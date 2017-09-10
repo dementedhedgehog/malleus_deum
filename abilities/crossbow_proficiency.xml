@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Crossbow Proficiency</abilitygrouptitle>
+    <abilitygroupid>crossbow</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use of the bow and arrow.  This
+	includes at higher lvels the use of the long bow.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Crossbow Use</abilitytitle>
+    <abilityid>crossbow.crossbow</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with an Crossbow can strike with it during combat
+	doing weapon damage.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+	<!-- level 0 is innate! -->
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage + 2</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 5</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Fast Loader</abilitytitle>
+    <abilityid>crossbow.fast_loader</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	The character has spent a long time practicing reloading a heavy
+	crossbow.  They can check to reload and fire in the same round.
+	If they do so their shot occurs in the melee attacks stage of the turn,
+	not in the missile/ranged attack stage.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>crossbow.crossbow_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Speed vs 10</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Speed vs 8</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Heavy Cross Bow Proficency</abilitytitle>
+    <abilityid>crossbow.heavy</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	Character has trained in the use of the heavy crossbow.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+	<!-- level 0 is innate! -->
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+      
+      <abilitylevel>	
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8+3 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8+3 vs opponents AC</check>
+        <damage>Weapon damage + 3</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+</abilitygroup>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Sword Proficiency</abilitygrouptitle>
+    <abilitygroupid>sword</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use swords in combat.  This includes
+	the use of two handed swords.
+      </p>      
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Sword Strike</abilitytitle>
+    <abilityid>sword.strike</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Sword can strike with it during combat doing
+	weapon damage.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+	<!-- level 0 is innate! -->
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 2 + Str modifier</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Sword Feint</abilitytitle>
+    <abilityid>sword.feint</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	The character makes an opposed agility check when an opponent attacks
+	them with a melee weapon. If they succeed they swap initiative order
+	with an opponent they are in combat with.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>sword.strike_2</prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Opposed agility check</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Opposed agility check +2</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Parry</abilitytitle>
+    <abilityid>sword.parry</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+        The player parrys a blow using a weapon.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>8</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Opposed speed check</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Opposed speed check + 2</check>
+        <!-- <successes>3</successes>
+             <failures>3</failures> -->
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Disarm</abilitytitle>
+    <abilityid>melee.disarm</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	The character attempts to disarm their opponent.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>5</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Opposed speed check -3</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>5</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Opposed speed check -1</check>
+        <!-- <successes>3</successes>
+             <failures>3</failures> -->
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+</abilitygroup>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Magic Abilities</abilitygrouptitle>
+    <abilitygroupid>magic</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Low level magical abilities or magic based lore abilities.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Augury</abilitytitle>
+    <abilityid>magic.augury</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	Augury involves petitioning a deity or powerful being for
+	information or insight.  Augurys are performed by
+	interpretation of the stars, palmistry, tea leaf reading,
+	dream interpretation, use of cards, the entrails of a sacraficial
+	victim etc.  The character should choose one method per message
+	recipient and use that method thereafter.
+      </p>
+
+      <p>
+	The augury process follows the following steps. First, the
+	character asks a question, then they prepare the augury,
+	and finally they examine the auspicies for the answer.
+      </p>
+
+      <p>
+	When asking the question it is important that the augure
+	specify to whom they are directing their question otherwise
+	nameless eavesdroppers may respond.  Asking the question is
+	usually done in one of the old languages.  Firstly because
+	it may be easier to communicate to the entity in that language,
+	and second because it makes for good theatre.	
+      </p>
+
+      <p>
+	The steps to prepare an augury depend on the method of
+	divination, but could include making a cup of tea, or
+	sacrificing someone on an alter (players should not do this).
+      </p>
+
+      <p>
+	Finally, the auspices can be examined. The GM will answer the
+	characters question in a three words or less or provide no
+	response.  If the augury is unsuccessful those worfs may have
+	nothing to do with the question being asked.  The player gets
+	to see their roll, but does not know the difficulty of the augury.
+      </p>
+
+      <p>
+	It is important to know that in Malleus Deum the Gods are
+	capricious,are not omniscient or in general, particularly caring.
+	So they may not answer the characters augury.
+      </p>
+      
+      <p>
+	A character may keep performing auguries until they fail, at which
+	point they feel they have lost the attention of the god.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>5</defaultlore>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs default 10</check>
+	<prereqtag>Cleric</prereqtag>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <check>Std 2d8 vs default 7</check>
+      </abilitylevel>      
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <check>Std 2d8 vs default 5</check>
+	<leveldescription>
+	  <p>
+	    The character may be gifted with visions from their deity.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Turn Undead</abilitytitle>
+    <abilityid>magic.turn_undead</abilityid>
+    <abilityclass>Fight-Ranged</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character calls on their deity to repel beings animated by
+	necrotic forces.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqtag>praedicant</prereqtag>
+        <defaultlore>8</defaultlore>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents will</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <check>Std 2d8 + 2 vs opponents will</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Arcana</abilitytitle>
+    <abilityid>magic.arcana</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character has read extensively of magic history and lore.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>1</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs default 14</check>
+	<leveldescription>
+	  <p>
+	    If successful the character knows some well-known magical lore.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 vs default 12</check>
+	<leveldescription>
+	  <p>
+	    Identifies well-known magical items and artifacts.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <check>Std 2d8 vs default 8</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Potion Making</abilitytitle>
+    <abilityid>magic.potions</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character knows how to make magical potions given
+	a lab, time and the right ingredients.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <prereqabilitylevel>lore.natural_history_2</prereqabilitylevel>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs default 7</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Scroll Writing</abilitytitle>
+    <abilityid>magic.scrolls</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character knows how to make magical scrolls given
+	sufficent time, and writing materials.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>language.inochian_2</prereqabilitylevel>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <prereqabilitylevel></prereqabilitylevel>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs default 7</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+</abilitygroup>

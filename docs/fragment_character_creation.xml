@@ -1,0 +1,224 @@
+
+<section>
+  <sectiontitle>Character Creation</sectiontitle>
+
+
+  <!--
+      <figure position="tb">
+      <img src="./resources/dragon.png" scale="0.4"></img>
+      </figure>
+  -->
+  
+  <p>
+    Follow these steps to create a character
+    <label>sec:character_creation</label>
+  </p>
+
+  <!--
+      {% include "tables/hit_point_bonuses.xml" %}
+  -->
+
+
+
+  <olist>
+    <li>
+      <p>
+        Choose an archetype.
+      </p>            
+    </li>
+
+    <li>
+      <p>
+        Choose a name for the character.
+      </p>            
+    </li>
+
+    <li>
+      <p>
+        Write your name in the players name area on the character sheet.
+      </p>            
+    </li>
+
+    <li>
+      Fill in your height, weight, and age as specified by the archetype.  Choose
+      whatever gender you like.  
+    </li>
+    
+    <li>
+      <p>
+        Determine your Primary Attributes using one of the following two methods:
+      </p>
+
+      <descriptions>
+        <term>Random</term> 
+        <description>For each attribute, roll 5d4, remove a single die with the lowest
+	value, and assign the sum of the remaing dice values to the attribute.  After 
+	all attributes have been assigned, optionally swap one or two pairs of
+	attribute values.
+        </description>  
+        
+        <term>Fixed</term> 
+        <description>Choose one of the following sets of numbers and assign them to 
+	the primary attributes of your choice:
+	<list>
+	  <li>15, 14, 12, 11, 10, 9, 7 or</li>
+	  <li>14, 14, 13, 11, 10, 9, 7</li>
+	</list>
+        </description>
+      </descriptions>
+    </li>
+
+    <li>
+      Fill in your opposed check modifiers.  The opposed check modifier for an attribute
+      is the value of the attribute minus nine, e.g. Dourli has a Strength of 14 and an
+      Agility of 7.  His opposed strength check modifier is +5 and his opposed agility
+      check modifier is -2.
+    </li>
+
+    <li>
+      Determine your Initiative Score and Modifier:
+      <equation>
+	<line>Initiative Score =</line>
+	<line>Archetype Initiative +</line>
+	<line>Speed Attribute Initiative Bonus</line>
+      </equation>
+    </li>
+
+    <li>
+      Determine your Movement and Movement Modifier.
+      <label>sec:character_movement</label>
+      <equation>
+	<line>Moves =</line>
+	<line>Archetype Movement +</line>
+	<line>Speed Attribute Move Bonus</line>
+      </equation>
+      Your movement modifier is the same as your movement.
+    </li>
+        
+    
+    <li>
+      Determine your Stamina.
+      <equation>
+	<line>Stamina =</line>
+	<line>Archetype Stamina +</line>
+	<line>Endurance Attribute Bonus for Stamina</line>
+      </equation>
+      The Archetype stamina is listed in the archetype description and the Attribute Bonus 
+      Table, see Table <ref>table:{{ doc_name }}_attribute_bonuses</ref> on page <pageref>table:{{ doc_name }}_attribute_bonuses</pageref>.
+    </li>
+    <li>
+      Determine your characters Health.
+      <equation>
+	<line>Health =</line>
+	<line>Archetype Health +</line>
+	<line>Strength Attribute Bonus for Health</line>
+      </equation>
+
+      The Archetype Health is listed in the archetype Level Progression Table and the
+      Strength Bonus is in the Attribute Bonus Table <ref>table:{{ doc_name }}_attribute_bonuses</ref> on page <pageref>table:{{ doc_name }}_attribute_bonuses</pageref>.      
+    </li>
+
+    <li>
+      Determine your Resolve Dice Pool, Refresh Rate and Current Pool: 
+      <equation>
+	<line>Resolve =</line>
+	<line>Archetype Resolve Dice +</line>
+	<line>Willpower Attribute Bonus Dice for Resolve</line>
+      </equation>
+      The Archetype Resolve is listed in the archetype Level Progression Table and the
+      Attribute Bonus Table <ref>table:{{ doc_name }}_attribute_bonuses</ref> on page
+      <pageref>table:{{ doc_name }}_attribute_bonuses</pageref>.
+    </li>
+
+    <li>
+      Fill in your Magic Pool and Magic Refresh Rate as described by your archetypes
+      level progression table.  The current pool starts equal to your Magic Pool.
+      Some archetypes have no magic pool and you can ignore this step for those
+      archetypes.
+    </li>
+
+    <li>
+      Determine your Fate Refresh Rate and Max Fate Pool from your archetype
+      with bonuses for Luck from the Attibute Bonus Table 2, see Table
+      <ref>table:{{ doc_name }}_attribute_bonuses2</ref> on page
+      <pageref>table:{{ doc_name }}_attribute_bonuses2</pageref>.  Set your Fate Pool
+      to your Max Fate Pool value.
+    </li>
+    
+    <li>
+      The rate of character progression is determined by Story Progression Points.
+      Starting SPP is zero unless the GM states otherwise.  The SPP required to reach
+      the next level is recorded in the archetype description document.
+    </li>
+
+    <li>
+      Determine the Skill Points you have available from your archetype level progression 
+      table and record them on your character sheet.
+    </li>
+
+    <li>
+      <p>
+        Players should choose a few initial aspects for their character.   Newly acquired 
+	aspects have a difficulty of $4 + d4$ unless the archetype description or the GM
+	says otherwise.
+      </p>
+      <p>
+	During the course of the game new aspects can be added and old aspects removed so 
+	the initial choice is not overly important.  We suggest you choose one aspect that 
+	describe your characters politics, motivations or troubles and another one that 
+	describes your characters relationship with some other member in the party.
+      </p>
+      <p>
+	To provide inspiration, each archetype has some suggested aspects. There is also 
+	a table of random aspects in Section <ref>table:{{ doc_name }}_random_aspects</ref>
+	on page <pageref>table:{{ doc_name }}_random_aspects</pageref>.  You do not have to
+	choose aspects from these lists.  You are more than welcome to create your own.  In
+	fact it is preferable.  Just make sure to run your aspects past your GM before
+	committing them to paper, as GMs and players may need to collaborate to ensure that
+	their character's aspects and the world, interact in interesting ways and are cogent.  
+      </p>
+    </li>
+
+    <li>
+      Optionally sketch out a couple of lines of back story with your fellow players and 
+      GM with a few points about the characters history.  For example, Dourli might come from 
+      the Iron Mountains and be searching for his long lost cousin Grimli.
+    </li>
+
+    <li>
+      Buy your starting skills using the skill point price list for your archetype.
+    </li>
+
+    <li>
+      Determine the starting money as described by your archetype.
+    </li>
+
+    <li>
+      Buy equipment.
+    </li>
+
+    <li>
+      Determine your Armour Class:
+      <equation>
+	<line>Armour Class =</line>
+	<line>Archetype Armour Class +</line>
+	<line>Shield Armour Class Bonus +</line>
+	<line>Speed Armour Class Bonus</line>
+      </equation>
+      The shield bonus is available when equipping shields and a few other 
+      weapons that can be used defensively.
+    </li>
+    
+  </olist>
+
+
+  {% include "tables/attribute_bonuses.xml" %}
+
+  <!--
+  { % include "tables/attribute_bonuses2.xml" % }
+      
+  <figure position="tb">
+    <img src="./resources/dragon_head.png" scale="0.15"/>
+  </figure>
+  -->
+</section>

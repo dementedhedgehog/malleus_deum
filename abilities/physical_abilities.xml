@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Physical Abilities</abilitygrouptitle>
+    <abilitygroupid>physical</abilitygroupid>
+    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents general physical abilities and common non-weapon-specific fighting
+	abilities, including boxing, wrestling and other bare handed martial
+	arts.
+      </p>
+      
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Run</abilitytitle>
+    <abilityid>physical.run</abilityid>
+    <abilityclass>Run</abilityclass>
+    <abilitydescription>
+      <p>
+        The Run ability allows the character to move twice their movement rate.
+	This skill represents the characters fleet footedness.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  
+
+  <ability>
+    <abilitytitle>Jump</abilitytitle>
+    <abilityid>physical.jump</abilityid>
+    <abilityclass>Run</abilityclass>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+    <abilitydescription>
+      <p>
+	This skill represents the characters ability to Jump.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Swim</abilitytitle>
+    <abilityid>physical.swim</abilityid>
+    <abilityclass>Run</abilityclass>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+    <abilitydescription>
+      <p>
+	This skill represents the characters ability to swim (if at all).
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Climb</abilitytitle>
+    <abilityid>physical.climb</abilityid>
+    <abilityclass>Run</abilityclass>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+    <abilitydescription>
+      <p>
+	This skill represents the characters ability to Climb.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Throw</abilitytitle>
+    <abilityid>physical.throw</abilityid>
+    <abilityclass>Fight-Ranged</abilityclass>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+    <abilitydescription>
+      <p>
+	This skill represents the characters ability to throw.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Notice</abilitytitle>
+    <abilityid>physical.notice</abilityid>
+    <abilityclass>Act</abilityclass>
+    <abilitydescription>
+      <p>
+	This skill represents the characters attention to detail,
+	alertness, and their ability to notice subtle things in their environs
+	that are not as they should be.
+      </p>
+    </abilitydescription>      
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Listen</abilitytitle>
+    <abilityid>physical.listen</abilityid>
+    <abilityclass>Act</abilityclass>
+    <abilitydescription>
+      <p>
+	This is the characters ability to hear faint noise.
+	<indexentry>Hear Noise<see>Notice</see></indexentry>	
+	<indexentry>Listen<see>Notice</see></indexentry>	
+      </p>
+    </abilitydescription>      
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs default 13</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <failures>2</failures>
+        <check>Std 2d8 + 3 vs default 13</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <check>Std 2d8 + 5 vs default 13</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Dodge</abilitytitle>
+    <abilityid>physical.dodge</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	After the actor is hit and/or damage is rolled the actor
+	may use their standard action to attempt to dodge the attack.
+	If successful the attack is dodged and the actor takes no damage.
+      </p>
+
+      <p>
+	Some types of attack cannot be dodged, e.g. surprise attacks and
+	poisonous gas attacks.  Other types of attack e.g. the acid or 
+	fire attacks of dragons may be dodgeable depending on the context
+	and deal half or no damage (at the GM's discretion).
+      </p>
+
+      <p>
+	Once the character fails a dodge they are rattled and can no longer
+	dodge for the rest of that combat.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>5</successes>
+        <check>Std 2d8 vs default 13</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>5</successes>
+        <check>Speed Check vs Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Speed Check + 2 vs Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Kick</abilitytitle>
+    <abilityid>physical.kick</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	The attacker kicks an opponent potentially pushing the opponent back.
+	The opponent must be approximately the same sized or smaller as the 
+	attacker in order to be pushed.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents Agility</check>
+	<damage>d3</damage>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents Agility</check>
+	<damage>d4</damage>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 vs opponents Agility</check>
+	<damage>d6 and opponent saves vs Str or is pushed back</damage>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 2 vs opponents Agility</check>
+	<damage>d8 and opponent saves vs Str-2 or is pushed back</damage>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Grapple</abilitytitle>
+    <abilityid>physical.grapple</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	Grappling involves grabbing, tackling or wrestling an opponent and holding 
+	them without harming them.  Other attacks against a grappled opponent
+	are hindered by the grappler being close to the opponent and the opponents
+	struggling.
+      </p>
+
+      <p>
+	Every round that an opponent is grappled they may make an opposed Str test 
+	against their grappler to escape.  Once grappled it takes a round for 
+	a second actor to tie-up, or otherwise constrain, the opponent.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Std 2d8 + Str Modifier vs max of opponents Str or Grapple</check>
+        <successes>2</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 + 2 + Str Modifier vs opponents Str or Grapple</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Std 2d8 + 4 + Str Modifier vs opponents Str or Grapple</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Head Butt</abilitytitle>
+    <abilityid>physical.head_butt</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	A head butt involves the attacker driving the top of their head into the bridge 
+	of the defenders nose.  Head butting is mainly used as an attack of last resort or 
+	as a surprise attack.  An attacker may only head butt someone immediately in 
+	front or behind them.  An actor may head butt when grappled.
+      </p>
+
+      <p>
+	Head butts do +2 damage if the attacker is wearing a helmet and -2 damage
+	if the defender is wearing a helmet.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs opponents Speed</check>
+	<damage>d4</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs opponents Speed</check>
+	<damage>d6 + opponent saves versus stun</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 2 vs opponents Speed</check>
+	<damage>d8 + opponent saves versus stun</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Punch</abilitytitle>
+    <abilityid>physical.punch</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	The attacker attempts to hit their opponent using their fists. 
+	Does +2 damage if the attacker is wearing gauntlets, -2 damage
+	if the attacker is wearing a helmet.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<successes>3</successes>
+        <failures>1</failures>
+        <check>Std 2d8 + 2 vs opponents Agility</check>
+	<damage>d4</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 4 vs opponents Agility</check>
+	<damage>d4 + Str</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 5 vs opponents Agility</check>
+	<damage>d4 + 2 + Str Modifier</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  
+  <!--
+  <ability>
+    <abilitytitle>Attack</abilitytitle>
+    <abilityid>melee.attack</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	This is the default fighting ability when a character uses 
+	a weapon that they have no proficiency in.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<leveldescription>
+	  <p>
+            A player tries to hit a monster with a weapon they roll a D20 and add their combat 
+            modifier with that weapon.  If they roll greater than or equal to the monsters AC 
+            they hit.  Roll the weapons damage dice and add the players damage modifier for 
+	    that weapon.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  -->
+
+
+
+
+
+
+
+
+  <!--
+  <ability>
+    <abilitytitle>Fast</abilitytitle>
+    <abilityid>general.fast</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <defaultcombat>2</defaultcombat>
+    <defaulttraining>3</defaulttraining>
+    <defaultlearning>0</defaultlearning>
+    <abilitydescription>
+      <p>
+        The Initiative skill is used to modify a characters Initiative roll during combat. 
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Observant</abilitytitle>
+    <abilityid>general.observant</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <defaultcombat>1</defaultcombat>
+    <defaulttraining>4</defaulttraining>
+    <defaultlearning>0</defaultlearning>
+    <abilitydescription>
+      <p>
+        Observant characters use their Observant level to modify the characters Suprise
+        roll before combat. 
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Climbing</abilitytitle>
+    <abilityid>general.climbing</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <defaultcombat>1</defaultcombat>
+    <defaulttraining>6</defaulttraining>
+    <defaultlearning>0</defaultlearning>
+    <abilitydescription>
+      <p>
+        The character is abilityed in Stegophilly or Urban Climibing.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Punch</abilitytitle>
+    <abilityid>general.punch</abilityid>
+    <abilityclass>Combat</abilityclass>
+    <defaultcombat>0</defaultcombat>
+    <defaulttraining>0</defaulttraining>
+    <defaultlearning>0</defaultlearning>
+    <abilitydescription>
+      <p>
+        This represents the characters pugilistic abilities.
+      </p>
+    </abilitydescription>
+  </ability> 
+
+
+  <ability>
+    <abilitytitle>Common Knowledge</abilitytitle>
+    <abilityid>general.common-knowledge</abilityid>
+    <abilityclass>Passive</abilityclass>
+    <actionpoints>0</actionpoints>
+    <defaultcombat>0</defaultcombat>
+    <defaulttraining>0</defaulttraining>
+    <defaultlearning>0</defaultlearning>
+    <abilitydescription>
+      <p>
+        A player has common knowledge about their race, background home town.
+        The player can know things about them using this skill. 
+      </p>
+    </abilitydescription>
+  </ability>
+  -->
+
+  
+</abilitygroup>

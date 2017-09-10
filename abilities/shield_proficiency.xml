@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <!--
+      
+      Note this is not a document format.
+      Docs get generated from this.
+      
+  -->
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Shield Proficiency</abilitygrouptitle>
+    <abilitygroupid>shield</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Shield abilities refer to any combat training with a shield
+	or buckler.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Shield Block</abilitytitle>
+    <abilityid>shield.block</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+        Characters equipped with a shield can block with it
+	during combat as a reaction.  This allows them to intercept
+	a physical attack to themselves or an adjacent character.	
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+        <failures>1</failures>
+	<check>Std 2d8 vs Default Difficulty: 6</check>
+	<effect>Reduces damage by 8 points</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>5</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>1</successes>
+        <attempts>2</attempts>
+        <failures>1</failures>
+	<check>Std 2d8 + 1 vs Difficulty Difficulty: 6</check>
+	<effect>Reduces damage by 12 points</effect>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>5</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<check>Std 2d8 + 2 vs Default Difficulty: 6</check>
+	<effect>Reduces damage by 15 points</effect>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Support</abilitytitle>
+    <abilityid>melee.support</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	<indexentry>support</indexentry>
+	Some armour, notably large shields provide <defn>support</defn>.
+	Allies standing shoulder to shoulder with the character gain a bonus to their
+	armour class from the shield.  This is a passive ability that requires no action
+	from the player.  Support may be reciprocated and is additive.  So in a line of
+	three characters with large shields the two characters on the ends will get
+	support once, the character in the center will get support twice.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+       
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<check>Std 2d8 vs Default Difficulty: 6</check>
+	<effect>Reduces damage by 3 points</effect>
+        <successes>3</successes>
+        <failures>3</failures>
+	<leveldescription>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<check>Std 2d8 vs Default Difficulty: 6</check>
+	<effect>Reduces damage by 6 points</effect>
+        <!-- <successes>3</successes>
+             <failures>3</failures> -->
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+
+
+  <ability>
+    <abilitytitle>Shield Push</abilitytitle>
+    <abilityid>melee.shield_push</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	<indexentry>shield push</indexentry>
+	The character can use the shield to push an adjacent opponent
+	back in a direction chosen by the character.  The opponent must
+	be corporeal, capable of being moved, and not too much larger
+	than the character.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+       
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<check>Strength vs Opponents Strength</check>
+	<effect>Opponent is pushed back</effect>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<leveldescription>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<check>Strength + 2 vs Opponents Strength</check>
+	<effect>Opponent is pushed back</effect>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<check>Strength + 4 vs Opponents Strength</check>
+	<effect>Opponent is pushed back</effect>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+</abilitygroup>

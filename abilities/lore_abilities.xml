@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Lore Abilities</abilitygrouptitle>
+    <abilitygroupid>lore</abilitygroupid>
+    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents book learning on a wide variety of fields through academic study.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>  
+
+
+  <ability>
+    <abilitytitle>Art</abilitytitle>
+    <abilityid>std.art</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The actor has some ability, experience and training in painting, sculpting,
+	art history and appraisal.  They have worked for a master craftsman for 
+	a number of years.  They know of, and can recognize, the great masters and 
+	can provide information about the provenence of works of art.
+      </p>
+      <p>
+	At third level The character can create good works of art, and can make a good
+	living creating	art, if they choose to do so.  They may have rich and powerful
+	patrons that will provide some support in times of need.  Given a few weeks,
+	access to the art-work and the necessary equipment they are able to craft
+	forgeries that are hard to detect.
+      </p>
+    </abilitydescription>
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <attempts>2</attempts>
+        <check>Std 2d8 vs default 10</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 8</check>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <check>Std 2d8 vs default 6</check>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Antiquarian</abilitytitle>
+    <abilityid>lore.antiquarian</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The character has studied the history of antique objects, furniture,
+	vases, coins, maps, swords, etc. They can check to evaluate the worth
+	and provenance of these objects.  At higher levels they can, with
+	difficulty, discern the nature of certain well-known eldritch objects.
+      </p>
+    </abilitydescription>
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <successes>2</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 vs default 10</check>	
+      </abilitylevel>
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs default 8</check>	
+      </abilitylevel>
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs default 6</check>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Book Keeping</abilitytitle>
+    <abilityid>lore.book_keeping</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Book keeping encompasses accounting and financial skills. 
+        Book keeping is used by merchants, clerks, and castellans, to manage 
+	finances.  With this skill an actor can examine the books of a business to 
+	get an idea of how the business operates, whether it is doing well or badly,
+	how much debt is owed if any, where the money is coming from and going to,
+	and so on.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>lore.maths_1</prereqabilitylevel>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>1</defaultgeneral>
+        <check>Std 2d8 vs default 10</check>	
+      </abilitylevel>
+
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>1</defaultgeneral>
+        <check>Std 2d8 vs default 8</check>	
+      </abilitylevel>
+
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>1</defaultgeneral>
+        <check>Std 2d8 vs default 6</check>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Mathemathics</abilitytitle>
+    <abilityid>lore.maths</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Maths is the lingua franca of science.  A basic understanding
+	of maths is a prerequisite for many other abilities.  It can be
+	applied in a very large and diverse range of circumstances.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <check>Std 2d8 vs default 10</check>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <check>Std 2d8 vs default 8</check>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <check>Std 2d8 vs default 6</check>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Alchemy</abilitytitle>
+    <abilityid>lore.alchemy</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Alchemy is concerned with the creation of chemical substances,
+	the creation of cures for various diseases, the creation of solvents (acids),
+	liquid fire, dies, gunpowder, etc.
+      </p>
+	
+      <p>
+	Two, as yet, unattained goals of alchemy are the transmutation of lead into gold,
+	and the creation of an elixir of immortality.  
+      </p>
+    </abilitydescription>
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <prereqabilitylevel>lore.maths_1</prereqabilitylevel>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs default 10</check>	
+	<leveldescription>
+	  <p>
+	    The character can check to Manufacture explosives,
+	    acids, dyes, gunpowder etc.  Can identify many chemical substances.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs default 8</check>		
+	<leveldescription>
+	  <p>
+	    The character call themselves an Apothecary, and can prepare poisons
+	    and medicines for certain diseases in addition to the abilities from first level.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Law (Society)</abilitytitle>
+    <abilityid>lore.law</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	An understanding of the law grants the character insight into the way society
+	works.  The practice of law invariably leads to the heart of industry and
+	the seats of power.  Characters may be able to discern the motive behind
+	political machinations and they may be able to cite a legal precedent in
+	order to compell or cease certain courses of events in a civilized society.	
+      </p>
+
+      <p>
+	Law is the study of the laws of a particular society.  The study of the
+	laws of one society is not necessarilly applicable to another.  When choosing
+	the law ability the player must specify which legal system they are studying.
+      </p>	
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 12</check>		
+	<leveldescription>
+	  <p>
+	    Good, but not professional, understanding of the law of some land.  Usually,
+	    the characters homeland.  Some understanding of the laws in surrounding regions.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 10</check>		
+	<leveldescription>
+	  <p>
+	    Professional level understanding and possibly experience with the law in a region.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Necromantic Lore</abilitytitle>
+    <abilityid>lore.necromancy</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Necromantic lore is the study of the legends of the dread necromancers
+	and the unquiet dead.  Characters may provide useful information about these
+	topics on occasion: identifying undead, and or their weaknesses, and providing
+	the relevant mythology around these creatures.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>1</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 12</check>		
+      </abilitylevel>
+
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>1</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 10</check>		
+      </abilitylevel>
+
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 8</check>		
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Demonic Lore</abilitytitle>
+    <abilityid>lore.demonic</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Demons inhabit the cold lower planes.  There is much recorded
+	of their nature and their history in old and long forgotten tomes.
+	This ability represents the study of that lore. Such books are not
+	easily come by.	
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 12</check>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 10</check>		
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>History</abilitytitle>
+    <abilityid>lore.history</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	History is the study of the events of the civilized peoples.
+	Its study is both interesting and useful.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 12</check>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 10</check>		
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Physics</abilitytitle>
+    <abilityid>lore.physics</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Physics involves the study of the natural laws of the universe, movement and
+	energy.  Its practioners usually make a clear deliniation between the study
+	of physics and the study of the wyrd, unworldly and unnatural laws (possibly
+	to protect themselves from pogroms and witch hunts).  At higher levels physics
+	also includes the study of celestial mechanics.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <prereqabilitylevel>lore.maths_1</prereqabilitylevel>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 10</check>		
+	<leveldescription>
+	  <p>
+	    Some understanding of the relationship between energy and forces,
+	    e.g. gravity, motion, stress and heat.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 8</check>		
+	<leveldescription>
+	  <p>
+	    Includes some understanding of Astronomy and Meterology.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Earth Science</abilitytitle>
+    <abilityid>lore.earth_science</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Earth science is the study of the earth, mining and minerals.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 10</check>		
+	<leveldescription>
+	  <p>
+	    The character has a good understanding of mineralogy and
+	    can identify metals, common stone types, and common
+	    greographical structures.  The character can read technical
+	    maps.  Can be used to detect secret doors underground.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <prereqabilitylevel>lore.maths_1</prereqabilitylevel>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs default 8</check>		
+	<leveldescription>
+	  <p>
+	    The character has a rudimentary understanding of civil
+	    engineering, load distribution, sapping, bridge or
+	    dam building, and so on.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Natural History</abilitytitle>
+    <abilityid>lore.natural_history</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The study of nature.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 12</check>	
+	<leveldescription>
+	  <p>
+	    The character has some knowledge of the flora and fauna of
+	    their homelands.  They may identify many plants and may know
+	    about useful herbal remedies for certain diseases or for use
+	    in the the making of poultices.  They have some understanding
+	    of zoology and anatomy.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs default 10</check>	
+	<leveldescription>
+	  <p>
+	    The character has enough of an understanding of anatomy that
+	    they may attempt minor surgeries, set bones etc.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <prereqabilitylevel>lore.alchemy_1</prereqabilitylevel>
+        <check>Std 2d8 vs default 8</check>	
+	<leveldescription>
+	  <p>
+	    The character has extensive knowledge of diseases both common
+	    and exotic.  They may diagnose many diseases, prepare poisons and
+	    medicines.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Politics</abilitytitle>
+    <abilityid>lore.politics</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	This ability represents the study of the machinations that occur in the
+	upper levels of power in society, its application, its history and its heraldry.
+	This includes political theory: Real Politics and Machiavellian dealings
+	and important historical treaties and maneveurings.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>2</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 vs default 12</check>	
+	<leveldescription>
+	  <p>
+	    The character has knowledge of the history and current affairs of some
+	    local regions nobility and royalty.  They know the heraldic insignias
+	    of these nobles and important state organizations.  They understand
+	    the laws of succession in that region.  They know most of the
+	    commonly known court intrigue.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultgeneral>7</defaultgeneral>
+        <successes>2</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 vs default 9</check>	
+	<leveldescription>
+	  <p>
+	    The character has 1st level knowledge of two other regions and has deep
+	    knowledge of their own region.  They may know some tightly kept secrets.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Theology</abilitytitle>
+    <abilityid>lore.theology</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      The study of religions, their belief systems, rituals and history.
+    </abilitydescription>
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <successes>1</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 12</check>
+	<leveldescription>
+	  <p>
+            The character has a vague understanding of religious philosophies,
+	    legends and lore.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>4</defaultlore>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 10</check>	
+	<leveldescription>
+	  <p>
+            The character has spent some time learning about religious philosophies,
+	    legends and lore.  Can identify most religious symbols and quote from
+	    their texts.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+      
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 8</check>
+	<leveldescription>
+	  <p>
+	    The character has a deep knowledge of numerour religions both living and
+	    dead.  The character depth of knowledge is deep enough that they may pass
+	    as a follower of many faiths when questioned.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>4</defaultlore>
+        <prereqabilitylevel></prereqabilitylevel>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs default 6</check>
+	<leveldescription>
+	  <p>
+	    Can enter a trance that releases stress, appears as if the character is dead 
+	    and can reduce the characters oxygen consumption, and reduce the effect of
+	    poisonous miasmas.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+</abilitygroup>

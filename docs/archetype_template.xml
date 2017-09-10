@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+  <chapter>
+    <chaptertitle>{{ archetype.get_title() }}</chaptertitle>
+    <section>        
+      <sectiontitle>Overview</sectiontitle>
+      <indexentry>{{ archetype.get_title() }}</indexentry>
+
+      {{ archetype.get_description() }}
+
+      <vspace/>
+      <p noindent="true">
+        <bold>Armour Class:</bold> {{ archetype.get_armour_class() }}
+      </p>
+      <p noindent="true">
+        <bold>Move:</bold>  {{ archetype.get_move() }}
+      </p>
+      <p noindent="true">
+        <bold>Archetype Initiative:</bold> {{ archetype.get_initiative() }}
+      </p>
+      <p noindent="true">
+        <bold>Starting Coin:</bold> {{ archetype.starting_cash }}
+      </p>
+      <p noindent="true">
+        <bold>Starting Gear:</bold> {{ archetype.starting_gear }}
+      </p>
+      <p noindent="true">
+        <bold>Height:</bold> {{ archetype.height }}
+      </p>
+      <p noindent="true">
+        <bold>Weight:</bold> {{ archetype.weight }}
+      </p>
+      <p noindent="true">
+        <bold>Age:</bold> {{ archetype.age }}
+      </p>
+      <p noindent="true">
+        <bold>Appearance Examples:</bold> {{ archetype.appearance }}
+      </p>
+      <p noindent="true">
+        <bold>Starting Coin:</bold> {{ archetype.get_starting_cash() }}
+      </p>
+      <p noindent="true">
+        <bold>Tags:</bold> {{ archetype.get_tags_str() }}
+      </p>
+      <p noindent="true">
+        <bold>Attr Bonuses:</bold>
+        {% if archetype.attr_bonuses | length > 0 %}
+        {% for attr_bonus in archetype.attr_bonuses %}
+        {{ attr_bonus }}{% if not loop.last %}, {% endif %}
+	{% endfor %}.   
+        {% endif %}    
+      </p>
+      <p noindent="true">
+        <bold>Attr Limits:</bold>    
+        {% if archetype.attr_limits | length > 0 %}
+	{% for attr_limit in archetype.attr_limits %}
+        {{ attr_limit }}{% if not loop.last %}, {% endif %}
+	{% endfor %}.       
+        {% endif %}    
+      </p>
+      
+      <p noindent="true">
+        <bold>Example Aspects:</bold> {{ archetype.aspect_examples }}
+      </p>
+      <p noindent="true">
+        <bold>Innate Abilities:</bold> The following abilities are innate to this archetype
+	specifically: {%
+	  for ability_level
+	  in archetype.get_archetype_specific_innate_ability_levels() %}
+	{{ ability_level.get_title() }}{% if not loop.last %}, {% endif %}{% endfor %}.
+      </p>
+
+      <p>
+	We do not list those abilities that are innate to all characters.
+      </p>
+      <vspace/>
+
+      <subsection>
+        <subsectiontitle>Suggested Builds</subsectiontitle>
+
+	<p>
+	  XXXX FIXME
+	</p>
+
+	<table>
+	  <tablecategory>Sideways</tablecategory>
+	  <tablespec>
+            <fixed>0.019</fixed>
+            <fixed>0.019</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.01</fixed>
+            <fixed>0.01</fixed>
+            <fixed>0.01</fixed>
+            <fixed>0.01</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.04</fixed>
+            <fixed>0.18</fixed>
+	  </tablespec>
+
+	  <tabletitle>{{ archetype.get_title() }} Level Progression Table</tabletitle>
+
+	  <tableheaderrow>
+            <multicolumntd columns="2">Level</multicolumntd>
+            <multicolumntd columns="2">Stamina</multicolumntd>
+            <multicolumntd columns="2">Health</multicolumntd>
+            <multicolumntd columns="4">Skill Points</multicolumntd>
+            <multicolumntd columns="2">Resolve</multicolumntd>
+            <multicolumntd columns="2">Magic</multicolumntd>
+            <multicolumntd columns="2">Fate</multicolumntd>
+            <th></th>
+	  </tableheaderrow>
+	  
+	  <tableheaderrow>
+            <th>No\#</th>
+            <th>XP</th>
+            <th>Base</th>
+            <th>Rest</th>
+            <th>Base</th>
+            <th>Rest</th>
+            <th><general/></th>
+            <th><martial/></th>
+            <th><lore/></th>
+            <th><magical/></th>
+            <th>Base</th>
+            <th>Rest</th>
+            <th>Base</th>
+            <th>Rest</th>
+            <th>Base</th>
+            <th>Rest</th>
+            <th>Notes...</th>
+	  </tableheaderrow>
+
+	  {% for level_progression_data in archetype.level_progression_table  %}
+	  <tablerow>
+            <td>{{ level_progression_data.get_level_number() }}</td>        
+            <td>{{ level_progression_data.get_level_spp() }}</td>        
+            <td>{{ level_progression_data.level_stamina }}</td>
+            <td>{{ level_progression_data.level_stamina_refresh }}</td>
+            <td>{{ level_progression_data.level_health }}</td>
+            <td>{{ level_progression_data.level_health_refresh }}</td>
+
+            <td>{{ level_progression_data.level_general if level_progression_data.level_general != 0 else "-"}}</td>
+            <td>{{ level_progression_data.level_martial if level_progression_data.level_martial != 0 else "-"}}</td>
+            <td>{{ level_progression_data.level_lore if level_progression_data.level_lore != 0 else "-"}}</td>
+            <td>{{ level_progression_data.level_magical if level_progression_data.level_magical != 0 else "N/A"}}</td>
+            <td>{{ level_progression_data.level_resolve }}</td>        
+            <td>{{ level_progression_data.level_resolve_refresh }}</td>        
+            <td>{{ level_progression_data.magic_pool if level_progression_data.magic_pool is not none else "N/A"}}</td>
+            <td>{{ level_progression_data.magic_refresh if level_progression_data.magic_refresh is not none else "N/A"}}</td>
+            <td>{{ level_progression_data.level_luck }}</td>        
+            <td>{{ level_progression_data.level_luck_refresh }}</td>        
+            <td>{{ level_progression_data.level_description if level_progression_data.level_description is not none else ""}}</td>
+	  </tablerow>
+	  {% endfor %}
+	</table>
+      </subsection>
+      
+      <subsection>
+        <subsectiontitle>Level Progression</subsectiontitle>
+	<p>
+	  The level progression table contains the skill points the player gets 
+	  to spend on abilities when they gain a new level.  Abilities that are
+	  innate to all characters are marked thus <innateabilitylevelsymbol/>.  All 
+	  characters get them for free at first level.   Abilities that are specially 
+	  innate to your archetype are marked with a <innatearchetypeabilitylevelsymbol/>.
+	  These are also free, but are special to your archetype.  Your character 
+	  automatically receives all innate abilities at first level.  Abilities 
+	  that we recommended you purchase for characters of this archetype are marked 
+	  with a <recommendedabilitylevelsymbol/> symbol.  
+	</p>
+      </subsection>
+      
+      <subsection>
+        <subsectiontitle>Purchasing Abilities</subsectiontitle>
+
+	<p>
+	  Abilities are purchased using points.  There are four different point types:
+	  Lore <lore/>, Martial <martial/>, General <general/>, and Magical <magical/>.
+	  Starting points for the archetype are specified in the previous section.  The
+	  following sections contain point costs for ability levels in the following form:
+	  <lore/>/<martial/>/<general/>/<magical/>.
+	</p>
+
+	<threecolumns>
+	  
+          {%
+	  for modified_ability in archetype.get_modified_abilities()
+	  %}	
+	  
+	  <table>
+            <tablecategory>Standard</tablecategory>
+            
+            <tablespec>
+	      <fixed>0.1</fixed>
+	      <fixed>0.25</fixed>
+	      <fixed>0.25</fixed>
+            </tablespec>
+
+            <tabletitle>X</tabletitle>
+
+            <tablerow>
+	      <td width="3" align="l">
+		<tablesection>{{ modified_ability.get_title() }}</tablesection>
+	      </td>
+            </tablerow>
+
+            {% for modified_ability_level in modified_ability  %}
+            {% if modified_ability_level.is_enabled() %}
+            <tablerow>
+	      <td>
+		{{- modified_ability_level.get_level_number() | convert_to_roman_numerals }}
+		{% if modified_ability_level.is_innate_for_this_archetype() -%}   
+		<innatearchetypeabilitylevelsymbol/>
+		{%- elif modified_ability_level.is_innate() -%}   
+		<innateabilitylevelsymbol/>
+		{%- endif -%}
+		{%- if modified_ability_level.is_recommended() -%}
+		<recommendedabilitylevelsymbol/>
+		{%- endif -%}
+	      </td>
+
+	      <td>
+		{{-
+		modified_ability_level.get_lore_points()
+		if modified_ability_level.get_lore_points() != 0
+		else "-"
+		-}}
+		/
+		{{-
+		modified_ability_level.get_martial_points()
+		if modified_ability_level.get_martial_points() != 0
+		else "-"
+		-}}
+		/
+		{{-
+		modified_ability_level.get_general_points()
+		if modified_ability_level.get_general_points() != 0
+		else "-"
+		-}}
+		/
+		{{-
+		modified_ability_level.get_magical_points()
+		if modified_ability_level.get_magical_points() != 0
+		else "-"
+		-}}
+	      </td>
+	      
+	      <td>
+		{%- for x in range(modified_ability_level.get_mastery_successes()) -%}
+		<success/>
+		{%- endfor -%}
+		{%- for x in range(modified_ability_level.get_mastery_attempts()) -%}
+		<attempt/>
+		{%- endfor -%}
+		{%- for x in range(modified_ability_level.get_mastery_failures()) -%}
+		<fail/>
+		{%- endfor -%}
+	      </td>              
+            </tablerow>
+
+            {% if modified_ability_level.has_prerequisites() %}   
+            <tablerow newcolour="false">          
+	      <td width="3" align="r">
+		<smaller>
+		  {%- if modified_ability_level.get_prerequisites() | length > 1 -%}
+		  Prereqs:
+		  {%- else -%}
+		  Prereq:
+		  {%- endif -%}
+
+		  {%- for prereq in modified_ability_level.get_prerequisites() -%}
+		  {{- prereq.to_string() -}}
+		  {%- if not loop.last %}, {% endif -%}
+		  {%- endfor -%}
+		</smaller>
+	      </td>
+            </tablerow>      
+            {% endif %}	    
+            {% endif %}        
+            {% endfor %}                                         
+	  </table>    
+	  {% endfor %}
+
+	</threecolumns>	
+      </subsection>	        
+    </section>
+  </chapter>
+</book>

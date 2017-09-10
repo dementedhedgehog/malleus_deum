@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Skullduggery Abilities</abilitygrouptitle>
+    <abilitygroupid>skullduggery</abilitygroupid>
+    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	Skullduggery involve skills associated with larceny, thievery
+	and spycraft.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Sleight of Hand</abilitytitle>
+    <abilityid>skullduggery.sleight_of_hand</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	This skill involves palming and concealing small objects about
+	ones person and picking pockets.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Std 2d8 - 2 vs opponents Perception</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 vs opponents Perception</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 + 2vs opponents Perception</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents Perception</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Sneak</abilitytitle>
+    <abilityid>skullduggery.sneak</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	Hiding in urban environments.  Shadowing people and remainging undetected.
+	The character rolls against the highest opponents perception and is undetected
+	if they succeed.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>2</failures>
+	<check>Std 2d8 vs opponents perception</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Std 2d8 + 3 vs opponents perception</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Std 2d8 + 5 vs opponents perception</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Disguise</abilitytitle>
+    <abilityid>skullduggery.disguise</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Disquise is the art of hiding in plain sight.  This covers anything
+	from throwing their hood over the heads through to assuming the dress,
+	mannerisms and style of speach of some class of people.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>1</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Trap Work</abilitytitle>
+    <abilityid>skullduggery.trap_work</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Spotting, arming and disarming traps.
+      </p>
+    </abilitydescription>
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 vs Trap Difficulty</check>
+        <successes>3</successes>
+        <attempts>3</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 2 vs Trap Difficulty</check>
+        <successes>3</successes>
+        <attempts>3</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <check>Std 2d8 + 4 vs Trap Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Pick Locks</abilitytitle>
+    <abilityid>skullduggery.pick_locks</abilityid>
+    <abilityclass>Act</abilityclass>
+    <abilitydescription>
+      <p>
+	Pick locks encompases lock smith skills, primarily
+	opening locks but it also includes lock repair.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 vs Lock Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 + 2 vs Lock Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 + 4 vs Lock Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <check>Std 2d8 + 6 vs Lock Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Concealment</abilitytitle>
+    <abilityid>skullduggery.concealment</abilityid>
+    <abilityclass>Act</abilityclass>
+    <abilitydescription>
+      <p>
+	<indexentry>concealment</indexentry>
+	Characters or monsters can conceal themselves from other creatures.  
+	Concealment is a relationship between two groups of creatures.            
+	For example given three groups; a party of adventurers, 
+	a large band of goblins and some goblin scouts; then it may be 
+	possible that the adventurers are concealed from the band of goblins, and 
+	the goblin scouts are concealed from the adventurers.
+      </p>
+
+      <p>
+	Because negotiation is a free action it is usually possible for 
+	information about concealed parties to spread amongst allied parties
+	almost instantaneously provided that they can communicate with one 
+	another.  
+      </p>
+
+      <p>
+	If the party remains still then no further concealment checks need
+	be made.  If the party would like to move, sneak past say, then the
+	lowest checks for concealment.
+      </p>
+
+      <p>
+	Attacks from concealment would usually grant surprise.  Back stabbing
+	is a notable example of attacking from concealment.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 vs Perception</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>2</attempts>
+	<check>Std 2d8 + 2 vs Perception</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+	<check>Std 2d8 + 4 vs Perception</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Search</abilitytitle>
+    <abilityid>skullduggery.search</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	There is quite a skill to finding carefully hidden
+	artifacts, equal parts experience, regimentation and
+	perception.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 vs DC</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 + 2 vs DC</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 + 4 vs DC</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>1</defaultgeneral>
+	<check>Std 2d8 + 6 vs DC</check>
+        <!-- <successes>3</successes>
+             <failures>3</failures> -->
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Ropecraft</abilitytitle>
+    <abilityid>skullduggery.ropecraft</abilityid>
+    <abilityclass>Act</abilityclass>
+    <abilitydescription>
+      <p>
+	This skill involves tying knots and working with ropes.
+	Most people can use ropes fairly well.  You only need to test
+	against this skill in exceptional circumstances.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 vs DC</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+ 	<check>Std 2d8 + 2 vs DC</check>
+     </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+	<check>Std 2d8 + 4 vs DC</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Cryptogrtaphy</abilitytitle>
+    <abilityid>skullduggery.cryptography</abilityid>
+    <abilityclass>Act</abilityclass>
+    <abilitydescription>
+      <p>
+	Knowledge of reading and writing ciphers and deciphering.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Std 2d8 vs default difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Std 2d8 + 2 vs default difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+</abilitygroup>

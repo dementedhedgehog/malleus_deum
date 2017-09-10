@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<archetype>
+
+  <archetypetitle>Hedge Wizard</archetypetitle>
+  <archetypeid>hedge_wizard</archetypeid>
+  <archetypedescription>     
+    <p>
+      Hedge Wizard
+    </p>
+  </archetypedescription>
+
+  <archetypeac>9</archetypeac>
+  <archetypemove>6</archetypemove>
+  <archetypeinitiative>11</archetypeinitiative>
+  <startingcash>20 + d4 sp</startingcash>
+  <startinggear>Leather armour, staff, long sword, hat, dagger, rope, rations for a week.</startinggear>
+
+  <height>
+    <metric>150 + 2d20 cm</metric> 
+    <imperial>4'8" + 2d8 inches</imperial>
+  </height>
+  <weight>
+    <metric>60 + 3d10 kg</metric> 
+    <imperial>120 + 4d20 pounds</imperial>
+  </weight>
+  <age>20 + 2d6 years</age>
+  <appearance>Aloof, wild-eyed, watchful.</appearance>
+
+  <aspectexamples></aspectexamples>
+  <archetypetags>
+    <tag>Magic-User</tag>
+    <tag>Human</tag>
+  </archetypetags>
+  
+  <levelprogressiontable>
+    <level>
+      <levelnumber>1</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>2d10</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>4+d4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>4+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>15</levellore>
+      <levelmartial>7</levelmartial>
+      <levelgeneral>10</levelgeneral>
+      <levelmagical>22</levelmagical>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>4d6</levelmagicpool>
+      <levelmagicrefresh>2d6</levelmagicrefresh>
+      <leveldescription>
+      </leveldescription>
+    </level>
+
+    <level>
+      <levelnumber>2</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>2d10, 1d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>+d4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>10</levellore>
+      <levelmartial>5</levelmartial>
+      <levelgeneral>10</levelgeneral>
+      <levelmagical>10</levelmagical>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>5d6</levelmagicpool>
+      <levelmagicrefresh>3d6</levelmagicrefresh>
+      <leveldescription></leveldescription>
+    </level>    
+
+    <level>
+      <levelnumber>3</levelnumber>
+      <levelspp>6</levelspp>
+      <levelresolve>2d10, 2d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>+d4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>10</levellore>
+      <levelmartial>5</levelmartial>
+      <levelgeneral>10</levelgeneral>
+      <levelmagical>10</levelmagical>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>5d6</levelmagicpool>
+      <levelmagicrefresh>3d6</levelmagicrefresh>
+      <leveldescription></leveldescription>
+    </level>    
+  </levelprogressiontable>
+
+  <abilitymodifiers>
+
+    <abilitymodifier>
+      <abilityid>archery.archery</abilityid>
+      <martialpointmodifier>+1</martialpointmodifier>
+      <abilitylevelmodifier>
+	      <level>2</level>
+	      <martialpointmodifier>+1</martialpointmodifier>	
+	      <successesmodifier>+1</successesmodifier>
+      </abilitylevelmodifier>	
+    </abilitymodifier>
+    
+    <abilitygroupmodifier>
+      <abilitygroupid>craft</abilitygroupid>
+      <generalpointmodifier>+1</generalpointmodifier>
+    </abilitygroupmodifier>
+
+
+    <abilitymodifier>
+      <abilityid>language.common</abilityid>
+      <lorepointmodifier>-2</lorepointmodifier>
+    </abilitymodifier>
+    
+    <innate>
+      <abilityid>spell.incendo</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>spell.cloak_of_shadows</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>language.inochian</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <innate>
+      <abilityid>language.common</abilityid>
+      <level>2</level>
+    </innate>
+
+
+    <abilitymodifier>
+      <abilityid>language.inochian</abilityid>
+      <lorepointmodifier>-2</lorepointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>lore.alchemy</abilityid>
+      <lorepointmodifier>-1</lorepointmodifier>
+    </abilitymodifier>
+    
+    <abilitymodifier>
+      <abilityid>lore.politics</abilityid>
+      <lorepointmodifier>-1</lorepointmodifier>
+    </abilitymodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>magic</abilitygroupid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitygroupmodifier>
+
+    <disable>
+      <abilityid>magic.turn_undead</abilityid>
+    </disable>
+    
+    <abilitymodifier>
+      <abilityid>magic.arcana</abilityid>
+      <lorepointmodifier>-2</lorepointmodifier>
+    </abilitymodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>physical</abilitygroupid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitygroupmodifier>
+
+    <abilitymodifier>
+      <abilityid>skullduggery.cryptography</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>social.interrogate</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <innate>
+      <abilityid>social.etiquette</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>social.low_contacts</abilityid>
+      <level>1</level>
+    </innate>
+
+    <disable>
+      <abilitygroupid>special</abilitygroupid>
+    </disable>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>sword</abilitygroupid>
+      <martialpointmodifier>+1</martialpointmodifier>
+    </abilitygroupmodifier>
+
+    <abilitymodifier>
+      <abilityid>sword.strike</abilityid>
+      <abilitylevelmodifier>
+	<level>1</level>
+	<martialpointmodifier>+1</martialpointmodifier>	
+	<recommended/>
+      </abilitylevelmodifier>      
+    </abilitymodifier>
+    
+  </abilitymodifiers>
+</archetype>
+
+

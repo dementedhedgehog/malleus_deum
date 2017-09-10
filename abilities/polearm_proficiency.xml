@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Polearm Use</abilitygrouptitle>
+    <abilitygroupid>apolearms</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        These skills represent training in the use of spears, staves,
+	halberds, bill hooks, glaives and other pole-arms in combat.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Polearm Stab</abilitytitle>
+    <abilityid>polearm.stab</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a polearm can strike with it during combat
+	doing weapon damage.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>	
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<prereqattr><attr>Strength</attr><value>11</value></prereqattr>	
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 2 + Str modifier</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Hook</abilitytitle>
+    <abilityid>polearm.hook</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+        Characters equipped with a polearm, but not a spear, can
+	use the axe to attempt to disarm an opponent or remove
+	their shield.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>polearm.stab_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage and opponent drops weapon/shield</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier and opponent drops weapon/shield</damage>
+	<prereqattr><attr>Strength</attr><value>13</value></prereqattr>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Brace for Charge</abilitytitle>
+    <abilityid>polearm.brace</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+        Characters equipped with a polearm can brace against
+	a charge striking first and doing extra damage.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>polearm.stab_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Double weapon damage, opponent must be charging.</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Double weapon damage + Str modifier, opponent must be charging.</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+</abilitygroup>

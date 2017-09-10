@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Archery Proficiency</abilitygrouptitle>
+    <abilitygroupid>archery</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	These skills represent training with the use of the bow and arrow.  Initial
+	training is with a short bow.  Use of the long bow requires a fair amount of
+	training.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Archery</abilitytitle>
+    <abilityid>archery.archery</abilityid>
+    <abilityclass>Fight-Ranged</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+        Characters may use Archery to shoot arrows from short bows during combat
+	doing weapon damage when they hit.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+	<!-- level 0 is innate! -->
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage + 2</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 4</damage>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 6 vs opponents AC</check>
+        <damage>Weapon damage + 6</damage>
+	<prereqattr><attr>Agility</attr><value>12</value></prereqattr>
+	<prereqattr><attr>Perception</attr><value>12</value></prereqattr>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Dead Eye</abilitytitle>
+    <abilityid>archery.dead_eye</abilityid>
+    <abilityclass>Fight-Ranged</abilityclass>
+    <abilitydescription>
+      <p>
+	The character has spent many hours working on improving the accuracy of
+	their shots.  Players can choose to call a shot which gives them a large
+	bonus to hit.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>archery.archery_2</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 + 8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 10 vs opponents AC</check>
+        <damage>Weapon damage + 2</damage>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+  
+  <ability>
+    <abilitytitle>Rain of Arrows</abilitytitle>
+    <abilityid>archery.rain_of_arrows</abilityid>
+    <abilityclass>Fight-Ranged</abilityclass>
+    <abilitydescription>
+      <p>
+	Holding a number of arrows in his hand at once the character
+	is able to shoot them all in quick succession.  Note that this involves
+	less than complete drawing of the bow and therefore causes less damage.
+	Also note that the speed of these shots occurs because the character is
+	holding the arrows in his firing hand before the combat, so this ability
+	can only be used in the first round of combat and cannot be used when the
+	character is surprised.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>archery.archery_2</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents AC twice on the first round of combat</check>
+        <damage>Weapon damage</damage>
+	<prereqattr><attr>Agility</attr><value>10</value></prereqattr>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 vs opponents AC thrice on the first round of combat</check>
+        <damage>Weapon damage</damage>
+	<prereqattr><attr>Agility</attr><value>12</value></prereqattr>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 2 vs opponents AC thrice on the first round of combat</check>
+        <damage>Weapon damage + 2</damage>
+	<prereqattr><attr>Agility</attr><value>13</value></prereqattr>	
+      </abilitylevel>
+      
+    </abilitylevels>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Long Bow Proficency</abilitytitle>
+    <abilityid>archery.long_bow</abilityid>
+    <abilityclass>Fight-Ranged</abilityclass>
+    <abilitydescription>
+      <p>
+	The character has trained in the use of the long bow.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>archery.archery_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+	<prereqattr><attr>Strength</attr><value>10</value></prereqattr>
+	<prereqnottag>Short</prereqnottag>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel>archery.archery_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage opponent saves versus agilty or is knocked back</damage>
+	<prereqattr><attr>Strength</attr><value>12</value></prereqattr>
+	<prereqnottag>Short</prereqnottag>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier, opponent saves versus agility or is knocked over</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+</abilitygroup>

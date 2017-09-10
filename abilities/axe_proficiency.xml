@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Axe Proficiency</abilitygrouptitle>
+    <abilitygroupid>axe</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        These skills represent training in the use of axes in combat.  This
+	includes the use of single handed war axes, two handed battle axes, 
+	and throwing axes.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Axe Strike</abilitytitle>
+    <abilityid>axe.strike</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with an axe can strike with it during combat
+	doing weapon damage.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>12</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 2 + Str modifier</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Axe Hook</abilitytitle>
+    <abilityid>axe.hook</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+        Characters equipped with an axe can use the axe to attempt to disarm
+	an opponent or remove their shield by using the axes beard as a hook.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>4</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage and opponent drops weapon/shield</damage>
+        <prereqabilitylevel>axe.strike_1</prereqabilitylevel>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier and opponent drops weapon/shield</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Cleave</abilitytitle>
+    <abilityid>axe.cleave</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	The character strikes at their opponent with great vengeance and
+	furious anger.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <prereqabilitylevel>axe.strike_2</prereqabilitylevel>
+	<prereqattr><attr>Strength</attr><value>9</value></prereqattr>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<prereqattr><attr>Strength</attr><value>11</value></prereqattr>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + 3 + Str modifier</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<prereqattr><attr>Strength</attr><value>13</value></prereqattr>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + 5 + Str modifier</damage>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Axe Frenzy</abilitytitle>
+    <abilityid>axe.frenzy</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	When a character makes a frenzied attack with an axe, they make
+	a morale check.  If they pass they make two attacks that round.
+      </p>
+    </abilitydescription>
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<prereqattr><attr>Willpower</attr><value>11</value></prereqattr>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+        <prereqabilitylevel>axe.strike_1</prereqabilitylevel>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>  
+</abilitygroup>

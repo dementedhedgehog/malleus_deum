@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Hammer Proficiency</abilitygrouptitle>
+    <abilitygroupid>hammer</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use war hammers in combat.  This includes
+	the use of two handed warhammers, single handed hammers, maces, mornings stars,
+	clubs and throwing hammers.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Hammer Strike</abilitytitle>
+    <abilityid>hammer.strike</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with an Hammer can strike with it during combat doing weapon 
+	damage.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+	<!-- level 0 is innate! -->
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>14</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 2 + Str modifier</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Hammer Smash</abilitytitle>
+    <abilityid>hammer.smash</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+        Characters equipped with a hammer can use the hammer
+	to "smash" an opponent hitting them and pushing them back.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>hammer.strike_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>5</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage opponent saves versus agilty or is knocked back</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>9</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Weapon damage + Str modifier, opponent saves versus agility or is knocked back</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+</abilitygroup>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <!--
+      
+      Note this is not a document format.
+      Docs get generated from this.
+      
+  -->
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Special Abilities</abilitygrouptitle>
+    <abilitygroupid>special</abilitygroupid>
+    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	Special abilities are extraordinary abilities or racial abilities not available 
+	to most characters in the usual course of events.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>  
+
+  <ability>
+    <abilitytitle>Sixth Sense</abilitytitle>
+    <abilityid>special.sixth_sense</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	If the character makes a successful perception check they may reroll
+	their surprise roll.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<effect>Perception check vs 10</effect>
+	<prereqtag>Halfling</prereqtag>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<effect>Perception check vs 8</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Natural Sprinters</abilitytitle>
+    <abilityid>special.natural_sprinter</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Dwarves are natural sprinters.  While slow to get moving,
+	and not the most agile when it comes to dodging and
+	quick changes of direction, Dwarves can build up a fair
+	amount of speed in a straight line over time.	
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+	<prereqtag>Dwarf</prereqtag>
+        <successes>3</successes>
+        <failures>3</failures>
+	<leveldescription>
+	  <p>
+	    All dwarves gain +1 to the movement modifier.  Note: this
+	    does not apply to movement, just the movement modifier.
+	  </p>
+	</leveldescription>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Fey Resilience</abilitytitle>
+    <abilityid>special.fey_resilience</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The fey are resistant to damage from non-magically conductive sources.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<prereqtag>Fey</prereqtag>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Magic versus 3</check>
+	<effect>Reduce all incoming damage from non-iron sources by 4.</effect>
+	<prereqtag>Fey</prereqtag>
+      </abilitylevel>
+
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+	<prereqtag>Fey</prereqtag>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Magic versus 3</check>
+	<effect>Reduce all incoming damage from non-iron sources by 2.</effect>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+</abilitygroup>

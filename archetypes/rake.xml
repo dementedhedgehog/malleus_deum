@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<archetype>
+  <archetypetitle>Rake</archetypetitle>
+  <archetypeid>rake</archetypeid>
+  <archetypedescription>           
+    <p>
+      Rake Blah Blah
+    </p>
+  </archetypedescription>
+
+  <archetypeac>10</archetypeac>
+  <archetypemove>6</archetypemove>
+  <archetypeinitiative>14</archetypeinitiative>
+  <startingcash>20 + 2d4 gp</startingcash>
+  <startinggear>Chain mail, long sword, cloak, belt, dagger, rations for a week.</startinggear>
+
+  <height>
+    <metric>150 + 2d20 cm</metric> 
+    <imperial>4'8" + 2d8 inches</imperial>
+  </height>
+  <weight>
+    <metric>60 + 2d8 kg</metric> 
+    <imperial>130 + 4d20 pounds</imperial>
+  </weight>
+  <age>23 + 2d6 years</age>
+  <appearance></appearance>
+
+  <aspectexamples>Life is Short</aspectexamples>
+  <archetypetags>
+    <tag>Human</tag>
+  </archetypetags>
+
+  <levelprogressiontable>    
+    <level>
+      <levelnumber>1</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>2d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>9+d4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>6+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>15</levellore>
+      <levelmartial>10</levelmartial>
+      <levelgeneral>15</levelgeneral>
+      <levelmagical>10</levelmagical>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>3d6</levelmagicpool>
+      <levelmagicrefresh>1d6</levelmagicrefresh>      
+      <leveldescription>
+      </leveldescription>
+    </level>    
+
+    <level>
+      <levelnumber>2</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>3d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>+4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>+4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>8</levellore>
+      <levelmartial>8</levelmartial>
+      <levelgeneral>8</levelgeneral>
+      <levelmagical>8</levelmagical>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>3d6</levelmagicpool>
+      <levelmagicrefresh>2d6</levelmagicrefresh>      
+      <leveldescription>
+      </leveldescription>
+    </level>
+    
+    <level>
+      <levelnumber>3</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>4d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>+5</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>+5</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>8</levellore>
+      <levelmartial>8</levelmartial>
+      <levelgeneral>8</levelgeneral>
+      <levelmagical>0</levelmagical>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>3d6</levelmagicpool>
+      <levelmagicrefresh>3d6</levelmagicrefresh>      
+      <leveldescription>
+      </leveldescription>
+    </level>    
+  </levelprogressiontable>
+
+
+  <abilitymodifiers>
+
+
+    <abilitygroupmodifier>
+      <abilitygroupid>archery</abilitygroupid>
+      <martialpointmodifier>-1</martialpointmodifier>
+    </abilitygroupmodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>craft</abilitygroupid>
+      <generalpointmodifier>+1</generalpointmodifier>
+    </abilitygroupmodifier>
+
+
+    <abilitygroupmodifier>
+      <abilitygroupid>crossbow</abilitygroupid>
+      <martialpointmodifier>+1</martialpointmodifier>
+    </abilitygroupmodifier>       
+
+    <abilitygroupmodifier>
+      <abilitygroupid>hammer</abilitygroupid>
+      <martialpointmodifier>+2</martialpointmodifier>
+    </abilitygroupmodifier>
+
+    <innate>
+      <abilityid>social.negotiate</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>social.etiquette</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <innate>
+      <abilityid>sword.strike</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <innate>
+      <abilityid>sword.strike</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>sword.feint</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>skullduggery.sneak</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>language.common</abilityid>
+      <level>2</level>
+    </innate>
+
+    <innate>
+      <abilityid>language.inochian</abilityid>
+      <level>1</level>
+    </innate>
+
+    <abilitymodifier>
+      <abilityid>language.inochian</abilityid>
+      <lorepointmodifier>+1</lorepointmodifier>
+    </abilitymodifier>    
+    
+    <abilitymodifier>
+      <abilityid>language.dwarven</abilityid>
+      <lorepointmodifier>+2</lorepointmodifier>
+    </abilitymodifier>
+
+    <abilitymodifier>
+      <abilityid>language.fey</abilityid>
+      <lorepointmodifier>+2</lorepointmodifier>
+    </abilitymodifier>
+
+    <!--
+    <disable>
+      <abilityid>magic.turn_undead</abilityid>
+      </disable>
+      -->
+
+    <disable>
+      <abilitygroupid>magic</abilitygroupid>
+    </disable>
+
+    <disable>
+      <abilitygroupid>spell</abilitygroupid>
+    </disable>
+
+    <abilitymodifier>
+      <abilityid>physical.dodge</abilityid>
+      <generalpointmodifier>-2</generalpointmodifier>
+    </abilitymodifier>
+
+
+    <abilitymodifier>
+      <abilityid>skullduggery.sneak</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>skullduggery.search</abilityid>
+      <generalpointmodifier>-2</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>skullduggery.ropecraft</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>social.perceive</abilityid>
+      <generalpointmodifier>-2</generalpointmodifier>
+    </abilitymodifier>    
+
+    <innate>
+      <abilityid>social.high_etiquette</abilityid>
+      <level>1</level>
+    </innate>
+
+    <disable>
+      <abilitygroupid>special</abilitygroupid>
+    </disable>
+
+
+    <abilitymodifier>
+      <abilityid>thespian.oratory</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>thespian.dance</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+
+    <abilitymodifier>
+      <abilityid>wilderness.stealth</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+    
+    <abilitymodifier>
+      <abilityid>wilderness.tracking</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+    
+    <abilitymodifier>
+      <abilityid>wilderness.wayfinding</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+    
+  </abilitymodifiers>
+</archetype>
+
+
+
+

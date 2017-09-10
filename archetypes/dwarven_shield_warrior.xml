@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<archetype>
+  <archetypetitle>Dwarven Shield Warrior</archetypetitle>
+  <archetypeid>dwarven_shield_warrior</archetypeid>
+  <archetypedescription>
+    <p>
+      The dwarves cling tenatiously to their mountain holds.  Fighting all comers 
+      at they attempt to sate their thirst for gold and other fine metals.
+    </p>
+
+    <p>
+      All Mountain Dwarves learn to fight in the shield wall and are expected to do so when 
+      required.  Shield warriors typically spend two score days a year training in the 
+      Dwarven Fyrd and on patrol.  Though only militia, the Dwarven psyche lends itself to 
+      disciplined fighting and Dwarven Shield Warriors are formidable fighters.  Military 
+      prowess is highly valued in Dwarven families and even Dwarves raised away from a 
+      dwarven stronghold may be considered to be equivalent to Shield Warriors.
+    </p>
+
+    <p>
+      Shield Warriors all have alternate occupations.  Those living in strongholds might 
+      be engineers, smiths, wood and leatherworkers, artisans, brewers, hunters and the like. 
+      Many dwarves travel forth and wander the land in search of fame and fortune.  These 
+      dwarves are likely merchants or trade representatives, mercenaries, carters, theives, 
+      spys, travelling tinkers and the like.
+    </p>
+
+    <p>
+      It is a tradition amongst the Dwarves of the Northen Mountains that after their 
+      apprenticeships Dwarven craftsmen should spend some years travelling and 
+      broadening their minds, a time referred to as their Vanderyahre.  
+    </p>
+    
+    <figure>
+      <img src="./resources/archetypes/dwarf_fighter.jpg"/>
+    </figure>
+  </archetypedescription>
+  <archetypeac>12</archetypeac>
+  <archetypemove>5</archetypemove>
+  <archetypeinitiative>8</archetypeinitiative>
+  <attrmax><attr>Agility</attr><value>14</value></attrmax>
+  <attrmin><attr>Endurance</attr><value>7</value></attrmin>
+  <attrbonus><attr>Willpower</attr><value>1</value></attrbonus>
+  <attrbonus><attr>Endurance</attr><value>1</value></attrbonus>
+  <attrbonus><attr>Speed</attr><value>-1</value></attrbonus>
+  <attrbonus><attr>Agility</attr><value>-1</value></attrbonus>  
+  <startingcash>20 + d4 sp</startingcash>
+  <startinggear>Chain mail, warhammer and shield, or battle axe, dagger, rope, rations for a week.</startinggear>
+
+  <height>
+    <metric>120 + 3d10 cm</metric> 
+    <imperial>3'9" + 2d6 inches</imperial>
+  </height>
+  <weight>
+    <metric>70 + 2d20 kg</metric> 
+    <imperial>155 + 5d20 pounds</imperial>
+  </weight>
+  <age>21 + 2d6 years</age>
+  <appearance>Scruffy, dour, stylish, a bit on the nose.</appearance>
+
+  <aspectexamples>The Dwarves do not forget, I would love a pint about now, Gold is my lodestone, My word as a Dwarf, Hold Fast.</aspectexamples>
+  <archetypetags>
+    <tag>Dwarf</tag>
+    <tag>Short</tag>
+  </archetypetags>
+  
+  <!--
+      starting hp
+      suggested initial aspects?
+  -->
+
+  <levelprogressiontable>
+    <level>
+      <levelnumber>1</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>3d10</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>9+d4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>9+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>10</levellore>
+      <levelmartial>15</levelmartial>
+      <levelgeneral>10</levelgeneral>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>2d6</levelmagicpool>
+      <levelmagicrefresh>1d6</levelmagicrefresh>      
+      <leveldescription>
+	One of Smith II, Capentry II, Builder II, or Cooper II.
+      </leveldescription>
+    </level>    
+
+    <level>
+      <levelnumber>2</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>4d10</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>+4</levelstamina>
+      <levelstaminarefresh>+d6</levelstaminarefresh>
+      <levelhealth>+4</levelhealth>
+      <levelhealthrefresh>+d6</levelhealthrefresh>
+      <levellore>10</levellore>
+      <levelmartial>15</levelmartial>
+      <levelgeneral>10</levelgeneral>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>2d6</levelmagicpool>
+      <levelmagicrefresh>1d6</levelmagicrefresh>      
+      <leveldescription></leveldescription>
+    </level>    
+
+    <level>
+      <levelnumber>3</levelnumber>
+      <levelspp>6</levelspp>
+      <levelresolve>5d10</levelresolve>
+      <levelresolverefresh>2d10</levelresolverefresh>
+      <levelstamina>+6</levelstamina>
+      <levelstaminarefresh>+d6</levelstaminarefresh>
+      <levelhealth>+6</levelhealth>
+      <levelhealthrefresh>+d6</levelhealthrefresh>
+      <levellore>10</levellore>
+      <levelmartial>15</levelmartial>
+      <levelgeneral>10</levelgeneral>
+      <levelmagical>0</levelmagical>
+      <levelfate>2d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>2d6</levelmagicpool>
+      <levelmagicrefresh>+1d6</levelmagicrefresh>      
+      <leveldescription></leveldescription>
+    </level>    
+  </levelprogressiontable>
+
+
+  <abilitymodifiers>
+    <abilitygroupmodifier>
+      <abilitygroupid>archery</abilitygroupid>
+      <martialpointmodifier>+1</martialpointmodifier>
+    </abilitygroupmodifier>
+    
+    <abilitygroupmodifier>
+      <abilitygroupid>shield</abilitygroupid>
+      <martialpointmodifier>-1</martialpointmodifier>
+      <successesmodifier>-1</successesmodifier>
+    </abilitygroupmodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>axe</abilitygroupid>
+      <martialpointmodifier>-2</martialpointmodifier>
+    </abilitygroupmodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>craft</abilitygroupid>
+      <martialpointmodifier>-1</martialpointmodifier>
+    </abilitygroupmodifier>
+
+    <abilitymodifier>
+      <abilityid>craft.mason</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+
+      <abilitylevelmodifier>
+	<level>1</level>
+	<generalpointmodifier>-2</generalpointmodifier>	
+	<successesmodifier>-1</successesmodifier>
+	<recommended/>
+      </abilitylevelmodifier>	
+      
+      <abilitylevelmodifier>
+	<level>2</level>
+	<generalpointmodifier>-1</generalpointmodifier>	
+	<successesmodifier>-1</successesmodifier>
+      </abilitylevelmodifier>	
+    </abilitymodifier>
+
+    <abilitymodifier>
+      <abilityid>crossbow.heavy</abilityid>
+      <abilitylevelmodifier>
+	<level>1</level>
+	<generalpointmodifier>-3</generalpointmodifier>	
+	<successesmodifier>-1</successesmodifier>
+	<recommended/>
+      </abilitylevelmodifier>	
+      
+      <abilitylevelmodifier>
+	<level>2</level>
+	<generalpointmodifier>-1</generalpointmodifier>	
+      </abilitylevelmodifier>	
+    </abilitymodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>hammer</abilitygroupid>
+      <martialpointmodifier>-2</martialpointmodifier>
+    </abilitygroupmodifier>
+    
+    
+    <abilitymodifier>
+      <abilityid>transport.sailor</abilityid>
+      <generalpointmodifier>+2</generalpointmodifier>
+      <successesmodifier>1</successesmodifier>
+    </abilitymodifier>
+
+    <abilitymodifier>
+      <abilityid>shield.block</abilityid>
+      <martialpointmodifier>-1</martialpointmodifier>
+
+      <abilitylevelmodifier>
+	<level>2</level>
+	<martialpointmodifier>-1</martialpointmodifier>	
+	<successesmodifier>-1</successesmodifier>
+	<recommended/>
+      </abilitylevelmodifier>	
+    </abilitymodifier>
+    
+
+    <disable>
+      <abilitygroupid>necromancy</abilitygroupid>
+      <abilityid>special.sixth_sense</abilityid>
+      <abilitygroupid>magic</abilitygroupid>
+      <abilitygroupid>spell</abilitygroupid>
+      <!--
+	  <abilityid>spell.auri_fames</abilityid>
+      -->
+    </disable>
+
+
+    <enable>
+      <!--
+	  <abilitygroupid>magic</abilitygroupid>
+	  <abilitygroupid>axe</abilitygroupid>
+	  <abilitygroupid>hammer</abilitygroupid>
+	  <abilitygroupid>sword</abilitygroupid>
+	  <abilitygroupid>crossbow</abilitygroupid>
+	  <abilitygroupid>craft</abilitygroupid>
+	  <abilitygroupid>shield</abilitygroupid>
+	  <abilitygroupid>language</abilitygroupid>
+	  <abilitygroupid>lore</abilitygroupid>
+	  <abilitygroupid>melee</abilitygroupid>
+	  <abilitygroupid>misc</abilitygroupid>
+	  <abilitygroupid>physical</abilitygroupid>
+	  <abilitygroupid>skullduggery</abilitygroupid>
+	  <abilitygroupid>social</abilitygroupid>
+	  <abilitygroupid>thespian</abilitygroupid>
+	  <abilitygroupid>wilderness</abilitygroupid>
+      -->
+    </enable>
+
+    <!--
+	<enable>
+	<abilitygroupid>bare_handed_fighting</abilitygroupid>
+	</enable>
+    -->
+
+    <innate>
+      <abilityid>special.natural_sprinter</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>axe.strike</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>shield.block</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>hammer.strike</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>language.dwarven</abilityid>
+      <level>3</level>
+    </innate>
+
+    <abilitymodifier>
+      <abilityid>language.dwarven</abilityid>
+      <lorepointmodifier>-2</lorepointmodifier>
+    </abilitymodifier>    
+
+
+    <abilitymodifier>
+      <abilityid>language.inochian</abilityid>
+      <lorepointmodifier>+2</lorepointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>language.hibernian</abilityid>
+      <lorepointmodifier>-1</lorepointmodifier>
+    </abilitymodifier>    
+    
+
+    <innate>
+      <abilityid>language.common</abilityid>
+      <level>2</level>
+    </innate>
+    
+
+    <abilitymodifier>
+      <abilityid>lore.book_keeping</abilityid>
+      <lorepointmodifier>-1</lorepointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>lore.maths</abilityid>
+      <lorepointmodifier>-1</lorepointmodifier>
+    </abilitymodifier>
+
+
+    <abilitymodifier>
+      <abilityid>lore.physics</abilityid>
+      <lorepointmodifier>-1</lorepointmodifier>
+    </abilitymodifier>
+
+    <abilitymodifier>
+      <abilityid>lore.earth_science</abilityid>
+      <lorepointmodifier>-2</lorepointmodifier>
+    </abilitymodifier>
+
+    <abilitymodifier>
+      <abilityid>physical.run</abilityid>
+      <generalpointmodifier>-2</generalpointmodifier>
+    </abilitymodifier>
+
+    <abilitymodifier>
+      <abilityid>physical.grapple</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>physical.swim</abilityid>
+      <generalpointmodifier>+1</generalpointmodifier>
+    </abilitymodifier>    
+    
+    <abilitymodifier>
+      <abilityid>skullduggery.trap_work</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+    
+    <abilitymodifier>
+      <abilityid>skullduggery.pick_locks</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>skullduggery.ropecraft</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>social.intimidate</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+
+    <innate>
+      <abilityid>social.etiquette</abilityid>
+      <level>1</level>
+    </innate>
+
+
+    <disable>
+      <abilitygroupid>special</abilitygroupid>
+    </disable>
+    <enable>
+      <abilityid>special.natural_sprinter</abilityid>
+    </enable>
+    
+    <abilitymodifier>
+      <abilityid>thespian.dance</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>thespian.singing</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>transport.sailor</abilityid>
+      <generalpointmodifier>+1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>wilderness.dungeoneering</abilityid>
+      <generalpointmodifier>-2</generalpointmodifier>
+    </abilitymodifier>    
+    
+</abilitymodifiers>
+</archetype>

@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <!--
+      
+      Note this is not a document format.
+      Docs get generated from this.
+      
+  -->
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Spell Abilities</abilitygrouptitle>
+    <abilitygroupid>spell</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Spell abilities involve the use of the characters magic pool and
+	are only available to certain archetypes.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Auri Fames</abilitytitle>
+    <abilityid>spell.auri_fames</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster attempts to curse the target, if successful the target
+	gains a <emph>Hunger for Gold</emph> aspect with a difficulty
+	equal to the magic pool result minus the targets willpower.
+	This spell requires some item of contagion with the target in
+	order to cast, preferably blood or hair (other items may be used
+	with penalties to the check).
+      </p>
+
+      <p>
+	If an overcharge occurs one or more of the following occur:
+	<list>
+	  <li>
+	    The caster suffers from backlash and also gains the
+	    <emph>Hunger for Gold</emph> aspect,
+	  </li>
+	  <li>
+	    A minor demon of greed takes notice and projects
+	    a simularcrum of themselves to the casters location.
+	    The goal of the demon may be to fight the caster, 
+	    make a deal with the caster either for mutual benefit
+	    or by threat.
+	  </li>
+	  <li>
+	    The spell nearly gets away from the caster and they must attempt
+	    assert control of the magical energies.  Reroll any remaining dice
+	    used in the check and lose any dice with a face value of 1.
+	  </li>
+	  <li>
+	    Roll on the magical overcharge table.
+	  </li>
+	</list>
+      </p>
+    </abilitydescription>    
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs Opponents WillPower</check>
+	<overcharge>Twice Opponents Willpower</overcharge>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 3 vs Opponents WillPower</check>
+	<overcharge>Twice Opponents Willpower</overcharge>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Alarum</abilitytitle>
+    <abilityid>spell.alarum</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster designates a volume of space no larger
+	than a typical living room.  Movement within
+	that region results in the caster receiving a short
+	sharp shock of thaumaturgical energy, informing them
+	of that movement and waking them if they are asleep.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>7</defaultmagical>
+        <successes>2</successes>
+        <failures>1</failures>
+	<check>Magic Pool vs 5</check>
+	<overcharge>10</overcharge>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <failures>0</failures>
+	<check>Magic Pool vs 3</check>
+	<overcharge>12</overcharge>	
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <failures>0</failures>
+	<check>Magic Pool vs 3</check>
+	<overcharge>16</overcharge>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Circle of Protection</abilitytitle>
+    <abilityid>spell.circle_of_protection</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	A circle of protection is a circle drawn upon the ground and infused
+	with magical energy that breaks thaumaturgic contagion.  As such it
+	is hard for summoned creatures to cross, either in or out.
+      </p>
+
+      <p>
+	The circle can be marked using chalk, salt, enscribed in the floor
+	or a multitude of other ways.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+	<check>Magic Pool vs 4</check>
+	<overcharge>12</overcharge>		
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<leveldescription>
+	  <p>
+	    If successful Creates a DC25 protective barrier against extra planar creatures.
+	    Creatures striking the protective barrier will lose D4 hit points for each 
+	    attempt.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 3</check>
+	<overcharge>15</overcharge>		
+	<leveldescription>
+	  <p>
+	    If successful Creates a DC35 protective barrier against extra planar creatures.
+	    Creatures striking the protective barrier will lose D8 hit points for each 
+	    attempt.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Contego</abilitytitle>
+    <abilityid>spell.contego</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster creates a magical shield around a person (or man-sized thing).
+	The barrier from outside appears as a blurred humanoid shape.  Kinetic
+	weapons do half damage to the character thus shielded.  It also provides
+	brief protection from fires, poisoness gases etc.  The shield is ablative
+	and is represented ingame by temporary hit points.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 12</check>
+	<overcharge>18</overcharge>		
+	<leveldescription>
+	  <p>
+	    The shield provides 20 temporary health points and lasts five minutes/30 rounds.
+	    If overcharged the shield may explode upon being hit, make a Std Check vs default 4
+	    or explode.   Explosions do 3d6 damage to all adjacent creatures including the
+	    character being shielded.  Adjacent creatures may save, Speed vs default 10, to
+	    take half damage.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Magic Pool vs 8</check>
+	<overcharge>18</overcharge>		
+	<leveldescription>
+	  <p>
+	    The shield provides 30 temporary health points and lasts five minutes/30 rounds.
+	    Overcharge behaviour as above.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Glamour</abilitytitle>
+    <abilityid>spell.glamour</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster magically takes the appearance of a person, creature or thing.
+	The glamour is illusiary in nature... a character taking the form of a
+	great eagle cannot fly.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus 15</check>
+        <overcharge>25</overcharge>
+	<leveldescription>
+	  <p>
+	    The caster may take the form of a person, creature of thing
+	    of similar size to the character.  The difficulty of seeing
+	    through the glamour with True Sight is 15 DC.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus 13</check>
+        <overcharge>25</overcharge>
+	<leveldescription>
+	  <p>
+	    The caster may take the form of a person, creature of thing
+	    of similar size to the character.  The difficulty of seeing
+	    through the glamour with True Sight is 20 DC.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus 11</check>
+        <overcharge>25</overcharge>
+	<leveldescription>
+	  <p>
+	    The caster may take the form of a person, creature of thing
+	    of significantly (50%) larger or smaller size to the character.	    
+	    The difficulty of seeing through the glamour with True Sight is 25.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Incendo</abilitytitle>
+    <abilityid>spell.incendo</abilityid>
+    <abilityclass>Act</abilityclass>
+    <abilitydescription>
+      <p>
+	Incendo allows the caster to create fire by heating the air.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 6</check>
+	<overcharge>15</overcharge>		
+	<leveldescription>
+	  <p>
+	    Creates a fire of torch intensity.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Magic Pool vs default 7</check>
+	<overcharge>17</overcharge>		
+	<leveldescription>
+	  <p>
+	    Allows the user to make a weapon flame for the duration of a combat.
+	    Flaming weapons do +d6 extra fire damage.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Portal</abilitytitle>
+    <abilityid>spell.portal</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The user creates a portal to another plane or to a different
+	position on this plane.  The portals remain open for 2d4 minutes.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>9</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 20</check>
+	<overcharge>25</overcharge>	
+	<leveldescription>
+	  <p>
+	    The character can open a portal in a wall or floor.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 19</check>
+	<overcharge>26</overcharge>	
+	<leveldescription>
+	  <p>
+	    Opens a portal between two well known places on this plane.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 18</check>
+	<overcharge>27</overcharge>	
+	<leveldescription>
+	  <p>
+	    Opens a portal between this plane and a near plane.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Cloak of Shadows</abilitytitle>
+    <abilityid>spell.cloak_of_shadows</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The character creates a cloak of darkness around themselves.
+	This makes it very difficult to see the character at night time.	
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Magic Pool vs default 7</check>
+	<overcharge>17</overcharge>
+	<effect>+2 on Sneak at night</effect>			
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Magic Pool vs default 5</check>
+	<overcharge>17</overcharge>			
+	<effect>+4 on Sneak at night</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Summon</abilitytitle>
+    <abilityid>spell.summon</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The character opens a minute portal into one of the near planes.
+	This allows some creature on the other side to project a simulacrum
+	of themselves into this plane.  It is highly likely that the
+	entity will be ravenous and seek to devour the animus of the caster or
+	others nearby.  For this reason the caster usually also casts a circle
+	of protection immediately after.  For the caster to have control over
+	the portal they must use a specially prepared fetish that is placed inside
+	the circle before the summoning.  The fetish provides a channel to the portal
+	spell via an external plane, thereby circumventing the circle of protection.
+      </p>
+
+      <p>
+	If the caster does not commune with an entity before the summoning they may
+	summon any extra planar creature.  This can be incredibly dangerous.  In addition
+	demons may lie about their names and their capabailites.  So the only, even
+	moderately safe way of summoning demons is to: commune with a demon of a known
+	name, then to summon them into a circle of protection.  Note that demons are
+	deceitful creatures and will jump at the chance to try to trick a summoner into
+	calling them into the world and once here they will try to establish a foothold
+	and not leave.   They will try to break the circle of protection or bargain
+	for information about the caster which will allow them to break the circle via
+	contagion.
+      </p>
+
+      <p>
+	Closing the portal cuts the simulacrums link to the demon.  Powerful demons
+	may be able to keep the portal open themselves, once they have created a
+	simulacrum.  Note that the demons simulacrum need not look like the demon
+	who created it and often times it does not as the demon will wish to disguise
+	their identity.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 20</check>
+	<overcharge>28</overcharge>
+	<effect>A single demon enters the plane</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 18</check>
+	<overcharge>30</overcharge>
+	<effect>A single demon enters the plane</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Sign of Idreshein</abilitytitle>
+    <abilityid>spell.sign_of_idreshein</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The Sign of Idreshein is a sigil that stores energy
+	that can be released when something touches the sign.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs default 7</check>
+	<overcharge>14</overcharge>
+	<effect>2d6 Thaumic damage to those near the blast</effect>			
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs default 5</check>
+	<overcharge>15</overcharge>
+	<effect>3d6 Thaumic damage to those near the blast</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Banish</abilitytitle>
+    <abilityid>spell.banish</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	Banishing is an attempt to disrupt a demons tenuous connection
+	with its simulacrum.  If the banisment succeeds the simulacrum
+	is destroyed.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs Demons Magic Pool</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 5 vs Demons Magic Pool</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Commune</abilitytitle>
+    <abilityid>spell.commune</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Commune is a spell that communicates with a named entity from beyond.
+	The character must know the name of the entity to contact.  On overcharge
+	the character must make an opposed will check against the demon or become
+	enthralled by the demon.  Enthralled characters will seek to summon the
+	demons simulacrum to this plane to further their nefarious plans.  
+      </p>
+
+      <p>
+	Summoned demons are not compelled to cooperate with the character, nor tell
+	the truth.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs default 14</check>
+	<overcharge>25</overcharge>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs default 13</check>
+	<overcharge>30</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Mind Worm</abilitytitle>
+    <abilityid>spell.mind_worm</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster attempts to insinutate an idea into the targets mind.
+	In order to succeed the caster must first make a check to cast
+	the spell and then at the point that the idea changes the targets
+	normal behaviour the target must make a Willpower check against
+	the characters magic pool result or behave in accordance with the
+	mind worm.  On overcharge the target realizes they are being
+	compelled at the time the mind worm effects their behaviour.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 8</check>
+	<overcharge>15</overcharge>			
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs 8</check>
+	<overcharge>18</overcharge>			
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Bind</abilitytitle>
+    <abilityid>spell.bind</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	Bind holds an opponent using the casters will.  The target must make a will
+	check versus the magic pool result or be held for one round.  The target
+	keeps checking until they succeed and the difficulty decreases by two for
+	each turn they are held.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs default 10</check>
+	<overcharge>17</overcharge>			
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Magic Pool vs default 8</check>
+	<overcharge>20</overcharge>			
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Mist</abilitytitle>
+    <abilityid>spell.mist</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster causes a fog to form by draining the temperature from the surrounds.
+	If that's peculiar then people may notice something strange.  
+      </p>
+    </abilitydescription>    
+    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+	<successes>3</successes>
+        <failures>1</failures>
+	<check>Magic Pool vs default 11</check>
+	<overcharge>18</overcharge>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Magic Pool vs default 10</check>
+	<overcharge>19</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Stone Skin</abilitytitle>
+    <abilityid>spell.stone_skin</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	The targets skin takes on a greyish hue and hardens, providing
+	some protection from physical damage.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Magic Pool vs default 7</check>
+	<overcharge>12</overcharge>
+	<effect>+2 to AC for five minutes</effect>				
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+	<check>Magic Pool vs default 6</check>
+        <successes>3</successes>
+        <failures>1</failures>
+	<overcharge>14</overcharge>
+	<effect>+3 to AC for five minutes</effect>				
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Hex</abilitytitle>
+    <abilityid>spell.hex</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Target breaks out in small pustules, loses something important to them,
+	or some other annoying but not life threatening consequence.  The caster
+	must have at least one item of the targets: hair, blood etc.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>1</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs default 5</check>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs default 4</check>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Smoke Weasel</abilitytitle>
+    <abilityid>spell.smoke_weasel</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Creates a weasel out of smoke that does what the caster asks of it.
+	Dissipates after five minutes.  The caster must have a source of smoke
+	which they inhale and then breathe out in to their hands into something
+	with the rough form of a weasel.  The smoke weasel may be used to fetch
+	things or carry small objects.  The smoke weasel dissipates after a few
+	minutes.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool vs default 7</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool vs default 7</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Flesh Ward</abilitytitle>
+    <abilityid>spell.flesh_ward</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	The Flesh Ward spell provides magical protection
+	for the caster against physical attacks, their skin
+	knits itself up if they take damage.  A Flesh Ward
+	lasts the duration of combat and only one Flesh Ward
+	can be in play at a time.
+      </p>
+
+      <p>
+	In game the effect of flesh ward is represented
+	in the form of temporary hit points.  The caster
+	states a target number of hit points then makes a
+	check against that target number to succeed.
+	If they roll higher than the target they receive
+	that many temporary hit points (for the duration of
+	the combat).  If they roll lower then they suffer
+	damage equal to the difference between the target
+	and their roll.	
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus Stated Target</check>
+	<effect>See above.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Magic Pool + 3 versus Stated Target</check>
+	<effect>See above.</effect>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Magic Pool + 6 versus Stated Target</check>
+	<effect>See above.</effect>
+	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>True Sight</abilitytitle>
+    <abilityid>spell.true_sight</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	The character is able to discern the true nature of a being, seeing
+	past glamours or other illusiary effects.  This does not allow the
+	character to discern motive or the content of a persons character.
+      </p>
+
+      <p>
+	Care should be taken because some creatures true form may be so hideous
+	that it effects the observers sanity.
+      </p>	
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus Glamour strength</check>
+	<effect>See above.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Magic Pool +2 versus Glamour DC</check>
+	<effect>See above.</effect>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Magic Pool +5 versus Glamour DC</check>
+	<effect>See above.</effect>
+	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Wither</abilitytitle>
+    <abilityid>spell.wither</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster grabs an opponent who is momentarily transfixed.
+	On success the caster acts as a conduit to one of the dread
+	planes,	life is drained from the target.  Anything that
+	increases contagion will increase damage for this spell.
+      </p>      
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Spell Pool vs 10</check>
+	<overcharge>14</overcharge>
+	<effect>
+	  Target saves versus Willpower or suffers 2d8 damage.
+	  On overcharge the caster suffers 1d8 damage.
+	</effect> 
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Spell Pool vs 8</check>
+	<overcharge>14</overcharge>
+	<effect>
+	  Target saves versus Willpower or suffers 3d8 damage.
+	  On overcharge the caster suffers 1d12 damage.
+	</effect> 
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+</abilitygroup>

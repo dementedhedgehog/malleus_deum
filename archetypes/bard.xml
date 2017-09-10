@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<archetype>
+  <archetypetitle>Bard</archetypetitle>
+  <archetypeid>bard</archetypeid>
+  <archetypedescription>     
+      
+    <p>
+      Bards travel the country playing music for their keep and seeking
+      out heros to write great epics about.
+    </p>
+    
+
+  </archetypedescription>
+
+  <archetypeac>10</archetypeac>
+  <archetypemove>6</archetypemove>
+  <archetypeinitiative>11</archetypeinitiative>
+  <startingcash>20 + 2d4 gp</startingcash>
+  <startinggear>Leather armour, long sword, dagger, rations for a week, musical instrument.</startinggear>
+
+  <height>
+    <metric>150 + 2d20 cm</metric> 
+    <imperial>4'8" + 2d8 inches</imperial>
+  </height>
+  <weight>
+    <metric>60 + 3d10 kg</metric> 
+    <imperial>130 + 4d20 pounds</imperial>
+  </weight>
+  <age>23 + 2d6 years</age>
+  <appearance>Dashing, handsome, , , </appearance>
+
+  <aspectexamples></aspectexamples>
+  <archetypetags>
+    <tag>Human</tag>
+  </archetypetags>
+
+
+  <levelprogressiontable>    
+    <level>
+      <levelnumber>1</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>2d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>6+d4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>6+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>15</levellore>
+      <levelmartial>10</levelmartial>
+      <levelgeneral>25</levelgeneral>
+      <levelmagical>0</levelmagical>
+      <levelfate>3d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>3d6</levelmagicpool>
+      <levelmagicrefresh>1 die</levelmagicrefresh>      
+      <leveldescription>
+	Musician - Strings I, Dance I, Oratory I, Brythinian II, Fey IV
+      </leveldescription>
+    </level>    
+
+    <level>
+      <levelnumber>2</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>3d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>+4</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>+4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>8</levellore>
+      <levelmartial>8</levelmartial>
+      <levelgeneral>14</levelgeneral>
+      <levelmagical>0</levelmagical>
+      <levelfate>3d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>3d6</levelmagicpool>
+      <levelmagicrefresh>2 dice</levelmagicrefresh>      
+      <leveldescription>
+      </leveldescription>
+    </level>
+    
+    <level>
+      <levelnumber>3</levelnumber>
+      <levelspp>3</levelspp>
+      <levelresolve>4d8</levelresolve>
+      <levelresolverefresh>1d10</levelresolverefresh>
+      <levelstamina>+5</levelstamina>
+      <levelstaminarefresh>2d4</levelstaminarefresh>
+      <levelhealth>+5</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levellore>8</levellore>
+      <levelmartial>8</levelmartial>
+      <levelgeneral>14</levelgeneral>
+      <levelmagical>20</levelmagical>
+      <levelfate>3d6</levelfate>
+      <levelfaterefresh>2 dice</levelfaterefresh>
+      <levelmagicpool>3d6</levelmagicpool>
+      <levelmagicrefresh>2 dice</levelmagicrefresh>      
+      <leveldescription>
+      </leveldescription>
+    </level>    
+  </levelprogressiontable>
+
+
+  <abilitymodifiers>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>craft</abilitygroupid>
+      <generalpointmodifier>+1</generalpointmodifier>
+    </abilitygroupmodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>crossbow</abilitygroupid>
+      <martialpointmodifier>-1</martialpointmodifier>
+    </abilitygroupmodifier>       
+
+    <abilitygroupmodifier>
+      <abilitygroupid>sword</abilitygroupid>
+      <martialpointmodifier>-1</martialpointmodifier>
+    </abilitygroupmodifier>
+    
+    <innate>
+      <abilityid>thespian.singing</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>social.negotiate</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <innate>
+      <abilityid>sword.strike</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>skullduggery.sneak</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>language.common</abilityid>
+      <level>2</level>
+    </innate>
+
+    <abilitymodifier>
+      <abilityid>lore.history</abilityid>
+      <lorepointmodifier>-3</lorepointmodifier>
+    </abilitymodifier>
+    
+    <abilitymodifier>
+      <abilityid>lore.politics</abilityid>
+      <lorepointmodifier>-1</lorepointmodifier>
+    </abilitymodifier>
+
+
+    <!--
+    <abilitymodifier>
+      <abilityid>social.leadership</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+      </abilitymodifier>
+      -->
+    
+    <disable>
+      <abilityid>magic.turn_undead</abilityid>
+    </disable>
+
+    <abilitymodifier>
+      <abilityid>physical.dodge</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>
+
+
+    <abilitymodifier>
+      <abilityid>skullduggery.sneak</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>skullduggery.search</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+
+    <abilitymodifier>
+      <abilityid>social.perceive</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>
+
+    <abilitygroupmodifier>
+      <abilitygroupid>thespian</abilitygroupid>
+      <generalpointmodifier>-2</generalpointmodifier>
+    </abilitygroupmodifier>        
+
+    <abilitymodifier>
+      <abilityid>thespian.oratory</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>thespian.dance</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>thespian.strings</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+
+    <abilitymodifier>
+      <abilityid>wilderness.stealth</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+    
+    <abilitymodifier>
+      <abilityid>wilderness.wayfinding</abilityid>
+      <generalpointmodifier>-1</generalpointmodifier>
+    </abilitymodifier>    
+    
+  </abilitymodifiers>
+</archetype>
+
+
+
+

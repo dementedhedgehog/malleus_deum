@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Wilderness Abilities</abilitygrouptitle>
+    <abilitygroupid>wilderness</abilitygroupid>
+    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents skills used to live in the wilderness: hunting, tracking,
+	wayfinding, survivalism and woodcraft.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Stealth</abilitytitle>
+    <abilityid>wilderness.stealth</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Stealth ia the skill of moving silently, avoiding detection, while
+	not leaving a trace of the characters passage in the wilderness.
+	This ability is used to avoiding being tracked.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents Tracking or Scout</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 3 vs opponents Tracking or Scout</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <check>Std 2d8 + 5 vs opponents Tracking or Scout</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Tracking</abilitytitle>
+    <abilityid>wilderness.tracking</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Tracking is the art of following trails left by others.
+	It applies mainly to the wilderness but given the right 
+	circumstances may be used in cities or beneath the earths 
+	surface.  Tracking involves observing changes in the 
+	environment caused by the individuals being tracked.  
+	For example, it might be impossible to track someone 
+	who had moved down a corridor unless they had just walked 
+	through mud or water, or were wounded and leaving 
+	a trail of blood.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Std 2d8 vs opponents Stealth or Hide</check>
+      </abilitylevel>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>5</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Std 2d8 + 3 vs opponents Stealth or Hide</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Std 2d8 + 5 vs opponents Stealth or Hide</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Wayfinding</abilitytitle>
+    <abilityid>wilderness.wayfinding</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Wayfinding is the art of finding paths through 
+	the wilderness to a destination.  Along major roads
+	no check is required.  Along tracks and side paths
+	this should be a fairly straight-forward test.  
+	When walking through deep forest or jungle or foggy marshes
+	this should be a hard test.  Possession of a map 
+	or being in view of landmarks should also make the 
+	test much easier.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <failures>1</failures>
+	<check>Std 2d8 vs Difficulty</check>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>1</defaultgeneral>
+        <successes>2</successes>
+        <failures>1</failures>
+	<check>Std 2d8 + 3</check>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+	<check>Std 2d8 + 5</check>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+
+
+  
+  <ability>
+    <abilitytitle>Scout</abilitytitle>
+    <abilityid>wilderness.scout</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Scout is the ability to notice things that are out of
+	place in the wilderness.  The character becomes aware of
+	any subtle but strange changes in the environment.  
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <failures>1</failures>
+	<check>Std 2d8 vs Default 13</check>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>4</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>1</defaultgeneral>
+        <successes>2</successes>
+        <failures>1</failures>
+	<check>Std 2d8 + 3 vs Default 13</check>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+	<check>Std 2d8 + 5 vs Default 13</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Survivalism</abilitytitle>
+    <abilityid>wilderness.survivalism</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Constructing make-shift shelters, starting fires in challenging conditions, 
+	finding water, trapping and the use of snares.  Normally this is not an issue 
+	for characters.  However, when the cold north winds start to howl and the 
+	snow falls, when food runs low, or when alone in the burning deserts survival
+	becomes	difficult and someone should test against this skill.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs Difficulty</check>
+      </abilitylevel>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>wilderness.wayfinding_1</prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 3 vs Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <check>Std 2d8 + 5 vs Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Hunting</abilitytitle>
+    <abilityid>wilderness.hunting</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The skill involves finding and hunting animals with a bow
+	or spear.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs Difficulty</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>wilderness.tracking_1</prereqabilitylevel>
+        <defaultlore>6</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <failures>2</failures>
+        <check>Std 2d8 + 3 vs Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <check>Std 2d8 + 5 vs Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Dungeoneering</abilitytitle>
+    <abilityid>wilderness.dungeoneering</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Skills used for living under the ground: detect slope, detect depth,
+	find direction.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs Difficulty</check>
+      </abilitylevel>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 + 3 vs Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <check>Std 2d8 + 5 vs Difficulty</check>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <check>Std 2d8 + 7 vs Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+</abilitygroup>
