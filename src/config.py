@@ -46,7 +46,7 @@ use_imperial = True
 
 # List of files to build (fname, build_index?, index_name)
 files_to_build = (
-    ("abilities.xml", True, "C"),
+    #("abilities.xml", True, "C"),
     ("core.xml", True, "C"),
     ("character_creation.xml", True, "CC"),
     ("equipment.xml", True, "Eq"),

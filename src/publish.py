@@ -3,7 +3,14 @@
 """
 
   Builds pdfs from the xml files.
+ 
+  Xelatex installer for windows.
+  http://www.texts.io/support/0002/
+  (May need to set up the proxy for downloading packages)
 
+   Erroneous fontspec error:
+   This is quite likely caused by mismatched versions of fontspec and expl3.
+   Update at least those packages using the MikTeX Update tool.
 
 """
 import sys
@@ -17,6 +24,7 @@ from copy import deepcopy
 from shutil import copy
 from io import BytesIO
 import re
+import platform
 
 src_dir = abspath(join(dirname(__file__)))
 third_party_dir = join(src_dir, "third_party")
@@ -24,7 +32,6 @@ sys.path.append(src_dir)
 sys.path.append(third_party_dir)
 
 from jinja2 import Template, Environment, FileSystemLoader
-
 
 from doc import Doc
 from abilities import AbilityGroups
@@ -39,20 +46,15 @@ root_dir = abspath(join(src_dir, ".."))
 build_dir = join(root_dir, "build")
 docs_dir = join(root_dir, "docs")
 pdfs_dir = join(root_dir, "pdfs")
-styles_dir = join(root_dir, "styles")
+styles_dir = join(root_dir, "styles").replace("\\", "/")
+#fonts_dir = join(root_dir, "fonts").replace("\\", "/")
 archetype_template_fname = "archetype_template.xml"
 
-# \\newfontfamily{\\iconfont}[Path=./fonts/, Scale=1.0]{rpg-icons}
-# \\newcommand{\\anicon}
-#   {\\begingroup\\iconfont\\selectfont\\char\"E0EA \\endgroup}
-# \\newcommand{\\icon}[1]{\\anicon}
-
+# latex preamble for the index.
 index_str = """
 \\documentclass{article}
 \\usepackage{makeidx}
 \\usepackage{hyperref}
-
-
 
 % Override the default index \see behaviour and include the pageref.
 \\renewcommand{\see}[2]{see #1 #2}
@@ -80,12 +82,36 @@ def usage(msg = "", return_code = 0):
 
 
 #_xelatex_regex = re.compile("^Underfull [vh]box.*?$.*?$", re.MULTILINE)
-_xelatex_regex = re.compile(
-    "(Underfull .*\n.*\n)|" # underfull boxes
-    #"(Overfull .*\n.*\n)|"  # overfull boxes
-    #"(^[ \t\r\f\v]*\n)|"    # blank lines
-    "(Trans)")
+# _xelatex_regex = re.compile(
+#     "(Underfull .*\n.*\n)|" # underfull boxes
+#     #"(Overfull .*\n.*\n)|"  # overfull boxes
+#     #"(^[ \t\r\f\v]*\n)|"    # blank lines
+#     "(Trans)")
 #_xelatex_regex = re.compile("Transcript", re.MULTILINE)
+
+
+def find_xelatex():
+    """
+    Return a path to the xelatex executable on this platform.
+
+    """
+    if platform.system() == "Linux":
+        xelatex = "/usr/bin/xelatex"
+    else:
+        xelatex = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/xelatex.exe"
+    return xelatex
+
+
+def find_makeindex():
+    """
+    Return a path the makeindex executable (a latex tool).
+
+    """
+    if platform.system() == "Linux":
+        makeindex = "/usr/bin/makeindex"
+    else:
+        makeindex = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/makeindex.exe"
+    return makeindex
 
 
 def filter_xelatex_output(xelatex_output):
@@ -182,10 +208,11 @@ def create_index():
     call(cmd_line, cwd = build_dir)
 
     # build the index.pdf
-    cmd_line = [xelatex, "-output-directory=%s" % build_dir, index_tex, ]
+    cmd_line = [xelatex, "-output-directory=%s" % build_dir, index_tex]
     if verbosity > 0:
         print(("\n\n\n" + " ".join(cmd_line)))
-    call(cmd_line, env = env)
+    #call(cmd_line, env = env)
+    call(cmd_line)
 
     # move the pdf from the build dir to the pdfs dir
     pdf_fname = join(build_dir, "index.pdf")
@@ -237,7 +264,7 @@ def build_doc(template_fname, verbosity, archetype = None):
                           doc_name = doc_base_fname)
 
     # if debug:
-    #     def fun(args):                
+    #     def fun(args):
     #         name, ext = splitext(base_xml_fname)
     #         xml_post_jinja_fname = join(build_dir, fname + "_post_jinja" + ext)
     #         with codecs.open(xml_post_jinja_fname, "w", "utf-8") as f:
@@ -295,19 +322,22 @@ def build_doc(template_fname, verbosity, archetype = None):
     # run xelatex to convert the latex to pdf
     cmd_line = [
         xelatex, 
-        "-output-directory=%s" % build_dir, 
+        "-output-directory=%s" % build_dir,
+        "-include-directory=%s" % styles_dir, # FIX
+        #"-include-directory=%s" % fonts_dir, # FIX
         "--halt-on-error",
         tex_fname, ]
-    if verbosity > 0:
-        print(("\n\nRun with:\n%s\n%s" % 
-               ("export TEXINPUTS=%s" % tex_inputs,
-                " ".join(cmd_line))))
+    # if verbosity > 0:
+    #     print(("\n\nRun with:\n%s\n%s" % 
+    #            ("export TEXINPUTS=%s" % tex_inputs,
+    #             " ".join(cmd_line))))
 
 
     xelatex_output = ""
     xelatex_error = False
     try:
-        xelatex_output = check_output(cmd_line, env = env)
+        #xelatex_output = check_output(cmd_line, env = env)
+        xelatex_output = check_output(cmd_line)
     except CalledProcessError as e:
         xelatex_output = e.output
         xelatex_error = True
@@ -325,7 +355,8 @@ def build_doc(template_fname, verbosity, archetype = None):
 
     # Rerun once to try and get cross-references right
     # (Throw away the trace this time)
-    check_output(cmd_line, env = env)
+    check_output(cmd_line)
+    #check_output(cmd_line, env = env)
         
     # run makeindex to ah make the index
     # (makeindex won't let you build an index outside of the cwd!)
@@ -416,11 +447,11 @@ if __name__ == "__main__":
             raise Exception("unhandled option")
 
     # check xelatex exists.
-    xelatex = "/usr/bin/xelatex"
+    xelatex = find_xelatex()
     assert exists(xelatex)
 
     # check makeindex exists.
-    makeindex = "/usr/bin/makeindex"
+    makeindex = find_makeindex()
     assert exists(makeindex)
 
     # make any dirs we need
@@ -459,8 +490,8 @@ if __name__ == "__main__":
     tex_inputs = styles_dir + "//:"
 
     # get a copy of the environment with TEXINPUTS set.
-    env = deepcopy(os.environ)
-    env["TEXINPUTS"] = tex_inputs
+    #env = deepcopy(os.environ)
+    #env["TEXINPUTS"] = tex_inputs
 
     for doc_xml_fname, _, _ in config.files_to_build:
         build_doc(doc_xml_fname, verbosity = verbosity)

@@ -25,7 +25,6 @@ class TableCategory:
     Sideways = "Sideways"    
 
 
-
 class LatexFormatter:
     
     def __init__(self, latex_file):
@@ -82,15 +81,13 @@ class LatexFormatter:
             "\\documentclass[" + paper_size + ",twocolumn,oneside]{book}\n" 
             "\n"
             "\\usepackage[unicode]{hyperref} % for hyperlinks in pdf\n"
-            #"\\PassOptionsToPackage{unicode}{hyperref}\n"
-            #"\\PassOptionsToPackage{naturalnames}{hyperref}\n"
-            "\\usepackage{caption}       % extra captions\n" 
-            "\\usepackage{color}         % color.. what can I say\n"
-            "\\usepackage{fancyhdr}      % header control\n" 
-            "\\usepackage{fancybox}      % fancy boxes.. eg box outs\n" 
-            "\\usepackage{graphicx}      % for including images\n" 
-            "\\usepackage{fontspec}      % fine font control\n"
-            "\\usepackage{titlesec}      % for fancy titles\n"
+            "\\usepackage{caption}           % extra captions\n" 
+            "\\usepackage{color}             % color.. what can I say\n"
+            "\\usepackage{fancyhdr}          % header control\n" 
+            "\\usepackage{fancybox}          % fancy boxes.. eg box outs\n" 
+            "\\usepackage{graphicx}          % for including images\n" 
+            "\\usepackage{fontspec}          % fine font control\n"
+            "\\usepackage{titlesec}          % for fancy titles\n"
             "\\usepackage{lettrine}      % for drop capitals \n"            
             "\\usepackage{tabularx}      % for tables \n"            
             "\\usepackage[table]{xcolor} % for tables with colour\n"
@@ -115,28 +112,23 @@ class LatexFormatter:
             "\\setcounter{tocdepth}{3}\n"
             "\n"
             "% fonts\n"
-            "\\newfontfamily{\\rim}[Path=./fonts/, Scale=1.5]{Rat Infested Mailbox}\n"
-            "%\\newfontfamily{\\eng}[Path=./fonts/, Scale=1.5]{English Gothic, 17th c.}\n"
-            "\\newfontfamily{\\dz}[Path=./fonts/, Scale=2.5]{Deutsche Zierschrift}\n"
-            "\\newfontfamily{\\tkaqf}[Path=./fonts/, Scale=2.5]{the King & Queen font}\n"
-            "\\newfontfamily{\\cloisterblack}[Path=./fonts/]{Cloister Black}\n"
-            "\\newfontfamily{\\cloisterblacklarge}[Path=./fonts/, Scale=1.2]{Cloister Black}\n"
-            "\\newfontfamily{\\carolingia}[Path=./fonts/]{Carolingia}\n"
-            "\\newfontfamily{\\fontawesome}[Path=./fonts/]{fontawesome-webfont.ttf}\n"
-            #"\\newfontfamily{\\rpgawesome}[Path=./fonts/]{rpgawesome-webfont.ttf}\n"
-            "\n"
-            "\\newfontfamily{\\rpgtitlefont}[Path=./fonts/, Scale=10.0]{Dogma}\n"
-            "\\newfontfamily{\\rpgchapterfont}[Path=./fonts/, Scale=1.0]{Cloister Black}\n"
-            "\\newfontfamily{\\symbolfont}[Path=./fonts/, Scale=1.0]{rpg-icons}\n"
+            "\\newfontfamily{\\rim}[Path=fonts/, Scale=1.5]{Rat Infested Mailbox}\n"
+            "\\newfontfamily{\\dz}[Path=fonts/, Scale=2.5]{Deutsche Zierschrift}\n"
+            "\\newfontfamily{\\tkaqf}[Path=fonts/, Scale=2.5]{the King & Queen font}\n"
+            "\\newfontfamily{\\cloisterblack}[Path=fonts/]{Cloister Black}\n"
+            "\\newfontfamily{\\cloisterblacklarge}[Path=fonts/, Scale=1.2]{Cloister Black}\n"
+            "\\newfontfamily{\\carolingia}[Path=fonts/]{Carolingia}\n"
+            "\\newfontfamily{\\fontawesome}[Path=fonts/]{fontawesome-webfont.ttf}\n"
+            "\\newfontfamily{\\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}\n"
+            "\\newfontfamily{\\rpgchapterfont}[Path=fonts/, Scale=1.0]{Cloister Black}\n"
+            "\\newfontfamily{\\symbolfont}[Path=fonts/, Scale=1.0]{rpg-icons}\n"
+            "\\newfontfamily{\\rpgtitlesubtitlefont}[Path=fonts/]{Cloister Black}\n"
+            "\\newfontfamily{\\rpgtitleauthorfont}[Path=fonts/]{Dogma}\n"
+            "\\newfontfamily{\\rpgdropcapfont}[Path=fonts/, Scale=1.2]{Cloister Black}\n"
+            "\\newfontfamily{\\wwdesigns}[Path=fonts/]{WWDesigns}\n"
             "\\newcommand{\\rpgsectionfont}{\cloisterblack}\n"
             "\\newcommand{\\rpgtableheaderfont}{\cloisterblack}\n"
-            "\\newcommand{\\rpgdropcapfont}{\cloisterblacklarge}\n"
-            "\\newfontfamily{\\rpgtitlesubtitlefont}[Path=./fonts/]{Cloister Black}\n"
-            "\\newfontfamily{\\rpgtitleauthorfont}[Path=./fonts/]{Dogma}\n"
-            "\\newfontfamily{\\rpgdropcapfont}[Path=./fonts/, Scale=1.2]{Cloister Black}\n"
-            #"\\newfontfamily{\\rpgtitleauthorfont}[Path=./fonts/]{Cloister Black}\n"
-            "\\newfontfamily{\\wwdesigns}[Path=./fonts/]{WWDesigns}\n"
-            "\n"
+            "\n"            
             "% colours \n"
             "\\definecolor{maroon}{RGB}{128,0,0}\n"
             "\\definecolor{darkred}{RGB}{139,0,0}\n"
@@ -149,18 +141,11 @@ class LatexFormatter:
             "\\colorlet{rpgtitlefontcolor}{black}\n"
             "\\colorlet{rpgchapterfontcolor}{black}\n"
             "\\colorlet{rpgsectionfontcolor}{rosewood}\n"
-            #"\\colorlet{rpgtableheaderfontcolor}{black}\n"
             "\n"
             "% spacing \n"            
             "\\newlength\drop\n"
             "\\drop = 0.01\\textheight % drop is a vspace 1/100th the page text height.\n"
             "\n"
-            #"% header formatting\n"
-            #"\\titleformat{\\chapter}[hang]\n"
-            #"   {\\Huge\\rpgchapterfont\\color{rpgchapterfontcolor}}\n"
-            #"   {\\thechapter}{0.5em}{}\n"
-            #"\n"
-            #"\\titleformat{name=\\chapter,numberless}[hang]\n"
             "\\titleformat{name=\\chapter}[hang]\n"
             "   {\\Huge\\bfseries\\rpgchapterfont\\color{rpgchapterfontcolor}}\n"
             "   {}{1em}{}\n"
@@ -224,19 +209,12 @@ class LatexFormatter:
             "\n"
             "\n"
             "% the font for the body of the text\n"
-            "\\setmainfont[Scale=0.95]{Linux Libertine O}\n"
+            "\\setmainfont[Path=/cygdrive/d/proj/malleus_deum/fonts/, Scale=0.95]{Linux Libertine O}\n"
             "\\setromanfont[\n"
             "  Mapping=tex-text, \n"
-            #"  Numbers=OldStyle, \n"
-            #"  Style=Historic, \n"
-            #"  Contextuals=Swash,\n"
             "  Mapping=tex-text, \n"
             "  Ligatures={Common,Rare,Discretionary}\n"
-            #"  Ligatures=Historic\n"
             "  ]{Linux Libertine O}\n"
-            #"               Ligatures=Historic]{Linux Libertine O}\n"
-            #"               Ligatures={Common,Rare,Discretionary}]{Linux Libertine O}\n"
-            #"\\setmonofont{TeX Gyre Pagella}\n"            
             "\n"
             "% special bullet symbols\n"
             "\\newcommand{\\rpgbullet}\n"
@@ -314,21 +292,8 @@ class LatexFormatter:
             "   \\endgroup\n"
             "}\n"
             "\n"
-            # "% scroll flourish divider symbol\n"
-            # "\\newcommand{\\rpgdividersymbol}\n"
-            # "{\n"
-            # "   \\begingroup\n"
-            # "   \\fontspec{old retro labels tfb}\n"
-            # "   \\Huge\n"
-            # "   \\selectfont\n"
-            # "   \\char\"006E"
-            # "   \\endgroup\n"
-            # "}\n"
             "\n"
             "\\newcommand{\\flourish}{\n"
-            #"\\begin{center}\n"
-            #"\\includegraphics[height=0.6em, width=0.9\columnwidth]{resources/flourish.png}\n" 
-            #"\\end{center}
             "}\n"
             "\n"
             "% combat symbol - a sword\n"
@@ -342,7 +307,6 @@ class LatexFormatter:
             "\n"
             "% success/fail/attempt symbols\n"
             "\\newcommand{\\rpgsuccess}{\\fatick}\n"
-            #"\\newcommand{\\rpgsuccess}{Y}\n"
             "\\newcommand{\\rpgfail}{\\facross}\n"            
             "\\newcommand{\\rpgattempt}{\\faquestion}\n"
             "\n"
@@ -359,8 +323,6 @@ class LatexFormatter:
             "  \\flourish\n"
             "  \\begin{quote}\n"
             "  \\small\n"
-            #"  \\parindent=0pt\n"
-            #"  \\leftmargin=0.2in\\rightmargin=0.2in\n"
             "  \\carolingia\n"
             "  \\setlength{\parindent}{0pt}\n"
             "  \\raggedright\n"
@@ -391,7 +353,6 @@ class LatexFormatter:
                 "% use a background image\n"
                 "\\CenterWallPaper{1.0}{./resources/paper_" + paper_size + ".jpg}"
                 "\n\n")
-            
         return
 
 
@@ -465,32 +426,8 @@ class LatexFormatter:
             tex = "\\subsubsection{"
 
         title = subsubsection.find("subsubsectiontitle")
-        #title = get_text_for_child(subsubsection,  )
         if title is not None:
-            tex += title.text.strip()
-            
-        #icon = get_text_for_child(title, "icon")
-        #if icon != "":
-        #    tex += " \\protect\icon{%s}" % icon
-
-        # for symbol in ("ambushsymbol",
-        #                "surprisesymbol",
-        #                "initiativesymbol",
-        #                "talksymbol",
-        #                "runsymbol",
-        #                "actsymbol",
-        #                "fightrangedsymbol",
-        #                "fightreachsymbol",
-        #                "fightsymbol",
-        #                "resolutionsymbol",
-        #                "reactsymbol",
-        #                "noncombatsymbol"):
-                       
-        #     symbol_node = get_text_for_child(title, symbol)
-        #     if symbol_node != "":
-        #         tex += "\\%s{}" % symbol
-
-        
+            tex += title.text.strip()        
         tex += self.get_latex_symbols(title)
 
         
@@ -498,32 +435,6 @@ class LatexFormatter:
         self.latex_file.write("}\n") 
         return
     end_subsubsection = no_op
-    # def end_subsubsection(self, subsection):
-    #     return 
-    
-    # def start_subsubsection(self, subsubsection):
-    #     tex = ""
-    #     anonymous = subsubsection.get("anonymous")
-    #     if anonymous is not None and anonymous.lower() == "true":
-    #         tex = "\\subsubsection*{"
-    #     else:
-    #         tex = "\\subsubsection{"
-
-    #     title = subsubsection.find("subsubsectiontitle")
-    #     #title = get_text_for_child(subsubsection,  )
-    #     if title is not None:
-    #         tex += title.text.strip()
-
-    #     icon = get_text_for_child(title, "icon")
-    #     if icon != "":
-    #         tex += " \\protect\icon{%s}" % icon
-
-    #     tex += "}\n"
-
-    #     self.latex_file.write(tex) 
-    #     return
-    # end_subsubsection = no_op
-
 
     start_ability_title = no_op
     end_ability_title = no_op
@@ -606,7 +517,6 @@ class LatexFormatter:
         return
     end_index = no_op
 
-
     def start_section(self, section):
         title_element = section.find("sectiontitle")
         if title_element is None:
@@ -618,7 +528,6 @@ class LatexFormatter:
         return
     end_section = no_op
 
-
     def start_subsection(self, subsection):
         tex = ""
         anonymous = subsection.get("anonymous")
@@ -627,25 +536,11 @@ class LatexFormatter:
         else:
             tex = "\\subsection{"
 
-
         title = subsection.find("subsectiontitle")
         if title is not None:
             tex += title.text.strip()
-
-            #icon = get_text_for_child(title, "icon")
-            #if icon != "":
-            #    tex += " \\protect\icon{%s}" % icon
             tex += self.get_latex_symbols(title)
 
-
-        # print title.text.strip()
-        # if title.text.strip() == "Dodge":
-        #     print title
-        #     print "[%s]" % self.get_latex_symbols(title)
-        #     raise Exception("X")
-            
-
-            
         tex += "}\n"
         self.latex_file.write(tex) 
         return
@@ -710,7 +605,6 @@ class LatexFormatter:
     def end_level_description(self, element):
         pass
 
-
     def start_titlepage(self, chapter):
         self.latex_file.write("\\begin{titlepage}\n"
                               "\\begin{center}\n")
@@ -721,14 +615,12 @@ class LatexFormatter:
                               "\\end{titlepage}\n")
         return
 
-
     def start_emph(self, emph):
         return
 
     def end_emph(self, emph):
         self.latex_file.write("\\emph{%s}" % normalize_ws(emph.text))
         return
-
 
     def start_equation(self, equation):
         self._equation_first_line = True
