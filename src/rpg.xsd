@@ -28,10 +28,10 @@
   </xs:complexType>    
 
   <!--
-  <xs:simpleType name="iconType">
-    <xs:restriction base="xs:string"/>
-    </xs:simpleType>
-    -->
+      <xs:simpleType name="iconType">
+      <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+  -->
 
   <!-- an enum -->
   <xs:simpleType name="abilitygroupfamilyType">
@@ -88,8 +88,8 @@
       <xs:enumeration value="None" />
 
       <!-- 
-	   melee ability classes 
-	   (defines when an ability occurs during combat)
+           melee ability classes 
+           (defines when an ability occurs during combat)
       -->
       <xs:enumeration value="Ambush" />
       <xs:enumeration value="Surprise" />
@@ -144,7 +144,7 @@
   
   
   <!--
-    Tags for abilities.
+      Tags for abilities.
   -->
   <xs:complexType name="abilityType">
     <xs:all>
@@ -154,9 +154,9 @@
 
       <!-- e.g. shield.block -->
       <!--
-      <xs:element name="prerequisitetag" type="xs:string" minOccurs="0"/>
-      <xs:element name="prerequisiteabilitylevel" type="xs:string" minOccurs="0"/>      
-      <xs:element name="prereqarchetypes" type="prereqArchetypesType" minOccurs="0"/>
+          <xs:element name="prerequisitetag" type="xs:string" minOccurs="0"/>
+          <xs:element name="prerequisiteabilitylevel" type="xs:string" minOccurs="0"/>      
+          <xs:element name="prereqarchetypes" type="prereqArchetypesType" minOccurs="0"/>
       -->
       
       <!-- e.g. Str > 12 -->
@@ -183,20 +183,20 @@
             name="levelnumber" 
             type="xs:unsignedInt" 
             minOccurs="1" maxOccurs="1"/>
-	<!--
-        <xs:element 
+        <!--
+            <xs:element 
             name="attr" 
             type="xs:string" 
             minOccurs="0" maxOccurs="1"/>
-	-->
+        -->
         <xs:element 
             name="check" 
             type="xs:string" 
             minOccurs="0" maxOccurs="1"/>
 
-      <!-- Overcharge for magic-->
-      <xs:element name="overcharge" type="xs:string" minOccurs="0" maxOccurs="1"/>
-	
+        <!-- Overcharge for magic-->
+        <xs:element name="overcharge" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        
         <xs:element 
             name="damage" 
             type="xs:string" 
@@ -219,22 +219,22 @@
         <xs:element name="defaultmagical" type="pointsType" 
                     minOccurs="1" 
                     maxOccurs="1"/>
-	<!-- e.g. shield.block -->
+        <!-- e.g. shield.block -->
         <xs:element name="prereqabilitylevel" type="prerequisiteType" 
                     minOccurs="0" 
                     maxOccurs="1"/>
-	
-	<!-- <xs:element name="prereqarchetypes" type="prereqArchetypesType" minOccurs="0"/>-->
-	<xs:element name="prereqtag" type="xs:string" minOccurs="0"/>	
-	<xs:element name="prereqnottag" type="xs:string" minOccurs="0"/>	
-	
-	<!-- e.g. Str > 13 -->
-	<xs:element name="prereqattr" type="prereqAttrType" minOccurs="0"/>	
-	<!-- <xs:element name="prereqattr" type="xs:string" minOccurs="0"/> -->
-	<xs:element name="leveldescription" type="levelDescriptionType" 
+        
+        <!-- <xs:element name="prereqarchetypes" type="prereqArchetypesType" minOccurs="0"/>-->
+        <xs:element name="prereqtag" type="xs:string" minOccurs="0"/>    
+        <xs:element name="prereqnottag" type="xs:string" minOccurs="0"/>    
+        
+        <!-- e.g. Str > 13 -->
+        <xs:element name="prereqattr" type="prereqAttrType" minOccurs="0"/>    
+        <!-- <xs:element name="prereqattr" type="xs:string" minOccurs="0"/> -->
+        <xs:element name="leveldescription" type="levelDescriptionType" 
                     minOccurs="0" 
                     maxOccurs="1"/>
-	<!-- mastery conditions -->
+        <!-- mastery conditions -->
         <xs:element name="successes" type="xs:unsignedInt" 
                     minOccurs="0" 
                     maxOccurs="1"/>
@@ -275,7 +275,7 @@
         <xs:element name="indexentry" type="indexentryType"/>
         <xs:element name="list" type="itemizedListType"/>
         <xs:element name="defn" type="defnType"/>
-	<xs:element name="ref" type="refType"/>
+        <xs:element name="ref" type="refType"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -309,10 +309,10 @@
         <xs:element name="indexentry" type="indexentryType"/>
         <xs:element name="list" type="itemizedListType"/>
         <xs:element name="defn" type="defnType"/>
-	<xs:element name="ref" type="refType"/>
-	<xs:element name="pageref" type="pagerefType"/>
-	<xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>	
-	<xs:element name="measurement" type="measurementType"/>
+        <xs:element name="ref" type="refType"/>
+        <xs:element name="pageref" type="pagerefType"/>
+        <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>    
+        <xs:element name="measurement" type="measurementType"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -323,10 +323,10 @@
       <xs:element name="tablespec" type="tablespecType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="tabletitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-	<xs:element name="tablelabel" type="labelType" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="tableheaderrow" type="tableRowType" minOccurs="0" 
-		    maxOccurs="unbounded"/>
-	<xs:element name="tablerow" type="tableRowType" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element name="tablelabel" type="labelType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="tableheaderrow" type="tableRowType" minOccurs="0" 
+                    maxOccurs="unbounded"/>
+        <xs:element name="tablerow" type="tableRowType" minOccurs="1" maxOccurs="unbounded"/>
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="figure-sideways" type="xs:boolean"/>      
@@ -338,9 +338,9 @@
   <xs:complexType name="tablespecType">
     <xs:choice minOccurs="1" maxOccurs="unbounded">
       <!--
-      <xs:element name="expand" type="tableSpecSettingType" />
-      <xs:element name="expand-center" type="tableSpecSettingType" />
-      <xs:element name="fit" type="tableSpecSettingType" />
+          <xs:element name="expand" type="tableSpecSettingType" />
+          <xs:element name="expand-center" type="tableSpecSettingType" />
+          <xs:element name="fit" type="tableSpecSettingType" />
       -->
       <xs:element name="fixed" type="xs:decimal"/> 
     </xs:choice>
@@ -359,34 +359,47 @@
   </xs:complexType>
 
   <xs:complexType name="tabledataType" mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="emph" type="emphType"/>
-        <xs:element name="bold" type="boldType"/>
-        <xs:element name="smaller" type="smallerType"/>
-        <xs:element name="newline" type="newlineType"/>
-        <xs:element name="defn" type="defnType"/>
-	<xs:element name="measurement" type="measurementType"/>
-        <xs:element name="olist" type="orderedListType"/>
-        <xs:element name="list" type="itemizedListType"/>
-        <xs:element name="descriptions" type="descriptionsType"/>
-        <xs:element name="p" type="paragraphType" />
-        <xs:element name="and" type="andType" />
-        <xs:element name="success" type="symbolType"/>
-        <xs:element name="fail" type="symbolType"/>
-        <xs:element name="attempt" type="symbolType"/>
-        <xs:element name="indexentry" type="indexentryType"/>
-        <xs:element name="tablesection" type="xs:string"/>
-	<xs:element name="innateabilitylevelsymbol" type="symbolType"/>
-	<xs:element name="innatearchetypeabilitylevelsymbol" type="symbolType"/>
-	<xs:element name="recommendedabilitylevelsymbol" type="symbolType"/>
-	<xs:element name="lore" type="symbolType"/>
-	<xs:element name="martial" type="symbolType"/>
-	<xs:element name="general" type="symbolType"/>
-	<xs:element name="magical" type="symbolType"/>
-        <xs:element name="img" type="imgType"/>
-      </xs:choice>
-      <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
-      <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="emph" type="emphType"/>
+      <xs:element name="bold" type="boldType"/>
+      <xs:element name="smaller" type="smallerType"/>
+      <xs:element name="newline" type="newlineType"/>
+      <xs:element name="defn" type="defnType"/>
+      <xs:element name="measurement" type="measurementType"/>
+      <xs:element name="olist" type="orderedListType"/>
+      <xs:element name="list" type="itemizedListType"/>
+      <xs:element name="descriptions" type="descriptionsType"/>
+      <xs:element name="p" type="paragraphType" />
+      <xs:element name="and" type="andType" />
+      <xs:element name="success" type="symbolType"/>
+      <xs:element name="fail" type="symbolType"/>
+      <xs:element name="attempt" type="symbolType"/>
+      <xs:element name="indexentry" type="indexentryType"/>
+      <xs:element name="tablesection" type="xs:string"/>
+      <xs:element name="innateabilitylevelsymbol" type="symbolType"/>
+      <xs:element name="innatearchetypeabilitylevelsymbol" type="symbolType"/>
+      <xs:element name="recommendedabilitylevelsymbol" type="symbolType"/>
+      <xs:element name="lore" type="symbolType"/>
+      <xs:element name="martial" type="symbolType"/>
+      <xs:element name="general" type="symbolType"/>
+      <xs:element name="magical" type="symbolType"/>
+      <xs:element name="ambush" type="symbolType"/>
+      <xs:element name="surprise" type="symbolType"/>
+      <xs:element name="initiative" type="symbolType"/>
+      <xs:element name="talk" type="symbolType"/>
+      <xs:element name="run" type="symbolType"/>
+      <xs:element name="act" type="symbolType"/>
+      <xs:element name="fightranged" type="symbolType"/>
+      <xs:element name="fightreach" type="symbolType"/>
+      <xs:element name="fightfast" type="symbolType"/>
+      <xs:element name="fight" type="symbolType"/>
+      <xs:element name="resolution" type="symbolType"/>      
+      <xs:element name="reaction" type="symbolType"/>      
+      <xs:element name="noncombat" type="symbolType"/>      
+      <xs:element name="img" type="imgType"/>
+    </xs:choice>
+    <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
+    <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
   </xs:complexType>
 
 
@@ -401,12 +414,12 @@
   <xs:complexType name="multicolumntabledataType" mixed="true">
     <xs:complexContent>    
       <xs:extension base="tabledataType">
-	<xs:attribute name="columns">
+        <xs:attribute name="columns">
           <xs:simpleType>
-	    <xs:restriction base="xs:positiveInteger">
-	    </xs:restriction>
-	  </xs:simpleType>
-	</xs:attribute>
+            <xs:restriction base="xs:positiveInteger">
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -494,7 +507,7 @@
         <xs:element name="playexample" type="playexampleType" />
         <xs:element name="olist" type="orderedListType"/>
         <xs:element name="subsubsection" type="subsubsectionType" />
-	<xs:element name="threecolumns" type="subsectionType"/>	
+        <xs:element name="threecolumns" type="subsectionType"/>    
         <xs:element name="indexentry" type="indexentryType"/>
         <xs:element name="levelprogressiontable" type="levelprogressiontableType"/>
         <xs:element name="descriptions" type="descriptionsType"/>
@@ -503,33 +516,34 @@
         <xs:element name="include" type="includeType" />
         <xs:element name="figure" type="figureType"/>
         <xs:element name="table" type="tableType"/>
-	<xs:element name="d4" type="emptyType"/>
-	<xs:element name="d6" type="emptyType"/>
-	<xs:element name="d8" type="emptyType"/>
-	<xs:element name="d10" type="emptyType"/>
-	<xs:element name="d12" type="emptyType"/>
-	<xs:element name="d4x" type="emptyType"/>
-	<xs:element name="d6x" type="emptyType"/>
-	<xs:element name="d8x" type="emptyType"/>
-	<xs:element name="d10x" type="emptyType"/>
-	<xs:element name="d12x" type="emptyType"/>
-	<xs:element name="d4mx" type="emptyType"/>
-	<xs:element name="d6mx" type="emptyType"/>
-	<xs:element name="d8mx" type="emptyType"/>
-	<xs:element name="d10mx" type="emptyType"/>
-	<xs:element name="d12mx" type="emptyType"/>
-      <xs:element name="ambush" type="symbolType"/>
-      <xs:element name="surprise" type="symbolType"/>
-      <xs:element name="initiative" type="symbolType"/>
-      <xs:element name="talk" type="symbolType"/>
-      <xs:element name="run" type="symbolType"/>
-      <xs:element name="act" type="symbolType"/>
-      <xs:element name="fightranged" type="symbolType"/>
-      <xs:element name="fightreach" type="symbolType"/>
-      <xs:element name="fight" type="symbolType"/>
-      <xs:element name="resolution" type="symbolType"/>      
-      <xs:element name="reaction" type="symbolType"/>      
-      <xs:element name="noncombat" type="symbolType"/>      	
+        <xs:element name="d4" type="emptyType"/>
+        <xs:element name="d6" type="emptyType"/>
+        <xs:element name="d8" type="emptyType"/>
+        <xs:element name="d10" type="emptyType"/>
+        <xs:element name="d12" type="emptyType"/>
+        <xs:element name="d4x" type="emptyType"/>
+        <xs:element name="d6x" type="emptyType"/>
+        <xs:element name="d8x" type="emptyType"/>
+        <xs:element name="d10x" type="emptyType"/>
+        <xs:element name="d12x" type="emptyType"/>
+        <xs:element name="d4mx" type="emptyType"/>
+        <xs:element name="d6mx" type="emptyType"/>
+        <xs:element name="d8mx" type="emptyType"/>
+        <xs:element name="d10mx" type="emptyType"/>
+        <xs:element name="d12mx" type="emptyType"/>
+        <xs:element name="ambush" type="symbolType"/>
+        <xs:element name="surprise" type="symbolType"/>
+        <xs:element name="initiative" type="symbolType"/>
+        <xs:element name="talk" type="symbolType"/>
+        <xs:element name="run" type="symbolType"/>
+        <xs:element name="act" type="symbolType"/>
+        <xs:element name="fightranged" type="symbolType"/>
+        <xs:element name="fightreach" type="symbolType"/>
+        <xs:element name="fightfast" type="symbolType"/>
+        <xs:element name="fight" type="symbolType"/>
+        <xs:element name="resolution" type="symbolType"/>      
+        <xs:element name="reaction" type="symbolType"/>      
+        <xs:element name="noncombat" type="symbolType"/>          
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="anonymous" type="xs:boolean" default="false"/>
@@ -545,18 +559,18 @@
         <xs:element name="figure" type="figureType" />
         <xs:element name="playexample" type="playexampleType" />
         <xs:element name="subsection" type="subsectionType" />
-        <xs:element name="subsubsection" type="subsubsectionType" />	
+        <xs:element name="subsubsection" type="subsubsectionType" />    
         <xs:element name="indexentry" type="indexentryType"/>
         <xs:element name="include" type="includeType" />
         <xs:element name="olist" type="orderedListType"/>
         <xs:element name="descriptions" type="descriptionsType"/>
-	<xs:element name="threecolumns" type="sectionType"/>	
+        <xs:element name="threecolumns" type="sectionType"/>    
         <!-- <xs:element name="foreachabilitygroup" type="foreachabilitygroupType"/> -->
         <xs:element name="list" type="itemizedListType"/>
         <xs:element name="img" type="imgType"/> 
         <xs:element name="table" type="tableType"/>
         <!-- <xs:element name="bigtable" type="tableType" /> -->
-	<xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
+        <xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -577,8 +591,7 @@
         <xs:element name="figure" type="figureType"/>
         <xs:element name="table" type="tableType" />
         <xs:element name="playexample" type="playexampleType" />
-        <!-- <xs:element name="bigtable" type="tableType" /> -->
-	<xs:element name="vspace" type="xs:integer" default="1"/>
+        <xs:element name="vspace" type="xs:integer" default="1"/>        
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="anonymous" type="xs:boolean" default="false"/>
@@ -588,14 +601,12 @@
   <xs:complexType name="designType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="p" type="paragraphType"/>
-
       <!--
-      <xs:element name="emph" type="emphType"/>
-      <xs:element name="defn" type="defnType"/>
-      <xs:element name="olist" type="orderedListType"/>
-      <xs:element name="list" type="itemizedListType"/>
-      -->
-      
+          <xs:element name="emph" type="emphType"/>
+          <xs:element name="defn" type="defnType"/>
+          <xs:element name="olist" type="orderedListType"/>
+          <xs:element name="list" type="itemizedListType"/>
+      -->      
     </xs:choice>
   </xs:complexType>
 
@@ -621,12 +632,12 @@
         <xs:element name="table" type="tableType" />        
 
         <!--
-        <xs:element name="p" type="paragraphType" />
-        <xs:element name="design" type="designType" />
-        <xs:element name="provenance" type="provenanceType" />
-        <xs:element name="olist" type="orderedListType"/>
-        <xs:element name="descriptions" type="descriptionsType"/>
-        <xs:element name="list" type="itemizedListType"/>
+            <xs:element name="p" type="paragraphType" />
+            <xs:element name="design" type="designType" />
+            <xs:element name="provenance" type="provenanceType" />
+            <xs:element name="olist" type="orderedListType"/>
+            <xs:element name="descriptions" type="descriptionsType"/>
+            <xs:element name="list" type="itemizedListType"/>
         -->
       </xs:choice>
     </xs:sequence>
@@ -786,9 +797,9 @@
 
   <!--
 
-     labels and references.
+labels and references.
 
-     -->
+  -->
 
   <xs:simpleType name="labelType">
     <xs:restriction base="xs:string"/>
@@ -830,10 +841,11 @@
       <xs:element name="actsymbol" type="symbolType"/>
       <xs:element name="fightrangedsymbol" type="symbolType"/>
       <xs:element name="fightreachsymbol" type="symbolType"/>
+      <xs:element name="fightfastsymbol" type="symbolType"/>
       <xs:element name="fightsymbol" type="symbolType"/>
       <xs:element name="resolutionsymbol" type="symbolType"/>      
       <xs:element name="reactionsymbol" type="symbolType"/>      
-      <xs:element name="noncombatsymbol" type="symbolType"/>      
+      <xs:element name="noncombatsymbol" type="symbolType"/>
     </xs:choice>
   </xs:complexType>
 
@@ -860,10 +872,10 @@
   </xs:simpleType> 
 
   <!--
-  <xs:simpleType name="tagsType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-   -->
+      <xs:simpleType name="tagsType">
+      <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+  -->
 
   <!-- a list of tags -->
   <xs:complexType name="tagsType">
@@ -884,7 +896,7 @@
   <xs:complexType name="abilityGroupType">
     <xs:sequence>
       <xs:element 
-	  name="abilitygroupinfo" type="abilitygroupinfoType" minOccurs="1" maxOccurs="1"/>
+          name="abilitygroupinfo" type="abilitygroupinfoType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="tag" type="tagType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="ability" type="abilityType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
@@ -922,12 +934,6 @@
           name="archetypedescription" 
           type="archetypedescriptionType" 
           minOccurs="1" maxOccurs="1"/>
-<!--
-      <xs:element 
-          name="archetypeactionpoints" 
-          type="pointsType" 
-          minOccurs="1" maxOccurs="1"/>
--->
       <xs:element 
           name="archetypeac" 
           type="pointsType" 
@@ -1191,15 +1197,15 @@
   </xs:complexType>
 
   <!--
-  <xs:complexType name="innateType">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:complexType name="innateType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element 
-          name="abilitylevel"
-          type="abilityidType" 
-          minOccurs="1" maxOccurs="unbounded"/>
-    </xs:choice>
-    </xs:complexType>
-    -->
+      name="abilitylevel"
+      type="abilityidType" 
+      minOccurs="1" maxOccurs="unbounded"/>
+      </xs:choice>
+      </xs:complexType>
+  -->
   
   <xs:element name="book" type="bookType"/>
 
@@ -1219,7 +1225,7 @@
   </xs:complexType>
 
   <xs:complexType name="titlePageType">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="title" type="titleType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="subtitle" type="titleType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
@@ -1233,7 +1239,7 @@
       <xs:element name="chaptertitle" type="titleType" minOccurs="0" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="section" type="sectionType"/>
-	<xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -1242,14 +1248,12 @@
     <xs:sequence>
     </xs:sequence>
   </xs:complexType>
-  
 
   <xs:complexType name="appendixType">
     <xs:sequence>
       <xs:element name="chapter" type="chapterType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-  
 
   <xs:complexType name="lineType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -1258,12 +1262,9 @@
     </xs:choice>
   </xs:complexType>  
 
-
   <xs:complexType name="equationType">
     <xs:sequence>
       <xs:element name="line" type="lineType" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
-  </xs:complexType>  
-
-
+  </xs:complexType>
 </xs:schema> 

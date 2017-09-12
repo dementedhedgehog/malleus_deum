@@ -176,9 +176,9 @@ class LatexFormatter:
             "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E1AD\\endgroup}"
             "  {fight-ranged}}\n"
             "\n"
-            "\\newcommand{\\resolvesymbol}\n"
+            "\\newcommand{\\resolutionsymbol}\n"
             "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E194\\endgroup}"
-            "  {resolve}}\n"
+            "  {resolution}}\n"
             "\n"
             "\\newcommand{\\surprisesymbol}\n"
             "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E1BE\\endgroup}"
@@ -195,6 +195,10 @@ class LatexFormatter:
             "\\newcommand{\\fightsymbol}\n"
             "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E20D\\endgroup}"
             "  {fight}}\n"
+            "\n"
+            "\\newcommand{\\fightfastsymbol}\n"
+            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E05D\\endgroup}"
+            "  {fightfast}}\n"
             "\n"
             "\\newcommand{\\talksymbol}\n"
             "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E277\\endgroup}"
@@ -391,13 +395,70 @@ class LatexFormatter:
     end_fightreachsymbol = no_op
     start_fightsymbol = no_op
     end_fightsymbol = no_op
+    start_fightfastsymbol = no_op
+    end_fightfastsymbol = no_op
     start_resolutionsymbol = no_op
     end_resolutionsymbol = no_op
     start_noncombatsymbol = no_op
     end_noncombatsymbol = no_op
     start_reactionsymbol = no_op
-    end_reactionsymbol = no_op    
+    end_reactionsymbol = no_op
 
+    def start_fightranged(self, symbol):
+        self.latex_file.write("\\fightrangedsymbol{}")
+        return
+    end_fightranged = no_op
+    
+    def start_fightreach(self, symbol):
+        self.latex_file.write("\\fightreachsymbol{}")
+        return
+    end_fightreach = no_op    
+
+    def start_fight(self, symbol):
+        self.latex_file.write("\\fightsymbol{}")
+        return
+    end_fight = no_op
+    
+    def start_fightfast(self, symbol):
+        self.latex_file.write("\\fightfastsymbol{}")
+        return
+    end_fightfast = no_op
+    
+    def start_run(self, symbol):
+        self.latex_file.write("\\runsymbol{}")
+        return
+    end_run = no_op    
+
+    def start_resolution(self, symbol):
+        self.latex_file.write("\\resolutionsymbol{}")
+        return
+    end_resolution = no_op
+    
+    def start_talk(self, symbol):
+        self.latex_file.write("\\talksymbol{}")
+        return
+    end_talk = no_op
+    
+    def start_act(self, symbol):
+        self.latex_file.write("\\actsymbol{}")
+        return
+    end_act = no_op
+
+    def start_ambush(self, symbol):
+        self.latex_file.write("\\ambushsymbol{}")
+        return
+    end_ambush = no_op
+    
+    def start_surprise(self, symbol):
+        self.latex_file.write("\\surprisesymbol{}")
+        return
+    end_surprise = no_op
+    
+    def start_initiative(self, symbol):
+        self.latex_file.write("\\initiativesymbol{}")
+        return
+    end_initiative = no_op
+    
     def get_latex_symbols(self, title):
         tex = ""
         for symbol in ("ambushsymbol",
@@ -408,6 +469,7 @@ class LatexFormatter:
                        "actsymbol",
                        "fightrangedsymbol",
                        "fightreachsymbol",
+                       "fightfastsymbol",
                        "fightsymbol",
                        "resolutionsymbol",
                        "reactionsymbol",
@@ -433,13 +495,12 @@ class LatexFormatter:
         if title is not None:
             tex += title.text.strip()        
         tex += self.get_latex_symbols(title)
-
         
         self.latex_file.write(tex) 
         self.latex_file.write("}\n") 
         return
     end_subsubsection = no_op
-
+        
     start_ability_title = no_op
     end_ability_title = no_op
 
