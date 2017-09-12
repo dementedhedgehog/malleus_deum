@@ -319,29 +319,24 @@ def build_doc(template_fname, verbosity, archetype = None):
     if latex_only:
         return
 
-    # run xelatex to convert the latex to pdf
+    # create the cmd line to convert the latex to pdf
     cmd_line = [
         xelatex, 
         "-output-directory=%s" % build_dir,
-        "-include-directory=%s" % styles_dir, # FIX
-        #"-include-directory=%s" % fonts_dir, # FIX
+        "-include-directory=%s" % styles_dir,
         "--halt-on-error",
         tex_fname, ]
-    # if verbosity > 0:
-    #     print(("\n\nRun with:\n%s\n%s" % 
-    #            ("export TEXINPUTS=%s" % tex_inputs,
-    #             " ".join(cmd_line))))
+    if verbosity > 0:
+        print("\n\nRun with:\n%s" % " ".join(cmd_line))
 
-
+    # run xelatex
     xelatex_output = ""
     xelatex_error = False
     try:
-        #xelatex_output = check_output(cmd_line, env = env)
         xelatex_output = check_output(cmd_line)
     except CalledProcessError as e:
         xelatex_output = e.output
         xelatex_error = True
-
 
     # print xelatex output (filter out some of the spammy messages)
     if verbosity > 1:
@@ -356,7 +351,6 @@ def build_doc(template_fname, verbosity, archetype = None):
     # Rerun once to try and get cross-references right
     # (Throw away the trace this time)
     check_output(cmd_line)
-    #check_output(cmd_line, env = env)
         
     # run makeindex to ah make the index
     # (makeindex won't let you build an index outside of the cwd!)
@@ -393,7 +387,6 @@ def clean():
             fname = join(pdfs_dir, fname)
             os.remove(fname)
     return
-
 
 
 if __name__ == "__main__":
