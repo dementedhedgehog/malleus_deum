@@ -47,7 +47,6 @@ build_dir = join(root_dir, "build")
 docs_dir = join(root_dir, "docs")
 pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
-#fonts_dir = join(root_dir, "fonts").replace("\\", "/")
 archetype_template_fname = "archetype_template.xml"
 
 # latex preamble for the index.
@@ -71,7 +70,8 @@ def usage(msg = "", return_code = 0):
     print(("Usage: %s -h | -s | -t | -x \n"
           "\n"
           "\t-h\tHelp! print this message.\n"
-          "\t-c\tClean all the files that get built, e.g. pdfs etc\n"
+          "\t-c\tClean all the files before building, e.g. pdfs etc\n"
+          "\t-C\tClean all the files and exit.\n"
           "\t-s\tFail slow!  Ignore xml errors and try and build the doc anyway.\n"
           "\t-t\tOnly do the template substitution don't parse the xml.\n"
           "\t-x\tDo the template substitution and parse the xml; don't build the doc.\n"
@@ -81,25 +81,78 @@ def usage(msg = "", return_code = 0):
     exit(return_code)
 
 
-#_xelatex_regex = re.compile("^Underfull [vh]box.*?$.*?$", re.MULTILINE)
-# _xelatex_regex = re.compile(
-#     "(Underfull .*\n.*\n)|" # underfull boxes
-#     #"(Overfull .*\n.*\n)|"  # overfull boxes
-#     #"(^[ \t\r\f\v]*\n)|"    # blank lines
-#     "(Trans)")
-#_xelatex_regex = re.compile("Transcript", re.MULTILINE)
-
-
 def find_xelatex():
     """
     Return a path to the xelatex executable on this platform.
 
     """
     if platform.system() == "Linux":
-        xelatex = "/usr/bin/xelatex"
+        xelatex_executable = "/usr/bin/xelatex"
     else:
-        xelatex = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/xelatex.exe"
-    return xelatex
+        xelatex_executable = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/xelatex.exe"
+    return xelatex_executable
+
+
+def xelatex(tex_fname, verbosity=0):
+    """
+    Run xelatex on the given tex file to produce a pdf.
+
+    """
+    global xelatex_executable
+    if xelatex_executable is None:
+        xelatex_executable = find_xelatex()
+
+    cmd_line = [xelatex_executable,
+                "-output-directory=%s" % build_dir, 
+                "--halt-on-error",
+                tex_fname]
+
+    # get a copy of the environment with TEXINPUTS set.
+    env = deepcopy(os.environ)
+    
+    if platform.system() == "Linux":
+        # Add the local styles dir
+        # The trailing // means that TeX programs will search recursively in that 
+        # folder; the trailing colon means "append the standard value of TEXINPUTS" 
+        # (which you don't need to provide).
+        tex_inputs = styles_dir + "//:"
+
+        env["TEXINPUTS"] = tex_inputs
+
+        if verbosity > 0:
+            print(("\n\nRun with:\n%s\n%s" % 
+                   ("export TEXINPUTS=%s" % tex_inputs,
+                    " ".join(cmd_line))))
+        
+    else:
+        args.insert(1, "-include-directory=%s" % styles_dir)
+
+        if verbosity > 0:
+            print("\n\nRun with:\n%s" % " ".join(cmd_line))
+
+
+    xelatex_output = ""
+    xelatex_error = False
+    try:
+        xelatex_output = check_output(cmd_line, env=env)
+    except CalledProcessError as e:
+        xelatex_output = e.output
+        xelatex_error = True
+
+    # print xelatex output (filter out some of the spammy messages)
+    if verbosity > 1:
+        assert False
+        print(xelatex_output)
+    else:        
+        filter_xelatex_output(xelatex_output)
+
+    if xelatex_error:
+        sys.exit("Failed to run xelatex on doc: %s" % tex_fname)
+
+    # Rerun once to try and get cross-references right
+    # (Throw away the trace this time)
+    check_output(cmd_line)            
+    return
 
 
 def find_makeindex():
@@ -156,7 +209,7 @@ def filter_xelatex_output(xelatex_output):
 
 
 
-def create_index():
+def create_index(verbosity=0):
     print()
     print("===============================================")
     print("===============================================")
@@ -201,18 +254,27 @@ def create_index():
     # run makeindex to ah make the index
     # (makeindex won't let you build an index outside of the cwd!)
     cmd_line = [makeindex, 
-                #"-q", 
+                #"-q",
                 basename(index_idx)]
+                #index_idx]
+    print " ".join(cmd_line)
+    
     if verbosity > 0:
         print(("\n\n\n" + " ".join(cmd_line)))
     call(cmd_line, cwd = build_dir)
 
+
+    print "-------------------------"
     # build the index.pdf
-    cmd_line = [xelatex, "-output-directory=%s" % build_dir, index_tex]
-    if verbosity > 0:
-        print(("\n\n\n" + " ".join(cmd_line)))
+    #print index_
+    xelatex(index_tex)
+    # cmd_line = [xelatex, "-output-directory=%s" % build_dir, index_tex]
+    # if verbosity > 0:
+    #     print(("\n\n\n" + " ".join(cmd_line)))
     #call(cmd_line, env = env)
-    call(cmd_line)
+
+    #print cmd_line
+    #call(cmd_line)
 
     # move the pdf from the build dir to the pdfs dir
     pdf_fname = join(build_dir, "index.pdf")
@@ -320,38 +382,25 @@ def build_doc(template_fname, verbosity, archetype = None):
         return
 
     # create the cmd line to convert the latex to pdf
-    cmd_line = [
-        xelatex, 
-        "-output-directory=%s" % build_dir,
-        "-include-directory=%s" % styles_dir,
-        "--halt-on-error",
-        tex_fname, ]
-    if verbosity > 0:
-        print("\n\nRun with:\n%s" % " ".join(cmd_line))
+    # cmd_line = [
+    #     xelatex, 
+    #     "-output-directory=%s" % build_dir,
+    #     "-include-directory=%s" % styles_dir,
+    #     "--halt-on-error",
+    #     tex_fname, ]
+    # if verbosity > 0:
+    #     print("\n\nRun with:\n%s" % " ".join(cmd_line))
+    xelatex(tex_fname, verbosity=verbosity)
 
     # run xelatex
-    xelatex_output = ""
-    xelatex_error = False
-    try:
-        xelatex_output = check_output(cmd_line)
-    except CalledProcessError as e:
-        xelatex_output = e.output
-        xelatex_error = True
+    # xelatex_output = ""
+    # xelatex_error = False
+    # try:
+    #     xelatex_output = check_output(cmd_line)
+    # except CalledProcessError as e:
+    #     xelatex_output = e.output
+    #     xelatex_error = True
 
-    # print xelatex output (filter out some of the spammy messages)
-    if verbosity > 1:
-        assert False
-        print(xelatex_output)
-    else:        
-        filter_xelatex_output(xelatex_output)
-
-    if xelatex_error:
-        sys.exit("Failed to run xelatex on doc: %s" % tex_fname)
-
-    # Rerun once to try and get cross-references right
-    # (Throw away the trace this time)
-    check_output(cmd_line)
-        
     # run makeindex to ah make the index
     # (makeindex won't let you build an index outside of the cwd!)
     return_code = call([makeindex, 
@@ -377,7 +426,7 @@ def clean():
     for fname in os.listdir(build_dir):
         _, ext = splitext(fname)
         if ext in (".tex", ".log", ".toc", ".aux", ".idx", ".ind", 
-                   ".xlsx", ".pdf", ".xml", ".ilg"):
+                   ".xlsx", ".pdf", ".xml", ".ilg", ".out"):
             fname = join(build_dir, fname)
             os.remove(fname)
 
@@ -393,9 +442,9 @@ if __name__ == "__main__":
     try:
         opts, args = getopt(
             sys.argv[1:],
-            "chxvtsl",
-            ["help", "clean", "template_only", "parse_xml", "verbose", "fail_slow", "no_index", 
-             "build_latex"])
+            "chxvtslC",
+            ["help", "clean", "template_only", "parse_xml", "verbose", "fail_slow",
+             "no_index", "clobber", "build_latex"])
 
     except GetoptError as err:
         usage(msg = str(err), return_code = 2)        
@@ -415,7 +464,11 @@ if __name__ == "__main__":
             usage()
 
         elif o in ("-c", "--clean"):
+            clean()            
+
+        elif o in ("-C", "--clobber"):
             clean()
+            sys.exit()
 
         elif o in ("-s", "--fail_slow"):
             fail_fast = False
@@ -440,12 +493,16 @@ if __name__ == "__main__":
             raise Exception("unhandled option")
 
     # check xelatex exists.
-    xelatex = find_xelatex()
-    assert exists(xelatex)
+    xelatex_executable = find_xelatex()
+    assert exists(xelatex_executable)
+    if verbosity > 1:
+        print "Using xelatex at %s" % xelatex_executable
 
     # check makeindex exists.
     makeindex = find_makeindex()
-    assert exists(makeindex)
+    assert exists(makeindex), "Can't find makeindex at %s" % makeindex
+    if verbosity > 1:
+        print "Using makeindex at %s" % makeindex
 
     # make any dirs we need
     if not exists(build_dir):
@@ -486,12 +543,12 @@ if __name__ == "__main__":
     #env = deepcopy(os.environ)
     #env["TEXINPUTS"] = tex_inputs
 
-    for doc_xml_fname, _, _ in config.files_to_build:
-        build_doc(doc_xml_fname, verbosity = verbosity)
+    for doc_xml_fname, _, _ in config.files_to_build:        
+        build_doc(doc_xml_fname, verbosity=verbosity)
 
     for archetype_id, _, _ in config.archetypes_to_build:
         archetype = archetypes[archetype_id]
-        build_doc(archetype_template_fname, archetype = archetype, verbosity = verbosity)
+        build_doc(archetype_template_fname, archetype = archetype, verbosity=verbosity)
 
     if parse_only or template_only or latex_only:
         sys.exit()
@@ -500,7 +557,7 @@ if __name__ == "__main__":
     # Create the index.pdf
     #
     if not no_index:
-        create_index()
+        create_index(verbosity=verbosity)
 
     # save summary details to a spreadsheet (for analysis)
     spreadsheet_fname = join(build_dir, "summary.xlsx")
