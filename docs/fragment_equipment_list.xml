@@ -9,13 +9,13 @@
   
   <!--
 
-  trip costs .. e.g. ship ticket
+trip costs .. e.g. ship ticket
 
-  spell ingredients
-  mandragora
-  shade of a newt
+spell ingredients
+mandragora
+shade of a newt
 
-  inn costs
+inn costs
 
   -->
 
@@ -38,6 +38,11 @@
     </tablerow>
 
     <tablerow>
+      <td>Electrum Dukes</td>
+      <td> = 100 Copper Groats</td>
+    </tablerow>
+
+    <tablerow>
       <td>Silver Noble</td>
       <td> = 10 Copper Groats</td>
     </tablerow>
@@ -48,7 +53,6 @@
     </tablerow>
   </table>
   
-
 
   <p noindent="true">
     If your campaign is set in a medieval European style setting
@@ -265,7 +269,7 @@
     </table>
     
   </subsection>
-    
+  
 
   <subsection>
     <subsectiontitle>Uncommon Equipment</subsectiontitle>    
@@ -332,15 +336,16 @@
       
     </table>
 
-<!--
-<figure position="b">
-  <img src="./resources/equipment/cart.png" scale="2.8"/>
-  </figure>
+    <!--
+	<figure position="b">
+	<img src="./resources/equipment/cart.png" scale="2.8"/>
+	</figure>
 
--->
+    -->
     
   </subsection>
-    
+  
+  
 
   <subsection>
     <subsectiontitle>Rare Equipment</subsectiontitle>    
@@ -378,85 +383,78 @@
       
     </table>
   </subsection>
-    
-<p>
 
-named weapons.. 
-when you name the weapon in combat
-kills?
 
-epic weapons.. 
-animus..
+  <subsection>
+    <subsectiontitle>Miscellaneous</subsectiontitle>
+    {% include "tables/prices_misc.xml" %}
+  </subsection>
 
-boats
+  <subsection>
+    <subsectiontitle>Transport</subsectiontitle>
+    {% include "tables/prices_transport.xml" %}
+  </subsection>
 
-furniture
+  <subsection>
+    <subsectiontitle>Housing</subsectiontitle>        
+    {% include "tables/prices_housing.xml" %}
+  </subsection>
 
-achievements
-medals?
-accolades?
-knighthoods?
-</p>
-<!--
-    https://medium.com/@zavidovych/what-we-can-learn-by-looking-at-prices-and-wages-in-medieval-england-8dc207cfd20a#.4f197hjln
--->
-<!--
-    http://www.petesqbsite.com/sections/tutorials/tuts/m_econ.htm
-    http://medieval.ucdavis.edu/120D/Money.html
-    http://www.historyextra.com/feature/time-traveller%E2%80%99s-guide-medieval-shopping
-    http://www.medievalcoinage.com/prices/medievalprices.htm
-    http://regia.org/research/misc/costs.htm
--->
+  <subsection>
+    <subsectiontitle>Agriculture</subsectiontitle>        
+    {% include "tables/prices_farming.xml" %}  
+  </subsection>
 
-<!--
-<figure position="b">
-  <img src="./resources/equipment/drinking_horn.png" scale="0.03"/>
-  </figure>
+  <subsection>
+    <subsectiontitle>Jewelery</subsectiontitle>        
+    {% include "tables/prices_treasures.xml" %}  
+  </subsection>
+  
+  
+  <!--
+      https://medium.com/@zavidovych/what-we-can-learn-by-looking-at-prices-and-wages-in-medieval-england-8dc207cfd20a#.4f197hjln
   -->
+  <!--
+
+  <p>    
+    XXXXXXXXXXX
     
-</section>
+    named weapons.. 
+    when you name the weapon in combat
+    kills?
+
+    epic weapons.. 
+    animus..
+
+    boats
+
+    furniture
+
+    achievements
+    medals?
+    accolades?
+    knighthoods?
+  </p>
+
+      http://www.petesqbsite.com/sections/tutorials/tuts/m_econ.htm
+      http://medieval.ucdavis.edu/120D/Money.html
+      http://www.historyextra.com/feature/time-traveller%E2%80%99s-guide-medieval-shopping
+      http://www.medievalcoinage.com/prices/medievalprices.htm
+      http://regia.org/research/misc/costs.htm
+  -->
+
+  <!--
+      <figure position="b">
+      <img src="./resources/equipment/drinking_horn.png" scale="0.03"/>
+      </figure>
+  -->
 
 
 
-
-
-<section>
-  <sectiontitle>Armour</sectiontitle>
-
-  {% include "tables/prices_armour.xml" %}
 
 
   <subsection>
-    <subsectiontitle>XXXX</subsectiontitle>
-    <p>
-      Gauntlets and Helmets provide no AC bonus but negate extra damage
-      to those body parts, in the event of a called shot.
-
-      FIXME: this is unworkable.
-    </p>
-  </subsection>
-
-
-  <subsection>
-    <subsectiontitle>Armour Tags</subsectiontitle>
-
-    <descriptions>
-      <term>X</term>
-      <description>Y
-      </description>
-      
-    </descriptions>
-  </subsection>
-</section>
-
-
-
-<section>
-  <sectiontitle>Weapons</sectiontitle>
-
-
-  <subsection>
-    <subsectiontitle>Weapon Tags</subsectiontitle>
+    <subsectiontitle>Weapon and Armour Tags</subsectiontitle>
 
     <descriptions>      
       <term>Asanguinous</term>
@@ -475,7 +473,12 @@ knighthoods?
       <description>
 	Can be braced against a charge.  Does double damage against charging opponents.
       </description>
-            
+
+      <term>Black-Powder</term>
+      <description>
+	Uses black gun powder that must be dry in order to fire..
+      </description>
+      
       <term>Club</term>
       <description>
 	Club weapons include clubs, maces, flails, morning stars and improvised weapons.
@@ -563,8 +566,27 @@ knighthoods?
     </descriptions>      
   </subsection>
 
-  
-  
+
+
+  <subsection>
+    <subsectiontitle>Armour</subsectiontitle>
+
+    {% include "tables/prices_armour.xml" %}
+
+    <!--
+    <subsubsection>
+      <subsubsectiontitle>XXXX</subsubsectiontitle>
+      <p>
+	Gauntlets and Helmets provide no AC bonus but negate extra damage
+	to those body parts, in the event of a called shot.
+
+	FIXME: this is unworkable.
+      </p>
+    </subsubsection>
+    -->
+  </subsection>
+
+
   <subsection>
     <subsectiontitle>Weapons</subsectiontitle>
 
@@ -573,8 +595,8 @@ knighthoods?
       <subsubsectiontitle>Rapier</subsubsectiontitle>
 
       <p>
-	Estoc, Rapier.
-	stabbing swords		
+	A rapier is a very thin bladed duelling swords.  They are made by skilled
+	craftsmen who use the finest steel in order to make the thin blades so strong.
       </p>
 
       <figure>
@@ -587,13 +609,8 @@ knighthoods?
       <subsubsectiontitle>Broad Sword</subsubsectiontitle>
 
       <p>
-	One handed, doubled edged, straight bladed swords.
-
-	Broadsword, claymore, bastard sword, spatha.
-
-	weighed between 3 - 5 pounds
-	used as close contact weapon
-	primarily cutting or slicing an opponent and was capable of cutting off the limbs or head of an enemy in one stroke
+	Broad swords are one handed, doubled edged, straight bladed swords.  They are
+	used in close formation fighting by heavy infantry.
       </p>
 
       <figure>
@@ -635,6 +652,19 @@ knighthoods?
       </figure>      
     </subsubsection>
 
+
+    <subsubsection>
+      <subsubsectiontitle>Firearms <fightrangedsymbol/></subsubsectiontitle>
+
+      <p>
+	There are two different types of firearms used in the game: Pistols and Muskets.
+	Pistols are single handed and weapons and Musketts are a primitive long barrelled
+	firearm.  Both of these weapons are smooth bore, muzzle loaded, black powder weapons
+	and are very slow to load.
+      </p>
+      
+    </subsubsection>
+    
     
 
 
@@ -651,14 +681,14 @@ knighthoods?
       <!--
 	  <figure fullwidth="true">
           <img src="./resources/equipment/glaive.png" scale="0.4" />
-        <<img src="" alt="" /> src="./resources/equipment/bec_de_corbin.png" scale="0.4" />
-	</figure>
+          <<img src="" alt="" /> src="./resources/equipment/bec_de_corbin.png" scale="0.4" />
+	  </figure>
       -->
     </subsubsection>
     
 
     <subsubsection>
-      <subsubsectiontitle>Sabre <fightsymbol/></subsubsectiontitle>
+      <subsubsectiontitle>Sabre <fightfastsymbol/></subsubsectiontitle>
       <p>
 	Sabres are light slashing swords.  Historical examples of this
 	type include the calvary sabres and the Katana.
@@ -690,10 +720,8 @@ knighthoods?
       <subsubsectiontitle>Long Swords <fightsymbol/></subsubsectiontitle>
       
       <p>
-	double edged, one-or-two handed straight edged swords.
-	
-	Includes the Long Sword (long refers to the style of fencing with
-	both hands on the hilt).
+	Long swords are double edged, one or ocassionaly two handed straight edged
+	swords that can be used for both piercing and slashing.
       </p>
 
       <figure>
@@ -705,26 +733,26 @@ knighthoods?
     <subsubsection>
       <subsubsectiontitle>Great Swords <fightsymbol/></subsubsectiontitle>
       <p>	
-	Zweihänder
+	Great swords are large, heavy two handed swords such as the Zweihänder.
       </p>
     </subsubsection>
     
-
 
     <subsubsection>
-      <subsubsectiontitle>Dagger <fightsymbol/></subsubsectiontitle>
+      <subsubsectiontitle>Dagger <fightfastsymbol/></subsubsectiontitle>
 
       <p>
-	Rondel, dirk.
-	dagger, foot long, thin, stabby 
+	Daggers include weapons, such as the Rondel, and the Dirk.  They
+	are small piercing weapons.
       </p>
     </subsubsection>
     
-       
+    
     <subsubsection>
       <subsubsectiontitle>Battle Axes <fightsymbol/></subsubsectiontitle>
       <p>
-	Cheap, can be made out of poor quality metals.
+	Battle axes are cheap but effective slashing weapons, that can be
+	made out of poor quality metals.
       </p>
 
       <figure>
@@ -746,7 +774,8 @@ knighthoods?
     <subsubsection>
       <subsubsectiontitle>Mace, Morning Star <fightsymbol/></subsubsectiontitle>
       <p>
-	Good against armour
+	A mace is similar to a war hammer.  They are heavy crushing weapons that
+	work well against heavily armoured foes.
       </p>
     </subsubsection>
 
@@ -754,6 +783,8 @@ knighthoods?
     <subsubsection>
       <subsubsectiontitle>Flail <fightsymbol/></subsubsectiontitle>
       <p>
+	A flail is a heavy crushing weapon which has a number of metal balls
+	attached by a chain to a haft.
       </p>
     </subsubsection>
 
@@ -761,39 +792,18 @@ knighthoods?
     <subsubsection>
       <subsubsectiontitle>Club <fightsymbol/></subsubsectiontitle>
       <p>
-	Improvised single handed weapon
+	Clubs are single handed, weapons constructd from heavy pieces of wood.
+	They can be constructed with metal bands and spikes or easily improvised
+	from wood lying about.	
       </p>
     </subsubsection>
 
     {% include "tables/melee_weapons.xml" %}
     {% include "tables/missile_weapons.xml" %}        
-  </subsection>
+  </subsection>  
 </section>
 
-<section>
-  <sectiontitle>Other Equipment</sectiontitle>
-  <subsection>
-    <subsectiontitle>Miscellaneous</subsectiontitle>
-    {% include "tables/prices_misc.xml" %}
-  </subsection>
 
-  <subsection>
-    <subsectiontitle>Transport</subsectiontitle>
-    {% include "tables/prices_transport.xml" %}
-  </subsection>
 
-  <subsection>
-    <subsectiontitle>Housing</subsectiontitle>        
-    {% include "tables/prices_housing.xml" %}
-  </subsection>
 
-  <subsection>
-    <subsectiontitle>Agriculture</subsectiontitle>        
-    {% include "tables/prices_farming.xml" %}  
-  </subsection>
 
-  <subsection>
-    <subsectiontitle>Jewelery</subsectiontitle>        
-    {% include "tables/prices_treasures.xml" %}  
-  </subsection>
-</section>

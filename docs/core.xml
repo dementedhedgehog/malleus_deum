@@ -26,29 +26,29 @@
         <indexentry>Player Character</indexentry> 
         <indexentry>Non-Player Character</indexentry> 
         <indexentry>Actor</indexentry>
-	      Malleus~Deum is a fantasy pen and paper, tabletop, role-playing game (RPG).	
+	Malleus~Deum is a fantasy pen and paper, tabletop, role-playing game (RPG).	
         In Malleus Deum one player assumes the role of Game Master or <defn>GM</defn>
-	      and plays the part of a narrator in a collaborative story.  Other 
-	      players adopt the role of individual people within the story, called 
-	      Player Characters.  All the other characters, and any monsters within the story
-	      are controlled by the GM and are referred to as Non-Player Characters or 
-	      <defn>NPCs</defn>.  We  use the term  
-	      <defn>Actors</defn> to denote all things that may take actions in the world, 
-	      this includes all player and non-player characters, and all monsters.
+	and plays the part of a narrator in a collaborative story.  Other 
+	players adopt the role of individual people within the story, called 
+	Player Characters.  All the other characters, and any monsters within the story
+	are controlled by the GM and are referred to as Non-Player Characters or 
+	<defn>NPCs</defn>.  We  use the term  
+	<defn>Actors</defn> to denote all things that may take actions in the world, 
+	this includes all player and non-player characters, and all monsters.
       </p>
 
       <p>
-	      <indexentry>Check<subentry>Difficulty</subentry></indexentry>
-	      Each player character is described by a Character Sheet. Any narrative decisions 
-	      of moment within the game are made by <emph>Making Checks</emph> which involves 
-	      rolling dice, adding any bonuses from the character sheet, and comparing the result
-	      to a <defn>Difficulty</defn> level
-	      <equation>
-	        <line>Check:</line>
-	        <line>Dice + Bonus <geqqsymbol/> Difficulty</line>
-	      </equation>
-	      The details of how this all fits together, how to make a character sheet, how to 
-	      make checks, and more is covered in the next few chapters.
+	<indexentry>Check<subentry>Difficulty</subentry></indexentry>
+	Each player character is described by a Character Sheet. Any narrative decisions 
+	of moment within the game are made by <emph>Making Checks</emph> which involves 
+	rolling dice, adding any bonuses from the character sheet, and comparing the result
+	to a <defn>Difficulty</defn> level
+	<equation>
+	  <line>Check:</line>
+	  <line>Dice + Bonus <geqqsymbol/> Difficulty</line>
+	</equation>
+	The details of how this all fits together, how to make a character sheet, how to 
+	make checks, and more is covered in the next few chapters.
       </p>
 
       <figure position="!b">
@@ -1809,9 +1809,6 @@ do this the initial check is modified by +2.
 	</p>
       </playexample>        
     </section>
-    
-
-
 
     <section>
       <sectiontitle>Initiative <initiativesymbol/></sectiontitle>
@@ -1827,7 +1824,6 @@ do this the initial check is modified by +2.
 	<bold>lowest to highest</bold>. 
       </p>
     </section>
-
 
     <section>
       <sectiontitle>Combat Rounds</sectiontitle>
@@ -1875,13 +1871,40 @@ do this the initial check is modified by +2.
       <sectiontitle>Action Order</sectiontitle>
 
       <p>
-	Actors in the game declare their actions in reverse initiative order, from 
-	lowest to highest.  After an actor declares their action any other actor 
-	with a higher initiative who is yet to take their action may interrupt the 
-	first players action.  The new interrupt action must be from an equal or higher 
-	stage.  Interrupts can occur multiple times until no actor wishes to interrupt 
-	further. At this point the actions are carried out in order from the most recent 
-	actor to interrupt back to the original actor.
+	Within a round the order that actions are taken in is determined by an
+	auction.  The character with the lowest initiative that has not performed an
+	action during the round declares their action.  Any character that has not
+	performed an action this round may make a faster action bid.  An action is
+	faster if its stage, (talk, run, act, fight) is faster or if its stage is
+	the same as the current fastest action and the character has higher initiative.
+	In other words stage is the most important factor in determining action order,
+	initiative is the tie-breaker.  After an action is chosen the auction process
+	starts again until all characters have used their actions.
+      </p>
+
+      <p>
+	Some important notes about the action order auction are:
+	<olist>
+          <li>
+	    Each character can only bid once per auction.
+          </li>
+
+          <li>
+	    Only one action gets performed per auction.  Any previous bids are ignored.
+          </li>
+
+          <li>
+	    The fastest action wins.
+          </li>
+
+          <li>
+	    Talk actions are free actions.
+          </li>
+
+          <li>
+	    A character can only react if they have not performed their action yet (see below).
+          </li>	  
+	</olist>
       </p>
 
       <playexample>
@@ -1930,8 +1953,7 @@ do this the initial check is modified by +2.
       <sectiontitle>Combat Details</sectiontitle>
 
       <subsection>
-	<subsectiontitle>Movement and Out of Turn Actions</subsectiontitle>
-	
+	<subsectiontitle>Movement</subsectiontitle>	
 	<p>
 	  Normally actors are allowed a single action during a combat round.
 	  A <defn>Free Action</defn> is an action that does not count against this limit.
@@ -1942,15 +1964,22 @@ do this the initial check is modified by +2.
 	  Most actions also implicitly include some optional movement.  When an actor attacks 
 	  it is understood to involve some movement to close the distance to their opponent.
 	</p>
+      </subsection>
 
+      <subsection>
+	<subsectiontitle>Reactions</subsectiontitle>	
 	<p>
-	  <indexentry>Out of Turn Actions</indexentry>
-	  Some special actions allow the actor to perform an action <defn>out of turn</defn>,
+	  <indexentry>Reactions</indexentry>
+	  Some special actions allow the actor to perform an <defn>reaction</defn>,
 	  usually when some triggering event occurs.  This means that the particular action 
-	  can be used to interrupt at some time when it would normally not be allowed.  An 
-	  actor may only perform one out of turn action per round.
+	  can be performed at some time when it would normally not be allowed.  A
+	  character may only perform one out of turn action per round.
 	</p>
 
+	<p>
+	  Reactions can only be performed if the character has not performed an action
+	  in the round so far.
+	</p>
       </subsection>
       
 
@@ -2042,8 +2071,8 @@ do this the initial check is modified by +2.
 
 	  <p>
 	    Characters may choose to perform a <indexentry>Retreat</indexentry>
-      <defn>Fighting Retreat</defn>. In a fighting retreat each turn the character
-      may make an attack if they can, but then must move their full movement away from 
+	    <defn>Fighting Retreat</defn>. In a fighting retreat each turn the character
+	    may make an attack if they can, but then must move their full movement away from 
 	    danger if they can.  They cannot move toward an enemy unless they have no other 
 	    option.  Once an actor starts to retreat they have to rally before they can take 
 	    an action other than Fighting Retreat or Flee as it takes great discipline to 
