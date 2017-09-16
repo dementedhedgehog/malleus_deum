@@ -999,62 +999,66 @@ class Archetype:
         return self.archetype_id
 
     def load(self, archetype_node, fail_fast):
-        self._load(archetype_node, fail_fast)
+        try:
+            self._load(archetype_node, fail_fast)
 
-        # sort the ability levels
-        self.innate_ability_levels.sort(key = lambda mal: mal.get_title())
+            # sort the ability levels
+            self.innate_ability_levels.sort(key = lambda mal: mal.get_title())
 
-        # update the innate abilities
-        for ability in list(self.modified_abilities_lookup.values()):
-            levels = ability.get_levels()
-            max_level = None
-            for level in levels:
-                if not level.is_innate():
-                    continue
+            # update the innate abilities
+            for ability in list(self.modified_abilities_lookup.values()):
+                levels = ability.get_levels()
+                max_level = None
+                for level in levels:
+                    if not level.is_innate():
+                        continue
 
-                if (max_level is None or 
-                    (max_level.get_level_number() < level.get_level_number())):
-                    max_level = level
-                
-            if max_level is not None:
+                    if (max_level is None or 
+                        (max_level.get_level_number() < level.get_level_number())):
+                        max_level = level
+
+                if max_level is not None:
                     self.innate_ability_levels.append(max_level)
-                            
-        # update the enabled flag in all the ability groups, abilities and levels
-        # (it might be out of date here)
-        for ability_group in self.modified_ability_groups:
 
-            # if a group is disabled all it's levels and abilities are also disabled.
-            if not ability_group.is_enabled():
-                for ability in ability_group.get_abilities():                    
-                    ability.set_enabled(False)
+            # update the enabled flag in all the ability groups, abilities and levels
+            # (it might be out of date here)
+            for ability_group in self.modified_ability_groups:
 
-            else:
-                # otherwise an ability group is disabled if all it's abilities are.
-                all_abilities_disabled = True
-                for ability in ability_group.get_abilities():
-                    if ability.is_enabled():
-                        all_abilities_disabled = False
-                        break
-
-                if all_abilities_disabled:
-                    ability_group.set_enabled(False)
+                # if a group is disabled all it's levels and abilities are also disabled.
+                if not ability_group.is_enabled():
+                    for ability in ability_group.get_abilities():                    
+                        ability.set_enabled(False)
 
                 else:
-
-                    # now disable abilities on a per ability basis
+                    # otherwise an ability group is disabled if all it's abilities are.
+                    all_abilities_disabled = True
                     for ability in ability_group.get_abilities():
-                        if not ability.is_enabled():
-                            ability.set_enabled(False)
-
-                    # also an ability is disabled if all its levels are.
-                    all_ability_levels_disabled = True
-                    for ability_level in ability:
-                        if ability_level.is_enabled():
-                            all_ability_levels_disabled = False
+                        if ability.is_enabled():
+                            all_abilities_disabled = False
                             break
 
-                        if all_ability_levels_disabled:
-                            ability.set_enabled(False)
+                    if all_abilities_disabled:
+                        ability_group.set_enabled(False)
+
+                    else:
+
+                        # now disable abilities on a per ability basis
+                        for ability in ability_group.get_abilities():
+                            if not ability.is_enabled():
+                                ability.set_enabled(False)
+
+                        # also an ability is disabled if all its levels are.
+                        all_ability_levels_disabled = True
+                        for ability_level in ability:
+                            if ability_level.is_enabled():
+                                all_ability_levels_disabled = False
+                                break
+
+                            if all_ability_levels_disabled:
+                                ability.set_enabled(False)
+        except:
+            print "Problem trying to parse archetype file: %s" % self.fname
+            raise
         return True
 
 
@@ -1368,7 +1372,11 @@ class Archetype:
                if ability_group_id is not None:
                    raise Exception("Only one id per ability group modifier!")
                else:
-                   ability_group_id = child.text.strip()               
+                   ability_group_id = child.text.strip()
+
+                   if ability_group_id not in self.modified_ability_groups_lookup:
+                       raise Exception("UNKNOWN ABILITY GROUP ID (%s) File: %s Line: %s\n" % 
+                                       (ability_group_id, self.fname, child.sourceline))
 
            elif tag == "lorepointmodifier":
                lore_point_modifier = convert_str_to_int(child.text)
@@ -1421,11 +1429,21 @@ class Archetype:
 
            if tag == "abilityid":
                ability_id = child.text.strip()
+
+               if ability_id not in self.modified_abilities_lookup:
+                   raise Exception("UNKNOWN ABILITY ID (%s) File: %s Line: %s\n" % 
+                                   (ability_id, self.fname, child.sourceline))
+               
                modified_ability = self.modified_abilities_lookup[ability_id]
                modified_ability.set_enabled(enabled)
 
            elif tag == "abilitygroupid":
                ability_group_id = child.text.strip()
+
+               if ability_group_id not in self.modified_ability_groups_lookup:
+                   raise Exception("UNKNOWN ABILITY GROUP ID (%s) File: %s Line: %s\n" % 
+                                   (ability_group_id, self.fname, child.sourceline))
+               
                modified_ability_group = self.modified_ability_groups_lookup[ability_group_id]
                modified_ability_group.set_enabled(enabled)
 

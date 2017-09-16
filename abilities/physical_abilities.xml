@@ -17,6 +17,54 @@
 
 
   <ability>
+    <abilitytitle>Charge</abilitytitle>
+    <abilityid>physical.charge</abilityid>
+    <abilityclass>Fight</abilityclass>
+    <abilitydescription>
+      <p>
+        The Charge ability allows the character to move twice their movement rate
+	in the direction of an enemy and then make an additional melee attack.
+	A character cannot Charge and enemy who is within their movement range, there
+	is not enough time.  If the character fails to charge they realize their foolishness
+	half way to the	enemy and must stop without attacking the enemy, moving at least their
+	distance.  Charging may provoke a break test in opponents at the GM's discretion.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Morale vs 7</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Morale vs 6</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+	<check>Morale vs 5</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  
+
+  <ability>
     <abilitytitle>Run</abilitytitle>
     <abilityid>physical.run</abilityid>
     <abilityclass>Run</abilityclass>
@@ -56,6 +104,48 @@
 
 
 
+  <ability>
+    <abilitytitle>Flee</abilitytitle>
+    <abilityid>physical.flee</abilityid>
+    <abilityclass>Run</abilityclass>
+    <abilitydescription>
+      <p>
+        The Flee ability allows the character to move more than twice their movement rate
+	away from an enemy, fear has given them wings.  Characters who are fleeing must
+	make a Rally check in the End Stage to stop fleeing.  Characters may voluntarily
+	flee if there exists a credible threat, or they may be forced to flee if they
+	fail a break test.  For the purposes of game play fleeing is considered to be a
+	double movement <emph>+d6</emph>.  Fleeing is successful if the character is not
+	damaged in the following round.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
   
 
   <ability>
@@ -271,6 +361,8 @@
 	After the character is hit and/or damage is rolled the character
 	may use their standard action to attempt to dodge the attack.
 	If successful the attack is dodged and the character takes no damage.
+	Note that unlike most other reactions Dodging requires the character
+	to spend their action!
       </p>
 
       <p>
@@ -304,7 +396,7 @@
         <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>5</successes>
-        <check>Speed Check vs Difficulty</check>
+        <check>Speed Check vs default 12</check>
       </abilitylevel>
       
       <abilitylevel>
@@ -312,7 +404,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <check>Speed Check + 2 vs Difficulty</check>
+        <check>Speed Check vs default 11</check>
       </abilitylevel>      
     </abilitylevels>
   </ability>
