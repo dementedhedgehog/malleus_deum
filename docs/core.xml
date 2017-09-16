@@ -1372,11 +1372,11 @@ do this the initial check is modified by +2.
 	  <p>
 	    Suppose Dourli is fighting an ogre, and a large amount of treasure is 
             at stake if Dourli can win.  The ogre is nearly defeated but Dourli fails 
-	    his break test.  Dourli's player might try to compel his 
+	    his break check.  Dourli's player might try to compel his 
 	    <emph>Gold is my Lodestone</emph> aspect to try to get the GM to give 
-	    Dourli some bonus to his break tests in that fight.  He rolls a 3.
+	    Dourli some bonus to his break check in that fight.  He rolls a 3.
 	    Well under the aspects difficulty and so is bound by the aspect.
-	    The GM grants him an extra $d6$ for his break test roll.   Dourli also
+	    The GM grants him an extra $d6$ for his break check roll.   Dourli also
 	    decreases the difficulty of this aspect as he successfully compelled his
 	    own aspect.
 	  </p>
@@ -1453,8 +1453,9 @@ do this the initial check is modified by +2.
           <indexentry>Broken Condition</indexentry> 
           <indexentry>Conditions<subentry>Broken</subentry></indexentry> 	  
 	  The character has lost the will to fight and must withdraw from battle.
-	  They may make a fighting withdrawal or flee.  This occurs after a character
-	  has failed two break checks in combat.
+	  On their turn they may attack but must move away from the enemy if they
+	  can.  This condition occurs after a character has failed two break checks
+	  in combat.
 	</description>
 	
 	<term>Checked</term>
@@ -1462,7 +1463,7 @@ do this the initial check is modified by +2.
 	  <label>condition:checked</label>
           <indexentry>Checked Condition</indexentry> 
           <indexentry>Conditions<subentry>Checked</subentry></indexentry> 	  
-	  The character has lost momentum in a fight. They will not charge and will
+	  The character has lost momentum in a fight. They will not Charge and will
 	  not pursue.  This occurs after the character has failed a break check in combat.
 	</description>
 	
@@ -1556,7 +1557,7 @@ do this the initial check is modified by +2.
           <indexentry>Routed Condition</indexentry> 
           <indexentry>Conditions<subentry>Routed</subentry></indexentry>
 	  The character has been defeated in combat.  If they can Flee they do so.
-	  Otherwise they will plead for mercy or do something desperate.  This occurs
+	  Otherwise they will Yield or do something desperate.  This occurs
 	  when the player has failed three break checks in combat.
 	</description>
 
@@ -1721,12 +1722,13 @@ do this the initial check is modified by +2.
 	<indexentry>Combat<subentry>Rounds</subentry></indexentry> 	
 	Combat is central to the game and has its own specific set of rules.
 	Combat starts with an optional <emph>ambush</emph> or <emph>surprise</emph> check,
-	an initiative roll, and then a series of <defn>Combat Rounds</defn>.  In each round
-	all the characters involved perform a single action.  The order in which actions are 
-	performed in the round is determined by the type of the action and the 
-	characters initiative.  Each round lasts six seconds.
+	an optional <emph>Talk Phase</emph>, an initiative roll, and then a series of
+	<defn>Combat Rounds</defn>.  In each round all the characters involved perform a
+	single action.  The order in which actions are performed in the round is determined
+	by the type of the action and the characters initiative.  Each round lasts six seconds.
       </p>
     </section>
+
 
     <section>
       <sectiontitle>Ambush and Surprise</sectiontitle>
@@ -1761,6 +1763,8 @@ do this the initial check is modified by +2.
       </subsection>
 
 
+      
+
       <subsection>
 	<subsectiontitle>Surprise <surprisesymbol/></subsectiontitle>
 
@@ -1785,8 +1789,58 @@ do this the initial check is modified by +2.
       </subsection>
 
 
+
+      <subsection>
+	<subsectiontitle>Talk <talksymbol/></subsectiontitle>
+
+	<p>
+	  The <defn>Talk Stage</defn> is optional, but can be used by the GM and the players
+	  for character development, plot development and as a means to achieve strategic
+	  ends.
+	</p>
+
+	<p>
+	  As a means of character development the Talk Stage provides an opportunity for
+	  the the NPCs to trash talk the player characters, brag about their achievements
+	  or reveal their motives.
+	</p>
+
+	<p>
+	  An important role of the Talk Stage is to drive the plot.  It allows the GM
+	  to provide narrative information to the players, exposition,
+	  colour and possibly the denoument, "Luke, I am your Father".
+	</p>
+
+	<p>
+	  Finally, the Talk Stage can be used as a strategic tool by either the
+	  players or the NPCs to avoid combat, negotiate a surrender, or forge alliances:
+	  <eg/> if the guards need to arrest the PCs they can ask them to come quietly.
+	</p>
+
+	<p>
+	  The Talk Stage only occurs if one side is predisposed to talking and the
+	  other side is capable of understanding the attempt at communication.  The
+	  Talk phase does not happen after an Ambush (presumably the ambushing side
+	  is committed to an attack).  Similarly a surprised party cannot initiate
+	  the Talk phase.  If a surprising party initiates decides to initiate the
+	  Talk Stage they lose any advantage they gained from Surprise.
+	</p>
+
+	<p>
+	  The party being communicated with needs to understand that an attempt is
+	  being made to communicate.  For example, a charging bear probably won't
+	  stop and have a chat with the player characters, while a group of Orcs may or
+	  may not depending on how hungry they are.  Usually, rational and intelligent
+	  characters will talk, if given the opportunity, in an attempt to try and avoid
+	  combat and reduce the chances of their own death.
+	</p>
+      </subsection>
+
+      
       <playexample>
 	<p>
+	  XXXXXXXXXx
+	  
           The thugs have returned to the cellars.  Dourli and Roslyn have been unable to 
 	  escape and now a fight looks inevitable.  It's still dark and our heroes have 
 	  managed to hide from the thugs so far.  Dourli attacks the thugs from his 
@@ -1815,13 +1869,12 @@ do this the initial check is modified by +2.
       <p>
 	<indexentry>Turn Order</indexentry>
 	<indexentry>Initiative</indexentry>
-	The order in which actions occur during combat rounds is partially determined 
-	by initiative.  Before combat starts players roll their initiative dice.
-	Their characters <defn>initiative</defn> for the rest of this combat is the 
-	total of this roll less any modifiers for surprise or ambush.  The GM may 
-	choose to add or subtract any other contextual modifier as they see fit.  
-	Combatants declare their actions in initiative order from 
-	<bold>lowest to highest</bold>. 
+	The order in which actions occur during combat rounds is
+	<emph>partially</emph> determined by initiative.  Before combat starts players
+	roll their initiative dice.  Their characters <defn>initiative</defn> for the
+	rest of this combat is the total of this roll including any modifiers for
+	surprise or ambush.  The GM may choose to add or subtract any other contextual
+	modifier as they see fit.
       </p>
     </section>
 
@@ -1829,28 +1882,26 @@ do this the initial check is modified by +2.
       <sectiontitle>Combat Rounds</sectiontitle>
 
       <p>
-	<defn>Combat rounds</defn> are divided into <defn>Stages</defn>.  
+	<defn>Combat rounds</defn> are divided into five <defn>Stages</defn>.  
 	Each stage is a set of actions all of which happen at roughly the 
-	same time.
-      </p>
-
-      <p>
-	There are five combat stages: Talk, Run, Act, Fight and Resolution.  Characters 
-	that choose actions in the earlier stages will tend to go before characters who 
+	same time.  They are: Start, Fast, Standard, Slow and End.  Characters 
+	that choose actions in the earlier stages will always go before characters who 
 	chose actions from the later stages.   In other words, if your character 
-	chooses to run they will generally run before anyone else has a chance to fight.
+	chooses to run in the Start stage they will run before anyone else has a chance
+	to attack them.
       </p>
 
       <p>
-	There are three other special combat stages: initiative and surprise which happen 
-	whenever initiative or surprise is being decided, and reactions that happen when a 
-	trigger occurs.  This allows us to classify in which combat stage related skills 
-	are applicable.
+	There are four other special combat stages: ambush, surprise, talk and initiative
+	which happen before combat starts and have been discussed previously.
+	We also define a <defn>Non-Combat Stage</defn> for actions that can only occur
+	outside of combat, <eg/> doing research in a library.  Breaking the combat down
+	into stages allows us to describe when abilities may be used.
       </p>
-
+   
       <p>
-	Finally there are various non-combat stages that only occur outside of combat, 
-	e.g. research.
+	Finally, there are a few extra complications to combat: Reactions, Free Actions,
+	Movement, Miscellaneous Actions, and Prepared Actions which we discuss later. 
       </p>
 
       {% include "tables/turn_order.xml" %}
@@ -1871,26 +1922,34 @@ do this the initial check is modified by +2.
       <sectiontitle>Action Order</sectiontitle>
 
       <p>
-	Within a round the order that actions are taken in is determined by an
-	auction.  The character with the lowest initiative that has not performed an
-	action during the round declares their action.  Any character that has not
-	performed an action this round may make a faster action bid.  An action is
-	faster if its stage, (talk, run, act, fight) is faster or if its stage is
-	the same as the current fastest action and the character has higher initiative.
-	In other words stage is the most important factor in determining action order,
-	initiative is the tie-breaker.  After an action is chosen the auction process
-	starts again until all characters have used their actions.
+	Within a round the order that actions are taken in is determined by an 
+	auction.  The character with the <emph>lowest initiative</emph> that has not performed
+	an action during the round declares, or bids, the action they would like to perform.
+	Any character that has not performed an action yet, this round, may then bid a
+	faster action.  No character may bid more than once and bidding is optional.
+	An action is faster if its stage, is faster (<eg/> Start Actions are faster than
+	Fast Actions, and Fast Actions are faster than Standard Actions <etc/>), or if
+	its stage is the same as the current fastest action and the character has a higher
+	initiative.  In other words stage is the most important factor in determining action
+	order, initiative is the tie-breaker.  When no more bids have been made the auction is
+	over and the fastest action is chosen.  After an action is chosen the auction
+	process starts again until all characters have used their actions.  This may seem
+	like a complicated process but usually there will be only one or two bids per auction.
       </p>
 
       <p>
 	Some important notes about the action order auction are:
 	<olist>
           <li>
+	    Lowest initiative goes first.
+          </li>
+	  
+          <li>
 	    Each character can only bid once per auction.
           </li>
 
           <li>
-	    Only one action gets performed per auction.  Any previous bids are ignored.
+	    Each bid must be faster than the last bid.
           </li>
 
           <li>
@@ -1898,17 +1957,15 @@ do this the initial check is modified by +2.
           </li>
 
           <li>
-	    Talk actions are free actions.
-          </li>
-
-          <li>
-	    A character can only react if they have not performed their action yet (see below).
+	    Only one action, the fastest action, gets performed per auction.
           </li>	  
 	</olist>
       </p>
 
       <playexample>
 	<p>
+	  XXXX FIXME:
+	  
           Dourli and his ally Roslyn, has been cornered by the local gang leader Fenton 
 	  One-Eye and two of his thugs.  A fight in the cellar of the Inn has been 
 	  underway for some number of rounds.  During the fight a few kegs of whiskey 
@@ -1952,34 +2009,84 @@ do this the initial check is modified by +2.
     <section>
       <sectiontitle>Combat Details</sectiontitle>
 
+
       <subsection>
-	<subsectiontitle>Movement</subsectiontitle>	
+	<subsectiontitle>Free Actions</subsectiontitle>
 	<p>
 	  Normally characters are allowed a single action during a combat round.
 	  A <defn>Free Action</defn> is an action that does not count against this limit.
 	  Only one free action may be performed by an character in any single combat round.
 	</p>
 
+      </subsection>
+      
+      <subsection>
+	<subsectiontitle>Movement</subsectiontitle>
 	<p>
-	  Most actions also implicitly include some optional movement.  When an character attacks 
-	  it is understood to involve some movement to close the distance to their opponent.
+	  Most combat actions also implicitly include some optional movement.  When a
+	  character attacks it is understood to involve a movement to close the distance to
+	  their opponent.  On a grid the distance the character may move is up to the
+	  characters movement.  Note that there is also a Run action that essentially just
+	  allows the character to move twice in a round, a Charge action for attacking at
+	  a run, and a Flee action.  In addition, the characters movement options may be
+	  curtailed if they have failed one or more Break Checks.
 	</p>
       </subsection>
 
       <subsection>
-	<subsectiontitle>Reactions</subsectiontitle>	
+	<subsectiontitle>Reactions <reactionsymbol/></subsectiontitle>
+
 	<p>
 	  <indexentry>Reactions</indexentry>
-	  Some special actions allow the character to perform an <defn>reaction</defn>,
-	  usually when some triggering event occurs.  This means that the particular action 
-	  can be performed at some time when it would normally not be allowed.  A
-	  character may only perform one out of turn action per round.
+	  Under certain circumstances a character will be able to perform an additional
+	  <defn>Reaction</defn>.  These Reaction will be triggered by some other players
+	  action.  Reactions can occur either after or during the triggering action. A
+	  character can only perform a reaction if they have not performed their action
+	  yet.  A character may only perform one out of turn action per round.  Some examples
+	  of reactios are: Shield Block, Sword Parry and Dodge.
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Miscellaneous Actions <actsymbol/></subsectiontitle>
+
+	<p>
+	  <indexentry>Miscellaneous Actions</indexentry>
+	  Miscellaneous actions refer to things that characters do during combat
+	  that are not actually fighting actions: <eg/> reading the runes that close
+	  a magic portal, releasing a portcullis, mounting a horse, quaffing a potion,
+	  pushing a load of barrels over and so on.
 	</p>
 
 	<p>
-	  Reactions can only be performed if the character has not performed an action
-	  in the round so far.
+	  For many miscellaneous actions the GM will just have to make a ruling as
+	  to the check required and the stage in which the action occurs as it would
+	  be impossible and infeasible for us to provide rules for the myriad of
+	  miscellaneous actions that might occur.  When doing this we strongly suggest
+	  that the GM make most Miscellaneous Actions occur in the Fast Stage.
+	  This will encourage players to choose these actions and make for more varied
+	  combat encounters.
 	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Prepared Actions</subsectiontitle>
+	<p>
+	  If the character knows that a combat is iminent they may declare that they
+	  prepare an action.  At that point, at the GMs discretion, the action becomes
+	  a reaction and occurs at one faster stage than normal, <eg/> a prepared arrow
+	  shot triggered when someone enters a room would occur in the Start Stage.
+	</p>
+      </subsection>
+      
+
+      <subsection>
+	<subsectiontitle>Benefits and Consequences</subsectiontitle>
+	  <p>
+	    Some suggested benefits and consequences for use during combat checks.
+	  </p>
+          {% include "tables/to_hit_consequences.xml" %}
+          {% include "tables/to_hit_benefits.xml" %}
       </subsection>
       
 
@@ -1987,115 +2094,48 @@ do this the initial check is modified by +2.
 	<subsectiontitle>Combat Stages and Actions</subsectiontitle>
 
 	<subsubsection>
-	  <subsubsectiontitle>Talk <talksymbol/></subsubsectiontitle>
+	  <subsubsectiontitle>Start</subsubsectiontitle>
 	  <p>
-	    The <defn>Parley</defn> action is a <emph>free action</emph> that occurs in the 
-	    Talk stage.   When parlaying the characters negotiate with the the other party to 
-	    some end, e.g. to gain information, to deescalate the conflict or to gain fame 
-	    etc.  Surprised characters cannot parley.  Parlaying is a brief exchange, if the 
-	    players wish to have an in-depth discussion then they must convince their 
-	    opponents to pause the conflict for a period while negotiations proceed. 
-	    Characters that try and filibuster, by talking at every opportunity will 
-	    most likely be ignored. 
+	    This is the first stage in a combat round.  Characters may use Leadership
+	    to try and start negotiations, the Run command to perform a double movement,
+	    Flee to run from the combat, or they may Yield at this stage.
 	  </p>
+	</subsubsection>
 
+	<subsubsection>
+	  <subsubsectiontitle>Fast Actions <actsymbol/><fightrangedsymbol/></subsubsectiontitle>
 	  <p>
-	    Alternatively vanquished characters may <defn>Yield</defn>.  When characters yield 
-	    they acknowledge their defeat and throw their fate at the mercy of their 
-	    opponent.  The effectiveness of this strategy depends on the opponent, but 
-	    most humans will spare a foe who has yielded.  Orcs will keep the downfallen 
-	    until they run out of other meat.  Even a bear (protecting its family) may 
-	    lose interest if you play dead.
+	    Fast actions include missile weapon attacks and many Miscellaneous Actions.
 	  </p>
 	</subsubsection>
 
 
 	<subsubsection>
-	  <subsubsectiontitle>Run <runsymbol/></subsubsectiontitle>
+	  <subsubsectiontitle>Standard Actions<fightreachsymbol/><fightfastsymbol/></subsubsectiontitle>
 	  <p>
-	    Characters who are fleeing perform the <defn>Flee Action</defn> now.  Characters who
-	    are fleeing must rally in the Resolve stage before they can perform any other 
-	    action.   Fleeing is generally faster than running as fear gives the character wings.
-	    Characters may voluntarily flee if there exists a credible threat, or 
-	    they may be forced to flee if they fail a break test in the Resolve Stage.  For 
-	    the purposes of game play fleeing is considered to be a double movement $+d6$.
-	  </p>
-
-	  <p>
-	    <indexentry>Running</indexentry>
-	    Alternatively, an character may choose to perform a <defn>Run Action</defn>.  The 
-	    player may perform no other actions in a turn if they are running but they may 
-	    stop running whenever they choose.  A run is a double movement.
+	    Standard actions include Charging, attacking with a Reach weapon in the first
+	    round, and attacking with a Fast melee weapon.	    
 	  </p>
 	</subsubsection>
 
 
 	<subsubsection>
-	  <subsubsectiontitle>Act <actsymbol/></subsubsectiontitle>
+	  <subsubsectiontitle>Slow Actions<fightsymbol/></subsubsectiontitle>
 	  <p>
-	    The Act Stage is where characters perform miscellaneous actions.  Some examples 
-	    actions the could be performed in the Act Stage include: releasing a 
-	    portcullis, mounting a horse, quaffing a potion, pushing a load of barrels 
-	    over and so on.
+	    Slow actions include melee fighting using heavy weapons.
 	  </p>
 	</subsubsection>
 
-
+	
 	<subsubsection>
-	  <subsubsectiontitle>Fight <fightrangedsymbol/><fightreachsymbol/><fightfastsymbol/><fightsymbol/></subsubsectiontitle>
-
-	  <p>
-	    A <defn>Charge</defn> is a move performed in the direction of an enemy which may 
-	    culminate in a Fight or Fight-Reached action.  Charges can <defn>fall short</defn>
-	    if the distance to the enemy is too great, check versus speed with a difficulty of
-	    7 to see if the charge falls short.  Charging may provoke a break test in opponents.
-	  </p>
-
-	  <p>
-	    A <defn>Fight Action</defn> is an optional move performed in the direction of an
-	    opponent followed by an attack.  A Fight action is a check using the attackers 
-	    ability's skill to hit value versus the armour class of the defender.  
-	  </p>
-
-	  <p>
-	    The benefits and consequences
-	  </p>
-
-          {% include "tables/to_hit_consequences.xml" %}
-          {% include "tables/to_hit_benefits.xml" %}
-
-	  <p>
-	    If the character fails a break test there options might be limited to one or more 
-	    of the following: Hold, Fighting Retreat, Flee or Yield.
-	  </p>
-
-	  <p>
-	    Characters may choose to perform a <indexentry>Retreat</indexentry>
-	    <defn>Fighting Retreat</defn>. In a fighting retreat each turn the character
-	    may make an attack if they can, but then must move their full movement away from 
-	    danger if they can.  They cannot move toward an enemy unless they have no other 
-	    option.  Once an character starts to retreat they have to rally before they can take 
-	    an action other than Fighting Retreat or Flee as it takes great discipline to 
-	    force themselves back into the fight.
-	  </p>
-
-	  <p>
-	    A <defn>Hold</defn> action allows the character to stand and fight, but they 
-	    may not advance.
-	  </p>
-
-	</subsubsection>
-
-	<subsubsection>
-	  <subsubsectiontitle>Resolution <resolutionsymbol/></subsubsectiontitle>
-
+	  <subsubsectiontitle>End Stage<resolutionsymbol/></subsubsectiontitle>
 	  <p>
 	    The GM may determine that one party or another must make a break test.  If they 
 	    fail the break test then they must flee.  The break test is not an action. 
 	  </p>
 
 	  <p>
-	    <indexentry>Rallying</indexentry>When an character flees they keeps fleeing until 
+	    <indexentry>Rallying</indexentry>When a character flees they keep fleeing until 
 	    they rally.  In order to rally the character must want to rally and then have to 
 	    make the break test they originally failed to cause them to flee in the first place.
 	    Rallying is a free action.
@@ -2144,9 +2184,6 @@ do this the initial check is modified by +2.
       </p>
 
     </section>
-
-    
-    
 
 
     <section>
@@ -2242,8 +2279,7 @@ do this the initial check is modified by +2.
 	  <indexentry>Breaking</indexentry>
 	  <label>sec:breaking</label>
 
-	  For player characters <defn>break checks</defn> are Ascending Chained
-	  Checks versus Resolve, i.e. the character with the lowest Resolve checks first.  
+	  For player characters <defn>break checks</defn> are made using the Resolve pool.  
 	  Any characters who fail the check must roll on one of the Break Resolution Tables.
 	  <equation>
 	    <line>Break if:</line>
@@ -2267,7 +2303,7 @@ do this the initial check is modified by +2.
 	</p>
 
 	<p>
-	  The GM should feel free to modify the break difficulty as he pleases, e.g.
+	  The GM should feel free to modify the break difficulty as he pleases, <eg/>
 	  to reflect being attacked at night, being vastly outnumbered, the horrible
 	  visage of the characters opponents, the party being in good spirits etc.
 	</p>	
@@ -2286,7 +2322,6 @@ do this the initial check is modified by +2.
 	  break check and the GM should feel free to make the sooner or later in the combat 
 	  so that they align with pivotal events in the combat.
 	</p>
-
       </subsection>
 
       <subsection>

@@ -1455,10 +1455,13 @@ class LatexFormatter:
         return
     end_eg = no_op
 
+    def start_etc(self, fail):
+        self.latex_file.write("etc.{}")
+        return
+    end_etc = no_op
 
 
     def start_vspace(self, vspace):
-
         if vspace.text is None:
             drop = 1
         else:

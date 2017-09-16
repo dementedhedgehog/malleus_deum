@@ -523,6 +523,18 @@
 	may reroll their morale check.  Only one such reroll is
 	permitted per round.
       </p>
+
+      <p>
+	Leadership can be used as a Reaction to the Start Stage to
+	try and momentarilly stop a combat so that some form of
+	negotiation can occur: "Yield you scum, you are clearly beat".
+	The GM will specify a difficulty based on the morale of the
+	opponents and their nature.  If successful, combat goes back
+	to the Talk Stage, and should combat start again then initiative
+	is rerolled. Note that opponents will treat filebustering
+	characters harshly.
+      </p>
+	
     </abilitydescription>
     <abilitylevels>
       <abilitylevel>
@@ -556,5 +568,53 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-  
+
+
+
+  <ability>
+    <abilitytitle>Yield</abilitytitle>
+    <abilityid>social.yield</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>    
+      <p>
+	Vanquished characters may <defn>Yield</defn>.  When characters yield 
+	they acknowledge their defeat and throw their fate at the mercy of their 
+	opponent.  The effectiveness of this strategy depends on the opponent, but 
+	most humans will spare a foe who has yielded.  Orcs will keep the downfallen 
+	until they run out of other meat.  Even a bear (protecting its family) may 
+	lose interest if you play dead.
+      </p>	
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Std 2d8</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Std 2d8 + 1</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	<check>Std 2d8 + 2</check>
+      </abilitylevel> 
+    </abilitylevels>
+  </ability>
 </abilitygroup>
