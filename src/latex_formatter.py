@@ -260,6 +260,16 @@ class LatexFormatter:
             "\n"
             "\\newcommand{\\dfour}\n"  
             " {\\begingroup\\rpgdice\\huge\\selectfont{}A\\endgroup}\n"
+            "\\newcommand{\\dsix}\n"
+            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            "\\newcommand{\\deight}\n"
+            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            "\\newcommand{\\dten}\n"
+            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            "\\newcommand{\\dtwelve}\n"
+            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            "\\newcommand{\\dtwenty}\n"
+            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
             #" {\\begingroup\\rpgdice\\selectfont\\symbol{\"F041}\\endgroup}\n"
             "\n"
             "% marki \n"
@@ -1466,6 +1476,36 @@ class LatexFormatter:
         return
     end_etc = no_op
 
+    def start_d4(self, fail):
+        self.latex_file.write("\\dfour{}")
+        return
+    end_d4 = no_op
+
+    def start_d6(self, fail):
+        self.latex_file.write("\\dsix{}")
+        return
+    end_d6 = no_op
+
+    def start_d8(self, fail):
+        self.latex_file.write("\\deight{}")
+        return
+    end_d8 = no_op
+    
+    def start_d10(self, fail):
+        self.latex_file.write("\\dten{}")
+        return
+    end_dten = no_op
+
+    def start_d12(self, fail):
+        self.latex_file.write("\\dtwelve{}")
+        return
+    end_d12 = no_op
+
+    def start_d20(self, fail):
+        self.latex_file.write("\\dtwenty{}")
+        return
+    end_d20 = no_op
+
 
     def start_vspace(self, vspace):
         if vspace.text is None:
@@ -1478,9 +1518,9 @@ class LatexFormatter:
     def end_vspace(self, vspace):
         return
 
-    def start_explode(self, d4x):
-        self.latex_file.write("\\bomb{}")
-    end_explode = no_op
+    # def start_explode(self, d4x):
+    #     self.latex_file.write("\\bomb{}")
+    # end_explode = no_op
 
     def start_maxdice(self, d12mx):
         self.latex_file.write("\\maxdie{}")
