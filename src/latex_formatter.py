@@ -261,15 +261,19 @@ class LatexFormatter:
             "\\newcommand{\\dfour}\n"  
             " {\\begingroup\\rpgdice\\huge\\selectfont{}A\\endgroup}\n"
             "\\newcommand{\\dsix}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            " {\\begingroup\\rpgdice\\Large\\selectfont{}B\\endgroup}\n"
             "\\newcommand{\\deight}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            " {\\begingroup\\rpgdice\\Large\\selectfont{}C\\endgroup}\n"
             "\\newcommand{\\dten}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            " {\\begingroup\\rpgdice\\Large\\selectfont{}D\\endgroup}\n"
             "\\newcommand{\\dtwelve}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            " {\\begingroup\\rpgdice\\Large\\selectfont{}E\\endgroup}\n"
             "\\newcommand{\\dtwenty}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
+            " {\\begingroup\\rpgdice\\Large\\selectfont{}F\\endgroup}\n"
+            "\\newcommand{\\dany}\n"
+            " {\\begingroup\\rpgdice\\Large\\selectfont{}G\\endgroup}\n"
+            "\\newcommand{\\dpool}\n"
+            " {\\begingroup\\rpgdice\\Large\\selectfont{}H\\endgroup}\n"
             #" {\\begingroup\\rpgdice\\selectfont\\symbol{\"F041}\\endgroup}\n"
             "\n"
             "% marki \n"
@@ -1339,6 +1343,11 @@ class LatexFormatter:
             else:
                 # normal table data
                 self.latex_file.write("%s" % text)
+
+            #     self.latex_file.write("\\multicolumn{%s}{%s}{%s" % (width, align, text))
+            # else:
+            #     # normal table data
+            #     self.latex_file.write("%s" % text)
         return
 
     def end_td(self, table_data):
@@ -1374,13 +1383,24 @@ class LatexFormatter:
         #     self.latex_file.write("\\rpgtableheader{%s} \n" %
         #                           table_data.text)
         #else:
-        self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s}}" % 
-                               (columns, table_data.text))
 
+        
+        # self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s}}" % 
+        #                        (columns, table_data.text))
+        self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s" %
+                              (columns, table_data.text))
+
+        # if self._current_column_in_table != 0:
+        #     self.latex_file.write(" & ")                        
+        # return
+    #end_multicolumntd = no_op
+    def end_multicolumntd(self, table_data):
+
+        self.latex_file.write("}}")
+        
         if self._current_column_in_table != 0:
-            self.latex_file.write(" & ")                        
+            self.latex_file.write(" & ")
         return
-    end_multicolumntd = no_op
 
 
     def start_tableofcontents(self, table_of_contents):
@@ -1505,6 +1525,16 @@ class LatexFormatter:
         self.latex_file.write("\\dtwenty{}")
         return
     end_d20 = no_op
+
+    def start_dany(self, fail):
+        self.latex_file.write("\\dany{}")
+        return
+    end_dany = no_op
+
+    def start_dpool(self, fail):
+        self.latex_file.write("\\dpool{}")
+        return
+    end_dpool = no_op
 
 
     def start_vspace(self, vspace):

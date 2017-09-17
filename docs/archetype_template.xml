@@ -111,9 +111,9 @@
             <multicolumntd columns="2">Stamina</multicolumntd>
             <multicolumntd columns="2">Health</multicolumntd>
             <multicolumntd columns="4">Skill Points</multicolumntd>
-            <multicolumntd columns="2">Resolve</multicolumntd>
-            <multicolumntd columns="2">Magic</multicolumntd>
-            <multicolumntd columns="2">Fate</multicolumntd>
+            <multicolumntd columns="2">Resolve <dpool/></multicolumntd>
+            <multicolumntd columns="2">Magic <dpool/></multicolumntd>
+            <multicolumntd columns="2">Fate <dpool/></multicolumntd>
             <th></th>
 	  </tableheaderrow>
 	  
@@ -152,10 +152,13 @@
             <td>{{ level_progression_data.level_magical if level_progression_data.level_magical != 0 else "N/A"}}</td>
             <td>{{ level_progression_data.level_resolve }}</td>        
             <td>{{ level_progression_data.level_resolve_refresh }}</td>        
-            <td>{{ level_progression_data.magic_pool if level_progression_data.magic_pool is not none else "N/A"}}</td>
-            <td>{{ level_progression_data.magic_refresh if level_progression_data.magic_refresh is not none else "N/A"}}</td>
-            <td>{{ level_progression_data.level_luck }}</td>        
-            <td>{{ level_progression_data.level_luck_refresh }}</td>        
+            <td>{{ level_progression_data.level_magic_pool if level_progression_data.level_magic_pool is not none else "N/A"}}</td>
+            <td>{{
+	    level_progression_data.level_magic_refresh
+	    if level_progression_data.level_magic_refresh is not none else "N/A"
+	    }}</td>
+            <td>{{ level_progression_data.level_fate }}</td>        
+            <td>{{ level_progression_data.level_fate_refresh }}</td>        
             <td>{{ level_progression_data.level_description if level_progression_data.level_description is not none else ""}}</td>
 	  </tablerow>
 	  {% endfor %}

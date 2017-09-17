@@ -70,7 +70,7 @@ def node_to_string(node):
     return etree.tostring(node, pretty_print=True)
 
 
-# def node_contto_string(node):
+# def node_contents_to_string(node):
 #     """
 #     Returns the nodes contents and its children as a string.
 
@@ -88,15 +88,18 @@ def node_to_string(node):
 
 def children_to_string(node):
     """
-    Returns the nodes children as a string.
+    Returns the nodes children as a string (just the xml elements).
 
     """
     return "".join([
         etree.tostring(c, pretty_print=True) for c in node.getchildren()
     ])
     
-# def get_node_text(node):
-#     retuirn 
-#     # return (node.text or "") + "".join(
-#     #     [child_to_string(child) for child in node.iterchildren()])
 
+def contents_to_string(node):
+    """
+    Returns everything between the nodes tags <x>..</x> but NOT the tags themselves.
+
+    """
+    return (node.text or "") + "".join(
+        [etree.tostring(child) for child in node.iterchildren()])

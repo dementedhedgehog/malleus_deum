@@ -313,6 +313,7 @@
         <xs:element name="pageref" type="pagerefType"/>
         <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>    
         <xs:element name="measurement" type="measurementType"/>
+	<xs:element name="eg" type="acronymType"/>		
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -397,6 +398,14 @@
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>      
       <xs:element name="img" type="imgType"/>
+      <xs:element name="d4" type="acronymType"/>
+      <xs:element name="d6" type="acronymType"/>
+      <xs:element name="d8" type="acronymType"/>
+      <xs:element name="d10" type="acronymType"/>
+      <xs:element name="d12" type="acronymType"/>
+      <xs:element name="d20" type="acronymType"/>      
+      <xs:element name="dany" type="acronymType"/>      
+      <xs:element name="dpool" type="acronymType"/>      
     </xs:choice>
     <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
     <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
@@ -450,6 +459,8 @@
       <xs:element name="d10" type="acronymType"/>
       <xs:element name="d12" type="acronymType"/>
       <xs:element name="d20" type="acronymType"/>
+      <xs:element name="dany" type="acronymType"/>
+      <xs:element name="dpool" type="acronymType"/>
       <xs:element name="lore" type="symbolType"/>
       <xs:element name="martial" type="symbolType"/>
       <xs:element name="general" type="symbolType"/>
@@ -523,6 +534,7 @@
         <xs:element name="include" type="includeType" />
         <xs:element name="figure" type="figureType"/>
         <xs:element name="table" type="tableType"/>
+	<!--
         <xs:element name="d4" type="emptyType"/>
         <xs:element name="d6" type="emptyType"/>
         <xs:element name="d8" type="emptyType"/>
@@ -538,6 +550,7 @@
         <xs:element name="d8mx" type="emptyType"/>
         <xs:element name="d10mx" type="emptyType"/>
         <xs:element name="d12mx" type="emptyType"/>
+	-->
         <xs:element name="ambush" type="symbolType"/>
         <xs:element name="surprise" type="symbolType"/>
         <xs:element name="initiative" type="symbolType"/>
@@ -677,6 +690,14 @@
       <xs:element name="martial" type="symbolType"/>
       <xs:element name="general" type="symbolType"/>
       <xs:element name="magical" type="symbolType"/>
+      <xs:element name="d4" type="acronymType"/>
+      <xs:element name="d6" type="acronymType"/>
+      <xs:element name="d8" type="acronymType"/>
+      <xs:element name="d10" type="acronymType"/>
+      <xs:element name="d12" type="acronymType"/>
+      <xs:element name="d20" type="acronymType"/>      
+      <xs:element name="dany" type="acronymType"/>      
+      <xs:element name="dpool" type="acronymType"/>            
     </xs:choice>    
   </xs:complexType>
 
@@ -721,6 +742,19 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="poolType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="d4" type="acronymType"/>
+      <xs:element name="d6" type="acronymType"/>
+      <xs:element name="d8" type="acronymType"/>
+      <xs:element name="d10" type="acronymType"/>
+      <xs:element name="d12" type="acronymType"/>
+      <xs:element name="d20" type="acronymType"/>      
+      <xs:element name="dany" type="acronymType"/>      
+      <xs:element name="dpool" type="acronymType"/>            
+    </xs:choice>
+  </xs:complexType>
+  
 
   <xs:complexType name="levelType">
     <xs:sequence>
@@ -728,11 +762,11 @@
       <xs:element name="levelspp" type="xs:unsignedInt" minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelresolve" 
-          type="xs:string" 
+          type="poolType" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelresolverefresh" 
-          type="xs:string" 
+          type="poolType" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelstamina" 
@@ -768,19 +802,19 @@
           minOccurs="0" maxOccurs="1"/>
       <xs:element 
           name="levelfate" 
-          type="xs:string" 
+          type="poolType" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelfaterefresh" 
-          type="xs:string" 
+          type="poolType" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelmagicpool" 
-          type="xs:string" 
+          type="poolType" 
           minOccurs="0" maxOccurs="1"/>
       <xs:element 
           name="levelmagicrefresh" 
-          type="xs:string" 
+          type="poolType" 
           minOccurs="0" maxOccurs="1"/>
       <xs:element name="leveldescription" type="xs:string" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
@@ -853,6 +887,14 @@ labels and references.
       <xs:element name="resolutionsymbol" type="symbolType"/>      
       <xs:element name="reactionsymbol" type="symbolType"/>      
       <xs:element name="noncombatsymbol" type="symbolType"/>
+      <xs:element name="d4" type="acronymType"/>
+      <xs:element name="d6" type="acronymType"/>
+      <xs:element name="d8" type="acronymType"/>
+      <xs:element name="d10" type="acronymType"/>
+      <xs:element name="d12" type="acronymType"/>
+      <xs:element name="d20" type="acronymType"/>      
+      <xs:element name="dany" type="acronymType"/>      
+      <xs:element name="dpool" type="acronymType"/>      	      
     </xs:choice>
   </xs:complexType>
 

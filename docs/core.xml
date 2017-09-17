@@ -29,7 +29,7 @@
 	Malleus~Deum is a fantasy pen and paper, tabletop, role-playing game (RPG).	
         In Malleus Deum one player assumes the role of Game Master or <defn>GM</defn>
 	and plays the part of a narrator in a collaborative story.  Other 
-	players adopt the role of individual people within the story, called <d4/> <d6/>
+	players adopt the role of individual people within the story, called <d4/> <d6/> <dpool/> <dany/>
 	Player Characters.  All the other people, and any monsters within the story
 	are controlled by the GM and are referred to as Non-Player Characters or 
 	<defn>NPCs</defn>.  We  use the term  
@@ -354,10 +354,10 @@
 
 
     <section>
-      <sectiontitle>Dice Pool Statistics</sectiontitle>
+      <sectiontitle>Dice Pool Statistics <dpool/></sectiontitle>
       
       <descriptions>
-	<term>Resolve:</term>
+	<term>Resolve <dpool/>:</term>
 	<description>
 	  <p>
 	    Resolve is a dice pool used during combat that measures the characters will to 
@@ -367,13 +367,13 @@
           </p>
 	</description>
 
-	<term>Magic:</term>
+	<term>Magic <dpool/>:</term>
 	<description>
 	  Casting magic uses a dice pool and many special rules described in
 	  Section<ref>ch:magic</ref> on page<pageref>ch:magic</pageref>.
 	</description>
 
-	<term>Fate:</term>
+	<term>Fate <dpool/>:</term>
 	<description>
           <indexentry>Fate Pool</indexentry> 	  
           Characters have a <defn>Fate Pool</defn>.  Characters get a number of 
@@ -709,7 +709,7 @@
 	    describing the result of the check to the rest of the table.  The player is 
 	    allowed to add some minor advantageous secondary effect to the result.  For 
 	    example, the opponent could be pushed back, drop the scroll they are carrying, or 
-	    be forced to make a break test.  As always the GM is the final arbiter of 
+	    be forced to make a break check.  As always the GM is the final arbiter of 
 	    whether a players call is reasonable and he may temper the results of the success, 
 	    as he chooses.
 	  </p>
@@ -870,7 +870,7 @@
           <indexentry>Ability Check</indexentry>	    
 	  Attribute checks are checks made using one of the characters
 	  attributes, when no more specific check applies, e.g. a character
-	  might test their speed when running from an avalanche.
+	  might check their speed when running from an avalanche.
 	</p>
 
 	<p>
@@ -917,7 +917,7 @@
 	<playexample>
           <p>
 	    Consider the intrepid Dourli holding a door shut while two thugs try to
-	    open the door.  This could be played as an opposed Str attribute test
+	    open the door.  This could be played as an opposed Str attribute check
 	    or the GM could just make Dourli make a regular Str Check against some
 	    stated difficulty chosen by the GM.
           </p>
@@ -1009,7 +1009,7 @@
 	  <p>
 	    <indexentry>Everyone Checks</indexentry> 
 	    <indexentry>Checks<subentry>Everyone</subentry></indexentry> 
-            Sometimes everyone in a group has to make a test.  For example, if the party is 
+            Sometimes everyone in a group has to make a check.  For example, if the party is 
             attacked using poisonous gas everyone in the party has to save.  When 
             <defn>Everyone Checks</defn>, each group member makes a separate check
 	    independent of the rest of the group and each individual suffers any
@@ -2130,8 +2130,8 @@ do this the initial check is modified by +2.
 	<subsubsection>
 	  <subsubsectiontitle>End Stage<resolutionsymbol/></subsubsectiontitle>
 	  <p>
-	    The GM may determine that one party or another must make a break test.  If they 
-	    fail the break test then they must flee.  The break test is not an action. 
+	    The GM may determine that one party or another must make a Break Check.  If they 
+	    fail the Break Check then they must flee.  The Break Check is not an action. 
 	  </p>
 
 	  <p>
@@ -2574,7 +2574,9 @@ do this the initial check is modified by +2.
 
 
   <chapter>
-    <chaptertitle>Equipment</chaptertitle>    
+    <chaptertitle>Equipment</chaptertitle>
+
+
     {% include "fragment_equipment_list.xml" %}
 
     <section>

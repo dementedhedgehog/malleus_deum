@@ -3,7 +3,13 @@ import sys
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
 
-from parser_utils import parse_xml, validate_xml, node_to_string, COMMENT, children_to_string
+from parser_utils import (
+    parse_xml,
+    validate_xml,
+    node_to_string,
+    COMMENT,
+    children_to_string,
+    contents_to_string)    
 from abilities import AbilityLevel
 from utils import convert_str_to_int, normalize_ws, parse_measurement_to_str
 
@@ -236,9 +242,6 @@ class ModifiedAbilityLevel:
     def is_innate_for_this_archetype(self):
         """Returns true if this ability level is innate for the archetype"""
         return self.get_level_number() > 0 and self.is_innate()
-
-    # def get_prerequisite_ids(self):
-    #     return self.ability_level.get_prerequisite_ids()
 
     def get_prerequisites(self):
         return self.ability_level.get_prerequisites()
@@ -565,8 +568,8 @@ class LevelProgressionData:
         self.level_fate_refresh = None
         
         # magic pool
-        self.magic_pool = None        
-        self.magic_refresh = None        
+        self.level_magic_pool = None        
+        self.level_magic_refresh = None        
         return
 
     def get_level_number(self):
@@ -597,13 +600,16 @@ class LevelProgressionData:
                if self.level_resolve is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   self.level_resolve = normalize_ws(child.text.strip())
+                   #self.level_resolve = normalize_ws(child.text.strip())
+                   self.level_resolve = contents_to_string(child)
+                   
 
            elif tag == "levelresolverefresh":
                if self.level_resolve_refresh is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   self.level_resolve_refresh = normalize_ws(child.text.strip())
+                   #self.level_resolve_refresh = normalize_ws(child.text.strip())
+                   self.level_resolve_refresh = contents_to_string(child)
 
            elif tag == "levelstamina":
                if self.level_stamina is not None:
@@ -661,30 +667,34 @@ class LevelProgressionData:
                        self.level_description = child.text.strip()
 
            elif tag == "levelmagicpool":
-               if self.magic_pool is not None:
+               if self.level_magic_pool is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   if child.text is not None:
-                       self.magic_pool = child.text.strip()
+                   self.level_magic_pool = contents_to_string(child)
+                   #if child.text is not None:
+                   #    self.magic_pool = child.text.strip()
                        
            elif tag == "levelmagicrefresh":
-               if self.magic_refresh is not None:
+               if self.level_magic_refresh is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   if child.text is not None:
-                       self.magic_refresh = child.text.strip()
+                   #if child.text is not None:
+                       #self.magic_refresh = child.text.strip()
+                   self.level_magic_refresh = contents_to_string(child)
 
            elif tag == "levelfate":
                if self.level_fate is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   self.level_fate = normalize_ws(child.text.strip())
+                   #self.level_fate = normalize_ws(child.text.strip())
+                   self.level_fate = contents_to_string(child)
 
            elif tag == "levelfaterefresh":
                if self.level_fate_refresh is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   self.level_fate_refresh = normalize_ws(child.text.strip())
+                   self.level_fate_refresh = contents_to_string(child)
+                   #self.level_fate_refresh = normalize_ws(child.text.strip())
                        
            elif tag is COMMENT:
                # ignore comments!
