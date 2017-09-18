@@ -60,14 +60,14 @@ files_to_build = (
 )
 
 archetypes_to_build = (
-    #("dwarven_shield_warrior", True, "[ADSW]"),
+    ("dwarven_shield_warrior", True, "[ADSW]"),
     # ("red_mage", True, "[ARM]"),
     # ("halfling_rover", True, "[HR]"),
     # ("elven_scion", True, "[ES]"),
     # ("praedicant", True, "[PR]"),
     # ("summoner", True, "[SM]"),
     # ("hedge_wizard", True, "[HW]"),
-    ("witch_hunter", True, "[WH]"),
+    #("witch_hunter", True, "[WH]"),
     # ("rake", True, "[RK]"),
     #("dwarven_rune_maester", True, "[DRM]"),
 )

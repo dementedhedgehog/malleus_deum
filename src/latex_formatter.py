@@ -1496,6 +1496,11 @@ class LatexFormatter:
         return
     end_etc = no_op
 
+    def start_notapplicable(self, fail):
+        self.latex_file.write("ⁿ/ₐ")
+        return
+    end_notapplicable = no_op
+
     def start_d4(self, fail):
         self.latex_file.write("\\dfour{}")
         return
@@ -1514,7 +1519,7 @@ class LatexFormatter:
     def start_d10(self, fail):
         self.latex_file.write("\\dten{}")
         return
-    end_dten = no_op
+    end_d10 = no_op
 
     def start_d12(self, fail):
         self.latex_file.write("\\dtwelve{}")

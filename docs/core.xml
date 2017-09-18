@@ -354,37 +354,83 @@
 
 
     <section>
-      <sectiontitle>Dice Pool Statistics <dpool/></sectiontitle>
-      
-      <descriptions>
-	<term>Resolve <dpool/>:</term>
-	<description>
-	  <p>
-	    Resolve is a dice pool used during combat that measures the characters will to 
-	    stand and fight, their mental well-being, morale, fear, shock, sanity and 
-	    determination.  Lost resolve is recovered by a number of dice per day as 
-            specified by the character's archetype.
-          </p>
-	</description>
+      <sectiontitle>Dice Pool Statistics</sectiontitle>
 
-	<term>Magic <dpool/>:</term>
-	<description>
-	  Casting magic uses a dice pool and many special rules described in
-	  Section<ref>ch:magic</ref> on page<pageref>ch:magic</pageref>.
-	</description>
+      <p>
+	There are three dice pool statistics: Resolve, Magic and Fate which we discuss
+	here.  But first we will briefly mention the dice notation used in this game.
+      </p>
 
-	<term>Fate <dpool/>:</term>
-	<description>
-          <indexentry>Fate Pool</indexentry> 	  
-          Characters have a <defn>Fate Pool</defn>.  Characters get a number of 
-	  dice in their Fate Pool at the start of a session called the
-	  <defn>Fate Rest Rate</defn>.  The Fate Rest Rate is the number of dice, of any
-	  type, the character may return to their pool after a short rest.  Each character
-	  also has a Maximum Fate Pool.  A characters Fate Pool cannot exceed this amount
-	  and any Fate dice accrued above this amount are lost.  The Fate Rest Rate and the
-	  Fate Maximum are specified by the characters archetype and their Luck.
-	</description>
-      </descriptions>
+
+      <subsubsection>
+	<subsubsectiontitle>Dice Notation</subsubsectiontitle>
+
+	<p>
+	  All the non-dice pool mechanics use the standard RPG dice mechanics, <eg/>
+	  3d6 + 2 means roll three six sided dice add two to the dice total to get a
+	  number.
+	</p>
+
+	<p>
+	  For dice pools, denoted <dpool/>, the character adds and removes dice to
+	  their dice pool during the course of the game and during character creation.
+	  The characters initial dice pool statistics are specified by the characters
+	  archetype, <eg/> 3 <d6/>, and may be modified by character ability bonuses,
+	  <eg/> +1<d4/>.  Refresh rates for dice pool are the rate at which the character
+	  recouperates dice back into their dice pool and are specified as some number of
+	  dice of any type, <eg/> +2<dany/> means that the character recovers two dice into
+	  their dice pool.  These dice may be of any type that was already in the dice pool,
+	  <eg/> if a character has a dice pool of 2<d6/> + 1<d4/> and they exhaust their
+	  <d4/> when they rest they can only recover +1<d4/> taking them back up to their
+	  starting pool size.
+
+	  <indexentry>xxx<see>Dice Pool Notation</see></indexentry>	  
+	</p>
+
+	<p>
+	  So attribute like Strength and statistics like Stamina, will be appear as a
+	  number on character sheets, while Dice Pool statistics, like Resolve, will
+	  appear on as a set of dice, <eg/> 3 <d6/> + 1<d4/>.  We describe how to
+	  use dice pools to make checks in Section<ref>sec:dice_pool</ref> on
+	  page<pageref>sec:dice_pool</pageref>.
+	</p>
+
+	
+      </subsubsection>
+
+      <subsubsection>
+	<subsubsectiontitle>The Dice Pool Statistics</subsubsectiontitle>
+	
+	<descriptions>
+	  <term>Resolve:</term>
+	  <description>
+	    <p>
+	      Resolve is a dice pool used during combat that measures the characters will to 
+	      stand and fight, their mental well-being, morale, fear, shock, sanity and 
+	      determination.  Lost resolve is recovered by a number of dice per day as 
+              specified by the character's archetype.
+            </p>
+	  </description>
+
+	  <term>Magic:</term>
+	  <description>
+	    Casting magic uses a dice pool and many special rules described in
+	    Section<ref>ch:magic</ref> on page<pageref>ch:magic</pageref>.
+	  </description>
+
+	  <term>Fate:</term>
+	  <description>
+            <indexentry>Fate Pool</indexentry> 	  
+            Characters have a <defn>Fate Pool</defn>.  Characters get a number of 
+	    dice in their Fate Pool at the start of a session called the
+	    <defn>Fate Rest Rate</defn>.  The Fate Rest Rate is the number of dice, of any
+	    type, the character may return to their pool after a short rest.  Each character
+	    also has a Maximum Fate Pool.  A characters Fate Pool cannot exceed this amount
+	    and any Fate dice accrued above this amount are lost.  The Fate Rest Rate and the
+	    Fate Maximum are specified by the characters archetype and their Luck.
+	  </description>
+	</descriptions>
+      </subsubsection>
     </section>
 
 
