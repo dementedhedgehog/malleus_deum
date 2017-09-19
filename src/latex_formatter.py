@@ -154,7 +154,7 @@ class LatexFormatter:
             "   {}{1em}{}\n"
             "\n"
             "\\titleformat{\\section}\n"
-            "  {\\rpgsectionfont\\Large\\color{rpgsectionfontcolor}}\n"
+            "  {\\rpgsectionfont\\LARGE\\color{rpgsectionfontcolor}}\n"
             "  {\\thesection}{0.5em}{}\n"
             "\n"
             "\\newcommand{\\rpgtableheader}{\\bfseries\\selectfont}{}\n"
@@ -715,7 +715,7 @@ class LatexFormatter:
     def start_equation(self, equation):
         self._equation_first_line = True
         self.latex_file.write("\\begin{tabbing}\n "
-                              "\\hspace*{1cm}\= \kill \\nopagebreak \n")    
+                              "\\hspace*{0.5cm}\= \kill \\nopagebreak \n")    
         return
 
     def end_equation(self, equation):

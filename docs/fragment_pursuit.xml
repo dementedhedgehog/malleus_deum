@@ -35,6 +35,8 @@
 
       <term>Chasing</term>
       <description>
+	Chasing is the most complicated of these steps and we cover it in more detail
+	in the next section.
       </description>
 
       <term>Tracking</term>
@@ -57,20 +59,20 @@
     <subsectiontitle>Chasing</subsectiontitle>
     
     <p>
-      Chasing occurs when one group is pursuing another and the other group is
+      Chasing occurs when one group is pursuing another and the pursued group is
       intermittently visible, or there is broken ground to stop the pursuers, or
       the quarry is running to some safe location.  The pursuers just need to close
       the distance between them and their quarry.   The quarry just need to get far
-      enough ahead that they can slip away or get to safety.
+      enough ahead that they can slip away or reach safety.
     </p>
 
     <p>
       Pursuit works as follows.  Assign every member of the pursuit an initial chase
       rank that represents their position in the chase.  Give the lead pursuer a rank
-      of 5. Now assign ranks to the rest of the members of the chase relative to the lead.
-      For example the members of the quarry closest to the lead pursuer might get an
-      initial rank of 6 or 7.  If there are members of the quarry who started running
-      earlier then they might get an initial rank of 8, or 9.
+      of 5 and other pursuers lower ranks. Now assign higher ranks to those being pursued
+      relative to the lead pursuer.  For example the members of the quarry closest to the
+      lead pursuer might get an initial rank of 6 or 7.  If there are members of the
+      quarry who started running earlier then they might get an initial rank of 8, or 9.
     </p>
 
     <p>
@@ -89,7 +91,12 @@
       <description>
 	Test versus movement.  If successful increase rank by 3, otherwise increase
 	rank by 2 and gain the Tired condition.  If the character has the tired
-	condition then they gain the Exhausted condition.
+	condition then they gain the Exhausted condition.  FIXME: MAKE THIS AN ABILITY.
+      </description>
+      
+      <term>Flee</term>
+      <description>
+	FIXME: XXXX
       </description>
 
       <term>Ranged Attack</term>
@@ -140,7 +147,7 @@
 
     <p>
       Pursuit is lost when the lowest ranking quarrys rank is greater than the
-      highest ranking plus five at the end of the round.  In this case the
+      highest pursuers rank plus five at the end of the round.  In this case the
       quarry has evaded their pursuers.
 
       <equation>

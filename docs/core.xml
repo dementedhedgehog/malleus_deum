@@ -2287,8 +2287,6 @@ do this the initial check is modified by +2.
         make break tests differently.
       </p>
 
-      {% include "tables/break_consequences.xml" %}        
-
       <subsection>
         <subsectiontitle>Player Character Break Check</subsectiontitle>       
         <p>
@@ -2315,7 +2313,7 @@ do this the initial check is modified by +2.
         <p>
           For example, looking at the table, the first time a character makes a break
           test during combat they do so with a difficulty of 8.  If they fail they gain
-          the Checked condition and further break tests are made with a difficulty of
+          the Checked condition and the next break test will be made with a difficulty of
           12.
         </p>
 
@@ -2328,9 +2326,10 @@ do this the initial check is modified by +2.
         {% include "tables/break_difficulties.xml" %}    
 
         <p>
-          Break tests for players should be made:
+          Break tests for players should be made at the GMs discretion.  But some
+	  suggested times to make break cheaks are:
           <list>
-            <li>After the party member becomes bloodied,</li>
+            <li>When any party member becomes bloodied,</li>
             <li>After all party members have become bloodied,</li>
             <li>When the party enters combat against a fear causing opponent,</li>
             <li>Whenever the party is surprised.</li>
@@ -2365,7 +2364,7 @@ do this the initial check is modified by +2.
         </p>
 
         <p>
-          In the interests of keeping the game flowing, if there are more than say five 
+          In the interests of keeping the game flowing, if there are more than, say, five 
           monsters then the monsters should be grouped together for the purposes of their 
           break tests.  For example, imagine there are 15 kobold guards in the combat, the 
           GM should group them as three groups of five for the purposes of testing to see 
@@ -2373,10 +2372,10 @@ do this the initial check is modified by +2.
         </p>
 
         <p>
-          If monsters lose their break test they must attempt to disengage, bargain their 
-          way out of the conflict, play for time, or flee as the GM pleases.  The GM is 
-          free to roll on one of the Break Resolution Tables for inspiration.
+	  When monsters fail their break tests they should attempt to break off combat,
+	  yield, negotiate or flee, at the GMs discretion.
         </p>
+	
       </subsection>
     </section>
 
@@ -2389,7 +2388,7 @@ do this the initial check is modified by +2.
 
       <p>
         For combat to be interesting strategically it is important that there
-        be a chance of failure.  However, as combat is highly lethal combat may
+        be a chance of failure.  However, as combat is highly lethal it may
         result in a total party kill, which is a generally undesirable outcome.
       </p>
       
@@ -2401,7 +2400,7 @@ do this the initial check is modified by +2.
 
       <p>
         The second approach to solving this problem is to provide an <defn>Out</defn>
-        for the party should things go south. For example if the characters are fighting
+        for the party should things go wrong. For example if the characters are fighting
         slavers and they lose then they can be enslaved and the game continues.  If
         they are fighting Orcs they may be kept for food later.  The city guards might
         throw them in the dungeon if they prevail against the party.
@@ -2462,8 +2461,7 @@ do this the initial check is modified by +2.
         be in the range 4 to 6.  In an enemy stronghold it might be 8 to 12.  Get
         one of the players to roll a standard check against that difficulty.  If
         they fail a random encounter occurs.
-      </p>
-      
+      </p>      
     </section>
     
 
@@ -2482,28 +2480,18 @@ do this the initial check is modified by +2.
         their break tests.
       </p>
     </section>
-
   </chapter>
-
-
-
 
 
   <chapter>
     <chaptertitle>The Laws of Magic \label{ch:magic}</chaptertitle>    
-
     {% include "fragment_magic.xml" %}
-
   </chapter>
 
 
-
-
-
-
   <chapter>
-    <chaptertitle>Mundane Skills and Abilities</chaptertitle>
-    <label>ch:mundane_skills</label>    
+    <chaptertitle>Skills and Abilities</chaptertitle>
+    <label>ch:abilities</label>    
     {% for ability_group in ability_groups %}
     <section>
       <sectiontitle>{{ ability_group.get_title() }}</sectiontitle>
