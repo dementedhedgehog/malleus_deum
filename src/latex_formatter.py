@@ -1487,12 +1487,12 @@ class LatexFormatter:
     end_fail = no_op
 
     def start_eg(self, fail):
-        self.latex_file.write("e.g.{}")
+        self.latex_file.write("e.g.\@{}")
         return
     end_eg = no_op
 
     def start_etc(self, fail):
-        self.latex_file.write("etc.{}")
+        self.latex_file.write("etc.\@{}")
         return
     end_etc = no_op
 
