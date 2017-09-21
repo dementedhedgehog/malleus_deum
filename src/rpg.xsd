@@ -519,7 +519,7 @@
 
   <xs:complexType name="subsectionType" >
     <xs:sequence>
-      <xs:element name="subsectiontitle" type="titleType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="subsectiontitle" type="titleType" minOccurs="0" maxOccurs="0"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="p" type="paragraphType" />
         <xs:element name="design" type="designType" />
@@ -536,6 +536,8 @@
         <xs:element name="include" type="includeType" />
         <xs:element name="figure" type="figureType"/>
         <xs:element name="table" type="tableType"/>
+        <xs:element name="monster" type="monsterType"/>
+        
 	<!--
         <xs:element name="d4" type="emptyType"/>
         <xs:element name="d6" type="emptyType"/>
@@ -613,7 +615,8 @@
         <xs:element name="figure" type="figureType"/>
         <xs:element name="table" type="tableType" />
         <xs:element name="playexample" type="playexampleType" />
-        <xs:element name="vspace" type="xs:integer" default="1"/>        
+        <xs:element name="vspace" type="xs:integer" default="1"/>
+        <xs:element name="monster" type="monsterType"/>
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="anonymous" type="xs:boolean" default="false"/>
@@ -1318,4 +1321,147 @@ labels and references.
       <xs:element name="line" type="lineType" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
+
+
+<!--
+  <xs:complexType name="monsterGroupType">
+    <xs:sequence>
+      <xs:element 
+          name="monstergrouptitle" 
+          type="titleType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="monstergroupdesc" 
+          type="sectionType" 
+          minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+-->
+
+<!--
+
+name
+hp,
+stamina,
+morale
+resolve
+magic
+attacks..
+tags
+-->
+
+
+  <xs:complexType name="monsterStatsType">
+    <xs:sequence>
+      <xs:element 
+          name="hp" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="ac" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="resolve" 
+          type="xs:string" 
+          minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+      
+  <xs:complexType name="monsterType">
+    <xs:sequence>
+      <xs:element 
+          name="monstertitle" 
+          type="titleType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="monsterstats" 
+          type="monsterStatsType" 
+          minOccurs="0" maxOccurs="1"/>
+      <xs:element 
+          name="monsterdesc" 
+          type="sectionType" 
+          minOccurs="1" maxOccurs="1"/>
+      <!--
+      <xs:element 
+          name="archetypeid" 
+          type="archetypeidType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="inheritance" 
+          type="inheritanceType" 
+          minOccurs="0" maxOccurs="1"/>
+      <xs:element 
+          name="archetypedescription" 
+          type="archetypedescriptionType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="archetypeac" 
+          type="pointsType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="archetypemove" 
+          type="pointsType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="archetypeinitiative" 
+          type="pointsType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="attrmax" 
+          type="attributeLimitType" 
+          minOccurs="0" maxOccurs="7"/>
+      <xs:element 
+          name="attrmin" 
+          type="attributeLimitType" 
+          minOccurs="0" maxOccurs="7"/>
+      <xs:element 
+          name="attrbonus" 
+          type="attributeBonusType" 
+          minOccurs="0" maxOccurs="7"/>
+      <xs:element 
+          name="startingcash" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="startinggear" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="height" 
+          type="measurementType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="weight" 
+          type="measurementType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="age" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="appearance" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="aspectexamples" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="archetypetags"
+          type="tagsType" 
+          minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element 
+          name="levelprogressiontable" 
+          type="levelprogressiontableType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="abilitymodifiers" 
+          type="abilitymodifiersType" 
+          minOccurs="1" maxOccurs="1"/>
+          -->
+    </xs:sequence>
+  </xs:complexType>
+  
 </xs:schema> 

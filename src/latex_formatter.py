@@ -1557,6 +1557,36 @@ class LatexFormatter:
     #     self.latex_file.write("\\bomb{}")
     # end_explode = no_op
 
-    def start_maxdice(self, d12mx):
-        self.latex_file.write("\\maxdie{}")
-    end_maxdice = no_op
+    # def start_maxdice(self, d12mx):
+    #     self.latex_file.write("\\maxdie{}")
+    #     return
+    # end_maxdice = no_op
+
+    # def start_monster(self, monster):
+    #     return
+    # end_monster = no_op
+
+    # def start_monstertitle(self, monster):
+    #     return
+    # end_monstertitle = no_op
+
+    # def start_monsterstats(self, monster):
+    #     return
+    # end_monsterstats = no_op
+
+    # def start_monsterdesc(self, monster):
+    #     return
+    # end_monsterdesc = no_op
+
+    # def start_hp(self, monster):
+    #     return
+    # end_hp = no_op
+
+    # def start_ac(self, monster):
+    #     return
+    # end_ac = no_op
+
+    # def start_resolve(self, monster):
+    #     return
+    # end_resolve = no_op
+    

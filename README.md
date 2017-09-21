@@ -15,6 +15,7 @@ Malleus Deum is a fantasy pen and paper, tabletop, role-playing game (RPG).
 
 ## Windows
 
+ * Install Python 2.7+
  * Install MikTek
  * Update MikTek as administrator.
  * Install git.
