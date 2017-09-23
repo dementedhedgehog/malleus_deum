@@ -95,12 +95,22 @@
       <xs:enumeration value="Surprise" />
       <xs:enumeration value="Initiative" />
       <xs:enumeration value="Talk" />
+
+
+      <!--
       <xs:enumeration value="Act" />
       <xs:enumeration value="Run" />
-      <xs:enumeration value="Fight-Ranged"/>
-      <xs:enumeration value="Fight-Reach"/>
       <xs:enumeration value="Fight"/>
-      <xs:enumeration value="Resolution" />
+      <xs:enumeration value="Fight-Ranged"/>
+      -->
+
+      <xs:enumeration value="Fight-Reach"/>
+
+      <xs:enumeration value="Start" />
+      <xs:enumeration value="Fast"/>
+      <xs:enumeration value="Medium" />
+      <xs:enumeration value="Slow"/>
+      <xs:enumeration value="Resolution"/>
       <xs:enumeration value="Reaction"/>
       <xs:enumeration value="Non-Combat"/>
       <!-- <xs:enumeration value="Instantaneous"/> -->
@@ -389,12 +399,18 @@
       <xs:element name="surprise" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
       <xs:element name="talk" type="symbolType"/>
+      <!--
       <xs:element name="run" type="symbolType"/>
       <xs:element name="act" type="symbolType"/>
       <xs:element name="fightranged" type="symbolType"/>
       <xs:element name="fightreach" type="symbolType"/>
       <xs:element name="fightfast" type="symbolType"/>
       <xs:element name="fight" type="symbolType"/>
+      -->
+      <xs:element name="start" type="symbolType"/>
+      <xs:element name="fast" type="symbolType"/>
+      <xs:element name="medium" type="symbolType"/>
+      <xs:element name="slow" type="symbolType"/>
       <xs:element name="resolution" type="symbolType"/>      
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>      
@@ -552,17 +568,17 @@
         <xs:element name="d8mx" type="emptyType"/>
         <xs:element name="d10mx" type="emptyType"/>
         <xs:element name="d12mx" type="emptyType"/>
+        <xs:element name="fightreach" type="symbolType"/>
+        <xs:element name="fightfast" type="symbolType"/>
+        <xs:element name="fightranged" type="symbolType"/>
+        <xs:element name="run" type="symbolType"/>
+        <xs:element name="act" type="symbolType"/>
+        <xs:element name="fight" type="symbolType"/>
 	-->
         <xs:element name="ambush" type="symbolType"/>
         <xs:element name="surprise" type="symbolType"/>
         <xs:element name="initiative" type="symbolType"/>
         <xs:element name="talk" type="symbolType"/>
-        <xs:element name="run" type="symbolType"/>
-        <xs:element name="act" type="symbolType"/>
-        <xs:element name="fightranged" type="symbolType"/>
-        <xs:element name="fightreach" type="symbolType"/>
-        <xs:element name="fightfast" type="symbolType"/>
-        <xs:element name="fight" type="symbolType"/>
         <xs:element name="resolution" type="symbolType"/>      
         <xs:element name="reaction" type="symbolType"/>      
         <xs:element name="noncombat" type="symbolType"/>          
@@ -880,12 +896,18 @@ labels and references.
       <xs:element name="surprisesymbol" type="symbolType"/>
       <xs:element name="initiativesymbol" type="symbolType"/>
       <xs:element name="talksymbol" type="symbolType"/>
+      <!--
       <xs:element name="runsymbol" type="symbolType"/>
-      <xs:element name="actsymbol" type="symbolType"/>
+      <xs:element name="actsymbol" type="symbolType"/>      
       <xs:element name="fightrangedsymbol" type="symbolType"/>
-      <xs:element name="fightreachsymbol" type="symbolType"/>
       <xs:element name="fightfastsymbol" type="symbolType"/>
       <xs:element name="fightsymbol" type="symbolType"/>
+      -->
+      <xs:element name="startsymbol" type="symbolType"/>
+      <xs:element name="fastsymbol" type="symbolType"/>
+      <xs:element name="mediumsymbol" type="symbolType"/>
+      <xs:element name="slowsymbol" type="symbolType"/>
+      <xs:element name="fightreachsymbol" type="symbolType"/>
       <xs:element name="resolutionsymbol" type="symbolType"/>      
       <xs:element name="reactionsymbol" type="symbolType"/>      
       <xs:element name="noncombatsymbol" type="symbolType"/>

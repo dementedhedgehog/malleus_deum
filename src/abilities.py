@@ -501,12 +501,16 @@ class AbilityClass:
     SURPRISE = "Surprise"
     INITIATIVE = "Initiative"
     TALK = "Talk"
-    ACT = "Act"
-    RUN = "Run"
-    FIGHT_RANGED = "Fight-Ranged"
+    #ACT = "Act"
+    #RUN = "Run"
+    #FIGHT_RANGED = "Fight-Ranged"
     FIGHT_REACH = "Fight-Reach"
-    FIGHT = "Fight"
-    RESOLVE = "Resolve"
+    #FIGHT = "Fight"
+    START = "Start"
+    FAST = "Fast"
+    MEDIUM = "Medium"
+    SLOW = "Slow"
+    RESOLUTION = "Resolution"
     REACTION = "Reaction"
     NON_COMBAT = "Non-Combat"
 
@@ -536,18 +540,27 @@ class AbilityClass:
             symbol_str = "<initiativesymbol/>"
         elif ability_class == AbilityClass.TALK:
             symbol_str = "<talksymbol/>"
-        elif ability_class == AbilityClass.ACT:
-            symbol_str = "<actsymbol/>"
-        elif ability_class == AbilityClass.RUN:
-            symbol_str = "<runsymbol/>"
-        elif ability_class == AbilityClass.FIGHT_RANGED:
-            symbol_str = "<fightrangedsymbol/>"
+        elif ability_class == AbilityClass.START:
+           symbol_str = "<startsymbol/>"
+        elif ability_class == AbilityClass.FAST:
+           symbol_str = "<fastsymbol/>"
+        elif ability_class == AbilityClass.MEDIUM:
+           symbol_str = "<mediumsymbol/>"
+        elif ability_class == AbilityClass.SLOW:
+           symbol_str = "<slowsymbol/>"
+            
+        #elif ability_class == AbilityClass.ACT:
+        #    symbol_str = "<actsymbol/>"
+        #elif ability_class == AbilityClass.RUN:
+        #    symbol_str = "<runsymbol/>"
+        #elif ability_class == AbilityClass.FIGHT_RANGED:
+        #    symbol_str = "<fightrangedsymbol/>"
         elif ability_class == AbilityClass.FIGHT_REACH:
             symbol_str = "<fightreachsymbol/>"
-        elif ability_class == AbilityClass.FIGHT:
-            symbol_str = "<fightsymbol/>"
-        elif ability_class == AbilityClass.RESOLVE:
-            symbol_str = "<resolvesymbol/>"
+        #elif ability_class == AbilityClass.FIGHT:
+        #    symbol_str = "<fightsymbol/>"
+        elif ability_class == AbilityClass.RESOLUTION:
+            symbol_str = "<resolutionsymbol/>"
         elif ability_class == AbilityClass.REACTION:
             symbol_str = "<reactionsymbol/>"
         elif ability_class == AbilityClass.NON_COMBAT:
@@ -573,20 +586,28 @@ class AbilityClass:
             ability_cls = AbilityClass.INITIATIVE
         elif ability_class == "talk":
             ability_cls = AbilityClass.TALK
-        elif ability_class == "act":
-            ability_cls = AbilityClass.ACT
-        elif ability_class == "run":
-            ability_cls = AbilityClass.RUN
-        elif ability_class == "fight":
-            ability_cls = AbilityClass.FIGHT
-        elif ability_class == "fight-ranged":
-            ability_cls = AbilityClass.FIGHT_RANGED
+        # elif ability_class == "act":
+        #     ability_cls = AbilityClass.ACT
+        # elif ability_class == "run":
+        #     ability_cls = AbilityClass.RUN
+        # elif ability_class == "fight":
+        #     ability_cls = AbilityClass.FIGHT
+        # elif ability_class == "fight-ranged":
+        #     ability_cls = AbilityClass.FIGHT_RANGED
         elif ability_class == "fight-reach":
             ability_cls = AbilityClass.FIGHT_REACH
         elif ability_class == "resolution":
             ability_cls = AbilityClass.RESOLUTION
         elif ability_class == "reaction":
             ability_cls = AbilityClass.REACTION
+        elif ability_class == "start":
+            ability_cls = AbilityClass.START
+        elif ability_class == "fast":
+            ability_cls = AbilityClass.FAST
+        elif ability_class == "medium":
+            ability_cls = AbilityClass.MEDIUM
+        elif ability_class == "slow":
+            ability_cls = AbilityClass.SLOW
         elif ability_class == "non-combat":
             ability_cls = AbilityClass.NON_COMBAT
         else:
