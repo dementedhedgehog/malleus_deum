@@ -35,6 +35,7 @@ from jinja2 import Template, Environment, FileSystemLoader
 
 from doc import Doc
 from abilities import AbilityGroups
+from monsters import MonsterGroups
 from archetypes import Archetypes
 from latex_formatter import LatexFormatter
 from spreadsheet_writer import write_summary_to_spreadsheet
@@ -521,8 +522,12 @@ if __name__ == "__main__":
     # load the archetypes
     archetypes = Archetypes()
     archetype_dir = join(root_dir, "archetypes")
-
     archetypes.load(ability_groups, archetype_dir, fail_fast = fail_fast)
+
+    # load the monsters
+    monster_groups = MonsterGroups()
+    monsters_dir = join(root_dir, "monsters")
+    monster_groups.load(monsters_dir, fail_fast = fail_fast)
 
     # get a jinja environment
     docs_dir  = join(root_dir, "docs")

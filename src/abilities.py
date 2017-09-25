@@ -916,7 +916,7 @@ class AbilityGroup:
         return self.info.title
         
     def validate(self):
-        cls = self.__class__
+        #cls = self.__class__
         valid = True
         error_log = validate_xml(self.doc)
         if error_log is not None:
