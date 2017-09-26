@@ -48,6 +48,7 @@ use_imperial = True
 files_to_build = (
     #("abilities.xml", True, "C"),
     #("core.xml", True, "C"),
+    #("character_abilities.xml", False, None),
     # ("character_creation.xml", True, "CC"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),

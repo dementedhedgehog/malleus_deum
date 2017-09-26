@@ -35,6 +35,7 @@ from jinja2 import Template, Environment, FileSystemLoader
 
 from doc import Doc
 from abilities import AbilityGroups
+from monsters import MonsterGroups
 from archetypes import Archetypes
 from latex_formatter import LatexFormatter
 from spreadsheet_writer import write_summary_to_spreadsheet
@@ -195,7 +196,6 @@ def filter_xelatex_output(xelatex_output):
         line = lines[line_index]
         
         if (line.startswith("(/usr/share/texlive/texmf-dist/tex/latex/") or 
-            line.startswith("(/usr/share/texlive/texmf-dist/tex/latex/") or 
             line.startswith("Underfull \hbox ") or 
             line.startswith("Overfull \hbox ") or 
             line.startswith("Overfull \hbox ") or 
@@ -320,6 +320,7 @@ def build_doc(template_fname, verbosity, archetype = None):
     # dir using Jinjas include directive).
     template = jinja_env.get_template(template_fname)
     xml = template.render(ability_groups = ability_groups,
+                          monster_groups = monster_groups,
                           archetypes = archetypes,
                           archetype = archetype,
                           config = config,
@@ -381,27 +382,10 @@ def build_doc(template_fname, verbosity, archetype = None):
     if latex_only:
         return
 
-    # create the cmd line to convert the latex to pdf
-    # cmd_line = [
-    #     xelatex, 
-    #     "-output-directory=%s" % build_dir,
-    #     "-include-directory=%s" % styles_dir,
-    #     "--halt-on-error",
-    #     tex_fname, ]
-    # if verbosity > 0:
-    #     print("\n\nRun with:\n%s" % " ".join(cmd_line))
+    # converts the latex to pdf
     xelatex(tex_fname, verbosity=verbosity)
 
-    # run xelatex
-    # xelatex_output = ""
-    # xelatex_error = False
-    # try:
-    #     xelatex_output = check_output(cmd_line)
-    # except CalledProcessError as e:
-    #     xelatex_output = e.output
-    #     xelatex_error = True
-
-    # run makeindex to ah make the index
+    # run makeindex to, ah, make the index
     # (makeindex won't let you build an index outside of the cwd!)
     return_code = call([makeindex, 
                         # "-q", 
@@ -521,8 +505,12 @@ if __name__ == "__main__":
     # load the archetypes
     archetypes = Archetypes()
     archetype_dir = join(root_dir, "archetypes")
-
     archetypes.load(ability_groups, archetype_dir, fail_fast = fail_fast)
+
+    # load the monsters
+    monster_groups = MonsterGroups()
+    monsters_dir = join(root_dir, "monsters")
+    monster_groups.load(monsters_dir, fail_fast = fail_fast)
 
     # get a jinja environment
     docs_dir  = join(root_dir, "docs")

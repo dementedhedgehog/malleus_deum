@@ -3,7 +3,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:complexType name="emptyType">
-  </xs:complexType> 
+  </xs:complexType>
+
+  <xs:simpleType name="idType">
+    <xs:restriction base="xs:NCName"/>
+  </xs:simpleType>
+  
 
   <xs:complexType name="measurementType">
     <xs:all>
@@ -32,7 +37,7 @@
       <xs:restriction base="xs:string"/>
       </xs:simpleType>
   -->
-
+ 
   <!-- an enum -->
   <xs:simpleType name="abilitygroupfamilyType">
     <xs:restriction base="xs:string">
@@ -41,7 +46,7 @@
       <xs:enumeration value="Magic" />
     </xs:restriction>
   </xs:simpleType>
-  
+ 
   <!-- an enum -->
   <xs:simpleType name="attributeType">
     <xs:restriction base="xs:string">
@@ -161,15 +166,6 @@
       <xs:element name="abilitytitle" type="titleType"/>
       <xs:element name="abilityid" type="abilityidType"/>
       <xs:element name="abilityclass" type="abilityclassType"/>
-
-      <!-- e.g. shield.block -->
-      <!--
-          <xs:element name="prerequisitetag" type="xs:string" minOccurs="0"/>
-          <xs:element name="prerequisiteabilitylevel" type="xs:string" minOccurs="0"/>      
-          <xs:element name="prereqarchetypes" type="prereqArchetypesType" minOccurs="0"/>
-      -->
-      
-      <!-- e.g. Str > 12 -->
       <xs:element name="abilitylevels" type="abilitylevelsType"/>
       <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
     </xs:all>
@@ -290,6 +286,8 @@
     </xs:sequence>
   </xs:complexType>
 
+
+  
   <xs:complexType name="archetypedescriptionType" mixed="true">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -605,7 +603,6 @@
         <xs:element name="olist" type="orderedListType"/>
         <xs:element name="descriptions" type="descriptionsType"/>
         <xs:element name="threecolumns" type="sectionType"/>    
-        <!-- <xs:element name="foreachabilitygroup" type="foreachabilitygroupType"/> -->
         <xs:element name="list" type="itemizedListType"/>
         <xs:element name="img" type="imgType"/> 
         <xs:element name="table" type="tableType"/>
@@ -1292,6 +1289,7 @@ labels and references.
       <xs:element name="listoffigures" type="emptyType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="listoftables" type="emptyType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="chapter" type="chapterType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="table" type="tableType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="appendix" type="appendixType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="index" type="indexType" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
@@ -1391,6 +1389,7 @@ tags
   </xs:complexType>
 
       
+      <!--
   <xs:complexType name="monsterType">
     <xs:sequence>
       <xs:element 
@@ -1405,7 +1404,6 @@ tags
           name="monsterdesc" 
           type="sectionType" 
           minOccurs="1" maxOccurs="1"/>
-      <!--
       <xs:element 
           name="archetypeid" 
           type="archetypeidType" 
@@ -1483,6 +1481,60 @@ tags
           type="abilitymodifiersType" 
           minOccurs="1" maxOccurs="1"/>
           -->
+
+  <xs:element name="monstergroup" type="monsterGroupType"/>  
+
+  <xs:complexType name="monsterGroupType">
+    <xs:sequence>
+      <xs:element
+	  name="monstergroupinfo" type="monstergroupinfoType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="tag" type="tagType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="monster" type="monsterType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="monstergroupidType">
+    <xs:restriction base="xs:NCName"/>
+  </xs:simpleType>
+
+  <!--
+  <xs:complexType name="descriptionType" mixed="true">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="p" type="paragraphType" />
+        <xs:element name="include" type="includeType" />
+        <xs:element name="table" type="tableType" />        
+        <xs:element name="img" type="imgType"/>
+        <xs:element name="figure" type="figureType"/>
+        <xs:element name="indexentry" type="indexentryType"/>
+        <xs:element name="list" type="itemizedListType"/>
+        <xs:element name="defn" type="defnType"/>
+        <xs:element name="ref" type="refType"/>
+      </xs:choice>
+    </xs:sequence>
+    </xs:complexType>
+    -->
+
+  <xs:complexType name="monsterType">
+    <xs:all>
+      <xs:element name="monstertitle" type="titleType"/>
+      <xs:element name="monsterid" type="idType"/>
+      <!--
+	  <xs:element name="monsterclass" type="monsterclassType"/>
+	  <xs:element name="monsterlevels" type="monsterlevelsType"/>
+      -->
+      <xs:element name="monsterdescription" type="descriptionType" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  
+
+  <xs:complexType name="monstergroupinfoType">
+    <xs:sequence>
+      <xs:element name="monstergrouptitle" type="titleType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="monstergroupid" type="monstergroupidType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="monstergroupdescription" 
+                  type="descriptionType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   

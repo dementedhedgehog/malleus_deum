@@ -105,38 +105,6 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-
-
-  <ability>
-    <abilitytitle>Turn Undead</abilitytitle>
-    <abilityid>magic.turn_undead</abilityid>
-    <abilityclass>Medium</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	The character calls on their deity to repel beings animated by
-	necrotic forces.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqtag>praedicant</prereqtag>
-        <defaultlore>8</defaultlore>
-        <successes>3</successes>
-        <failures>3</failures>
-        <check>Std 2d8 vs opponents will</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
-        <check>Std 2d8 + 2 vs opponents will</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
   
 
   <ability>
@@ -1283,16 +1251,50 @@
   </ability>
   
 
+
+  <ability>
+    <abilitytitle>Turn Undead</abilitytitle>
+    <abilityid>magic.turn_undead</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character calls on their deity to repel beings animated by
+	necrotic forces.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqtag>praedicant</prereqtag>
+        <defaultlore>8</defaultlore>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs opponents will</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <check>Std 2d8 + 2 vs opponents will</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
   <ability>
     <abilitytitle>Wither</abilitytitle>
     <abilityid>magic.wither</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
+    <abilityclass>Slow</abilityclass>
     <abilitydescription>
       <p>
-	The caster grabs an opponent who is momentarily transfixed.
+	The caster grabs an opponent.
 	On success the caster acts as a conduit to one of the dread
 	planes,	life is drained from the target.  Anything that
 	increases contagion will increase damage for this spell.
+	The target is momentarily transfixed (checks Will versus the casters
+	successful magic roll or loses their turn).	
       </p>      
     </abilitydescription>    
 
