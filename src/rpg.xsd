@@ -533,7 +533,7 @@
 
   <xs:complexType name="subsectionType" >
     <xs:sequence>
-      <xs:element name="subsectiontitle" type="titleType" minOccurs="0" maxOccurs="0"/>
+      <xs:element name="subsectiontitle" type="titleType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="p" type="paragraphType" />
         <xs:element name="design" type="designType" />

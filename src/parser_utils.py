@@ -37,7 +37,8 @@ def parse_xml(fname):
 def validate_xml(doc):
     result = None
     if not xml_schema.validate(doc):
-        result = xml_schema.error_log.last_error
+        #result = xml_schema.error_log.last_error
+        result = "\n".join([str(e) for e in xml_schema.error_log])
     return result
 
 

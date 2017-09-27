@@ -303,10 +303,9 @@ def build_doc(template_fname, verbosity, archetype = None):
     xml_fname = join(build_dir, "%s.xml" % doc_base_fname)
     pdf_fname = join(build_dir, "%s.pdf" % doc_base_fname)
     tex_fname = join(build_dir, "%s.tex" % doc_base_fname)
-    # makeindex won't write to files outside of the cwd.  We don't want a path here.
-    # Just a filename
+    # makeindex won't write to files outside of the cwd.
+    # We don't want a path here.  Just a filename
     idx_fname = "%s.idx" % doc_base_fname
-
 
     print("===============================================")
     print("Building %s " % doc_fname)
@@ -326,13 +325,6 @@ def build_doc(template_fname, verbosity, archetype = None):
                           config = config,
                           doc_name = doc_base_fname)
 
-    # if debug:
-    #     def fun(args):
-    #         name, ext = splitext(base_xml_fname)
-    #         xml_post_jinja_fname = join(build_dir, fname + "_post_jinja" + ext)
-    #         with codecs.open(xml_post_jinja_fname, "w", "utf-8") as f:
-    #             f.write(xml)            
-
     # drop out early?
     if template_only:
         print("Template only! ...")
@@ -342,7 +334,7 @@ def build_doc(template_fname, verbosity, archetype = None):
     # write the post-processed xml to the build dir 
     # (has all the included files in it).
     with codecs.open(xml_fname, "w", "utf-8") as f:
-        f.write(xml)
+       f.write(xml)
             
     # parse an xml documento
     doc = Doc(xml_fname)        
