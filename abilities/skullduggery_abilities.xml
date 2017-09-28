@@ -14,6 +14,41 @@
   </abilitygroupinfo>
   
 
+
+  <ability>
+    <abilitytitle>Cloak Fighting</abilitytitle>
+    <abilityid>skullduggery.cloak_fighting</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	      Reaction to being hit with a Piercing weapon.  The character
+        can make a cloak fighting check to use their cloak to block the
+        attack.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>4</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+	      <check>Std 2d8 vs opponents agility</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>4</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	      <check>Std 2d8 + 2 vs opponents agility</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+  
   <ability>
     <abilitytitle>Sleight of Hand</abilitytitle>
     <abilityid>skullduggery.sleight_of_hand</abilityid>
