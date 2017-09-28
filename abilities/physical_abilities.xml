@@ -645,6 +645,115 @@
   </ability>
 
 
+
+  <ability>
+    <abilitytitle>Rest</abilitytitle>
+    <abilityid>physical.rest</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+        The character takes a moment to catch their breath
+        and collect themselves.  This takes five to ten minutes.
+        Given time the character succeeds automatically. 
+        If the character only has a few minutes to rest then they
+        must check to see if they are successful.
+      </p>
+
+      <p>
+        Characters only benefit from up to two Rests between Sleeps.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+        <check>Std 2d8 vs default 7</check>
+        <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs default 6</check>
+        <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 vs default 5</check>
+        <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Sleep</abilitytitle>
+    <abilityid>physical.sleep</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+        The character sleeps for six or more hours.  If the characters
+        sleep is uninterrupted then no check is required.  If the characters
+        are attacked or disturbed they may need to 
+      </p>
+
+      <p>
+        If the character sleeps then they receive two refreshes, if they
+        are required to check and they fail then they only receive one refresh.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+        <check>Std 2d8 vs 7</check>
+        <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>3</failures>
+        <check>Std 2d8 vs 6</check>
+        <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>2</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 vs 5</check>
+        <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
   
   <!--
   <ability>
