@@ -572,6 +572,50 @@
 
 
   <ability>
+    <abilitytitle>Rally</abilitytitle>
+    <abilityid>social.rally</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>    
+      <p>
+        When characters starts to flee they need to Rally before they can stop.
+      </p>	
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>0</failures>
+	      <check>Resolve Pool vs default 8</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	      <check>Resolve Pool vs default 7</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>4</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	      <check>Resolve Pool vs default 6</check>
+      </abilitylevel> 
+    </abilitylevels>
+  </ability>
+
+  
+
+  <ability>
     <abilitytitle>Yield</abilitytitle>
     <abilityid>social.yield</abilityid>
     <abilityclass>Reaction</abilityclass>
@@ -593,7 +637,7 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <failures>3</failures>
-	<check>Std 2d8</check>
+	      <check>Std 2d8</check>
       </abilitylevel>
 
       <abilitylevel>
@@ -603,7 +647,7 @@
         <defaultgeneral>2</defaultgeneral>
         <successes>3</successes>
         <failures>3</failures>
-	<check>Std 2d8 + 1</check>
+	      <check>Std 2d8 + 1</check>
       </abilitylevel>
       
       <abilitylevel>
@@ -613,7 +657,7 @@
         <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <failures>3</failures>
-	<check>Std 2d8 + 2</check>
+	      <check>Std 2d8 + 2</check>
       </abilitylevel> 
     </abilitylevels>
   </ability>

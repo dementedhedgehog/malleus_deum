@@ -70,8 +70,9 @@
     <abilityclass>Fast</abilityclass>
     <abilitydescription>
       <p>
-        The Run ability allows the character to move twice their movement rate.
-	This skill represents the characters fleet footedness.
+        The Run ability allows the character to move twice their movement rate during combat
+        or pursuit.  This skill represents the characters fleet footedness.  In addition that
+        character can 
       </p>
     </abilitydescription>
     <abilitylevels>
@@ -82,6 +83,12 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
+        <check>Std 2d8 vs 9</check>
+        <effect>
+          The character moves a bit extra.  During combat this is an extra square when playing on
+          a grid, or something narrative in a TOTM combat.  During a pursuit the character increases
+          their rank by two if they fail and three if they succeed.          
+        </effect>
       </abilitylevel>
       
       <abilitylevel>
@@ -91,6 +98,10 @@
         <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
+        <check>Std 2d8 vs 8</check>
+        <effect>
+          As above.
+        </effect>
       </abilitylevel>
       
       <abilitylevel>
@@ -98,6 +109,10 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>2</defaultgeneral>
+        <check>Std 2d8 vs 7</check>
+        <effect>
+          As above.
+        </effect>
       </abilitylevel>      
     </abilitylevels>
   </ability>
