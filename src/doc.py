@@ -43,7 +43,7 @@ class Doc:
             print(error)
 
             # print out the context
-            print(get_error_context(self.fname, error.line))
+            #print(get_error_context(self.fname, error.line))
             valid = False
         return valid
 
