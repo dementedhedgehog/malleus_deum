@@ -161,12 +161,13 @@ class LatexFormatter:
             "\n"
             "\\newcommand{\\rpgtablesection}{\\rule{0pt}{3ex}\\rpgtableheaderfont\\bfseries}{}\n"
             "\n"
-            "\\newcommand{\\runsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E1C8\\endgroup}"
-            "  {run}}\n"
-            "\n"
+            # "\\newcommand{\\runsymbol}\n"
+            # "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E1C8\\endgroup}"
+            # "  {run}}\n"
+            # "\n"
             "\\newcommand{\\reactionsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E28B\\endgroup}"
+            #"  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E28B\\endgroup}"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}R\\endgroup}"
             "  {reaction}}\n"
             "\n"
             "\\newcommand{\\startsymbol}\n"
@@ -174,6 +175,10 @@ class LatexFormatter:
             #"  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E28B\\endgroup}"
             #" {\\begingroup\\rpgdice\\selectfont{}1\\endgroup}\n"
             "  {start}}\n"            
+            "\n"
+            "\\newcommand{\\talksymbol}\n"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}t\\endgroup}"
+            "  {talk}}\n"
             "\n"
             "\\newcommand{\\fastsymbol}\n"
             "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}2\\endgroup}"
@@ -187,55 +192,36 @@ class LatexFormatter:
             "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}4\\endgroup}"
             "  {slow}}\n"
             "\n"
+            "\\newcommand{\\startandreactionsymbol}\n"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}1+R\\endgroup}"
+            "  {startandreactionsymbol}}\n"
+            "\n"
+            "\\newcommand{\\mediumorslowsymbol}\n"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}3/4\\endgroup}"
+            "  {mediumorslowsymbol}}\n"
+            "\n"
             "\\newcommand{\\resolutionsymbol}\n"
             "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}5\\endgroup}"
             "  {resolution}}\n"
             "\n"
-
-            
-            # "\n"
-            # "\\newcommand{\\actsymbol}\n"
-            # "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E139\\endgroup}"
-            # "  {act}}\n"
-            # "\n"
-            # "\\newcommand{\\fightrangedsymbol}\n"
-            # "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E1AD\\endgroup}"
-            # "  {fight-ranged}}\n"
-            # "\n"
-            # "\\newcommand{\\resolutionsymbol}\n"
-            # "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E194\\endgroup}"
-            # "  {resolution}}\n"
-            # "\n"
             "\\newcommand{\\surprisesymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E1BE\\endgroup}"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}s\\endgroup}"
             "  {surprise}}\n"
             "\n"
             "\\newcommand{\\ambushsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E1EA\\endgroup}"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}a\\endgroup}"
             "  {ambush}}\n"
             "\n"
             "\\newcommand{\\initiativesymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E002\\endgroup}"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}i\\endgroup}"
             "  {initiative}}\n"
             "\n"
-            # "\\newcommand{\\fightsymbol}\n"
-            # "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E20D\\endgroup}"
-            # "  {fight}}\n"
-            # "\n"
-            # "\\newcommand{\\fightfastsymbol}\n"
-            # "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E05D\\endgroup}"
-            # "  {fightfast}}\n"
-            # "\n"
-            "\\newcommand{\\talksymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E277\\endgroup}"
-            "  {talk}}\n"  
-            "\n"
             "\\newcommand{\\fightreachsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E034\\endgroup}"
+            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}3:4\\endgroup}"
             "  {fight-reach}}\n"
             "\n"
             "\\newcommand{\\noncombatsymbol}"
-            "{\\texorpdfstring{\\begingroup\\symbolfont\\selectfont\\char\"E088\\endgroup}"
+            "{\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}n\\endgroup}"
             "{non-combat}}\n"
             "\n"
             "\n"
@@ -444,12 +430,6 @@ class LatexFormatter:
     end_initiativesymbol = no_op
     start_talksymbol = no_op
     end_talksymbol = no_op
-    #start_actsymbol = no_op
-    #end_actsymbol = no_op
-    #start_runsymbol = no_op
-    #end_runsymbol = no_op
-    #start_fightrangedsymbol = no_op
-    #end_fightrangedsymbol = no_op
     start_fightreachsymbol = no_op
     end_fightreachsymbol = no_op
     start_startsymbol = no_op
@@ -460,12 +440,10 @@ class LatexFormatter:
     end_mediumsymbol = no_op
     start_slowsymbol = no_op
     end_slowsymbol = no_op
-    #start_fightreachsymbol = no_op
-    #end_fightreachsymbol = no_op
-    #start_fightsymbol = no_op
-    #end_fightsymbol = no_op
-    #start_fightfastsymbol = no_op
-    #end_fightfastsymbol = no_op
+    start_mediumorslowsymbol = no_op
+    end_mediumorslowsymbol = no_op
+    start_startandreactionsymbol = no_op
+    end_startandreactionsymbol = no_op
     start_resolutionsymbol = no_op
     end_resolutionsymbol = no_op
     start_noncombatsymbol = no_op
@@ -473,11 +451,6 @@ class LatexFormatter:
     start_reactionsymbol = no_op
     end_reactionsymbol = no_op
 
-    # def start_fightranged(self, symbol):
-    #     self.latex_file.write("\\fightrangedsymbol{}")
-    #     return
-    # end_fightranged = no_op
-    
     def start_fightreach(self, symbol):
         self.latex_file.write("\\fightreachsymbol{}")
         return
@@ -508,6 +481,16 @@ class LatexFormatter:
         return
     end_medium = no_op
     
+    def start_mediumorslow(self, symbol):
+        self.latex_file.write("\\mediumorslowsymbol{}")
+        return
+    end_mediumorslow = no_op
+    
+    def start_startandreaction(self, symbol):
+        self.latex_file.write("\\startandreactionsymbol{}")
+        return
+    end_startandreaction = no_op
+    
     def start_slow(self, symbol):
         self.latex_file.write("\\slowsymbol{}")
         return
@@ -516,7 +499,12 @@ class LatexFormatter:
     # def start_run(self, symbol):
     #     self.latex_file.write("\\runsymbol{}")
     #     return
-    # end_run = no_op    
+    # end_run = no_op
+
+    def start_noncombat(self, symbol):
+        self.latex_file.write("\\noncombatsymbol{}")
+        return
+    end_noncombat = no_op    
 
     def start_resolution(self, symbol):
         self.latex_file.write("\\resolutionsymbol{}")
@@ -554,12 +542,18 @@ class LatexFormatter:
                        "surprisesymbol",
                        "initiativesymbol",
                        "talksymbol",
-                       "runsymbol",
-                       "actsymbol",
-                       "fightrangedsymbol",
+                       #"runsymbol",
+                       #"actsymbol",
+                       #"fightrangedsymbol",
                        "fightreachsymbol",
-                       "fightfastsymbol",
-                       "fightsymbol",
+                       "startsymbol",
+                       "fastsymbol",
+                       "mediumsymbol",
+                       "slowsymbol",
+                       "mediumorslowsymbol",
+                       "startandreactionsymbol",
+                       #"fightfastsymbol",
+                       #"fightsymbol",
                        "resolutionsymbol",
                        "reactionsymbol",
                        "noncombatsymbol"):

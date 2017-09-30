@@ -139,7 +139,7 @@ def draw_cell(c, x, y, cell_width, cell_height, ability_level=None):
     ability_class_str = "a"
     draw_string(c,
                 x + cell_width - get_text_width(ability_class_str) - 3,
-                y + 9,
+                y + 13,
                 ability_class_str)
    
     # mastery

@@ -501,21 +501,19 @@ class AbilityClass:
     SURPRISE = "Surprise"
     INITIATIVE = "Initiative"
     TALK = "Talk"
-    #ACT = "Act"
-    #RUN = "Run"
-    #FIGHT_RANGED = "Fight-Ranged"
     FIGHT_REACH = "Fight-Reach"
-    #FIGHT = "Fight"
     START = "Start"
     FAST = "Fast"
     MEDIUM = "Medium"
+    MEDIUM_OR_SLOW = "MediumOrSlow"
+    START_AND_REACTION = "StartAndReaction"
     SLOW = "Slow"
     RESOLUTION = "Resolution"
     REACTION = "Reaction"
     NON_COMBAT = "Non-Combat"
 
     # misc abilities
-    LORE = "Lore"
+    #LORE = "Lore"
 
     @classmethod
     def to_string(cls, ability_class):
@@ -546,23 +544,18 @@ class AbilityClass:
            symbol_str = "<fastsymbol/>"
         elif ability_class == AbilityClass.MEDIUM:
            symbol_str = "<mediumsymbol/>"
+        elif ability_class == AbilityClass.MEDIUM_OR_SLOW:
+           symbol_str = "<mediumorslowsymbol/>"
         elif ability_class == AbilityClass.SLOW:
-           symbol_str = "<slowsymbol/>"
-            
-        #elif ability_class == AbilityClass.ACT:
-        #    symbol_str = "<actsymbol/>"
-        #elif ability_class == AbilityClass.RUN:
-        #    symbol_str = "<runsymbol/>"
-        #elif ability_class == AbilityClass.FIGHT_RANGED:
-        #    symbol_str = "<fightrangedsymbol/>"
+           symbol_str = "<slowsymbol/>"            
         elif ability_class == AbilityClass.FIGHT_REACH:
             symbol_str = "<fightreachsymbol/>"
-        #elif ability_class == AbilityClass.FIGHT:
-        #    symbol_str = "<fightsymbol/>"
         elif ability_class == AbilityClass.RESOLUTION:
             symbol_str = "<resolutionsymbol/>"
         elif ability_class == AbilityClass.REACTION:
             symbol_str = "<reactionsymbol/>"
+        elif ability_class == AbilityClass.START_AND_REACTION:
+           symbol_str = "<startandreactionsymbol/>"            
         elif ability_class == AbilityClass.NON_COMBAT:
             symbol_str = "<noncombatsymbol/>"
         else:
@@ -574,9 +567,11 @@ class AbilityClass:
     @staticmethod
     def load(ability_class):
         ability_cls = AbilityClass.NONE
-
+        
         if ability_class is not None:
             ability_class = ability_class.lower().strip()
+
+        print ability_class
 
         if ability_class == "none":
             ability_cls = AbilityClass.NONE
@@ -584,16 +579,6 @@ class AbilityClass:
             ability_cls = AbilityClass.SURPRISE
         elif ability_class == "initiative":
             ability_cls = AbilityClass.INITIATIVE
-        elif ability_class == "talk":
-            ability_cls = AbilityClass.TALK
-        # elif ability_class == "act":
-        #     ability_cls = AbilityClass.ACT
-        # elif ability_class == "run":
-        #     ability_cls = AbilityClass.RUN
-        # elif ability_class == "fight":
-        #     ability_cls = AbilityClass.FIGHT
-        # elif ability_class == "fight-ranged":
-        #     ability_cls = AbilityClass.FIGHT_RANGED
         elif ability_class == "fight-reach":
             ability_cls = AbilityClass.FIGHT_REACH
         elif ability_class == "resolution":
@@ -608,6 +593,10 @@ class AbilityClass:
             ability_cls = AbilityClass.MEDIUM
         elif ability_class == "slow":
             ability_cls = AbilityClass.SLOW
+        elif ability_class == "mediumorslow":
+            ability_cls = AbilityClass.START_AND_REACTION
+        elif ability_class == "startandreaction":
+            ability_cls = AbilityClass.FAST
         elif ability_class == "non-combat":
             ability_cls = AbilityClass.NON_COMBAT
         else:
