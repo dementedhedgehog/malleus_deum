@@ -251,7 +251,7 @@
       <xs:element name="success" type="symbolType"/>
       <xs:element name="fail" type="symbolType"/>
       <xs:element name="attempt" type="symbolType"/>
-      <xs:element name="indexentry" type="indexentryType"/>
+      <xs:element name="indexentry" type="indexentryType"/>      
       <xs:element name="tablesection" type="xs:string"/>
       <xs:element name="innateabilitylevelsymbol" type="symbolType"/>
       <xs:element name="innatearchetypeabilitylevelsymbol" type="symbolType"/>
@@ -264,6 +264,7 @@
       <xs:element name="surprise" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
       <xs:element name="talk" type="symbolType"/>
+      
       <!--
       <xs:element name="run" type="symbolType"/>
       <xs:element name="act" type="symbolType"/>
@@ -622,6 +623,8 @@
         <xs:element name="list" type="itemizedListType"/>
         <xs:element name="img" type="imgType"/> 
         <xs:element name="table" type="tableType"/>
+        <xs:element name="monsterblock" type="monsterblockType"/>
+	
         <!-- <xs:element name="bigtable" type="tableType" /> -->
         <xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
       </xs:choice>
@@ -1518,5 +1521,45 @@ tags
                   type="descriptionType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
+
+
+
+
+  <!--
+
+  Monster presentation xml.
+
+  -->
+  <xs:complexType name="monsterblockType">
+    <xs:sequence>
+      <xs:element name="mbtitle" type="titleType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbtags" type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbac"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbstamina"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbhealth"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbstr"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbend"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbag"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbspd"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbluck"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbwil"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbper"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <!--
+      <xs:element name="mblanguages"  type="textType" minOccurs="1" maxOccurs="1"/>
+      -->
+      <xs:element name="mbabilities"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbaspects" type="textType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>  
+
+  <xs:complexType name="monsterblockAbilitiesType">
+    <xs:sequence>
+      <xs:element name="mbability" type="titleType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbcheck" type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbdmg"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbeffect"  type="textType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>  
+
   
 </xs:schema> 
