@@ -1,5 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+"""
+
+To get the fdf from a form
+pdftk test.pdf fill_form test.fdf output out.pdf verbose
+
+To set the form values in a pdf
+pdftk test.pdf fill_form test.fdf output out.pdf verbose
+
+
+"""
 from shutil import copy
 
 from reportlab.pdfgen import canvas

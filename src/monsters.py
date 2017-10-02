@@ -3,7 +3,7 @@
 from os.path import join
 from os import listdir
 
-from parser_utils import parse_xml, validate_xml, children_to_string
+from utils import parse_xml, validate_xml, children_to_string, contents_to_string
 #, node_to_string, COMMENT
 
 
@@ -101,26 +101,26 @@ class MonsterGroups:
                 self.monster_lookup[monster.get_id()] = monster
 
         # inform each monster about monsters that require it as a prerequisite
-        for monster_group in self.monster_groups:
-            for monster in monster_group.get_monsters():
+        # for monster_group in self.monster_groups:
+        #     for monster in monster_group.get_monsters():
 
-                for monster_level in monster.get_levels():
+        #         for monster_level in monster.get_levels():
 
-                    for prereq in monster_level.get_monster_level_prereqs():
-                        # for prereq_monster_level_id in monster_level.get_prerequisite_ids():
+        #             for prereq in monster_level.get_monster_level_prereqs():
+        #                 # for prereq_monster_level_id in monster_level.get_prerequisite_ids():
 
-                        #if prereq_monster_level_id is None:
-                        #    continue
+        #                 #if prereq_monster_level_id is None:
+        #                 #    continue
 
-                        # reqister this monster level with any prerequisites it might have
-                        prereq_monster_level = MonsterLevel.get_level(prereq.monster_level_id)
+        #                 # reqister this monster level with any prerequisites it might have
+        #                 prereq_monster_level = MonsterLevel.get_level(prereq.monster_level_id)
                         
-                        if prereq_monster_level is None:
-                            raise Exception(
-                                ("No monster level matches prereq key: %s "
-                                 "for monster: %s") % 
-                                (prereq_monster_level_id, monster_level.get_title()))
-                        prereq_monster_level.add_dependency(monster_level.get_id())
+        #                 if prereq_monster_level is None:
+        #                     raise Exception(
+        #                         ("No monster level matches prereq key: %s "
+        #                          "for monster: %s") % 
+        #                         (prereq_monster_level_id, monster_level.get_title()))
+        #                 prereq_monster_level.add_dependency(monster_level.get_id())
 
         # sort the groups
         self.monster_groups.sort()
@@ -211,8 +211,13 @@ class MonsterGroupInfo:
            elif tag == "monstergroupdescription":
                if self.description is not None:
                    raise Exception("Only one monstergroupdescription per file.")
-               else:
-                   self.description = children_to_string(child)
+               else:                   
+                   self.description = contents_to_string(child)
+                   # children_to_string(child)
+                   #print "---"
+                   #print self.description
+                   #print contents_to_string(child)
+                   #print child
 
            elif tag is COMMENT:
                pass # ignore comments!
@@ -221,6 +226,7 @@ class MonsterGroupInfo:
                #
                raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
 
+           print(self.description)
         return
 
 # class MonsterGroup:
@@ -285,11 +291,13 @@ class MonsterGroup:
         self.monsters = []
         return
 
+    def get_description(self):        
+        return self.info.get_description()
+
     def get_title(self):
         return self.info.title
         
     def validate(self):
-        #cls = self.__class__
         valid = True
         error_log = validate_xml(self.doc)
         if error_log is not None:
@@ -493,11 +501,13 @@ class Monster:
         self.title = None
         self.monster_id = None
         self.description = None
-        self.tags = []
+        self.tags = ["Human", ] # FIXME:
+        self.aspects = ["floof", "foof"] # FIXME:
         self.monster_class = MonsterClass.NONE
-
-        # mapping from
-        self.levels = []        
+        self.ac = 7 # FIXME
+        self.health = 8 # FIXME
+        self.stamina = 9 # FIXME
+        self.abilities = ["Frog II", "Dog O"]
         return
 
     def get_monster_class_symbol(self):
@@ -506,11 +516,20 @@ class Monster:
     def get_description(self):
         return self.description
 
-    def get_levels(self):
-        return self.levels
-
     def get_title(self):
         return self.title
+
+    def get_ac(self):
+        return self.ac
+
+    def get_abilities_str(self):
+        return ", ".join(self.abilities)
+
+    def get_stamina(self):
+        return self.stamina
+
+    def get_health(self):
+        return self.health
 
     #def get_monster_class(self):
     #    return self.monster_class
@@ -541,6 +560,8 @@ class Monster:
     def get_tags_str(self):
         return ", ".join(self.tags)
 
+    def get_aspects_str(self):
+        return ", ".join(self.aspects)
 
     def load(self, monster_element):
         # check it's the right sort of element
@@ -595,12 +616,12 @@ class Monster:
                    raise Exception("Unknown monster class: (%s) %s in %s\n" %
                                    (child.tag, child.text, self.fname))
 
-           elif tag == "monsterlevels":
-               if len(self.levels) > 0: #  is not None:
-                   raise Exception("Only one monsterlevels per monster. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.load_monster_levels(child)
+           # elif tag == "monsterlevels":
+           #     if len(self.levels) > 0: #  is not None:
+           #         raise Exception("Only one monsterlevels per monster. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.load_monster_levels(child)
 
            elif tag == "monsterdescription":
                if self.description is not None:
@@ -628,36 +649,35 @@ class Monster:
                                (child.tag, self.fname))
         return
 
-
-    def load_monster_levels(self, monster_levels):
-        # handle all the children
-        for child in list(monster_levels):
+    # def load_monster_levels(self, monster_levels):
+    #     # handle all the children
+    #     for child in list(monster_levels):
         
-           tag = child.tag
-           if tag == "monsterlevel":
-               level = MonsterLevel.load_monster_level(
-                   monster = self, 
-                   monster_level_element = child)
+    #        tag = child.tag
+    #        if tag == "monsterlevel":
+    #            level = MonsterLevel.load_monster_level(
+    #                monster = self, 
+    #                monster_level_element = child)
 
-               # check we don't already have an monster level with the same level number!
-               for other_level in self.levels:
-                   if other_level.get_level_number() == level.get_level_number():
-                       raise Exception(
-                           "Received two monster level definitions for monster: %s"
-                           % level.get_title())
-               self.levels.append(level)
+    #            # check we don't already have an monster level with the same level number!
+    #            for other_level in self.levels:
+    #                if other_level.get_level_number() == level.get_level_number():
+    #                    raise Exception(
+    #                        "Received two monster level definitions for monster: %s"
+    #                        % level.get_title())
+    #            self.levels.append(level)
 
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
-           else:
-               raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
+    #        elif tag is COMMENT:
+    #            # ignore comments!
+    #            pass
+    #        else:
+    #            raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
 
-        # now sort the levels.
-        def get_level_key(level):
-            return level.level_number
-        self.levels.sort(key = get_level_key)
-        return
+    #     # now sort the levels.
+    #     def get_level_key(level):
+    #         return level.level_number
+    #     self.levels.sort(key = get_level_key)
+    #     return
 
 
 if __name__ == "__main__":

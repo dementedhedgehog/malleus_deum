@@ -3,8 +3,10 @@ import sys
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
 
-from parser_utils import parse_xml, validate_xml, node_to_string, COMMENT, children_to_string
-from utils import convert_to_roman_numerals
+from utils import (
+    parse_xml, validate_xml, node_to_string, COMMENT, children_to_string,
+    convert_to_roman_numerals
+)
         
 src_dir = abspath(join(dirname(__file__)))
 root_dir = abspath(join(src_dir, ".."))
@@ -570,8 +572,6 @@ class AbilityClass:
         
         if ability_class is not None:
             ability_class = ability_class.lower().strip()
-
-        print ability_class
 
         if ability_class == "none":
             ability_cls = AbilityClass.NONE

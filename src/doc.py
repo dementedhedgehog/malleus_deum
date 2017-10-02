@@ -11,11 +11,16 @@ from os import makedirs
 from copy import deepcopy
 import sys
 import codecs
-from utils import normalize_ws
+from utils import (
+    normalize_ws,
+    parse_xml, validate_xml,
+    COMMENT,
+    node_to_string,
+    get_error_context
+)
 
 
 from latex_formatter import LatexFormatter
-from parser_utils import parse_xml, validate_xml, COMMENT, node_to_string, get_error_context
 
 
 class Doc:

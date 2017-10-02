@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
+from os.path import join
 import config
-from utils import normalize_ws, convert_str_to_bool, convert_str_to_int
+from utils import (
+    normalize_ws,
+    convert_str_to_bool,
+    convert_str_to_int,
+    COMMENT# ,
+    #resources_dir
+)
 from config import use_imperial
-from parser_utils import COMMENT
+
 
 
 def get_text_for_child(element, child_name):
@@ -226,18 +233,11 @@ class LatexFormatter:
             "\n"
             "\n"
             "% the font for the body of the text\n"
-            # FIXME REMOVExs
-            #"\\setmainfont[SmallCapsFont={Linux Libertine Capitals O}]{Linux Libertine O}\n"
-
-            #"\\setmainfont[Path=./fonts/, Scale=0.95]{Linux Libertine O}\n"
             "\\setmainfont[Scale=0.95]{Linux Libertine O}\n"
-            #"\\setmainfont[Path=./fonts/, Scale=0.95]{LinLibertine_DR.otf}\n"
-            #"\\setmainfont[Path=./fonts/, Scale=0.95]{LinLibertine_Mah}\n"
             "\\setromanfont[\n"
             "  Mapping=tex-text, \n"
             "  Mapping=tex-text, \n"
             "  Ligatures={Common,Rare,Discretionary}\n"
-            #"  ]{LinLibertine_Mah}\n"
             "  ]{Linux Libertine O}\n"
             "\n"
             "% special bullet symbols\n"
@@ -294,7 +294,6 @@ class LatexFormatter:
             " {\\begingroup\\rpgdice\\selectfont{}4\\endgroup}\n"
             "\\newcommand{\\fifthstage}\n"
             " {\\begingroup\\rpgdice\\selectfont{}5\\endgroup}\n"
-            #" {\\begingroup\\rpgdice\\selectfont\\symbol{\"F041}\\endgroup}\n"
             "\n"
             "% marki \n"
             "\\newcommand{\\marko}{\\facircleo\\,\\facircleo\\,\\facircleo}\n"
@@ -316,15 +315,14 @@ class LatexFormatter:
             u"\\newcommand{\\quarter}{¼}\n"
             "\n"
             "\\newcommand{\\bomb}\n"  
-            "  {\\begingroup\\fontawesome\\scriptsize\\selectfont \\symbol{\"F1E2} \\endgroup}\n"
+            "  {\\begingroup\\fontawesome\\scriptsize\\selectfont\\symbol{\"F1E2}\\endgroup}\n"
             "\\newcommand{\\maxdie}{\n"
             "\\begingroup\\fontawesome\\small\\selectfont\\hspace{-0.3em}\\symbol{\"F077}\\hspace{0.08em}\\endgroup}\n"
             "\\newcommand{\\lore}{\n"
             "\\begingroup\\fontawesome\\small\\selectfont\\symbol{\"F02D}\\hspace{0.08em}\\endgroup}\n"
 
             "\\newcommand{\\martial}{\n"
-            "\\begingroup\\symbolfont\\small\\selectfont\\symbol{\"E20D}\\hspace{0.08em}\\endgroup}\n"
-            
+            "\\begingroup\\symbolfont\\small\\selectfont\\symbol{\"E20D}\\hspace{0.08em}\\endgroup}\n"            
             "\\newcommand{\\general}{\n"
             "\\begingroup\\fontawesome\\small\\selectfont\\symbol{\"F0AD}\\hspace{0.08em}\\endgroup}\n"
            "\\newcommand{\\theurgical}{"
@@ -396,6 +394,27 @@ class LatexFormatter:
             "pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt\n"
             "}\n"
             "\n"
+            "\n" # monster block formatting
+            "\\newcommand\\mbsep{\\raisebox{1.2ex}{"
+            "\\includegraphics[width=\\columnwidth,height=0.1cm]{./resources/hrule.png}"
+            "}}\n"
+            "\n"
+            "% \\monster command\n"
+            "\\makeatletter\n"
+            # "\\newcommand\\monster{\\noindent\\@startsection{subsection}{3}"
+            #"{X}"
+            #"{\\z@ }% indent 0pt\n"
+            #"X}"
+            #"{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
+            #"% vertical rubber space after the title\n"
+            #"{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}\n"
+            #"{\\Large\\color{monstertextcolor}%\n"
+            #\fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{LinLibertine_aS.ttf}\scshape}*% heading style modifiers
+            #"}\n"
+            "\\makeatother\n"
+            "\n"
+            "\n"
+            "\n"            
             "% the document! \n"
             "\\begin{document}\n"
             "\n")
@@ -1611,40 +1630,83 @@ class LatexFormatter:
     def end_vspace(self, vspace):
         return
 
-    # def start_explode(self, d4x):
-    #     self.latex_file.write("\\bomb{}")
-    # end_explode = no_op
 
-    # def start_maxdice(self, d12mx):
-    #     self.latex_file.write("\\maxdie{}")
-    #     return
-    # end_maxdice = no_op
 
-    # def start_monster(self, monster):
-    #     return
-    # end_monster = no_op
+    #
+    # Monster blocks.
+    #
 
-    # def start_monstertitle(self, monster):
-    #     return
-    # end_monstertitle = no_op
-
-    # def start_monsterstats(self, monster):
-    #     return
-    # end_monsterstats = no_op
-
-    # def start_monsterdesc(self, monster):
-    #     return
-    # end_monsterdesc = no_op
-
-    # def start_hp(self, monster):
-    #     return
-    # end_hp = no_op
-
-    # def start_ac(self, monster):
-    #     return
-    # end_ac = no_op
-
-    # def start_resolve(self, monster):
-    #     return
-    # end_resolve = no_op
+    start_monsterblock = no_op
+    end_monsterblock = no_op
     
+    def start_mbtitle(self, mbtitle):
+        self.latex_file.write("\\subsection{%s}\n\\mbsep{}" % mbtitle.text)
+        return
+
+    def end_mbtitle(self, mbtitle):
+        return
+    
+    def start_mbtags(self, mbtags):
+        self.latex_file.write("Tags: %s\n" % mbtags.text)
+        return
+    end_mbtags = no_op
+    
+    def start_mbabilities(self, mbabilities):
+        self.latex_file.write("Abilities: %s\n" % mbabilities.text)
+        return
+    end_mbabilities = no_op
+
+    def start_mbaspects(self, mbaspects):
+        self.latex_file.write("Aspects: %s\n" % mbaspects.text)
+        return
+    end_mbaspects = no_op
+
+    def start_mbac(self, mbac):
+        self.latex_file.write("AC: %s, " % mbac.text)
+        return
+    end_mbac = no_op
+
+    def start_mbstamina(self, mbstamina):
+        self.latex_file.write("Stamina: %s, " % mbstamina.text)
+        return
+    end_mbstamina = no_op
+
+    def start_mbhealth(self, mbhealth):
+        self.latex_file.write("Health: %s\n" % mbhealth.text)
+        return
+    end_mbhealth = no_op
+
+    def start_mbstr(self, mbstr):
+        self.latex_file.write("Str: %s, " % mbstr.text)
+        return
+    end_mbstr = no_op
+
+    def start_mbend(self, mbend):
+        self.latex_file.write("End: %s, " % mbend.text)
+        return
+    end_mbend = no_op
+    
+    def start_mbag(self, mbag):
+        self.latex_file.write("Ag: %s, " % mbag.text)
+        return
+    end_mbag = no_op
+    
+    def start_mbspd(self, mbspd):
+        self.latex_file.write("Spd: %s, " % mbspd.text)
+        return
+    end_mbspd = no_op
+    
+    def start_mbluck(self, mbluck):
+        self.latex_file.write("Luck: %s, " % mbluck.text)
+        return
+    end_mbluck = no_op
+    
+    def start_mbwil(self, mbwil):
+        self.latex_file.write("Wil: %s, " % mbwil.text)
+        return
+    end_mbwil = no_op
+    
+    def start_mbper(self, mbper):
+        self.latex_file.write("Per: %s\n" % mbper.text)
+        return
+    end_mbper = no_op    

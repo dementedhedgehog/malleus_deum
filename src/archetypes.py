@@ -2,16 +2,17 @@
 import sys
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
-
-from parser_utils import (
+from utils import (
     parse_xml,
     validate_xml,
     node_to_string,
     COMMENT,
+    convert_str_to_int,
+    normalize_ws,
+    parse_measurement_to_str,
     children_to_string,
     contents_to_string)    
 from abilities import AbilityLevel
-from utils import convert_str_to_int, normalize_ws, parse_measurement_to_str
 
 
 class NonUniqueTagError(Exception):
