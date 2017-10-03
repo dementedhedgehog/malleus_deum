@@ -1617,120 +1617,6 @@ do this the initial check is modified by +2.
 
 
 
-  <chapter>
-    <chaptertitle>Abilities<label>ch:abilities</label></chaptertitle>
-
-    <section>
-      <sectiontitle>Overview</sectiontitle>
-
-      <p>
-        This chapter describes abilities available to characters in the game.
-      </p>     
-
-      <p>
-        <indexentry>Abilities</indexentry> 
-        <indexentry>Skills<see>Abilities</see></indexentry>
-        Each character has a set of <defn>Abilities</defn>.
-        Some abilties allow the player to perform <defn>Actions</defn> or 
-        <defn>Ability Checks</defn> while others provide the player with passive advantages.  
-        Skills may be used in a variety of ways depending on the skill in question.
-      </p>
-      
-      <p>
-        Abilities are tags and like other tags, they may be used by the player 
-        to gain an advantage in an appropriate context.  
-      </p>
-
-      <p>
-        Many abilities have a cost that players must pay in order to acquire the ability.
-        As players increase in level they get more points to purchase additional abilities.
-        Some abilities are innate - they have zero cost and the character is assumed to
-        automatically have the ability at first level.    
-      </p>
-
-      <p>
-        <indexentry>Mastering a Skill</indexentry>
-        <indexentry>Skill<subentry>Mastery</subentry></indexentry>
-        Some skills have prerequisites.  In order to use one skill as a prerequisite for 
-        another the character must first have mastered the skill.  In order to master the skill
-        the player must have used the skill and achieved the appropriate number of successes 
-        and failures using that skill.
-      </p>
-    </section>
-
-    
-    <section>
-      <sectiontitle>Ability Progression</sectiontitle>
-
-      <p>
-        <indexentry>Ability<subentry>Progression</subentry></indexentry> 
-        For a character to increase an ability level they potentially need to satisfy four 
-        conditions: Prerequisites, Training, Mastery and Reflection.  Most abilities will
-        require some or all of these conditions to be met before the ability can be attained.
-      </p>
-
-      <p>
-        <indexentry>Innate Skills<see>Skills Innate</see></indexentry> 
-        <indexentry>Skills<subentry>Innate</subentry></indexentry>
-        Innate skills are considered to be either instinctive or have been learned in the 
-        characters childhood.  Most characters in the game are assumed to have these skills by 
-        default. This includes things like jumping, climbing and speaking a language or two.  
-      </p>
-
-      <subsection>
-        <subsectiontitle>Prerequisites</subsectiontitle>
-        <p>
-          <indexentry>Prerequisites<see>Skills Prerequisites</see></indexentry> 
-          <indexentry>Skills<subentry>Prerequisites</subentry></indexentry> 
-          Some skill levels have prerequisites.  These prerequisites must be met before 
-          the new skill level can be attained.  Prerequisites are generally of two types:
-          minimum primary attribute requirements, e.g. Strength > 13, and other skill 
-          prerequisites, <eg/> Maths I is a prerequisite for Alchemy I.  An ability does 
-          not have to be mastered in order to be used as a prerequisite for another skill.
-          But a character cannot attain the next level of an ability without mastering the
-          current level, <eg/> you must have mastered Maths I before you can gain Maths II,
-          but mastery is not required to satisfy the prerequisite for Alchemy I.
-        </p>
-
-      </subsection>
-
-      <subsection>
-        <subsectiontitle>Training</subsectiontitle>
-
-        <p>
-          <indexentry>Training<see>Skills Training</see></indexentry> 
-          <indexentry>Skills<subentry>Training</subentry></indexentry> 
-          Training represents the time spent studying or practicing a skill and is represented
-          using skill points.  When a character goes up a level they receive skill points.  
-          Those skill points can be used to learn new skills and abilities.  
-        </p>
-      </subsection>
-
-
-      <subsection>
-        <subsectiontitle>Mastery</subsectiontitle>
-        <p>
-          <indexentry>Training<see>Skills Mastery</see></indexentry> 
-          <indexentry>Skills<subentry>Mastery</subentry></indexentry> 
-          In order for a character to attain a higher level of a skill they already have
-          they must first have mastered the existing skill level.  Listed beside the 
-          skill level in their archetype description will be the number of successes
-          <success/>, attempts <attempt/> or failures <fail/> of the ability is required
-          before that skill level is mastered.   During the course of a game the player is
-          required to keep track of the progress of unmastered abilities.
-        </p>
-      </subsection>
-      
-      <subsection>
-        <subsectiontitle>Reflection</subsectiontitle>
-        <p>
-          Finally, the character requires reflection so that they can truly understand 
-          the ability that they have learned.  Characters must wait for a long rest which
-          allows them the time to contemplate what they have learned.
-        </p>
-      </subsection>
-    </section>
-  </chapter>
 
 
   <chapter>
@@ -2504,9 +2390,123 @@ do this the initial check is modified by +2.
   </chapter>
 
 
+
+
   <chapter>
     <chaptertitle>Skills and Abilities</chaptertitle>
     <label>ch:abilities</label>    
+
+    <section>
+      <sectiontitle>Overview</sectiontitle>
+
+      <p>
+        This chapter describes abilities available to characters in the game.
+      </p>     
+
+      <p>
+        <indexentry>Abilities</indexentry> 
+        <indexentry>Skills<see>Abilities</see></indexentry>
+        Each character has a set of <defn>Abilities</defn>.
+        Some abilties allow the player to perform <defn>Actions</defn> or 
+        <defn>Ability Checks</defn> while others provide the player with passive advantages.  
+        Skills may be used in a variety of ways depending on the skill in question.
+      </p>
+      
+      <p>
+        Abilities are tags and like other tags, they may be used by the player 
+        to gain an advantage in an appropriate context.  
+      </p>
+
+      <p>
+        Many abilities have a cost that players must pay in order to acquire the ability.
+        As players increase in level they get more points to purchase additional abilities.
+        Some abilities are innate - they have zero cost and the character is assumed to
+        automatically have the ability at first level.    
+      </p>
+
+      <p>
+        <indexentry>Mastering a Skill</indexentry>
+        <indexentry>Skill<subentry>Mastery</subentry></indexentry>
+        Some skills have prerequisites.  In order to use one skill as a prerequisite for 
+        another the character must first have mastered the skill.  In order to master the skill
+        the player must have used the skill and achieved the appropriate number of successes 
+        and failures using that skill.
+      </p>
+    </section>
+
+    
+    <section>
+      <sectiontitle>Ability Progression</sectiontitle>
+
+      <p>
+        <indexentry>Ability<subentry>Progression</subentry></indexentry> 
+        For a character to increase an ability level they potentially need to satisfy four 
+        conditions: Prerequisites, Training, Mastery and Reflection.  Most abilities will
+        require some or all of these conditions to be met before the ability can be attained.
+      </p>
+
+      <p>
+        <indexentry>Innate Skills<see>Skills Innate</see></indexentry> 
+        <indexentry>Skills<subentry>Innate</subentry></indexentry>
+        Innate skills are considered to be either instinctive or have been learned in the 
+        characters childhood.  Most characters in the game are assumed to have these skills by 
+        default. This includes things like jumping, climbing and speaking a language or two.  
+      </p>
+
+      <subsection>
+        <subsectiontitle>Prerequisites</subsectiontitle>
+        <p>
+          <indexentry>Prerequisites<see>Skills Prerequisites</see></indexentry> 
+          <indexentry>Skills<subentry>Prerequisites</subentry></indexentry> 
+          Some skill levels have prerequisites.  These prerequisites must be met before 
+          the new skill level can be attained.  Prerequisites are generally of two types:
+          minimum primary attribute requirements, e.g. Strength > 13, and other skill 
+          prerequisites, <eg/> Maths I is a prerequisite for Alchemy I.  An ability does 
+          not have to be mastered in order to be used as a prerequisite for another skill.
+          But a character cannot attain the next level of an ability without mastering the
+          current level, <eg/> you must have mastered Maths I before you can gain Maths II,
+          but mastery is not required to satisfy the prerequisite for Alchemy I.
+        </p>
+
+      </subsection>
+
+      <subsection>
+        <subsectiontitle>Training</subsectiontitle>
+
+        <p>
+          <indexentry>Training<see>Skills Training</see></indexentry> 
+          <indexentry>Skills<subentry>Training</subentry></indexentry> 
+          Training represents the time spent studying or practicing a skill and is represented
+          using skill points.  When a character goes up a level they receive skill points.  
+          Those skill points can be used to learn new skills and abilities.  
+        </p>
+      </subsection>
+
+
+      <subsection>
+        <subsectiontitle>Mastery</subsectiontitle>
+        <p>
+          <indexentry>Training<see>Skills Mastery</see></indexentry> 
+          <indexentry>Skills<subentry>Mastery</subentry></indexentry> 
+          In order for a character to attain a higher level of a skill they already have
+          they must first have mastered the existing skill level.  Listed beside the 
+          skill level in their archetype description will be the number of successes
+          <success/>, attempts <attempt/> or failures <fail/> of the ability is required
+          before that skill level is mastered.   During the course of a game the player is
+          required to keep track of the progress of unmastered abilities.
+        </p>
+      </subsection>
+      
+      <subsection>
+        <subsectiontitle>Reflection</subsectiontitle>
+        <p>
+          Finally, the character requires reflection so that they can truly understand 
+          the ability that they have learned.  Characters must wait for a long rest which
+          allows them the time to contemplate what they have learned.
+        </p>
+      </subsection>
+    </section>
+
     {% for ability_group in ability_groups %}
     <section>
       <sectiontitle>{{ ability_group.get_title() }}</sectiontitle>
