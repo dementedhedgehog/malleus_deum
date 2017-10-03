@@ -20,12 +20,50 @@
   -->
 
   <chapter>
+    <section>
+      <sectiontitle>Introduction</sectiontitle>
+
+      <p>
+	This chapter contains information about the various monsters and
+	NPCs the characters might encounter.
+      </p>
+      
+    </section>
+      
 
     {% for monster_group in monster_groups %}
     <section>
     <sectiontitle>{{ monster_group.get_title() }}</sectiontitle>
-    </section>
 
+    <p>
+    {{ monster_group.get_description() }}
+    
+    {{ monster_group.__class__.__name__ }}
+    </p>
+
+    {% for monster in monster_group %}
+    <monsterblock>
+      <mbtitle>{{ monster.get_title() }}</mbtitle>
+      <mbtags>{{ monster.get_tags_str() }}</mbtags>
+      <mbac>{{ monster.get_ac() }}</mbac>
+      <mbstamina>{{ monster.get_stamina() }}</mbstamina>
+      <mbhealth>{{ monster.get_health() }}</mbhealth>
+      <mbstr>9</mbstr>
+      <mbend>10</mbend>
+      <mbag>11</mbag>
+      <mbspd>12</mbspd>
+      <mbluck>9</mbluck>
+      <mbwil>8</mbwil>
+      <mbper>10</mbper>
+      <mbabilities>{{ monster.get_abilities_str() }}</mbabilities>
+      <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
+    </monsterblock>    
     {% endfor %}      
+    
+    
+    </section>   
+    {% endfor %}
+
+    
   </chapter>
 </book>
