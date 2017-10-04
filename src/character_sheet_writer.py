@@ -48,7 +48,7 @@ trailer
 %%EOF
 """
 
-"""
+fdf = """
 %FDF-1.2
 %âãÏÓ
 1 0 obj 
@@ -65,6 +65,14 @@ trailer
 /T (AbilityClass0)
 >> 
 <<
+/V (e)
+/T (AbilityEffect0)
+>> 
+<<
+/V (t)
+/T (AbilityEffectType0)
+>> 
+<<
 /V (Z)
 /T (AbilityName0)
 >>]
@@ -79,7 +87,44 @@ trailer
 %%EOF
 """
 
+fdf = """
+%FDF-1.2
+%<E2><E3><CF><D3>
+1 0 obj 
+<<
+/FDF 
+<<
+/Fields [
+<<
+/V (a)
+/T (AbilityCheck0)
+>> 
+<<
+/V (a)
+/T (AbilityClass0)
+>> 
+<<
+/V (a)
+/T (AbilityName0)
+>> 
+<<
+/V (a)
+/T (AbilityEffectType0)
+>> 
+<<
+/V (a)
+/T (AbilityEffect0)
+>>]
+>>
+>>
+endobj 
+trailer
 
+<<
+/Root 1 0 R
+>>
+%%EOF
+"""
 
 character_sheets_dir = join(resources_dir, "character_sheets")
 
