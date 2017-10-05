@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from os.path import join
+from os.path import join, splitext
 import config
 from utils import (
     normalize_ws,
@@ -100,6 +100,7 @@ class LatexFormatter:
             "\\usepackage[table]{xcolor}     % for tables with colour\n"
             "\\usepackage{booktabs}          % for tables\n"
             "\\usepackage{calc}              % for table width calculations\n"
+            #"\\usepackage{svg}               % for svg images\n"
             #"\\usepackage{wasysym}           % for checked box\n"
             "\\usepackage{xcolor}            % for color aliases\n"            
             "\\usepackage{wallpaper}         % for the paper background\n"            
@@ -1048,9 +1049,18 @@ class LatexFormatter:
         if config.draw_imgs:
             if config.debug_outline_images:
                 self.latex_file.write("\\fbox{")
+
             self.latex_file.write("\t\\begin{center}\n")
+
+            filename = img.get("src")
+            #_, ext = splitext(filename)
+            #if ext.lower() == ".svg":            
+            #    self.latex_file.write("\t\\includesvg{%s}\n"
+            #                          % (#img.get("scale", default="1.0", ),
+            #                              filename))
+            #else:
             self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
-                                  % (img.get("scale", default="1.0"), img.get("src")))
+                                  % (img.get("scale", default="1.0"), filename))
         return
 
     def end_img(self, img):
