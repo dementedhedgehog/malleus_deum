@@ -37,84 +37,91 @@ tick = u""
 cross = u""
 question_mark = u""
 
-fdf = """\
-%FDF-1.2
-1 0 obj<</FDF<< /Fields[
-<< /T(AbilityName0) /V(sfdg) 
-] >> >>
-endobj
-trailer
-<</Root 1 0 R>>
-%%EOF
-"""
+# fdf = """\
+# %FDF-1.2
+# 1 0 obj<</FDF<< /Fields[
+# << /T(AbilityName0) /V(sfdg) 
+# ] >> >>
+# endobj
+# trailer
+# <</Root 1 0 R>>
+# %%EOF
+# """
 
-fdf = """
-%FDF-1.2
-%âãÏÓ
-1 0 obj 
-<<
-/FDF 
-<<
-/Fields [
-<<
-/V (X)
-/T (AbilityCheck0)
->> 
-<<
-/V (a)
-/T (AbilityClass0)
->> 
-<<
-/V (e)
-/T (AbilityEffect0)
->> 
-<<
-/V (t)
-/T (AbilityEffectType0)
->> 
-<<
-/V (Z)
-/T (AbilityName0)
->>]
->>
->>
-endobj 
-trailer
+# fdf = """
+# %FDF-1.2
+# %âãÏÓ
+# 1 0 obj 
+# <<
+# /FDF 
+# <<
+# /Fields [
+# <<
+# /V (X)
+# /T (AbilityCheck0)
+# >> 
+# <<
+# /V (a)
+# /T (AbilityClass0)
+# >> 
+# <<
+# /V (e)
+# /T (AbilityEffect0)
+# >> 
+# <<
+# /V (t)
+# /T (AbilityEffectType0)
+# >> 
+# <<
+# /V (Z)
+# /T (AbilityName0)
+# >>]
+# >>
+# >>
+# endobj 
+# trailer
 
-<<
-/Root 1 0 R
->>
-%%EOF
-"""
+# <<
+# /Root 1 0 R
+# >>
+# %%EOF
+# """
 
-fdf = """
+
+fdf_header = """
 %FDF-1.2
 %<E2><E3><CF><D3>
 1 0 obj 
 <<
 /FDF 
+"""
+
+fdf_body = """
 <<
 /Fields [
 <<
-/V (a)
-/T (AbilityCheck0)
+/V ({ability_check})
+/T (AbilityCheck{ability_number})
 >> 
 <<
-/V (a)
-/T (AbilityClass0)
+/V ({ability_class})
+/T (AbilityClass{ability_number})
 >> 
 <<
-/V (a)
-/T (AbilityName0)
+/V ({ability_name})
+/T (AbilityName{ability_number})
 >> 
 <<
-/V (a)
-/T (AbilityEffectType0)
+/V ({ability_effect_number})
+/T (AbilityEffectType{ability_number})
 >> 
 <<
-/V (a)
-/T (AbilityEffect0)
->>]
+/V ({ability_effect})
+/T (AbilityEffect{ability_number})
+>>
+"""
+
+fdf_footer = """]
 >>
 >>
 endobj 
@@ -176,9 +183,12 @@ def pdftk(pdf_in, fdf_in, pdf_out):
     return
 
 
-def create_fdf(fdf_name, ability):
+def create_fdf(fdf_name, abilities):
     with file(fdf_name, "wb") as f:
-        f.write(fdf)
+        f.write(fdf_header)
+        for ability in abilities:
+            f.write(fdf_body.format(**ability.__dict__()))
+        f.write(fdf_footer)
     return
 
 
@@ -194,7 +204,7 @@ if __name__ == "__main__":
 
     #print fdf_name
     
-    #create_fdf(fdf_name, None)
+    create_fdf(fdf_name, None)
     pdftk(pdf_in, fdf_name, pdf_out)
 
     #pdftk = find_pdftk()
