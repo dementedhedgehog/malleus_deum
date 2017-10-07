@@ -88,17 +88,16 @@ question_mark = u""
 # """
 
 
-fdf_header = """
+fdf_header = u"""\
 %FDF-1.2
 %<E2><E3><CF><D3>
 1 0 obj 
 <<
-/FDF 
-"""
+/FDF
+<<
+/Fields ["""
 
 fdf_body = """
-<<
-/Fields [
 <<
 /V ({ability_check})
 /T (AbilityCheck{ability_number})
@@ -112,14 +111,17 @@ fdf_body = """
 /T (AbilityName{ability_number})
 >> 
 <<
-/V ({ability_effect_number})
+/V ({ability_effect_type})
 /T (AbilityEffectType{ability_number})
 >> 
 <<
 /V ({ability_effect})
 /T (AbilityEffect{ability_number})
 >>
-"""
+<<
+/V ({ability_mastery})
+/T (AbilityMastery{ability_number})
+>>"""
 
 fdf_footer = """]
 >>
@@ -186,8 +188,18 @@ def pdftk(pdf_in, fdf_in, pdf_out):
 def create_fdf(fdf_name, abilities):
     with file(fdf_name, "wb") as f:
         f.write(fdf_header)
-        for ability in abilities:
-            f.write(fdf_body.format(**ability.__dict__()))
+
+        #ability = abilities[0]
+        
+        for i in range(24):
+            #if i < abilities:
+            f.write(fdf_body.format(ability_number=i,
+                                    ability_check="x%s" % i,
+                                    ability_class="a",
+                                    ability_name="frog",
+                                    ability_effect_type="a",
+                                    ability_effect="x",
+                                    ability_mastery="xx"))
         f.write(fdf_footer)
     return
 
