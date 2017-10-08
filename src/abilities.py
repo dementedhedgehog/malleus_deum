@@ -529,7 +529,7 @@ class AbilityClass:
         if ability_class is not None:
             ability_class = ability_class.strip()
 
-        if ability_class == "none":            
+        if ability_class == "None":            
             symbol_str = "NONE!"
             raise Exception("X")
         elif ability_class == AbilityClass.AMBUSH:
@@ -569,37 +569,41 @@ class AbilityClass:
     @staticmethod
     def load(ability_class):
         ability_cls = AbilityClass.NONE
+
+        print ability_class
         
         if ability_class is not None:
-            ability_class = ability_class.lower().strip()
+            #ability_class = ability_class.lower().strip()
+            ability_class = ability_class.strip()
 
-        if ability_class == "none":
+        if ability_class == "None":
             ability_cls = AbilityClass.NONE
-        elif ability_class == "surprise":
+        elif ability_class == "Surprise":
             ability_cls = AbilityClass.SURPRISE
-        elif ability_class == "initiative":
+        elif ability_class == "Initiative":
             ability_cls = AbilityClass.INITIATIVE
-        elif ability_class == "fight-reach":
+        elif ability_class == "Fight-Reach":
             ability_cls = AbilityClass.FIGHT_REACH
         elif ability_class == "resolution":
             ability_cls = AbilityClass.RESOLUTION
-        elif ability_class == "reaction":
+        elif ability_class == "Reaction":
             ability_cls = AbilityClass.REACTION
-        elif ability_class == "start":
+        elif ability_class == "Start":
             ability_cls = AbilityClass.START
-        elif ability_class == "fast":
+        elif ability_class == "Fast":
             ability_cls = AbilityClass.FAST
-        elif ability_class == "medium":
+        elif ability_class == "Medium":
             ability_cls = AbilityClass.MEDIUM
-        elif ability_class == "slow":
+        elif ability_class == "Slow":
             ability_cls = AbilityClass.SLOW
-        elif ability_class == "mediumorslow":
+        elif ability_class == "MediumOrSlow":
             ability_cls = AbilityClass.START_AND_REACTION
-        elif ability_class == "startandreaction":
+        elif ability_class == "StartAndReaction":
             ability_cls = AbilityClass.FAST
-        elif ability_class == "non-combat":
+        elif ability_class == "Non-Combat":
             ability_cls = AbilityClass.NON_COMBAT
         else:
+            #raise Exception("Unknown ability class: %s" % ability_class)
             ability_cls = AbilityClass.NONE
         return ability_cls
 
@@ -628,6 +632,9 @@ class Ability:
 
     def get_ability_class_symbol(self):
         return AbilityClass.get_symbol(self.ability_class)
+    
+    def get_ability_class(self):
+        return self.ability_class
 
     def get_description(self):
         return self.description
@@ -647,9 +654,8 @@ class Ability:
 
     def get_ability_class(self):
         if self.ability_class is None:
-            return "missing"
-
-        return self.ability_class.lower()            
+            raise Exception("Missing ability class!")
+        return self.ability_class
 
     def has_prerequisites(self):
         has_prereqs = False
@@ -716,6 +722,8 @@ class Ability:
                self.tags.append(child.text)
 
            elif tag == "abilityclass":
+               if child.text == "fast":
+                   raise Exception("XXX")
                self.ability_class = AbilityClass.load(child.text)
                if self.ability_class == AbilityClass.NONE:
                    raise Exception("Unknown ability class: (%s) %s in %s\n" %
