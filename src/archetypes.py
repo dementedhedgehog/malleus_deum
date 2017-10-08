@@ -56,6 +56,12 @@ class ModifiedAbilityLevel:
         self.attempts_modifier = 0
         return
 
+    def get_effect(self):
+        return self.ability_level.get_effect()
+    
+    def get_ability_class(self):
+        return self.modified_ability.get_ability_class()
+    
     def get_family(self):
         return self.modified_ability_group.get_family()
 
@@ -80,6 +86,22 @@ class ModifiedAbilityLevel:
 
     def is_enabled(self):
         return self.enabled
+
+    def should_appear_in_archetype_list(self):
+        """
+        An ability level should only appear in an archetypes purchase list if it's
+        enabled and it's level is >= the lowest innate level.
+
+        """
+        should_appear = True
+        if not self.is_enabled():
+            should_appear = False
+        else:            
+            innate_level = self.modified_ability.get_highest_innate_level()
+            if innate_level is not None:
+                should_appear = innate_level.get_level_number() <= self.get_level_number()
+        
+        return should_appear
 
     def get_martial_points(self):
         if self.ability_level.is_innate() or self.get_level_number() == 0:
@@ -286,6 +308,9 @@ class ModifiedAbility:
         # if an ability is enabled or disabled it overrides the group setting
         self.enabled = True
         return
+
+    def get_ability_class(self):
+        return self.ability.get_ability_class()
 
     def get_highest_innate_level(self):
         """
@@ -601,7 +626,6 @@ class LevelProgressionData:
                if self.level_resolve is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   #self.level_resolve = normalize_ws(child.text.strip())
                    self.level_resolve = contents_to_string(child)
                    
 
@@ -609,7 +633,6 @@ class LevelProgressionData:
                if self.level_resolve_refresh is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   #self.level_resolve_refresh = normalize_ws(child.text.strip())
                    self.level_resolve_refresh = contents_to_string(child)
 
            elif tag == "levelstamina":
@@ -672,22 +695,17 @@ class LevelProgressionData:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
                    self.level_magic_pool = contents_to_string(child)
-                   #if child.text is not None:
-                   #    self.magic_pool = child.text.strip()
                        
            elif tag == "levelmagicrefresh":
                if self.level_magic_refresh is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   #if child.text is not None:
-                       #self.magic_refresh = child.text.strip()
                    self.level_magic_refresh = contents_to_string(child)
 
            elif tag == "levelfate":
                if self.level_fate is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   #self.level_fate = normalize_ws(child.text.strip())
                    self.level_fate = contents_to_string(child)
 
            elif tag == "levelfaterefresh":
@@ -695,7 +713,6 @@ class LevelProgressionData:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
                    self.level_fate_refresh = contents_to_string(child)
-                   #self.level_fate_refresh = normalize_ws(child.text.strip())
                        
            elif tag is COMMENT:
                # ignore comments!
@@ -790,23 +807,21 @@ class AttrBonus(object):
     def parse(self, fname, bonus_element):
         for child in list(bonus_element):
            tag = child.tag
-
            if tag == "attr":
-               #self.attribute = node_to_string(child)
-               self.attribute = children_to_string(child)
+               self.attribute = contents_to_string(child)
+               print self.attribute
 
            elif tag == "value":
                try:
-                   self.bonus = convert_str_to_int(node_to_string(child))
+                   self.bonus = convert_str_to_int(contents_to_string(child))
                except ValueError as err:
                    ValueError("%s (%s) File: %s Line: %s\n" % 
-                             (str(err), child.tag, fname, child.sourceline))                   
+                             (str(err), child.tag, fname, child.sourceline))
                
-
            elif tag is COMMENT:
                # ignore comments!
                pass
-
+        
            else:
                raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
                                (child.tag, fname, child.sourceline))
@@ -847,12 +862,11 @@ class AttrLimit:
            tag = child.tag
 
            if tag == "attr":
-               #self.attribute = node_to_string(child)
-               self.attribute = children_to_string(child)
+               self.attribute = contents_to_string(child)
 
            elif tag == "value":
                try:
-                   self.limit = convert_str_to_int(node_to_string(child))
+                   self.limit = convert_str_to_int(contents_to_string(child))
                except ValueError as err:
                    ValueError("%s (%s) File: %s Line: %s\n" % 
                              (str(err), child.tag, fname, child.sourceline))                   
@@ -924,6 +938,20 @@ class Archetype:
         self.level_progression_table = LevelProgressionTable(self.fname)        
         return
 
+    def get_attribute_limits_str(self):
+        if len(self.attr_limits) == 0:
+            attr_limits_str = "None"
+        else:
+            attr_limits_str = ", ".join([str(limit) for limit in self.attr_limits])
+        return attr_limits_str
+
+    def get_attribute_bonus_str(self):
+        if len(self.attr_bonuses) == 0:
+            attr_bonus_str = "None"
+        else:
+            attr_bonus_str = ", ".join([str(bonus) for bonus in self.attr_bonuses])
+        return attr_bonus_str
+    
 
     def get_modified_abilities(self):
         abilities = self.modified_abilities_lookup.values()
@@ -1110,8 +1138,6 @@ class Archetype:
                if self.description is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   #self.description = child_to_string_recursive(child)
-                   #self.description = node_to_string(child)
                    self.description = children_to_string(child)
 
            elif tag == "archetypeinitiative":
@@ -1514,7 +1540,6 @@ class Archetypes:
             archetypes_in_file.append(archetype)
 
         return archetypes_in_file
-
 
     def load(self, ability_groups, archetypes_dir, fail_fast):
         """
