@@ -22,7 +22,7 @@
 
     <p>
       Trained by a range of tutors in an array of fields from a young age, an Elven
-      Scion is a diplomant, poet, champion, and spy.  When abroad theyt are expected
+      Scion is a diplomant, poet, champion, and spy.  When abroad they are expected
       to act as the eyes and ears of the elvish courts, and as agents that project
       Elvish power in the world and act in the best interests of the Elvish Courts.
     </p>
@@ -37,6 +37,16 @@
   <archetypeac>7</archetypeac>
   <archetypemove>6</archetypemove>
   <archetypeinitiative>12</archetypeinitiative>
+  
+  <attrmax><attr>Strength</attr><value>14</value></attrmax>
+  <attrmin><attr>Speed</attr><value>10</value></attrmin>
+  <attrmin><attr>Agility</attr><value>9</value></attrmin>
+  <attrbonus><attr>Speed</attr><value>1</value></attrbonus>
+  <attrbonus><attr>Agility</attr><value>1</value></attrbonus>
+  <attrbonus><attr>Perception</attr><value>1</value></attrbonus>
+  <attrbonus><attr>Strength</attr><value>-2</value></attrbonus>
+  <attrbonus><attr>Endurance</attr><value>-1</value></attrbonus>  
+  
   <startingcash>40 + 2d4 gp</startingcash>
   <startinggear>Chain mail, long sword, dagger, rations for a week.</startinggear>
 
@@ -236,6 +246,7 @@
 
     <disable>
       <abilityid>magic.turn_undead</abilityid>
+      <abilityid>magic.augury</abilityid>
     </disable>
 
     <abilitymodifier>
