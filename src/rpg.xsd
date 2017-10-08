@@ -558,7 +558,7 @@
         <xs:element name="playexample" type="playexampleType" />
         <xs:element name="olist" type="orderedListType"/>
         <xs:element name="subsubsection" type="subsubsectionType" />
-        <xs:element name="threecolumns" type="subsectionType"/>    
+        <xs:element name="fourcolumns" type="subsectionType"/>    
         <xs:element name="indexentry" type="indexentryType"/>
         <xs:element name="levelprogressiontable" type="levelprogressiontableType"/>
         <xs:element name="descriptions" type="descriptionsType"/>
@@ -619,7 +619,7 @@
         <xs:element name="include" type="includeType" />
         <xs:element name="olist" type="orderedListType"/>
         <xs:element name="descriptions" type="descriptionsType"/>
-        <xs:element name="threecolumns" type="sectionType"/>    
+        <xs:element name="fourcolumns" type="sectionType"/>    
         <xs:element name="list" type="itemizedListType"/>
         <xs:element name="img" type="imgType"/> 
         <xs:element name="table" type="tableType"/>
@@ -1320,7 +1320,7 @@ labels and references.
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="threecolumnsType">
+  <xs:complexType name="fourcolumnsType">
     <xs:sequence>
     </xs:sequence>
   </xs:complexType>
@@ -1519,7 +1519,8 @@ tags
       <xs:element name="monstergrouptitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="monstergroupid" type="monstergroupidType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="monstergroupdescription" 
-                  type="descriptionType" minOccurs="1" maxOccurs="1"/>
+                  type="subsectionType" minOccurs="1" maxOccurs="1"/>
+
     </xs:sequence>
   </xs:complexType>
 
