@@ -35,11 +35,7 @@
     <section>
     <sectiontitle>{{ monster_group.get_title() }}</sectiontitle>
 
-    <p>
-    {{ monster_group.get_description() }}
-    
-    {{ monster_group.__class__.__name__ }}
-    </p>
+    {{ monster_group.get_description() }}    
 
     {% for monster in monster_group %}
     <monsterblock>
