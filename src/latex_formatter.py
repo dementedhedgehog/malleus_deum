@@ -110,7 +110,7 @@ class LatexFormatter:
             "\\usepackage{xtab}              % for multipage tables\n"
             "\\usepackage{rotating}          % for sidewaystable\n"
             "\\usepackage{parskip}           % non indented paragraphs\n"
-            "\\usepackage{multicol}          % used for three column mode.\n"
+            "\\usepackage{multicol}          % used for four column mode.\n"
             "\n"
             "% include subsubsections in the table of contents\n"
             "\\setcounter{tocdepth}{3}\n"
@@ -118,17 +118,15 @@ class LatexFormatter:
             "% fonts\n"
             "\\newfontfamily{\\cloisterblack}[Path=fonts/]{Cloister Black}\n"
             "\\newfontfamily{\\carolingia}[Path=fonts/]{Carolingia}\n"
+            "\\newfontfamily{\\rpgdice}[Path=fonts/]{RPGDice}\n"
             "% fonts\n"
             "\\newfontfamily{\\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}\n"
             "\\newfontfamily{\\rpgchapterfont}[Path=fonts/, Scale=1.0]{Cloister Black}\n"
             "\\newfontfamily{\\rpgtitlesubtitlefont}[Path=fonts/]{Cloister Black}\n" 
             "\\newfontfamily{\\rpgtitleauthorfont}[Path=fonts/]{Dogma}\n"
             "\\newfontfamily{\\rpgdropcapfont}[Path=fonts/, Scale=1.2]{Cloister Black}\n"
-            "\\newfontfamily{\\rpgdice}[Path=fonts/]{RPGDice}\n"
             "\n"            
             "\\newcommand{\\rpgsectionfont}{\cloisterblack}\n"
-            "\\newcommand{\\rpgtableheaderfont}{\cloisterblack}\n"
-            "\\newcommand{\\mbtagfont}{\cloisterblack}\n"
             "\n"            
             "% colours \n"
             "\\definecolor{maroon}{RGB}{128,0,0}\n"
@@ -157,9 +155,11 @@ class LatexFormatter:
             "\n"
             "\\newcommand{\\rpgtableheader}{\\bfseries\\selectfont}{}\n"
             "\n"
-            "\\newcommand{\\rpgtablesection}%"
-            "  {\\rule{0pt}{3ex}\\rpgtableheaderfont\\bfseries}{}\n"
+            "\\newcommand\\rpgtablesection[1]{"
+            "\\rule{0pt}{1ex}\\bfseries\\scriptsize #1}\n"
             "\n"
+            "\n"
+            "% symbols\n"
             "\\newcommand{\\reactionsymbol}\n"
             "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}R\\endgroup}"
             "  {reaction}}\n"
@@ -227,21 +227,26 @@ class LatexFormatter:
             "\n"
             "% special bullet symbol\n"
             "\\newcommand{\\rpgbullet}\n"
-            "{\\begingroup\\rpgdice\\large\\selectfont{}*\\endgroup}\n" 	
-            ""
-            "\\newcommand{\\fatick}\n"  
+            "{\\begingroup\\rpgdice\\large\\selectfont{}*\\endgroup}\n"
+            "\\renewcommand{\\labelitemi}{\\rpgbullet}\n"            
+            "\n"
+            "% success/fail/attempt symbols\n"
+            "\\newcommand{\\rpgsuccess}\n"  
             " {\\begingroup\\rpgdice\\selectfont{}y\\endgroup}\n"
-            "\\newcommand{\\facross}\n"  
+            "\\newcommand{\\rpgfail}\n"  
             " {\\begingroup\\rpgdice\\selectfont{}x\\endgroup}\n"
-            "\\newcommand{\\faquestion}\n"  
-            " {\\begingroup\\rpgdice\\selectfont{}?\\endgroup}\n"
-            "\\newcommand{\\fastar}\n"  
-            " {\\begingroup\\rpgdice\\selectfont\\symbol{\"201C}\\endgroup}\n"
-            "\\newcommand{\\fastaro}\n"   
-            " {\\begingroup\\rpgdice\\selectfont\\symbol{\"201D}\\endgroup}\n"
-            "\\newcommand{\\faexclamation}\n"
+            "\\newcommand{\\rpgattempt}\n"
+            " {\\begingroup\\rpgdice\\selectfont{}?\\endgroup}\n"            
+            "\n"
+            "% achetype ability mark up symbols (star, empty-star and exclamation)\n"
+            "\\newcommand{\\rpginnatearchetypeabilitysymbol}"  
+            " {\\begingroup\\rpgdice\\selectfont\\symbol{\"201C}\\endgroup}\n"            
+            "\\newcommand{\\rpginnateabilitysymbol}"   
+            " {\\begingroup\\rpgdice\\selectfont\\symbol{\"201D}\\endgroup}\n"            
+            "\\newcommand{\\rpgrecommendedabilitylevelsymbol}"
             " {\\begingroup\\rpgdice\\selectfont{}!\\endgroup}\n"
             "\n"
+            "% dice pool notation\n"            
             "\\newcommand{\\dfour}\n" 
             " {\\begingroup\\rpgdice\\selectfont{}A\\endgroup}\n"
             "\\newcommand{\\dsix}\n"
@@ -270,19 +275,12 @@ class LatexFormatter:
             " {\\begingroup\\rpgdice\\selectfont{}5\\endgroup}\n"
             "\n"
             "\n"
-            "\\newcommand{\\rpginnateabilitysymbol}{\\fastaro}\n"
-            "\\newcommand{\\rpginnatearchetypeabilitysymbol}{\\fastar}\n"
-            "\\newcommand{\\rpgrecommendedabilitylevelsymbol}{\\faexclamation}\n"
-            "\n"
-            "\n"
-            "% half symbol \n"
+            "% fraction symbols\n"
             u"\\newcommand{\\half}{½}\n"
-            "% third symbol \n"
             u"\\newcommand{\\third}{⅓}\n"
-            "% quarter symbol \n"
             u"\\newcommand{\\quarter}{¼}\n"
-
             "\n"
+            "% skill point symbols\n"
             "\\newcommand{\\lore}{%\n"
             "\\begingroup\\rpgdice\\selectfont{}l\\endgroup}\n"
             "\\newcommand{\\martial}{%\n"
@@ -292,40 +290,14 @@ class LatexFormatter:
             "\\newcommand{\\magical}{%\n"
             "\\begingroup\\rpgdice\\selectfont{}z\endgroup}\n"
             "\n"
-            "\\renewcommand{\\labelitemi}{\\rpgbullet}\n"
             "\n"
             "\n"
             "% special provenance symbol\n"
-            # "\\newcommand{\\rpgprovenancesymbol}\n"
-            # "{\n"
-            # "   \\begingroup\n"
-            # "   \\fontspec{WWDesigns}\n"
-            # "   \\Large\n"
-            # "   \\selectfont\n"
-            # "   \\char\"0041"
-            # "   \\endgroup\n"
-            # "}\n"
-            "\n"
             "\\newcommand{\\rpgprovenancesymbol}\n"
             "{\\begingroup\\fontspec{rpgdice}\\Large\\selectfont{}>\\endgroup}\n"
             "\n"
             "\\newcommand{\\flourish}{\n"
             "}\n"
-            "\n"
-            "% combat symbol - a sword\n"
-            "\\newcommand{\\rpgcombatsymbol}{$\\dagger$}\n"
-            "\n"
-            "% training symbol\n"
-            "\\newcommand{\\rpgtrainingsymbol}{$\\otimes$}\n"
-            "\n"
-            "% learning symbols\n"
-            "\\newcommand{\\rpglearningsymbol}{$\Psi$}\n"            
-            "\n"
-            "% success/fail/attempt symbols\n"
-            "\\newcommand{\\rpgsuccess}{\\fatick}\n"
-            "\\newcommand{\\rpgfail}{\\facross}\n"            
-            "\\newcommand{\\rpgattempt}{\\faquestion}\n"
-            "\n"
             "\n"
             "\n"
             "% the index \n"
@@ -368,7 +340,8 @@ class LatexFormatter:
             #"  \fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{sherwood.ttf}%
             #\large\color{monstertextcolor}#1}
             #"\n"            
-            "\\newcommand\\mbtagformat[1]{\\begingroup\\mbtagfont\\normalsize#1\\endgroup}\n"
+            "\\newcommand\\mbtagformat[1]{"
+            "\\begingroup\\cloisterblack\\normalsize#1\\endgroup}\n"
             "\n"            
             "% \\monster command\n"
             "\\makeatletter\n"
@@ -397,6 +370,13 @@ class LatexFormatter:
             #"}\n"
             "\\makeatother\n"
             "\n"
+            "\n"
+            "% Archetype table formatting\n"
+            "\\newcommand\\achetypenameformat[1]{\\begingroup\\scriptsize#1\\endgroup}\n"
+            "\n"
+            "\n"
+            "\n"
+            "\n"            
             "\n"
             "\n"            
             "% the document! \n"
@@ -459,16 +439,6 @@ class LatexFormatter:
         return
     end_fightreach = no_op    
 
-    # def start_fight(self, symbol):
-    #     self.latex_file.write("\\fightsymbol{}")
-    #     return
-    # end_fight = no_op
-    
-    # def start_fightfast(self, symbol):
-    #     self.latex_file.write("\\fightfastsymbol{}")
-    #     return
-    # end_fightfast = no_op
-
     def start_start(self, symbol):
         self.latex_file.write("\\startsymbol{}")
         return
@@ -499,11 +469,6 @@ class LatexFormatter:
         return
     end_slow = no_op
     
-    # def start_run(self, symbol):
-    #     self.latex_file.write("\\runsymbol{}")
-    #     return
-    # end_run = no_op
-
     def start_noncombat(self, symbol):
         self.latex_file.write("\\noncombatsymbol{}")
         return
@@ -545,9 +510,6 @@ class LatexFormatter:
                        "surprisesymbol",
                        "initiativesymbol",
                        "talksymbol",
-                       #"runsymbol",
-                       #"actsymbol",
-                       #"fightrangedsymbol",
                        "fightreachsymbol",
                        "startsymbol",
                        "fastsymbol",
@@ -555,8 +517,6 @@ class LatexFormatter:
                        "slowsymbol",
                        "mediumorslowsymbol",
                        "startandreactionsymbol",
-                       #"fightfastsymbol",
-                       #"fightsymbol",
                        "resolutionsymbol",
                        "reactionsymbol",
                        "noncombatsymbol"):
@@ -565,9 +525,7 @@ class LatexFormatter:
                 tex += " \\%s{}" % symbol
             #else:
             #    raise Exception("UNKNOWN SYMBOL: %s" % symbol)
-        return tex
-        
-        
+        return tex               
     
     def start_subsubsection(self, subsubsection):
         tex = ""
@@ -1342,7 +1300,7 @@ class LatexFormatter:
     end_tablelabel = no_op
 
     def start_tablesection(self, tablesection):
-        self.latex_file.write("\\rpgtablesection{%s}\n" % tablesection.text.strip())
+        self.latex_file.write("\\rpgtablesection{%s}" % tablesection.text.strip())
         return
     end_tablesection = no_op
 
@@ -1366,14 +1324,10 @@ class LatexFormatter:
 
         elif (self._current_row_in_table + 1) % 2 == 1:                
             self.latex_file.write("\\rowcolor{blue!20} \n")
-        else:
-            #self.latex_file.write("\\rowcolor{yellow!50} \n")
-            pass
         return
 
     def end_tablerow(self, table_title):
         self.latex_file.write(" \\tabularnewline ")
-        #self.latex_file.write("\\caption{%s}\n" % table_title.text)
         return
 
     start_tableheaderrow = start_tablerow
@@ -1531,11 +1485,11 @@ class LatexFormatter:
     end_label = no_op
 
 
-    def start_threecolumns(self, threecolumns):
-        self.latex_file.write("\\onecolumn\\begin{multicols}{3}\n")
+    def start_fourcolumns(self, threecolumns):
+        self.latex_file.write("\\onecolumn\\begin{multicols}{4}\n")
         return
     
-    def end_threecolumns(self, ability_group):
+    def end_fourcolumns(self, ability_group):
         self.latex_file.write("\\end{multicols}\\twocolumn\n")
         return
 
