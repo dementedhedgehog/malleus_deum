@@ -501,8 +501,8 @@ class Monster:
         self.title = None
         self.monster_id = None
         self.description = None
-        self.tags = ["Human", ] # FIXME:
-        self.aspects = ["floof", "foof"] # FIXME:
+        self.tags = [] 
+        self.aspects = [] 
         self.monster_class = MonsterClass.NONE
         self.ac = 7 # FIXME
         self.health = 8 # FIXME
@@ -558,7 +558,8 @@ class Monster:
 
 
     def get_tags_str(self):
-        return ", ".join(self.tags)
+        print "TAGS STR" + "" if len(self.tags) == 0 else ", ".join(self.tags)
+        return "" if len(self.tags) == 0 else ", ".join(self.tags)
 
     def get_aspects_str(self):
         return ", ".join(self.aspects)
@@ -576,11 +577,13 @@ class Monster:
         return "%s:%s" % (self.fname, lxml_element.sourceline)
 
 
-    def _load(self, monster_element):        
-        # handle all the children
-        for child in list(monster_element):
+    def _load(self, monster_element):
+        print "---------------------____"
         
+        # handle all the children
+        for child in list(monster_element):              
            tag = child.tag
+           print tag
            if tag == "monstertitle":
                if self.title is not None:
                    raise Exception("Only one monstertitle per monster. (%s) %s\n" %
@@ -607,21 +610,19 @@ class Monster:
                    # save the id!
                    self.monster_id = monster_id
 
-           elif tag == "tag":
+           elif tag == "monstertag":
+               print "XXX"
+               print child.text
                self.tags.append(child.text)
+
+           elif tag == "monsteraspect":
+               self.aspects.append(child.text)
 
            elif tag == "monsterclass":
                self.monster_class = MonsterClass.load(child.text)
                if self.monster_class == MonsterClass.NONE:
                    raise Exception("Unknown monster class: (%s) %s in %s\n" %
                                    (child.tag, child.text, self.fname))
-
-           # elif tag == "monsterlevels":
-           #     if len(self.levels) > 0: #  is not None:
-           #         raise Exception("Only one monsterlevels per monster. (%s) %s\n" %
-           #                         (child.tag, str(child)))
-           #     else:
-           #         self.load_monster_levels(child)
 
            elif tag == "monsterdescription":
                if self.description is not None:
@@ -631,14 +632,6 @@ class Monster:
                    #self.description = get_text(child)                   
                    #self.description = node_to_string(child)                   
                    self.description = children_to_string(child)                   
-
-           # elif tag == "prerequisitemonster":
-           #     self.prerequisites.append(child.text)
-
-           # elif tag == "prerequisitetag":
-           #     prerequisite_tag = child.text
-           #     if prerequisite_tag is not None:
-           #         self.prerequisite_tags.append(prerequisite_tag)               
 
            elif tag is COMMENT:
                # ignore comments!

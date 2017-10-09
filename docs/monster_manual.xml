@@ -53,13 +53,11 @@
       <mbper>10</mbper>
       <mbabilities>{{ monster.get_abilities_str() }}</mbabilities>
       <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
+      <mbdescription>{{ monster.description }}</mbdescription>
     </monsterblock>    
     {% endfor %}      
-    
-    
+        
     </section>   
-    {% endfor %}
-
-    
+    {% endfor %}    
   </chapter>
 </book>

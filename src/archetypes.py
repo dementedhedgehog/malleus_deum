@@ -809,7 +809,6 @@ class AttrBonus(object):
            tag = child.tag
            if tag == "attr":
                self.attribute = contents_to_string(child)
-               print self.attribute
 
            elif tag == "value":
                try:

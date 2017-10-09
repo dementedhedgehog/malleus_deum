@@ -1295,6 +1295,7 @@ labels and references.
       <xs:element name="appendix" type="appendixType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="index" type="indexType" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
+    <xs:attribute name="landscape" type="xs:boolean" default="false"/>    
   </xs:complexType>
 
   <xs:complexType name="indexType">
@@ -1391,98 +1392,6 @@ tags
   </xs:complexType>
 
       
-      <!--
-  <xs:complexType name="monsterType">
-    <xs:sequence>
-      <xs:element 
-          name="monstertitle" 
-          type="titleType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="monsterstats" 
-          type="monsterStatsType" 
-          minOccurs="0" maxOccurs="1"/>
-      <xs:element 
-          name="monsterdesc" 
-          type="sectionType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="archetypeid" 
-          type="archetypeidType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="inheritance" 
-          type="inheritanceType" 
-          minOccurs="0" maxOccurs="1"/>
-      <xs:element 
-          name="archetypedescription" 
-          type="archetypedescriptionType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="archetypeac" 
-          type="pointsType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="archetypemove" 
-          type="pointsType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="archetypeinitiative" 
-          type="pointsType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="attrmax" 
-          type="attributeLimitType" 
-          minOccurs="0" maxOccurs="7"/>
-      <xs:element 
-          name="attrmin" 
-          type="attributeLimitType" 
-          minOccurs="0" maxOccurs="7"/>
-      <xs:element 
-          name="attrbonus" 
-          type="attributeBonusType" 
-          minOccurs="0" maxOccurs="7"/>
-      <xs:element 
-          name="startingcash" 
-          type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="startinggear" 
-          type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="height" 
-          type="measurementType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="weight" 
-          type="measurementType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="age" 
-          type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="appearance" 
-          type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="aspectexamples" 
-          type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="archetypetags"
-          type="tagsType" 
-          minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element 
-          name="levelprogressiontable" 
-          type="levelprogressiontableType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="abilitymodifiers" 
-          type="abilitymodifiersType" 
-          minOccurs="1" maxOccurs="1"/>
-          -->
 
   <xs:element name="monstergroup" type="monsterGroupType"/>  
 
@@ -1501,15 +1410,17 @@ tags
 
 
   <xs:complexType name="monsterType">
-    <xs:all>
+    <xs:sequence>
       <xs:element name="monstertitle" type="titleType"/>
       <xs:element name="monsterid" type="idType"/>
+      <xs:element name="monstertag" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="monsteraspect" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <!--
 	  <xs:element name="monsterclass" type="monsterclassType"/>
 	  <xs:element name="monsterlevels" type="monsterlevelsType"/>
       -->
       <xs:element name="monsterdescription" type="descriptionType" minOccurs="0"/>
-    </xs:all>
+    </xs:sequence>
   </xs:complexType>
 
   
@@ -1551,6 +1462,7 @@ tags
       -->
       <xs:element name="mbabilities"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbaspects" type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbdescription" type="subsubsectionType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>  
 

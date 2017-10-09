@@ -570,10 +570,7 @@ class AbilityClass:
     def load(ability_class):
         ability_cls = AbilityClass.NONE
 
-        print ability_class
-        
         if ability_class is not None:
-            #ability_class = ability_class.lower().strip()
             ability_class = ability_class.strip()
 
         if ability_class == "None":
