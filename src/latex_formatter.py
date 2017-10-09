@@ -83,9 +83,15 @@ class LatexFormatter:
             paper_size = "letterpaper"
         else:
             raise Exception("Unknown paper size.  Pick one of [a4, letter] in config.py")
+
+        orientation = ""
+        if "landscape" in book.attrib:
+            landscape = book.get("landscape").lower()
+            if landscape == "true":
+                orientation = ",landscape"
         
         self.latex_file.write(
-            "\\documentclass[" + paper_size + ",twocolumn,oneside]{book}\n" 
+            "\\documentclass[" + paper_size + orientation + ",twocolumn,oneside]{book}\n" 
             "\n"
             "\\usepackage[unicode]{hyperref} % for hyperlinks in pdf\n"
             "\\usepackage{caption}           % extra captions\n" 
@@ -809,46 +815,18 @@ class LatexFormatter:
         return
     end_defn = no_op
 
-    # def start_distance(self, distance):
-    #     d = None
-    #     if use_imperial:
-    #         if "imperial" in paragraph.attrib:
-    #             d = normalize_ws(distance.get("imperial").lower())
-    #         else:
-    #             raise Exception("Imperial distance not specified!")
-
-    #     else:
-    #         # assume metric
-    #         if "metric" in paragraph.attrib:
-    #             d = normalize_ws(distance.get("metric").lower())
-    #         else:
-    #             raise Exception("Metric distance not specified!")
-
-    #     self.latex_file.write("  " % (normalize_ws(d)))
-    #     return
-    # end_distance = no_op
 
     def start_measurement(self, distance):
         #d = None
         if use_imperial:
             distance_text = get_text_for_child(distance, "imperial")
-            #if "imperial" in distance.attrib:
-            #    d = normalize_ws(distance.get("imperial").lower())
-            #else:
             if distance_text is None:
                 raise Exception("Imperial distance not specified!")
 
         else:
             distance_text = get_text_for_child(distance, "metric")
-            # assume metric
-            #if "metric" in paragraph.attrib:
-            #    d = normalize_ws(distance.get("metric").lower())
-            #else:
             if distance_text is None:
                 raise Exception("Metric distance not specified!")
-
-        print "[%s]" % distance_text
-        print "[%s]" % normalize_ws(distance_text)
 
         self.latex_file.write(normalize_ws(distance_text))
         return
@@ -1660,4 +1638,9 @@ class LatexFormatter:
     def start_mbper(self, mbper):
         self.latex_file.write("Per: %s\n" % mbper.text)
         return
-    end_mbper = no_op    
+    end_mbper = no_op
+    
+    def start_mbdescription(self, mbdescription):
+        self.latex_file.write("Description: %s\n" % mbdescription.text)
+        return
+    end_mbdescription = no_op    
