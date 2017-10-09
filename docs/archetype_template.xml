@@ -67,98 +67,88 @@
       </descriptions>
       
 
-      
-      <vspace/>
 
-      <subsection>
-        <subsectiontitle>Suggested Builds</subsectiontitle>
+      <table>
+	<tablecategory>Sideways</tablecategory>
+	<tablespec>
+          <fixed>0.02</fixed>
+          <fixed>0.015</fixed>
+          <fixed>0.03</fixed>
+          <fixed>0.03</fixed>
+          <fixed>0.03</fixed>
+          <fixed>0.03</fixed>
+          <fixed>0.01</fixed>
+          <fixed>0.01</fixed>
+          <fixed>0.01</fixed>
+          <fixed>0.01</fixed>
+          <fixed>0.025</fixed>
+          <fixed>0.025</fixed>
+          <fixed>0.025</fixed>
+          <fixed>0.025</fixed>
+          <fixed>0.025</fixed>
+          <fixed>0.025</fixed>
+          <fixed>0.31</fixed>
+	</tablespec>
 
-	<p>
-	  XXXX FIXME
-	</p>
+	<tabletitle>{{ archetype.get_title() }} Level Progression Table</tabletitle>
 
-	<table>
-	  <tablecategory>Sideways</tablecategory>
-	  <tablespec>
-            <fixed>0.02</fixed>
-            <fixed>0.015</fixed>
-            <fixed>0.03</fixed>
-            <fixed>0.03</fixed>
-            <fixed>0.03</fixed>
-            <fixed>0.03</fixed>
-            <fixed>0.01</fixed>
-            <fixed>0.01</fixed>
-            <fixed>0.01</fixed>
-            <fixed>0.01</fixed>
-            <fixed>0.025</fixed>
-            <fixed>0.025</fixed>
-            <fixed>0.025</fixed>
-            <fixed>0.025</fixed>
-            <fixed>0.025</fixed>
-            <fixed>0.025</fixed>
-            <fixed>0.31</fixed>
-	  </tablespec>
+	<tableheaderrow>
+          <multicolumntd columns="2">Level</multicolumntd>
+          <multicolumntd columns="2">Stamina</multicolumntd>
+          <multicolumntd columns="2">Health</multicolumntd>
+          <multicolumntd columns="4">Skill Points</multicolumntd>
+          <multicolumntd columns="2">Resolve<dpool/></multicolumntd>
+          <multicolumntd columns="2">Magic<dpool/></multicolumntd>
+          <multicolumntd columns="2">Fate<dpool/></multicolumntd>
+          <th></th>
+	</tableheaderrow>
+	
+	<tableheaderrow>
+          <th>No\#</th>
+          <th>XP</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th><general/></th>
+          <th><martial/></th>
+          <th><lore/></th>
+          <th><magical/></th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Notes...</th>
+	</tableheaderrow>
 
-	  <tabletitle>{{ archetype.get_title() }} Level Progression Table</tabletitle>
+	{% for level_progression_data in archetype.level_progression_table  %}
+	<tablerow>
+          <td>{{ level_progression_data.get_level_number() }}</td>        
+          <td>{{ level_progression_data.get_level_spp() }}</td>        
+          <td>{{ level_progression_data.level_stamina }}</td>
+          <td>{{ level_progression_data.level_stamina_refresh }}</td>
+          <td>{{ level_progression_data.level_health }}</td>
+          <td>{{ level_progression_data.level_health_refresh }}</td>
 
-	  <tableheaderrow>
-            <multicolumntd columns="2">Level</multicolumntd>
-            <multicolumntd columns="2">Stamina</multicolumntd>
-            <multicolumntd columns="2">Health</multicolumntd>
-            <multicolumntd columns="4">Skill Points</multicolumntd>
-            <multicolumntd columns="2">Resolve<dpool/></multicolumntd>
-            <multicolumntd columns="2">Magic<dpool/></multicolumntd>
-            <multicolumntd columns="2">Fate<dpool/></multicolumntd>
-            <th></th>
-	  </tableheaderrow>
-	  
-	  <tableheaderrow>
-            <th>No\#</th>
-            <th>XP</th>
-            <th>Base</th>
-            <th>Rest</th>
-            <th>Base</th>
-            <th>Rest</th>
-            <th><general/></th>
-            <th><martial/></th>
-            <th><lore/></th>
-            <th><magical/></th>
-            <th>Base</th>
-            <th>Rest</th>
-            <th>Base</th>
-            <th>Rest</th>
-            <th>Base</th>
-            <th>Rest</th>
-            <th>Notes...</th>
-	  </tableheaderrow>
-
-	  {% for level_progression_data in archetype.level_progression_table  %}
-	  <tablerow>
-            <td>{{ level_progression_data.get_level_number() }}</td>        
-            <td>{{ level_progression_data.get_level_spp() }}</td>        
-            <td>{{ level_progression_data.level_stamina }}</td>
-            <td>{{ level_progression_data.level_stamina_refresh }}</td>
-            <td>{{ level_progression_data.level_health }}</td>
-            <td>{{ level_progression_data.level_health_refresh }}</td>
-
-            <td>{{ level_progression_data.level_general if level_progression_data.level_general != 0 else "-"}}</td>
-            <td>{{ level_progression_data.level_martial if level_progression_data.level_martial != 0 else "-"}}</td>
-            <td>{{ level_progression_data.level_lore if level_progression_data.level_lore != 0 else "-"}}</td>
-            <td>{{ level_progression_data.level_magical if level_progression_data.level_magical != 0 else "-"}}</td>
-            <td>{{ level_progression_data.level_resolve }}</td>        
-            <td>{{ level_progression_data.level_resolve_refresh }}</td>        
-            <td>{{ level_progression_data.level_magic_pool if level_progression_data.level_magic_pool is not none else "N/A"}}</td>
-            <td>{{
-	    level_progression_data.level_magic_refresh
-	    if level_progression_data.level_magic_refresh is not none else "N/A"
-	    }}</td>
-            <td>{{ level_progression_data.level_fate }}</td>        
-            <td>{{ level_progression_data.level_fate_refresh }}</td>        
-            <td>{{ level_progression_data.level_description if level_progression_data.level_description is not none else ""}}</td>
-	  </tablerow>
-	  {% endfor %}
-	</table>
-      </subsection>
+          <td>{{ level_progression_data.level_general if level_progression_data.level_general != 0 else "-"}}</td>
+          <td>{{ level_progression_data.level_martial if level_progression_data.level_martial != 0 else "-"}}</td>
+          <td>{{ level_progression_data.level_lore if level_progression_data.level_lore != 0 else "-"}}</td>
+          <td>{{ level_progression_data.level_magical if level_progression_data.level_magical != 0 else "-"}}</td>
+          <td>{{ level_progression_data.level_resolve }}</td>        
+          <td>{{ level_progression_data.level_resolve_refresh }}</td>        
+          <td>{{ level_progression_data.level_magic_pool if level_progression_data.level_magic_pool is not none else "N/A"}}</td>
+          <td>{{
+	  level_progression_data.level_magic_refresh
+	  if level_progression_data.level_magic_refresh is not none else "N/A"
+	  }}</td>
+          <td>{{ level_progression_data.level_fate }}</td>        
+          <td>{{ level_progression_data.level_fate_refresh }}</td>        
+          <td>{{ level_progression_data.level_description if level_progression_data.level_description is not none else ""}}</td>
+	</tablerow>
+	{% endfor %}
+      </table>
       
       <subsection>
         <subsectiontitle>Level Progression</subsectiontitle>
