@@ -2,8 +2,8 @@
 <abilitygroup>
 
   <abilitygroupinfo>
-    <abilitygrouptitle>Polearm Use</abilitygrouptitle>
-    <abilitygroupid>apolearms</abilitygroupid>
+    <abilitygrouptitle>Spear Use</abilitygrouptitle>
+    <abilitygroupid>aspears</abilitygroupid>
     <abilitygroupfamily>Combat</abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -15,13 +15,13 @@
   
 
   <ability>
-    <abilitytitle>Polearm Stab</abilitytitle>
-    <abilityid>polearm.stab</abilityid>
+    <abilitytitle>Spear Strike</abilitytitle>
+    <abilityid>spear.strike</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
     <abilitydescription>
       <p noindent="true">
-        Characters equipped with a polearm can strike with it during combat
-	doing weapon damage.
+        Characters equipped with a spear, staff or polearm can strike with
+	it during combat doing weapon damage.
       </p>
     </abilitydescription>
 
@@ -64,15 +64,17 @@
   </ability>
 
 
+
+
   <ability>
     <abilitytitle>Hook</abilitytitle>
-    <abilityid>polearm.hook</abilityid>
+    <abilityid>spear.hook</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
     <abilitydescription>
       <p>
-        Characters equipped with a polearm, but not a spear, can
-	use the axe to attempt to disarm an opponent or remove
-	their shield.
+        Characters equipped with a polearm, but not a spear or staff, can
+	use the hooked edge of this weapon to attempt to disarm an opponent
+	or remove their shield.
       </p>
     </abilitydescription>
 
@@ -80,7 +82,7 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>polearm.stab_1</prereqabilitylevel>
+        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
         <defaultlore>0</defaultlore>
         <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
@@ -109,11 +111,11 @@
 
   <ability>
     <abilitytitle>Brace for Charge</abilitytitle>
-    <abilityid>polearm.brace</abilityid>
+    <abilityid>spear.brace</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
     <abilitydescription>
       <p>
-        Characters equipped with a polearm can brace against
+        Characters equipped with a spear or polearm can brace against
 	a charge striking first and doing extra damage.
       </p>
     </abilitydescription>
@@ -122,7 +124,7 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>polearm.stab_1</prereqabilitylevel>
+        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
         <defaultlore>0</defaultlore>
         <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
@@ -145,4 +147,86 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
+
+
+  <ability>
+    <abilitytitle>Circle of Death</abilitytitle>
+    <abilityid>spear.circle_of_death</abilityid>
+    <abilityclass>Fight-Reach</abilityclass>
+    <abilitydescription>
+      <p>
+	The character swings their weapon in large arcs keeping foes at bay.
+	Opponents must make a morale check to attack and the character may
+	roll to hit the first opponent who tries to do so in the round as a
+	reaction.  If successful the opponent cannot close to attack.
+      </p>
+
+      <p>
+	Note that this ability requires a reasonable amount of space to swing the
+	weapon, and it only works when the opponents are within a 180° arc.  
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Morale check to attack, reaction counter-attack</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>Morale check to attack, reaction counter-attack</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Spear Parry</abilitytitle>
+    <abilityid>spear.parry</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+        The player parrys a blow using their weapon.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>	
+        <defaultlore>2</defaultlore>
+        <defaultmartial>8</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <failures>1</failures>
+	<check>Opposed speed check</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Opposed speed check + 2</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+  
 </abilitygroup>
