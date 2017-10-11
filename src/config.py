@@ -41,18 +41,21 @@ resources_dir = abspath(join(dirname(__file__), "..", "resources"))
 
 
 # measurement system (metric or imperial)
-use_imperial = True
-#use_imperial = False
+#use_imperial = True
+use_imperial = False
+
+# Should we append the index to the core doc?
+add_index_to_core = True
 
 # List of files to build (fname, build_index?, index_name)
 files_to_build = (
-    #("abilities.xml", True, "C"),
     ("core.xml", True, "C"),
     #("character_abilities.xml", False, None),
     # ("character_creation.xml", True, "CC"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
     ("monster_manual.xml", True, "MM"),
+    #("gms_screen.xml", False, "GMS"),
     # ("magic_items.xml", True, "MI"),
     # #("dmg.xml",
     # #("archetypes.xml", True, "[A]"),
@@ -61,15 +64,15 @@ files_to_build = (
 )
 
 archetypes_to_build = (
-    # ("bard", True, "[BRD]"),
-    # ("dwarven_shield_warrior", True, "[DSW]"),
-    # ("red_mage", True, "[RM]"),
-    # ("halfling_rover", True, "[HR]"),
-    # ("elven_scion", True, "[ES]"),
-    # ("praedicant", True, "[PR]"),
-    # ("summoner", True, "[SM]"),
-    # ("hedge_wizard", True, "[HW]"),
-    # ("witch_hunter", True, "[WH]"),
-    # ("rake", True, "[RK]"),
+    #("bard", True, "[BRD]"),
+    #("dwarven_shield_warrior", True, "[DSW]"),
+    #("red_mage", True, "[RM]"),
+    #("halfling_rover", True, "[HR]"),
+    #("elven_scion", True, "[ES]"),
+    #("praedicant", True, "[PR]"),
+    #("summoner", True, "[SM]"),
+    #("hedge_wizard", True, "[HW]"),
+    #("witch_hunter", True, "[WH]"),
+    #("rake", True, "[RK]"),
     #("dwarven_rune_maester", True, "[DRM]"),
 )

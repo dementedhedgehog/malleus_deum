@@ -323,6 +323,7 @@ def build_doc(template_fname, verbosity, archetype = None):
                           archetypes = archetypes,
                           archetype = archetype,
                           config = config,
+                          add_index_to_core = config.add_index_to_core,
                           doc_name = doc_base_fname)
 
     # drop out early?
@@ -488,20 +489,20 @@ if __name__ == "__main__":
         mkdir(pdfs_dir)
 
     # load the abilities
-    ability_groups = AbilityGroups()
     abilities_dir = join(root_dir, "abilities")
+    ability_groups = AbilityGroups()
     if not ability_groups.load(abilities_dir, fail_fast = fail_fast) and fail_fast:
         print("Failing fast")
         sys.exit()
     
     # load the archetypes
-    archetypes = Archetypes()
     archetype_dir = join(root_dir, "archetypes")
+    archetypes = Archetypes()
     archetypes.load(ability_groups, archetype_dir, fail_fast = fail_fast)
 
     # load the monsters
-    monster_groups = MonsterGroups()
     monsters_dir = join(root_dir, "monsters")
+    monster_groups = MonsterGroups()
     monster_groups.load(monsters_dir, fail_fast = fail_fast)
 
     # get a jinja environment
@@ -517,7 +518,7 @@ if __name__ == "__main__":
     # The trailing // means that TeX programs will search recursively in that 
     # folder; the trailing colon means "append the standard value of TEXINPUTS" 
     # (which you don't need to provide).
-    tex_inputs = styles_dir + "//:"
+    #tex_inputs = styles_dir + "//:"
 
     # get a copy of the environment with TEXINPUTS set.
     #env = deepcopy(os.environ)

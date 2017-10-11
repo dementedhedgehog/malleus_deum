@@ -151,6 +151,7 @@
 
   <!--
       Text type .. used for blocks of text like paragraphs and such.
+      Doesn't allow paragraphs or sections
 
   -->
   <xs:complexType name="textType" mixed="true">
@@ -235,6 +236,8 @@
     <xs:attribute name="noindent" type="xs:boolean" default="false"/>
   </xs:complexType>
 
+
+
   <xs:complexType name="tabledataType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="emph" type="emphType"/>
@@ -246,6 +249,7 @@
       <xs:element name="olist" type="orderedListType"/>
       <xs:element name="list" type="itemizedListType"/>
       <xs:element name="descriptions" type="descriptionsType"/>
+      <xs:element name="eg" type="acronymType"/>
       <xs:element name="p" type="textType" />
       <xs:element name="and" type="andType" />
       <xs:element name="success" type="symbolType"/>
@@ -263,16 +267,7 @@
       <xs:element name="ambush" type="symbolType"/>
       <xs:element name="surprise" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
-      <xs:element name="talk" type="symbolType"/>
-      
-      <!--
-      <xs:element name="run" type="symbolType"/>
-      <xs:element name="act" type="symbolType"/>
-      <xs:element name="fightranged" type="symbolType"/>
-      <xs:element name="fightreach" type="symbolType"/>
-      <xs:element name="fightfast" type="symbolType"/>
-      <xs:element name="fight" type="symbolType"/>
-      -->
+      <xs:element name="talk" type="symbolType"/>      
       <xs:element name="start" type="symbolType"/>
       <xs:element name="fast" type="symbolType"/>
       <xs:element name="medium" type="symbolType"/>
@@ -280,6 +275,8 @@
       <xs:element name="resolution" type="symbolType"/>      
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>      
+      <xs:element name="mediumorslow" type="symbolType"/>
+      <xs:element name="startandreaction" type="symbolType"/>
       <xs:element name="img" type="imgType"/>
       <xs:element name="d4" type="acronymType"/>
       <xs:element name="d6" type="acronymType"/>
@@ -288,7 +285,7 @@
       <xs:element name="d12" type="acronymType"/>
       <xs:element name="d20" type="acronymType"/>      
       <xs:element name="dany" type="acronymType"/>      
-      <xs:element name="dpool" type="acronymType"/>      
+      <xs:element name="dpool" type="acronymType"/>
     </xs:choice>
     <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
     <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
@@ -465,9 +462,19 @@
 	<xs:element name="slowsymbol" type="symbolType"/>	
 	<xs:element name="mediumorslowsymbol" type="symbolType"/>
 	<xs:element name="startandreactionsymbol" type="symbolType"/>
+	<xs:element name="ambush" type="symbolType"/>
+	<xs:element name="surprise" type="symbolType"/>
+	<xs:element name="talk" type="symbolType"/>
+	<xs:element name="initiative" type="symbolType"/>
+	<xs:element name="start" type="symbolType"/>
+	<xs:element name="fast" type="symbolType"/>
+	<xs:element name="medium" type="symbolType"/>
+	<xs:element name="slow" type="symbolType"/>
+	<xs:element name="mediumorslow" type="symbolType"/>
+	<xs:element name="startandreaction" type="symbolType"/>
       </xs:choice>
     </xs:sequence>
-  </xs:complexType>
+    </xs:complexType>
 
   <xs:complexType name="tableType">
     <xs:sequence>      
@@ -708,7 +715,7 @@
   </xs:complexType>
 
 
-
+<!--
   <xs:complexType name="termType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="lore" type="symbolType"/>
@@ -724,13 +731,15 @@
       <xs:element name="dany" type="acronymType"/>      
       <xs:element name="dpool" type="acronymType"/>            
     </xs:choice>    
-  </xs:complexType>
+    </xs:complexType>
+    -->
 
 
   <xs:complexType name="descriptionsType">
     <xs:sequence>
       <xs:sequence minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="term" type="termType"/>
+        <xs:element name="term" type="textType"/>
+        <!-- <xs:element name="term" type="termType"/>-->
         <xs:element name="description" type="descriptionType"/>
         <!-- <xs:element name="description" type="xs:string"/> -->
       </xs:sequence>
@@ -758,6 +767,7 @@
       <xs:element name="ref" type="refType"/>
       <xs:element name="equation" type="equationType"/>
       <xs:element name="pageref" type="pagerefType"/>
+      <xs:element name="eg" type="acronymType"/>
     </xs:choice>
   </xs:complexType>
 
@@ -982,8 +992,12 @@ labels and references.
       <xs:element name="abilitygrouptitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="abilitygroupid" type="abilitygroupidType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="abilitygroupfamily" type="abilitygroupfamilyType" minOccurs="1" maxOccurs="1"/>
+      <!--
       <xs:element name="abilitygroupdescription" 
-                  type="descriptionType" minOccurs="1" maxOccurs="1"/>
+                  type="textType" minOccurs="1" maxOccurs="1"/>
+      -->
+      <xs:element name="abilitygroupdescription" 
+		  type="descriptionType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -1418,11 +1432,12 @@ tags
       <!--
 	  <xs:element name="monsterclass" type="monsterclassType"/>
 	  <xs:element name="monsterlevels" type="monsterlevelsType"/>
+	  <xs:element name="monsterdescription" type="textType" minOccurs="0"/>
       -->
       <xs:element name="monsterdescription" type="descriptionType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-
+  
   
 
   <xs:complexType name="monstergroupinfoType">
