@@ -99,7 +99,7 @@
 
 
   <ability>
-    <abilitytitle>Parry</abilitytitle>
+    <abilitytitle>Sword Parry</abilitytitle>
     <abilityid>sword.parry</abilityid>
     <abilityclass>Reaction</abilityclass>
     <abilitydescription>
@@ -133,7 +133,7 @@
 
 
   <ability>
-    <abilitytitle>Disarm</abilitytitle>
+    <abilitytitle>Sword Disarm</abilitytitle>
     <abilityid>melee.disarm</abilityid>
     <abilityclass>Slow</abilityclass>
     <abilitydescription>
@@ -149,8 +149,9 @@
         <defaultmartial>5</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
-        <failures>3</failures>
-	<check>Opposed speed check -3</check>
+        <attempts>3</attempts>
+	<check>Opposed speed check at -3</check>
+	<effect>The opponent drops their weapon.</effect>
       </abilitylevel>
       
       <abilitylevel>
@@ -159,8 +160,7 @@
         <defaultmartial>5</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
 	<check>Opposed speed check -1</check>
-        <!-- <successes>3</successes>
-             <failures>3</failures> -->
+	<effect>The opponent drops their weapon.</effect>
       </abilitylevel>      
     </abilitylevels>
   </ability>
