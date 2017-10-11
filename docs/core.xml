@@ -212,7 +212,7 @@
           <li>A set of Abilities, e.g: Sweeping Blow, Arcane Lore, Pick Locks, 
           and</li>
           <li>Some optional description about the character. A back-story for the character, 
-          possibly some fame and any tertiary statistics the player might want to include: 
+          and any tertiary statistics the player might want to include: 
           Height, Weight, Age, Hair Colour and so on.</li>
         </list>
         The characters attributes and aspects are used to determine whether the player 
@@ -235,7 +235,7 @@
       <p>
         Every character shares a set of primary attributes.  Attributes are 
         numeric descriptions of a characters capabilities.  Initially they are values 
-        between four and sixteen inclusive.
+        between six and twelve inclusive.
       </p>
 
       <subsection>
@@ -381,24 +381,30 @@
         </p>
 
         <p>
-          So attribute like Strength and statistics like Stamina, will be appear as a
+          So attributes like Strength and statistics like Stamina, will appear as a
           number on character sheets, while Dice Pool statistics, like Resolve, will
-          appear on as a set of dice, <eg/> 3<d6/> + 1<d4/>.  We describe how to
-          use dice pools to make checks in Section<ref>sec:dice_pool</ref> on
-          page<pageref>sec:dice_pool</pageref>.
+          appear on as a set of dice, <eg/> 3<d6/> + 1<d4/>.
         </p>
       </subsubsection>
 
       <subsubsection>
-        <subsubsectiontitle>The Dice Pool Statistics</subsubsectiontitle>        
+        <subsubsectiontitle>The Dice Pool Statistics</subsubsectiontitle>
+
+	<p>
+	  Characters have three dice pool statistics.  They start the game with a full pool.
+	  During the game they may lose dice from those pools by making dice pool checks,
+	  and they may return dice to the pools by resting.  We describe how to
+          use dice pools to make checks in Section<ref>sec:dice_pool</ref> on
+          page<pageref>sec:dice_pool</pageref>.
+	</p>
+	
         <descriptions>
           <term>Resolve:</term>
           <description>
             <p>
               Resolve is a dice pool used during combat that measures the characters will to 
               stand and fight, their mental well-being, morale, fear, shock, sanity and 
-              determination.  Lost resolve is recovered by a number of dice per day as 
-              specified by the character's archetype.
+              determination.
             </p>
           </description>
 
@@ -411,13 +417,8 @@
           <term>Fate:</term>
           <description>
             <indexentry>Fate Pool</indexentry>       
-            Characters have a <defn>Fate Pool</defn>.  Characters get a number of 
-            dice in their Fate Pool at the start of a session called the
-            <defn>Fate Rest Rate</defn>.  The Fate Rest Rate is the number of dice, of any
-            type, the character may return to their pool after a short rest.  Each character
-            also has a Maximum Fate Pool.  A characters Fate Pool cannot exceed this amount
-            and any Fate dice accrued above this amount are lost.  The Fate Rest Rate and the
-            Fate Maximum are specified by the characters archetype and their Luck.
+            Characters have a <defn>Fate Pool</defn> that represents the players
+	    manifest destiny.  
           </description>
         </descriptions>
       </subsubsection>
@@ -433,30 +434,10 @@
         more usual that attacks cause one type of damage.  Usually the character will
         take damage to stamina first and then health.  Stamina represents minor wounds
         and exhaustion, and heals quickly.  Health represents the actual physical status
-        of the character and heals slowly.
+        of the character and heals slowly.   Both of these hit point stats have a
+	minimum value of zero, they cannot be negative numbers.
       </p>
 
-      <p>
-        <indexentry>Zero Hit Points</indexentry>
-        <indexentry>Consequences</indexentry>
-        Hit points have a minimum value of zero.  After a character takes a hit to a given 
-        hit point stat which reduces that stat to zero they have taken <emph>critical</emph>
-        damage to that stat and the <emph>effect of the damage must be resolved</emph>.
-        In order to resolve damage the GM may:
-        <olist>
-          <li>Declare an outcome, or</li>
-          <li>Negotiate an outcome with the player and the party, or</li>
-          <li>Have the player roll on an appropriate Consequence Table.</li>
-        </olist>
-      </p>
-
-      <p>
-        At the GMs discretion, characters may also be forced to roll on a Consequence 
-        Table when other events occur in game.  For example, the first time 
-        the characters see a dragon the GM make make them roll on the Fear Consequence Table. 
-        If a player is struck by a mountain giants club the GM may force them 
-        to roll on the Crushing Blow Consequence Table.
-      </p>
 
       <subsection>
         <subsectiontitle>Stamina</subsectiontitle>
@@ -467,10 +448,11 @@
         </p>
 
         <p>
-          The first time damage reduces Stamina below zero during an encounter the player 
-          must resolve the Critical Stamina Damage <emph>and</emph> any remaining damage 
-          is removed from Health instead.  Critical damage may be resolved on the Brawling 
-          Critical Table, or the Heavy Blow Critical Table.
+          The first time damage reduces Stamina below zero during an encounter the character
+          becomes Bloodied <emph>and</emph> any remaining damage is removed from the characters
+	  health.  See Section<ref>sec:non-lethal-combat</ref> on
+	  page<pageref>sec:non-lethal-combat</pageref> for more information on non-lethal
+	  combat and becoming bloodied.
         </p>
 
         <p>
@@ -487,21 +469,14 @@
 
         <p>
           <indexentry>Health</indexentry>
-          Health is the characters brawn, their physical capacity to take damage.
-        </p>
-
-        <p>
           <indexentry>Zero Health</indexentry>
-          <indexentry>Death <see>Zero Health</see></indexentry>
-          When a character reaches zero health they are effectively too hurt, too weak or 
-          too tired to defend themselves.  When a players Health reaches zero they roll for 
-          a Near Death Consequence.
-        </p>
-
-        <p>
           <indexentry>Healing<subentry>Health</subentry></indexentry>
-          Health represents severe physical damage to the character.  It takes time to 
-          restore health. The character gains Health back at their Rest Rate when they Sleep.
+          Health is the characters brawn, their physical capacity to take damage.
+          When a character reaches zero health they are effectively too hurt and too weak 
+          to defend themselves or do anything and are in danger of dying.  Character death
+	  is covered in Section<ref>sec:death</ref> on
+	  page<pageref>sec:death</pageref>.  It takes time to restore health. The character
+	  gains Health back at their Rest Rate when they Sleep.
         </p>        
       </subsection>
       
@@ -511,8 +486,8 @@
           Dourli, our amiable dwarven friend has somehow managed to find himself
           in a brawl with some of the town's thugs.  He punches one of the thugs in the face
           and rolls 7 Stamina Damage.  The thug has only 5 Stamina remaining so his Stamina 
-          is reduced to 0, his Health is reduced by 2 and the thug has to roll on the 
-          Stamina Consequence Table.  He rolls poorly and is knocked unconscious.
+          is reduced to 0, his Health is reduced by 2 and the thug has to make a break check.
+          He rolls poorly and flees the fight.
         </p>
       </playexample>
     </section>
@@ -528,7 +503,7 @@
         Each character has a set of <defn>Abilities</defn> that 
         allow them to perform actions within the game.  Abilities are bought 
         using skill points as part of character creation and when the characters level 
-        increases.  There are five types of <defn>Skill Points</defn>:
+        increases.  There are four types of <defn>Skill Points</defn>:
       </p>
 
       <descriptions>
@@ -536,8 +511,8 @@
         <description>
           <indexentry>Skill Points<subentry>Lore</subentry></indexentry> 
           represents the ``book-learning'' a character has received, how much knowledge
-          they have accumulated.  Lore is used to purchase skills like Heraldry, 
-          Alchemy, Herbal Medicine and the like.
+          they have accumulated.  Lore is used to purchase skills like Antiquarian,
+	  Natural History, Alchemy, and the like.  
         </description>
 
         <term>Martial<martial/></term>
@@ -549,21 +524,21 @@
         <term>General<general/></term>
         <description>
           <indexentry>Skill Points<subentry>General</subentry></indexentry> 
-          represents physical skills learned, or trade-craft: smithing, 
-          horse-riding, swimming, leather-work and so on.
+          represents physical skills learned, or trade-craft: Smith, 
+          Animal Handling, Hunting and so on.
         </description>
 
         <term>Magical<magical/></term>
         <description>
           <indexentry>Skill Points<subentry>Magical</subentry></indexentry> 
-          represents occult and theological related skills
+          represents occult and theological related skills and spells.
         </description>
       </descriptions>     
 
       <p>
         A characters initial skills are determined by his or her archetype and by using a 
         point-buy system.  The characters archetype assigns a number of skill points 
-        for each of the five different skill point types.  During character creation the 
+        for each of the four different skill point types.  During character creation the 
         player chooses which skills or abilities they would like their character to have 
         and pays the purchase price for that skill in skill points.  Skills and 
         abilities are discussed further in Chapter<ref>ch:abilities</ref> on 
@@ -726,6 +701,11 @@
             character receives a benefit.  
           </p>
         </subsubsection>
+
+
+	<p>
+	  In short, doubles are special, double odds are bad, double evens are good.	  
+	</p>
       </subsection>
 
       <subsection>
@@ -735,7 +715,7 @@
           <p>
             Whether the check succeeds or not, through skill or luck, the character 
             has gained some advantage in the check.  When the character gains a benefit
-            the GM can describe the benefit or may allow the player to call the result, 
+            the GM may describe the benefit or may allow the player to call the result, 
             describing the result of the check to the rest of the table.  The player is 
             allowed to add some minor advantageous secondary effect to the result.  For 
             example, the opponent could be pushed back, drop the scroll they are carrying, or 
@@ -757,6 +737,8 @@
             on an appropriate consequence for the character, or roll on
             one of the blunder tables for inspiration.  
           </p>
+
+	  
         </subsubsection>
 
         <playexample>
@@ -767,7 +749,7 @@
             Dourli must roll a 14 or more in order to get the horse under control.  Dourli 
             doesn't have Horsemanship or Animal Husbandry but he does have a fairly high 
             strength.  Dourli attempts to control the horse using strength.  Dourli 
-            has a strength of 13 and so gets a bonus to his role of +3.  Dourli rolls a 
+            has a strength of 12 and so gets a bonus to his role of +3.  Dourli rolls a 
             pair of fives on his 2d8 for a total of 10 and adds the 3 to get 13 which isn't 
             enough to make the 14 required to control the horse.   In addition, because he 
             rolled double odds he suffers a consequence.  The GM declares that the horse 
@@ -784,7 +766,7 @@
         <indexentry>Dice Pool Check</indexentry> 
         <indexentry>Check<subentry>Dice Pool</subentry></indexentry>
         Dice pools  represent some finite resource that will run out if overused,
-        e.g. Magic, Fate and Resolve.  When the player has to make a dice pool check
+        <eg/> Magic, Fate and Resolve.  When the player has to make a dice pool check
         they choose <emph>however many dice they want</emph> from their dice pool and
         roll them to try and get a result within a certain range.
         <equation>
@@ -899,7 +881,7 @@
           <indexentry>Checks<subentry>Ability</subentry></indexentry>
           <indexentry>Ability Check</indexentry>        
           Attribute checks are checks made using one of the characters
-          attributes, when no more specific check applies, e.g. a character
+          attributes, when no more specific check applies, <eg/> a character
           might check their speed when running from an avalanche.
         </p>
 
@@ -921,14 +903,13 @@
           <p>
             Dourli tries to shift a large wine barrel that is sitting on a trap door 
             in a cellar.  The GM declares that in order to do so Dourli must make a strength 
-            check with a difficulty of 12.  The player rolls a 3 and a 4 on their 2d8.
-            Dourli has a Strength of 13, and so gets a bonus of +4 for a total of 11.  Dourli 
+            check with a difficulty of 12.  The player rolls a 3 and a 5 on their 2d8.
+            Dourli has a Strength of 12, and so gets a bonus of +3 for a total of 11.  Dourli 
             fails to move the wine barrel. 
           </p>
         </playexample>      
 
         {% include "tables/std_check_difficulties.xml" %}
-
         {% include "tables/attribute_modifiers.xml" %}
       </subsection>
 
@@ -962,8 +943,9 @@
           <indexentry>Break Check</indexentry>
           <indexentry>Morale Check</indexentry>
           Break Checks occur when the characters are loosing a fight when fear takes
-          a hold on them.  Described in Section<ref>sec:break</ref> on
-          page<pageref>sec:break</pageref>.
+          a hold on them, panic can set in and they may flee from the fight.  This
+	  process is described further in Section<ref>sec:break</ref> on
+	  page<pageref>sec:break</pageref>.
         </p>        
       </subsection>
 
@@ -1096,7 +1078,7 @@
 
           <p>
             Again, the GM should feel free to use an approximate ordering of the characters to 
-            save time and spread the action, e.g. just choose a character that is likely to
+            save time and spread the action, <eg/> just choose a character that is likely to
             have a low bonus for the descending check.  Any effect that this approximate
             ordering has on the outcome should be considered due to the fickle winds of fate.
           </p>
@@ -1148,10 +1130,11 @@ do this the initial check is modified by +2.
       <sectiontitle>Tags</sectiontitle>
       <p>
         <indexentry>Tag</indexentry> 
-        A <emph>Tag</emph> is a label or signifier attached to a character, monster, or 
-        scenario in the world. A cellar might be <emph>dark</emph> and <emph>musty</emph>.  
+        A <emph>Tag</emph> is a label or signifier attached to something  in the world.
+	A cellar might be <emph>dark</emph> and <emph>musty</emph>, or a monsters attack
+	might be <emph>necrotic</emph> <indexentry>damage type</indexentry>.
         If the GM describes a cellar as being dark then we say it is tagged dark, a dwarven 
-        character is tagged dwarven.
+        character is tagged dwarf.
       </p>
 
       
@@ -1165,8 +1148,8 @@ do this the initial check is modified by +2.
         <p>
           Dourli hides from a local gang of thugs in a cellar.  The GM describes the 
           cellar as dark and dank and storing old barrels.  The thugs enter the cellar 
-          and look around.   Dourli invokes the dark tag of the cellar saying "They'll 
-          have trouble seeing me in the dark.".  The GM agrees the difficulty of the 
+          and look around.   Dourli invokes the dark tag of the cellar saying ``They'll 
+          have trouble seeing me in the dark''.  The GM agrees the difficulty of the 
           thugs search is increased and the thug's.
         </p>
       </playexample>
@@ -1204,7 +1187,7 @@ do this the initial check is modified by +2.
           <p>
             describe some part of a characters personality or demeanor, their flaws and
 	    foibles, their short-comings, their weaknesses and sometimes their strengths,
-	    <eg/>Mama's Boy, As Exciting as Cold Oatmeal, Suspicion Haunts the Guilty Mind.
+	    <eg/> Mama's Boy, As Exciting as Cold Oatmeal, Plagued by Self-Doubt.
           </p>
         </description>
 
@@ -1212,7 +1195,7 @@ do this the initial check is modified by +2.
         <description>
           <p>
             encode a character's beliefs and their moral compass: Defender of the 
-            Downtrodden, Man of the Book, Laws are like Spider's Webs, Hold Fast.
+            Downtrodden, Man of the Book, Death before Dishonour.
           </p>
         </description>
 
@@ -1221,7 +1204,7 @@ do this the initial check is modified by +2.
           <p>
             Relationship aspects can be used to describe a close bond between the
             character and an individual, or a small group or even a large population.
-            In the last case it comes in the form of Fame, or infamy, with aspects
+            In the last case it comes in the form of fame, or infamy, with aspects
             like The Heroes of Izenholme, or The Scourge of the Serpent People.
           </p>
 
@@ -1240,10 +1223,10 @@ do this the initial check is modified by +2.
           <p>
             If you have an appearance aspect then there is something about your character 
             that is visibly notable, <eg/> Eyes of Midnight Black.  Dourli might pick
-            <emph>A beard to die for.</emph> for example.  Town criers might call out a
+            <emph>A Beard To Die For</emph>.  Town criers might call out a
             wanted description for payment regarding information leading to the apprehension
             of a dwarf with a particularly fine beard.  Girl dwarves might find Dourli
-            particularly irresistible. 
+            particularly irresistible.  Evil fiends might threaten to cut his beard short!
           </p>
         </description>
       </descriptions>
@@ -1264,7 +1247,7 @@ do this the initial check is modified by +2.
         </p>
 
         <p>
-          If the player <emph>Accepts a Compel</emph> for an aspect then they should have 
+          If the player <emph>accepts a compel</emph> for an aspect then they should have 
           their character behave in accordance with that aspect.
         </p>
         
@@ -1279,8 +1262,8 @@ do this the initial check is modified by +2.
         </p>
 
 	<figure position="!t" fullwidth="true">
-	  <img src="./resources/compelling_aspects/aspects" scale="0.75"/>
 	  <label>figure:compel_aspect_table</label>
+	  <img src="./resources/compelling_aspects/aspects" scale="0.75"/>
 	</figure>
 
         <playexample>
@@ -1353,7 +1336,7 @@ do this the initial check is modified by +2.
           <list>
             <li>Manageability: if the character has too many aspects consider removing 
             some, preferably starting with those with the lowest difficulties.</li>
-            <li>To satisfy the Narrative Imperative: if adding the aspect to the 
+            <li>To satisfy the narrative imperative: if adding the aspect to the 
             character would drive the story forward in interesting ways.  This might 
             happen as the result of some traumatic event or epiphany.</li>
             <li>To tweak an existing Aspect: if the aspect is constantly being exploited 
@@ -1410,7 +1393,7 @@ do this the initial check is modified by +2.
         <p>
           Sometimes a characters aspects conflict with one another.  In such cases 
           someone can compel one aspect to try and gain an advantage on a second
-          aspect check, e.g. suppose the GM tries to compel Dourli's <emph>Gold is 
+          aspect check, <eg/> suppose the GM tries to compel Dourli's <emph>Gold is 
           my Lodestone</emph> aspect to make Dourli sell out one of his companions.
           The player may counter that Dourli has claimed his friendship with the 
           companion while imbibing and that the GMs compel conflicts with his other 
@@ -1474,7 +1457,8 @@ do this the initial check is modified by +2.
         <description>
           <indexentry>Bloodied Condition</indexentry> 
           <indexentry>Conditions<subentry>Bloodied</subentry></indexentry>       
-          The character has suffered damage to their Health.       
+          The character has suffered damage to their Health.  When a character first
+	  suffers health damage in a fight they must make a morale check.
         </description>    
         
         <term>Broken</term>
@@ -2059,40 +2043,8 @@ do this the initial check is modified by +2.
     </section>
 
 
-    <section>
-      <sectiontitle>Non-Lethal vs Lethal Combat</sectiontitle>
-      
-      <p>
-        There are two categories of combat: Lethal and Non-Lethal.  In Non-Lethal 
-        combat the participants are not actively trying to kill their opponents, but 
-        rather trying to subdue them or drive them off.
-      </p>
 
-      <p>
-        The difference between non-lethal combat and lethal combat is that non-lethal
-        combat ends when someone becomes <defn>Bloodied</defn>, which occurs when their
-        Stamina reaches zero.  At this point the combatants have to determine what type
-        of combat is taking place.  If fighting continues that involves the bloodied
-        character then the combat has become lethal.
-      </p>
-
-      <p>      
-        Examples of typical non-lethal combat encounters include fights with the local 
-        guards, barroom brawls, fights with gangs of thugs and bandits.  There are 
-        many reasons to use non-lethal combat: killing people is often a capital crime 
-        in human society, there are severe social implications when an individual 
-        becomes known as a killer, potentially the players might wish to interrogate 
-        an opponent, and bandits might want to make money selling people into slavery.
-      </p>      
-
-
-      <p>
-        In lethal combat when the targets health reaches zero they start making
-        Near-Death rolls.
-      </p>      
-    </section>
-
-
+    
     <section>
       <sectiontitle>Movement and Range</sectiontitle>
 
@@ -2101,7 +2053,8 @@ do this the initial check is modified by +2.
 
         <p>
           <indexentry>Movement</indexentry>
-          Combat may either be performed on a table with miniatures using a map with a <defn>grid</defn>, 
+          Combat may either be performed on a table with miniatures using a map with a
+	  <defn>grid</defn>, 
           or purely narratively using the theatre of the mind <defn>TOTM</defn>.
         </p>
 
@@ -2151,15 +2104,78 @@ do this the initial check is modified by +2.
 
         <p>
           If a character is engaged then any action that causes them to move away
-          from the character that has engaged  them; except Flee; triggers an <defn>attack of opportunity</defn>
-          against the moving character.  An attack of opportunity is simply an additional melee attack as a
-          free action.  Recall that characters may only perform one free action per combat round.
+          from the character that has engaged  them; except Flee; triggers an <defn>attack
+	  of opportunity</defn> against the moving character.  An attack of opportunity is
+	  simply an additional melee attack as a free action.  Recall that characters may
+	  only perform one free action per combat round.
         </p>
 
       </subsection>
     </section>
 
 
+
+    <section>
+      <sectiontitle>
+	Non-Lethal vs Lethal Combat <label>sec:non-lethal-combat</label>
+      </sectiontitle>
+      
+      <p>
+        There are two categories of combat: Lethal and Non-Lethal.  In Non-Lethal 
+        combat the participants are not actively trying to kill their opponents, but 
+        rather trying to subdue them or drive them off.
+      </p>
+
+      <p>
+        The difference between non-lethal combat and lethal combat is that non-lethal
+        combat ends when someone becomes <defn>Bloodied</defn>, which occurs when their
+        Stamina reaches zero.  At this point the combatants have to determine what type
+        of combat is taking place.  If fighting continues that involves the bloodied
+        character then the combat has become lethal.  Note that when a character becomes
+	Bloodied they are forced to make a break check.
+      </p>
+
+      <p>      
+        Examples of typical non-lethal combat encounters include fights with the local 
+        guards, bar-room brawls, fights with gangs of thugs and bandits.  There are 
+        many reasons to use non-lethal combat: killing people is often a capital crime 
+        in human society, there are severe social implications when an individual 
+        becomes known as a killer, potentially the players might wish to interrogate 
+        an opponent, and bandits might want to make money selling people into slavery.
+      </p>      
+    </section>
+
+
+
+    <section>
+      <sectiontitle>
+	Death <label>sec:death</label>
+      </sectiontitle>
+
+      <p>
+        <indexentry>Death <see>Zero Health</see></indexentry>
+        <indexentry>Zero Hit Points</indexentry>
+        <indexentry>Consequences</indexentry>
+        Health has a minimum value of zero.  After a characters health is reduced to zero
+	they enter a <defn>Near Death</defn> state.  In order to resolve this state the GM may:
+        <olist>
+          <li>Declare an outcome, or</li>
+          <li>Negotiate an outcome with the player and the party, or</li>
+          <li>Have the player roll on the Near Death Table, see Table
+	  <ref>table:near_death_table</ref> on page <pageref>table:near_death_table</pageref>.
+	  </li>
+        </olist>
+      </p>
+
+      <p>
+	The GM should choose the option that is most reasonable and narratively satisfying.
+	If a character falls into a pool of lava they are dead.  If they have been knocked
+	down by Orcs then roll on the Near Death Table.  
+      </p>
+      
+      {% include "tables/near_death_table.xml" %}            
+    </section>
+    
 
     <section>
       <sectiontitle>Break Checks <label>sec:break</label></sectiontitle>      
@@ -2465,7 +2481,7 @@ do this the initial check is modified by +2.
           <indexentry>Skills<subentry>Prerequisites</subentry></indexentry> 
           Some skill levels have prerequisites.  These prerequisites must be met before 
           the new skill level can be attained.  Prerequisites are generally of two types:
-          minimum primary attribute requirements, e.g. Strength > 13, and other skill 
+          minimum primary attribute requirements, <eg/> Strength > 13, and other skill 
           prerequisites, <eg/> Maths I is a prerequisite for Alchemy I.  An ability does 
           not have to be mastered in order to be used as a prerequisite for another skill.
           But a character cannot attain the next level of an ability without mastering the
@@ -2616,17 +2632,19 @@ do this the initial check is modified by +2.
         encumbrance or become exhausted.   A character leaping from one roof 
         to another who gets a consequence in their check may be forced to roll 
         a speed or agility check against their encumbrance or drop some equipment
-        into the streets below.
+        into the streets below.  Encumberance does not simply represent weight,
+	it also represents the unweildiness of the item; how awkward it is to move
+	while carrying the item.
       </p>
 
       <p>
-        In order to use encumbrance you must be using the standard character sheets.
+        In order to use encumbrance you should be using the standard character sheets.
         In the equipment section of the character sheet, marked against the side, are
         encumbrance values for each class of item (small, medium and large) and values
         for armour and coin.  The total of these values is the characters encumbrance.
-        The underlying maths is based on the idea that carrying about <measurement>
-	<metric>40 kg</metric><imperial>100 lb</imperial></measurement> is represented by a
-        Std 2d8 Check with a difficulty of 14.
+	Note that you do not count items twice (<eg/> a shield may be a large object in
+	practice but its encumberance is counted separately because of the encumberance
+	values for armour)
       </p>
 
       <p>
@@ -2636,5 +2654,9 @@ do this the initial check is modified by +2.
         Just eye-ball it.
       </p>
     </section>    
-  </chapter>  
+  </chapter>
+
+  {% if add_index_to_core %}
+  <index/>
+  {% endif %}
 </book>
