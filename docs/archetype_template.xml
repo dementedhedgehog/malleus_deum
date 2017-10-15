@@ -185,7 +185,7 @@
 	  {# ignore disabled abilities. #}
           {% if modified_ability.is_enabled() %}
 	  
-	  <table>
+	  <table compact="true">
             <tablecategory>Standard</tablecategory>
             
             <tablespec>
@@ -258,7 +258,7 @@
 
             {% if modified_ability_level.has_prerequisites() %}   
             <tablerow newcolour="false">          
-	      <td width="3" align="l">
+	      <td width="3" align="X">
 		<smaller>
 		  {%- if modified_ability_level.get_prerequisites() | length > 1 -%}
 		  Prereqs:
