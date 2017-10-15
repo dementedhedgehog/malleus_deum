@@ -72,7 +72,7 @@
       <p>
         The Run ability allows the character to move twice their movement rate during combat
         or pursuit.  This skill represents the characters fleet footedness.  In addition that
-        character can 
+        character can make a check to nive 
       </p>
     </abilitydescription>
     <abilitylevels>
@@ -85,9 +85,9 @@
         <attempts>1</attempts>
         <check>Std 2d8 vs 9</check>
         <effect>
-          The character moves a bit extra.  During combat this is an extra square when playing on
-          a grid, or something narrative in a TOTM combat.  During a pursuit the character increases
-          their rank by two if they fail and three if they succeed.          
+          The character moves a bit extra.  During combat this is an extra square when playing
+	  on a grid, or something narrative in a TOTM combat.  During a pursuit the character
+	  increases their rank by two if they fail and three if they succeed.          
         </effect>
       </abilitylevel>
       
@@ -143,6 +143,7 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
+        <check>Move Check vs default 12</check>	
       </abilitylevel>
       
       <abilitylevel>
@@ -152,6 +153,7 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
+        <check>Move Check + 1 vs default 12</check>	
       </abilitylevel>
       
       <abilitylevel>
@@ -159,6 +161,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>2</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
+        <check>Move Check + 2 vs default 12</check>	
       </abilitylevel>      
     </abilitylevels>
   </ability>
