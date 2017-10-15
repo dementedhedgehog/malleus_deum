@@ -621,7 +621,7 @@
         <xs:element name="figure" type="figureType" />
         <xs:element name="playexample" type="playexampleType" />
         <xs:element name="subsection" type="subsectionType" />
-        <xs:element name="subsubsection" type="subsubsectionType" />    
+        <!-- <xs:element name="subsubsection" type="subsubsectionType" />     -->
         <xs:element name="indexentry" type="indexentryType"/>
         <xs:element name="include" type="includeType" />
         <xs:element name="olist" type="orderedListType"/>
@@ -681,6 +681,7 @@
       <xs:choice minOccurs="0">
         <xs:element name="img" type="imgType"/>
         <xs:element name="table" type="tableType" />        
+        <xs:element name="caption" type="labelType" minOccurs="1" maxOccurs="1"/>
         <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="1"/>
 
         <!--
