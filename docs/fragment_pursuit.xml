@@ -30,7 +30,7 @@
 
       <term>Decide to Pursue</term>
       <description>
-	Pursuit is optional.  Actors with the checked condition cannot pursue.
+	Pursuit is optional.  Characters with the Checked condition cannot pursue.
       </description>
 
       <term>Chasing</term>
@@ -39,14 +39,22 @@
 	in the next section.
       </description>
 
+      <term>Running Down</term>
+      <description>	
+	Running down occurs on plains, deserts and in lightly wooded terrain when
+	the quarry has successfully avoided the chase.  Unfortunately in this case
+	there is no where to hide, the quarry are <measurement><metric>one kilometre</metric>
+	<imperial>half a mile</imperial></measurement> ahead of the pursuers and they
+	have to outrun their pursuers or get to somewhere where they can ecade the pursuit.
+      </description>
+
       <term>Tracking</term>
       <description>
-	Occurs when the pursuer can no longer see the quarry.  In the wilderness
+	Occurs when the pursuer can no longer see the quarry.  In forests, or jungles 
 	they have to use the Tracking skill vs their opponents Evasion.  In cities
 	they might have to question people, possibly using diplomacy, intimidation,
 	or bribery.
       </description>
-      
     </descriptions>
     
     <p>
@@ -60,7 +68,7 @@
     
     <p>
       Chasing occurs when one group is pursuing another and the pursued group is
-      intermittently visible, or there is broken ground to stop the pursuers, or
+      intermittently visible, there is broken ground to slow the pursuers, or
       the quarry is running to some safe location.  The pursuers just need to close
       the distance between them and their quarry.   The quarry just need to get far
       enough ahead that they can slip away or reach safety.
@@ -87,20 +95,16 @@
 	Increase rank by 2.
       </description>
 
-      <term>Run</term>
+      <term>Run or Flee</term>
       <description>
-	      Test versus movement.  If successful increase rank by 3, otherwise increase
-	      rank by 2 and gain the Tired condition.  If the character has the tired
-	      condition then they gain the Exhausted condition.  
+	Both Run and Flee are double movement actions increasing your rank by 2.  Both these
+	abilities also allow you to optionally check versus movement and, if successful,
+	increase your rank by 3, if the check fails then you increase your rank by 2 and gain
+	the Tired condition.  If the character already has the Tired condition then they
+	gain the Exhausted condition instead.  Fleeing is the same as Running except that 
+	in addition you need to make a morale check in order to stop fleeing.
       </description>
       
-      <term>Flee</term>
-      <description>
-        Flee is an ability.  The character gives in to terror and they run in a panic.
-        Flee automatically increases the rank by 3 but you need to make a morale check
-        in order to stop.
-      </description>
-
       <term>Ranged Attack</term>
       <description>
 	Make a missile attack.  If the weapon is tagged Fast then the character
@@ -120,6 +124,12 @@
 	perform this action if they can describe a feasible way to slow their pursuers.
 	For example they might tip over a cart in a town.  However on a plain there
 	might be no way to create an obstacle.
+      </description>
+      
+      <term>Evasion</term>
+      <description>
+	If successful then the character gains rank +4.  Otherwise they are set to the
+	same rank as the lead pursuer.
       </description>
       
       <term>Melee Attacks</term>
@@ -143,7 +153,7 @@
     </p>
 
     <p>
-      Pursuit is lost when the lowest ranking quarrys rank is greater than the
+      Pursuit is lost when the lowest ranking quarries rank is greater than the
       highest pursuers rank plus five at the end of the round.  In this case the
       quarry has evaded their pursuers.
 
@@ -176,7 +186,9 @@
       Random encounters may occur during a chase.  The chase might run into
       a midnight procession of the worshippers of the gods of bachanalia,
       maybe there is a cart blocking the path, or they run into the night watch.	
-      Refer to chase events table for random events (FIXME: TO BE DONE LATER).
+      Refer to chase events table for random events.
+
+      FIXME
     </p>	        
   </subsection>
   
