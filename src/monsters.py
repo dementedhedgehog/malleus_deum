@@ -3,66 +3,12 @@
 from os.path import join
 from os import listdir
 
-from utils import parse_xml, validate_xml, children_to_string, contents_to_string
-#, node_to_string, COMMENT
+from utils import (
+    parse_xml, validate_xml, children_to_string, contents_to_string,
+    COMMENT
+)
+#, node_to_string    
 
-
-
-# class MonsterGroups:
-
-
-#     def __init__(self):
-#         self.monster_groups = []
-#         return
-
-#     def load(self, monsters_dir, fail_fast):
-        
-#         # load all the monster groups
-#         for xml_fname in listdir(monsters_dir):
-#             if not xml_fname.endswith(".xml"):
-#                 continue
-
-#             if xml_fname.startswith(".#"):
-#                 continue
-            
-#             xml_fname = join(monsters_dir, xml_fname)
-#             monster_group = MonsterGroup(xml_fname)
-#             if not monster_group.validate() and fail_fast:
-#                 return False
-#             monster_group.load()
-
-#             self.monster_groups.append(monster_group)
-
-#             # # populate the monster_id -> monster lookup table
-#             # for monster in monster_group.get_monsters():
-#             #     self.monster_lookup[monster.get_id()] = monster
-
-#         # # inform each monster about monsters that require it as a prerequisite
-#         # for monster_group in self.monster_groups:
-#         #     for monster in monster_group.get_monsters():
-
-#         #         for monster_level in monster.get_levels():
-
-#         #             for prereq in monster_level.get_monster_level_prereqs():
-#         #                 # for prereq_monster_level_id in monster_level.get_prerequisite_ids():
-
-#         #                 #if prereq_monster_level_id is None:
-#         #                 #    continue
-
-#         #                 # reqister this monster level with any prerequisites it might have
-#         #                 prereq_monster_level = MonsterLevel.get_level(prereq.monster_level_id)
-                        
-#         #                 if prereq_monster_level is None:
-#         #                     raise Exception(
-#         #                         ("No monster level matches prereq key: %s "
-#         #                          "for monster: %s") % 
-#         #                         (prereq_monster_level_id, monster_level.get_title()))
-#         #                 prereq_monster_level.add_dependency(monster_level.get_id())
-
-#         # sort the groups
-#         self.monster_groups.sort()
-#         return True
-    
 
 class MonsterGroups:
     """
@@ -99,28 +45,6 @@ class MonsterGroups:
             # populate the monster_id -> monster lookup table
             for monster in monster_group.get_monsters():
                 self.monster_lookup[monster.get_id()] = monster
-
-        # inform each monster about monsters that require it as a prerequisite
-        # for monster_group in self.monster_groups:
-        #     for monster in monster_group.get_monsters():
-
-        #         for monster_level in monster.get_levels():
-
-        #             for prereq in monster_level.get_monster_level_prereqs():
-        #                 # for prereq_monster_level_id in monster_level.get_prerequisite_ids():
-
-        #                 #if prereq_monster_level_id is None:
-        #                 #    continue
-
-        #                 # reqister this monster level with any prerequisites it might have
-        #                 prereq_monster_level = MonsterLevel.get_level(prereq.monster_level_id)
-                        
-        #                 if prereq_monster_level is None:
-        #                     raise Exception(
-        #                         ("No monster level matches prereq key: %s "
-        #                          "for monster: %s") % 
-        #                         (prereq_monster_level_id, monster_level.get_title()))
-        #                 prereq_monster_level.add_dependency(monster_level.get_id())
 
         # sort the groups
         self.monster_groups.sort()
@@ -229,56 +153,6 @@ class MonsterGroupInfo:
            print(self.description)
         return
 
-# class MonsterGroup:
-
-#     def __init__(self, xml_fname):
-#         self.fname = xml_fname
-#         self.doc = parse_xml(xml_fname)
-#         self.info = None
-#         self.monsters = []
-#         return
-
-#     def validate(self):
-#         #cls = self.__class__
-#         valid = True
-#         error_log = validate_xml(self.doc)
-#         if error_log is not None:
-#             print("Errors (XSD)!")
-#             valid = False
-#             print("\t%s" % error_log)
-#         return valid
-    
-
-#     def load(self):
-#         root = self.doc.getroot()
-
-#         # check it's the right sort of element
-#         if root.tag != "monstergroup":
-#             raise Exception("UNEXPECTED TAG (%s) %s in file: %s\n" %
-#                             (root.tag, str(root), self.xml_fname))
-        
-#         # handle all the children of the monster group
-#         for child in list(root):
-        
-#            tag = child.tag
-#            if tag == "monstergroupinfo":
-#                if self.info is not None:
-#                    raise Exception("Only one monstergroupinfo per file.")
-#                else:
-#                    self.info = MonsterGroupInfo(self.fname)
-#                    self.info.load(child)
-
-#            elif tag == "monster":
-#                monster = Monster(self.fname)
-#                monster.load(child)
-#                self.monsters.append(monster)
-
-#            elif tag is COMMENT:               
-#                pass # ignore comments!
-
-#            else:
-#                raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
-#         return
 
 
 class MonsterGroup:
@@ -365,126 +239,126 @@ class MonsterGroup:
         return self.info.rank
     
         
-class MonsterClass:
-    NONE = "None"
+# class MonsterClass:
+#     NONE = "None"
 
-    # melee monsters
-    AMBUSH = "Ambush"
-    SURPRISE = "Surprise"
-    INITIATIVE = "Initiative"
-    TALK = "Talk"
-    #ACT = "Act"
-    #RUN = "Run"
-    #FIGHT_RANGED = "Fight-Ranged"
-    FIGHT_REACH = "Fight-Reach"
-    #FIGHT = "Fight"
-    START = "Start"
-    FAST = "Fast"
-    MEDIUM = "Medium"
-    SLOW = "Slow"
-    RESOLUTION = "Resolution"
-    REACTION = "Reaction"
-    NON_COMBAT = "Non-Combat"
+#     # melee monsters
+#     AMBUSH = "Ambush"
+#     SURPRISE = "Surprise"
+#     INITIATIVE = "Initiative"
+#     TALK = "Talk"
+#     #ACT = "Act"
+#     #RUN = "Run"
+#     #FIGHT_RANGED = "Fight-Ranged"
+#     FIGHT_REACH = "Fight-Reach"
+#     #FIGHT = "Fight"
+#     START = "Start"
+#     FAST = "Fast"
+#     MEDIUM = "Medium"
+#     SLOW = "Slow"
+#     RESOLUTION = "Resolution"
+#     REACTION = "Reaction"
+#     NON_COMBAT = "Non-Combat"
 
-    # misc monsters
-    LORE = "Lore"
+#     # misc monsters
+#     LORE = "Lore"
 
-    @classmethod
-    def to_string(cls, monster_class):
-        if monster_class is None:
-            return MonsterClass.NONE
-        return cls._names[stage]
+#     @classmethod
+#     def to_string(cls, monster_class):
+#         if monster_class is None:
+#             return MonsterClass.NONE
+#         return cls._names[stage]
 
-    @staticmethod
-    def get_symbol(monster_class):
+#     @staticmethod
+#     def get_symbol(monster_class):
         
-        if monster_class is not None:
-            monster_class = monster_class.strip()
+#         if monster_class is not None:
+#             monster_class = monster_class.strip()
 
-        if monster_class == "none":            
-            symbol_str = "NONE!"
-            raise Exception("X")
-        elif monster_class == MonsterClass.AMBUSH:
-            monster_cls = "<ambushsymbol/>"
-        elif monster_class == MonsterClass.SURPRISE:
-            symbol_str = "<surprisesymbol/>"
-        elif monster_class == MonsterClass.INITIATIVE:
-            symbol_str = "<initiativesymbol/>"
-        elif monster_class == MonsterClass.TALK:
-            symbol_str = "<talksymbol/>"
-        elif monster_class == MonsterClass.START:
-           symbol_str = "<startsymbol/>"
-        elif monster_class == MonsterClass.FAST:
-           symbol_str = "<fastsymbol/>"
-        elif monster_class == MonsterClass.MEDIUM:
-           symbol_str = "<mediumsymbol/>"
-        elif monster_class == MonsterClass.SLOW:
-           symbol_str = "<slowsymbol/>"
+#         if monster_class == "none":            
+#             symbol_str = "NONE!"
+#             raise Exception("X")
+#         elif monster_class == MonsterClass.AMBUSH:
+#             monster_cls = "<ambushsymbol/>"
+#         elif monster_class == MonsterClass.SURPRISE:
+#             symbol_str = "<surprisesymbol/>"
+#         elif monster_class == MonsterClass.INITIATIVE:
+#             symbol_str = "<initiativesymbol/>"
+#         elif monster_class == MonsterClass.TALK:
+#             symbol_str = "<talksymbol/>"
+#         elif monster_class == MonsterClass.START:
+#            symbol_str = "<startsymbol/>"
+#         elif monster_class == MonsterClass.FAST:
+#            symbol_str = "<fastsymbol/>"
+#         elif monster_class == MonsterClass.MEDIUM:
+#            symbol_str = "<mediumsymbol/>"
+#         elif monster_class == MonsterClass.SLOW:
+#            symbol_str = "<slowsymbol/>"
             
-        #elif monster_class == MonsterClass.ACT:
-        #    symbol_str = "<actsymbol/>"
-        #elif monster_class == MonsterClass.RUN:
-        #    symbol_str = "<runsymbol/>"
-        #elif monster_class == MonsterClass.FIGHT_RANGED:
-        #    symbol_str = "<fightrangedsymbol/>"
-        elif monster_class == MonsterClass.FIGHT_REACH:
-            symbol_str = "<fightreachsymbol/>"
-        #elif monster_class == MonsterClass.FIGHT:
-        #    symbol_str = "<fightsymbol/>"
-        elif monster_class == MonsterClass.RESOLUTION:
-            symbol_str = "<resolutionsymbol/>"
-        elif monster_class == MonsterClass.REACTION:
-            symbol_str = "<reactionsymbol/>"
-        elif monster_class == MonsterClass.NON_COMBAT:
-            symbol_str = "<noncombatsymbol/>"
-        else:
-            symbol_str = "UNKNOWN! %s" % monster_class
-            raise Exception("X")
-        return symbol_str
+#         #elif monster_class == MonsterClass.ACT:
+#         #    symbol_str = "<actsymbol/>"
+#         #elif monster_class == MonsterClass.RUN:
+#         #    symbol_str = "<runsymbol/>"
+#         #elif monster_class == MonsterClass.FIGHT_RANGED:
+#         #    symbol_str = "<fightrangedsymbol/>"
+#         elif monster_class == MonsterClass.FIGHT_REACH:
+#             symbol_str = "<fightreachsymbol/>"
+#         #elif monster_class == MonsterClass.FIGHT:
+#         #    symbol_str = "<fightsymbol/>"
+#         elif monster_class == MonsterClass.RESOLUTION:
+#             symbol_str = "<resolutionsymbol/>"
+#         elif monster_class == MonsterClass.REACTION:
+#             symbol_str = "<reactionsymbol/>"
+#         elif monster_class == MonsterClass.NON_COMBAT:
+#             symbol_str = "<noncombatsymbol/>"
+#         else:
+#             symbol_str = "UNKNOWN! %s" % monster_class
+#             raise Exception("X")
+#         return symbol_str
 
     
-    @staticmethod
-    def load(monster_class):
-        monster_cls = MonsterClass.NONE
+#     @staticmethod
+#     def load(monster_class):
+#         monster_cls = MonsterClass.NONE
 
-        if monster_class is not None:
-            monster_class = monster_class.lower().strip()
+#         if monster_class is not None:
+#             monster_class = monster_class.lower().strip()
 
-        if monster_class == "none":
-            monster_cls = MonsterClass.NONE
-        elif monster_class == "surprise":
-            monster_cls = MonsterClass.SURPRISE
-        elif monster_class == "initiative":
-            monster_cls = MonsterClass.INITIATIVE
-        elif monster_class == "talk":
-            monster_cls = MonsterClass.TALK
-        # elif monster_class == "act":
-        #     monster_cls = MonsterClass.ACT
-        # elif monster_class == "run":
-        #     monster_cls = MonsterClass.RUN
-        # elif monster_class == "fight":
-        #     monster_cls = MonsterClass.FIGHT
-        # elif monster_class == "fight-ranged":
-        #     monster_cls = MonsterClass.FIGHT_RANGED
-        elif monster_class == "fight-reach":
-            monster_cls = MonsterClass.FIGHT_REACH
-        elif monster_class == "resolution":
-            monster_cls = MonsterClass.RESOLUTION
-        elif monster_class == "reaction":
-            monster_cls = MonsterClass.REACTION
-        elif monster_class == "start":
-            monster_cls = MonsterClass.START
-        elif monster_class == "fast":
-            monster_cls = MonsterClass.FAST
-        elif monster_class == "medium":
-            monster_cls = MonsterClass.MEDIUM
-        elif monster_class == "slow":
-            monster_cls = MonsterClass.SLOW
-        elif monster_class == "non-combat":
-            monster_cls = MonsterClass.NON_COMBAT
-        else:
-            monster_cls = MonsterClass.NONE
-        return monster_cls
+#         if monster_class == "none":
+#             monster_cls = MonsterClass.NONE
+#         elif monster_class == "surprise":
+#             monster_cls = MonsterClass.SURPRISE
+#         elif monster_class == "initiative":
+#             monster_cls = MonsterClass.INITIATIVE
+#         elif monster_class == "talk":
+#             monster_cls = MonsterClass.TALK
+#         # elif monster_class == "act":
+#         #     monster_cls = MonsterClass.ACT
+#         # elif monster_class == "run":
+#         #     monster_cls = MonsterClass.RUN
+#         # elif monster_class == "fight":
+#         #     monster_cls = MonsterClass.FIGHT
+#         # elif monster_class == "fight-ranged":
+#         #     monster_cls = MonsterClass.FIGHT_RANGED
+#         elif monster_class == "fight-reach":
+#             monster_cls = MonsterClass.FIGHT_REACH
+#         elif monster_class == "resolution":
+#             monster_cls = MonsterClass.RESOLUTION
+#         elif monster_class == "reaction":
+#             monster_cls = MonsterClass.REACTION
+#         elif monster_class == "start":
+#             monster_cls = MonsterClass.START
+#         elif monster_class == "fast":
+#             monster_cls = MonsterClass.FAST
+#         elif monster_class == "medium":
+#             monster_cls = MonsterClass.MEDIUM
+#         elif monster_class == "slow":
+#             monster_cls = MonsterClass.SLOW
+#         elif monster_class == "non-combat":
+#             monster_cls = MonsterClass.NON_COMBAT
+#         else:
+#             monster_cls = MonsterClass.NONE
+#         return monster_cls
 
 
 class Monster:
@@ -503,7 +377,7 @@ class Monster:
         self.description = None
         self.tags = [] 
         self.aspects = [] 
-        self.monster_class = MonsterClass.NONE
+        #self.monster_class = MonsterClass.NONE
         self.ac = 7 # FIXME
         self.health = 8 # FIXME
         self.stamina = 9 # FIXME
