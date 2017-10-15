@@ -149,8 +149,6 @@ class MonsterGroupInfo:
            else:
                #
                raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
-
-           print(self.description)
         return
 
 
