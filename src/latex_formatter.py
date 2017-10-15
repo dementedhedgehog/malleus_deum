@@ -1263,6 +1263,7 @@ class LatexFormatter:
         self._current_column_in_table = 0
         self._current_row_in_table = 0
 
+
         # turn this on to draw vertical lines between columns
         DEBUG_COLUMN_WIDTH = False
 
@@ -1296,8 +1297,18 @@ class LatexFormatter:
                 table_spec_str += "|"
         self._number_of_columns_in_table = columns
 
+        # Check whether we want compact tables!
+        compact = False
+        if "compact" in table.attrib:
+            compact = table.get("compact").lower() == "true"        
+        
+
         # don't have paragraph indents buggering up our table layouts
-        self.latex_file.write("\n\n\\vspace{0.2cm}\\noindent")
+        if compact:
+            self.latex_file.write("\n\n\\vspace{0.15cm}\\noindent")
+        else:
+            self.latex_file.write("\n\n\\vspace{0.2cm}\\noindent")
+
 
         # wrap single page tables in a table environment
         # (we use xtabular for multi-page tables and the table environment
@@ -1313,7 +1324,12 @@ class LatexFormatter:
             self.latex_file.write("\\captionsetup{type=figure}")
 
         #self.latex_file.write("\\centering")
-                        
+
+        # reduce the line spacing in compact tables
+        if compact:
+            self.latex_file.write("\\begingroup\n")
+            self.latex_file.write("\\renewcommand\\arraystretch{0.75}\n")
+        
         if fullwidth:
             # normal table environment
             self.latex_file.write("\\begin{tabularx}{1.0\\textwidth}{%s} " 
@@ -1364,13 +1380,17 @@ class LatexFormatter:
         self.latex_file.write("\\end{tabularx}")
         
 
+        compact = False
+        if "compact" in table.attrib:
+            compact = table.get("compact").lower() == "true"        
+        if compact:
+            self.latex_file.write("\\endgroup\n")
+
+        
         table_title = table.find("tabletitle")
         if table_title is not None and table_title.text.strip() != "":
             if figure:
                 self.latex_file.write("\\caption{%s}" % table_title.text)
-            #else:            
-            #    self.latex_file.write("\\captionof{table}{%s}"
-            #                          % table_title.text)
             
             
         # we also need to find any labels! (place them after the caption!)
