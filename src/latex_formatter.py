@@ -94,6 +94,7 @@ class LatexFormatter:
             "\\documentclass[" + paper_size + orientation + ",twocolumn,oneside]{book}\n" 
             "\n"
             "\\usepackage[unicode]{hyperref} % for hyperlinks in pdf\n"
+            "\\usepackage{bookmark}          % fixes a hyperref warning.\n"
             "\\usepackage{caption}           % extra captions\n" 
             "\\usepackage{color}             % color.. what can I say\n"
             "\\usepackage{fancyhdr}          % header control\n" 
@@ -121,6 +122,8 @@ class LatexFormatter:
             "% include subsubsections in the table of contents\n"
             "\\setcounter{tocdepth}{3}\n"
             "\n"
+            "\n"
+            "\n"            
             "% fonts\n"
             "\\newfontfamily{\\cloisterblack}[Path=fonts/]{Cloister Black}\n"
             "\\newfontfamily{\\carolingia}[Path=fonts/]{Carolingia}\n"
@@ -337,28 +340,28 @@ class LatexFormatter:
             "pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt\n"
             "}\n"
             "\n"
-            "\n" # monster block formatting
-            "\\newcommand\\mbsep{\\raisebox{1.2ex}{"
-            "\\includegraphics[width=\\columnwidth,height=0.1cm]{./resources/hrule.png}"
-            "}}\n"
-            "\n"
-            #"\\newcommand\\mbtitleformat[1]{"
-            #"  \fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{sherwood.ttf}%
-            #\large\color{monstertextcolor}#1}
-            #"\n"            
-            "\\newcommand\\mbtagformat[1]{"
-            "\\begingroup\\cloisterblack\\normalsize#1\\endgroup}\n"
-            "\n"            
-            "% \\monster command\n"
-            "\\makeatletter\n"
-            "\\newcommand\\monster[1]{%\n"
-            #"    \\noindent#1%\n"
-            "\\noindent\\@startsection{subsection}{3}%\n"
-            "{\\z@ }% indent 0pt\n"
-            "{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
-            "{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}% vertical rubber space after the title\n"
-            "{\\Large #1 }*% heading style modifiers\n"
-            "}\n"
+            # "\n" # monster block formatting
+            # "\\newcommand\\mbsep{\\raisebox{1.2ex}{"
+            # "\\includegraphics[width=\\columnwidth,height=0.1cm]{./resources/hrule.png}"
+            # "}}\n"
+            # "\n"
+            # #"\\newcommand\\mbtitleformat[1]{"
+            # #"  \fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{sherwood.ttf}%
+            # #\large\color{monstertextcolor}#1}
+            # #"\n"            
+            # "\\newcommand\\mbtagformat[1]{"
+            # "\\begingroup\\cloisterblack\\normalsize#1\\endgroup}\n"
+            # "\n"            
+            # "% \\monster command\n"
+            # "\\makeatletter\n"
+            # "\\newcommand\\monster[1]{%\n"
+            # #"    \\noindent#1%\n"
+            # "\\noindent\\@startsection{subsection}{3}%\n"
+            # "{\\z@ }% indent 0pt\n"
+            # "{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
+            # "{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}% vertical rubber space after the title\n"
+            # "{\\Large #1 }*% heading style modifiers\n"
+            # "}\n"
 
             # \\\\\\mbsep
 #{\Large \color{monstertextcolor}%
@@ -374,7 +377,101 @@ class LatexFormatter:
             #"{\\Large\\color{monstertextcolor}%\n"
             #\fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{LinLibertine_aS.ttf}\scshape}*% heading style modifiers
             #"}\n"
-            "\\makeatother\n"
+            #"\\makeatother\n"
+
+
+#             "\n"
+#             "\n"
+#             "\n"
+#             "% Monster Blocks\n"
+#             "\n"
+#             "% \\mbsep command\n"
+#             "\\newcommand\\mbsep{\\raisebox{1.2ex}{"
+#             "\\includegraphics[width=\\columnwidth,height=0.1cm]{./resources/hrule.png}"
+#             "}}\n"
+#             "\n"            
+#             "\n"
+#             "% \\monster command\n"
+#             "\\makeatletter\n"
+#             "\\newcommand\\monster[1]{%\n"
+#             #"    \\noindent#1%\n"
+#             "\\noindent\\@startsection{subsection}{3}%\n"
+#             "{\\z@ }% indent 0pt\n"
+#             "% vertical rubber space before the title\n" 
+#             "{-1.5ex\\@plus -1ex \\@minus -.2ex}%\n"
+#             "% vertical rubber space after the title\n"
+#             "{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}%\n"
+#             "{\\Large #1 }*% heading style modifiers\n"
+#             "}\n"
+#             "\\makeatother\n"
+#             "\n"
+#             "\n"
+#             "\n"
+#             "%\n"
+#             "\\newenvironment{monsterblock}{%\n"
+#             #\newcommand\mbgetinfo{}%
+#             #\newcommand\mbgetac{}%
+#             # \newcommand\mbgethp{}%
+#             # \newcommand\mbgetspeed{}%
+#             # \newcommand\mbgetstr{}%
+#             # \newcommand\mbgetdex{}%
+#             # \newcommand\mbgetcon{}%
+#             # \newcommand\mbgetint{}%
+#             # \newcommand\mbgetwis{}%
+#             # \newcommand\mbgetcha{}%
+#             # \newcommand\mbgetsavingthrows{}%
+#             # \newcommand\mbgetskills{}%
+#             # \newcommand\mbgetsenses{}%
+#             # \newcommand\mbgetlanguages{}%
+#             # \newcommand\mbgetchallenge{}%
+#             # \newcommand\mbgetreactions{}%
+#             "}{%\n"
+#             "\\begin{tabular}{@{}l@{}}%\n"
+#             #"\\noindent\mbinfoformat{\mbgetinfo}\\%\n"
+#             "\\mbsep\\[-0.15cm]%\n"
+# #             \mbattrformat{Armour Class}{\mbgetac}\\%
+# # \mbattrformat{Hit Points}{\mbgethp}\\%
+# # \mbattrformat{Speed}{\mbgetspeed}\\%
+# # \mbsep\\[-0.15cm]%
+# # % attribute block
+# # \begin{tabular}{@{}cccccc@{}}%
+# # \mbattrtitleformat{STR} & %
+# # \mbattrtitleformat{DEX} & %
+# # \mbattrtitleformat{CON} & %
+# # \mbattrtitleformat{INT} & %
+# # \mbattrtitleformat{WIS} & %
+# # \mbattrtitleformat{CHA}\\%
+# # \small{\mbgetstr} & %
+# # \small{\mbgetdex} & %
+# # \small{\mbgetcon} & %
+# # \small{\mbgetint} & %
+# # \small{\mbgetwis} & %
+# # \small{\mbgetcha}\\%
+#             "\\end{tabular}\\%\n"
+#             "\\mbsep\\\\[-0.15cm]%\n"
+#             "%\n"
+# #             \ifdefempty{\mbgetsavingthrows}{}{%
+# # \mbattrformat{Saving Throws}{\mbgetsavingthrows}\\}%
+# # %
+# # \ifdefempty{\mbgetskills}{}{%
+# # \mbattrformat{Skills}{\mbgetskills}\\}%
+# # %
+# # \ifdefempty{\mbgetsenses}{}{%
+# # \mbattrformat{Senses}{\mbgetsenses}\\}%
+# # %
+# # \ifdefempty{\mbgetlanguages}{}{%
+# # \mbattrformat{Languages}{\mbgetlanguages}\\}%
+# # %
+# # \ifdefempty{\mbgetchallenge}{}{%
+# # \mbattrformat{Challenge}{\mbgetchallenge}\\}%
+#             "\\mbsep%\\\\[-0.15cm]%\n"
+#             "\\end{tabular}%\n"
+#             "}\n"            
+            "\n"
+            "\n"
+            "\n"
+            "\n"
+            "\n"            
             "\n"
             "\n"
             "% Archetype table formatting\n"
@@ -388,6 +485,28 @@ class LatexFormatter:
             "% the document! \n"
             "\\begin{document}\n"
             "\n")
+
+
+
+# \monster{Bear}
+# \begin{monsterblock}%
+# \mbinfo{Large beast}%
+# \mbac{13 (natural armour)}%
+# \mbhp{59 (7d10 + 21)}%
+# \mbspeed{40ft.}%
+# \mbstr{20(+5)}%
+# \mbdex{12(+1)}%
+# \mbcon{17(+3)}%
+# \mbint{3(-4)}%
+# \mbwis{12(+1)}%
+# \mbcha{7(-2)}%
+# \mbsavingthrows{}
+# \mbskills{Perception +3}
+# \mbsenses{darkvision 60ft, passive perception 13}
+# \mblanguages{\textemdash}
+# \mbchallenge{3 (700XP)}
+# \end{monsterblock}
+        
 
         if config.display_page_background:
             self.latex_file.write(
@@ -777,7 +896,9 @@ class LatexFormatter:
 
     def handle_text(self, text):
         if text is not None:
-            self.latex_file.write(text.encode('utf8'))
+            text = text.strip()
+            if len(text) > 0:
+                self.latex_file.write(text.encode('utf8'))
         return
 
     start_indexentry = no_op
@@ -817,7 +938,6 @@ class LatexFormatter:
 
 
     def start_measurement(self, distance):
-        #d = None
         if use_imperial:
             distance_text = get_text_for_child(distance, "imperial")
             if distance_text is None:
@@ -828,7 +948,7 @@ class LatexFormatter:
             if distance_text is None:
                 raise Exception("Metric distance not specified!")
 
-        self.latex_file.write(normalize_ws(distance_text))
+        self.latex_file.write(normalize_ws(distance_text).strip())
         return
     end_measurement = no_op
 
@@ -938,6 +1058,13 @@ class LatexFormatter:
         return
 
     def end_title(self, title):
+        return
+
+    def start_caption(self, caption):
+        self.latex_file.write("\\caption{%s}" % caption.text)
+        return
+
+    def end_caption(self, caption):
         return
 
     def start_subtitle(self, subtitle):        
@@ -1330,7 +1457,7 @@ class LatexFormatter:
             (self._current_column_in_table + width) % self._number_of_columns_in_table)
 
         if table_data.text is not None:
-            text = normalize_ws(table_data.text)
+            text = normalize_ws(table_data.text).strip()
 
             # override for table headers
             parent = table_data.getparent()
@@ -1345,11 +1472,6 @@ class LatexFormatter:
             else:
                 # normal table data
                 self.latex_file.write("%s" % text)
-
-            #     self.latex_file.write("\\multicolumn{%s}{%s}{%s" % (width, align, text))
-            # else:
-            #     # normal table data
-            #     self.latex_file.write("%s" % text)
         return
 
     def end_td(self, table_data):
@@ -1458,7 +1580,7 @@ class LatexFormatter:
 
 
     def start_label(self, label):
-        self.latex_file.write("\\label{%s} " % normalize_ws(label.text))
+        self.latex_file.write("\n\\label{%s} " % normalize_ws(label.text))
         return
     end_label = no_op
 
@@ -1567,16 +1689,16 @@ class LatexFormatter:
     def start_mbtitle(self, mbtitle):
         #self.latex_file.write("\\subsection{%s}\n\\mbsep{}" % mbtitle.text)
         #self.latex_file.write("\\mbtitleformat{%s}\n\\mbsep{}" % mbtitle.text)
-        self.latex_file.write("\\monster{%s}\n"
+        self.latex_file.write("\\monster{%s}\n" % mbtitle.text)
                               #"\\\\\n"
-                              "\\mbsep\n" % mbtitle.text)
+                              #"\\mbsep\n" % mbtitle.text)
         return
 
     def end_mbtitle(self, mbtitle):
         return
     
     def start_mbtags(self, mbtags):
-        self.latex_file.write("\\mbtagformat{%s}\n" % mbtags.text)
+        #self.latex_file.write("\\mbtagformat{%s}\n" % mbtags.text)
         return
     end_mbtags = no_op
     
