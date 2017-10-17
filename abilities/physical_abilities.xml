@@ -239,6 +239,17 @@
     <abilityclass>Slow</abilityclass>
     <abilitylevels>
       <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <failures>2</failures>
+	<check>Std 2d8</check>
+      </abilitylevel>
+      
+      <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
         <defaultlore>0</defaultlore>
@@ -246,6 +257,7 @@
         <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <failures>3</failures>
+	<check>Std 2d8 + 2</check>
       </abilitylevel>
       
       <abilitylevel>
@@ -253,11 +265,12 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>2</defaultgeneral>
+	<check>Std 2d8 + 3</check>
       </abilitylevel>      
     </abilitylevels>
     <abilitydescription>
       <p>
-    This skill represents the characters ability to Climb.
+	This skill represents the characters ability to Climb.
       </p>
     </abilitydescription>
   </ability>
