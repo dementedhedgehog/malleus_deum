@@ -41,7 +41,7 @@ ability_groups_dir = join(root_dir, "abilities")
 PG1_TEMPLATE = join(char_sheet_dir, "character_sheet_pg1.pdf")
 ABILITIES_TEMPLATE = join(char_sheet_dir, "character_sheet_abilities.pdf")
 
-N_ROWS_PER_ABILITY_PAGE = 12
+N_ROWS_PER_ABILITY_PAGE = 11
 N_COLS_PER_ABILITY_PAGE = 2
 ABILITIES_PER_PAGE = N_ROWS_PER_ABILITY_PAGE * N_COLS_PER_ABILITY_PAGE
 
@@ -254,19 +254,24 @@ def compose_pdf(dest_fname, src_fnames):
     char_sheet_file = file(dest_fname, "wb")
     char_sheet.write(char_sheet_file)
     return
-    
+
+
+def cmp_titles(ability, ability2):
+    return cmp(ability.get_title(), ability2.get_title())
+
 
 def create_character_sheet_for_archetype(archetype):
 
     # build a list containing all th archetypes avialable abilities.
     ability_levels = []
     for ability_group in archetype.modified_ability_groups:
-        print("\t%s" % ability_group.get_title())
-        
+        print("\t%s" % ability_group.get_title())        
         for ability in ability_group:
             ability_level = ability.get_highest_innate_level()
             if ability_level is not None:
                 ability_levels.append(ability_level)
+
+    ability_levels.sort(cmp_titles)
 
     # the pages we want to stick together.
     pdf_pages = []
