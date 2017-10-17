@@ -81,13 +81,16 @@
       <equation>
 	<line>Initiative Score =</line>
 	<line>Archetype Initiative +</line>
-	<line>Speed Attribute Initiative Bonus</line>
+	<line>Initiative Bonus</line>
       </equation>
 
       <p>
 	<bold>N.B.</bold> Here the archetype initiative comes from the archetype document.
-	It is different for each archetype.  The attribute bonus comes from the Attribute
-	Bonus Table, on page <pageref>table:{{ doc_name }}_attribute_bonuses</pageref>.  The same basic approach is used when calculating the rest of the character statistics that follow; add a value from the archetype document to a bonus from the attribute bonus table.
+	It is different for each archetype.  <bold>The attribute bonus comes from the Attribute
+	Bonus Table</bold>, on page <pageref>table:{{ doc_name }}_attribute_bonuses</pageref>.
+	The same basic approach is used when calculating the rest of the character statistics
+	that follow; add a value from the archetype document to a bonus from the attribute
+	bonus table.
       </p>
     </li>
 
@@ -97,7 +100,7 @@
       <equation>
 	<line>Moves =</line>
 	<line>Archetype Movement +</line>
-	<line>Speed Attribute Move Bonus</line>
+	<line>Move Bonus</line>
       </equation>
     </li>
         
@@ -107,7 +110,7 @@
       <equation>
 	<line>Stamina =</line>
 	<line>Archetype Stamina +</line>
-	<line>Endurance Attribute Bonus for Stamina</line>
+	<line>Stamina Bonus</line>
       </equation>
     </li>
     <li>
@@ -115,7 +118,7 @@
       <equation>
 	<line>Health =</line>
 	<line>Archetype Health +</line>
-	<line>Strength Attribute Bonus for Health</line>
+	<line>Health Bonus</line>
       </equation>
     </li>
 
@@ -124,7 +127,7 @@
       <equation>
 	<line>Resolve =</line>
 	<line>Archetype Resolve Dice +</line>
-	<line>Willpower Attribute Bonus Dice for Resolve</line>
+	<line>Resolve Bonus</line>
       </equation>
     </li>
 
@@ -134,7 +137,7 @@
       <equation>
 	<line>Magic =</line>
 	<line>Archetype Magic Dice +</line>
-	<line>Willpower Attribute Bonus Dice for Magic</line>
+	<line>Magic Bonus</line>
       </equation>
       The current pool starts equal to your Magic Pool.
       Not all characters are able to cast spells, but all characters have a magic pool.
@@ -164,7 +167,7 @@
     <li>
       <p>
         Players should choose a few initial aspects for their character.   Newly acquired 
-	aspects have a difficulty of d4 + 4 unless the archetype description or the GM
+	aspects have a difficulty of 2d4 + 4 unless the archetype description or the GM
 	says otherwise.  It is best to do this in a group with the other players and
 	the GM.  Better still let the other players choose an aspect for you.
       </p>
@@ -211,15 +214,15 @@
       <equation>
 	<line>Armour Class =</line>
 	<line>Archetype Armour Class +</line>
-	<line>Shield Armour Class Bonus +</line>
-	<line>Speed Armour Class Bonus</line>
+	<line>Armour Modifier +</line>
+	<line>Shield Modifier +</line>
+	<line>Armour Class Bonus</line>
       </equation>
-      The shield bonus is available when equipping shields and a few other 
-      weapons that can be used defensively.
-    </li>
-    
+      The armour modifier depends on what armour the character is wearing.  The shield
+      modifier is available when equipping a shield or a few other weapons that can be
+      used defensively.
+    </li>    
   </olist>
-
 
   {% include "tables/attribute_bonuses.xml" %}
 </section>
