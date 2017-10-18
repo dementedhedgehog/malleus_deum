@@ -91,8 +91,13 @@ class LatexFormatter:
                 orientation = ",landscape"
         
         self.latex_file.write(
-            "\\documentclass[" + paper_size + orientation + ",twocolumn,oneside]{book}\n" 
-            "\n"
+            #"\\documentclass[" + paper_size + orientation + ",twocolumn,oneside]{book}\n" 
+            "\\documentclass[twocolumn,oneside]{book}\n"
+            # blurb
+            #"\\usepackage[paperwidth=8.125in,paperheight=10.250in]{geometry}\n"
+            # lulu
+            "\\usepackage[paperwidth=21.59cm,paperheight=27.94cm]{geometry}\n"
+            "\n"            
             "\\usepackage[unicode]{hyperref} % for hyperlinks in pdf\n"
             "\\usepackage{bookmark}          % fixes a hyperref warning.\n"
             "\\usepackage{caption}           % extra captions\n" 
@@ -479,13 +484,14 @@ class LatexFormatter:
             "\n"
             "\n"
             "\n"
-            "\n"            
+            "\\AtEndDocument{\\clearpage\\ifodd\\value{page}\\else\\null\\clearpage\\fi}\n"
             "\n"
             "\n"            
             "% the document! \n"
             "\\begin{document}\n"
             "\n")
 
+        
 
 
 # \monster{Bear}
@@ -598,6 +604,11 @@ class LatexFormatter:
         self.latex_file.write("\\noncombatsymbol{}")
         return
     end_noncombat = no_op    
+
+    def start_newpage(self, symbol):
+        self.latex_file.write("\\newpage[4]\n")
+        return
+    end_newpage = no_op    
 
     def start_resolution(self, symbol):
         self.latex_file.write("\\resolutionsymbol{}")
@@ -884,13 +895,13 @@ class LatexFormatter:
         return
 
 
-    def start_bold(self, emph):
-        self.latex_file.write("\\textbf{%s} " % normalize_ws(emph.text))
+    def start_bold(self, bold):
+        self.latex_file.write("\\textbf{%s} " % normalize_ws(bold.text))
         return
     end_bold = no_op
 
-    def start_smaller(self, emph):
-        self.latex_file.write("\\scriptsize{%s} " % normalize_ws(emph.text))
+    def start_smaller(self, smaller):
+        self.latex_file.write("\\scriptsize{%s} " % normalize_ws(smaller.text))
         return
     end_smaller = no_op
 
