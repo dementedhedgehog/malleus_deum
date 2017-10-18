@@ -57,6 +57,15 @@
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
       </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 5 vs opponents AC</check>
+        <damage>Weapon damage + 2 + Str modifier</damage>
+      </abilitylevel>      
     </abilitylevels>
   </ability>
 
@@ -93,6 +102,52 @@
         <defaultmartial>7</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 3 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Dagger Riposte (Dual Wielding)</abilitytitle>
+    <abilityid>dagger.riposte</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilitydescription>
+      <p>
+	The character is dual wielding, holding the dagger in their off hand.
+	They attack with both weapons.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>dagger.strike_2</prereqabilitylevel>
+	<prereqattr><attr>Speed</attr><value>10</value></prereqattr>
+	<prereqattr><attr>Agility</attr><value>10</value></prereqattr>	
+        <defaultlore>0</defaultlore>
+        <defaultmartial>5</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>3</attempts>
+        <failures>1</failures>
+        <check>
+	  Make a Dagger Strike II check and a non-reaction action
+	  with their primary weapon
+	</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <prereqabilitylevel>dagger.strike_3</prereqabilitylevel>
+        <check>
+	  Make a Dagger Strike III check and a non-reaction action
+	  with their primary weapon
+	</check>
         <damage>Weapon damage</damage>
       </abilitylevel>      
     </abilitylevels>
