@@ -285,7 +285,8 @@ def create_character_sheet_for_archetype(archetype):
     pdf_pages.append(pdf_fname_out)    
 
     # work out how many ability pages we need
-    n_pages = len(ability_levels) / ABILITIES_PER_PAGE + 1
+    # (+2 because we want a whole extra clean sheet of abilities)
+    n_pages = len(ability_levels) / ABILITIES_PER_PAGE + 2
     
     # create all the ability pages    
     ability_level_iterator = iter(ability_levels)
