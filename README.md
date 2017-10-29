@@ -1,6 +1,10 @@
 # Malleus Deum
 
-Malleus Deum is a fantasy pen and paper, tabletop, role-playing game (RPG).	
+Malleus Deum is a fantasy pen and paper, tabletop, role-playing game (RPG).
+It is the authors intention that *you* should be able to modify, rebuild and
+or push changes you make to the rules.  However, currently the document build
+is a little complex.   I suggest that you only try and edit the documents
+directly if you have a good understanding of Python/Latex and Xml.
 
 
 # Installation
