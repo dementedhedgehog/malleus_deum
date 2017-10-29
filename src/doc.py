@@ -23,6 +23,26 @@ from utils import (
 from latex_formatter import LatexFormatter
 
 
+# These are tags we want to walk into.
+# 
+# This is a bit of a hack.. I should have organized the latex
+# formatter better.. we use this to gradually get to how we want
+# the formatters to all work, which is like html/xml with opening
+# and closing tags and descending into tags recursively rather than
+# hard coding element.text in the latex_writer.  Ultimately
+# this would be all tags.. in the meanwhile that would cause chaos.
+TEXT_TAGS = (
+    "mbtitle",
+    "mbtags",
+    "mbac", "mbhp", "mbmove",
+    "mbstr", "mbend", "mbag", "mbspd", "mbluck", "mbwil", "mbper",
+    "mbabilities", "mbaspects", "mbdescription",
+    "sectiontitle", "subsectiontitle", "subsubsectiontitle",
+    "descriptions", "term", "description",
+    "p",
+    )
+
+
 class Doc:
 
     def __init__(self, fname):
@@ -107,9 +127,17 @@ class Doc:
                 handler = methods[start_handler_name]
                 handler(element)                
             else:
-                errors.append("Unknown open element: <%s> at %s:%s\n%s" % 
-                              (tag, self.fname, element.sourceline, 
-                               get_error_context(self.fname, element.sourceline)))            
+                errors.append("Unknown %s open element: <%s> at %s:%s\n%s" % 
+                              (i_formatter.__class__, tag, self.fname, element.sourceline, 
+                               get_error_context(self.fname, element.sourceline)))
+
+        # handle trailing text.
+        if element.tag in TEXT_TAGS and element.text:
+            text = element.text
+            text = text.strip()
+            if text != "":
+                i_formatter.handle_text(text)
+                
         # handle all the children
         for child in list(element):
             self._format(child, i_formatter, methods, errors)
@@ -122,13 +150,16 @@ class Doc:
                 handler = methods[end_handler_name]
                 handler(element)                    
             else:
-                errors.append("Unknown close element: </%s> at %s:%s\n%s" % 
-                              (tag, self.fname, element.sourceline, 
-                               get_error_context(self.fname, element.sourceline)))        
-        # handle all the children
+                errors.append("Unknown %s close element: </%s> at %s:%s\n%s" % 
+                              (i_formatter.__class__, tag, self.fname, element.sourceline, 
+                               get_error_context(self.fname, element.sourceline)))
+
+        # handle trailing text.
         if element.tail:
             tail = element.tail
-            i_formatter.handle_text(tail)
+            tail = tail.strip()
+            if tail != "":
+                i_formatter.handle_text(tail)
         return
     
                 
