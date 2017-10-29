@@ -531,35 +531,63 @@ class AbilityClass:
 
         if ability_class == "None":            
             symbol_str = "NONE!"
-            raise Exception("X")
+            raise Exception("X") 
+        # elif ability_class == AbilityClass.AMBUSH:
+        #     ability_cls = "<ambushsymbol/>"
+        # elif ability_class == AbilityClass.SURPRISE:
+        #     symbol_str = "<surprisesymbol/>"
+        # elif ability_class == AbilityClass.INITIATIVE:
+        #     symbol_str = "<initiativesymbol/>"
+        # elif ability_class == AbilityClass.TALK:
+        #     symbol_str = "<talksymbol/>"
+        # elif ability_class == AbilityClass.START:
+        #    symbol_str = "<startsymbol/>"
+        # elif ability_class == AbilityClass.FAST:
+        #    symbol_str = "<fastsymbol/>"
+        # elif ability_class == AbilityClass.MEDIUM:
+        #    symbol_str = "<mediumsymbol/>"
+        # elif ability_class == AbilityClass.MEDIUM_OR_SLOW:
+        #    symbol_str = "<mediumorslowsymbol/>"
+        # elif ability_class == AbilityClass.SLOW:
+        #    symbol_str = "<slowsymbol/>"            
+        # elif ability_class == AbilityClass.FIGHT_REACH:
+        #     symbol_str = "<fightreachsymbol/>"
+        # elif ability_class == AbilityClass.RESOLUTION:
+        #     symbol_str = "<resolutionsymbol/>"
+        # elif ability_class == AbilityClass.REACTION:
+        #     symbol_str = "<reactionsymbol/>"
+        # elif ability_class == AbilityClass.START_AND_REACTION:
+        #    symbol_str = "<startandreactionsymbol/>"            
+        # elif ability_class == AbilityClass.NON_COMBAT:
+        #     symbol_str = "<noncombatsymbol/>"
         elif ability_class == AbilityClass.AMBUSH:
-            ability_cls = "<ambushsymbol/>"
+            ability_cls = "<ambush/>"
         elif ability_class == AbilityClass.SURPRISE:
-            symbol_str = "<surprisesymbol/>"
+            symbol_str = "<surprise/>"
         elif ability_class == AbilityClass.INITIATIVE:
-            symbol_str = "<initiativesymbol/>"
+            symbol_str = "<initiative/>"
         elif ability_class == AbilityClass.TALK:
-            symbol_str = "<talksymbol/>"
+            symbol_str = "<talk/>"
         elif ability_class == AbilityClass.START:
-           symbol_str = "<startsymbol/>"
+           symbol_str = "<start/>"
         elif ability_class == AbilityClass.FAST:
-           symbol_str = "<fastsymbol/>"
+           symbol_str = "<fast/>"
         elif ability_class == AbilityClass.MEDIUM:
-           symbol_str = "<mediumsymbol/>"
+           symbol_str = "<medium/>"
         elif ability_class == AbilityClass.MEDIUM_OR_SLOW:
-           symbol_str = "<mediumorslowsymbol/>"
+           symbol_str = "<mediumorslow/>"
         elif ability_class == AbilityClass.SLOW:
-           symbol_str = "<slowsymbol/>"            
+           symbol_str = "<slow/>"            
         elif ability_class == AbilityClass.FIGHT_REACH:
-            symbol_str = "<fightreachsymbol/>"
+            symbol_str = "<fightreach/>"
         elif ability_class == AbilityClass.RESOLUTION:
-            symbol_str = "<resolutionsymbol/>"
+            symbol_str = "<resolution/>"
         elif ability_class == AbilityClass.REACTION:
-            symbol_str = "<reactionsymbol/>"
+            symbol_str = "<reaction/>"
         elif ability_class == AbilityClass.START_AND_REACTION:
-           symbol_str = "<startandreactionsymbol/>"            
+           symbol_str = "<startandreaction/>"            
         elif ability_class == AbilityClass.NON_COMBAT:
-            symbol_str = "<noncombatsymbol/>"
+            symbol_str = "<noncombat/>"
         else:
             symbol_str = "UNKNOWN! %s" % ability_class
             raise Exception("X")
