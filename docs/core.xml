@@ -211,7 +211,7 @@
 
   <chapter>
     <chaptertitle>Character Generation</chaptertitle>
-    <label>ch:character_generation</label>
+    <label>ch:character-generation</label>
 
     <section>
       <sectiontitle>Character Overview</sectiontitle>
@@ -247,8 +247,8 @@
         The characters attributes and aspects are used to determine whether the player 
         can successfully perform certain actions within the world.  Checks are described
         further in Section<ref>sec:checks</ref> on page<pageref>sec:checks</pageref>. 
-        Steps to create a character can be found in Section<ref>sec:character_creation</ref> 
-        on page<pageref>sec:character_creation</pageref>.
+        Steps to create a character can be found in Section<ref>sec:character-creation</ref> 
+        on page<pageref>sec:character-creation</pageref>.
       </p>
 
       <playexample>
@@ -423,8 +423,8 @@
 	  Characters have three dice pool statistics.  They start the game with a full pool.
 	  During the game they may lose dice from those pools by making dice pool checks,
 	  and they may return dice to the pools by resting.  We describe how to
-          use dice pools to make checks in Section<ref>sec:dice_pool</ref> on
-          page<pageref>sec:dice_pool</pageref>.
+          use dice pools to make checks in Section<ref>sec:dice-pool</ref> on
+          page<pageref>sec:dice-pool</pageref>.
 	</p>
 	
         <descriptions>
@@ -621,7 +621,7 @@
         to be made against them.  Aspects are defined in great detail in chapter 
         Chapter<ref>ch:aspects</ref> on page<pageref>ch:aspects</pageref>.  We describe the 
         process by which aspects are assigned to new characters in
-        Section<ref>sec:character_creation</ref> on character creation.
+        Section<ref>sec:character-creation</ref> on character creation.
       </p>
     </section>
 
@@ -790,7 +790,7 @@
 
     
     <section>
-      <sectiontitle>Dice Pool Check<label>sec:dice_pool</label></sectiontitle>
+      <sectiontitle>Dice Pool Check<label>sec:dice-pool</label></sectiontitle>
       <p>
         <indexentry>Dice Pool Check</indexentry> 
         <indexentry>Check<subentry>Dice Pool</subentry></indexentry>
@@ -916,15 +916,15 @@
 
         <p>
           For Attribute Checks the character rolls a Std 2d8 modified by the
-          characters Attribute modifier, see Table<ref>table:core_attribute_modifiers</ref>
-          on page<pageref>table:core_attribute_modifiers</pageref> for a list of
+          characters Attribute modifier, see Table<ref>table:core-attribute-modifiers</ref>
+          on page<pageref>table:core-attribute-modifiers</pageref> for a list of
           attribute modifers.
         </p>
 
         <p>
           The difficulty for these attribute checks is chosen by the GM, see
-          Table<ref>table:std_check_difficulties</ref> on
-          page<pageref>table:std_check_difficulties</pageref> for a list of
+          Table<ref>table:std-check-difficulties</ref> on
+          page<pageref>table:std-check-difficulties</pageref> for a list of
           suggested difficulties.
         </p>
 
@@ -1287,13 +1287,13 @@ do this the initial check is modified by +2.
           compel</emph>.  They may perform a standard check against that Aspects difficulty.  
           If they fail the check their character must perform an action that is congruous 
           with the aspect in question, <emph>and</emph> increase the difficulty of the 
-          aspect by one up to a maximum of 13.  See Figure<ref>figure:compel_aspect_table</ref>.
+          aspect by one up to a maximum of 13.  See Figure<ref>figure:compel-aspect-table</ref>.
         </p>
 
 	<figure position="!t" fullwidth="true">
 	  <img src="./resources/compelling_aspects/aspects" scale="0.75"/>
 	  <caption>Compelling Aspects</caption>
-	  <label>figure:compel_aspect_table</label>
+	  <label>figure:compel-aspect-table</label>
 	</figure>
 
         <playexample>
@@ -1454,8 +1454,8 @@ do this the initial check is modified by +2.
           conflict and problems for the characters to overcome.  If an Aspect does not 
           cause the character to overcome difficulties or make interesting decisions it
           is not a good aspect.  We have included some example Aspects in 
-          Table<ref>table:{{ doc_name }}_random_aspects</ref> on
-          page<pageref>table:{{ doc_name }}_random_aspects</pageref>. 
+          Table<ref>table:{{ doc_name }}-random-aspects</ref> on
+          page<pageref>table:{{ doc_name }}-random-aspects</pageref>.
         </p>
       </subsection>
       
@@ -1667,7 +1667,7 @@ do this the initial check is modified by +2.
       </p>
       
       <subsection>
-        <subsectiontitle>Ambush <ambushsymbol/></subsectiontitle>
+        <subsectiontitle>Ambush <ambush/></subsectiontitle>
 
         <p>
           In order for one party to Ambush another they must be <defn>aware</defn> of that 
@@ -1675,8 +1675,8 @@ do this the initial check is modified by +2.
           ambushing party.  Ambushing requires that an opposed proxy check to check if the
           party being ambushed detects the ambushers before they are attacked.  The actual
           abilities used in an ambush check depends on the environment in which the ambush
-          occurs, see Table<ref>table:{{ doc_name }}_awareness</ref> on
-          page<pageref>table:{{ doc_name }}_awareness</pageref>.
+          occurs, see Table<ref>table:{{ doc_name }}-awareness</ref> on
+          page<pageref>table:{{ doc_name }}-awareness</pageref>.
         </p>
         
         <p>
@@ -1686,14 +1686,15 @@ do this the initial check is modified by +2.
         </p>
 
         <p>          
-          If the ambush attempt fails the ambushed group then checks to see if they are surprised.
+          If the ambush attempt fails the ambushed group then checks to see if they are
+	  surprised.
         </p>
 
         {% include "tables/awareness.xml" %}
       </subsection>
 
       <subsection>
-        <subsectiontitle>Surprise <surprisesymbol/></subsectiontitle>
+        <subsectiontitle>Surprise <surprise/></subsectiontitle>
 
         <p>
           <indexentry>Surprise<subentry>Rounds</subentry></indexentry>
@@ -1716,7 +1717,7 @@ do this the initial check is modified by +2.
 
 
       <subsection>
-        <subsectiontitle>Talk <talksymbol/></subsectiontitle>
+        <subsectiontitle>Talk <talk/></subsectiontitle>
 
         <p>
           The <defn>Talk Stage</defn> is optional, but can be used by the GM and the players
@@ -1787,7 +1788,7 @@ do this the initial check is modified by +2.
     </section>
 
     <section>
-      <sectiontitle>Initiative <initiativesymbol/></sectiontitle>
+      <sectiontitle>Initiative <initiative/></sectiontitle>
       <p>
         <indexentry>Turn Order</indexentry>
         <indexentry>Initiative</indexentry>
@@ -1942,7 +1943,7 @@ do this the initial check is modified by +2.
         <subsectiontitle>Combat Stages and Actions</subsectiontitle>
 
         <subsubsection>
-          <subsubsectiontitle>Start <startsymbol/></subsubsectiontitle>
+          <subsubsectiontitle>Start <start/></subsubsectiontitle>
           <p>
             This is the first stage in a combat round.  Characters may use Leadership
             to try and start negotiations, the Run command to perform a double movement,
@@ -1951,7 +1952,7 @@ do this the initial check is modified by +2.
         </subsubsection>
 
         <subsubsection>
-          <subsubsectiontitle>Fast Actions <fastsymbol/></subsubsectiontitle>
+          <subsubsectiontitle>Fast Actions <fast/></subsubsectiontitle>
           <p>
             Fast actions include missile weapon attacks and many Miscellaneous Actions.
           </p>
@@ -1959,7 +1960,7 @@ do this the initial check is modified by +2.
 
 
         <subsubsection>
-          <subsubsectiontitle>Standard Actions<mediumsymbol/></subsubsectiontitle>
+          <subsubsectiontitle>Standard Actions <medium/></subsubsectiontitle>
           <p>
             Standard actions include Charging, attacking with a Reach weapon in the first
             round, and attacking with a Fast melee weapon.        
@@ -1968,7 +1969,7 @@ do this the initial check is modified by +2.
 
 
         <subsubsection>
-          <subsubsectiontitle>Slow Actions<slowsymbol/></subsubsectiontitle>
+          <subsubsectiontitle>Slow Actions <slow/></subsubsectiontitle>
           <p>
             Slow actions include melee fighting using heavy weapons.
           </p>
@@ -1976,7 +1977,7 @@ do this the initial check is modified by +2.
 
         
         <subsubsection>
-          <subsubsectiontitle>End Stage<resolutionsymbol/></subsubsectiontitle>
+          <subsubsectiontitle>End Stage <resolution/></subsubsectiontitle>
           <p>
             The GM may determine that one party or another must make a Break Check.
           </p>
@@ -2014,7 +2015,7 @@ do this the initial check is modified by +2.
       </subsection>
 
       <subsection>
-        <subsectiontitle>Reactions <reactionsymbol/></subsectiontitle>
+        <subsectiontitle>Reactions <reaction/></subsectiontitle>
         <p>
           <indexentry>Reactions</indexentry>
           Under certain circumstances a character will be able to perform an additional
@@ -2023,14 +2024,14 @@ do this the initial check is modified by +2.
           to be performed as a Reaction or specially labelled abilities, such as: Shield Block,
           Sword Parry, Cloak Fighting and Dodge.  A character can only perform a reaction during
           a turn if they have not performed their action yet.  A character may only perform at
-          most one reaction per round.   If two or more characters want to react to an action the
+          most one reaction per round.  If two or more characters want to react to an action the
           character with the highest initiative decides the reaction order.
         </p>
       </subsection>
 
       <subsection>
         <subsectiontitle>
-      Miscellaneous Actions <noncombatsymbol/>/<fastsymbol/>?
+      Miscellaneous Actions <noncombat/>/<fast/>?
     </subsectiontitle>
         <p>
           <indexentry>Miscellaneous Actions</indexentry>
@@ -2065,8 +2066,8 @@ do this the initial check is modified by +2.
         <subsectiontitle>Benefits and Consequences</subsectiontitle>
         <p>
           Some suggested benefits and consequences for use during combat checks
-          can be found in Tables <ref>table:{{ doc_name }}_to_hit_consequences</ref>
-          and <ref>table:{{ doc_name }}_to_hit_consequences</ref>.
+          can be found in Tables <ref>table:{{ doc_name }}-to-hit-consequences</ref>
+          and <ref>table:{{ doc_name }}-to-hit-consequences</ref>.
         </p>
         {% include "tables/to_hit_consequences.xml" %}
         {% include "tables/to_hit_benefits.xml" %}
@@ -2193,7 +2194,7 @@ do this the initial check is modified by +2.
           <li>Declare an outcome, or</li>
           <li>Negotiate an outcome with the player and the party, or</li>
           <li>Have the player roll on the Near Death Table, see Table
-	  <ref>table:near_death_table</ref> on page <pageref>table:near_death_table</pageref>.
+	  <ref>table:near-death-table</ref> on page <pageref>table:near-death-table</pageref>.
 	  </li>
         </olist>
       </p>
@@ -2234,8 +2235,8 @@ do this the initial check is modified by +2.
         <p>
           As characters fail break tests they gain conditions that limit what they can
           do during combat, and subsequent break checks become more difficult, see
-          Table<ref>table:break_difficulties</ref> on
-          page<pageref>table:break_difficulties</pageref> for a list of break test
+          Table<ref>table:break-difficulties</ref> on
+          page<pageref>table:break-difficulties</pageref> for a list of break test
           difficulties and conditions.
         </p>
 
@@ -2310,56 +2311,6 @@ do this the initial check is modified by +2.
 
 
     {% include "fragment_pursuit.xml" %}
-
-
-    <section>
-      <sectiontitle>Foreshadowing and Outs</sectiontitle>
-
-      <p>
-        For combat to be interesting strategically it is important that there
-        be a chance of failure.  However, as combat is highly lethal it may
-        result in a total party kill, which is a generally undesirable outcome.
-      </p>
-      
-      <p>
-        There are two approaches to solving this problem.  The first is to make
-        sure that the characters are able to win the combat by providing deliberately
-        easy foes.  While this works, if overused it leads to a dull combat experience.
-      </p>               
-
-      <p>
-        The second approach to solving this problem is to provide an <defn>Out</defn>
-        for the party should things go wrong. For example if the characters are fighting
-        slavers and they lose then they can be enslaved and the game continues.  If
-        they are fighting Orcs they may be kept for food later.  The city guards might
-        throw them in the dungeon if they prevail against the party.
-      </p>
-
-
-      <p>
-        A sub-type of the Out is the Deus Ex Machina.  In this case the party is
-        saved right at the last minute by some third-party.  This is generally undesirable
-        from a narrative perspective as it leads the players to believe that whatever
-        they do some third-party will save them at the last minute, thus reducing tension.
-      </p>
-
-      <p>
-        The trick to making Outs feel less contrived is <defn>Foreshadowing</defn>.
-        As a GM, you should provide information to the characters about the Out so that
-        if and when you have to use it the development in the narrative is less jarring.
-        For example, if characters are trying to contact the elvish border guards in the
-        Grey Forest and you, as the GM, know they are just about to run into giant spiders
-        have the characters hear the guards trumpets in the distance.  If the players
-        are fighting slavers, let them know that there have been slaver raids taking place.
-        Also it is a good idea to plant these foreshadowing seeds earlier rather than later.
-      </p>
-
-      <p>
-        In summary, to avoid combat annihilation try to have an Out for the characters
-        before the combat.  Use foreshadowing in order to make the out seem less contrived.
-      </p>          
-      
-    </section>
 
 
     <section>
