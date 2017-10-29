@@ -6,385 +6,334 @@ from utils import (
     convert_str_to_bool,
     convert_str_to_int,
     COMMENT# ,
-    #resources_dir
+    #resources_dir    
 )
 from config import use_imperial
 
 
+# \usepackage[paperwidth=8.125in,paperheight=10.250in]{geometry}
+#%% lulu
+# %%\usepackage[paperwidth=21.59cm,paperheight=27.94cm]{geometry}
+#%% documentclass[twocolumn,oneside]{book}
+#%% blurb
+#%%  
+#%% fraction symbols
+#\newcommand{\half}{½}
+#\newcommand{\third}{⅓}
+#\newcommand{\quarter}{¼}
 
-def get_text_for_child(element, child_name):
-    """
-    Find text for a child element.
-
-    """
-    child = element.find(child_name)
-    if child is None or child.text is None:
-        text = ""
-    else:
-        text = child.text.strip()
-    return text
-
-
-class TableCategory:
-    Standard = "Standard"
-    Figure = "Figure"
-    Fullwidth = "FullWidth"
-    Sideways = "Sideways"    
+# %% fraction symbols
+# \newcommand{\half}{FIXME HALF ½}
+# \newcommand{\third}{FIXME THIRD}
+# \newcommand{\quarter}{FIXME QUARTER}
 
 
-class LatexFormatter:
-    
-    def __init__(self, latex_file):
+latex_frontmatter = r"""
+\documentclass[%s,twocolumn,oneside]{book}
+\usepackage[unicode]{hyperref} %% for hyperlinks in pdf
+\usepackage{bookmark}          %% fixes a hyperref warning.
+\usepackage{caption}           %% extra captions
+\usepackage{color}             %% color.. what can I say
+\usepackage{fancyhdr}          %% header control
+\usepackage{fancybox}          %% fancy boxes.. eg box outs
+\usepackage{graphicx}          %% for including images
+\usepackage{fontspec}          %% fine font control
+\usepackage{titlesec}          %% for fancy titles
+\usepackage{lettrine}          %% for drop capitals
+\usepackage{tabularx}          %% for tables  
+\usepackage[table]{xcolor}     %% for tables with colour
+\usepackage{booktabs}          %% for tables
+\usepackage{calc}              %% for table width calculations
+\usepackage{xcolor}            %% for color aliases    
+\usepackage{wallpaper}         %% for the paper background
+\usepackage{enumerate}         %% for roman numerals in enumerations
+\usepackage{lipsum}            %% for generating debug text
+\usepackage{wrapfig}           %% sidebar thingy
+\usepackage{makeidx}           %% for building the index
+\usepackage{amssymb}           %% for special maths symbols, e.g. slanted geq
+\usepackage{xtab}              %% for multipage tables
+\usepackage{rotating}          %% for sidewaystable
+\usepackage{parskip}           %% non indented paragraphs
+\usepackage{multicol}          %% used for four column mode.
 
-        # open latex file pointer
-        self.latex_file = latex_file
-        
-        # internal state
-        self._drop_capped_first_letter_of_chapter = False
+%% include subsubsections in the table of contents
+\setcounter{tocdepth}{3}
 
-        # for tables
-        self._number_of_columns_in_table = 0
-        self._current_column_in_table = 0
-        self._current_row_in_table = 0
 
-        # for equations (indent second and subsequent lines)
-        self._equation_first_line = True
+%% fonts
+\newfontfamily{\cloisterblack}[Path=fonts/]{Cloister Black}
+\newfontfamily{\carolingia}[Path=fonts/]{Carolingia}
+\newfontfamily{\rpgdice}[Path=fonts/]{RPGDice}
+\newfontfamily{\sherwood}[Path=fonts/]{Sherwood}
+\newfontfamily{\libertine}{Linux Libertine O}
 
-        # for level tables FIXME: remove this.
-        self._current_row_in_level_table = 0
+\newfontfamily{\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}
+\newfontfamily{\rpgchapterfont}[Path=fonts/, Scale=1.0]{Cloister Black}
+\newfontfamily{\rpgtitlesubtitlefont}[Path=fonts/]{Cloister Black}
+\newfontfamily{\rpgtitleauthorfont}[Path=fonts/]{Dogma}
+\newfontfamily{\rpgdropcapfont}[Path=fonts/, Scale=1.2]{Cloister Black}            
+\newcommand{\rpgsectionfont}{\cloisterblack}
 
-        # for descriptions
-        self.description_terms_on_their_own_line = False
 
-        # for the index_entry see field (None or a string).
-        self.index_entry_see = None
-        self.index_entry_subentry = None
+%% colours
+\definecolor{maroon}{RGB}{128,0,0}
+\definecolor{darkred}{RGB}{139,0,0}
+\definecolor{barnred}{RGB}{124,10,2}
+\definecolor{rosetaupe}{RGB}{144,93,93}
+\definecolor{rosewood}{RGB}{101,0,11}
+\definecolor{black}{RGB}{0,0,0}
 
-        #
-        # configuration
-        #        
-        return
+%% colour aliases
+\colorlet{rpgtitlefontcolor}{black}
+\colorlet{rpgchapterfontcolor}{black}
+\colorlet{rpgsectionfontcolor}{rosewood}
+\colorlet{monstertitlecolor}{rosewood}
+\colorlet{monstertagscolor}{black}
 
-    def verify(self):
-        verifyObject(IFormatter, self)
-        return
 
-    def no_op(self, obj):
-        """We've got a lot of handlers that don't need to do anything.. do nothing once."""
-        pass
+%% spacing
+%% drop is a vspace 1/100th the page text height.
+\newlength\drop
+\drop = 0.01\textheight
 
-    
-    def start_book(self, book):
-        
-        # must be a valid latex paper size
-        if config.paper_size == "a4":
-            paper_size = "a4paper"
-        elif config.paper_size == "letter":
-            paper_size = "letterpaper"
-        else:
-            raise Exception("Unknown paper size.  Pick one of [a4, letter] in config.py")
+\titleformat{name=\chapter}[hang]
+{\Huge\bfseries\rpgchapterfont\color{rpgchapterfontcolor}}
+{}{1em}{}
 
-        orientation = ""
-        if "landscape" in book.attrib:
-            landscape = book.get("landscape").lower()
-            if landscape == "true":
-                orientation = ",landscape"
-        
-        self.latex_file.write(
-            #"\\documentclass[" + paper_size + orientation + ",twocolumn,oneside]{book}\n" 
-            "\\documentclass[twocolumn,oneside]{book}\n"
-            # blurb
-            #"\\usepackage[paperwidth=8.125in,paperheight=10.250in]{geometry}\n"
-            # lulu
-            "\\usepackage[paperwidth=21.59cm,paperheight=27.94cm]{geometry}\n"
-            "\n"            
-            "\\usepackage[unicode]{hyperref} % for hyperlinks in pdf\n"
-            "\\usepackage{bookmark}          % fixes a hyperref warning.\n"
-            "\\usepackage{caption}           % extra captions\n" 
-            "\\usepackage{color}             % color.. what can I say\n"
-            "\\usepackage{fancyhdr}          % header control\n" 
-            "\\usepackage{fancybox}          % fancy boxes.. eg box outs\n" 
-            "\\usepackage{graphicx}          % for including images\n" 
-            "\\usepackage{fontspec}          % fine font control\n"
-            "\\usepackage{titlesec}          % for fancy titles\n"
-            "\\usepackage{lettrine}          % for drop capitals \n"            
-            "\\usepackage{tabularx}          % for tables \n"            
-            "\\usepackage[table]{xcolor}     % for tables with colour\n"
-            "\\usepackage{booktabs}          % for tables\n"
-            "\\usepackage{calc}              % for table width calculations\n"
-            "\\usepackage{xcolor}            % for color aliases\n"            
-            "\\usepackage{wallpaper}         % for the paper background\n"            
-            "\\usepackage{enumerate}         % for roman numerals in enumerations\n"            
-            "\\usepackage{lipsum}            % for generating debug text\n"
-            "\\usepackage{wrapfig}           % sidebar thingy\n"
-            "\\usepackage{makeidx}           % for building the index\n"
-            "\\usepackage{amssymb}           % for special maths symbols, e.g. slanted geq\n"
-            "\\usepackage{xtab}              % for multipage tables\n"
-            "\\usepackage{rotating}          % for sidewaystable\n"
-            "\\usepackage{parskip}           % non indented paragraphs\n"
-            "\\usepackage{multicol}          % used for four column mode.\n"
-            "\n"
-            "% include subsubsections in the table of contents\n"
-            "\\setcounter{tocdepth}{3}\n"
-            "\n"
-            "\n"
-            "\n"            
-            "% fonts\n"
-            "\\newfontfamily{\\cloisterblack}[Path=fonts/]{Cloister Black}\n"
-            "\\newfontfamily{\\carolingia}[Path=fonts/]{Carolingia}\n"
-            "\\newfontfamily{\\rpgdice}[Path=fonts/]{RPGDice}\n"
-            "% fonts\n"
-            "\\newfontfamily{\\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}\n"
-            "\\newfontfamily{\\rpgchapterfont}[Path=fonts/, Scale=1.0]{Cloister Black}\n"
-            "\\newfontfamily{\\rpgtitlesubtitlefont}[Path=fonts/]{Cloister Black}\n" 
-            "\\newfontfamily{\\rpgtitleauthorfont}[Path=fonts/]{Dogma}\n"
-            "\\newfontfamily{\\rpgdropcapfont}[Path=fonts/, Scale=1.2]{Cloister Black}\n"
-            "\n"            
-            "\\newcommand{\\rpgsectionfont}{\cloisterblack}\n"
-            "\n"            
-            "% colours \n"
-            "\\definecolor{maroon}{RGB}{128,0,0}\n"
-            "\\definecolor{darkred}{RGB}{139,0,0}\n"
-            "\\definecolor{barnred}{RGB}{124,10,2}\n"
-            "\\definecolor{rosetaupe}{RGB}{144,93,93}\n"
-            "\\definecolor{rosewood}{RGB}{101,0,11}\n"
-            "\\definecolor{black}{RGB}{0,0,0}\n"
-            "\n"
-            "% colour aliases\n"
-            "\\colorlet{rpgtitlefontcolor}{black}\n"
-            "\\colorlet{rpgchapterfontcolor}{black}\n"
-            "\\colorlet{rpgsectionfontcolor}{rosewood}\n"
-            "\n"
-            "% spacing \n"            
-            "\\newlength\drop\n"
-            "\\drop = 0.01\\textheight % drop is a vspace 1/100th the page text height.\n"
-            "\n"
-            "\\titleformat{name=\\chapter}[hang]\n"
-            "   {\\Huge\\bfseries\\rpgchapterfont\\color{rpgchapterfontcolor}}\n"
-            "   {}{1em}{}\n"
-            "\n"
-            "\\titleformat{\\section}\n"
-            "  {\\rpgsectionfont\\LARGE\\color{rpgsectionfontcolor}}\n"
-            "  {\\thesection}{0.5em}{}\n"
-            "\n"
-            "\\newcommand{\\rpgtableheader}{\\bfseries\\selectfont}{}\n"
-            "\n"
-            "\\newcommand\\rpgtablesection[1]{"
-            "\\rule{0pt}{1ex}\\bfseries\\scriptsize #1}\n"
-            "\n"
-            "\n"
-            "% symbols\n"
-            "\\newcommand{\\reactionsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}R\\endgroup}"
-            "  {reaction}}\n"
-            "\n"
-            "\\newcommand{\\startsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}1\\endgroup}"
-            "  {start}}\n"            
-            "\n"
-            "\\newcommand{\\talksymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}t\\endgroup}"
-            "  {talk}}\n"
-            "\n"
-            "\\newcommand{\\fastsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}2\\endgroup}"
-            "  {fast}}\n"
-            "\n"
-            "\\newcommand{\\mediumsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}3\\endgroup}"
-            "  {medium}}\n"
-            "\n"
-            "\\newcommand{\\slowsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}4\\endgroup}"
-            "  {slow}}\n"
-            "\n"
-            "\\newcommand{\\startandreactionsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}1+R\\endgroup}"
-            "  {startandreactionsymbol}}\n"
-            "\n"
-            "\\newcommand{\\mediumorslowsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}3/4\\endgroup}"
-            "  {mediumorslowsymbol}}\n"
-            "\n"
-            "\\newcommand{\\resolutionsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}5\\endgroup}"
-            "  {resolution}}\n"
-            "\n"
-            "\\newcommand{\\surprisesymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}s\\endgroup}"
-            "  {surprise}}\n"
-            "\n"
-            "\\newcommand{\\ambushsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}a\\endgroup}"
-            "  {ambush}}\n"
-            "\n"
-            "\\newcommand{\\initiativesymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}i\\endgroup}"
-            "  {initiative}}\n"
-            "\n"
-            "\\newcommand{\\fightreachsymbol}\n"
-            "  {\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}3:4\\endgroup}"
-            "  {fight-reach}}\n"
-            "\n"
-            "\\newcommand{\\noncombatsymbol}"
-            "{\\texorpdfstring{\\begingroup\\rpgdice\\selectfont{}n\\endgroup}"
-            "{non-combat}}\n"
-            "\n"
-            "\n"
-            "% the font for the body of the text\n"
-            "\\setmainfont[Scale=0.95]{Linux Libertine O}\n"
-            "\\setromanfont[\n"
-            "  Mapping=tex-text, \n"
-            "  Mapping=tex-text, \n"
-            "  Ligatures={Common,Rare,Discretionary}\n"
-            "  ]{Linux Libertine O}\n"
-            "\n"
-            "% special bullet symbol\n"
-            "\\newcommand{\\rpgbullet}\n"
-            "{\\begingroup\\rpgdice\\large\\selectfont{}*\\endgroup}\n"
-            "\\renewcommand{\\labelitemi}{\\rpgbullet}\n"            
-            "\n"
-            "% success/fail/attempt symbols\n"
-            "\\newcommand{\\rpgsuccess}\n"  
-            " {\\begingroup\\rpgdice\\selectfont{}y\\endgroup}\n"
-            "\\newcommand{\\rpgfail}\n"  
-            " {\\begingroup\\rpgdice\\selectfont{}x\\endgroup}\n"
-            "\\newcommand{\\rpgattempt}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}?\\endgroup}\n"            
-            "\n"
-            "% achetype ability mark up symbols (star, empty-star and exclamation)\n"
-            "\\newcommand{\\rpginnatearchetypeabilitysymbol}"  
-            " {\\begingroup\\rpgdice\\selectfont\\symbol{\"201C}\\endgroup}\n"            
-            "\\newcommand{\\rpginnateabilitysymbol}"   
-            " {\\begingroup\\rpgdice\\selectfont\\symbol{\"201D}\\endgroup}\n"            
-            "\\newcommand{\\rpgrecommendedabilitylevelsymbol}"
-            " {\\begingroup\\rpgdice\\selectfont{}!\\endgroup}\n"
-            "\n"
-            "% dice pool notation\n"            
-            "\\newcommand{\\dfour}\n" 
-            " {\\begingroup\\rpgdice\\selectfont{}A\\endgroup}\n"
-            "\\newcommand{\\dsix}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}B\\endgroup}\n"
-            "\\newcommand{\\deight}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}C\\endgroup}\n"
-            "\\newcommand{\\dten}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}D\\endgroup}\n"
-            "\\newcommand{\\dtwelve}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}E\\endgroup}\n"
-            "\\newcommand{\\dtwenty}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}F\\endgroup}\n"
-            "\\newcommand{\\dany}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}G\\endgroup}\n"
-            "\\newcommand{\\dpool}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}H\\endgroup}\n"
-            "\\newcommand{\\firststage}\n"  
-            " {\\begingroup\\rpgdice\\selectfont{}1\\endgroup}\n"
-            "\\newcommand{\\secondstage}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}2\\endgroup}\n"
-            "\\newcommand{\\thirdstage}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}3\\endgroup}\n"
-            "\\newcommand{\\fourthstage}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}4\\endgroup}\n"
-            "\\newcommand{\\fifthstage}\n"
-            " {\\begingroup\\rpgdice\\selectfont{}5\\endgroup}\n"
-            "\n"
-            "\n"
-            "% fraction symbols\n"
-            u"\\newcommand{\\half}{½}\n"
-            u"\\newcommand{\\third}{⅓}\n"
-            u"\\newcommand{\\quarter}{¼}\n"
-            "\n"
-            "% skill point symbols\n"
-            "\\newcommand{\\lore}{%\n"
-            "\\begingroup\\rpgdice\\selectfont{}l\\endgroup}\n"
-            "\\newcommand{\\martial}{%\n"
-            "\\begingroup\\rpgdice\\selectfont{}m\\endgroup}\n"            
-            "\\newcommand{\\general}{%\n"
-            "\\begingroup\\rpgdice\\selectfont{}g\\endgroup}\n"
-            "\\newcommand{\\magical}{%\n"
-            "\\begingroup\\rpgdice\\selectfont{}z\endgroup}\n"
-            "\n"
-            "\n"
-            "\n"
-            "% special provenance symbol\n"
-            "\\newcommand{\\rpgprovenancesymbol}\n"
-            "{\\begingroup\\fontspec{rpgdice}\\Large\\selectfont{}>\\endgroup}\n"
-            "\n"
-            "\\newcommand{\\flourish}{\n"
-            "}\n"
-            "\n"
-            "\n"
-            "% the index \n"
-            "\\makeindex\n"            
-            "\n"
-            # start other evironments in newenvironments like this 
-            # put it after a section, not just before
-            "\n"
-            "\\newenvironment{playexample}{\n" 
-            "\\vspace{0.4em}\n"
-            "  \\flourish\n"
-            "  \\begin{quote}\n"
-            "  \\small\n"
-            "  \\carolingia\n"
-            "  \\setlength{\parindent}{0pt}\n"
-            "  \\raggedright\n"
-            "}\n"
-            "{\n"
-            "  \\end{quote}\n"
-            "  \\flourish\n"
-            "\\vspace{0.4em}\n"
-            "}\n"
-            "\n"
-            "% don't break paragraphs\n"            
-            "\\widowpenalties 1 10000\n"
-            "\\raggedbottom\n"
-            "\n"
-            "\hypersetup{%\n"
-            "colorlinks=false,% hyperlinks will be black\n"
-            "linkbordercolor=blue,% hyperlink borders will be red\n"
-            "pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt\n"
-            "}\n"
-            "\n"
-            # "\n" # monster block formatting
-            # "\\newcommand\\mbsep{\\raisebox{1.2ex}{"
-            # "\\includegraphics[width=\\columnwidth,height=0.1cm]{./resources/hrule.png}"
-            # "}}\n"
-            # "\n"
-            # #"\\newcommand\\mbtitleformat[1]{"
-            # #"  \fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{sherwood.ttf}%
-            # #\large\color{monstertextcolor}#1}
-            # #"\n"            
-            # "\\newcommand\\mbtagformat[1]{"
-            # "\\begingroup\\cloisterblack\\normalsize#1\\endgroup}\n"
-            # "\n"            
-            # "% \\monster command\n"
-            # "\\makeatletter\n"
-            # "\\newcommand\\monster[1]{%\n"
-            # #"    \\noindent#1%\n"
-            # "\\noindent\\@startsection{subsection}{3}%\n"
-            # "{\\z@ }% indent 0pt\n"
-            # "{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
-            # "{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}% vertical rubber space after the title\n"
-            # "{\\Large #1 }*% heading style modifiers\n"
-            # "}\n"
+\titleformat{\section}
+{\rpgsectionfont\LARGE\color{rpgsectionfontcolor}}
+{\thesection}{0.5em}{}
 
-            # \\\\\\mbsep
+\newcommand{\rpgtableheader}{\bfseries\selectfont}{}
+
+\newcommand\rpgtablesection[1]{
+\rule{0pt}{1ex}\bfseries\scriptsize #1}
+
+
+%% symbols
+\newcommand{\reactionsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}R\endgroup}{reaction}}
+
+\newcommand{\startsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}1\endgroup}{start}}
+
+\newcommand{\talksymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}t\endgroup}{talk}}
+
+\newcommand{\fastsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}2\endgroup}{fast}}
+
+\newcommand{\mediumsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}3\endgroup}
+{medium}}
+
+\newcommand{\slowsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}4\endgroup}{slow}}
+
+\newcommand{\startandreactionsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}1+R\endgroup}
+{startandreactionsymbol}}
+
+\newcommand{\mediumorslowsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}3/4\endgroup}
+{mediumorslowsymbol}}
+
+\newcommand{\resolutionsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}5\endgroup}{resolution}}
+
+\newcommand{\surprisesymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}s\endgroup}
+{surprise}}
+
+\newcommand{\ambushsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}a\endgroup}
+{ambush}}
+
+\newcommand{\initiativesymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}i\endgroup}
+{initiative}}
+
+\newcommand{\fightreachsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}3:4\endgroup}
+{fight-reach}}
+
+\newcommand{\noncombatsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}n\endgroup}
+{non-combat}}
+
+%% the font for the body of the text
+\setmainfont[Scale=0.95]{Linux Libertine O}
+\setromanfont[
+  Mapping=tex-text, 
+  Mapping=tex-text, 
+  Ligatures={Common,Rare,Discretionary}]{Linux Libertine O}
+            
+%% special bullet symbol
+\newcommand{\rpgbullet}
+{\begingroup\rpgdice\large\selectfont{}*\endgroup}
+\renewcommand{\labelitemi}{\rpgbullet}        
+
+%% success/fail/attempt symbols
+\newcommand{\rpgsuccess}
+ {\begingroup\rpgdice\selectfont{}y\endgroup}
+\newcommand{\rpgfail}
+ {\begingroup\rpgdice\selectfont{}x\endgroup}
+\newcommand{\rpgattempt}
+ {\begingroup\rpgdice\selectfont{}?\endgroup}          
+
+
+%% achetype ability mark up symbols (star, empty-star and exclamation)
+\newcommand{\rpginnatearchetypeabilitysymbol}
+ {\begingroup\rpgdice\selectfont\symbol{\"201C}\endgroup}          
+\newcommand{\rpginnateabilitysymbol} 
+ {\begingroup\rpgdice\selectfont\symbol{\"201D}\endgroup}          
+\newcommand{\rpgrecommendedabilitylevelsymbol}
+ {\begingroup\rpgdice\selectfont{}!\endgroup}
+
+%% dice pool notation          
+\newcommand{\dfour} 
+ {\begingroup\rpgdice\selectfont{}A\endgroup}
+\newcommand{\dsix}
+ {\begingroup\rpgdice\selectfont{}B\endgroup}
+\newcommand{\deight}
+ {\begingroup\rpgdice\selectfont{}C\endgroup}
+\newcommand{\dten}
+ {\begingroup\rpgdice\selectfont{}D\endgroup}
+\newcommand{\dtwelve}
+ {\begingroup\rpgdice\selectfont{}E\endgroup}
+\newcommand{\dtwenty}
+ {\begingroup\rpgdice\selectfont{}F\endgroup}
+\newcommand{\dany}
+ {\begingroup\rpgdice\selectfont{}G\endgroup}
+\newcommand{\dpool}
+ {\begingroup\rpgdice\selectfont{}H\endgroup}
+\newcommand{\firststage}
+ {\begingroup\rpgdice\selectfont{}1\endgroup}
+\newcommand{\secondstage}
+ {\begingroup\rpgdice\selectfont{}2\endgroup}
+\newcommand{\thirdstage}
+{\begingroup\rpgdice\selectfont{}3\endgroup}
+\newcommand{\fourthstage}
+{\begingroup\rpgdice\selectfont{}4\endgroup}
+\newcommand{\fifthstage}
+{\begingroup\rpgdice\selectfont{}5\endgroup}
+
+
+
+%% skill point symbols
+\newcommand{\lore}{%%
+\begingroup\rpgdice\selectfont{}l\endgroup}
+\newcommand{\martial}{%%
+\begingroup\rpgdice\selectfont{}m\endgroup}
+\newcommand{\general}{%%
+\begingroup\rpgdice\selectfont{}g\endgroup}
+\newcommand{\magical}{%%
+\begingroup\rpgdice\selectfont{}z\endgroup}
+
+
+%% special provenance symbol
+\newcommand{\rpgprovenancesymbol}
+{\begingroup\fontspec{rpgdice}\Large\selectfont{}>\endgroup}
+
+\newcommand{\flourish}{}
+
+%% the index 
+\makeindex
+
+%% start other evironments in newenvironments like this 
+%% put it after a section, not just before
+
+\newenvironment{playexample}{ 
+\vspace{0.4em}
+\flourish
+\begin{quote}
+\small
+\carolingia
+\setlength{\parindent}{0pt}
+\raggedright}
+{\end{quote}\flourish\vspace{0.4em}}
+
+%% don't break paragraphs
+\widowpenalties 1 10000
+\raggedbottom
+
+\hypersetup{%%
+colorlinks=false,%% hyperlinks will be black
+linkbordercolor=blue,%% hyperlink borders will be red
+pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
+}
+
+%% Archetype table formatting
+\newcommand\achetypenameformat[1]{\begingroup\scriptsize#1\endgroup}
+
+%% "\AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
+
+
+%%
+%% Monsters
+%%
+
+\newcommand\mbsep{\raisebox{3.0ex}{\includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule.png}}}
+
+\newenvironment{mbtitle}
+{\sherwood\color{monstertitlecolor}\begin{large}}
+{\end{large}}
+
+\newenvironment{mbtags}
+{\color{monstertagscolor}\begin{normalsize}}
+{\end{normalsize}}
+
+\newenvironment{mbac}
+{\color{monstertitlecolor}\normalsize}{}
+
+\newenvironment{mbmove}
+{\color{monstertitlecolor}\normalsize}{}
+
+\newenvironment{mbhp}
+{\color{monstertitlecolor}\normalsize}{}
+
+\newcommand\mbattrtitleformat[1]{\normalsize\textbf{#1}}
+
+%% the document! 
+\begin{document}
+
+"""
+
+
+# "\n"
+# #"\\newcommand\\mbtitleformat[1]{"
+# #"  \fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{sherwood.ttf}%
+# #\large\color{monstertextcolor}#1}
+# #"\n"            
+# "\\newcommand\\mbtagformat[1]{"
+# "\\begingroup\\cloisterblack\\normalsize#1\\endgroup}\n"
+# "\n"            
+# "% \\monster command\n"
+# "\\makeatletter\n"
+# "\\newcommand\\monster[1]{%\n"
+# #"    \\noindent#1%\n"
+# "\\noindent\\@startsection{subsection}{3}%\n"
+# "{\\z@ }% indent 0pt\n"
+# "{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
+# "{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}% vertical rubber space after the title\n"
+# "{\\Large #1 }*% heading style modifiers\n"
+# "}\n"
+
+# \\\\\\mbsep
 #{\Large \color{monstertextcolor}%
 #\fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{LinLibertine_aS.ttf}\scshape}*% h
 
-            # \\monster{\\noindent\\@startsection{subsection}{3}{}{}{}\n"
-            #"{X}"
-            #"{\\z@ }% indent 0pt\n"
-            #"X}"
-            #"{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
-            #"% vertical rubber space after the title\n"
-            #"{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}\n"
-            #"{\\Large\\color{monstertextcolor}%\n"
-            #\fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{LinLibertine_aS.ttf}\scshape}*% heading style modifiers
-            #"}\n"
-            #"\\makeatother\n"
-
-
+# \\monster{\\noindent\\@startsection{subsection}{3}{}{}{}\n"
+#"{X}"
+#"{\\z@ }% indent 0pt\n"
+#"X}"
+#"{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
+#"% vertical rubber space after the title\n"
+#"{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}\n"
+#"{\\Large\\color{monstertextcolor}%\n"
+#\fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{LinLibertine_aS.ttf}\scshape}*% heading style modifiers
+#"}\n"
+#"\\makeatother\n"
 #             "\n"
 #             "\n"
 #             "\n"
@@ -472,47 +421,91 @@ class LatexFormatter:
 #             "\\mbsep%\\\\[-0.15cm]%\n"
 #             "\\end{tabular}%\n"
 #             "}\n"            
-            "\n"
-            "\n"
-            "\n"
-            "\n"
-            "\n"            
-            "\n"
-            "\n"
-            "% Archetype table formatting\n"
-            "\\newcommand\\achetypenameformat[1]{\\begingroup\\scriptsize#1\\endgroup}\n"
-            "\n"
-            "\n"
-            "\n"
-            "\\AtEndDocument{\\clearpage\\ifodd\\value{page}\\else\\null\\clearpage\\fi}\n"
-            "\n"
-            "\n"            
-            "% the document! \n"
-            "\\begin{document}\n"
-            "\n")
 
+
+
+def get_text_for_child(element, child_name):
+    """
+    Find text for a child element.
+
+    """
+    child = element.find(child_name)
+    if child is None or child.text is None:
+        text = ""
+    else:
+        text = child.text.strip()
+    return text
+
+
+class TableCategory:
+    Standard = "Standard"
+    Figure = "Figure"
+    Fullwidth = "FullWidth"
+    Sideways = "Sideways"    
+
+
+class LatexFormatter:
+    
+    def __init__(self, latex_file):
+
+        # open latex file pointer
+        self.latex_file = latex_file
         
+        # internal state
+        self._drop_capped_first_letter_of_chapter = False
 
+        # for tables
+        self._number_of_columns_in_table = 0
+        self._current_column_in_table = 0
+        self._current_row_in_table = 0
 
-# \monster{Bear}
-# \begin{monsterblock}%
-# \mbinfo{Large beast}%
-# \mbac{13 (natural armour)}%
-# \mbhp{59 (7d10 + 21)}%
-# \mbspeed{40ft.}%
-# \mbstr{20(+5)}%
-# \mbdex{12(+1)}%
-# \mbcon{17(+3)}%
-# \mbint{3(-4)}%
-# \mbwis{12(+1)}%
-# \mbcha{7(-2)}%
-# \mbsavingthrows{}
-# \mbskills{Perception +3}
-# \mbsenses{darkvision 60ft, passive perception 13}
-# \mblanguages{\textemdash}
-# \mbchallenge{3 (700XP)}
-# \end{monsterblock}
+        # for equations (indent second and subsequent lines)
+        self._equation_first_line = True
+
+        # for level tables FIXME: remove this.
+        self._current_row_in_level_table = 0
+
+        # for descriptions
+        self.description_terms_on_their_own_line = False
+
+        # for the index_entry see field (None or a string).
+        self.index_entry_see = None
+        self.index_entry_subentry = None
+
+        #
+        # configuration
+        #        
+        return
+
+    def verify(self):
+        verifyObject(IFormatter, self)
+        return
+
+    def no_op(self, obj):
+        """We've got a lot of handlers that don't need to do anything.. do nothing once."""
+        pass
+
+    
+    def start_book(self, book):
         
+        # must be a valid latex paper size
+        if config.paper_size == "a4":
+            paper_size = "a4paper"
+        elif config.paper_size == "letter":
+            paper_size = "letterpaper"
+        else:
+            raise Exception("Unknown paper size.  Pick one of [a4, letter] in config.py")
+
+        orientation = ""
+        if "landscape" in book.attrib:
+            landscape = book.get("landscape").lower()
+            if landscape == "true":
+                formatting = ",landscape"
+
+        formatting = paper_size + orientation
+        #print latex_frontmatter
+        #print latex_frontmatter % formatting
+        self.latex_file.write(latex_frontmatter % formatting)
 
         if config.display_page_background:
             self.latex_file.write(
@@ -536,34 +529,34 @@ class LatexFormatter:
 
     # symbols handled specially by the subsectiontitle
     # HACK!!
-    start_ambushsymbol = no_op
-    end_ambushsymbol = no_op
-    start_surprisesymbol = no_op
-    end_surprisesymbol = no_op    
-    start_initiativesymbol = no_op
-    end_initiativesymbol = no_op
-    start_talksymbol = no_op
-    end_talksymbol = no_op
-    start_fightreachsymbol = no_op
-    end_fightreachsymbol = no_op
-    start_startsymbol = no_op
-    end_startsymbol = no_op
-    start_fastsymbol = no_op
-    end_fastsymbol = no_op
-    start_mediumsymbol = no_op
-    end_mediumsymbol = no_op
-    start_slowsymbol = no_op
-    end_slowsymbol = no_op
-    start_mediumorslowsymbol = no_op
-    end_mediumorslowsymbol = no_op
-    start_startandreactionsymbol = no_op
-    end_startandreactionsymbol = no_op
-    start_resolutionsymbol = no_op
-    end_resolutionsymbol = no_op
-    start_noncombatsymbol = no_op
-    end_noncombatsymbol = no_op
-    start_reactionsymbol = no_op
-    end_reactionsymbol = no_op
+    # start_ambushsymbol = no_op
+    # end_ambushsymbol = no_op
+    # start_surprisesymbol = no_op
+    # end_surprisesymbol = no_op    
+    # start_initiativesymbol = no_op
+    # end_initiativesymbol = no_op
+    # start_talksymbol = no_op
+    # end_talksymbol = no_op
+    # start_fightreachsymbol = no_op
+    # end_fightreachsymbol = no_op
+    # start_startsymbol = no_op
+    # end_startsymbol = no_op
+    # start_fastsymbol = no_op
+    # end_fastsymbol = no_op
+    # start_mediumsymbol = no_op
+    # end_mediumsymbol = no_op
+    # start_slowsymbol = no_op
+    # end_slowsymbol = no_op
+    # start_mediumorslowsymbol = no_op
+    # end_mediumorslowsymbol = no_op
+    # start_startandreactionsymbol = no_op
+    # end_startandreactionsymbol = no_op
+    # start_resolutionsymbol = no_op
+    # end_resolutionsymbol = no_op
+    # start_noncombatsymbol = no_op
+    # end_noncombatsymbol = no_op
+    # start_reactionsymbol = no_op
+    # end_reactionsymbol = no_op
 
     def start_fightreach(self, symbol):
         self.latex_file.write("\\fightreachsymbol{}")
@@ -635,51 +628,69 @@ class LatexFormatter:
         return
     end_surprise = no_op
     
+    def start_reaction(self, symbol):
+        self.latex_file.write("\\reactionsymbol{}")
+        return
+    end_reaction = no_op
+    
     def start_initiative(self, symbol):
         self.latex_file.write("\\initiativesymbol{}")
         return
     end_initiative = no_op
     
-    def get_latex_symbols(self, title):
-        tex = ""
-        for symbol in ("ambushsymbol",
-                       "surprisesymbol",
-                       "initiativesymbol",
-                       "talksymbol",
-                       "fightreachsymbol",
-                       "startsymbol",
-                       "fastsymbol",
-                       "mediumsymbol",
-                       "slowsymbol",
-                       "mediumorslowsymbol",
-                       "startandreactionsymbol",
-                       "resolutionsymbol",
-                       "reactionsymbol",
-                       "noncombatsymbol"):
-            symbol_node = title.find(symbol)
-            if symbol_node is not None:
-                tex += " \\%s{}" % symbol
-            #else:
-            #    raise Exception("UNKNOWN SYMBOL: %s" % symbol)
-        return tex               
+    # def get_latex_symbols(self, title):
+    #     tex = ""
+    #     for symbol in ("ambushsymbol",
+    #                    "surprisesymbol",
+    #                    "initiativesymbol",
+    #                    "talksymbol",
+    #                    "fightreachsymbol",
+    #                    "startsymbol",
+    #                    "fastsymbol",
+    #                    "mediumsymbol",
+    #                    "slowsymbol",
+    #                    "mediumorslowsymbol",
+    #                    "startandreactionsymbol",
+    #                    "resolutionsymbol",
+    #                    "reactionsymbol",
+    #                    "noncombatsymbol"):
+    #         symbol_node = title.find(symbol)
+    #         if symbol_node is not None:
+    #             tex += " \\%s{}" % symbol
+    #         #else:
+    #         #    raise Exception("UNKNOWN SYMBOL: %s" % symbol)
+    #     return tex               
     
-    def start_subsubsection(self, subsubsection):
-        tex = ""
-        anonymous = subsubsection.get("anonymous")
-        if anonymous is not None and anonymous.lower() == "true":
-            tex = "\\subsubsection*{"
-        else:
-            tex = "\\subsubsection{"
+    # def start_subsubsection(self, subsubsection):
+    #     tex = ""
+    #     anonymous = subsubsection.get("anonymous")
+    #     if anonymous is not None and anonymous.lower() == "true":
+    #         tex = "\\subsubsection*{"
+    #     else:
+    #         tex = "\\subsubsection{"
 
-        title = subsubsection.find("subsubsectiontitle")
-        if title is not None:
-            tex += title.text.strip()        
-        tex += self.get_latex_symbols(title)
+    #     title = subsubsection.find("subsubsectiontitle")
+    #     if title is not None:
+    #         tex += title.text.strip()        
+    #     tex += self.get_latex_symbols(title)
         
-        self.latex_file.write(tex) 
-        self.latex_file.write("}\n") 
-        return
+    #     self.latex_file.write(tex) 
+    #     self.latex_file.write("}\n") 
+    #     return
+    # end_subsubsection = no_op
+
+    start_subsubsection = no_op
     end_subsubsection = no_op
+
+    #start_subsectiontitle = no_op    
+    #end_subsectiontitle = no_op
+    def start_subsubsectiontitle(self, section_title):
+        self.latex_file.write("\\subsubsection{")
+        return
+    def end_subsubsectiontitle(self, section_title):
+        self.latex_file.write("}")
+        return
+    
         
     start_ability_title = no_op
     end_ability_title = no_op
@@ -762,40 +773,59 @@ class LatexFormatter:
         return
     end_index = no_op
 
-    def start_section(self, section):
-        title_element = section.find("sectiontitle")
-        if title_element is None:
-            title = ""
-        else:
-            title = title_element.text
+    # def start_section(self, section):
+    #     title_element = section.find("sectiontitle")
+    #     if title_element is None:
+    #         title = ""
+    #     else:
+    #         title = title_element.text
 
-        self.latex_file.write("\\section{%s}\n" % title)               
-        return
+    #     self.latex_file.write("\\section{%s}\n" % title)               
+    #     return
+    start_section = no_op
     end_section = no_op
 
-    def start_subsection(self, subsection):
-        tex = ""
-        anonymous = subsection.get("anonymous")
-        if anonymous is not None and anonymous.lower() == "true":
-            tex = "\\subsection{"
-        else:
-            tex = "\\subsection{"
-
-        title = subsection.find("subsectiontitle")
-        if title is not None:
-            tex += title.text.strip()
-            tex += self.get_latex_symbols(title)
-
-        tex += "}\n"
-        self.latex_file.write(tex) 
+    #start_sectiontitle = no_op
+    #end_sectiontitle = no_op
+    def start_sectiontitle(self, section_title):
+        self.latex_file.write("\\section{")#  % title)               
         return
+
+    def end_sectiontitle(self, section_title):
+        self.latex_file.write("}\n")#  % title)               
+        return
+    
+
+    # def start_subsection(self, subsection):
+    #     tex = ""
+    #     anonymous = subsection.get("anonymous")
+    #     if anonymous is not None and anonymous.lower() == "true":
+    #         tex = "\\subsection{"
+    #     else:
+    #         tex = "\\subsection{"
+
+    #     title = subsection.find("subsectiontitle")
+    #     if title is not None:
+    #         tex += title.text.strip()
+    #         tex += self.get_latex_symbols(title)
+
+    #     tex += "}\n"
+    #     self.latex_file.write(tex) 
+    #     return
+    start_subsection = no_op
     end_subsection = no_op
 
-    start_subsectiontitle = no_op
-    end_subsectiontitle = no_op
+    #start_subsectiontitle = no_op    
+    #end_subsectiontitle = no_op
+    def start_subsectiontitle(self, section_title):
+        self.latex_file.write("\\subsection{")
+        return
+    def end_subsectiontitle(self, section_title):
+        self.latex_file.write("}")
+        return
 
-    start_subsubsectiontitle = no_op
-    end_subsubsectiontitle = no_op
+    # start_subsubsectiontitle = no_op
+    # end_subsubsectiontitle = no_op
 
     def start_playexample(self, playexample):
         self.latex_file.write("\\begin{playexample}\n")
@@ -907,9 +937,11 @@ class LatexFormatter:
 
     def handle_text(self, text):
         if text is not None:
-            text = text.strip()
-            if len(text) > 0:
-                self.latex_file.write(text.encode('utf8'))
+            if isinstance(text, unicode):                           
+                #self.latex_file.write(text.encode('utf8'))
+                self.latex_file.write(text)
+            else:
+                self.latex_file.write(text)
         return
 
     start_indexentry = no_op
@@ -1013,14 +1045,11 @@ class LatexFormatter:
                                      "nindent=0.3em, "
                                      "slope=0em]{\\rpgdropcapfont %s}{%s}" %
                                      (first_letter, other_letters))
-
                 words = [drop_cap_word, ] + words[1:]
-
-            text = " ".join(words)
-        else:
-            text = normalize_ws(paragraph.text)
-
-        self.latex_file.write(text)        
+        #    text = " ".join(words)
+        #else:
+        #    text = normalize_ws(paragraph.text)
+        #self.latex_file.write(text)        
         return
 
     def end_p(self, paragraph):
@@ -1093,14 +1122,6 @@ class LatexFormatter:
     # def end_chapter_title(self, chapter_title):
     #     return
 
-
-    start_sectiontitle = no_op
-    end_sectiontitle = no_op
-    # def start_sectiontitle(self, section_title):
-    #     return
-
-    # def end_sectiontitle(self, section_title):
-    #     return
 
     def start_img(self, img):
         if config.draw_imgs:
@@ -1185,6 +1206,21 @@ class LatexFormatter:
         self.latex_file.write("\\end{description}\n\n")
         return
 
+    def start_term(self, term):
+        """
+        A description term.
+
+        """
+        #if term.text is not None:
+        #    assert not self.description_terms_on_their_own_line
+        #    # if self.description_terms_on_their_own_line:
+        #    #     self.latex_file.write("\\item[%s] \hfill \n" % term.text)
+        #    # else:
+        #    #     self.latex_file.write("\\item[%s]" % term.text)
+        self.latex_file.write("\\item[")
+        return
+    def end_term(self, term):
+        self.latex_file.write("]")
 
     def start_description(self, description):
         if description.text is not None:
@@ -1193,21 +1229,6 @@ class LatexFormatter:
 
     def end_description(self, list_item):
         return
-
-    def start_term(self, term):
-        """
-        A description term.
-
-        """
-        if term.text is not None:
-            assert not self.description_terms_on_their_own_line
-            # if self.description_terms_on_their_own_line:
-            #     self.latex_file.write("\\item[%s] \hfill \n" % term.text)
-            # else:
-            #     self.latex_file.write("\\item[%s]" % term.text)
-            self.latex_file.write("\\item[%s]" % term.text)
-        return
-    end_term = no_op
 
 
     def start_list(self, list_element):
@@ -1718,82 +1739,132 @@ class LatexFormatter:
     end_monsterblock = no_op
     
     def start_mbtitle(self, mbtitle):
-        #self.latex_file.write("\\subsection{%s}\n\\mbsep{}" % mbtitle.text)
-        #self.latex_file.write("\\mbtitleformat{%s}\n\\mbsep{}" % mbtitle.text)
-        self.latex_file.write("\\monster{%s}\n" % mbtitle.text)
-                              #"\\\\\n"
-                              #"\\mbsep\n" % mbtitle.text)
+        self.latex_file.write(r"\begin{mbtitle}")
         return
 
     def end_mbtitle(self, mbtitle):
+        self.latex_file.write(r"\end{mbtitle}"
+                              r"\\"
+                              "\n")
         return
     
     def start_mbtags(self, mbtags):
-        #self.latex_file.write("\\mbtagformat{%s}\n" % mbtags.text)
+        self.latex_file.write(r"\begin{mbtags}")
         return
-    end_mbtags = no_op
-    
-    def start_mbabilities(self, mbabilities):
-        self.latex_file.write("Abilities: %s\n" % mbabilities.text)
+    def end_mbtags(self, mbtags):
+        self.latex_file.write(r"\end{mbtags}"
+                              r"\\"
+                              r"\mbsep{}\\[-0.36cm]"
+                              "\n")
         return
-    end_mbabilities = no_op
-
-    def start_mbaspects(self, mbaspects):
-        self.latex_file.write("Aspects: %s\n" % mbaspects.text)
-        return
-    end_mbaspects = no_op
 
     def start_mbac(self, mbac):
-        self.latex_file.write("AC: %s, " % mbac.text)
+        self.latex_file.write(r"\textbf{AC:} \begin{mbac}")
         return
-    end_mbac = no_op
-
-    def start_mbstamina(self, mbstamina):
-        self.latex_file.write("Stamina: %s, " % mbstamina.text)
+    def end_mbac(self, mbac):
+        self.latex_file.write(r"\end{mbac} ")
         return
-    end_mbstamina = no_op
 
-    def start_mbhealth(self, mbhealth):
-        self.latex_file.write("Health: %s\n" % mbhealth.text)
+    def start_mbhp(self, mbhp):
+        self.latex_file.write(r"\textbf{HP:} \begin{mbhp}")
         return
-    end_mbhealth = no_op
+    
+    def end_mbhp(self, mbho):
+        self.latex_file.write("\\end{mbhp} ")
+        return
 
+    def start_mbmove(self, mbmove):
+        self.latex_file.write(r"\textbf{Move:} \begin{mbmove}")
+        return
+    def end_mbmove(self, mbmove):
+        self.latex_file.write(r"\end{mbmove}"
+                              r"\\[0.1cm]"
+                              "\n")
+        return
+    
     def start_mbstr(self, mbstr):
-        self.latex_file.write("Str: %s, " % mbstr.text)
+        self.latex_file.write(
+            "% attribute block\n" 
+            #"\\begin{tabular}{ccccccc@{}}%\n"
+            "\\begin{tabular}{@{}ccccccc@{}}%\n"
+            "\\mbattrtitleformat{STR} & %\n"
+            "\\mbattrtitleformat{END} & %\n"
+            "\\mbattrtitleformat{AG} & %\n"
+            "\\mbattrtitleformat{SPD} & %\n"
+            "\\mbattrtitleformat{LUCK} & %\n"
+            "\\mbattrtitleformat{WIL} & %\n"
+            "\\mbattrtitleformat{PER}\\\\%\n"
+            "\\begin{small}")
         return
-    end_mbstr = no_op
+    def end_mbstr(self, mbstr):
+        self.latex_file.write("\\end{small} & %\n")
 
     def start_mbend(self, mbend):
-        self.latex_file.write("End: %s, " % mbend.text)
+        self.latex_file.write("\\begin{small}")
         return
-    end_mbend = no_op
-    
+    def end_mbend(self, mbend):
+        self.latex_file.write("\\end{small} & %\n")
+        return
+
     def start_mbag(self, mbag):
-        self.latex_file.write("Ag: %s, " % mbag.text)
+        self.latex_file.write("\\begin{small}")
         return
-    end_mbag = no_op
+    def end_mbag(self, mbag):
+        self.latex_file.write("\\end{small} & %\n")
+        return
     
-    def start_mbspd(self, mbspd):
-        self.latex_file.write("Spd: %s, " % mbspd.text)
+    def start_mbspd(self, mbag):
+        self.latex_file.write("\\begin{small}")
         return
-    end_mbspd = no_op
+    def end_mbspd(self, mbag):
+        self.latex_file.write("\\end{small} & %\n")
+        return
     
-    def start_mbluck(self, mbluck):
-        self.latex_file.write("Luck: %s, " % mbluck.text)
+    def start_mbluck(self, mbag):
+        self.latex_file.write("\\begin{small}")
         return
-    end_mbluck = no_op
+    def end_mbluck(self, mbag):
+        self.latex_file.write("\\end{small} & %\n")
+        return
     
-    def start_mbwil(self, mbwil):
-        self.latex_file.write("Wil: %s, " % mbwil.text)
+    def start_mbwil(self, mbag):
+        self.latex_file.write("\\begin{small}")
         return
-    end_mbwil = no_op
+    def end_mbwil(self, mbag):
+        self.latex_file.write("\\end{small} & %\n")
+        return
     
-    def start_mbper(self, mbper):
-        self.latex_file.write("Per: %s\n" % mbper.text)
+    def start_mbper(self, mbag):
+        self.latex_file.write("\\begin{small}")
         return
-    end_mbper = no_op
+    def end_mbper(self, mbag):
+        self.latex_file.write("\\end{small}"
+                              "\\end{tabular}"
+                              "\\\\"
+                              "\n")
+        # \\%\n"
+        #"\\mbsep\\[-0.15cm]%"
+        #)
+        return
+    
+    def start_mbabilities(self, mbabilities):
+        self.latex_file.write(r"\textbf{Abilities}: ")
+        return
+    def end_mbabilities(self, mbabilities):
+        self.latex_file.write("\\\\\n")
+        return
+
+    def start_mbaspects(self, mbaspects):
+        self.latex_file.write(r"\textbf{Aspects:} ")
+        return
+    def end_mbaspects(self, mbaspects):
+        self.latex_file.write("\\\\\n")
+        return
     
     def start_mbdescription(self, mbdescription):
-        self.latex_file.write("Description: %s\n" % mbdescription.text)
+        self.latex_file.write(r"\textbf{Description:} ")
         return
-    end_mbdescription = no_op    
+    def end_mbdescription(self, mbdescription):
+        #self.latex_file.write("\\\\\n")
+        self.latex_file.write("\n")
+        return

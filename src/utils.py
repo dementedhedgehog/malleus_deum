@@ -70,8 +70,7 @@ def convert_str_to_int(str_int):
     return int(str_int)
 
 
-def parse_measurement_to_str(fname, measurement_node):
-    
+def parse_measurement_to_str(fname, measurement_node):    
     # check at most once
     metric_found = False
     imperial_found = False
@@ -100,11 +99,8 @@ def parse_measurement_to_str(fname, measurement_node):
         else:
             raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
                             (child.tag, fname, child.sourceline))
-
     return text_repr
     
-
-
 
 
 def parse_xml(fname):    
@@ -148,23 +144,12 @@ def get_error_context(fname, error_line_number):
     return context
 
 
-
-
 def node_to_string(node):
     """
     Returns the nodes contents and its children as a string.
 
     """
     return etree.tostring(node, pretty_print=True)
-
-
-
-# def get_all_text(node):
-#     """
-#     Return all the text between <x>.. and.. </x> including <x> and </x>
-
-#     """
-#     return node_to_string(node, method = "xml")    
 
 
 def children_to_string(node):

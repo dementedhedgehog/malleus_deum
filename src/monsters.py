@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-#from os.path import abspath, join, splitext, dirname, exists, basename
 from os.path import join
 from os import listdir
 
 from utils import (
     parse_xml, validate_xml, children_to_string, contents_to_string,
-    COMMENT
+    COMMENT, convert_str_to_int
 )
 #, node_to_string    
 
@@ -374,13 +373,17 @@ class Monster:
         self.monster_id = None
         self.description = None
         self.tags = [] 
-        self.aspects = [] 
-        #self.monster_class = MonsterClass.NONE
-        self.ac = 7 # FIXME
-        self.health = 8 # FIXME
-        self.stamina = 9 # FIXME
+        self.aspects = []
+        self.move = None
+        self.ac = 7 
+        self.health = 0
+        self.stamina = 0
+        self.resolve = ""
         self.abilities = ["Frog II", "Dog O"]
         return
+
+    def get_move(self):
+        return self.move
 
     def get_monster_class_symbol(self):
         return MonsterClass.get_symbol(self.monster_class)
@@ -403,10 +406,6 @@ class Monster:
     def get_health(self):
         return self.health
 
-    #def get_monster_class(self):
-    #    return self.monster_class
-
-
     def get_id(self):
         return self.monster_id
 
@@ -424,13 +423,10 @@ class Monster:
                 break
         return has_prereqs
 
-
     def has_tags(self):
         return len(self.tags) > 0
 
-
     def get_tags_str(self):
-        print "TAGS STR" + "" if len(self.tags) == 0 else ", ".join(self.tags)
         return "" if len(self.tags) == 0 else ", ".join(self.tags)
 
     def get_aspects_str(self):
@@ -444,18 +440,13 @@ class Monster:
         self._load(monster_element)
         return
 
-
     def _get_location(self, lxml_element):
         return "%s:%s" % (self.fname, lxml_element.sourceline)
 
-
-    def _load(self, monster_element):
-        print "---------------------____"
-        
+    def _load(self, monster_element):        
         # handle all the children
         for child in list(monster_element):              
            tag = child.tag
-           print tag
            if tag == "monstertitle":
                if self.title is not None:
                    raise Exception("Only one monstertitle per monster. (%s) %s\n" %
@@ -483,9 +474,19 @@ class Monster:
                    self.monster_id = monster_id
 
            elif tag == "monstertag":
-               print "XXX"
-               print child.text
                self.tags.append(child.text)
+
+           elif tag == "monstermove":
+               self.move = convert_str_to_int(child.text)
+
+           elif tag == "monsterhealth":
+               self.health = convert_str_to_int(child.text)
+
+           elif tag == "monsterstamina":
+               self.stamina = convert_str_to_int(child.text)
+
+           elif tag == "monsterresolve":
+               self.resolve = child.text
 
            elif tag == "monsteraspect":
                self.aspects.append(child.text)
@@ -503,7 +504,7 @@ class Monster:
                else:
                    #self.description = get_text(child)                   
                    #self.description = node_to_string(child)                   
-                   self.description = children_to_string(child)                   
+                   self.description = children_to_string(child)
 
            elif tag is COMMENT:
                # ignore comments!

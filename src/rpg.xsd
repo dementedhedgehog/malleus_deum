@@ -153,6 +153,8 @@
       Text type .. used for blocks of text like paragraphs and such.
       Doesn't allow paragraphs or sections
 
+     FIXME: merge with blocktype then remove!
+
   -->
   <xs:complexType name="textType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -211,32 +213,51 @@
       <xs:element name="resolution" type="symbolType"/>
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>      
-      
-      <!-- <xs:element name="d4" type="emptyType"/> -->
-      <!-- <xs:element name="d6" type="emptyType"/> -->
-      <!-- <xs:element name="d8" type="emptyType"/> -->
-      <!-- <xs:element name="d10" type="emptyType"/> -->
-      <!-- <xs:element name="d12" type="emptyType"/> -->
-      <!-- <xs:element name="d4x" type="emptyType"/> -->
-      <!-- <xs:element name="d6x" type="emptyType"/> -->
-      <!-- <xs:element name="d8x" type="emptyType"/> -->
-      <!-- <xs:element name="d10x" type="emptyType"/> -->
-      <!-- <xs:element name="d12x" type="emptyType"/> -->
-      <!-- <xs:element name="d4m" type="emptyType"/> -->
-      <!-- <xs:element name="d6m" type="emptyType"/> -->
-      <!-- <xs:element name="d8m" type="emptyType"/> -->
-      <!-- <xs:element name="d10m" type="emptyType"/> -->
-      <!-- <xs:element name="d12m" type="emptyType"/> -->
-      <!-- <xs:element name="d4mx" type="emptyType"/> -->
-      <!-- <xs:element name="d6mx" type="emptyType"/> -->
-      <!-- <xs:element name="d8mx" type="emptyType"/> -->
-      <!-- <xs:element name="d10mx" type="emptyType"/> -->
-      <!-- <xs:element name="d12mx" type="emptyType"/> -->
     </xs:choice>
     <xs:attribute name="noindent" type="xs:boolean" default="false"/>
   </xs:complexType>
 
 
+  <!-- block of stuff -->
+  <xs:group name="blockGroup" >
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="p" type="textType" />
+        <xs:element name="design" type="textType" />
+        <xs:element name="provenance" type="provenanceType" />
+        <xs:element name="playexample" type="playexampleType" />
+        <xs:element name="olist" type="orderedListType"/>
+        <xs:element name="subsubsection" type="subsubsectionType" />
+        <xs:element name="fourcolumns" type="blockType" />
+        <xs:element name="indexentry" type="indexentryType"/>
+        <xs:element name="levelprogressiontable" type="levelprogressiontableType"/>
+        <xs:element name="descriptions" type="descriptionsType"/>
+        <xs:element name="list" type="itemizedListType"/>
+        <xs:element name="img" type="imgType"/> 
+        <xs:element name="include" type="includeType" />
+        <xs:element name="figure" type="figureType"/>
+        <xs:element name="table" type="tableType"/>
+        <xs:element name="monster" type="monsterType"/>
+        <xs:element name="ambush" type="symbolType"/>
+        <xs:element name="surprise" type="symbolType"/>
+        <xs:element name="initiative" type="symbolType"/>
+        <xs:element name="talk" type="symbolType"/>
+        <xs:element name="resolution" type="symbolType"/>      
+        <xs:element name="reaction" type="symbolType"/>      
+        <xs:element name="noncombat" type="symbolType"/>          
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+
+
+
+  <xs:complexType name="blockType">
+    <xs:sequence>
+      <xs:group ref="blockGroup"/>    
+    </xs:sequence>
+  </xs:complexType>
+  
+  
 
   <xs:complexType name="tabledataType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -457,11 +478,13 @@
         <xs:element name="measurement" type="measurementType"/>
 	<xs:element name="eg" type="acronymType"/>
 	<xs:element name="emph" type="emphType"/>
+	<!--
 	<xs:element name="fastsymbol" type="symbolType"/>
 	<xs:element name="mediumsymbol" type="symbolType"/>
 	<xs:element name="slowsymbol" type="symbolType"/>	
 	<xs:element name="mediumorslowsymbol" type="symbolType"/>
 	<xs:element name="startandreactionsymbol" type="symbolType"/>
+	-->	
 	<xs:element name="ambush" type="symbolType"/>
 	<xs:element name="surprise" type="symbolType"/>
 	<xs:element name="talk" type="symbolType"/>
@@ -557,65 +580,20 @@
     </xs:sequence>
   </xs:complexType>
 
+
   <xs:complexType name="subsectionType" >
     <xs:sequence>
-      <xs:element name="subsectiontitle" type="titleType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="p" type="textType" />
-        <xs:element name="design" type="textType" />
-        <xs:element name="provenance" type="provenanceType" />
-        <xs:element name="playexample" type="playexampleType" />
-        <xs:element name="olist" type="orderedListType"/>
-        <xs:element name="subsubsection" type="subsubsectionType" />
-        <xs:element name="fourcolumns" type="subsectionType"/>    
-        <xs:element name="indexentry" type="indexentryType"/>
-        <xs:element name="levelprogressiontable" type="levelprogressiontableType"/>
-        <xs:element name="descriptions" type="descriptionsType"/>
-        <xs:element name="list" type="itemizedListType"/>
-        <xs:element name="img" type="imgType"/> 
-        <xs:element name="include" type="includeType" />
-        <xs:element name="figure" type="figureType"/>
-        <xs:element name="table" type="tableType"/>
-        <xs:element name="monster" type="monsterType"/>
-        
-	<!--
-        <xs:element name="d4" type="emptyType"/>
-        <xs:element name="d6" type="emptyType"/>
-        <xs:element name="d8" type="emptyType"/>
-        <xs:element name="d10" type="emptyType"/>
-        <xs:element name="d12" type="emptyType"/>
-        <xs:element name="d4x" type="emptyType"/>
-        <xs:element name="d6x" type="emptyType"/>
-        <xs:element name="d8x" type="emptyType"/>
-        <xs:element name="d10x" type="emptyType"/>
-        <xs:element name="d12x" type="emptyType"/>
-        <xs:element name="d4mx" type="emptyType"/>
-        <xs:element name="d6mx" type="emptyType"/>
-        <xs:element name="d8mx" type="emptyType"/>
-        <xs:element name="d10mx" type="emptyType"/>
-        <xs:element name="d12mx" type="emptyType"/>
-        <xs:element name="fightreach" type="symbolType"/>
-        <xs:element name="fightfast" type="symbolType"/>
-        <xs:element name="fightranged" type="symbolType"/>
-        <xs:element name="run" type="symbolType"/>
-        <xs:element name="act" type="symbolType"/>
-        <xs:element name="fight" type="symbolType"/>
-	-->
-        <xs:element name="ambush" type="symbolType"/>
-        <xs:element name="surprise" type="symbolType"/>
-        <xs:element name="initiative" type="symbolType"/>
-        <xs:element name="talk" type="symbolType"/>
-        <xs:element name="resolution" type="symbolType"/>      
-        <xs:element name="reaction" type="symbolType"/>      
-        <xs:element name="noncombat" type="symbolType"/>          
-      </xs:choice>
+      <!-- Title is mandatory and has to come first! -->
+      <xs:element name="subsectiontitle" type="titleType" minOccurs="1" maxOccurs="1"/>
+      <xs:group ref="blockGroup"/>
     </xs:sequence>
-    <xs:attribute name="anonymous" type="xs:boolean" default="false"/>
   </xs:complexType>
+    
 
   <xs:complexType name="sectionType">
     <xs:sequence>
-      <xs:element name="sectiontitle" type="titleType" minOccurs="0" maxOccurs="1"/>
+      <!-- It's important for parsing that we have a mandatory sectiontitle first! -->
+      <xs:element name="sectiontitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="p" type="textType" />
         <xs:element name="design" type="textType" />
@@ -623,7 +601,6 @@
         <xs:element name="figure" type="figureType" />
         <xs:element name="playexample" type="playexampleType" />
         <xs:element name="subsection" type="subsectionType" />
-        <!-- <xs:element name="subsubsection" type="subsubsectionType" />     -->
         <xs:element name="indexentry" type="indexentryType"/>
         <xs:element name="include" type="includeType" />
         <xs:element name="olist" type="orderedListType"/>
@@ -633,8 +610,6 @@
         <xs:element name="img" type="imgType"/> 
         <xs:element name="table" type="tableType"/>
         <xs:element name="monsterblock" type="monsterblockType"/>
-	
-        <!-- <xs:element name="bigtable" type="tableType" /> -->
         <xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
       </xs:choice>
     </xs:sequence>
@@ -660,7 +635,9 @@
         <xs:element name="monster" type="monsterType"/>
       </xs:choice>
     </xs:sequence>
-    <xs:attribute name="anonymous" type="xs:boolean" default="false"/>
+    <!--
+	<xs:attribute name="anonymous" type="xs:boolean" default="false"/>
+	-->
   </xs:complexType>
 
 
@@ -911,7 +888,8 @@ labels and references.
   <xs:complexType name="titleType" mixed="true"> 
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="label" type="labelType"/>
-      <xs:element name="indexentry" type="indexentryType"/>      
+      <xs:element name="indexentry" type="indexentryType"/>
+      <!--
       <xs:element name="ambushsymbol" type="symbolType"/>
       <xs:element name="surprisesymbol" type="symbolType"/>
       <xs:element name="initiativesymbol" type="symbolType"/>
@@ -926,6 +904,21 @@ labels and references.
       <xs:element name="resolutionsymbol" type="symbolType"/>      
       <xs:element name="reactionsymbol" type="symbolType"/>      
       <xs:element name="noncombatsymbol" type="symbolType"/>
+      -->
+      <xs:element name="ambush" type="symbolType"/>
+      <xs:element name="surprise" type="symbolType"/>
+      <xs:element name="initiative" type="symbolType"/>
+      <xs:element name="talk" type="symbolType"/>
+      <xs:element name="start" type="symbolType"/>
+      <xs:element name="fast" type="symbolType"/>
+      <xs:element name="medium" type="symbolType"/>
+      <xs:element name="slow" type="symbolType"/>
+      <xs:element name="mediumorslow" type="symbolType"/>
+      <xs:element name="startandreaction" type="symbolType"/>
+      <xs:element name="fightreach" type="symbolType"/>
+      <xs:element name="resolution" type="symbolType"/>      
+      <xs:element name="reaction" type="symbolType"/>      
+      <xs:element name="noncombat" type="symbolType"/>
       <xs:element name="d4" type="acronymType"/>
       <xs:element name="d6" type="acronymType"/>
       <xs:element name="d8" type="acronymType"/>
@@ -1311,6 +1304,7 @@ labels and references.
       <xs:element name="table" type="tableType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="appendix" type="appendixType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="index" type="indexType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="newpage" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="landscape" type="xs:boolean" default="false"/>    
   </xs:complexType>
@@ -1362,21 +1356,6 @@ labels and references.
     </xs:sequence>
   </xs:complexType>
 
-
-<!--
-  <xs:complexType name="monsterGroupType">
-    <xs:sequence>
-      <xs:element 
-          name="monstergrouptitle" 
-          type="titleType" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="monstergroupdesc" 
-          type="sectionType" 
-          minOccurs="1" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
--->
 
 <!--
 
@@ -1432,6 +1411,10 @@ tags
       <xs:element name="monsterid" type="idType"/>
       <xs:element name="monstertag" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="monsteraspect" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="monstermove" type="xs:positiveInteger"/>
+      <xs:element name="monsterhealth" type="xs:positiveInteger"/>
+      <xs:element name="monsterstamina" type="xs:positiveInteger"/>
+      <xs:element name="monsterresolve" type="xs:string"/>
       <!--
 	  <xs:element name="monsterclass" type="monsterclassType"/>
 	  <xs:element name="monsterlevels" type="monsterlevelsType"/>
@@ -1448,7 +1431,7 @@ tags
       <xs:element name="monstergrouptitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="monstergroupid" type="monstergroupidType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="monstergroupdescription" 
-                  type="subsectionType" minOccurs="1" maxOccurs="1"/>
+                  type="blockType" minOccurs="1" maxOccurs="1"/>
 
     </xs:sequence>
   </xs:complexType>
@@ -1466,8 +1449,8 @@ tags
       <xs:element name="mbtitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbtags" type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbac"  type="textType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mbstamina"  type="textType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mbhealth"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbhp"  type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbmove" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbstr"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbend"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbag"  type="textType" minOccurs="1" maxOccurs="1"/>
@@ -1479,7 +1462,7 @@ tags
       <xs:element name="mblanguages"  type="textType" minOccurs="1" maxOccurs="1"/>
       -->
       <xs:element name="mbabilities"  type="textType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mbaspects" type="textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbaspects" type="textType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="mbdescription" type="subsubsectionType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>  
