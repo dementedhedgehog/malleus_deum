@@ -1,0 +1,41 @@
+<section>
+  <sectiontitle>Introduction</sectiontitle>
+
+<p>
+  This chapter contains information about the various monsters and
+  NPCs the characters might encounter.
+</p>
+
+</section>
+
+
+{% for monster_group in monster_groups %}
+<section>
+  <sectiontitle>{{ monster_group.get_title() }}</sectiontitle>
+
+  {{ monster_group.get_description() }}    
+
+  {% for monster in monster_group %}
+  <monsterblock>
+    <mbtitle>{{ monster.get_title() }}</mbtitle>
+    <mbtags>{{ monster.get_tags_str() }}</mbtags>
+    <mbac>{{ monster.get_ac() }}</mbac>
+    <mbhp>{{ monster.get_stamina() }}/{{ monster.get_health() }}</mbhp>
+    <mbmove>{{ monster.get_move() }}</mbmove>
+    <mbstr>9</mbstr>
+    <mbend>10</mbend>
+    <mbag>11</mbag>
+    <mbspd>12</mbspd>
+    <mbluck>9</mbluck>
+    <mbwil>8</mbwil>
+    <mbper>10</mbper>
+    <mbabilities>{{ monster.get_abilities_str() }}</mbabilities>
+    {% if monster.get_aspects_str() != "" %}
+    <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
+    {% endif %}
+    <mbdescription>{{ monster.description }}</mbdescription>
+  </monsterblock>    
+  {% endfor %}      
+  
+</section>   
+{% endfor %}    
