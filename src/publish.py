@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
 """
-
   Builds pdfs from the xml files.
  
   Xelatex installer for windows.
@@ -38,6 +37,7 @@ from abilities import AbilityGroups
 from monsters import MonsterGroups
 from archetypes import Archetypes
 from latex_formatter import LatexFormatter
+from html_formatter import HtmlFormatter
 from spreadsheet_writer import write_summary_to_spreadsheet
 import config
 import utils
@@ -263,18 +263,8 @@ def create_index(verbosity=0):
         print(("\n\n\n" + " ".join(cmd_line)))
     call(cmd_line, cwd = build_dir)
 
-
     print "-------------------------"
-    # build the index.pdf
-    #print index_
     xelatex(index_tex)
-    # cmd_line = [xelatex, "-output-directory=%s" % build_dir, index_tex]
-    # if verbosity > 0:
-    #     print(("\n\n\n" + " ".join(cmd_line)))
-    #call(cmd_line, env = env)
-
-    #print cmd_line
-    #call(cmd_line)
 
     # move the pdf from the build dir to the pdfs dir
     pdf_fname = join(build_dir, "index.pdf")
@@ -286,11 +276,8 @@ def create_index(verbosity=0):
 
 
 
-def build_doc(template_fname, verbosity, archetype = None):
-    """
-    Archetype required only when building archetype docs.
+def build_pdf_doc(template_fname, verbosity, archetype = None):
 
-    """
     # archetypes all use the same template.. but we don't want to 
     # put them in the same doc file.
     if archetype is not None:
@@ -302,7 +289,8 @@ def build_doc(template_fname, verbosity, archetype = None):
     doc_base_fname, _ = splitext(basename(doc_fname))
     xml_fname = join(build_dir, "%s.xml" % doc_base_fname)
     pdf_fname = join(build_dir, "%s.pdf" % doc_base_fname)
-    tex_fname = join(build_dir, "%s.tex" % doc_base_fname)
+    tex_fname = join(build_dir, "%s.tex" % doc_base_fname) 
+    
     # makeindex won't write to files outside of the cwd.
     # We don't want a path here.  Just a filename
     idx_fname = "%s.idx" % doc_base_fname
@@ -337,7 +325,7 @@ def build_doc(template_fname, verbosity, archetype = None):
     with codecs.open(xml_fname, "w", "utf-8") as f:
        f.write(xml)
             
-    # parse an xml documento
+    # parse an xml document
     doc = Doc(xml_fname)        
     if not doc.parse():
         print("Problem parsing the xml.")
@@ -388,11 +376,57 @@ def build_doc(template_fname, verbosity, archetype = None):
 
     # Copy the pdf from the build dir to the pdfs dir
     copy(pdf_fname, pdfs_dir)
+    
 
     print("===============================================")
     print(("   Finished building %s " % doc_fname))
     print("===============================================\n")
     return
+    
+
+
+def build_html_doc(template_fname, verbosity, archetype = None):
+    """
+    Archetype required only when building archetype docs.
+
+    """
+    # archetypes all use the same template.. but we don't want to 
+    # put them in the same doc file.
+    if archetype is not None:
+        doc_fname = archetype.get_id()
+    else:
+        doc_fname = template_fname
+
+    # base name .. no extension
+    doc_base_fname, _ = splitext(basename(doc_fname))
+    xml_fname = join(build_dir, "%s.xml" % doc_base_fname)
+    html_fname = join(build_dir, "%s.html" % doc_base_fname)
+
+    # parse an xml document
+    doc = Doc(xml_fname)        
+    if not doc.parse():
+        print("Problem parsing the xml.")
+        exit(0)
+
+    if not doc.validate() and fail_fast:
+        print("Fatal: xml errors are fatal!")
+        print("Run with the -s cmd line option to ignore xml errors.")
+        exit(0)
+    
+    
+    # build the html document by converting the xml into tex
+    with codecs.open(html_fname, "w", "utf-8") as f:
+        html_formatter = HtmlFormatter(f)
+        errors = doc.format(html_formatter)
+        if len(errors) > 0:
+            print("Errors:")
+            for error in errors:
+                print("\t%s\n\n\n" % error)
+                
+            if fail_fast:
+                sys.exit()
+    return
+    
 
 
 def clean():
@@ -524,12 +558,20 @@ if __name__ == "__main__":
     #env = deepcopy(os.environ)
     #env["TEXINPUTS"] = tex_inputs
 
-    for doc_xml_fname, _, _ in config.files_to_build:        
-        build_doc(doc_xml_fname, verbosity=verbosity)
 
+    # Build latex/pdf files.
+    for doc_xml_fname, _, _ in config.files_to_build:
+        build_pdf_doc(doc_xml_fname, verbosity=verbosity)
+
+    # Build latex/pdf archetype files.
     for archetype_id, _, _ in config.archetypes_to_build:
         archetype = archetypes[archetype_id]
-        build_doc(archetype_template_fname, archetype = archetype, verbosity=verbosity)
+        build_pdf_doc(archetype_template_fname, archetype = archetype, verbosity=verbosity)
+
+
+    for doc_xml_fname, _, _ in config.files_to_build:
+        build_html_doc(doc_xml_fname, verbosity=verbosity)
+        
 
     if parse_only or template_only or latex_only:
         sys.exit()
