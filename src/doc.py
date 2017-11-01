@@ -134,9 +134,7 @@ class Doc:
         # handle trailing text.
         if element.tag in TEXT_TAGS and element.text:
             text = element.text
-            text = text.strip()
-            if text != "":
-                i_formatter.handle_text(text)
+            i_formatter.handle_text(text)
                 
         # handle all the children
         for child in list(element):
@@ -157,9 +155,7 @@ class Doc:
         # handle trailing text.
         if element.tail:
             tail = element.tail
-            tail = tail.strip()
-            if tail != "":
-                i_formatter.handle_text(tail)
+            i_formatter.handle_text(tail)
         return
     
                 

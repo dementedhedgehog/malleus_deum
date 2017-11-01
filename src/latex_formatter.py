@@ -183,12 +183,14 @@ latex_frontmatter = r"""
 
 
 %% achetype ability mark up symbols (star, empty-star and exclamation)
-\newcommand{\rpginnatearchetypeabilitysymbol}
- {\begingroup\rpgdice\selectfont\symbol{\"201C}\endgroup}          
-\newcommand{\rpginnateabilitysymbol} 
- {\begingroup\rpgdice\selectfont\symbol{\"201D}\endgroup}          
-\newcommand{\rpgrecommendedabilitylevelsymbol}
- {\begingroup\rpgdice\selectfont{}!\endgroup}
+\newcommand{\rpginnatearchetypeabilitysymbol}%%
+{\begingroup\rpgdice\selectfont\symbol{"201C}\endgroup}
+
+\newcommand{\rpginnateabilitysymbol}%%
+{\begingroup\rpgdice\selectfont\symbol{"201D}\endgroup}
+
+\newcommand{\rpgrecommendedabilitylevelsymbol}%%
+{\begingroup\rpgdice\selectfont{}!\endgroup}
 
 %% dice pool notation          
 \newcommand{\dfour} 
