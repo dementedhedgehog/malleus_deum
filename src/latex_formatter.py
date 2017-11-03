@@ -275,15 +275,17 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 %% Monsters
 %%
 
-\newcommand\mbsep{\raisebox{3.0ex}{\includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule.png}}}
+\newcommand\mbsep{%%
+\includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule.png}%%
+\vspace{-0.5cm}\hfill\break}
 
-\newenvironment{mbtitle}
-{\sherwood\color{monstertitlecolor}\begin{large}}
-{\end{large}}
+\newenvironment{mbtitle}%%
+{\sherwood\color{monstertitlecolor}\begin{large}}%%
+{\end{large}\vspace{0.0cm}\hfill\break}
 
-\newenvironment{mbtags}
-{\color{monstertagscolor}\begin{normalsize}}
-{\end{normalsize}}
+\newenvironment{mbtags}%%
+{\color{monstertagscolor}\begin{normalsize}}%%
+{\end{normalsize}\vspace{0.0cm}\hfill\break}
 
 \newenvironment{mbac}
 {\color{monstertitlecolor}\normalsize}{}
@@ -1741,53 +1743,45 @@ class LatexFormatter:
     end_monsterblock = no_op
     
     def start_mbtitle(self, mbtitle):
-        self.latex_file.write(r"\begin{mbtitle}")
+        self.latex_file.write("\\mbsep{}\\begin{mbtitle}")
         return
 
     def end_mbtitle(self, mbtitle):
-        self.latex_file.write(r"\end{mbtitle}"
-                              r"\\"
-                              "\n")
+        self.latex_file.write(r"\end{mbtitle}\noindent")
         return
     
     def start_mbtags(self, mbtags):
         self.latex_file.write(r"\begin{mbtags}")
         return
     def end_mbtags(self, mbtags):
-        self.latex_file.write(r"\end{mbtags}"
-                              r"\\"
-                              r"\mbsep{}\\[-0.36cm]"
-                              "\n")
+        self.latex_file.write(r"\end{mbtags}\noindent")
         return
 
     def start_mbac(self, mbac):
-        self.latex_file.write(r"\textbf{AC:} \begin{mbac}")
+        self.latex_file.write(r"\textbf{AC: }\begin{mbac}")
         return
     def end_mbac(self, mbac):
-        self.latex_file.write(r"\end{mbac} ")
+        self.latex_file.write(r"\end{mbac}\enspace{}")
         return
 
     def start_mbhp(self, mbhp):
-        self.latex_file.write(r"\textbf{HP:} \begin{mbhp}")
+        self.latex_file.write(r"\textbf{HP: }\begin{mbhp}")
         return
     
     def end_mbhp(self, mbho):
-        self.latex_file.write("\\end{mbhp} ")
+        self.latex_file.write("\\end{mbhp}\enspace{}")
         return
 
     def start_mbmove(self, mbmove):
-        self.latex_file.write(r"\textbf{Move:} \begin{mbmove}")
+        self.latex_file.write(r"\textbf{Move: }\begin{mbmove}")
         return
     def end_mbmove(self, mbmove):
-        self.latex_file.write(r"\end{mbmove}"
-                              r"\\[0.1cm]"
-                              "\n")
+        self.latex_file.write("\\end{mbmove}\\vspace{0.1cm}\\hfill\\break{}")
         return
     
     def start_mbstr(self, mbstr):
         self.latex_file.write(
             "% attribute block\n" 
-            #"\\begin{tabular}{ccccccc@{}}%\n"
             "\\begin{tabular}{@{}ccccccc@{}}%\n"
             "\\mbattrtitleformat{STR} & %\n"
             "\\mbattrtitleformat{END} & %\n"
@@ -1842,18 +1836,14 @@ class LatexFormatter:
     def end_mbper(self, mbag):
         self.latex_file.write("\\end{small}"
                               "\\end{tabular}"
-                              "\\\\"
                               "\n")
-        # \\%\n"
-        #"\\mbsep\\[-0.15cm]%"
-        #)
         return
     
     def start_mbabilities(self, mbabilities):
         self.latex_file.write(r"\textbf{Abilities}: ")
         return
     def end_mbabilities(self, mbabilities):
-        self.latex_file.write("\\\\\n")
+        self.latex_file.write("\n")# \\\\") #\n")
         return
 
     def start_mbaspects(self, mbaspects):
@@ -1864,9 +1854,8 @@ class LatexFormatter:
         return
     
     def start_mbdescription(self, mbdescription):
-        self.latex_file.write(r"\textbf{Description:} ")
+        self.latex_file.write(r"\textbf{Description:}\hfill\break\vspace{-0.62cm}")
         return
     def end_mbdescription(self, mbdescription):
-        #self.latex_file.write("\\\\\n")
         self.latex_file.write("\n")
         return
