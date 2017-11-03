@@ -32,8 +32,7 @@ from latex_formatter import LatexFormatter
 # hard coding element.text in the latex_writer.  Ultimately
 # this would be all tags.. in the meanwhile that would cause chaos.
 TEXT_TAGS = (
-    "mbtitle",
-    "mbtags",
+    "mbtitle", "mbtags",
     "mbac", "mbhp", "mbmove",
     "mbstr", "mbend", "mbag", "mbspd", "mbluck", "mbwil", "mbper",
     "mbabilities", "mbaspects", "mbdescription",
