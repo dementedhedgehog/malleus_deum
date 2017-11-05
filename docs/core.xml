@@ -1849,15 +1849,16 @@ do this the initial check is modified by +2.
         auction.  The character with the <emph>lowest initiative</emph> that has not performed
         an action during the round declares, or bids, the action they would like to perform.
         Any character that has not performed an action yet, this round, may then bid a
-        faster action.  No character may bid more than once and bidding is optional.
+        faster action.  No character may bid more than once in each auction and bidding is
+	optional for everyone except the character who has to make the initial bid.
       </p>
 
       <p>        
         An action is <defn>faster</defn> if its stage, is faster (<eg/> Start Actions are
         faster than Fast Actions, and Fast Actions are faster than Standard Actions <etc/>),
         or if its stage is the same as the current fastest action and the character has a higher
-        initiative.  In other words stage is the most important factor in determining action
-        order, initiative is the tie-breaker.
+        initiative.  In other words <bold>stage is the most important factor in determining
+	action order, initiative is the tie-breaker for actions with the same stage.</bold>
       </p>
 
       <p>
@@ -1880,6 +1881,13 @@ do this the initial check is modified by +2.
 
           <li>
             Each bid must be faster than the last bid.
+          </li>
+
+          <li>
+            A bid is faster if its stage is faster than the current bid, or its stage is
+	    the same as the current bid and the characters initiative is higher.  In the 
+	    event that two characters have tied initiatives the first bid from either
+	    character is faster.
           </li>
 
           <li>
