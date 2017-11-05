@@ -1227,8 +1227,8 @@ class LatexFormatter:
         self.latex_file.write("]")
 
     def start_description(self, description):
-        if description.text is not None:
-            self.latex_file.write("%s" % description.text)
+        #if description.text is not None:
+        #    self.latex_file.write("%s" % description.text)
         return
 
     def end_description(self, list_item):

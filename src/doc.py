@@ -56,7 +56,7 @@ class Doc:
         self.doc = parse_xml(self.fname)
         return self.doc
 
-        
+
     def validate(self):
         valid = True        
         error = validate_xml(self.doc)
