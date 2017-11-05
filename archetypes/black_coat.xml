@@ -43,9 +43,6 @@ haunted?
 
       Get thee hence.      
       God provides.. roll to have a required item.
-      hold undead.
-      turn undead.
-      destroy undead
       aspect... Shed no blood - Not a drop by mine hand.
       -->
     </p>
@@ -53,9 +50,9 @@ haunted?
 
   <archetypeac>7</archetypeac>
   <archetypemove>6</archetypemove>
-  <archetypeinitiative>11</archetypeinitiative>
+  <archetypeinitiative>10</archetypeinitiative>
   <startingcash>20 + d4 sp</startingcash>
-  <startinggear>Chain armour, mace, hat, dagger, backpack, rations for a week.</startinggear>
+  <startinggear>Chain armour, mace, shield, hat, dagger, backpack, rations for a week.</startinggear>
 
   <height>
     <metric>150 + 2d20 cm</metric> 
@@ -66,9 +63,9 @@ haunted?
     <imperial>130 + 4d20 pounds</imperial>
   </weight>
   <age>16 + 3d6 years</age>
-  <appearance>Aloof, wild-eyed, watchful.</appearance>
+  <appearance>Grim, watchful, .</appearance>
 
-  <aspectexamples>Purity of Mind above All, </aspectexamples>
+  <aspectexamples>Purity of Mind above All, I will shed no blood.</aspectexamples>
   <archetypetags>
     <tag>Human</tag>
     <tag>Magic-User</tag>
@@ -100,6 +97,22 @@ haunted?
 
 
   <abilitymodifiers>
+
+    <innate>
+      <abilityid>club.smash</abilityid>
+      <level>1</level>      
+    </innate>
+
+    <innate>
+      <abilityid>club.strike</abilityid>
+      <level>1</level>      
+    </innate>
+        
+    <innate>
+      <abilityid>sword.feint</abilityid>
+      <level>1</level>      
+    </innate>
+    
     <innate>
       <abilityid>lore.theology</abilityid>
       <level>2</level>      
@@ -107,13 +120,20 @@ haunted?
 
     <innate>
       <abilityid>magic.turn_undead</abilityid>
+      <level>1</level> 
+    </innate>
+    
+    <innate>
+      <abilityid>magic.heal</abilityid>
+      <level>1</level>      
+    </innate>
+
+    
+    <innate>
+      <abilityid>shield.block</abilityid>
       <level>1</level>      
     </innate>
     
-    <disable>
-      <abilitygroupid>necromancy</abilitygroupid>
-    </disable>
-
     <abilitygroupmodifier>
       <abilitygroupid>hammer</abilitygroupid>
       <martialpointmodifier>-1</martialpointmodifier>
@@ -179,8 +199,6 @@ haunted?
       <abilityid>thespian.oratory</abilityid>
       <generalpointmodifier>-1</generalpointmodifier>
     </abilitymodifier>    
-
-    
   </abilitymodifiers>
 </archetype>
 

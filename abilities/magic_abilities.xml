@@ -76,7 +76,7 @@
         <defaultlore>5</defaultlore>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Std 2d8 vs default 10</check>
 	<prereqtag>Cleric</prereqtag>
       </abilitylevel>
@@ -179,7 +179,7 @@
         <defaultgeneral>5</defaultgeneral>
         <prereqabilitylevel>lore.natural_history_2</prereqabilitylevel>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Std 2d8 vs default 7</check>
       </abilitylevel>
     </abilitylevels>
@@ -206,7 +206,7 @@
         <defaultgeneral>5</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Std 2d8 vs default 7</check>
       </abilitylevel>
     </abilitylevels>
@@ -303,7 +303,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>7</defaultmagical>
         <successes>2</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Magic Pool vs 5</check>
 	<overcharge>10</overcharge>	
       </abilitylevel>
@@ -315,7 +315,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>3</defaultmagical>
         <successes>1</successes>
-        <failures>0</failures>
+        <attempts>0</attempts>
 	<check>Magic Pool vs 3</check>
 	<overcharge>12</overcharge>	
       </abilitylevel>      
@@ -327,7 +327,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>3</defaultmagical>
         <successes>1</successes>
-        <failures>0</failures>
+        <attempts>0</attempts>
 	<check>Magic Pool vs 3</check>
 	<overcharge>16</overcharge>	
       </abilitylevel>      
@@ -440,7 +440,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
 	<check>Magic Pool vs 8</check>
 	<overcharge>18</overcharge>		
 	<leveldescription>
@@ -526,6 +526,46 @@
     </abilitylevels>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Heal</abilitytitle>
+    <abilityid>magic.heal</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The healing character places their hands on a bloodied target
+	and makes a check.  If successful the bloodied character heals
+	Health.  On overcharge the healer accidentaly uses their own animus
+	in order to heal the bloodied character.
+      </p>
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqtag>Cleric</prereqtag>
+        <defaultlore>8</defaultlore>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool versus 8 overcharge of 14</check>
+        <effect>Bloodied character heals 2d6 damage</effect>
+        <overcharge>Caster takes d6 damage.</overcharge>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <check>Magic Pool versus 7 overcharge of 15</check>
+        <effect>Bloodied character heals 3d6 damage</effect>
+        <overcharge>Caster takes 2d6 damage.</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
   
   <ability>
     <abilitytitle>Incendo</abilitytitle>
@@ -562,7 +602,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
 	<check>Magic Pool vs default 7</check>
 	<overcharge>17</overcharge>		
 	<leveldescription>
@@ -661,7 +701,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>3</defaultmagical>
         <successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Magic Pool vs default 7</check>
 	<overcharge>17</overcharge>
 	<effect>+2 on Sneak at night</effect>			
@@ -674,7 +714,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Magic Pool vs default 5</check>
 	<overcharge>17</overcharge>			
 	<effect>+4 on Sneak at night</effect>
@@ -957,7 +997,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
 	<check>Magic Pool vs default 8</check>
 	<overcharge>20</overcharge>			
       </abilitylevel>      
@@ -985,7 +1025,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>3</defaultmagical>
 	<successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Magic Pool vs default 11</check>
 	<overcharge>18</overcharge>
       </abilitylevel>
@@ -997,7 +1037,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>3</defaultmagical>
         <successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Magic Pool vs default 10</check>
 	<overcharge>19</overcharge>
       </abilitylevel>      
@@ -1024,7 +1064,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>3</defaultmagical>
         <successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Magic Pool vs default 7</check>
 	<overcharge>12</overcharge>
 	<effect>+2 to AC for five minutes</effect>				
@@ -1038,7 +1078,7 @@
         <defaultmagical>3</defaultmagical>
 	<check>Magic Pool vs default 6</check>
         <successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<overcharge>14</overcharge>
 	<effect>+3 to AC for five minutes</effect>				
       </abilitylevel>
@@ -1172,7 +1212,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
 	<check>Magic Pool + 3 versus Stated Target</check>
 	<effect>See above.</effect>
       </abilitylevel>      
@@ -1184,7 +1224,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
 	<check>Magic Pool + 6 versus Stated Target</check>
 	<effect>See above.</effect>
 	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
@@ -1230,7 +1270,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Magic Pool +2 versus Glamour DC</check>
 	<effect>See above.</effect>
       </abilitylevel>      
@@ -1242,7 +1282,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Magic Pool +5 versus Glamour DC</check>
 	<effect>See above.</effect>
 	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
@@ -1261,14 +1301,18 @@
 	The character calls on their deity to repel beings animated by
 	necrotic forces.
       </p>
+
+      <!--
+	  at low levels hold, then turn then destroy the undead
+      -->
     </abilitydescription>    
     <abilitylevels>
        <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqtag>praedicant</prereqtag>
+        <prereqtag>cleric</prereqtag>
         <defaultlore>8</defaultlore>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Std 2d8 vs opponents will</check>
       </abilitylevel>
       
@@ -1322,7 +1366,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Magic Pool vs 8</check>
 	<overcharge>14</overcharge>
 	<effect>

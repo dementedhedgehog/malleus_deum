@@ -35,7 +35,7 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Weapon damage</damage>
       </abilitylevel>
@@ -46,7 +46,7 @@
         <defaultmartial>7</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
-        <failures>3</failures>
+        <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
       </abilitylevel>
@@ -67,23 +67,23 @@
   <ability>
     <abilitytitle>Sword Feint</abilitytitle>
     <abilityid>sword.feint</abilityid>
-    <abilityclass>Reaction</abilityclass>
+    <abilityclass>MediumOrSlow</abilityclass>
     <abilitydescription>
       <p>
 	The character makes an opposed agility check when an opponent attacks
 	them with a melee weapon. If they succeed they swap initiative order
-	with an opponent they are in combat with.
+	with their opponent.
       </p>
     </abilitydescription>
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>sword.strike_2</prereqabilitylevel>
+        <prereqabilitylevel>sword.strike_1</prereqabilitylevel>
         <defaultlore>8</defaultlore>
         <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Opposed agility check</check>
       </abilitylevel>
       
@@ -115,7 +115,7 @@
         <defaultmartial>8</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
-        <failures>1</failures>
+        <attempts>1</attempts>
 	<check>Opposed speed check</check>
       </abilitylevel>
       
@@ -126,7 +126,7 @@
         <defaultgeneral>0</defaultgeneral>
 	<check>Opposed speed check + 2</check>
         <!-- <successes>3</successes>
-             <failures>3</failures> -->
+             <attempts>3</attempts> -->
       </abilitylevel>      
     </abilitylevels>
   </ability>
