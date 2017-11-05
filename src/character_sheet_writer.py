@@ -85,6 +85,14 @@ FDF_ABILITY_BODY = """
 <<
 /V ({ability_mastery})
 /T (AbilityMastery{ability_number})
+>>
+<<
+/V ({ability_overcharge_type})
+/T (AbilityOverchargeType{ability_number})
+>>
+<<
+/V ({ability_overcharge})
+/T (AbilityOvercharge{ability_number})
 >>"""
 
 fdf_footer = """]
@@ -206,7 +214,8 @@ def create_abilities_fdf(fdf_name, ability_levels = None):
 
                 effect_type = ""
                 effect = ""
-                if ability_level.get_family() == "Combat":                    
+                dmg = ability_level.get_damage()
+                if dmg != "":
                     effect_type = "Dmg:"
                     effect = ability_level.get_damage()
                 else:
@@ -214,18 +223,26 @@ def create_abilities_fdf(fdf_name, ability_levels = None):
                     if effect != "":
                         effect_type = "Effect:"                        
 
+                overcharge_type = ""
+                overcharge = ability_level.get_overcharge()
+                if overcharge != "":
+                    overcharge_type = "Overcharge:"
+                else:
+                    overcharge = ""
 
                 ability_class = ability_level.get_ability_class()
                 ability_class_str = ability_class_lookup[ability_class]
-                
+
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
                     ability_number=i,
-                    ability_check=ability_level.get_check(),
+                    ability_check=check,
                     ability_class=ability_class_str,
                     ability_name=ability_level.get_title(),
                     ability_effect_type=effect_type,
                     ability_effect=effect,
+                    ability_overcharge_type=overcharge_type,
+                    ability_overcharge=overcharge,
                     ability_mastery=mastery)
             else:
                 # write empty info
@@ -236,7 +253,19 @@ def create_abilities_fdf(fdf_name, ability_levels = None):
                     ability_name="",
                     ability_effect_type="",
                     ability_effect="",
+                    ability_overcharge_type="",
+                    ability_overcharge="",
                     ability_mastery="")
+
+                    # ability_check="a%s" % i,
+                    # ability_class="b%s" % i,
+                    # ability_name="c%s" % i,
+                    # ability_effect_type="d%s" % i,
+                    # ability_effect="e%s" % i,
+                    # ability_overcharge_type="f%s" % i,
+                    # ability_overcharge="g%s" % i,
+                    # ability_mastery="h%s" % i)
+                
             f.write(fdf_info)
         f.write(fdf_footer)
     return
@@ -267,8 +296,11 @@ def create_character_sheet_for_archetype(archetype):
     for ability_group in archetype.modified_ability_groups:
         print("\t%s" % ability_group.get_title())        
         for ability in ability_group:
+            print("\t\t%s" % ability.get_title())            
             ability_level = ability.get_highest_innate_level()
-            if ability_level is not None:
+            print("\t\t%s" % ability_level)                        
+            if ability_level is not None and ability_level.is_enabled():
+                print("\t\t%s" % ability_level.get_title())                        
                 ability_levels.append(ability_level)
 
     ability_levels.sort(cmp_titles)
@@ -325,6 +357,10 @@ def create_character_sheets_for_all_archetypes():
     archetypes.load(ability_groups, archetypes_dir, fail_fast = True)
     for archetype in archetypes:
         print("Archetype: %s" % archetype.get_title())
+
+        ###########################
+        #if "Black" not in archetype.get_title():
+        #    continue        
         create_character_sheet_for_archetype(archetype)
     return
 

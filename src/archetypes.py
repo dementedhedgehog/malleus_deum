@@ -46,6 +46,12 @@ class ModifiedAbilityLevel:
         # is this a recommended ability at first level?
         self.recommended = False
 
+        # has we been flagged as innate
+        # (note that innateness is complicated to calculate and depends on
+        # many things which might not be setr correctly.. this flag indicates
+        # we the ability level *should* be innate)
+        self.innate_flag = False
+
         # abilities can be enabled or disabled
         # if an ability is enabled or disabled it overrides the group setting
         self.enabled = True
@@ -74,6 +80,9 @@ class ModifiedAbilityLevel:
     def get_title(self):
         return self.ability_level.get_title()
 
+    def get_overcharge(self):
+        return self.ability_level.get_overcharge()
+
     def get_level_number(self):
         return self.ability_level.get_level_number()
 
@@ -100,21 +109,18 @@ class ModifiedAbilityLevel:
             innate_level = self.modified_ability.get_highest_innate_level()
             if innate_level is not None:
                 should_appear = innate_level.get_level_number() <= self.get_level_number()
-        
         return should_appear
 
     def get_martial_points(self):
-        if self.ability_level.is_innate() or self.get_level_number() == 0:
+        if self.innate_flag or self.get_level_number() == 0:
             return 0
-
         martial_points = (self.ability_level.get_default_martial() +
                           self.martial_point_modifier +
                           self.modified_ability_group.get_martial_point_modifier())
         return max(martial_points, 0)
 
     def get_lore_points(self):
-
-        if self.ability_level.is_innate() or self.get_level_number() == 0:
+        if self.innate_flag or self.get_level_number() == 0:
             return 0
 
         lore_points = (
@@ -125,7 +131,7 @@ class ModifiedAbilityLevel:
         return max(lore_points, 0)
 
     def get_general_points(self):
-        if self.ability_level.is_innate() or self.get_level_number() == 0:
+        if self.innate_flag or self.get_level_number() == 0:
             return 0
 
         general_points = (
@@ -137,7 +143,7 @@ class ModifiedAbilityLevel:
 
     def get_magical_points(self):
 
-        if self.ability_level.is_innate() or self.get_level_number() == 0:
+        if self.innate_flag or self.get_level_number() == 0:
             return 0
 
         magical_points = (
@@ -148,11 +154,23 @@ class ModifiedAbilityLevel:
         return max(magical_points, 0)
 
 
-    def set_innate(self):
+    def set_innate(self):              
+        print "Set %s innate " % self.get_title()
+
+        self.innate_flag = True
         self.martial_point_modifier -= self.get_martial_points() 
         self.general_point_modifier -= self.get_general_points() 
         self.lore_point_modifier -= self.get_lore_points() 
-        self.magical_point_modifier -= self.get_magical_points() 
+        self.magical_point_modifier -= self.get_magical_points()
+
+        print "martial %s " % self.get_martial_points() 
+        print "general %s " % self.get_general_points() 
+        print "lore %s" % self.get_lore_points() 
+        print "megical %s" % self.get_magical_points()
+
+        #if "Club" in self.get_title():
+        print "--------------------"
+        print "Set level innate %s" % self.ability_level.get_title()
 
         # if an ability level is innate for a character then so are its
         # previous levels.
@@ -162,7 +180,61 @@ class ModifiedAbilityLevel:
             if previous_lvl is not None:
                 previous_lvl.set_innate()
         return
-    
+
+
+    def check_consistency(self):
+        """
+        Called after we've loaded all the abilities.
+
+        """
+        # Note: it's important that we actually check for the innate flag
+        # and not is_innate() here!
+        if self.innate_flag:
+
+            # check prerequisite tags
+            for prereq_tag in self.ability_level.get_prerequisite_tags():
+                if prereq_tag not in self.archetype.tags:
+                    raise Exception("For archetype %s the ability %s is marked innate but "
+                                    "the archetype lacks the required prerequisite tag: %s "
+                                    % (self.archetype.get_title(),
+                                       self.get_title(),
+                                       str(prereq_tag)))                
+
+            # check ability level prerequisites
+            for ability_level_prereq in self.ability_level.get_ability_level_prereqs():
+            
+                # get the unmodified ability.
+                ability_level_id = ability_level_prereq.get_ability_level_id()
+                ability_level = AbilityLevel.get_level(ability_level_id)
+                ability = ability_level.ability
+        
+                print "ability " 
+                print ability
+
+                print "From ability level %s" % self.ability_level
+                    
+                print ability_level_prereq
+                print ability_level_prereq.ability_level
+
+                # get the ability level
+                #level_num = ability_level_prereq.ability_level
+                level_num = ability_level.get_level_number()
+
+                print "level number %s " % level_num
+            
+                # get the prereq modified ability level.
+                modified_ability = self.archetype.get_modified_ability(ability.ability_id)
+                modified_ability_level = modified_ability.get_modified_ability_level(level_num)
+
+                assert modified_ability_level is not None
+                
+                if not modified_ability_level.is_innate():
+                    raise Exception("Archetype %s has an ability level %s that is innate "
+                                    "but it has a prerequisite %s that is not innate!" %
+                                    (self.archetype.get_title(), self.get_title(),
+                                     modified_ability_level.get_title()))            
+            #modified_ability_level.set_innate()        
+        return
     
     def get_mastery_successes(self):
         mastery_successes = (
@@ -199,7 +271,7 @@ class ModifiedAbilityLevel:
     def is_recommended(self):
         return self.recommended
     
-    def is_innate(self):
+    def is_innate(self, d = False):
         """
         You automatically get abilities with a zero cost and satisfied prereqs.
         Note.  
@@ -207,6 +279,8 @@ class ModifiedAbilityLevel:
         """
         lvl_num = self.ability_level.get_level_number()
 
+        if d:
+            print lvl_num
 
         if lvl_num <= 1:
             previous_level_is_innate = True
@@ -255,7 +329,20 @@ class ModifiedAbilityLevel:
         # check for prerequisite tags
         has_prerequisite_tags = True
         for prereq_tag in self.ability_level.get_prerequisite_tags():
-            has_prerequisite_tags = has_prerequisite_tags and prereq_tag in self.archetype.tags
+            if prereq_tag not in self.archetype.tags:
+                has_prerequisite_tags = False
+
+        if d:
+            print self.get_title()
+            print "previous level is innate %s" % previous_level_is_innate
+            print "has prereqs %s " % has_prerequisite_tags
+            print "all_prerequisites_are_innate %s" % all_prerequisites_are_innate
+            print "point cost is zero %s " % (self.get_total_point_cost() == 0)
+            print "\tmartial %s " % self.get_martial_points()
+            print "\tgeneral %s " % self.get_general_points()
+            print "\tlore %s " % self.get_lore_points()
+            print "\tmagical %s " % self.get_magical_points()
+                
 
         return (previous_level_is_innate and
                 has_prerequisite_tags and
@@ -778,7 +865,7 @@ class Tags:
         for child in list(archetype_tags_node):
            tag = child.tag
            if tag == "tag":
-               tag = child.text.strip()
+               tag = child.text.strip().lower()
                self.tags.append(tag)
            elif tag is COMMENT:
                # ignore comments!
@@ -791,7 +878,13 @@ class Tags:
 
     def __iter__(self):
         return iter(self.tags)
-    
+
+    def __str__(self):
+        return ", ".join(self.tags)
+
+    def __contains__(self, key):
+        return key.tag.lower() in self.tags
+
 
 class AttrBonus(object):
     """
@@ -980,8 +1073,7 @@ class Archetype:
         """
         return [ ability_level for ability_level in self.innate_ability_levels if 
                  ability_level.is_innate_for_this_archetype() ]
-        
-
+ 
     def get_armour_class(self):
         return self.ac
 
@@ -1097,7 +1189,34 @@ class Archetype:
         except:
             print "Problem trying to parse archetype file: %s" % self.fname
             raise
+
+        # after we've loaded all the archertype ability information
+        # go through and set the innate information for prerequisites
+        #self.set_innate_abilities() ###########################################
+        for ability in self.modified_abilities_lookup.values():
+            for ability_level in ability:
+                ability_level.check_consistency()
         return True
+
+
+    #def _set_ability_prereqs_innate_for_innate_abilities(self):
+    # def set_innate_abilities(self):
+    #     """
+    #     If an ability is innate and it has ability prerequisites then we 
+    #     have to make those prerequisite abilities innate as well.
+
+    #     We have to do this after we've loaded all the modified abilities so
+    #     we can find change them.
+
+    #     """
+    #     for ability_group in self.modified_ability_groups:
+    #         for ability in ability_group.get_abilities():
+    #             if not ability.is_enabled():
+    #                 continue
+    #             for ability_level in ability:
+    #                 #if ability_level.innate_flag:
+    #                     ability_level.set_innate()
+    #     return
 
 
     def _load(self, archetype_node, fail_fast):        
@@ -1122,7 +1241,7 @@ class Archetype:
                if self.ac is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   self.ac = child.text.strip() 
+                   self.ac = child.text.strip()
 
            elif tag == "archetypemove":
                if self.move is not None:
@@ -1243,6 +1362,7 @@ class Archetype:
                                (child.tag, self.fname, child.sourceline))
         return
 
+
     def _load_innate_ability_modifier(self, innate_node):
         ability_id = None
         ability_level = None
@@ -1300,7 +1420,7 @@ class Archetype:
            elif tag == "enable":
                self.set_enabled(child, True)
 
-           elif tag == "innate":
+           elif tag == "innate":               
                self._load_innate_ability_modifier(child)
 
            elif tag is COMMENT:
@@ -1537,9 +1657,9 @@ class Archetypes:
             archetype = Archetype(abilities, xml_fname)
             archetype.load(archetype_node, fail_fast)
             archetypes_in_file.append(archetype)
-
         return archetypes_in_file
 
+    
     def load(self, ability_groups, archetypes_dir, fail_fast):
         """
         Load all the archetypes in all the xml files in the docs_dir.
@@ -1588,18 +1708,26 @@ if __name__ == "__main__":
     #archetypes.write_abilities_xml_to_dir(build_dir)
 
     for archetype in archetypes:
-        print("Archetype: %s" % archetype.get_title())
 
+        if "Black" not in archetype.get_title():
+            continue
+        
+        print("Archetype: %s" % archetype.get_title())        
         for ability_group in archetype.modified_ability_groups:
+            #if "Magic" not in ability_group.get_title():
+            #    continue
+
             print("\t%s" % ability_group.get_title())
-
-            if "Language" not in ability_group.get_title():
-                continue
-
             for ability in ability_group:
+
+                if "Sword" not in ability.get_title():
+                    continue
+                
                 print("\t\t%s" % ability.get_title())
+                print("\t\tHighest innate level %s" % ability.get_highest_innate_level())
                 
                 for mal in ability.get_levels():
                     print("\t\t\t%s %s" % (mal.get_title(), mal.get_total_point_cost()))
+                    print("\t\t\tIS INNATE %s" % mal.is_innate(d = True))
                     print("\t\t\t\tRecommended: %s" % mal.is_recommended())
-
+        

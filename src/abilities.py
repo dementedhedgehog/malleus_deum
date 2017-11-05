@@ -29,16 +29,24 @@ class Prerequisite(object):
 class AbilityLevelPrereq(Prerequisite):
 
     def __init__(self, ability_level_id):
+        assert ability_level_id is not None
         self.ability_level_id = ability_level_id
         self.ability_level = None
         return
 
-    def to_string(self): 
-        self.ability_level = ability_level_lookup[self.ability_level_id]
-        return str(self.ability_level)
+    def get_ability_level(self):
+        if self.ability_level is None:
+            self.ability_level = ability_level_lookup[self.ability_level_id]
+        return self.ability_level
+    
+    def to_string(self):         
+        return str(self.get_ability_level())
+
+    def get_ability_level_id(self): 
+        return self.ability_level_id
 
     def get_title(self):
-        return self.ability_level.get_title()
+        return self.get_ability_level().get_title()
 
     def __str__(self):
         return self.to_string()
@@ -221,6 +229,9 @@ class AbilityLevel:
     def get_effect(self):
         return self.effect if self.effect is not None else ""
     
+    def get_overcharge(self):
+        return self.overcharge if self.overcharge is not None else ""
+    
     def get_title(self):
         return "%s %s" % (
             self.ability.get_title(), convert_to_roman_numerals(self.level_number))
@@ -308,8 +319,7 @@ class AbilityLevel:
     
     
     @classmethod
-    def load_ability_level(cls, ability, ability_level_element):
-        #def load_ability_level(cls, ability, ability_level_element, fname):
+    def load_ability_level(cls, fname, ability, ability_level_element):
         level = cls()
         level.ability = ability        
         
@@ -355,8 +365,8 @@ class AbilityLevel:
 
            elif tag == "attempts":
                if level.attempts > 0:
-                   raise Exception("Only one attempts per abilitylevel. (%s) %s\n" %
-                                   (child.tag, str(child)))
+                   raise Exception("Only one attempts per abilitylevel. (%s) %s "
+                                   "in file %s\n" % (child.tag, str(child), fname))
                else:
                    if child.text is not None:
                        level.attempts = int(child.text)
@@ -461,7 +471,9 @@ class AbilityLevel:
            #     level.prerequisite_archetypes.append(archetype_id)
                                       
            elif tag == "overcharge":
-               level.overcharge = child.text.strip()
+               overcharge = child.text.strip()
+               if overcharge != "":
+                   level.overcharge = overcharge
                    
            elif tag is COMMENT:
                # ignore comments!
@@ -532,34 +544,6 @@ class AbilityClass:
         if ability_class == "None":            
             symbol_str = "NONE!"
             raise Exception("X") 
-        # elif ability_class == AbilityClass.AMBUSH:
-        #     ability_cls = "<ambushsymbol/>"
-        # elif ability_class == AbilityClass.SURPRISE:
-        #     symbol_str = "<surprisesymbol/>"
-        # elif ability_class == AbilityClass.INITIATIVE:
-        #     symbol_str = "<initiativesymbol/>"
-        # elif ability_class == AbilityClass.TALK:
-        #     symbol_str = "<talksymbol/>"
-        # elif ability_class == AbilityClass.START:
-        #    symbol_str = "<startsymbol/>"
-        # elif ability_class == AbilityClass.FAST:
-        #    symbol_str = "<fastsymbol/>"
-        # elif ability_class == AbilityClass.MEDIUM:
-        #    symbol_str = "<mediumsymbol/>"
-        # elif ability_class == AbilityClass.MEDIUM_OR_SLOW:
-        #    symbol_str = "<mediumorslowsymbol/>"
-        # elif ability_class == AbilityClass.SLOW:
-        #    symbol_str = "<slowsymbol/>"            
-        # elif ability_class == AbilityClass.FIGHT_REACH:
-        #     symbol_str = "<fightreachsymbol/>"
-        # elif ability_class == AbilityClass.RESOLUTION:
-        #     symbol_str = "<resolutionsymbol/>"
-        # elif ability_class == AbilityClass.REACTION:
-        #     symbol_str = "<reactionsymbol/>"
-        # elif ability_class == AbilityClass.START_AND_REACTION:
-        #    symbol_str = "<startandreactionsymbol/>"            
-        # elif ability_class == AbilityClass.NON_COMBAT:
-        #     symbol_str = "<noncombatsymbol/>"
         elif ability_class == AbilityClass.AMBUSH:
             ability_cls = "<ambush/>"
         elif ability_class == AbilityClass.SURPRISE:
@@ -622,9 +606,9 @@ class AbilityClass:
         elif ability_class == "Slow":
             ability_cls = AbilityClass.SLOW
         elif ability_class == "MediumOrSlow":
-            ability_cls = AbilityClass.START_AND_REACTION
+            ability_cls = AbilityClass.MEDIUM_OR_SLOW
         elif ability_class == "StartAndReaction":
-            ability_cls = AbilityClass.FAST
+            ability_cls = AbilityClass.START_AND_REACTION
         elif ability_class == "Non-Combat":
             ability_cls = AbilityClass.NON_COMBAT
         else:
@@ -794,7 +778,9 @@ class Ability:
         
            tag = child.tag
            if tag == "abilitylevel":
+
                level = AbilityLevel.load_ability_level(
+                   fname = self.fname,
                    ability = self, 
                    ability_level_element = child)
 
