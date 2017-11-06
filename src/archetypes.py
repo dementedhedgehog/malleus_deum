@@ -86,9 +86,6 @@ class ModifiedAbilityLevel:
     def get_level_number(self):
         return self.ability_level.get_level_number()
 
-    def get_level_spp(self):
-        return self.ability_level.get_level_spp()
-
     def set_enabled(self, enabled):
         self.enabled = enabled
         return
@@ -654,9 +651,6 @@ class LevelProgressionData:
         # this level number
         self.level_number = None
 
-        # spp to get to next level.
-        self.level_spp = None
-
         # 
         self.level_description = None
 
@@ -688,9 +682,6 @@ class LevelProgressionData:
     def get_level_number(self):
         return self.level_number
 
-    def get_level_spp(self):
-        return self.level_spp
-
     def load(self, archetype_node, fail_fast):        
 
         # handle all the children
@@ -702,12 +693,6 @@ class LevelProgressionData:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
                    self.level_number = child.text.strip() 
-
-           elif tag == "levelspp":
-               if self.level_spp is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_spp = convert_str_to_int(child.text.strip())
 
            elif tag == "levelresolve":
                if self.level_resolve is not None:

@@ -72,7 +72,6 @@
 	<tablecategory>Sideways</tablecategory>
 	<tablespec>
           <fixed>0.02</fixed>
-          <fixed>0.015</fixed>
           <fixed>0.03</fixed>
           <fixed>0.03</fixed>
           <fixed>0.03</fixed>
@@ -81,19 +80,19 @@
           <fixed>0.01</fixed>
           <fixed>0.01</fixed>
           <fixed>0.01</fixed>
-          <fixed>0.025</fixed>
-          <fixed>0.025</fixed>
-          <fixed>0.025</fixed>
-          <fixed>0.025</fixed>
-          <fixed>0.025</fixed>
-          <fixed>0.025</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
           <fixed>0.31</fixed>
 	</tablespec>
 
 	<tabletitle>{{ archetype.get_title() }} Level Progression Table</tabletitle>
 
 	<tableheaderrow>
-          <multicolumntd columns="2">Level</multicolumntd>
+          <th>Level</th>
           <multicolumntd columns="2">Stamina</multicolumntd>
           <multicolumntd columns="2">Health</multicolumntd>
           <multicolumntd columns="4">Skill Points</multicolumntd>
@@ -105,7 +104,6 @@
 	
 	<tableheaderrow>
           <th>No\#</th>
-          <th>XP</th>
           <th>Base</th>
           <th>Rest</th>
           <th>Base</th>
@@ -126,7 +124,6 @@
 	{% for level_progression_data in archetype.level_progression_table  %}
 	<tablerow>
           <td>{{ level_progression_data.get_level_number() }}</td>        
-          <td>{{ level_progression_data.get_level_spp() }}</td>        
           <td>{{ level_progression_data.level_stamina }}</td>
           <td>{{ level_progression_data.level_stamina_refresh }}</td>
           <td>{{ level_progression_data.level_health }}</td>
