@@ -1985,7 +1985,7 @@ do this the initial check is modified by +2.
           <p>
             <indexentry>Rallying</indexentry>When a character flees they keep fleeing until 
             they rally.  In order to rally the character must want to rally and then have to 
-            make the break test they originally failed to cause them to flee in the first place.
+            make the break check they originally failed to cause them to flee in the first place.
             Rallying is a free action.
           </p>
         </subsubsection>
@@ -2215,7 +2215,7 @@ do this the initial check is modified by +2.
         <indexentry>Break Checks</indexentry>
         Both player characters and monsters may, from time to time, be forced to make a 
         break check.  In order to make life more manageable, the GM and player characters
-        make break tests differently.
+        make break checks differently.
       </p>
 
       <subsection>
@@ -2224,8 +2224,10 @@ do this the initial check is modified by +2.
           <indexentry>Breaking</indexentry>
           <label>sec:breaking</label>
           
-          For player characters <defn>Break Checks</defn> are made using the Resolve pool.
-          The Break Check is not an action.
+          For player characters <defn>Break Checks</defn> are a <emph>chained check</emph>
+	  made using the Resolve pool.  When a character fails a break check another
+	  character must make a check.  Break checks chain until someone succeeds.
+	  The Break Check is not an action.
           <equation>
             <line>Break if:</line>
             <line>Resolve Pool <leqqsymbol/> Break Difficulty</line>
@@ -2233,17 +2235,17 @@ do this the initial check is modified by +2.
         </p>
 
         <p>
-          As characters fail break tests they gain conditions that limit what they can
+          As characters fail break checks they gain conditions that limit what they can
           do during combat, and subsequent break checks become more difficult, see
           Table<ref>table:break-difficulties</ref> on
-          page<pageref>table:break-difficulties</pageref> for a list of break test
+          page<pageref>table:break-difficulties</pageref> for a list of break check
           difficulties and conditions.
         </p>
 
         <p>
           For example, looking at the table, the first time a character makes a break
-          test during combat they do so with a difficulty of 8.  If they fail they gain
-          the Checked condition and the next break test will be made with a difficulty of
+          check during combat they do so with a difficulty of 8.  If they fail they gain
+          the Checked condition and the next break check will be made with a difficulty of
           12.
         </p>
 
@@ -2256,8 +2258,8 @@ do this the initial check is modified by +2.
         {% include "tables/break_difficulties.xml" %}    
 
         <p>
-          Break tests for players should be made at the GMs discretion.  But some
-      suggested times to make break cheaks are:
+          Break checks for players should be made at the GMs discretion.  But some
+	  suggested times to make break cheaks are:
           <list>
             <li>When any party member becomes bloodied,</li>
             <li>After all party members have become bloodied,</li>
@@ -2271,7 +2273,7 @@ do this the initial check is modified by +2.
       </subsection>
 
       <subsection>
-        <subsectiontitle>Monster and NPC Character Break Tests</subsectiontitle>       
+        <subsectiontitle>Monster and NPC Character Break Checks</subsectiontitle>       
 
         <p>
           Monster stat blocks include a default break difficulty for the monster as a 
@@ -2284,9 +2286,8 @@ do this the initial check is modified by +2.
         </p>
 
         <p>
-          Break tests for monsters and opposing NPCs should be made when:
+          Break checks for monsters and opposing NPCs should be made when:
           <list>
-            <li>The first time a monster dies during an encounter,</li>
             <li>After a third of the monsters have died,</li>
             <li>After two thirds of the monsters have died,</li>
             <li>Whenever the monsters are surprised.</li>
@@ -2296,13 +2297,13 @@ do this the initial check is modified by +2.
         <p>
           In the interests of keeping the game flowing, if there are more than, say, five 
           monsters then the monsters should be grouped together for the purposes of their 
-          break tests.  For example, imagine there are 15 kobold guards in the combat, the 
+          break checks.  For example, imagine there are 15 kobold guards in the combat, the 
           GM should group them as three groups of five for the purposes of testing to see 
           if they break.
         </p>
 
         <p>
-      When monsters fail their break tests they should attempt to break off combat,
+      When monsters fail their break checks they should attempt to break off combat,
       yield, negotiate or flee, at the GMs discretion.
         </p>
     
@@ -2381,7 +2382,7 @@ do this the initial check is modified by +2.
         on two fronts, provided that the number of people in each front row
         is greater than or equal to the number of people in the back row.
         Furthermore, characters in the back row add a temporary bonus die to
-        their break tests.
+        their break checks.
       </p>
     </section>
   </chapter>
