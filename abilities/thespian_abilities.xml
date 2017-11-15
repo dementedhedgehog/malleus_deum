@@ -19,6 +19,50 @@
     </abilitygroupdescription>
   </abilitygroupinfo>
 
+
+  <ability>
+    <abilitytitle>Arts</abilitytitle>
+    <abilityid>thespian.arts</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	This skill represents the characters knowledge of the arts.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <prereqabilitylevel></prereqabilitylevel>
+	<check>Std 2d8 - 5 vs Difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+	<check>Std 2d8 - 3 vs Difficulty</check>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+	<check>Std 2d8 - 2 vs Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
   <ability>
     <abilitytitle>Oratory</abilitytitle>
     <abilityid>thespian.oratory</abilityid>
@@ -40,6 +84,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs Difficulty</check>
+        <prereqabilitylevel>thespian.arts_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
@@ -62,6 +107,47 @@
 
 
   <ability>
+    <abilitytitle>Music</abilitytitle>
+    <abilityid>thespian.music</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	This ability represents the characters understanding the structure
+	of music, scales rhythm and so on.  
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+	<check>Std 2d8 - 5 vs Difficulty</check>
+        <prereqabilitylevel>thespian.arts_1</prereqabilitylevel>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+	<check>Std 2d8 - 3 vs Difficulty</check>
+      </abilitylevel>      
+
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>3</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+	<check>Std 2d8 - 3 vs Difficulty</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
     <abilitytitle>Jester</abilitytitle>
     <abilityid>thespian.jester</abilityid>
     <abilityclass>Non-Combat</abilityclass>
@@ -79,7 +165,7 @@
         <defaultlore>2</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>3</defaultgeneral>
-        <prereqabilitylevel></prereqabilitylevel>
+        <prereqabilitylevel>thespian.arts_1</prereqabilitylevel>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs Difficulty</check>
@@ -130,6 +216,7 @@
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs Difficulty</check>
+        <prereqabilitylevel>thespian.music_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
@@ -174,6 +261,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs Difficulty</check>
+        <prereqabilitylevel>thespian.music_1</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
@@ -208,6 +296,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs Difficulty</check>
+        <prereqabilitylevel>thespian.music_1</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
@@ -242,6 +331,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs Difficulty</check>
+        <prereqabilitylevel>thespian.music_2</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
@@ -276,6 +366,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs Difficulty</check>
+        <prereqabilitylevel>thespian.music_2</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
@@ -309,6 +400,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs Difficulty</check>
+        <prereqabilitylevel>thespian.music_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>

@@ -13,55 +13,6 @@
   </abilitygroupinfo>  
 
 
-  <ability>
-    <abilitytitle>Art</abilitytitle>
-    <abilityid>std.art</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p>
-	The character has some ability, experience and training in painting, sculpting,
-	art history and appraisal.  They have worked for a master craftsman for 
-	a number of years.  They know of, and can recognize, the great masters and 
-	can provide information about the provenence of works of art.
-      </p>
-      <p>
-	At third level The character can create good works of art, and can make a good
-	living creating	art, if they choose to do so.  They may have rich and powerful
-	patrons that will provide some support in times of need.  Given a few weeks,
-	access to the art-work and the necessary equipment they are able to craft
-	forgeries that are hard to detect.
-      </p>
-    </abilitydescription>
-    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <defaultlore>2</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
-        <attempts>2</attempts>
-        <check>Std 2d8 vs default 10</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <defaultlore>2</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs default 8</check>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <defaultlore>3</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
-        <check>Std 2d8 vs default 6</check>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
 
   <ability>
     <abilitytitle>Antiquarian</abilitytitle>
@@ -84,7 +35,8 @@
         <defaultgeneral>2</defaultgeneral>
         <successes>2</successes>
         <attempts>2</attempts>
-        <check>Std 2d8 vs default 10</check>	
+        <check>Std 2d8 vs default 10</check>
+        <prereqabilitylevel>school.art_1</prereqabilitylevel>	
       </abilitylevel>
       <abilitylevel>
         <levelnumber>2</levelnumber>
@@ -131,6 +83,7 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>1</defaultgeneral>
         <check>Std 2d8 vs default 10</check>	
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
 
 
@@ -175,6 +128,7 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <check>Std 2d8 vs default 10</check>	
+        <prereqabilitylevel>school.scholar_2</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -290,6 +244,7 @@
 	    the characters homeland.  Some understanding of the laws in surrounding regions.
 	  </p>
 	</leveldescription>
+        <prereqabilitylevel>school.scholar_2</prereqabilitylevel>	
       </abilitylevel>
 
 
@@ -335,6 +290,7 @@
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs default 12</check>		
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
 
 
@@ -384,6 +340,7 @@
         <successes>2</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs default 12</check>		
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -420,6 +377,7 @@
         <successes>2</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs default 12</check>		
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -513,6 +471,7 @@
 	    maps.  Can be used to detect secret doors underground.
 	  </p>
 	</leveldescription>
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -564,6 +523,7 @@
 	    of zoology and anatomy.
 	  </p>
 	</leveldescription>
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -650,6 +610,7 @@
 	    knowledge of their own region.  They may know some tightly kept secrets.
 	  </p>
 	</leveldescription>
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -690,6 +651,7 @@
 	    their texts.
 	  </p>
 	</leveldescription>
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
       </abilitylevel>
       
 

@@ -79,6 +79,7 @@
         <attempts>3</attempts>
         <check>Std 2d8 vs default 10</check>
 	<prereqtag>Cleric</prereqtag>
+        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
@@ -105,60 +106,6 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-  
-
-  <ability>
-    <abilitytitle>Arcana</abilitytitle>
-    <abilityid>magic.arcana</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	The character has read extensively of magic history and lore.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>1</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs default 14</check>
-	<leveldescription>
-	  <p>
-	    If successful the character knows some well-known magical lore.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
-        <defaultlore>8</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>2</successes>
-        <attempts>2</attempts>
-        <check>Std 2d8 vs default 12</check>
-	<leveldescription>
-	  <p>
-	    Identifies well-known magical items and artifacts.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <defaultlore>4</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
-        <check>Std 2d8 vs default 8</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
 
 
   <ability>
@@ -178,9 +125,10 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>5</defaultgeneral>
         <prereqabilitylevel>lore.natural_history_2</prereqabilitylevel>
+        <prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Std 2d8 vs default 7</check>
+        <check>Std 2d8 vs default 7</check>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -208,6 +156,8 @@
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs default 7</check>
+        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
+        <prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -264,6 +214,7 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs Opponents WillPower</check>
 	<overcharge>Twice Opponents Willpower</overcharge>
+        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -306,6 +257,7 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs 5</check>
 	<overcharge>10</overcharge>	
+        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -364,6 +316,7 @@
 	<overcharge>12</overcharge>		
         <successes>3</successes>
         <attempts>1</attempts>
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
 	<leveldescription>
 	  <p>
 	    If successful Creates a DC25 protective barrier against extra planar creatures.
@@ -422,6 +375,7 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs 12</check>
 	<overcharge>18</overcharge>		
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
 	<leveldescription>
 	  <p>
 	    The shield provides 20 temporary health points and lasts five minutes/30 rounds.
@@ -496,6 +450,7 @@
         <attempts>1</attempts>
         <check>Magic Pool versus 13</check>
         <overcharge>25</overcharge>
+        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
 	<leveldescription>
 	  <p>
 	    The caster may take the form of a person, creature of thing
@@ -551,6 +506,7 @@
         <check>Magic Pool versus 8 overcharge of 14</check>
         <effect>Bloodied character heals 2d6 damage</effect>
         <overcharge>Caster takes d6 damage.</overcharge>
+        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
@@ -593,6 +549,7 @@
 	    Creates a fire of torch intensity.
 	  </p>
 	</leveldescription>
+        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -643,6 +600,7 @@
 	    The character can open a portal in a wall or floor.
 	  </p>
 	</leveldescription>
+        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -705,6 +663,7 @@
 	<check>Magic Pool vs default 7</check>
 	<overcharge>17</overcharge>
 	<effect>+2 on Sneak at night</effect>			
+        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -775,6 +734,7 @@
 	<check>Magic Pool vs 20</check>
 	<overcharge>28</overcharge>
 	<effect>A single demon enters the plane</effect>
+        <prereqabilitylevel>magic_school.conjuration_2</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -816,7 +776,8 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs default 7</check>
 	<overcharge>14</overcharge>
-	<effect>2d6 Thaumic damage to those near the blast</effect>			
+	<effect>2d6 Thaumic damage to those near the blast</effect>
+        <prereqabilitylevel>magic_school.runes_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -858,6 +819,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs Demons Magic Pool</check>
+        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
@@ -904,6 +866,7 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs default 14</check>
 	<overcharge>25</overcharge>
+        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
@@ -946,7 +909,8 @@
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs 8</check>
-	<overcharge>15</overcharge>			
+	<overcharge>15</overcharge>
+        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>			
       </abilitylevel>
 
       <abilitylevel>
@@ -987,7 +951,8 @@
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs default 10</check>
-	<overcharge>17</overcharge>			
+	<overcharge>17</overcharge>
+        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
@@ -1028,6 +993,7 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs default 11</check>
 	<overcharge>18</overcharge>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -1067,7 +1033,8 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs default 7</check>
 	<overcharge>12</overcharge>
-	<effect>+2 to AC for five minutes</effect>				
+	<effect>+2 to AC for five minutes</effect>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
@@ -1107,7 +1074,8 @@
         <defaultmagical>1</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 5</check>	
+	<check>Magic Pool vs default 5</check>
+        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>			
       </abilitylevel>
 
       <abilitylevel>
@@ -1150,6 +1118,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool vs default 7</check>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
@@ -1203,6 +1172,7 @@
         <attempts>1</attempts>
         <check>Magic Pool versus Stated Target</check>
 	<effect>See above.</effect>
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -1260,6 +1230,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool versus Glamour strength</check>
+        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>
 	<effect>See above.</effect>
       </abilitylevel>
 
@@ -1314,6 +1285,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents will</check>
+        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
@@ -1357,6 +1329,7 @@
 	  Target saves versus Willpower or suffers 2d8 damage.
 	  On overcharge the caster suffers 1d8 damage.
 	</effect> 
+        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>

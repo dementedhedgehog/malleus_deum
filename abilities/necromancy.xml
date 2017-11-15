@@ -19,6 +19,40 @@
     <abilitytitle>Commune with the Dead</abilitytitle>
     <abilityid>necromancy.commune</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	While holding part of the deceased's body the necromancer may ask questions of the 
+	dead person.  If the spell succeeds the dead person will respond to questions 
+	telepathically.  After each question roll a D4, on a 1 the link with the spirit has 
+	been broken and no more questions can be asked.
+      </p>
+
+      <p>
+	Answers will be heard only by the necromancer and will be heard 
+	as a voice in the head.  The necromancer must ask the question in a language 
+	understood by the spirit and the spirit will respond in a language they understood 
+	during their lifetime.  The spirit that is contacted is under no compulsion to 
+	reply and may ignore the character, lie in its responses or answer how it pleases.  
+      </p>
+
+      <p>
+	The newly dead are often disorientated by their experience and may not realize that 
+	they are in fact dead.  If death is sudden or traumatic a spirit may not remember 
+	it.
+      </p>
+
+      <p>
+	Characters may only attempt to commune with a particular dead person once.  
+	Whether they succeed or fail in their first attempt they will never be 
+	able to successfully commune with that person again as the things that keep the 
+	gates between life and death are vigillant and fearsome.
+      </p>
+      
+      <p>
+        summoned might attack (need to exert will over them?)
+        handle failure of magic
+      </p>	  
+    </abilitydescription>
 
     <abilitylevels>
       <abilitylevel>
@@ -30,42 +64,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs default 8</check>
-	<leveldescription>
-	  <p>
-	    While holding part of the deceased's body the necromancer may ask questions of the 
-	    dead person.  If the spell succeeds the dead person will respond to questions 
-	    telepathically.  After each question roll a D4, on a 1 the link with the spirit has 
-	    been broken and no more questions can be asked.
-	  </p>
-
-	  <p>
-	    Answers will be heard only by the necromancer and will be heard 
-	    as a voice in the head.  The necromancer must ask the question in a language 
-	    understood by the spirit and the spirit will respond in a language they understood 
-	    during their lifetime.  The spirit that is contacted is under no compulsion to 
-	    reply and may ignore the character, lie in its responses or answer how it pleases.  
-	  </p>
-
-	  <p>
-	    The newly dead are often disorientated by their experience and may not realize that 
-	    they are in fact dead.  If death is sudden or traumatic a spirit may not remember 
-	    it.
-	  </p>
-
-	  <p>
-	    Characters may only attempt to commune with a particular dead person once.  
-	    Whether they succeed or fail in their first attempt they will never be 
-	    able to successfully commune with that person again as the things that keep the 
-	    gates between life and death are vigillant and fearsome.
-	  </p>
-
-	  
-	  <p>
-            summoned might attack (need to exert will over them?)
-            handle failure of magic
-	  </p>
-	  
-	</leveldescription>
+        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>	
       </abilitylevel>
 
       <!-- <abilitylevel> -->
