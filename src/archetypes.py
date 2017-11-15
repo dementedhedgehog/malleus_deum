@@ -692,7 +692,7 @@ class LevelProgressionData:
                if self.level_number is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   self.level_number = child.text.strip() 
+                   self.level_number = int(child.text.strip())
 
            elif tag == "levelresolve":
                if self.level_resolve is not None:

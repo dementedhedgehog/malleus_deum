@@ -14,7 +14,7 @@ sys.path.append(src_dir)
 
 
 
-# ability id -> ability level lookup
+# ability level id -> ability level lookup
 ability_level_lookup = {}
 
 valid_attrs = ("Strength", "Endurance", "Agility", "Speed",  
@@ -33,6 +33,9 @@ class AbilityLevelPrereq(Prerequisite):
         self.ability_level_id = ability_level_id
         self.ability_level = None
         return
+
+    def get_ability(self):        
+        return self.get_ability_level().ability
 
     def get_ability_level(self):
         if self.ability_level is None:
@@ -145,8 +148,12 @@ class AbilityLevel:
 
     @classmethod
     def get_level(cls, ability_level_id):
+        """
+        Get the level with the given id or None.
+
+        """
         assert(ability_level_id.__class__ is str)
-        return ability_level_lookup[ability_level_id]
+        return ability_level_lookup.get(ability_level_id, None)
 
     def __init__(self):
         self.level_number = None        
@@ -657,6 +664,28 @@ class Ability:
     #def get_ability_class(self):
     #    return self.ability_class
 
+    def check_sanity(self):
+        """
+        Check to make sure that the ability is valid.
+
+        """
+        last_level_number = None
+        is_first_level = True
+        for ability_level in self.levels:
+            level_number = ability_level.get_level_number()
+
+            # check the first level is always 0 or 1
+            if is_first_level:
+                if level_number not in (0, 1):
+                    raise Exception("First level for ability %s is %s should be 0 or 1"
+                                    % (self.get_title(), level_number))
+                is_first_level = False
+            else:
+                if last_level_number + 1 != level_number:
+                    raise Exception("Bad level numbers for ability %s around level  %s"
+                                    % (self.get_title(), level_number))            
+            last_level_number = level_number
+        return
 
     def get_id(self):
         return self.ability_id
@@ -908,7 +937,7 @@ class AbilityGroupInfo:
 
         return
 
-        
+
 
 class AbilityGroup:
     xsd_schema = None
@@ -1010,6 +1039,8 @@ class AbilityGroups:
         
         # load all the ability groups
         for xml_fname in listdir(abilities_dir):
+
+            print xml_fname
             if not xml_fname.endswith(".xml"):
                 continue
 
@@ -1042,19 +1073,31 @@ class AbilityGroups:
 
                         # reqister this ability level with any prerequisites it might have
                         prereq_ability_level = AbilityLevel.get_level(prereq.ability_level_id)
-                        
+
                         if prereq_ability_level is None:
                             raise Exception(
                                 ("No ability level matches prereq key: %s "
-                                 "for ability: %s") % 
-                                (prereq_ability_level_id, ability_level.get_title()))
+                                 "for ability: %s in file: %s") % 
+                                (prereq.ability_level_id,
+                                 ability_level.get_title(),
+                                 ability.fname))
                         prereq_ability_level.add_dependency(ability_level.get_id())
 
         # sort the groups
         self.ability_groups.sort()
 
+        # die if anything is misconfigured.
+        self.check_sanity()        
         return True
+    
 
+    def check_sanity(self):
+        for ability_group in self:
+            for ability in ability_group:
+                ability.check_sanity()
+                #for ability_level in ability.get_levels():
+        return                        
+    
     def get_ability_level_by_id(self, ability_level_id):
         return ability_level_lookup[ability_level_id]
 

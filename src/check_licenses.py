@@ -33,12 +33,14 @@ def generate_license_report(project_dir):
             _, ext = splitext(fname)
             full_fname = join(dir_name, fname)
             
-            if ext in (): # (".png", ".svg", ".jpg"):
+            if ext in ("", ".ods", ".bat", ".md", ):
+                # ignore these non-image files!
+                pass
+                
+            elif ext in (): # (".png", ".svg", ".jpg"):
                 print('\t%s' % fname)
 
-            elif ext in (".gif",
-                         #".svg",
-                         ".jpg"):
+            elif ext == ".jpg":
                 #):
                 print('\t%s' % fname)
 
@@ -58,6 +60,10 @@ def generate_license_report(project_dir):
                 
             elif ext in (".ttf", ):
                 print('\t%s' % fname)
+
+            else:
+                raise Exception("Unhandled extension %s for file %s"
+                                % (ext, fname))
                 
         if '.git' in sub_dirs:
             sub_dirs.remove('.git')
