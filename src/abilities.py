@@ -4,8 +4,13 @@ from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
 
 from utils import (
-    parse_xml, validate_xml, node_to_string, COMMENT, children_to_string,
-    convert_to_roman_numerals
+    parse_xml,
+    validate_xml,
+    node_to_string,
+    COMMENT,
+    children_to_string,
+    convert_to_roman_numerals,
+    convert_str_to_bool
 )
         
 src_dir = abspath(join(dirname(__file__)))
@@ -110,7 +115,7 @@ class AttrPrereq(Prerequisite):
         return self.to_string()
     
     
-
+    
 class TagPrereq(Prerequisite):
 
     def __init__(self, tag):
@@ -197,6 +202,9 @@ class AbilityLevel:
         self.failures = 0
         self.attempts = 0
         return
+
+    def get_ability(self):
+        return self.ability
 
     def get_lore_points(self):
         return self.default_lore
@@ -498,7 +506,8 @@ class AbilityLevel:
         # sanity checks
         if (level.get_level_number() > 0 and
             level.get_default_cost() == 0 and
-            len(level.prerequisite_tags) == 0):
+            len(level.prerequisite_tags) == 0 and
+            not level.get_ability().is_inborn()):
             raise Exception("Ability level %s has a level > 0 and 0 points cost.  "
                             "This is not allowed.  Non-zero ability levels must cost "
                             ">0 points to acquire by default (This can be modified by "
@@ -642,9 +651,25 @@ class Ability:
         self.tags = []
         self.ability_class = AbilityClass.NONE
 
+        # Is the ability a special racial/class ability?
+        #
+        # This differs from the concept of innateness in that an ability
+        # can be innate to one archetype X and a second archetype Y can
+        # learn that ability.
+        #
+        # Inborn abilities cannot be acquired during the game (except through
+        # exceptional magical effects), e.g. if you're a dwarf you stay a dwarf
+        # if you're not a dwarf you can't become one.  Abilties that apply
+        # to dwarves alone.. always apply to dwarves alone.
+        #
+        self.inborn = None
+
         # mapping from
         self.levels = []        
         return
+
+
+    #def prereq_ab
 
     def get_ability_class_symbol(self):
         return AbilityClass.get_symbol(self.ability_class)
@@ -756,6 +781,14 @@ class Ability:
                    # save the id!
                    self.ability_id = ability_id
 
+
+           elif tag == "inborn":
+               if self.inborn is not None:
+                   raise Exception("Only one inborn element per ability. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.inborn = convert_str_to_bool(child.text)
+
            elif tag == "tag":
                self.tags.append(child.text)
 
@@ -798,9 +831,16 @@ class Ability:
            else:
                raise Exception("UNKNOWN (%s) in file %s\n" % 
                                (child.tag, self.fname))
+
+        # by default abilities are not inborn
+        if self.inborn is None:
+            self.inborn = False
         return
 
 
+    def is_inborn(self):
+        return self.inborn
+    
     def load_ability_levels(self, ability_levels):
         # handle all the children
         for child in list(ability_levels):
@@ -1023,7 +1063,7 @@ class AbilityGroup:
 
 class AbilityGroups:
     """
-    A list of all enabled skills.
+    A list of all abilities.
 
     """
     def __init__(self):

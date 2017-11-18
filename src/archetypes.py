@@ -196,41 +196,32 @@ class ModifiedAbilityLevel:
                                     % (self.archetype.get_title(),
                                        self.get_title(),
                                        str(prereq_tag)))                
-
-            # check ability level prerequisites
-            for ability_level_prereq in self.ability_level.get_ability_level_prereqs():
-            
-                # get the unmodified ability.
-                ability_level_id = ability_level_prereq.get_ability_level_id()
-                ability_level = AbilityLevel.get_level(ability_level_id)
-                ability = ability_level.ability
-        
-                print "ability " 
-                print ability
-
-                print "From ability level %s" % self.ability_level
-                    
-                print ability_level_prereq
-                print ability_level_prereq.ability_level
-
-                # get the ability level
-                #level_num = ability_level_prereq.ability_level
-                level_num = ability_level.get_level_number()
-
-                print "level number %s " % level_num
-            
-                # get the prereq modified ability level.
-                modified_ability = self.archetype.get_modified_ability(ability.ability_id)
-                modified_ability_level = modified_ability.get_modified_ability_level(level_num)
-
-                assert modified_ability_level is not None
+            #
+            # Innate abilities don't have to have innate parents!
+            # 
                 
-                if not modified_ability_level.is_innate():
-                    raise Exception("Archetype %s has an ability level %s that is innate "
-                                    "but it has a prerequisite %s that is not innate!" %
-                                    (self.archetype.get_title(), self.get_title(),
-                                     modified_ability_level.get_title()))            
-            #modified_ability_level.set_innate()        
+            # # check ability level prerequisites
+            # for ability_level_prereq in self.ability_level.get_ability_level_prereqs():
+            
+            #     # get the unmodified ability.
+            #     ability_level_id = ability_level_prereq.get_ability_level_id()
+            #     ability_level = AbilityLevel.get_level(ability_level_id)
+            #     ability = ability_level.ability
+        
+            #     # get the ability level
+            #     level_num = ability_level.get_level_number()
+            
+            #     # get the prereq modified ability level.
+            #     modified_ability = self.archetype.get_modified_ability(ability.ability_id)
+            #     modified_ability_level = modified_ability.get_modified_ability_level(level_num)
+
+            #     assert modified_ability_level is not None
+                
+            #     if not modified_ability_level.is_innate():
+            #         raise Exception("Archetype %s has an ability level %s that is innate "
+            #                         "but it has a prerequisite %s that is not innate!" %
+            #                         (self.archetype.get_title(), self.get_title(),
+            #                          modified_ability_level.get_title()))
         return
     
     def get_mastery_successes(self):

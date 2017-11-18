@@ -23,6 +23,7 @@
     <abilitytitle>Sixth Sense</abilitytitle>
     <abilityid>special.sixth_sense</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <inborn>true</inborn>
     <abilitydescription>
       <p>
 	If the character makes a successful perception check they may reroll
@@ -41,6 +42,7 @@
         <attempts>3</attempts>
 	<effect>Perception check vs 10</effect>
 	<prereqtag>Halfling</prereqtag>
+        <prereqabilitylevel>school.racial_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
@@ -60,6 +62,7 @@
     <abilitytitle>Natural Sprinters</abilitytitle>
     <abilityid>special.natural_sprinter</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <inborn>true</inborn>
     <abilitydescription>
       <p>
 	Dwarves are natural sprinters.  While slow to get moving,
@@ -76,15 +79,16 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>0</defaultmagical>
-	      <prereqtag>Dwarf</prereqtag>
+	<prereqtag>Dwarf</prereqtag>
         <successes>0</successes>
         <attempts>0</attempts>
-	      <leveldescription>
-	        <p>
-	          All dwarves gain +1 to the movement modifier.  Note: this
-	          does not apply to movement, just the movement modifier.
-	        </p>
-	      </leveldescription>	
+	<leveldescription>
+	  <p>
+	    All dwarves gain +1 to the movement modifier.  Note: this
+	    does not apply to movement, just the movement modifier.
+	  </p>
+	</leveldescription>	
+	<prereqabilitylevel>school.racial_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -94,6 +98,7 @@
     <abilitytitle>Fey Resilience</abilitytitle>
     <abilityid>special.fey_resilience</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <inborn>true</inborn>
     <abilitydescription>
       <p>
 	The fey are resistant to damage from non-magically conductive sources.
@@ -107,12 +112,12 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>0</defaultmagical>
-	<prereqtag>Fey</prereqtag>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic versus 3</check>
 	<effect>Reduce all incoming damage from non-iron sources by 4.</effect>
 	<prereqtag>Fey</prereqtag>
+        <prereqabilitylevel>school.racial_1</prereqabilitylevel>	
       </abilitylevel>
 
 

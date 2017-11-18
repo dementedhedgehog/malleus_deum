@@ -65,6 +65,29 @@
   </ability>
   
 
+
+  <ability>
+    <abilitytitle>Racial</abilitytitle>
+    <abilityid>school.racial</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <inborn>true</inborn>
+    <abilitydescription>
+      <p noindent="true">
+	Special racial abilities 
+      </p>
+    </abilitydescription>    
+    <abilitylevels>      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+      </abilitylevel>
+    </abilitylevels>      
+  </ability>
+
+  
   <ability>
     <abilitytitle>Physical</abilitytitle>
     <abilityid>school.physical</abilityid>
@@ -133,7 +156,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>0</defaultmagical>
       </abilitylevel>
-            
+      
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
@@ -363,16 +386,18 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-  
 
-<!--
+
+
+
+
   <ability>
-    <abilitytitle>Common</abilitytitle>
-    <abilityid>school.common</abilityid>
+    <abilitytitle>Skullduggery</abilitytitle>
+    <abilityid>school.skullduggery</abilityid>
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
-	Abilities common to everyone.
+	XXXX
       </p>
     </abilitydescription>    
     <abilitylevels>
@@ -386,238 +411,278 @@
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>5</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
+        <defaultgeneral>5</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
         <check>Std 2d8 - 3 vs difficulty</check>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>5</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
+        <defaultgeneral>5</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
         <check>Std 2d8 vs difficulty - 2</check>
       </abilitylevel>      
     </abilitylevels>
-    </ability>
+  </ability>
+  
 
--->
+  <!--
+      <ability>
+      <abilitytitle>Common</abilitytitle>
+      <abilityid>school.common</abilityid>
+      <abilityclass>Non-Combat</abilityclass>
+      <abilitydescription>
+      <p noindent="true">
+      Abilities common to everyone.
+      </p>
+      </abilitydescription>    
+      <abilitylevels>
+      <abilitylevel>
+      <levelnumber>0</levelnumber>
+      <defaultlore>0</defaultlore>
+      <defaultmartial>0</defaultmartial>
+      <defaultgeneral>0</defaultgeneral>
+      <check>Std 2d8 - 5 vs difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+      <levelnumber>1</levelnumber>
+      <defaultlore>5</defaultlore>
+      <defaultmartial>0</defaultmartial>
+      <defaultgeneral>0</defaultgeneral>
+      <defaultmagical>5</defaultmagical>
+      <check>Std 2d8 - 3 vs difficulty</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+      <levelnumber>2</levelnumber>
+      <defaultlore>5</defaultlore>
+      <defaultmartial>0</defaultmartial>
+      <defaultgeneral>0</defaultgeneral>
+      <defaultmagical>5</defaultmagical>
+      <check>Std 2d8 vs difficulty - 2</check>
+      </abilitylevel>      
+      </abilitylevels>
+      </ability>
+
+  -->
   
   <!--
-  <ability>
-    <abilitytitle>Evocation</abilitytitle>
-    <abilityid>magic_school.evocation</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
+      <ability>
+      <abilitytitle>Evocation</abilitytitle>
+      <abilityid>magic_school.evocation</abilityid>
+      <abilityclass>Non-Combat</abilityclass>
+      <abilitydescription>
       <p noindent="true">
-	Evocation is the use of raw magic powers.
+      Evocation is the use of raw magic powers.
       </p>
-    </abilitydescription>    
-    <abilitylevels>
+      </abilitydescription>    
+      <abilitylevels>
       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+      <levelnumber>1</levelnumber>
+      <prereqabilitylevel></prereqabilitylevel>
+      <defaultlore>5</defaultlore>
+      <defaultmagical>5</defaultmagical>
+      <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
       </abilitylevel>
-    </abilitylevels>
-  </ability>
+      </abilitylevels>
+      </ability>
 
 
-    
-  <ability>
-    <abilitytitle>Abjuration</abilitytitle>
-    <abilityid>magic_school.abjuration</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	Abjuration involve the use of raw magical energies to cast protective
-	shielding and counter magic.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+
+<ability>
+<abilitytitle>Abjuration</abilitytitle>
+<abilityid>magic_school.abjuration</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+Abjuration involve the use of raw magical energies to cast protective
+shielding and counter magic.
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
+</abilitylevel>
+</abilitylevels>
+</ability>
 
 
-    
-  <ability>
-    <abilitytitle>Conjuration</abilitytitle>
-    <abilityid>magic_school.conjuration</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	Conjuration involves summoning or communicating with extra planar entities, binding
-	extra planar entities, opening gates and the like.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-      </abilitylevel>
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+<ability>
+<abilitytitle>Conjuration</abilitytitle>
+<abilityid>magic_school.conjuration</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+Conjuration involves summoning or communicating with extra planar entities, binding
+extra planar entities, opening gates and the like.
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
+</abilitylevel>
 
-    
-  <ability>
-    <abilitytitle>Enchantment</abilitytitle>
-    <abilityid>magic_school.enchantment</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	Enchantment is the use of magic to control the minds of others.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+<abilitylevel>
+<levelnumber>2</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+</abilitylevel>
+</abilitylevels>
+</ability>
 
-  <ability>
-    <abilitytitle>Elemental Magic</abilitytitle>
-    <abilityid>magic_school.elemental</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	Elemental magic is a special sub-type of evocation that uses
-	the limited, but more stable magic from the nearby elemental planes.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
 
-  <ability>
-    <abilitytitle>Ritual Magic</abilitytitle>
-    <abilityid>magic_school.ritual</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>2</defaultlore>
-        <defaultmagical>0</defaultmagical>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+<ability>
+<abilitytitle>Enchantment</abilitytitle>
+<abilityid>magic_school.enchantment</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+Enchantment is the use of magic to control the minds of others.
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
+</abilitylevel>
+</abilitylevels>
+</ability>
 
-  <ability>
-    <abilitytitle>Necromantic Magic</abilitytitle>
-    <abilityid>magic_school.necromancy</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	The school of necromancy is concerned with the use of death or blood magic.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+<ability>
+<abilitytitle>Elemental Magic</abilitytitle>
+<abilityid>magic_school.elemental</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+Elemental magic is a special sub-type of evocation that uses
+the limited, but more stable magic from the nearby elemental planes.
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+</abilitylevel>
+</abilitylevels>
+</ability>
 
-  <ability>
-    <abilitytitle>Biothaumic Magic</abilitytitle>
-    <abilityid>magic_school.biothaumic</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	YYY
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+<ability>
+<abilitytitle>Ritual Magic</abilitytitle>
+<abilityid>magic_school.ritual</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>2</defaultlore>
+<defaultmagical>0</defaultmagical>
+</abilitylevel>
+</abilitylevels>
+</ability>
 
-  <ability>
-    <abilitytitle>Rune Magic</abilitytitle>
-    <abilityid>magic_school.runes</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	ZZZ
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-  
-  <ability>
-    <abilitytitle>Theurgic Magic</abilitytitle>
-    <abilityid>magic_school.theurgic</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilitydescription>
-      <p noindent="true">
-	XXX
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>5</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+<ability>
+<abilitytitle>Necromantic Magic</abilitytitle>
+<abilityid>magic_school.necromancy</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+The school of necromancy is concerned with the use of death or blood magic.
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+</abilitylevel>
+</abilitylevels>
+</ability>
+
+<ability>
+<abilitytitle>Biothaumic Magic</abilitytitle>
+<abilityid>magic_school.biothaumic</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+YYY
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+</abilitylevel>
+</abilitylevels>
+</ability>
+
+<ability>
+<abilitytitle>Rune Magic</abilitytitle>
+<abilityid>magic_school.runes</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+ZZZ
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+</abilitylevel>
+</abilitylevels>
+</ability>
+
+<ability>
+<abilitytitle>Theurgic Magic</abilitytitle>
+<abilityid>magic_school.theurgic</abilityid>
+<abilityclass>Non-Combat</abilityclass>
+<abilitydescription>
+<p noindent="true">
+XXX
+</p>
+</abilitydescription>    
+<abilitylevels>
+<abilitylevel>
+<levelnumber>1</levelnumber>
+<prereqabilitylevel></prereqabilitylevel>
+<defaultlore>5</defaultlore>
+<defaultmagical>5</defaultmagical>
+<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+</abilitylevel>
+</abilitylevels>
+</ability>
   -->
 </abilitygroup>
