@@ -37,13 +37,14 @@
 
       <p>
         <indexentry>Check<subentry>Difficulty</subentry></indexentry>
+        <indexentry>Check<subentry>DC</subentry></indexentry>
         Each player character is described by a Character Sheet. Any narrative decisions 
         of moment within the game are made by <emph>Making Checks</emph> which involves 
         rolling dice, adding any bonuses from the character sheet, and comparing the result
-        to a <defn>Difficulty</defn> level
+        to a <defn>Difficulty Class</defn> or <defn>DC</defn>.
         <equation>
           <line>Check:</line>
-          <line>Dice + Bonus <geqqsymbol/> Difficulty</line>
+          <line>Dice + Bonus <geqqsymbol/> DC</line>
         </equation>
         The details of how this all fits together, how to make a character sheet, how to 
         make checks, and more is covered in the next few chapters.
@@ -351,9 +352,10 @@
         
         <term>Armour Class:</term>
         <description>
-          A representation of how difficult a character is to hit.  A character may be harder 
-          to hit because they are wearing armour or carrying a shield or even because of the
-          use of misdirection and guile.
+          A representation of how difficult a character is to hit.  When a character checks
+	  to see if they hit their opponents AC is the difficulty for that check.  A character
+	  may be harder to hit because they are wearing armour or carrying a shield or even
+	  because of the use of misdirection and guile.
         </description>
 
         <term>Initiative:</term>      
@@ -670,14 +672,21 @@
         Standard Checks are the simplest and most common check.
         In order to make a <defn>Standard Check</defn> or <defn>Std 2d8</defn> the player
         rolls 2d8, adds any relevant bonus, and the check succeeds if the total dice result
-        rolled is greater than or equal to the task's difficulty.  The <defn>Difficulty</defn>
-        is a number that represents how hard it is to perform the task at hand. 
+        rolled is greater than or equal to the task's difficulty.  The <defn>Difficulty
+	Class</defn> is a number that represents how hard it is to perform the task at hand. 
         <equation>
           <line>Standard Check aka Std 2d8:</line>
-          <line>2d8 + Bonus <geqqsymbol/> Difficulty</line>
+          <line>2d8 + Bonus <geqqsymbol/> DC</line>
         </equation>
       </p>
 
+      <p>
+        <indexentry>Check<subentry>DDC</subentry></indexentry>
+	Some checks will have a <defn>Default Difficulty Class</defn>, or
+	<defn>DCC</defn> this number represents a <emph>suggestion to the GM</emph> for
+	a DC for a <emph>typical</emph> check for this ability.
+      </p>
+      
 
       <subsection>
         <subsectiontitle>Doubles Are Special</subsectiontitle>        
@@ -792,14 +801,14 @@
         roll them to try and get a result within a certain range.
         <equation>
           <line>A Dice Pool Check succeeds if:</line>
-          <line>Difficulty <leqqsymbol/> Dice Result &lt; Over-Charge</line>
+          <line>DC <leqqsymbol/> Dice Result &lt; Over-Charge</line>
         </equation>
       </p>
 
       <p>
         Some Dice Pool Checks may not have an Over-Charge value.  But if the check has an
         overcharge and the player rolls greater than or equal to the overcharge then they
-        succeed, but some bad over-charge effect occurs.  If they roll under the Difficulty
+        succeed, but some bad over-charge effect occurs.  If they roll under the DC
         then they fail.
       </p>
       
@@ -941,7 +950,7 @@
           Opposed attribute checks involve two sides making an attribute check against
           each other.  The difficulty for the check is the other sides check result.        
           <equation>
-            <line>Opposed Attribute Check vs Difficulty:</line>
+            <line>Opposed Attribute Check:</line>
             <line>Std2d8 + Mod. &gt; Std 2d8 + Opponents Mod.</line>
           </equation>
         </p>
@@ -2229,7 +2238,7 @@ do this the initial check is modified by +2.
 	  The Break Check is not an action.
           <equation>
             <line>Break if:</line>
-            <line>Resolve Pool <leqqsymbol/> Break Difficulty</line>
+            <line>Resolve Pool <leqqsymbol/> Break DC</line>
           </equation>      
         </p>
 
@@ -2350,6 +2359,8 @@ do this the initial check is modified by +2.
       <p>
         <indexentry>Refreshes</indexentry>     
         <indexentry>Healing</indexentry>
+        <indexentry>Sleep<subentry>Healing</subentry></indexentry>
+        <indexentry>Rest<subentry>Healing</subentry></indexentry>	
         Players heal, recover their magic, luck and resolve by Resting and Sleeping
         using the Rest and Heal abilities.  
       </p>
