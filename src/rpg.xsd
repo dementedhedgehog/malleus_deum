@@ -321,7 +321,9 @@
       <xs:element name="abilitytitle" type="titleType"/>
       <xs:element name="abilityid" type="abilityidType"/>
       <xs:element name="abilityclass" type="abilityclassType"/>
-      <xs:element name="abilitylevels" type="abilitylevelsType"/>
+      <xs:element name="abilitylevels" type="abilitylevelsType"/>      
+      <!-- inborn abilities can have 0 cost for levels > 0 -->
+      <xs:element name="inborn" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
       <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
     </xs:all>
   </xs:complexType>
@@ -978,7 +980,7 @@ labels and references.
       <xs:element 
           name="abilitygroupinfo" type="abilitygroupinfoType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="tag" type="tagType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="ability" type="abilityType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ability" type="abilityType" minOccurs="0" maxOccurs="unbounded"/>      
     </xs:sequence>
   </xs:complexType>
 
@@ -986,11 +988,8 @@ labels and references.
     <xs:sequence>
       <xs:element name="abilitygrouptitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="abilitygroupid" type="abilitygroupidType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="abilitygroupfamily" type="abilitygroupfamilyType" minOccurs="1" maxOccurs="1"/>
-      <!--
-      <xs:element name="abilitygroupdescription" 
-                  type="textType" minOccurs="1" maxOccurs="1"/>
-      -->
+      <xs:element name="abilitygroupfamily"
+		  type="abilitygroupfamilyType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="abilitygroupdescription" 
 		  type="descriptionType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
