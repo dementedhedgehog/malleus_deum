@@ -272,6 +272,10 @@ class AbilityLevel:
         return self.level_number
 
     def get_dependencies(self):
+        """
+        Returns a list of ability levels that have this ability level as a prerequisite.
+
+        """
         return [ ability_level_lookup[aid] for aid in self.dependent_ids ]
         
     def is_prerequisite(self):
@@ -519,6 +523,15 @@ class AbilityLevel:
                             "This is not allowed.  Zero ability levels must cost "
                             "0 points to acquire by default in %s." % 
                             (level.get_title(), basename(level.ability.fname)))
+
+        # check that if an ability requires successes or failures it has check
+        if ((level.successes > 0 or level.attempts > 0 or level.failures > 0)
+            and
+            (level.check is None or level.check.strip() == "")):
+            print level.check is not None
+            print level.check
+            raise Exception("Ability level %s (%s) requires mastery to level up but has "
+                            "no check." % (level.get_title(), level.get_id()))
            
         return level
 
@@ -668,9 +681,6 @@ class Ability:
         self.levels = []        
         return
 
-
-    #def prereq_ab
-
     def get_ability_class_symbol(self):
         return AbilityClass.get_symbol(self.ability_class)
     
@@ -685,9 +695,6 @@ class Ability:
 
     def get_title(self):
         return self.title
-
-    #def get_ability_class(self):
-    #    return self.ability_class
 
     def check_sanity(self):
         """
