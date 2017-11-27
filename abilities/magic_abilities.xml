@@ -77,7 +77,8 @@
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Std 2d8 vs default 10</check>
+        <check>Std 2d8 vs DDC 10</check>
+	<overcharge>15</overcharge>
 	<prereqtag>Cleric</prereqtag>
         <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
       </abilitylevel>
@@ -88,7 +89,8 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
-        <check>Std 2d8 vs default 7</check>
+        <check>Std 2d8 + 2 vs DDC 10</check>
+	<overcharge>16</overcharge>	
       </abilitylevel>      
       
       <abilitylevel>
@@ -97,7 +99,8 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
-        <check>Std 2d8 vs default 5</check>
+        <check>Std 2d8 + 3 vs DDC 10</check>
+	<overcharge>17</overcharge>
 	<leveldescription>
 	  <p>
 	    The character may be gifted with visions from their deity.
@@ -128,7 +131,7 @@
         <prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Std 2d8 vs default 7</check>	
+        <check>Std 2d8 vs DDC 8</check>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -155,7 +158,7 @@
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Std 2d8 vs default 7</check>
+        <check>Std 2d8 vs DDC 8</check>
         <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
         <prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
       </abilitylevel>
@@ -209,7 +212,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs Opponents WillPower</check>
@@ -249,13 +252,13 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>5</defaultlore>
+        <defaultlore>1</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>7</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 5</check>
+	<check>Magic Pool vs DDC 6</check>
 	<overcharge>10</overcharge>	
         <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
       </abilitylevel>
@@ -268,7 +271,7 @@
         <defaultmagical>3</defaultmagical>
         <successes>1</successes>
         <attempts>0</attempts>
-	<check>Magic Pool vs 3</check>
+	<check>Magic Pool vs DDC 6</check>
 	<overcharge>12</overcharge>	
       </abilitylevel>      
 
@@ -280,8 +283,8 @@
         <defaultmagical>3</defaultmagical>
         <successes>1</successes>
         <attempts>0</attempts>
-	<check>Magic Pool vs 3</check>
-	<overcharge>16</overcharge>	
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>13</overcharge>	
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -311,8 +314,8 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
-	<check>Magic Pool vs 4</check>
+        <defaultmagical>5</defaultmagical>
+	<check>Magic Pool vs DDC 6</check>
 	<overcharge>12</overcharge>		
         <successes>3</successes>
         <attempts>1</attempts>
@@ -331,10 +334,10 @@
         <defaultlore>1</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 3</check>
+	<check>Magic Pool + 2 vs DDC 6</check>
 	<overcharge>15</overcharge>		
 	<leveldescription>
 	  <p>
@@ -370,18 +373,18 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 12</check>
-	<overcharge>18</overcharge>		
+	<check>Magic Pool vs DDC 12</check>
+	<overcharge>DC + 6</overcharge>		
         <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
 	<leveldescription>
 	  <p>
 	    The shield provides 20 temporary health points and lasts five minutes/30 rounds.
-	    If overcharged the shield may explode upon being hit, make a Std Check vs default 4
+	    If overcharged the shield may explode upon being hit, make a Std Check vs DDC 4
 	    or explode.   Explosions do 3d6 damage to all adjacent creatures including the
-	    character being shielded.  Adjacent creatures may save, Speed vs default 10, to
+	    character being shielded.  Adjacent creatures may save, Speed vs DDC 10, to
 	    take half damage.
 	  </p>
 	</leveldescription>
@@ -392,11 +395,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>3</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
-	<check>Magic Pool vs 8</check>
-	<overcharge>18</overcharge>		
+	<check>Magic Pool + 3 vs 12</check>
+	<overcharge>DC + 7</overcharge>		
 	<leveldescription>
 	  <p>
 	    The shield provides 30 temporary health points and lasts five minutes/30 rounds.
@@ -426,11 +429,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool versus 15</check>
-        <overcharge>25</overcharge>
+        <check>Magic Pool versus DDC 14</check>
+        <overcharge>DC + 10</overcharge>
 	<leveldescription>
 	  <p>
 	    The caster may take the form of a person, creature of thing
@@ -448,8 +451,8 @@
         <defaultmagical>3</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool versus 13</check>
-        <overcharge>25</overcharge>
+        <check>Magic Pool + 2 versus DDC 14</check>
+        <overcharge>DC + 11</overcharge>
         <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
 	<leveldescription>
 	  <p>
@@ -468,8 +471,8 @@
         <defaultmagical>3</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool versus 11</check>
-        <overcharge>25</overcharge>
+        <check>Magic Pool versus DDC 14</check>
+        <overcharge>DC + 12</overcharge>
 	<leveldescription>
 	  <p>
 	    The caster may take the form of a person, creature of thing
@@ -492,7 +495,8 @@
 	The healing character places their hands on a bloodied target
 	and makes a check.  If successful the bloodied character heals
 	Health.  On overcharge the healer accidentaly uses their own animus
-	in order to heal the bloodied character.
+	in order to heal the bloodied character.  On overcharge the character
+	may lose d6 hitpoints.
       </p>
 
     </abilitydescription>    
@@ -500,12 +504,13 @@
        <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqtag>Cleric</prereqtag>
-        <defaultlore>8</defaultlore>
+        <defaultlore>4</defaultlore>
+        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Magic Pool versus 8 overcharge of 14</check>
+        <check>Magic Pool versus DDC 8</check>
         <effect>Bloodied character heals 2d6 damage</effect>
-        <overcharge>Caster takes d6 damage.</overcharge>
+        <overcharge>DC + 6</overcharge>
         <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
       </abilitylevel>
       
@@ -514,10 +519,10 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
-        <check>Magic Pool versus 7 overcharge of 15</check>
+        <defaultmagical>4</defaultmagical>
+        <check>Magic Pool + 2 versus DDC 8</check>
         <effect>Bloodied character heals 3d6 damage</effect>
-        <overcharge>Caster takes 2d6 damage.</overcharge>
+        <overcharge>DC + 7, Caster takes 2d6 damage.</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -539,11 +544,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 6</check>
-	<overcharge>15</overcharge>		
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 7</overcharge>		
 	<leveldescription>
 	  <p>
 	    Creates a fire of torch intensity.
@@ -557,11 +562,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
-	<check>Magic Pool vs default 7</check>
-	<overcharge>17</overcharge>		
+	<check>Magic Pool + 2 vs DDC 8</check>
+	<overcharge>DC + 8</overcharge>		
 	<leveldescription>
 	  <p>
 	    Allows the user to make a weapon flame for the duration of a combat.
@@ -593,8 +598,8 @@
         <defaultmagical>9</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 20</check>
-	<overcharge>25</overcharge>	
+	<check>Magic Pool vs DDC 20</check>
+	<overcharge>DC + 5</overcharge>	
 	<leveldescription>
 	  <p>
 	    The character can open a portal in a wall or floor.
@@ -611,8 +616,8 @@
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 19</check>
-	<overcharge>26</overcharge>	
+	<check>Magic Pool + 1 vs DDC 20</check>
+	<overcharge>DC + 6</overcharge>	
 	<leveldescription>
 	  <p>
 	    Opens a portal between two well known places on this plane.
@@ -628,8 +633,8 @@
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 18</check>
-	<overcharge>27</overcharge>	
+	<check>Magic Pool + 2 vs DDC 20</check>
+	<overcharge>DC + 7</overcharge>	
 	<leveldescription>
 	  <p>
 	    Opens a portal between this plane and a near plane.
@@ -657,11 +662,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 7</check>
-	<overcharge>17</overcharge>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 9</overcharge>
 	<effect>+2 on Sneak at night</effect>			
         <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
       </abilitylevel>
@@ -671,11 +676,11 @@
         <defaultlore>1</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 5</check>
-	<overcharge>17</overcharge>			
+	<check>Magic Pool + 2 vs DDC 8</check>
+	<overcharge>DC + 10</overcharge>			
 	<effect>+4 on Sneak at night</effect>
       </abilitylevel>      
     </abilitylevels>
@@ -731,8 +736,8 @@
         <defaultmagical>5</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 20</check>
-	<overcharge>28</overcharge>
+	<check>Magic Pool vs DDC 20</check>
+	<overcharge>DC + 8</overcharge>
 	<effect>A single demon enters the plane</effect>
         <prereqabilitylevel>magic_school.conjuration_2</prereqabilitylevel>	
       </abilitylevel>
@@ -745,8 +750,8 @@
         <defaultmagical>3</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 18</check>
-	<overcharge>30</overcharge>
+	<check>Magic Pool + 2 vs DDC 20</check>
+	<overcharge>DC + 10</overcharge>
 	<effect>A single demon enters the plane</effect>
       </abilitylevel>      
     </abilitylevels>
@@ -771,11 +776,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
+        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 7</check>
-	<overcharge>14</overcharge>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 7</overcharge>
 	<effect>2d6 Thaumic damage to those near the blast</effect>
         <prereqabilitylevel>magic_school.runes_1</prereqabilitylevel>	
       </abilitylevel>
@@ -785,11 +790,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 5</check>
-	<overcharge>15</overcharge>
+	<check>Magic Pool + 2 vs DDC 8</check>
+	<overcharge>DC + 8</overcharge>
 	<effect>3d6 Thaumic damage to those near the blast</effect>
       </abilitylevel>      
     </abilitylevels>
@@ -815,7 +820,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs Demons Magic Pool</check>
@@ -827,7 +832,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 5 vs Demons Magic Pool</check>
@@ -861,11 +866,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 14</check>
-	<overcharge>25</overcharge>
+	<check>Magic Pool vs DDC 14</check>
+	<overcharge>DC + 11</overcharge>
         <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>
       </abilitylevel>
 
@@ -874,11 +879,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 13</check>
-	<overcharge>30</overcharge>
+	<check>Magic Pool + 1 vs DDC 14</check>
+	<overcharge>DC + 12</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -895,7 +900,9 @@
 	normal behaviour the target must make a Willpower check against
 	the characters magic pool result or behave in accordance with the
 	mind worm.  On overcharge the target realizes they are being
-	compelled at the time the mind worm effects their behaviour.
+	compelled at the time the mind worm effects their behaviour.  Other
+	overcharge effects might also apply (for example the caster might
+	create a two-way mind worm).
       </p>
     </abilitydescription>    
 
@@ -908,8 +915,8 @@
         <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 8</check>
-	<overcharge>15</overcharge>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 7</overcharge>
         <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>			
       </abilitylevel>
 
@@ -918,11 +925,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs 8</check>
-	<overcharge>18</overcharge>			
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 9</overcharge>			
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -937,7 +944,7 @@
 	Bind holds an opponent using magical energies.  
 	The target makes a will	check versus the spells difficulty and are held
 	until they succeed.   The difficulty decreases by two every round the target
-	is held.  The caster may release the target at any time.
+	is held.  The caster may release the target at any time.  
       </p>
     </abilitydescription>
 
@@ -947,11 +954,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>7</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 10</check>
-	<overcharge>17</overcharge>
+	<check>Magic Pool vs DDC 10 or opponents Willpower</check>
+	<overcharge>DC + 7</overcharge>
         <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>		
       </abilitylevel>
 
@@ -960,11 +967,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
-	<check>Magic Pool vs default 8</check>
-	<overcharge>20</overcharge>			
+	<check>Magic Pool + 2 vs DDC 10 or opponents Willpower</check>
+	<overcharge>DC + 10</overcharge>			
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -981,18 +988,17 @@
       </p>
     </abilitydescription>    
     
-
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>4</defaultmagical>
 	<successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 11</check>
-	<overcharge>18</overcharge>
+	<check>Magic Pool vs DDC 10</check>
+	<overcharge>DC + 8</overcharge>
         <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>	
       </abilitylevel>
 
@@ -1001,11 +1007,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 10</check>
-	<overcharge>19</overcharge>
+	<check>Magic Pool + 2 vs DDC 10</check>
+	<overcharge>DC + 9</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -1028,11 +1034,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 7</check>
-	<overcharge>12</overcharge>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 5</overcharge>
 	<effect>+2 to AC for five minutes</effect>
         <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>
       </abilitylevel>
@@ -1042,11 +1048,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
-	<check>Magic Pool vs default 6</check>
+        <defaultmagical>5</defaultmagical>
+	<check>Magic Pool + 2 vs DDC 8</check>
         <successes>3</successes>
         <attempts>1</attempts>
-	<overcharge>14</overcharge>
+	<overcharge>DC + 6</overcharge>
 	<effect>+3 to AC for five minutes</effect>				
       </abilitylevel>
     </abilitylevels>
@@ -1071,10 +1077,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>1</defaultmagical>
+        <defaultmagical>2</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 5</check>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 8</overcharge>
         <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>			
       </abilitylevel>
 
@@ -1086,7 +1093,8 @@
         <defaultmagical>2</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-	<check>Magic Pool vs default 4</check>	
+	<check>Magic Pool + 2 vs DDC 6</check>	
+	<overcharge>DC + 8</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -1104,7 +1112,8 @@
 	which they inhale and then breathe out in to their hands into something
 	with the rough form of a weasel.  The smoke weasel may be used to fetch
 	things or carry small objects.  The smoke weasel dissipates after a few
-	minutes.
+	minutes.  On overcharge the smoke weasel is most likely to attack the
+	caster.
       </p>
     </abilitydescription>    
 
@@ -1114,10 +1123,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool vs default 7</check>
+        <check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 8</overcharge>
         <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>		
       </abilitylevel>
 
@@ -1126,10 +1136,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Magic Pool vs default 7</check>
+        <check>Magic Pool  + 2 vs DDC 8</check>
+	<overcharge>DC + 10</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -1150,14 +1161,11 @@
 
       <p>
 	In game the effect of flesh ward is represented
-	in the form of temporary hit points.  The caster
-	states a target number of hit points then makes a
-	check against that target number to succeed.
-	If they roll higher than the target they receive
-	that many temporary hit points (for the duration of
-	the combat).  If they roll lower then they suffer
-	damage equal to the difference between the target
-	and their roll.	
+	in the form of temporary hit points.  If the caster
+	succeeds they receive the stated number of temporary
+	hit points (for the duration of the combat).  If they
+	overcharge then they suffer damage equal to the difference
+	between the DC and their roll).	
       </p>
     </abilitydescription>    
 
@@ -1167,11 +1175,11 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool versus Stated Target</check>
-	<effect>See above.</effect>
+        <check>Magic Pool versus DDC 10</check>
+	<effect>+8 temo</effect>
         <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
       </abilitylevel>
 
@@ -1180,7 +1188,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 3 versus Stated Target</check>
@@ -1192,7 +1200,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 6 versus Stated Target</check>
@@ -1226,10 +1234,10 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool versus Glamour strength</check>
+        <check>Magic Pool versus Glamour DC</check>
         <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>
 	<effect>See above.</effect>
       </abilitylevel>
@@ -1239,7 +1247,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool +2 versus Glamour DC</check>
@@ -1251,7 +1259,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool +5 versus Glamour DC</check>
@@ -1320,7 +1328,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool vs 10</check>
@@ -1337,7 +1345,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
+        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool vs 8</check>

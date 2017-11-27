@@ -42,7 +42,7 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>4</defaultgeneral>
         <attempts>2</attempts>
-        <check>Std 2d8 vs default 10</check>
+        <check>Std 2d8 vs DDC 10</check>
       </abilitylevel>
 
       <abilitylevel>
@@ -51,7 +51,7 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>4</defaultgeneral>
         <attempts>1</attempts>
-        <check>Std 2d8 vs default 8</check>	
+        <check>Std 2d8 vs DDC 8</check>	
       </abilitylevel>
       
       <abilitylevel>
@@ -59,7 +59,7 @@
         <defaultlore>3</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>2</defaultgeneral>
-        <check>Std 2d8 vs default 6</check>	
+        <check>Std 2d8 vs DDC 6</check>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -428,261 +428,4 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-  
-
-  <!--
-      <ability>
-      <abilitytitle>Common</abilitytitle>
-      <abilityid>school.common</abilityid>
-      <abilityclass>Non-Combat</abilityclass>
-      <abilitydescription>
-      <p noindent="true">
-      Abilities common to everyone.
-      </p>
-      </abilitydescription>    
-      <abilitylevels>
-      <abilitylevel>
-      <levelnumber>0</levelnumber>
-      <defaultlore>0</defaultlore>
-      <defaultmartial>0</defaultmartial>
-      <defaultgeneral>0</defaultgeneral>
-      <check>Std 2d8 - 5 vs difficulty</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-      <levelnumber>1</levelnumber>
-      <defaultlore>5</defaultlore>
-      <defaultmartial>0</defaultmartial>
-      <defaultgeneral>0</defaultgeneral>
-      <defaultmagical>5</defaultmagical>
-      <check>Std 2d8 - 3 vs difficulty</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-      <levelnumber>2</levelnumber>
-      <defaultlore>5</defaultlore>
-      <defaultmartial>0</defaultmartial>
-      <defaultgeneral>0</defaultgeneral>
-      <defaultmagical>5</defaultmagical>
-      <check>Std 2d8 vs difficulty - 2</check>
-      </abilitylevel>      
-      </abilitylevels>
-      </ability>
-
-  -->
-  
-  <!--
-      <ability>
-      <abilitytitle>Evocation</abilitytitle>
-      <abilityid>magic_school.evocation</abilityid>
-      <abilityclass>Non-Combat</abilityclass>
-      <abilitydescription>
-      <p noindent="true">
-      Evocation is the use of raw magic powers.
-      </p>
-      </abilitydescription>    
-      <abilitylevels>
-      <abilitylevel>
-      <levelnumber>1</levelnumber>
-      <prereqabilitylevel></prereqabilitylevel>
-      <defaultlore>5</defaultlore>
-      <defaultmagical>5</defaultmagical>
-      <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-      </abilitylevels>
-      </ability>
-
-
-
-<ability>
-<abilitytitle>Abjuration</abilitytitle>
-<abilityid>magic_school.abjuration</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-Abjuration involve the use of raw magical energies to cast protective
-shielding and counter magic.
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-
-
-<ability>
-<abilitytitle>Conjuration</abilitytitle>
-<abilityid>magic_school.conjuration</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-Conjuration involves summoning or communicating with extra planar entities, binding
-extra planar entities, opening gates and the like.
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-</abilitylevel>
-
-<abilitylevel>
-<levelnumber>2</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-
-<ability>
-<abilitytitle>Enchantment</abilitytitle>
-<abilityid>magic_school.enchantment</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-Enchantment is the use of magic to control the minds of others.
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-<ability>
-<abilitytitle>Elemental Magic</abilitytitle>
-<abilityid>magic_school.elemental</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-Elemental magic is a special sub-type of evocation that uses
-the limited, but more stable magic from the nearby elemental planes.
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-<ability>
-<abilitytitle>Ritual Magic</abilitytitle>
-<abilityid>magic_school.ritual</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>2</defaultlore>
-<defaultmagical>0</defaultmagical>
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-<ability>
-<abilitytitle>Necromantic Magic</abilitytitle>
-<abilityid>magic_school.necromancy</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-The school of necromancy is concerned with the use of death or blood magic.
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-<ability>
-<abilitytitle>Biothaumic Magic</abilitytitle>
-<abilityid>magic_school.biothaumic</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-YYY
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-<ability>
-<abilitytitle>Rune Magic</abilitytitle>
-<abilityid>magic_school.runes</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-ZZZ
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-</abilitylevel>
-</abilitylevels>
-</ability>
-
-<ability>
-<abilitytitle>Theurgic Magic</abilitytitle>
-<abilityid>magic_school.theurgic</abilityid>
-<abilityclass>Non-Combat</abilityclass>
-<abilitydescription>
-<p noindent="true">
-XXX
-</p>
-</abilitydescription>    
-<abilitylevels>
-<abilitylevel>
-<levelnumber>1</levelnumber>
-<prereqabilitylevel></prereqabilitylevel>
-<defaultlore>5</defaultlore>
-<defaultmagical>5</defaultmagical>
-<prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-</abilitylevel>
-</abilitylevels>
-</ability>
-  -->
 </abilitygroup>
