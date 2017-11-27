@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+
+  <chapter>
+    <chaptertitle>Abilities</chaptertitle>       
+
+    <!-- *************************************** -->
+    {% for ability_group in ability_groups %}
+    <section>
+      <sectiontitle>{{ ability_group.get_title() }}</sectiontitle>
+      
+      {% for ability in ability_group  %}
+	<table>
+	  <tablecategory>Standard</tablecategory>
+
+	  <tablespec>
+            <fixed>0.05</fixed>
+            <fixed>0.85</fixed>
+	  </tablespec>
+
+	  <tabletitle>X</tabletitle>
+
+	  <tablerow>
+            <multicolumntd columns="2">
+	      {{ ability.get_title() }} {{ ability.get_ability_class_symbol() }}
+	    </multicolumntd>
+	    </tablerow>
+
+	  {% for ability_level in ability.get_levels()  %}
+	  <tablerow>
+            <td>
+              {{- ability_level.get_level_number() | convert_to_roman_numerals }}
+              {%- if ability_level.is_innate() %} <innateabilitylevelsymbol/>{% endif -%}
+            </td>
+            <td>
+              {%- if ability_level.check is not none -%}
+              <bold>Check:</bold> {{ ability_level.check -}}
+              {%- endif %}	      
+              {%- if ability_level.overcharge is not none -%}
+              <bold> Overcharge:</bold> {{ ability_level.overcharge -}}
+              {%- endif %}	      
+            </td>
+	  </tablerow>
+	  {% endfor %}                
+	</table>	
+      {% endfor %}
+    </section>
+    {% endfor %}      
+  </chapter>  
+</book>
