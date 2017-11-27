@@ -1,3 +1,10 @@
+"""
+
+ Writes a table with all the abilitis in it and their costs.
+ Used to try and tweak game balance.
+
+
+"""
 import datetime
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, PatternFill
@@ -81,6 +88,14 @@ def write_ability_groups_to_sheet(sheet, ability_groups, archetypes):
 
     col += 1
     cell = sheet.cell(row = row, column = col)
+    cell.value = "Total"
+
+    col += 1
+    cell = sheet.cell(row = row, column = col)
+    cell.value = "Mastery"
+
+    col += 1
+    cell = sheet.cell(row = row, column = col)
     cell.value = "Prereqs"
 
     # row = TOP_LABEL_ROW
@@ -120,18 +135,33 @@ def write_ability_groups_to_sheet(sheet, ability_groups, archetypes):
                 cell = sheet.cell(row = row, column = col)
                 cell.value = str(ability_level.get_level_number())
 
-                # 
-                ability_cost = ("%s/%s/%s/%s (%s/%s/%s)" % (
+                # ability cost
+                ability_cost = ("%s/%s/%s/%s" % (
                     ability_level.get_default_general(),
                     ability_level.get_default_martial(),
                     ability_level.get_default_lore(),
-                    ability_level.get_default_magical(),
+                    ability_level.get_default_magical()))
+                col += 1
+                cell = sheet.cell(row = row, column = col)
+                cell.value = ability_cost
+                
+                # ability total
+                total = (ability_level.get_default_general() +
+                         ability_level.get_default_martial() + 
+                         ability_level.get_default_lore() +
+                         ability_level.get_default_magical())
+                col += 1
+                cell = sheet.cell(row = row, column = col)
+                cell.value = total
+
+                # mastery - successes/attempts/failures                
+                mastery = ("%s/%s/%s" % (
                     ability_level.get_successes(),
                     ability_level.get_attempts(),
                     ability_level.get_failures()))
                 col += 1
                 cell = sheet.cell(row = row, column = col)
-                cell.value = ability_cost
+                cell.value = mastery
 
                 # prerequisites 
                 col += 1
@@ -177,53 +207,24 @@ def write_ability_groups_to_sheet(sheet, ability_groups, archetypes):
                                                                    total)
                         cell.value = points
                 row += 1
-
         row += ABILITY_GROUP_VSPACE
-
-
 
     # column widths
     NARROW = 2.0
     STANDARD = 6.0
     WIDE = 22.0
-    #sheet.column_dimensions[col].width = STANDARD
-    sheet.column_dimensions['A'].width = NARROW
-    sheet.column_dimensions['B'].width = WIDE
-    sheet.column_dimensions['C'].width = STANDARD
-    sheet.column_dimensions['D'].width = 18
-    sheet.column_dimensions['F'].width = NARROW
-    sheet.column_dimensions['G'].width = WIDE
-    sheet.column_dimensions['H'].width = WIDE
+    sheet.column_dimensions['A'].width = NARROW   # margin
+    sheet.column_dimensions['B'].width = WIDE     # ability name
+    sheet.column_dimensions['C'].width = STANDARD # level
+    sheet.column_dimensions['D'].width = 10       # point cost
+    sheet.column_dimensions['E'].width = 5        # total
+    sheet.column_dimensions['F'].width = 8        # mastery
+    sheet.column_dimensions['G'].width = 30       # prereqs
+    sheet.column_dimensions['H'].width = NARROW   # margin
     sheet.column_dimensions['I'].width = WIDE
     sheet.column_dimensions['J'].width = WIDE
     sheet.column_dimensions['K'].width = WIDE
     sheet.column_dimensions['L'].width = WIDE
     sheet.column_dimensions['M'].width = WIDE
-
-
-    
-    # sheet.column_dimensions['L'].width = NARROW
-    # sheet.column_dimensions['K'].width = 12
-    
-    # sheet.column_dimensions['M'].width = 15
-    # sheet.column_dimensions['N'].width = 15
-    # sheet.column_dimensions['O'].width = 15
-    # sheet.column_dimensions['P'].width = 15
-    # sheet.column_dimensions['Q'].width = 15
-
-	
-
-    # column_widths = []
-    # for row in sheet.iter_rows():
-    #     print row
-    #     for i, cell in enumerate(row):
-    #         if len(column_widths) > i:
-    #             if len(cell) > column_widths[i]:
-    #                 column_widths[i] = len(cell)
-    #             else:
-    #                 column_widths += [len(cell)]
-
-    # for i, column_width in enumerate(column_widths):
-    #     worksheet.column_dimensions[get_column_letter(i+1)].width = column_width
     return
 

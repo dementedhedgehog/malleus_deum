@@ -56,6 +56,7 @@ files_to_build = (
     #("monster_manual.xml", True, "MM"),
     #("magic_items.xml", True, "MI"),
     # ("abilities.xml", True, "Ab"),
+    ("ability_dcs.xml", False, "X"),
     # ("tables.xml", True, "[T]"),
 
     #("character_abilities.xml", False, None),
@@ -65,15 +66,15 @@ files_to_build = (
 )
 
 archetypes_to_build = (
-    ("bard", True, "[BRD]"),
-    ("dwarven_shield_warrior", True, "[DSW]"),
-    ("red_mage", True, "[RM]"),
-    ("halfling_rover", True, "[HR]"),
-    ("elven_scion", True, "[ES]"),
-    ("outrider", True, "[BC]"),
-    ("black_coat", True, "[BC]"),
-    ("summoner", True, "[SM]"),
-    ("hedge_wizard", True, "[HW]"),
-    ("witch_hunter", True, "[WH]"),
-    ("rake", True, "[RK]"),
+    # ("bard", True, "[BRD]"),
+    # ("dwarven_shield_warrior", True, "[DSW]"),
+    # ("red_mage", True, "[RM]"),
+    # ("halfling_rover", True, "[HR]"),
+    # ("elven_scion", True, "[ES]"),
+    # ("outrider", True, "[BC]"),
+    # ("black_coat", True, "[BC]"),
+    # ("summoner", True, "[SM]"),
+    # ("hedge_wizard", True, "[HW]"),
+    # ("witch_hunter", True, "[WH]"),
+    # ("rake", True, "[RK]"),
 )
