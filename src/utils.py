@@ -54,11 +54,10 @@ def normalize_ws(text):
 
 def convert_to_roman_numerals(number):
     if number <= 0:
-        return "0"
-    elif number <= 10:
-        return ("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X")[number - 1]
-    else:
-        return number
+        number = 0
+    elif number > 10:
+        number = 10
+    return ("0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X")[number]
 
 
 def convert_str_to_bool(str_bool):

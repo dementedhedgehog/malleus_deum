@@ -473,7 +473,7 @@ class LatexFormatter:
         self.description_terms_on_their_own_line = False
 
         # for the index_entry see field (None or a string).
-        self.index_entry_see = None
+        #self.index_entry_see = None
         self.index_entry_subentry = None
 
         #
@@ -950,12 +950,13 @@ class LatexFormatter:
 
     start_indexentry = no_op
     def end_indexentry(self, index_entry):
-        if self.index_entry_see is not None:
-            self.latex_file.write("\\index{%s|see {%s}}" % (
-                normalize_ws(index_entry.text), self.index_entry_see))
-            self.index_entry_see = None
+        #if self.index_entry_see is not None:
+        #    self.latex_file.write("\\index{%s|see {%s}}" % (
+        #        normalize_ws(index_entry.text), self.index_entry_see))
+        #    self.index_entry_see = None
 
-        elif self.index_entry_subentry is not None:
+        #el
+        if self.index_entry_subentry is not None:
             self.latex_file.write("\\index{%s!%s}" % (
                 normalize_ws(index_entry.text), self.index_entry_subentry))
             self.index_entry_subentry = None
@@ -965,12 +966,12 @@ class LatexFormatter:
         return
 
     # see element in index entry
-    start_see = no_op
-    def end_see(self, index_entry):
-        self.index_entry_see = normalize_ws(index_entry.text)
-        return
+    # start_see = no_op
+    # def end_see(self, index_entry):
+    #     self.index_entry_see = normalize_ws(index_entry.text)
+    #     return
 
-    # see element in index entry
+    # subentry element in index entry
     start_subentry = no_op
     def end_subentry(self, index_subentry):
         self.index_entry_subentry = normalize_ws(index_subentry.text)
@@ -1034,7 +1035,10 @@ class LatexFormatter:
         # add drop caps to the first word of every chapter
         if not self._drop_capped_first_letter_of_chapter:
             self._drop_capped_first_letter_of_chapter = True
-            words = paragraph.text.split()
+            if paragraph.text:
+                words = paragraph.text.split()
+            else:
+                words = []
             if len(words) > 0:
                 first_word = words[0]
                 if len(first_word) > 0:
@@ -1504,6 +1508,7 @@ class LatexFormatter:
             width = int(width)
         else: 
             width = 1
+        #width = 1
 
         align = table_data.get("align")
         if align is None:
@@ -1512,29 +1517,37 @@ class LatexFormatter:
         self._current_column_in_table = (
             (self._current_column_in_table + width) % self._number_of_columns_in_table)
 
-        if table_data.text is not None:
-            text = normalize_ws(table_data.text).strip()
+        #if table_data.text is not None:
+        #    text = normalize_ws(table_data.text).strip()
 
-            # override for table headers
-            parent = table_data.getparent()
-            if parent.tag == "tableheaderrow":
-                text = "\\rpgtableheader{%s}" % text
+        # override for table headers
+        parent = table_data.getparent()
+        if parent.tag == "tableheaderrow":
+            #text = "\\rpgtableheader{%s}" % text
+            text = "\\begin{rpgtableheader}"
 
-            if width > 1 or align != "l":
-                # multicolumn table data
-                assert align is not None
-
-                self.latex_file.write("\\multicolumn{%s}{%s}{%s" % (width, align, text))
-            else:
-                # normal table data
-                self.latex_file.write("%s" % text)
+        if width > 1 or align != "l":
+           self.latex_file.write("\\multicolumn{%s}{%s}{" % (width, align))
         return
 
     def end_td(self, table_data):
         width = table_data.get("width")
+        if width is not None:
+            width = int(width)
+        else: 
+            width = 1
+            
         align = table_data.get("align")
-        if width is not None or align is not None:
-            self.latex_file.write("}")                        
+        if align is None:
+            align = "l"
+        
+        parent = table_data.getparent()
+        if parent.tag == "tableheaderrow":
+            text = "\\end{rpgtableheader}"
+
+        if width > 1 or align != "l":
+            # multicolumn table data
+            self.latex_file.write("}")
 
         if self._current_column_in_table != 0:
             self.latex_file.write(" & ")                
@@ -1545,42 +1558,42 @@ class LatexFormatter:
     end_th = end_td
 
 
-    def start_multicolumntd(self, table_data):
-        """
-        Start muilticolumn table data.
+    # def start_multicolumntd(self, table_data):
+    #     """
+    #     Start muilticolumn table data.
 
-        """
-        if "columns" in table_data.attrib:
-            columns = int(table_data.get("columns"))
+    #     """
+    #     if "columns" in table_data.attrib:
+    #         columns = int(table_data.get("columns"))
 
-        if ((self._current_column_in_table + columns) > self._number_of_columns_in_table):
-            raise Exception("Multicolumn table data overflows table!")
+    #     if ((self._current_column_in_table + columns) > self._number_of_columns_in_table):
+    #         raise Exception("Multicolumn table data overflows table!")
 
-        self._current_column_in_table = (
-            (self._current_column_in_table + columns) % self._number_of_columns_in_table)
+    #     self._current_column_in_table = (
+    #         (self._current_column_in_table + columns) % self._number_of_columns_in_table)
 
-        #if self._current_row_in_table == 0:
-        #     self.latex_file.write("\\rpgtableheader{%s} \n" %
-        #                           table_data.text)
-        #else:
+    #     #if self._current_row_in_table == 0:
+    #     #     self.latex_file.write("\\rpgtableheader{%s} \n" %
+    #     #                           table_data.text)
+    #     #else:
 
         
-        # self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s}}" % 
-        #                        (columns, table_data.text))
-        self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s" %
-                              (columns, table_data.text))
+    #     # self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s}}" % 
+    #     #                        (columns, table_data.text))
+    #     self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s" %
+    #                           (columns, table_data.text))
 
-        # if self._current_column_in_table != 0:
-        #     self.latex_file.write(" & ")                        
-        # return
-    #end_multicolumntd = no_op
-    def end_multicolumntd(self, table_data):
+    #     # if self._current_column_in_table != 0:
+    #     #     self.latex_file.write(" & ")                        
+    #     # return
+    # #end_multicolumntd = no_op
+    # def end_multicolumntd(self, table_data):
 
-        self.latex_file.write("}}")
+    #     self.latex_file.write("}}")
         
-        if self._current_column_in_table != 0:
-            self.latex_file.write(" & ")
-        return
+    #     if self._current_column_in_table != 0:
+    #         self.latex_file.write(" & ")
+    #     return
 
 
     def start_tableofcontents(self, table_of_contents):

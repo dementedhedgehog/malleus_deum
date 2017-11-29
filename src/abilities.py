@@ -1169,10 +1169,11 @@ if __name__ == "__main__":
     for ability_group in ability_groups:
         print(ability_group.get_title())
 
-        for ability in ability_group:
 
-            if "eering" not in ability.get_title():
-                continue
+        if "ocial" not in ability_group.get_title():
+            continue
+        
+        for ability in ability_group:
             
             print("\t%s" % ability.get_title())
             print("\t\t\tAbility Class: %s" % ability.get_ability_class())
@@ -1181,9 +1182,9 @@ if __name__ == "__main__":
             #print("\t\t\t\t: %s" % ability.get_ability_class())
             
             for ability_level in ability.get_levels():
-                print("\t\t\t\t%s" % ability_level.get_title())
-                print("\t\t\t\t%s" % ability_level.check)
-                print("\t\t\t\t%s" % ability_level.description)
+                print("\t\t\t\t1 %s" % ability_level.get_title())
+                print("\t\t\t\t2 %s" % ability_level.check)
+                print("\t\t\t\t3 %s" % ability_level.description)
             #    #print("\t\t\tLore: %s" % ability_level.get_default_lore())
 
 

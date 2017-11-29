@@ -326,6 +326,7 @@
       <xs:element name="dany" type="acronymType"/>      
       <xs:element name="dpool" type="acronymType"/>
     </xs:choice>
+    <!-- the number of columns the table data takes -->
     <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
     <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
   </xs:complexType>
@@ -556,7 +557,9 @@
       <xs:element name="td" type="tabledataType" />
       <xs:element name="th" type="tabledataType" />
       <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="multicolumntd" type="multicolumntabledataType"/>
+      <!--
+	  <xs:element name="multicolumntd" type="multicolumntabledataType"/>
+	  -->
     </xs:choice>
     <xs:attribute name="newcolour" type="xs:boolean" default="true"/>
   </xs:complexType>
@@ -572,6 +575,7 @@
     </xs:restriction>
   </xs:simpleType>
 
+	<!--
   <xs:complexType name="multicolumntabledataType" mixed="true">
     <xs:complexContent>    
       <xs:extension base="tabledataType">
@@ -580,10 +584,11 @@
             <xs:restriction base="xs:positiveInteger">
             </xs:restriction>
           </xs:simpleType>
-        </xs:attribute>
+          </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+	  -->
 
 
   <xs:complexType name="orderedListType">
@@ -952,7 +957,7 @@ labels and references.
   <xs:complexType name="indexentryType" mixed="true"> 
 
     <xs:choice minOccurs="0" maxOccurs="1">
-      <xs:element name="see" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <!-- <xs:element name="see" type="xs:string" minOccurs="0" maxOccurs="1"/>-->
       <xs:element name="subentry" type="xs:string" minOccurs="0" maxOccurs="1"/>
     </xs:choice>
   </xs:complexType>
