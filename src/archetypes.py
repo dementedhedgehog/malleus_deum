@@ -265,10 +265,13 @@ class ModifiedAbilityLevel:
         Note.  
 
         """
+        if self.innate_flag:
+            return True
+        
         lvl_num = self.ability_level.get_level_number()
 
-        if d:
-            print lvl_num
+        # if d:
+        #     print lvl_num
 
         if lvl_num <= 1:
             previous_level_is_innate = True
@@ -320,16 +323,16 @@ class ModifiedAbilityLevel:
             if prereq_tag not in self.archetype.tags:
                 has_prerequisite_tags = False
 
-        if d:
-            print self.get_title()
-            print "previous level is innate %s" % previous_level_is_innate
-            print "has prereqs %s " % has_prerequisite_tags
-            print "all_prerequisites_are_innate %s" % all_prerequisites_are_innate
-            print "point cost is zero %s " % (self.get_total_point_cost() == 0)
-            print "\tmartial %s " % self.get_martial_points()
-            print "\tgeneral %s " % self.get_general_points()
-            print "\tlore %s " % self.get_lore_points()
-            print "\tmagical %s " % self.get_magical_points()
+        # if d:
+        #     print self.get_title()
+        #     print "previous level is innate %s" % previous_level_is_innate
+        #     print "has prereqs %s " % has_prerequisite_tags
+        #     print "all_prerequisites_are_innate %s" % all_prerequisites_are_innate
+        #     print "point cost is zero %s " % (self.get_total_point_cost() == 0)
+        #     print "\tmartial %s " % self.get_martial_points()
+        #     print "\tgeneral %s " % self.get_general_points()
+        #     print "\tlore %s " % self.get_lore_points()
+        #     print "\tmagical %s " % self.get_magical_points()
                 
 
         return (previous_level_is_innate and
@@ -346,6 +349,9 @@ class ModifiedAbilityLevel:
     
     def has_prerequisites(self):
         return self.ability_level.has_prerequisites()
+
+    def __str__(self):
+        return str(self.ability_level)
 
 
 
@@ -1685,18 +1691,18 @@ if __name__ == "__main__":
 
     for archetype in archetypes:
 
-        if "Black" not in archetype.get_title():
+        if "Outrider" not in archetype.get_title():
             continue
         
         print("Archetype: %s" % archetype.get_title())        
         for ability_group in archetype.modified_ability_groups:
-            #if "Magic" not in ability_group.get_title():
-            #    continue
+            if "ocial" not in ability_group.get_title():
+                continue
 
-            print("\t%s" % ability_group.get_title())
+            #print("\t%s" % ability_group.get_title())
             for ability in ability_group:
 
-                if "Sword" not in ability.get_title():
+                if "Negotiate" not in ability.get_title():
                     continue
                 
                 print("\t\t%s" % ability.get_title())
@@ -1707,3 +1713,5 @@ if __name__ == "__main__":
                     print("\t\t\tIS INNATE %s" % mal.is_innate(d = True))
                     print("\t\t\t\tRecommended: %s" % mal.is_recommended())
         
+                    print("\t\t\t\tArch Innate: %s" %
+                          mal.is_innate_for_this_archetype())
