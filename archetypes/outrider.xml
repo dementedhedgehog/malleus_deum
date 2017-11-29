@@ -4,36 +4,17 @@
   <archetypeid>outrider</archetypeid>
   <archetypedescription>           
     <p>
-      Outriders are agents that patrol the borderlands
-      or towns in search of insurrection or corruption.
+      Outriders are agents that patrol the borderlands or towns in search of
+      insurrection or corruption.  They are smugglers, fixers, scouts, spys,
+      messengers, bandits and diplomats as their situation dictates.
     </p>
 
     <figure>
-      <img src="./resources/archetypes/rake/rake.png" scale="0.28"/>
+      <img src="./resources/archetypes/outrider/a_ranger_of_the_north_by_solidtom-d6gqkll.jpg"
+	   scale="0.9"/>
     </figure>    
   </archetypedescription>
 
-  <!--
-
-Core skills thoughts:
-
-- Tracking
-- Sneak
-- Archery
-- Sword
-- Traps
-- Perception
-
-Other skill rounders:
-
-- Wilderness
-- Animal Handling 
-- Slight of hand
-- Deception
-- Disguise
-- Persuasion
-
--->
 
   <archetypeac>8</archetypeac>
   <archetypemove>6</archetypemove>
@@ -43,17 +24,17 @@ Other skill rounders:
   </startinggear>
 
   <height>
-    <metric>154 + 2d20 cm</metric> 
+    <metric>156 + 2d20 cm</metric> 
     <imperial>4'9" + 2d8 inches</imperial>
   </height>
   <weight>
-    <metric>70 + 2d8 kg</metric> 
-    <imperial>145 + 4d20 pounds</imperial>
+    <metric>75 + 2d8 kg</metric> 
+    <imperial>155 + 4d20 pounds</imperial>
   </weight>
   <age>27 + 2d6 years</age>
   <appearance></appearance>
 
-  <aspectexamples>Life is Short</aspectexamples>
+  <aspectexamples>Hmm, very interesting</aspectexamples>
   <archetypetags>
     <tag>Human</tag>
   </archetypetags>
@@ -67,8 +48,8 @@ Other skill rounders:
       <levelstaminarefresh>2d4</levelstaminarefresh>
       <levelhealth>6+d4</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
-      <levellore>15</levellore>
-      <levelmartial>10</levelmartial>
+      <levellore>8</levellore>
+      <levelmartial>12</levelmartial>
       <levelgeneral>15</levelgeneral>
       <levelmagical>0</levelmagical>
       <levelfate>2<d6/></levelfate>
@@ -88,7 +69,7 @@ Other skill rounders:
       <levelhealth>+4</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
       <levellore>8</levellore>
-      <levelmartial>8</levelmartial>
+      <levelmartial>7</levelmartial>
       <levelgeneral>8</levelgeneral>
       <levelmagical>5</levelmagical>
       <levelfate>2<d6/></levelfate>
@@ -108,7 +89,7 @@ Other skill rounders:
       <levelhealth>+5</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
       <levellore>8</levellore>
-      <levelmartial>8</levelmartial>
+      <levelmartial>7</levelmartial>
       <levelgeneral>8</levelgeneral>
       <levelmagical>0</levelmagical>
       <levelfate>2<d6/></levelfate>
@@ -128,7 +109,7 @@ Other skill rounders:
       <levelhealth>+5</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
       <levellore>8</levellore>
-      <levelmartial>8</levelmartial>
+      <levelmartial>7</levelmartial>
       <levelgeneral>8</levelgeneral>
       <levelmagical>0</levelmagical>
       <levelfate>2<d6/></levelfate>
@@ -309,8 +290,38 @@ Other skill rounders:
     </innate>
 
     <innate>
+      <abilityid>archery.archery</abilityid>
+      <level>1</level>
+    </innate>    
+
+    <innate>
+      <abilityid>archery.dead_eye</abilityid>
+      <level>1</level>
+    </innate>    
+    
+    <innate>
+      <abilityid>wilderness.tracking</abilityid>
+      <level>1</level>
+    </innate>    
+    
+    <innate>
       <abilityid>skullduggery.sneak</abilityid>
       <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>wilderness.stealth</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>physical.notice</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>wilderness.scout</abilityid>
+      <level>2</level>
     </innate>
 
     <innate>
@@ -318,6 +329,39 @@ Other skill rounders:
       <level>2</level>
     </innate>
 
+    <innate>
+      <abilityid>wilderness.survivalism</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>transport.horse_riding</abilityid>
+      <level>1</level>
+    </innate>
+
+    
+    <innate>
+      <abilityid>skullduggery.sleight_of_hand</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>skullduggery.disguise</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>social.negotiate</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>social.deceive</abilityid>
+      <level>1</level>
+    </innate>
+
+    
+    <!--
     <innate>
       <abilityid>language.inochian</abilityid>
       <level>1</level>
@@ -336,7 +380,8 @@ Other skill rounders:
     <abilitymodifier>
       <abilityid>language.fey</abilityid>
       <lorepointmodifier>+2</lorepointmodifier>
-    </abilitymodifier>
+      </abilitymodifier>
+      -->
 
     <!--
     <disable>
@@ -371,30 +416,11 @@ Other skill rounders:
       <generalpointmodifier>-2</generalpointmodifier>
     </abilitymodifier>    
 
-    <innate>
-      <abilityid>social.high_etiquette</abilityid>
-      <level>1</level>
-    </innate>
-
-    <innate>
-      <abilityid>gun.shoot</abilityid>
-      <level>1</level>
-    </innate>
 
     <disable>
       <abilitygroupid>special</abilitygroupid>
     </disable>
 
-
-    <abilitymodifier>
-      <abilityid>thespian.oratory</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
-
-    <abilitymodifier>
-      <abilityid>thespian.dance</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
 
 
     <abilitymodifier>
