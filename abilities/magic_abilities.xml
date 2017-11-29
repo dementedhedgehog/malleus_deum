@@ -78,7 +78,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs DDC 10</check>
-	<overcharge>15</overcharge>
+	<overcharge>DC + 5</overcharge>
 	<prereqtag>Cleric</prereqtag>
         <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
       </abilitylevel>
@@ -90,7 +90,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <check>Std 2d8 + 2 vs DDC 10</check>
-	<overcharge>16</overcharge>	
+	<overcharge>DC + 6</overcharge>	
       </abilitylevel>      
       
       <abilitylevel>
@@ -100,7 +100,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
         <check>Std 2d8 + 3 vs DDC 10</check>
-	<overcharge>17</overcharge>
+	<overcharge>DC + 7</overcharge>
 	<leveldescription>
 	  <p>
 	    The character may be gifted with visions from their deity.
@@ -259,7 +259,7 @@
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 6</check>
-	<overcharge>10</overcharge>	
+	<overcharge>DC + 4</overcharge>	
         <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
       </abilitylevel>
 
@@ -272,7 +272,7 @@
         <successes>1</successes>
         <attempts>0</attempts>
 	<check>Magic Pool vs DDC 6</check>
-	<overcharge>12</overcharge>	
+	<overcharge>DC + 6</overcharge>	
       </abilitylevel>      
 
       <abilitylevel>
@@ -284,7 +284,7 @@
         <successes>1</successes>
         <attempts>0</attempts>
 	<check>Magic Pool vs DDC 6</check>
-	<overcharge>13</overcharge>	
+	<overcharge>DC + 7</overcharge>	
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -338,7 +338,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 6</check>
-	<overcharge>15</overcharge>		
+	<overcharge>DC + 9</overcharge>		
 	<leveldescription>
 	  <p>
 	    If successful Creates a DC35 protective barrier against extra planar creatures.
@@ -350,9 +350,7 @@
     </abilitylevels>
   </ability>
 
-
-
-
+  
   <ability>
     <abilitytitle>Contego</abilitytitle>
     <abilityid>magic.contego</abilityid>
@@ -824,6 +822,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs Demons Magic Pool</check>
+	<overcharge>DC + 8</overcharge>
         <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>
       </abilitylevel>
 
@@ -836,6 +835,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 5 vs Demons Magic Pool</check>
+	<overcharge>DC + 9</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -1094,7 +1094,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 6</check>	
-	<overcharge>DC + 8</overcharge>
+	<overcharge>DC + 9</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -1179,7 +1179,8 @@
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool versus DDC 10</check>
-	<effect>+8 temo</effect>
+	<overcharge>DC + 8</overcharge>
+	<effect>+8 temp hit points</effect>
         <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
       </abilitylevel>
 
@@ -1192,6 +1193,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 3 versus Stated Target</check>
+	<overcharge>DC + 9</overcharge>
 	<effect>See above.</effect>
       </abilitylevel>      
 
@@ -1204,6 +1206,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 6 versus Stated Target</check>
+	<overcharge>DC + 10</overcharge>
 	<effect>See above.</effect>
 	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
       </abilitylevel>      
@@ -1238,6 +1241,7 @@
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool versus Glamour DC</check>
+	<overcharge>DC + 8</overcharge>
         <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>
 	<effect>See above.</effect>
       </abilitylevel>
@@ -1251,6 +1255,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool +2 versus Glamour DC</check>
+	<overcharge>DC + 9</overcharge>
 	<effect>See above.</effect>
       </abilitylevel>      
 
@@ -1263,6 +1268,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool +5 versus Glamour DC</check>
+	<overcharge>DC + 10</overcharge>
 	<effect>See above.</effect>
 	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
       </abilitylevel>      
@@ -1292,7 +1298,8 @@
         <defaultlore>8</defaultlore>
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Std 2d8 vs opponents will</check>
+        <check>Std 2d8 vs opponents Will</check>
+	<overcharge>DC + 8</overcharge>
         <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
       </abilitylevel>
       
@@ -1302,7 +1309,8 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
-        <check>Std 2d8 + 2 vs opponents will</check>
+        <check>Std 2d8 + 2 vs opponents Will</check>
+	<overcharge>DC + 9</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -1331,8 +1339,8 @@
         <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool vs 10</check>
-	<overcharge>14</overcharge>
+        <check>Magic Pool vs DDC 10</check>
+	<overcharge>DC + 4</overcharge>
 	<effect>
 	  Target saves versus Willpower or suffers 2d8 damage.
 	  On overcharge the caster suffers 1d8 damage.
@@ -1348,14 +1356,13 @@
         <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Magic Pool vs 8</check>
-	<overcharge>14</overcharge>
+        <check>Magic Pool + 2 vs DDC 10</check>
+	<overcharge>DC + 4</overcharge>
 	<effect>
 	  Target saves versus Willpower or suffers 3d8 damage.
 	  On overcharge the caster suffers 1d12 damage.
 	</effect> 
       </abilitylevel>      
     </abilitylevels>
-  </ability>
-  
+  </ability>  
 </abilitygroup>
