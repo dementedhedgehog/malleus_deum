@@ -153,7 +153,9 @@
       Text type .. used for blocks of text like paragraphs and such.
       Doesn't allow paragraphs or sections
 
-     FIXME: merge with blocktype then remove!
+      FIXME: merge with blocktype then remove!
+
+      N.B. see also blockGroup
 
   -->
   <xs:complexType name="textType" mixed="true">
@@ -463,7 +465,6 @@
   </xs:complexType>
 
 
-  
   <xs:complexType name="archetypedescriptionType" mixed="true">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -1496,6 +1497,108 @@ tags
       <xs:element name="mbeffect"  type="textType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>  
+
+
+  <!--
+
+    Patrons
+
+  -->
+
+
+  <xs:complexType name="patronType">
+    <xs:sequence>
+      <xs:element 
+          name="patrontitle" 
+          type="titleType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patronid" 
+          type="idType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patrondescription" 
+          type="blockType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element
+	  name="abilitygroup"
+	  type="abilityGroupType"
+          minOccurs="1" maxOccurs="1"/>
+  
+      <!--
+      <xs:element 
+          name="inheritance" 
+          type="inheritanceType" 
+          minOccurs="0" maxOccurs="1"/>
+      <xs:element 
+          name="archetypeac" 
+          type="pointsType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="archetypemove" 
+          type="pointsType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="archetypeinitiative" 
+          type="pointsType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="attrmax" 
+          type="attributeLimitType" 
+          minOccurs="0" maxOccurs="7"/>
+      <xs:element 
+          name="attrmin" 
+          type="attributeLimitType" 
+          minOccurs="0" maxOccurs="7"/>
+      <xs:element 
+          name="attrbonus" 
+          type="attributeBonusType" 
+          minOccurs="0" maxOccurs="7"/>
+      <xs:element 
+          name="startingcash" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="startinggear" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="height" 
+          type="measurementType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="weight" 
+          type="measurementType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="age" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="appearance" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="aspectexamples" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="archetypetags"
+          type="tagsType" 
+          minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element 
+          name="levelprogressiontable" 
+          type="levelprogressiontableType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="abilitymodifiers" 
+          type="abilitymodifiersType" 
+          minOccurs="1" maxOccurs="1"/>
+	  -->
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="patron" type="patronType"/>
 
   
 </xs:schema> 

@@ -4,7 +4,53 @@
   <patronid>klazyabolus</patronid>
   <patrondescription>           
     <p>
-    </p>    
+    </p>
+
+    <table>
+      <tablecategory>Standard</tablecategory>
+      <tablespec>
+	<fixed>0.2</fixed>
+	<fixed>0.75</fixed>
+      </tablespec>
+      <tabletitle>Klazyabolous Patron Taint Table</tabletitle>
+      <tablelabel>table:{{ doc_name }}-awareness</tablelabel>
+      
+      <tableheaderrow>
+	<td>11</td>
+	<td></td>
+      </tableheaderrow>
+
+      <tablerow>
+	<td>12</td>
+	<td></td>
+      </tablerow>
+
+      <tablerow>
+	<td>13</td>
+	<td>Skin is constantly, visibly moist.</td>
+      </tablerow>
+
+      <tablerow>
+	<td>14-18</td>
+	<td>Flies constantly circle the player.</td>
+      </tablerow>
+
+      <tablerow>
+	<td>21-24</td>
+	<td>Skin turns greenish hue</td>
+      </tablerow>
+      
+      <tablerow>
+	<td>25-28</td>
+	<td>Eyes get nictitating membranes</td>
+      </tablerow>
+      
+      <tablerow>
+	<td>31-88</td>
+	<td>Normal overcharge effect - no patron taint.</td>
+      </tablerow>
+    </table>
+    
   </patrondescription>
 
   <!--
@@ -16,10 +62,23 @@ More flavourful to have a per patron thing?
 
 -->
 
+  <abilitygroup>
+
+    <abilitygroupinfo>
+      <abilitygrouptitle>Patron Abilities</abilitygrouptitle>
+      <abilitygroupid>klazyabolous</abilitygroupid>
+      <abilitygroupfamily>Magic</abilitygroupfamily>
+      <abilitygroupdescription>
+	<p>
+	  ...
+	</p>
+      </abilitygroupdescription>
+    </abilitygroupinfo>
+  
 
   <ability>
     <abilitytitle>Invoke Klazyabolous</abilitytitle>
-    <abilityid>magic.incorporal_mist</abilityid>
+    <abilityid>klazyabolous.invoke</abilityid>
     <abilityclass>Slow</abilityclass>
     <abilitydescription>
       <p>
@@ -61,7 +120,7 @@ More flavourful to have a per patron thing?
 
   <ability>
     <abilitytitle>Leap</abilitytitle>
-    <abilityid>magic.leap</abilityid>
+    <abilityid>klazyabolous.leap</abilityid>
     <abilityclass>Slow</abilityclass>
     <abilitydescription>
       <p>
@@ -104,7 +163,7 @@ More flavourful to have a per patron thing?
 
   <ability>
     <abilitytitle>Incorporal Mist</abilitytitle>
-    <abilityid>magic.incorporal_mist</abilityid>
+    <abilityid>klazyabolous.incorporal_mist</abilityid>
     <abilityclass>Slow</abilityclass>
     <abilitydescription>
       <p>
@@ -141,53 +200,6 @@ More flavourful to have a per patron thing?
 	</effect> 
       </abilitylevel>      
     </abilitylevels>
-  </ability>
-
-
-<table>
-  <tablecategory>Figure</tablecategory>
-  <tablespec>
-    <fixed>0.2</fixed>
-    <fixed>0.75</fixed>
-  </tablespec>
-  <tabletitle>Klazyabolous Patron Taint Table</tabletitle>
-  <tablelabel>table:{{ doc_name }}-awareness</tablelabel>
-  
-
-  <tableheaderrow>
-    <td>11</td>
-    <td></td>
-  </tableheaderrow>
-
-  <tablerow>
-    <td>12</td>
-    <td></td>
-  </tablerow>
-
-  <tablerow>
-    <td>13</td>
-    <td>Skin is constantly, visibly moist.</td>
-  </tablerow>
-
-  <tablerow>
-    <td>14-18</td>
-    <td>Flies constantly circle the player.</td>
-  </tablerow>
-
-  <tablerow>
-    <td>21-24</td>
-    <td>Skin turns greenish hue</td>
-  </tablerow>
-  
-  <tablerow>
-    <td>25-28</td>
-    <td>Eyes get nictitating membranes</td>
-  </tablerow>
-  
-  <tablerow>
-    <td>31-88</td>
-    <td>Normal overcharge effect - no patron taint.</td>
-  </tablerow>
-</table>
-  
+  </ability>  
+</abilitygroup>  
 </patron>

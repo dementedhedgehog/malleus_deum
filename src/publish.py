@@ -36,6 +36,7 @@ from doc import Doc
 from abilities import AbilityGroups
 from monsters import MonsterGroups
 from archetypes import Archetypes
+from patrons import Patrons
 from latex_formatter import LatexFormatter
 from html_formatter import HtmlFormatter
 from spreadsheet_writer import write_summary_to_spreadsheet
@@ -49,6 +50,7 @@ docs_dir = join(root_dir, "docs")
 pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 archetype_template_fname = "archetype_template.xml"
+patron_template_fname = "patron_template.xml"
 
 # latex preamble for the index.
 index_str = """
@@ -276,14 +278,16 @@ def create_index(verbosity=0):
 
 
 
-def build_pdf_doc(template_fname, verbosity, archetype = None):
+def build_pdf_doc(template_fname, doc_fname, verbosity,
+                  archetype=None,
+                  patron=None):
 
     # archetypes all use the same template.. but we don't want to 
     # put them in the same doc file.
-    if archetype is not None:
-        doc_fname = archetype.get_id()
-    else:
-        doc_fname = template_fname
+    #if archetype is not None:
+    #    doc_fname = archetype.get_id()
+    #else:
+    #    doc_fname = template_fname
 
     # base name .. no extension
     doc_base_fname, _ = splitext(basename(doc_fname))
@@ -308,9 +312,10 @@ def build_pdf_doc(template_fname, verbosity, archetype = None):
     template = jinja_env.get_template(template_fname)
     xml = template.render(ability_groups = ability_groups,
                           monster_groups = monster_groups,
-                          archetypes = archetypes,
-                          archetype = archetype,
-                          config = config,
+                          archetypes=archetypes,
+                          archetype=archetype,
+                          patron=patron,
+                          config=config,
                           add_index_to_core = config.add_index_to_core,
                           doc_name = doc_base_fname)
 
@@ -532,12 +537,19 @@ if __name__ == "__main__":
     # load the archetypes
     archetype_dir = join(root_dir, "archetypes")
     archetypes = Archetypes()
-    archetypes.load(ability_groups, archetype_dir, fail_fast = fail_fast)
+    archetypes.load(ability_groups, archetype_dir, fail_fast=fail_fast)
+
+    # load the patrons
+    patrons_dir = join(root_dir, "patrons")
+    patrons = Patrons()
+    patrons.load(patrons_dir=patrons_dir,
+                 ability_groups=ability_groups,
+                 fail_fast=fail_fast)
 
     # load the monsters
     monsters_dir = join(root_dir, "monsters")
     monster_groups = MonsterGroups()
-    monster_groups.load(monsters_dir, fail_fast = fail_fast)
+    monster_groups.load(monsters_dir, fail_fast=fail_fast)
 
     # get a jinja environment
     docs_dir  = join(root_dir, "docs")
@@ -560,14 +572,26 @@ if __name__ == "__main__":
 
 
     # Build latex/pdf files.
-    for doc_xml_fname, _, _ in config.files_to_build:
-        build_pdf_doc(doc_xml_fname, verbosity=verbosity)
+    for doc_xml_fname, _, _ in config.files_to_build:        
+        build_pdf_doc(doc_xml_fname,
+                      doc_fname=doc_xml_fname,
+                      verbosity=verbosity)
 
     # Build latex/pdf archetype files.
     for archetype_id, _, _ in config.archetypes_to_build:
         archetype = archetypes[archetype_id]
-        build_pdf_doc(archetype_template_fname, archetype = archetype, verbosity=verbosity)
+        build_pdf_doc(archetype_template_fname,
+                      doc_fname=archetype.get_id(),
+                      archetype=archetype,
+                      verbosity=verbosity)
 
+    # Build latex/pdf patron files.
+    for patron_id, _, _ in config.patrons_to_build:
+        patron = patrons[patron_id]
+        build_pdf_doc(patron_template_fname,
+                      doc_fname=patron.get_id(), 
+                      patron=patron,
+                      verbosity=verbosity)
 
     for doc_xml_fname, _, _ in config.files_to_build:
         build_html_doc(doc_xml_fname, verbosity=verbosity)

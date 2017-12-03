@@ -1034,8 +1034,12 @@ class AbilityGroup:
     def __cmp__(self, other):
         return cmp(self.get_title(), other.get_title())
 
-    def load(self):
-        root = self.doc.getroot()
+    def load(self, node = None):
+
+        if node is None:
+            root = self.doc.getroot()
+        else:
+            root = node
 
         # check it's the right sort of element
         if root.tag != "abilitygroup":
