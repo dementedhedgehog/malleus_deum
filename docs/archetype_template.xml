@@ -201,7 +201,7 @@
             <tablerow>
 	      <td>
 		{{- modified_ability_level.get_level_number() | convert_to_roman_numerals }}
-		{% if modified_ability_level.is_innate_for_this_archetype() -%}   
+		{%- if modified_ability_level.is_innate_for_this_archetype() -%}
 		<innatearchetypeabilitylevelsymbol/>
 		{%- elif modified_ability_level.is_innate() -%}   
 		<innateabilitylevelsymbol/>
