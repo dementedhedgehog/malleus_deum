@@ -13,12 +13,22 @@
   
   <monster>    
     <monstertitle>Bear</monstertitle>
-    <monsterid>bear</monsterid>
+    <monsterid>animal.bear</monsterid>
     <monstertag>Animal</monstertag>
     <monstermove>8</monstermove>
     <monsterhealth>50</monsterhealth>
     <monsterstamina>20</monsterstamina>
-    <monsterresolve>8</monsterresolve>
+    <monsterinitiativebonus>+2</monsterinitiativebonus>
+    <monsterresolve>2d8</monsterresolve>
+    <monstermagic>2d6</monstermagic>
+    <ac>9</ac>
+    <strength>15</strength>
+    <endurance>14</endurance>
+    <agility>9</agility>
+    <speed>14</speed>
+    <luck>9</luck>
+    <willpower>7</willpower>
+    <perception>11</perception>
     <monsterdescription>
       <p>
 	Bears are large omniverous mammals who live in forests and the northern steppes.
@@ -26,6 +36,78 @@
 	their young.
       </p>
     </monsterdescription>    
+  </monster>
+
+
+  <monster>    
+    <monstertitle>Spider, Giant</monstertitle>
+    <monsterid>animal.spider_giant</monsterid>
+    <monstertag>Animal</monstertag>
+    <monstermove>8</monstermove>
+    <monsterhealth>30</monsterhealth>
+    <monsterstamina>20</monsterstamina>
+    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterresolve>2d8</monsterresolve>
+    <monstermagic>3d6</monstermagic>
+    <ac>9</ac>
+    <strength>16</strength>
+    <endurance>14</endurance>
+    <agility>11</agility>
+    <speed>15</speed>
+    <luck>7</luck>
+    <willpower>8</willpower>
+    <perception>12</perception>    
+    <abilitylevelid>monster.poison_bite_2</abilitylevelid>
+    <abilitylevelid>monster.web_2</abilitylevelid>
+    <monsterdescription>
+      <p>
+	Giant Spiders get two attacks per round, a web attack and a
+	poisonous bite attack.  Spider poison lasts till a short rest.  Fresh poison
+	from the spiders corpse is potent for one day after it is sourced.
+      </p>
+
+      <p>
+	Giant spiders are intelligent.  If they have the upper hand they like
+	to taunt their prey.  Wondering aloud how they'll taste, telling them
+	they'll make their deaths slow and asking them to choose which one to kill
+	first.  They are completely untrusting and untrustworthy creatures.
+      </p>
+    </monsterdescription>    
   </monster>  
+  
+
+
+  <monster>    
+    <monstertitle>Spider, Large</monstertitle>
+    <monsterid>animal.spider_large</monsterid>
+    <monstertag>Animal</monstertag>
+    <monstermove>8</monstermove>
+    <monsterhealth>5</monsterhealth>
+    <monsterstamina>5</monsterstamina>
+    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterresolve>2d8</monsterresolve>
+    <monstermagic>3d6</monstermagic>
+    <ac>9</ac>
+    <strength>16</strength>
+    <endurance>14</endurance>
+    <agility>11</agility>
+    <speed>15</speed>
+    <luck>7</luck>
+    <willpower>8</willpower>
+    <perception>12</perception>    
+    <abilitylevelid>monster.poison_bite_1</abilitylevelid>
+    <abilitylevelid>physical.jump_1</abilitylevelid>
+    <abilitylevelid>physical.charge_1</abilitylevelid>
+    <monsterdescription>
+      <p>
+	Spider poison lasts till a short rest.  Fresh poison
+	from the spiders corpse is potent for one day after it is sourced.
+	Large spiders will typically run in and leap at their opponents faces
+	(counts as a charge).
+      </p>
+    </monsterdescription>    
+  </monster>  
+  
+  
 </monstergroup>    
     
