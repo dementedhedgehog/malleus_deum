@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 from os.path import join, splitext
+import sys
 import config
 from utils import (
     normalize_ws,
     convert_str_to_bool,
     convert_str_to_int,
-    COMMENT# ,
-    #resources_dir    
+    COMMENT
 )
 from config import use_imperial
+
+from npcs import NPC, NPCGroup
 
 
 # \usepackage[paperwidth=8.125in,paperheight=10.250in]{geometry}
@@ -16,17 +18,8 @@ from config import use_imperial
 # %%\usepackage[paperwidth=21.59cm,paperheight=27.94cm]{geometry}
 #%% documentclass[twocolumn,oneside]{book}
 #%% blurb
-#%%  
-#%% fraction symbols
-#\newcommand{\half}{½}
-#\newcommand{\third}{⅓}
-#\newcommand{\quarter}{¼}
 
-# %% fraction symbols
-# \newcommand{\half}{FIXME HALF ½}
-# \newcommand{\third}{FIXME THIRD}
-# \newcommand{\quarter}{FIXME QUARTER}
-
+#\usepackage{float}             %% allows figures in minipages.
 
 latex_frontmatter = r"""
 \documentclass[%s,twocolumn,oneside]{book}
@@ -276,25 +269,41 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 %%
 
 \newcommand\mbsep{%%
-\includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule.png}%%
+\includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule/hrule.png}%%
 \vspace{-0.5cm}\hfill\break}
 
 \newenvironment{mbtitle}%%
 {\sherwood\color{monstertitlecolor}\begin{large}}%%
-{\end{large}\vspace{0.0cm}\hfill\break}
+{\end{large}\vspace{0.0cm}\hfill}
 
 \newenvironment{mbtags}%%
 {\color{monstertagscolor}\begin{normalsize}}%%
-{\end{normalsize}\vspace{0.0cm}\hfill\break}
+{\end{normalsize}\vspace{0.0cm}\break}
 
 \newenvironment{mbac}
-{\color{monstertitlecolor}\normalsize}{}
+{\color{monstertitlecolor}\normalsize}{\hfill}
 
 \newenvironment{mbmove}
-{\color{monstertitlecolor}\normalsize}{}
+{\color{monstertitlecolor}\normalsize}{\hfill}
 
 \newenvironment{mbhp}
+{\color{monstertitlecolor}\normalsize}{\hfill}
+
+\newenvironment{mbresolve}
+{\color{monstertitlecolor}\normalsize}{\hfill}
+
+\newenvironment{mbinitiativebonus}
 {\color{monstertitlecolor}\normalsize}{}
+
+\newenvironment{mbmagic}
+{\color{monstertitlecolor}\normalsize}{}
+
+\newenvironment{npcname}
+{\color{monstertitlecolor}\normalsize}{}
+
+\newenvironment{npchp}
+{\color{monstertitlecolor}\normalsize}{}
+
 
 \newcommand\mbattrtitleformat[1]{\normalsize\textbf{#1}}
 
@@ -302,131 +311,6 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 \begin{document}
 
 """
-
-
-# "\n"
-# #"\\newcommand\\mbtitleformat[1]{"
-# #"  \fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{sherwood.ttf}%
-# #\large\color{monstertextcolor}#1}
-# #"\n"            
-# "\\newcommand\\mbtagformat[1]{"
-# "\\begingroup\\cloisterblack\\normalsize#1\\endgroup}\n"
-# "\n"            
-# "% \\monster command\n"
-# "\\makeatletter\n"
-# "\\newcommand\\monster[1]{%\n"
-# #"    \\noindent#1%\n"
-# "\\noindent\\@startsection{subsection}{3}%\n"
-# "{\\z@ }% indent 0pt\n"
-# "{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
-# "{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}% vertical rubber space after the title\n"
-# "{\\Large #1 }*% heading style modifiers\n"
-# "}\n"
-
-# \\\\\\mbsep
-#{\Large \color{monstertextcolor}%
-#\fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{LinLibertine_aS.ttf}\scshape}*% h
-
-# \\monster{\\noindent\\@startsection{subsection}{3}{}{}{}\n"
-#"{X}"
-#"{\\z@ }% indent 0pt\n"
-#"X}"
-#"{-1.5ex\\@plus -1ex \\@minus -.2ex}% vertical rubber space before the title\n"
-#"% vertical rubber space after the title\n"
-#"{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}\n"
-#"{\\Large\\color{monstertextcolor}%\n"
-#\fontspec[Path = /home/blaize/proj/dnd/laibstadt/style/fonts/]{LinLibertine_aS.ttf}\scshape}*% heading style modifiers
-#"}\n"
-#"\\makeatother\n"
-#             "\n"
-#             "\n"
-#             "\n"
-#             "% Monster Blocks\n"
-#             "\n"
-#             "% \\mbsep command\n"
-#             "\\newcommand\\mbsep{\\raisebox{1.2ex}{"
-#             "\\includegraphics[width=\\columnwidth,height=0.1cm]{./resources/hrule.png}"
-#             "}}\n"
-#             "\n"            
-#             "\n"
-#             "% \\monster command\n"
-#             "\\makeatletter\n"
-#             "\\newcommand\\monster[1]{%\n"
-#             #"    \\noindent#1%\n"
-#             "\\noindent\\@startsection{subsection}{3}%\n"
-#             "{\\z@ }% indent 0pt\n"
-#             "% vertical rubber space before the title\n" 
-#             "{-1.5ex\\@plus -1ex \\@minus -.2ex}%\n"
-#             "% vertical rubber space after the title\n"
-#             "{1sp \\@minus 0ex\\nointerlineskip\\vspace{3\\lineskip}}%\n"
-#             "{\\Large #1 }*% heading style modifiers\n"
-#             "}\n"
-#             "\\makeatother\n"
-#             "\n"
-#             "\n"
-#             "\n"
-#             "%\n"
-#             "\\newenvironment{monsterblock}{%\n"
-#             #\newcommand\mbgetinfo{}%
-#             #\newcommand\mbgetac{}%
-#             # \newcommand\mbgethp{}%
-#             # \newcommand\mbgetspeed{}%
-#             # \newcommand\mbgetstr{}%
-#             # \newcommand\mbgetdex{}%
-#             # \newcommand\mbgetcon{}%
-#             # \newcommand\mbgetint{}%
-#             # \newcommand\mbgetwis{}%
-#             # \newcommand\mbgetcha{}%
-#             # \newcommand\mbgetsavingthrows{}%
-#             # \newcommand\mbgetskills{}%
-#             # \newcommand\mbgetsenses{}%
-#             # \newcommand\mbgetlanguages{}%
-#             # \newcommand\mbgetchallenge{}%
-#             # \newcommand\mbgetreactions{}%
-#             "}{%\n"
-#             "\\begin{tabular}{@{}l@{}}%\n"
-#             #"\\noindent\mbinfoformat{\mbgetinfo}\\%\n"
-#             "\\mbsep\\[-0.15cm]%\n"
-# #             \mbattrformat{Armour Class}{\mbgetac}\\%
-# # \mbattrformat{Hit Points}{\mbgethp}\\%
-# # \mbattrformat{Speed}{\mbgetspeed}\\%
-# # \mbsep\\[-0.15cm]%
-# # % attribute block
-# # \begin{tabular}{@{}cccccc@{}}%
-# # \mbattrtitleformat{STR} & %
-# # \mbattrtitleformat{DEX} & %
-# # \mbattrtitleformat{CON} & %
-# # \mbattrtitleformat{INT} & %
-# # \mbattrtitleformat{WIS} & %
-# # \mbattrtitleformat{CHA}\\%
-# # \small{\mbgetstr} & %
-# # \small{\mbgetdex} & %
-# # \small{\mbgetcon} & %
-# # \small{\mbgetint} & %
-# # \small{\mbgetwis} & %
-# # \small{\mbgetcha}\\%
-#             "\\end{tabular}\\%\n"
-#             "\\mbsep\\\\[-0.15cm]%\n"
-#             "%\n"
-# #             \ifdefempty{\mbgetsavingthrows}{}{%
-# # \mbattrformat{Saving Throws}{\mbgetsavingthrows}\\}%
-# # %
-# # \ifdefempty{\mbgetskills}{}{%
-# # \mbattrformat{Skills}{\mbgetskills}\\}%
-# # %
-# # \ifdefempty{\mbgetsenses}{}{%
-# # \mbattrformat{Senses}{\mbgetsenses}\\}%
-# # %
-# # \ifdefempty{\mbgetlanguages}{}{%
-# # \mbattrformat{Languages}{\mbgetlanguages}\\}%
-# # %
-# # \ifdefempty{\mbgetchallenge}{}{%
-# # \mbattrformat{Challenge}{\mbgetchallenge}\\}%
-#             "\\mbsep%\\\\[-0.15cm]%\n"
-#             "\\end{tabular}%\n"
-#             "}\n"            
-
-
 
 def get_text_for_child(element, child_name):
     """
@@ -450,7 +334,7 @@ class TableCategory:
 
 class LatexFormatter:
     
-    def __init__(self, latex_file):
+    def __init__(self, latex_file, db):
 
         # open latex file pointer
         self.latex_file = latex_file
@@ -476,9 +360,11 @@ class LatexFormatter:
         #self.index_entry_see = None
         self.index_entry_subentry = None
 
-        #
-        # configuration
-        #        
+        # keep track of state for npc blocks
+        self._in_npc_group = False
+
+        # game db
+        self.db = db
         return
 
     def verify(self):
@@ -1746,26 +1632,46 @@ class LatexFormatter:
     def end_vspace(self, vspace):
         return
 
+    #
+    #
+    #
+               
+    def bold_begin(self):
+        self.latex_file.write("\\textbf{")
+        return
+    
+    def bold_finish(self):
+        self.latex_file.write("s} ")
+        return
 
+    def newline(self):
+        self.latex_file.write("\\newline\n")
+        return
 
     #
     # Monster blocks.
     #
 
-    start_monsterblock = no_op
-    end_monsterblock = no_op
-    
+    def start_monsterblock(self, monsterblock):
+        self.latex_file.write(r"\begin{minipage}{\linewidth}")
+        return
+
+    def end_monsterblock(self, monsterblock):
+        self.latex_file.write(r"\end{minipage}")
+        return
+
     def start_mbtitle(self, mbtitle):
-        self.latex_file.write("\\mbsep{}\\begin{mbtitle}")
+        self.latex_file.write(r"\mbsep{}\begin{mbtitle}")
         return
 
     def end_mbtitle(self, mbtitle):
-        self.latex_file.write(r"\end{mbtitle}\noindent")
+        self.latex_file.write(r"\end{mbtitle}\noindent{}")
         return
     
     def start_mbtags(self, mbtags):
         self.latex_file.write(r"\begin{mbtags}")
         return
+
     def end_mbtags(self, mbtags):
         self.latex_file.write(r"\end{mbtags}\noindent")
         return
@@ -1773,6 +1679,7 @@ class LatexFormatter:
     def start_mbac(self, mbac):
         self.latex_file.write(r"\textbf{AC: }\begin{mbac}")
         return
+
     def end_mbac(self, mbac):
         self.latex_file.write(r"\end{mbac}\enspace{}")
         return
@@ -1781,15 +1688,37 @@ class LatexFormatter:
         self.latex_file.write(r"\textbf{HP: }\begin{mbhp}")
         return
     
-    def end_mbhp(self, mbho):
-        self.latex_file.write("\\end{mbhp}\enspace{}")
+    def end_mbhp(self, mbhp):
+        self.latex_file.write("\\end{mbhp}")
         return
 
     def start_mbmove(self, mbmove):
         self.latex_file.write(r"\textbf{Move: }\begin{mbmove}")
         return
+
     def end_mbmove(self, mbmove):
-        self.latex_file.write("\\end{mbmove}\\vspace{0.1cm}\\hfill\\break{}")
+        self.latex_file.write("\\end{mbmove}")
+        return
+
+    def start_mbinitiativebonus(self, mbresolve):
+        self.latex_file.write(r"\textbf{Initiative Bonus: }\begin{mbinitiativebonus}")
+        return
+    def end_mbinitiativebonus(self, mbresolve):
+        self.latex_file.write("\\end{mbinitiativebonus}\\vspace{0.1cm}\\break{}")
+        return
+    
+    def start_mbmagic(self, mbmagic):
+        self.latex_file.write(r"\textbf{Magic Pool: }\begin{mbmagic}")
+        return
+    def end_mbmagic(self, mbmagic):
+        self.latex_file.write("\\end{mbmagic}\\vspace{0.1cm}\\break{}")
+        return
+    
+    def start_mbresolve(self, mbresolve):
+        self.latex_file.write(r"\textbf{Resolve Pool: }\begin{mbresolve}")
+        return
+    def end_mbresolve(self, mbresolve):
+        self.latex_file.write("\\end{mbresolve}")        
         return
     
     def start_mbstr(self, mbstr):
@@ -1807,6 +1736,7 @@ class LatexFormatter:
         return
     def end_mbstr(self, mbstr):
         self.latex_file.write("\\end{small} & %\n")
+        return
 
     def start_mbend(self, mbend):
         self.latex_file.write("\\begin{small}")
@@ -1822,41 +1752,41 @@ class LatexFormatter:
         self.latex_file.write("\\end{small} & %\n")
         return
     
-    def start_mbspd(self, mbag):
+    def start_mbspd(self, mbspd):
         self.latex_file.write("\\begin{small}")
         return
-    def end_mbspd(self, mbag):
+    def end_mbspd(self, mbspd):
         self.latex_file.write("\\end{small} & %\n")
         return
     
-    def start_mbluck(self, mbag):
+    def start_mbluck(self, mbluck):
         self.latex_file.write("\\begin{small}")
         return
-    def end_mbluck(self, mbag):
+    def end_mbluck(self, mbluck):
         self.latex_file.write("\\end{small} & %\n")
         return
     
-    def start_mbwil(self, mbag):
+    def start_mbwil(self, mbwil):
         self.latex_file.write("\\begin{small}")
         return
-    def end_mbwil(self, mbag):
+    def end_mbwil(self, mbwil):
         self.latex_file.write("\\end{small} & %\n")
         return
     
-    def start_mbper(self, mbag):
+    def start_mbper(self, mbper):
         self.latex_file.write("\\begin{small}")
         return
-    def end_mbper(self, mbag):
+    def end_mbper(self, mbper):
         self.latex_file.write("\\end{small}"
                               "\\end{tabular}"
                               "\n")
         return
     
     def start_mbabilities(self, mbabilities):
-        self.latex_file.write(r"\textbf{Abilities}: ")
+        #self.latex_file.write(r"\textbf{Abilities}: ")
         return
     def end_mbabilities(self, mbabilities):
-        self.latex_file.write("\n")# \\\\") #\n")
+        #self.latex_file.write("\n")
         return
 
     def start_mbaspects(self, mbaspects):
@@ -1867,8 +1797,28 @@ class LatexFormatter:
         return
     
     def start_mbdescription(self, mbdescription):
-        self.latex_file.write(r"\textbf{Description:}\hfill\break\vspace{-0.62cm}")
+        self.latex_file.write(r"\textbf{Description:}\hfill\break") # \vspace{-0.62cm}")
         return
     def end_mbdescription(self, mbdescription):
         self.latex_file.write("\n")
+        return
+    
+    def start_mbnpc(self, mbnpc):
+        return
+    def end_mbnpc(self, mbnpc):
+        self.latex_file.write("\\newline{}")
+        return
+
+    def start_npcname(self, npcname):
+        self.latex_file.write(r"\textbf{Name: }\begin{npcname}")
+        return
+    def end_npcname(self, npcname):
+        self.latex_file.write("\\end{npcname} ")
+        return
+    
+    def start_npchps(self, npchps):
+        self.latex_file.write(r"\textbf{HPs: }\begin{npchp}")
+        return
+    def end_npchps(self, npchps):
+        self.latex_file.write("\\end{npchp}")
         return
