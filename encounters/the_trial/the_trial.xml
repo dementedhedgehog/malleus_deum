@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+
+  {% from "docs/macro_npcs.xml" import build_npcs with context %}
+  
+  <chapter>
+    <chaptertitle>The Trial</chaptertitle>
+
+
+    <section>
+      <sectiontitle>Setup</sectiontitle>
+
+      <p>
+	The characters are taken to the courthouse before <bold>Magister Heinz Adelman</bold>.
+	(old, fat, bouffant, rosacae).   The court is run by <bold>Scribe Ernst
+	Hoffman</bold>, (old, wise, bald, pince nez) constantly making suggestions to the
+	magister in sotto voce.  There's a jury
+	sitting in a box to one side and a crowd of onlookers ready to cheer any pithy comments.
+	There's very few young men as they're mostly off to war or working.  Courts try half
+	a dozen cases a day.
+
+	<!--
+	Advocate for the Witchhunters Guild, Wigand Lange	
+	with the captain of the guard.
+	-->
+      </p>
+
+
+      <olist>
+
+	<li>Magister asks for Initial Accusations.  <emph>Shall we get this going then?</emph>
+	<olist>
+	  <li>Public Prosecutor Otlar Neidhart introduces himself and takes a cheap shot at
+	  the characters.  Thin humourless sycophantic
+	  man.</li>
+	  <li>Establish the identies of the individuals.</li>	
+	  <li>Magister <emph>Can we hurry this along.. I am feeling a bit peckish and would
+	  like to pot these contemptible rascals before lunch</emph></li>	
+	  <li>Ernst Hoffman.. <emph>yes sire .. but first some necessary preliminaries..</emph>
+	  The reading of the charges:
+	  <list>
+	    <li>Disturbing the Peace</li>	          
+	    <li>Assault and Battery</li>	          
+	    <li>the Murder of Hans Hunolt, Witch Hunter and associates</li>	
+	  </list>
+	  the penalities are: a fine of 5 silver pieces per for disturbing the piece and
+	  death by hanging for the assault and battery and the murders.
+	  </li>	
+	</olist>
+	</li>
+
+	<li>Defendents Plea Guilty or Not Guilty.	
+	For people who remain silent .. trial by the weight of his sins (weights placed
+	on their chest until they confess).</li>
+	
+	<li>Prosecutor presents his case..
+	Various witnesses..  Characters are allowed to question the witnesses.
+
+	<olist>
+          <li>Berthilda Brummer (very old, thick glasses) - "I saw them with my own two eyes." +/-1</li>
+	  <li>Hanke Jost - an Affidavit Men in the hire of Yacob Sprenger +/-1  possibly known to the rogue types</li>
+	  <li>Ronyon - youth and affadavit man.  Will change sides.  "I came to report
+	this incident to your lordship as part of my civic duty, like you majesty."
+          +/-1</li>	  
+	  <li>Prosecutor will put one of them on the stand and try and get them to turn on the others... +/-?</li>
+	  <li>Luther Leonardus (Witch Hunter militia man)- will lie through his teeth (see if the characters can catch him in a contradiction in his story) +/-1</li>
+	  <li>Mathias Erdich, the Guard Captain. +/-1</li>
+	</olist>
+	</li>
+		
+	<li>Summary remarks... keep it short please.  Remember my lunch.</li>	
+	<li>Jury adjourns..  if found guilty
+        check is 2d8 with a difficulty of 10 modified by their cross examination performance.
+
+	If found guilty..
+	Thrown into prison. <emph>Have them hanged with the rest on St Mael the Elders day.
+        (thinking) except of course the young lady.  I can't bear the thought
+	of the noose around her young neck .. (pause) In our mercy we will
+	have her drowned as an adulteress.. Ernst could you amend the
+	record accordingly please.. Right I'm off to lunch, Grundewald
+	has a roasting partridge and some fine Aquilonian red waiting for
+	me I believe.</emph>
+	</li>	
+      </olist>
+
+      {{ build_npcs("the_trial.guards") }}
+
+      <p>XXX
+      </p>
+    </section>
+    
+  </chapter>  
+</book>
