@@ -952,7 +952,7 @@ class Archetype:
         self.aspect_examples = None
         self.starting_cash = None
         self.starting_gear = None
-        #self.initial_abilities = None
+        self.initial_abilities = None
 
         self.height = None
         self.weight = None
@@ -1064,8 +1064,8 @@ class Archetype:
     def get_description(self):
         return self.description
         
-    # def get_initial_abilities(self):
-    #     return self.initial_abilities
+    def get_initial_abilities(self):
+        return self.initial_abilities
         
     def has_tags(self):
         return len(self.tags) > 0
@@ -1163,8 +1163,8 @@ class Archetype:
 
     def check_consistency(self):
         
-        # if self.initial_abilities is not None:
-        #     raise Exception("Missing 'initial_abilities' in file: %s" % self.fname)
+        if self.initial_abilities is None:
+            raise Exception("Missing 'initial_abilities' in file: %s" % self.fname)
 
         return
 
@@ -1279,11 +1279,11 @@ class Archetype:
            elif tag == "archetypetags":
                self.tags.load(child, fail_fast)
 
-           # elif tag == "archetypeinitialabilities":
-           #     if self.initial_abilities is not None:
-           #         raise NonUniqueTagError(tag, self.fname, child.sourceline)
-           #     else:
-           #         self.initial_abilities = children_to_string(child)
+           elif tag == "archetypeinitialabilities":
+               if self.initial_abilities is not None:
+                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+               else:
+                   self.initial_abilities = children_to_string(child)
 
            elif tag == "levelprogressiontable":
                self.level_progression_table.load(child, fail_fast)
