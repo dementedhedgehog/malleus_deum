@@ -84,7 +84,12 @@
 	cannot choose to just reroll the 1).  Dourli chooses to reroll and rolls a total
 	of 4 on his second roll. Dourli cannot  reroll the second roll because he can
 	reroll the dice in a check at most once.
-      </p>      
+      </p>
+
+      <p>
+	In the case of overcharge the characters are out of luck and exhaust a die from their
+	fate pool.
+      </p>
     </abilitydescription>
 
     <abilitylevels>
@@ -94,8 +99,8 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
-	<check>Fate Pool vs DDC 14</check>
-	<overcharge>DC + 6</overcharge>
+	<check>Fate Pool vs DDC 12</check>
+	<overcharge>DC + 4</overcharge>
 	<effect>The character gets to reroll a check</effect>
       </abilitylevel>
 
@@ -105,8 +110,8 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
-	<check>Fate Pool + 2 vs DDC 14</check>
-	<overcharge>DC + 7</overcharge>	
+	<check>Fate Pool + 2 vs DDC 12</check>
+	<overcharge>DC + 5</overcharge>	
 	<effect>The character gets to reroll a check</effect>
       </abilitylevel>
       
@@ -116,8 +121,8 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>3</defaultgeneral>
         <successes>4</successes>
-	<check>Fate Pool + 4 vs DDC 14</check>
-	<overcharge>DC + 8</overcharge>	
+	<check>Fate Pool + 4 vs DDC 12</check>
+	<overcharge>DC + 6</overcharge>	
 	<effect>The character gets to reroll a check</effect>
       </abilitylevel>
       
@@ -128,8 +133,8 @@
         <defaultgeneral>1</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
-	<check>Fate Pool + 6 vs DDC 14</check>
-        <overcharge>DC + 9</overcharge>	
+	<check>Fate Pool + 6 vs DDC 12</check>
+        <overcharge>DC + 7</overcharge>	
 	<effect>The character gets to reroll a check</effect>
       </abilitylevel>      
     </abilitylevels>
@@ -148,6 +153,12 @@
 	wounded character heals D6+3 hit points.  Only one such wound can be
 	examined per encounter.
       </p>
+
+      <p>
+	In the case of overcharge the characters are out of luck and exhaust a
+	die from their fate pool.
+      </p>
+      
     </abilitydescription>
     <abilitylevels>
       <abilitylevel>
@@ -158,7 +169,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Fate Pool vs DDC 12</check>
-        <overcharge>DC + 5</overcharge>
+        <overcharge>DC + 4</overcharge>
       </abilitylevel>
 
       <abilitylevel>
@@ -169,7 +180,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Fate Pool + 2 vs DDC 12</check>
-        <overcharge>DC + 6</overcharge>
+        <overcharge>DC + 5</overcharge>
       </abilitylevel>
       
       <abilitylevel>
@@ -180,7 +191,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Fate Pool + 4 vs DDC 12</check>	
-        <overcharge>DC + 7</overcharge>
+        <overcharge>DC + 6</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -195,13 +206,14 @@
       <p>
         Sometimes all you need is a little luck to get something done in the nick of 
 	time. After an NPC, monster of character performs an action the player can try to 
-	perform any action as a reaction "in the nick of time".  If the DM chooses to
-	allow it the PC performs their action before the monsters turn.
+	perform any action as a reaction <emph>in the nick of time</emph>.  If the GM chooses
+	to allow it the PC performs their action before the monsters turn.
       </p>
 
       <p>
 	Usable once per encounter for the whole party.
       </p>
+      
     </abilitydescription>
     <abilitylevels>
       <abilitylevel>
@@ -212,7 +224,6 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Luck vs DDC 10</check>
-        <overcharge>DC + 4</overcharge>
       </abilitylevel>
 
       <abilitylevel>
@@ -222,8 +233,7 @@
         <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
-	<check>Luck + 2 vs DDC 10</check>
-        <overcharge>DC + 4</overcharge>
+	<check>Luck + 1 vs DDC 10</check>
       </abilitylevel>
       
       <abilitylevel>
@@ -233,8 +243,17 @@
         <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
+	<check>Luck + 2 vs DDC 10</check>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
 	<check>Luck + 3 vs DDC 10</check>	
-        <overcharge>DC + 4</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -270,8 +289,10 @@
       </p>
 
       <p>
-	Misfortune is usable once per encounter for the whole party.
-      </p>	  
+	Misfortune is usable once per encounter for the whole party.  In the case
+	of overcharge the characters are out of luck and exhaust a die from their
+	fate pool.
+      </p>
     </abilitydescription>
     <abilitylevels>
 
@@ -280,10 +301,10 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>3</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>1</successes>
+        <attempts>2</attempts>
         <check>Fate Pool vs DDC 14</check>
-        <overcharge>DC + 5</overcharge>
+        <overcharge>DC + 4</overcharge>
       </abilitylevel>
       
       <abilitylevel>
@@ -291,8 +312,8 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>3</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>1</successes>
+        <attempts>2</attempts>
         <check>Fate Pool + 2 vs DDC 14</check>
         <overcharge>DC + 6</overcharge>
       </abilitylevel>

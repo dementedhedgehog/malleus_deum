@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Monster Abilities</abilitygrouptitle>
+    <abilitygroupid>monster</abilitygroupid>
+    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	These skills describe monsters special abilities.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Poisonous Bite</abilitytitle>
+    <abilityid>monster.poison_bite</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <inborn>true</inborn>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>2d4</damage>
+        <effect>Endurance Check vs 7 or target is Poisoned</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>2d4</damage>
+        <effect>Endurance Check vs 9 or target is Poisoned</effect>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>Std 2d8 + 3 vs opponents AC</check>
+        <damage>2d6</damage>
+        <effect>Endurance Check vs 10 or target is Poisoned</effect>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>2d8</damage>
+        <effect>Endurance Check vs 10 or target is Poisoned</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Web</abilitytitle>
+    <abilityid>monster.web</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <inborn>true</inborn>
+    <abilitydescription>
+      <p noindent="true">
+	The monster can shoot a sticky web-like substance that slows
+	and constrains the target.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 vs opponents Speed or Agility</check>
+        <effect>Target is Slowed</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 + 2 vs opponents Speed or Agility</check>
+        <effect>Target is Slowed</effect>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>Std 2d8 + 4 vs opponents Speed or Agility</check>
+        <effect>Target is Slowed</effect>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>Std 2d8 + 6 vs opponents Speed or Agility</check>
+        <effect>Target is Slowed</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+</abilitygroup>
