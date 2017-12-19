@@ -34,8 +34,9 @@ from latex_formatter import LatexFormatter
 TEXT_TAGS = (
     "mbtitle", "mbtags",
     "mbac", "mbhp", "mbmove",
-    "mbstr", "mbend", "mbag", "mbspd", "mbluck", "mbwil", "mbper",
-    "mbabilities", "mbaspects", "mbdescription",
+    "mbstr", "mbend", "mbag", "mbspd", "mbluck", "mbwil", "mbper",    
+    "mbabilities", "mbaspects", "mbdescription", "mbinitiativebonus",
+    "npcname", "npchps", "mbresolve", "mbmagic",
     "sectiontitle", "subsectiontitle", "subsubsectiontitle",
     "descriptions", "term", "description",
     "p",
