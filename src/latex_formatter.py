@@ -1797,7 +1797,11 @@ class LatexFormatter:
         return
     
     def start_mbdescription(self, mbdescription):
-        self.latex_file.write(r"\textbf{Description:}\hfill\break") # \vspace{-0.62cm}")
+        self.latex_file.write(r"\vspace{1.0mm}"
+                              r"\textbf{Description:}"
+                              r"\hfill"
+                              r"\break"
+                              r"\vspace{-0.3cm}")
         return
     def end_mbdescription(self, mbdescription):
         self.latex_file.write("\n")
