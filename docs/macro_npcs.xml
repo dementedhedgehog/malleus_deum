@@ -1,0 +1,97 @@
+
+{% macro build_npcs(npc_gang_id) %}
+
+{% set npc_gang = db.npc_gangs[npc_gang_id] -%}
+{%- if npc_gang -%}
+{% for npc_like in npc_gang %}
+
+{%- if npc_like.is_npc_group() -%}
+{% set npc_group = npc_like -%}
+
+<monsterblock>
+  <mbtitle>{{ npc_group.get_title() }}</mbtitle>
+  <mbtags>{{ npc_group.get_tags_str() }}</mbtags>
+  <mbac>{{ npc_group.get_ac() }}</mbac>
+  <mbhp>{{ npc_group.get_health() }}/{{ npc_group.get_stamina() }}</mbhp>
+  <mbmove>{{ npc_group.get_move() }}</mbmove>
+  <mbinitiativebonus>{{ npc_group.get_initiative_bonus() }}</mbinitiativebonus>
+  <mbresolve>{{ npc_group.get_resolve_pool() }}</mbresolve>
+  <mbmagic>{{ npc_group.get_magic_pool() }}</mbmagic>
+  <mbstr>9</mbstr>
+  <mbend>10</mbend>
+  <mbag>11</mbag>
+  <mbspd>12</mbspd>
+  <mbluck>9</mbluck>
+  <mbwil>8</mbwil>
+  <mbper>10</mbper>
+  <mbabilities>
+    {% for ability_level_id in npc_group.get_ability_level_ids() %}
+    <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
+    {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
+    <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
+    {% endif -%}       
+    {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
+    <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
+    {% endif -%}       
+    {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
+    <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
+    {% endif -%}
+    {% endfor %}
+  </mbabilities>
+  {% if npc_group.get_aspects_str() != "" %}
+  <mbaspects>{{ npc_group.get_aspects_str() }}</mbaspects>
+  {% endif %}
+  
+  {% for npc in npc_group.npcs -%}
+  <mbnpc>
+    <npcname>{{ npc.get_name() }}</npcname>
+    <npchps>{{ npc_group.get_health() }}/{{ npc_group.get_stamina() }}</npchps>
+  </mbnpc>
+  {%- endfor %}  
+</monsterblock>
+
+
+{% else %}
+{% set npc = npc_like -%}
+<monsterblock>
+  {% if npc.get_name() %}  
+  <mbtitle>{{ npc.get_name() }} - {{ npc.get_title() }}</mbtitle>
+  {%- else %}
+  <mbtitle>{{ npc.get_title() }}</mbtitle>
+  {% endif %}       
+  <mbtags>{{ npc.get_tags_str() }}</mbtags>
+  <mbac>{{ npc.get_ac() }}</mbac>
+  <mbhp>{{ npc.get_health() }}/{{ npc.get_stamina() }}</mbhp>  
+  <mbmove>{{ npc.get_move() }}</mbmove>
+  <mbinitiativebonus>{{ npc.get_initiative_bonus() }}</mbinitiativebonus>
+  <mbresolve>{{ npc.get_resolve_pool() }}</mbresolve>
+  <mbmagic>{{ npc.get_magic_pool() }}</mbmagic>
+  <mbstr>9</mbstr>
+  <mbend>10</mbend>
+  <mbag>11</mbag>
+  <mbspd>12</mbspd>
+  <mbluck>9</mbluck>
+  <mbwil>8</mbwil>
+  <mbper>10</mbper>
+  <mbabilities>
+    {% for ability_level_id in npc.get_ability_level_ids() %}
+    <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
+    {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
+    <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
+    {% endif -%}       
+    {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
+    <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
+    {% endif -%}       
+    {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
+    <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
+    {% endif -%}
+    {% endfor %}
+  </mbabilities>
+  {% if npc.get_aspects_str() != "" %}
+  <mbaspects>{{ npc.get_aspects_str() }}</mbaspects>
+  {% endif %}  
+</monsterblock>    
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endmacro %}
