@@ -528,8 +528,6 @@ class AbilityLevel:
         if ((level.successes > 0 or level.attempts > 0 or level.failures > 0)
             and
             (level.check is None or level.check.strip() == "")):
-            print level.check is not None
-            print level.check
             raise Exception("Ability level %s (%s) requires mastery to level up but has "
                             "no check." % (level.get_title(), level.get_id()))
            
@@ -981,7 +979,6 @@ class AbilityGroupInfo:
            else:
                #
                raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
-
         return
 
 
@@ -1080,18 +1077,20 @@ class AbilityGroups:
     def __init__(self):
         self.ability_groups = []
         self.ability_lookup = {}
+        #self.ability_level_lookup = {}
         return
 
     def __iter__(self):
         return iter(self.ability_groups)
 
+    def get_ability_level(self, ability_level_id):
+        return ability_level_lookup[ability_level_id]
     
     def load(self, abilities_dir, fail_fast):
         
         # load all the ability groups
         for xml_fname in listdir(abilities_dir):
 
-            print xml_fname
             if not xml_fname.endswith(".xml"):
                 continue
 
@@ -1109,7 +1108,7 @@ class AbilityGroups:
             # populate the ability_id -> ability lookup table
             for ability in ability_group.get_abilities():
                 self.ability_lookup[ability.get_id()] = ability
-
+                
         # inform each ability about abilities that require it as a prerequisite
         for ability_group in self.ability_groups:
             for ability in ability_group.get_abilities():
