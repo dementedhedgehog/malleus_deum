@@ -152,22 +152,11 @@ class ModifiedAbilityLevel:
 
 
     def set_innate(self):              
-        print "Set %s innate " % self.get_title()
-
         self.innate_flag = True
         self.martial_point_modifier -= self.get_martial_points() 
         self.general_point_modifier -= self.get_general_points() 
         self.lore_point_modifier -= self.get_lore_points() 
         self.magical_point_modifier -= self.get_magical_points()
-
-        print "martial %s " % self.get_martial_points() 
-        print "general %s " % self.get_general_points() 
-        print "lore %s" % self.get_lore_points() 
-        print "megical %s" % self.get_magical_points()
-
-        #if "Club" in self.get_title():
-        print "--------------------"
-        print "Set level innate %s" % self.ability_level.get_title()
 
         # if an ability level is innate for a character then so are its
         # previous levels.
@@ -270,9 +259,6 @@ class ModifiedAbilityLevel:
         
         lvl_num = self.ability_level.get_level_number()
 
-        # if d:
-        #     print lvl_num
-
         if lvl_num <= 1:
             previous_level_is_innate = True
         else:
@@ -322,18 +308,6 @@ class ModifiedAbilityLevel:
         for prereq_tag in self.ability_level.get_prerequisite_tags():
             if prereq_tag not in self.archetype.tags:
                 has_prerequisite_tags = False
-
-        # if d:
-        #     print self.get_title()
-        #     print "previous level is innate %s" % previous_level_is_innate
-        #     print "has prereqs %s " % has_prerequisite_tags
-        #     print "all_prerequisites_are_innate %s" % all_prerequisites_are_innate
-        #     print "point cost is zero %s " % (self.get_total_point_cost() == 0)
-        #     print "\tmartial %s " % self.get_martial_points()
-        #     print "\tgeneral %s " % self.get_general_points()
-        #     print "\tlore %s " % self.get_lore_points()
-        #     print "\tmagical %s " % self.get_magical_points()
-                
 
         return (previous_level_is_innate and
                 has_prerequisite_tags and
@@ -978,6 +952,7 @@ class Archetype:
         self.aspect_examples = None
         self.starting_cash = None
         self.starting_gear = None
+        #self.initial_abilities = None
 
         self.height = None
         self.weight = None
@@ -1089,6 +1064,9 @@ class Archetype:
     def get_description(self):
         return self.description
         
+    # def get_initial_abilities(self):
+    #     return self.initial_abilities
+        
     def has_tags(self):
         return len(self.tags) > 0
 
@@ -1178,8 +1156,17 @@ class Archetype:
         for ability in self.modified_abilities_lookup.values():
             for ability_level in ability:
                 ability_level.check_consistency()
-        return True
 
+        self.check_consistency()                
+        return True
+    
+
+    def check_consistency(self):
+        
+        # if self.initial_abilities is not None:
+        #     raise Exception("Missing 'initial_abilities' in file: %s" % self.fname)
+
+        return
 
     #def _set_ability_prereqs_innate_for_innate_abilities(self):
     # def set_innate_abilities(self):
@@ -1291,6 +1278,12 @@ class Archetype:
 
            elif tag == "archetypetags":
                self.tags.load(child, fail_fast)
+
+           # elif tag == "archetypeinitialabilities":
+           #     if self.initial_abilities is not None:
+           #         raise NonUniqueTagError(tag, self.fname, child.sourceline)
+           #     else:
+           #         self.initial_abilities = children_to_string(child)
 
            elif tag == "levelprogressiontable":
                self.level_progression_table.load(child, fail_fast)
