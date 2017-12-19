@@ -33,10 +33,7 @@ sys.path.append(third_party_dir)
 from jinja2 import Template, Environment, FileSystemLoader
 
 from doc import Doc
-from abilities import AbilityGroups
-from monsters import MonsterGroups
-from archetypes import Archetypes
-from patrons import Patrons
+from db import DB
 from latex_formatter import LatexFormatter
 from html_formatter import HtmlFormatter
 from spreadsheet_writer import write_summary_to_spreadsheet
@@ -49,8 +46,8 @@ build_dir = join(root_dir, "build")
 docs_dir = join(root_dir, "docs")
 pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
-archetype_template_fname = "archetype_template.xml"
-patron_template_fname = "patron_template.xml"
+archetype_template_fname = join("docs", "archetype_template.xml")
+patron_template_fname = join("docs", "patron_template.xml")
 
 # latex preamble for the index.
 index_str = """
@@ -279,16 +276,9 @@ def create_index(verbosity=0):
 
 
 def build_pdf_doc(template_fname, doc_fname, verbosity,
+                  db,
                   archetype=None,
                   patron=None):
-
-    # archetypes all use the same template.. but we don't want to 
-    # put them in the same doc file.
-    #if archetype is not None:
-    #    doc_fname = archetype.get_id()
-    #else:
-    #    doc_fname = template_fname
-
     # base name .. no extension
     doc_base_fname, _ = splitext(basename(doc_fname))
     xml_fname = join(build_dir, "%s.xml" % doc_base_fname)
@@ -304,15 +294,18 @@ def build_pdf_doc(template_fname, doc_fname, verbosity,
     print("===============================================")
 
     # get the path to the xml filename, e.g. docs/core.xml
-    full_template_fname = join(docs_dir, template_fname)
+    #full_template_fname = join(docs_dir, template_fname)
+
+    print template_fname
 
     # the very first thing we do is run the xml through a template engine 
     # (Doing it like this allows us to include files relative to the doc 
     # dir using Jinjas include directive).
     template = jinja_env.get_template(template_fname)
-    xml = template.render(ability_groups = ability_groups,
-                          monster_groups = monster_groups,
-                          archetypes=archetypes,
+    xml = template.render(db=db,
+                          monster_groups=db.monster_groups,                          
+                          ability_groups=db.ability_groups,
+                          npc_gangs=db.npc_gangs,
                           archetype=archetype,
                           patron=patron,
                           config=config,
@@ -354,7 +347,7 @@ def build_pdf_doc(template_fname, doc_fname, verbosity,
 
     # build the latex document by converting the xml into tex
     with codecs.open(tex_fname, "w", "utf-8") as f:           
-        latex_formatter = LatexFormatter(f)
+        latex_formatter = LatexFormatter(f, db)
         errors = doc.format(latex_formatter)
         if len(errors) > 0:
             print("Errors:")
@@ -527,34 +520,15 @@ if __name__ == "__main__":
     if not exists(pdfs_dir):
         mkdir(pdfs_dir)
 
-    # load the abilities
-    abilities_dir = join(root_dir, "abilities")
-    ability_groups = AbilityGroups()
-    if not ability_groups.load(abilities_dir, fail_fast = fail_fast) and fail_fast:
-        print("Failing fast")
-        sys.exit()
+    # load the game database (archetypes, abilties etc).
+    db = DB()
+    db.load(root_dir=root_dir, fail_fast=fail_fast)
     
-    # load the archetypes
-    archetype_dir = join(root_dir, "archetypes")
-    archetypes = Archetypes()
-    archetypes.load(ability_groups, archetype_dir, fail_fast=fail_fast)
-
-    # load the patrons
-    patrons_dir = join(root_dir, "patrons")
-    patrons = Patrons()
-    patrons.load(patrons_dir=patrons_dir,
-                 ability_groups=ability_groups,
-                 fail_fast=fail_fast)
-
-    # load the monsters
-    monsters_dir = join(root_dir, "monsters")
-    monster_groups = MonsterGroups()
-    monster_groups.load(monsters_dir, fail_fast=fail_fast)
-
     # get a jinja environment
-    docs_dir  = join(root_dir, "docs")
+    #docs_dir  = join(root_dir, "docs")
     jinja_env = Environment(
-        loader = FileSystemLoader(docs_dir),
+        #loader = FileSystemLoader(docs_dir),
+        loader = FileSystemLoader(root_dir),
         keep_trailing_newline = True,
         trim_blocks = False,
         lstrip_blocks = False)
@@ -572,26 +546,48 @@ if __name__ == "__main__":
 
 
     # Build latex/pdf files.
-    for doc_xml_fname, _, _ in config.files_to_build:        
-        build_pdf_doc(doc_xml_fname,
+    for doc_xml_fname, _, _ in config.files_to_build:
+        full_doc_xml_fname = join("docs", doc_xml_fname)        
+        build_pdf_doc(full_doc_xml_fname,
                       doc_fname=doc_xml_fname,
+                      db=db,
                       verbosity=verbosity)
 
     # Build latex/pdf archetype files.
     for archetype_id, _, _ in config.archetypes_to_build:
-        archetype = archetypes[archetype_id]
-        build_pdf_doc(archetype_template_fname,
+        archetype = db.archetypes[archetype_id]
+        build_pdf_doc(template_fname=archetype_template_fname,                      
                       doc_fname=archetype.get_id(),
-                      archetype=archetype,
-                      verbosity=verbosity)
+                      verbosity=verbosity,
+                      db=db,
+                      archetype=archetype)
 
     # Build latex/pdf patron files.
     for patron_id, _, _ in config.patrons_to_build:
-        patron = patrons[patron_id]
-        build_pdf_doc(patron_template_fname,
+        patron = db.patrons[patron_id]
+        build_pdf_doc(template_fname=patron_template_fname,
                       doc_fname=patron.get_id(), 
-                      patron=patron,
+                      verbosity=verbosity,
+                      db=db,
+                      patron=patron)
+
+    # Build latex/pdf encounter files.
+    for encounter_id, _, _ in config.encounters_to_build:
+        encounter_fname = join("encounters",
+                               encounter_id,
+                               "%s.xml" % encounter_id)
+        build_pdf_doc(encounter_fname,
+                      db=db,
+                      doc_fname=encounter_fname, 
                       verbosity=verbosity)
+
+   # Build latex/pdf adventure files.
+    # for encounter_id, _, _ in config.encounters_to_build:
+    #     encounter = encounters[encounter_id]
+    #     build_pdf_doc(encounter_template_fname,
+    #                   doc_fname=encounter.get_id(), 
+    #                   encounter=encounter,
+    #                   verbosity=verbosity)
 
     for doc_xml_fname, _, _ in config.files_to_build:
         build_html_doc(doc_xml_fname, verbosity=verbosity)
@@ -608,5 +604,7 @@ if __name__ == "__main__":
 
     # save summary details to a spreadsheet (for analysis)
     spreadsheet_fname = join(build_dir, "summary.xlsx")
-    write_summary_to_spreadsheet(spreadsheet_fname, ability_groups, archetypes)
+    write_summary_to_spreadsheet(spreadsheet_fname,
+                                 ability_groups=db.ability_groups,
+                                 archetypes=db.archetypes)
 
