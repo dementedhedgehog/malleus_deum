@@ -4,7 +4,7 @@
     <vspace>2</vspace>
     <title>Malleus Deum</title>
     <vspace>6</vspace>
-    <img src="./resources/dragon_title.png" scale="0.3"/>
+    <img src="./resources/dragon_title/dragon_title.png" scale="0.3"/>
     <vspace>6</vspace>
     <author>Blaize A. Rhodes, and</author>
     <vspace>1</vspace>
@@ -51,7 +51,7 @@
       </p>
 
       <figure position="!b">
-        <img src="./resources/albrecht_durer_nativity.png" scale="0.4"/>
+        <img src="./resources/durer_nativity/durer_nativity.png" scale="0.4"/>
       </figure>
     </section>
 
@@ -252,7 +252,7 @@
       </p>
 
       <playexample>
-        <img src="./resources/dwarf_portrait.png" scale="0.6">
+        <img src="./resources/dwarf_portrait/dwarf_portrait.png" scale="0.6">
           Young Dourli, Dwarven Shield Guard
         </img>
       </playexample>
@@ -340,7 +340,7 @@
       </subsection>
 
       <figure position="b">
-        <img src="./resources/footer2.png" scale="1.4"/>
+        <img src="./resources/footer/footer.png" scale="0.45"/>
       </figure>
 
     </section>
@@ -632,7 +632,7 @@
     </section>
 
 
-    {% include "fragment_character_creation.xml" %}
+    {% include "docs/fragment_character_creation.xml" %}
 
   </chapter>
 
@@ -939,8 +939,8 @@
           </p>
         </playexample>      
 
-        {% include "tables/std_check_difficulties.xml" %}
-        {% include "tables/attribute_modifiers.xml" %}
+        {% include "docs/tables/std_check_difficulties.xml" %}
+        {% include "docs/tables/attribute_modifiers.xml" %}
       </subsection>
 
       
@@ -1459,7 +1459,7 @@ do this the initial check is modified by +2.
         </p>
       </subsection>
       
-      {% include "tables/random_aspect_table.xml" %}
+      {% include "docs/tables/random_aspect_table.xml" %}
 
     </section>
 
@@ -1566,6 +1566,16 @@ do this the initial check is modified by +2.
           The character has no fear and makes no break checks.
         </description>    
         
+        <term>Flanked</term>
+        <description>
+          <indexentry>Flanked Condition</indexentry> 
+          <indexentry>Conditions<subentry>Flanked</subentry></indexentry>       
+          The character is being attacked from multiple sides simultaneoulsy.
+	  This drastically reduces their ability to defend themselves and they
+	  suffer $-3$ to their armour class while flanked.  See 
+	  Section<ref>sec:flanking</ref> on page<pageref>sec:flanking</pageref>
+        </description>    
+        
         <term>Invisible</term>    
         <description>
           <indexentry>Invisible Condition</indexentry> 
@@ -1613,6 +1623,16 @@ do this the initial check is modified by +2.
           check at the start of each turn in combat and if they fail they perform
           checks that turn at -2.
         </description>
+
+        <term>Slowed</term>
+        <description>
+          <indexentry>Slowed Condition</indexentry> 
+          <indexentry>Conditions<subentry>Slowed</subentry></indexentry>       
+          For some reason the character has trouble moving.  They must make
+	  an Agility Check vs 10 or their move is reduced by 4.
+        </description>
+
+	
 
         <term>Tired</term>
         <description>
@@ -1690,7 +1710,7 @@ do this the initial check is modified by +2.
 	  surprised.
         </p>
 
-        {% include "tables/awareness.xml" %}
+        {% include "docs/tables/awareness.xml" %}
       </subsection>
 
       <subsection>
@@ -1827,14 +1847,14 @@ do this the initial check is modified by +2.
         Movement, Miscellaneous Actions, and Prepared Actions which we discuss later. 
       </p>
 
-      {% include "tables/turn_order.xml" %}
+      {% include "docs/tables/turn_order.xml" %}
 
       <figure position="tb">
-        <img src="./resources/footer.png" scale="0.4"/>
+        <img src="./resources/footer/footer.png" scale="0.4"/>
       </figure>
 
       <figure position="!t">
-        <img src="./resources/death.png" scale="0.8"/>
+        <img src="./resources/death/death.png" scale="0.8"/>
       </figure>
     </section>
 
@@ -2077,8 +2097,8 @@ do this the initial check is modified by +2.
           can be found in Tables <ref>table:{{ doc_name }}-to-hit-consequences</ref>
           and <ref>table:{{ doc_name }}-to-hit-consequences</ref>.
         </p>
-        {% include "tables/to_hit_consequences.xml" %}
-        {% include "tables/to_hit_benefits.xml" %}
+        {% include "docs/tables/to_hit_consequences.xml" %}
+        {% include "docs/tables/to_hit_benefits.xml" %}
       </subsection>      
     </section>
 
@@ -2119,7 +2139,7 @@ do this the initial check is modified by +2.
           difficulty.
         </p>
 
-        {% include "tables/combat_modifiers.xml" %}    
+        {% include "docs/tables/combat_modifiers.xml" %}    
 
         <p>
           <indexentry>Cover</indexentry>
@@ -2151,6 +2171,44 @@ do this the initial check is modified by +2.
         </p>
 
       </subsection>
+
+
+      <subsection>
+        <subsectiontitle>Flanking <label>sec:flanking</label></subsectiontitle>
+
+        <p>
+	  A character is said to be <defn>Flanked</defn> if it is being attacked
+	  from two or more sides at once.  Flanked characters have +3 to hit.	  
+        </p>
+
+	<p>
+	  When playing using theatre of the mind, whether or not a character is flanked
+	  is determined by role-playing and GM fiat, <eg/> the GM might require the character
+	  makes a check to leap over a table to get into a flanking position.
+	</p>
+
+	<p>
+	  When using a grid, a character <emph>X</emph> is said to be flanked by two other
+	  characters <emph>A</emph> and <emph>B</emph> if the angle ∠AXB > 90°.  For
+	  example in Figure<ref>figure:not-flanked</ref> <emph>X</emph> is not flanked because
+	  ∠AXB = 90°.  While <emph>X</emph> is flanked in Figure<ref>figure:flanked</ref> as
+	  the angle ∠AXC > 90°.  Note that when <emph>X</emph> is flanked everyone gets the
+	  bonus to attack, including <emph>B</emph>.
+	</p>
+
+      <figure position="!b">
+        <img src="./resources/flanking/not_flanked.png" scale="1.0"/>
+	<caption>Not Flanked</caption>
+	<label>figure:not-flanked</label>	
+      </figure>
+	
+      <figure position="!b">
+        <img src="./resources/flanking/flanked.png" scale="1.0"/>
+	<caption>Flanked</caption>
+	<label>figure:flanked</label>	
+      </figure>	
+      </subsection>
+      
     </section>
 
 
@@ -2213,7 +2271,7 @@ do this the initial check is modified by +2.
 	down by Orcs then roll on the Near Death Table.  
       </p>
       
-      {% include "tables/near_death_table.xml" %}            
+      {% include "docs/tables/near_death_table.xml" %}            
     </section>
     
 
@@ -2238,23 +2296,20 @@ do this the initial check is modified by +2.
 	  The Break Check is not an action.
           <equation>
             <line>Break if:</line>
-            <line>Resolve Pool <leqqsymbol/> Break DC</line>
+            <line>Resolve Pool <leqqsymbol/> DC 10</line>
           </equation>      
         </p>
 
         <p>
           As characters fail break checks they gain conditions that limit what they can
-          do during combat, and subsequent break checks become more difficult, see
-          Table<ref>table:break-difficulties</ref> on
+          do during combat, see Table<ref>table:break-difficulties</ref> on
           page<pageref>table:break-difficulties</pageref> for a list of break check
           difficulties and conditions.
         </p>
 
         <p>
-          For example, looking at the table, the first time a character makes a break
-          check during combat they do so with a difficulty of 8.  If they fail they gain
-          the Checked condition and the next break check will be made with a difficulty of
-          12.
+          For example, looking at the table, the first time a character fails a break check
+	  they gain the Checked condition.
         </p>
 
         <p>
@@ -2263,7 +2318,7 @@ do this the initial check is modified by +2.
           visage of the characters opponents, the party being in good spirits etc.
         </p>    
 
-        {% include "tables/break_difficulties.xml" %}    
+        {% include "docs/tables/break_difficulties.xml" %}    
 
         <p>
           Break checks for players should be made at the GMs discretion.  But some
@@ -2319,7 +2374,7 @@ do this the initial check is modified by +2.
     </section>
 
 
-    {% include "fragment_pursuit.xml" %}
+    {% include "docs/fragment_pursuit.xml" %}
 
 
     <section>
@@ -2400,7 +2455,7 @@ do this the initial check is modified by +2.
 
   <chapter>
     <chaptertitle>The Laws of Magic<label>ch:magic</label></chaptertitle>    
-    {% include "fragment_magic.xml" %}
+    {% include "docs/fragment_magic.xml" %}
   </chapter>
 
 
@@ -2611,7 +2666,7 @@ do this the initial check is modified by +2.
     <chaptertitle>Equipment</chaptertitle>
 
 
-    {% include "fragment_equipment_list.xml" %}
+    {% include "docs/fragment_equipment_list.xml" %}
 
     <section>
       <sectiontitle>Encumbrance<label>sec:encumbrance</label></sectiontitle>
