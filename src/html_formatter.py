@@ -1462,6 +1462,28 @@ class HtmlFormatter:
                               r"\\[0.1cm]"
                               "\n")
         return
+
+
+    def start_mbmagic(self, mbmagic):
+        #self.latex_file.write(r"\textbf{Magic Pool: }\begin{mbmagic}")
+        return
+    def end_mbmagic(self, mbmagic):
+        #self.latex_file.write("\\end{mbmagic}\\vspace{0.1cm}\\hfill\\break{}")
+        return
+    
+    def start_mbresolve(self, mbresolve):
+        #self.latex_file.write(r"\textbf{Resolve Pool: }\begin{mbresolve}")
+        return
+    def end_mbresolve(self, mbresolve):
+        #self.latex_file.write("\\end{mbresolve}\\vspace{0.1cm}\\hfill\\break{}")
+        return    
+
+    def start_mbinitiativebonus(self, mbresolve):
+        #self.latex_file.write(r"\textbf{Initiative Bonus: }\begin{mbresolve}")
+        return
+    def end_mbinitiativebonus(self, mbresolve):
+        #self.latex_file.write("\\end{mbresolve}\\vspace{0.1cm}\\hfill\\break{}")        
+        return
     
     def start_mbstr(self, mbstr):
         self.html_file.write(
@@ -1548,3 +1570,55 @@ class HtmlFormatter:
     def end_mbdescription(self, mbdescription):
         self.html_file.write("\n")
         return
+
+    
+    def start_npcs(self, npcs):
+        self.html_file.write(r"NPCS!!")
+        return
+
+    def end_npcs(self, npcs):
+        self.html_file.write("END NPCS!!\n")
+        return
+    
+    
+    def start_npcgroup(self, npcs):
+        self.html_file.write(r"X")
+        return
+
+    def end_npcgroup(self, npcs):
+        self.html_file.write("XX\n")
+        return
+
+    
+    def start_npc(self, npcs):
+        self.html_file.write(r"X")
+        return
+
+    def end_npc(self, npcs):
+        self.html_file.write("XX\n")
+        return
+
+    def start_name(self, name):
+        self.html_file.write(r"X")
+        return
+
+    def end_name(self, name):
+        self.html_file.write("XX\n")
+        return
+
+    start_health = no_op
+    end_health = no_op
+    start_stamina = no_op
+    end_stamina = no_op
+
+
+    def start_monsterid(self, name):
+        self.html_file.write(r"X")
+        return
+
+    def end_monsterid(self, name):
+        self.html_file.write("XX\n")
+        return
+    
+
+    

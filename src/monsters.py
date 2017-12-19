@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 from os.path import join
 from os import listdir
+from os.path import abspath, dirname
 
 from utils import (
     parse_xml, validate_xml, children_to_string, contents_to_string,
     COMMENT, convert_str_to_int
 )
-#, node_to_string    
 
 
 class MonsterGroups:
@@ -19,11 +19,17 @@ class MonsterGroups:
         self.monster_lookup = {}
         return
 
-    def __iter__(self):
-        return iter(self.monster_groups)
-
+    #def __iter__(self):
+    #    return iter(self.monster_groups)
+    
+    def __len__(self):
+        count = 0
+        for group in self.monster_groups:
+            count += len(group)
+        return count
     
     def load(self, monsters_dir, fail_fast):
+        result = True
         
         # load all the monster groups
         for xml_fname in listdir(monsters_dir):
@@ -35,8 +41,11 @@ class MonsterGroups:
             
             xml_fname = join(monsters_dir, xml_fname)
             monster_group = MonsterGroup(xml_fname)
-            if not monster_group.validate() and fail_fast:
-                return False
+            if not monster_group.validate():
+                result = False
+                if fail_fast:
+                    raise Exception("Errors in %s" % xml_fname)
+                
             monster_group.load()
 
             self.monster_groups.append(monster_group)
@@ -47,11 +56,11 @@ class MonsterGroups:
 
         # sort the groups
         self.monster_groups.sort()
+        return result
+    
 
-        return True
-
-    def get_monster_level_by_id(self, monster_level_id):
-        return monster_level_lookup[monster_level_id]
+    def get_monster_by_id(self, monster_id):
+        return self.monster_lookup[monster_id]
 
     def get_monster_groups(self):
         return self.monster_groups
@@ -75,7 +84,7 @@ class MonsterGroupInfo:
         self.title = None
         self.monster_group_id = None
         self.description = None
-        self.family = None # one of Combat, Mundane or Magic.
+        #self.family = None # one of Combat, Mundane or Magic.
         return
 
     def get_title(self):
@@ -126,9 +135,9 @@ class MonsterGroupInfo:
                    # save the id!
                    self.monster_group_id = monster_group_id
                    
-           elif tag == "monstergroupfamily":
-                self.family = child.text
-                assert self.family in ("Mundane", "Combat", "Magic")
+           # elif tag == "monstergroupfamily":
+           #      self.family = child.text
+           #      assert self.family in ("Mundane", "Combat", "Magic")
                 
 
            elif tag == "monstergroupdescription":
@@ -136,11 +145,6 @@ class MonsterGroupInfo:
                    raise Exception("Only one monstergroupdescription per file.")
                else:                   
                    self.description = contents_to_string(child)
-                   # children_to_string(child)
-                   #print "---"
-                   #print self.description
-                   #print contents_to_string(child)
-                   #print child
 
            elif tag is COMMENT:
                pass # ignore comments!
@@ -153,7 +157,6 @@ class MonsterGroupInfo:
 
 
 class MonsterGroup:
-    xsd_schema = None
 
     def __init__(self, fname):
         self.fname = fname
@@ -172,14 +175,16 @@ class MonsterGroup:
         valid = True
         error_log = validate_xml(self.doc)
         if error_log is not None:
-            print("Errors (XSD)!")
             valid = False
+            print("Errors (XSD)!")
             print("\t%s" % error_log)
         return valid
 
+    # def get_family(self):
+    #     return self.info.family
 
-    def get_family(self):
-        return self.info.family
+    def __len__(self):
+        return len(self.monsters)
     
     def __iter__(self):
         return iter(self.monsters)
@@ -221,7 +226,7 @@ class MonsterGroup:
                    self.info.load(child)
 
            elif tag == "monster":
-               monster = Monster(self.fname)
+               monster = Monster(fname=self.fname)
                monster.load(child)
                self.monsters.append(monster)
 
@@ -230,133 +235,13 @@ class MonsterGroup:
 
            else:
                raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
+
+        assert self.info.title
         return
 
     def get_rank(self):
         return self.info.rank
     
-        
-# class MonsterClass:
-#     NONE = "None"
-
-#     # melee monsters
-#     AMBUSH = "Ambush"
-#     SURPRISE = "Surprise"
-#     INITIATIVE = "Initiative"
-#     TALK = "Talk"
-#     #ACT = "Act"
-#     #RUN = "Run"
-#     #FIGHT_RANGED = "Fight-Ranged"
-#     FIGHT_REACH = "Fight-Reach"
-#     #FIGHT = "Fight"
-#     START = "Start"
-#     FAST = "Fast"
-#     MEDIUM = "Medium"
-#     SLOW = "Slow"
-#     RESOLUTION = "Resolution"
-#     REACTION = "Reaction"
-#     NON_COMBAT = "Non-Combat"
-
-#     # misc monsters
-#     LORE = "Lore"
-
-#     @classmethod
-#     def to_string(cls, monster_class):
-#         if monster_class is None:
-#             return MonsterClass.NONE
-#         return cls._names[stage]
-
-#     @staticmethod
-#     def get_symbol(monster_class):
-        
-#         if monster_class is not None:
-#             monster_class = monster_class.strip()
-
-#         if monster_class == "none":            
-#             symbol_str = "NONE!"
-#             raise Exception("X")
-#         elif monster_class == MonsterClass.AMBUSH:
-#             monster_cls = "<ambushsymbol/>"
-#         elif monster_class == MonsterClass.SURPRISE:
-#             symbol_str = "<surprisesymbol/>"
-#         elif monster_class == MonsterClass.INITIATIVE:
-#             symbol_str = "<initiativesymbol/>"
-#         elif monster_class == MonsterClass.TALK:
-#             symbol_str = "<talksymbol/>"
-#         elif monster_class == MonsterClass.START:
-#            symbol_str = "<startsymbol/>"
-#         elif monster_class == MonsterClass.FAST:
-#            symbol_str = "<fastsymbol/>"
-#         elif monster_class == MonsterClass.MEDIUM:
-#            symbol_str = "<mediumsymbol/>"
-#         elif monster_class == MonsterClass.SLOW:
-#            symbol_str = "<slowsymbol/>"
-            
-#         #elif monster_class == MonsterClass.ACT:
-#         #    symbol_str = "<actsymbol/>"
-#         #elif monster_class == MonsterClass.RUN:
-#         #    symbol_str = "<runsymbol/>"
-#         #elif monster_class == MonsterClass.FIGHT_RANGED:
-#         #    symbol_str = "<fightrangedsymbol/>"
-#         elif monster_class == MonsterClass.FIGHT_REACH:
-#             symbol_str = "<fightreachsymbol/>"
-#         #elif monster_class == MonsterClass.FIGHT:
-#         #    symbol_str = "<fightsymbol/>"
-#         elif monster_class == MonsterClass.RESOLUTION:
-#             symbol_str = "<resolutionsymbol/>"
-#         elif monster_class == MonsterClass.REACTION:
-#             symbol_str = "<reactionsymbol/>"
-#         elif monster_class == MonsterClass.NON_COMBAT:
-#             symbol_str = "<noncombatsymbol/>"
-#         else:
-#             symbol_str = "UNKNOWN! %s" % monster_class
-#             raise Exception("X")
-#         return symbol_str
-
-    
-#     @staticmethod
-#     def load(monster_class):
-#         monster_cls = MonsterClass.NONE
-
-#         if monster_class is not None:
-#             monster_class = monster_class.lower().strip()
-
-#         if monster_class == "none":
-#             monster_cls = MonsterClass.NONE
-#         elif monster_class == "surprise":
-#             monster_cls = MonsterClass.SURPRISE
-#         elif monster_class == "initiative":
-#             monster_cls = MonsterClass.INITIATIVE
-#         elif monster_class == "talk":
-#             monster_cls = MonsterClass.TALK
-#         # elif monster_class == "act":
-#         #     monster_cls = MonsterClass.ACT
-#         # elif monster_class == "run":
-#         #     monster_cls = MonsterClass.RUN
-#         # elif monster_class == "fight":
-#         #     monster_cls = MonsterClass.FIGHT
-#         # elif monster_class == "fight-ranged":
-#         #     monster_cls = MonsterClass.FIGHT_RANGED
-#         elif monster_class == "fight-reach":
-#             monster_cls = MonsterClass.FIGHT_REACH
-#         elif monster_class == "resolution":
-#             monster_cls = MonsterClass.RESOLUTION
-#         elif monster_class == "reaction":
-#             monster_cls = MonsterClass.REACTION
-#         elif monster_class == "start":
-#             monster_cls = MonsterClass.START
-#         elif monster_class == "fast":
-#             monster_cls = MonsterClass.FAST
-#         elif monster_class == "medium":
-#             monster_cls = MonsterClass.MEDIUM
-#         elif monster_class == "slow":
-#             monster_cls = MonsterClass.SLOW
-#         elif monster_class == "non-combat":
-#             monster_cls = MonsterClass.NON_COMBAT
-#         else:
-#             monster_cls = MonsterClass.NONE
-#         return monster_cls
-
 
 class Monster:
     """
@@ -375,15 +260,60 @@ class Monster:
         self.tags = [] 
         self.aspects = []
         self.move = None
-        self.ac = 7 
+        self.ac = None
+        self.initiative_bonus = None
         self.health = 0
         self.stamina = 0
-        self.resolve = ""
-        self.abilities = ["Frog II", "Dog O"]
+        self.resolve = "X"
+        self.magic_pool = None
+        self.ability_level_ids = []
+        self.strength = None
+        self.endurance = None
+        self.agility = None
+        self.speed = None
+        self.luck = None
+        self.willpower = None
+        self.perception = None
         return
+
+    def validate(self):
+        assert self.ac is not None
+        assert self.magic_pool is not None
+        return
+
+    def get_strength(self):
+        return self.strength
+
+    def get_endurance(self):
+        return self.endurance
+
+    def get_agility(self):
+        return self.agility
+
+    def get_speed(self):
+        return self.speed
+
+    def get_luck(self):
+        return self.luck
+
+    def get_willpower(self):
+        return self.willpower
+
+    def get_perception(self):
+        return self.perception
 
     def get_move(self):
         return self.move
+
+    def get_initiative_bonus(self):
+        return self.initiative_bonus    
+
+    def get_resolve_pool(self):
+        print "getting resolve pool %s" % self.resolve
+        return self.resolve
+
+    def get_magic_pool(self):
+        return self.resolve
 
     def get_monster_class_symbol(self):
         return MonsterClass.get_symbol(self.monster_class)
@@ -391,14 +321,24 @@ class Monster:
     def get_description(self):
         return self.description
 
+    def get_ability_level_ids(self):
+        return self.ability_level_ids
+
     def get_title(self):
         return self.title
 
+    def get_initiative_bonus(self):
+        return self.initiative_bonus
+    
     def get_ac(self):
         return self.ac
 
-    def get_abilities_str(self):
-        return ", ".join(self.abilities)
+    # def get_abilities_str(self):
+    #     #return ", ".join(a.get_check() for a in self.ability_levels)
+    #     str_rep = ""
+    #     for ability_level_id in self.ability_level_ids:
+    #         ability_level.
+    
 
     def get_stamina(self):
         return self.stamina
@@ -412,8 +352,7 @@ class Monster:
     def get_monster_class(self):
         if self.monster_class is None:
             return "missing"
-
-        return self.monster_class.lower()            
+        return self.monster_class.lower()
 
     def has_prerequisites(self):
         has_prereqs = False
@@ -487,9 +426,76 @@ class Monster:
 
            elif tag == "monsterresolve":
                self.resolve = child.text
+               print "set resolve pool to [%s]" % self.resolve
+               #sys.exit()
+               
+           elif tag == "monstermagic":
+               self.magic_pool = child.text
 
            elif tag == "monsteraspect":
                self.aspects.append(child.text)
+
+           elif tag == "monsterinitiativebonus":
+               self.initiative_bonus = convert_str_to_int(child.text)
+
+           elif tag == "ac":
+               self.ac = convert_str_to_int(child.text)
+
+           elif tag == "strength":
+               if self.strength is not None:
+                   raise Exception("Only one strength per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.strength = convert_str_to_int(child.text)
+
+           elif tag == "endurance":
+               if self.endurance is not None:
+                   raise Exception("Only one endurance per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.endurance = convert_str_to_int(child.text)
+
+
+           elif tag == "agility":
+               if self.agility is not None:
+                   raise Exception("Only one agility per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.agility = convert_str_to_int(child.text)
+
+
+           elif tag == "speed":
+               if self.speed is not None:
+                   raise Exception("Only one speed per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.speed = convert_str_to_int(child.text)
+
+
+           elif tag == "luck":
+               if self.luck is not None:
+                   raise Exception("Only one luck per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.luck = convert_str_to_int(child.text)
+
+           elif tag == "willpower":
+               if self.willpower is not None:
+                   raise Exception("Only one strength per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.willpower = convert_str_to_int(child.text)
+
+           elif tag == "perception":
+               if self.perception is not None:
+                   raise Exception("Only one perception per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.perception = convert_str_to_int(child.text)
+
+           elif tag == "abilitylevelid":
+               ability_level_id = child.text
+               self.ability_level_ids.append(ability_level_id)
 
            elif tag == "monsterclass":
                self.monster_class = MonsterClass.load(child.text)
@@ -513,6 +519,7 @@ class Monster:
            else:
                raise Exception("UNKNOWN (%s) in file %s\n" % 
                                (child.tag, self.fname))
+        self.validate()
         return
 
     # def load_monster_levels(self, monster_levels):
@@ -548,19 +555,27 @@ class Monster:
 
 if __name__ == "__main__":
 
+    src_dir = abspath(join(dirname(__file__)))
+    root_dir = abspath(join(src_dir, ".."))    
+    
     monster_groups = MonsterGroups()
     monster_groups_dir = join(root_dir, "monsters")
-    monster_groups.load(monster_groups_dir, fail_fast = True)
+    monster_groups.load(monster_groups_dir, fail_fast=True)
     
     # build_dir = join(root_dir, "build")
     # #monster_groups.draw_all_skill_trees(build_dir)
     # #monster_groups.draw_skill_tree(build_dir)
     # #monster_groups.draw_skill_tree2(build_dir)
 
-    # for monster_group in monster_groups:
-    #     print(monster_group.get_title())
+    for monster_group in monster_groups:
 
-    #     for monster in monster_group:
+        for monster in monster_group:
+            print monster
+            print monster.get_id()
+            print monster.get_ac()
+
+            if monster.get_id() == "human.thug":
+                assert monster.get_ac() is not None
 
     #         if "eering" not in monster.get_title():
     #             continue
