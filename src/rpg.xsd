@@ -7,8 +7,7 @@
 
   <xs:simpleType name="idType">
     <xs:restriction base="xs:NCName"/>
-  </xs:simpleType>
-  
+  </xs:simpleType>  
 
   <xs:complexType name="measurementType">
     <xs:all>
@@ -634,6 +633,7 @@
         <xs:element name="fourcolumns" type="sectionType"/>    
         <xs:element name="list" type="itemizedListType"/>
         <xs:element name="img" type="imgType"/> 
+        <xs:element name="npcs" type="npcsType"/> 
         <xs:element name="table" type="tableType"/>
         <xs:element name="monsterblock" type="monsterblockType"/>
         <xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
@@ -1097,6 +1097,10 @@ labels and references.
           name="archetypetags"
           type="tagsType" 
           minOccurs="0" maxOccurs="unbounded"/>
+      <!-- <xs:element  -->
+      <!--     name="archetypeinitialabilities"  -->
+      <!--     type="blockType"  -->
+      <!--     minOccurs="0" maxOccurs="1"/>       -->
       <xs:element 
           name="levelprogressiontable" 
           type="levelprogressiontableType" 
@@ -1381,35 +1385,8 @@ labels and references.
 
 <!--
 
-name
-hp,
-stamina,
-morale
-resolve
-magic
-attacks..
 tags
 -->
-
-
-  <xs:complexType name="monsterStatsType">
-    <xs:sequence>
-      <xs:element 
-          name="hp" 
-          type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="ac" 
-          type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
-          name="resolve" 
-          type="xs:string" 
-          minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
-
-      
 
   <xs:element name="monstergroup" type="monsterGroupType"/>  
 
@@ -1426,7 +1403,6 @@ tags
     <xs:restriction base="xs:NCName"/>
   </xs:simpleType>
 
-
   <xs:complexType name="monsterType">
     <xs:sequence>
       <xs:element name="monstertitle" type="titleType"/>
@@ -1436,7 +1412,18 @@ tags
       <xs:element name="monstermove" type="xs:positiveInteger"/>
       <xs:element name="monsterhealth" type="xs:positiveInteger"/>
       <xs:element name="monsterstamina" type="xs:positiveInteger"/>
+      <xs:element name="monsterinitiativebonus" type="xs:string"/>
       <xs:element name="monsterresolve" type="xs:string"/>
+      <xs:element name="monstermagic" type="xs:string"/>
+      <xs:element name="ac" type="xs:positiveInteger"/>
+      <xs:element name="strength" type="xs:positiveInteger"/>
+      <xs:element name="endurance" type="xs:positiveInteger"/>
+      <xs:element name="agility" type="xs:positiveInteger"/>
+      <xs:element name="speed" type="xs:positiveInteger"/>
+      <xs:element name="luck" type="xs:positiveInteger"/>
+      <xs:element name="willpower" type="xs:positiveInteger"/>
+      <xs:element name="perception" type="xs:positiveInteger"/>
+      <xs:element name="abilitylevelid" type="idType" minOccurs="0" maxOccurs="unbounded"/>
       <!--
 	  <xs:element name="monsterclass" type="monsterclassType"/>
 	  <xs:element name="monsterlevels" type="monsterlevelsType"/>
@@ -1447,17 +1434,13 @@ tags
   </xs:complexType>
   
   
-
   <xs:complexType name="monstergroupinfoType">
     <xs:sequence>
       <xs:element name="monstergrouptitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="monstergroupid" type="monstergroupidType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="monstergroupdescription" 
-                  type="blockType" minOccurs="1" maxOccurs="1"/>
-
+      <xs:element name="monstergroupdescription" type="blockType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
-
 
 
 
@@ -1469,10 +1452,14 @@ tags
   <xs:complexType name="monsterblockType">
     <xs:sequence>
       <xs:element name="mbtitle" type="titleType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbsubtitle" type="titleType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="mbtags" type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbac"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbhp"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbmove" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbinitiativebonus" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbresolve" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbmagic" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbstr"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbend"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbag"  type="textType" minOccurs="1" maxOccurs="1"/>
@@ -1485,7 +1472,12 @@ tags
       -->
       <xs:element name="mbabilities"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbaspects" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="mbdescription" type="subsubsectionType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbdescription" type="subsubsectionType" minOccurs="0" maxOccurs="1"/>
+
+      <!--
+	  For npc instances..	  
+      -->
+      <xs:element name="mbnpc" type="mbnpcType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>  
 
@@ -1495,6 +1487,13 @@ tags
       <xs:element name="mbcheck" type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbdmg"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbeffect"  type="textType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="mbnpcType">
+    <xs:sequence>
+      <xs:element name="npcname" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="npchps" type="xs:string" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>  
 
@@ -1600,5 +1599,165 @@ tags
 
   <xs:element name="patron" type="patronType"/>
 
+
+  <!--
+
+    NPC Monster Block
+
+  -->
+
+  <xs:complexType name="dicepoolType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="d4" type="acronymType"/>
+      <xs:element name="d6" type="acronymType"/>
+      <xs:element name="d8" type="acronymType"/>
+      <xs:element name="d10" type="acronymType"/>
+      <xs:element name="d12" type="acronymType"/>
+      <xs:element name="d20" type="acronymType"/>      
+    </xs:choice>
+  </xs:complexType>
+
   
+  <!-- A single npc -->
+  <xs:complexType name="fullNpcType" mixed="true">
+    <xs:sequence>      
+      <xs:element 
+          name="monsterid" 
+          type="idType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="name" 
+          type="xs:string" 
+          minOccurs="0" maxOccurs="1"/>
+      
+      <!--
+      <xs:element 
+          name="patronid" 
+          type="idType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patrondescription" 
+          type="blockType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element
+	  name="abilitygroup"
+	  type="abilityGroupType"
+          minOccurs="1" maxOccurs="1"/>  
+	  -->
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="partialNpcType" mixed="true">
+    <xs:sequence>      
+      <xs:element 
+          name="name" 
+          type="xs:string" 
+          minOccurs="0" maxOccurs="1"/>
+      <xs:element 
+          name="health" 
+          type="xs:positiveInteger" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="stamina" 
+          type="xs:positiveInteger" 
+          minOccurs="1" maxOccurs="1"/>
+      <!--
+      <xs:element 
+          name="stamina" 
+          type="xs:positiveInteger" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="monsterid" 
+          type="monsterid" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patronid" 
+          type="idType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patrondescription" 
+          type="blockType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element
+	  name="abilitygroup"
+	  type="abilityGroupType"
+          minOccurs="1" maxOccurs="1"/>  
+	  -->
+    </xs:sequence>
+  </xs:complexType>
+  
+
+  <!-- group of heterogeneous npcs -->
+  <xs:complexType name="npcGroupType" mixed="true">
+    <xs:sequence>      
+      <xs:element
+          name="monsterid" 
+          type="idType" 
+          minOccurs="1" maxOccurs="1"/>
+      <!--
+      <xs:element 
+          name="resolve"
+          type="dicepoolType" 
+          minOccurs="1" maxOccurs="1"/>
+	  -->
+      <xs:element 
+          name="npc"
+          type="partialNpcType" 
+          minOccurs="1" maxOccurs="unbounded"/>
+      <!--
+      <xs:element 
+          name="patronid" 
+          type="idType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patrondescription" 
+          type="blockType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element
+	  name="abilitygroup"
+	  type="abilityGroupType"
+          minOccurs="1" maxOccurs="1"/>  
+	  -->
+    </xs:sequence>
+  </xs:complexType>  
+  
+  <!-- a group of homogeneous npcs -->
+  <xs:complexType name="npcsType" mixed="true">
+    <xs:sequence>     
+      <xs:element name="npcsid"
+		  type="idType"
+		  minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="npc" 
+          type="fullNpcType" 
+          minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element 
+          name="npcgroup" 
+          type="npcGroupType" 
+          minOccurs="0" maxOccurs="unbounded"/>
+      <!--
+      <xs:element 
+          name="patrontitle" 
+          type="titleType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patronid" 
+          type="idType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="patrondescription" 
+          type="blockType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element
+	  name="abilitygroup"
+	  type="abilityGroupType"
+          minOccurs="1" maxOccurs="1"/>  
+	  -->
+    </xs:sequence>
+  </xs:complexType>
+      
+  <!--
+      <xs:element name="npcs" type="npcsType"/>
+  -->   
 </xs:schema> 
