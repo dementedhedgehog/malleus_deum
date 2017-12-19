@@ -22,14 +22,30 @@
     <mbac>{{ monster.get_ac() }}</mbac>
     <mbhp>{{ monster.get_stamina() }}/{{ monster.get_health() }}</mbhp>
     <mbmove>{{ monster.get_move() }}</mbmove>
-    <mbstr>9</mbstr>
-    <mbend>10</mbend>
-    <mbag>11</mbag>
-    <mbspd>12</mbspd>
-    <mbluck>9</mbluck>
-    <mbwil>8</mbwil>
-    <mbper>10</mbper>
-    <mbabilities>{{ monster.get_abilities_str() }}</mbabilities>
+    <mbinitiativebonus>{{ monster.get_initiative_bonus() }}</mbinitiativebonus>
+    <mbresolve>{{ monster.get_resolve_pool() }}</mbresolve>
+    <mbmagic>{{ monster.get_magic_pool() }}</mbmagic>
+    <mbstr>{{ monster.get_strength() }}</mbstr>
+    <mbend>{{ monster.get_endurance() }}</mbend>
+    <mbag>{{ monster.get_agility() }}</mbag>
+    <mbspd>{{ monster.get_speed() }}</mbspd>
+    <mbluck>{{ monster.get_luck() }}</mbluck>
+    <mbwil>{{ monster.get_willpower() }}</mbwil>
+    <mbper>{{ monster.get_perception() }}</mbper>
+    <mbabilities>
+    {% for ability_level_id in monster.get_ability_level_ids() %}
+       <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
+       {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
+       <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
+       {% endif -%}       
+       {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
+       <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
+       {% endif -%}       
+       {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
+       <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
+       {% endif -%}
+    {% endfor %}
+    </mbabilities>
     {% if monster.get_aspects_str() != "" %}
     <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
     {% endif %}
