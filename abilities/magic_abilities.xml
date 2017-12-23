@@ -216,7 +216,7 @@
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs Opponents WillPower</check>
-	<overcharge>Twice Opponents Willpower</overcharge>
+	<overcharge>DC + 5</overcharge>
         <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
       </abilitylevel>
 
@@ -229,7 +229,7 @@
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 3 vs Opponents WillPower</check>
-	<overcharge>Twice Opponents Willpower</overcharge>	
+	<overcharge>DC + 6</overcharge>	
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -360,9 +360,17 @@
 	The caster creates a magical shield around a person (or man-sized thing).
 	The barrier from outside appears as a blurred humanoid shape.  Kinetic
 	weapons do half damage to the character thus shielded.  It also provides
-	brief protection from fires, poisoness gases etc.  The shield is ablative
+	brief protection from fires, poisoness gases <etc/>.  The shield is ablative
 	and is represented ingame by temporary hit points.
       </p>
+
+      <p>
+	The shield provides temporary health points and lasts five minutes/30 rounds.
+	If overcharged the shield may explode upon being hit, make a Std Check vs DDC 4
+	or explode.   Explosions do 3d6 damage to all adjacent creatures including the
+	character being shielded.  Adjacent creatures may save, Speed vs DDC 10, to
+	take half damage.
+      </p>      
     </abilitydescription>    
 
     <abilitylevels>
@@ -376,16 +384,8 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 12</check>
 	<overcharge>DC + 6</overcharge>		
+	<effect>Shield provides 20 temporary health point</effect>		
         <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
-	<leveldescription>
-	  <p>
-	    The shield provides 20 temporary health points and lasts five minutes/30 rounds.
-	    If overcharged the shield may explode upon being hit, make a Std Check vs DDC 4
-	    or explode.   Explosions do 3d6 damage to all adjacent creatures including the
-	    character being shielded.  Adjacent creatures may save, Speed vs DDC 10, to
-	    take half damage.
-	  </p>
-	</leveldescription>
       </abilitylevel>
 
       <abilitylevel>
@@ -398,12 +398,7 @@
         <attempts>3</attempts>
 	<check>Magic Pool + 3 vs 12</check>
 	<overcharge>DC + 7</overcharge>		
-	<leveldescription>
-	  <p>
-	    The shield provides 30 temporary health points and lasts five minutes/30 rounds.
-	    Overcharge behaviour as above.
-	  </p>
-	</leveldescription>
+	<effect>Shield provides 30 temporary health point</effect>		
       </abilitylevel>      
     </abilitylevels>
   </ability>
