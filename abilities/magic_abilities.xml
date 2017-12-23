@@ -316,7 +316,7 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>5</defaultmagical>
 	<check>Magic Pool vs DDC 6</check>
-	<overcharge>12</overcharge>		
+	<overcharge>DC + 6</overcharge>		
         <successes>3</successes>
         <attempts>1</attempts>
         <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
@@ -365,7 +365,7 @@
       </p>
 
       <p>
-	The shield provides temporary health points and lasts five minutes/30 rounds.
+	The shield provides temporary hit points and lasts five minutes/30 rounds.
 	If overcharged the shield may explode upon being hit, make a Std Check vs DDC 4
 	or explode.   Explosions do 3d6 damage to all adjacent creatures including the
 	character being shielded.  Adjacent creatures may save, Speed vs DDC 10, to
@@ -384,8 +384,8 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 12</check>
 	<overcharge>DC + 6</overcharge>		
-	<effect>Shield provides 20 temporary health point</effect>		
-        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
+	<effect>Shield provides 20 temporary HP</effect>		
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
@@ -398,7 +398,7 @@
         <attempts>3</attempts>
 	<check>Magic Pool + 3 vs 12</check>
 	<overcharge>DC + 7</overcharge>		
-	<effect>Shield provides 30 temporary health point</effect>		
+	<effect>Shield provides 30 temporary HP</effect>		
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -630,7 +630,8 @@
 	<overcharge>DC + 7</overcharge>	
 	<leveldescription>
 	  <p>
-	    Opens a portal between this plane and a near plane.
+	    Opens a portal between this plane and a near plane (the shadow
+	    realms or the wylds).
 	  </p>
 	</leveldescription>
       </abilitylevel>      
@@ -638,6 +639,56 @@
   </ability>
 
 
+
+  <ability>
+    <abilitytitle>Greater Portal</abilitytitle>
+    <abilityid>magic.greater_portal</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilitydescription>
+      <p>
+	This is a very rapid invocation of the normal portal spell.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>9</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 26</check>
+	<overcharge>DC + 6</overcharge>	
+	<leveldescription>
+	  <p>
+	    The character can open a portal in a wall or floor.
+	  </p>
+	</leveldescription>
+        <prereqabilitylevel>magic.portal_2</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 26</check>
+	<overcharge>DC + 7</overcharge>	
+	<leveldescription>
+	  <p>
+	    Opens a portal between two well known places on this plane.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+  
   <ability>
     <abilitytitle>Cloak of Shadows</abilitytitle>
     <abilityid>magic.cloak_of_shadows</abilityid>
@@ -966,7 +1017,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 2 vs DDC 10 or opponents Willpower</check>
-	<overcharge>DC + 10</overcharge>			
+	<overcharge>DC + 10</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>
