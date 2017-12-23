@@ -31,10 +31,12 @@
       apprenticeships Dwarven craftsmen should spend some years travelling and 
       broadening their minds, a time referred to as their Vanderyahre.  
     </p>
-    
-    <figure>
-      <img src="./resources/archetypes/dwarf_fighter.jpg"/>
-    </figure>
+
+    <!--
+    < figure >
+      < img src="./resources/archetypes/dwarf_fighter.jpg" / >
+      < / figure >
+      -->
   </archetypedescription>
   <archetypeac>8</archetypeac>
   <archetypemove>5</archetypemove>
@@ -66,14 +68,12 @@
     <tag>Short</tag>
   </archetypetags>
   
-  <!--
-      starting hp
-      suggested initial aspects?
-  -->
+
 
   <archetypeinitialabilities>
     <p>
-      XXXX
+      Choose one of Smith II, Carpentry II, Builder II, or Cooper II.  Choose one of Pick Locks,
+      or Ropecraft.  Choose one of Wayfinding or Scout.
     </p>
   </archetypeinitialabilities>
   
@@ -96,7 +96,6 @@
       <levelmagicpool>2<d6/></levelmagicpool>
       <levelmagicrefresh>+1<dany/></levelmagicrefresh>      
       <leveldescription>
-	One of Smith II, Carpentry II, Builder II, or Cooper II.
       </leveldescription>
     </level>    
 
@@ -438,6 +437,11 @@
     <innate>
       <abilityid>language.common</abilityid>
       <level>2</level>
+    </innate>
+
+    <innate>
+      <abilityid>wilderness.dungeoneering</abilityid>
+      <level>1</level>
     </innate>
     
 
