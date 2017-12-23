@@ -314,7 +314,7 @@ def create_character_sheet_for_archetype(archetype):
     fdf_fname = join(build_dir,  "%s_pg1.fdf" % archetype_id)
     create_first_page_fdf(fdf_fname, archetype)
     pdftk(PG1_TEMPLATE, fdf_fname, pdf_fname_out)        
-    pdf_pages.append(pdf_fname_out)    
+    pdf_pages.append(pdf_fname_out)
 
     # work out how many ability pages we need
     # (+2 because we want a whole extra clean sheet of abilities)
@@ -356,11 +356,6 @@ def create_character_sheets_for_all_archetypes():
     archetypes = Archetypes()
     archetypes.load(ability_groups, archetypes_dir, fail_fast = True)
     for archetype in archetypes:
-        print("Archetype: %s" % archetype.get_title())
-
-        ###########################
-        #if "Black" not in archetype.get_title():
-        #    continue        
         create_character_sheet_for_archetype(archetype)
     return
 
