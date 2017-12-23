@@ -316,7 +316,9 @@ class ModifiedAbilityLevel:
     
     def is_innate_for_this_archetype(self):
         """Returns true if this ability level is innate for the archetype"""
-        return self.get_level_number() > 0 and self.is_innate()
+        return (self.get_level_number() > 0 and
+                self.is_innate() and
+                "monster" not in self.ability_level.get_id()) # FIXME: HACK
 
     def get_prerequisites(self):
         return self.ability_level.get_prerequisites()
