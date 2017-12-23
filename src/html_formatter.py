@@ -1348,6 +1348,11 @@ class HtmlFormatter:
         return
     end_eg = no_op
 
+    def start_ie(self, fail):
+        self.html_file.write("i.e.\@{}")
+        return
+    end_ie = no_op
+
     def start_etc(self, fail):
         self.html_file.write("etc.\@{}")
         return
