@@ -56,6 +56,91 @@
 
 
 
+  
+
+  <ability>
+    <abilitytitle>Claw</abilitytitle>
+    <abilityid>monster.claw</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <inborn>true</inborn>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 vs opponents AC</check>
+        <damage>2d4</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>2d4</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>Std 2d8 + 3 vs opponents AC</check>
+        <damage>2d6</damage>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>2d8</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>Summon Demon</abilitytitle>
+    <abilityid>monster.summon_demon</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <inborn>true</inborn>
+    <abilitydescription>
+      <p noindent="true">
+	A demon is summoned
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 vs 5</check>
+        <effect>A demon is summoned</effect>
+      </abilitylevel>
+
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Prehensile Tongue</abilitytitle>
+    <abilityid>monster.prehensile_tongue</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <inborn>true</inborn>
+    <abilitydescription>
+      <p noindent="true">
+	The monster has a tongue that they can shoot out and grab things with.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 vs 5</check>
+        <effect>The monster grabs the target with Str DC 8</effect>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  
   <ability>
     <abilitytitle>Web</abilitytitle>
     <abilityid>monster.web</abilityid>
