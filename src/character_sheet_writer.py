@@ -291,7 +291,7 @@ def cmp_titles(ability, ability2):
 
 def create_character_sheet_for_archetype(archetype):
 
-    # build a list containing all th archetypes avialable abilities.
+    # build a list containing all the archetypes avialable abilities.
     ability_levels = []
     for ability_group in archetype.modified_ability_groups:
         print("\t%s" % ability_group.get_title())        
@@ -302,7 +302,7 @@ def create_character_sheet_for_archetype(archetype):
             if ability_level is not None and ability_level.is_enabled():
                 print("\t\t%s" % ability_level.get_title())                        
                 ability_levels.append(ability_level)
-
+    
     ability_levels.sort(cmp_titles)
 
     # the pages we want to stick together.
@@ -348,13 +348,8 @@ def create_character_sheet_for_archetype(archetype):
 
 
                      
-def create_character_sheets_for_all_archetypes():
-    from abilities import AbilityGroups
-    ability_groups = AbilityGroups()
-    ability_groups.load(ability_groups_dir, fail_fast = True)
+def create_character_sheets_for_all_archetypes(archetypes):
 
-    archetypes = Archetypes()
-    archetypes.load(ability_groups, archetypes_dir, fail_fast = True)
     for archetype in archetypes:
         create_character_sheet_for_archetype(archetype)
     return
@@ -375,6 +370,14 @@ def create_empty_abilities_sheet():
     
 
 if __name__ == "__main__":
-    create_character_sheets_for_all_archetypes()
+
+    from abilities import AbilityGroups
+    ability_groups = AbilityGroups()
+    ability_groups.load(ability_groups_dir, fail_fast = True)
+
+    archetypes = Archetypes()
+    archetypes.load(ability_groups, archetypes_dir, fail_fast = True)
+            
+    create_character_sheets_for_all_archetypes(archetypes=archetypes)
     create_empty_abilities_sheet()
     # done.

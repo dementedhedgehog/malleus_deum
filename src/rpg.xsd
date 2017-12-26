@@ -298,24 +298,7 @@
       <xs:element name="resolution" type="symbolType"/>      
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>
-
-      <!--
-      <xs:element name="ambush" type="symbolType"/>
-      <xs:element name="surprise" type="symbolType"/>
-      <xs:element name="initiative" type="symbolType"/>
-      <xs:element name="talk" type="symbolType"/>
-      <xs:element name="start" type="symbolType"/>
-      <xs:element name="fast" type="symbolType"/>
-      <xs:element name="medium" type="symbolType"/>
-      <xs:element name="slow" type="symbolType"/>
-      <xs:element name="mediumorslow" type="symbolType"/>
-      <xs:element name="startandreaction" type="symbolType"/>
-      <xs:element name="resolution" type="symbolType"/>      
-      <xs:element name="reaction" type="symbolType"/>      
-      <xs:element name="noncombat" type="symbolType"/>
-      -->
-      <xs:element name="fightreach" type="symbolType"/>
-      
+      <xs:element name="fightreach" type="symbolType"/>      
       <xs:element name="mediumorslow" type="symbolType"/>
       <xs:element name="startandreaction" type="symbolType"/>
       <xs:element name="img" type="imgType"/>
@@ -542,11 +525,6 @@
 
   <xs:complexType name="tablespecType">
     <xs:choice minOccurs="1" maxOccurs="unbounded">
-      <!--
-          <xs:element name="expand" type="tableSpecSettingType" />
-          <xs:element name="expand-center" type="tableSpecSettingType" />
-          <xs:element name="fit" type="tableSpecSettingType" />
-      -->
       <xs:element name="fixed" type="xs:decimal"/> 
     </xs:choice>
   </xs:complexType>
@@ -558,9 +536,6 @@
       <xs:element name="td" type="tabledataType" />
       <xs:element name="th" type="tabledataType" />
       <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
-      <!--
-	  <xs:element name="multicolumntd" type="multicolumntabledataType"/>
-	  -->
     </xs:choice>
     <xs:attribute name="newcolour" type="xs:boolean" default="true"/>
   </xs:complexType>
@@ -1757,8 +1732,61 @@ tags
 	  -->
     </xs:sequence>
   </xs:complexType>
-      
+
+
   <!--
-      <xs:element name="npcs" type="npcsType"/>
-  -->   
+
+    Image License Information
+
+  -->
+
+  <!-- licenses -->
+  <xs:simpleType name="licenseType">
+    <xs:restriction base="xs:string">
+      <!-- Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0) -->
+      <xs:enumeration value="CC_BY-NC-ND_30" />
+
+      <!-- Creative Commons Zero / Public Domain -->
+      <xs:enumeration value="CC0" />
+
+      <!-- Creative Commons Public Domain -->
+      <xs:enumeration value="CCPD" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+
+  <!-- a group of homogeneous npcs -->
+  <xs:complexType name="licenseinfoType" mixed="false">
+    <xs:sequence>     
+      <xs:element 
+          name="license" 
+          type="licenseType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="artist" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="artistfullname" 
+          type="xs:string" 
+          minOccurs="0" maxOccurs="1"/>
+
+      <!-- short name, e.g. deviantart -->
+      <xs:element 
+          name="source" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="url" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="notes" 
+          type="xs:string" 
+          minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  
+  
 </xs:schema> 

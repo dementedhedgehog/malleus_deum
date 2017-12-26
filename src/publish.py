@@ -25,6 +25,10 @@ from io import BytesIO
 import re
 import platform
 
+# handle utf 8 output on ascii consoles
+#UTF8Writer = codecs.getwriter('utf8')
+#sys.stdout = UTF8Writer(sys.stdout)
+
 src_dir = abspath(join(dirname(__file__)))
 third_party_dir = join(src_dir, "third_party")
 sys.path.append(src_dir)
@@ -37,6 +41,10 @@ from db import DB
 from latex_formatter import LatexFormatter
 from html_formatter import HtmlFormatter
 from spreadsheet_writer import write_summary_to_spreadsheet
+from character_sheet_writer import (
+    create_character_sheets_for_all_archetypes,
+    create_empty_abilities_sheet)
+from check_licenses import generate_license_report
 import config
 import utils
 
@@ -203,6 +211,8 @@ def filter_xelatex_output(xelatex_output):
             del lines[line_index]
 
     for line in lines:
+        if not isinstance(line, str):        
+            line = line.encode("ascii", "replace")            
         print line
     return
 
@@ -538,11 +548,11 @@ if __name__ == "__main__":
     # The trailing // means that TeX programs will search recursively in that 
     # folder; the trailing colon means "append the standard value of TEXINPUTS" 
     # (which you don't need to provide).
-    #tex_inputs = styles_dir + "//:"
+    tex_inputs = styles_dir + "//:"
 
-    # get a copy of the environment with TEXINPUTS set.
-    #env = deepcopy(os.environ)
-    #env["TEXINPUTS"] = tex_inputs
+    # Get a copy of the environment with TEXINPUTS set.
+    env = deepcopy(os.environ)
+    env["TEXINPUTS"] = tex_inputs
 
 
     # Build latex/pdf files.
@@ -581,18 +591,11 @@ if __name__ == "__main__":
                       doc_fname=encounter_fname, 
                       verbosity=verbosity)
 
-   # Build latex/pdf adventure files.
-    # for encounter_id, _, _ in config.encounters_to_build:
-    #     encounter = encounters[encounter_id]
-    #     build_pdf_doc(encounter_template_fname,
-    #                   doc_fname=encounter.get_id(), 
-    #                   encounter=encounter,
-    #                   verbosity=verbosity)
-
+    # Build html docs.
     for doc_xml_fname, _, _ in config.files_to_build:
         build_html_doc(doc_xml_fname, verbosity=verbosity)
         
-
+    # Exit early if we've been configured to only do a partial build.
     if parse_only or template_only or latex_only:
         sys.exit()
     
@@ -601,10 +604,42 @@ if __name__ == "__main__":
     #
     if not no_index:
         create_index(verbosity=verbosity)
-
+        
+    #
+    # Create Summary.xslx
+    # (a table of ability costs by archetype for working on balance)
+    #
     # save summary details to a spreadsheet (for analysis)
     spreadsheet_fname = join(build_dir, "summary.xlsx")
     write_summary_to_spreadsheet(spreadsheet_fname,
                                  ability_groups=db.ability_groups,
                                  archetypes=db.archetypes)
+    
+    #
+    # Create the character sheets
+    #
+    create_character_sheets_for_all_archetypes(archetypes=db.archetypes)
+    create_empty_abilities_sheet()
 
+    print sys.getdefaultencoding()
+   
+    #
+    #
+    #
+    img_license_info = generate_license_report(root_dir)
+    print "\n----"
+    n_chars = len(root_dir) + 1
+    for img_info in img_license_info.values():
+
+        if img_info.img_license:
+            status = "OK"
+        else:
+            status = "*** MISSING LICENSE INFO ***"
+            
+        print "%s %s %s %s %s" % (
+            status,
+            ", ".join([fname[n_chars:] for fname in img_info.img_fnames]),
+            img_info.get_license(),
+            img_info.get_artist(),
+            img_info.source)
+        

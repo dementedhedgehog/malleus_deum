@@ -134,7 +134,7 @@ class Doc:
 
         # handle trailing text.
         if element.tag in TEXT_TAGS and element.text:
-            text = element.text
+            text = element.text # .strip()
             i_formatter.handle_text(text)
                 
         # handle all the children

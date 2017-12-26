@@ -1155,8 +1155,6 @@ class LatexFormatter:
     end_tablespec = no_op
 
     def start_table(self, table):
-
-        #category = table.find("tablecategory")
         category = get_text_for_child(table, "tablecategory")
         if category is None:
             raise Error("Table requires a tablecategory child element.")
@@ -1196,17 +1194,6 @@ class LatexFormatter:
         columns = 0
         for child in table_spec.iterchildren():
             columns += 1
-            # if child.tag == "fit":
-            #     table_spec_str += "p{\\widthof{%s}}" % child.text
-            # elif child.tag == "expand":
-
-            #     # complicated with calculations
-            #     table_spec_str += "p{0.3\\linewidth}"
-
-            # elif child.tag == "expand-center":
-            #     table_spec_str += ">{\\centering \\arraybackslash}X"
-
-            # el
 
             if child.tag == "fixed":
                 percent_width = float(child.text)
