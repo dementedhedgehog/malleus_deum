@@ -71,21 +71,22 @@ patrons_to_build = (
 
 archetypes_to_build = (
     #("bard", True, "[BRD]"),
-    # ("dwarven_shield_warrior", True, "[DSW]"),
+    ("dwarven_shield_warrior", True, "[DSW]"),
     # ("red_mage", True, "[RM]"),
     # ("halfling_rover", True, "[HR]"),
     # ("elven_scion", True, "[ES]"),
-    ("outrider", True, "[OR]"),
-    ("black_coat", True, "[BC]"),
-    ("summoner", True, "[SM]"),
+    #("outrider", True, "[OR]"),
+    #("black_coat", True, "[BC]"),
+    #("summoner", True, "[SM]"),
     ("hedge_wizard", True, "[HW]"),
-    ("witch_hunter", True, "[WH]"),
-    ("rake", True, "[RK]"),
+    #("witch_hunter", True, "[WH]"),
+    #("rake", True, "[RK]"),
 )
 
 encounters_to_build = (
-    ("dwarven_mines", False, "[dm]"),
-    ("the_trial", False, "[tt]"),
+    #("dwarven_mines", False, "[dm]"),
+    #("the_trial", False, "[tt]"),
+    #("von_bauer_chateau", False, "[vbc]"),
 )
 
 
