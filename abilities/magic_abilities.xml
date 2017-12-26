@@ -733,6 +733,175 @@
 
 
   <ability>
+    <abilitytitle>Scry</abilitytitle>
+    <abilityid>magic.scry</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The character can view events from the past.  Viewing events in
+	the future is incredibly difficult and unreliable (See Scry, Greater). 
+      </p>
+
+      <p>
+	The caster first names a target then checks to see whether the spell
+	succeeds. If it does, they see an important scene from targets life
+	(the GM narrates the scene to the player). The caster may then choose
+	to look far forward, forward, back or far back in time.  Each time
+	the player attempts to view another scene from the targets life they
+	make another check with their remaining magic pool against a DC 10.
+	The caster may continue to view scenes from the targets life until they
+	fail or choose to stop scrying.
+      </p>
+
+      <p>
+	Contagion is very important to this spell.  A good contagious link, the
+	targets blood, or hair for example, can	reduce the difficulty of this
+	spell by 10!  If the caster fails any checks while scrying their contagious
+	link is destroyed.
+      </p>
+      
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 32</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The caster views scences from the targets past.</effect>
+        <prereqabilitylevel>magic_school.evocation_2</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 27</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The caster views scences from the targets past.</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+
+  <ability>
+    <abilitytitle>Scry, Greater</abilitytitle>
+    <abilityid>magic.scry_greater</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The character can view events from a targets present and their future as well
+	as their past. 	This spell works like the lesser Scry but because the future
+	is not predetermined the results are often very unreliable and inaccurate.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 36</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The caster views scences from the targets past, present or future.</effect>
+        <prereqabilitylevel>magic.scry_2</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 31</check>
+	<overcharge>DC + 10</overcharge>
+	<effect>The caster views scences from the targets past, present or future</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Shatter</abilitytitle>
+    <abilityid>magic.shatter</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	When casting shatter the caster intones magical words
+	and strikes a target of stone, metal or ice (in fact anything
+	elemental in nature, even including wood).
+      </p>
+
+      <p>
+	This spell is particularly effective for bringing down structures
+	supported be columns or arches.  A city wall or a tower is designed
+	to suffer a lot of damage without failing.
+      </p>
+
+      <p>
+	This spell may also be used to attack a subset of monsters, including
+	earth and water elementals, metalic, stone or earthen constructs, and
+	natural wooden animates.  For most other creatures this spell does no
+	damage.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 10</check>
+	<overcharge>DC + 7</overcharge>
+	<effect>The target is shattered (see above)</effect>
+        <prereqabilitylevel>magic_school.elemental_2</prereqabilitylevel>
+	<leveldescription>
+	  Against certain monsters roll to hit with a grounding weapon (staff or spear)
+	  and does an additional 4d10 damage.
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 10</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The target is shattered (see above)</effect>
+	<leveldescription>
+	  Against certain monsters roll to hit with a grounding weapon (staff or spear)
+	  and does an additional 5d10 damage.
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+  
+
+  <ability>
     <abilitytitle>Summon</abilitytitle>
     <abilityid>magic.summon</abilityid>
     <abilityclass>Non-Combat</abilityclass>
