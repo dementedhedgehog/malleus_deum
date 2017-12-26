@@ -1,61 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <patron>
-  <patrontitle>Klazyabolus - Lord of the Flies</patrontitle>
+  <patrontitle>Klazyabolus - Lord of the Fens</patrontitle>
   <patronid>klazyabolus</patronid>
   <patrondescription>           
     <p>
+      Klazyabolus sits atop his throne of skulls in the stygian fens of the
+      Wyld and plots the downfall of his foes.  A being of great power, banished
+      in past eons to the mires of that plane for a transgression
+      long since forgotten by most.  
     </p>
 
+    <p>
+      His lair is a fetid and ramshackle motte and bailey steading, where he is
+      defended and served by the fey denizens of the area who hail him ``Y'cklar
+      Y'cklar! Masharal'' - Ruler of all.  Klazyabolus spends his time involving himself
+      in political intrigue from afar in an attempt to broker enough power to petition
+      the queens of the Wyld to have his banishment lifted.  To this end he frequently
+      patrons humans as pawns in the inscrutable machiovellian games he plays.
+    </p>
+
+
+    <p>
+      Overtime his powerful magic has warped his form and his mind, through a process
+      of thaumic osmosis, he has become in likeness of both mind and body, to resemble
+      the inhabitants of his land.  He most closely resembles an amphibian 
+    </p>
+
+    
+    <figure>
+      <img src="./resources/patrons/klazyabolous/the_death_by_erik_blaster-d6oiu1e.png"
+	   scale="2.0"/>
+    </figure>        
+
+    
     <table>
       <tablecategory>Standard</tablecategory>
       <tablespec>
 	<fixed>0.2</fixed>
-	<fixed>0.75</fixed>
+	<fixed>0.7</fixed>
       </tablespec>
       <tabletitle>Klazyabolous Patron Taint Table</tabletitle>
       <tablelabel>table:{{ doc_name }}-awareness</tablelabel>
       
       <tableheaderrow>
-	<td>11</td>
-	<td></td>
+	<td>Roll d49</td>
+	<td>Overcharge Effect</td>
       </tableheaderrow>
 
       <tablerow>
-	<td>12</td>
-	<td></td>
+	<td>11</td>
+	<td>Klazyabolous is displeased at the casters impertinance, disturbing him while eating.  The spell fails.</td>
       </tablerow>
 
       <tablerow>
+	<td>12</td>
+	<td>The character gains a Miasmatic Aura that, although undetectable to humans,
+	will make dogs, cats and other animals, who are not used to it, extremely uneasy.</td>
+      </tablerow>
+      
+      <tablerow>
 	<td>13</td>
-	<td>Skin is constantly, visibly moist.</td>
+	<td>The characters skin is constantly, visibly moist.</td>
       </tablerow>
 
       <tablerow>
 	<td>14-18</td>
-	<td>Flies constantly circle the player.</td>
+	<td>One or two flies constantly circle the caster.</td>
       </tablerow>
 
       <tablerow>
 	<td>21-24</td>
-	<td>Skin turns greenish hue</td>
+	<td>Skin turns a greenish hue, particularly around the eyes</td>
       </tablerow>
       
       <tablerow>
-	<td>25-28</td>
-	<td>Eyes get nictitating membranes</td>
+	<td>25</td>
+	<td>Eyes get nictitating membranes.  Character can see well underwater.
+	People who observe the character </td>
       </tablerow>
       
       <tablerow>
-	<td>31-88</td>
-	<td>Normal overcharge effect - no patron taint.</td>
+	<td>26-27</td>
+	<td>The character gains a level of Leap.</td>
+      </tablerow>
+      
+      <tablerow>
+	<td>28-29</td>
+	<td>The character gains the Prehensile Tongue I monster ability.</td>
+      </tablerow>
+      
+      <tablerow>
+	<td>30-49</td>
+	<td>Reroll on the overcharge effects table - no patron taint.  Klazyabolous
+	is not paying attention.</td>
       </tablerow>
     </table>
     
   </patrondescription>
 
   <!--
-
-
 
 Commune .. vs Invoke??
 More flavourful to have a per patron thing?
@@ -70,19 +113,36 @@ More flavourful to have a per patron thing?
       <abilitygroupfamily>Magic</abilitygroupfamily>
       <abilitygroupdescription>
 	<p>
-	  ...
+	  Klazyabolous is a virtuous and generous master, only punishing his
+	  servants when the whim takes him.  He bestows his gifts
+	  to his servants with magnanimity.
 	</p>
       </abilitygroupdescription>
     </abilitygroupinfo>
-  
+    
 
   <ability>
     <abilitytitle>Invoke Klazyabolous</abilitytitle>
     <abilityid>klazyabolous.invoke</abilityid>
-    <abilityclass>Slow</abilityclass>
+    <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p>
-      </p>      
+	This first time this spell is cast it must be used to forge
+	a pact with Klazyabolous.  If Klazyabolous is not satisfied with the
+	result of the pact then he will end the invocation and the caster must
+	roll on the miscast table.  If Klazyabolous is pleased with the deal then
+	a written pact is formed and signed in blood.  The caster gains a
+	Servant of Klazyabolous aspect.
+      </p>
+
+      <p>
+	Subsequent invocations may be used to ask questions of Klazyabolous.
+	However, his patience is limited and he acts in his own
+	interests.  He will seldom answer unless he can see a way of furthering
+	his own needs.  One way to indicate this is to increase the level of
+	subjugation of the character to Klazyabolous by increasing the difficulty
+	of the casters Servant of Klazyabolous aspect.
+      </p>	
     </abilitydescription>    
 
     <abilitylevels>
@@ -96,8 +156,7 @@ More flavourful to have a per patron thing?
         <attempts>1</attempts>
         <check>Magic Pool vs DDC 10</check>
 	<overcharge>DC + 4</overcharge>
-	<effect>
-	</effect> 
+	<effect>See above</effect> 
         <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
       </abilitylevel>
 
@@ -110,7 +169,7 @@ More flavourful to have a per patron thing?
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool + 2 vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
+	<overcharge>DC + 5</overcharge>
 	<effect>
 	</effect> 
       </abilitylevel>      
@@ -167,7 +226,7 @@ More flavourful to have a per patron thing?
     <abilityclass>Slow</abilityclass>
     <abilitydescription>
       <p>
-      </p>      
+      </p>
     </abilitydescription>    
 
     <abilitylevels>
