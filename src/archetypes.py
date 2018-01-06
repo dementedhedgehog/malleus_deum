@@ -363,7 +363,10 @@ class ModifiedAbility:
 
         # abilities can be enabled or disabled
         # if an ability is enabled or disabled it overrides the group setting
-        self.enabled = True
+        if ability.is_inborn():
+            self.enabled = False
+        else:
+            self.enabled = True
         return
 
     def get_ability_class(self):
@@ -1686,19 +1689,19 @@ if __name__ == "__main__":
 
     for archetype in archetypes:
 
-        if "Outrider" not in archetype.get_title():
-            continue
+        #if "Outrider" not in archetype.get_title():
+        #    continue
         
         print("Archetype: %s" % archetype.get_title())        
         for ability_group in archetype.modified_ability_groups:
-            if "ocial" not in ability_group.get_title():
+            if "onster" not in ability_group.get_title():
                 continue
 
             #print("\t%s" % ability_group.get_title())
             for ability in ability_group:
 
-                if "Negotiate" not in ability.get_title():
-                    continue
+                #if "Negotiate" not in ability.get_title():
+                #    continue
                 
                 print("\t\t%s" % ability.get_title())
                 print("\t\tHighest innate level %s" % ability.get_highest_innate_level())
@@ -1706,7 +1709,8 @@ if __name__ == "__main__":
                 for mal in ability.get_levels():
                     print("\t\t\t%s %s" % (mal.get_title(), mal.get_total_point_cost()))
                     print("\t\t\tIS INNATE %s" % mal.is_innate(d = True))
-                    print("\t\t\t\tRecommended: %s" % mal.is_recommended())
-        
+                    print("\t\t\t\tRecommended: %s" % mal.is_recommended())        
                     print("\t\t\t\tArch Innate: %s" %
                           mal.is_innate_for_this_archetype())
+                    print("\t\t\t\tEnabled?: %s" %
+                          mal.is_enabled())
