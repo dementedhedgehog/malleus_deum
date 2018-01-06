@@ -127,7 +127,6 @@
         <defaultlore>5</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>5</defaultgeneral>
-        <prereqabilitylevel>lore.natural_history_2</prereqabilitylevel>
         <prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
         <successes>3</successes>
         <attempts>3</attempts>
@@ -151,7 +150,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>language.inochian_2</prereqabilitylevel>
         <defaultlore>5</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>5</defaultgeneral>
@@ -159,7 +157,6 @@
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs DDC 8</check>
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
         <prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
@@ -292,6 +289,70 @@
 
 
   <ability>
+    <abilitytitle>Kiss of the Deep</abilitytitle>
+    <abilityid>magic.kiss_of_the_deep</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster kisses a target on the lips and then
+	casts this spell.  Casting is close to instantaneous
+	but the spell cannot be used in combat due to the difficulty
+	of kissing people while in a fight.  
+      </p>
+
+      <p>
+	When cast the targets lungs fill with water and they cannot
+	breath, they fall to the ground coughing and gagging.  The
+	effects of this spell depend on the narrative imperative and
+	the whim of the GM.  Either the target falls to the ground
+	choking for 1d3+1 rounds, or the target dies, no save. 
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 6</overcharge>
+	<effect>See description above</effect>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <attempts>0</attempts>
+	<check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 7</overcharge>	
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <attempts>0</attempts>
+	<check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 8</overcharge>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+
+  <ability>
     <abilitytitle>Circle of Protection</abilitytitle>
     <abilityid>magic.circle_of_protection</abilityid>
     <abilityclass>Non-Combat</abilityclass>
@@ -404,6 +465,111 @@
   </ability>
 
 
+  
+  <ability>
+    <abilitytitle>Eldritch Push</abilitytitle>
+    <abilityid>magic.eldritch_push</abilityid>
+    <abilityclass>Fast</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster shoots a raw stream of thaumic energy from
+	their hands at a target.  If successful the target may
+	make a Dodge, agility, or speed check to avoid the stream.
+      </p>
+
+      <p>
+	If the stream hits the target the target suffers d6 damage
+	and is pushed  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
+	away from the caster.  If the caster hits and a benefit occurs
+	roll on the overcharge effects table and apply the result to the
+	<emph>target</emph>.  The caster can choose whether or not to apply
+	the overcharge effect to the target or to control the magical energies
+	and supress the result.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 6</overcharge>		
+	<effect>d6 damage and pushed back </effect>		
+        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 6</check>
+	<overcharge>DC + 7</overcharge>		
+	<effect>d6 damage and pushed back</effect>		
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Eldritch Shield</abilitytitle>
+    <abilityid>magic.eldritch_shield</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster uses raw magical energy to knock a arrows and bolts out
+	of the air.  The caster must be aware of the attack, <ie/> not
+	ambushed or surprised.  The size of the missile that can be
+	diverted depends on the level of the casters ability.  The missile
+	does not have to be aimed at the caster in order for the caster
+	to cast this spell.  This spell is cast as a reaction after
+	the target is hit, the caster can tell that the missile would hit
+	and acts accordingly before it does.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 7</check>
+	<overcharge>DC + 6</overcharge>		
+	<effect>d6 damage and pushed back </effect>		
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 6</check>
+	<overcharge>DC + 7</overcharge>		
+	<effect>d6 damage and pushed back</effect>		
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  
+  
+  
   <ability>
     <abilitytitle>Glamour</abilitytitle>
     <abilityid>magic.glamour</abilityid>
@@ -477,6 +643,65 @@
     </abilitylevels>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Graft Flesh</abilitytitle>
+    <abilityid>magic.graft_flesh</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster grafts the fresh flesh of one creature onto another.
+	Without the appropriate skeletal, vascular and muscular support the new
+	flesh will not be usable by the subject, <eg/> you can graft
+	an extra arm to a subject but they will not be able to use it.
+	You can however replace an existing limb with another or
+	restore a previously amputated limb.  Note that you cannot
+	use this spell to replace a head on a creature.  Once decapitated
+	the creature is dead.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>0</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus DDC 5</check>
+        <overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>0</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus DDC 5</check>
+        <overcharge>DC + 7</overcharge>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>0</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus DDC 5</check>
+        <overcharge>DC + 9</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
 
 
   <ability>
@@ -637,8 +862,8 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-
-
+ 
+  
 
   <ability>
     <abilitytitle>Greater Portal</abilitytitle>
@@ -657,7 +882,7 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>9</defaultmagical>
-        <successes>3</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 26</check>
 	<overcharge>DC + 6</overcharge>	
@@ -675,7 +900,7 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>2</defaultmagical>
-        <successes>3</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 26</check>
 	<overcharge>DC + 7</overcharge>	
@@ -688,6 +913,290 @@
     </abilitylevels>
   </ability>
 
+
+  <ability>
+    <abilitytitle>Spider Climb</abilitytitle>
+    <abilityid>magic.spider_climb</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilitydescription>
+      <p>
+	The caster uses magical energies to help him climb a surface
+	as per the Climb ability. 
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>9</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 12</check>
+	<overcharge>DC + 8</overcharge>	
+	<effect>+3 to Climb check</effect>	
+        <prereqabilitylevel>magic_school.biothaumic_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 12</check>
+	<overcharge>DC + 7</overcharge>	
+	<effect>+4 to Climb check</effect>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+  
+  
+  <ability>
+    <abilitytitle>Wyld Portal</abilitytitle>
+    <abilityid>magic.wyld_portal</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilitydescription>
+      <p>
+	This ability enables the user to recognize gateways,
+	areas with an affinity with the Wyld.  At
+	these places the caster may cast a portal which opens to
+	the Wyld.
+      </p>
+
+      <p>	
+      	It is not known how many such gateways exist. Given
+	the near suicidal nature of travelling in the Wyld
+	the knowledge of their locations is quickly forgotten.
+      </p>
+
+      <p>	
+	Finally, it should be added that the Wyld is a
+	many-varied place.  Gateways can be found in swamps,
+	deserts and sewers, as well as forested groves.
+	Often the presence of a gateway is indicated by an incongrousness
+	in the environment as the gateway forms a contagious link
+	between the two planes at its locus.  The nature of the
+	Wyld bleeds into this plane at the gateway which can
+	indicate the nature of the Wyld beyond.
+      </p>	
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>9</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 26</check>
+	<overcharge>DC + 6</overcharge>	
+        <prereqabilitylevel>magic.greater_portal_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>1</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 26</check>
+	<overcharge>DC + 7</overcharge>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+ 
+
+
+  <ability>
+    <abilitytitle>Phantasmal Leech</abilitytitle>
+    <abilityid>magic.phantasmal_leech</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+
+      <p noindent="true">
+	<emph>Like one who, on a lonely road, Doth walk in fear	and dread,
+	And, having once turned round, walks on, And turns no more his head;
+	Because he knows a frightful fiend Doth close behind him tread.</emph>
+      </p>
+      
+      <p>
+	Given an object with a contagious connection to a target, the caster
+	summons a Phantasmal Leech to track the target.  A Phantasmal Leech is
+	a cat sized, snake-like demon with membraneous wings and a cyclostomatic head
+	with five lidless black eyes.  It is translucent, and insubstantial.  The starving
+	Leech craves the blood of the target and the caster sees through its eyes as it
+	tracks the target.   The leeches projection onto this plane is volatile and it
+	is easily destroyed by magic.  If not dismissed	it will involuntarily return
+	to its home plane after ten minutes. Furthermore the leech cannot interact with
+	objects in this plane and may pass through walls, doors <etc/>   The leech cannot attack.
+      </p>
+      
+      <p>
+	If successfully cast the target gets a perception check to notice the presence
+	of the leech following.  if the target has magical attacks these will almost
+	certainly work against the leech, sending it back from whence it came.  If the
+	target has no magical attacks it cannot harm the creature.  
+      </p>
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
+	<tablelabel>fig:combat-modifiers</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d49</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>10-19</td>
+	  <td>The caster summons a Phantasmal Vulture instead (as per the spell of the
+	  same name).</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>20-29</td>
+	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
+	  d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>30-39</td>
+	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
+	  3d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>40-49</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>	
+      </table>
+      
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqtag>Cleric</prereqtag>
+        <defaultlore>4</defaultlore>
+        <defaultmagical>4</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool versus DDC 8</check>
+        <effect>Target makes a perception check with DC 12.</effect>
+        <overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <check>Magic Pool + 2 versus DDC 8</check>
+        <effect>Target makes a perception check with DC 14.</effect>
+        <overcharge>DC + 7.</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Phantasmal Vulture</abilitytitle>
+    <abilityid>magic.phantasmal_vulture</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+
+      <p noindent="true">
+	Given an object with a contagious connection to a target, the caster
+	summons a Phantasmal Vulture to track the target.  A Phantasmal Vulture is
+	a dog sized, vulture-like demon with membraneous wings, a tentacled face and
+	stinging tail. 	Like a Phantasmal Leech it is translucent, susceptible to magical
+	attacks and has the same difficulty of detection.  Unlike the Leech the Vulture
+	can summon its magical reserves to phase into this plane momentarilly to attack.
+	It may attack once before being dispelled to its home plane and will automatically
+	do so when it finds its prey (it is not up to the caster).
+      </p>
+
+      <p>
+	The vulture makes a single Std 2d8 + 2 attack versus AC for 1d8 damage (if
+	the target has not perceived the vulture it is considered to be Blind to the attack,
+	-4 to AC).
+      </p>
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
+	<tablelabel>fig:combat-modifiers</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d49</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>10-19</td>
+	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
+	  d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>20-29</td>
+	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
+	  3d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>30-49</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>	
+      </table>
+      
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqtag>Cleric</prereqtag>
+        <defaultlore>4</defaultlore>
+        <defaultmagical>4</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool versus DDC 8</check>
+        <effect>Target makes a perception check with DC 12.</effect>
+        <overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic.phantasmal_leech_2</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <check>Magic Pool + 2 versus DDC 8</check>
+        <effect>Target makes a perception check with DC 14.</effect>
+        <overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+  
   
   <ability>
     <abilitytitle>Cloak of Shadows</abilitytitle>
@@ -1038,7 +1547,7 @@
         <attempts>1</attempts>
 	<check>Magic Pool vs Demons Magic Pool</check>
 	<overcharge>DC + 8</overcharge>
-        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
@@ -1191,6 +1700,49 @@
     </abilitylevels>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Hyperosmia</abilitytitle>
+    <abilityid>magic.hyperosmia</abilityid>
+    <abilityclass>StartAndReaction</abilityclass>
+    <abilitydescription>
+      <p>
+	The character gains a very enhanced sense of smell, temporarily.
+	This spell gives them advantges to fighting when they cannot see
+	(+2 to hit, more against strongly smelling opponents),
+	+2 tracking, saves against illusions, +4 to Ambush roles, and +2 to Interogate and
+	Perceive checks.  The spell lasts half an hour.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.biothaumic_1</prereqabilitylevel>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+	<check>Magic Pool + 2 vs DDC 4</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
 
   <ability>
     <abilitytitle>Mist</abilitytitle>
@@ -1427,6 +1979,256 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
+
+
+
+  <ability>
+    <abilitytitle>Speak with Amphibians</abilitytitle>
+    <abilityid>magic.speak_with_amphibians</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with amphibian and reptile animals.
+	Note however that these creatures are not that smart.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultmagical>2</defaultmagical>
+        <check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 5</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+
+  <ability>
+    <abilitytitle>Speak with Wolves</abilitytitle>
+    <abilityid>magic.speak_with_wolves</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with canine animals: bears,
+	wolves, dogs and foxes.
+      </p>
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultmagical>2</defaultmagical>
+        <check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 5</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Speak with Horses</abilitytitle>
+    <abilityid>magic.speak_with_horses</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with ungulates: horses, goats,
+	cows, deers, antelope, pigs, rhinoceroses, pigs, hipopotomai
+	and the like.
+      </p>
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultmagical>2</defaultmagical>
+        <check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 5</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Speak with Cats</abilitytitle>
+    <abilityid>magic.speak_with_cats</abilityid>
+    <abilityclass>Fast</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with cats and other felines.
+      </p>
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultmagical>2</defaultmagical>
+        <check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 5</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Speak with Birds</abilitytitle>
+    <abilityid>magic.speak_with_birds</abilityid>
+    <abilityclass>Fast</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with birds.  Note that birds are
+	not very smart.
+      </p>
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultmagical>2</defaultmagical>
+        <check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 5</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Speak with Rodents</abilitytitle>
+    <abilityid>magic.speak_with_rodents</abilityid>
+    <abilityclass>Fast</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with rodents: rats and mice etc.
+      </p>
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>2</defaultlore>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultmagical>2</defaultmagical>
+        <check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 5</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Stay Death</abilitytitle>
+    <abilityid>magic.stay_death</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilitydescription>
+      <p>
+	The character holds death at bay for a moment.  The target
+	can reroll a single near-death roll.  This spell may be cast
+	once per character per day.
+      </p>
+
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>1</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool versus DDC 7</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
+	<effect>Reroll a near-death roll.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>1</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool +2 versus DDC 7</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool +3 versus DDC 7</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>See above.</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
 
 
   <ability>

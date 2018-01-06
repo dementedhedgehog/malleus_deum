@@ -514,4 +514,53 @@
     </abilitylevels>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Contortionist/Escape Artist</abilitytitle>
+    <abilityid>skullduggery.escapist</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	The character is supple and or double jointed.  They have
+	studied the art of escaping from bindings.  At higher
+	levels they may be able to earn money in towns and cities
+	performing shows.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Std 2d8 + 2 vs DDC 12</check>
+        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
+        <successes>2</successes>
+        <attempts>2</attempts>
+	<check>Std 2d8 + 4 vs DDC 12</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
 </abilitygroup>

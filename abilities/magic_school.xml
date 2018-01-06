@@ -74,7 +74,7 @@
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
-	Evocation is the use of raw magic powers.
+	Evocation involves the unsophisticated use of raw magic powers.
       </p>
     </abilitydescription>    
     <abilitylevels>
@@ -105,10 +105,10 @@
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
-	Abjuration involve the use of raw magical energies to cast protective
-	shielding and counter magic.
+	Abjuration involve the use of raw magical energies focusing on casting
+	protective, shielding and counter magics.
       </p>
-    </abilitydescription>    
+    </abilitydescription>
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
@@ -132,14 +132,23 @@
 
     
   <ability>
-    <abilitytitle>Conjuration</abilitytitle>
+    <abilitytitle>School of Conjuration</abilitytitle>
     <abilityid>magic_school.conjuration</abilityid>
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
-	Conjuration involves summoning or communicating with extra planar entities, binding
-	extra planar entities, opening gates and the like.
+	Demons inhabit the cold lower planes.  There is much recorded
+	of their nature and their history in old and long forgotten tomes.
+	This ability represents the study of that lore.  
+	Such books are not easily come by, notr should they be read lightly.
+	<indexentry>Demonic Lore<subentry>See Conjuration</subentry></indexentry>
       </p>
+
+      <p>
+	Magical spells that require this skill as a prerequisite 
+	involve summoning or communicating with extra planar
+	entities, binding extra planar entities, opening gates and the like.
+      </p>      
     </abilitydescription>    
     <abilitylevels>
       <abilitylevel>
@@ -228,18 +237,23 @@
         <defaultlore>3</defaultlore>
         <defaultmagical>0</defaultmagical>
         <check>Std 2d8 vs DDC 12</check>
+	<prereqabilitylevel>magic_school.arcana_2</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
 
   <ability>
-    <abilitytitle>Necromantic Magic</abilitytitle>
+    <abilitytitle>Necromancy</abilitytitle>
     <abilityid>magic_school.necromancy</abilityid>
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
 	The school of necromancy is concerned with the use of death or blood magic.
-      </p>
+	Necromantic lore is the study of the legends of the dread necromancers
+	and the unquiet dead.  Characters may provide useful information about these
+	topics on occasion: identifying undead, and or their weaknesses, and providing
+	the relevant mythology around these creatures.
+      </p>      
     </abilitydescription>    
     <abilitylevels>
       <abilitylevel>
@@ -259,7 +273,7 @@
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
-	YYY
+	Biothaumic magic is the use of the residual life magic in a region.
       </p>
     </abilitydescription>    
     <abilitylevels>
@@ -280,7 +294,8 @@
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
-	ZZZ
+	Rune magic is a very specific form of elemental ritual magic
+	used mainly by dwarves and shamen.
       </p>
     </abilitydescription>    
     <abilitylevels>
@@ -301,7 +316,7 @@
     <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p noindent="true">
-	XXX
+	Theurgic magic is magic channelled from a powerful deity.
       </p>
     </abilitydescription>    
     <abilitylevels>
@@ -316,4 +331,26 @@
     </abilitylevels>
   </ability>
 
+
+  <ability>
+    <abilitytitle>Zoolingualism</abilitytitle>
+    <abilityid>magic_school.zoolingualism</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p noindent="true">
+	A sub-class of magic used to communicate with animals.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>5</defaultlore>
+        <defaultmagical>5</defaultmagical>
+        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
+        <check>Std 2d8 vs DDC 14</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
 </abilitygroup>
