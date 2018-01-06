@@ -182,7 +182,8 @@ class AbilityLevel:
         # Check 
         self.overcharge = None        
 
-        # ability level ids for levels that are a prerequisite for this level.
+        # Ability level ids for levels that are a prerequisite for
+        # this level.
         self.ability_level_prereqs = []
 
         # attribute prerequisites (e.g. Str > 13)
@@ -315,17 +316,8 @@ class AbilityLevel:
     def has_prerequisites(self):
         return self.prerequisites
 
-    # def get_prerequisite_ids(self):
-    #     return self.prerequisite_ability_level_ids
-    
     def get_ability_level_prereqs(self):
-        return self.ability_level_prereqs
-        #return self.prerequisite_ability_levels
-
-    # def add_prequisite_id(self, prereq_id):
-    #     assert prereq_id is not None
-    #     self.prerequisite_ids.append(prereq_id)
-    #     return
+       return self.ability_level_prereqs
 
     def get_successes(self):    
         return self.successes
@@ -420,8 +412,6 @@ class AbilityLevel:
                    raise Exception("At most one damage per abilitylevel. (%s) %s\n" %
                                    (child.tag, str(child)))
                else:
-                   #level.damage = get_text(child)
-                   #level.damage = node_to_string(child)
                    level.damage = child.text
 
            elif tag == "effect":
@@ -429,8 +419,6 @@ class AbilityLevel:
                    raise Exception("At most one effect per abilitylevel. (%s) %s\n" %
                                    (child.tag, str(child)))
                else:
-                   #level.damage = get_text(child)
-                   #level.damage = node_to_string(child)
                    level.effect = child.text
                    
            elif tag == "levelnumber":
@@ -445,18 +433,14 @@ class AbilityLevel:
                    raise Exception("Only one description per ability-level. (%s) %s\n" %
                                    (child.tag, str(child)))
                else:
-                   #level.description = get_text(child)
-                   #level.description = child.text
                    level.description = children_to_string(child)
 
            elif tag == "prereqabilitylevel":
+
                ability_level_id = child.text
                if ability_level_id is not None:
-                   #level.prerequisite_ability_level_ids.append(ability_level_id)
-                   #ability_level = cls.ability_level_lookup[ability_level_id]
-                   prereq = AbilityLevelPrereq(ability_level_id)
+                   prereq = AbilityLevelPrereq(ability_level_id)                   
                    level.ability_level_prereqs.append(prereq)
-                   #level.prerequisite_ability_level_ids.append(prereq)
                    level.prerequisites.append(prereq)
 
            elif tag == "prereqtag":
@@ -474,11 +458,6 @@ class AbilityLevel:
                    level.prerequisites.append(prereq)
                    
            elif tag == "prereqattr":
-               # ability_level_id = child.text
-               # if ability_level_id is not None:
-               #     level.prerequisite_ids.append(ability_level_id)
-               #prereq = AttrPrereq("Str", 12)
-
                prereq = AttrPrereq.parse_xml(child)
                level.prerequisite_attr.append(prereq)
                level.prerequisites.append(prereq)
@@ -995,9 +974,11 @@ class AbilityGroup:
 
     def get_title(self):
         return self.info.title
+
+    def get_abilities(self):
+        return self.abilities
         
     def validate(self):
-        #cls = self.__class__
         valid = True
         error_log = validate_xml(self.doc)
         if error_log is not None:
@@ -1005,7 +986,6 @@ class AbilityGroup:
             valid = False
             print("\t%s" % error_log)
         return valid
-
 
     def get_family(self):
         return self.info.family
@@ -1077,7 +1057,6 @@ class AbilityGroups:
     def __init__(self):
         self.ability_groups = []
         self.ability_lookup = {}
-        #self.ability_level_lookup = {}
         return
 
     def __iter__(self):
@@ -1085,6 +1064,12 @@ class AbilityGroups:
 
     def get_ability_level(self, ability_level_id):
         return ability_level_lookup[ability_level_id]
+
+    def get_abilities(self):
+        for group in self.ability_groups:
+            for ability in group.get_abilities():
+                yield ability
+        return
     
     def load(self, abilities_dir, fail_fast):
         
@@ -1099,7 +1084,9 @@ class AbilityGroups:
             
             xml_fname = join(abilities_dir, xml_fname)
             ability_group = AbilityGroup(xml_fname)
-            if not ability_group.validate() and fail_fast:
+            if not ability_group.validate():
+                if fail_fast:
+                    raise Exception("Problem with xml %s" % xml_fname)
                 return False
             ability_group.load()
 
@@ -1138,14 +1125,12 @@ class AbilityGroups:
 
         # die if anything is misconfigured.
         self.check_sanity()        
-        return True
-    
+        return True    
 
     def check_sanity(self):
         for ability_group in self:
             for ability in ability_group:
                 ability.check_sanity()
-                #for ability_level in ability.get_levels():
         return                        
     
     def get_ability_level_by_id(self, ability_level_id):
@@ -1172,23 +1157,22 @@ if __name__ == "__main__":
     for ability_group in ability_groups:
         print(ability_group.get_title())
 
-
-        if "ocial" not in ability_group.get_title():
-            continue
+        #if "chool" not in ability_group.get_title():
+        #    continue
         
         for ability in ability_group:
             
             print("\t%s" % ability.get_title())
-            print("\t\t\tAbility Class: %s" % ability.get_ability_class())
-            print("\t\t\tAbility Desc: %s" % ability.description)
-            #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
-            #print("\t\t\t\t: %s" % ability.get_ability_class())
+            # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
+            # print("\t\t\tAbility Desc: %s" % ability.description)
+            # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
+            # #print("\t\t\t\t: %s" % ability.get_ability_class())
             
-            for ability_level in ability.get_levels():
-                print("\t\t\t\t1 %s" % ability_level.get_title())
-                print("\t\t\t\t2 %s" % ability_level.check)
-                print("\t\t\t\t3 %s" % ability_level.description)
-            #    #print("\t\t\tLore: %s" % ability_level.get_default_lore())
+            # for ability_level in ability.get_levels():
+            #     print("\t\t\t\t1 %s" % ability_level.get_title())
+            #     print("\t\t\t\t2 %s" % ability_level.check)
+            #     print("\t\t\t\t3 %s" % ability_level.description)
+            # #    #print("\t\t\tLore: %s" % ability_level.get_default_lore())
 
 
 
