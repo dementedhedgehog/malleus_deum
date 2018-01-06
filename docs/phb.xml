@@ -1478,8 +1478,8 @@ do this the initial check is modified by +2.
         <description>
           <indexentry>Blind Condition</indexentry> 
           <indexentry>Conditions<subentry>Blind</subentry></indexentry>
-          The character cannot see.  They make checks Ambush, Surprise, Initiative, 
-          and To-Hit at -5.
+          The character cannot see.  Ambush, Surprise, Initiative, To-Hit, and AC
+	  all receive a -4 modifier.
         </description>
 
         <term>Bloodied</term>
@@ -2111,8 +2111,8 @@ do this the initial check is modified by +2.
         <p>
           <indexentry>Movement</indexentry>
           Combat may either be performed on a table with miniatures using a map with a
-	  <defn>grid</defn>, 
-          or purely narratively using the theatre of the mind <defn>TOTM</defn>.
+	  <defn>grid</defn>, or purely narratively using the theatre of the mind
+	  <defn>TOTM</defn>.
         </p>
 
         <p>
@@ -2500,6 +2500,19 @@ do this the initial check is modified by +2.
         the player must have used the skill and achieved the appropriate number of successes 
         and failures using that skill.
       </p>
+
+
+      <figure position="h" fullwidth="true" sideways="true">
+	<img src="./build/ability_tree1.eps" scale="0.75"/>
+	<caption>Ability Tree 1</caption>
+	<label>figure:ability_tree1</label>		
+      </figure>
+
+      <figure position="h" fullwidth="true" sideways="true">
+	<img src="./build/ability_tree2.eps" scale="0.75"/>
+	<caption>Ability Tree 2</caption>
+	<label>figure:ability_tree2</label>
+      </figure>      
     </section>
 
     
@@ -2572,8 +2585,10 @@ do this the initial check is modified by +2.
           the ability that they have learned.  Characters must wait for a long rest which
           allows them the time to contemplate what they have learned.
         </p>
-      </subsection>
+      </subsection>      
     </section>
+
+    
 
     {% for ability_group in ability_groups %}
     <section>
