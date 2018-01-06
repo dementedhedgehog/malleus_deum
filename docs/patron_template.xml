@@ -74,25 +74,44 @@
 
               {% endif %}
               {%- if ability_level.check is not none -%}
-              <bold>Check:</bold> {{ ability_level.check -}}
-              {%- endif %}	      
-              {%- if ability_level.damage is not none %}	      
-              <bold>Dmg:</bold> {{- ability_level.damage }}
-              {%- endif %}
-              {%- if ability_level.effect is not none %}
+              <bold>Check:</bold> {{ ability_level.check }}
 	      
-              <bold>Effect:</bold> {{ ability_level.effect -}}
-              {%- endif %}              
+              {% endif %}
+              {%- if ability_level.overcharge is not none -%}
+              <bold>Overcharge:</bold> {{ ability_level.overcharge }}
+	      
+              {% endif %}          
+              {%- if ability_level.damage is not none %}          
+              <bold>Dmg:</bold> {{- ability_level.damage }}
+	      
+              {% endif %}
+              {%- if ability_level.effect is not none %}              
+              <bold>Effect:</bold> {{ ability_level.effect }}
+	      
+              {% endif %}              
               {%- if ability_level.description is not none %}
               {{ ability_level.description }}
               {%- endif %}
+              {%- if ability_level.is_masterable() %}
+	      
+              <bold>Mastery:</bold>
+              {%- for x in range(ability_level.get_mastery_successes()) -%}
+              <success/>
+              {%- endfor -%}
+              {%- for x in range(ability_level.get_mastery_attempts()) -%}
+              <attempt/>
+              {%- endfor -%}
+              {%- for x in range(ability_level.get_mastery_failures()) -%}
+              <fail/>
+              {%- endfor -%}
+              {%- endif %}
+
             </td>
 	  </tablerow>
 	  {% endfor %}                
 	</table>	
       </subsection>      
       {% endfor %}
-    </section>
-    
+    </section>    
   </chapter>
 </book>
