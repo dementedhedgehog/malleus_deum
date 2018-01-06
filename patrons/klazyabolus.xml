@@ -23,7 +23,8 @@
     <p>
       Overtime his powerful magic has warped his form and his mind, through a process
       of thaumic osmosis, he has become in likeness of both mind and body, to resemble
-      the inhabitants of his land.  He most closely resembles an amphibian 
+      the inhabitants of his land, with a definite batracian visage: green slimy skin,
+      and nictitating eyelids.
     </p>
 
     
@@ -34,7 +35,7 @@
 
     
     <table>
-      <tablecategory>Standard</tablecategory>
+      <tablecategory>Figure</tablecategory>
       <tablespec>
 	<fixed>0.2</fixed>
 	<fixed>0.7</fixed>
@@ -76,7 +77,7 @@
       <tablerow>
 	<td>25</td>
 	<td>Eyes get nictitating membranes.  Character can see well underwater.
-	People who observe the character </td>
+	People who observe the character are distinctly uneasy.</td>
       </tablerow>
       
       <tablerow>
@@ -132,7 +133,8 @@ More flavourful to have a per patron thing?
 	result of the pact then he will end the invocation and the caster must
 	roll on the miscast table.  If Klazyabolous is pleased with the deal then
 	a written pact is formed and signed in blood.  The caster gains a
-	Servant of Klazyabolous aspect.
+	Servant of Klazyabolous aspect and the Speak with Amphibians I magic
+	ability.
       </p>
 
       <p>
@@ -166,23 +168,25 @@ More flavourful to have a per patron thing?
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>5</defaultmagical>
+	<!--
         <successes>3</successes>
         <attempts>3</attempts>
+	-->
         <check>Magic Pool + 2 vs DDC 10</check>
 	<overcharge>DC + 5</overcharge>
-	<effect>
-	</effect> 
       </abilitylevel>      
     </abilitylevels>
   </ability>  
   
 
   <ability>
-    <abilitytitle>Leap</abilitytitle>
+    <abilitytitle>Batracian Leap</abilitytitle>
     <abilityid>klazyabolous.leap</abilityid>
-    <abilityclass>Slow</abilityclass>
+    <abilityclass>Fast</abilityclass>
     <abilitydescription>
       <p>
+	This magical leap allows the character to jump
+	up to <measurement><metric>20m</metric><imperial>60'</imperial></measurement>.
       </p>      
     </abilitydescription>    
 
@@ -195,11 +199,8 @@ More flavourful to have a per patron thing?
         <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>
-	</effect> 
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
+        <check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 4</overcharge>	
       </abilitylevel>
 
       <abilitylevel>
@@ -208,12 +209,12 @@ More flavourful to have a per patron thing?
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>5</defaultmagical>
+	<!--
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Magic Pool + 2 vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>
-	</effect> 
+	-->
+        <check>Magic Pool + 2 vs DDC 7</check>
+	<overcharge>DC + 5</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>  
@@ -223,9 +224,12 @@ More flavourful to have a per patron thing?
   <ability>
     <abilitytitle>Incorporal Mist</abilitytitle>
     <abilityid>klazyabolous.incorporal_mist</abilityid>
-    <abilityclass>Slow</abilityclass>
+    <abilityclass>Non-Combat</abilityclass>
     <abilitydescription>
       <p>
+	The character transforms into a cloud of green mist.  Their clothes
+	and possessions are left behind when this happens.   They can stay in this
+	form for up to half an hour.
       </p>
     </abilitydescription>    
 
@@ -238,10 +242,8 @@ More flavourful to have a per patron thing?
         <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Magic Pool vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>
-	</effect> 
+        <check>Magic Pool vs DDC 20</check>
+	<overcharge>DC + 6</overcharge>
         <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
       </abilitylevel>
 
@@ -251,14 +253,14 @@ More flavourful to have a per patron thing?
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>5</defaultmagical>
+	<!--
         <successes>3</successes>
         <attempts>3</attempts>
-        <check>Magic Pool + 2 vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>
-	</effect> 
+	-->
+        <check>Magic Pool + 2 vs DDC 20</check>
+	<overcharge>DC + 7</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>  
-</abilitygroup>  
+</abilitygroup>
 </patron>
