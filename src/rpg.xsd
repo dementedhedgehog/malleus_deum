@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
-<!-- -*-xml-*- -->
+<!-- -*-xml-*-
+
+  This is the XSD Schema for all the xml documents in the project.
+  We use this to verify our xml.
+
+-->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:complexType name="emptyType">
@@ -133,7 +138,11 @@
       <xs:enumeration value="Perception" />
     </xs:restriction>
   </xs:simpleType>
-  
+
+  <!--
+      Primary attribute value prerequisites, e.g. Str > 10 ..
+      I've decided this is mostly a bad idea.
+  -->
   <xs:complexType name="prereqAttrType">
     <xs:sequence>
       <xs:element 
@@ -147,6 +156,18 @@
     </xs:sequence>
   </xs:complexType>
 
+  <!--
+      Primary Attributes whose modifiers can be used for ability checks.
+  -->
+  <xs:complexType name="abilityattrmodifierType">
+    <xs:sequence>
+      <xs:element 
+          name="attr" 
+          type="attrType"
+          minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
 
   <!--
       Text type .. used for blocks of text like paragraphs and such.
@@ -325,6 +346,7 @@
       <xs:element name="abilitytitle" type="titleType"/>
       <xs:element name="abilityid" type="abilityidType"/>
       <xs:element name="abilityclass" type="abilityclassType"/>
+      <xs:element name="abilityattrmodifiers" type="abilityattrmodifierType"/>
       <xs:element name="abilitylevels" type="abilitylevelsType"/>      
       <!-- inborn abilities can have 0 cost for levels > 0 -->
       <xs:element name="inborn" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
@@ -508,7 +530,7 @@
     <xs:sequence>      
       <xs:element name="tablecategory" type="tableCategoryType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="tablespec" type="tablespecType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="tabletitle" type="titleType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="tabletitle" type="titleType" minOccurs="0" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="tablelabel" type="labelType" minOccurs="0" maxOccurs="1"/>
         <xs:element name="tableheaderrow" type="tableRowType" minOccurs="0" 
@@ -516,9 +538,11 @@
         <xs:element name="tablerow" type="tableRowType" minOccurs="1" maxOccurs="unbounded"/>
       </xs:choice>
     </xs:sequence>
+    <!--
     <xs:attribute name="figure-sideways" type="xs:boolean"/>      
-    <xs:attribute name="figure-fullwidth" type="xs:boolean"/> 
+    <xs:attribute name="figure-fullwidth" type="xs:boolean"/>    
     <xs:attribute name="figure" type="xs:boolean" default="true"/>
+    -->
     <xs:attribute name="compact" type="xs:boolean" default="false"/>
   </xs:complexType>
 
@@ -677,8 +701,9 @@
     </xs:sequence>
     <xs:attribute name="src" type="xs:string"/>      
     <xs:attribute name="position" type="xs:string"/>
-    <xs:attribute name="caption" type="xs:string"/>      
-    <xs:attribute name="fullwidth" type="xs:boolean"/>      
+    <xs:attribute name="fullwidth" type="xs:boolean"/>
+    <xs:attribute name="noindent" type="xs:boolean" default="false"/>
+    <xs:attribute name="sideways" type="xs:boolean" default="false"/>
   </xs:complexType>
 
 
@@ -750,6 +775,7 @@
       <xs:element name="equation" type="equationType"/>
       <xs:element name="pageref" type="pagerefType"/>
       <xs:element name="eg" type="acronymType"/>
+      <xs:element name="table" type="tableType"/>      
     </xs:choice>
   </xs:complexType>
 
@@ -890,22 +916,6 @@ labels and references.
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="label" type="labelType"/>
       <xs:element name="indexentry" type="indexentryType"/>
-      <!--
-      <xs:element name="ambushsymbol" type="symbolType"/>
-      <xs:element name="surprisesymbol" type="symbolType"/>
-      <xs:element name="initiativesymbol" type="symbolType"/>
-      <xs:element name="talksymbol" type="symbolType"/>
-      <xs:element name="startsymbol" type="symbolType"/>
-      <xs:element name="fastsymbol" type="symbolType"/>
-      <xs:element name="mediumsymbol" type="symbolType"/>
-      <xs:element name="slowsymbol" type="symbolType"/>
-      <xs:element name="mediumorslowsymbol" type="symbolType"/>
-      <xs:element name="startandreactionsymbol" type="symbolType"/>
-      <xs:element name="fightreachsymbol" type="symbolType"/>
-      <xs:element name="resolutionsymbol" type="symbolType"/>      
-      <xs:element name="reactionsymbol" type="symbolType"/>      
-      <xs:element name="noncombatsymbol" type="symbolType"/>
-      -->
       <xs:element name="ambush" type="symbolType"/>
       <xs:element name="surprise" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
@@ -927,14 +937,16 @@ labels and references.
       <xs:element name="d12" type="acronymType"/>
       <xs:element name="d20" type="acronymType"/>      
       <xs:element name="dany" type="acronymType"/>      
-      <xs:element name="dpool" type="acronymType"/>      	      
+      <xs:element name="dpool" type="acronymType"/>
+      <xs:element name="smaller" type="smallerType"/>
+      
     </xs:choice>
   </xs:complexType>
 
   <xs:complexType name="indexentryType" mixed="true"> 
 
     <xs:choice minOccurs="0" maxOccurs="1">
-      <!-- <xs:element name="see" type="xs:string" minOccurs="0" maxOccurs="1"/>-->
+      <!-- <xs:element name="see" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
       <xs:element name="subentry" type="xs:string" minOccurs="0" maxOccurs="1"/>
     </xs:choice>
   </xs:complexType>
@@ -1349,6 +1361,12 @@ labels and references.
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="geqqsymbol" type="symbolType"/>
       <xs:element name="leqqsymbol" type="symbolType"/>
+      <xs:element name="d4" type="acronymType"/>
+      <xs:element name="d6" type="acronymType"/>
+      <xs:element name="d8" type="acronymType"/>
+      <xs:element name="d10" type="acronymType"/>
+      <xs:element name="d12" type="acronymType"/>
+      <xs:element name="d20" type="acronymType"/>      
     </xs:choice>
   </xs:complexType>  
 
