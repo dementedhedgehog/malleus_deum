@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+"""
+
+ An Archetype is a class+race, e.g. Dwarven Shield Warrior.
+ The code in here is used to parse the  
+
+
+"""
 import sys
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
@@ -62,6 +69,9 @@ class ModifiedAbilityLevel:
         self.attempts_modifier = 0
         return
 
+    def get_ability(self):
+        return self.modified_ability
+    
     def get_effect(self):
         return self.ability_level.get_effect()
     
@@ -396,6 +406,8 @@ class ModifiedAbility:
     def get_title(self):
         return self.ability.get_title()
 
+    def get_attr_modifiers(self):
+        return self.ability.get_attr_modifiers()
 
     def get_innate_ability_level(self):
         """
@@ -808,6 +820,8 @@ class LevelProgressionTable:
     def __iter__(self):
         return iter(self.level_progression_data_list)
 
+    def __getitem__(self, index):
+        return self.level_progression_data_list[index]
 
 
 
@@ -978,6 +992,7 @@ class Archetype:
             self.modified_ability_groups.append(modified_ability_group)
             self.modified_ability_groups_lookup[ability_group.get_id()] = modified_ability_group
 
+            #print modified_ability_group
             for ability in ability_group.get_abilities():
                 modified_ability = modified_ability_group.add_modified_ability(ability)
                 self.modified_abilities_lookup[ability.get_id()] = modified_ability
@@ -991,6 +1006,10 @@ class Archetype:
         # what advantages you get at what levels.
         self.level_progression_table = LevelProgressionTable(self.fname)        
         return
+
+    def get_progression_data_for_level(self, level):
+        return self.level_progression_table.level_progression_data_list[level]
+    
 
     def get_attribute_limits_str(self):
         if len(self.attr_limits) == 0:
@@ -1679,7 +1698,6 @@ if __name__ == "__main__":
     ability_groups = AbilityGroups()
     ability_groups_dir = join(root_dir, "abilities")
     ability_groups.load(ability_groups_dir, fail_fast = True)
-    #abilities = ability_groups.get_abilities()
 
     archetypes = Archetypes()
     archetypes_dir = join(root_dir, "archetypes")
@@ -1693,24 +1711,25 @@ if __name__ == "__main__":
         #    continue
         
         print("Archetype: %s" % archetype.get_title())        
-        for ability_group in archetype.modified_ability_groups:
-            if "onster" not in ability_group.get_title():
-                continue
+        print("initial abilities: %s\n" % archetype.get_initial_abilities())
+        # for ability_group in archetype.modified_ability_groups:
+        #     #if "onster" not in ability_group.get_title():
+        #     #   continue            
 
-            #print("\t%s" % ability_group.get_title())
-            for ability in ability_group:
+        #     #print("\t%s" % ability_group.get_title())
+        #     # for ability in ability_group:
 
-                #if "Negotiate" not in ability.get_title():
-                #    continue
+        #     #     #if "Negotiate" not in ability.get_title():
+        #     #     #    continue
                 
-                print("\t\t%s" % ability.get_title())
-                print("\t\tHighest innate level %s" % ability.get_highest_innate_level())
+        #     #     print("\t\t%s" % ability.get_title())
+        #     #     print("\t\tHighest innate level %s" % ability.get_highest_innate_level())
                 
-                for mal in ability.get_levels():
-                    print("\t\t\t%s %s" % (mal.get_title(), mal.get_total_point_cost()))
-                    print("\t\t\tIS INNATE %s" % mal.is_innate(d = True))
-                    print("\t\t\t\tRecommended: %s" % mal.is_recommended())        
-                    print("\t\t\t\tArch Innate: %s" %
-                          mal.is_innate_for_this_archetype())
-                    print("\t\t\t\tEnabled?: %s" %
-                          mal.is_enabled())
+        #     #     for mal in ability.get_levels():
+        #     #         print("\t\t\t%s %s" % (mal.get_title(), mal.get_total_point_cost()))
+        #     #         print("\t\t\tIS INNATE %s" % mal.is_innate(d = True))
+        #     #         print("\t\t\t\tRecommended: %s" % mal.is_recommended())        
+        #     #         print("\t\t\t\tArch Innate: %s" %
+        #     #               mal.is_innate_for_this_archetype())
+        #     #         print("\t\t\t\tEnabled?: %s" %
+        #     #               mal.is_enabled())
