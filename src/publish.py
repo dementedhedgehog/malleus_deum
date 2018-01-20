@@ -45,6 +45,7 @@ from character_sheet_writer import (
     create_character_sheets_for_all_archetypes,
     create_empty_abilities_sheet)
 from check_licenses import generate_license_report
+from generate_skill_tree import Page, SkillTreeBuilder #generate_skill_tree
 import config
 import utils
 
@@ -55,6 +56,7 @@ docs_dir = join(root_dir, "docs")
 pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 archetype_template_fname = join("docs", "archetype_template.xml")
+archetype_template_fname2 = join("docs", "archetype_template2.xml")
 patron_template_fname = join("docs", "patron_template.xml")
 
 # latex preamble for the index.
@@ -450,7 +452,7 @@ def clean():
             os.remove(fname)
 
     for fname in os.listdir(pdfs_dir):
-        print fname
+        #print fname
         if fname.endswith(".pdf"):
             fname = join(pdfs_dir, fname)
             os.remove(fname)
@@ -533,11 +535,22 @@ if __name__ == "__main__":
     # load the game database (archetypes, abilties etc).
     db = DB()
     db.load(root_dir=root_dir, fail_fast=fail_fast)
+
+    # generate the skill tree images
+    skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
+    skill_tree_builder.build(db.ability_groups,
+                             fname=join(build_dir, "ability_tree1.eps"))
+    skill_tree_builder.build(db.ability_groups,
+                             fname=join(build_dir, "ability_tree1.pdf"))
     
+    skill_tree_builder = SkillTreeBuilder(page=Page.TWO)
+    skill_tree_builder.build(db.ability_groups,
+                             fname=join(build_dir, "ability_tree2.eps"))
+    skill_tree_builder.build(db.ability_groups,
+                             fname=join(build_dir, "ability_tree2.pdf"))
+        
     # get a jinja environment
-    #docs_dir  = join(root_dir, "docs")
     jinja_env = Environment(
-        #loader = FileSystemLoader(docs_dir),
         loader = FileSystemLoader(root_dir),
         keep_trailing_newline = True,
         trim_blocks = False,
@@ -554,7 +567,6 @@ if __name__ == "__main__":
     env = deepcopy(os.environ)
     env["TEXINPUTS"] = tex_inputs
 
-
     # Build latex/pdf files.
     for doc_xml_fname, _, _ in config.files_to_build:
         full_doc_xml_fname = join("docs", doc_xml_fname)        
@@ -568,6 +580,13 @@ if __name__ == "__main__":
         archetype = db.archetypes[archetype_id]
         build_pdf_doc(template_fname=archetype_template_fname,                      
                       doc_fname=archetype.get_id(),
+                      verbosity=verbosity,
+                      db=db,
+                      archetype=archetype)
+
+        # Also build latex/pdf archetype2 files.   EXPERIMENTAL!!
+        build_pdf_doc(template_fname=archetype_template_fname2,                      
+                      doc_fname=archetype.get_id() + "2",
                       verbosity=verbosity,
                       db=db,
                       archetype=archetype)
