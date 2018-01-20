@@ -40,7 +40,8 @@
 
   <archetypeinitialabilities>
     <p>
-      XXXX
+      Choose one of Kick I or Grapple I.  Choose one of Dodge I or Cloak Fighting I.
+      Choose one of Listen I or Notice I.  Choose one of Disguise I or Sneak I.
     </p>
   </archetypeinitialabilities>
   
@@ -247,10 +248,12 @@
   </levelprogressiontable>
   <abilitymodifiers>
 
+    <!--
     <disable>
       <abilitygroupid>magic</abilitygroupid>
       <abilitygroupid>special</abilitygroupid>
-    </disable>
+      </disable>
+      -->
     
 
     <abilitygroupmodifier>
@@ -275,6 +278,11 @@
     </abilitygroupmodifier>
 
     <innate>
+      <abilityid>physical.climb</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
       <abilityid>social.negotiate</abilityid>
       <level>1</level>
     </innate>
@@ -293,6 +301,12 @@
       <abilityid>sword.feint</abilityid>
       <level>1</level>
     </innate>
+
+    <innate>
+      <abilityid>dagger.strike</abilityid>
+      <level>1</level>
+    </innate>
+    
 
     <innate>
       <abilityid>skullduggery.sneak</abilityid>

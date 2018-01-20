@@ -16,7 +16,7 @@
   <archetypemove>6</archetypemove>
   <archetypeinitiative>11</archetypeinitiative>
   <startingcash>20 + 2d4 gp</startingcash>
-  <startinggear>Leather armour, long sword, dagger, rations for a week, musical instrument.</startinggear>
+  <startinggear>Leather armour, long sword, dagger, rations for a week, musical instrument of your choice.</startinggear>
 
   <height>
     <metric>150 + 2d20 cm</metric> 
@@ -36,7 +36,10 @@
 
   <archetypeinitialabilities>
     <p>
-      XXXX
+      Choose one of Musician - Strings I, Musician - Keyed I, or
+      Musician - Wind Instrument I.  Choose one of Dance I or Oratory I.
+      Choose one of Aquilonian I or Dwarven I.  Choose one of History I or
+      Theology I.
     </p>
   </archetypeinitialabilities>  
 
@@ -58,7 +61,6 @@
       <levelmagicpool>3<d6/></levelmagicpool>
       <levelmagicrefresh>+1<dany/></levelmagicrefresh>      
       <leveldescription>
-	Musician - Strings I, Dance I, Oratory I, Brythinian III, Fey I
       </leveldescription>
     </level>    
 
@@ -73,12 +75,13 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>0</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
       <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
       <leveldescription>
+	Enchantment I
       </leveldescription>
     </level>
     
@@ -93,7 +96,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -113,7 +116,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -133,7 +136,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -154,7 +157,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -175,7 +178,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>5<d6/></levelfate>
       <levelfaterefresh>+3<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -195,7 +198,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>5<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -216,7 +219,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>5<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -236,7 +239,7 @@
       <levellore>8</levellore>
       <levelmartial>8</levelmartial>
       <levelgeneral>14</levelgeneral>
-      <levelmagical>20</levelmagical>
+      <levelmagical>10</levelmagical>
       <levelfate>5<d6/></levelfate>
       <levelfaterefresh>+3<dany/></levelfaterefresh>
       <levelmagicpool>3<d6/></levelmagicpool>
@@ -252,7 +255,9 @@
     <disable>
       <abilitygroupid>necromancy</abilitygroupid>
       <abilitygroupid>special</abilitygroupid>
-      <abilitygroupid>magic</abilitygroupid>
+      <!--
+	  <abilitygroupid>magic</abilitygroupid>
+	  -->
     </disable>
     
     <abilitygroupmodifier>
@@ -271,6 +276,21 @@
     </abilitygroupmodifier>
     
     <innate>
+      <abilityid>school.fine_arts</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <innate>
+      <abilityid>language.fey</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <innate>
+      <abilityid>fine_arts.music</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
       <abilityid>fine_arts.singing</abilityid>
       <level>1</level>
     </innate>
@@ -282,6 +302,11 @@
     
     <innate>
       <abilityid>sword.strike</abilityid>
+      <level>1</level>
+    </innate>
+
+    <innate>
+      <abilityid>archery.archery</abilityid>
       <level>1</level>
     </innate>
 
@@ -364,9 +389,7 @@
     <abilitymodifier>
       <abilityid>wilderness.wayfinding</abilityid>
       <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>
-
-    
+    </abilitymodifier>    
     
   </abilitymodifiers>
 </archetype>
