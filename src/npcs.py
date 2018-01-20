@@ -18,8 +18,7 @@ class NPC:
 
     """
 
-    def __init__(self, monster_groups, npc_group=None):
-        self.monster_groups = monster_groups
+    def __init__(self, npc_group=None):
 
         # These values shadow those in the monster class
         # we use these to enable people to override the
@@ -42,6 +41,12 @@ class NPC:
         self.name = None
         self.health = None
         self.stamina = None
+        self.tags_str = None
+        
+        if npc_group is not None:
+            self.health = npc_group.get_health()
+            self.stamina = npc_group.get_stamina()
+            self.tags_str = npc_group.get_tags_str()
 
         self.ability_level_ids = []
         self.npc_group = npc_group        
@@ -57,19 +62,31 @@ class NPC:
         return self.monster_id
 
     def get_initiative_bonus(self):
-        return self.monster.get_initiative_bonus()
+        return self.initiative_bonus
 
     def get_tags_str(self):
         return self.monster.get_tags_str()
     
     def get_title(self):
-        return self.monster.get_title()    
+        return self.title
 
     def get_stamina(self):
-        return self.monster.get_stamina()
+        result = None
+        if self.stamina is not None:
+            result = self.stamina
+        elif self.monster is not None:
+            result = self.monster.stamina
+        return result    
+        #return self.stamina
     
     def get_health(self):
-        return self.monster.get_health()
+        result = None
+        if self.health is not None:
+            result = self.health
+        elif self.health is not None:
+            result = self.monster.health
+        return result    
+        #return self.health
 
     def get_aspects_str(self):
         return self.monster.get_aspects_str()    
@@ -175,13 +192,13 @@ class NPC:
         return result
 
     
-    def parse(self, node):        
+    def parse(self, node, monster_groups):        
          for child in list(node):
             tag = child.tag
 
             if tag == "monsterid":
                 self.monster_id = child.text
-                self.monster = self.monster_groups.get_monster_by_id(self.monster_id)
+                self.monster = monster_groups.get_monster_by_id(self.monster_id)
 
             elif tag == "name":
                 self.name = child.text
@@ -285,8 +302,8 @@ class NPCGroup:
                self.monster = self.monster_groups.get_monster_by_id(self.monster_id)
 
            elif tag == "npc":
-               npc = NPC(monster_groups=self.monster_groups, npc_group=self)
-               npc.parse(child)
+               npc = NPC(npc_group=self)
+               npc.parse(child, monster_groups=self.monster_groups)
                self.npcs.append(npc)
 
            elif tag is COMMENT:
@@ -336,8 +353,8 @@ class NPCGang:
                self.npcs_id = child.text
 
            elif tag == "npc":
-               npc = NPC(monster_groups=self.monster_groups)
-               npc.parse(child)
+               npc = NPC()
+               npc.parse(child, monster_groups=self.monster_groups)
                self.npc_likes.append(npc)
 
            elif tag == "npcgroup":
@@ -365,15 +382,15 @@ class NPCGang:
                     continue
             
                 xml_fname = join(root, name)
-                print xml_fname
+                #print xml_fname
                 
                 doc = parse_xml(xml_fname)
                 root = doc.getroot()
 
-                print root.tag
+                #print root.tag
 
                 if root.tag == "npcs":
-                    print "XXX"
+                    #print "XXX"
 
                     npcs = NPCs(monster_groups=monster_groups)
                     npcs.parse(root)
@@ -400,11 +417,7 @@ class NPCGangs:
 
     """
 
-    def __init__(self): # , monster_groups):
-        #self.npc_likes = []
-        #self.npcs_id = None
-        #self.monster_groups = monster_groups
-        
+    def __init__(self):
         # map of npc_id -> npcs.
         self.npc_gang_lookup = {}        
         return
@@ -412,43 +425,9 @@ class NPCGangs:
     def __iter__(self):
         return iter(self.npc_gang_lookup.items())
 
-
-    # def __index__(self, key):
-    #     return self.npc_gang_lookup[key]
-
     def __getitem__(self, key):
-        print "xxxxxxxxxxxxxxxxxxx =============================="
-        print key
-        print self.npc_gang_lookup[key]   
         return self.npc_gang_lookup[key]   
     
-    
-    # def get_id(self):
-    #     return self.npcs_id
-
-    # def parse(self, npcs_node):
-    #     for child in list(npcs_node):
-    #        tag = child.tag
-
-    #        if tag == "npcsid":
-    #            self.npcs_id = child.text
-
-    #        elif tag == "npc":
-    #            npc = NPC(monster_groups=self.monster_groups)
-    #            npc.parse(child)
-    #            self.npc_likes.append(npc)
-
-    #        elif tag == "npcgroup":
-    #            npc_group = NPCGroup()
-    #            npc_group.parse(child)
-    #            self.npc_likes.append(npc_group)
-
-    #        elif tag is COMMENT:
-    #            # ignore comments!
-    #            pass
-    #        else:
-    #            raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
-    #     return
 
     def load(self, npcs_dir, monster_groups, fail_fast):
         result = True
