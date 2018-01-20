@@ -5,9 +5,9 @@
     Walks the dir tree looking for licensing information
     for art and fonts.
 
-
     Find images by googling like this:
            site:deviantart.com creative commons golem
+           https://pixabay.com/en/users/OpenClipart-Vectors-30363/?tab=popular
 
 """
 import os
