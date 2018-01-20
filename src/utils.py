@@ -168,3 +168,22 @@ def contents_to_string(node):
     """
     return (node.text or "") + "".join(
         [etree.tostring(child) for child in node.iterchildren()])
+
+
+def attrib_is_true(xml_node, attribute):
+    """
+    Returns True if the xml_node has the attribute specified and it's set to true.
+
+    """
+    value = False
+    if attribute in xml_node.attrib:
+        value_str = xml_node.get(attribute)
+        if value_str == "true":
+            value = True
+        elif value_str != "false":
+            raise Exception("Unexpected value for boolean in xml")
+    return value
+        
+
+    
+    
