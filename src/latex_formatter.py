@@ -6,7 +6,8 @@ from utils import (
     normalize_ws,
     convert_str_to_bool,
     convert_str_to_int,
-    COMMENT
+    COMMENT,
+    attrib_is_true
 )
 from config import use_imperial
 
@@ -18,8 +19,6 @@ from npcs import NPC, NPCGroup
 # %%\usepackage[paperwidth=21.59cm,paperheight=27.94cm]{geometry}
 #%% documentclass[twocolumn,oneside]{book}
 #%% blurb
-
-#\usepackage{float}             %% allows figures in minipages.
 
 latex_frontmatter = r"""
 \documentclass[%s,twocolumn,oneside]{book}
@@ -790,7 +789,7 @@ class LatexFormatter:
     def start_equation(self, equation):
         self._equation_first_line = True
         self.latex_file.write("\\begin{tabbing}\n "
-                              "\\hspace*{0.5cm}\= \kill \\nopagebreak \n")    
+                              "\\hspace*{0.5cm}\= \kill \\nopagebreak \n")
         return
 
     def end_equation(self, equation):
@@ -836,12 +835,6 @@ class LatexFormatter:
 
     start_indexentry = no_op
     def end_indexentry(self, index_entry):
-        #if self.index_entry_see is not None:
-        #    self.latex_file.write("\\index{%s|see {%s}}" % (
-        #        normalize_ws(index_entry.text), self.index_entry_see))
-        #    self.index_entry_see = None
-
-        #el
         if self.index_entry_subentry is not None:
             self.latex_file.write("\\index{%s!%s}" % (
                 normalize_ws(index_entry.text), self.index_entry_subentry))
@@ -940,10 +933,6 @@ class LatexFormatter:
                                      "slope=0em]{\\rpgdropcapfont %s}{%s}" %
                                      (first_letter, other_letters))
                 words = [drop_cap_word, ] + words[1:]
-        #    text = " ".join(words)
-        #else:
-        #    text = normalize_ws(paragraph.text)
-        #self.latex_file.write(text)        
         return
 
     def end_p(self, paragraph):
@@ -1010,12 +999,6 @@ class LatexFormatter:
 
     start_chaptertitle = no_op
     end_chaptertitle = no_op
-    # def start_chaptertitle(self, chapter_title):
-    #     return
-
-    # def end_chapter_title(self, chapter_title):
-    #     return
-
 
     def start_img(self, img):
         if config.draw_imgs:
@@ -1025,14 +1008,12 @@ class LatexFormatter:
             self.latex_file.write("\t\\begin{center}\n")
 
             filename = img.get("src")
-            #_, ext = splitext(filename)
-            #if ext.lower() == ".svg":            
-            #    self.latex_file.write("\t\\includesvg{%s}\n"
-            #                          % (#img.get("scale", default="1.0", ),
-            #                              filename))
-            #else:
+            # image without a box
             self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
                                   % (img.get("scale", default="1.0"), filename))
+            # image with a box around the outside!
+            #self.latex_file.write("\t\\fbox{\\includegraphics[scale=%s]{%s}}\n"
+            #                      % (img.get("scale", default="1.0"), filename))
         return
 
     def end_img(self, img):
@@ -1048,14 +1029,19 @@ class LatexFormatter:
         if "position" in figure.attrib:
             position = figure.get("position")
 
-        fullwidth = False
-        if "fullwidth" in figure.attrib:
-            fullwidth = figure.get("fullwidth")
-
-        if fullwidth:
-            self.latex_file.write("\\begin{figure*}[%s]\n" % position)
+                    
+        if attrib_is_true(figure, "fullwidth"):
+            if attrib_is_true(figure, "sideways"):
+                figure_name = "sidewaysfigure*"
+            else:
+                figure_name = "figure*"
         else:
-            self.latex_file.write("\\begin{figure}[%s]\n" % position)
+            if attrib_is_true(figure, "sideways"):
+                figure_name = "sidewaysfigure"
+            else:
+                figure_name = "figure"
+            
+        self.latex_file.write("\\begin{%s}[%s]\n" % (figure_name, position))
         self.latex_file.write("\\centering\n")
         return
 
@@ -1064,14 +1050,33 @@ class LatexFormatter:
         if caption is not None:
             self.latex_file.write("\\caption{%s}\n" % caption)        
 
-        fullwidth = False
-        if "fullwidth" in figure.attrib:
-            fullwidth = figure.get("fullwidth")
+        # fullwidth = False
+        # if "fullwidth" in figure.attrib:
+        #     fullwidth = figure.get("fullwidth")
 
-        if fullwidth:
-            self.latex_file.write("\\end{figure*}\n")
+        # if attrib_is_true(figure, "fullwidth"):
+        #     figure_name = "figure*"
+        # else:
+        #     figure_name = "figure"
+
+        if attrib_is_true(figure, "fullwidth"):
+            if attrib_is_true(figure, "sideways"):
+                figure_name = "sidewaysfigure*"
+            else:
+                figure_name = "figure*"
         else:
-            self.latex_file.write("\\end{figure}\n")
+            if attrib_is_true(figure, "sideways"):
+                figure_name = "sidewaysfigure"
+            else:
+                figure_name = "figure"
+            
+ 
+        # if attrib_is_true(figure, "fullwidth"):
+        #     self.latex_file.write("\\end{figure*}\n")
+        # else:
+        #     self.latex_file.write("\\end{figure}\n")
+
+        self.latex_file.write("\\end{%s}\n" % figure_name)            
         return
 
     def start_olist(self, enumeration):
@@ -1197,7 +1202,9 @@ class LatexFormatter:
 
             if child.tag == "fixed":
                 percent_width = float(child.text)
-                table_spec_str += "p{%s\\linewidth}" % percent_width
+                #table_spec_str += "p{%s\\linewidth}" % percent_width
+                #table_spec_str += "p{%s\\textwidth}" % percent_width
+                table_spec_str += "p{%s\\hsize}" % percent_width
                 
             elif child.tag is COMMENT:
                # ignore comments!
@@ -1220,7 +1227,8 @@ class LatexFormatter:
         if compact:
             self.latex_file.write("\n\n\\vspace{0.15cm}\\noindent")
         else:
-            self.latex_file.write("\n\n\\vspace{0.2cm}\\noindent")
+            self.latex_file.write("\n\\vspace{-0.2cm}\\noindent")
+            #self.latex_file.write("\n\\noindent")
 
 
         # wrap single page tables in a table environment
@@ -1233,8 +1241,8 @@ class LatexFormatter:
                 self.latex_file.write("\\begin{table*}[ht]")
             else:
                 self.latex_file.write("\\begin{table}")
-        else:
-            self.latex_file.write("\\captionsetup{type=figure}")
+        #else:
+            #self.latex_file.write("\\captionsetup{type=figure}")
 
         #self.latex_file.write("\\centering")
 
@@ -1243,12 +1251,13 @@ class LatexFormatter:
             self.latex_file.write("\\begingroup\n")
             self.latex_file.write("\\renewcommand\\arraystretch{0.75}\n")
         
+        self.latex_file.write(" \\begin{center} ")
         if fullwidth:
             # normal table environment
             self.latex_file.write("\\begin{tabularx}{1.0\\textwidth}{%s} " 
                                   % table_spec_str)
         else:
-            self.latex_file.write("\\begin{tabularx}{1.0\\linewidth}{%s} " 
+            self.latex_file.write("\\begin{tabularx}{1.0\\linewidth}{%s}" 
                                   % table_spec_str)
 
         if figure:
@@ -1263,6 +1272,14 @@ class LatexFormatter:
         category = get_text_for_child(table, "tablecategory")
         if category is None:
             raise Error("Table requires a tablecategory child element.")
+
+        table_title = table.find("tabletitle")        
+        if table_title is not None:
+            if hasattr(table_title, "text"):
+                table_title = table_title.text
+            table_title = table_title.strip()
+        else:
+            table_title = ""
 
         figure = False
         fullwidth = False
@@ -1292,7 +1309,10 @@ class LatexFormatter:
         # normal table environment
         self.latex_file.write("\\end{tabularx}")
         
-
+        if table_title != "":
+            self.latex_file.write(" \\captionof{table}{%s}" % table_title)
+        self.latex_file.write(" \\end{center} \\vspace{0.4cm} ")
+        
         compact = False
         if "compact" in table.attrib:
             compact = table.get("compact").lower() == "true"        
@@ -1300,11 +1320,12 @@ class LatexFormatter:
             self.latex_file.write("\\endgroup\n")
 
         
-        table_title = table.find("tabletitle")
-        if table_title is not None and table_title.text.strip() != "":
-            if figure:
-                self.latex_file.write("\\caption{%s}" % table_title.text)
-            
+        # table_title = table.find("tabletitle")
+        # if table_title is not None and table_title.text.strip() != "":
+        #     if figure:
+        #         self.latex_file.write("\\caption{%s}" % table_title.text)
+                
+                
             
         # we also need to find any labels! (place them after the caption!)
         label = table.find("tablelabel")
@@ -1319,6 +1340,8 @@ class LatexFormatter:
                 self.latex_file.write("\\end{table*}")        
             else:
                 self.latex_file.write("\\end{table}")
+                # vertical space
+                self.latex_file.write("\n\\\\\n")
             
         self.latex_file.write("\n\n")
         return
@@ -1381,7 +1404,6 @@ class LatexFormatter:
             width = int(width)
         else: 
             width = 1
-        #width = 1
 
         align = table_data.get("align")
         if align is None:
@@ -1390,13 +1412,9 @@ class LatexFormatter:
         self._current_column_in_table = (
             (self._current_column_in_table + width) % self._number_of_columns_in_table)
 
-        #if table_data.text is not None:
-        #    text = normalize_ws(table_data.text).strip()
-
         # override for table headers
         parent = table_data.getparent()
         if parent.tag == "tableheaderrow":
-            #text = "\\rpgtableheader{%s}" % text
             text = "\\begin{rpgtableheader}"
 
         if width > 1 or align != "l":
