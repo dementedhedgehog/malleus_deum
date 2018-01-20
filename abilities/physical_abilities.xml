@@ -20,6 +20,7 @@
     <abilitytitle>Charge</abilitytitle>
     <abilityid>physical.charge</abilityid>
     <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
         The Charge ability allows the character to move twice their movement rate
@@ -69,6 +70,7 @@
     <abilitytitle>Run</abilitytitle>
     <abilityid>physical.run</abilityid>
     <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
         The Run ability allows the character to move twice their movement rate during combat
@@ -84,7 +86,7 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 6</check>
+        <check>Std 2d8 vs DDC 7</check>
         <effect>
           The character moves a bit extra.  During combat this is an extra square when playing
 	  on a grid, or something narrative in a TOTM combat.  During a pursuit the character
@@ -99,7 +101,7 @@
         <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs DDC 6</check>
+        <check>Std 2d8 + 1 vs DDC 7</check>
         <effect>
           As above.
         </effect>
@@ -111,7 +113,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>2</defaultgeneral>
-        <check>Std 2d8 + 2 vs DDC 6</check>
+        <check>Std 2d8 + 2 vs DDC 7</check>
         <effect>
           As above.
         </effect>
@@ -125,6 +127,7 @@
     <abilitytitle>Flee</abilitytitle>
     <abilityid>physical.flee</abilityid>
     <abilityclass>StartAndReaction</abilityclass>
+    <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
         The Flee ability allows the character to move more than twice their movement rate
@@ -174,6 +177,7 @@
     <abilitytitle>Jump</abilitytitle>
     <abilityid>physical.jump</abilityid>
     <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
@@ -218,6 +222,12 @@
     <abilitytitle>Swim</abilitytitle>
     <abilityid>physical.swim</abilityid>
     <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers>
+      <attr>Strength</attr>
+      <attr>Endurance</attr>
+      <attr>Willpower</attr>
+    </abilityattrmodifiers>
+    
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
@@ -268,6 +278,12 @@
     <abilitytitle>Climb</abilitytitle>
     <abilityid>physical.climb</abilityid>
     <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	This skill represents the characters ability to Climb.
+      </p>
+    </abilitydescription>    
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
@@ -309,11 +325,6 @@
 	<check>Std 2d8 + 4  vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
-    <abilitydescription>
-      <p>
-	This skill represents the characters ability to Climb.
-      </p>
-    </abilitydescription>
   </ability>
 
 
@@ -321,6 +332,7 @@
     <abilitytitle>Throw</abilitytitle>
     <abilityid>physical.throw</abilityid>
     <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
@@ -362,6 +374,7 @@
     <abilitytitle>Notice</abilitytitle>
     <abilityid>physical.notice</abilityid>
     <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	This skill represents the characters attention to detail,
@@ -404,6 +417,7 @@
     <abilitytitle>Listen</abilitytitle>
     <abilityid>physical.listen</abilityid>
     <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	This is the characters ability to hear faint noise.
@@ -450,6 +464,7 @@
     <abilitytitle>Dodge</abilitytitle>
     <abilityid>physical.dodge</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	After the character is hit and/or damage is rolled the character
@@ -509,6 +524,7 @@
     <abilitytitle>Kick</abilitytitle>
     <abilityid>physical.kick</abilityid>
     <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	The attacker kicks an opponent potentially pushing the opponent back.
@@ -570,6 +586,7 @@
     <abilitytitle>Grapple</abilitytitle>
     <abilityid>physical.grapple</abilityid>
     <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Grappling involves grabbing, tackling or wrestling an opponent and holding 
@@ -601,8 +618,8 @@
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultmartial>3</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + Str Modifier vs opponents Str or Grapple</check>
@@ -634,6 +651,7 @@
     <abilitytitle>Head Butt</abilitytitle>
     <abilityid>physical.head_butt</abilityid>
     <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	A head butt involves the attacker driving the top of their head into the bridge 
@@ -688,6 +706,7 @@
     <abilitytitle>Punch</abilitytitle>
     <abilityid>physical.punch</abilityid>
     <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	The attacker attempts to hit their opponent using their fists. 
@@ -738,6 +757,7 @@
     <abilitytitle>Rest</abilitytitle>
     <abilityid>physical.rest</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Luck</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Rest</subentry></indexentry>		
@@ -795,6 +815,7 @@
     <abilitytitle>Sleep</abilitytitle>
     <abilityid>physical.sleep</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Sleep</subentry></indexentry>	

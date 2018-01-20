@@ -24,6 +24,7 @@
     <abilitytitle>Intimidate</abilitytitle>
     <abilityid>social.intimidate</abilityid>
     <abilityclass>Start</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	The character can make an check against an opponent
@@ -65,6 +66,7 @@
     <abilitytitle>Interrogate/Torture</abilitytitle>
     <abilityid>social.interrogate</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	The character can make a Std 2d8 check against an opponent.
@@ -116,6 +118,7 @@
     <abilitytitle>Deceive</abilitytitle>
     <abilityid>social.deceive</abilityid>
     <abilityclass>Start</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Lying convincingly can be difficult.  This skill represents
@@ -153,6 +156,7 @@
     <abilitytitle>Perceive</abilitytitle>
     <abilityid>social.perceive</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Perceive represents the characters insight, and empathy,
@@ -175,9 +179,9 @@
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>4</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <check>Std 2d8 + 2 vs Opponents Deceive</check>
         <prereqabilitylevel>school.social_1</prereqabilitylevel>	
@@ -191,6 +195,7 @@
     <abilitytitle>Negotiate</abilitytitle>
     <abilityid>social.negotiate</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Negotiation is the art of the deal, persuasion and diplomacy.
@@ -277,7 +282,7 @@
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>3</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>2</attempts>
@@ -291,6 +296,7 @@
     <abilitytitle>High Etiquette</abilitytitle>
     <abilityid>social.high_etiquette</abilityid>
     <abilityclass>Start</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
       <indexentry>diplomacy</indexentry>
@@ -303,9 +309,9 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>2</successes>
         <attempts>2</attempts>
@@ -320,6 +326,7 @@
     <abilitytitle>Etiquette</abilitytitle>
     <abilityid>social.etiquette</abilityid>
     <abilityclass>Start</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
       <indexentry>diplomacy</indexentry>
@@ -334,7 +341,7 @@
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>3</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>3</attempts>
@@ -349,6 +356,7 @@
     <abilitytitle>Low Etiquette</abilitytitle>
     <abilityid>social.low_etiquette</abilityid>
     <abilityclass>Start</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
       <indexentry>diplomacy</indexentry>
@@ -364,7 +372,7 @@
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>1</defaultgeneral>
+        <defaultgeneral>3</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>3</attempts>
@@ -378,6 +386,7 @@
     <abilitytitle>High Contacts</abilitytitle>
     <abilityid>social.high_contacts</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	If your character has high contacts they know certain people
@@ -390,7 +399,7 @@
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs DDC 12</check>
@@ -424,6 +433,7 @@
     <abilitytitle>Contacts</abilitytitle>
     <abilityid>social.contacts</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	If your character has contacts they know many people
@@ -447,7 +457,7 @@
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>2</attempts>
 	<check>Std 2d8 + 1 vs DDC 10</check>
@@ -480,6 +490,7 @@
     <abilitytitle>Low Contacts</abilitytitle>
     <abilityid>social.low_contacts</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>    
       <p>
 	If your character has low contacts they know many people
@@ -526,6 +537,7 @@
     <abilitytitle>Leadership</abilitytitle>
     <abilityid>social.leadership</abilityid>
     <abilityclass>StartAndReaction</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>    
       <p>
 	The character is a leader.  As a reaction they may
@@ -561,8 +573,8 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 2 vs DDC 12</check>
@@ -572,8 +584,8 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>7</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 4 vs DDC 12</check>
@@ -587,6 +599,7 @@
     <abilitytitle>Rally</abilitytitle>
     <abilityid>social.rally</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>    
       <p>
         When characters starts to flee they need to Rally before they can stop.
@@ -632,6 +645,7 @@
     <abilitytitle>Yield</abilitytitle>
     <abilityid>social.yield</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>    
       <p>
 	Vanquished characters may <defn>Yield</defn>.  When characters yield 
@@ -656,8 +670,8 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 1 vs DDC 8</check>
@@ -667,7 +681,7 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
+        <defaultmartial>0</defaultmartial>
         <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>

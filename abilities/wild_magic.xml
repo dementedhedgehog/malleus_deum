@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Wild Magic</abilitygrouptitle>
+    <abilitygroupid>wild_magic</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	XXX FIXME: rename  Wild Magic?
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Wild Magic</abilitytitle>
+    <abilityid>magic_school.wild_magic</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	Wild Magic magic is the use of the residual life magic in a region.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>4</defaultmagical>
+        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
+        <check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Spider Climb</abilitytitle>
+    <abilityid>magic.spider_climb</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster uses magical energies to help him climb a surface
+	as per the Climb ability. 
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>8</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 12</check>
+	<overcharge>DC + 8</overcharge>	
+	<effect>+3 to Climb check</effect>	
+        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 12</check>
+	<overcharge>DC + 7</overcharge>	
+	<effect>+4 to Climb check</effect>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Hyperosmia</abilitytitle>
+    <abilityid>magic.hyperosmia</abilityid>
+    <abilityclass>StartAndReaction</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character gains a very enhanced sense of smell, temporarily.
+	This spell gives them advantges to fighting when they cannot see
+	(+2 to hit, more against strongly smelling opponents),
+	+2 tracking, saves against illusions, +4 to Ambush roles, and +2 to Interogate and
+	Perceive checks.  The spell lasts half an hour.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+	<check>Magic Pool + 2 vs DDC 4</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>  
+</abilitygroup>

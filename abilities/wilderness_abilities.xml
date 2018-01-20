@@ -18,6 +18,7 @@
     <abilitytitle>Stealth</abilitytitle>
     <abilityid>wilderness.stealth</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Stealth ia the skill of moving silently, avoiding detection, while
@@ -47,9 +48,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>school.wilderness_1</prereqabilitylevel>
-        <defaultlore>5</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>6</defaultgeneral>
         <successes>3</successes>
         <failures>3</failures>
         <check>Std 2d8 + 3 vs opponents Tracking or Scout</check>
@@ -57,9 +58,9 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>5</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultgeneral>6</defaultgeneral>
         <check>Std 2d8 + 5 vs opponents Tracking or Scout</check>
       </abilitylevel>      
     </abilitylevels>
@@ -70,6 +71,7 @@
     <abilitytitle>Tracking</abilitytitle>
     <abilityid>wilderness.tracking</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
     <abilitydescription>
       <p>
 	Tracking is the art of following trails left by others.
@@ -120,6 +122,7 @@
     <abilitytitle>Wayfinding</abilitytitle>
     <abilityid>wilderness.wayfinding</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>        
     <abilitydescription>
       <p>
 	Wayfinding is the art of finding paths through 
@@ -146,9 +149,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>4</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>1</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 3 vs DDC 12</check>	
@@ -157,9 +160,9 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
 	<check>Std 2d8 + 5 vs DDC 12</check>	
       </abilitylevel>      
     </abilitylevels>
@@ -170,6 +173,7 @@
     <abilitytitle>Scout</abilitytitle>
     <abilityid>wilderness.scout</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
     <abilitydescription>
       <p>
 	Scout is the ability to notice things that are out of
@@ -200,9 +204,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>4</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>1</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 3 vs DDC 12</check>	
@@ -211,9 +215,9 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>4</defaultgeneral>
 	<check>Std 2d8 + 5 vs DDC 12</check>
       </abilitylevel>      
     </abilitylevels>
@@ -224,6 +228,7 @@
     <abilitytitle>Survivalism</abilitytitle>
     <abilityid>wilderness.survivalism</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
     <abilitydescription>
       <p>
 	Constructing make-shift shelters, starting fires in challenging conditions, 
@@ -248,9 +253,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>wilderness.wayfinding_1</prereqabilitylevel>
-        <defaultlore>8</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>6</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 3 vs DDC 12</check>
@@ -260,7 +265,7 @@
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <check>Std 2d8 + 5 vs DDC 12</check>
       </abilitylevel>      
     </abilitylevels>
@@ -272,6 +277,7 @@
     <abilitytitle>Hunting</abilitytitle>
     <abilityid>wilderness.hunting</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
     <abilitydescription>
       <p>
 	The skill involves finding and hunting animals with a bow
@@ -292,9 +298,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>wilderness.tracking_1</prereqabilitylevel>
-        <defaultlore>6</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <successes>2</successes>
         <attempts>2</attempts>
         <check>Std 2d8 + 3 vs DDC 10</check>
@@ -302,9 +308,9 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <check>Std 2d8 + 5 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
@@ -315,6 +321,7 @@
     <abilitytitle>Dungeoneering</abilitytitle>
     <abilityid>wilderness.dungeoneering</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
     <abilitydescription>
       <p>
 	Skills used for living under the ground: detect slope, detect depth,
@@ -335,9 +342,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>8</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>7</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 3 vs DDC 10</check>
@@ -346,17 +353,17 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>3</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>6</defaultgeneral>
         <check>Std 2d8 + 4 vs DDC 10</check>
       </abilitylevel>      
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>3</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <check>Std 2d8 + 5 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>

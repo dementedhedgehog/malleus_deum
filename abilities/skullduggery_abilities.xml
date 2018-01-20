@@ -19,6 +19,7 @@
     <abilitytitle>Cloak Fighting</abilitytitle>
     <abilityid>skullduggery.cloak_fighting</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Reaction to being hit with a Piercing weapon.  The character
@@ -40,10 +41,10 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>3</defaultlore>
-        <defaultmartial>4</defaultmartial>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-	      <check>Std 2d8 + 2 vs opponents Agility</check>
+	<check>Std 2d8 + 2 vs opponents Agility</check>
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -53,6 +54,7 @@
     <abilitytitle>Sleight of Hand</abilitytitle>
     <abilityid>skullduggery.sleight_of_hand</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	This skill involves palming and concealing small objects about
@@ -108,6 +110,7 @@
     <abilitytitle>Sneak</abilitytitle>
     <abilityid>skullduggery.sneak</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Hiding in urban environments.  Shadowing people and remainging undetected.
@@ -158,6 +161,7 @@
     <abilitytitle>Disguise</abilitytitle>
     <abilityid>skullduggery.disguise</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Disquise is the art of hiding in plain sight.  This covers anything
@@ -203,6 +207,7 @@
     <abilitytitle>Trap Work</abilitytitle>
     <abilityid>skullduggery.trap_work</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers> 
     <abilitydescription>
       <p>
 	Creating, arming and disarming traps in urban environs.
@@ -225,9 +230,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>4</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>4</defaultgeneral>
         <check>Std 2d8 + 2 vs Trap Difficulty</check>
         <successes>3</successes>
         <attempts>3</attempts>
@@ -236,9 +241,9 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>4</defaultgeneral>
         <check>Std 2d8 + 4 vs Trap Difficulty</check>
       </abilitylevel>      
     </abilitylevels>
@@ -249,6 +254,7 @@
     <abilitytitle>Pick Locks</abilitytitle>
     <abilityid>skullduggery.pick_locks</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Pick locks encompases lock smith skills, primarily
@@ -269,7 +275,7 @@
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>8</defaultlore>
+        <defaultlore>5</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
@@ -280,7 +286,7 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>8</defaultlore>
+        <defaultlore>5</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
@@ -290,7 +296,7 @@
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>8</defaultlore>
+        <defaultlore>5</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
@@ -300,9 +306,9 @@
       
       <abilitylevel>
         <levelnumber>4</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>4</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 6 vs Lock Difficulty</check>
       </abilitylevel>      
     </abilitylevels>
@@ -314,6 +320,7 @@
     <abilitytitle>Concealment</abilitytitle>
     <abilityid>skullduggery.concealment</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	<indexentry>concealment</indexentry>
@@ -383,6 +390,7 @@
     <abilitytitle>Search</abilitytitle>
     <abilityid>skullduggery.search</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	There is quite a skill to finding carefully hidden
@@ -405,9 +413,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>8</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>6</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 2 vs DDC 12</check>
@@ -416,9 +424,9 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>8</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>6</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 4 vs DDC 12</check>
@@ -427,9 +435,9 @@
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>1</defaultgeneral>
+        <defaultgeneral>4</defaultgeneral>
 	<check>Std 2d8 + 6 vs DDC 12</check>
         <!-- <successes>3</successes>
              <failures>3</failures> -->
@@ -441,6 +449,7 @@
     <abilitytitle>Ropecraft</abilitytitle>
     <abilityid>skullduggery.ropecraft</abilityid>
     <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	This skill involves tying knots and working with ropes.
@@ -486,6 +495,7 @@
     <abilitytitle>Cryptogrtaphy</abilitytitle>
     <abilityid>skullduggery.cryptography</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	Knowledge of reading and writing ciphers and deciphering.
@@ -520,6 +530,7 @@
     <abilitytitle>Contortionist/Escape Artist</abilitytitle>
     <abilityid>skullduggery.escapist</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	The character is supple and or double jointed.  They have

@@ -18,6 +18,7 @@
     <abilitytitle>Sword Strike</abilitytitle>
     <abilityid>sword.strike</abilityid>
     <abilityclass>MediumOrSlow</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a Sword can strike with it during combat doing
@@ -69,6 +70,7 @@
     <abilitytitle>Sword Feint</abilitytitle>
     <abilityid>sword.feint</abilityid>
     <abilityclass>MediumOrSlow</abilityclass>
+    <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	The character makes an opposed agility check when an opponent attacks
@@ -80,8 +82,8 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>sword.strike_2</prereqabilitylevel>
-        <defaultlore>8</defaultlore>
-        <defaultmartial>3</defaultmartial>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
@@ -91,7 +93,7 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
+        <defaultmartial>5</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
 	<check>Opposed Agility Check +2</check>
       </abilitylevel>      
@@ -103,6 +105,7 @@
     <abilitytitle>Sword Parry</abilitytitle>
     <abilityid>sword.parry</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
         The player parrys a blow using a weapon.
@@ -112,7 +115,7 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>2</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>8</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
@@ -124,7 +127,7 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
+        <defaultmartial>5</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
 	<check>Opposed Speed Check + 2</check>
         <!-- <successes>3</successes>
@@ -138,6 +141,7 @@
     <abilitytitle>Sword Disarm</abilitytitle>
     <abilityid>sword.disarm</abilityid>
     <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Speed</attr><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	The character attempts to disarm their opponent.

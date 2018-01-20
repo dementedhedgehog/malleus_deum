@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Rune Magic</abilitygrouptitle>
+    <abilitygroupid>runes</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	XXXX
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+
+
+
+  <ability>
+    <abilitytitle>Rune Magic</abilitytitle>
+    <abilityid>magic_school.runes</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	Rune magic is a very specific form of elemental ritual magic
+	used mainly by dwarves and shamen.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>8</defaultlore>
+        <defaultmagical>0</defaultmagical>
+        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>	
+        <check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Sign of Idreshein</abilitytitle>
+    <abilityid>magic.sign_of_idreshein</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The Sign of Idreshein is a sigil that stores energy
+	that can be released when something touches the sign.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>7</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 7</overcharge>
+	<effect>2d6 Thaumic damage to those near the blast</effect>
+        <prereqabilitylevel>magic_school.runes_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 8</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>3d6 Thaumic damage to those near the blast</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+</abilitygroup>

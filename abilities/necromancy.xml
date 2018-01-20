@@ -15,10 +15,39 @@
     </abilitygroupdescription>      
   </abilitygroupinfo>
 
+    
+
+  <ability>
+    <abilitytitle>Necromancy</abilitytitle>
+    <abilityid>magic_school.necromancy</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	The school of necromancy is concerned with the use of death or blood magic.
+	Necromantic lore is the study of the legends of the dread necromancers
+	and the unquiet dead.  Characters may provide useful information about these
+	topics on occasion: identifying undead, and or their weaknesses, and providing
+	the relevant mythology around these creatures.
+      </p>      
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>7</defaultmagical>
+        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>	
+        <check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
   <ability>
     <abilitytitle>Commune with the Dead</abilitytitle>
     <abilityid>necromancy.commune</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	While holding part of the deceased's body the necromancer may ask questions of the 
@@ -58,9 +87,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <defaultmartial>0</defaultmartial>
-        <defaultlore>5</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
+        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 8</check>
@@ -87,5 +116,118 @@
     </abilitylevels>
     
   </ability>
-    
+
+
+
+  <ability>
+    <abilitytitle>Graft Flesh</abilitytitle>
+    <abilityid>magic.graft_flesh</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster grafts the fresh flesh of one creature onto another.
+	Without the appropriate skeletal, vascular and muscular support the new
+	flesh will not be usable by the subject, <eg/> you can graft
+	an extra arm to a subject but they will not be able to use it.
+	You can however replace an existing limb with another or
+	restore a previously amputated limb.  Note that you cannot
+	use this spell to replace a head on a creature.  Once decapitated
+	the creature is dead.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <successes>0</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus DDC 5</check>
+        <overcharge>DC + 5</overcharge>
+        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>0</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus DDC 5</check>
+        <overcharge>DC + 7</overcharge>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>0</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus DDC 5</check>
+        <overcharge>DC + 9</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Stay Death</abilitytitle>
+    <abilityid>magic.stay_death</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character holds death at bay for a moment.  The target
+	can reroll a single near-death roll.  This spell may be cast
+	once per character per day.
+      </p>
+
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>1</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool versus DDC 7</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
+	<effect>Reroll a near-death roll.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>1</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool +2 versus DDC 7</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool +3 versus DDC 7</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>See above.</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
 </abilitygroup>

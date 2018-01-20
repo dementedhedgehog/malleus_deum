@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Magic Abilities</abilitygrouptitle>
+    <abilitygroupid>theurgic</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Magic abilities involve the use of the characters magic pool and
+	are only available to certain archetypes.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+  
+  <ability>
+    <abilitytitle>Theurgic Magic</abilitytitle>
+    <abilityid>magic_school.theurgic</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	Theurgic magic is magic channelled from a powerful deity.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>8</defaultmagical>
+        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
+        <!--
+	    <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>
+	-->
+        <check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Augury</abilitytitle>
+    <abilityid>magic.augury</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	Augury involves petitioning a deity or powerful being for
+	information or insight.  Augurys are performed by
+	interpretation of the stars, palmistry, tea leaf reading,
+	dream interpretation, use of cards, the entrails of a sacraficial
+	victim etc.  The character should choose one method per message
+	recipient and use that method thereafter.
+      </p>
+
+      <p>
+	The augury process follows the following steps. First, the
+	character asks a question, then they prepare the augury,
+	and finally they examine the auspicies for the answer.
+      </p>
+
+      <p>
+	When asking the question it is important that the augure
+	specify to whom they are directing their question otherwise
+	nameless eavesdroppers may respond.  Asking the question is
+	usually done in one of the old languages.  Firstly because
+	it may be easier to communicate to the entity in that language,
+	and second because it makes for good theatre.	
+      </p>
+
+      <p>
+	The steps to prepare an augury depend on the method of
+	divination, but could include making a cup of tea, or
+	sacrificing someone on an alter (players should not do this).
+      </p>
+
+      <p>
+	Finally, the auspices can be examined. The GM will answer the
+	characters question in a three words or less or provide no
+	response.  If the augury is unsuccessful those worfs may have
+	nothing to do with the question being asked.  The player gets
+	to see their roll, but does not know the difficulty of the augury.
+      </p>
+
+      <p>
+	It is important to know that in Malleus Deum the Gods are
+	capricious,are not omniscient or in general, particularly caring.
+	So they may not answer the characters augury.
+      </p>
+      
+      <p>
+	A character may keep performing auguries until they fail, at which
+	point they feel they have lost the attention of the god.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>6</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs DDC 10</check>
+	<overcharge>DC + 5</overcharge>
+	<prereqtag>Cleric</prereqtag>
+        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <check>Std 2d8 + 2 vs DDC 10</check>
+	<overcharge>DC + 6</overcharge>	
+      </abilitylevel>      
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <check>Std 2d8 + 3 vs DDC 10</check>
+	<overcharge>DC + 7</overcharge>
+	<leveldescription>
+	  <p>
+	    The character may be gifted with visions from their deity.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Heal</abilitytitle>
+    <abilityid>magic.heal</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	The healing character places their hands on a bloodied target
+	and makes a check.  If successful the bloodied character heals
+	Health.  On overcharge the healer accidentaly uses their own animus
+	in order to heal the bloodied character.  On overcharge the character
+	may lose d6 hitpoints.
+      </p>
+
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqtag>Cleric</prereqtag>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>8</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool versus DDC 8</check>
+        <effect>Bloodied character heals 2d6 damage</effect>
+        <overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <check>Magic Pool + 2 versus DDC 8</check>
+        <effect>Bloodied character heals 3d6 damage</effect>
+        <overcharge>DC + 7, Caster takes 2d6 damage.</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Turn Undead</abilitytitle>
+    <abilityid>magic.turn_undead</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	The character calls on their deity to repel beings animated by
+	necrotic forces.
+      </p>
+
+      <!--
+	  at low levels hold, then turn then destroy the undead
+      -->
+    </abilitydescription>    
+    <abilitylevels>
+       <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqtag>cleric</prereqtag>
+        <defaultmagical>6</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs opponents Will</check>
+	<overcharge>DC + 8</overcharge>
+        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>2</defaultmagical>
+        <check>Std 2d8 + 2 vs opponents Will</check>
+	<overcharge>DC + 9</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+</abilitygroup>

@@ -24,6 +24,7 @@
     <abilitytitle>Lucky</abilitytitle>
     <abilityid>luck.lucky</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>    
     <abilitydescription>
       <p>
 	The character was born lucky.  The character refreshes 
@@ -34,31 +35,31 @@
 
     <abilitylevels>
       <abilitylevel>
-        <levelnumber>1</levelnumber>
+        <levelnumber>0</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
-        <successes>2</successes>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>1</successes>
 	<check>Critical success on any Std 2d8 roll</check>
 	<effect>The character refreshes a die into their Fate Pool</effect>
       </abilitylevel>
 
       <abilitylevel>
-        <levelnumber>2</levelnumber>
+        <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>3</defaultgeneral>
-        <successes>2</successes>
+        <successes>1</successes>
 	<check>Critical success on any Std 2d8 roll</check>
 	<effect>The character refreshes two dice into their Fate Pool</effect>
       </abilitylevel>
       
       <abilitylevel>
-        <levelnumber>3</levelnumber>
+        <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>1</defaultgeneral>
-        <successes>2</successes>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>1</successes>
 	<check>Critical success on any Std 2d8 roll</check>
 	<effect>The character refreshes three dice into their Fate Pool</effect>
       </abilitylevel>      
@@ -71,6 +72,7 @@
     <abilitytitle>Reroll</abilitytitle>
     <abilityid>luck.reroll</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>    
     <abilitydescription>
       <p>
 	The character gets a lucky break and gets to reroll.
@@ -113,6 +115,7 @@
 	<check>Fate Pool + 2 vs DDC 12</check>
 	<overcharge>DC + 5</overcharge>	
 	<effect>The character gets to reroll a check</effect>
+        <prereqabilitylevel>luck.lucky_0</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
@@ -146,6 +149,7 @@
     <abilitytitle>Not As Bad As It Looks</abilitytitle>
     <abilityid>luck.nabail</abilityid>
     <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>    
     <abilitydescription>
       <p>
         The character examines a wound, checks against Luck and if successful 
@@ -165,18 +169,19 @@
         <levelnumber>1</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Fate Pool vs DDC 12</check>
         <overcharge>DC + 4</overcharge>
+        <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Fate Pool + 2 vs DDC 12</check>
@@ -186,8 +191,8 @@
       <abilitylevel>
         <levelnumber>3</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Fate Pool + 4 vs DDC 12</check>	
@@ -202,6 +207,7 @@
     <abilitytitle>Nick of Time</abilitytitle>
     <abilityid>luck.nick_of_time</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>    
     <abilitydescription>
       <p>
         Sometimes all you need is a little luck to get something done in the nick of 
@@ -218,19 +224,20 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>1</defaultlore>
-        <defaultmartial>1</defaultmartial>
-        <defaultgeneral>1</defaultgeneral>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Luck vs DDC 10</check>
+        <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
+        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Luck + 1 vs DDC 10</check>
@@ -263,6 +270,7 @@
     <abilitytitle>Misfortune</abilitytitle>
     <abilityid>luck.misfortune</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>    
     <abilitydescription>
             
       <p>
@@ -305,6 +313,7 @@
         <attempts>2</attempts>
         <check>Fate Pool vs DDC 14</check>
         <overcharge>DC + 4</overcharge>
+        <prereqabilitylevel>luck.lucky_2</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>

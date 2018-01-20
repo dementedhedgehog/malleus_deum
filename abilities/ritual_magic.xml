@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Ritual Magic</abilitygrouptitle>
+    <abilitygroupid>rituals</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	XXXX
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Ritual Magic</abilitytitle>
+    <abilityid>magic_school.ritual</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>4</defaultmagical> 
+	<check>Std 2d8 vs DDC 12</check>
+	<prereqabilitylevel>language.inochian_1</prereqabilitylevel>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Potion Making</abilitytitle>
+    <abilityid>magic.potions</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	The character knows how to make magical potions given
+	a lab, time and the right ingredients.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral> 
+        <defaultmagical>4</defaultmagical>
+	<prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs DDC 8</check>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Scroll Writing</abilitytitle>
+    <abilityid>magic.scrolls</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	The character knows how to make magical scrolls given
+	sufficent time, and writing materials.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical> 
+	<prereqabilitylevel></prereqabilitylevel>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs DDC 8</check>
+        <prereqabilitylevel>magic_school.ritual_1</prereqabilitylevel>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+  
+
+</abilitygroup>

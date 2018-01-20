@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Elemental Magic</abilitygrouptitle>
+    <abilitygroupid>elemental</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	XXXX
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Elemental Magic</abilitytitle>
+    <abilityid>magic_school.elemental</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	Elemental magic is a special sub-type of evocation that uses
+	the limited, but more stable magic from the nearby elemental planes.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>6</defaultmagical>
+        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
+        <check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>4</defaultmagical>
+        <check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Kiss of the Deep</abilitytitle>
+    <abilityid>magic.kiss_of_the_deep</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster kisses a target on the lips and then
+	casts this spell.  Casting is close to instantaneous
+	but the spell cannot be used in combat due to the difficulty
+	of kissing people while in a fight.  
+      </p>
+
+      <p>
+	When cast the targets lungs fill with water and they cannot
+	breath, they fall to the ground coughing and gagging.  The
+	effects of this spell depend on the narrative imperative and
+	the whim of the GM.  Either the target falls to the ground
+	choking for 1d3+1 rounds, or the target dies, no save. 
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 6</overcharge>
+	<effect>See description above</effect>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <attempts>0</attempts>
+	<check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 7</overcharge>	
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <attempts>0</attempts>
+	<check>Magic Pool vs DDC 3</check>
+	<overcharge>DC + 8</overcharge>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Shatter</abilitytitle>
+    <abilityid>magic.shatter</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	When casting shatter the caster intones magical words
+	and strikes a target of stone, metal or ice (in fact anything
+	elemental in nature, even including wood).
+      </p>
+
+      <p>
+	This spell is particularly effective for bringing down structures
+	supported be columns or arches.  A city wall or a tower is designed
+	to suffer a lot of damage without failing.
+      </p>
+
+      <p>
+	This spell may also be used to attack a subset of monsters, including
+	earth and water elementals, metalic, stone or earthen constructs, and
+	natural wooden animates.  For most other creatures this spell does no
+	damage.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 10</check>
+	<overcharge>DC + 7</overcharge>
+	<effect>The target is shattered (see above)</effect>
+        <prereqabilitylevel>magic_school.elemental_2</prereqabilitylevel>
+	<leveldescription>
+	  Against certain monsters roll to hit with a grounding weapon (staff or spear)
+	  and does an additional 4d10 damage.
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 10</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The target is shattered (see above)</effect>
+	<leveldescription>
+	  Against certain monsters roll to hit with a grounding weapon (staff or spear)
+	  and does an additional 5d10 damage.
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Smoke Weasel</abilitytitle>
+    <abilityid>magic.smoke_weasel</abilityid>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilitydescription>
+      <p>
+	Creates a weasel out of smoke that does what the caster asks of it.
+	Dissipates after five minutes.  The caster must have a source of smoke
+	which they inhale and then breathe out in to their hands into something
+	with the rough form of a weasel.  The smoke weasel may be used to fetch
+	things or carry small objects.  The smoke weasel dissipates after a few
+	minutes.  On overcharge the smoke weasel is most likely to attack the
+	caster.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 8</overcharge>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool  + 2 vs DDC 8</check>
+	<overcharge>DC + 10</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Stone Skin</abilitytitle>
+    <abilityid>magic.stone_skin</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The targets skin takes on a greyish hue and hardens, providing
+	some protection from physical damage.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 5</overcharge>
+	<effect>+2 to AC for five minutes</effect>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+	<check>Magic Pool + 2 vs DDC 8</check>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<overcharge>DC + 6</overcharge>
+	<effect>+3 to AC for five minutes</effect>				
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Mist</abilitytitle>
+    <abilityid>magic.mist</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster causes a fog to form by draining the temperature from the surrounds.
+	If that's peculiar then people may notice something strange.  
+      </p>
+    </abilitydescription>    
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+	<successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 10</check>
+	<overcharge>DC + 8</overcharge>
+        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 10</check>
+	<overcharge>DC + 9</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+</abilitygroup>

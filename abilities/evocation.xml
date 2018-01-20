@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Evocation</abilitygrouptitle>
+    <abilitygroupid>evocation</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	XXXX
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Evocation</abilitytitle>
+    <abilityid>magic_school.evocation</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	Evocation involves the unsophisticated use of raw magic powers.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmagical>7</defaultmagical>
+        <prereqabilitylevel>language.inochian_2</prereqabilitylevel>	
+        <check>Std 2d8 vs DDC 12</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultmagical>6</defaultmagical>
+        <check>Std 2d8 + 2 vs DDC 12</check>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Eldritch Push</abilitytitle>
+    <abilityid>magic.eldritch_push</abilityid>
+    <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster shoots a raw stream of thaumic energy from
+	their hands at a target.  If successful the target may
+	make a Dodge, agility, or speed check to avoid the stream.
+      </p>
+
+      <p>
+	If the stream hits the target the target suffers d6 damage
+	and is pushed  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
+	away from the caster.  If the caster hits and a benefit occurs
+	roll on the overcharge effects table and apply the result to the
+	<emph>target</emph>.  The caster can choose whether or not to apply
+	the overcharge effect to the target or to control the magical energies
+	and supress the result.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 6</overcharge>		
+	<effect>d6 damage and pushed back </effect>		
+        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 6</check>
+	<overcharge>DC + 7</overcharge>		
+	<effect>d6 damage and pushed back</effect>		
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+  
+  <ability>
+    <abilitytitle>Incendo</abilitytitle>
+    <abilityid>magic.incendo</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	Incendo allows the caster to create fire by heating the air.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 7</overcharge>		
+	<leveldescription>
+	  <p>
+	    Creates a fire of torch intensity.
+	  </p>
+	</leveldescription>
+        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+	<check>Magic Pool + 2 vs DDC 8</check>
+	<overcharge>DC + 8</overcharge>		
+	<leveldescription>
+	  <p>
+	    Allows the user to make a weapon flame for the duration of a combat.
+	    Flaming weapons do +d6 extra fire damage.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+
+  <ability>
+    <abilitytitle>Scry</abilitytitle>
+    <abilityid>magic.scry</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character can view events from the past.  Viewing events in
+	the future is incredibly difficult and unreliable (See Scry, Greater). 
+      </p>
+
+      <p>
+	The caster first names a target then checks to see whether the spell
+	succeeds. If it does, they see an important scene from targets life
+	(the GM narrates the scene to the player). The caster may then choose
+	to look far forward, forward, back or far back in time.  Each time
+	the player attempts to view another scene from the targets life they
+	make another check with their remaining magic pool against a DC 10.
+	The caster may continue to view scenes from the targets life until they
+	fail or choose to stop scrying.
+      </p>
+
+      <p>
+	Contagion is very important to this spell.  A good contagious link, the
+	targets blood, or hair for example, can	reduce the difficulty of this
+	spell by 10!  If the caster fails any checks while scrying their contagious
+	link is destroyed.
+      </p>
+      
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 32</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The caster views scences from the targets past.</effect>
+        <prereqabilitylevel>magic_school.evocation_2</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 27</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The caster views scences from the targets past.</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Scry, Greater</abilitytitle>
+    <abilityid>magic.scry_greater</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character can view events from a targets present and their future as well
+	as their past. 	This spell works like the lesser Scry but because the future
+	is not predetermined the results are often very unreliable and inaccurate.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 36</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>The caster views scences from the targets past, present or future.</effect>
+        <prereqabilitylevel>magic.scry_2</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 31</check>
+	<overcharge>DC + 10</overcharge>
+	<effect>The caster views scences from the targets past, present or future</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  <ability>
+    <abilitytitle>Wither</abilitytitle>
+    <abilityid>magic.wither</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster grabs an opponent.
+	On success the caster acts as a conduit to one of the dread
+	planes,	life is drained from the target.  Anything that
+	increases contagion will increase damage for this spell.
+	The target is momentarily transfixed (checks Will versus the casters
+	successful magic roll or loses their turn).	
+      </p>      
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool vs DDC 10</check>
+	<overcharge>DC + 4</overcharge>
+	<effect>
+	  Target saves versus Willpower or suffers 2d8 damage.
+	  On overcharge the caster suffers 1d8 damage.
+	</effect> 
+        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool + 2 vs DDC 10</check>
+	<overcharge>DC + 4</overcharge>
+	<effect>
+	  Target saves versus Willpower or suffers 3d8 damage.
+	  On overcharge the caster suffers 1d12 damage.
+	</effect> 
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>  
+  
+</abilitygroup>
