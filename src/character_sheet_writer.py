@@ -212,9 +212,10 @@ def create_abilities_fdf(fdf_name, ability_levels = None):
                            "x" * ability_level.get_mastery_failures())
                 check = ability_level.get_check()
 
-                modifiers = ability_level.get_ability().get_attr_modifiers()
-                if len(modifiers) > 0:
-                    check += "  (%s)" % ", ".join(modifiers)
+                #modifiers = ability_level.get_ability().get_attr_modifiers()
+                #if len(modifiers) > 0:
+                #    check += "  (%s)" % ", ".join(modifiers)
+                check += "  " + ability_level.get_ability().get_attr_modifiers_str()
 
                 effect_type = ""
                 effect = ""

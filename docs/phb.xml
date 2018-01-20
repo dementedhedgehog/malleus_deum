@@ -2603,10 +2603,7 @@ do this the initial check is modified by +2.
           <indexentry>{{- ability.get_title() }} Ability</indexentry> 
           <indexentry>Ability<subentry>{{- ability.get_title() }}</subentry></indexentry>
           <smaller>
-	    {%- if ability.get_attr_modifiers() and ability.get_attr_modifiers()|length > 0 %} ({{
-	    ability.attr_modifiers|join(', ')
-	    }})
-	    {% endif -%}
+	    {{ ability.get_attr_modifiers_str() }}
 	  </smaller>
         </subsectiontitle>
         

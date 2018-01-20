@@ -741,10 +741,7 @@
 	      <td width="3" align="l">		
 		<tablesection>{{ modified_ability.get_title() }}
 		<!-- <smaller>-->
-		  {%- if modified_ability.get_attr_modifiers() is not none and modified_ability.get_attr_modifiers()|length > 0 %} ({{
-		  modified_ability.get_attr_modifiers()|join(', ')
-		  }})
-		  {% endif -%}
+		{{modified_ability.get_attr_modifiers_str() }}
 		<!-- </smaller> -->
 		</tablesection>
 	      </td>

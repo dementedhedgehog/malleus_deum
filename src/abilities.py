@@ -667,8 +667,18 @@ class Ability:
         self.levels = []        
         return
 
-    def get_attr_modifiers(self):
-        return self.attr_modifiers
+    # def get_attr_modifiers(self):
+    #     return self.attr_modifiers
+
+    def get_attr_modifiers_str(self):
+        """
+        A bit of presentation logic here :(
+
+        """
+        str_rep = ""
+        if len(self.attr_modifiers) > 0:
+            str_rep = "(" + ", ".join(self.attr_modifiers) + ")"
+        return str_rep
     
     def get_ability_class_symbol(self):
         return AbilityClass.get_symbol(self.ability_class)

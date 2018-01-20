@@ -406,8 +406,11 @@ class ModifiedAbility:
     def get_title(self):
         return self.ability.get_title()
 
-    def get_attr_modifiers(self):
-        return self.ability.get_attr_modifiers()
+    #def get_attr_modifiers(self):
+    #    return self.ability.get_attr_modifiers()
+    
+    def get_attr_modifiers_str(self):
+        return self.ability.get_attr_modifiers_str()
 
     def get_innate_ability_level(self):
         """
