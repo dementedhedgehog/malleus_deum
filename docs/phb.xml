@@ -917,8 +917,8 @@
 
         <p>
           For Attribute Checks the character rolls a Std 2d8 modified by the
-          characters Attribute modifier, see Table<ref>table:core-attribute-modifiers</ref>
-          on page<pageref>table:core-attribute-modifiers</pageref> for a list of
+          characters Attribute modifier, see Table<ref>table:phb-attribute-modifiers</ref>
+          on page<pageref>table:phb-attribute-modifiers</pageref> for a list of
           attribute modifers.
         </p>
 
@@ -2602,6 +2602,12 @@ do this the initial check is modified by +2.
           {{ ability.get_title() }} {{ ability.get_ability_class_symbol() }}
           <indexentry>{{- ability.get_title() }} Ability</indexentry> 
           <indexentry>Ability<subentry>{{- ability.get_title() }}</subentry></indexentry>
+          <smaller>
+	    {%- if ability.get_attr_modifiers() and ability.get_attr_modifiers()|length > 0 %} ({{
+	    ability.attr_modifiers|join(', ')
+	    }})
+	    {% endif -%}
+	  </smaller>
         </subsectiontitle>
         
         {% if ability.description is not none %}
@@ -2615,8 +2621,6 @@ do this the initial check is modified by +2.
             <fixed>0.05</fixed>
             <fixed>0.85</fixed>
           </tablespec>
-
-          <tabletitle>X</tabletitle>
 
           <!--
               <tablerow>
