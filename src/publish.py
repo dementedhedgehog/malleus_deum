@@ -56,7 +56,6 @@ docs_dir = join(root_dir, "docs")
 pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 archetype_template_fname = join("docs", "archetype_template.xml")
-archetype_template_fname2 = join("docs", "archetype_template2.xml")
 patron_template_fname = join("docs", "patron_template.xml")
 
 # latex preamble for the index.
@@ -580,13 +579,6 @@ if __name__ == "__main__":
         archetype = db.archetypes[archetype_id]
         build_pdf_doc(template_fname=archetype_template_fname,                      
                       doc_fname=archetype.get_id(),
-                      verbosity=verbosity,
-                      db=db,
-                      archetype=archetype)
-
-        # Also build latex/pdf archetype2 files.   EXPERIMENTAL!!
-        build_pdf_doc(template_fname=archetype_template_fname2,                      
-                      doc_fname=archetype.get_id() + "2",
                       verbosity=verbosity,
                       db=db,
                       archetype=archetype)
