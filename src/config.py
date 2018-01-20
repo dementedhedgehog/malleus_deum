@@ -53,40 +53,40 @@ files_to_build = (
     # ("character_creation.xml", True, "CC"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    ("monster_manual.xml", True, "MM"),
+    #("monster_manual.xml", True, "MM"),
     #("magic_items.xml", True, "MI"),
-    #("abilities.xml", True, "Ab"),
+    ("abilities.xml", True, "Ab"),
     #("ability_dcs.xml", False, "X"),
     # ("tables.xml", True, "[T]"),
 
-    #("character_abilities.xml", False, None),
     #("gms_screen.xml", False, "GMS"),
     ("gmg.xml", True, "[GMG]"),
     #("archetypes.xml", True, "[A]"),
 )
 
 patrons_to_build = (
-    ("klazyabolus", True, "[KL]"),
+    #("klazyabolus", True, "[KL]"),
 )
 
 archetypes_to_build = (
-    #("bard", True, "[BRD]"),
-    ("dwarven_shield_warrior", True, "[DSW]"),
+    # ("bard", True, "[BRD]"),
+    # ("black_coat", True, "[BC]"),
+    # ("dwarven_shield_warrior", True, "[DSW]"),
     # ("red_mage", True, "[RM]"),
     # ("halfling_rover", True, "[HR]"),
     # ("elven_scion", True, "[ES]"),
-    #("outrider", True, "[OR]"),
-    #("black_coat", True, "[BC]"),
-    #("summoner", True, "[SM]"),
+    ("outrider", True, "[OR]"),
+    ("summoner", True, "[SM]"),
     ("hedge_wizard", True, "[HW]"),
-    #("witch_hunter", True, "[WH]"),
-    #("rake", True, "[RK]"),
+    ("witch_hunter", True, "[WH]"),
+    ("rake", True, "[RK]"),
 )
 
 encounters_to_build = (
     #("dwarven_mines", False, "[dm]"),
     #("the_trial", False, "[tt]"),
     #("von_bauer_chateau", False, "[vbc]"),
+    #("the_tower_of_laibstadt", False, "[tol]"),
 )
 
 
