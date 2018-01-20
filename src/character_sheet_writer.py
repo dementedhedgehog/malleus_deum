@@ -147,7 +147,7 @@ def pdftk(pdf_in, fdf_in, pdf_out):
     Run pdftk to fill in pdf_out from the pdf form template and data given.
 
     """
-    print pdftk_executable
+    #print pdftk_executable
     cmd_line = [pdftk_executable,
                 pdf_in,
                 "fill_form",
@@ -155,7 +155,7 @@ def pdftk(pdf_in, fdf_in, pdf_out):
                 "output",
                 pdf_out,
                 "verbose"]
-    print " ".join(cmd_line)
+    #print " ".join(cmd_line)
     try:
         pdftk_output = check_output(cmd_line) # , env=env)
     except CalledProcessError as e:
@@ -212,6 +212,10 @@ def create_abilities_fdf(fdf_name, ability_levels = None):
                            "x" * ability_level.get_mastery_failures())
                 check = ability_level.get_check()
 
+                modifiers = ability_level.get_ability().get_attr_modifiers()
+                if len(modifiers) > 0:
+                    check += "  (%s)" % ", ".join(modifiers)
+
                 effect_type = ""
                 effect = ""
                 dmg = ability_level.get_damage()
@@ -256,15 +260,6 @@ def create_abilities_fdf(fdf_name, ability_levels = None):
                     ability_overcharge_type="",
                     ability_overcharge="",
                     ability_mastery="")
-
-                    # ability_check="a%s" % i,
-                    # ability_class="b%s" % i,
-                    # ability_name="c%s" % i,
-                    # ability_effect_type="d%s" % i,
-                    # ability_effect="e%s" % i,
-                    # ability_overcharge_type="f%s" % i,
-                    # ability_overcharge="g%s" % i,
-                    # ability_mastery="h%s" % i)
                 
             f.write(fdf_info)
         f.write(fdf_footer)
