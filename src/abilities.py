@@ -383,7 +383,6 @@ class AbilityLevel:
                    if child.text is not None:
                        level.attempts = int(child.text)
 
-
            elif tag == "failures":
                if level.failures > 0:
                    raise Exception("Only one masteryfailures per abilitylevel. (%s) %s\n" %
@@ -391,13 +390,6 @@ class AbilityLevel:
                else:
                    if child.text is not None:
                        level.failures = int(child.text)
-
-           # elif tag == "attr":
-           #     if level.attr is not None:
-           #         raise Exception("Only one attr per abilitylevel. (%s) %s\n" %
-           #                         (child.tag, str(child)))
-           #     else:
-           #         level.attr = get_text(child)
 
            elif tag == "check":
                if level.check is not None:
@@ -462,13 +454,7 @@ class AbilityLevel:
                prereq = AttrPrereq.parse_xml(child)
                level.prerequisite_attr.append(prereq)
                level.prerequisites.append(prereq)
-               
-           # elif tag == "prereqarchetypes":
-           #     archetype_id = child.text
-           #     archetype_id = archetype_id.strip()
-           #     prereq = 
-           #     level.prerequisite_archetypes.append(archetype_id)
-                                      
+
            elif tag == "overcharge":
                overcharge = child.text.strip()
                if overcharge != "":
