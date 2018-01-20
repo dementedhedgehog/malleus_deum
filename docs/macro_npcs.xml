@@ -45,7 +45,7 @@
   {% for npc in npc_group.npcs -%}
   <mbnpc>
     <npcname>{{ npc.get_name() }}</npcname>
-    <npchps>{{ npc_group.get_health() }}/{{ npc_group.get_stamina() }}</npchps>
+    <npchps>{{ npc.get_health() }}/{{ npc.get_stamina() }}</npchps>
   </mbnpc>
   {%- endfor %}  
 </monsterblock>
