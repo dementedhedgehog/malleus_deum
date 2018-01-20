@@ -147,7 +147,8 @@ class NotTagPrereq(Prerequisite):
 
     def __str__(self):
         return self.to_string()
-    
+
+
 
 class AbilityLevel:
 
@@ -503,13 +504,31 @@ class AbilityLevel:
                             "0 points to acquire by default in %s." % 
                             (level.get_title(), basename(level.ability.fname)))
 
+
+        non_zero_skill_point_count = 0
+        if level.default_martial > 0:
+            non_zero_skill_point_count += 1
+
+        if level.default_general > 0:
+            non_zero_skill_point_count += 1
+            
+        if level.default_lore > 0:
+            non_zero_skill_point_count += 1
+            
+        if level.default_magical > 0:
+            non_zero_skill_point_count += 1
+
+        if non_zero_skill_point_count > 1:
+            raise Exception("Ability level %s costs two different types of skill points "
+                            "This is not allowed in %s." % 
+                            (level.get_title(), basename(level.ability.fname)))        
+
         # check that if an ability requires successes or failures it has check
         if ((level.successes > 0 or level.attempts > 0 or level.failures > 0)
             and
             (level.check is None or level.check.strip() == "")):
             raise Exception("Ability level %s (%s) requires mastery to level up but has "
                             "no check." % (level.get_title(), level.get_id()))
-           
         return level
 
 
@@ -641,6 +660,10 @@ class Ability:
         self.tags = []
         self.ability_class = AbilityClass.NONE
 
+        # A list of primary attibutes (Strength, Endurance etc whose modifiers
+        # can be used when making this test).
+        self.attr_modifiers = []
+
         # Is the ability a special racial/class ability?
         #
         # This differs from the concept of innateness in that an ability
@@ -658,6 +681,9 @@ class Ability:
         self.levels = []        
         return
 
+    def get_attr_modifiers(self):
+        return self.attr_modifiers
+    
     def get_ability_class_symbol(self):
         return AbilityClass.get_symbol(self.ability_class)
     
@@ -728,11 +754,34 @@ class Ability:
                                                    str(ability_element)))
         self._load(ability_element)
         return
-
+    
 
     def _get_location(self, lxml_element):
         return "%s:%s" % (self.fname, lxml_element.sourceline)
+    
 
+    def _parse_attr_modifiers(self, attr_modifiers_node):
+        """An primary attribute whose modifiers can be used with this skill."""    
+        for child in list(attr_modifiers_node):
+           tag = child.tag
+
+           if tag == "attr":
+               attr = child.text.strip()
+               if attr not in valid_attrs:
+                   raise Exception("Received invalid attr. (%s) expecting "
+                                   "one of %s\n" %
+                                   (child.tag, ", ".join(valid_attrs)))
+               self.attr_modifiers.append(attr)
+                                      
+           elif tag is COMMENT:
+               # ignore comments!
+               pass
+
+           else:
+               #
+               raise Exception("UNKNOWN (%s) %s\n" % (child.tag,
+                                                      level.ability.fname))
+        return
 
     def _load(self, ability_element):        
         # handle all the children
@@ -800,6 +849,9 @@ class Ability:
                    #self.description = node_to_string(child)                   
                    self.description = children_to_string(child)                   
 
+           elif tag == "abilityattrmodifiers":
+               self._parse_attr_modifiers(child)
+               
            # elif tag == "prerequisiteability":
            #     self.prerequisites.append(child.text)
 
@@ -1154,25 +1206,28 @@ if __name__ == "__main__":
     #ability_groups.draw_skill_tree(build_dir)
     #ability_groups.draw_skill_tree2(build_dir)
 
+    count = 0
+    
     for ability_group in ability_groups:
-        print(ability_group.get_title())
+        #print(ability_group.get_title())
 
         #if "chool" not in ability_group.get_title():
         #    continue
         
         for ability in ability_group:
-            
-            print("\t%s" % ability.get_title())
-            # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
-            # print("\t\t\tAbility Desc: %s" % ability.description)
-            # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
-            # #print("\t\t\t\t: %s" % ability.get_ability_class())
+            count += 1
+            print("\t%i %s" % (count, ability.get_title()))
+            # # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
+            # # print("\t\t\tAbility Desc: %s" % ability.description)
+            # # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
+            # # #print("\t\t\t\t: %s" % ability.get_ability_class())
             
             # for ability_level in ability.get_levels():
-            #     print("\t\t\t\t1 %s" % ability_level.get_title())
-            #     print("\t\t\t\t2 %s" % ability_level.check)
-            #     print("\t\t\t\t3 %s" % ability_level.description)
-            # #    #print("\t\t\tLore: %s" % ability_level.get_default_lore())
+            #     print("\t\t\t\t title %s" % ability_level.get_title())
+            #     print("\t\t\t\t id %s" % ability_level.get_id())
+            # #     print("\t\t\t\t2 %s" % ability_level.check)
+            # #     print("\t\t\t\t3 %s" % ability_level.description)
+            # # #    #print("\t\t\tLore: %s" % ability_level.get_default_lore())
 
 
 
