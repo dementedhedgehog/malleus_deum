@@ -12,6 +12,8 @@ from monsters import MonsterGroups
 from archetypes import Archetypes
 from patrons import Patrons
 from npcs import NPCGangs
+from attribute_bonuses import attribute_bonuses
+
 
 class DB:
 
@@ -20,6 +22,7 @@ class DB:
         self.ability_groups = None
         self.monster_groups = None
         self.archetypes = None
+        self.attribute_bonuses = attribute_bonuses
         return
 
     
@@ -32,7 +35,8 @@ class DB:
         # load the archetypes
         archetype_dir = join(root_dir, "archetypes")
         self.archetypes = Archetypes()
-        self.archetypes.load(self.ability_groups, archetype_dir, fail_fast=fail_fast)
+        self.archetypes.load(ability_groups=self.ability_groups,
+                             archetypes_dir=archetype_dir, fail_fast=fail_fast)
 
         # load the monsters
         monsters_dir = join(root_dir, "monsters")
