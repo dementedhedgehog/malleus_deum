@@ -49,18 +49,18 @@ add_index_to_core = True
 
 # List of files to build (fname, build_index?, index_name)
 files_to_build = (
-    ("phb.xml", True, "PHB"),
+    #("phb.xml", True, "PHB"),
     # ("character_creation.xml", True, "CC"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
     #("monster_manual.xml", True, "MM"),
     #("magic_items.xml", True, "MI"),
-    ("abilities.xml", True, "Ab"),
+    #("abilities.xml", True, "Ab"),
     #("ability_dcs.xml", False, "X"),
     # ("tables.xml", True, "[T]"),
 
     #("gms_screen.xml", False, "GMS"),
-    ("gmg.xml", True, "[GMG]"),
+    #("gmg.xml", True, "[GMG]"),
     #("archetypes.xml", True, "[A]"),
 )
 
@@ -75,10 +75,10 @@ archetypes_to_build = (
     # ("red_mage", True, "[RM]"),
     # ("halfling_rover", True, "[HR]"),
     # ("elven_scion", True, "[ES]"),
-    ("outrider", True, "[OR]"),
-    ("summoner", True, "[SM]"),
-    ("hedge_wizard", True, "[HW]"),
-    ("witch_hunter", True, "[WH]"),
+    # ("outrider", True, "[OR]"),
+    # ("summoner", True, "[SM]"),
+    # ("hedge_wizard", True, "[HW]"),
+    # ("witch_hunter", True, "[WH]"),
     ("rake", True, "[RK]"),
 )
 

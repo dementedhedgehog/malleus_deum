@@ -69,8 +69,14 @@ class ModifiedAbilityLevel:
         self.attempts_modifier = 0
         return
 
+    def get_points(self):
+        return self.ability_level.get_points()
+    
     def get_ability(self):
         return self.modified_ability
+
+    def get_skill_point_type(self):
+        return self.ability_level.get_skill_point_type()
     
     def get_effect(self):
         return self.ability_level.get_effect()
@@ -339,6 +345,8 @@ class ModifiedAbilityLevel:
     def __str__(self):
         return str(self.ability_level)
 
+    def is_masterable(self):
+        return self.ability_level.is_masterable()
 
 
 class ModifiedAbility:

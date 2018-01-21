@@ -48,6 +48,7 @@ from check_licenses import generate_license_report
 from generate_skill_tree import Page, SkillTreeBuilder #generate_skill_tree
 import config
 import utils
+from abilities import SKILL_POINT_TYPE
 
 
 root_dir = abspath(join(src_dir, ".."))
@@ -287,7 +288,7 @@ def create_index(verbosity=0):
 
 
 def build_pdf_doc(template_fname, doc_fname, verbosity,
-                  db,
+                  db,                  
                   archetype=None,
                   patron=None):
     # base name .. no extension

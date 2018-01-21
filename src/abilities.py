@@ -17,7 +17,11 @@ src_dir = abspath(join(dirname(__file__)))
 root_dir = abspath(join(src_dir, ".."))
 sys.path.append(src_dir)
 
-
+class SKILL_POINT_TYPE:
+    MARTIAL = "<martial/>"
+    GENERAL = "<general/>"
+    LORE    = "<lore/>"
+    MAGICAL = "<magical/>"
 
 # ability level id -> ability level lookup
 ability_level_lookup = {}
@@ -205,6 +209,9 @@ class AbilityLevel:
         self.attempts = 0
         return
 
+    def get_skill_point_type(self):
+        return self.ability.get_skill_point_type()
+
     def get_ability(self):
         return self.ability
 
@@ -219,6 +226,12 @@ class AbilityLevel:
 
     def get_magical_points(self):
         return self.default_magical
+
+    def get_points(self):
+        return (self.default_lore +
+                self.default_martial +
+                self.default_general +
+                self.default_magical)
 
     def __str__(self):
         return self.get_title()
@@ -507,7 +520,7 @@ class AbilityLevel:
         if non_zero_skill_point_count > 1:
             raise Exception("Ability level %s costs two different types of skill points "
                             "This is not allowed in %s." % 
-                            (level.get_title(), basename(level.ability.fname)))        
+                            (level.get_title(), basename(level.ability.fname))) 
 
         # check that if an ability requires successes or failures it has check
         if ((level.successes > 0 or level.attempts > 0 or level.failures > 0)
@@ -646,6 +659,9 @@ class Ability:
         self.tags = []
         self.ability_class = AbilityClass.NONE
 
+        # The type of skill point required to pay for this 
+        self.skill_point_type = None
+
         # A list of primary attibutes (Strength, Endurance etc whose modifiers
         # can be used when making this test).
         self.attr_modifiers = []
@@ -663,12 +679,19 @@ class Ability:
         #
         self.inborn = None
 
+        # If this is true put the ability in the GMG otherwise put it in
+        # the players handbook
+        self.gmg_ability = False        
+
         # mapping from
         self.levels = []        
         return
 
     # def get_attr_modifiers(self):
     #     return self.attr_modifiers
+
+    def get_skill_point_type(self):
+        return self.skill_point_type
 
     def get_attr_modifiers_str(self):
         """
@@ -818,6 +841,9 @@ class Ability:
                else:
                    self.inborn = convert_str_to_bool(child.text)
 
+           elif tag == "gmgability":
+                self.gmgability = True
+
            elif tag == "tag":
                self.tags.append(child.text)
 
@@ -847,14 +873,6 @@ class Ability:
 
            elif tag == "abilityattrmodifiers":
                self._parse_attr_modifiers(child)
-               
-           # elif tag == "prerequisiteability":
-           #     self.prerequisites.append(child.text)
-
-           # elif tag == "prerequisitetag":
-           #     prerequisite_tag = child.text
-           #     if prerequisite_tag is not None:
-           #         self.prerequisite_tags.append(prerequisite_tag)               
 
            elif tag is COMMENT:
                # ignore comments!
@@ -867,11 +885,68 @@ class Ability:
         # by default abilities are not inborn
         if self.inborn is None:
             self.inborn = False
+
+        # sanity check.
+        self.validate()
+        return
+
+    
+    def validate(self):
+
+        # Check that each ability can only cost one type of skill points
+        # (otherwise leveling up becomes very complicated).
+        martial = False
+        general = False
+        magical = False
+        lore = False
+        for level in self.levels:
+
+            if level.get_lore_points() > 0:
+                lore = True
+		self.skill_point_type = SKILL_POINT_TYPE.LORE
+
+            if level.get_martial_points() > 0:
+                martial = True
+		self.skill_point_type = SKILL_POINT_TYPE.MARTIAL
+                
+            if level.get_general_points() > 0:
+                general = True
+		self.skill_point_type = SKILL_POINT_TYPE.GENERAL                
+
+            if level.get_magical_points() > 0:
+                magical = True
+		self.skill_point_type = SKILL_POINT_TYPE.MAGICAL
+
+        points = []
+        if martial:
+            points.append("martial")
+
+        if lore:
+            points.append("lore")
+
+        if general:
+            points.append("general")
+
+        if magical:
+            points.append("magical")
+
+        if len(points) > 1:
+            raise Exception("Only one skill point cost per ability: %s "
+                            "received %s" % (self.title, ", ".join(points)))
         return
 
 
     def is_inborn(self):
+        """
+        Abilities that are in_born are not aquired but innate to the character
+        so they don't have any skill point costs.
+        
+        """
         return self.inborn
+
+    def is_gmg_ability(self):
+        #return self.inborn
+        return self.gmg_ability
     
     def load_ability_levels(self, ability_levels):
         # handle all the children

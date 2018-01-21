@@ -241,6 +241,11 @@ SKILL_POSITION_LOOKUP = {
     "special.fey_resilience": (Page.NONE, None, ((100, 100),)),
     "special.natural_sprinter": (Page.NONE, None, ((100, 100),)),
     "special.sixth_sense": (Page.NONE, None, ((100, 100),)),
+    # "staff.brace": (Page.ONE, "staff.strike", ((25, 5),)),
+    # "staff.circle_of_death": (Page.ONE, "staff.strike", ((20, -20),)),
+    # "staff.hook": (Page.ONE, "staff.strike", ((20, 45),)),
+    # "staff.parry": (Page.ONE, "staff.strike", ((30, 25),)),
+    # "staff.strike": (Page.ONE, "school.military", ((-10, 200),)),
     "sword.disarm": (Page.ONE, "sword.strike", ((55, 20),)),
     "sword.feint": (Page.ONE, "sword.strike", ((50, 35),)),
     "sword.parry": (Page.ONE, "sword.strike", ((75, 5),)),
@@ -256,9 +261,7 @@ SKILL_POSITION_LOOKUP = {
     "wilderness.stealth": (Page.ONE, "school.wilderness", ((30, -5),)),
     "wilderness.survivalism": (Page.ONE, "wilderness.wayfinding", ((25, 0),)),
     "wilderness.tracking": (Page.ONE, "school.wilderness", ((5, -60),)),
-    "wilderness.wayfinding": (Page.ONE, "school.wilderness", ((30, -25),)),
-    
-    
+    "wilderness.wayfinding": (Page.ONE, "school.wilderness", ((30, -25),)),    
 }
 
 

@@ -8,6 +8,7 @@
 from os.path import abspath, join, splitext, dirname, exists, basename
 
 from abilities import AbilityGroups
+from abilities import SKILL_POINT_TYPE
 from monsters import MonsterGroups
 from archetypes import Archetypes
 from patrons import Patrons
@@ -23,6 +24,7 @@ class DB:
         self.monster_groups = None
         self.archetypes = None
         self.attribute_bonuses = attribute_bonuses
+        self.skill_point_type = SKILL_POINT_TYPE
         return
 
     

@@ -101,7 +101,6 @@ latex_frontmatter = r"""
 \newcommand\rpgtablesection[1]{
 \rule{0pt}{1ex}\bfseries\scriptsize #1}
 
-
 %% symbols
 \newcommand{\reactionsymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}R\endgroup}{reaction}}
@@ -152,6 +151,10 @@ latex_frontmatter = r"""
 \newcommand{\noncombatsymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}n\endgroup}
 {non-combat}}
+
+\newcommand{\arrowleft}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}<\endgroup}
+{arrowleft}}
 
 %% the font for the body of the text
 \setmainfont[Scale=0.95]{Linux Libertine O}
@@ -386,14 +389,8 @@ class LatexFormatter:
             raise Exception("Unknown paper size.  Pick one of [a4, letter] in config.py")
 
         orientation = ""
-        if "landscape" in book.attrib:
-            landscape = book.get("landscape").lower()
-            if landscape == "true":
-                formatting = ",landscape"
-
+        landscape = attrib_is_true(book, "landscape")
         formatting = paper_size + orientation
-        #print latex_frontmatter
-        #print latex_frontmatter % formatting
         self.latex_file.write(latex_frontmatter % formatting)
 
         if config.display_page_background:
@@ -526,6 +523,12 @@ class LatexFormatter:
         self.latex_file.write("\\initiativesymbol{}")
         return
     end_initiative = no_op
+
+    def start_arrowleft(self, symbol):
+        self.latex_file.write("\\arrowleft{}")
+        return
+    end_arrowleft = no_op    
+
     
     # def get_latex_symbols(self, title):
     #     tex = ""
@@ -674,8 +677,6 @@ class LatexFormatter:
     start_section = no_op
     end_section = no_op
 
-    #start_sectiontitle = no_op
-    #end_sectiontitle = no_op
     def start_sectiontitle(self, section_title):
         self.latex_file.write("\\section{")#  % title)               
         return
@@ -684,37 +685,15 @@ class LatexFormatter:
         self.latex_file.write("}\n")#  % title)               
         return
     
-
-    # def start_subsection(self, subsection):
-    #     tex = ""
-    #     anonymous = subsection.get("anonymous")
-    #     if anonymous is not None and anonymous.lower() == "true":
-    #         tex = "\\subsection{"
-    #     else:
-    #         tex = "\\subsection{"
-
-    #     title = subsection.find("subsectiontitle")
-    #     if title is not None:
-    #         tex += title.text.strip()
-    #         tex += self.get_latex_symbols(title)
-
-    #     tex += "}\n"
-    #     self.latex_file.write(tex) 
-    #     return
     start_subsection = no_op
     end_subsection = no_op
 
-    #start_subsectiontitle = no_op    
-    #end_subsectiontitle = no_op
     def start_subsectiontitle(self, section_title):
         self.latex_file.write("\\subsection{")
         return
     def end_subsectiontitle(self, section_title):
         self.latex_file.write("}")
         return
-
-    # start_subsubsectiontitle = no_op
-    # end_subsubsectiontitle = no_op
 
     def start_playexample(self, playexample):
         self.latex_file.write("\\begin{playexample}\n")
@@ -793,7 +772,7 @@ class LatexFormatter:
         return
 
     def end_equation(self, equation):
-        self.latex_file.write("\\end{tabbing}\n ")
+        self.latex_file.write("\\end{tabbing}\\vspace{-0.5cm}\n ")
         return
 
 
@@ -844,12 +823,6 @@ class LatexFormatter:
             self.latex_file.write("\\index{%s}" % normalize_ws(index_entry.text))
         return
 
-    # see element in index entry
-    # start_see = no_op
-    # def end_see(self, index_entry):
-    #     self.index_entry_see = normalize_ws(index_entry.text)
-    #     return
-
     # subentry element in index entry
     start_subentry = no_op
     def end_subentry(self, index_subentry):
@@ -857,8 +830,6 @@ class LatexFormatter:
         return
 
     def start_defn(self, defn):
-        # self.latex_file.write(" \\textbf{%s}\\index{%s}" % (normalize_ws(defn.text),
-        #                                                     normalize_ws(defn.text)))
         self.latex_file.write(" \\textbf{%s}" % (normalize_ws(defn.text)))
         return
     end_defn = no_op
@@ -906,10 +877,9 @@ class LatexFormatter:
         self.latex_file.write("\n\n")
 
         # turn of paragraph indentation?
-        if "noindent" in paragraph.attrib:
-            no_indent = paragraph.get("noindent").lower()
-            if no_indent == "true":
-                self.latex_file.write("\\noindent ")
+        no_indent = attrib_is_true(paragraph, "noindent")
+        if no_indent:
+            self.latex_file.write("\\noindent ")
                 
         # add drop caps to the first word of every chapter
         if not self._drop_capped_first_letter_of_chapter:
@@ -1163,6 +1133,9 @@ class LatexFormatter:
         category = get_text_for_child(table, "tablecategory")
         if category is None:
             raise Error("Table requires a tablecategory child element.")
+
+        # Check whether we want compact tables!
+        compact = attrib_is_true(table, "compact")
         
         figure = False
         fullwidth = False
@@ -1202,8 +1175,6 @@ class LatexFormatter:
 
             if child.tag == "fixed":
                 percent_width = float(child.text)
-                #table_spec_str += "p{%s\\linewidth}" % percent_width
-                #table_spec_str += "p{%s\\textwidth}" % percent_width
                 table_spec_str += "p{%s\\hsize}" % percent_width
                 
             elif child.tag is COMMENT:
@@ -1216,20 +1187,16 @@ class LatexFormatter:
             if DEBUG_COLUMN_WIDTH:
                 table_spec_str += "|"
         self._number_of_columns_in_table = columns
-
-        # Check whether we want compact tables!
-        compact = False
-        if "compact" in table.attrib:
-            compact = table.get("compact").lower() == "true"        
         
+        # veritcal space
+        if compact:
+            self.latex_file.write("\n\\vspace{-0.2cm}")
+        else:
+            self.latex_file.write("\n\\vspace{0.05cm}")
 
         # don't have paragraph indents buggering up our table layouts
-        if compact:
-            self.latex_file.write("\n\n\\vspace{0.15cm}\\noindent")
-        else:
-            self.latex_file.write("\n\\vspace{-0.2cm}\\noindent")
-            #self.latex_file.write("\n\\noindent")
-
+        self.latex_file.write("\\noindent{}")
+            
 
         # wrap single page tables in a table environment
         # (we use xtabular for multi-page tables and the table environment
@@ -1261,14 +1228,16 @@ class LatexFormatter:
                                   % table_spec_str)
 
         if figure:
-            self.latex_file.write(" \\toprule ")
+            self.latex_file.write(" \\toprule{}")
 
         return
 
 
     def end_table(self, table): # , use_xtabular = False):
-            
-        #category = table.find("tablecategory")
+
+        # Check whether we want compact tables!
+        compact = attrib_is_true(table, "compact")
+        
         category = get_text_for_child(table, "tablecategory")
         if category is None:
             raise Error("Table requires a tablecategory child element.")
@@ -1311,21 +1280,16 @@ class LatexFormatter:
         
         if table_title != "":
             self.latex_file.write(" \\captionof{table}{%s}" % table_title)
-        self.latex_file.write(" \\end{center} \\vspace{0.4cm} ")
-        
-        compact = False
-        if "compact" in table.attrib:
-            compact = table.get("compact").lower() == "true"        
-        if compact:
-            self.latex_file.write("\\endgroup\n")
 
+        #if 
+        self.latex_file.write(" \\end{center}")
+        #if compact
+        #self.latex_file.write(" \\end{center}\\vspace{0.4cm}")
         
-        # table_title = table.find("tabletitle")
-        # if table_title is not None and table_title.text.strip() != "":
-        #     if figure:
-        #         self.latex_file.write("\\caption{%s}" % table_title.text)
-                
-                
+        if compact:
+            self.latex_file.write("\\vspace{0.14cm}")
+            self.latex_file.write("\\endgroup{}\n")
+        
             
         # we also need to find any labels! (place them after the caption!)
         label = table.find("tablelabel")
@@ -1384,11 +1348,11 @@ class LatexFormatter:
             assert False
 
         elif (self._current_row_in_table + 1) % 2 == 1:                
-            self.latex_file.write("\\rowcolor{blue!20} \n")
+            self.latex_file.write("\\rowcolor{blue!20}\n")
         return
 
     def end_tablerow(self, table_title):
-        self.latex_file.write(" \\tabularnewline ")
+        self.latex_file.write("\\tabularnewline \n")
         return
 
     start_tableheaderrow = start_tablerow

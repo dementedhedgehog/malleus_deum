@@ -322,6 +322,7 @@
       <xs:element name="fightreach" type="symbolType"/>      
       <xs:element name="mediumorslow" type="symbolType"/>
       <xs:element name="startandreaction" type="symbolType"/>
+      <xs:element name="arrowleft" type="symbolType"/>            
       <xs:element name="img" type="imgType"/>
       <xs:element name="d4" type="acronymType"/>
       <xs:element name="d6" type="acronymType"/>
@@ -348,8 +349,10 @@
       <xs:element name="abilityclass" type="abilityclassType"/>
       <xs:element name="abilityattrmodifiers" type="abilityattrmodifierType"/>
       <xs:element name="abilitylevels" type="abilitylevelsType"/>      
-      <!-- inborn abilities can have 0 cost for levels > 0 -->
+      <!-- inborn abilities can have 0 cost for levels > 0 but they cannot be acquired during the game -->
       <xs:element name="inborn" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <!-- Which book does this ability go in? -->
+      <xs:element name="gmgability" type="emptyType" minOccurs="0" maxOccurs="1"/> 
       <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
     </xs:all>
   </xs:complexType>
@@ -904,9 +907,14 @@ labels and references.
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
 
+  <!--
   <xs:simpleType name="smallerType"> 
     <xs:restriction base="xs:string"/>
-  </xs:simpleType>
+    </xs:simpleType>
+    -->
+  <xs:simpleType name="smallerType"> 
+    <xs:restriction base="xs:string"/>
+    </xs:simpleType>
 
   <xs:simpleType name="defnType"> 
     <xs:restriction base="xs:string"/>
