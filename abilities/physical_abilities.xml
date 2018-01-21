@@ -15,6 +15,49 @@
     </abilitygroupdescription>
   </abilitygroupinfo>
 
+  <ability>
+    <abilitytitle>Physical</abilitytitle>
+    <abilityid>school.physical</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	A general ability for all physical things.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>1</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 - 4 vs DDC 10</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <successes>2</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 - 2 vs DDC 10</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>5</defaultgeneral>
+        <defaultmagical>0</defaultmagical>
+        <check>Std 2d8 vs DDC 10</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
 
   <ability>
     <abilitytitle>Charge</abilitytitle>
@@ -238,9 +281,7 @@
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs DDC 12</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>
       </abilitylevel>
-
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
@@ -730,8 +771,8 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>8</defaultlore>
-        <defaultmartial>0</defaultmartial>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
@@ -788,9 +829,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>8</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 1 vs DDC 8</check>
@@ -801,8 +842,8 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 8</check>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
       </abilitylevel>      
@@ -845,9 +886,9 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>8</defaultlore>
+        <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultgeneral>2</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 1 vs DDC 8</check>
@@ -858,8 +899,8 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>2</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 8</check>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
       </abilitylevel>      
