@@ -350,19 +350,15 @@ Random encounter rules?  .. provides tension.. forces the players not to camp.
       </p>
 
       <subsection>
-	<subsectiontitle>Ability Point Cost</subsectiontitle>       
+	<subsectiontitle>Ability Point Costs</subsectiontitle>       
 	<p>
 	  Default point cost should be around 5 per ability, most abilities total point cost
 	  should be in the range 3-7.  Abilities should only cost one type of point, <ie/>
 	  one of Martial, Lore, General or Magical.
 	</p>
-      </subsection>
-
-      <subsection>
-	<subsectiontitle>Archetype Skill Points Per Level</subsectiontitle>       
 	
 	<p>
-	  Each level the character should get about 50 points.
+	  Each level the character should get about 35 points.
 
 	  Remember to take into account that lore and general points are usually less
 	  useful during combat and so are less desirable than martial and magical points.
@@ -439,6 +435,20 @@ Random encounter rules?  .. provides tension.. forces the players not to camp.
       </p>
       
       {% include "docs/tables/insanities.xml" %}
-    </section>    
+    </section>
+
+
+
+    <section>
+      <sectiontitle>Monster and NPC Abilities</sectiontitle>
+
+      {% from "docs/macro_ability.xml" import build_ability with context %}
+      
+      {% for ability in ability_groups.get_abilities() if ability.is_gmg_ability() %}
+          {{ build_ability(ability) }}    
+      {% endfor %}      
+      
+    </section>
+    
   </chapter>  
 </book>

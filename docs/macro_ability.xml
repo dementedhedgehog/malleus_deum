@@ -1,0 +1,69 @@
+{% macro build_ability(ability) %}
+
+      <subsection>
+        <subsectiontitle>
+          {{- ability.get_title() -}}
+	  {{ ' ' }}
+	  {{- ability.get_ability_class_symbol() -}}
+	  {{ ' ' }}
+	  {{- ability.get_skill_point_type() -}}
+          <indexentry>{{- ability.get_title() }} Ability</indexentry> 
+          <indexentry>Ability<subentry>{{- ability.get_title() }}</subentry></indexentry>
+          <smaller>
+	    {{ ability.get_attr_modifiers_str() }}
+	  </smaller>
+        </subsectiontitle>
+        
+        {% if ability.description is not none %}
+        {{ ability.description }}
+        {% endif %}
+
+        <table>
+          <tablecategory>Standard</tablecategory>
+
+          <tablespec>
+            <fixed>0.05</fixed>
+            <fixed>0.85</fixed>
+          </tablespec>
+
+          {% for ability_level in ability.get_levels()  %}
+          <tablerow>
+            <td>
+              {{- ability_level.get_level_number() | convert_to_roman_numerals }}
+              {%- if ability_level.is_innate() %} <innateabilitylevelsymbol/>{% endif -%}
+            </td>
+            <td>
+              {%- if ability_level.has_prerequisites() %}
+              <bold>Prereq:</bold>
+              {%-     for prereq in ability_level.get_prerequisites()  %}
+              {{-         prereq.to_string() }}
+              {%-         if not loop.last %}, {% endif %}          
+              {%-     endfor %}
+
+              {% endif %}
+              {%- if ability_level.check is not none -%}
+              <bold>Check:</bold> {{ ability_level.check }}
+	      
+              {% endif %}
+              {%- if ability_level.overcharge is not none -%}
+              <bold>Overcharge:</bold> {{ ability_level.overcharge }}
+	      
+              {% endif %}          
+              {%- if ability_level.damage is not none %}          
+              <bold>Dmg:</bold> {{- ability_level.damage }}
+	      
+              {% endif %}
+              {%- if ability_level.effect is not none %}              
+              <bold>Effect:</bold> {{ ability_level.effect }}
+	      
+              {% endif %}              
+              {%- if ability_level.description is not none %}
+              {{ ability_level.description }}
+              {%- endif %}
+            </td>
+          </tablerow>
+          {% endfor %}                
+        </table>    
+      </subsection>      
+
+{% endmacro %}

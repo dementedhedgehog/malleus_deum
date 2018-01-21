@@ -2588,96 +2588,39 @@ do this the initial check is modified by +2.
       </subsection>      
     </section>
 
+  {% from "docs/macro_ability.xml" import build_ability with context %}
     
-
-    {% for ability_group in ability_groups %}
-    <section>
-      <sectiontitle>{{ ability_group.get_title() }}</sectiontitle>
-      
-      {{ ability_group.get_description() }}
-
-      {% for ability in ability_group  %}
-      <subsection>
-        <subsectiontitle>
-          {{ ability.get_title() }} {{ ability.get_ability_class_symbol() }}
-          <indexentry>{{- ability.get_title() }} Ability</indexentry> 
-          <indexentry>Ability<subentry>{{- ability.get_title() }}</subentry></indexentry>
-          <smaller>
-	    {{ ability.get_attr_modifiers_str() }}
-	  </smaller>
-        </subsectiontitle>
-        
-        {% if ability.description is not none %}
-        {{ ability.description }}
-        {% endif %}
-
-        <table>
-          <tablecategory>Standard</tablecategory>
-
-          <tablespec>
-            <fixed>0.05</fixed>
-            <fixed>0.85</fixed>
-          </tablespec>
-
-          <!--
-              <tablerow>
-              <td width="2" align="l">
-              <tablesection>{{ ability.get_title() }}</tablesection>
-              </td>
-              </tablerow>
-          -->
-
-          <!--
-              {% if loop.index0 == 0 %}   
-              <tableheaderrow>
-              <th>Level</th>
-              <th>Check</th>
-              </tableheaderrow>
-              {% endif %}
-          -->
-
-          {% for ability_level in ability.get_levels()  %}
-          <tablerow>
-            <td>
-              {{- ability_level.get_level_number() | convert_to_roman_numerals }}
-              {%- if ability_level.is_innate() %} <innateabilitylevelsymbol/>{% endif -%}
-            </td>
-            <td>
-              {%- if ability_level.has_prerequisites() %}
-              <bold>Prereq:</bold>
-              {%-     for prereq in ability_level.get_prerequisites()  %}
-              {{-         prereq.to_string() }}
-              {%-         if not loop.last %}, {% endif %}          
-              {%-     endfor %}
-
-              {% endif %}
-              {%- if ability_level.check is not none -%}
-              <bold>Check:</bold> {{ ability_level.check }}
-	      
-              {% endif %}
-              {%- if ability_level.overcharge is not none -%}
-              <bold>Overcharge:</bold> {{ ability_level.overcharge }}
-	      
-              {% endif %}          
-              {%- if ability_level.damage is not none %}          
-              <bold>Dmg:</bold> {{- ability_level.damage }}
-	      
-              {% endif %}
-              {%- if ability_level.effect is not none %}              
-              <bold>Effect:</bold> {{ ability_level.effect }}
-	      
-              {% endif %}              
-              {%- if ability_level.description is not none %}
-              {{ ability_level.description }}
-              {%- endif %}
-            </td>
-          </tablerow>
-          {% endfor %}                
-        </table>    
-      </subsection>      
-      {% endfor %}
-    </section>
+  <section>
+    <sectiontitle>Lore Abilities</sectiontitle>
+    {% for ability in ability_groups.get_abilities()
+             if ability.is_lore_ability() and not ability.is_gmg_ability() %}
+        {{ build_ability(ability) }}    
     {% endfor %}      
+  </section>
+
+  <section>
+    <sectiontitle>Martial Abilities</sectiontitle>
+    {% for ability in ability_groups.get_abilities()
+             if ability.is_martial_ability() and not ability.is_gmg_ability() %}
+        {{ build_ability(ability) }}    
+    {% endfor %}      
+  </section>
+
+  <section>
+    <sectiontitle>General Abilities</sectiontitle>
+    {% for ability in ability_groups.get_abilities()
+             if ability.is_general_ability() and not ability.is_gmg_ability() %}
+        {{ build_ability(ability) }}    
+    {% endfor %}      
+  </section>
+
+  <section>
+    <sectiontitle>Magic Abilities</sectiontitle>
+    {% for ability in ability_groups.get_abilities()
+             if ability.is_magic_ability() and not ability.is_gmg_ability() %}
+        {{ build_ability(ability) }}    
+    {% endfor %}      
+  </section>
 
   </chapter>
   

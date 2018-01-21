@@ -49,7 +49,7 @@ add_index_to_core = True
 
 # List of files to build (fname, build_index?, index_name)
 files_to_build = (
-    #("phb.xml", True, "PHB"),
+    ("phb.xml", True, "PHB"),
     # ("character_creation.xml", True, "CC"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
@@ -60,7 +60,7 @@ files_to_build = (
     # ("tables.xml", True, "[T]"),
 
     #("gms_screen.xml", False, "GMS"),
-    #("gmg.xml", True, "[GMG]"),
+    ("gmg.xml", True, "[GMG]"),
     #("archetypes.xml", True, "[A]"),
 )
 

@@ -693,6 +693,18 @@ class Ability:
     def get_skill_point_type(self):
         return self.skill_point_type
 
+    def is_lore_ability(self):
+        return self.skill_point_type == SKILL_POINT_TYPE.LORE
+    
+    def is_general_ability(self):
+        return self.skill_point_type == SKILL_POINT_TYPE.GENERAL
+    
+    def is_magic_ability(self):
+        return self.skill_point_type == SKILL_POINT_TYPE.MAGICAL
+    
+    def is_martial_ability(self):
+        return self.skill_point_type == SKILL_POINT_TYPE.MARTIAL        
+
     def get_attr_modifiers_str(self):
         """
         A bit of presentation logic here :(
@@ -842,7 +854,7 @@ class Ability:
                    self.inborn = convert_str_to_bool(child.text)
 
            elif tag == "gmgability":
-                self.gmgability = True
+                self.gmg_ability = True
 
            elif tag == "tag":
                self.tags.append(child.text)
@@ -945,7 +957,11 @@ class Ability:
         return self.inborn
 
     def is_gmg_ability(self):
-        #return self.inborn
+        """
+        Returns True if this is a special ability that should go in the GMG and not 
+        in the PHB.
+
+        """
         return self.gmg_ability
     
     def load_ability_levels(self, ability_levels):
