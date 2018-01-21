@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Abjuration</abilitygrouptitle>
+    <abilitygroupid>abjuration</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Magic abilities involve the use of the characters magic pool and
+	are only available to certain archetypes.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+  
+
+
+      
+  <ability>
+    <abilitytitle>Abjuration</abilitytitle>
+    <abilityid>magic_school.abjuration</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	Abjuration involve the use of raw magical energies focusing on casting
+	protective, shielding and counter magics.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultmagical>8</defaultmagical>
+        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
+        <check>Std 2d8 vs DDC 12</check>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultmagical>8</defaultmagical>
+        <check>Std 2d8 + 2 vs DDC 12</check>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+
+  
+  <ability>
+    <abilitytitle>Contego</abilitytitle>
+    <abilityid>magic.contego</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster creates a magical shield around a person (or man-sized thing).
+	The barrier from outside appears as a blurred humanoid shape.  Kinetic
+	weapons do half damage to the character thus shielded.  It also provides
+	brief protection from fires, poisoness gases <etc/>.  The shield is ablative
+	and is represented ingame by temporary Stamina. It lasts five minutes/30 rounds.
+      </p>
+
+      <p>
+	If overcharged the shield may explode upon being hit, make a Std Check vs DDC 4
+	or explode.   Explosions do 3d6 damage to all adjacent creatures including the
+	character being shielded.  Adjacent creatures may save, Speed vs DDC 10, to
+	take half damage.
+      </p>      
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 12</check>
+	<overcharge>DC + 6</overcharge>		
+	<effect>Shield provides 20 temporary Stamina</effect>		
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultmagical>3</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+	<check>Magic Pool + 3 vs 12</check>
+	<overcharge>DC + 7</overcharge>		
+	<effect>Shield provides 30 temporary Stamina</effect>		
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+
+  <ability>
+    <abilitytitle>Banish</abilitytitle>
+    <abilityid>magic.banish</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	Banishing is an attempt to disrupt a demons tenuous connection
+	with its simulacrum.  If the banisment succeeds the simulacrum
+	is destroyed.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs Demons Magic Pool</check>
+	<overcharge>DC + 8</overcharge>
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 5 vs Demons Magic Pool</check>
+	<overcharge>DC + 9</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Commune</abilitytitle>
+    <abilityid>magic.commune</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	Commune is a spell that communicates with a named entity from beyond.
+	The character must know the name of the entity to contact.  On overcharge
+	the character must make an opposed will check against the demon or become
+	enthralled by the demon.  Enthralled characters will seek to summon the
+	demons simulacrum to this plane to further their nefarious plans.  
+      </p>
+
+      <p>
+	Summoned demons are not compelled to cooperate with the character, nor tell
+	the truth.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 14</check>
+	<overcharge>DC + 11</overcharge>
+        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 14</check>
+	<overcharge>DC + 12</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Flesh Ward</abilitytitle>
+    <abilityid>magic.flesh_ward</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The Flesh Ward spell provides magical protection
+	for the caster against physical attacks, their skin
+	knits itself up if they take damage.  A Flesh Ward
+	lasts the duration of combat and only one Flesh Ward
+	can be in play at a time.
+      </p>
+
+      <p>
+	In game the effect of flesh ward is represented
+	in the form of temporary hit points.  If the caster
+	succeeds they receive the stated number of temporary
+	hit points (for the duration of the combat).  If they
+	overcharge then they suffer damage equal to the difference
+	between the DC and their roll).	
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus DDC 10</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>+8 temp hit points</effect>
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+	<check>Magic Pool + 3 versus Stated Target</check>
+	<overcharge>DC + 9</overcharge>
+	<effect>See above.</effect>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+	<check>Magic Pool + 6 versus Stated Target</check>
+	<overcharge>DC + 10</overcharge>
+	<effect>See above.</effect>
+	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Circle of Protection</abilitytitle>
+    <abilityid>magic.circle_of_protection</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	A circle of protection is a circle drawn upon the ground and infused
+	with magical energy that breaks thaumaturgic contagion.  As such it
+	is hard for summoned creatures to cross, either in or out.
+      </p>
+
+      <p>
+	The circle can be marked using chalk, salt, enscribed in the floor
+	or a multitude of other ways.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 6</overcharge>		
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
+	<leveldescription>
+	  <p>
+	    If successful Creates a DC25 protective barrier against extra planar creatures.
+	    Creatures striking the protective barrier will lose D4 hit points for each 
+	    attempt.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 6</check>
+	<overcharge>DC + 9</overcharge>		
+	<leveldescription>
+	  <p>
+	    If successful Creates a DC35 protective barrier against extra planar creatures.
+	    Creatures striking the protective barrier will lose D8 hit points for each 
+	    attempt.
+	  </p>
+	</leveldescription>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+
+
+  <ability>
+    <abilitytitle>Eldritch Shield</abilitytitle>
+    <abilityid>magic.eldritch_shield</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster uses raw magical energy to knock a arrows and bolts out
+	of the air.  The caster must be aware of the attack, <ie/> not
+	ambushed or surprised.  The size of the missile that can be
+	diverted depends on the level of the casters ability.  The missile
+	does not have to be aimed at the caster in order for the caster
+	to cast this spell.  This spell is cast as a reaction after
+	the target is hit, the caster can tell that the missile would hit
+	and acts accordingly before it does.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 7</check>
+	<overcharge>DC + 6</overcharge>		
+	<effect>d6 damage and pushed back </effect>		
+        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 6</check>
+	<overcharge>DC + 7</overcharge>		
+	<effect>d6 damage and pushed back</effect>		
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>  
+  
+</abilitygroup>
+
+
+
+  
+

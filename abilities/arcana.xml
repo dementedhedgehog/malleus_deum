@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Arcana</abilitygrouptitle>
+    <abilitygroupid>arcana</abilitygroupid>
+    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Magic abilities involve the use of the characters magic pool and
+	are only available to certain archetypes.
+      </p>
+    </abilitygroupdescription>
+  </abilitygroupinfo>
+
+
+
+  <ability>
+    <abilitytitle>Arcana</abilitytitle>
+    <abilityid>magic_school.arcana</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	This is the entry level for all magic.  It represents a basic understanding
+	of the principles of magic.  The character has read extensively of magic
+	history and lore.
+      </p>
+    </abilitydescription>    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>1</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs DDC 14</check>
+	<leveldescription>
+	  <p>
+	    If successful the character knows some well-known magical lore.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>2</attempts>
+        <check>Std 2d8 + 2 vs DDC 12</check>
+	<leveldescription>
+	  <p>
+	    Identifies well-known magical items and artifacts.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <check>Std 2d8 + 4 vs DDC 12</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Alarum</abilitytitle>
+    <abilityid>magic.alarum</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster designates a volume of space no larger
+	than a typical living room.  Movement within
+	that region results in the caster receiving a short
+	sharp shock of thaumaturgical energy, informing them
+	of that movement and waking them if they are asleep.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 4</overcharge>	
+        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <attempts>0</attempts>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 6</overcharge>	
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>1</successes>
+        <attempts>0</attempts>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 7</overcharge>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Cloak of Shadows</abilitytitle>
+    <abilityid>magic.cloak_of_shadows</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character creates a cloak of darkness around themselves.
+	This makes it very difficult to see the character at night time.	
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 8</check>
+	<overcharge>DC + 9</overcharge>
+	<effect>+2 on Sneak at night</effect>			
+        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 2 vs DDC 8</check>
+	<overcharge>DC + 10</overcharge>			
+	<effect>+4 on Sneak at night</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>True Sight</abilitytitle>
+    <abilityid>magic.true_sight</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character is able to discern the true nature of a being, seeing
+	past glamours or other illusiary effects.  This does not allow the
+	character to discern motive or the content of a persons character.
+      </p>
+
+      <p>
+	Care should be taken because some creatures true form may be so hideous
+	that it effects the observers sanity.
+      </p>	
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+        <successes>3</successes>
+        <attempts>1</attempts>
+        <check>Magic Pool versus Glamour DC</check>
+	<overcharge>DC + 8</overcharge>
+        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>
+	<effect>See above.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool +2 versus Glamour DC</check>
+	<overcharge>DC + 9</overcharge>
+	<effect>See above.</effect>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Magic Pool +5 versus Glamour DC</check>
+	<overcharge>DC + 10</overcharge>
+	<effect>See above.</effect>
+	<prereqattr><attr>Willpower</attr><value>12</value></prereqattr>	
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  
+</abilitygroup>
