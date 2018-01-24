@@ -699,8 +699,9 @@
 
     <fourcolumns>
       
-          {%
-      for modified_ability in archetype.get_modified_abilities()
+      {%
+	  for modified_ability in archetype.get_modified_abilities()
+	  if not modified_ability.is_inborn()
       %}
 
       {# ignore disabled abilities. #}

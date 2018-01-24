@@ -234,5 +234,34 @@
   </ability>
   
 
+  <ability>
+    <abilitytitle>Scroll Writing</abilitytitle>
+    <abilityid>magic.scrolls</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+	The character knows how to make magical scrolls given
+	sufficent time, and writing materials.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>4</defaultmagical> 
+	<prereqabilitylevel></prereqabilitylevel>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs DDC 8</check>
+        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
+  
   
 </abilitygroup>
