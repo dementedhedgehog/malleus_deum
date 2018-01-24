@@ -387,6 +387,9 @@ class ModifiedAbility:
             self.enabled = True
         return
 
+    def is_inborn(self):
+        return self.ability.is_inborn()
+
     def get_ability_class(self):
         return self.ability.get_ability_class()
 

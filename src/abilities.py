@@ -687,9 +687,6 @@ class Ability:
         self.levels = []        
         return
 
-    # def get_attr_modifiers(self):
-    #     return self.attr_modifiers
-
     def get_skill_point_type(self):
         return self.skill_point_type
 
