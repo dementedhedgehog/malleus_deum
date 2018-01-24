@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 
+
 from os.path import abspath, join, splitext, dirname, exists, basename
 import cairo
 import math
@@ -79,19 +80,20 @@ SKILL_POSITION_LOOKUP = {
     "language.aquillonian": (Page.TWO, "school.scholar", ((0, 120),)),
     "language.brythinian": (Page.TWO, "school.scholar", ((-15, -200),)),
     "language.dwarven": (Page.TWO, "school.scholar", ((25, -85),)),
-    "language.fey": (Page.TWO, "school.scholar", ((-20, 160),)),
+    "language.fey": (Page.TWO, "school.scholar", ((-10, 170),)),
     "language.hibernian": (Page.TWO, "school.scholar", ((45, -5),)),
     "language.inochian": (Page.TWO, "school.scholar", ((60, 45),)),
     "language.sylvan": (Page.TWO, "school.scholar", ((40, -60),)),
-    "lore.alchemy": (Page.TWO, "lore.maths", ((-15, 100),)),
+    "lore.alchemy": (Page.TWO, "lore.natural_history", ((50, 120),)),
     "lore.antiquarian": (Page.TWO, "school.scholar", ((35, 70),)),
     "lore.book_keeping": (Page.TWO, "lore.maths", ((25, 0),)),
-    "lore.earth_science": (Page.TWO, "lore.maths", ((10, 70),)),
+    "lore.earth_science": (Page.TWO, "lore.maths", ((10, 50),)),
     "lore.history": (Page.TWO, "school.scholar", ((5, -135),)),
     "lore.law": (Page.TWO, "school.scholar", ((10, 90),)),
-    "lore.maths": (Page.TWO, "school.scholar", ((-30, 180),)),
-    "lore.natural_history": (Page.TWO, "lore.alchemy", ((20, 0),)),
-    "lore.physics": (Page.TWO, "lore.maths", ((25, 35),)),
+    "lore.maths": (Page.TWO, "school.scholar", ((-30, 230),)),
+    #"lore.natural_history": (Page.TWO, "lore.alchemy", ((20, 0),)),
+    "lore.natural_history": (Page.TWO, "school.scholar", ((50, 100),)),
+    "lore.physics": (Page.TWO, "lore.maths", ((25, 20),)),
     "lore.politics": (Page.TWO, "school.scholar", ((35, 15),)),
     "lore.theology": (Page.TWO, "school.scholar", ((-5, -180),)),
     "luck.lucky": (Page.ONE, None, ((540, 345),)),
@@ -105,7 +107,7 @@ SKILL_POSITION_LOOKUP = {
     "magic.banish": (Page.TWO, "magic_school.abjuration", ((25, 40),)),
     "magic.bind": (Page.TWO, "magic_school.conjuration", ((30, -70),)),
     "magic.circle_of_protection": (Page.TWO, "magic_school.abjuration", ((30, 20),)),
-    "magic.cloak_of_shadows": (Page.TWO, "magic_school.enchantment", ((-40, -80),)),
+    "magic.cloak_of_shadows": (Page.TWO, "magic_school.arcana", ((20, -10),)),
     "magic.commune": (Page.TWO, "magic_school.conjuration", ((35, -5),)),
     "magic.contego": (Page.TWO, "magic_school.abjuration", ((30, -5),)),
     "magic.eldritch_push": (Page.TWO, "magic_school.evocation", ((40, 5),)),
@@ -124,8 +126,10 @@ SKILL_POSITION_LOOKUP = {
     "magic.phantasmal_leech": (Page.TWO, "magic_school.conjuration", ((30, -30),)),
     "magic.phantasmal_vulture": (Page.TWO, "magic.phantasmal_leech", ((20, 10),)),
     "magic.portal": (Page.TWO, "magic_school.conjuration", ((50, 20),)),
-    "magic.potions": (Page.TWO, "magic_school.ritual", ((20, 0),)),
-    "magic.scrolls": (Page.TWO, "magic_school.ritual", ((20, 20),)),
+    # "magic.potions": (Page.TWO, "magic_school.ritual", ((20, 0),)),
+    # "magic.scrolls": (Page.TWO, "magic_school.ritual", ((20, 20),)),
+    "magic.potions": (Page.TWO, "lore.alchemy", ((40, 20),)),
+    "magic.scrolls": (Page.TWO, "magic_school.arcana", ((20, 20),)),
     "magic.scry": (Page.TWO, "magic_school.evocation", ((50, 25),)),
     "magic.scry_greater": (Page.TWO, "magic.scry", ((40, -10),)),
     "magic.shatter": (Page.TWO, "magic_school.elemental", ((10, 50),)),
@@ -149,7 +153,7 @@ SKILL_POSITION_LOOKUP = {
                                                                 (80, 0),
                                                                 #(80, 10)
     )),
-    "magic_school.arcana": (Page.TWO, "language.inochian", ((50, -190),)),    
+    "magic_school.arcana": (Page.TWO, "language.inochian", ((50, -180),)),    
     "magic_school.wild_magic": (Page.TWO, "school.scholar", ((-30, -240),
                                                              (10, 0))),
     
@@ -157,19 +161,19 @@ SKILL_POSITION_LOOKUP = {
                                                                  #(0, 0),
                                                                  #(50, 0)
     )),
-    "magic_school.elemental": (Page.TWO, "language.inochian", ((50, -130),
+    "magic_school.elemental": (Page.TWO, "language.inochian", ((50, -110),
                                                                (240, 0),
                                                                (40, 50)
     )),
-    "magic_school.enchantment": (Page.TWO, "language.fey", ((110, 0),
+    "magic_school.enchantment": (Page.TWO, "language.fey", ((90, 0),
                                                             (40, 80),
-                                                            (220, 0),)),
-    "magic_school.evocation": (Page.TWO, "language.inochian", ((50, 145), )),
-    "magic_school.necromancy": (Page.TWO, "language.inochian", ((50, -130),
+                                                            (250, 0),)),
+    "magic_school.evocation": (Page.TWO, "language.inochian", ((60, 140), )),
+    "magic_school.necromancy": (Page.TWO, "language.inochian", ((50, -120),
                                                                 (180, 0),
                                                                 (40, -80))),
-    "magic_school.ritual": (Page.TWO, "language.inochian", ((50, -115),)),
-    "magic_school.runes": (Page.TWO, "language.inochian", ((30, -275),)),
+    #"magic_school.ritual": (Page.TWO, "language.inochian", ((50, -115),)),
+    "magic_school.runes": (Page.TWO, "language.inochian", ((30, -285),)),
     "magic_school.theurgic": (Page.TWO, "language.inochian", ((50, -240),)),
 
     
@@ -647,6 +651,13 @@ class SkillTreeBuilder:
                     from_point = from_node.get_outgoing_pos(ability_level_number)
                     to_point = to_node.get_incoming_pos()
 
+                    if dashed:
+                        # FIXME: enforce one parent per ability.
+                        raise Exception("Ability parent mismatch: %s has a parent %s "
+                                        "but the ability graph thinks its parent is %s"
+                                        % (ability_level.get_id(),
+                                           from_id, relative_parent_id))
+
                     # the relative positions are relative to the center of the node
                     # so we have to offset the relative positions based on the distance
                     # from the center of the start node to its outgoing point
@@ -686,10 +697,10 @@ if __name__ == "__main__":
     ability_groups = AbilityGroups()
     ability_groups.load(abilities_dir, fail_fast=True)
 
-    fname = "build/ability_tree1.svg"
+    fname = "build/ability_tree1.pdf"
     skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
     skill_tree_builder.build(ability_groups, fname=fname)
 
-    fname = "build/ability_tree2.svg"
+    fname = "build/ability_tree2.pdf"
     skill_tree_builder = SkillTreeBuilder(page=Page.TWO)
     skill_tree_builder.build(ability_groups, fname=fname)
