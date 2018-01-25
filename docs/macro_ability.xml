@@ -22,8 +22,8 @@
           <tablecategory>Standard</tablecategory>
 
           <tablespec>
-            <fixed>0.05</fixed>
-            <fixed>0.85</fixed>
+            <fixed>0.06</fixed>
+            <fixed>0.87</fixed>
           </tablespec>
 
           {% for ability_level in ability.get_levels()  %}
@@ -42,24 +42,24 @@
 
               {% endif %}
               {%- if ability_level.check is not none -%}
-              <bold>Check:</bold> {{ ability_level.check }}
-	      
+              <bold>Check:</bold> {{ ability_level.check -}}
               {% endif %}
-              {%- if ability_level.overcharge is not none -%}
-              <bold>Overcharge:</bold> {{ ability_level.overcharge }}
+              {%- if ability_level.overcharge is not none %}
 	      
-              {% endif %}          
-              {%- if ability_level.damage is not none %}          
+              <bold>Overcharge:</bold> {{ ability_level.overcharge -}}
+              {% endif %}
+              {%- if ability_level.damage is not none %}
+	      
               <bold>Dmg:</bold> {{- ability_level.damage }}
-	      
               {% endif %}
-              {%- if ability_level.effect is not none %}              
-              <bold>Effect:</bold> {{ ability_level.effect }}
-	      
-              {% endif %}              
+              {%- if ability_level.effect is not none %}
+              
+              <bold>Effect:</bold> {{ ability_level.effect -}}
+              {% endif -%}
               {%- if ability_level.description is not none %}
+	      
               {{ ability_level.description }}
-              {%- endif %}
+              {%- endif -%}
             </td>
           </tablerow>
           {% endfor %}                
