@@ -729,6 +729,14 @@ class HtmlFormatter:
     def end_author(self, author):
         return
 
+
+    def start_version(self, version):
+        #self.latex_file.write("{\\LARGE \\rpgtitleauthorfont %s}\\\\" % version.text)        
+        return
+    
+    def end_version(self, npchps):
+        return
+    
     def start_title(self, title):
         self.html_file.write("{ \\color{rpgtitlefontcolor} \\rpgtitlefont %s }\\\\\n"
                               % title.text)

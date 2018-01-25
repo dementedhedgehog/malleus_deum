@@ -1344,6 +1344,7 @@ labels and references.
       <xs:element name="subtitle" type="titleType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
       <xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:choice>
   </xs:complexType>
@@ -1817,6 +1818,25 @@ tags
     </xs:sequence>
   </xs:complexType>
 
+
+  <!-- Semantic versioning for the project -->
+  <xs:element name="version" type="versionType"/>
+  <xs:complexType name="versionType" mixed="false">
+    <xs:sequence>     
+      <xs:element 
+          name="major" 
+          type="xs:positiveInteger" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="minor" 
+          type="xs:positiveInteger" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="revision" 
+          type="xs:positiveInteger" 
+          minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>      
   
   
 </xs:schema> 

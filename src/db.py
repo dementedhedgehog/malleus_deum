@@ -14,11 +14,13 @@ from archetypes import Archetypes
 from patrons import Patrons
 from npcs import NPCGangs
 from attribute_bonuses import attribute_bonuses
+from version import Version
 
 
 class DB:
 
     def __init__(self):
+        self.version = None
         self.patrons = None
         self.ability_groups = None
         self.monster_groups = None
@@ -29,6 +31,12 @@ class DB:
 
     
     def load(self, root_dir, fail_fast=True):
+
+        # load the version
+        version_dir = join(root_dir, "docs")
+        version_fname = join(version_dir, "version.xml")
+        self.version = Version.load(version_fname)
+        
         # load the abilities
         abilities_dir = join(root_dir, "abilities")
         self.ability_groups = AbilityGroups()

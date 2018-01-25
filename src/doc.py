@@ -40,7 +40,7 @@ TEXT_TAGS = (
     "sectiontitle", "subsectiontitle", "subsubsectiontitle",
     "descriptions", "term", "description",
     "p",
-    "td", "th"
+    "td", "th", "version",
     )
 
 

@@ -945,6 +945,14 @@ class LatexFormatter:
     def end_author(self, author):
         return
 
+    def start_version(self, version):
+        #self.latex_file.write("{\\LARGE \\rpgtitleauthorfont %s}\\\\" % version.text)        
+        return
+    
+    def end_version(self, npchps):
+        return
+
+    
     def start_title(self, title):
         self.latex_file.write("{ \\color{rpgtitlefontcolor} \\rpgtitlefont %s }\\\\\n"
                               % title.text)
@@ -1800,3 +1808,8 @@ class LatexFormatter:
     def end_npchps(self, npchps):
         self.latex_file.write("\\end{npchp}")
         return
+
+
+    #
+    #
+    #
