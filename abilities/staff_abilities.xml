@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Spear Use</abilitygrouptitle>
-    <abilitygroupid>aspears</abilitygroupid>
+    <abilitygrouptitle>Staves</abilitygrouptitle>
+    <abilitygroupid>staves</abilitygroupid>
     <abilitygroupfamily>Combat</abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        These skills represent training in the use of spears, 
+        These skills represent training in the use of staves,
 	halberds, bill hooks, glaives and other pole-arms in combat.
       </p>
     </abilitygroupdescription>
@@ -14,13 +14,13 @@
   
 
   <ability>
-    <abilitytitle>Spear Strike</abilitytitle>
-    <abilityid>spear.strike</abilityid>
+    <abilitytitle>Staff Strike</abilitytitle>
+    <abilityid>staff.strike</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
-        Characters equipped with a spear or polearm can strike with
+        Characters equipped with a staff, staff or polearm can strike with
 	it during combat doing weapon damage.
       </p>
     </abilitydescription>
@@ -46,6 +46,7 @@
         <defaultmagical>0</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
+	<prereqattr><attr>Strength</attr><value>11</value></prereqattr>	
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
 	<prereqabilitylevel>school.military_1</prereqabilitylevel>
@@ -64,58 +65,14 @@
   </ability>
 
 
-
-
   <ability>
-    <abilitytitle>Polearm - Hook</abilitytitle>
-    <abilityid>spear.hook</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <abilityattrmodifiers><attr>Speed</attr><attr>Agility</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-        Characters equipped with a polearm, but <bold>not a spear</bold>, can
-	use the hooked edge of this weapon to attempt to disarm an opponent
-	or remove their shield.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
-        <successes>2</successes>
-        <attempts>3</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage and opponent drops weapon/shield</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
-        <check>Std 2d8 + 2 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier and opponent drops weapon/shield</damage>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-
-  <ability>
-    <abilitytitle>Spear - Brace for Charge</abilitytitle>
-    <abilityid>spear.brace</abilityid>
+    <abilitytitle>Staff - Brace for Charge</abilitytitle>
+    <abilityid>staff.brace</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
     <abilityattrmodifiers><attr>Strength</attr><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
-        Characters equipped with a spear or polearm can brace against
+        Characters equipped with a staff can brace against
 	a charge striking first and doing extra damage.
       </p>
     </abilitydescription>
@@ -124,7 +81,7 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
+        <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
         <defaultlore>0</defaultlore>
         <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
@@ -150,8 +107,8 @@
 
 
   <ability>
-    <abilitytitle>Spear - Circle of Death</abilitytitle>
-    <abilityid>spear.circle_of_death</abilityid>
+    <abilitytitle>Staff - Circle of Death</abilitytitle>
+    <abilityid>staff.circle_of_death</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
@@ -169,10 +126,9 @@
     </abilitydescription>
 
     <abilitylevels>
-
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
+        <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
         <defaultlore>0</defaultlore>
         <defaultmartial>3</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
@@ -181,7 +137,7 @@
         <attempts>3</attempts>
         <failures>1</failures>
         <check>Std 2d8 vs opponents AC</check>
-        <damage>Each opponent must make a Resolve Check vs DDC 10 to attack the first time,
+        <damage>Each opponent must make a Resolve Check + 2 vs DDC 10 to attack the first time,
 	reaction counter-attack</damage>
       </abilitylevel>
       
@@ -192,17 +148,16 @@
         <defaultgeneral>0</defaultgeneral>
         <defaultmagical>0</defaultmagical>
         <check>Std 2d8 vs opponents AC</check>
-        <damage>Each opponent must make a Resolve Check vs DDC 10 to attack the first time,
+        <damage>Each opponent must make a Resolve Check + 2 vs DDC 10 to attack the first time,
 	reaction counter-attack</damage>
       </abilitylevel>      
     </abilitylevels>
   </ability>
 
 
-
   <ability>
-    <abilitytitle>Spear Parry</abilitytitle>
-    <abilityid>spear.parry</abilityid>
+    <abilitytitle>Staff Parry</abilitytitle>
+    <abilityid>staff.parry</abilityid>
     <abilityclass>Reaction</abilityclass>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
@@ -213,7 +168,7 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>	
+        <prereqabilitylevel>staff.strike_1</prereqabilitylevel>	
         <defaultlore>0</defaultlore>
         <defaultmartial>5</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
