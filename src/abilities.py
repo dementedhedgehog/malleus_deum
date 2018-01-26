@@ -549,9 +549,7 @@ class AbilityClass:
     RESOLUTION = "Resolution"
     REACTION = "Reaction"
     NON_COMBAT = "Non-Combat"
-
-    # misc abilities
-    #LORE = "Lore"
+    TAG = "Tag"
 
     @classmethod
     def to_string(cls, ability_class):
@@ -596,6 +594,8 @@ class AbilityClass:
            symbol_str = "<startandreaction/>"            
         elif ability_class == AbilityClass.NON_COMBAT:
             symbol_str = "<noncombat/>"
+        elif ability_class == AbilityClass.TAG:
+            symbol_str = "<tag/>"
         else:
             symbol_str = "UNKNOWN! %s" % ability_class
             raise Exception("X")
@@ -609,6 +609,8 @@ class AbilityClass:
         if ability_class is not None:
             ability_class = ability_class.strip()
 
+        print "--- %s " % ability_class
+            
         if ability_class == "None":
             ability_cls = AbilityClass.NONE
         elif ability_class == "Surprise":
@@ -635,6 +637,8 @@ class AbilityClass:
             ability_cls = AbilityClass.START_AND_REACTION
         elif ability_class == "Non-Combat":
             ability_cls = AbilityClass.NON_COMBAT
+        elif ability_class == "Tag":
+            ability_cls = AbilityClass.TAG
         else:
             #raise Exception("Unknown ability class: %s" % ability_class)
             ability_cls = AbilityClass.NONE
@@ -857,8 +861,7 @@ class Ability:
                self.tags.append(child.text)
 
            elif tag == "abilityclass":
-               if child.text == "fast":
-                   raise Exception("XXX")
+               print child.text
                self.ability_class = AbilityClass.load(child.text)
                if self.ability_class == AbilityClass.NONE:
                    raise Exception("Unknown ability class: (%s) %s in %s\n" %
@@ -876,8 +879,6 @@ class Ability:
                    raise Exception("Only one abilitydescription per ability. (%s) %s\n" %
                                    (child.tag, str(child)))
                else:
-                   #self.description = get_text(child)                   
-                   #self.description = node_to_string(child)                   
                    self.description = children_to_string(child)                   
 
            elif tag == "abilityattrmodifiers":
