@@ -117,4 +117,83 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>  
+
+
+
+  <ability>
+    <abilitytitle>Vermin Swarm</abilitytitle>
+    <abilityid>magic.vermin_swarm</abilityid>
+    <abilityclass>StartAndReaction</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character summons a swarm of vermin.  The GM should choose one 
+	of the following types of swarms either randomly or as appropriate to
+	the context: Spider, Beetle, Rat, Bees, Flys, Bats.  Swarms stay until
+	the end of combat or 5 minutes which-ever is longer. 
+      </p>
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Vermin Swarm Overcharge Table</tabletitle>
+	<tablelabel>fig:vermin-swarm-overcharge</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-28</td>
+	  <td>The swarm mistakes the caster for the target.  They GM moves the swarm
+	  towards the caster each turn until they are destroyed </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-38</td>
+	  <td>The casters mind is linked to the swarm.  They can either banish the swarm
+	  or control it, but that is all.
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>41-58</td>
+	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
+	  3d6 damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>61-88</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>	
+      </table>
+      
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 4</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+	<check>Magic Pool + 2 vs DDC 4</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>  
 </abilitygroup>
