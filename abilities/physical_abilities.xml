@@ -116,10 +116,17 @@
     <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
-        The Run ability allows the character to move twice their movement rate during combat
-        or pursuit.  This skill represents the characters fleet footedness.  In addition that
-        character can make a check to nive 
+        The Run ability represents a double move.  It allows the character to move twice
+	their movement rate during combat or pursuit.  
       </p>
+
+      <p>
+	In addition the character may make a check to move a bit further in addition to their
+	double move.  This skill represents the characters fleet footedness.  During combat
+	this is represented by moving an extra 1-3 squares when playing on a grid, or something
+	narrative in a TOTM combat.  During a pursuit the character increases their rank by
+	two if they fail and three if they succeed.
+      </p>      
     </abilitydescription>
     <abilitylevels>
       <abilitylevel>
@@ -129,12 +136,7 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 7</check>
-        <effect>
-          The character moves a bit extra.  During combat this is an extra square when playing
-	  on a grid, or something narrative in a TOTM combat.  During a pursuit the character
-	  increases their rank by two if they fail and three if they succeed.          
-        </effect>
+        <check>Std 2d8 vs DDC 10</check>
       </abilitylevel>
       
       <abilitylevel>
@@ -144,7 +146,7 @@
         <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs DDC 7</check>
+        <check>Std 2d8 + 1 vs DDC 10</check>
         <effect>
           As above.
         </effect>
@@ -156,7 +158,7 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>2</defaultgeneral>
-        <check>Std 2d8 + 2 vs DDC 7</check>
+        <check>Std 2d8 + 2 vs DDC 10</check>
         <effect>
           As above.
         </effect>
