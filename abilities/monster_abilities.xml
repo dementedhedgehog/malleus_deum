@@ -99,6 +99,32 @@
     </abilitylevels>
   </ability>
 
+
+
+
+  <ability>
+    <abilitytitle>Fly</abilitytitle>
+    <abilityid>monster.fly</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	The monster can fly.   They can move over terrain that they
+	would not be able to under normal conditions such as pits and
+	rivers.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <effect>Flying!</effect>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
   
 
   <ability>
@@ -150,11 +176,56 @@
   </ability>
 
 
+
+  <ability>
+    <abilitytitle>Countless Bites</abilitytitle>
+    <abilityid>monster.countless_bites</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	The monster makes dozens of attacks per round.  No to-hit
+	roll is required.  No block or dodge saves apply.  The monster does
+	a fixed amount of damage to each character, friend or foe, adjacent
+	to it at the end of the monsters turn.  The monster makes an automatic
+	attack when making an opportunity attack.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>None</check>
+        <effect>3 points damage.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>None</check>
+        <effect>4 points damage.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>None</check>
+        <effect>5 points damage.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>None</check>
+        <effect>6 points damage.</effect>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
   
+
   <ability>
     <abilitytitle>Web</abilitytitle>
     <abilityid>monster.web</abilityid>
-    <abilityclass>Medium</abilityclass>
+    <abilityclass>Tag</abilityclass>
     <abilityattrmodifiers></abilityattrmodifiers>
     <inborn>true</inborn>
     <gmgability/>
@@ -188,6 +259,43 @@
         <levelnumber>4</levelnumber>
         <check>Std 2d8 + 6 vs opponents Speed or Agility</check>
         <effect>Target is Slowed</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+
+
+
+  
+  <ability>
+    <abilitytitle>Swarm</abilitytitle>
+    <abilityid>monster.swarm</abilityid>
+    <abilityclass>Tag</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	This monster is actually a swarm of small individuals acting as one.  Area of
+	effect attacks do full damage against a swarm.	
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <effect>Weapons do only 2 point of damage.  Crushing weapons do full damage</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <effect>Weapons do only 2 point of damage.  Crushing weapons do half damage.</effect>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <effect>Weapons do only 1 point of damage.  Crushing weapons do 2 points.</effect>
       </abilitylevel>      
     </abilitylevels>
   </ability>
