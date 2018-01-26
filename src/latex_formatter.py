@@ -1369,7 +1369,7 @@ class LatexFormatter:
         return
 
     def end_tablerow(self, table_title):
-        self.latex_file.write("\\tabularnewline \n")
+        self.latex_file.write("\\tabularnewline ")
         return
 
     start_tableheaderrow = start_tablerow
