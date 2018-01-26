@@ -230,4 +230,58 @@
     </abilitylevels>
   </ability>
   
+
+  <ability>
+    <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
+    <abilityid>magic.blood_soucriant</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	In the presence of a lot of blood the character can summon
+	a Blood Soucriant.  A female demon, temptress and drinker of blood.
+	The demon will not tarry long and once summoned will drink of the
+	blood of the living.   If the Blood Sucreant does not drink she
+	will attack the caster.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>1</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool versus DDC 9</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
+	<effect>Reroll a near-death roll.</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>1</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool +2 versus DDC 9</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>1</successes>
+        <check>Magic Pool +3 versus DDC 9</check>
+	<overcharge>DC + 8</overcharge>
+	<effect>See above.</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>  
 </abilitygroup>

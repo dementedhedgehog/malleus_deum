@@ -106,6 +106,7 @@ SKILL_POSITION_LOOKUP = {
     "magic.auri_fames": (Page.TWO, "magic_school.enchantment", ((20, 20),)),
     "magic.banish": (Page.TWO, "magic_school.abjuration", ((25, 40),)),
     "magic.bind": (Page.TWO, "magic_school.conjuration", ((30, -70),)),
+    "magic.blood_soucriant": (Page.TWO, "magic_school.necromancy", ((30, -70),)),
     "magic.circle_of_protection": (Page.TWO, "magic_school.abjuration", ((30, 20),)),
     "magic.cloak_of_shadows": (Page.TWO, "magic_school.arcana", ((20, -10),)),
     "magic.commune": (Page.TWO, "magic_school.conjuration", ((35, -5),)),
@@ -181,6 +182,7 @@ SKILL_POSITION_LOOKUP = {
     
     "magic_school.zoolingualism": (Page.TWO, "magic_school.enchantment", ((20, -30),)),
     "monster.claw": (Page.NONE, None, ((100, 100),)),
+    "monster.demon_instability": (Page.NONE, None, ((100, 100),)),
     "monster.fly": (Page.NONE, None, ((100, 100),)),
     "monster.countless_bites": (Page.NONE, None, ((100, 100),)),
     "monster.poison_bite": (Page.NONE, None, ((100, 100),)),

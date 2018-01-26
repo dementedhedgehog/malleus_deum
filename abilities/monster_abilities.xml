@@ -99,9 +99,7 @@
     </abilitylevels>
   </ability>
 
-
-
-
+  
   <ability>
     <abilitytitle>Fly</abilitytitle>
     <abilityid>monster.fly</abilityid>
@@ -146,8 +144,44 @@
         <check>Std 2d8 vs 5</check>
         <effect>A demon is summoned</effect>
       </abilitylevel>
-
     </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Demon Instability</abilitytitle>
+    <abilityid>monster.demon_instability</abilityid>
+    <abilityclass>Tag</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	Demons when they are bloodied make a check or their
+	simulacrums on this plane dissipate explosively
+	causing damage to all adjacent characters.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 vs 13</check>
+        <effect>The demon dissipates</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 vs 10</check>
+        <effect>The demon dissipates</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>Std 2d8 vs 7</check>
+        <effect>The demon dissipates</effect>
+      </abilitylevel>
+</abilitylevels>
   </ability>
 
 
