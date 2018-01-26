@@ -114,6 +114,7 @@
       <xs:enumeration value="Resolution"/>
       <xs:enumeration value="Reaction"/>
       <xs:enumeration value="Non-Combat"/>
+      <xs:enumeration value="Tag"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -236,6 +237,7 @@
       <xs:element name="resolution" type="symbolType"/>
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>      
+      <xs:element name="tag" type="symbolType"/>      
     </xs:choice>
     <xs:attribute name="noindent" type="xs:boolean" default="false"/>
   </xs:complexType>
@@ -268,6 +270,7 @@
         <xs:element name="resolution" type="symbolType"/>      
         <xs:element name="reaction" type="symbolType"/>      
         <xs:element name="noncombat" type="symbolType"/>          
+	<xs:element name="tag" type="symbolType"/>      
       </xs:choice>
     </xs:sequence>
   </xs:group>
@@ -319,6 +322,7 @@
       <xs:element name="resolution" type="symbolType"/>      
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>
+      <xs:element name="tag" type="symbolType"/>      
       <xs:element name="fightreach" type="symbolType"/>      
       <xs:element name="mediumorslow" type="symbolType"/>
       <xs:element name="startandreaction" type="symbolType"/>
@@ -938,6 +942,7 @@ labels and references.
       <xs:element name="resolution" type="symbolType"/>      
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>
+      <xs:element name="tag" type="symbolType"/>      
       <xs:element name="lore" type="symbolType"/>
       <xs:element name="martial" type="symbolType"/>
       <xs:element name="general" type="symbolType"/>
