@@ -97,6 +97,61 @@
   </ability>
 
 
+  <ability>
+    <abilitytitle>Eldritch Grasp</abilitytitle>
+    <abilityid>magic.eldritch_grasp</abilityid>
+    <abilityclass>Fast</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster uses a raw stream of thaumic energy to grab a target
+	crushing it and pulling it towards him. If successful the target may
+	make a Dodge, agility, or speed check to avoid the stream.
+      </p>
+
+      <p>
+	If the stream hits the target the target suffers d6 damage
+	and is pulled  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
+	towards the caster.  If the caster hits and a benefit occurs
+	roll on the overcharge effects table and apply the result to the
+	<emph>target</emph>.  The caster can choose whether or not to apply
+	the overcharge effect to the target or to control the magical energies
+	and supress the result.
+      </p>
+    </abilitydescription>    
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>5</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 6</check>
+	<overcharge>DC + 6</overcharge>		
+	<effect>d6 damage and pulled</effect>		
+        <prereqabilitylevel>magic.eldritch_push_2</prereqabilitylevel>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>3</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool + 1 vs DDC 6</check>
+	<overcharge>DC + 7</overcharge>		
+	<effect>d6 damage and pulled</effect>		
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  
 
   
   <ability>

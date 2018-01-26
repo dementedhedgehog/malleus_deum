@@ -111,6 +111,7 @@ SKILL_POSITION_LOOKUP = {
     "magic.commune": (Page.TWO, "magic_school.conjuration", ((35, -5),)),
     "magic.contego": (Page.TWO, "magic_school.abjuration", ((30, -5),)),
     "magic.eldritch_push": (Page.TWO, "magic_school.evocation", ((40, 5),)),
+    "magic.eldritch_grasp": (Page.TWO, "magic.eldritch_push", ((40, -20),)),
     "magic.eldritch_shield": (Page.TWO, "magic_school.abjuration", ((20, 65),)),
     "magic.flesh_ward": (Page.TWO, "magic_school.abjuration", ((35, -30),)),
     "magic.glamour": (Page.TWO, "magic_school.enchantment", ((10, 40),)),
