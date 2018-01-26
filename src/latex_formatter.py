@@ -152,6 +152,10 @@ latex_frontmatter = r"""
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}n\endgroup}
 {non-combat}}
 
+\newcommand{\tagsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}T\endgroup}
+{tag}}
+
 \newcommand{\arrowleft}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}<\endgroup}
 {arrowleft}}
@@ -483,6 +487,11 @@ class LatexFormatter:
         self.latex_file.write("\\noncombatsymbol{}")
         return
     end_noncombat = no_op    
+
+    def start_tag(self, symbol):
+        self.latex_file.write("\\tagsymbol{}")
+        return
+    end_tag = no_op    
 
     def start_newpage(self, symbol):
         self.latex_file.write("\\newpage[4]\n")

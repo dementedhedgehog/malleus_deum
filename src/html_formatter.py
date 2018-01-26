@@ -221,6 +221,11 @@ class HtmlFormatter:
         return
     end_noncombat = no_op    
 
+    def start_tag(self, symbol):
+        #self.latex_file.write("\\tagsymbol{}")
+        return
+    end_tag = no_op    
+
     def start_newpage(self, symbol):
         self.html_file.write("\\newpage[4]\n")
         return
