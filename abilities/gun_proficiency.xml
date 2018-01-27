@@ -17,7 +17,7 @@
     <abilitytitle>Gun Shoot</abilitytitle>
     <abilityid>gun.shoot</abilityid>
     <abilityclass>Fast</abilityclass>
-    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
+    <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a gun can shoot with it during combat
@@ -60,6 +60,45 @@
     </abilitylevels>
   </ability>
 
+  <ability>
+    <abilitytitle>Sharp Shooter</abilitytitle>
+    <abilityid>gun.sharp_shooter</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The character has spent many hours working on improving the accuracy of
+	their shots.  Players can choose to call a shot which gives them a large
+	bonus to hit, but takes a little longer to aim.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel>gun.shoot_2</prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>5</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>2</attempts>
+        <failures>1</failures>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>6</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 5 vs opponents AC</check>
+        <damage>Weapon damage + 2</damage>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+
+
+  
 
   <ability>
     <abilitytitle>Gun Maintenance</abilitytitle>

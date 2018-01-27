@@ -75,6 +75,7 @@ SKILL_POSITION_LOOKUP = {
     "fine_arts.wind": (Page.ONE, "fine_arts.music", ((20, -20),)),
     "gun.maintenance": (Page.ONE, "gun.shoot", ((20, 0),)),
     "gun.shoot": (Page.ONE, "school.military", ((30, -50),)),
+    "gun.sharp_shooter": (Page.ONE, "gun.shoot", ((60, -50),)),
     "hammer.smash": (Page.ONE, "hammer.strike", ((40, -5),)),
     "hammer.strike": (Page.ONE, "school.military", ((-10, -270),)),
     "language.aquillonian": (Page.TWO, "school.scholar", ((0, 180),)),
