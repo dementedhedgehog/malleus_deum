@@ -23,7 +23,7 @@
       <p noindent="true">
         Characters equipped with a Sword can strike with it during combat doing
 	weapon damage.  This weapon strikes in phase <medium/> or <slow/> depending
-	on the weapons speed.  Note: rapiers are tne only swords that strike in the
+	on the weapons speed.  Note: rapiers are the only swords that strike in the
 	<medium/> phase.
       </p>
     </abilitydescription>
@@ -58,14 +58,80 @@
         <defaultlore>0</defaultlore>
         <defaultmartial>8</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>8</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 3 + Str modifier</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Mighty Blow</abilitytitle>
+    <abilityid>sword.mighty_blow</abilityid>
+    <abilityclass>MediumOrSlow</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Sword can strike with it during combat doing
+	weapon damage.  This weapon strikes in phase <medium/> or <slow/> depending
+	on the weapons speed.  Note: rapiers are the only swords that strike in the
+	<medium/> phase.
+      </p>
+
+      <p>
+	When attacking a Mook the usual benefit is that the mook is insta-killed.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>7</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 3 + Str modifier</damage>
+	<prereqabilitylevel>sword.strike_3</prereqabilitylevel>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>8</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 4 + Str modifier</damage>
+      </abilitylevel>      
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>8</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>Weapon damage + 5 + Str modifier</damage>
       </abilitylevel>      
     </abilitylevels>
   </ability>
 
 
 
+  
   <ability>
     <abilitytitle>Sword Feint</abilitytitle>
     <abilityid>sword.feint</abilityid>

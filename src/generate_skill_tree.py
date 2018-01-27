@@ -156,7 +156,6 @@ SKILL_POSITION_LOOKUP = {
     "magic.call_of_the_wild": (Page.TWO, "magic_school.wild_magic", ((20, 40),)),
     "magic_school.abjuration": (Page.TWO, "language.inochian", ((70, -70),
                                                                 (80, 0),
-                                                                #(80, 10)
     )),
     "magic_school.arcana": (Page.TWO, "language.inochian", ((50, -180),)),    
     "magic_school.wild_magic": (Page.TWO, "school.scholar", ((-30, -240),
@@ -267,6 +266,7 @@ SKILL_POSITION_LOOKUP = {
     "sword.feint": (Page.ONE, "sword.strike", ((50, 35),)),
     "sword.parry": (Page.ONE, "sword.strike", ((75, 5),)),
     "sword.strike": (Page.ONE, "school.military", ((20, 85),)),
+    "sword.mighty_blow": (Page.ONE, "sword.strike", ((20, 85),)),
     "transport.animal_handling": (Page.ONE, "school.trade", ((-20, -140),)),
     "transport.drive_cart": (Page.ONE, "school.trade", ((0, -100),)),
     "transport.horse_riding": (Page.ONE, "transport.animal_handling", ((20, -20),)),
