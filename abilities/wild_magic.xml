@@ -123,7 +123,7 @@
   <ability>
     <abilitytitle>Vermin Swarm</abilitytitle>
     <abilityid>magic.vermin_swarm</abilityid>
-    <abilityclass>StartAndReaction</abilityclass>
+    <abilityclass>Slow</abilityclass>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -195,5 +195,82 @@
 	<overcharge>DC + 7</overcharge>
       </abilitylevel>      
     </abilitylevels>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Call of the Wild</abilitytitle>
+    <abilityid>magic.call_of_the_wild</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The caster calls to the local animals for help.
+      </p>
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Call of the Wild Overcharge Table</tabletitle>
+	<tablelabel>fig:call-of-the-wild-overcharge</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-28</td>
+	  <td>The animals here the call but are swayed by their own self-interest.
+	      None answer the call.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-38</td>
+	  <td>The casters mind is linked to the animals.  They can either banish the animals
+	  or control them, but that is all.
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>41-58</td>
+	  <td>Something from beyond takes a bite out of the caster.  Caster suffers
+	  2d6 damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>61-88</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>	
+      </table>      
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 13</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+	<check>Magic Pool + 2 vs DDC 13</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
   </ability>  
+  
 </abilitygroup>
