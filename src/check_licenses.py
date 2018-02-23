@@ -76,28 +76,35 @@ class ImgInfo:
         
         doc = parse_xml(license_fname)
         root = doc.getroot()
-        assert root.tag == "licenseinfo"
-
+        if root.tag != "licenseinfo":
+            raise Exception("Bad xml looking for xml with a root tag of licenseinfo "
+                            "in %s" % license_fname)
 
         for child in list(root):
 
            tag = child.tag
+           if child.text is None:
+
+               if tag not in ("source", "url", "notes"):
+                   raise Exception("%s has empty value for %s" % (license_fname, tag))
+               else:
+                   text = u""
+           else:
+               text = unicode(child.text.strip())
         
            #for attr, value in json_info.items():
            if tag == "license":
-               info.img_license = unicode(child.text.strip())
+               info.img_license = text
            elif tag == "artist":
-               info.artist = unicode(child.text.strip())
+               info.artist = text
            elif tag == "artistfullname":
-               info.artistfullname = unicode(child.text.strip())
+               info.artistfullname = text
            elif tag == "source":
-               if child.text is not None:
-                   info.source = unicode(child.text.strip())
+                   info.source = text
            elif tag == "url":
-               if child.text is not None:
-                   info.url = unicode(child.text.strip())
+                   info.url = text
            elif tag == "notes":
-               info.notes = unicode(child.text.strip())
+               info.notes = text
            else:
                fail("Unknown license information %s in %s" %
                     (attr, license_fname))
@@ -131,26 +138,42 @@ class ImgInfo:
             status)
     
 
-def generate_license_report(project_dir):
+def generate_license_report(resource_dirs):
+    """
+    Check licenses for art in the given list of resource dirs.
 
-    for dir_name, sub_dirs, files in os.walk(project_dir):
-        for fname in files:
-            base_fname, ext = splitext(fname)
-            full_fname = join(dir_name, fname)
+    """
 
-            # images..
-            if ext in (".png", ".svg", ".jpg", "gif", "xcf"):
-                license_fname = join(dir_name, base_fname + ".xml")
-                ImgInfo.parse(img_fname=full_fname,
-                              license_fname=license_fname)
-                
+    if isinstance(resource_dirs, basestring):
+        resource_dirs = (resource_dirs, )
+
+    print "--------------------"
+    print "RESOURCES %s " % ", ".join(resource_dirs)
+    
+    for resource_dir in resource_dirs:
+        for dir_name, sub_dirs, files in os.walk(resource_dir):
+            print "  %s" % dir_name
+            for fname in files:
+                base_fname, ext = splitext(fname)
+                full_fname = join(dir_name, fname)
+
+                # images..
+                if ext in (".png", ".svg", ".jpg", "gif", "xcf"):
+                    if not fname.startswith("__original_art_"):
+                        license_fname = join(dir_name, base_fname + ".xml")
+                        ImgInfo.parse(img_fname=full_fname,
+                                      license_fname=license_fname)                
     return ImgInfo.info_lookup
 
 
 if __name__ == "__main__":
     src_dir = dirname(__file__)
-    root_dir = abspath(join(src_dir, ".."))
-    img_license_info = generate_license_report(root_dir)
+    root_dir = abspath(join(src_dir, ".."))    
+
+    resource_dirs = (join(root_dir, "resources"),
+                     join(root_dir, "unused_resources"))
+
+    img_license_info = generate_license_report(resource_dirs)
 
     n_chars = len(root_dir) + 1
     for img_info in img_license_info.values():

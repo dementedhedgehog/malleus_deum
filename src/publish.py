@@ -58,6 +58,9 @@ pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 archetype_template_fname = join("docs", "archetype_template.xml")
 patron_template_fname = join("docs", "patron_template.xml")
+resource_dir = join(root_dir, "resources")
+unused_resources = join(root_dir, "unused_resources")
+
 
 # latex preamble for the index.
 index_str = """
@@ -638,7 +641,7 @@ if __name__ == "__main__":
     #
     #
     #
-    img_license_info = generate_license_report(root_dir)
+    img_license_info = generate_license_report((resource_dir, unused_resources))
     print "\n----"
     n_chars = len(root_dir) + 1
     for img_info in img_license_info.values():

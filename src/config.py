@@ -53,9 +53,9 @@ files_to_build = (
     # ("character_creation.xml", True, "CC"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    #("monster_manual.xml", True, "MM"),
+    ("monster_manual.xml", True, "MM"),
     #("magic_items.xml", True, "MI"),
-    #("abilities.xml", True, "Ab"),
+    ("abilities.xml", True, "Ab"),
     #("ability_dcs.xml", False, "X"),
     # ("tables.xml", True, "[T]"),
 

@@ -376,6 +376,15 @@
     <abilityid>physical.throw</abilityid>
     <abilityclass>Fast</abilityclass>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	This character attempts to thrown something.  If unsuccessful, and a consequence occurs
+	and they are under some form of pressure the character drops the item at their feet.
+	Otherwise unsuccessful throws scatter one random square five times.  If sucessful the
+	throw is accurate.
+      </p>
+    </abilitydescription>    
+    
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
@@ -405,11 +414,6 @@
         <check>Std 2d8 + 3 vs DDC 8</check>
       </abilitylevel>      
     </abilitylevels>
-    <abilitydescription>
-      <p>
-	This skill represents the characters ability to throw.
-      </p>
-    </abilitydescription>
   </ability>
 
 
@@ -745,6 +749,103 @@
     </abilitylevels>
   </ability>
 
+
+  <ability>
+    <abilitytitle>Juggernaut</abilitytitle>
+    <abilityid>physical.juggernaut</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	The attacker uses his mass and strength to brush aside those who
+	stand in his way.  Such is the force of his unstoppable charge that
+	at most one opportunity attack can be made against him.
+      </p>
+
+      <p>
+	Note that the Juggernaut ability may only be used against opponents of
+	similar or smaller size and strength.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+	<successes>2</successes>
+        <check>Std 2d8 vs DDC 8</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <successes>2</successes>
+        <check>Std 2d8 + 1 vs DDC 8</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <check>Std 2d8 + 2 vs DDC 8</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
+  
+
+  
+  <ability>
+    <abilitytitle>Sure Feet</abilitytitle>
+    <abilityid>physical.sure_feet</abilityid>
+    <abilityclass>Reaction</abilityclass>
+    <abilityattrmodifiers><attr>Agility</attr><attr>Endurance</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+	When the attacker would be knocked prone they can check whether to resist being
+	knocked over.  If modified by endurance then this entails enduring the blow, if using
+	agility it involves rolling with the blow.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+	<successes>2</successes>
+        <check>Std 2d8 - 2 vs DDC 10</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <successes>2</successes>
+        <check>Std 2d8 vs DDC 10</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>4</defaultgeneral>
+        <check>Std 2d8 + 2 vs DDC 10</check>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+
+  
   <ability>
     <abilitytitle>Punch</abilitytitle>
     <abilityid>physical.punch</abilityid>

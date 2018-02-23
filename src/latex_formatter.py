@@ -47,6 +47,7 @@ latex_frontmatter = r"""
 \usepackage{rotating}          %% for sidewaystable
 \usepackage{parskip}           %% non indented paragraphs
 \usepackage{multicol}          %% used for four column mode.
+\usepackage{epstopdf}
 
 %% include subsubsections in the table of contents
 \setcounter{tocdepth}{3}

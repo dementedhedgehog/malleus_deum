@@ -273,4 +273,132 @@
     </abilitylevels>
   </ability>  
   
+
+  <ability>
+    <abilitytitle>Therianthropy</abilitytitle>
+    <abilityid>magic.therianthropy</abilityid>
+    <abilityclass>Slow</abilityclass>
+    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitydescription>
+      <indexentry>Shapeshifting<subentry>see Therianthropy</subentry></indexentry>      
+      <p>
+	The caster takes animal form for up to a few hours.  The first
+	time the caster casts the spell they roll on the Therianthropy
+	table to choose the animal to which they are atuned.  That is the
+	animal that they will always change into when casting this spell.
+      </p>
+      <!--
+	  Therianthropy
+	  differs from lycanthropy in that the caster
+      -->
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Therianthropy Table</tabletitle>
+	<tablelabel>fig:therianthropy</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Animal</td>
+	</tableheaderrow>
+
+	<tablerow> <td>11</td><td>Cockroach</td></tablerow>
+	<tablerow> <td>12</td><td>Beetle</td></tablerow>
+	<tablerow> <td>13-14</td><td>House fly or Firefly</td></tablerow>
+	<tablerow> <td>15-18</td><td>Spider or Scorpion</td></tablerow>
+
+	<tablerow> <td>21-22</td><td>Frog or Toad</td></tablerow>
+	<tablerow> <td>23-25</td><td>Lizard or Newt</td></tablerow>
+	<tablerow> <td>26</td><td>Squirrel, Mouse, Rat or Hamster</td></tablerow>
+	<tablerow> <td>27</td><td>Mole, Vole or Hedgehog</td></tablerow>
+	<tablerow> <td>28</td><td>Hare or Rabbit</td></tablerow>
+	
+	<tablerow> <td>31</td><td>Yak, Musk Ox, Bison, Bull or Cow</td></tablerow>
+	<tablerow> <td>32-34</td><td>Sparrow, Crow, Parrot, Pidgeon</td></tablerow>
+	<tablerow> <td>35-36</td><td>Weasel or Ferret</td></tablerow>
+	<tablerow> <td>37-38</td><td>Bat</td></tablerow>
+
+	<tablerow> <td>41</td><td>Deer, Elk</td></tablerow>
+	<tablerow> <td>42-43</td><td>Goat or Ibex</td></tablerow>
+	<tablerow> <td>44-45</td><td>Pig or Wild Boar</td></tablerow>	
+	<tablerow> <td>46-47</td><td>Pony, Mule, Donkey or Draft Horse</td></tablerow>
+	<tablerow> <td>48</td><td>Python</td></tablerow>
+	
+	<tablerow> <td>51-52</td><td>Fox or Jackal</td></tablerow>
+	<tablerow> <td>53-54</td><td>Owl or Vulture</td></tablerow>
+	<tablerow> <td>55</td><td>Baboon, Gibbon, Orangutan or Chimpanzee</td></tablerow>
+	<tablerow> <td>56-58</td><td>Mastiff, Terrier, Sheepdog, Scent Hound, Lapdog, Retriever</td></tablerow>
+	
+	<tablerow> <td>61-63</td><td>House Cat</td></tablerow>
+	<tablerow> <td>64-65</td><td>Crocodile</td></tablerow>
+	<tablerow> <td>66-68</td><td>Hawk</td></tablerow>
+	
+	<tablerow> <td>71-72</td><td>Otter or Badger</td></tablerow>
+	<tablerow> <td>73-74</td><td>Wolverine</td></tablerow>
+	<tablerow> <td>75</td><td>Thorough-bred Horse</td></tablerow>
+	<tablerow> <td>76-78</td><td>Viper (poisonous)</td></tablerow>
+	
+	<tablerow> <td>81-83</td><td>Wolf</td></tablerow>
+	<tablerow> <td>84</td><td>Gorilla</td></tablerow>
+	<tablerow> <td>85-86</td><td>Lion, Snow Leopard, Panther etc.</td></tablerow>
+	<tablerow> <td>87-88</td><td>Bear Black, Brown or Polar</td></tablerow>
+      </table>
+
+      <p>
+	If a character rolls one of the results with multiple animals then it
+	is the GMs role to choose which of the animals the caster becomes based
+	on their character and the environs from which they came, <eg/> a northern
+	barbarian might become a polar bear given the bear result.	
+      </p>
+     
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Therianthropy Overcharge Table</tabletitle>
+	<tablelabel>fig:therianthropy_overcharge</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>ThaOvercharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow> <td>13-14</td><td>Roll on the random overcharge table</td></tablerow>
+	<tablerow> <td>14-18</td><td>The character is trapped in the animal form until the spell can be removed.</td></tablerow>
+	<tablerow> <td>21-28</td><td>The caster is trapped in animal form for d3 days or until the spell is removed.</td></tablerow>
+	<tablerow> <td>31-58</td><td>The character gains an aspect that their animal might have.</td></tablerow>
+	<tablerow> <td>61-88</td><td>No Effect</td></tablerow>
+      </table>
+
+      <p>
+	In the event the spell is overcharged roll on the table above.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+        <successes>2</successes>
+        <attempts>1</attempts>
+	<check>Magic Pool vs DDC 13</check>
+	<overcharge>DC + 6</overcharge>
+        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <defaultmagical>6</defaultmagical>
+	<check>Magic Pool + 2 vs DDC 13</check>
+	<overcharge>DC + 7</overcharge>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
 </abilitygroup>

@@ -180,13 +180,14 @@
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
         <prereqabilitylevel>lore.natural_history_1</prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>2</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 vs DDC 10</check>	
 	<leveldescription>
 	  <p>
-	    The character can check to Manufacture explosives,
-	    acids, dyes, gunpowder etc.  Can identify many chemical substances.
+	    If the character has the necessary ingredients they can check to manufacture
+	    acids, dyes, blackpowder, war-fire, petards, grenades etc.
+	    They can identify many chemical substances.
 	  </p>
 	</leveldescription>
       </abilitylevel>
@@ -196,12 +197,12 @@
         <defaultlore>8</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>2</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 10</check>		
 	<leveldescription>
 	  <p>
-	    The character call themselves an Apothecary, and can prepare poisons
+	    The character call themselves an Apothecary, and can prepare poisons, laudanum,
 	    and medicines for certain diseases in addition to the abilities from first level.
 	  </p>
 	</leveldescription>
@@ -209,6 +210,87 @@
     </abilitylevels>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Grand Discovery</abilitytitle>
+    <abilityid>lore.grand_discovery</abilityid>
+    <abilityclass>Non-Combat</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitydescription>
+      <p>
+      </p>
+	
+      <p>
+      </p>
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Grand Discoveries Table</tabletitle>
+	<tablelabel>fig:grand-discoveries</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-58</td>
+	  <td>Disapointment!  No discovery made</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>61-68</td>
+	  <td>Poison Resistance.  If the character already has poison resistance then
+	  the result is dissapointment.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>71-75</td>
+	  <td>Unexpected Discovery.  Choose another alchemical ability.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>76-78</td>
+	  <td>..</td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>51-88</td>
+	  <td>..</td>
+	</tablerow>	
+
+	<tablerow>
+	  <td>51-88</td>
+	  <td>..</td>
+	</tablerow>	
+
+	<tablerow>
+	  <td>88</td>
+	  <td>Elixir of Life.  The alchemist has somehow cease their own aging.</td>
+	</tablerow>	
+	
+      </table>
+      
+    </abilitydescription>
+    
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <prereqabilitylevel>lore.alchemy_1</prereqabilitylevel>
+        <successes>3</successes>
+        <attempts>3</attempts>
+        <check>Std 2d8 vs DDC 15</check>	
+	<leveldescription>
+	</leveldescription>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
 
 
   <ability>
