@@ -53,9 +53,9 @@ files_to_build = (
     # ("character_creation.xml", True, "CC"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    ("monster_manual.xml", True, "MM"),
+    #("monster_manual.xml", True, "MM"),
     #("magic_items.xml", True, "MI"),
-    ("abilities.xml", True, "Ab"),
+    #("abilities.xml", True, "Ab"),
     #("ability_dcs.xml", False, "X"),
     # ("tables.xml", True, "[T]"),
 
@@ -77,9 +77,9 @@ archetypes_to_build = (
     # ("elven_scion", True, "[ES]"),
     # ("outrider", True, "[OR]"),
     # ("summoner", True, "[SM]"),
-    # ("hedge_wizard", True, "[HW]"),
+    ("hedge_wizard", True, "[HW]"),
     # ("witch_hunter", True, "[WH]"),
-    ("rake", True, "[RK]"),
+    # ("rake", True, "[RK]"),
 )
 
 encounters_to_build = (

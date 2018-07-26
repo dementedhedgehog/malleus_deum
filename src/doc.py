@@ -41,6 +41,7 @@ TEXT_TAGS = (
     "descriptions", "term", "description",
     "p",
     "td", "th", "version",
+    "inspiration", "attribution",
     )
 
 
@@ -51,14 +52,46 @@ class Doc:
         self.fname = fname
         self.doc = None
         # stack of ability groups 
-        self.ability_groups = []
+        # self.ability_groups = []
+
+        # list of resource ids.
+        self.resource_ids = []
         return
 
     def parse(self):
         self.doc = parse_xml(self.fname)
+        self._find_resource_ids()
         return self.doc
 
+    def _find_resource_ids(self):
+        book_node = self.get_book_node()
+        if book_node is None:
+            raise Exception("Can't find resources in a doc without a book node!")
+        errors = []
+        self._parse_resources(book_node, errors)
+        return errors
 
+    def _parse_resources(self, element, errors, in_comment=False):
+        """
+        FSM to find img resource ids.
+        """
+        tag = element.tag
+        element_name = ("%s" % tag).lower()
+
+        if tag is COMMENT:
+            # i_formatter.start_comment(element)
+            in_comment = True
+        elif element_name == "img":
+            if not in_comment and "id" in element.attrib:
+                resource_id = element.get("id")
+                self.resource_ids.append(resource_id)
+
+        # handle all the children
+        for child in list(element):
+            self._parse_resources(child, errors, in_comment=in_comment)
+        return
+
+    
     def validate(self):
         valid = True        
         error = validate_xml(self.doc)
@@ -103,7 +136,6 @@ class Doc:
             raise Exception("Can't format a doc without a book node!")
         errors = []
 
-
         methods = {}
         for fn_name in dir(i_formatter):
             if fn_name.startswith("start_") or fn_name.startswith("end_"):
@@ -113,7 +145,6 @@ class Doc:
                               
         self._format(book_node, i_formatter, methods, errors)
         return errors
-
 
 
     def _format(self, element, i_formatter, methods, errors):
@@ -126,7 +157,14 @@ class Doc:
             start_handler_name = "start_%s" % element_name
             if start_handler_name in methods:
                 handler = methods[start_handler_name]
-                handler(element)                
+
+                try:
+                    handler(element)
+                except Exception as err:
+                    context = get_error_context(self.fname, element.sourceline)
+                    raise Exception("%s element %s formatter <%s> at %s:%s\n%s" % 
+                              (str(err.message), i_formatter.__class__,
+                               tag, self.fname, element.sourceline, context))
             else:
                 errors.append("Unknown %s open element: <%s> at %s:%s\n%s" % 
                               (i_formatter.__class__, tag, self.fname, element.sourceline, 

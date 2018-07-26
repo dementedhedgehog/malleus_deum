@@ -609,14 +609,14 @@ class AbilityClass:
         if ability_class is not None:
             ability_class = ability_class.strip()
 
-        print "--- %s " % ability_class
-            
         if ability_class == "None":
             ability_cls = AbilityClass.NONE
         elif ability_class == "Surprise":
             ability_cls = AbilityClass.SURPRISE
         elif ability_class == "Initiative":
             ability_cls = AbilityClass.INITIATIVE
+        elif ability_class == "Talk":
+            ability_cls = AbilityClass.TALK
         elif ability_class == "Fight-Reach":
             ability_cls = AbilityClass.FIGHT_REACH
         elif ability_class == "resolution":

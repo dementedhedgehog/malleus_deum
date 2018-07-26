@@ -12,7 +12,152 @@
     </abilitygroupdescription>
   </abilitygroupinfo>
   
+  <ability>
+    <abilitytitle>Horns, Lesser</abilitytitle>
+    <abilityid>monster.horns_lesser</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	This small to medium sized monster has a set of horns
+	that it may use when charging.
+      </p>
+    </abilitydescription>
 
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 + 1 vs opponents AC</check>
+        <damage>1d4</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>1d6</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>Std 2d8 + 3 vs opponents AC</check>
+        <damage>1d8</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>1d10</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>5</levelnumber>
+        <check>Std 2d8 + 5 vs opponents AC</check>
+        <damage>1d12</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Horns</abilitytitle>
+    <abilityid>monster.horns</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	This powerfull built monster has a set of horns
+	that it may use when charging.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 + 1 vs opponents AC</check>
+        <damage>2d4</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>2d6</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>Std 2d8 + 3 vs opponents AC</check>
+        <damage>2d8</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>2d10</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>5</levelnumber>
+        <check>Std 2d8 + 5 vs opponents AC</check>
+        <damage>2d12</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Horns, Greater</abilitytitle>
+    <abilityid>monster.horns_greater</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	This large monster has a set of horns
+	that it may use when charging to great effect.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 + 1 vs opponents AC</check>
+        <damage>3d4</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 + 2 vs opponents AC</check>
+        <damage>3d6</damage>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>Std 2d8 + 3 vs opponents AC</check>
+        <damage>3d8</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>Std 2d8 + 4 vs opponents AC</check>
+        <damage>3d10</damage>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>5</levelnumber>
+        <check>Std 2d8 + 5 vs opponents AC</check>
+        <damage>3d12</damage>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
+
+  
+  
   <ability>
     <abilitytitle>Poisonous Bite</abilitytitle>
     <abilityid>monster.poison_bite</abilityid>
@@ -56,9 +201,6 @@
     </abilitylevels>
   </ability>
 
-
-
-  
 
   <ability>
     <abilitytitle>Claw</abilitytitle>
@@ -206,9 +348,49 @@
         <check>Std 2d8 vs 5</check>
         <effect>The monster grabs the target with Str DC 8</effect>
       </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 vs AC</check>
+        <effect>The monster can wield a weapon </effect>
+      </abilitylevel>
     </abilitylevels>
   </ability>
 
+
+  <ability>
+    <abilitytitle>Prehensile Tail</abilitytitle>
+    <abilityid>monster.prehensile_tail</abilityid>
+    <abilityclass>Medium</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	The monster has a prehensile tail that they can use to climb, grab
+	things or wield a weapon.
+      </p>
+    </abilitydescription>
+
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>Std 2d8 vs 5</check>
+        <effect>The monster can grab a target with Str DC 6</effect>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <check>Std 2d8 vs AC</check>
+        <effect>
+	  The monster can wield a weapon with their tail as if they were
+	  fighting with it in their hand.
+	</effect>
+        <damage>As per weapon</damage>	
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
 
 
   <ability>
@@ -299,8 +481,44 @@
 
 
 
+  <ability>
+    <abilitytitle>Regeneration</abilitytitle>
+    <abilityid>monster.regeneration</abilityid>
+    <abilityclass>Tag</abilityclass>
+    <abilityattrmodifiers></abilityattrmodifiers>
+    <inborn>true</inborn>
+    <gmgability/>
+    <abilitydescription>
+      <p noindent="true">
+	The monster regenerates damage that it is immune to.
+	The types of damage a create is ammune to vary from
+	creature to creature.
+      </p>
+    </abilitydescription>
 
+    <abilitylevels>
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <check>At the start of the creatures turn it regenerates d6 stamina</check>
+      </abilitylevel>
 
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <effect>At the start of the creatures turn it regenerates d6 hit points</effect>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <check>At the start of the creatures turn it regenerates 2d6 stamina</check>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <effect>At the start of the creatures turn it regenerates 2d6 hit points</effect>
+      </abilitylevel>      
+    </abilitylevels>
+  </ability>
+  
   
   <ability>
     <abilitytitle>Swarm</abilitytitle>

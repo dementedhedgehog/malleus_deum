@@ -29,6 +29,22 @@
     <xs:restriction base="xs:NCName"/>
   </xs:simpleType>
 
+  <!--
+  <xs:complexType name="attributionType">
+    <xs:attribute name="src" type="xs:string"/>    
+  </xs:complexType>
+
+  <xs:complexType name="inspirationType">
+    <xs:attribute name="src" type="xs:string"/>    
+    </xs:complexType>
+    -->
+
+  <xs:complexType name="attributionType">
+  </xs:complexType>
+
+  <xs:complexType name="inspirationType">
+  </xs:complexType>
+  
   <xs:complexType name="abilitylevelidType">
     <xs:sequence>
       <xs:element name="abilityid" type="xs:string"/>
@@ -50,7 +66,16 @@
       <xs:enumeration value="Magic" />
     </xs:restriction>
   </xs:simpleType>
- 
+
+
+  <!-- an enum -->
+  <xs:simpleType name="resourceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Image" />
+      <xs:enumeration value="Font" />
+    </xs:restriction>
+  </xs:simpleType>
+  
   <!-- an enum -->
   <xs:simpleType name="attributeType">
     <xs:restriction base="xs:string">
@@ -876,8 +901,13 @@
       
   -->
   <xs:complexType name="imgType" mixed="true">
-    <xs:attribute name="src" type="xs:string"/>
+    <xs:sequence>
+      <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/>    
+    </xs:sequence>
     <xs:attribute name="scale" type="xs:float"/>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="src" type="xs:string"/>
   </xs:complexType>  
 
 
@@ -1330,6 +1360,7 @@ labels and references.
       <xs:element name="titlepage" type="titlePageType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="tableofcontents" type="emptyType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="listoffigures" type="emptyType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="listofart" type="emptyType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="listoftables" type="emptyType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="chapter" type="chapterType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="table" type="tableType" minOccurs="0" maxOccurs="unbounded"/>
@@ -1778,7 +1809,7 @@ tags
 
   <!-- licenses -->
   <xs:simpleType name="licenseType">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="xs:string">      
       <!-- Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0) -->
       <xs:enumeration value="CC_BY-NC-ND_30" />
 
@@ -1794,6 +1825,18 @@ tags
   <!-- a group of homogeneous npcs -->
   <xs:complexType name="licenseinfoType" mixed="false">
     <xs:sequence>     
+      <xs:element
+          name="sig" 
+          type="xs:NCName"
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element
+          name="type" 
+          type="resourceType" 
+          minOccurs="1" maxOccurs="1"/>
+      <xs:element
+          name="fname" 
+          type="xs:string" 
+          minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="license" 
           type="licenseType" 
@@ -1823,7 +1866,6 @@ tags
     </xs:sequence>
   </xs:complexType>
 
-
   <!-- Semantic versioning for the project -->
   <xs:element name="version" type="versionType"/>
   <xs:complexType name="versionType" mixed="false">
@@ -1841,7 +1883,5 @@ tags
           type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
-  </xs:complexType>      
-  
-  
+  </xs:complexType>  
 </xs:schema> 

@@ -44,7 +44,7 @@ from spreadsheet_writer import write_summary_to_spreadsheet
 from character_sheet_writer import (
     create_character_sheets_for_all_archetypes,
     create_empty_abilities_sheet)
-from check_licenses import generate_license_report
+# from licenses import generate_license_report
 from generate_skill_tree import Page, SkillTreeBuilder #generate_skill_tree
 import config
 import utils
@@ -58,8 +58,8 @@ pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 archetype_template_fname = join("docs", "archetype_template.xml")
 patron_template_fname = join("docs", "patron_template.xml")
-resource_dir = join(root_dir, "resources")
-unused_resources = join(root_dir, "unused_resources")
+# resource_dir = join(root_dir, "resources")
+# unused_resources = join(root_dir, "unused_resources")
 
 
 # latex preamble for the index.
@@ -308,11 +308,6 @@ def build_pdf_doc(template_fname, doc_fname, verbosity,
     print("Building %s " % doc_fname)
     print("===============================================")
 
-    # get the path to the xml filename, e.g. docs/core.xml
-    #full_template_fname = join(docs_dir, template_fname)
-
-    print template_fname
-
     # the very first thing we do is run the xml through a template engine 
     # (Doing it like this allows us to include files relative to the doc 
     # dir using Jinjas include directive).
@@ -326,6 +321,10 @@ def build_pdf_doc(template_fname, doc_fname, verbosity,
                           config=config,
                           add_index_to_core = config.add_index_to_core,
                           doc_name = doc_base_fname)
+    # write the post-processed xml to the build dir 
+    # (has all the included files in it).
+    with codecs.open(xml_fname, "w", "utf-8") as f:
+       f.write(xml)
 
     # drop out early?
     if template_only:
@@ -333,13 +332,9 @@ def build_pdf_doc(template_fname, doc_fname, verbosity,
         print(xml.encode('ascii', 'xmlcharrefreplace'))
         return
 
-    # write the post-processed xml to the build dir 
-    # (has all the included files in it).
-    with codecs.open(xml_fname, "w", "utf-8") as f:
-       f.write(xml)
-            
     # parse an xml document
-    doc = Doc(xml_fname)        
+    doc = Doc(xml_fname)
+    print xml_fname
     if not doc.parse():
         print("Problem parsing the xml.")
         exit(0)
@@ -439,7 +434,6 @@ def build_html_doc(template_fname, verbosity, archetype = None):
             if fail_fast:
                 sys.exit()
     return
-    
 
 
 def clean():
@@ -450,7 +444,7 @@ def clean():
     for fname in os.listdir(build_dir):
         _, ext = splitext(fname)
         if ext in (".tex", ".log", ".toc", ".aux", ".idx", ".ind", 
-                   ".xlsx", ".pdf", ".xml", ".ilg", ".out"):
+                   ".xlsx", ".pdf", ".xml", ".ilg", ".out", ".loa"):
             fname = join(build_dir, fname)
             os.remove(fname)
 
@@ -570,6 +564,10 @@ if __name__ == "__main__":
     env = deepcopy(os.environ)
     env["TEXINPUTS"] = tex_inputs
 
+    #
+    # Build Pdf Files.
+    #
+    
     # Build latex/pdf files.
     for doc_xml_fname, _, _ in config.files_to_build:
         full_doc_xml_fname = join("docs", doc_xml_fname)        
@@ -606,6 +604,10 @@ if __name__ == "__main__":
                       doc_fname=encounter_fname, 
                       verbosity=verbosity)
 
+    #
+    # Build HTML Files (mostly a placeholder at this stage)
+    #
+
     # Build html docs.
     for doc_xml_fname, _, _ in config.files_to_build:
         build_html_doc(doc_xml_fname, verbosity=verbosity)
@@ -636,25 +638,8 @@ if __name__ == "__main__":
     create_character_sheets_for_all_archetypes(archetypes=db.archetypes)
     create_empty_abilities_sheet()
 
-    print sys.getdefaultencoding()
-   
     #
+    # Generate the license report
     #
-    #
-    img_license_info = generate_license_report((resource_dir, unused_resources))
-    print "\n----"
-    n_chars = len(root_dir) + 1
-    for img_info in img_license_info.values():
-
-        if img_info.img_license:
-            status = "OK"
-        else:
-            status = "*** MISSING LICENSE INFO ***"
-            
-        print "%s %s %s %s %s" % (
-            status,
-            ", ".join([fname[n_chars:] for fname in img_info.img_fnames]),
-            img_info.get_license(),
-            img_info.get_artist(),
-            img_info.source)
+    db.licenses.generate_license_report(root_dir)
         

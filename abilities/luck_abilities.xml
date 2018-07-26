@@ -327,4 +327,60 @@
     </abilitylevels>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Brilliant Planner</abilitytitle>
+    <abilityid>luck.brilliant_planner</abilityid>
+    <abilityclass>Talk</abilityclass>
+    <abilityattrmodifiers><attr>Luck</attr></abilityattrmodifiers>    
+    <abilitydescription>            
+      <p>
+	The character is a brilliant planner.  They may have thought
+	far enough ahead to have organized to have just the right piece of
+	equipment at just the right time.
+      </p>
+
+      <p>
+	To use this ability the character states what their prior
+	preparation for the current situation was.  The GM then rules
+	on whether the check is reasonable: Was it possible that the
+	character could have forseen the current state of affairs?
+	Did they have the means to procure any equipment that their
+	plan requires (if they had to buy equipment then they should
+	deduct the price of the equipment if the check is successful).
+      </p>
+
+      <p>
+	If the GM allows it, the player checks to see if their planning
+	was successful.
+      </p>
+    </abilitydescription>
+    <abilitylevels>
+
+      <abilitylevel>
+        <levelnumber>1</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>1</successes>
+        <attempts>2</attempts>
+        <check>Fate Pool vs DDC 16</check>
+        <overcharge>DC + 4</overcharge>
+        <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>0</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>3</defaultgeneral>
+        <successes>1</successes>
+        <attempts>2</attempts>
+        <check>Fate Pool + 2 vs DDC 16</check>
+        <overcharge>DC + 6</overcharge>
+      </abilitylevel>
+    </abilitylevels>
+  </ability>
+  
 </abilitygroup>

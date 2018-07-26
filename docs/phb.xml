@@ -5,7 +5,8 @@
     <title>Malleus Deum</title>
     <vspace>6</vspace>
     <!-- <img src="./resources/dragon_title/dragon_title.png" scale="0.3"/>-->
-    <img src="./resources/dragon_title/dragon.jpg" scale="0.6"/>
+    <!-- <img src="./resources/dragon_title/dragon.jpg" scale="0.6"/> -->
+    <img id="dragon_title" scale="0.6"/>
     <vspace>6</vspace>
     <author>Blaize A. Rhodes, and</author>
     <vspace>1</vspace>
@@ -15,6 +16,8 @@
   </titlepage>
   
   <tableofcontents/>
+  <listoffigures/>
+  <listofart/>
   <chapter>
     <chaptertitle>Introduction</chaptertitle>
 
@@ -53,7 +56,7 @@
       </p>
 
       <figure position="!b">
-        <img src="./resources/durer_nativity/durer_nativity.png" scale="0.4"/>
+        <img id="durer_nativity" scale="0.4"/>
       </figure>
     </section>
 
@@ -254,7 +257,7 @@
       </p>
 
       <playexample>
-        <img src="./resources/dwarf/dwarf.png" scale="0.3">
+        <img id="dwarf" scale="0.3">
           Young Dourli, Dwarven Shield Guard
         </img>
       </playexample>
@@ -342,7 +345,7 @@
       </subsection>
 
       <figure position="b">
-        <img src="./resources/footer/footer.png" scale="0.45"/>
+        <img id="footer" scale="0.45"/>
       </figure>
 
     </section>
@@ -1295,7 +1298,7 @@ do this the initial check is modified by +2.
         </p>
 
 	<figure position="!t" fullwidth="true">
-	  <img src="./resources/compelling_aspects/aspects" scale="0.75"/>
+	  <img id="compelling_aspects" scale="0.75"/>
 	  <caption>Compelling Aspects</caption>
 	  <label>figure:compel-aspect-table</label>
 	</figure>
@@ -1857,11 +1860,11 @@ do this the initial check is modified by +2.
       {% include "docs/tables/turn_order.xml" %}
 
       <figure position="tb">
-        <img src="./resources/footer/footer.png" scale="0.4"/>
+        <img id="footer" scale="0.4"/>
       </figure>
 
       <figure position="!t">
-        <img src="./resources/death/death.png" scale="0.8"/>
+        <img id="death" scale="0.8"/>
       </figure>
     </section>
 
@@ -2206,13 +2209,13 @@ do this the initial check is modified by +2.
 	</p>
 
       <figure position="!b">
-        <img src="./resources/flanking/not_flanked.png" scale="1.0"/>
+        <img id="not_flanked" scale="1.0"/>
 	<caption>Not Flanked</caption>
 	<label>figure:not-flanked</label>	
       </figure>
 	
       <figure position="!b">
-        <img src="./resources/flanking/flanked.png" scale="1.0"/>
+        <img id="flanked" scale="1.0"/>
 	<caption>Flanked</caption>
 	<label>figure:flanked</label>	
       </figure>	

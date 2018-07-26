@@ -11,10 +11,14 @@ import codecs
 import lxml
 from lxml import etree
 
-
-XSD_SCHEMA = abspath(join(dirname(__file__), "rpg.xsd"))
-xml_schema_doc = etree.parse(XSD_SCHEMA)
-xml_schema = etree.XMLSchema(xml_schema_doc)
+schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
+schema = etree.parse(schema_fname)
+try:
+    xml_schema = etree.XMLSchema(schema)
+except lxml.etree.XMLSchemaParseError as err:
+    raise lxml.etree.XMLSchemaParseError(
+        "Problem parsing the schema doc: %s\n%s" % (schema_fname, err.message))
+    
 xml_parser = etree.XMLParser(dtd_validation=True, attribute_defaults=True)
 
 # directory constants
@@ -104,6 +108,7 @@ def parse_measurement_to_str(fname, measurement_node):
 
 def parse_xml(fname):    
     try:
+        print("PARSING %s" % fname)
         result = etree.parse(fname)
     except lxml.etree.XMLSyntaxError as lxml_err:
         lxml_err.msg += " happens in file: %s" % fname
@@ -121,7 +126,6 @@ def parse_xml(fname):
 def validate_xml(doc):
     result = None
     if not xml_schema.validate(doc):
-        #result = xml_schema.error_log.last_error
         result = "\n".join([str(e) for e in xml_schema.error_log])
     return result
 

@@ -15,6 +15,7 @@ from patrons import Patrons
 from npcs import NPCGangs
 from attribute_bonuses import attribute_bonuses
 from version import Version
+from licenses import Licenses
 
 
 class DB:
@@ -27,8 +28,11 @@ class DB:
         self.archetypes = None
         self.attribute_bonuses = attribute_bonuses
         self.skill_point_type = SKILL_POINT_TYPE
+        self.licenses = None
         return
 
+    def get_x(self):
+        return "X"
     
     def load(self, root_dir, fail_fast=True):
 
@@ -66,5 +70,11 @@ class DB:
         self.npc_gangs.load(npcs_dir=npcs_dir,
                             monster_groups=self.monster_groups,
                             fail_fast=fail_fast)
+
+        # licenses
+        resource_dir = join(root_dir, "resources")
+        unused_resource_dir = join(root_dir, "unused_resources")
+        self.licenses = Licenses()
+        self.licenses.load((resource_dir, unused_resource_dir))
         return
 

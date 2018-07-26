@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from os.path import join, splitext
+# from os import exists
+from os.path import join, splitext, exists
 import sys
 import config
 from utils import (
@@ -22,31 +23,32 @@ from npcs import NPC, NPCGroup
 
 latex_frontmatter = r"""
 \documentclass[%s,twocolumn,oneside]{book}
-\usepackage[unicode]{hyperref} %% for hyperlinks in pdf
-\usepackage{bookmark}          %% fixes a hyperref warning.
-\usepackage{caption}           %% extra captions
-\usepackage{color}             %% color.. what can I say
-\usepackage{fancyhdr}          %% header control
-\usepackage{fancybox}          %% fancy boxes.. eg box outs
-\usepackage{graphicx}          %% for including images
-\usepackage{fontspec}          %% fine font control
-\usepackage{titlesec}          %% for fancy titles
-\usepackage{lettrine}          %% for drop capitals
-\usepackage{tabularx}          %% for tables  
-\usepackage[table]{xcolor}     %% for tables with colour
-\usepackage{booktabs}          %% for tables
-\usepackage{calc}              %% for table width calculations
-\usepackage{xcolor}            %% for color aliases    
-\usepackage{wallpaper}         %% for the paper background
-\usepackage{enumerate}         %% for roman numerals in enumerations
-\usepackage{lipsum}            %% for generating debug text
-\usepackage{wrapfig}           %% sidebar thingy
-\usepackage{makeidx}           %% for building the index
-\usepackage{amssymb}           %% for special maths symbols, e.g. slanted geq
-\usepackage{xtab}              %% for multipage tables
-\usepackage{rotating}          %% for sidewaystable
-\usepackage{parskip}           %% non indented paragraphs
-\usepackage{multicol}          %% used for four column mode.
+\usepackage[unicode]{hyperref}     %% for hyperlinks in pdf
+\usepackage{bookmark}              %% fixes a hyperref warning.
+\usepackage{caption}               %% extra captions
+\usepackage{color}                 %% color.. what can I say
+\usepackage{fancyhdr}              %% header control
+\usepackage{fancybox}              %% fancy boxes.. eg box outs
+\usepackage{graphicx}              %% for including images
+\usepackage{fontspec}              %% fine font control
+\usepackage[raggedright]{titlesec} %% for fancy titles (and don't hyphenate)
+\usepackage{lettrine}              %% for drop capitals
+\usepackage{tabularx}              %% for tables  
+\usepackage[table]{xcolor}         %% for tables with colour
+\usepackage{booktabs}              %% for tables
+\usepackage{calc}                  %% for table width calculations
+\usepackage{xcolor}                %% for color aliases    
+\usepackage{wallpaper}             %% for the paper background
+\usepackage{enumerate}             %% for roman numerals in enumerations
+\usepackage{lipsum}                %% for generating debug text
+\usepackage{wrapfig}               %% sidebar thingy
+\usepackage{makeidx}               %% for building the index
+\usepackage{amssymb}               %% for special maths symbols, e.g. slanted geq
+\usepackage{xtab}                  %% for multipage tables
+\usepackage{rotating}              %% for sidewaystable
+\usepackage{parskip}               %% non indented paragraphs
+\usepackage{multicol}              %% used for four column mode.
+\usepackage{newfloat}              %% for list of art
 \usepackage{epstopdf}
 
 %% include subsubsections in the table of contents
@@ -59,6 +61,7 @@ latex_frontmatter = r"""
 \newfontfamily{\rpgdice}[Path=fonts/]{RPGDice}
 \newfontfamily{\sherwood}[Path=fonts/]{Sherwood}
 \newfontfamily{\libertine}{Linux Libertine O}
+\newfontfamily{\germaniaversalien}{GermaniaVersalien}
 
 \newfontfamily{\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}
 \newfontfamily{\rpgchapterfont}[Path=fonts/, Scale=1.0]{Cloister Black}
@@ -66,6 +69,7 @@ latex_frontmatter = r"""
 \newfontfamily{\rpgtitleauthorfont}[Path=fonts/]{Dogma}
 \newfontfamily{\rpgdropcapfont}[Path=fonts/, Scale=1.2]{Cloister Black}            
 \newcommand{\rpgsectionfont}{\cloisterblack}
+\newcommand{\attributionfont}{\germaniaversalien}
 
 
 %% colours
@@ -90,7 +94,7 @@ latex_frontmatter = r"""
 \drop = 0.01\textheight
 
 \titleformat{name=\chapter}[hang]
-{\Huge\bfseries\rpgchapterfont\color{rpgchapterfontcolor}}
+{\raggedright\Huge\bfseries\rpgchapterfont\color{rpgchapterfontcolor}}
 {}{1em}{}
 
 \titleformat{\section}
@@ -311,6 +315,13 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 \newenvironment{npchp}
 {\color{monstertitlecolor}\normalsize}{}
 
+%% for List of Art
+\DeclareFloatingEnvironment[
+  fileext=loa,
+  listname={List of Art},
+  name=Art,
+  placement=tp,
+]{art}
 
 \newcommand\mbattrtitleformat[1]{\normalsize\textbf{#1}}
 
@@ -318,6 +329,10 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 \begin{document}
 
 """
+
+#  %%within=section, %% activate it if you want
+#  %%chapterlistsgaps=on, %% meaningful only if chapters exist
+
 
 def get_text_for_child(element, child_name):
     """
@@ -539,60 +554,15 @@ class LatexFormatter:
         return
     end_arrowleft = no_op    
 
-    
-    # def get_latex_symbols(self, title):
-    #     tex = ""
-    #     for symbol in ("ambushsymbol",
-    #                    "surprisesymbol",
-    #                    "initiativesymbol",
-    #                    "talksymbol",
-    #                    "fightreachsymbol",
-    #                    "startsymbol",
-    #                    "fastsymbol",
-    #                    "mediumsymbol",
-    #                    "slowsymbol",
-    #                    "mediumorslowsymbol",
-    #                    "startandreactionsymbol",
-    #                    "resolutionsymbol",
-    #                    "reactionsymbol",
-    #                    "noncombatsymbol"):
-    #         symbol_node = title.find(symbol)
-    #         if symbol_node is not None:
-    #             tex += " \\%s{}" % symbol
-    #         #else:
-    #         #    raise Exception("UNKNOWN SYMBOL: %s" % symbol)
-    #     return tex               
-    
-    # def start_subsubsection(self, subsubsection):
-    #     tex = ""
-    #     anonymous = subsubsection.get("anonymous")
-    #     if anonymous is not None and anonymous.lower() == "true":
-    #         tex = "\\subsubsection*{"
-    #     else:
-    #         tex = "\\subsubsection{"
-
-    #     title = subsubsection.find("subsubsectiontitle")
-    #     if title is not None:
-    #         tex += title.text.strip()        
-    #     tex += self.get_latex_symbols(title)
-        
-    #     self.latex_file.write(tex) 
-    #     self.latex_file.write("}\n") 
-    #     return
-    # end_subsubsection = no_op
-
     start_subsubsection = no_op
     end_subsubsection = no_op
 
-    #start_subsectiontitle = no_op    
-    #end_subsectiontitle = no_op
     def start_subsubsectiontitle(self, section_title):
         self.latex_file.write("\\subsubsection{")
         return
     def end_subsubsectiontitle(self, section_title):
         self.latex_file.write("}")
-        return
-    
+        return    
         
     start_ability_title = no_op
     end_ability_title = no_op
@@ -621,7 +591,6 @@ class LatexFormatter:
         self.latex_file.write("\\&")
         return
     end_and = no_op
-
 
     def start_lore(self, element):
         self.latex_file.write("\\lore{}")
@@ -995,13 +964,27 @@ class LatexFormatter:
 
             self.latex_file.write("\t\\begin{center}\n")
 
-            filename = img.get("src")
+            # 
+            if "src" in img.attrib:
+                filename = img.get("src")
+                
+            elif "id" in img.attrib:
+                resource_id = img.get("id")
+                resource = self.db.licenses.find(resource_id)
+                filename = resource.get_fname()
+                self.latex_file.write("\\addcontentsline{loa}{section}{%s}" # % "frog")
+                                      % resource.get_contents_desc())
+            else:
+                raise Exception("Image missing source or id!")
+
+            if not exists(filename):
+                raise Exception("Image does not exist: %s" % filename)
+
+            print("--------------- %s" % filename)
+            
             # image without a box
             self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
                                   % (img.get("scale", default="1.0"), filename))
-            # image with a box around the outside!
-            #self.latex_file.write("\t\\fbox{\\includegraphics[scale=%s]{%s}}\n"
-            #                      % (img.get("scale", default="1.0"), filename))
         return
 
     def end_img(self, img):
@@ -1098,20 +1081,12 @@ class LatexFormatter:
         A description term.
 
         """
-        #if term.text is not None:
-        #    assert not self.description_terms_on_their_own_line
-        #    # if self.description_terms_on_their_own_line:
-        #    #     self.latex_file.write("\\item[%s] \hfill \n" % term.text)
-        #    # else:
-        #    #     self.latex_file.write("\\item[%s]" % term.text)
         self.latex_file.write("\\item[")
         return
     def end_term(self, term):
         self.latex_file.write("]")
 
     def start_description(self, description):
-        #if description.text is not None:
-        #    self.latex_file.write("%s" % description.text)
         return
 
     def end_description(self, list_item):
@@ -1213,8 +1188,7 @@ class LatexFormatter:
             self.latex_file.write("\n\\vspace{0.05cm}")
 
         # don't have paragraph indents buggering up our table layouts
-        self.latex_file.write("\\noindent{}")
-            
+        self.latex_file.write("\\noindent{}")            
 
         # wrap single page tables in a table environment
         # (we use xtabular for multi-page tables and the table environment
@@ -1226,10 +1200,6 @@ class LatexFormatter:
                 self.latex_file.write("\\begin{table*}[ht]")
             else:
                 self.latex_file.write("\\begin{table}")
-        #else:
-            #self.latex_file.write("\\captionsetup{type=figure}")
-
-        #self.latex_file.write("\\centering")
 
         # reduce the line spacing in compact tables
         if compact:
@@ -1244,14 +1214,12 @@ class LatexFormatter:
         else:
             self.latex_file.write("\\begin{tabularx}{1.0\\linewidth}{%s}" 
                                   % table_spec_str)
-
         if figure:
             self.latex_file.write(" \\toprule{}")
-
         return
 
 
-    def end_table(self, table): # , use_xtabular = False):
+    def end_table(self, table):
 
         # Check whether we want compact tables!
         compact = attrib_is_true(table, "compact")
@@ -1430,58 +1398,24 @@ class LatexFormatter:
     start_th = start_td
     end_th = end_td
 
-
-    # def start_multicolumntd(self, table_data):
-    #     """
-    #     Start muilticolumn table data.
-
-    #     """
-    #     if "columns" in table_data.attrib:
-    #         columns = int(table_data.get("columns"))
-
-    #     if ((self._current_column_in_table + columns) > self._number_of_columns_in_table):
-    #         raise Exception("Multicolumn table data overflows table!")
-
-    #     self._current_column_in_table = (
-    #         (self._current_column_in_table + columns) % self._number_of_columns_in_table)
-
-    #     #if self._current_row_in_table == 0:
-    #     #     self.latex_file.write("\\rpgtableheader{%s} \n" %
-    #     #                           table_data.text)
-    #     #else:
-
-        
-    #     # self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s}}" % 
-    #     #                        (columns, table_data.text))
-    #     self.latex_file.write("\\multicolumn{%s}{c}{\\rpgtableheader{%s" %
-    #                           (columns, table_data.text))
-
-    #     # if self._current_column_in_table != 0:
-    #     #     self.latex_file.write(" & ")                        
-    #     # return
-    # #end_multicolumntd = no_op
-    # def end_multicolumntd(self, table_data):
-
-    #     self.latex_file.write("}}")
-        
-    #     if self._current_column_in_table != 0:
-    #         self.latex_file.write(" & ")
-    #     return
-
-
     def start_tableofcontents(self, table_of_contents):
         self.latex_file.write("\\tableofcontents\n")
         return
+    end_tableofcontents = no_op
 
-    def end_tableofcontents(self, table_of_contents):
-        return
+    def start_listoffigures(self, list_of_figures):
+        # self.latex_file.write("\\listoffigures\n")
+        self.latex_file.write( # "\\listoffigures\n")
+            "\\begin{minipage}[t]{1\\textwidth}\\listoffigures\\end{minipage}")
 
-    def start_list_of_figures(self, list_of_figures):
-        self.latex_file.write("\\listoffigures\n")
         return
+    end_listoffigures = no_op
 
-    def end_list_of_figures(self, list_of_figures):
+    def start_listofart(self, list_of_art):
+        self.latex_file.write(# "\\listofart\n")
+        "\\begin{minipage}[b]{1\\textwidth}\\listofart\\end{minipage}")
         return
+    end_listofart = no_op
 
     def start_list_of_tables(self, list_of_tables):
         self.latex_file.write("\\listoftables\n")
@@ -1520,22 +1454,18 @@ class LatexFormatter:
         return
     end_learning_symbol = no_op
 
-
     def start_label(self, label):
         self.latex_file.write("\n\\label{%s} " % normalize_ws(label.text))
         return
     end_label = no_op
 
-
     def start_fourcolumns(self, threecolumns):
         self.latex_file.write("\\onecolumn\\begin{multicols}{4}\n")
         return
-    
+
     def end_fourcolumns(self, ability_group):
         self.latex_file.write("\\end{multicols}\\twocolumn\n")
         return
-
-
     
     def start_attempt(self, success):
         self.latex_file.write("\\rpgattempt{}")
@@ -1819,7 +1749,39 @@ class LatexFormatter:
         self.latex_file.write("\\end{npchp}")
         return
 
+    def start_inspiration(self, inspiration):
+        # resource_id = inspiration.get("src")
+        # resource = self.db.licenses.find(resource_id)
+        # sig = resource.get_sig()
+        # self.latex_file.write(r"{\attributionfont %s}" % sig)
+        img = inspiration.getparent()
+        if "id" in img.attrib:
+            resource_id = img.get("id")
+            resource = self.db.licenses.find(resource_id)
+            sig = resource.get_sig()
+            
+            self.latex_file.write(r"{\attributionfont %s}" % sig)
+        else:
+            raise Exception("Image inspiration missing id!")        
+        return
+    end_inspiration = no_op
 
-    #
-    #
-    #
+    def start_attribution(self, attribution):
+        # resource_id = attribution.get("src")
+        # resource = self.db.licenses.find(resource_id)
+        # sig = resource.get_sig()
+
+        # if "src" in img.attrib:
+        #     filename = img.get("src")
+        # el
+        img = attribution.getparent()
+        if "id" in img.attrib:
+            resource_id = img.get("id")
+            resource = self.db.licenses.find(resource_id)
+            sig = resource.get_sig()
+            
+            self.latex_file.write(r"{\attributionfont %s}" % sig)
+        else:
+            raise Exception("Image attribution missing id!")
+        return
+    end_attribution = no_op

@@ -5,7 +5,7 @@
     <monstergroupid>serpent_men</monstergroupid>
     <monstergroupdescription>
       <p>
-	serpent men
+	The serpent men are the twisted forms of men by evil spirits.
       </p>
     </monstergroupdescription>
   </monstergroupinfo>
@@ -38,9 +38,16 @@
 	
       </p>
 
-      <img src="./resources/kobold2/kobold2.png" scale="0.2">
-      </img>
+      <!--
+      <img src="{{ db.licenses.find('kobolds').get_fname() }}" scale="0.16">
+	<attribution>{{ db.licenses.find('kobolds').get_sig() }}</attribution>
+	</img>
+	<attribution src="kobolds"/>
+	-->
 	
+      <img id="kobolds" scale="0.16">
+	<attribution/>
+      </img>
     </monsterdescription>
   </monster>
   

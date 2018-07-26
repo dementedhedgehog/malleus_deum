@@ -1276,16 +1276,17 @@ class HtmlFormatter:
     def start_tableofcontents(self, table_of_contents):
         self.html_file.write("\\tableofcontents\n")
         return
+    end_tableofcontents = no_op
 
-    def end_tableofcontents(self, table_of_contents):
-        return
-
-    def start_list_of_figures(self, list_of_figures):
+    def start_listoffigures(self, list_of_figures):
         self.html_file.write("\\listoffigures\n")
         return
+    end_listoffigures = no_op
 
-    def end_list_of_figures(self, list_of_figures):
+    def start_listofart(self, list_of_art):
+        self.html_file.write("\\listofart\n")
         return
+    end_listofart = no_op
 
     def start_list_of_tables(self, list_of_tables):
         self.html_file.write("\\listoftables\n")
@@ -1639,4 +1640,18 @@ class HtmlFormatter:
         return
     
 
+
+    def start_inspiration(self, x):
+        self.html_file.write(r"\\begin{attributionfont}")
+        return
+    def end_inspiration(self, npchps):
+        self.html_file.write(r"\\end{attributionfont}")
+        return
+
+    def start_attribution(self, x):
+        self.html_file.write(r"\\begin{attributionfont}")
+        return
+    def end_attribution(self, x):
+        self.html_file.write(r"\\end{attributionfont}")
+        return
     
