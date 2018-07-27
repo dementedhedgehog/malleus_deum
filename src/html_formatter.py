@@ -191,30 +191,42 @@ class HtmlFormatter:
         return
     end_start = no_op    
     
-    def start_fast(self, symbol):
-        self.html_file.write("\\fastsymbol{}")
+    def start_melee(self, symbol):
+        self.html_file.write("\\meleesymbol{}")
         return
-    end_fast = no_op
+    end_melee = no_op
     
-    def start_medium(self, symbol):
-        self.html_file.write("\\mediumsymbol{}")
-        return
-    end_medium = no_op
     
-    def start_mediumorslow(self, symbol):
-        self.html_file.write("\\mediumorslowsymbol{}")
+    def start_immediate(self, symbol):
+        self.html_file.write("\\immediatesymbol{}")
         return
-    end_mediumorslow = no_op
+    end_immediate = no_op
     
-    def start_startandreaction(self, symbol):
-        self.html_file.write("\\startandreactionsymbol{}")
-        return
-    end_startandreaction = no_op
     
-    def start_slow(self, symbol):
-        self.html_file.write("\\slowsymbol{}")
-        return
-    end_slow = no_op
+    # def start_fast(self, symbol):
+    #     self.html_file.write("\\fastsymbol{}")
+    #     return
+    # end_fast = no_op
+    
+    # def start_medium(self, symbol):
+    #     self.html_file.write("\\mediumsymbol{}")
+    #     return
+    # end_medium = no_op
+    
+    # def start_mediumorslow(self, symbol):
+    #     self.html_file.write("\\mediumorslowsymbol{}")
+    #     return
+    # end_mediumorslow = no_op
+    
+    # def start_startandreaction(self, symbol):
+    #     self.html_file.write("\\startandreactionsymbol{}")
+    #     return
+    # end_startandreaction = no_op
+    
+    # def start_slow(self, symbol):
+    #     self.html_file.write("\\slowsymbol{}")
+    #     return
+    # end_slow = no_op
     
     def start_noncombat(self, symbol):
         self.html_file.write("\\noncombatsymbol{}")

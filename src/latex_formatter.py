@@ -116,6 +116,12 @@ latex_frontmatter = r"""
 \newcommand{\talksymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}t\endgroup}{talk}}
 
+\newcommand{\meleesymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}2\endgroup}{melee}}
+
+\newcommand{\immediatesymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}2\endgroup}{immediate}}
+
 \newcommand{\fastsymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}2\endgroup}{fast}}
 
@@ -474,30 +480,40 @@ class LatexFormatter:
         return
     end_start = no_op    
     
-    def start_fast(self, symbol):
-        self.latex_file.write("\\fastsymbol{}")
+    def start_melee(self, symbol):
+        self.latex_file.write("\\meleesymbol{}")
         return
-    end_fast = no_op
+    end_melee = no_op
     
-    def start_medium(self, symbol):
-        self.latex_file.write("\\mediumsymbol{}")
+    def start_immediate(self, symbol):
+        self.latex_file.write("\\immediatesymbol{}")
         return
-    end_medium = no_op
+    end_immediate = no_op
     
-    def start_mediumorslow(self, symbol):
-        self.latex_file.write("\\mediumorslowsymbol{}")
-        return
-    end_mediumorslow = no_op
+    # def start_fast(self, symbol):
+    #     self.latex_file.write("\\fastsymbol{}")
+    #     return
+    # end_fast = no_op
     
-    def start_startandreaction(self, symbol):
-        self.latex_file.write("\\startandreactionsymbol{}")
-        return
-    end_startandreaction = no_op
+    # def start_medium(self, symbol):
+    #     self.latex_file.write("\\mediumsymbol{}")
+    #     return
+    # end_medium = no_op
     
-    def start_slow(self, symbol):
-        self.latex_file.write("\\slowsymbol{}")
-        return
-    end_slow = no_op
+    # def start_mediumorslow(self, symbol):
+    #     self.latex_file.write("\\mediumorslowsymbol{}")
+    #     return
+    # end_mediumorslow = no_op
+    
+    # def start_startandreaction(self, symbol):
+    #     self.latex_file.write("\\startandreactionsymbol{}")
+    #     return
+    # end_startandreaction = no_op
+    
+    # def start_slow(self, symbol):
+    #     self.latex_file.write("\\slowsymbol{}")
+    #     return
+    # end_slow = no_op
     
     def start_noncombat(self, symbol):
         self.latex_file.write("\\noncombatsymbol{}")

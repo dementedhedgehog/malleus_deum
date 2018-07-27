@@ -148,7 +148,6 @@ class NotTagPrereq(Prerequisite):
     def get_title(self):
         return self.to_string()
 
-
     def __str__(self):
         return self.to_string()
 
@@ -538,14 +537,16 @@ class AbilityClass:
     AMBUSH = "Ambush"
     SURPRISE = "Surprise"
     INITIATIVE = "Initiative"
-    TALK = "Talk"
+    IMMEDIATE = "Immediate"
+    # TALK = "Talk"
     FIGHT_REACH = "Fight-Reach"
-    START = "Start"
-    FAST = "Fast"
-    MEDIUM = "Medium"
-    MEDIUM_OR_SLOW = "MediumOrSlow"
-    START_AND_REACTION = "StartAndReaction"
-    SLOW = "Slow"
+    #START = "Start"
+    #FAST = "Fast"
+    #MEDIUM = "Medium"
+    #MEDIUM_OR_SLOW = "MediumOrSlow"
+    #START_AND_REACTION = "StartAndReaction"
+    #SLOW = "Slow"
+    MELEE = "Melee"
     RESOLUTION = "Resolution"
     REACTION = "Reaction"
     NON_COMBAT = "Non-Combat"
@@ -572,26 +573,30 @@ class AbilityClass:
             symbol_str = "<surprise/>"
         elif ability_class == AbilityClass.INITIATIVE:
             symbol_str = "<initiative/>"
-        elif ability_class == AbilityClass.TALK:
-            symbol_str = "<talk/>"
-        elif ability_class == AbilityClass.START:
-           symbol_str = "<start/>"
-        elif ability_class == AbilityClass.FAST:
-           symbol_str = "<fast/>"
-        elif ability_class == AbilityClass.MEDIUM:
-           symbol_str = "<medium/>"
-        elif ability_class == AbilityClass.MEDIUM_OR_SLOW:
-           symbol_str = "<mediumorslow/>"
-        elif ability_class == AbilityClass.SLOW:
-           symbol_str = "<slow/>"            
+        elif ability_class == AbilityClass.IMMEDIATE:
+            symbol_str = "<immediate/>"
+        # elif ability_class == AbilityClass.TALK:
+        #     symbol_str = "<talk/>"
+        # elif ability_class == AbilityClass.START:
+        #    symbol_str = "<start/>"
+        # elif ability_class == AbilityClass.FAST:
+        #    symbol_str = "<fast/>"
+        # elif ability_class == AbilityClass.MEDIUM:
+        #    symbol_str = "<medium/>"
+        # elif ability_class == AbilityClass.MEDIUM_OR_SLOW:
+        #    symbol_str = "<mediumorslow/>"
+        # elif ability_class == AbilityClass.SLOW:
+        #    symbol_str = "<slow/>"            
+        elif ability_class == AbilityClass.MELEE:
+            symbol_str = "<melee/>"
         elif ability_class == AbilityClass.FIGHT_REACH:
             symbol_str = "<fightreach/>"
         elif ability_class == AbilityClass.RESOLUTION:
             symbol_str = "<resolution/>"
         elif ability_class == AbilityClass.REACTION:
             symbol_str = "<reaction/>"
-        elif ability_class == AbilityClass.START_AND_REACTION:
-           symbol_str = "<startandreaction/>"            
+        # elif ability_class == AbilityClass.START_AND_REACTION:
+        #   symbol_str = "<startandreaction/>"            
         elif ability_class == AbilityClass.NON_COMBAT:
             symbol_str = "<noncombat/>"
         elif ability_class == AbilityClass.TAG:
@@ -615,26 +620,30 @@ class AbilityClass:
             ability_cls = AbilityClass.SURPRISE
         elif ability_class == "Initiative":
             ability_cls = AbilityClass.INITIATIVE
-        elif ability_class == "Talk":
-            ability_cls = AbilityClass.TALK
+        elif ability_class == "Immediate":
+            ability_cls = AbilityClass.IMMEDIATE
+        #elif ability_class == "Talk":
+        #    ability_cls = AbilityClass.TALK
         elif ability_class == "Fight-Reach":
             ability_cls = AbilityClass.FIGHT_REACH
         elif ability_class == "resolution":
             ability_cls = AbilityClass.RESOLUTION
         elif ability_class == "Reaction":
             ability_cls = AbilityClass.REACTION
-        elif ability_class == "Start":
-            ability_cls = AbilityClass.START
-        elif ability_class == "Fast":
-            ability_cls = AbilityClass.FAST
-        elif ability_class == "Medium":
-            ability_cls = AbilityClass.MEDIUM
-        elif ability_class == "Slow":
-            ability_cls = AbilityClass.SLOW
-        elif ability_class == "MediumOrSlow":
-            ability_cls = AbilityClass.MEDIUM_OR_SLOW
-        elif ability_class == "StartAndReaction":
-            ability_cls = AbilityClass.START_AND_REACTION
+        elif ability_class == "Melee":
+            ability_cls = AbilityClass.MELEE
+        # elif ability_class == "Start":
+        #     ability_cls = AbilityClass.START
+        # elif ability_class == "Fast":
+        #     ability_cls = AbilityClass.FAST
+        # elif ability_class == "Medium":
+        #     ability_cls = AbilityClass.MEDIUM
+        # elif ability_class == "Slow":
+        #     ability_cls = AbilityClass.SLOW
+        # elif ability_class == "MediumOrSlow":
+        #     ability_cls = AbilityClass.MEDIUM_OR_SLOW
+        # elif ability_class == "StartAndReaction":
+        #     ability_cls = AbilityClass.START_AND_REACTION
         elif ability_class == "Non-Combat":
             ability_cls = AbilityClass.NON_COMBAT
         elif ability_class == "Tag":
@@ -861,7 +870,6 @@ class Ability:
                self.tags.append(child.text)
 
            elif tag == "abilityclass":
-               print child.text
                self.ability_class = AbilityClass.load(child.text)
                if self.ability_class == AbilityClass.NONE:
                    raise Exception("Unknown ability class: (%s) %s in %s\n" %

@@ -186,8 +186,16 @@
 	<leveldescription>
 	  <p>
 	    If the character has the necessary ingredients they can check to manufacture
-	    acids, dyes, blackpowder, war-fire, petards, grenades etc.
-	    They can identify many chemical substances.
+	    acids, dyes, blackpowder, inks, petards, grenades, poultices etc.
+	    They can identify many chemical substances.  In need they may be able to
+	    substitute some substances during creation to make solutions of lesser strength.
+	    Requires a Mortar and Pestle.
+	  </p>
+
+	  <p>
+	    In addition the character can make lore checks regarding the chemical composition
+	    of solutions, metals etc and might be able to conjecture on their origins and
+	    purposes.
 	  </p>
 	</leveldescription>
       </abilitylevel>
@@ -199,11 +207,31 @@
         <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
+        <check>Std 2d8 + 1 vs DDC 10</check>		
+	<leveldescription>
+	  <p>
+	    The character may call themselves an Apothecary, and can prepare poisons,
+	    laudanum, war-fire, foaming plaster, and medicines for certain diseases in
+	    addition to the abilities from first level.  Requires Alchemical Equipement.
+	  </p>
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <successes>2</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 10</check>		
 	<leveldescription>
 	  <p>
-	    The character call themselves an Apothecary, and can prepare poisons, laudanum,
-	    and medicines for certain diseases in addition to the abilities from first level.
+	    The character can prepare Alkahest (requires Bile of the White Worm),
+	    a Potion of Living Death (requires serpents venom), Tears of Lethe
+	    (requires Laudanum), Limaceous Grease (requires the ichor of a demon),
+	    Smoked snigglets (requires fresh swamp snigglets), Ignis Sacer (requires
+	    rye bread and a few weeks of time), or Spirits of Quickening.
 	  </p>
 	</leveldescription>
       </abilitylevel>
@@ -219,9 +247,7 @@
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
-      </p>
-	
-      <p>
+	The alchemist makes a Grand Discovery!! (maybe). 
       </p>
 
       <table>
@@ -236,43 +262,55 @@
 	</tableheaderrow>
 
 	<tablerow>
-	  <td>11-58</td>
+	  <td>2-3</td>
+	  <td>Possession.  The character becomes possessed!</td>
+	</tablerow>	
+	
+	<tablerow>
+	  <td>4-7</td>
 	  <td>Disapointment!  No discovery made</td>
 	</tablerow>
 
 	<tablerow>
-	  <td>61-68</td>
-	  <td>Poison Resistance.  If the character already has poison resistance then
-	  the result is dissapointment.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>71-75</td>
-	  <td>Unexpected Discovery.  Choose another alchemical ability.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>76-78</td>
-	  <td>..</td>
+	  <td>8</td>
+	  <td>Untamed Brute.  The characters brutish nature comes to the fore.  FIXME</td>
 	</tablerow>
 	
 	<tablerow>
-	  <td>51-88</td>
-	  <td>..</td>
+	  <td>9</td>
+	  <td>Poison Resistance, +5 to saves versus being poisoned.</td>
 	</tablerow>	
 
 	<tablerow>
-	  <td>51-88</td>
-	  <td>..</td>
-	</tablerow>	
-
-	<tablerow>
-	  <td>88</td>
-	  <td>Elixir of Life.  The alchemist has somehow cease their own aging.</td>
-	</tablerow>	
+	  <td>10-11</td>
+	  <td>Unexpected Discovery.  Gain a level in alchemy.</td>
+	</tablerow>
 	
+	<tablerow>
+	  <td>13</td>
+	  <td>Forbidden Knowledge.  Gain 3x promotions in magic and 3x promotions in
+	  fine arts, lore or special skills (promotions cannot be used to gain more
+	  Grand Discoveries)</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>14</td>
+	  <td>Transmutation.  After years of practice you finally are able to transmute
+	  lead into gold.  Unfortunately you can't work out how to repeat the process.
+	  Fortunatly you transmute a lot of lead.
+	  </td>
+	</tablerow>	
+
+	<tablerow>
+	  <td>15</td>
+	  <td>Elixir of Life.  The alchemist has somehow ceased their own aging.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>16+</td>
+	  <td>Surprise Discovery.  Choose a Grand Discovery.</td>
+	</tablerow>	
       </table>
-      
     </abilitydescription>
     
     <abilitylevels>
@@ -281,11 +319,44 @@
         <defaultlore>8</defaultlore>
         <defaultmartial>0</defaultmartial>
         <defaultgeneral>0</defaultgeneral>
-        <prereqabilitylevel>lore.alchemy_1</prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 15</check>	
+        <prereqabilitylevel>lore.alchemy_2</prereqabilitylevel>
+        <successes>0</successes>
+        <attempts>0</attempts>
+        <check>Std 2d8 </check>	
 	<leveldescription>
+	  Roll once on the Grand Discovery table.  If the character makes several
+	  Grand Discoveries and receives a duplicate result then they reroll (except for
+	  the Transmutation and Surprise Discovery results).
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>2</levelnumber>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <prereqabilitylevel>lore.alchemy_2</prereqabilitylevel>
+        <successes>0</successes>
+        <attempts>0</attempts>
+        <check>Std 2d8 + 1</check>	
+	<leveldescription>
+	  Roll on the Grand Discovery table with +1 to the result, otherwise
+	  interpret the results the same as the level I version of this skill.
+	</leveldescription>
+      </abilitylevel>
+
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <defaultlore>8</defaultlore>
+        <defaultmartial>0</defaultmartial>
+        <defaultgeneral>0</defaultgeneral>
+        <prereqabilitylevel>lore.alchemy_2</prereqabilitylevel>
+        <successes>0</successes>
+        <attempts>0</attempts>
+        <check>Std 2d8 + 2</check>	
+	<leveldescription>
+	  Roll on the Grand Discovery table with +2 to the result, otherwise
+	  interpret the results the same as the level I version of this skill.
 	</leveldescription>
       </abilitylevel>
     </abilitylevels>

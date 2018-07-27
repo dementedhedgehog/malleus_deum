@@ -128,15 +128,19 @@
       <xs:enumeration value="Ambush" />
       <xs:enumeration value="Surprise" />
       <xs:enumeration value="Initiative" />
-      <xs:enumeration value="Talk" />
       <xs:enumeration value="Fight-Reach"/>
+      <xs:enumeration value="Immediate"/>
+      <!--
+      <xs:enumeration value="Talk" />
       <xs:enumeration value="Start" />
       <xs:enumeration value="Fast"/>
       <xs:enumeration value="Medium" />
       <xs:enumeration value="MediumOrSlow"/>
       <xs:enumeration value="Slow"/>
-      <xs:enumeration value="StartAndReaction"/>      
+      <xs:enumeration value="StartAndReaction"/>
       <xs:enumeration value="Resolution"/>
+      -->
+      <xs:enumeration value="Melee"/>
       <xs:enumeration value="Reaction"/>
       <xs:enumeration value="Non-Combat"/>
       <xs:enumeration value="Tag"/>
@@ -251,8 +255,8 @@
       <xs:element name="recommendedabilitylevelsymbol" type="symbolType"/>
       <xs:element name="ambush" type="symbolType"/>
       <xs:element name="surprise" type="symbolType"/>
-      <xs:element name="talk" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
+      <!--
       <xs:element name="start" type="symbolType"/>
       <xs:element name="fast" type="symbolType"/>
       <xs:element name="medium" type="symbolType"/>
@@ -260,6 +264,9 @@
       <xs:element name="mediumorslow" type="symbolType"/>
       <xs:element name="startandreaction" type="symbolType"/>
       <xs:element name="resolution" type="symbolType"/>
+      -->
+      <xs:element name="melee" type="symbolType"/>
+      <xs:element name="immediate" type="symbolType"/>
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>      
       <xs:element name="tag" type="symbolType"/>      
@@ -291,8 +298,12 @@
         <xs:element name="ambush" type="symbolType"/>
         <xs:element name="surprise" type="symbolType"/>
         <xs:element name="initiative" type="symbolType"/>
-        <xs:element name="talk" type="symbolType"/>
-        <xs:element name="resolution" type="symbolType"/>      
+        <xs:element name="melee" type="symbolType"/>
+        <xs:element name="immediate" type="symbolType"/>
+	<!--
+            <xs:element name="talk" type="symbolType"/>
+            <xs:element name="resolution" type="symbolType"/>
+	-->
         <xs:element name="reaction" type="symbolType"/>      
         <xs:element name="noncombat" type="symbolType"/>          
 	<xs:element name="tag" type="symbolType"/>      
@@ -339,18 +350,22 @@
       <xs:element name="ambush" type="symbolType"/>
       <xs:element name="surprise" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
+      <xs:element name="immediate" type="symbolType"/>
+      <!--
       <xs:element name="talk" type="symbolType"/>      
       <xs:element name="start" type="symbolType"/>
       <xs:element name="fast" type="symbolType"/>
       <xs:element name="medium" type="symbolType"/>
       <xs:element name="slow" type="symbolType"/>
-      <xs:element name="resolution" type="symbolType"/>      
+      <xs:element name="resolution" type="symbolType"/>
+      <xs:element name="mediumorslow" type="symbolType"/>
+      <xs:element name="startandreaction" type="symbolType"/>
+      -->
+      <xs:element name="melee" type="symbolType"/>
       <xs:element name="reaction" type="symbolType"/>      
       <xs:element name="noncombat" type="symbolType"/>
       <xs:element name="tag" type="symbolType"/>      
       <xs:element name="fightreach" type="symbolType"/>      
-      <xs:element name="mediumorslow" type="symbolType"/>
-      <xs:element name="startandreaction" type="symbolType"/>
       <xs:element name="arrowleft" type="symbolType"/>            
       <xs:element name="img" type="imgType"/>
       <xs:element name="d4" type="acronymType"/>
@@ -359,7 +374,7 @@
       <xs:element name="d10" type="acronymType"/>
       <xs:element name="d12" type="acronymType"/>
       <xs:element name="d20" type="acronymType"/>      
-      <xs:element name="dany" type="acronymType"/>      
+      <xs:element name="dany" type="acronymType"/>
       <xs:element name="dpool" type="acronymType"/>
     </xs:choice>
     <!-- the number of columns the table data takes -->
@@ -543,17 +558,18 @@
 	<xs:element name="slowsymbol" type="symbolType"/>	
 	<xs:element name="mediumorslowsymbol" type="symbolType"/>
 	<xs:element name="startandreactionsymbol" type="symbolType"/>
+	<xs:element name="mediumorslow" type="symbolType"/>
+	<xs:element name="startandreaction" type="symbolType"/>
+	<xs:element name="talk" type="symbolType"/>
 	-->	
 	<xs:element name="ambush" type="symbolType"/>
 	<xs:element name="surprise" type="symbolType"/>
-	<xs:element name="talk" type="symbolType"/>
 	<xs:element name="initiative" type="symbolType"/>
+	<xs:element name="immediate" type="symbolType"/>
 	<xs:element name="start" type="symbolType"/>
 	<xs:element name="fast" type="symbolType"/>
 	<xs:element name="medium" type="symbolType"/>
 	<xs:element name="slow" type="symbolType"/>
-	<xs:element name="mediumorslow" type="symbolType"/>
-	<xs:element name="startandreaction" type="symbolType"/>
       </xs:choice>
     </xs:sequence>
     </xs:complexType>
@@ -961,16 +977,20 @@ labels and references.
       <xs:element name="ambush" type="symbolType"/>
       <xs:element name="surprise" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
+      <xs:element name="immediate" type="symbolType"/>
+      <xs:element name="fightreach" type="symbolType"/>
+      <xs:element name="reaction" type="symbolType"/>
+      <xs:element name="melee" type="symbolType"/>
+      <!--
       <xs:element name="talk" type="symbolType"/>
-      <xs:element name="start" type="symbolType"/>
+      <xs:element name="startandreaction" type="symbolType"/>
+      <xs:element name="resolution" type="symbolType"/>      
       <xs:element name="fast" type="symbolType"/>
       <xs:element name="medium" type="symbolType"/>
       <xs:element name="slow" type="symbolType"/>
       <xs:element name="mediumorslow" type="symbolType"/>
-      <xs:element name="startandreaction" type="symbolType"/>
-      <xs:element name="fightreach" type="symbolType"/>
-      <xs:element name="resolution" type="symbolType"/>      
-      <xs:element name="reaction" type="symbolType"/>      
+      <xs:element name="start" type="symbolType"/>
+      -->
       <xs:element name="noncombat" type="symbolType"/>
       <xs:element name="tag" type="symbolType"/>      
       <xs:element name="lore" type="symbolType"/>

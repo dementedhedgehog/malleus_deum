@@ -23,7 +23,7 @@
   <ability>
     <abilitytitle>Intimidate</abilitytitle>
     <abilityid>social.intimidate</abilityid>
-    <abilityclass>Start</abilityclass>
+    <abilityclass>Immediate</abilityclass>
     <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -117,7 +117,7 @@
   <ability>
     <abilitytitle>Deceive</abilitytitle>
     <abilityid>social.deceive</abilityid>
-    <abilityclass>Start</abilityclass>
+    <abilityclass>Non-Combat</abilityclass>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -295,7 +295,7 @@
   <ability>
     <abilitytitle>High Etiquette</abilitytitle>
     <abilityid>social.high_etiquette</abilityid>
-    <abilityclass>Start</abilityclass>
+    <abilityclass>Non-Combat</abilityclass>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
@@ -325,7 +325,7 @@
   <ability>
     <abilitytitle>Etiquette</abilitytitle>
     <abilityid>social.etiquette</abilityid>
-    <abilityclass>Start</abilityclass>
+    <abilityclass>Non-Combat</abilityclass>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
@@ -355,7 +355,7 @@
   <ability>
     <abilitytitle>Low Etiquette</abilitytitle>
     <abilityid>social.low_etiquette</abilityid>
-    <abilityclass>Start</abilityclass>
+    <abilityclass>Non-Combat</abilityclass>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
@@ -536,11 +536,11 @@
   <ability>
     <abilitytitle>Leadership</abilitytitle>
     <abilityid>social.leadership</abilityid>
-    <abilityclass>StartAndReaction</abilityclass>
+    <abilityclass>Immediate</abilityclass>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>    
       <p>
-	The character is a leader.  As a reaction they may
+	The character is a leader.  They may
 	yell some encouraging words to an associate who has
 	just failed a morale check.  If successful the target
 	may reroll their morale check.  Only one such reroll is
@@ -548,14 +548,13 @@
       </p>
 
       <p>
-	Leadership can be used as a Reaction to the Start Stage to
+	Leadership can be used to
 	try and momentarilly stop a combat so that some form of
 	negotiation can occur: "Yield you scum, you are clearly beat".
 	The GM will specify a difficulty based on the morale of the
-	opponents and their nature.  If successful, combat goes back
-	to the Talk Stage, and should combat start again then initiative
-	is rerolled. Note that opponents will treat filebustering
-	characters harshly.
+	opponents and their nature.  If successful combat stops
+	and negotiation begins (note this does not mean that the
+	opponents are bound to a peaceful resolution).
       </p>
       
     </abilitydescription>
