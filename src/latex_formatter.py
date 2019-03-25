@@ -14,6 +14,7 @@ from config import use_imperial
 
 from npcs import NPC, NPCGroup
 
+# \usepackage{float}                 %% force the position of floats
 
 # \usepackage[paperwidth=8.125in,paperheight=10.250in]{geometry}
 #%% lulu
@@ -23,6 +24,7 @@ from npcs import NPC, NPCGroup
 
 latex_frontmatter = r"""
 \documentclass[%s,twocolumn,oneside]{book}
+\usepackage{amsthm}                %% nice theorem environments
 \usepackage[unicode]{hyperref}     %% for hyperlinks in pdf
 \usepackage{bookmark}              %% fixes a hyperref warning.
 \usepackage{caption}               %% extra captions
@@ -54,6 +56,21 @@ latex_frontmatter = r"""
 %% include subsubsections in the table of contents
 \setcounter{tocdepth}{3}
 
+%% Principle and Corollary environments
+%% Also redefine the corollary/principle style to not put 
+%% parentheses around the title.
+\newtheoremstyle{customtheoremstyle}%% Name
+  {.5\baselineskip}%% Space above
+  {.5\baselineskip}%% Space below
+  {\itshape}%% Body font
+  {0pt}%% Indent amount
+  {\bfseries}%% Theorem head font
+  {}%% Punctuation after theorem head
+  {\newline}%% Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}.\thmnote{ #3}}%% Theorem head spec 
+\theoremstyle{customtheoremstyle}
+\newtheorem{principle}{Principle}
+\newtheorem{corollary}{Corollary}
 
 %% fonts
 \newfontfamily{\cloisterblack}[Path=fonts/]{Cloister Black}
@@ -61,7 +78,7 @@ latex_frontmatter = r"""
 \newfontfamily{\rpgdice}[Path=fonts/]{RPGDice}
 \newfontfamily{\sherwood}[Path=fonts/]{Sherwood}
 \newfontfamily{\libertine}{Linux Libertine O}
-\newfontfamily{\germaniaversalien}{GermaniaVersalien}
+\newfontfamily{\germaniaversalien}[Path=fonts/]{GermaniaVersalien}
 
 \newfontfamily{\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}
 \newfontfamily{\rpgchapterfont}[Path=fonts/, Scale=1.0]{Cloister Black}
@@ -110,38 +127,11 @@ latex_frontmatter = r"""
 \newcommand{\reactionsymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}R\endgroup}{reaction}}
 
-\newcommand{\startsymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}1\endgroup}{start}}
-
-\newcommand{\talksymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}t\endgroup}{talk}}
-
 \newcommand{\meleesymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}2\endgroup}{melee}}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}m\endgroup}{melee}}
 
 \newcommand{\immediatesymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}2\endgroup}{immediate}}
-
-\newcommand{\fastsymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}2\endgroup}{fast}}
-
-\newcommand{\mediumsymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}3\endgroup}
-{medium}}
-
-\newcommand{\slowsymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}4\endgroup}{slow}}
-
-\newcommand{\startandreactionsymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}1+R\endgroup}
-{startandreactionsymbol}}
-
-\newcommand{\mediumorslowsymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}3/4\endgroup}
-{mediumorslowsymbol}}
-
-\newcommand{\resolutionsymbol}
-{\texorpdfstring{\begingroup\rpgdice\selectfont{}5\endgroup}{resolution}}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}z\endgroup}{immediate}}
 
 \newcommand{\surprisesymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}s\endgroup}
@@ -339,6 +329,22 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 #  %%within=section, %% activate it if you want
 #  %%chapterlistsgaps=on, %% meaningful only if chapters exist
 
+table_state = None
+
+class TableState:
+
+    def __init__(self):
+        self.label = None
+
+        # list of (index entry / sub entry)
+        self.index_entries = []
+
+def get_table_state():
+    global table_state
+    if table_state is None:
+        table_state = TableState()
+    return table_state
+
 
 def get_text_for_child(element, child_name):
     """
@@ -385,7 +391,6 @@ class LatexFormatter:
         self.description_terms_on_their_own_line = False
 
         # for the index_entry see field (None or a string).
-        #self.index_entry_see = None
         self.index_entry_subentry = None
 
         # keep track of state for npc blocks
@@ -400,20 +405,22 @@ class LatexFormatter:
         return
 
     def no_op(self, obj):
-        """We've got a lot of handlers that don't need to do anything.. do nothing once."""
+        """
+        We've got a lot of handlers that don't need to do anything..
+        do nothing once.
+        """
         pass
 
     
-    def start_book(self, book):
-        
+    def start_book(self, book):        
         # must be a valid latex paper size
         if config.paper_size == "a4":
             paper_size = "a4paper"
         elif config.paper_size == "letter":
             paper_size = "letterpaper"
         else:
-            raise Exception("Unknown paper size.  Pick one of [a4, letter] in config.py")
-
+            raise Exception("Unknown paper size.  "
+                            "Pick one of [a4, letter] in config.py")
         orientation = ""
         landscape = attrib_is_true(book, "landscape")
         formatting = paper_size + orientation
@@ -489,6 +496,61 @@ class LatexFormatter:
         self.latex_file.write("\\immediatesymbol{}")
         return
     end_immediate = no_op
+
+    #
+    # Corollarys
+    #
+    def start_corollary(self, symbol):
+        self.latex_file.write("\\begin{corollary}")
+        return
+    
+    def end_corollary(self, symbol):
+        self.latex_file.write("\\end{corollary}")
+        return
+
+    def start_corollary(self, symbol):
+        self.latex_file.write("\\begin{corollary}")
+        return
+
+    def start_corollarytitle(self, symbol):
+        self.latex_file.write("[")
+        return
+    
+    def end_corollarytitle(self, symbol):
+        self.latex_file.write("]")
+        return
+    
+    start_corollarybody = no_op
+    end_corollarybody = no_op
+    
+    def end_corollary(self, symbol):
+        self.latex_file.write("\\end{corollary}")
+        return
+
+
+    #
+    # Principles
+    #
+    start_principlebody = no_op
+    end_principlebody = no_op
+
+    def start_principle(self, symbol):
+        self.latex_file.write("\\begin{principle}")
+        return
+    
+    def end_principle(self, symbol):
+        self.latex_file.write("\\end{principle}")
+        return    
+
+    def start_principletitle(self, symbol):
+        self.latex_file.write("[")
+        return
+    
+    def end_principletitle(self, symbol):
+        self.latex_file.write("]")
+        return
+    
+    
     
     # def start_fast(self, symbol):
     #     self.latex_file.write("\\fastsymbol{}")
@@ -618,6 +680,11 @@ class LatexFormatter:
         return    
     end_martial = no_op
 
+    def start_percent(self, element):
+        self.latex_file.write("\\%")
+        return    
+    end_percent = no_op
+
     def start_general(self, element):
         self.latex_file.write("\\general{}")
         return    
@@ -637,6 +704,16 @@ class LatexFormatter:
         self.latex_file.write("$\stackrel{\scriptscriptstyle ?}{\leq}{}$")
         return
     end_leqqsymbol = no_op
+
+    def start_leqsymbol(self, leq_element):
+        self.latex_file.write("$\leq$")
+        return
+    end_leqsymbol = no_op
+
+    def start_geqsymbol(self, geq_element):
+        self.latex_file.write("$\geq$")
+        return
+    end_geqsymbol = no_op
 
     def start_newline(self, newline):
         self.latex_file.write("\\newline\n")
@@ -807,15 +884,35 @@ class LatexFormatter:
                 self.latex_file.write(text)
         return
 
-    start_indexentry = no_op
-    def end_indexentry(self, index_entry):
-        if self.index_entry_subentry is not None:
+
+    def write_index(self, index_entry, index_subentry):
+        if index_subentry is not None:
             self.latex_file.write("\\index{%s!%s}" % (
-                normalize_ws(index_entry.text), self.index_entry_subentry))
-            self.index_entry_subentry = None
-            
+                normalize_ws(index_entry.text), index_subentry))
         else:
             self.latex_file.write("\\index{%s}" % normalize_ws(index_entry.text))
+        return
+
+
+    start_indexentry = no_op
+    def end_indexentry(self, index_entry):
+
+        # entry = "\\index{%s!%s}" % (
+        #         normalize_ws(index_entry.text), self.index_entry_subentry))
+
+        global table_state
+        if table_state is not None:
+            table_state.index_entries.append(
+                (index_entry, self.index_entry_subentry))
+        else:
+            self.write_index(index_entry, self.index_entry_subentry)
+            # if self.index_entry_subentry is not None:
+            #     self.latex_file.write("\\index{%s!%s}" % (
+            #         normalize_ws(index_entry.text), self.index_entry_subentry))
+            #     self.index_entry_subentry = None
+            # else:
+            #     self.latex_file.write("\\index{%s}" % normalize_ws(index_entry.text))
+        self.index_entry_subentry = None
         return
 
     # subentry element in index entry
@@ -988,15 +1085,13 @@ class LatexFormatter:
                 resource_id = img.get("id")
                 resource = self.db.licenses.find(resource_id)
                 filename = resource.get_fname()
-                self.latex_file.write("\\addcontentsline{loa}{section}{%s}" # % "frog")
+                self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
                                       % resource.get_contents_desc())
             else:
                 raise Exception("Image missing source or id!")
 
             if not exists(filename):
                 raise Exception("Image does not exist: %s" % filename)
-
-            print("--------------- %s" % filename)
             
             # image without a box
             self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
@@ -1016,7 +1111,6 @@ class LatexFormatter:
         if "position" in figure.attrib:
             position = figure.get("position")
 
-                    
         if attrib_is_true(figure, "fullwidth"):
             if attrib_is_true(figure, "sideways"):
                 figure_name = "sidewaysfigure*"
@@ -1027,7 +1121,7 @@ class LatexFormatter:
                 figure_name = "sidewaysfigure"
             else:
                 figure_name = "figure"
-            
+
         self.latex_file.write("\\begin{%s}[%s]\n" % (figure_name, position))
         self.latex_file.write("\\centering\n")
         return
@@ -1135,45 +1229,70 @@ class LatexFormatter:
     def end_comment(self, comment):
         return
 
+    #
+    # Table
+    #
     start_tablespec = no_op
     end_tablespec = no_op
+    
+    # def start_table(self, table):
+    #     pass
+    
+    def end_table(self, table):
+        return
+    
+    # def start_tablefooter(self, table_footer):
+    #     return
+    
+    # def end_tablefooter(self, table_footer):
+    #     # we also need to find any labels! (place them after the caption!)
+    #     # label = table_footer.find("tablelabel")
+    #     # if label is not None:
+    #     #    self.start_label(label)
+    #     #    self.end_label(label)     
+    #     return
 
     def start_table(self, table):
+
+        global table_state
+        assert table_state is None
+        table_state = TableState()
+
         category = get_text_for_child(table, "tablecategory")
         if category is None:
             raise Error("Table requires a tablecategory child element.")
 
         # Check whether we want compact tables!
-        compact = attrib_is_true(table, "compact")
+        table_state.compact = attrib_is_true(table, "compact")
         
-        figure = False
-        fullwidth = False
-        sideways = False
+        table_state.figure = False
+        table_state.fullwidth = False
+        table_state.sideways = False
         if category == TableCategory.Figure:
-            figure = True
+            table_state.figure = True
 
         elif category == TableCategory.Fullwidth:
-            figure = True
-            fullwidth = True
+            table_state.figure = True
+            table_state.fullwidth = True
 
         elif category == TableCategory.Sideways:
-            figure = True
-            fullwidth =  True
-            sideways = True
+            table_state.figure = True
+            table_state.fullwidth =  True
+            table_state.sideways = True
 
         elif category == TableCategory.Standard:
             # the default
             pass
         else:
             raise Exception("Unknown table category: '%s'" % category)        
-
-        # we need to work out in advance the table layout (e.g. |c|c|c| or whatever).
+        
+        # we need to work out in advance the table layout (e.g. |c|c|c|
+        # or whatever).
         table_spec = table.find("tablespec")
         table_spec_str = ""
         self._number_of_columns_in_table = 0
         self._current_column_in_table = 0
         self._current_row_in_table = 0
-
 
         # turn this on to draw vertical lines between columns
         DEBUG_COLUMN_WIDTH = False
@@ -1198,7 +1317,7 @@ class LatexFormatter:
         self._number_of_columns_in_table = columns
         
         # veritcal space
-        if compact:
+        if table_state.compact:
             self.latex_file.write("\n\\vspace{-0.2cm}")
         else:
             self.latex_file.write("\n\\vspace{0.05cm}")
@@ -1209,36 +1328,37 @@ class LatexFormatter:
         # wrap single page tables in a table environment
         # (we use xtabular for multi-page tables and the table environment
         # confuses it about page size).        
-        if figure:
-            if sideways:
-                self.latex_file.write("\\begin{sidewaystable*}[htp]")                
-            elif fullwidth:
+        if table_state.figure:
+            if table_state.sideways:
+                self.latex_file.write("\\begin{sidewaystable*}[htp]")
+            elif table_state.fullwidth:
                 self.latex_file.write("\\begin{table*}[ht]")
             else:
                 self.latex_file.write("\\begin{table}")
 
         # reduce the line spacing in compact tables
-        if compact:
+        if table_state.compact:
             self.latex_file.write("\\begingroup\n")
             self.latex_file.write("\\renewcommand\\arraystretch{0.75}\n")
         
         self.latex_file.write(" \\begin{center} ")
-        if fullwidth:
+        if table_state.fullwidth:
             # normal table environment
             self.latex_file.write("\\begin{tabularx}{1.0\\textwidth}{%s} " 
                                   % table_spec_str)
         else:
             self.latex_file.write("\\begin{tabularx}{1.0\\linewidth}{%s}" 
                                   % table_spec_str)
-        if figure:
-            self.latex_file.write(" \\toprule{}")
+        if table_state.figure:
+            self.latex_file.write(r" \toprule{}\\")
         return
 
 
     def end_table(self, table):
+        global table_state
 
         # Check whether we want compact tables!
-        compact = attrib_is_true(table, "compact")
+        table_state.compact = attrib_is_true(table, "compact")
         
         category = get_text_for_child(table, "tablecategory")
         if category is None:
@@ -1282,27 +1402,24 @@ class LatexFormatter:
         
         if table_title != "":
             self.latex_file.write(" \\captionof{table}{%s}" % table_title)
+    
+        if table_state.label is not None:
+            label = self.latex_file.write("\\label{%s}"  % table_state.label)
 
-        #if 
         self.latex_file.write(" \\end{center}")
-        #if compact
-        #self.latex_file.write(" \\end{center}\\vspace{0.4cm}")
+
         
-        if compact:
+        if table_state.compact:
             self.latex_file.write("\\vspace{0.14cm}")
             self.latex_file.write("\\endgroup{}\n")
-        
-            
-        # we also need to find any labels! (place them after the caption!)
-        label = table.find("tablelabel")
-        if label is not None:
-            self.start_label(label)
-            self.end_label(label)
-            
-        if figure:
-            if sideways:
+
+        for index, index_subentry in table_state.index_entries:
+            self.write_index(index, index_subentry)
+
+        if table_state.figure:
+            if table_state.sideways:
                 self.latex_file.write("\\end{sidewaystable*}")        
-            elif fullwidth:
+            elif table_state.fullwidth:
                 self.latex_file.write("\\end{table*}")        
             else:
                 self.latex_file.write("\\end{table}")
@@ -1310,6 +1427,8 @@ class LatexFormatter:
                 self.latex_file.write("\n\\\\\n")
             
         self.latex_file.write("\n\n")
+
+        table_state = None
         return
 
     # tablespec and it's children are parsed by the table element (it's special)
@@ -1323,7 +1442,10 @@ class LatexFormatter:
     end_tabletitle = no_op
 
     # tablelabel is also parsed by the table
-    start_tablelabel = no_op
+    def start_tablelabel(self, label):
+        global table_state
+        #table = get_table_state()
+        table_state.label = label.text.strip()
     end_tablelabel = no_op
 
     def start_tablesection(self, tablesection):
@@ -1345,9 +1467,11 @@ class LatexFormatter:
         if new_colour:
             self._current_row_in_table += 1
 
-        if table_row.tag == "tableheader":
+        if table_row.tag == "tableheaderrow":
             self.latex_file.write("\\rowcolor{blue!33}\n")
-            assert False
+            #self.latex_file.write("\\rowcolor{blue!20}\n")
+            # assert False
+            pass
 
         elif (self._current_row_in_table + 1) % 2 == 1:                
             self.latex_file.write("\\rowcolor{blue!20}\n")
@@ -1471,9 +1595,14 @@ class LatexFormatter:
     end_learning_symbol = no_op
 
     def start_label(self, label):
-        self.latex_file.write("\n\\label{%s} " % normalize_ws(label.text))
+        #self.latex_file.write("\n\\label{%s} " % normalize_ws(label.text))
+        #self.latex_file.write("\n\\begin{label}")
+        self.latex_file.write("\n\\label{")
         return
-    end_label = no_op
+    def end_label(self, label):
+        #self.latex_file.write("\\end{label}")
+        self.latex_file.write("}")
+        return
 
     def start_fourcolumns(self, threecolumns):
         self.latex_file.write("\\onecolumn\\begin{multicols}{4}\n")

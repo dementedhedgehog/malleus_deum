@@ -172,8 +172,16 @@ def find_pdftk():
     else:
         #pdftk_executable = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/xelatex.exe"
         raise Exception("I wonder where pdftk will be on windows.")
+
+    if not exists(pdftk_executable):
+        raise Exception("Can't find pdftk executable.")
+        
     return pdftk_executable
 
+
+#
+# FIXME: don't want to fix this now!!
+#
 pdftk_executable = find_pdftk()
 
 pdfunite_executable = "/usr/bin/pdfunite"
@@ -195,6 +203,9 @@ def pdftk_fill(pdf_in, fdf_in, pdf_out):
     print " ".join(cmd_line)
     try:
         pdftk_output = check_output(cmd_line) # , env=env)
+    except OSError as e:
+        print("Can't find file either %s or %s" % (pdf_in, fdf_in))
+        raise e
     except CalledProcessError as e:
         pdftk_output = e.output
         pdftk_error = True
@@ -322,10 +333,11 @@ def create_abilities_fdf(fdf_name, ability_levels = None):
                            "x" * ability_level.get_mastery_failures())
                 check = ability_level.get_check()
 
-                #modifiers = ability_level.get_ability().get_attr_modifiers()
+                modifiers = ability_level.get_ability().get_attr_modifiers()
                 #if len(modifiers) > 0:
-                #    check += "  (%s)" % ", ".join(modifiers)
+                #   check += "  (%s)" % ", ".join(modifiers)
                 check += "  " + ability_level.get_ability().get_attr_modifiers_str()
+                # check = " X? "
 
                 effect_type = ""
                 effect = ""
@@ -488,9 +500,7 @@ from PyPDF2.generic import BooleanObject, NameObject, IndirectObject, TextString
 #     pdf = PdfFileReader(f)
 #     print pdf.getFields()
     
-    
 #     return
-    
 
 
 def cmp_titles(ability, ability2):
@@ -499,23 +509,29 @@ def cmp_titles(ability, ability2):
 
 def create_character_sheet_for_archetype(archetype):
 
-    # build a list containing all the archetypes avialable abilities.
+    print("============================")
+    
+    # build a list containing all the archetypes available abilities.
     ability_levels = []
     for ability_group in archetype.modified_ability_groups:
         print("\t%s" % ability_group.get_title())        
         for ability in ability_group:
             print("\t\t%s" % ability.get_title())            
             ability_level = ability.get_highest_innate_level()
-            print("\t\t%s" % ability_level)                        
+            print("\t\t%s" % ability_level)
+            #if ability_level is not None:
+            #    raise Exception("XXXXX")
             if ability_level is not None and ability_level.is_enabled():
                 print("\t\t%s" % ability_level.get_title())                        
                 ability_levels.append(ability_level)
-    
+
+                
+            #if ability_level is not None and ability_level.is_innate_for_this_archetype():
+            #    print("GG")
+            #    raise Exception("GG")
+
     ability_levels.sort(cmp_titles)
-
-    print archetype.get_id() 
-   
-
+    
     # the pages we want to stick together.
     pdf_pages = []
 
@@ -545,7 +561,6 @@ def create_character_sheet_for_archetype(archetype):
         
     # now compose the pdf.
     pdf_pages.append(join(char_sheet_dir, "character_sheet_equipment.pdf"))
-    #pdf_pages.append(join(char_sheet_dir, "character_sheet_notes.pdf"))
     pdf_pages.append(join(char_sheet_dir, "character_sheet_notes.pdf"))
     char_sheet_fname = join(build_dir, "%s_char_sheet.pdf" % archetype.get_id())
 
@@ -559,14 +574,10 @@ def create_character_sheet_for_archetype(archetype):
         print("Missing pdf: %s" % pdf_fname)
     return
 
-
-
                      
 def create_character_sheets_for_all_archetypes(archetypes):
-
     for archetype in archetypes:
         create_character_sheet_for_archetype(archetype)
-        # break ##################################
     return
 
 

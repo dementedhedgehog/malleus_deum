@@ -19,6 +19,7 @@
     <abilityid>crossbow.crossbow</abilityid>
     <abilityclass>Melee</abilityclass>
     <abilityattrmodifiers></abilityattrmodifiers>
+    <keywords><weapon/><crossbow/></keywords>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with an Crossbow can strike with it during combat
@@ -30,9 +31,6 @@
       <abilitylevel>
 	<!-- level 0 is innate! -->
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -41,21 +39,14 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + 2</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 5</damage>
       </abilitylevel>      
@@ -67,6 +58,7 @@
     <abilitytitle>Fast Loader</abilitytitle>
     <abilityid>crossbow.fast_loader</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><crossbow/></keywords>
     <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -82,9 +74,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>crossbow.crossbow_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -93,9 +82,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Speed + 2 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
@@ -106,6 +92,7 @@
     <abilitytitle>Heavy Cross Bow Proficency</abilitytitle>
     <abilityid>crossbow.heavy</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><crossbow/></keywords>
     <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -118,9 +105,6 @@
       <abilitylevel>
 	<!-- level 0 is innate! -->
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -130,9 +114,6 @@
       
       <abilitylevel>	
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -142,9 +123,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8+3 vs opponents AC</check>
         <damage>Weapon damage + 3</damage>
       </abilitylevel>      

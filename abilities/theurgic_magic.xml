@@ -18,6 +18,7 @@
     <abilitytitle>Theurgic Magic</abilitytitle>
     <abilityid>magic_school.theurgic</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><theurgic/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -28,12 +29,7 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>8</defaultmagical>
         <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
-        <!--
-	    <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>
-	-->
         <check>Std 2d8 vs DDC 12</check>
       </abilitylevel>
     </abilitylevels>
@@ -44,6 +40,7 @@
     <abilitytitle>Augury</abilitytitle>
     <abilityid>magic.augury</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><theurgic/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -99,8 +96,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs DDC 10</check>
@@ -111,20 +106,12 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <check>Std 2d8 + 2 vs DDC 10</check>
 	<overcharge>DC + 6</overcharge>	
       </abilitylevel>      
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <check>Std 2d8 + 3 vs DDC 10</check>
 	<overcharge>DC + 7</overcharge>
 	<leveldescription>
@@ -142,6 +129,7 @@
     <abilitytitle>Heal</abilitytitle>
     <abilityid>magic.heal</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><theurgic/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -157,8 +145,6 @@
        <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqtag>Cleric</prereqtag>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>8</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool versus DDC 8</check>
@@ -169,10 +155,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <check>Magic Pool + 2 versus DDC 8</check>
         <effect>Bloodied character heals 3d6 damage</effect>
         <overcharge>DC + 7, Caster takes 2d6 damage.</overcharge>
@@ -185,6 +167,7 @@
     <abilitytitle>Turn Undead</abilitytitle>
     <abilityid>magic.turn_undead</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><theurgic/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -200,7 +183,6 @@
        <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqtag>cleric</prereqtag>
-        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents Will</check>
@@ -210,10 +192,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
         <check>Std 2d8 + 2 vs opponents Will</check>
 	<overcharge>DC + 9</overcharge>
       </abilitylevel>      

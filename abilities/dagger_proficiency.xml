@@ -18,6 +18,7 @@
     <abilitytitle>Dagger Strike</abilitytitle>
     <abilityid>dagger.strike</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><dagger/></keywords>
     <abilityattrmodifiers><attr>Agility</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -28,11 +29,7 @@
 
     <abilitylevels>
       <abilitylevel>
-	<!-- level 0 is innate! -->
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -41,30 +38,20 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
       </abilitylevel>      
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 5 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
       </abilitylevel>      
@@ -76,6 +63,7 @@
     <abilitytitle>Throw Dagger</abilitytitle>
     <abilityid>dagger.throw</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><dagger/></keywords> 
     <abilityattrmodifiers><attr>Agility</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -89,9 +77,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>dagger.strike_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -101,9 +86,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 3 vs opponents AC</check>
         <damage>Weapon damage</damage>
       </abilitylevel>      
@@ -115,6 +97,7 @@
     <abilitytitle>Dagger Riposte (Dual Wielding)</abilitytitle>
     <abilityid>dagger.riposte</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><dagger/></keywords>
     <abilityattrmodifiers><attr>Agility</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -129,9 +112,6 @@
         <prereqabilitylevel>dagger.strike_2</prereqabilitylevel>
 	<prereqattr><attr>Speed</attr><value>10</value></prereqattr>
 	<prereqattr><attr>Agility</attr><value>10</value></prereqattr>	
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -144,9 +124,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>
 	  Make a Dagger Strike III check and a non-reaction action
 	  with their primary weapon
@@ -155,5 +132,4 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-
 </abilitygroup>

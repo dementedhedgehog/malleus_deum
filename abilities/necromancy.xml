@@ -21,6 +21,7 @@
     <abilitytitle>Necromancy</abilitytitle>
     <abilityid>magic_school.necromancy</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><necromancy/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -35,8 +36,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>7</defaultmagical>
         <prereqabilitylevel>language.inochian_1</prereqabilitylevel>	
         <check>Std 2d8 vs DDC 12</check>
       </abilitylevel>
@@ -47,6 +46,7 @@
     <abilitytitle>Commune with the Dead</abilitytitle>
     <abilityid>necromancy.commune</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><necromancy/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -86,35 +86,13 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultmartial>0</defaultmartial>
-        <defaultlore>0</defaultlore>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 8</check>
 	<overcharge>DC + 6</overcharge>
         <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>	
       </abilitylevel>
-
-      <!-- <abilitylevel> -->
-      <!--   <levelnumber>1</levelnumber> -->
-      <!--   <defaultcombat>8</defaultcombat> -->
-      <!--   <defaulttraining>3</defaulttraining> -->
-      <!--   <defaultlearning>3</defaultlearning> -->
-      <!--   <successes>3</successes> -->
-      <!--   <attempts>3</attempts> -->
-      <!-- </abilitylevel> -->
-      
-      <!-- <abilitylevel> -->
-      <!--   <levelnumber>2</levelnumber> -->
-      <!--   <defaultcombat>8</defaultcombat> -->
-      <!--   <defaulttraining>2</defaulttraining> -->
-      <!--   <defaultlearning>2</defaultlearning> -->
-      <!--   <attr>Str + 8</attr> -->
-      <!-- </abilitylevel>       -->
     </abilitylevels>
-    
   </ability>
 
 
@@ -123,6 +101,7 @@
     <abilitytitle>Graft Flesh</abilitytitle>
     <abilityid>magic.graft_flesh</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><necromancy/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -140,10 +119,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>2</defaultmagical>
         <successes>0</successes>
         <attempts>1</attempts>
         <check>Magic Pool versus DDC 5</check>
@@ -153,10 +128,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
         <successes>0</successes>
         <attempts>1</attempts>
         <check>Magic Pool versus DDC 5</check>
@@ -165,10 +136,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
         <successes>0</successes>
         <attempts>1</attempts>
         <check>Magic Pool versus DDC 5</check>
@@ -181,6 +148,7 @@
     <abilitytitle>Stay Death</abilitytitle>
     <abilityid>magic.stay_death</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><necromancy/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -188,16 +156,11 @@
 	can reroll a single near-death roll.  This spell may be cast
 	once per character per day.
       </p>
-
     </abilitydescription>    
 
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>1</defaultmagical>
         <successes>1</successes>
         <check>Magic Pool versus DDC 7</check>
 	<overcharge>DC + 6</overcharge>
@@ -207,10 +170,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>1</defaultmagical>
         <successes>1</successes>
         <check>Magic Pool +2 versus DDC 7</check>
 	<overcharge>DC + 7</overcharge>
@@ -218,10 +177,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>1</successes>
         <check>Magic Pool +3 versus DDC 7</check>
 	<overcharge>DC + 8</overcharge>
@@ -235,6 +190,7 @@
     <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
     <abilityid>magic.blood_soucriant</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><necromancy/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -249,10 +205,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>1</defaultmagical>
         <successes>1</successes>
         <check>Magic Pool versus DDC 9</check>
 	<overcharge>DC + 6</overcharge>
@@ -262,10 +214,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>1</defaultmagical>
         <successes>1</successes>
         <check>Magic Pool +2 versus DDC 9</check>
 	<overcharge>DC + 7</overcharge>
@@ -273,10 +221,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>1</successes>
         <check>Magic Pool +3 versus DDC 9</check>
 	<overcharge>DC + 8</overcharge>

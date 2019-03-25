@@ -16,53 +16,10 @@
   </abilitygroupinfo>
 
   <ability>
-    <abilitytitle>Physical</abilitytitle>
-    <abilityid>school.physical</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	A general ability for all physical things.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>1</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 - 4 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
-        <successes>2</successes>
-        <attempts>2</attempts>
-        <check>Std 2d8 - 2 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
-        <check>Std 2d8 vs DDC 10</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-  
-
-  <ability>
     <abilitytitle>Charge</abilitytitle>
     <abilityid>physical.charge</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -77,30 +34,21 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
+        <successes>2</successes>
         <attempts>1</attempts>
-	<check>Resolve vs DDC 8</check>
-      </abilitylevel>
+	<check>Resolve vs DDC 8</check>  
+	<innate/>
+     </abilitylevel>
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Resolve + 2 vs DDC 8</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
 	<check>Resolve + 3 vs DDC 8</check>
       </abilitylevel>      
     </abilitylevels>
@@ -113,15 +61,17 @@
     <abilitytitle>Run</abilitytitle>
     <abilityid>physical.run</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
         The Run ability represents a double move.  It allows the character to move twice
-	their movement rate during combat or pursuit.  
+	their movement rate during combat or pursuit.  This ability automatically succeeds
+	if the character is not encapacicated in some way.
       </p>
 
       <p>
-	In addition the character may make a check to move a bit further in addition to their
+	In addition, the character may make a check to move a bit further in addition to their
 	double move.  This skill represents the characters fleet footedness.  During combat
 	this is represented by moving an extra 1-3 squares when playing on a grid, or something
 	narrative in a TOTM combat.  During a pursuit the character increases their rank by
@@ -131,33 +81,24 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs DDC 10</check>
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 1 vs DDC 10</check>
         <effect>
           As above.
         </effect>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 10</check>
         <effect>
           As above.
@@ -167,11 +108,11 @@
   </ability>
 
 
-
   <ability>
     <abilitytitle>Flee</abilitytitle>
     <abilityid>physical.flee</abilityid>
     <abilityclass>Immediate</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -188,31 +129,22 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
-        <check>Move Check vs DDC 12</check>	
+        <check>Std Check vs DDC 12</check>	
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
-        <check>Move Check + 1 vs DDC 12</check>	
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
+        <check>Std Check + 1 vs DDC 12</check>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <check>Move Check + 2 vs DDC 12</check>	
+        <check>Std Check + 2 vs DDC 12</check>	
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -222,37 +154,29 @@
     <abilitytitle>Jump</abilitytitle>
     <abilityid>physical.jump</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs DDC 8</check>
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
-        <successes>3</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>
-        <check>Std 2d8 + 2 vs DDC 8</check>
+        <check>Std 2d8 + 1 vs DDC 8</check>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
-        <check>Std 2d8 + 3 vs DDC 8</check>
+        <check>Std 2d8 + 2 vs DDC 8</check>
       </abilitylevel>      
     </abilitylevels>
     <abilitydescription>
@@ -267,6 +191,7 @@
     <abilitytitle>Swim</abilitytitle>
     <abilityid>physical.swim</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers>
       <attr>Strength</attr>
       <attr>Endurance</attr>
@@ -277,32 +202,37 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 12</check>
+        <successes>1</successes>
+        <check>Std 2d8 vs DDC 10</check>
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 3 vs DDC 12</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>
+        <successes>1</successes>
+        <check>Std 2d8 + 1 vs DDC 10</check>
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
-        <check>Std 2d8 + 4 vs DDC 12</check>
+        <prereqabilitylevel></prereqabilitylevel>
+        <successes>1</successes>
+        <check>Std 2d8 + 2 vs DDC 10</check>
+	<innate/>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <successes>1</successes>
+        <check>Std 2d8 + 3 vs DDC 10</check>
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>4</levelnumber>
+        <check>Std 2d8 + 4 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
     <abilitydescription>
@@ -321,6 +251,7 @@
     <abilitytitle>Climb</abilitytitle>
     <abilityid>physical.climb</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -330,41 +261,28 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>2</successes>
-        <attempts>2</attempts>
+        <successes>1</successes>
+        <attempts>1</attempts>
 	<check>Std 2d8 vs DDC 10</check>
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>1</successes>
+        <attempts>1</attempts>
 	<check>Std 2d8 + 2 vs DDC 10</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
+        <successes>1</successes>
+        <attempts>1</attempts>
 	<check>Std 2d8 + 3  vs DDC 10</check>
       </abilitylevel>      
 
-
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
 	<check>Std 2d8 + 4  vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
@@ -375,6 +293,7 @@
     <abilitytitle>Throw</abilitytitle>
     <abilityid>physical.throw</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -389,28 +308,22 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs DDC 8</check>
+	<innate/>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>1</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 8</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
         <check>Std 2d8 + 3 vs DDC 8</check>
       </abilitylevel>      
     </abilitylevels>
@@ -421,6 +334,7 @@
     <abilitytitle>Notice</abilitytitle>
     <abilityid>physical.notice</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -438,22 +352,25 @@
     </abilitydescription>      
     <abilitylevels>
       <abilitylevel>
+        <levelnumber>0</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <successes>1</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 vs DDC 10</check>
+	<innate/>
+      </abilitylevel>
+
+      <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 10</check>
+        <successes>1</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 + 1 vs DDC 10</check>
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>	
         <check>Std 2d8 + 2 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
@@ -464,6 +381,7 @@
     <abilitytitle>Listen</abilitytitle>
     <abilityid>physical.listen</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -476,31 +394,22 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>1</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 vs DDC 12</check>
+	<innate/>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>2</attempts>
         <check>Std 2d8 + 3 vs DDC 12</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <check>Std 2d8 + 4 vs DDC 12</check>
       </abilitylevel>
     </abilitylevels>
@@ -511,6 +420,7 @@
     <abilitytitle>Dodge</abilitytitle>
     <abilityid>physical.dodge</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Agility</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -538,30 +448,21 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>5</successes>
-        <check>Std 2d8 vs DDC 12</check>
+        <check>Std 2d8 vs DDC 14</check>
+	<innate/>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>5</successes>
-        <check>Speed Check vs DDC 12</check>
+        <check>Speed Check vs DDC 14</check>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <check>Speed Check + 1 vs DDC 12</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
+        <check>Speed Check + 1 vs DDC 14</check>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -571,57 +472,55 @@
     <abilitytitle>Kick</abilitytitle>
     <abilityid>physical.kick</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
-	The attacker kicks an opponent potentially pushing the opponent back.
-	The opponent must be approximately the same sized or smaller as the 
-	attacker in order to be pushed.
+	The attacker kicks an opponent potentially pushing the opponent back
+	at higher levels. The opponent must be approximately the same sized
+	or smaller as the attacker in order to be pushed.
       </p>
     </abilitydescription>
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
-        <failures>1</failures>
+        <successes>2</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 vs opponents Agility</check>
 	<damage>d3</damage>    
+	<innate/>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
-        <failures>1</failures>
+        <successes>2</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 + 1 vs opponents Agility</check>
 	<damage>d4</damage>    
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
-        <attempts>2</attempts>
+        <successes>2</successes>
+        <attempts>1</attempts>
+        <check>Std 2d8 + 2 vs opponents Agility</check>
+	<damage>d6 vs opponents Agility</damage>    
+      </abilitylevel>
+      
+      <abilitylevel>
+        <levelnumber>3</levelnumber>
+        <prereqabilitylevel></prereqabilitylevel>
+        <successes>2</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 + 2 vs opponents Agility</check>
 	<damage>d6 and opponent saves vs Str or is pushed back</damage>    
       </abilitylevel>
       
       <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
+        <levelnumber>4</levelnumber>
         <check>Std 2d8 + 3 vs opponents Agility</check>
 	<damage>d8 and opponent saves vs Str-2 or is pushed back</damage>    
       </abilitylevel>      
@@ -633,6 +532,7 @@
     <abilitytitle>Grapple</abilitytitle>
     <abilityid>physical.grapple</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -653,41 +553,29 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Std 2d8 vs max of opponents Str or Grapple</check>
-        <successes>2</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
+	<innate/>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>2</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + Str Modifier vs opponents Str or Grapple</check>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>4</successes>
+        <successes>1</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 2 + Str Modifier vs opponents Str or Grapple</check>
       </abilitylevel>      
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Std 2d8 + 4 + Str Modifier vs opponents Str or Grapple</check>
       </abilitylevel>      
     </abilitylevels>
@@ -698,6 +586,7 @@
     <abilitytitle>Head Butt</abilitytitle>
     <abilityid>physical.head_butt</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -716,33 +605,24 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs opponents Speed</check>
 	<damage>d4</damage>
+	<innate/>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 1 vs opponents Speed</check>
 	<damage>d6 + opponent saves versus stun</damage>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 2 vs opponents Speed</check>
 	<damage>d8 + opponent saves versus stun</damage>
       </abilitylevel>      
@@ -754,6 +634,7 @@
     <abilitytitle>Juggernaut</abilitytitle>
     <abilityid>physical.juggernaut</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -771,9 +652,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
 	<successes>2</successes>
         <check>Std 2d8 vs DDC 8</check>
       </abilitylevel>
@@ -781,18 +659,12 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>2</successes>
         <check>Std 2d8 + 1 vs DDC 8</check>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 8</check>
       </abilitylevel>      
     </abilitylevels>
@@ -806,6 +678,7 @@
     <abilitytitle>Sure Feet</abilitytitle>
     <abilityid>physical.sure_feet</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Agility</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -818,9 +691,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
 	<successes>2</successes>
         <check>Std 2d8 - 2 vs DDC 10</check>
       </abilitylevel>
@@ -828,18 +698,12 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>2</successes>
         <check>Std 2d8 vs DDC 10</check>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
@@ -850,6 +714,7 @@
     <abilitytitle>Punch</abilitytitle>
     <abilityid>physical.punch</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -862,33 +727,22 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-	<successes>3</successes>
-        <failures>1</failures>
+	<successes>2</successes>
         <check>Std 2d8 + 2 vs opponents Agility</check>
 	<damage>d4</damage>
+	<innate/>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+	<successes>2</successes>
         <check>Std 2d8 + 4 vs opponents Agility</check>
 	<damage>d4 + Str</damage>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>		
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 5 vs opponents Agility</check>
 	<damage>d4 + 2 + Str Modifier</damage>
       </abilitylevel>      
@@ -901,6 +755,7 @@
     <abilitytitle>Rest</abilitytitle>
     <abilityid>physical.rest</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers><attr>Luck</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -920,33 +775,22 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
-        <failures>1</failures>
         <check>Std 2d8 vs DDC 8</check>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
+	<innate/>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
-        <attempts>3</attempts>
         <check>Std 2d8 + 1 vs DDC 8</check>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 8</check>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
       </abilitylevel>      
@@ -959,6 +803,7 @@
     <abilitytitle>Sleep</abilitytitle>
     <abilityid>physical.sleep</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><physical/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -977,33 +822,24 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <successes>3</successes>
+        <successes>1</successes>
         <failures>1</failures>
         <check>Std 2d8 vs DDC 8</check>
+	<innate/>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
-        <successes>3</successes>
-        <attempts>3</attempts>
+        <successes>2</successes>
+        <attempts>1</attempts>
         <check>Std 2d8 + 1 vs DDC 8</check>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
-        <prereqabilitylevel>school.physical_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 8</check>
         <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
       </abilitylevel>      

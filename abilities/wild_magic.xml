@@ -7,39 +7,16 @@
     <abilitygroupfamily>Magic</abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	XXX FIXME: rename  Wild Magic?
+	Wild Magic magic is the use of the residual life magic in a region.
       </p>
     </abilitygroupdescription>
   </abilitygroupinfo>
-
-
-  <ability>
-    <abilitytitle>Wild Magic</abilitytitle>
-    <abilityid>magic_school.wild_magic</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	Wild Magic magic is the use of the residual life magic in a region.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>4</defaultmagical>
-        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>	
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
 
   <ability>
     <abilitytitle>Spider Climb</abilitytitle>
     <abilityid>magic.spider_climb</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><wildmagic/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -51,24 +28,15 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>8</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 12</check>
 	<overcharge>DC + 8</overcharge>	
 	<effect>+3 to Climb check</effect>	
-        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 12</check>
@@ -83,6 +51,7 @@
     <abilitytitle>Hyperosmia</abilitytitle>
     <abilityid>magic.hyperosmia</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><wildmagic/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -97,23 +66,14 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 4</check>
 	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
 	<check>Magic Pool + 2 vs DDC 4</check>
 	<overcharge>DC + 7</overcharge>
       </abilitylevel>      
@@ -126,6 +86,7 @@
     <abilitytitle>Vermin Swarm</abilitytitle>
     <abilityid>magic.vermin_swarm</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><wildmagic/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -139,7 +100,6 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Vermin Swarm Overcharge Table</tabletitle>
-	<tablelabel>fig:vermin-swarm-overcharge</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d88</td>
@@ -168,7 +128,8 @@
 	<tablerow>
 	  <td>61-88</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
-	</tablerow>	
+	</tablerow>
+	<tablelabel>fig:vermin-swarm-overcharge</tablelabel>
       </table>
       
     </abilitydescription>
@@ -176,23 +137,14 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 4</check>
 	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
 	<check>Magic Pool + 2 vs DDC 4</check>
 	<overcharge>DC + 7</overcharge>
       </abilitylevel>      
@@ -200,12 +152,11 @@
   </ability>
 
 
-
-
   <ability>
     <abilitytitle>Call of the Wild</abilitytitle>
     <abilityid>magic.call_of_the_wild</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><wildmagic/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -216,7 +167,6 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Call of the Wild Overcharge Table</tabletitle>
-	<tablelabel>fig:call-of-the-wild-overcharge</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d88</td>
@@ -226,7 +176,7 @@
 	<tablerow>
 	  <td>11-28</td>
 	  <td>The animals here the call but are swayed by their own self-interest.
-	      None answer the call.</td>
+	  None answer the call.</td>
 	</tablerow>
 
 	<tablerow>
@@ -245,30 +195,22 @@
 	<tablerow>
 	  <td>61-88</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
-	</tablerow>	
+	</tablerow>
+	<tablelabel>fig:call-of-the-wild-overcharge</tablelabel>	  
       </table>      
     </abilitydescription>
 
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 13</check>
 	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
 	<check>Magic Pool + 2 vs DDC 13</check>
 	<overcharge>DC + 7</overcharge>
       </abilitylevel>      
@@ -280,6 +222,7 @@
     <abilitytitle>Therianthropy</abilitytitle>
     <abilityid>magic.therianthropy</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><wildmagic/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>Shapeshifting<subentry>see Therianthropy</subentry></indexentry>      
@@ -298,7 +241,6 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Therianthropy Table</tabletitle>
-	<tablelabel>fig:therianthropy</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d88</td>
@@ -345,6 +287,7 @@
 	<tablerow> <td>84</td><td>Gorilla</td></tablerow>
 	<tablerow> <td>85-86</td><td>Lion, Snow Leopard, Panther etc.</td></tablerow>
 	<tablerow> <td>87-88</td><td>Bear Black, Brown or Polar</td></tablerow>
+	<tablelabel>fig:therianthropy</tablelabel>
       </table>
 
       <p>
@@ -359,7 +302,6 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Therianthropy Overcharge Table</tabletitle>
-	<tablelabel>fig:therianthropy_overcharge</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d88</td>
@@ -371,6 +313,7 @@
 	<tablerow> <td>21-28</td><td>The caster is trapped in animal form for d3 days or until the spell is removed.</td></tablerow>
 	<tablerow> <td>31-58</td><td>The character gains an aspect that their animal might have.</td></tablerow>
 	<tablerow> <td>61-88</td><td>No Effect</td></tablerow>
+	<tablelabel>fig:therianthropy_overcharge</tablelabel>
       </table>
 
       <p>
@@ -381,23 +324,14 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 13</check>
 	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.wild_magic_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
 	<check>Magic Pool + 2 vs DDC 13</check>
 	<overcharge>DC + 7</overcharge>
       </abilitylevel>      

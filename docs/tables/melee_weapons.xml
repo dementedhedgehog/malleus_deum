@@ -1,150 +1,27 @@
 <table>
-  <tablecategory>FullWidth</tablecategory>
-  <tablespec>
-    <fixed>0.13</fixed>
-    <fixed>0.06</fixed>
-    <fixed>0.05</fixed>
-    <fixed>0.05</fixed>
-    <fixed>0.575</fixed>
-  </tablespec>
+    <tablecategory>FullWidth</tablecategory>
+    <tablespec>
+      <fixed>0.13</fixed>
+      <fixed>0.06</fixed>
+      <fixed>0.05</fixed>
+      <fixed>0.05</fixed>
+      <fixed>0.575</fixed>
+    </tablespec>
 
-  <tabletitle>Melee Weapon Table</tabletitle>
+    <tabletitle>Melee Weapon Table</tabletitle>
 
-  <tableheaderrow>
-    <td>Name</td>
-    <td>Dmg</td>
-    <td>Price</td>
-    <td>Save</td>
-    <td>Tags</td>
-  </tableheaderrow>
-
-
-  <tablerow>
-    <td>Battle Axe</td>
-    <td>d10</td>
-    <td>20c</td>
-    <td>3</td>
-    <td>Heavy, Crushing and Slashing, Iron</td>
-  </tablerow>
-  
-
-  <tablerow>
-    <td>Club</td>
-    <td>d6</td>
-    <td>1c</td>
-    <td>6</td>
-    <td>Improvised, Crushing</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Dagger </td>
-    <td>d6</td>
-    <td>10g</td>
-    <td>4</td>
-    <td>Iron, Piercing</td>
-  </tablerow>
-  
-  <tablerow>
-    <td>Mace</td>
-    <td>d8</td>
-    <td>12c</td>
-    <td>5</td>
-    <td>Asanguinous, Heavy, As-Club, Iron</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Morning Star</td>
-    <td>d8</td>
-    <td>18c</td>
-    <td>4</td>
-    <td>Asanguinous, Heavy, As-Club, Iron</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Polearm</td>
-    <td>d10</td>
-    <td>2g</td>
-    <td>6</td>
-    <td>As-Spear, Reach, Brace, Two-Handed, Heavy, Piercing</td>
-  </tablerow>
-  
-  <tablerow>
-    <td>Flail</td>
-    <td>d8</td>
-    <td>17c</td>
-    <td>4</td>
-    <td>As-Club, Unparryable, Disarm, Heavy, Crushing</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Sabre</td>
-    <td>d6</td>
-    <td>20g</td>
-    <td>4</td>
-    <td>Parry, Slash, Fast, Iron</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Scimitar</td>
-    <td>d8</td>
-    <td>10g</td>
-    <td>6</td>
-    <td>Parry, Slash, Iron</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Spear</td>
-    <td>d8</td>
-    <td>10g</td>
-    <td>5</td>
-    <td>Reach, Brace, Piercing, Grounding, Parry</td>
-  </tablerow>  
-  
-  <tablerow>
-    <td>Staff</td>
-    <td>d6</td>
-    <td>5c</td>
-    <td>6</td>
-    <td>As-Spear, Reach, Grounding, Parry</td>
-  </tablerow>
-  
-  <tablerow>
-    <td>Sword, Great</td>
-    <td>d12</td>
-    <td>10g</td>
-    <td>6</td>
-    <td>Heavy, Two-Handed, Slashing, Slow</td>
-  </tablerow>
-  
-  <tablerow>
-    <td>Sword, Long</td>
-    <td>d8</td>
-    <td>10g</td>
-    <td>5</td>
-    <td>Parry, Slashing, Slow</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Sword, Broad</td>
-    <td>d8</td>
-    <td>10g</td>
-    <td>4</td>
-    <td>Parry, Slashing or Piercing, Slow</td>
-  </tablerow>  
-
-  <tablerow>
-    <td>Rapier</td>
-    <td>d8</td>
-    <td>100g</td>
-    <td>6</td>
-    <td>Parry, Piercing</td>
-  </tablerow>
-  
-  <tablerow>
-    <td>War Hammer</td>
-    <td>d10</td>
-    <td>20c</td>
-    <td>3</td>
-    <td>Heavy, Crushing and Piercing, Iron, Slow</td>
-  </tablerow>  
+    <tableheaderrow>
+      <td>Name</td>
+      <td>Dmg</td>
+      <td>Price</td>
+      <td>Save</td>
+      <td>Tags</td>
+    </tableheaderrow>
+    {%- for weapon in db.melee_weapons -%}
+    <tablerow><td>{{ weapon.name }}</td>
+      <td>{{ weapon.damage }}</td>
+      <td>{{ weapon.price }}</td>
+      <td>{{ weapon.save }}</td>
+      <td>{{ weapon.tags }}</td></tablerow>
+    {%- endfor -%}                                             
 </table>

@@ -12,13 +12,13 @@
       </p>
     </abilitygroupdescription>
   </abilitygroupinfo>
-  
 
 
   <ability>
     <abilitytitle>Cloak Fighting</abilitytitle>
     <abilityid>skullduggery.cloak_fighting</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -30,10 +30,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs opponents Agility</check>
@@ -41,9 +37,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Std 2d8 + 2 vs opponents Agility</check>
       </abilitylevel>
     </abilitylevels>
@@ -54,6 +47,7 @@
     <abilitytitle>Sleight of Hand</abilitytitle>
     <abilityid>skullduggery.sleight_of_hand</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -65,9 +59,6 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <failures>1</failures>
 	<check>Std 2d8 - 2 vs opponents Perception</check>
@@ -76,21 +67,14 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>8</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs opponents Perception</check>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 2 vs opponents Perception</check>
@@ -98,9 +82,6 @@
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents Perception</check>
       </abilitylevel>      
     </abilitylevels>
@@ -110,6 +91,7 @@
     <abilitytitle>Sneak</abilitytitle>
     <abilityid>skullduggery.sneak</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -125,9 +107,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>2</attempts>
 	<check>Std 2d8 vs opponents Perception</check>
@@ -136,20 +115,13 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>8</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 3 vs opponents Perception</check>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 5 vs opponents Perception</check>
@@ -161,6 +133,7 @@
     <abilitytitle>Disguise</abilitytitle>
     <abilityid>skullduggery.disguise</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -173,9 +146,6 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs opponents Perception or DDC 9</check>
@@ -184,20 +154,13 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
 	<check>Std 2d8 + 2 vs opponents Perception or DDC 9</check>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
 	<check>Std 2d8 + 3 vs opponents Perception or DDC 9</check>
       </abilitylevel>      
     </abilitylevels>
@@ -207,6 +170,7 @@
     <abilitytitle>Trap Work</abilitytitle>
     <abilityid>skullduggery.trap_work</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers> 
     <abilitydescription>
       <p>
@@ -219,9 +183,6 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 vs Trap Difficulty</check>
         <successes>3</successes>
         <attempts>3</attempts>
@@ -230,20 +191,13 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <check>Std 2d8 + 2 vs Trap Difficulty</check>
         <successes>3</successes>
         <attempts>3</attempts>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <check>Std 2d8 + 4 vs Trap Difficulty</check>
       </abilitylevel>      
     </abilitylevels>
@@ -254,6 +208,7 @@
     <abilitytitle>Pick Locks</abilitytitle>
     <abilityid>skullduggery.pick_locks</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Perception</attr><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -265,9 +220,6 @@
 
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>2</attempts>
         <check>Std 2d8 - 4 vs Lock Difficulty</check>
@@ -275,20 +227,13 @@
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>5</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs Lock Difficulty</check>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>5</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs Lock Difficulty</check>
@@ -296,9 +241,6 @@
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>5</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 4 vs Lock Difficulty</check>
@@ -306,20 +248,17 @@
       
       <abilitylevel>
         <levelnumber>4</levelnumber>
-        <defaultlore>4</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 6 vs Lock Difficulty</check>
       </abilitylevel>      
     </abilitylevels>
   </ability>
 
 
-
   <ability>
     <abilitytitle>Concealment</abilitytitle>
     <abilityid>skullduggery.concealment</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -355,9 +294,6 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs opponents Perception</check>
@@ -366,20 +302,13 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>2</attempts>
 	<check>Std 2d8 + 2 vs opponents Perception</check>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
 	<check>Std 2d8 + 4 vs opponents Perception</check>
       </abilitylevel>      
     </abilitylevels>
@@ -390,6 +319,7 @@
     <abilitytitle>Search</abilitytitle>
     <abilityid>skullduggery.search</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -402,9 +332,6 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs DDC 12</check>
@@ -413,9 +340,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>6</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 2 vs DDC 12</check>
@@ -424,23 +348,14 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>6</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 4 vs DDC 12</check>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
 	<check>Std 2d8 + 6 vs DDC 12</check>
-        <!-- <successes>3</successes>
-             <failures>3</failures> -->
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -449,6 +364,7 @@
     <abilitytitle>Ropecraft</abilitytitle>
     <abilityid>skullduggery.ropecraft</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -461,9 +377,6 @@
       <abilitylevel>
         <levelnumber>0</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs DDC 8</check>
@@ -472,20 +385,13 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
  	<check>Std 2d8 + 2 vs DDC 8</check>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
      </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
 	<check>Std 2d8 + 4 vs DDC 8</check>
       </abilitylevel>      
     </abilitylevels>
@@ -495,6 +401,7 @@
     <abilitytitle>Cryptogrtaphy</abilitytitle>
     <abilityid>skullduggery.cryptography</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -505,9 +412,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>2</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs DDC 12</check>
@@ -515,21 +419,16 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>3</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Std 2d8 + 2  vs DDC 12</check>
-        <prereqabilitylevel>school.scholar_1</prereqabilitylevel>
       </abilitylevel>      
     </abilitylevels>
   </ability>
-
-
 
   <ability>
     <abilitytitle>Contortionist/Escape Artist</abilitytitle>
     <abilityid>skullduggery.escapist</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><skullduggery/></keywords>
     <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -543,9 +442,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs DDC 12</check>
@@ -553,25 +449,17 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 2 vs DDC 12</check>
-        <prereqabilitylevel>school.skullduggery_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
         <successes>2</successes>
         <attempts>2</attempts>
 	<check>Std 2d8 + 4 vs DDC 12</check>
       </abilitylevel>      
     </abilitylevels>
-  </ability>
-  
+  </ability>  
 </abilitygroup>

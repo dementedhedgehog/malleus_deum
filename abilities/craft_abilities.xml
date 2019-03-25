@@ -27,6 +27,7 @@
     <abilitytitle>Smith</abilitytitle>
     <abilityid>craft.smith</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -40,20 +41,13 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs DDC 8</check>
-        <prereqabilitylevel>school.trade_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 8</check>
@@ -61,14 +55,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
-        <!-- 
-	<successes>3</successes>
-        <failures>3</failures> 
-        <check>Std 2d8 vs DDC 8</check>
-	-->
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -78,6 +64,7 @@
     <abilitytitle>Weapon Smith</abilitytitle>
     <abilityid>craft.weapon_smith</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -88,9 +75,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <prereqabilitylevel>craft.smith_2</prereqabilitylevel>
         <successes>1</successes>
         <attempts>1</attempts>
@@ -99,9 +83,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <check>Std 2d8 + 2 vs DDC 10</check>
       </abilitylevel>
     </abilitylevels>
@@ -112,6 +93,7 @@
     <abilitytitle>Armour Smith</abilitytitle>
     <abilityid>craft.armour_smith</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -122,9 +104,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <prereqabilitylevel>craft.smith_2</prereqabilitylevel>
@@ -135,12 +114,8 @@
 	</leveldescription>
       </abilitylevel>
 
-
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <prereqabilitylevel>craft.smith_2</prereqabilitylevel>
@@ -158,6 +133,7 @@
     <abilitytitle>Carpentry</abilitytitle>
     <abilityid>craft.carpentry</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -170,12 +146,8 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
-        <prereqabilitylevel>school.trade_1</prereqabilitylevel>		
         <check>Std 2d8 vs DDC 10</check>	
 	<leveldescription>
 	  <p>
@@ -187,9 +159,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
 	<leveldescription>
@@ -202,9 +171,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
 	<leveldescription>
 	  <p>
 	    Excellent furniture builder.
@@ -214,13 +180,13 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-  
 
 
   <ability>
     <abilitytitle>Builder</abilitytitle>
     <abilityid>craft.builder</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -232,9 +198,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>	
@@ -243,9 +206,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 10</check>
@@ -253,9 +213,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>7</defaultgeneral>
         <check>Std 2d8 + 3 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
@@ -266,6 +223,7 @@
     <abilitytitle>Cartwright</abilitytitle>
     <abilityid>craft.cartwright</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -276,9 +234,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>
         <successes>1</successes>
         <attempts>1</attempts>
@@ -287,9 +242,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 8</check>
@@ -297,9 +249,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -309,6 +258,7 @@
     <abilitytitle>Shipwright</abilitytitle>
     <abilityid>craft.shipwright</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -319,9 +269,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>
         <successes>1</successes>
         <attempts>1</attempts>
@@ -330,9 +277,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 10</check>
@@ -340,20 +284,17 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <check>Std 2d8 + 3 vs DDC 10</check>
       </abilitylevel>      
     </abilitylevels>
-  </ability>
-  
+  </ability>  
 
 
   <ability>
     <abilitytitle>Cooper</abilitytitle>
     <abilityid>craft.cooper</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -365,9 +306,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>
         <successes>1</successes>
         <attempts>1</attempts>
@@ -376,9 +314,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 8</check>
@@ -391,6 +326,7 @@
     <abilitytitle>Mason</abilitytitle>
     <abilityid>craft.mason</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -402,12 +338,8 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
-        <prereqabilitylevel>school.trade_1</prereqabilitylevel>		
         <check>Std 2d8 vs DDC 10</check>
 	<leveldescription>
 	  <p>
@@ -419,9 +351,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 10</check>
@@ -435,9 +364,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <check>Std 2d8 + 3 vs DDC 10</check>
 	<leveldescription>
 	  <p>
@@ -450,11 +376,11 @@
   </ability>
 
 
-
   <ability>
     <abilitytitle>Farmer</abilitytitle>
     <abilityid>craft.farmer</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><craft/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -465,20 +391,13 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>	
         <check>Std 2d8 vs DDC 8</check>
-        <prereqabilitylevel>school.trade_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>1</successes>
         <attempts>1</attempts>
         <check>Std 2d8 + 2 vs DDC 8</check>
@@ -486,9 +405,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <check>Std 2d8 + 3 vs DDC 8</check>
       </abilitylevel>      
     </abilitylevels>

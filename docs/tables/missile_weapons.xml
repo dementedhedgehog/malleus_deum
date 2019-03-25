@@ -1,144 +1,33 @@
+
 <table>
-  <tablecategory>FullWidth</tablecategory>
-  <tablespec>
-    <fixed>0.17</fixed>    
-    <fixed>0.07</fixed>    
-    <fixed>0.07</fixed>    
-    <fixed>0.09</fixed>    
-    <fixed>0.47</fixed>    
-  </tablespec>
-  <tabletitle>Missile Weapons</tabletitle>
+    <tablecategory>FullWidth</tablecategory>
+    <tablespec>
+      <fixed>0.17</fixed>    
+      <fixed>0.07</fixed>    
+      <fixed>0.07</fixed>    
+      <fixed>0.09</fixed>    
+      <fixed>0.47</fixed>    
+    </tablespec>
+    <tabletitle>Missile Weapons</tabletitle>
 
-  <tableheaderrow>
-    <td>Name</td>
-    <td>Cost</td>
-    <td>Dmg</td>
-    <td>Range</td>
-    <td>Notes</td>
-  </tableheaderrow>
-
-  
-  <tablerow>
-    <td>Axe, Thrown</td>
-    <td>8s</td>
-    <td>1d10</td>
-    <td><measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement></td>
-    <td></td>
-  </tablerow>  
-
-  <tablerow>
-    <td>Bow, Long</td>
-    <td>2g</td>
-    <td>2d6</td>
-    <td><measurement>
-      <metric>20/50/200m</metric><imperial>60/160/600'</imperial>
-    </measurement></td>
-    <td>Long-Bow Prof, Standing</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Bow, Short</td>
-    <td>1g</td>
-    <td>2d4</td>
-    <td><measurement>
-      <metric>10/25/100m</metric><imperial>30/80/300'</imperial>
-    </measurement></td>
-    <td>Short-Bow Prof, Fast</td>
-  </tablerow>
+    <tableheaderrow>
+      <td>Name</td>
+      <td>Dmg</td>
+      <td>Price</td>
+      <td>Range</td>
+      <td>Notes</td>
+    </tableheaderrow>
 
 
-  <tablerow>
-    <td>Crossbow, Light</td>
-    <td>4g</td>
-    <td>2d4</td>
-    <td>
-      <measurement>
-      <metric>10/20/80m</metric><imperial>30/60/180'</imperial></measurement>
-    </td>
-    <td>Crossbow Prof.</td>
-  </tablerow>
-  
-<!--
-  <tablerow>
-    <td>Crossbow, Light</td>
-    <td>4g</td>
-    <td>2d4</td>
-    <td>
-      <measurement>
-	<metric>10/20/80m</metric><imperial>30/60/180'</imperial>
-      </measurement>
-    </td>
-  </tablerow>
--->
-
-  <tablerow>
-    <td>Crossbow, Heavy</td>
-    <td>7g</td>
-    <td>2d6</td>
-    <td>
-      <measurement>
-	<metric>10/20/100m</metric><imperial>30/60/300'</imperial>
-      </measurement>
-    </td>
-    <td>Heavy Crossbow Prof, Standing, Slow-Reload</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Dagger, Thrown</td>
-    <td>3e</td>
-    <td>1d6</td>
-    <td><measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement></td>
-    <td></td>
-  </tablerow>  
-
-  <tablerow>
-    <td>Javelin</td>
-    <td>3s</td>
-    <td>2d4</td>
-    <td><measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement></td>
-    <td>Short-Bow Prof, Fast</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Muskett</td>
-    <td>30g</td>
-    <td>2d8</td>
-    <td>
-      <measurement><metric>10/20/40m</metric><imperial>30/60/120'</imperial></measurement>
-    </td>
-    <td>Black-Powder, Slow-Reload, Slow</td>
-  </tablerow>  
-  
-  <tablerow>
-    <td>Pistol</td>
-    <td>25g</td>
-    <td>2d6</td>
-    <td>
-      <measurement>
-	<metric>10/20/30m</metric>
-	<imperial>30/60/90'</imperial>
-      </measurement>
-    </td>
-    <td>Black-Powder, Slow-Reload</td>
-  </tablerow>
-
-  <tablerow>
-    <td>Rock, Thrown</td>
-    <td>-</td>
-    <td>1d3</td>
-    <td>
-      <measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement>
-    </td>
-    <td></td>
-  </tablerow>
-
-  <tablerow>
-    <td>Sling</td>
-    <td>5s</td>
-    <td>2d4</td>
-    <td>
-      <measurement><metric>10/20/100m</metric><imperial>30/60/300'</imperial></measurement>
-    </td>
-    <td>Standing</td>
-  </tablerow>
+    {% for weapon in db.missile_weapons %}
+        
+    <tablerow>
+      <td>{{ weapon.name }}</td>
+      <td>{{ weapon.damage }}</td>
+      <td>{{ weapon.price }}</td>
+      <td>{{ weapon.missile_range }}</td>
+      <td>{{ weapon.tags }}</td>      
+    </tablerow>
+    {%- endfor -%}                                                 
+    
 </table>

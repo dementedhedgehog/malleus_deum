@@ -32,16 +32,20 @@ from latex_formatter import LatexFormatter
 # hard coding element.text in the latex_writer.  Ultimately
 # this would be all tags.. in the meanwhile that would cause chaos.
 TEXT_TAGS = (
+
+    "corollary", "corollarytitle", "corollarybody",
     "mbtitle", "mbtags",
     "mbac", "mbhp", "mbmove",
     "mbstr", "mbend", "mbag", "mbspd", "mbluck", "mbwil", "mbper",    
     "mbabilities", "mbaspects", "mbdescription", "mbinitiativebonus",
     "npcname", "npchps", "mbresolve", "mbmagic",
     "sectiontitle", "subsectiontitle", "subsubsectiontitle",
-    "descriptions", "term", "description",
-    "p",
+    "descriptions", "term", "description", 
+    "p", 
+    "principle", "principletitle", "principlebody",
     "td", "th", "version",
     "inspiration", "attribution",
+    "label",
     )
 
 
@@ -157,7 +161,7 @@ class Doc:
             start_handler_name = "start_%s" % element_name
             if start_handler_name in methods:
                 handler = methods[start_handler_name]
-
+                
                 try:
                     handler(element)
                 except Exception as err:

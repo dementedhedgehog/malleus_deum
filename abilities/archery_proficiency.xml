@@ -19,6 +19,7 @@
     <abilitytitle>Archery</abilitytitle>
     <abilityid>archery.archery</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><archery/></keywords>    
     <abilityattrmodifiers><attr>Agility</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -31,9 +32,6 @@
       <abilitylevel>
 	<!-- level 0 is innate! -->
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -42,30 +40,20 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + 2</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 4</damage>
       </abilitylevel>      
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 6 vs opponents AC</check>
         <damage>Weapon damage + 6</damage>
       </abilitylevel>      
@@ -77,6 +65,7 @@
     <abilitytitle>Dead Eye</abilitytitle>
     <abilityid>archery.dead_eye</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><archery/></keywords>    
     <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -89,9 +78,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>archery.archery_2</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>2</attempts>
         <failures>1</failures>
@@ -101,9 +87,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 5 vs opponents AC</check>
         <damage>Weapon damage + 2</damage>
       </abilitylevel>
@@ -115,6 +98,7 @@
     <abilitytitle>Rain of Arrows</abilitytitle>
     <abilityid>archery.rain_of_arrows</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><archery/></keywords>    
     <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -132,9 +116,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>archery.archery_2</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -144,18 +125,12 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 vs opponents AC thrice on the first round of combat</check>
         <damage>Weapon damage</damage>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 2 vs opponents AC thrice on the first round of combat</check>
         <damage>Weapon damage + 2</damage>
       </abilitylevel>
@@ -168,6 +143,7 @@
     <abilitytitle>Long Bow Proficency</abilitytitle>
     <abilityid>archery.long_bow</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><archery/></keywords>    
     <abilityattrmodifiers><attr>Agility</attr><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -179,9 +155,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>archery.archery_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -194,9 +167,6 @@
       <abilitylevel>
         <levelnumber>2</levelnumber>
         <prereqabilitylevel>archery.archery_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -207,9 +177,6 @@
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + Str modifier, opponent saves versus agility or is knocked over</damage>
       </abilitylevel>      

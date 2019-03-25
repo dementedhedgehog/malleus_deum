@@ -24,6 +24,7 @@
     <abilitytitle>Shield Block</abilitytitle>
     <abilityid>shield.block</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -36,10 +37,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
         <failures>1</failures>
@@ -49,24 +46,15 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <successes>1</successes>
         <attempts>2</attempts>
         <failures>1</failures>
 	<check>Std 2d8 + 1 vs DDC 8</check>
 	<effect>Reduces damage by 12 points</effect>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
 	<check>Std 2d8 + 2 vs DDC 8</check>
 	<effect>Reduces damage by 15 points</effect>
       </abilitylevel>
@@ -77,6 +65,7 @@
     <abilitytitle>Shield Support</abilitytitle>
     <abilityid>shield.support</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers>
       <attr>Strength</attr>
     </abilityattrmodifiers>
@@ -96,10 +85,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>8</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
 	<check>Std 2d8 vs DDC 6</check>
 	<effect>Reduces damage by 3 points</effect>
         <successes>3</successes>
@@ -111,14 +96,8 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
 	<check>Std 2d8 vs DDC 6</check>
 	<effect>Reduces damage by 6 points</effect>
-        <!-- <successes>3</successes>
-             <attempts>3</attempts> -->
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -128,6 +107,7 @@
     <abilitytitle>Shield Push</abilitytitle>
     <abilityid>shield.push</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -143,10 +123,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>8</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
 	<check>Strength vs Opponents Strength</check>
 	<effect>Opponent is pushed back</effect>
         <successes>3</successes>
@@ -158,10 +134,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
 	<check>Strength + 2 vs Opponents Strength</check>
 	<effect>Opponent is pushed back</effect>
         <successes>3</successes>
@@ -170,10 +142,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>2</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
 	<check>Strength + 4 vs Opponents Strength</check>
 	<effect>Opponent is pushed back</effect>
         <successes>3</successes>
@@ -181,5 +149,4 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-
 </abilitygroup>

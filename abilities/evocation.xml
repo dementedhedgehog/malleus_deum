@@ -7,46 +7,17 @@
     <abilitygroupfamily>Magic</abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	XXXX
+	Evocation involves the unsophisticated use of raw magic powers.
       </p>
     </abilitygroupdescription>
   </abilitygroupinfo>
-
-
-  <ability>
-    <abilitytitle>Evocation</abilitytitle>
-    <abilityid>magic_school.evocation</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	Evocation involves the unsophisticated use of raw magic powers.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>7</defaultmagical>
-        <prereqabilitylevel>language.inochian_2</prereqabilitylevel>	
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultmagical>6</defaultmagical>
-        <check>Std 2d8 + 2 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
   
   
   <ability>
     <abilitytitle>Eldritch Push</abilitytitle>
     <abilityid>magic.eldritch_push</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><evocation/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -69,24 +40,15 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 6</check>
 	<overcharge>DC + 6</overcharge>		
 	<effect>d6 damage and pushed back </effect>		
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 6</check>
@@ -101,6 +63,7 @@
     <abilitytitle>Eldritch Grasp</abilitytitle>
     <abilityid>magic.eldritch_grasp</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><evocation/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -123,10 +86,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 6</check>
@@ -137,10 +96,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 6</check>
@@ -150,14 +105,12 @@
     </abilitylevels>
   </ability>
 
-
-  
-
   
   <ability>
     <abilitytitle>Incendo</abilitytitle>
     <abilityid>magic.incendo</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><evocation/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -168,10 +121,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 8</check>
@@ -181,15 +130,10 @@
 	    Creates a fire of torch intensity.
 	  </p>
 	</leveldescription>
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-      </abilitylevel>
+     </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 2 vs DDC 8</check>
@@ -202,14 +146,14 @@
 	</leveldescription>
       </abilitylevel>      
     </abilitylevels>
-  </ability>
-  
+  </ability>  
 
 
   <ability>
     <abilitytitle>Scry</abilitytitle>
     <abilityid>magic.scry</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><evocation/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -234,30 +178,20 @@
 	spell by 10!  If the caster fails any checks while scrying their contagious
 	link is destroyed.
       </p>
-      
     </abilitydescription>    
 
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 32</check>
 	<overcharge>DC + 8</overcharge>
 	<effect>The caster views scences from the targets past.</effect>
-        <prereqabilitylevel>magic_school.evocation_2</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 27</check>
@@ -272,6 +206,7 @@
     <abilitytitle>Scry, Greater</abilitytitle>
     <abilityid>magic.scry_greater</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><evocation/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -284,10 +219,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 36</check>
@@ -298,10 +229,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 31</check>
@@ -316,6 +243,7 @@
     <abilitytitle>Wither</abilitytitle>
     <abilityid>magic.wither</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><evocation/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -331,10 +259,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool vs DDC 10</check>
@@ -343,15 +267,10 @@
 	  Target saves versus Willpower or suffers 2d8 damage.
 	  On overcharge the caster suffers 1d8 damage.
 	</effect> 
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool + 2 vs DDC 10</check>

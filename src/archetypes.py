@@ -30,28 +30,16 @@ class NonUniqueTagError(Exception):
             "Only one tag: %s per file. %s:%s" % (tag, fname, line_number))
         return
 
+
 class ModifiedAbilityLevel:
     """
     Modified ability/level for an archetype.
 
     """
-
     def __init__(self, group, modified_ability, ability_level):
         self.modified_ability_group = group
         self.modified_ability = modified_ability   
         self.ability_level = ability_level
-
-        # shorthand
-        self.archetype = modified_ability.archetype
-
-        # modifications to the point cost at the specific ability level
-        self.martial_point_modifier = 0
-        self.general_point_modifier = 0
-        self.lore_point_modifier = 0
-        self.magical_point_modifier = 0
-
-        # is this a recommended ability at first level?
-        self.recommended = False
 
         # has we been flagged as innate
         # (note that innateness is complicated to calculate and depends on
@@ -60,23 +48,11 @@ class ModifiedAbilityLevel:
         self.innate_flag = False
 
         # abilities can be enabled or disabled
-        # if an ability is enabled or disabled it overrides the group setting
         self.enabled = True
-
-        # level mastery modifiers
-        self.successes_modifier = 0
-        self.failures_modifier = 0
-        self.attempts_modifier = 0
         return
-
-    def get_points(self):
-        return self.ability_level.get_points()
     
     def get_ability(self):
         return self.modified_ability
-
-    def get_skill_point_type(self):
-        return self.ability_level.get_skill_point_type()
     
     def get_effect(self):
         return self.ability_level.get_effect()
@@ -84,9 +60,6 @@ class ModifiedAbilityLevel:
     def get_ability_class(self):
         return self.modified_ability.get_ability_class()
     
-    def get_family(self):
-        return self.modified_ability_group.get_family()
-
     def get_damage(self):
         return self.ability_level.get_damage()
     
@@ -102,77 +75,11 @@ class ModifiedAbilityLevel:
     def get_level_number(self):
         return self.ability_level.get_level_number()
 
-    def set_enabled(self, enabled):
-        self.enabled = enabled
-        return
-
     def is_enabled(self):
         return self.enabled
 
-    def should_appear_in_archetype_list(self):
-        """
-        An ability level should only appear in an archetypes purchase list if it's
-        enabled and it's level is >= the lowest innate level.
-
-        """
-        should_appear = True
-        if not self.is_enabled():
-            should_appear = False
-        else:            
-            innate_level = self.modified_ability.get_highest_innate_level()
-            if innate_level is not None:
-                should_appear = innate_level.get_level_number() <= self.get_level_number()
-        return should_appear
-
-    def get_martial_points(self):
-        if self.innate_flag or self.get_level_number() == 0:
-            return 0
-        martial_points = (self.ability_level.get_default_martial() +
-                          self.martial_point_modifier +
-                          self.modified_ability_group.get_martial_point_modifier())
-        return max(martial_points, 0)
-
-    def get_lore_points(self):
-        if self.innate_flag or self.get_level_number() == 0:
-            return 0
-
-        lore_points = (
-            self.ability_level.get_default_lore() +
-            self.lore_point_modifier +                    # level modifier
-            self.modified_ability.get_lore_point_modifier() +   # ability modifier
-            self.modified_ability_group.get_lore_point_modifier()) # group modifier
-        return max(lore_points, 0)
-
-    def get_general_points(self):
-        if self.innate_flag or self.get_level_number() == 0:
-            return 0
-
-        general_points = (
-            self.ability_level.get_default_general() +
-            self.general_point_modifier +
-            self.modified_ability.get_general_point_modifier() +   # ability modifier
-            self.modified_ability_group.get_general_point_modifier())
-        return max(general_points, 0)
-
-    def get_magical_points(self):
-
-        if self.innate_flag or self.get_level_number() == 0:
-            return 0
-
-        magical_points = (
-            self.ability_level.get_default_magical() +
-            self.magical_point_modifier +
-            self.modified_ability.get_magical_point_modifier() +   # ability modifier
-            self.modified_ability_group.get_magical_point_modifier())
-        return max(magical_points, 0)
-
-
     def set_innate(self):              
         self.innate_flag = True
-        self.martial_point_modifier -= self.get_martial_points() 
-        self.general_point_modifier -= self.get_general_points() 
-        self.lore_point_modifier -= self.get_lore_points() 
-        self.magical_point_modifier -= self.get_magical_points()
 
         # if an ability level is innate for a character then so are its
         # previous levels.
@@ -182,87 +89,18 @@ class ModifiedAbilityLevel:
             if previous_lvl is not None:
                 previous_lvl.set_innate()
         return
-
-
-    def check_consistency(self):
-        """
-        Called after we've loaded all the abilities.
-
-        """
-        # Note: it's important that we actually check for the innate flag
-        # and not is_innate() here!
-        if self.innate_flag:
-
-            # check prerequisite tags
-            for prereq_tag in self.ability_level.get_prerequisite_tags():
-                if prereq_tag not in self.archetype.tags:
-                    raise Exception("For archetype %s the ability %s is marked innate but "
-                                    "the archetype lacks the required prerequisite tag: %s "
-                                    % (self.archetype.get_title(),
-                                       self.get_title(),
-                                       str(prereq_tag)))                
-            #
-            # Innate abilities don't have to have innate parents!
-            # 
-                
-            # # check ability level prerequisites
-            # for ability_level_prereq in self.ability_level.get_ability_level_prereqs():
-            
-            #     # get the unmodified ability.
-            #     ability_level_id = ability_level_prereq.get_ability_level_id()
-            #     ability_level = AbilityLevel.get_level(ability_level_id)
-            #     ability = ability_level.ability
-        
-            #     # get the ability level
-            #     level_num = ability_level.get_level_number()
-            
-            #     # get the prereq modified ability level.
-            #     modified_ability = self.archetype.get_modified_ability(ability.ability_id)
-            #     modified_ability_level = modified_ability.get_modified_ability_level(level_num)
-
-            #     assert modified_ability_level is not None
-                
-            #     if not modified_ability_level.is_innate():
-            #         raise Exception("Archetype %s has an ability level %s that is innate "
-            #                         "but it has a prerequisite %s that is not innate!" %
-            #                         (self.archetype.get_title(), self.get_title(),
-            #                          modified_ability_level.get_title()))
-        return
     
     def get_mastery_successes(self):
-        mastery_successes = (
-            self.ability_level.get_mastery_successes() + 
-            self.successes_modifier +
-            self.modified_ability.get_successes_modifier() +   # ability modifier
-            self.modified_ability_group.get_successes_modifier())
+        mastery_successes = self.ability_level.get_mastery_successes()
         return max(mastery_successes, 0)
 
     def get_mastery_attempts(self):
-        mastery_attempts = (
-            self.ability_level.get_mastery_attempts() + 
-            self.attempts_modifier +
-            self.modified_ability.get_attempts_modifier() +   # ability modifier
-            self.modified_ability_group.get_attempts_modifier())
+        mastery_attempts = self.ability_level.get_mastery_attempts()
         return max(mastery_attempts, 0)
 
     def get_mastery_failures(self):
-        mastery_failures = (
-            self.ability_level.get_mastery_failures() + 
-            self.failures_modifier +
-            self.modified_ability.get_failures_modifier() +   # ability modifier
-            self.modified_ability_group.get_failures_modifier())
+        mastery_failures = self.ability_level.get_mastery_failures()
         return max(mastery_failures, 0)
-
-
-    def get_total_point_cost(self):
-        return (self.get_martial_points() +
-                self.get_general_points() +
-                self.get_lore_points() +
-                self.get_magical_points())
-
-
-    def is_recommended(self):
-        return self.recommended
     
     def is_innate(self, d = False):
         """
@@ -270,83 +108,16 @@ class ModifiedAbilityLevel:
         Note.  
 
         """
+
         if self.innate_flag:
             return True
-        
-        lvl_num = self.ability_level.get_level_number()
-
-        if lvl_num <= 1:
-            previous_level_is_innate = True
-        else:
-            previous_lvl = self.modified_ability.get_modified_ability_level(lvl_num - 1)
-            previous_level_is_innate = previous_lvl.is_innate()
-
-        # sanity check: level 0 abilities must have 0 cost
-        if lvl_num == 0:
-            if (self.get_martial_points() != 0 or
-                self.get_general_points() != 0 or 
-                self.get_lore_points() != 0 or 
-                self.get_magical_points() != 0):
-            
-                costs = "%s/%s/%s/%s/%s" % (self.get_martial_points(),
-                                            self.get_general_points(),
-                                            self.get_lore_points(),
-                                            self.get_magical_points())
-            
-                raise Exception("Level 0 abilities must be innate! [%s:%s] has non zero points "
-                                "for var in collection: archetype %s, costs are: %s" % 
-                                (self.modified_ability_group.get_title(), 
-                                 self.modified_ability.get_title(), 
-                                 self.archetype.get_title(),
-                                 costs))                            
-
-        # check for prerequisite abilities.
-        all_prerequisites_are_innate = True 
-        for prereq in self.ability_level.get_ability_level_prereqs():
-           
-            # this next bit is all fiddling with the unmodified abilities.
-            unmodified_prereq_lvl = AbilityLevel.get_level(prereq.ability_level_id)
-            unmodified_prereq_ability = unmodified_prereq_lvl.ability
-            unmodified_ability_id = unmodified_prereq_ability.get_id()
-            lvl_number = unmodified_prereq_lvl.get_level_number()
-
-            # now get the modified ability level
-            modified_prereq_ability = self.archetype.get_modified_ability(unmodified_ability_id)
-            modified_prereq_lvl = modified_prereq_ability.get_modified_ability_level(lvl_number)
-            
-            # and check it's innate
-            if not modified_prereq_lvl.is_innate():
-                all_prerequisites_are_innate = False
-                break
-
-        # check for prerequisite tags
-        has_prerequisite_tags = True
-        for prereq_tag in self.ability_level.get_prerequisite_tags():
-            if prereq_tag not in self.archetype.tags:
-                has_prerequisite_tags = False
-
-        return (previous_level_is_innate and
-                has_prerequisite_tags and
-                all_prerequisites_are_innate and 
-                self.get_total_point_cost() == 0)
+        return self.ability_level.is_innate()
     
     def is_innate_for_this_archetype(self):
         """Returns true if this ability level is innate for the archetype"""
         return (self.get_level_number() > 0 and
                 self.is_innate() and
                 "monster" not in self.ability_level.get_id()) # FIXME: HACK
-
-    def get_prerequisites(self):
-        return self.ability_level.get_prerequisites()
-    
-    def has_prerequisites(self):
-        return self.ability_level.has_prerequisites()
-
-    def __str__(self):
-        return str(self.ability_level)
-
-    def is_masterable(self):
-        return self.ability_level.is_masterable()
 
 
 class ModifiedAbility:
@@ -357,9 +128,9 @@ class ModifiedAbility:
     def __init__(self, archetype, modified_ability_group, ability):
         self.archetype = archetype
         self.modified_ability_group = modified_ability_group
-        assert ability.__class__.__name__ == "Ability"
+        # assert ability.__class__.__name__ == "Ability"
 
-        self.ability = ability        
+        self.ability = ability
         self.modified_ability_levels = []
         self.modified_ability_level_lookup = {}
         for ability_level in ability.get_levels():
@@ -368,27 +139,7 @@ class ModifiedAbility:
                                        ability_level)
             self.modified_ability_levels.append(mal)
             self.modified_ability_level_lookup[mal.get_level_number()] = mal
-
-        self.martial_point_modifier = 0
-        self.general_point_modifier = 0
-        self.lore_point_modifier = 0
-        self.magical_point_modifier = 0
-
-        # ability mastery modifiers
-        self.successes_modifier = 0
-        self.failures_modifier = 0
-        self.attempts_modifier = 0
-
-        # abilities can be enabled or disabled
-        # if an ability is enabled or disabled it overrides the group setting
-        if ability.is_inborn():
-            self.enabled = False
-        else:
-            self.enabled = True
         return
-
-    def is_inborn(self):
-        return self.ability.is_inborn()
 
     def get_ability_class(self):
         return self.ability.get_ability_class()
@@ -405,136 +156,22 @@ class ModifiedAbility:
             else:
                 break
         return innate_ability_level
-    
-    
+
     def get_modified_ability_level(self, level):
         """Return a modified ability level or None."""
         return self.modified_ability_level_lookup.get(level)
 
-    def __iter__(self):
-        return iter(self.modified_ability_levels)
-
     def get_title(self):
         return self.ability.get_title()
 
-    #def get_attr_modifiers(self):
-    #    return self.ability.get_attr_modifiers()
+    def get_attr_modifiers(self):
+       return self.ability.get_attr_modifiers()
     
     def get_attr_modifiers_str(self):
         return self.ability.get_attr_modifiers_str()
 
-    def get_innate_ability_level(self):
-        """
-        Returns the highest innate ability level (the ability level that has a 
-        zero point cost) if this ability is not disabled for this archetype.  
-        Disabled abilities are set in the archetype.  Returns None otherwise..
-
-        """
-        if self.is_disabled() or self.modified_ability_group.is_disabled():
-            return None
-
-        innate_level = None
-        for level in self.levels:
-            if level.is_innate() and not level.is_disabled():
-                innate_level = level
-            else:
-                break
-
-        return innate_level
-
-
-    def get_levels(self):
-        return self.modified_ability_levels
-
-    def set_enabled(self, enabled):
-        self.enabled = enabled
-        for ability_level in self.modified_ability_levels:
-            ability_level.set_enabled(enabled)
-        return
-
     def is_enabled(self):
         return self.enabled
-
-    def get_martial_point_modifier(self):
-        return self.martial_point_modifier
-
-    def get_general_point_modifier(self):
-        return self.general_point_modifier
-    
-    def get_lore_point_modifier(self):
-        return self.lore_point_modifier
-
-    def get_magical_point_modifier(self):
-        return self.magical_point_modifier
-
-    def get_successes_modifier(self):
-        return self.successes_modifier
-
-    def get_attempts_modifier(self):
-        return self.attempts_modifier
-
-    def get_failures_modifier(self):
-        return self.failures_modifier
-
-    def load_ability_level_modifier(self, ability_level_modifier):
-        ability_id = None
-        lore_point_modifier = 0
-        martial_point_modifier = 0
-        general_point_modifier = 0
-        magical_point_modifier = 0
-        successes_modifier = 0
-        attempts_modifier = 0
-        failures_modifier = 0
-        recommended = False
-        
-        # handle all the children
-        for child in list(ability_level_modifier):
-           tag = child.tag
-
-           if tag == "level":
-               level_id = convert_str_to_int(child.text)
-
-           elif tag == "lorepointmodifier":
-               lore_point_modifier = convert_str_to_int(child.text)
-               
-           elif tag == "martialpointmodifier":
-               martial_point_modifier = convert_str_to_int(child.text)
-               
-           elif tag == "generalpointmodifier":
-               general_point_modifier = convert_str_to_int(child.text)
-
-           elif tag == "magicalpointmodifier":
-               magical_point_modifier = convert_str_to_int(child.text)
-
-           elif tag == "successesmodifier":
-               successes_modifier = convert_str_to_int(child.text)
-
-           elif tag == "failuresmodifier":
-               failures_modifier = convert_str_to_int(child.text)
-
-           elif tag == "attemptsmodifier":
-               attempts_modifier = convert_str_to_int(child.text)
-
-           elif tag == "recommended":
-               recommended = True
-
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
-
-           else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
-                               (child.tag, self.fname, child.sourceline))
-
-        modified_ability_level = self.modified_ability_level_lookup[level_id]
-        modified_ability_level.martial_point_modifier = martial_point_modifier
-        modified_ability_level.lore_point_modifier = lore_point_modifier
-        modified_ability_level.general_point_modifier = general_point_modifier
-        modified_ability_level.magical_point_modifier = magical_point_modifier
-        modified_ability_level.successes_modifier = successes_modifier
-        modified_ability_level.attempts_modifier = attempts_modifier
-        modified_ability_level.failures_modifier = failures_modifier
-        return
 
 
 
@@ -548,36 +185,8 @@ class ModifiedAbilityGroup:
         self.ability_group = ability_group
         self.abilities = []
 
-        # by default abilities are enabled
-        # (you have to disable the groups or individual abilities to turn them off
-        # you can also disable a group and enable an ability in the group)
-        self.enabled = True
-
-        self.martial_point_modifier = 0        
-        self.general_point_modifier = 0        
-        self.lore_point_modifier = 0        
-        self.magical_point_modifier = 0        
-
-        # ability group mastery modifiers
-        self.successes_modifier = 0
-        self.failures_modifier = 0
-        self.attempts_modifier = 0
-        return
-
-    def get_family(self):
-        return self.ability_group.get_family()
-
     def __iter__(self):
         return iter(self.abilities)
-
-    def set_enabled(self, enabled):
-        self.enabled = enabled
-        for ability in self.abilities:
-            ability.set_enabled(enabled)
-        return
-
-    def is_enabled(self):
-        return self.enabled
 
     def add_modified_ability(self, ability):
         assert ability.__class__.__name__ == "Ability"
@@ -587,57 +196,10 @@ class ModifiedAbilityGroup:
                                            ability = ability)
         self.abilities.append(modified_ability)
         return modified_ability
-
-    def get_martial_point_modifier(self):
-        return self.martial_point_modifier
-
-    def get_general_point_modifier(self):
-        return self.general_point_modifier
-    
-    def get_lore_point_modifier(self):
-        return self.lore_point_modifier
-
-    def get_magical_point_modifier(self):
-        return self.magical_point_modifier
-
-    def get_successes_modifier(self):
-        return self.successes_modifier
-
-    def get_attempts_modifier(self):
-        return self.attempts_modifier
-
-    def get_failures_modifier(self):
-        return self.failures_modifier
-
-    #def get_point_modifier(self):
-    #    return self.lore_point_modifier
-
-    #def get_lore_point_modifier(self):
-    #    return self.lore_point_modifier
-
-    def is_enabled(self):
-        return self.enabled
-
-    def get_abilities(self):
-        return self.abilities
-
-    def get_filtered_abilities(self):
-        """
-        Returns a list of abilities that are enabled and not innate.
-        
-        """
-        return [
-            ability for ability in self.abilities # ]
-            if ability.is_enabled()] ## FIXME
-            #if not ability.is_innate() and ability.is_enabled()] ## FIXME
-
     
     def get_title(self):
         return self.ability_group.get_title()
 
-    def __cmp__(self, other):
-        return cmp(self.ability_group, other.ability_group)
-    
 
 class LevelProgressionData:
     """
@@ -653,7 +215,7 @@ class LevelProgressionData:
         # this level number
         self.level_number = None
 
-        # 
+        # description
         self.level_description = None
 
         # hit points
@@ -662,11 +224,9 @@ class LevelProgressionData:
         self.level_health = None
         self.level_health_refresh = None
 
-        # points gained.
-        self.level_lore = None
-        self.level_martial = None
-        self.level_general = None
-        self.level_magical = None
+        # level up ability gains and promotions
+        self.level_abilities = []
+        self.level_promotions = []
 
         # resolve pool
         self.level_resolve = None
@@ -684,8 +244,62 @@ class LevelProgressionData:
     def get_level_number(self):
         return self.level_number
 
-    def load(self, archetype_node, fail_fast):        
+    def get_new_ability_str(self):
+        return ", ".join([str(ability) for ability in self.level_abilities])
 
+    def get_new_ability_promotion_str(self):
+        return ", ".join([str(promotion) for promotion in self.level_promotions])
+
+    def load_or_level_abilities(self, or_node):
+        abilities = []
+        for child in list(or_node):
+           tag = child.tag
+
+           if tag is COMMENT:
+               # ignore comments!
+               pass
+           else:
+               abilities.append(tag)
+        return abilities
+
+    def load_level_abilities(self, node):
+        for child in list(node):
+           tag = child.tag
+           if tag == "or":
+               or_abilities = self.load_or_level_abilities(child)
+               self.level_abilities.append(or_abilities)
+           elif tag is COMMENT:
+               # ignore comments!
+               pass               
+           else:
+               self.level_abilities.append(tag)
+           return
+    
+    def load_or_level_promotions(self, or_node):
+        promotions = []
+        for child in list(or_node):
+           tag = child.tag
+           if tag is COMMENT:
+               # ignore comments!
+               pass
+           else:
+               promotions.append(tag)
+        return promotions
+
+    def load_level_promotions(self, node):
+        for child in list(node):
+           tag = child.tag
+           if tag == "or":
+               or_promotions = self.load_or_level_abilities(child)
+               self.level_promotions.append(or_promotions)
+           elif tag is COMMENT:
+               # ignore comments!
+               pass               
+           else:
+               self.level_promotions.append(tag)
+           return
+
+    def load(self, archetype_node, fail_fast):
         # handle all the children
         for child in list(archetype_node):
         
@@ -700,8 +314,7 @@ class LevelProgressionData:
                if self.level_resolve is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
-                   self.level_resolve = contents_to_string(child)
-                   
+                   self.level_resolve = contents_to_string(child)                   
 
            elif tag == "levelresolverefresh":
                if self.level_resolve_refresh is not None:
@@ -762,7 +375,21 @@ class LevelProgressionData:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
                    if child.text is not None:
-                       self.level_description = child.text.strip()
+                       self.level_description = contents_to_string(child)
+
+           elif tag == "newlevelabilities":
+               if len(self.level_abilities) > 0:
+                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+               else:
+                   if child.text is not None:
+                       self.load_level_abilities(child)
+
+           elif tag == "newlevelpromotions":
+               if len(self.level_promotions) > 0:
+                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+               else:
+                   if child.text is not None:
+                       self.load_level_promotions(child)
 
            elif tag == "levelmagicpool":
                if self.level_magic_pool is not None:
@@ -1014,6 +641,12 @@ class Archetype:
         # Sort by group name
         self.modified_ability_groups.sort()
 
+        #
+        # FIXME: we need proper modified_ability_groups ..
+        # just has innateness!!
+        #        
+        # self.modified_ability_groups = ability_groups
+
         # update these after a load
         self.innate_ability_levels = []
                 
@@ -1041,13 +674,14 @@ class Archetype:
     
 
     def get_modified_abilities(self):
-        abilities = self.modified_abilities_lookup.values()
+        # abilities = self.modified_abilities_lookup.values()
 
-        def sort_fn(a, b):
-            return cmp(a.get_title(), b.get_title())
+        # def sort_fn(a, b):
+        #     return cmp(a.get_title(), b.get_title())
         
-        abilities.sort(sort_fn)
-        return abilities
+        # abilities.sort(sort_fn)
+        # return abilities
+        return []
         
     
     def has_magical_abilities(self):
@@ -1079,7 +713,8 @@ class Archetype:
         return self.initiative
 
     def get_modified_ability(self, ability_id):
-        return self.modified_abilities_lookup[ability_id]
+        #return self.modified_abilities_lookup[ability_id]
+        return []
 
     def get_groups(self):
         return self.modified_ability_groups
@@ -1134,56 +769,56 @@ class Archetype:
             self.innate_ability_levels.sort(key = lambda mal: mal.get_title())
 
             # update the innate abilities
-            for ability in list(self.modified_abilities_lookup.values()):
-                levels = ability.get_levels()
-                max_level = None
-                for level in levels:
-                    if not level.is_innate():
-                        continue
+            # for ability in list(self.modified_abilities_lookup.values()):
+            #     levels = ability.get_levels()
+            #     max_level = None
+            #     for level in levels:
+            #         if not level.is_innate():
+            #             continue
 
-                    if (max_level is None or 
-                        (max_level.get_level_number() < level.get_level_number())):
-                        max_level = level
+            #         if (max_level is None or 
+            #             (max_level.get_level_number() < level.get_level_number())):
+            #             max_level = level
 
-                if max_level is not None:
-                    self.innate_ability_levels.append(max_level)
+            #     if max_level is not None:
+            #         self.innate_ability_levels.append(max_level)
 
             # update the enabled flag in all the ability groups, abilities and levels
             # (it might be out of date here)
-            for ability_group in self.modified_ability_groups:
+            # for ability_group in self.modified_ability_groups:
 
-                # if a group is disabled all it's levels and abilities are also disabled.
-                if not ability_group.is_enabled():
-                    for ability in ability_group.get_abilities():                    
-                        ability.set_enabled(False)
+            #     # if a group is disabled all it's levels and abilities are also disabled.
+            #     if not ability_group.is_enabled():
+            #         for ability in ability_group.get_abilities():                    
+            #             ability.set_enabled(False)
 
-                else:
-                    # otherwise an ability group is disabled if all it's abilities are.
-                    all_abilities_disabled = True
-                    for ability in ability_group.get_abilities():
-                        if ability.is_enabled():
-                            all_abilities_disabled = False
-                            break
+            #     else:
+            #         # otherwise an ability group is disabled if all it's abilities are.
+            #         all_abilities_disabled = True
+            #         for ability in ability_group.get_abilities():
+            #             if ability.is_enabled():
+            #                 all_abilities_disabled = False
+            #                 break
 
-                    if all_abilities_disabled:
-                        ability_group.set_enabled(False)
+            #         if all_abilities_disabled:
+            #             ability_group.set_enabled(False)
 
-                    else:
+            #         else:
 
-                        # now disable abilities on a per ability basis
-                        for ability in ability_group.get_abilities():
-                            if not ability.is_enabled():
-                                ability.set_enabled(False)
+            #             # now disable abilities on a per ability basis
+            #             for ability in ability_group.get_abilities():
+            #                 if not ability.is_enabled():
+            #                     ability.set_enabled(False)
 
-                        # also an ability is disabled if all its levels are.
-                        all_ability_levels_disabled = True
-                        for ability_level in ability:
-                            if ability_level.is_enabled():
-                                all_ability_levels_disabled = False
-                                break
+            #             # also an ability is disabled if all its levels are.
+            #             all_ability_levels_disabled = True
+            #             for ability_level in ability:
+            #                 if ability_level.is_enabled():
+            #                     all_ability_levels_disabled = False
+            #                     break
 
-                            if all_ability_levels_disabled:
-                                ability.set_enabled(False)
+            #                 if all_ability_levels_disabled:
+            #                     ability.set_enabled(False)
         except:
             print "Problem trying to parse archetype file: %s" % self.fname
             raise
@@ -1191,43 +826,21 @@ class Archetype:
         # after we've loaded all the archertype ability information
         # go through and set the innate information for prerequisites
         #self.set_innate_abilities() ###########################################
-        for ability in self.modified_abilities_lookup.values():
-            for ability_level in ability:
-                ability_level.check_consistency()
+        # for ability in self.modified_abilities_lookup.values():
+        #     for ability_level in ability:
+        #         ability_level.check_consistency()
 
         self.check_consistency()                
         return True
     
 
-    def check_consistency(self):
-        
+    def check_consistency(self):        
         if self.initial_abilities is None:
             raise Exception("Missing 'initial_abilities' in file: %s" % self.fname)
-
         return
 
-    #def _set_ability_prereqs_innate_for_innate_abilities(self):
-    # def set_innate_abilities(self):
-    #     """
-    #     If an ability is innate and it has ability prerequisites then we 
-    #     have to make those prerequisite abilities innate as well.
 
-    #     We have to do this after we've loaded all the modified abilities so
-    #     we can find change them.
-
-    #     """
-    #     for ability_group in self.modified_ability_groups:
-    #         for ability in ability_group.get_abilities():
-    #             if not ability.is_enabled():
-    #                 continue
-    #             for ability_level in ability:
-    #                 #if ability_level.innate_flag:
-    #                     ability_level.set_innate()
-    #     return
-
-
-    def _load(self, archetype_node, fail_fast):        
-
+    def _load(self, archetype_node, fail_fast):
         # handle all the children
         for child in list(archetype_node):
         
@@ -1410,7 +1023,7 @@ class Archetype:
         ability_level = ability.get_modified_ability_level(ability_level)
         ability_level.set_innate()
         return
-        
+
 
     def _load_ability_modifiers(self, ability_modifiers):
         """
@@ -1428,12 +1041,14 @@ class Archetype:
                self._load_ability_group_modifier(child)
 
            elif tag == "disable":
-               self.set_enabled(child, False)
+               #self.set_enabled(child, False)
+               pass
 
            elif tag == "enable":
-               self.set_enabled(child, True)
+               #self.set_enabled(child, True)
+               pass
 
-           elif tag == "innate":               
+           elif tag == "innate":
                self._load_innate_ability_modifier(child)
 
            elif tag is COMMENT:
@@ -1502,22 +1117,22 @@ class Archetype:
                raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
                                (child.tag, self.fname, child.sourceline))
            
-        if ability_id not in self.modified_abilities_lookup:
-            raise Exception("UNKNOWN ABILITY (%s) File: %s Line: %s\n" % 
-                               (ability_id, self.fname, child.sourceline))
+        # if ability_id not in self.modified_abilities_lookup:
+        #     raise Exception("UNKNOWN ABILITY (%s) File: %s Line: %s\n" % 
+        #                        (ability_id, self.fname, child.sourceline))
 
-        modified_ability = self.modified_abilities_lookup[ability_id]
-        modified_ability.martial_point_modifier = martial_point_modifier
-        modified_ability.lore_point_modifier = lore_point_modifier
-        modified_ability.general_point_modifier = general_point_modifier
-        modified_ability.magical_point_modifier = magical_point_modifier
-        modified_ability.successes_modifier = successes_modifier
-        modified_ability.failures_modifier = failures_modifier
-        modified_ability.attempts_modifier = attempts_modifier
+        # modified_ability = self.modified_abilities_lookup[ability_id]
+        # modified_ability.martial_point_modifier = martial_point_modifier
+        # modified_ability.lore_point_modifier = lore_point_modifier
+        # modified_ability.general_point_modifier = general_point_modifier
+        # modified_ability.magical_point_modifier = magical_point_modifier
+        # modified_ability.successes_modifier = successes_modifier
+        # modified_ability.failures_modifier = failures_modifier
+        # modified_ability.attempts_modifier = attempts_modifier
 
-        # handle
-        for child in ability_level_modifier_elements:
-            modified_ability.load_ability_level_modifier(child)
+        # # handle
+        # for child in ability_level_modifier_elements:
+        #     modified_ability.load_ability_level_modifier(child)
         
         return
 
@@ -1543,9 +1158,9 @@ class Archetype:
                else:
                    ability_group_id = child.text.strip()
 
-                   if ability_group_id not in self.modified_ability_groups_lookup:
-                       raise Exception("UNKNOWN ABILITY GROUP ID (%s) File: %s Line: %s\n" % 
-                                       (ability_group_id, self.fname, child.sourceline))
+                   # if ability_group_id not in self.modified_ability_groups_lookup:
+                   #     raise Exception("UNKNOWN ABILITY GROUP ID (%s) File: %s Line: %s\n" % 
+                   #                     (ability_group_id, self.fname, child.sourceline))
 
            elif tag == "lorepointmodifier":
                lore_point_modifier = convert_str_to_int(child.text)
@@ -1576,55 +1191,19 @@ class Archetype:
                raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
                                (child.tag, self.fname, child.sourceline))
 
-        modified_ability_group = self.modified_ability_groups_lookup[ability_group_id]
-        modified_ability_group.lore_point_modifier = lore_point_modifier
-        modified_ability_group.martial_point_modifier = martial_point_modifier
-        modified_ability_group.general_point_modifier = general_point_modifier
-        modified_ability_group.magical_point_modifier = magical_point_modifier
-        modified_ability_group.successes_modifier = successes_modifier
-        modified_ability_group.attempts_modifier = attempts_modifier
-        modified_ability_group.failures_modifier = failures_modifier
+        # modified_ability_group = self.modified_ability_groups_lookup[ability_group_id]
+        # modified_ability_group.lore_point_modifier = lore_point_modifier
+        # modified_ability_group.martial_point_modifier = martial_point_modifier
+        # modified_ability_group.general_point_modifier = general_point_modifier
+        # modified_ability_group.magical_point_modifier = magical_point_modifier
+        # modified_ability_group.successes_modifier = successes_modifier
+        # modified_ability_group.attempts_modifier = attempts_modifier
+        # modified_ability_group.failures_modifier = failures_modifier
 
         ## assert self.ability_id is not None
         ## return ability_modifier
         return
 
-
-    def set_enabled(self, children, enabled):
-        
-        # handle all the children
-        for child in list(children):
-           tag = child.tag
-
-           if tag == "abilityid":
-               ability_id = child.text.strip()
-
-               if ability_id not in self.modified_abilities_lookup:
-                   raise Exception("UNKNOWN ABILITY ID (%s) File: %s Line: %s\n" % 
-                                   (ability_id, self.fname, child.sourceline))
-               
-               modified_ability = self.modified_abilities_lookup[ability_id]
-               modified_ability.set_enabled(enabled)
-
-           elif tag == "abilitygroupid":
-               ability_group_id = child.text.strip()
-
-               if ability_group_id not in self.modified_ability_groups_lookup:
-                   raise Exception("UNKNOWN ABILITY GROUP ID (%s) File: %s Line: %s\n" % 
-                                   (ability_group_id, self.fname, child.sourceline))
-               
-               modified_ability_group = self.modified_ability_groups_lookup[ability_group_id]
-               modified_ability_group.set_enabled(enabled)
-
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
-
-           else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
-                               (child.tag, self.fname, child.sourceline))
-        return
-    
 
 class Archetypes:
     """

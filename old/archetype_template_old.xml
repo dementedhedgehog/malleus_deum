@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+  <chapter>
+    <chaptertitle>{{ archetype.get_title() }}</chaptertitle>
+    <section>        
+      <sectiontitle>Overview</sectiontitle>
+      <indexentry>{{ archetype.get_title() }}</indexentry>
+
+      {{ archetype.get_description() }}
+
+      <vspace/>     
+      <descriptions>
+
+	<term>Appearance Examples:</term>
+	<description>{{ archetype.appearance }}</description>
+
+	<term>Attr Bonuses:</term>
+	<description>{{ archetype.get_attribute_bonus_str() }}</description>
+
+	<term>Attr Limits:</term>
+	<description>{{ archetype.get_attribute_limits_str() }}</description>
+      </descriptions>
+
+    </section>
+
+    <section>
+      <sectiontitle>{{ archetype.get_title() }} Character Creation</sectiontitle>
+
+
+      <!--
+	  <figure position="tb">
+	  <img src="./resources/dragon.png" scale="0.4"></img>
+	  </figure>
+      -->
+      
+      <p>
+	Follow these steps to create a {{ archetype.get_title() }} character
+	<label>sec:character-creation</label>
+      </p>
+
+
+      <olist>
+	<li>
+	  <p>
+            Print out a  {{ archetype.get_title() }} character sheet.  This will save you a lot
+	    of work during the game and is highly recommended.
+	  </p>            
+	</li>
+	
+	<li>
+	  <p>
+            Choose a name for the character and write it on the character sheet..
+	  </p>            
+	</li>
+
+	<li>
+	  <p>
+            Write your own name in the players name area on the character sheet.
+	  </p>            
+	</li>
+
+	<li>
+	  Fill in your height: {{ archetype.height }}, weight: {{ archetype.weight }}, and age: 
+	  {{ archetype.age }}.  Choose whatever gender you want.
+	</li>
+
+	<li>
+	  Fill in your level: 1.
+	</li>
+	
+	<li>
+	  Fill in your characters tags: {{ archetype.get_tags_str() }}
+	</li>
+	
+	<li>
+	  <p>
+            Determine your Primary Attributes using one of the following two methods:
+	  </p>
+
+	  <descriptions>
+            <term>Random</term> 
+            <description>For each attribute, roll 1d6 + 5, and assign that value to the
+	    attribute.  After all attributes have been assigned, optionally swap one
+            or two pairs of    attribute values.
+            </description>  
+            
+            <term>Fixed</term> 
+            <description>Choose one of the following sets of numbers and assign them to 
+            the primary attributes of your choice:
+            <list> 
+              <li>11, 10, 9, 9, 8, 7, 6 or</li>
+              <li>10, 10, 10, 9, 8, 7, 6</li>
+            </list>
+            </description>
+	  </descriptions>
+	</li>
+
+	<li>
+	  Fill in your opposed check modifiers.  The opposed check modifier for an attribute
+	  is the value of the attribute minus nine, <eg/> Dourli has a Strength of 11 and an
+	  Agility of 6.  His opposed strength check modifier is +2 and his opposed agility
+	  check modifier is -3.
+	</li>
+
+	<li>
+	  Determine your Initiative Score and Modifier:
+	  <equation>
+            <line>Initiative Score = {{ archetype.get_initiative() }} + Bonus</line>
+	  </equation>
+
+	  <table>
+	    <tablebody>
+	      <tablecategory>Standard</tablecategory>
+	      <tablespec>
+		<fixed>0.18</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+	      </tablespec>
+
+	      <tableheaderrow>
+		<td>Speed</td>
+		<td align="r">6</td>
+		<td align="r">7</td>
+		<td align="r">8</td>
+		<td align="r">9</td>
+		<td align="r">10</td>
+		<td align="r">11</td>
+	      </tableheaderrow>    
+
+	      <tablerow>
+		<td>Bonus</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[6]["InitiativeSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[7]["InitiativeSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[8]["InitiativeSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[9]["InitiativeSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[10]["InitiativeSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[11]["InitiativeSpeedBonus"] }}</td>
+	      </tablerow>
+	    </tablebody>
+	    <tablefooter>
+	    </tablefooter>
+	  </table>            
+	</li>
+
+	<li>
+	  Determine your Movement.
+	  <label>sec:character-movement</label>
+	  <equation>
+            <line>Moves = {{ archetype.get_move() }} + Bonus</line>
+	  </equation>
+	  Look up your Move Bonus in the following table:
+	  <table>
+	    <tablebody>
+	      <tablecategory>Standard</tablecategory>
+	      <tablespec>
+		<fixed>0.18</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+	      </tablespec>
+
+	      <tableheaderrow>
+		<td>Speed</td>
+		<td align="r">6</td>
+		<td align="r">7</td>
+		<td align="r">8</td>
+		<td align="r">9</td>
+		<td align="r">10</td>
+		<td align="r">11</td>
+	      </tableheaderrow>    
+
+	      <tablerow>
+		<td>Bonus</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[6]["MoveSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[7]["MoveSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[8]["MoveSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[9]["MoveSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[10]["MoveSpeedBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[11]["MoveSpeedBonus"] }}</td>
+	      </tablerow>
+	    </tablebody>
+	    <tablefooter>
+	    </tablefooter>	    
+	  </table>      
+	</li>
+	<li>
+	  Determine your characters Health.
+	  <equation>
+	    <line>Health = {{ archetype.get_progression_data_for_level(0).level_health }} + Bonus</line>
+	  </equation>
+
+	  <table>
+	    <tablebody>
+	      
+	      <tablecategory>Standard</tablecategory>
+	      <tablespec>
+		<fixed>0.18</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+	      </tablespec>
+
+	      <tableheaderrow>
+		<td>Strength</td>
+		<td align="r">6</td>
+		<td align="r">7</td>
+		<td align="r">8</td>
+		<td align="r">9</td>
+		<td align="r">10</td>
+		<td align="r">11</td>
+	      </tableheaderrow>    
+
+	      <tablerow>
+		<td>Bonus</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[6]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[7]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[8]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[9]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[10]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[11]["StrHealthBonus"] }}</td>
+	      </tablerow>
+	    </tablebody>	  
+	    <tablefooter>
+	    </tablefooter>	    
+	  </table>            
+	</li>
+        
+	
+	<li>
+	  Determine your Stamina.
+	  <equation>
+            <line>Stamina = {{ archetype.get_progression_data_for_level(0).level_stamina }}
+            + Bonus</line>
+	  </equation>
+
+	  <table>
+	    <tablebody>	    
+	    <tablecategory>Standard</tablecategory>
+	    <tablespec>
+	      <fixed>0.18</fixed>
+	      <fixed>0.05</fixed>
+	      <fixed>0.05</fixed>
+	      <fixed>0.05</fixed>
+	      <fixed>0.05</fixed>
+	      <fixed>0.05</fixed>
+	      <fixed>0.05</fixed>
+	    </tablespec>
+
+	    <tableheaderrow>
+	      <td>Endurance</td>
+	      <td align="r">6</td>
+	      <td align="r">7</td>
+	      <td align="r">8</td>
+	      <td align="r">9</td>
+	      <td align="r">10</td>
+	      <td align="r">11</td>
+	    </tableheaderrow>    
+
+	    <tablerow>
+	      <td>Bonus</td>
+	      <td align="r">{{ '%+d' % db.attribute_bonuses[6]["StaminaEnduranceBonus"] }}</td>
+	      <td align="r">{{ '%+d' % db.attribute_bonuses[7]["StaminaEnduranceBonus"] }}</td>
+	      <td align="r">{{ '%+d' % db.attribute_bonuses[8]["StaminaEnduranceBonus"] }}</td>
+	      <td align="r">{{ '%+d' % db.attribute_bonuses[9]["StaminaEnduranceBonus"] }}</td>
+	      <td align="r">{{ '%+d' % db.attribute_bonuses[10]["StaminaEnduranceBonus"] }}</td>
+	      <td align="r">{{ '%+d' % db.attribute_bonuses[11]["StaminaEnduranceBonus"] }}</td>
+	    </tablerow>
+	    </tablebody>
+	  </table>      
+	</li>
+	<li>
+	  Determine your characters Health.
+	  <equation>
+	    <line>Health =
+	    {{ archetype.get_progression_data_for_level(0).level_health }} + Bonus
+	    </line>
+	  </equation>
+
+	  <table> 
+	    <tablebody>
+	      <tablecategory>Standard</tablecategory>
+	      <tablespec>
+		<fixed>0.18</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+		<fixed>0.05</fixed>
+	      </tablespec>
+
+	      <tableheaderrow>
+		<td>Strength</td>
+		<td align="r">6</td>
+		<td align="r">7</td>
+		<td align="r">8</td>
+		<td align="r">9</td>
+		<td align="r">10</td>
+		<td align="r">11</td>
+	      </tableheaderrow>    
+
+	      <tablerow>
+		<td>Bonus</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[6]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[7]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[8]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[9]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[10]["StrHealthBonus"] }}</td>
+		<td align="r">{{ '%+d' % db.attribute_bonuses[11]["StrHealthBonus"] }}</td>
+	      </tablerow>
+	    </tablebody>
+	    <tablefooter>
+	    </tablefooter>	    
+	  </table>      
+	</li>
+
+	<li>
+	  Determine your Resolve Dice Pool, Refresh Rate and Current Resolve Pool: 
+	  <equation>
+	    <line>Resolve Dice Pool =
+	    {{ archetype.get_progression_data_for_level(0).level_resolve }} + Bonus
+	    </line>
+	  </equation>
+
+	  <table> 
+	    <tablebody>
+	    <tablecategory>Standard</tablecategory>
+	    <tablespec>
+	      <fixed>0.10</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	    </tablespec>
+
+	    <tableheaderrow>
+	      <td>Willpower</td>
+	      <td align="r">6</td>
+	      <td align="r">7</td>
+	      <td align="r">8</td>
+	      <td align="r">9</td>
+	      <td align="r">10</td>
+	      <td align="r">11</td>
+	    </tableheaderrow>    
+
+	    <tablerow>
+	      <td>Bonus</td>
+	      <td>{{ '%s' % db.attribute_bonuses[6]["ResolveWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[7]["ResolveWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[8]["ResolveWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[9]["ResolveWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[10]["ResolveWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[11]["ResolveWillpowerBonus"] }}</td>
+	    </tablerow>
+	    </tablebody>
+	    <tablefooter>
+	    </tablefooter>	    
+	  </table>
+
+	  <p>
+	    Note that this is a dice pool stat, so you write the number of dice down.
+	    You don't roll anything for this stat.
+	  </p>
+
+	  <p>
+	    Your Resolve Refresh Rate is:
+	    {{ archetype.get_progression_data_for_level(0).level_resolve_refresh }}, and
+	    your current pool is the same as your Resolve Dice Pool.
+	  </p>
+	</li>
+
+	<li>
+	  Fill in your Magic Pool, Magic Refresh Rate and Current Magic Pool.
+	  <equation>
+	    <line>Magic Dice Pool =
+	    {{ archetype.get_progression_data_for_level(0).level_magic_pool }} + Bonus
+	    </line>
+	  </equation>
+
+	  <table> 
+	    <tablebody>
+	    <tablecategory>Standard</tablecategory>
+	    <tablespec>
+	      <fixed>0.10</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	    </tablespec>
+
+	    <tableheaderrow>
+	      <td>Willpower</td>
+	      <td align="r">6</td>
+	      <td align="r">7</td>
+	      <td align="r">8</td>
+	      <td align="r">9</td>
+	      <td align="r">10</td>
+	      <td align="r">11</td>
+	    </tableheaderrow>    
+
+	    <tablerow>
+	      <td>Bonus</td>
+	      <td>{{ '%s' % db.attribute_bonuses[6]["MagicWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[7]["MagicWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[8]["MagicWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[9]["MagicWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[10]["MagicWillpowerBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[11]["MagicWillpowerBonus"] }}</td>
+	    </tablerow>
+	    </tablebody>
+	    <tablefooter>
+	    </tablefooter>	    
+	  </table>
+
+	  <p>
+	    Your Magic Refresh Rate is:
+	    {{ archetype.get_progression_data_for_level(0).level_magic_refresh }}, and
+	    your Current Magic Pool is the same as your Magic Dice Pool.
+	  </p>
+	  
+	  <p>
+	    Not all characters are able to cast spells, but all characters have a magic pool.
+	    This pool represents their animus, their spark of life, and can be use to resist
+	    spells.
+	  </p>
+	</li>
+
+	<li>
+	  Determine your Fate Dice Pool, Fate Refresh Rate and Current Fate Pool: 
+	  <equation>
+	    <line>Fate Dice Pool =
+	    {{ archetype.get_progression_data_for_level(0).level_fate }} + Bonus
+	    </line>
+	  </equation>
+
+	  <table> 
+	    <tablebody>
+	    <tablecategory>Standard</tablecategory>
+	    <tablespec>
+	      <fixed>0.10</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	    </tablespec>
+
+	    <tableheaderrow>
+	      <td>Luck</td>
+	      <td align="r">6</td>
+	      <td align="r">7</td>
+	      <td align="r">8</td>
+	      <td align="r">9</td>
+	      <td align="r">10</td>
+	      <td align="r">11</td>
+	    </tableheaderrow>    
+
+	    <tablerow>
+	      <td>Bonus</td>
+	      <td>{{ '%s' % db.attribute_bonuses[6]["FateLuckBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[7]["FateLuckBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[8]["FateLuckBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[9]["FateLuckBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[10]["FateLuckBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[11]["FateLuckBonus"] }}</td>
+	    </tablerow>
+	    </tablebody>
+	    <tablefooter>
+	    </tablefooter>	    
+	  </table>
+
+	  <p>
+	    Note that this is a dice pool stat, so you write the number of dice down.
+	    You don't roll anything for this stat.
+	  </p>
+
+	  <p>
+	    Your Fate Refresh Rate is:
+	    {{ archetype.get_progression_data_for_level(0).level_fate_refresh }}, and
+	    your current pool is the same as your Fate Dice Pool.
+	  </p>
+	</li>
+	
+
+	<li>
+	  All your Skill Points start at zero.  You will get more when you level up.
+	</li>
+
+	<li>
+	  <p>
+            Players should choose a few initial aspects for their character.   Newly acquired 
+	    aspects have a difficulty of 2d4 + 4 unless the archetype description or the GM
+	    says otherwise.  It is best to do this in a group with the other players and
+	    the GM.  Better still let the other players choose an aspect for you.
+	  </p>
+	  <p>
+	    During the course of the game new aspects can be added and old aspects removed, so 
+	    the initial choice is not overly important.  We suggest you choose one aspect that 
+	    describe your characters politics, motivations or troubles and another one that 
+	    describes your characters relationship with some other member in the party.
+	  </p>
+	  <p>
+	    To provide inspiration, some suggested aspects for this archetype are:
+	    {{ archetype.aspect_examples }}. There is also a table of random aspects in Section
+	    <ref>table:{{ doc_name }}-random-aspects</ref> on page
+	    <pageref>table:{{ doc_name }}-random-aspects</pageref>.  You do not have to
+	    choose aspects from these lists.  You are more than welcome to create your own.  In
+	    fact it is preferable.  Just make sure to run your aspects past your GM before
+	    committing them to paper, as GMs and players may need to collaborate to ensure that
+	    their character's aspects and the world, interact in interesting ways and are cogent.  
+	  </p>
+	</li>
+
+	<li>
+	  Optionally sketch out a couple of lines of back story with your fellow players and 
+	  GM with a few points about the characters history.  Why are you adventuring?  What
+	  made you leave your home to face danger and the not unlikely probability of dying
+	  in a ditch?  Where do you come from and what are you trying to do with your life?
+	</li>
+
+	<li>
+	  <p>
+	    Choose your starting skills for your archetype.  At first level you just choose
+	    skills from the Starting Skills section of your archetype.  At seconed and higher
+	    levels we use a point buy system described in the following section.
+	  </p>
+
+	  <p>
+	    This archetype starts with the following additional abilities: {%
+            for ability_level in archetype.get_archetype_specific_innate_ability_levels() %}
+	    {{ ability_level.get_title() }}{% if not loop.last %}, {% endif %}
+	    {%- endfor %}.
+	  </p>
+
+	  <p>
+	    We do not list those abilities that are innate to all characters.
+	  </p>         
+	  
+	  {{ archetype.get_initial_abilities() }}          
+	</li>
+
+	<li>
+	  Determine your starting money: {{ archetype.starting_cash }}.
+	</li>
+
+	<li>
+	  <p>
+	    Buy equipment.
+	  </p>
+
+	  <p>
+	    Note that each archetype also has a list of default starting equipment
+	    that you get for free at the start of the game: {{ archetype.starting_gear }}
+	  </p>
+	</li>
+
+	<li>
+	  Determine your Armour Class:
+	  <equation>
+	    <line>Armour Class =</line>
+	    <line>{{ archetype.get_armour_class() }} + Armour Modifier +</line>
+	    <line>Shield Modifier +</line>
+	    <line>AC Bonus</line>
+	  </equation>
+	  The armour modifier depends on what armour the character is wearing.  The shield
+	  modifier is available when equipping a shield or a few other weapons that can be
+	  used defensively.  You can look up your AC Bonus below.
+
+	  <table> 
+	    <tablebody>
+	    <tablecategory>Standard</tablecategory>
+	    <tablespec>
+	      <fixed>0.10</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	      <fixed>0.08</fixed>
+	    </tablespec>
+
+	    <tableheaderrow>
+	      <td>Agility</td>
+	      <td align="r">6</td>
+	      <td align="r">7</td>
+	      <td align="r">8</td>
+	      <td align="r">9</td>
+	      <td align="r">10</td>
+	      <td align="r">11</td>
+	    </tableheaderrow>    
+
+	    <tablerow>
+	      <td>Bonus</td>
+	      <td>{{ '%s' % db.attribute_bonuses[6]["ACAgilityBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[7]["ACAgilityBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[8]["ACAgilityBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[9]["ACAgilityBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[10]["ACAgilityBonus"] }}</td>
+	      <td>{{ '%s' % db.attribute_bonuses[11]["ACAgilityBonus"] }}</td>
+	    </tablerow>
+	    </tablebody>
+	    <tablefooter>
+	    </tablefooter>	    
+	  </table>	  
+	</li>    
+      </olist>
+    </section>
+
+
+
+    <section>
+      <sectiontitle>{{ archetype.get_title() }} Level Progression</sectiontitle>
+      <table>
+	<tablebody>
+	<tablecategory>Sideways</tablecategory>
+	<tablespec>
+          <fixed>0.02</fixed>
+          <fixed>0.03</fixed>
+          <fixed>0.03</fixed>
+          <fixed>0.03</fixed>
+          <fixed>0.03</fixed>
+	  <fixed>0.031</fixed>      
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.031</fixed>
+          <fixed>0.31</fixed>
+	</tablespec>
+
+	<tabletitle>{{ archetype.get_title() }} Level Progression Table</tabletitle>
+
+	<tableheaderrow>
+          <th>Level</th>
+          <td width="2">Stamina</td>
+          <th width="2">Health</th>
+          <td width="2">Resolve<dpool/></td>
+          <td width="2">Magic<dpool/></td>
+          <td width="2">Fate<dpool/></td>
+          <th></th>
+	</tableheaderrow>
+	
+	<tableheaderrow>
+          <th>No\#</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Base</th>
+          <th>Rest</th>
+          <th>Notes...</th>
+	</tableheaderrow>
+
+	{% for level_progression_data in archetype.level_progression_table[1:]  %}
+	<tablerow>
+          <td>{{ level_progression_data.get_level_number() }}</td>        
+          <td>{{ level_progression_data.level_stamina }}</td>
+          <td>{{ level_progression_data.level_stamina_refresh }}</td>
+          <td>{{ level_progression_data.level_health }}</td>
+          <td>{{ level_progression_data.level_health_refresh }}</td>
+
+          <td>{{ level_progression_data.level_resolve }}</td>        
+          <td>{{ level_progression_data.level_resolve_refresh }}</td>        
+          <td>{{ level_progression_data.level_magic_pool if level_progression_data.level_magic_pool is not none else "N/A"}}</td>
+          <td>{{
+	  level_progression_data.level_magic_refresh
+	  if level_progression_data.level_magic_refresh is not none else "N/A"
+	  }}</td>
+          <td>{{ level_progression_data.level_fate }}</td>        
+          <td>{{ level_progression_data.level_fate_refresh }}</td>        
+          <td>{{ level_progression_data.level_description if level_progression_data.level_description is not none else ""}}</td>
+	</tablerow>
+	{% endfor %}
+	</tablebody>
+	<tablefooter>
+	</tablefooter>	    
+      </table>
+      
+      <subsection>
+        <subsectiontitle>Level Progression</subsectiontitle>
+	<p>
+	  The level progression table contains the skill points the player gets 
+	  to spend on abilities when they gain a new level.  Abilities that are
+	  innate to all characters are marked thus <innateabilitylevelsymbol/>.  All 
+	  characters get them for free at first level.   Abilities that are specially 
+	  innate to your archetype are marked with a <innatearchetypeabilitylevelsymbol/>.
+	  These are also free, but are special to your archetype.  Your character 
+	  automatically receives all innate abilities at first level.  Abilities 
+	  that we recommended you purchase for characters of this archetype are marked 
+	  with a <recommendedabilitylevelsymbol/> symbol.  
+	</p>
+      </subsection>
+      
+      <subsection>
+        <subsectiontitle>Purchasing Abilities</subsectiontitle>
+
+	<p>
+	  When your character goes up to second and higher levels you gain skill points
+	  that you can use to purchase abilities.  There are four different point types:
+	  Lore <lore/>, Martial <martial/>, General <general/>, and Magical <magical/>.
+	  Starting points for the archetype are specified in the previous section.  The
+	  following sections contain point costs for ability levels in the following form:
+	  <lore/>/<martial/>/<general/>/<magical/>.
+	</p>
+
+	<fourcolumns>
+	  
+	  {%
+	  for modified_ability in archetype.get_modified_abilities()
+	  if not modified_ability.is_inborn()
+	  %}
+
+	  {# ignore disabled abilities. #}
+          {% if modified_ability.is_enabled() %}
+	  
+	  <table compact="true">
+	    <tablebody>	    
+              <tablecategory>Standard</tablecategory>
+              
+              <tablespec>
+		<fixed>0.95</fixed>
+              </tablespec>
+
+              <tablerow>
+		<td align="l">
+		  <tablesection>{{- modified_ability.get_title() -}}
+		  {{ ' ' }}
+		  {{- modified_ability.get_attr_modifiers_str() -}}
+		  </tablesection>
+              </td></tablerow>
+
+              {%- for modified_ability_level in modified_ability  -%}
+              {%- if modified_ability_level.should_appear_in_archetype_list() -%}
+              <tablerow>
+		<td>
+		  {{- modified_ability_level.get_level_number() | convert_to_roman_numerals -}}
+		  {%- if modified_ability_level.is_innate_for_this_archetype() -%}
+		  <innatearchetypeabilitylevelsymbol/>
+		  {%- elif modified_ability_level.is_innate() -%}   
+		  <innateabilitylevelsymbol/>
+		  {%- endif -%}
+		  {%- if modified_ability_level.is_recommended() -%}
+		  <recommendedabilitylevelsymbol/>
+		  {%- endif -%}
+
+		  {%- if modified_ability_level.is_masterable() -%}
+		  {{ ' ' }}          
+		  {%- for x in range(modified_ability_level.get_mastery_successes()) -%}
+                  <success/>
+		  {%- endfor -%}
+		  {%- for x in range(modified_ability_level.get_mastery_attempts()) -%}
+                  <attempt/>
+		  {%- endfor -%}
+		  {%- for x in range(modified_ability_level.get_mastery_failures()) -%}
+                  <fail/>
+		  {%- endfor -%}
+		  x
+		  {%- endif -%}
+
+		  {% if modified_ability_level.has_prerequisites() %}
+		  <arrowleft/>              
+		  <smaller>
+                    {%- for prereq in modified_ability_level.get_prerequisites() -%}
+                    {{- prereq.to_string() -}}
+                    {%- if not loop.last %}, {% endif -%}
+                    {%- endfor -%}
+		  </smaller>
+		  {%- endif -%}
+		  x
+		</td>
+		<td>
+		  y
+		</td>
+		
+              </tablerow>      
+              {%- endif -%}        
+              {%- endfor -%}
+	    </tablebody>	      
+	    <tablefooter>
+	    </tablefooter>	    
+          </table>    
+          {%- endif -%} {# end if enabled. #}
+	  {%- endfor -%}      
+	</fourcolumns>    
+      </subsection>            
+    </section>
+  </chapter>
+</book>

@@ -60,7 +60,8 @@ files_to_build = (
     # ("tables.xml", True, "[T]"),
 
     #("gms_screen.xml", False, "GMS"),
-    ("gmg.xml", True, "[GMG]"),
+    #("gmg.xml", True, "[GMG]"),
+    ("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
 )
 
@@ -69,7 +70,7 @@ patrons_to_build = (
 )
 
 archetypes_to_build = (
-    # ("bard", True, "[BRD]"),
+    #("bard", True, "[BRD]"),
     # ("black_coat", True, "[BC]"),
     # ("dwarven_shield_warrior", True, "[DSW]"),
     # ("red_mage", True, "[RM]"),
@@ -77,8 +78,8 @@ archetypes_to_build = (
     # ("elven_scion", True, "[ES]"),
     # ("outrider", True, "[OR]"),
     # ("summoner", True, "[SM]"),
-    ("hedge_wizard", True, "[HW]"),
-    # ("witch_hunter", True, "[WH]"),
+    #("hedge_wizard", True, "[HW]"),
+    #("witch_hunter", True, "[WH]"),
     # ("rake", True, "[RK]"),
 )
 

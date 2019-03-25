@@ -68,13 +68,12 @@
     <tag>Short</tag>
     <tag>Grudge-Bearer</tag>
   </archetypetags>
-  
-
 
   <archetypeinitialabilities>
     <p>
-      Choose one of Smith II, Carpentry II, Builder II, or Cooper II.  Choose one of Pick Locks,
-      or Ropecraft.  Choose one of Wayfinding or Scout.
+      Choose one of Smith II, Carpentry II, Builder II, or Cooper II.  Choose one of
+      Pick Locks I, or Ropecraft I.  Choose one of Wayfinding I or Scout I.
+      Choose one of Axe Strike I or Hammer Strike I.
     </p>
   </archetypeinitialabilities>
   
@@ -88,14 +87,10 @@
       <levelstaminarefresh>2d4</levelstaminarefresh>
       <levelhealth>d4+9</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
-      <levellore>0</levellore>
-      <levelmartial>0</levelmartial>
-      <levelgeneral>0</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>3<d6/></levelfate>
       <levelfaterefresh>+1<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
-      <levelmagicrefresh>+1<dany/></levelmagicrefresh>      
+      <levelmagicrefresh>+1<dany/></levelmagicrefresh>
       <leveldescription>
       </leveldescription>
     </level>    
@@ -108,15 +103,25 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+4</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>3<d6/></levelfate>
       <levelfaterefresh>+1<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
-      <levelmagicrefresh>+1<dany/></levelmagicrefresh>      
-      <leveldescription></leveldescription>
+      <levelmagicrefresh>+1<dany/></levelmagicrefresh>	
+      <leveldescription>
+	<p>
+	  Abilities: Weapon, Craft, Physical
+	  Promotions: Heavy-Weapons <leqsymbol/>2, Weapon <leqsymbol/>2,
+	  Physical <leqsymbol/>2 x 2
+	</p>
+      </leveldescription>
+      <newlevelabilities>
+	<arcana/>
+	<craft/>
+	<or><weapon/> <craft/></or>
+      </newlevelabilities>
+      <newlevelpromotions>
+	<arcana level="2"/>
+      </newlevelpromotions>      
     </level>    
 
     <level>
@@ -127,10 +132,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>3<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -146,10 +147,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -165,10 +162,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -184,10 +177,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -203,10 +192,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -222,10 +207,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>4<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -241,10 +222,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>5<d6/></levelfate>
       <levelfaterefresh>+2<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -260,10 +237,6 @@
       <levelstaminarefresh>+d6</levelstaminarefresh>
       <levelhealth>+6</levelhealth>
       <levelhealthrefresh>+d6</levelhealthrefresh>
-      <levellore>10</levellore>
-      <levelmartial>15</levelmartial>
-      <levelgeneral>10</levelgeneral>
-      <levelmagical>0</levelmagical>
       <levelfate>5<d6/></levelfate>
       <levelfaterefresh>+3<dany/></levelfaterefresh>
       <levelmagicpool>2<d6/></levelmagicpool>
@@ -274,6 +247,19 @@
 
 
   <abilitymodifiers>
+
+    <innate>
+      <abilityid>craft.mason</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <innate>
+      <abilityid>craft.mason</abilityid>
+      <level>1</level>
+    </innate>
+    
+    <!--
+
     <abilitygroupmodifier>
       <abilitygroupid>archery</abilitygroupid>
       <martialpointmodifier>+1</martialpointmodifier>
@@ -353,16 +339,13 @@
     </abilitymodifier>
     
 
-    <!--
     <disable>
       <abilitygroupid>necromancy</abilitygroupid>
       <abilityid>special.sixth_sense</abilityid>
       <abilitygroupid>magic</abilitygroupid>
     </disable>
-    -->
 
     <enable>
-      <!--
 	  <abilitygroupid>magic</abilitygroupid>
 	  <abilitygroupid>axe</abilitygroupid>
 	  <abilitygroupid>hammer</abilitygroupid>
@@ -379,20 +362,16 @@
 	  <abilitygroupid>social</abilitygroupid>
 	  <abilitygroupid>thespian</abilitygroupid>
 	  <abilitygroupid>wilderness</abilitygroupid>
-      -->
     </enable>
 
-    <!--
 	<enable>
 	<abilitygroupid>bare_handed_fighting</abilitygroupid>
 	</enable>
-    -->
 
     <innate>
       <abilityid>school.military</abilityid>
       <level>1</level>
     </innate>
-
     
     <innate>
       <abilityid>special.natural_sprinter</abilityid>
@@ -536,6 +515,7 @@
       <abilityid>wilderness.dungeoneering</abilityid>
       <generalpointmodifier>-2</generalpointmodifier>
     </abilitymodifier>    
+    -->
     
 </abilitymodifiers>
 </archetype>

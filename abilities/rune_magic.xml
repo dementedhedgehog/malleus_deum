@@ -12,12 +12,11 @@
     </abilitygroupdescription>
   </abilitygroupinfo>
 
-
-
   <ability>
     <abilitytitle>Rune Magic</abilitytitle>
     <abilityid>magic_school.runes</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><runemagic/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -29,8 +28,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>8</defaultlore>
-        <defaultmagical>0</defaultmagical>
         <prereqabilitylevel>language.inochian_1</prereqabilitylevel>	
         <check>Std 2d8 vs DDC 12</check>
       </abilitylevel>
@@ -42,6 +39,7 @@
     <abilitytitle>Sign of Idreshein</abilitytitle>
     <abilityid>magic.sign_of_idreshein</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><runemagic/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -53,10 +51,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>7</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 8</check>
@@ -67,10 +61,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>7</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 8</check>

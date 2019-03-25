@@ -24,6 +24,7 @@
     <abilitytitle>Intimidate</abilitytitle>
     <abilityid>social.intimidate</abilityid>
     <abilityclass>Immediate</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -40,9 +41,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <failures>1</failures>
         <check>Strength vs Opponents Strength or Willpower</check>		
@@ -50,13 +48,9 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Strength + 2 vs Opponents Strength or Willpower</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -66,6 +60,7 @@
     <abilitytitle>Interrogate/Torture</abilitytitle>
     <abilityid>social.interrogate</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -93,9 +88,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>2</successes>
         <failures>1</failures>
@@ -104,11 +96,7 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <check>Std 2d8 vs Opponents Check (see above)</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -118,6 +106,7 @@
     <abilitytitle>Deceive</abilitytitle>
     <abilityid>social.deceive</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -129,24 +118,16 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Std 2d8 vs Opponents Perceive</check>
       </abilitylevel>
 
-
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs Opponents Perceive</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -156,6 +137,7 @@
     <abilitytitle>Perceive</abilitytitle>
     <abilityid>social.perceive</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -167,9 +149,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>2</successes>
         <attempts>1</attempts>
@@ -179,12 +158,8 @@
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <check>Std 2d8 + 2 vs Opponents Deceive</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -195,6 +170,7 @@
     <abilitytitle>Negotiate</abilitytitle>
     <abilityid>social.negotiate</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -257,9 +233,6 @@
       
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>2</attempts>
@@ -268,21 +241,14 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>2</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>2</attempts>
         <check>Std 2d8 + 2 vs Opponents Negotiate or DDC 10</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>2</attempts>
@@ -296,6 +262,7 @@
     <abilitytitle>High Etiquette</abilitytitle>
     <abilityid>social.high_etiquette</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
@@ -309,14 +276,10 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>5</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>2</successes>
         <attempts>2</attempts>
         <check>Std 2d8 vs Opponents High Ettiquette</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -326,6 +289,7 @@
     <abilitytitle>Etiquette</abilitytitle>
     <abilityid>social.etiquette</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
@@ -339,14 +303,10 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs Opponents Ettiquette</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -356,6 +316,7 @@
     <abilitytitle>Low Etiquette</abilitytitle>
     <abilityid>social.low_etiquette</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>
       <indexentry>persuasion</indexentry>
@@ -370,14 +331,10 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <prereqabilitylevel></prereqabilitylevel>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs Opponents Low Ettiquette</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
     </abilitylevels>
   </ability>
@@ -386,6 +343,7 @@
     <abilitytitle>High Contacts</abilitytitle>
     <abilityid>social.high_contacts</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -397,20 +355,13 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs DDC 12</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 3 vs DDC 12</check>
@@ -418,9 +369,6 @@
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 5 vs DDC 12</check>
@@ -433,6 +381,7 @@
     <abilitytitle>Contacts</abilitytitle>
     <abilityid>social.contacts</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -444,20 +393,13 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs DDC 10</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>2</attempts>
 	<check>Std 2d8 + 1 vs DDC 10</check>
@@ -465,9 +407,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 2 vs DDC 10</check>
@@ -475,9 +414,6 @@
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 3 vs DDC 10</check>
@@ -490,6 +426,7 @@
     <abilitytitle>Low Contacts</abilitytitle>
     <abilityid>social.low_contacts</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>    
       <p>
@@ -501,9 +438,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>2</successes>
         <attempts>2</attempts>
 	<check>Std 2d8 vs DDC 10</check>
@@ -511,20 +445,13 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 2 vs DDC 10</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>4</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 4 vs DDC 10</check>
@@ -537,6 +464,7 @@
     <abilitytitle>Leadership</abilitytitle>
     <abilityid>social.leadership</abilityid>
     <abilityclass>Immediate</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>    
       <p>
@@ -561,9 +489,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 vs DDC 12</check>
@@ -571,20 +496,13 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>7</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 2 vs DDC 12</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>7</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 4 vs DDC 12</check>
@@ -598,6 +516,7 @@
     <abilitytitle>Rally</abilitytitle>
     <abilityid>social.rally</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>    
       <p>
@@ -607,9 +526,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>0</attempts>
 	<check>Resolve Pool vs DDC 8</check>
@@ -617,9 +533,6 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Resolve Pool + 1 vs DDC 8</check>
@@ -627,13 +540,9 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Resolve Pool + 2 vs DDC 8</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel> 
     </abilitylevels>
   </ability>
@@ -644,6 +553,7 @@
     <abilitytitle>Yield</abilitytitle>
     <abilityid>social.yield</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><social/></keywords>
     <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
     <abilitydescription>    
       <p>
@@ -658,9 +568,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 vs DDC 8</check>
@@ -668,20 +575,13 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Std 2d8 + 1 vs DDC 8</check>
-        <prereqabilitylevel>school.social_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>3</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Std 2d8 + 2 vs DDC 8</check>

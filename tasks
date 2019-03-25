@@ -1,30 +1,209 @@
 
 
+make the abilities skills
+
+group checks
+median?
+
+low
+medium
+high misc abilities?
+general misc abilities
 
 
- - simplify initiative system (no speeds.. just normal, interrupts and immediate)
- - simplify the skill system???   multiple subtrees?
+How do we lose bravery?????  Bold Moves.
+when you fail to block or dodge you lose a dice from your dice pool?
+
+
+change attacks of opportunity ... only happen when you run past (e.g. move from one adjacent square into another in the same round??)  Have a feat to let you do it.
+
+
+defense... roll armour or dodge or block or parry (magical shield).  dodge, block and parry take a minor.  Interrupts take a minor.
+Different defenses can be used against different attacks.
+
+armour saves use the pool???  no cause then you can be unhittable??
+
+chase scene reviews.
+
+
+initiative...
+like mearles????
+but fast, medium and slow (d10, d8, d6)??
+make it a group check
+take the median result.
+leaders etc can throw away the lowest dice. (problem no decision .. they'll always throw away the lowest.. make them roll bravery?)
+DnD 5e side initiative.
+
+
+rethink initiative?  group initiative??
+rethink group checks??
+have the players play in any order on their turn?????
+
+block, dodge, parry.
+
+
+Make attributes skills!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Change std check to 2d10
+  - gets us a wider range (so more scope for improvement) and makes the
+
+
+What's the relationship between abilities and attributes???
+Make ability values the difficulties??  lower is better???
+Get rid of abilities all together??
+
+
+Use bravery for blocking etc
+
+
+PROBLEM: Too wide a spread of attack to hit values ... 
+
+Separate weapon proficiencies into "Proficiency" which gives bonus to hit and others which give special attacks.
+ADVANTAGE: simple and keeps the ranges reasonable
+PROBLEM: special attacks like attack multiple targets have the same damage etc?
+SOLUTION: just make the proficiency level the base
+
+
+Damage is weapon damage * tier (tier is 1, 2 or 3).
+
+"click" for traps.
+
+nephilim
+
+  fix the weapons table.
+
+ - MD work out rules (can choose a difficulty) 
+ - MD what about roll to hit.. bonuses do X dmg + effect?, normal hits do y, double odds do z damage?
+ - WHAT AM I GOING TO DO ABOUT DODGING ETC???
+     - test your mettle??
+
+what about making defense use bravery??
+
+ DEFENSIVE ACTIONS
+
+
+ BALANCE!!!
+   - work out for each ability the weapon that does the most damage that the archetype can use.
+     given an archetype and a skill work out the max damage?
+   - need to get the number of levels for each ability
+   - need max damage for each ability level
+   - each ability needs a max to-hit + weapon??? + attr?   
+   - each ability needs a max dmg bonus + weapon + attr??  weapon_class.. keywords.
+   - each ability needs a max defense + weapon?? + attr??
+   - each ability needs a strategic "rating"
+     (can be used in combat but doesn't directly do damage)
+   - each ability needs a flavour "rating".
+
+
+MAKE CHOICE OF WEAPON A CHOICE..
+ - axes .. plus vs doors and trees?
+ - hammers plus damage vs armoured and skeletons.
+ 
+
+spreadsheet_writer2.py
+
+<weaponclass>
+<dmg>
+<tohit>
+<strategy>
+<flavour>
+
+
+
+ make all dice pools d6s?
+
+ look at hankerins social encounters thing..
+ rowcolor at the start of the column??
+
+ consider making the dm passive??  .. will do!!! (dm can roll for damage)
+
+
+ how do I stop people only using one ability?
+   (don't make them special-purpose.. accurate, more damage, multiple targets, disarm etc).
+
+
+
+ PRINCIPLES
+  - don't modify to hit by attributes.. modify damage by attributes.
+  - make modifier level 1 give +1, level 2 give +2 etc!!
+
+
+  Role Playing Scenes
+  What's at stake in the scene?
+  Dilemma.. choice?
+  Timer?
+  Multiple outcomes.. favourable, as written, bad?
+
+  hardwire into the code?
+  what about resolve checks (charge?) .. beserk..
+
+  need some kind of expression for ability progression in archetypes?
+
+  fix ability graph generation
+
+  glamour.. needs mechanics.
+
+  combine rest and sleep??
+
+  DND4 like classification of monsters.
+  reduce starting hit points a bit????
+
+    Change attribute type xsd to a 
+
+  Get rid of the klazyabolous abilities.. make them special or monster?
+
+
+ PROBLEMS
+
+ - run pep8 test on code
+
+ - abilities.. (no per character ability stuff).
+     - mastery 
+     - keywords
+     - broken down by keyword
+     - innate and inborn
+     - automation??
+     - remove all the parent abilities ... like physical???  make the attribute tests.
+     - what do we do about trees and dependencies?
+
+  character sheets missing innate and inborn
+
+  fix the mastery conditions
+
+  if I go to keywords how do I organize the trees?
+  want to make the trees smaller as well.
+
+
+ - Travel..
+      i) it's ok to skip it!
+      ii) skill challenge.
+      iii) role-play it.
+
+ - episodic game play (just cut out the store rooms etc).
+
+
+ - simplify the bonus system??
  - maths behind the game.
  - fights were all the same.
  - resolve?? uses..
+      has't worked yet
+      possession?
+ - fix level up points.
+ - character creation .. simplify
+      
+ - ability tree complexity?
+ - the role of attribute modifiers in abilities
+ - pursuit
+	no high level spells? (is that a bad thing?)
+	breaking??? 
+	rests?
+	character creation too complicated
+	leveling up!
+	balance
 
-    Morale.. hasn't worked yet
     Point-buy system.. problematic.
     Equipment prices.. eratic
 
-
-
- CHECK
-    Ability classes... Talk-> Immediate?
-    fight-reach.. change to a spear!
-    What does FAST and SLOW mean?
-    remove talk
-    lose resolution???? (maybe keep it?)
-    FIXME
-    no electrum
-
- - fix level up points.
- - Fewer lore points.
  - change level up tables to only show changes going up levels??
  - mooks, named characters, key characters. (names?)
  - two shot ability with guns. ?? 
@@ -34,15 +213,23 @@
  - rename wilderness and city abilites (sneak etc).
  - physical is broken .. no mastery for tree roots?
  - witchhunter starting points.
-
-
  - remove willpower??? replace with resolve??
+ - banish (under powered.. poorly designed)
+ - rip out the per class mastery?
+
+ CHECK
+    fight-reach.. change to a spear!
+    What does FAST and SLOW mean?
+    lose resolution???? (maybe keep it?)
+    FIXME
+
   
 remove ability group description?
 
-  prepared.. right tool for the job.. (ability.. fills a heavy item place).
+  prepared.. right tool for the job.. (ability.. fills a heavy item place). Sound planner?
 
 add level 4 attribute bonuses.
+
 
 rename theurgic
 
@@ -61,12 +248,6 @@ look at warhammer fantasy magic
 
 
  *** CHANGES ***
-
-
-make sure that all images have licensing information
-
-spell animal form...
-  roll on a table for animal!!
 
 plan..
    drop attribute prereqs from (most) abilities. .. prereaattr
@@ -113,18 +294,6 @@ nerf large shield. Reduce AC bonus of large shield to +1.. give them a deny-flan
  overcharge table.
 
  bind is op.
-
- Added these spells:
-   greater portal..
-   scrying
-   graft flesh
-   hyperosmia
-   portal to the Wyld.???
-   eldritch push
-   eldritch shield
-   phantasmal vulture
-   spider climb
-   kiss of the deep
 
  removed necromantic lore and demonic lore.. moved that into the conjuration magic school.
  (should I call it conjuration or demonic lore?)
@@ -205,7 +374,6 @@ Reading Scroll make test at the language level .. inochian, fey or possibly dwar
 Face of the Beloved This spell combines necromancy with illusion. The necromancer raises a zombie which has no face. When the living look upon it they see their own loved ones.
 So the hero trying to destroy this zombie is confronted by his mother, or his wife or son, or his best friend.
 
-
 Move the tables for bonuses into the character creation fragment!!
 
 rename abilities for hide in towns? Urban/Wilderness
@@ -214,8 +382,6 @@ counter spells?
 
 WHAT DO I DO ABOUT ABILITIES?
 DROP SOME ABILITIES??
-
-have a look at the Summoner Sorceror game.
 
 copyright?
 
@@ -227,18 +393,6 @@ abilities.. too many attempts..
 
 give additions to abilities.
 
- PROBLEMS:     
-
-    open problems
-        ability tree complexity.
-	the role of attribute modifiers in abilities
-	pursuit
-	no high level spells? (is that a bad thing?)
-	breaking??? 
-	rests?
-	character creation too complicated
-	leveling up!
-	balance
 
 
 atuning magical items??
@@ -265,6 +419,12 @@ http://fossilbank.wikidot.com/category:tabletop-game-libre
 
 
 
- *** DONE ***
- - make the character sheets editable.
- 
+
+ *** CHANGES ***
+ - removed point buy system for abilities
+ - simplify initiative system (no speeds.. just normal, interrupts and immediate)
+ - removed root abilities (scholar, military etc).
+ - add keywords to abilities (to provide finer grained ability grouping)
+ - simplify the skill system???   multiple subtrees?
+
+

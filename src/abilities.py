@@ -2,6 +2,7 @@
 import sys
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
+from collections import defaultdict
 
 from utils import (
     parse_xml,
@@ -29,7 +30,45 @@ ability_level_lookup = {}
 valid_attrs = ("Strength", "Endurance", "Agility", "Speed",  
                "Luck", "Willpower", "Perception")
 
+ability_keywords = (
+    "archery",
+    "light-weapon",
+    "heavy-weapon",
+    "scholar",
+    "military",
+    "scholar",
+    "language",
+    "physical",
+    "skullduggery",
+    "trade",
+    "social",
+    "finearts",
+    "enchantment",
+    "special",
+    "runemagic",
+    "dagger",
+    "elemental",
+    "abjuration",
+    "spear",
+    "craft",
+    "evocation",
+    "luck",
+    "monster",
+    "necromancy",
+    "wildmagic",
+    "arcana",
+    "hammer",
+    "gun",
+    "club",
+    "transport",
+    "conjuration",
+    "crossbow",
+    "theurgic",
+    "weapon",
+    "wilderness",
 
+    "klazyabolus",
+    )
 
 class Prerequisite(object):
     pass
@@ -166,10 +205,7 @@ class AbilityLevel:
 
     def __init__(self):
         self.level_number = None        
-        self.default_martial = 0
-        self.default_general = 0
-        self.default_lore = 0
-        self.default_magical = 0
+        self.innate = False
 
         # the check associated with this ability
         self.check = None 
@@ -214,40 +250,11 @@ class AbilityLevel:
     def get_ability(self):
         return self.ability
 
-    def get_lore_points(self):
-        return self.default_lore
-
-    def get_martial_points(self):
-        return self.default_martial
-    
-    def get_general_points(self):
-        return self.default_general
-
-    def get_magical_points(self):
-        return self.default_magical
-
-    def get_points(self):
-        return (self.default_lore +
-                self.default_martial +
-                self.default_general +
-                self.default_magical)
-
     def __str__(self):
         return self.get_title()
 
     def is_innate(self):
-        return (
-            self.level_number == 0 and
-            self.default_martial == 0 and 
-            self.default_general == 0 and 
-            self.default_lore == 0 and 
-            self.default_magical == 0)
-
-    def get_default_cost(self):
-        return (self.default_martial +
-                self.default_general +
-                self.default_lore + 
-                self.default_magical)
+        return self.innate
 
     def get_check(self):
         return self.check
@@ -302,18 +309,6 @@ class AbilityLevel:
     def get_prerequisite_tags(self):
         return self.prerequisite_tags    
 
-    def get_default_martial(self):
-        return self.default_martial
-
-    def get_default_general(self):
-        return self.default_general
-    
-    def get_default_lore(self):
-        return self.default_lore
-
-    def get_default_magical(self):
-        return self.default_magical
-
     def is_masterable(self):
         return self.successes > 0 or self.failures > 0 or self.attempts > 0
 
@@ -358,27 +353,13 @@ class AbilityLevel:
                else:
                    level.default_lore = int(child.text)
 
-           elif tag == "defaultmartial":
-               if level.default_martial != 0:
-                   raise Exception("Only one defaultmartial per abilitylevel. (%s) %s\n" %
+           elif tag == "innate":
+               if level.innate:
+                   raise Exception("Only one innate per abilitylevel. (%s) %s\n" %
                                    (child.tag, str(child)))
                else:
-                   level.default_martial = int(child.text)
-                   
-           elif tag == "defaultgeneral":
-               if level.default_general != 0:
-                   raise Exception("Only one defaultgeneral per abilitylevel. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   level.default_general = int(child.text)
-
-           elif tag == "defaultmagical":
-               if level.default_magical != 0:
-                   raise Exception("Only one defaultmagical per abilitylevel. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   level.default_magical = int(child.text)
-
+                   level.innate = True
+           
            elif tag == "successes":
                if level.successes > 0:
                    raise Exception("Only one successes per abilitylevel. (%s) %s\n" %
@@ -484,42 +465,6 @@ class AbilityLevel:
         # add this ability level to the lookup table 
         # (after we have an id)
         ability_level_lookup[level.get_id()] = level
-
-        # sanity checks
-        if (level.get_level_number() > 0 and
-            level.get_default_cost() == 0 and
-            len(level.prerequisite_tags) == 0 and
-            not level.get_ability().is_inborn()):
-            raise Exception("Ability level %s has a level > 0 and 0 points cost.  "
-                            "This is not allowed.  Non-zero ability levels must cost "
-                            ">0 points to acquire by default (This can be modified by "
-                            "archetypes down to zero) in %s." % 
-                            (level.get_title(), basename(level.ability.fname)))
-
-        elif level.get_level_number() == 0 and level.get_default_cost() != 0:
-            raise Exception("Ability level %s has a level of 0 and > 0 points cost."
-                            "This is not allowed.  Zero ability levels must cost "
-                            "0 points to acquire by default in %s." % 
-                            (level.get_title(), basename(level.ability.fname)))
-
-
-        non_zero_skill_point_count = 0
-        if level.default_martial > 0:
-            non_zero_skill_point_count += 1
-
-        if level.default_general > 0:
-            non_zero_skill_point_count += 1
-            
-        if level.default_lore > 0:
-            non_zero_skill_point_count += 1
-            
-        if level.default_magical > 0:
-            non_zero_skill_point_count += 1
-
-        if non_zero_skill_point_count > 1:
-            raise Exception("Ability level %s costs two different types of skill points "
-                            "This is not allowed in %s." % 
-                            (level.get_title(), basename(level.ability.fname))) 
 
         # check that if an ability requires successes or failures it has check
         if ((level.successes > 0 or level.attempts > 0 or level.failures > 0)
@@ -632,18 +577,6 @@ class AbilityClass:
             ability_cls = AbilityClass.REACTION
         elif ability_class == "Melee":
             ability_cls = AbilityClass.MELEE
-        # elif ability_class == "Start":
-        #     ability_cls = AbilityClass.START
-        # elif ability_class == "Fast":
-        #     ability_cls = AbilityClass.FAST
-        # elif ability_class == "Medium":
-        #     ability_cls = AbilityClass.MEDIUM
-        # elif ability_class == "Slow":
-        #     ability_cls = AbilityClass.SLOW
-        # elif ability_class == "MediumOrSlow":
-        #     ability_cls = AbilityClass.MEDIUM_OR_SLOW
-        # elif ability_class == "StartAndReaction":
-        #     ability_cls = AbilityClass.START_AND_REACTION
         elif ability_class == "Non-Combat":
             ability_cls = AbilityClass.NON_COMBAT
         elif ability_class == "Tag":
@@ -679,6 +612,8 @@ class Ability:
         # can be used when making this test).
         self.attr_modifiers = []
 
+        self.keywords = None
+
         # Is the ability a special racial/class ability?
         #
         # This differs from the concept of innateness in that an ability
@@ -700,6 +635,12 @@ class Ability:
         self.levels = []        
         return
 
+    def get_ability_level(self, level_number):
+        for ability_level in self.levels:
+            if ability_level.get_level_number() == level_number:
+                return ability_level            
+        return None
+    
     def get_skill_point_type(self):
         return self.skill_point_type
 
@@ -724,6 +665,9 @@ class Ability:
         if len(self.attr_modifiers) > 0:
             str_rep = "(" + ", ".join(self.attr_modifiers) + ")"
         return str_rep
+    
+    def get_attr_modifiers(self):
+        return self.attr_modifiers
     
     def get_ability_class_symbol(self):
         return AbilityClass.get_symbol(self.ability_class)
@@ -779,6 +723,8 @@ class Ability:
                 break
         return has_prereqs
 
+    def __iter__(self):
+        return iter(self.get_levels())
 
     def has_tags(self):
         return len(self.tags) > 0
@@ -892,6 +838,9 @@ class Ability:
            elif tag == "abilityattrmodifiers":
                self._parse_attr_modifiers(child)
 
+           elif tag == "keywords":
+               self.keywords = self.parse_keywords(child)
+
            elif tag is COMMENT:
                # ignore comments!
                pass
@@ -908,51 +857,26 @@ class Ability:
         self.validate()
         return
 
+    def parse_keywords(self, keywords_element):
+        keywords = []
+        # handle all the children
+        for child in list(keywords_element):
+
+            tag = child.tag
+            if tag in ability_keywords:
+                keywords.append(tag)
+
+            elif tag is COMMENT:
+                # ignore comments!
+                pass
+
+            else:
+                raise Exception("UNKNOWN (%s) in file %s\n" % 
+                                (child.tag, self.fname))        
+        return keywords
     
     def validate(self):
-
-        # Check that each ability can only cost one type of skill points
-        # (otherwise leveling up becomes very complicated).
-        martial = False
-        general = False
-        magical = False
-        lore = False
-        for level in self.levels:
-
-            if level.get_lore_points() > 0:
-                lore = True
-		self.skill_point_type = SKILL_POINT_TYPE.LORE
-
-            if level.get_martial_points() > 0:
-                martial = True
-		self.skill_point_type = SKILL_POINT_TYPE.MARTIAL
-                
-            if level.get_general_points() > 0:
-                general = True
-		self.skill_point_type = SKILL_POINT_TYPE.GENERAL                
-
-            if level.get_magical_points() > 0:
-                magical = True
-		self.skill_point_type = SKILL_POINT_TYPE.MAGICAL
-
-        points = []
-        if martial:
-            points.append("martial")
-
-        if lore:
-            points.append("lore")
-
-        if general:
-            points.append("general")
-
-        if magical:
-            points.append("magical")
-
-        if len(points) > 1:
-            raise Exception("Only one skill point cost per ability: %s "
-                            "received %s" % (self.title, ", ".join(points)))
         return
-
 
     def is_inborn(self):
         """
@@ -1001,6 +925,9 @@ class Ability:
             return level.level_number
         self.levels.sort(key = get_level_key)
         return
+
+    def get_keywords(self):
+        return self.keywords
 
 
 class AbilityGroupId:
@@ -1287,6 +1214,33 @@ class AbilityGroups:
     def __getitem__(self, key):
         return self.ability_groups[key]
 
+
+def get_ability_level_total_prereqs(ability_groups, ability_level, prereqs=None):
+    """
+    Gets a list of all the prereqs for this ability level (including this ability level.
+
+    """
+    if prereqs is None:
+        prereqs = set()
+    level_number = ability_level.get_level_number()
+    prereqs.add(ability_level)
+    
+    ability = ability_level.get_ability()
+    for i in range(1, level_number):
+        pal = ability.get_ability_level(i)
+        get_ability_level_total_prereqs(ability_groups,
+                                        pal,
+                                        prereqs=prereqs)
+        
+    for prereq in ability_level.get_prerequisites():
+        if isinstance(prereq, AbilityLevelPrereq):
+            prereq_ability_level = ability_groups.get_ability_level(prereq.ability_level_id)
+            get_ability_level_total_prereqs(ability_groups,
+                                            prereq_ability_level,
+                                            prereqs=prereqs)
+    return prereqs
+    
+
     
 if __name__ == "__main__":
 
@@ -1302,12 +1256,13 @@ if __name__ == "__main__":
     count = 0
     
     for ability_group in ability_groups:
-        #print(ability_group.get_title())
+        print(ability_group.get_title())
 
-        #if "chool" not in ability_group.get_title():
-        #    continue
+        if "Sword" not in ability_group.get_title():
+           continue
         
         for ability in ability_group:
+            
             count += 1
             print("\t%i %s" % (count, ability.get_title()))
             # # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
@@ -1315,12 +1270,18 @@ if __name__ == "__main__":
             # # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
             # # #print("\t\t\t\t: %s" % ability.get_ability_class())
             
-            # for ability_level in ability.get_levels():
-            #     print("\t\t\t\t title %s" % ability_level.get_title())
+            for ability_level in ability.get_levels():
+                print("\t\t\t\t title %s" % ability_level.get_title())
+                print("\t\t\t\t prereqs %s" % ability_level.get_prerequisites())
+
+                pd = get_ability_level_total_prereqs(ability_groups, ability_level)
+                #print("\t\t\t\t pd %s" % str(pd))
+                print("\t\t\t\t pd %s" % ", ".join([p.get_title() for p in pd]))
+                
             #     print("\t\t\t\t id %s" % ability_level.get_id())
             # #     print("\t\t\t\t2 %s" % ability_level.check)
             # #     print("\t\t\t\t3 %s" % ability_level.description)
             # # #    #print("\t\t\tLore: %s" % ability_level.get_default_lore())
-
+            
 
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Axe Proficiency</abilitygrouptitle>
     <abilitygroupid>axe</abilitygroupid>
@@ -14,11 +13,11 @@
     </abilitygroupdescription>
   </abilitygroupinfo>
   
-
   <ability>
     <abilitytitle>Axe Strike</abilitytitle>
     <abilityid>axe.strike</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><heavy-weapon/></keywords>
     <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -30,9 +29,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -41,21 +37,14 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
       </abilitylevel>      
@@ -67,6 +56,7 @@
     <abilitytitle>Axe Hook</abilitytitle>
     <abilityid>axe.hook</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><heavy-weapon/></keywords>
     <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -77,9 +67,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -90,9 +77,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Weapon damage + Str modifier and opponent drops weapon/shield</damage>
       </abilitylevel>      
@@ -104,6 +88,7 @@
     <abilitytitle>Axe Cleave</abilitytitle>
     <abilityid>axe.cleave</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><heavy-weapon/></keywords>
     <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -115,9 +100,6 @@
       
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <prereqabilitylevel>axe.strike_2</prereqabilitylevel>
@@ -128,18 +110,12 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Weapon damage + 3 + Str modifier</damage>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Weapon damage + 5 + Str modifier</damage>
       </abilitylevel>
@@ -151,6 +127,7 @@
     <abilitytitle>Axe Frenzy</abilitytitle>
     <abilityid>axe.frenzy</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><heavy-weapon/></keywords>
     <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -163,9 +140,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
 	<prereqattr><attr>Willpower</attr><value>9</value></prereqattr>
@@ -176,9 +150,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
       </abilitylevel>      

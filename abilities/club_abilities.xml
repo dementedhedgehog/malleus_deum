@@ -18,6 +18,7 @@
     <abilitytitle>Club Strike</abilitytitle>
     <abilityid>club.strike</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><club/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -30,9 +31,6 @@
       <abilitylevel>
 	<!-- level 0 is innate! -->
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -41,21 +39,14 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
       </abilitylevel>      
@@ -67,6 +58,7 @@
     <abilitytitle>Club Smash</abilitytitle>
     <abilityid>club.smash</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><club/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -79,9 +71,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>club.strike_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -94,9 +83,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>
 	  Weapon damage + 6 and opponent saves versus
@@ -111,6 +97,7 @@
     <abilitytitle>Club Wild Swing</abilitytitle>
     <abilityid>club.wild_swing</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><club/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -122,9 +109,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -139,9 +123,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>4</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + 2</damage>
         <effect>

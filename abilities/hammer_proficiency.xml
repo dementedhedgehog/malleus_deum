@@ -19,6 +19,7 @@
     <abilitytitle>Hammer Strike</abilitytitle>
     <abilityid>hammer.strike</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><heavy-weapon/><hammer/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -31,9 +32,6 @@
       <abilitylevel>
 	<!-- level 0 is innate! -->
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -42,21 +40,14 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
       </abilitylevel>      
@@ -68,6 +59,7 @@
     <abilitytitle>Hammer Smash</abilitytitle>
     <abilityid>hammer.smash</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/><heavy-weapon/><hammer/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -81,9 +73,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>hammer.strike_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -93,9 +82,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>6</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Weapon damage + Str modifier, opponent saves versus agility or is knocked back</damage>
       </abilitylevel>      

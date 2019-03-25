@@ -360,6 +360,11 @@ class HtmlFormatter:
         return    
     end_martial = no_op
 
+    def start_percent(self, element):
+        self.html_file.write("%")
+        return    
+    end_percent = no_op
+
     def start_general(self, element):
         self.html_file.write("\\general{}")
         return    
@@ -966,12 +971,12 @@ class HtmlFormatter:
     start_tablespec = no_op
     end_tablespec = no_op
 
-    def start_table(self, table):
+    def start_tableody(self, table):
 
         #category = table.find("tablecategory")
         category = get_text_for_child(table, "tablecategory")
-        if category is None:
-            raise Error("Table requires a tablecategory child element.")
+        if category is None or category.strip() == "":
+            raise Exception("Table requires a tablecategory child element.")
         
         figure = False
         fullwidth = False
@@ -992,7 +997,7 @@ class HtmlFormatter:
             # the default
             pass
         else:
-            raise Exception("Unknown table category: '%s'" % category)        
+            raise Exception("Unknown table category: '%s'" % category)
 
         # we need to work out in advance the table layout (e.g. |c|c|c| or whatever).
         table_spec = table.find("tablespec")
@@ -1667,3 +1672,7 @@ class HtmlFormatter:
         self.html_file.write(r"\\end{attributionfont}")
         return
     
+    def start_arrowleft(self, symbol):
+        self.html_file.write(u"🡒")
+        return
+    end_arrowleft = no_op    

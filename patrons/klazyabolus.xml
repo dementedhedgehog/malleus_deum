@@ -41,7 +41,6 @@
 	<fixed>0.7</fixed>
       </tablespec>
       <tabletitle>Klazyabolous Patron Taint Table</tabletitle>
-      <tablelabel>table:{{ doc_name }}-awareness</tablelabel>
       
       <tableheaderrow>
 	<td>Roll d49</td>
@@ -95,6 +94,7 @@
 	<td>Reroll on the overcharge effects table - no patron taint.  Klazyabolous
 	is not paying attention.</td>
       </tablerow>
+      <tablelabel>table:{{ doc_name }}-awareness</tablelabel>
     </table>
     
   </patrondescription>
@@ -126,6 +126,7 @@ More flavourful to have a per patron thing?
     <abilitytitle>Invoke Klazyabolous</abilitytitle>
     <abilityid>klazyabolous.invoke</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><klazyabolus/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -151,10 +152,6 @@ More flavourful to have a per patron thing?
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool vs DDC 10</check>
@@ -165,14 +162,6 @@ More flavourful to have a per patron thing?
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
-	<!--
-        <successes>3</successes>
-        <attempts>3</attempts>
-	-->
         <check>Magic Pool + 2 vs DDC 10</check>
 	<overcharge>DC + 5</overcharge>
       </abilitylevel>      
@@ -184,6 +173,7 @@ More flavourful to have a per patron thing?
     <abilitytitle>Batracian Leap</abilitytitle>
     <abilityid>klazyabolous.leap</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><klazyabolus/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -195,10 +185,6 @@ More flavourful to have a per patron thing?
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool vs DDC 8</check>
@@ -207,26 +193,17 @@ More flavourful to have a per patron thing?
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
-	<!--
-        <successes>3</successes>
-        <attempts>3</attempts>
-	-->
         <check>Magic Pool + 2 vs DDC 7</check>
 	<overcharge>DC + 5</overcharge>
       </abilitylevel>      
     </abilitylevels>
   </ability>  
-  
-
 
   <ability>
     <abilitytitle>Incorporal Mist</abilitytitle>
     <abilityid>klazyabolous.incorporal_mist</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><klazyabolus/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -239,10 +216,6 @@ More flavourful to have a per patron thing?
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool vs DDC 20</check>
@@ -252,14 +225,6 @@ More flavourful to have a per patron thing?
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
-	<!--
-        <successes>3</successes>
-        <attempts>3</attempts>
-	-->
         <check>Magic Pool + 2 vs DDC 20</check>
 	<overcharge>DC + 7</overcharge>
       </abilitylevel>      

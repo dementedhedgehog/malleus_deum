@@ -19,6 +19,10 @@
     </section>
 
     <section>
+      <sectiontitle>Defense Abilities</sectiontitle>
+    </section>
+
+    <section>
       <sectiontitle>Martial Abilities</sectiontitle>
       {% for ability in ability_groups.get_abilities()
       if ability.is_martial_ability() and not ability.is_gmg_ability() %}

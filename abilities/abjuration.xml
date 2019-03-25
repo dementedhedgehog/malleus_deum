@@ -8,44 +8,19 @@
     <abilitygroupdescription>
       <p>
         Magic abilities involve the use of the characters magic pool and
-	are only available to certain archetypes.
+	are only available to certain archetypes. Abjuration involve the
+	use of raw magical energies focusing on casting
+	protective, shielding and counter magics.
       </p>
     </abilitygroupdescription>
   </abilitygroupinfo>
 
- 
-  <ability>
-    <abilitytitle>Abjuration</abilitytitle>
-    <abilityid>magic_school.abjuration</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	Abjuration involve the use of raw magical energies focusing on casting
-	protective, shielding and counter magics.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <defaultmagical>8</defaultmagical>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
-        <check>Std 2d8 vs DDC 12</check>	
-      </abilitylevel>
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <defaultmagical>8</defaultmagical>
-        <check>Std 2d8 + 2 vs DDC 12</check>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
-  
   <ability>
     <abilitytitle>Contego</abilitytitle>
     <abilityid>magic.contego</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><abjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -61,24 +36,21 @@
 	or explode.   Explosions do 3d6 damage to all adjacent creatures including the
 	character being shielded.  Adjacent creatures may save, Speed vs DDC 10, to
 	take half damage.
-      </p>      
+      </p>
     </abilitydescription>    
 
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 12</check>
 	<overcharge>DC + 6</overcharge>		
 	<effect>Shield provides 20 temporary Stamina</effect>		
-        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultmagical>3</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 3 vs 12</check>
@@ -87,13 +59,12 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
-  
-
 
   <ability>
     <abilitytitle>Banish</abilitytitle>
     <abilityid>magic.banish</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><abjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -106,23 +77,14 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs Demons Magic Pool</check>
 	<overcharge>DC + 8</overcharge>
-        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 5 vs Demons Magic Pool</check>
@@ -136,6 +98,7 @@
     <abilitytitle>Commune</abilitytitle>
     <abilityid>magic.commune</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><abjuration/></keywords>
     <abilityattrmodifiers></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -155,23 +118,14 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 14</check>
 	<overcharge>DC + 11</overcharge>
-        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 14</check>
@@ -181,12 +135,11 @@
   </ability>
 
 
-
-
   <ability>
     <abilitytitle>Flesh Ward</abilitytitle>
     <abilityid>magic.flesh_ward</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><abjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -210,24 +163,15 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
         <check>Magic Pool versus DDC 10</check>
 	<overcharge>DC + 8</overcharge>
 	<effect>+8 temp hit points</effect>
-        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 3 versus Stated Target</check>
@@ -237,10 +181,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 6 versus Stated Target</check>
@@ -255,6 +195,7 @@
     <abilitytitle>Circle of Protection</abilitytitle>
     <abilityid>magic.circle_of_protection</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><abjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -272,15 +213,10 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
 	<check>Magic Pool vs DDC 6</check>
 	<overcharge>DC + 6</overcharge>		
         <successes>3</successes>
         <attempts>1</attempts>
-        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>	
 	<leveldescription>
 	  <p>
 	    If successful Creates a DC25 protective barrier against extra planar creatures.
@@ -292,10 +228,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 6</check>
@@ -312,13 +244,11 @@
   </ability>
 
 
-
-
-
   <ability>
     <abilitytitle>Eldritch Shield</abilitytitle>
     <abilityid>magic.eldritch_shield</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><abjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -336,24 +266,15 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 7</check>
 	<overcharge>DC + 6</overcharge>		
 	<effect>d6 damage and pushed back </effect>		
-        <prereqabilitylevel>magic_school.abjuration_1</prereqabilitylevel>
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 6</check>

@@ -1,0 +1,61 @@
+<fourcolumns>  
+<sectiontitle>Abilities by Name</sectiontitle>
+
+{%
+  for ability in ability_groups.get_abilities()
+  if not ability.is_inborn()
+  %}
+
+  <table compact="true">
+    <tablecategory>Standard</tablecategory>
+    
+    <tablespec>
+      <fixed>0.95</fixed>
+    </tablespec>
+
+    <tableheaderrow><td align="l">
+        <tablesection>{{- ability.get_title() -}}
+        {{ ' ' }}
+        {{- ability.get_attr_modifiers_str() -}}
+        </tablesection>
+      </td></tableheaderrow>
+    
+    <tablerow>
+      <td align="l">
+        <tablesection>Keywords: {{ ability.get_keywords() | join(', ') }}</tablesection>
+    </td></tablerow>
+
+
+    {%- for ability_level in ability  -%}
+    <tablerow>
+      <td>
+        {{- ability_level.get_level_number() | convert_to_roman_numerals -}}
+
+        {%- if ability_level.is_masterable() -%}
+        {{ ' ' }}          
+        {%- for x in range(ability_level.get_mastery_successes()) -%}
+        <success/>
+         {%- endfor -%}
+        {%- for x in range(ability_level.get_mastery_attempts()) -%}
+        <attempt/>
+        {%- endfor -%}
+        {%- for x in range(ability_level.get_mastery_failures()) -%}
+        <fail/>
+        {%- endfor -%}
+        {%- endif -%}
+
+        {% if ability_level.has_prerequisites() %}
+        <arrowleft/>              
+        <smaller>
+          {%- for prereq in ability_level.get_prerequisites() -%}
+          {{- prereq.to_string() -}}
+          {%- if not loop.last %}, {% endif -%}
+          {%- endfor -%}
+        </smaller>
+        {%- endif -%}        
+      </td>
+    </tablerow>      
+    {%- endfor -%}
+  </table>    
+  {%- endfor -%}      
+</fourcolumns>    

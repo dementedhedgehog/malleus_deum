@@ -16,6 +16,7 @@ from npcs import NPCGangs
 from attribute_bonuses import attribute_bonuses
 from version import Version
 from licenses import Licenses
+from weapons import Weapons
 
 
 class DB:
@@ -29,10 +30,12 @@ class DB:
         self.attribute_bonuses = attribute_bonuses
         self.skill_point_type = SKILL_POINT_TYPE
         self.licenses = None
+        self.melee_weapons = None
+        self.missile_weapons = None
         return
 
-    def get_x(self):
-        return "X"
+    # def get_x(self):
+    #     return "X"
     
     def load(self, root_dir, fail_fast=True):
 
@@ -76,5 +79,17 @@ class DB:
         unused_resource_dir = join(root_dir, "unused_resources")
         self.licenses = Licenses()
         self.licenses.load((resource_dir, unused_resource_dir))
+
+        # melee weapons
+        melee_weapons_xml = join(root_dir, "items", "melee_weapons.xml")
+        self.melee_weapons = Weapons(fname=melee_weapons_xml)
+        self.melee_weapons.load()        
+    
+        # missile weapons
+        missile_weapons_xml = join(root_dir, "items", "missile_weapons.xml")
+        self.missile_weapons = Weapons(fname=missile_weapons_xml)
+        self.missile_weapons.load()
+
+        assert self.missile_weapons is not None
         return
 

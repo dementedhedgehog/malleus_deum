@@ -11,12 +11,12 @@
       </p>
     </abilitygroupdescription>
   </abilitygroupinfo>
-  
 
   <ability>
     <abilitytitle>Staff Strike</abilitytitle>
     <abilityid>staff.strike</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -28,10 +28,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>	
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -40,24 +36,15 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<prereqattr><attr>Strength</attr><value>11</value></prereqattr>	
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 2 + Str modifier</damage>
       </abilitylevel>      
@@ -69,6 +56,7 @@
     <abilitytitle>Staff - Brace for Charge</abilitytitle>
     <abilityid>staff.brace</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -82,10 +70,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -95,10 +79,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Double weapon damage + Str modifier, opponent must be charging.</damage>
       </abilitylevel>      
@@ -110,6 +90,7 @@
     <abilitytitle>Staff - Circle of Death</abilitytitle>
     <abilityid>staff.circle_of_death</abilityid>
     <abilityclass>Fight-Reach</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -129,10 +110,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <successes>2</successes>
         <attempts>3</attempts>
         <failures>1</failures>
@@ -143,10 +120,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>0</defaultmagical>
         <check>Std 2d8 vs opponents AC</check>
         <damage>Each opponent must make a Resolve Check + 2 vs DDC 10 to attack the first time,
 	reaction counter-attack</damage>
@@ -154,11 +127,11 @@
     </abilitylevels>
   </ability>
 
-
   <ability>
     <abilitytitle>Staff Parry</abilitytitle>
     <abilityid>staff.parry</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -169,9 +142,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>staff.strike_1</prereqabilitylevel>	
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Opposed Speed Check</check>
@@ -179,9 +149,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>3</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Opposed Speed Check + 2</check>
       </abilitylevel>      
     </abilitylevels>

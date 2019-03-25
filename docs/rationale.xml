@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+  <titlepage>
+    <vspace>2</vspace>
+    <title>Malleus Deum</title>  
+    <vspace>6</vspace>
+    <img src="resources/dragon_title/dragon.jpg" scale="0.6"/>
+    <vspace>6</vspace>
+    <subtitle>Igitur qui desiderat pacem, praeparet bellum.</subtitle>
+    <vspace>1</vspace>
+    <author>Blaize A. Rhodes</author>
+    <vspace>1</vspace>
+    <author>William F. Rhodes</author>
+    <vspace>1</vspace>
+    <version>{{ db.version }}</version>
+  </titlepage>
+
+
+  <tableofcontents/>  
+
+  <chapter>
+    <chaptertitle>Game Balance and Design Philosophy</chaptertitle>
+
+
+    <section>
+      <sectiontitle>Motivation and Design</sectiontitle>      
+      <p>
+        This game has the following design goals:
+      </p>
+
+      <olist>
+        <li>
+          <p>
+            The authors believe that the big name RPGs are showing their age.  Dungeons
+            and Dragons is now 40 years old.  While there are a large number of indie rpgs
+            that have explored interesting new rpg design elements, Dungeons and Dragons
+            has remained relatively static, its development ossified by negative feedback
+            to changes from its large existing fan-base.  These rules represent a response
+            to this state of affairs.  
+          </p>    
+          
+          <p>
+            Malleus Deum is an attempt at a <emph>modern</emph> rule set.  It  
+            tries to integrate advances in RPG rule design into an otherwise traditional RPG 
+            rules system.  Specifically we try to include an Aspect-like mechanic from FATE, 
+            linear magic-users like 13th age and Dnd5e, a strategic initiative phase from Dr 
+            Who to encourage non-combat resolutions, simple unified resolutions, morale,
+            and adding benefits and complications to dice results.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            In this game we are trying to deemphasize combat.  Not remove it.  But
+            take an opportunity to try and provide rules that will allow the GM
+            to shine the light on other parts of the game: negotiation, morale,
+            fleeing and pursuit, investigation and personal development.
+          </p>
+
+          <p>
+            It's nice to have a change in pace and scenery.  We have tried to design a
+            game where combat plays a major role, but other aspects of the game, such
+            as role-playing, negotiation, non-lethal combat, and investigation, are also
+            a possibility.
+          </p>
+        </li>
+        
+        <li>
+          <p>
+            We feel it is important for users of the game that the game license allow people
+            to contribute to the game on their own terms and have, therefore, released the
+            game under the Creative Commons Attribution License 3.0, which is available 
+            online.  In a nutshell, you are free, to: 
+            <list>
+              <li>Share — to copy, distribute and transmit the work, to</li>
+              <li>Remix — to adapt the work, and to</li>
+              <li>Make commercial use of the work</li>
+            </list>
+            
+            Under the following conditions:
+            <list>
+              <li>Attribution — You must attribute the work in the manner specified by 
+              the author, but not in any way that suggests that they endorse you 
+              or your use of the work.  
+              </li>
+            </list>
+          </p>
+
+	  <p>
+	    All creative commons licenses require attribution.  We suspect it may have
+	    something to do with establishing the provenance of the license.
+	  </p>	    
+        </li>      
+        
+
+        <li>
+          <p>
+            Modular and Customizable: Our goal is that you should be able to include the bits 
+            you want, exclude the bits you do not, customize whatever you like, add whatever 
+            house rules you like, then build your own set of rule books and modules and
+            print them.
+          </p>
+
+          <p>
+            Modularity also makes maintaining balance in an evolving game easier
+            as some parts of the system can be tweaked without effecting other parts.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Moderately heavy-weight rules complexity means that the rules are a little more 
+            complicated than, for example, FATE, FUDGE, Basic Dnd, or Call of Cthulhu and a 
+            little less complicated than say DnD4e.   Combat needs to be easy enough that 
+            GMs can throw challenging encounters together on the fly.  But the rules for 
+            character progression need to be rich enough to capture and keep the imagination
+            of the players.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Geared to a low magic setting.  At high level magic becomes difficult to GM
+            with a myriad of unforeseen interactions and unintended consequences.  In the
+            authors opinion, there are also problems with game balance in high fantasy
+            settings.  As George Martin said: ``If you look at The Lord of the Rings, what
+            strikes you, it certainly struck me, is that although the world is infused with
+            this great sense of magic, there is very little onstage magic. So you have a
+            sense of magic, but it's kept under very tight control.''.  We also refer the
+            interested reader to Sandersons Rules of Magic.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Malleus Deum is designed specifically for fantasy settings.  We feel that generic
+	    role playing systems do not fit any milieu particularly well - they are the jacks
+	    of all trades and masters of none.
+          </p>
+        </li>
+	
+        <li>
+          <p>
+            We hope to develop this game via a process of gradual incremental improvement.
+	    There is a constraint on the corporate model of RPG development where each new
+	    version of the rules has to be significantly different from previous versions
+	    otherwise they cannot justify the prices they charge for the new books or resell
+	    you the same modules.  An open source model has no such constraints.  We hope
+	    that an open approach will allow a slow process of identifying problem areas with
+	    the rules and fine-tuning those rules in a slow and incremental process.
+          </p>	  
+        </li>
+
+
+        <li>
+          <p>
+	    The default milieu for the game draws elements from the standard fantasy sources:
+	    Lord of the Rings, Conan the Barbarian, Dungeons and Dragons, and Warhammer and
+	    also some slightly unusual sources: Jim Butchers Dresden Files, Charles Stross's
+	    Laundry Files and Lovecraft.  
+          </p>
+        </li>
+        
+      </olist>
+
+      <p>
+	We hope you enjoy the game.
+      </p>
+
+      <!--
+          <figure position="!b">
+          <img src="./resources/werewolf2.jpg" scale="0.7"/>
+          </figure>
+      -->
+    </section>    
+    
+
+    <section>
+      <sectiontitle>Design Principles</sectiontitle>
+
+      <p>
+	Good game design requires a balanced mechanical foundation.
+	In this chapter we lay out the design principles we use to try to
+	ensure compelling game play and good game balance.  In later sections we will
+	apply those principles to individual game mechanics.
+      </p>
+
+
+      
+
+      <subsection>
+	<subsectiontitle>Simplicity</subsectiontitle>
+	
+	<p>
+	  We do not believe that complex game mechanics are necessary for good gameplay.
+	  Keeping the number and complexity of the game mechanics of the game small
+	  makes for a faster, easier and more enjoyable game to play.
+	</p>
+
+	<principle>
+	  <principletitle>Simplicity</principletitle>
+	  <label>Simplicity</label>
+	  <principlebody>
+	    Keep the number of mechanics to a minimum.
+	  </principlebody>
+	</principle>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Operant Conditioning</subsectiontitle>
+	
+	<p>
+	  Behavioural psychology, and more specifically, operant conditioning,
+	  suggests that the best training schedule is one with random positive
+	  reinforcement and not continuous feedback.  What that means in English
+	  is that random stepped increases in player character advancement is
+	  <emph>``more fun''</emph> than gradual continuous improvement or improvement
+	  at fixed times.
+	</p>
+
+	<principle>
+	  <principletitle>Random Reinforcement</principletitle>
+	  <label>Random Reinforcement</label>
+	  <principlebody>
+	    Character progression should increase in large and infrequent semi-random
+	    discrete steps, and not gradually.
+	  </principlebody>
+	</principle>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Game Theory</subsectiontitle>
+	
+	<p>
+	  It has been claimed that a well designed game presents players with problems
+	  that force them to make	interesting decisions.   Game Theory has the concept
+	  of a dominant strategy.  If a problem has a dominant strategy then there is
+	  a solution to that problem that is clearly better than all the rest.  If
+	  a game has problems have dominant strategies then they are not forcing players
+	  to make interesting decisions.  
+	</p>
+
+	<principle>
+	  <principletitle>Avoid Dominant Strategies</principletitle>
+	  <label>Avoid Dominant Strategies</label>
+	  <principlebody>
+	    We should strive to provide choices to players that do not have any clearly
+	    better general-purpose solution when creating, developing and playing his
+	    character.  Force the characters to make meaningfull choices.
+	  </principlebody>
+	</principle>
+      </subsection>
+      
+      <subsection>
+	<subsectiontitle>Succeed more than you Fail</subsectiontitle>
+
+	<p>
+	  Let us define the playable range for standard check dice mechanics to be the range
+	  of values that have a probability from, say, 30<percent/> to 80<percent/>.  This
+	  represents the range that <emph>most</emph> but not all checks should be in to
+	  make for an interesting game.
+	</p>
+
+	<p>
+	  If players have more than an 80<percent/> chance of
+	  succeeding, then play becomes a little too easy and monotonous.  If players have
+	  less than a 30<percent/> chance of succeeding then play becomes frustrating.  This
+	  range is a little arbitrary but good enough for the purposes of this discussion.
+	</p>
+	
+	<principle>
+	  <principletitle>Playable Range</principletitle>
+	  <label>Playable Range</label>
+	  <principlebody>
+	    Checks have a playable range which is not too hard and not too easy.
+	    Most checks in the game should fall in the playable range.
+	  </principlebody>
+	</principle>
+	
+	<p>
+	  Furthermore, experience suggests that, on the whole, players prefer to succeed in
+	  their checks more than they fail, by which we mean that the typical
+	  probability of success should be in the range 50-70<percent/>.
+	</p>
+
+	<principle>
+	  <principletitle>Succeed more than you Fail</principletitle>
+	  <label>Succeed more than you Fail</label>
+	  <principlebody>
+	    On average, checks should succeed more often than fail.
+	  </principlebody>
+	</principle>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Make Players Roll</subsectiontitle>
+	<p>
+	  We will steal an idea from DungeonWorld and Numenera and make players roll
+	  for defence when they are being attacked.  This will keep them busy and engaged
+	  and free up time for the GM.
+	</p>      
+      </subsection>
+      
+      <subsection>
+	<subsectiontitle>Archetypes Differentiation</subsectiontitle>
+	
+	<p>
+    	  The character archetypes should feel different to play and
+    	  have strengths and weaknesses to provide variety and tactical
+	  options during game play.  For the purposes of discussion we can break
+	  the archetypes into four groups: Tanks, Damagers Support (Controllers, Healers, etc)
+	  and Generalists.
+	</p>
+
+	<p>
+	  We expect that the Tanks should be more defensive than the other classes, the
+	  Damagers should do more damage.  Support should be sub-optimal in the
+	  damaging and defense roles but have additional strategic and/or buffing options
+	  available to them during combat.
+
+	  The Generalists are specialized non-combatants.  We introduce them because 
+	  we are trying to deemphasize combat.  At the same time we want the generalists to 
+	  have reasonable options within combat and be able to be reasonably
+	  effective otherwise combat is boring for these archetypes.  To this end it is
+	  important that the generalists performance in combat is worse than that of
+	  the combat specialists, but not drastically so.  We need to define an envelope
+	  within which there is a difference between combat ability, but that difference
+	  is not so great that the generalists feel left out of combat.
+	</p>
+	
+	<principle>
+    	  <principletitle></principletitle>
+    	  <label>Archetype Differentiation</label>
+    	  <principlebody>
+	    Archetypes should be either specialists, strong in one area and weak in
+	    others or generalists that are somewhat competent in combat.
+    	  </principlebody>
+	</principle>
+      </subsection>
+
+
+      <subsection>	
+	<subsectiontitle>Monster Combat Classes</subsectiontitle>
+
+	<p>
+	  We will give monsters a very similar combat classification to those used by Dnd 4e
+	  as it introduces a nice level of strategy to combat.  Each monster
+	  has a level and a combat role: Grunt, Brute, Soldier, Artillery, Elite, Skirmisher,
+	  Lurker, or Elite.  In addition they can have a hybrid role, i.e.  Solo, Controller,
+	  or Leader that augments their role in combat.
+	</p>
+
+	<descriptions>
+
+	  <term>Grunts</term>
+	  <description>are the typical foot soldier type monster.
+	  </description>
+
+	  <term>Brutes</term>
+	  <description>are the monster equivalent of Damagers.  They have higher
+	  damage and hit points than grunts, and a lower armour class.
+	  </description>
+
+	  <term>Elites</term>
+	  <description>
+	    are like Brutes but get two or more attacks.  They are the sergeants or
+	    the second in command types.
+	  </description>
+	  
+	  <term>Soldiers</term>
+	  <description>
+	    are the monster equivalent of tanks. They have higher AC than the Grunts,
+	    and have similar HP and damage.  They might have abilities that make them sticky.
+	  </description>
+
+	  <term>Artillery</term>
+	  <description>
+	    are ranged attackers with lower ACs and HPs than Grunts.
+	  </description>
+
+	  <term>Lurkers</term>
+	  <description>
+	    typically have lower HP and AC than Grunts but they have special abilities
+	    that allow them to avoid detection.
+	  </description>
+	  
+	  <term>Skirmishers
+	  </term>
+	  <description>
+	    have similar HP and AC as Grunts.  They may do higher damage and they have
+	    abilities that grant them extra mobility.
+	  </description>
+	</descriptions>
+
+
+	<p>
+	  The hybrid roles include the following:
+	</p>
+
+	<descriptions>
+
+	  <term>Controllers </term>
+	  <description>
+	    have the same kinds of abilities as their PC analogs.  They are able to buff
+	    their side, or debuff their opponents, allow their allies to move unhindered
+	    across the battlefield, etc. 
+	  </description>	  
+	  
+	  <term>Leaders</term>
+	  <description>
+	    have abilities that let them control their own troops or intimidate their
+	    opponents.  They might be considered a special subtype of controller.
+	  </description>
+	  
+	  <term>Solos</term>
+	  <description>
+	    Solos are monsters that can fight a party of adventurers on their own.  They
+	    have similar AC to the Grunts but a lot more HP, they do a lot more damage and
+	    they should have multiple attacks and possibly special abilities.
+	  </description>	 	  
+	</descriptions>	
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Level Equivalence</subsectiontitle>
+	<p>
+	  To make it easy to compare monster and PC strengths monsters and characters
+	  of the same level should have similar AC and do similar damage.  Monsters
+	  will typically have fewer HP.
+	</p>      
+      </subsection>      
+
+    </section>
+
+
+    <section>
+      <sectiontitle>Game Mechanics</sectiontitle>
+      
+      
+      <subsection>
+	<subsectiontitle>Standard Checks</subsectiontitle>
+	
+	<p>
+	  It follows from Principle<ref>Succeed more than you Fail</ref> that for
+	  standard checks, such as to-hit rolls, there is a finite
+	  range of values within the 2d12 or 2-24 range that are reasonable and enjoyable
+	  to choose for difficulty values.
+	</p>
+
+	{% include "docs/tables/probabilities_2d12.xml" %}
+	
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/std_check_2d12_vs_d20.png" scale="0.45"/>
+	  <caption>To Hit Probabilities 2d12 vs d20</caption>
+	  <label>figure:tohit2d12vsd20</label>
+	</figure>
+
+	<p>
+	  Based on the following graph, see Figure<ref>figure:tohit2d12vsd20</ref> and
+	  Table<ref>table:probabilities_2d12</ref>,
+	  we can see that the playable range, with a success rate of 30-80<percent/>
+	  for a 2d12 mechanic is about 11 to 18 with a difference of 7.  The playable range
+	  for 1d20 is 7 to 17 with a difference of 10.  It follows that bonuses to Std
+	  Checks, must be smaller than equivalent bonuses in a d20 system, <eg/> a +2 bonus
+	  in a d20 system like DnD is roughly equivalent to a +3 bonus in a 2d12 system.
+	  A +4 bonus in a d20 system is roughly equivalent to a +5 bonus in a 2d12 system.
+	</p>
+
+	<principle>
+	  <principletitle>Std Checks Bonuses should be at most +4</principletitle>
+	  <label>Bonuses for Std Checks should be at Most +4</label>
+	  <principlebody>
+	    Because the 2d12 checks have a smaller playable range than d20 systems
+	    the maximum, unadjusted, difference for a standard check bonus between
+	    any two archetypes at the same level should be less than or equal to +4.
+	  </principlebody>
+	</principle>      
+
+	<p>
+	  Note that the average result for 2d12 is also higher, 13 in our 2d12 system
+	  versus 10.5 in a d20 system.
+	</p>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Dice Pools</subsectiontitle>
+
+	<p>
+	  Dice pool mechanics are used for a number of different things Magic, Mettle, and
+	  Luck.  Here we take a quick look at dice pool behaviour.  In Table
+	  <ref>dicepools</ref> we provide a range of difficulties
+	  (and overcharge values for spells).  Assuming that dedicated first level spell casters
+	  can cast a few spells before replenishing their dice pools it follows, from Table
+	  <ref>figure:dicepools</ref>, that their dice pools should contain about 2 to 3
+	  dice which will allow them to cast six to nine difficulty 3 spells.  Further,
+	  suppose we wish a 10th level caster to be able to cast a similar number of
+	  difficulty 14 spells, then their dice pool size should be about 6 to 9 dice.
+	</p>
+
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/dice_pools.png" scale="0.18"/>
+	  <caption>Dice Pool Difficulties vs Number of Dice Rolled</caption>
+	  <label>figure:dicepools</label>
+	</figure>
+
+	{% include "docs/tables/dice_pool_cost.xml" %}
+      </subsection>
+      
+    </section>
+    
+    <section>
+      <sectiontitle>PC Attacks</sectiontitle>
+
+      <subsection>
+	<subsectiontitle>PC To-Hit Checks</subsectiontitle>
+
+	<p>
+	  To-Hit rolls are basically a kind of Std Check. Consequently, the same narrower
+	  playable range applies to the to-hit rolls of different classes.  We aim to
+	  have a reasonable small difference in combat ability between generalist classes
+	  and combat specialist classes in Malleus Deum.  It would seem that in order to
+	  have the generalist characters be able to enjoy combat <emph>the to-hit bonus
+	  difference between generalists and combat specialists should be no more than
+	  3 for characters of the same level</emph>.
+	</p>
+
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/to_hit_bonus_by_level.png" scale="0.45"/>
+	  <caption>PC To Hit Bonus by Level</caption>
+	  <label>figure:to_hit_bonus_by_level</label>
+	</figure>      
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Monster Armour Class</subsectiontitle>	
+	<p>
+          For a typical monster of the samel level PC Combat classes should hit
+	  on average two in three times.  Non combatants should hit 
+          ever slightly less frequently.  Monster armour classes then flow from
+	  the desired hit ratio and the PC per level to hit table.
+	</p>
+
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/monster_ac_by_level.png" scale="0.45"/>
+	  <caption>Monster AC by Level</caption>
+	  <label>figure:monster_ac_by_level</label>
+	</figure>
+      </subsection>
+      
+      <subsection>
+	<subsectiontitle>PC Damage</subsectiontitle>
+
+	<p>
+	  We can choose the amount of damage PCs deal fairly arbitrarily and scale other
+	  game mechanics accordingly (such as monster and PC hit points).  The base damage
+	  for a weapon is d8.  Weapons that do d10 should be two handed. Weapons that do d6
+	  should have other advantages, eg they can be thrown, are easy to learn, can be
+	  concealed about ones person, etc.  We want to make the choice of weapons an
+	  actual choice, no dominant strategy, so	there cannot be a best weapon.
+	</p>
+
+	<p>
+	  We will also adopt the damage scaling system from 13th Age.  At certain levels,
+	  we will increase the number of dice rolled for damage.
+	</p>
+	
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/pc_dmg_bonus_by_level.png" scale="0.45"/>
+	  <caption>PC Damage Bonus by Level</caption>
+	  <label>figure:pc_dmg_bonus_by_level</label>
+	</figure>
+	
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/pc_avg_dmg_by_level.png" scale="0.45"/>
+	  <caption>PC Average Damge by Level</caption>
+	  <label>figure:pc_avg_dmg_by_level</label>
+	</figure>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Monster Hit Points</subsectiontitle>
+
+	<p>
+          In order to balance play we have the following set of rules of thumb to 
+          allow us to maintain game balance.  Characters that deal average damage
+	  should be able to kill a Grunt of their level with two average hits.
+	  Non-combat specialist characters should be able to kill
+	  a monster in two or three average hits.
+	</p>
+
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/monster_hp_by_level.png" scale="0.45"/>
+	  <caption>Monster HP by Level</caption>
+	  <label>figure:monster_hp_by_level</label>
+	</figure>	
+      </subsection>
+
+
+
+    </section>
+
+
+    <section>
+      <sectiontitle>Monster Attacks</sectiontitle>
+
+
+      <subsection>
+	<subsectiontitle>Monster Attack Difficulties</subsectiontitle>
+	<p>
+	  Monster attack difficulties should be roughly equivalent to player characters
+	  attack difficulties of the same level.  However players roll to hit and
+	  we want a single target number of monster to hit difficulties so we will
+	  take the monster to-hit difficulties from the average of the player to hit
+	  rolls.  See Figure<ref>figure:monster_attack_difficulty_by_level</ref> for
+	  monster attack difficulties.
+	</p>
+
+      <figure position="!htbp" fullwidth="true">
+	<img src="./docs/graphs/monster_attack_difficulty_by_level.png" scale="0.45"/>
+	<caption>Monster Attack Difficulty by Level</caption>
+	<label>figure:monster_attack_difficulty_by_level</label>
+      </figure>      
+	
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Defense Checks</subsectiontitle>
+	<p>
+	  Defense checks are made by players to avoid being hit by monsters.
+	  The most common defense checks are Armour, Dodge, Block and Parry Checks.
+	  Based on the following graph it seems that in order to have the generalist
+	  characters able to enjoy combat the to-hit difference between generalists
+	  and combat specialists should be no more than 2.  We can work back from the
+	  desired 
+	</p>
+
+	
+      </subsection>
+
+      <figure position="!htbp" fullwidth="true">
+	<img src="./docs/graphs/pc_ac_by_level.png" scale="0.45"/>
+	<caption>PC Defense Difficulty by Level</caption>
+	<label>figure:pc_ac_by_level</label>
+      </figure>      
+
+
+      <subsection>
+	<subsectiontitle>Monster Damage</subsectiontitle>
+	<p>
+	  Monster damage for a typical Grunt should be one par for a player character
+	  of the same level (it makes the maths easy), see Figure
+	  <ref>figure:pc_avg_dmg_by_level</ref>.
+	</p>
+      </subsection>
+      
+      <subsection>
+	<subsectiontitle>PC Hit Points</subsectiontitle>
+	
+	<p>
+	  In order to make combat sufficiently dangerous while still mitigating
+	  the effect of a few lucky roles on monster attacks we decide that
+	  a PC should be able to survive between four and six hits from a typical
+	  monster of the same level.  To simplify matters we can require that a
+	  typical monster does the same amount of damage as the character of the
+	  same level.
+	</p>
+
+	<principle>
+	  <principletitle>PCs should be able to take 4-6 hits.</principletitle>
+	  <label>PCs should be able to take 4-6 hits.</label>
+	  <principlebody>
+	    Most PCs should have enough hit points to sustain four hits from an
+	    average monster of their level.  Tanks should have enough hit points
+	    to sustain six.
+	  </principlebody>
+	</principle>
+
+	<figure position="!htbp" fullwidth="true">
+	  <img src="./docs/graphs/pc_hp_by_level.png" scale="0.45"/>
+	  <caption>PC HP by Level</caption>
+	  <label>figure:pc_hp_by_level</label>
+	</figure>
+      </subsection>      
+    </section>
+
+    
+
+
+    <section>
+      <sectiontitle>Abilities</sectiontitle>
+
+      <subsection>
+	<subsectiontitle>Creating New Abilities</subsectiontitle>       
+	
+	<p>
+	  An average level skill should cost 5 skill points.
+	</p>
+
+	<p>
+	  If skills require successes/attempts then they must have a Check defined.
+	  The check should include a DDC.  If the check uses a dice pool the ability
+	  should also have an overcharge value.  The overcharge should be a value
+	  relative to the DC used .. e.g. DC + 5.
+	</p>
+
+	<principle>
+	  <principletitle>No Dominant Strategy</principletitle>
+	  <label>No Dominant Strategy</label>
+	  <principlebody>
+	    There should not be a dominant strategy for any particular character.
+	  </principlebody>
+	</principle>
+	
+	<principle>
+	  <principletitle>Meaningful Difference</principletitle>
+	  <label>Meaningful Difference</label>
+	  <principlebody>
+	    Character archetypes should be sufficiently different from one another.
+	  </principlebody>
+	</principle>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Ability Progression</subsectiontitle>       
+	<p>
+	  Abilities should have a type and a level so that we can make
+	  make archetypes different and so we can make the players make
+	  meaningfull choices when developing their characters.  
+	</p>
+
+	<corollary>
+	  <corollarytitle>Skills should have a Type</corollarytitle>
+	  <corollarybody>
+	    Skills have to be typed in order to
+	  </corollarybody>
+	</corollary>
+
+	<corollary>
+	  <corollarytitle>Abilities should be Skills</corollarytitle>
+	  <corollarybody>
+	    It follows from <ref>Simplicity</ref>, that standard abilities
+	    like Strength, Intelligence etc from d20 games should be Skills.
+	  </corollarybody>
+	</corollary>	
+      </subsection>           
+    </section>
+
+
+
+    <section>
+      <sectiontitle>Spells</sectiontitle>
+
+      <subsection>
+	<subsectiontitle>Spells and Game Balance</subsectiontitle>
+	<p>
+	  Spells that impinge on the scope of other archetypes.
+	  OK provided they can only do one domain
+	</p>
+
+	<p>
+	  Spells that are so good no one uses anything else.
+	  Fireball.
+	</p>    
+      </subsection>           
+    </section>
+  </chapter>
+</book>
+

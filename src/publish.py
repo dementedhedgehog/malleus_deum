@@ -40,10 +40,14 @@ from doc import Doc
 from db import DB
 from latex_formatter import LatexFormatter
 from html_formatter import HtmlFormatter
-from spreadsheet_writer import write_summary_to_spreadsheet
-from character_sheet_writer import (
-    create_character_sheets_for_all_archetypes,
-    create_empty_abilities_sheet)
+# from spreadsheet_writer import write_summary_to_spreadsheet
+from spreadsheet_writer2 import write_game_balance_spreadsheet #####
+
+# FIXME: didn't want to deal with pdftk at the moment.
+# from character_sheet_writer import (
+#     create_character_sheets_for_all_archetypes,
+#     create_empty_abilities_sheet)
+
 # from licenses import generate_license_report
 from generate_skill_tree import Page, SkillTreeBuilder #generate_skill_tree
 import config
@@ -58,8 +62,6 @@ pdfs_dir = join(root_dir, "pdfs")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 archetype_template_fname = join("docs", "archetype_template.xml")
 patron_template_fname = join("docs", "patron_template.xml")
-# resource_dir = join(root_dir, "resources")
-# unused_resources = join(root_dir, "unused_resources")
 
 
 # latex preamble for the index.
@@ -131,18 +133,16 @@ def xelatex(tex_fname, verbosity=0):
         tex_inputs = styles_dir + "//:"
 
         env["TEXINPUTS"] = tex_inputs
+        #env["TEXMFHOME"] = "/home/blaize/proj/malleus_deum/fonts"
 
         if verbosity > 0:
             print(("\n\nRun with:\n%s\n%s" % 
                    ("export TEXINPUTS=%s" % tex_inputs,
-                    " ".join(cmd_line))))
-        
+                    " ".join(cmd_line))))        
     else:
         args.insert(1, "-include-directory=%s" % styles_dir)
-
         if verbosity > 0:
             print("\n\nRun with:\n%s" % " ".join(cmd_line))
-
 
     xelatex_output = ""
     xelatex_error = False
@@ -164,7 +164,7 @@ def xelatex(tex_fname, verbosity=0):
 
     # Rerun once to try and get cross-references right
     # (Throw away the trace this time)
-    check_output(cmd_line)            
+    check_output(cmd_line)
     return
 
 
@@ -534,17 +534,17 @@ if __name__ == "__main__":
     db.load(root_dir=root_dir, fail_fast=fail_fast)
 
     # generate the skill tree images
-    skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
-    skill_tree_builder.build(db.ability_groups,
-                             fname=join(build_dir, "ability_tree1.eps"))
-    skill_tree_builder.build(db.ability_groups,
-                             fname=join(build_dir, "ability_tree1.pdf"))
+    # skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
+    # skill_tree_builder.build(db.ability_groups,
+    #                          fname=join(build_dir, "ability_tree1.eps"))
+    # skill_tree_builder.build(db.ability_groups,
+    #                          fname=join(build_dir, "ability_tree1.pdf"))
     
-    skill_tree_builder = SkillTreeBuilder(page=Page.TWO)
-    skill_tree_builder.build(db.ability_groups,
-                             fname=join(build_dir, "ability_tree2.eps"))
-    skill_tree_builder.build(db.ability_groups,
-                             fname=join(build_dir, "ability_tree2.pdf"))
+    # skill_tree_builder = SkillTreeBuilder(page=Page.TWO)
+    # skill_tree_builder.build(db.ability_groups,
+    #                          fname=join(build_dir, "ability_tree2.eps"))
+    # skill_tree_builder.build(db.ability_groups,
+    #                          fname=join(build_dir, "ability_tree2.pdf"))
         
     # get a jinja environment
     jinja_env = Environment(
@@ -609,8 +609,8 @@ if __name__ == "__main__":
     #
 
     # Build html docs.
-    for doc_xml_fname, _, _ in config.files_to_build:
-        build_html_doc(doc_xml_fname, verbosity=verbosity)
+    #for doc_xml_fname, _, _ in config.files_to_build:
+    #    build_html_doc(doc_xml_fname, verbosity=verbosity)
         
     # Exit early if we've been configured to only do a partial build.
     if parse_only or template_only or latex_only:
@@ -627,16 +627,22 @@ if __name__ == "__main__":
     # (a table of ability costs by archetype for working on balance)
     #
     # save summary details to a spreadsheet (for analysis)
-    spreadsheet_fname = join(build_dir, "summary.xlsx")
-    write_summary_to_spreadsheet(spreadsheet_fname,
-                                 ability_groups=db.ability_groups,
-                                 archetypes=db.archetypes)
+    #spreadsheet_fname = join(build_dir, "summary.xlsx")
+    #write_summary_to_spreadsheet(spreadsheet_fname,
+    #                             ability_groups=db.ability_groups,
+    #                             archetypes=db.archetypes)
+
+    spreadsheet_fname = join(build_dir, "game_balance.xlsx")
+    write_game_balance_spreadsheet(spreadsheet_fname,
+                                   ability_groups=db.ability_groups,
+                                   archetypes=db.archetypes)
     
     #
     # Create the character sheets
     #
-    create_character_sheets_for_all_archetypes(archetypes=db.archetypes)
-    create_empty_abilities_sheet()
+    # FIXME: pdftk not installed!
+    #create_character_sheets_for_all_archetypes(archetypes=db.archetypes)
+    #create_empty_abilities_sheet()
 
     #
     # Generate the license report

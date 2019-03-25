@@ -10,84 +10,56 @@
         Magic abilities involve the use of the characters magic pool and
 	are only available to certain archetypes.
       </p>
-    </abilitygroupdescription>
-  </abilitygroupinfo>
 
-
-  <ability>
-    <abilitytitle>Conjuration</abilitytitle>
-    <abilityid>magic_school.conjuration</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
       <p noindent="true">
 	Demons inhabit the cold lower planes.  There is much recorded
 	of their nature and their history in old and long forgotten tomes.
-	This ability represents the study of that lore.  
-	Such books are not easily come by, notr should they be read lightly.
+	Conjuration represents the study of that lore.  
+	Such books are not easily come by, nor should they be read lightly.
 	<indexentry>Demonic Lore<subentry>See Conjuration</subentry></indexentry>
       </p>
 
       <p>
-	Magical spells that require this skill as a prerequisite 
+	Magical spells that require these skills as a prerequisite 
 	involve summoning or communicating with extra planar
 	entities, binding extra planar entities, opening gates and the like.
       </p>      
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>7</defaultmagical>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>	
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
+      
+    </abilitygroupdescription>
+  </abilitygroupinfo>
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>5</defaultmagical>
-        <check>Std 2d8 + 2 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
   
   <ability>
     <abilitytitle>Portal</abilitytitle>
     <abilityid>magic.portal</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><conjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
-	The user creates a portal in a wall or floor.   The portals remain
-	open for 2d4 minutes or until the caster wills the gate shut.
+	The user creates a portal in a wall or floor.   The portal remains
+	open for 2d4 minutes or until the caster wills the gate shut.  Casting
+	portal requires marking a magical circle in the ground or against a wall
+	which takes minutes to prepare.
+	The portal opens a path within the current plane, to a point up to
+	<measurement><metric>three meters</metric>
+	<imperial>ten feet</imperial></measurement> per level of the spell.
       </p>
     </abilitydescription>    
 
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>9</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 20</check>
 	<overcharge>DC + 5</overcharge>	
 	<leveldescription>
 	</leveldescription>
-        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 20</check>
@@ -96,10 +68,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 20</check>
@@ -107,27 +75,25 @@
       </abilitylevel>      
     </abilitylevels>
   </ability>
- 
+  
   
 
   <ability>
     <abilitytitle>Greater Portal</abilitytitle>
     <abilityid>magic.greater_portal</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><conjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
 	This is a very rapid invocation of the normal portal spell.
+	The spell is cast in one action.
       </p>
     </abilitydescription>    
 
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>7</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 26</check>
@@ -142,10 +108,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 26</check>
@@ -159,13 +121,12 @@
     </abilitylevels>
   </ability>
 
-
-
   
   <ability>
     <abilitytitle>Wyld Portal</abilitytitle>
     <abilityid>magic.wyld_portal</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><conjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -196,10 +157,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>7</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 26</check>
@@ -209,10 +166,6 @@
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <successes>1</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 1 vs DDC 26</check>
@@ -226,6 +179,7 @@
     <abilitytitle>Phantasmal Leech</abilitytitle>
     <abilityid>magic.phantasmal_leech</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><conjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
 
@@ -244,7 +198,8 @@
 	tracks the target.   The leeches projection onto this plane is volatile and it
 	is easily destroyed by magic.  If not dismissed	it will involuntarily return
 	to its home plane after ten minutes. Furthermore the leech cannot interact with
-	objects in this plane and may pass through walls, doors <etc/>   The leech cannot attack.
+	objects in this plane and may pass through walls, doors <etc/>   The leech cannot
+	attack.
       </p>
       
       <p>
@@ -258,7 +213,6 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
-	<tablelabel>fig:leech-overcharge</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d88</td>
@@ -286,31 +240,25 @@
 	<tablerow>
 	  <td>51-88</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
-	</tablerow>	
+	</tablerow>
+	<tablelabel>fig:leech-overcharge</tablelabel>
       </table>
       
 
     </abilitydescription>    
     <abilitylevels>
-       <abilitylevel>
+      <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqtag>Cleric</prereqtag>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>7</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool versus DDC 8</check>
         <effect>Target makes a perception check with DC 12.</effect>
         <overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>	
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <check>Magic Pool + 2 versus DDC 8</check>
         <effect>Target makes a perception check with DC 14.</effect>
         <overcharge>DC + 7.</overcharge>
@@ -325,6 +273,7 @@
     <abilitytitle>Phantasmal Vulture</abilitytitle>
     <abilityid>magic.phantasmal_vulture</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><conjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
 
@@ -348,7 +297,6 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
-	<tablelabel>fig:vulture-overcharge</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d49</td>
@@ -370,16 +318,15 @@
 	<tablerow>
 	  <td>30-49</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
-	</tablerow>	
+	</tablerow>
+	<tablelabel>fig:vulture-overcharge</tablelabel>
       </table>
 
     </abilitydescription>    
     <abilitylevels>
-       <abilitylevel>
+      <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqtag>Cleric</prereqtag>
-        <defaultlore>0</defaultlore>
-        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Magic Pool versus DDC 8</check>
@@ -390,10 +337,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>4</defaultmagical>
         <check>Magic Pool + 2 versus DDC 8</check>
         <effect>Target makes a perception check with DC 14.</effect>
         <overcharge>DC + 7</overcharge>
@@ -406,6 +349,7 @@
     <abilitytitle>Summon</abilitytitle>
     <abilityid>magic.summon</abilityid>
     <abilityclass>Non-Combat</abilityclass>
+    <keywords><conjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -445,24 +389,15 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>5</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 20</check>
 	<overcharge>DC + 8</overcharge>
 	<effect>A single demon enters the plane</effect>
-        <prereqabilitylevel>magic_school.conjuration_2</prereqabilitylevel>	
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>3</defaultmagical>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Magic Pool + 2 vs DDC 20</check>
@@ -477,6 +412,7 @@
     <abilitytitle>Bind</abilitytitle>
     <abilityid>magic.bind</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><conjuration/></keywords>
     <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -490,23 +426,14 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>7</defaultmagical>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Magic Pool vs DDC 10 or opponents Willpower</check>
 	<overcharge>DC + 7</overcharge>
-        <prereqabilitylevel>magic_school.conjuration_1</prereqabilitylevel>		
       </abilitylevel>
 
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
-        <defaultmagical>6</defaultmagical>
         <successes>3</successes>
         <attempts>3</attempts>
 	<check>Magic Pool + 2 vs DDC 10 or opponents Willpower</check>

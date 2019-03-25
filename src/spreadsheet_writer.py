@@ -49,8 +49,6 @@ def write_summary_to_spreadsheet(spreadsheet_fname, ability_groups, archetypes):
     workbook.save(spreadsheet_fname)
     return
 
-
-
 def write_ability_groups_to_sheet(sheet, ability_groups, archetypes):
 
     # layout constants
@@ -136,20 +134,22 @@ def write_ability_groups_to_sheet(sheet, ability_groups, archetypes):
                 cell.value = str(ability_level.get_level_number())
 
                 # ability cost
-                ability_cost = ("%s/%s/%s/%s" % (
-                    ability_level.get_default_general(),
-                    ability_level.get_default_martial(),
-                    ability_level.get_default_lore(),
-                    ability_level.get_default_magical()))
+                ability_cost = "X"
+                # ability_cost = ("%s/%s/%s/%s" % (
+                #     ability_level.get_default_general(),
+                #     ability_level.get_default_martial(),
+                #     ability_level.get_default_lore(),
+                #     ability_level.get_default_magical()))
                 col += 1
                 cell = sheet.cell(row = row, column = col)
                 cell.value = ability_cost
                 
                 # ability total
-                total = (ability_level.get_default_general() +
-                         ability_level.get_default_martial() + 
-                         ability_level.get_default_lore() +
-                         ability_level.get_default_magical())
+                total = 3
+                # total = (ability_level.get_default_general() +
+                #          ability_level.get_default_martial() + 
+                #          ability_level.get_default_lore() +
+                #          ability_level.get_default_magical())
                 col += 1
                 cell = sheet.cell(row = row, column = col)
                 cell.value = total
@@ -188,23 +188,26 @@ def write_ability_groups_to_sheet(sheet, ability_groups, archetypes):
                         cell.value = "n/a"
 
                     else:
-                        lore = mal.get_lore_points()
-                        martial = mal.get_martial_points()
-                        general = mal.get_general_points()
-                        magical = mal.get_magical_points()
-                        total = lore + martial + general + magical
+                        # lore = mal.get_lore_points()
+                        # martial = mal.get_martial_points()
+                        # general = mal.get_general_points()
+                        # magical = mal.get_magical_points()
+                        # total = lore + martial + general + magical
                         successes = mal.get_mastery_successes()
                         attempts = mal.get_mastery_attempts()
                         failures = mal.get_mastery_failures()
-                        
-                        points = "%i/%i/%i/%i (%s/%s/%s) = %i " % (general,
-                                                                   martial,
-                                                                   lore,
-                                                                   magical,
-                                                                   successes,
-                                                                   attempts,
-                                                                   failures,
-                                                                   total)
+
+                        points = "(%s/%s/%s) " % (successes,
+                                                  attempts,
+                                                  failures)                        
+                        # points = "%i/%i/%i/%i (%s/%s/%s) = %i " % (general,
+                        #                                            martial,
+                        #                                            lore,
+                        #                                            magical,
+                        #                                            successes,
+                        #                                            attempts,
+                        #                                            failures,
+                        #                                            total)
                         cell.value = points
                 row += 1
         row += ABILITY_GROUP_VSPACE

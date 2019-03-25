@@ -18,6 +18,7 @@
     <abilitytitle>Sword Strike</abilitytitle>
     <abilityid>sword.strike</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -30,9 +31,6 @@
       <abilitylevel>
 	<!-- level 0 is innate! -->
         <levelnumber>0</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>0</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 vs opponents AC</check>
@@ -41,21 +39,14 @@
 
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 2 vs opponents AC</check>
         <damage>Weapon damage + Str modifier</damage>
-	<prereqabilitylevel>school.military_1</prereqabilitylevel>
       </abilitylevel>
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>8</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 4 vs opponents AC</check>
@@ -64,9 +55,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>8</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 3 + Str modifier</damage>
       </abilitylevel>      
@@ -78,6 +66,7 @@
     <abilitytitle>Mighty Blow</abilitytitle>
     <abilityid>sword.mighty_blow</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p noindent="true">
@@ -93,9 +82,6 @@
     <abilitylevels>
       <abilitylevel>
         <levelnumber>1</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 4 vs opponents AC</check>
@@ -105,9 +91,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>8</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>3</attempts>
         <check>Std 2d8 + 4 vs opponents AC</check>
@@ -116,9 +99,6 @@
 
       <abilitylevel>
         <levelnumber>3</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>8</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <check>Std 2d8 + 4 vs opponents AC</check>
         <damage>Weapon damage + 5 + Str modifier</damage>
       </abilitylevel>      
@@ -130,6 +110,7 @@
     <abilitytitle>Sword Feint</abilitytitle>
     <abilityid>sword.feint</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -142,9 +123,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel>sword.strike_2</prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>7</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Opposed Agility Check</check>
@@ -152,9 +130,6 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Opposed Agility Check +2</check>
       </abilitylevel>      
     </abilitylevels>
@@ -165,6 +140,7 @@
     <abilitytitle>Sword Parry</abilitytitle>
     <abilityid>sword.parry</abilityid>
     <abilityclass>Reaction</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -175,9 +151,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>8</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>3</successes>
         <attempts>1</attempts>
 	<check>Opposed Speed Check</check>
@@ -186,12 +159,7 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Opposed Speed Check + 2</check>
-        <!-- <successes>3</successes>
-             <attempts>3</attempts> -->
       </abilitylevel>      
     </abilitylevels>
   </ability>
@@ -201,6 +169,7 @@
     <abilitytitle>Sword Disarm</abilitytitle>
     <abilityid>sword.disarm</abilityid>
     <abilityclass>Melee</abilityclass>
+    <keywords><weapon/></keywords>
     <abilityattrmodifiers><attr>Speed</attr><attr>Agility</attr></abilityattrmodifiers>
     <abilitydescription>
       <p>
@@ -211,9 +180,6 @@
       <abilitylevel>
         <levelnumber>1</levelnumber>
         <prereqabilitylevel></prereqabilitylevel>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
         <successes>2</successes>
         <attempts>1</attempts>
 	<check>Opposed Speed Check at -3</check>
@@ -223,13 +189,9 @@
       
       <abilitylevel>
         <levelnumber>2</levelnumber>
-        <defaultlore>0</defaultlore>
-        <defaultmartial>5</defaultmartial>
-        <defaultgeneral>0</defaultgeneral>
 	<check>Opposed Speed Check -1</check>
 	<effect>The opponent drops their weapon.</effect>
       </abilitylevel>      
     </abilitylevels>
-  </ability>
-  
+  </ability>  
 </abilitygroup>
