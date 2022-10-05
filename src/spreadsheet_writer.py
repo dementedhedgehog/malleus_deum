@@ -28,7 +28,7 @@ def write_game_balance_spreadsheet(spreadsheet_fname,
                                    ability_groups,
                                    archetypes):
 
-    workbook = xlsxwriter.Workbook('balance.xlsx')
+    workbook = xlsxwriter.Workbook(spreadsheet_fname)
     worksheet = workbook.add_worksheet()    
     
     #

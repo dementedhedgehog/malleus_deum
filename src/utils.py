@@ -28,7 +28,7 @@ ability_groups_dir = join(root_dir, "abilities")
 encounters_dir = join(root_dir, "encounters")
 modules_dir = join(root_dir, "modules")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
-
+release_dir = join(root_dir, "releases")
 
 # load the xml schema
 def load_schema(schema_fname):

@@ -26,7 +26,7 @@ from shutil import copy
 import io 
 import re
 import platform
-
+import zipfile
 
 
 src_dir = abspath(join(dirname(__file__)))
@@ -66,6 +66,7 @@ from utils import (
     styles_dir,
     encounters_dir,
     modules_dir,
+    release_dir,
 )
 
 # Jinja2 doesn't like absolute paths.  We must supply a relative path
@@ -135,6 +136,7 @@ def usage(msg = "", return_code = 0):
            "\t-x\tDo the template substitution and parse the xml; don't build the doc.\n"
            "\t-l\tOnly build the latex doc; don't build the pdf.\n"
            "\t-v\tVerbose.\n"
+           "\t-r\tBuild a release zip with contents defined in config and version from docs/version.xml.\n"
            "\n"
            "%s" % (prog_name, msg)))
     exit(return_code)    
@@ -574,18 +576,36 @@ def build_book(dir_name, xml_fname, verbosity=0):
     return
 
 
+
+def create_release(config, db, verbosity=0):
+    release_fname = join(release_dir, f"malleus_deum_{db.version}.zip")
+    if verbosity > 0:
+        print("----------------------------------")
+        print(f"Creating release {release_fname}")
+        
+    with zipfile.ZipFile(release_fname, mode="w") as archive:
+        for fname in config.release_files:
+            fname = join(build_dir, fname)
+
+            if verbosity > 1:
+                print(f"\tadding {fname})")
+            archive.write(fname)
+    return
+
+
 if __name__ == "__main__":
     try:
         opts, args = getopt(
             sys.argv[1:],
-            "vhcC",
-            ["verbose", "help", "clean", "clobber"])
+            "vhcCr",
+            ["verbose", "help", "clean", "clobber", "release"])
 
     except GetoptError as err:
         usage(msg = str(err), return_code = 2)        
 
     verbosity = 0
     debug = True
+    release = False
     for o, a in opts:
         if o in ("-v", "--verbose"):
             verbosity += 1            
@@ -596,6 +616,8 @@ if __name__ == "__main__":
         elif o in ("-C", "--clobber"):
             clean()
             sys.exit()
+        elif o in ("-r", "--release"):
+            release = True
         else:
             raise Exception(f"unhandled option {o}")
 
@@ -734,13 +756,6 @@ if __name__ == "__main__":
 
 
 
-#         doc,
-#         db,
-#         archetype=None,
-#         patron=None):
-# -
-
-
     #
     # Build HTML Files (mostly a placeholder at this stage)
     #
@@ -787,3 +802,10 @@ if __name__ == "__main__":
     #
     db.licenses.generate_license_report(root_dir)
     
+
+    #
+    # If we're releasing then zip a bunch of pdfs from the
+    # zip dir and put them in the release dir.
+    #
+    if release:
+        create_release(config, db, verbosity)

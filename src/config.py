@@ -119,3 +119,32 @@ modules_to_build = (
     ("cold_keep", False, "[ck]"),
     # ("brummbär_money_lender", False, "[bml]"),    
 )
+
+
+# These get added to a zip and dropped into the releases dir
+# with the current release number when ./publish -r is run.
+release_files = (
+    "phb.pdf",
+    "archetypes.pdf",
+    "rationale.pdf",
+
+    "black_coat.pdf",
+    "chevalier.pdf",
+    "champion_of_mithras.pdf",
+    "confessor_militant.pdf",
+    "elven_scion.pdf", 
+    "fyrdzwerg.pdf", 
+    "halfling_rover.pdf",
+    "hedge_wizard.pdf", 
+    "outrider.pdf", 
+    "penitent_brother.pdf", 
+    "red_mage.pdf", 
+    "second_son.pdf", 
+    "skald.pdf", 
+    "summoner.pdf", 
+    "witch_hunter.pdf",
+)
+
+    
+
+    
