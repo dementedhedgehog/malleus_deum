@@ -20,6 +20,7 @@ draw_skill_trees = True
 # outline images
 # (useful for debugging alignment and sizing of images)
 debug_outline_images = False
+#debug_outline_images = True
 
 # display design notes..
 # These are musings on why things have been done a certain way.
@@ -48,21 +49,29 @@ use_imperial = False
 add_index_to_core = True
 
 # List of files to build (fname, build_index?, index_name)
-files_to_build = (
+doc_files_to_build = (
     ("phb.xml", True, "PHB"),
-    # ("character_creation.xml", True, "CC"),
-    # ("equipment.xml", True, "Eq"),
-    # ("magic.xml", True, "Mg"),
+    #("equipment.xml", True, "Eq"),
+    #("magic.xml", True, "Mg"),
     #("monster_manual.xml", True, "MM"),
+    ("archetypes.xml", True, "AR"),
     #("magic_items.xml", True, "MI"),
     #("abilities.xml", True, "Ab"),
     #("ability_dcs.xml", False, "X"),
-    # ("tables.xml", True, "[T]"),
-
+    #("tables.xml", True, "[TBL]"),
     #("gms_screen.xml", False, "GMS"),
     #("gmg.xml", True, "[GMG]"),
-    ("rationale.xml", True, "[R]"),
+    #("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
+)
+
+
+# List of background files to build (fname, build_index?, index_name)
+background_files_to_build = (
+    #("mithras/mithras.xml", True, "MTH"),
+    #("noble_houses_of_westreich/noble_houses_of_westreich.xml", True, "NHW"),
+    # ("ascheburg/ascheburg.xml", True, "ASB"),
+    #("names/names.xml", True, "NMS"),
 )
 
 patrons_to_build = (
@@ -70,17 +79,21 @@ patrons_to_build = (
 )
 
 archetypes_to_build = (
-    #("bard", True, "[BRD]"),
-    # ("black_coat", True, "[BC]"),
-    # ("dwarven_shield_warrior", True, "[DSW]"),
-    # ("red_mage", True, "[RM]"),
-    # ("halfling_rover", True, "[HR]"),
-    # ("elven_scion", True, "[ES]"),
-    # ("outrider", True, "[OR]"),
-    # ("summoner", True, "[SM]"),
-    #("hedge_wizard", True, "[HW]"),
+    #("black_coat", True, "[BC]"),
+    #("chevalier", True, "[Ch]"),
+    # ("champion_of_mithras", True, "[CoM]"),
+    #("confessor_militant", True, "[FC]"), 
+    #("elven_scion", True, "[ESc]"),
+    #("fyrdzwerg", True, "[FZW]"),
+    #("halfling_rover", True, "[HR]"),
+#    ("hedge_wizard", True, "[HW]"),
+    #("outrider", True, "[OR]"),
+    # ("penitent_brother", True, "[PB]"),
+    #("red_mage", True, "[RM]"),
+#    ("second_son", True, "[SS]"),
+    #("skald", True, "[SKL]"),
+    #("summoner", True, "[SM]"),
     #("witch_hunter", True, "[WH]"),
-    # ("rake", True, "[RK]"),
 )
 
 encounters_to_build = (
@@ -90,4 +103,19 @@ encounters_to_build = (
     #("the_tower_of_laibstadt", False, "[tol]"),
 )
 
-
+modules_to_build = (
+    #("calibration", False, "[calib]"),
+    #("dwarven_mines", False, "[dm]"),
+    #("the_trial", False, "[tt]"),
+    #("von_bauer_chateau", False, "[vbc]"),
+    #("the_tower_of_laibstadt", False, "[tol]"),
+    # ("candlemass", False, "[cdm]"),
+    # ("reichs_pferdemeister", False, "[rfm]"),
+    # ("ottmar_fulcade", False, "[of]"),
+    
+    #("temple_of_the_white_prince", False, "[totwp]"),
+    #("lonely_road", False, "[lonr]"),
+    #("half_cask", False, "[hcask]"),
+    ("cold_keep", False, "[ck]"),
+    # ("brummbär_money_lender", False, "[bml]"),    
+)

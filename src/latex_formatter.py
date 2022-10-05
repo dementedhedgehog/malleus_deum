@@ -8,22 +8,18 @@ from utils import (
     convert_str_to_bool,
     convert_str_to_int,
     COMMENT,
-    attrib_is_true
+    attrib_is_true,
+    get_text_for_child
 )
 from config import use_imperial
 
 from npcs import NPC, NPCGroup
+import abilities
+import utils
 
-# \usepackage{float}                 %% force the position of floats
-
-# \usepackage[paperwidth=8.125in,paperheight=10.250in]{geometry}
-#%% lulu
-# %%\usepackage[paperwidth=21.59cm,paperheight=27.94cm]{geometry}
-#%% documentclass[twocolumn,oneside]{book}
-#%% blurb
 
 latex_frontmatter = r"""
-\documentclass[%s,twocolumn,oneside]{book}
+\documentclass[%s,twocolumn,twoside]{book}
 \usepackage{amsthm}                %% nice theorem environments
 \usepackage[unicode]{hyperref}     %% for hyperlinks in pdf
 \usepackage{bookmark}              %% fixes a hyperref warning.
@@ -31,9 +27,9 @@ latex_frontmatter = r"""
 \usepackage{color}                 %% color.. what can I say
 \usepackage{fancyhdr}              %% header control
 \usepackage{fancybox}              %% fancy boxes.. eg box outs
+\usepackage{float}                 %% for float[H]
 \usepackage{graphicx}              %% for including images
 \usepackage{fontspec}              %% fine font control
-\usepackage[raggedright]{titlesec} %% for fancy titles (and don't hyphenate)
 \usepackage{lettrine}              %% for drop capitals
 \usepackage{tabularx}              %% for tables  
 \usepackage[table]{xcolor}         %% for tables with colour
@@ -41,32 +37,38 @@ latex_frontmatter = r"""
 \usepackage{calc}                  %% for table width calculations
 \usepackage{xcolor}                %% for color aliases    
 \usepackage{wallpaper}             %% for the paper background
-\usepackage{enumerate}             %% for roman numerals in enumerations
+\usepackage{enumitem}              %% for smaller enumerations
 \usepackage{lipsum}                %% for generating debug text
-\usepackage{wrapfig}               %% sidebar thingy
+\usepackage{wrapfig}               %% figures with text wrapping.
 \usepackage{makeidx}               %% for building the index
 \usepackage{amssymb}               %% for special maths symbols, e.g. slanted geq
 \usepackage{xtab}                  %% for multipage tables
 \usepackage{rotating}              %% for sidewaystable
 \usepackage{parskip}               %% non indented paragraphs
 \usepackage{multicol}              %% used for four column mode.
-\usepackage{newfloat}              %% for list of art
+\usepackage[raggedright]{titlesec} %% for fancy titles (and avoid hyphenating titles)
 \usepackage{epstopdf}
+
+%% more floats (side-step a build error)
+\usepackage[maxfloats=256]{morefloats}
+\maxdeadcycles=1000
 
 %% include subsubsections in the table of contents
 \setcounter{tocdepth}{3}
 
+%% Ability header format
+\newcommand{\ability}[1]{\subsubsection{#1}\vspace{-1.8ex}}
+
 %% Principle and Corollary environments
-%% Also redefine the corollary/principle style to not put 
-%% parentheses around the title.
+%% Redefine the corollary/principle style to not put parentheses around the title.
 \newtheoremstyle{customtheoremstyle}%% Name
-  {.5\baselineskip}%% Space above
-  {.5\baselineskip}%% Space below
-  {\itshape}%% Body font
-  {0pt}%% Indent amount
-  {\bfseries}%% Theorem head font
-  {}%% Punctuation after theorem head
-  {\newline}%% Space after theorem head, ' ', or \newline
+  {.5\baselineskip}%%                           Space above
+  {.5\baselineskip}%%                           Space below
+  {\itshape}%%                                  Body font
+  {0pt}%%                                       Indent amount
+  {\bfseries}%%                                 Theorem header font
+  {}%%                                          Punctuation after theorem head
+  {\newline}%%                                  Space after theorem head, ' ', or \newline
   {\thmname{#1}\thmnumber{ #2}.\thmnote{ #3}}%% Theorem head spec 
 \theoremstyle{customtheoremstyle}
 \newtheorem{principle}{Principle}
@@ -74,7 +76,7 @@ latex_frontmatter = r"""
 
 %% fonts
 \newfontfamily{\cloisterblack}[Path=fonts/]{Cloister Black}
-\newfontfamily{\carolingia}[Path=fonts/]{Carolingia}
+%%\newfontfamily{\carolingia}[Path=fonts/]{Carolingia}
 \newfontfamily{\rpgdice}[Path=fonts/]{RPGDice}
 \newfontfamily{\sherwood}[Path=fonts/]{Sherwood}
 \newfontfamily{\libertine}{Linux Libertine O}
@@ -104,11 +106,17 @@ latex_frontmatter = r"""
 \colorlet{monstertitlecolor}{rosewood}
 \colorlet{monstertagscolor}{black}
 
-
 %% spacing
 %% drop is a vspace 1/100th the page text height.
 \newlength\drop
 \drop = 0.01\textheight
+
+%% Caption Spacing (spacing around table/figure captions)
+\setlength{\abovecaptionskip}{0ex}
+\setlength{\belowcaptionskip}{0ex}
+
+%% Use a page style that shows chapter headings at the top of the page.
+\pagestyle{headings}
 
 \titleformat{name=\chapter}[hang]
 {\raggedright\Huge\bfseries\rpgchapterfont\color{rpgchapterfontcolor}}
@@ -141,6 +149,10 @@ latex_frontmatter = r"""
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}a\endgroup}
 {ambush}}
 
+\newcommand{\physicalsymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}p\endgroup}
+{ambush}}
+
 \newcommand{\initiativesymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}i\endgroup}
 {initiative}}
@@ -156,6 +168,10 @@ latex_frontmatter = r"""
 \newcommand{\tagsymbol}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}T\endgroup}
 {tag}}
+
+\newcommand{\defensivesymbol}
+{\texorpdfstring{\begingroup\rpgdice\selectfont{}d\endgroup}
+{defensive}}
 
 \newcommand{\arrowleft}
 {\texorpdfstring{\begingroup\rpgdice\selectfont{}<\endgroup}
@@ -182,13 +198,7 @@ latex_frontmatter = r"""
  {\begingroup\rpgdice\selectfont{}?\endgroup}          
 
 
-%% achetype ability mark up symbols (star, empty-star and exclamation)
-\newcommand{\rpginnatearchetypeabilitysymbol}%%
-{\begingroup\rpgdice\selectfont\symbol{"201C}\endgroup}
-
-\newcommand{\rpginnateabilitysymbol}%%
-{\begingroup\rpgdice\selectfont\symbol{"201D}\endgroup}
-
+%% archetype ability mark up symbols (star, empty-star and exclamation)
 \newcommand{\rpgrecommendedabilitylevelsymbol}%%
 {\begingroup\rpgdice\selectfont{}!\endgroup}
 
@@ -231,6 +241,8 @@ latex_frontmatter = r"""
 \begingroup\rpgdice\selectfont{}g\endgroup}
 \newcommand{\magical}{%%
 \begingroup\rpgdice\selectfont{}z\endgroup}
+\newcommand{\innate}{%%
+\begingroup\rpgdice\selectfont{}z\endgroup}
 
 
 %% special provenance symbol
@@ -239,6 +251,10 @@ latex_frontmatter = r"""
 
 \newcommand{\flourish}{}
 
+
+\newenvironment{smaller}{\begin{footnotesize}}{\end{footnotesize}}
+
+
 %% the index 
 \makeindex
 
@@ -246,35 +262,32 @@ latex_frontmatter = r"""
 %% put it after a section, not just before
 
 \newenvironment{playexample}{ 
-\vspace{0.4em}
 \flourish
 \begin{quote}
+\itshape
 \small
-\carolingia
 \setlength{\parindent}{0pt}
 \raggedright}
-{\end{quote}\flourish\vspace{0.4em}}
+{\end{quote}\flourish}
 
-%% don't break paragraphs
-\widowpenalties 1 10000
+%% Try not to break paragraphs too much
+\widowpenalties 1 1000
 \raggedbottom
 
+%% Setup hyperlink formatting
 \hypersetup{%%
-colorlinks=false,%% hyperlinks will be black
-linkbordercolor=blue,%% hyperlink borders will be red
-pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
+colorlinks=false,%%            hyperlinks will be black
+linkbordercolor=blue,%%        hyperlink border colour
+pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 }
 
 %% Archetype table formatting
 \newcommand\achetypenameformat[1]{\begingroup\scriptsize#1\endgroup}
 
-%% "\AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
-
 
 %%
-%% Monsters
+%% Monsters Block Formatting.
 %%
-
 \newcommand\mbsep{%%
 \includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule/hrule.png}%%
 \vspace{-0.5cm}\hfill\break}
@@ -287,7 +300,7 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 {\color{monstertagscolor}\begin{normalsize}}%%
 {\end{normalsize}\vspace{0.0cm}\break}
 
-\newenvironment{mbac}
+\newenvironment{mbdefence}
 {\color{monstertitlecolor}\normalsize}{\hfill}
 
 \newenvironment{mbmove}
@@ -296,7 +309,7 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 \newenvironment{mbhp}
 {\color{monstertitlecolor}\normalsize}{\hfill}
 
-\newenvironment{mbresolve}
+\newenvironment{mbmettle}
 {\color{monstertitlecolor}\normalsize}{\hfill}
 
 \newenvironment{mbinitiativebonus}
@@ -311,14 +324,6 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 \newenvironment{npchp}
 {\color{monstertitlecolor}\normalsize}{}
 
-%% for List of Art
-\DeclareFloatingEnvironment[
-  fileext=loa,
-  listname={List of Art},
-  name=Art,
-  placement=tp,
-]{art}
-
 \newcommand\mbattrtitleformat[1]{\normalsize\textbf{#1}}
 
 %% the document! 
@@ -326,37 +331,28 @@ pdfborderstyle={/S/U/W 1}%% border style will be underline of width 1pt
 
 """
 
+
+# %% for List of Art
+# \DeclareFloatingEnvironment[
+#   fileext=loa,
+#   listname={List of Art},
+#   name=Art,
+#   placement=tp,
+# ]{art}
+
+
 #  %%within=section, %% activate it if you want
 #  %%chapterlistsgaps=on, %% meaningful only if chapters exist
 
+# Global table state
 table_state = None
 
 class TableState:
-
     def __init__(self):
         self.label = None
 
         # list of (index entry / sub entry)
         self.index_entries = []
-
-def get_table_state():
-    global table_state
-    if table_state is None:
-        table_state = TableState()
-    return table_state
-
-
-def get_text_for_child(element, child_name):
-    """
-    Find text for a child element.
-
-    """
-    child = element.find(child_name)
-    if child is None or child.text is None:
-        text = ""
-    else:
-        text = child.text.strip()
-    return text
 
 
 class TableCategory:
@@ -410,7 +406,6 @@ class LatexFormatter:
         do nothing once.
         """
         pass
-
     
     def start_book(self, book):        
         # must be a valid latex paper size
@@ -446,51 +441,24 @@ class LatexFormatter:
         return
     end_appendix = no_op
 
-    # symbols handled specially by the subsectiontitle
-    # HACK!!
-    # start_ambushsymbol = no_op
-    # end_ambushsymbol = no_op
-    # start_surprisesymbol = no_op
-    # end_surprisesymbol = no_op    
-    # start_initiativesymbol = no_op
-    # end_initiativesymbol = no_op
-    # start_talksymbol = no_op
-    # end_talksymbol = no_op
-    # start_fightreachsymbol = no_op
-    # end_fightreachsymbol = no_op
-    # start_startsymbol = no_op
-    # end_startsymbol = no_op
-    # start_fastsymbol = no_op
-    # end_fastsymbol = no_op
-    # start_mediumsymbol = no_op
-    # end_mediumsymbol = no_op
-    # start_slowsymbol = no_op
-    # end_slowsymbol = no_op
-    # start_mediumorslowsymbol = no_op
-    # end_mediumorslowsymbol = no_op
-    # start_startandreactionsymbol = no_op
-    # end_startandreactionsymbol = no_op
-    # start_resolutionsymbol = no_op
-    # end_resolutionsymbol = no_op
-    # start_noncombatsymbol = no_op
-    # end_noncombatsymbol = no_op
-    # start_reactionsymbol = no_op
-    # end_reactionsymbol = no_op
-
+    
     def start_fightreach(self, symbol):
         self.latex_file.write("\\fightreachsymbol{}")
         return
     end_fightreach = no_op    
 
+    
     def start_start(self, symbol):
         self.latex_file.write("\\startsymbol{}")
         return
     end_start = no_op    
+
     
     def start_melee(self, symbol):
         self.latex_file.write("\\meleesymbol{}")
         return
     end_melee = no_op
+
     
     def start_immediate(self, symbol):
         self.latex_file.write("\\immediatesymbol{}")
@@ -549,34 +517,7 @@ class LatexFormatter:
     def end_principletitle(self, symbol):
         self.latex_file.write("]")
         return
-    
-    
-    
-    # def start_fast(self, symbol):
-    #     self.latex_file.write("\\fastsymbol{}")
-    #     return
-    # end_fast = no_op
-    
-    # def start_medium(self, symbol):
-    #     self.latex_file.write("\\mediumsymbol{}")
-    #     return
-    # end_medium = no_op
-    
-    # def start_mediumorslow(self, symbol):
-    #     self.latex_file.write("\\mediumorslowsymbol{}")
-    #     return
-    # end_mediumorslow = no_op
-    
-    # def start_startandreaction(self, symbol):
-    #     self.latex_file.write("\\startandreactionsymbol{}")
-    #     return
-    # end_startandreaction = no_op
-    
-    # def start_slow(self, symbol):
-    #     self.latex_file.write("\\slowsymbol{}")
-    #     return
-    # end_slow = no_op
-    
+        
     def start_noncombat(self, symbol):
         self.latex_file.write("\\noncombatsymbol{}")
         return
@@ -627,6 +568,16 @@ class LatexFormatter:
         return
     end_initiative = no_op
 
+    def start_physical(self, symbol):
+        self.latex_file.write("\\physicalsymbol{}")
+        return
+    end_physical = no_op
+
+    def start_defensive(self, symbol):
+        self.latex_file.write("\\defensivesymbol{}")
+        return
+    end_defensive = no_op
+
     def start_arrowleft(self, symbol):
         self.latex_file.write("\\arrowleft{}")
         return
@@ -639,6 +590,13 @@ class LatexFormatter:
         self.latex_file.write("\\subsubsection{")
         return
     def end_subsubsectiontitle(self, section_title):
+        self.latex_file.write("}")
+        return    
+
+    def start_abilitytitle(self, section_title):
+        self.latex_file.write("\\ability{")
+        return
+    def end_abilitytitle(self, section_title):
         self.latex_file.write("}")
         return    
         
@@ -680,6 +638,11 @@ class LatexFormatter:
         return    
     end_martial = no_op
 
+    def start_innate(self, element):
+        self.latex_file.write("\\innate{}")
+        return    
+    end_innate = no_op
+
     def start_percent(self, element):
         self.latex_file.write("\\%")
         return    
@@ -710,6 +673,11 @@ class LatexFormatter:
         return
     end_leqsymbol = no_op
 
+    def start_ltsymbol(self, leq_element):
+        self.latex_file.write("$<$")
+        return
+    end_ltsymbol = no_op
+
     def start_geqsymbol(self, geq_element):
         self.latex_file.write("$\geq$")
         return
@@ -737,24 +705,15 @@ class LatexFormatter:
         return
     end_index = no_op
 
-    # def start_section(self, section):
-    #     title_element = section.find("sectiontitle")
-    #     if title_element is None:
-    #         title = ""
-    #     else:
-    #         title = title_element.text
-
-    #     self.latex_file.write("\\section{%s}\n" % title)               
-    #     return
     start_section = no_op
     end_section = no_op
 
     def start_sectiontitle(self, section_title):
-        self.latex_file.write("\\section{")#  % title)               
+        self.latex_file.write("\\section{")
         return
 
     def end_sectiontitle(self, section_title):
-        self.latex_file.write("}\n")#  % title)               
+        self.latex_file.write("}\n")
         return
     
     start_subsection = no_op
@@ -866,19 +825,24 @@ class LatexFormatter:
 
 
     def start_bold(self, bold):
-        self.latex_file.write("\\textbf{%s} " % normalize_ws(bold.text))
+        self.latex_file.write("\\textbf{%s}" % normalize_ws(bold.text))
         return
     end_bold = no_op
 
     def start_smaller(self, smaller):
-        self.latex_file.write("\\scriptsize{%s} " % normalize_ws(smaller.text))
+        # smaller text
+        self.latex_file.write("\\begin{smaller} ")
+        # smaller vertical space in lists etc.
+        self.latex_file.write("\\setlist{nosep} ")        
         return
-    end_smaller = no_op
+    
+    def end_smaller(self, smaller):
+        self.latex_file.write("\\end{smaller}")
+        return
 
     def handle_text(self, text):
         if text is not None:
-            if isinstance(text, unicode):                           
-                #self.latex_file.write(text.encode('utf8'))
+            if isinstance(text, str):                           
                 self.latex_file.write(text)
             else:
                 self.latex_file.write(text)
@@ -1070,41 +1034,100 @@ class LatexFormatter:
     start_chaptertitle = no_op
     end_chaptertitle = no_op
 
-    def start_img(self, img):
+    def start_img(self, img):        
+        self.latex_file.write("\t\\begin{center}\n")
+
         if config.draw_imgs:
             if config.debug_outline_images:
                 self.latex_file.write("\\fbox{")
 
-            self.latex_file.write("\t\\begin{center}\n")
+        # 
+        if "src" in img.attrib:
+            filename = img.get("src")
 
-            # 
-            if "src" in img.attrib:
-                filename = img.get("src")
-                
-            elif "id" in img.attrib:
-                resource_id = img.get("id")
+        elif "id" in img.attrib:
+            resource_id = img.get("id")
+            try:
                 resource = self.db.licenses.find(resource_id)
-                filename = resource.get_fname()
-                self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
-                                      % resource.get_contents_desc())
-            else:
-                raise Exception("Image missing source or id!")
+            except KeyError:
+                print(self.db.licenses.lookup.keys())
+                raise Exception(f"Image {resource_id} does not exist!")
+            filename = resource.get_fname()
+            self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
+                                  % resource.get_contents_desc())
+        else:
+            raise Exception("Image missing source or id!")
 
-            if not exists(filename):
-                raise Exception("Image does not exist: %s" % filename)
-            
-            # image without a box
-            self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
-                                  % (img.get("scale", default="1.0"), filename))
+        if not exists(filename):
+            raise Exception("Image does not exist: %s" % filename)
+
+        # image without a box
+        self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
+                              % (img.get("scale", default="1.0"), filename))
         return
 
     def end_img(self, img):
         if img.text is not None:
             self.latex_file.write("\t%s\n" % img.text)
-        self.latex_file.write("\t\\end{center}\n")
         if config.debug_outline_images:
             self.latex_file.write("}")
+        self.latex_file.write("\t\\end{center}\n")
         return
+
+
+    def start_handout(self, handout):
+        """
+        Handout is a figure+image hybrid on its own page and with a blank following page.
+
+        """                
+        self.latex_file.write("\\newpage\n")
+        self.latex_file.write("\\pagestyle{empty}\n")
+        self.latex_file.write("\\begin{figure*}[h!t]\n")
+        self.latex_file.write("\\begin{center}\n")
+
+        if config.draw_imgs:
+            if config.debug_outline_images:
+                self.latex_file.write("\\fbox{")
+
+        # 
+        if "src" in handout.attrib:
+            filename = handout.get("src")
+
+        elif "id" in handout.attrib:
+            resource_id = handout.get("id")
+            try:
+                resource = self.db.licenses.find(resource_id)
+            except KeyError:
+                print(self.db.licenses.lookup.keys())
+                raise Exception(f"Handout image {resource_id} does not exist!")
+            filename = resource.get_fname()
+            self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
+                                  % resource.get_contents_desc())
+        else:
+            raise Exception("Handout missing image src or id!")
+
+        if not exists(filename):
+            raise Exception("Handout image does not exist: %s" % filename)
+
+        # handout image without a box
+        self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
+                              % (handout.get("scale", default="1.0"), filename))
+        return
+
+    def end_handout(self, handout):
+        if handout.text is not None:
+            self.latex_file.write("\t%s\n" % handout.text)
+        if config.debug_outline_images:
+            self.latex_file.write("}")
+        self.latex_file.write("\\end{center}\n")
+        self.latex_file.write("\\end{figure*}\n")
+        self.latex_file.write("\\cleardoublepage\n")
+        self.latex_file.write("\\newpage\n")
+        self.latex_file.write("\\cleardoublepage\n")
+        self.latex_file.write("\\newpage\n")
+        self.latex_file.write("\\pagestyle{headings}\n")
+        return
+
 
     def start_figure(self, figure):
         position = "ht"
@@ -1131,15 +1154,6 @@ class LatexFormatter:
         if caption is not None:
             self.latex_file.write("\\caption{%s}\n" % caption)        
 
-        # fullwidth = False
-        # if "fullwidth" in figure.attrib:
-        #     fullwidth = figure.get("fullwidth")
-
-        # if attrib_is_true(figure, "fullwidth"):
-        #     figure_name = "figure*"
-        # else:
-        #     figure_name = "figure"
-
         if attrib_is_true(figure, "fullwidth"):
             if attrib_is_true(figure, "sideways"):
                 figure_name = "sidewaysfigure*"
@@ -1150,23 +1164,70 @@ class LatexFormatter:
                 figure_name = "sidewaysfigure"
             else:
                 figure_name = "figure"
-            
- 
-        # if attrib_is_true(figure, "fullwidth"):
-        #     self.latex_file.write("\\end{figure*}\n")
-        # else:
-        #     self.latex_file.write("\\end{figure}\n")
 
         self.latex_file.write("\\end{%s}\n" % figure_name)            
         return
 
+
+    def start_wrapimg(self, wrapimg):
+        position = wrapimg.get("position", "l")
+        width = wrapimg.get("scale", default="1.0") + "\\textwidth"
+        
+        self.latex_file.write("\\begin{wrapfigure}{%s}{%s}\n" % (position, width))
+
+        if config.draw_imgs:
+            if config.debug_outline_images:
+                self.latex_file.write("\\fbox{")
+
+        self.latex_file.write("\\centering\n")
+        # self.latex_file.write("\t\\begin{center}\n")
+
+        # 
+        if "src" in wrapimg.attrib:
+            filename = wrapimg.get("src")
+
+        elif "id" in wrapimg.attrib:
+            resource_id = wrapimg.get("id")
+            try:
+                resource = self.db.licenses.find(resource_id)
+            except KeyError:
+                raise Exception(f"Image {resource_id} does not exist!")
+            filename = resource.get_fname()
+            self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
+                                  % resource.get_contents_desc())
+        else:
+            raise Exception("Image missing source or id!")
+
+        if not exists(filename):
+            raise Exception("Image does not exist: %s" % filename)
+
+        # image without a box
+        self.latex_file.write("\t\\includegraphics[width=%s]{%s}\n"
+                              % (width, filename))        
+        return
+
+    
+    def end_wrapimg(self, wrapimg):
+        if config.debug_outline_images:
+            self.latex_file.write("}")
+
+        caption = wrapimg.get("caption")
+        if caption is not None:
+            self.latex_file.write("\\caption{%s}\n" % caption)
+        self.latex_file.write("\\end{wrapfigure}\n")
+        return
+
+    
     def start_olist(self, enumeration):
         """
         Start enumeration, ordered list of things.
 
         """
         # the [i] gets us roman numerals in the enumeration
-        self.latex_file.write("\\begin{enumerate}[i.]\n")
+        #self.latex_file.write("\\begin{enumerate}[i.]\n")
+        self.latex_file.write("\\begin{enumerate}[label = (\\roman*)]\n")
+
+
         return
 
     def end_olist(self, enumeration):
@@ -1235,25 +1296,8 @@ class LatexFormatter:
     start_tablespec = no_op
     end_tablespec = no_op
     
-    # def start_table(self, table):
-    #     pass
     
-    def end_table(self, table):
-        return
-    
-    # def start_tablefooter(self, table_footer):
-    #     return
-    
-    # def end_tablefooter(self, table_footer):
-    #     # we also need to find any labels! (place them after the caption!)
-    #     # label = table_footer.find("tablelabel")
-    #     # if label is not None:
-    #     #    self.start_label(label)
-    #     #    self.end_label(label)     
-    #     return
-
-    def start_table(self, table):
-
+    def start_table(self, table):        
         global table_state
         assert table_state is None
         table_state = TableState()
@@ -1315,16 +1359,13 @@ class LatexFormatter:
             if DEBUG_COLUMN_WIDTH:
                 table_spec_str += "|"
         self._number_of_columns_in_table = columns
-        
-        # veritcal space
-        if table_state.compact:
-            self.latex_file.write("\n\\vspace{-0.2cm}")
-        else:
-            self.latex_file.write("\n\\vspace{0.05cm}")
+
+        # vertical space
+        self.latex_file.write("\n\\vspace{-0.3cm}")
 
         # don't have paragraph indents buggering up our table layouts
         self.latex_file.write("\\noindent{}")            
-
+        
         # wrap single page tables in a table environment
         # (we use xtabular for multi-page tables and the table environment
         # confuses it about page size).        
@@ -1335,22 +1376,39 @@ class LatexFormatter:
                 self.latex_file.write("\\begin{table*}[ht]")
             else:
                 self.latex_file.write("\\begin{table}")
-
+        else:
+             self.latex_file.write("\\begin{table}[H]")
+        
+        # The table caption
+        table_title = table.find("tabletitle")        
+        if table_title is not None:
+            if hasattr(table_title, "text"):
+                table_title = table_title.text
+            table_title = table_title.strip()
+            self.latex_file.write(" \\captionof{table}{%s} " % table_title)
+            
         # reduce the line spacing in compact tables
         if table_state.compact:
             self.latex_file.write("\\begingroup\n")
-            self.latex_file.write("\\renewcommand\\arraystretch{0.75}\n")
-        
-        self.latex_file.write(" \\begin{center} ")
+            self.latex_file.write("\\renewcommand\\arraystretch{0.75}")
+            
+        self.latex_file.write(" \\begin{center}")
+
+        # Tabular
         if table_state.fullwidth:
             # normal table environment
-            self.latex_file.write("\\begin{tabularx}{1.0\\textwidth}{%s} " 
+            self.latex_file.write("\\begin{tabularx}{1.0\\textwidth}{%s}" 
                                   % table_spec_str)
         else:
             self.latex_file.write("\\begin{tabularx}{1.0\\linewidth}{%s}" 
                                   % table_spec_str)
+
+        # horizontal line
         if table_state.figure:
-            self.latex_file.write(r" \toprule{}\\")
+            #self.latex_file.write(r" \toprule{}\\")
+            self.latex_file.write(r" \toprule ")
+        else:
+            self.latex_file.write(r" \hline ")
         return
 
 
@@ -1363,14 +1421,6 @@ class LatexFormatter:
         category = get_text_for_child(table, "tablecategory")
         if category is None:
             raise Error("Table requires a tablecategory child element.")
-
-        table_title = table.find("tabletitle")        
-        if table_title is not None:
-            if hasattr(table_title, "text"):
-                table_title = table_title.text
-            table_title = table_title.strip()
-        else:
-            table_title = ""
 
         figure = False
         fullwidth = False
@@ -1395,20 +1445,21 @@ class LatexFormatter:
             raise Exception("Unknown table category: '%s'" % category)
                 
         if figure:
-            self.latex_file.write("\\bottomrule ")    
+            self.latex_file.write("\\bottomrule ")
+        else:
+            self.latex_file.write(r" \hline ")
 
         # normal table environment
         self.latex_file.write("\\end{tabularx}")
         
-        if table_title != "":
-            self.latex_file.write(" \\captionof{table}{%s}" % table_title)
-    
+        # Add labels for references
         if table_state.label is not None:
-            label = self.latex_file.write("\\label{%s}"  % table_state.label)
+            label = self.latex_file.write("\\label{%s}" % table_state.label)
+            #label = self.latex_file.write("\\label{%s}\\medskip\\medskip"  % table_state.label)
+            #label = self.latex_file.write("\\vskip{1ex}\\label{%s}\\medskip"  % table_state.label)
 
         self.latex_file.write(" \\end{center}")
 
-        
         if table_state.compact:
             self.latex_file.write("\\vspace{0.14cm}")
             self.latex_file.write("\\endgroup{}\n")
@@ -1425,6 +1476,14 @@ class LatexFormatter:
                 self.latex_file.write("\\end{table}")
                 # vertical space
                 self.latex_file.write("\n\\\\\n")
+        else:
+            self.latex_file.write("\\end{table}")
+        
+                
+
+        # Force the caption and the table to be on the same page.
+        #self.latex_file.write(r"\end{minipage}")        
+                
             
         self.latex_file.write("\n\n")
 
@@ -1441,10 +1500,9 @@ class LatexFormatter:
     start_tabletitle = no_op
     end_tabletitle = no_op
 
-    # tablelabel is also parsed by the table
+    # Tablelabel is also parsed by the table
     def start_tablelabel(self, label):
         global table_state
-        #table = get_table_state()
         table_state.label = label.text.strip()
     end_tablelabel = no_op
 
@@ -1455,7 +1513,6 @@ class LatexFormatter:
 
 
     def start_tablerow(self, table_row):
-
         # we can turn off new colours on the next row 
         # (and keep the same colour as the previous row).
         if "newcolour" in table_row.attrib:
@@ -1469,15 +1526,12 @@ class LatexFormatter:
 
         if table_row.tag == "tableheaderrow":
             self.latex_file.write("\\rowcolor{blue!33}\n")
-            #self.latex_file.write("\\rowcolor{blue!20}\n")
-            # assert False
-            pass
 
         elif (self._current_row_in_table + 1) % 2 == 1:                
             self.latex_file.write("\\rowcolor{blue!20}\n")
         return
 
-    def end_tablerow(self, table_title):
+    def end_tablerow(self, tablerow):
         self.latex_file.write("\\tabularnewline ")
         return
 
@@ -1490,7 +1544,7 @@ class LatexFormatter:
 
         """
         width = table_data.get("width")
-        if width is not None:
+        if width is not None:            
             width = int(width)
         else: 
             width = 1
@@ -1552,8 +1606,8 @@ class LatexFormatter:
     end_listoffigures = no_op
 
     def start_listofart(self, list_of_art):
-        self.latex_file.write(# "\\listofart\n")
-        "\\begin{minipage}[b]{1\\textwidth}\\listofart\\end{minipage}")
+        #self.latex_file.write(# "\\listofart\n")
+        #"\\begin{minipage}[b]{1\\textwidth}\\listofart\\end{minipage}")
         return
     end_listofart = no_op
 
@@ -1636,6 +1690,11 @@ class LatexFormatter:
         self.latex_file.write("i.e.\@{}")
         return
     end_ie = no_op
+
+    def start_aka(self, fail):
+        self.latex_file.write("a.k.a.\@{}")
+        return
+    end_aka = no_op
 
     def start_etc(self, fail):
         self.latex_file.write("etc.\@{}")
@@ -1743,12 +1802,12 @@ class LatexFormatter:
         self.latex_file.write(r"\end{mbtags}\noindent")
         return
 
-    def start_mbac(self, mbac):
-        self.latex_file.write(r"\textbf{AC: }\begin{mbac}")
+    def start_mbdefence(self, mbac):
+        self.latex_file.write(r"\textbf{Defence: }\begin{mbdefence}")
         return
 
-    def end_mbac(self, mbac):
-        self.latex_file.write(r"\end{mbac}\enspace{}")
+    def end_mbdefence(self, mbac):
+        self.latex_file.write(r"\end{mbdefence}\enspace{}")
         return
 
     def start_mbhp(self, mbhp):
@@ -1781,11 +1840,11 @@ class LatexFormatter:
         self.latex_file.write("\\end{mbmagic}\\vspace{0.1cm}\\break{}")
         return
     
-    def start_mbresolve(self, mbresolve):
-        self.latex_file.write(r"\textbf{Resolve Pool: }\begin{mbresolve}")
+    def start_mbmettle(self, mbmettle):
+        self.latex_file.write(r"\textbf{Resolve Pool: }\begin{mbmettle}")
         return
-    def end_mbresolve(self, mbresolve):
-        self.latex_file.write("\\end{mbresolve}")        
+    def end_mbmettle(self, mbresolve):
+        self.latex_file.write("\\end{mbmettle}")
         return
     
     def start_mbstr(self, mbstr):
@@ -1912,13 +1971,6 @@ class LatexFormatter:
     end_inspiration = no_op
 
     def start_attribution(self, attribution):
-        # resource_id = attribution.get("src")
-        # resource = self.db.licenses.find(resource_id)
-        # sig = resource.get_sig()
-
-        # if "src" in img.attrib:
-        #     filename = img.get("src")
-        # el
         img = attribution.getparent()
         if "id" in img.attrib:
             resource_id = img.get("id")
@@ -1930,3 +1982,60 @@ class LatexFormatter:
             raise Exception("Image attribution missing id!")
         return
     end_attribution = no_op
+
+    def start_ellipsis(self, ellipsis):
+        self.latex_file.write("\ldots")
+    end_ellipsis = no_op
+
+    def start_hline(self, _):
+        self.latex_file.write(r"\noindent\rule{\columnwidth}{0.8pt}\nopagebreak\vspace{-0.8em}")
+        return    
+    def end_hline(self, _):
+        self.latex_file.write(r"\nopagebreak\vspace{-1.2em}\noindent\rule{\columnwidth}{0.8pt}")
+        return    
+
+    def start_abilityref(self, ability_ref):
+        try:
+            ability_id = ability_ref.attrib["id"]
+            ab = self.db.lookup_ability_or_ability_level(ability_id)
+
+            print(ab)
+            print(ab.__class__)
+            print(isinstance(ab, abilities.AbilityLevel))
+            if isinstance(ab, abilities.AbilityLevel):
+                name = ab.get_ability().get_title()
+                
+            elif isinstance(ab, abilities.Ability):
+                name = ab.get_title()
+
+            else:
+                raise Exception(f"Bad abilityref!!  No ability has id: {ability_id}")
+
+
+            level_num = ab.get_level_number()
+            if level_num is not None:
+                level_num = utils.convert_to_roman_numerals(level_num)
+                
+            if ab.is_innate():
+                print("INNATE")
+                if level_num is None:
+                    self.latex_file.write(f"{name}^i")
+                else:
+                    print(f"--- {name}^i {level_num}")
+                    self.latex_file.write(f"{name}^i {level_num}")
+            else:
+                if level_num is None:
+                    self.latex_file.write(f"{name}")
+                else:
+                    self.latex_file.write(f"{name} {level_num}")
+            
+        except KeyError:
+            # bad ability ref...
+            raise Exception("Bad abilityref!!  Missing ability id.")
+        
+            
+        
+        return    
+    def end_abilityref(self, _):
+        return    
+    

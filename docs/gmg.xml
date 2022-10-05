@@ -10,8 +10,6 @@
     <vspace>1</vspace>
     <author>Blaize A. Rhodes</author>
     <vspace>1</vspace>
-    <author>William F. Rhodes</author>    
-    <vspace>1</vspace>
     <version>{{ db.version }}</version>
   </titlepage>
 
@@ -21,6 +19,47 @@
   <chapter>
     <chaptertitle>Introduction</chaptertitle>
 
+    <section>
+      <p>
+	The first and most important rule is that all the rules are suggestions for the GM.
+	The GM can overrule any rule at their discretion.
+      </p>
+    </section>
+  </chapter>
+
+  <chapter>
+    <chaptertitle>Colour</chaptertitle>
+    {% include "docs/fragment_colour.xml" %}
+  </chapter>
+
+  <chapter>
+    <chaptertitle>Scenes</chaptertitle>
+    {% include "docs/fragment_scenes.xml" %}
+  </chapter>
+
+  <chapter>
+    <chaptertitle>Combat</chaptertitle>
+    {% include "docs/fragment_combat.xml" %}
+  </chapter>
+  
+  <chapter>
+    <chaptertitle>Travel</chaptertitle>
+    {% include "docs/fragment_travel.xml" %}
+  </chapter>
+  
+  <chapter>
+    <chaptertitle>Down Time</chaptertitle>
+    {% include "docs/fragment_down_time.xml" %}
+  </chapter>
+  
+  <chapter>
+    <chaptertitle>Death, Diseases and Insanity</chaptertitle>
+    {% include "docs/fragment_death.xml" %}
+  </chapter>  
+  
+  <chapter>
+    <chaptertitle>Cults</chaptertitle>
+    {% include "docs/fragment_cults.xml" %}
   </chapter>
 
   <chapter>
@@ -32,21 +71,15 @@
     <chaptertitle>Magic Items</chaptertitle>
     {% include "docs/fragment_magic_items.xml" %}
   </chapter>
-  
 
   <chapter>
     <chaptertitle>Traps</chaptertitle>
+    {% include "docs/fragment_traps.xml" %}
+  </chapter>
 
-    <section>
-      <sectiontitle>Mechanical Traps</sectiontitle>
-      <p>
-	FIXME: "click"
-	write it down.
-
-	anatomy... trigger, effect.a
-      </p>
-    </section>
-    
+  <chapter>
+    <chaptertitle>The Planes</chaptertitle>
+    {% include "docs/fragment_planes.xml" %}
   </chapter>
 
 
@@ -55,93 +88,18 @@
     <chaptertitle>Special Cases</chaptertitle>
 
     <section>
-      <sectiontitle>Sudden Death</sectiontitle>
-
-      <p>
-	XXXX handle sudden death stuff (falling, drowning, poison etc)
-      </p>
-    </section>
-    
-    
-    <section>
-      <sectiontitle>Damage</sectiontitle>
-
-      <subsection>
-	<subsectiontitle>Falling Damage</subsectiontitle>
-
-	<p>
-	  There are two types of falling damage.  Falls where
-	  the character will be hurt and falls where the character
-	  will die instantly.  It is important for the GM to remember
-	  that this game is about heros.  So every opportunity to
-	  avoid falling to the characters death should be given.
-	</p>
-	
-	<p>
-	  When falling the character suffers d8 per <measurement><metric>5m</metric>
-	  <imperial>10'</imperial></measurement> fallen.  
-	</p>
-	
-	<p>
-	  When characters are in danger of falling to their death
-	  remember that this is not the story of
-
-	  leaves on a bus.
-	</p>
-
-	<p>
-	  XXXX  reroll, save to catch something, save to hit something on the way down, save for divine intervention.
-	</p>
-      </subsection> 
-
-      <subsection>
-	<subsectiontitle>Suffication and Drowning</subsectiontitle>
-	<p>
-	  XXXX
-	</p>
-      </subsection>
-      
-
-      <subsection>
-	<subsectiontitle>Fire Damage</subsectiontitle>
-	<p>
-	  XXXX
-	</p>
-      </subsection>
-      
-      <subsection>
-	<subsectiontitle>Divine Intervention</subsectiontitle>
-	<p>
-	  XXXX
-	</p>
-      </subsection>
-      
-    </section>
-
-    <section>
-      <sectiontitle>Temporary Insanity</sectiontitle>
-
-      <p>
-	Insanity might at the GMs discretion lead to sudden insights or vice versa.
-      </p>
-      
-      {% include "docs/tables/insanities.xml" %}
-    </section>
-
-    <section>
       <sectiontitle>Monster and NPC Abilities</sectiontitle>
 
       {% from "docs/macro_ability.xml" import build_ability with context %}
-      
+
+      <subsection>
+      <subsectiontitle>XXX</subsectiontitle>
       {% for ability in ability_groups.get_abilities() if ability.is_gmg_ability() %}
       {{ build_ability(ability) }}    
       {% endfor %}      
-      
-    </section>
-    
+      </subsection>
+    </section>    
   </chapter>
-
-
 
   
 
@@ -261,6 +219,7 @@
       out
       encounter nerfs and buffs
 
+      planned combat (monster AI)
     </p>
 
 
@@ -296,8 +255,8 @@
 	</p>
 
 	<p>
-	  To inject a little flavour and context into combat Std Checks have benefits and
-	  consequences.  These provide hooks that allow the GM to reward characters by
+	  To inject a little flavour and context into combat Std Checks have boons and
+	  banes.  These provide hooks that allow the GM to reward characters by
 	  describing their extraordinary success or failure, for example they might be
 	  able to instantly kill a minor opponent, or their sword might break.
 	</p>
@@ -364,7 +323,7 @@
           Use a <emph>Luck</emph> roll or an <emph>Intelligence</emph> roll to provide the 
           players with some advantage before you use an out.   They might, luckily, see a key 
           hanging on the wall or they might realize that this would be the room where a key 
-          might be stored.  It's better if the players abilities save them rather than a deus 
+          might be stored.  It is better if the players abilities save them rather than a deus 
           ex machina.
         </p>
 
@@ -460,7 +419,6 @@
 	
 	<subsubsection>
 	  <subsubsectiontitle>Fleeing</subsubsectiontitle>
-
 	  <p>
 	    One good Out is to have fleeing be an option for the party.
 	    When designing the encounter consider what will happen if the characters
@@ -481,7 +439,6 @@
 	
 	<subsubsection>
 	  <subsubsectiontitle>Diplomacy</subsubsectiontitle>
-
 	  <p>
 	    Consider how the characters opponents might react to diplomacy.
 	    If the foes are unlikly to normally be disposed
@@ -544,7 +501,14 @@
     </section>
   </chapter>
 
+  <chapter>
+    <chaptertitle>Useful Tables</chaptertitle>
   
-  
+    <section>
+      <sectiontitle>Abilities</sectiontitle>
+
+      {% include "docs/tables/gmg_abilities.xml" %}
+    </section>
+  </chapter>
 </book>
 

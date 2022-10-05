@@ -1317,16 +1317,6 @@ class HtmlFormatter:
         return
     end_combat_symbol = no_op
 
-    def start_innateabilitylevelsymbol(self, innate_ability_symbol):
-        self.html_file.write("\\rpginnateabilitysymbol{}")
-        return
-    end_innateabilitylevelsymbol = no_op
-
-    def start_innatearchetypeabilitylevelsymbol(self, innate_ability_symbol):
-        self.html_file.write("\\rpginnatearchetypeabilitysymbol{}")
-        return
-    end_innatearchetypeabilitylevelsymbol = no_op
-
     def start_recommendedabilitylevelsymbol(self, recommended_ability_level_symbol):
         self.html_file.write("\\rpgrecommendedabilitylevelsymbol{}")
         return

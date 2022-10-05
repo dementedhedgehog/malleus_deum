@@ -1,0 +1,49 @@
+\documentclass[a4paper]{dnd5}
+\usepackage{wrapfig}
+
+\newcommand\inc[1]{
+ \includegraphics[width=0.22\textwidth, height=0.22\textwidth]{#1}
+}
+
+
+\newcommand\origin{\textbf{Origin:}}
+\newcommand\sigil{\textbf{Sigil:}}
+\newcommand\words{\textbf{Words:}}
+
+\pagestyle{fancy}
+
+\newtoggle{DM}
+%\toggletrue{DM}
+\togglefalse{DM}
+
+
+
+\iftoggle{DM}{\lhead{DM's Version}}{}
+
+
+\begin{document}
+
+
+\section*{Languages}
+
+All Thules speak Thule. Some Thules in their outlying districts speak Brythinian, or Samartian, or even Orcish depending on where they live within that country and their occupations.
+
+All elves speak elvish.
+High elves, from Sylvannia, speak Aquilonian as well.
+Wood elves from the forests south of Cheruskia speak Cheruskian and/or Brythynian.
+Dark elves speak Arkadian (that is the language of their religious texts) and possibly Brythinian, Hibernian, Cheruskian as well.
+
+All Dwarves speak Dwarven and Brythynian.
+
+Brythinians typically only speak Brythynian. Travellers and those living near the borders might speak Thule, Cheruskian, Hibernian or Averoigne.
+
+Stout halfings come from villages around Midheim and speak Brythinian, and either Cheruskian or Dwarven.
+Lightfoots come from villages scattered through Hibernia and speak Hibernian and Brythinian.
+
+Cheruskians speak Cheruskian.
+
+All Hibernians speak Hibernian and most speak Brythinian as well.  
+
+Aquillonian is the language of learning and trade around the middle seas.  In the north Brythynian has surplanted it for trade purposes.  Aquillonian is however, still, a very important language.
+
+\end{document}

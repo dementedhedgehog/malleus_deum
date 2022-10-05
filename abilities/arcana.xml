@@ -4,21 +4,76 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Arcana</abilitygrouptitle>
     <abilitygroupid>arcana</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Magic abilities involve the use of the characters magic pool and
-	are only available to certain archetypes.
+	Arcana magic represents magical abilities and learning that is common to
+	many other schools of magic.   It is comprised of simple, fairly generic,
+	magic source agnostic spells. 	Arcana involves the use of the characters
+	magic pool and is only available to certain archetypes.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
 
   <ability>
-    <abilitytitle>Arcana</abilitytitle>
-    <abilityid>magic_school.arcana</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><arcana/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Aegis</abilitytitle>
+    <abilityid>arcana.aegis</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><arcana/><ranged/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitydescription>
+      <p noindent="true">
+	The aegis spell is perhaps optimistically named.   It briefly forms
+	an invisible force umbrella about <measurement><metric>2m</metric><imperial>6'</imperial></measurement>
+	wide that protects the character from rain, winds, and potentially gaseous attacks.
+	Can be cast to cushion the impact from falling, reducing damage by 1d6.
+	Arrows and crossbow bolts cast against this spell suffer a -3 to hit penalty.
+	It can also aditionally protect one adjacent medium or small creature.
+      </p>
+    </abilitydescription>    
+    <spline><p x="-45" y="45"/></spline>
+    <prereqabilitylevel>arcana_1</prereqabilitylevel>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+  
+
+  <ability>
+    <abilitytitle>Alarum</abilitytitle>
+    <abilityid>arcana.alarum</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><arcana/><ranged/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level" />
+    <abilitydescription>
+      <p noindent="true">
+	The caster designates a volume of space no larger
+	than a typical room.  Movement within
+	that region results in the caster receiving a short
+	sharp shock of thaumaturgical energy, informing them
+	of that movement and waking them if they are asleep.
+      </p>
+
+      <p>
+	Once cast the character may move away from the area
+	provided they maintain a contagious link with the area
+      </p>
+    </abilitydescription>    
+    <spline><p x="-90" y="30"/></spline>
+    <prereqabilitylevel>arcana_1</prereqabilitylevel>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Arcana Lore</abilitytitle>
+    <abilityid>arcana</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><arcana/><lore/></tags>
+    <abilitycheck dc="12"/> 
     <abilitydescription>
       <p noindent="true">
 	This is the entry level for all magic.  It represents a basic understanding
@@ -26,127 +81,83 @@
 	history and lore.
       </p>
     </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>1</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 14</check>
-	<leveldescription>
-	  <p>
-	    If successful the character knows some well-known magical lore.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>2</attempts>
-        <check>Std 2d8 + 2 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-	    Identifies well-known magical items and artifacts.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 4 vs DDC 12</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <spline></spline>
+    <abilitylevels from="1" to="4"/>
   </ability>
-
-
-  <ability>
-    <abilitytitle>Alarum</abilitytitle>
-    <abilityid>magic.alarum</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><arcana/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The caster designates a volume of space no larger
-	than a typical living room.  Movement within
-	that region results in the caster receiving a short
-	sharp shock of thaumaturgical energy, informing them
-	of that movement and waking them if they are asleep.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 6</check>
-	<overcharge>DC + 4</overcharge>	
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>0</attempts>
-	<check>Magic Pool vs DDC 6</check>
-	<overcharge>DC + 6</overcharge>	
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>1</successes>
-        <attempts>0</attempts>
-	<check>Magic Pool vs DDC 6</check>
-	<overcharge>DC + 7</overcharge>	
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-  
 
   <ability>
     <abilitytitle>Cloak of Shadows</abilitytitle>
-    <abilityid>magic.cloak_of_shadows</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><arcana/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityid>arcana.cloak_of_shadows</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><arcana/><pool/></tags>
+    <abilitycheck dc="4" overcharge="9+Level"/>
     <abilitydescription>
-      <p>
+      <p noindent="true">
 	The character creates a cloak of darkness around themselves.
-	This makes it very difficult to see the character at night time.	
+	This makes it very difficult to see the character at night time.
+	If successful this spell grants a bonus of +3 x Level to Sneak
+	Checks in the dark.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 9</overcharge>
-	<effect>+2 on Sneak at night</effect>			
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 8</check>
-	<overcharge>DC + 10</overcharge>			
-	<effect>+4 on Sneak at night</effect>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-75" y="50"/><p x="0" y="30"/></spline>
+    <prereqabilitylevel>arcana_1</prereqabilitylevel>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>
   
 
   <ability>
+    <abilitytitle>Ignis</abilitytitle>
+    <abilityid>arcana.ignis</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><conjuration/><pool/></tags>
+    <abilitydescription>
+      <p>
+	Ignis allows the caster to create fire of torch
+	intensity by heating the air.  If cast on a 
+	creature, that creature suffers d4 fire damage.
+        At level 1 this spell requires physical contact 
+        with the target to cast.  At level 2 and higher 
+        it has a range of a five meters.
+      </p>
+    </abilitydescription>    
+    <spline><p x="0" y="45"/></spline>
+    <prereqabilitylevel>arcana_1</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="9+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
+
+
+  <ability>
+    <abilitytitle>Incendo</abilitytitle>
+    <abilityid>arcana.incendo</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><conjuration/><pool/></tags>
+    <abilitydescription>
+      <p>
+	Allows the user to make a weapon flame for the
+	duration of a combat. Flaming weapons do +d6 extra
+	fire damage.
+      </p>
+    </abilitydescription>    
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>arcana.ignis_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
+  
+  <ability>
     <abilitytitle>True Sight</abilitytitle>
-    <abilityid>magic.true_sight</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><arcana/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityid>arcana.true_sight</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><arcana/><pool/></tags>
     <abilitydescription>
       <p>
 	The character is able to discern the true nature of a being, seeing
@@ -159,61 +170,32 @@
 	that it effects the observers sanity.
       </p>	
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool versus Glamour DC</check>
-	<overcharge>DC + 8</overcharge>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>
-	<effect>See above.</effect>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool +2 versus Glamour DC</check>
-	<overcharge>DC + 9</overcharge>
-	<effect>See above.</effect>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool +5 versus Glamour DC</check>
-	<overcharge>DC + 10</overcharge>
-	<effect>See above.</effect>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="60" y="75"/></spline>
+    <prereqabilitylevel>arcana_1</prereqabilitylevel>
+    <abilitycheck dc="2"
+    overcharge="10+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>
   
 
   <ability>
     <abilitytitle>Scroll Writing</abilitytitle>
-    <abilityid>magic.scrolls</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><arcana/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityid>arcana.scrolls</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><arcana/></tags>
     <abilitydescription>
       <p noindent="true">
 	The character knows how to make magical scrolls given
 	sufficent time, and writing materials.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-	<prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 8</check>
-        <prereqabilitylevel>magic_school.arcana_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="90" y="30"/></spline>
+    <prereqabilitylevel>arcana_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>  
 </abilitygroup>

@@ -5,12 +5,14 @@
 
 
 """
+import re
 from os.path import abspath, join, splitext, dirname, exists, basename
+from os import walk
 
-from abilities import AbilityGroups
-from abilities import SKILL_POINT_TYPE
+from abilities import AbilityGroups, ability_families
 from monsters import MonsterGroups
 from archetypes import Archetypes
+from encounters import Encounters
 from patrons import Patrons
 from npcs import NPCGangs
 from attribute_bonuses import attribute_bonuses
@@ -28,15 +30,13 @@ class DB:
         self.monster_groups = None
         self.archetypes = None
         self.attribute_bonuses = attribute_bonuses
-        self.skill_point_type = SKILL_POINT_TYPE
         self.licenses = None
         self.melee_weapons = None
         self.missile_weapons = None
+        self.encounters = None
+        self.ability_families = ability_families
         return
 
-    # def get_x(self):
-    #     return "X"
-    
     def load(self, root_dir, fail_fast=True):
 
         # load the version
@@ -45,9 +45,11 @@ class DB:
         self.version = Version.load(version_fname)
         
         # load the abilities
+        print("Loading abilities")
         abilities_dir = join(root_dir, "abilities")
         self.ability_groups = AbilityGroups()
         self.ability_groups.load(abilities_dir, fail_fast=fail_fast)
+        print("Abilities Loaded")
         
         # load the archetypes
         archetype_dir = join(root_dir, "archetypes")
@@ -68,17 +70,22 @@ class DB:
                           fail_fast=fail_fast)
 
         # load the npcs
-        npcs_dir = join(root_dir, "encounters") # FIXME
+        npcs_dir = join(root_dir, "npcs") 
         self.npc_gangs = NPCGangs()        
         self.npc_gangs.load(npcs_dir=npcs_dir,
                             monster_groups=self.monster_groups,
                             fail_fast=fail_fast)
 
         # licenses
-        resource_dir = join(root_dir, "resources")
-        unused_resource_dir = join(root_dir, "unused_resources")
         self.licenses = Licenses()
-        self.licenses.load((resource_dir, unused_resource_dir))
+        resource_dirs = []
+        for root, dirs, files in walk(root_dir):
+            for d in dirs:
+                if d == "resources":                    
+                    resource_dirs.append(join(root, d))
+        unused_resource_dir = join(root_dir, "unused_resources")
+        resource_dirs.append(unused_resource_dir)
+        self.licenses.load(resource_dirs)
 
         # melee weapons
         melee_weapons_xml = join(root_dir, "items", "melee_weapons.xml")
@@ -90,6 +97,59 @@ class DB:
         self.missile_weapons = Weapons(fname=missile_weapons_xml)
         self.missile_weapons.load()
 
+        # load the encounters
+        encounters_dirs = join(root_dir, "encounters")
+        self.encounters = Encounters()
+        self.encounters.load(root_dir=root_dir)
+        
         assert self.missile_weapons is not None
         return
 
+
+    def lookup_ability_or_ability_level(self, ability_id):
+        try:
+            ability_level = self.ability_groups.get_ability_level(ability_id)
+            return ability_level
+            #ability_str = ability_level.get_title()
+        except KeyError:
+            return self.ability_groups.get_ability(ability_id)
+        #     ability = self.ability_groups.get_ability(ability_id)
+        #     return ability
+        #     if ability is not None:
+        #         ability_str = ability.get_title()
+        #     else:
+        #         # dunno what this is .. just pass it through unmodified.
+        #         ability_str = ability_id
+        # return ability_str
+        
+
+    def filter_abilities(self, xml):
+        """
+        Filters xml replacing magical tokens starting with ✱ with values from the db.
+        We could have done this with xml or jinja filters but it's a lot of typing.
+        """
+        tokens = re.split("(✱[a-zA-Z\._0-9]+)", xml)
+        new_tokens = []
+        for token in tokens:
+
+            #
+            if not token.startswith("✱"):
+                new_tokens.append(token)
+                continue
+            
+            # try and translate the token
+            token = token[1:]
+            # toks = token.split("_")
+            # try:
+            #     level_number = int(toks[-1])
+            #     token_xml = f'<abilityref id="{token} level="{level_number}""/>'
+            # except ValueError:
+            #     # not a level.            
+            #     token_xml = f'<abilityref id="{token}"/>'
+            
+            token_xml = f'<abilityref id="{token}"/>'
+            new_tokens.append(token_xml)
+        return "".join(new_tokens)
+    
+
+    

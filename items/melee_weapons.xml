@@ -1,207 +1,299 @@
 <weapons>
 
+  <!-- Axes -->
   <weapon>
-    <name>Battle Axe</name>
-    <damage>d10</damage>
+    <name>Axe, Battle</name>
+    <damage>6 or d10</damage>
     <price>20c</price>
-    <save>4</save>
+    <save>5</save>
     <tags>
-      <tag>Heavy</tag>
-      <tag>Crushing</tag>
-      <tag>Slashing</tag>
-      <tag>Iron</tag>
+      <iron/>
+      <large/>
+      <lethal/>
+      <parry/>
+      <slashing/>
     </tags>
   </weapon>
   
   <weapon>
-    <name>Club</name>
-    <damage>d6</damage>
-    <price>1c</price>
-    <save>6</save>
+    <name>Axe, Great</name>
+    <damage>7 or d12</damage>
+    <price>20c</price>
+    <save>4</save>
     <tags>
-      <tag>Improvised</tag>
-      <tag>Crushing</tag>
+      <heavy/>
+      <iron/>
+      <large/>
+      <lethal/>
+      <parry/>
+      <slashing/>
+      <slow/>
+      <two-handed/>
+    </tags>
+  </weapon>  
+
+  <!-- Clubs and Maces -->  
+  <weapon>
+    <name>Club</name>
+    <damage>4 or d6</damage>
+    <price>1c</price>
+    <save>8</save>
+    <tags>
+      <asanguineous/>
+      <improvised/>
+      <crushing/>
+      <nonlethal/>
     </tags>
   </weapon>
 
   <weapon>
-    <name>Dagger </name>
-    <damage>d6</damage>
-    <price>10g</price>
-    <save>4</save>
-    <tags>
-      <tag>Iron</tag>
-      <tag>Piercing</tag>
-    </tags>
-  </weapon>
-  
-  <weapon>
-    <name>Mace</name>
-    <damage>d8</damage>
-    <price>12c</price>
+    <name>Flail</name>
+    <damage>5 or d8</damage>
+    <price>17c</price>
     <save>5</save>
     <tags>
-      <tag>Asanguinous</tag>
-      <tag>Heavy</tag>
-      <tag>As-Club</tag>
-      <tag>Iron</tag>
+      <as-mace/>
+      <asanguineous/>
+      <crushing/>
+      <disarm/>
+      <large/>
+      <slow/>
+      <unparryable/>
+    </tags>
+  </weapon>
+
+  <weapon>
+    <name>Mace</name>
+    <damage>5 or d8</damage>
+    <price>20s</price>
+    <save>7</save>
+    <tags>
+      <as-mace/>
+      <asanguineous/>
+      <crushing/>
+      <iron/>
     </tags>
   </weapon>
 
   <weapon>
     <name>Morning Star</name>
-    <damage>d8</damage>
-    <price>18c</price>
-    <save>4</save>
+    <damage>6 or d10</damage>
+    <price>5g</price>
+    <save>5</save>
     <tags>
-      <tag>Asanguinous</tag>
-      <tag>Heavy</tag>
-      <tag>As-Club</tag>
-      <tag>Iron</tag>
+      <as-mace/>
+      <asanguineous/>
+      <crushing/>
+      <iron/>
+      <slow/>
     </tags>
   </weapon>
 
+  <!-- Hammers -->  
   <weapon>
-    <name>Polearm</name>
-    <damage>d10</damage>
-    <price>2g</price>
-    <save>6</save>
+    <name>Hammer, Great</name>
+    <damage>7 or d12</damage>
+    <price>10g</price>
+    <save>5</save>
     <tags>
-      <tag>As-Spear</tag>
-      <tag>Reach</tag>
-      <tag>Brace</tag>
-      <tag>Two-Handed</tag>
-      <tag>Heavy</tag>
-      <tag>Piercing</tag>
+      <crushing/>
+      <iron/>
+      <heavy/>
+      <large/>
+      <lethal/>
+      <piercing/>
+      <slow/>
+      <two-handed/>
     </tags>
-  </weapon>
+  </weapon>    
   
   <weapon>
-    <name>Flail</name>
-    <damage>d8</damage>
-    <price>17c</price>
-    <save>4</save>
+    <name>Hammer, War</name>
+    <damage>6 or d10</damage>
+    <price>5g</price>
+    <save>5</save>
     <tags>
-      <tag>As-Club</tag>
-      <tag>Unparryable</tag>
-      <tag>Disarm</tag>
-      <tag>Heavy</tag>
-      <tag>Crushing</tag>
+      <crushing/>
+      <iron/>
+      <large/>
+      <lethal/>
+      <parry/>
+      <piercing/>
+      <slow/>
     </tags>
-  </weapon>
-
+  </weapon>    
+  
   <weapon>
-    <name>Sabre</name>
-    <damage>d6</damage>
-    <price>20g</price>
-    <save>4</save>
+    <name>Hammer, Sanctified</name>
+    <damage>6 or d10</damage>
+    <price>7g</price>
+    <save>5</save>
     <tags>
-      <tag>Parry</tag>
-      <tag>Slash</tag>
-      <tag>Fast</tag>
-      <tag>Iron</tag>
+      <asanguineous/>
+      <crushing/>
+      <iron/>
+      <large/>
+      <lethal/>
+      <parry/>
+      <slow/>
     </tags>
-  </weapon>
-
+  </weapon>    
+  
+  <!-- Polearms -->
   <weapon>
-    <name>Scimitar</name>
-    <damage>d8</damage>
-    <price>10g</price>
-    <save>6</save>
+    <name>Polearm</name>
+    <damage>6 or d10</damage>
+    <price>2g</price>
+    <save>8</save>
     <tags>
-      <tag>Parry</tag>
-      <tag>Slash</tag>
-      <tag>Iron</tag>
+      <as-spear/>
+      <brace/>
+      <large/>
+      <piercing/>
+      <one-or-two-handed/>
+      <reach/>
+      <slashing/>
     </tags>
   </weapon>
 
   <weapon>
     <name>Spear</name>
-    <damage>d8</damage>
+    <damage>5 or d8</damage>
     <price>10g</price>
-    <save>5</save>
+    <save>8</save>
     <tags>
-      <tag>Reach</tag>
-      <tag>Brace</tag>
-      <tag>Piercing</tag>
-      <tag>Grounding</tag>
-      <tag>Parry</tag>
+      <brace/>
+      <fast/>
+      <grounding/>
+      <parry/>
+      <piercing/>
+      <one-or-two-handed/>
+      <reach/>
     </tags>
   </weapon>  
   
   <weapon>
     <name>Staff</name>
-    <damage>d6</damage>
+    <damage>4 or d6</damage>
     <price>5c</price>
-    <save>6</save>
+    <save>8</save>
     <tags>
-      <tag>As-Spear</tag>
-      <tag>Reach</tag>
-      <tag>Grounding</tag>
-      <tag>Parry</tag>
+      <as-spear/>
+      <brace/>
+      <grounding/>      
+      <parry/>
+      <one-or-two-handed/>
+      <reach/>
+      <nonlethal/>
     </tags>
   </weapon>
   
+
+  
+  
+
+  <!-- Swords --> 
   <weapon>
     <name>Sword, Great</name>
-    <damage>d12</damage>
+    <damage>7 or d12</damage>
     <price>10g</price>
     <save>6</save>
     <tags>
-      <tag>Heavy</tag>
-      <tag>Two-Handed</tag>
-      <tag>Slashing</tag>
-      <tag>Slow</tag>
+      <heavy/>
+      <large/>
+      <lethal/>
+      <parry/>
+      <one-or-two-handed/>
+      <slashing/>
+      <slow/>
+      <two-handed/>
+    </tags>
+  </weapon>
+
+  <weapon>
+    <name>Scimitar, Cutlass or Falchion</name>
+    <damage>6 or d10</damage>
+    <price>8g</price>
+    <save>6</save>
+    <tags>
+      <heavy/>
+      <iron/>      
+      <lethal/>
+      <parry/>
+      <slashing/>
+      <slow/>
+      <iron/>
     </tags>
   </weapon>
   
   <weapon>
     <name>Sword, Long</name>
-    <damage>d8</damage>
+    <damage>6 or d10</damage>
     <price>10g</price>
-    <save>5</save>
+    <save>7</save>
     <tags>
-      <tag>Parry</tag>
-      <tag>Slashing</tag>
-      <tag>Slow</tag>
+      <heavy/>
+      <iron/>      
+      <large/>
+      <lethal/>
+      <parry/>
+      <piercing/>
+      <slashing/>
     </tags>
   </weapon>
 
   <weapon>
     <name>Sword, Broad</name>
-    <damage>d8</damage>
+    <damage>5 or d8</damage>
     <price>10g</price>
-    <save>4</save>
-    <tags>
-      <tag>Parry</tag>
-      <tag>Slashing</tag>
-      <tag>Piercing</tag>
-      <tag>Slow</tag>
-    </tags>
-  </weapon>  
-
-  <weapon>
-    <name>Rapier</name>
-    <damage>d8</damage>
-    <price>100g</price>
     <save>6</save>
     <tags>
-      <tag>Parry</tag>
-      <tag>Piercing</tag>
+      <iron/>      
+      <lethal/>
+      <parry/>
+      <slashing/>
+      <piercing/>
+    </tags>
+  </weapon>  
+  
+  <weapon>
+    <name>Rapier</name>
+    <damage>5 or d8</damage>
+    <price>100g</price>
+    <save>8</save>
+    <tags>
+      <iron/>      
+      <lethal/>
+      <parry/>
+      <piercing/>
+      <fast/>
+    </tags>
+  </weapon>
+
+  <weapon>
+    <name>Sabre</name>
+    <damage>5 or d8</damage>
+    <price>20g</price>
+    <save>7</save>
+    <tags>
+      <iron/>      
+      <lethal/>
+      <parry/>
+      <slashing/>
+      <fast/>
     </tags>
   </weapon>
   
   <weapon>
-    <name>War Hammer</name>
-    <damage>d10</damage>
-    <price>20c</price>
-    <save>4</save>
+    <name>Dagger</name>
+    <damage>4 or d6</damage>
+    <price>10g</price>
+    <save>6</save>
     <tags>
-      <tag>Heavy</tag>
-      <tag>Crushing</tag>
-      <tag>Piercing</tag>
-      <tag>Iron</tag>
-      <tag>Slow</tag>
+      <fast/>
+      <iron/>
+      <lethal/>
+      <piercing/>
     </tags>
-  </weapon>    
+  </weapon>  
 </weapons>

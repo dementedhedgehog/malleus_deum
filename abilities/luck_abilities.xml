@@ -10,294 +10,24 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Luck Abilities</abilitygrouptitle>
     <abilitygroupid>luck</abilitygroupid>
-    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	There are old adventures and their are unlucky adventurers,
 	but there are not any old unlucky adventurers.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
-
-  <ability>
-    <abilitytitle>Lucky</abilitytitle>
-    <abilityid>luck.lucky</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><luck/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>    
-    <abilitydescription>
-      <p>
-	The character was born lucky.  The character refreshes 
-	dice into their Fate Pool every time they roll a critical
-	success (double 8s) on standard tests during the game.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>1</successes>
-	<check>Critical success on any Std 2d8 roll</check>
-	<effect>The character refreshes a die into their Fate Pool</effect>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-	<check>Critical success on any Std 2d8 roll</check>
-	<effect>The character refreshes two dice into their Fate Pool</effect>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-	<check>Critical success on any Std 2d8 roll</check>
-	<effect>The character refreshes three dice into their Fate Pool</effect>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-
-  <ability>
-    <abilitytitle>Reroll</abilitytitle>
-    <abilityid>luck.reroll</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><luck/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>    
-    <abilitydescription>
-      <p>
-	The character gets a lucky break and gets to reroll.
-      </p>
-
-      <p>
-	<indexentry>Rerolls</indexentry>
-	Players may use their <defn>Rerolls</defn> during the game to reroll <emph>all the 
-	dice in the current check at most once</emph>.  E.g. Dourli rolls 2d8 to hit 
-	and gets a 1 and an 8.  He may choose to reroll both dice or take the result (he
-	cannot choose to just reroll the 1).  Dourli chooses to reroll and rolls a total
-	of 4 on his second roll. Dourli cannot  reroll the second roll because he can
-	reroll the dice in a check at most once.
-      </p>
-
-      <p>
-	In the case of overcharge the characters are out of luck and exhaust a die from their
-	fate pool.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-	<check>Fate Pool vs DDC 12</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>The character gets to reroll a check</effect>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-	<check>Fate Pool + 2 vs DDC 12</check>
-	<overcharge>DC + 5</overcharge>	
-	<effect>The character gets to reroll a check</effect>
-        <prereqabilitylevel>luck.lucky_0</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>4</successes>
-	<check>Fate Pool + 4 vs DDC 12</check>
-	<overcharge>DC + 6</overcharge>	
-	<effect>The character gets to reroll a check</effect>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Fate Pool + 6 vs DDC 12</check>
-        <overcharge>DC + 7</overcharge>	
-	<effect>The character gets to reroll a check</effect>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Not As Bad As It Looks</abilitytitle>
-    <abilityid>luck.nabail</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><luck/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>    
-    <abilitydescription>
-      <p>
-        The character examines a wound, checks against Luck and if successful 
-	declares the wound is <emph>not as bad as it looks</emph>.  The 
-	wounded character heals D6+3 hit points.  Only one such wound can be
-	examined per encounter.
-      </p>
-
-      <p>
-	In the case of overcharge the characters are out of luck and exhaust a
-	die from their fate pool.
-      </p>
-      
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Fate Pool vs DDC 12</check>
-        <overcharge>DC + 4</overcharge>
-        <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Fate Pool + 2 vs DDC 12</check>
-        <overcharge>DC + 5</overcharge>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Fate Pool + 4 vs DDC 12</check>	
-        <overcharge>DC + 6</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-
-  <ability>
-    <abilitytitle>Nick of Time</abilitytitle>
-    <abilityid>luck.nick_of_time</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><luck/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>    
-    <abilitydescription>
-      <p>
-        Sometimes all you need is a little luck to get something done in the nick of 
-	time. After an NPC, monster of character performs an action the player can try to 
-	perform any action as a reaction <emph>in the nick of time</emph>.  If the GM chooses
-	to allow it the PC performs their action before the monsters turn.
-      </p>
-
-      <p>
-	Usable once per encounter for the whole party.
-      </p>
-      
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Luck vs DDC 10</check>
-        <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Luck + 1 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Luck + 2 vs DDC 10</check>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Luck + 3 vs DDC 10</check>	
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Misfortune</abilitytitle>
-    <abilityid>luck.misfortune</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><luck/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>    
-    <abilitydescription>
-            
-      <p>
-        It is said that "Anything that can go wrong, will go wrong" and in this case 
-        it does.  Misfortune allows a player to momentarily take over the narrative
-	from the GM.  Whenever something happens in game a character with this skill
-	can make a pronouncement: "It would be a terrible misfortune if ...".  For
-	example: "It would be a terrible misfortune if the high sorceror accidently
-	spilled a drop of sacrificial blood from the chalice".
-      </p>
-
-      <p>
-	As this ability can be terribly overpowered or game-destroying if used
-	inappropriately the GM then gets a right of veto.  "Unfortunately, the
-	sorceror is extremely careful knowing full well the consequences of such
-	a mistake".  Alternatively, the GM could make a counter-suggestion
-	"the sorcerors complete attention is focused on the sacrificial chalice
-	you may be able to undo your bindings"?
-      </p>
-
-      <p>
-	If the misfortune is acceptable to the player, they check and if successful
-	the misfortune occurs.
-      </p>
-
-      <p>
-	Misfortune is usable once per encounter for the whole party.  In the case
-	of overcharge the characters are out of luck and exhaust a die from their
-	fate pool.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <!-- <defaultlore>0</defaultlore> -->
-        <!-- <defaultmartial>0</defaultmartial> -->
-        <!-- <defaultgeneral>3</defaultgeneral> -->
-        <successes>1</successes>
-        <attempts>2</attempts>
-        <check>Fate Pool vs DDC 14</check>
-        <overcharge>DC + 4</overcharge>
-        <prereqabilitylevel>luck.lucky_2</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <!-- <defaultlore>0</defaultlore> -->
-        <!-- <defaultmartial>0</defaultmartial> -->
-        <!-- <defaultgeneral>3</defaultgeneral> -->
-        <successes>1</successes>
-        <attempts>2</attempts>
-        <check>Fate Pool + 2 vs DDC 14</check>
-        <overcharge>DC + 6</overcharge>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
-
 
   <ability>
     <abilitytitle>Brilliant Planner</abilitytitle>
     <abilityid>luck.brilliant_planner</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><luck/></keywords>
-    <abilityattrmodifiers><attr>Luck</attr></abilityattrmodifiers>    
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><luck/><pool/></tags>
+    <abilitycheck dc="6"
+    overcharge="10+Level" />
+    <abilitychecktype>Luck</abilitychecktype>
     <abilitydescription>            
       <p>
 	The character is a brilliant planner.  They may have thought
@@ -319,31 +49,180 @@
 	If the GM allows it, the player checks to see if their planning
 	was successful.
       </p>
-    </abilitydescription>
-    <abilitylevels>
 
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <!-- <defaultlore>0</defaultlore> -->
-        <!-- <defaultmartial>0</defaultmartial> -->
-        <!-- <defaultgeneral>3</defaultgeneral> -->
-        <successes>1</successes>
-        <attempts>2</attempts>
-        <check>Fate Pool vs DDC 16</check>
-        <overcharge>DC + 4</overcharge>
-        <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <!-- <defaultlore>0</defaultlore> -->
-        <!-- <defaultmartial>0</defaultmartial> -->
-        <!-- <defaultgeneral>3</defaultgeneral> -->
-        <successes>1</successes>
-        <attempts>2</attempts>
-        <check>Fate Pool + 2 vs DDC 16</check>
-        <overcharge>DC + 6</overcharge>
-      </abilitylevel>
-    </abilitylevels>
+      <p>
+	On overcharge lose an additional luck dice.  The character cannot
+	lose more dice than they commited to the check.
+      </p>
+    </abilitydescription>
+    <spline><p x="60" y="60"/></spline> 
+    <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
+    <abilitylevels from="1" to="2"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Lucky</abilitytitle>
+    <abilityid>luck.lucky</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><luck/><pool/></tags>
+    <abilitycheck dc="Critical Success"/>
+    <abilitychecktype>Any Std</abilitychecktype>
+    <abilitydescription>
+      <p>
+	The character was born lucky.  Whenever the character rolls a critical succces (double 12s)
+	on any standard test during the game character refreshes luck dice into their pool.  The
+	number of dice that are refreshed is equal to the Lucky level plus one.
+      </p>      
+    </abilitydescription>
+    <spline><p x="0" y="0"/></spline> 
+    <abilitylevels from="0" to="2"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>I Think I'm OK!</abilitytitle>
+    <abilityid>luck.itiok</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><luck/><pool/></tags>
+    <abilitycheck dc="4" overcharge="4+Level"/>
+    <abilitychecktype>Luck</abilitychecktype>
+    <abilitydescription>
+      <p>
+	This ability works in the same way as <emph>Not As Bad As It Looks</emph> (above),
+	except that it can only be applied to one's self.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="40"/></spline> 
+    <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+  
+  
+  <ability>
+    <abilitytitle>Misfortune</abilitytitle>
+    <abilityid>luck.misfortune</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><luck/><pool/></tags>
+    <abilitycheck dc="4" overcharge="8+Level"/>
+    <abilitychecktype>Luck</abilitychecktype>
+    <abilitydescription>            
+      <p>
+        It is said that "Anything that can go wrong, will go wrong" and in this case 
+        it does.  Misfortune allows a player to suggest an unfortunate event to 
+	the GM.  Whenever something happens in game a character with this ability
+	can make a pronouncement: "It would be a terrible misfortune if ...".  For
+	example: "It would be a terrible misfortune if the high sorceror accidently
+	spilled a drop of sacrificial blood from the chalice".  The GM then
+	decides whether such a misfortune might occur.   If so the player may make
+	the luck check.
+      </p>
+
+      <p>
+	As this ability can be terribly overpowered or game-destroying if used
+	inappropriately the GM then gets a right of veto.  "Unfortunately, the
+	sorceror is extremely careful knowing full well the consequences of such
+	a mistake".  Alternatively, the GM could make a counter-suggestion
+	"the sorcerors complete attention is focused on the sacrificial chalice
+	you may be able to undo your bindings"?
+      </p>
+
+      <p>
+	If the misfortune is acceptable to the player, they check and if successful
+	the misfortune occurs.
+      </p>
+
+      <p>
+	Misfortune is usable once per day for the whole party.  In the case
+	of overcharge the characters are out of luck and exhaust a die from their
+	luck pool.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="30"/></spline> 
+    <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Nick of Time</abilitytitle>
+    <abilityid>luck.nick_of_time</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><luck/><pool/></tags>
+    <abilitycheck dc="4" overcharge="10+Level" />
+    <abilitychecktype>Luck</abilitychecktype>
+    <abilitydescription>
+      <p>
+        Sometimes all you need is a little luck to get something done in the nick of 
+	time. After an NPC, monster of character performs an action the player can try to 
+	perform any action as a reaction <emph>in the nick of time</emph>.  If the GM chooses
+	to allow it the PC performs their action before the monsters action.
+      </p>
+
+      <p>
+	Usable once per encounter for the whole party.
+      </p>      
+    </abilitydescription>
+    <spline><p x="-70" y="60"/></spline> 
+    <prereqabilitylevel>luck.lucky_1</prereqabilitylevel>	
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Not As Bad As It Looks</abilitytitle>
+    <abilityid>luck.nabail</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><luck/><pool/></tags>
+    <abilitycheck dc="4" overcharge="8+Level" />
+    <abilitychecktype>Luck</abilitychecktype>
+    <abilitydescription>
+      <p>
+        The character examines a wound, checks against Luck and if successful 
+	declares the wound is <emph>not as bad as it looks</emph>.  The 
+	wounded character heals D4+3 health, not stamina.  Only one such wound can be
+	examined per encounter.
+      </p>
+
+      <p>
+	In the case of overcharge the characters are out of luck and exhaust a
+	die from their fate pool.
+      </p>      
+    </abilitydescription>
+    <spline><p x="0" y="35"/></spline> 
+    <prereqabilitylevel>luck.itiok_1</prereqabilitylevel>	
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Reroll</abilitytitle>
+    <abilityid>luck.reroll</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><luck/><pool/></tags>
+    <abilitycheck dc="4" overcharge="8+Level" />
+    <abilitychecktype>Luck</abilitychecktype>
+    <abilitydescription>
+      <p>
+	The character gets a lucky break and gets to reroll.
+      </p>
+
+      <p>
+	<indexentry>Rerolls</indexentry>
+	Players may use their <defn>Rerolls</defn> during the game to reroll <emph>all the 
+	dice in the current check at most once</emph>.  E.g. Dourli rolls 2d8 to hit 
+	and gets a 1 and an 8.  He may choose to reroll both dice or take the result (he
+	cannot choose to just reroll the 1).  Dourli chooses to reroll and rolls a total
+	of 4 on his second roll. Dourli cannot reroll the second roll because he can
+	reroll the dice in a check at most once and must accept the 4 (and not the previously
+	rolled 9).
+      </p>
+
+      <p>
+	In the case of overcharge the characters are out of luck and exhaust a die from their
+	fate pool.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="30"/></spline> 
+    <prereqabilitylevel>luck.lucky_0</prereqabilitylevel>	
+    <abilitylevels from="1" to="3"/>
   </ability>
 </abilitygroup>

@@ -4,441 +4,180 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Conjuration</abilitygrouptitle>
     <abilitygroupid>conjuration</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Magic abilities involve the use of the characters magic pool and
-	are only available to certain archetypes.
+	Conjuration is the most versatile, powerful and therefore hardest to control and
+	most dangerous of all magical schools.   It involves harnessing raw magic and 
+	Conjuration involves the unsophisticated use of raw magic powers.
       </p>
-
-      <p noindent="true">
-	Demons inhabit the cold lower planes.  There is much recorded
-	of their nature and their history in old and long forgotten tomes.
-	Conjuration represents the study of that lore.  
-	Such books are not easily come by, nor should they be read lightly.
-	<indexentry>Demonic Lore<subentry>See Conjuration</subentry></indexentry>
-      </p>
-
-      <p>
-	Magical spells that require these skills as a prerequisite 
-	involve summoning or communicating with extra planar
-	entities, binding extra planar entities, opening gates and the like.
-      </p>      
-      
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
-
   
   <ability>
-    <abilitytitle>Portal</abilitytitle>
-    <abilityid>magic.portal</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><conjuration/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Conjuration Lore</abilitytitle>
+    <abilityid>conjuration</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><conjuration/><lore/></tags>
     <abilitydescription>
       <p>
-	The user creates a portal in a wall or floor.   The portal remains
-	open for 2d4 minutes or until the caster wills the gate shut.  Casting
-	portal requires marking a magical circle in the ground or against a wall
-	which takes minutes to prepare.
-	The portal opens a path within the current plane, to a point up to
-	<measurement><metric>three meters</metric>
-	<imperial>ten feet</imperial></measurement> per level of the spell.
+	This ability represents the characters knowledge of conjuration
+	magic and its theory.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 20</check>
-	<overcharge>DC + 5</overcharge>	
-	<leveldescription>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 1 vs DDC 20</check>
-	<overcharge>DC + 6</overcharge>	
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 20</check>
-	<overcharge>DC + 7</overcharge>	
-      </abilitylevel>      
-    </abilitylevels>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <spline></spline>
+    <abilitylevels from="1" to="3"/>
   </ability>
   
   
-
   <ability>
-    <abilitytitle>Greater Portal</abilitytitle>
-    <abilityid>magic.greater_portal</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><conjuration/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Eldritch Push</abilitytitle>
+    <abilityid>magic.eldritch_push</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><conjuration/><pool/></tags>
     <abilitydescription>
       <p>
-	This is a very rapid invocation of the normal portal spell.
-	The spell is cast in one action.
+	The caster shoots a raw stream of thaumic energy from
+	their hands at a target.  If successful the caster makes
+	a second Std Check +6+Level bonus attack against the targets Dodge, Agility, or Strength Defence.
+      </p>
+
+      <p>
+	If they hit the target, the target suffers 8 damage
+	and is pushed  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
+	away from the caster.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 26</check>
-	<overcharge>DC + 6</overcharge>	
-	<leveldescription>
-	  <p>
-	    The character can open a portal in a wall or floor.
-	  </p>
-	</leveldescription>
-        <prereqabilitylevel>magic.portal_2</prereqabilitylevel>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 1 vs DDC 26</check>
-	<overcharge>DC + 7</overcharge>	
-	<leveldescription>
-	  <p>
-	    Opens a portal between two well known places on this plane.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="90" y="30"/></spline>
+    <prereqabilitylevel>conjuration_2</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg>4 +Level</abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
 
-  
+
   <ability>
-    <abilitytitle>Wyld Portal</abilitytitle>
-    <abilityid>magic.wyld_portal</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><conjuration/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Eldritch Grasp</abilitytitle>
+    <abilityid>magic.eldritch_grasp</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><conjuration/><pool/></tags>
     <abilitydescription>
       <p>
-	This ability enables the user to recognize gateways,
-	areas with an affinity with the Wyld.  At
-	these places the caster may cast a portal which opens to
-	the Wyld.
+	The caster uses a raw stream of thaumic energy to grab a target
+	crushing it and pulling it towards him.  If successful the caster makes
+	a second attack against the targets Dodge, Agility, or Strength Defence Check,
+	with a +6+Level bonus.
       </p>
 
-      <p>	
-      	It is not known how many such gateways exist. Given
-	the near suicidal nature of travelling in the Wyld
-	the knowledge of their locations is quickly forgotten.
+      <p>
+	If they hit the target, the target suffers damage
+	and is either pushed or pulled  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
+	in any direction.  
       </p>
-
-      <p>	
-	Finally, it should be added that the Wyld is a
-	many-varied place.  Gateways can be found in swamps,
-	deserts and sewers, as well as forested groves.
-	Often the presence of a gateway is indicated by an incongrousness
-	in the environment as the gateway forms a contagious link
-	between the two planes at its locus.  The nature of the
-	Wyld bleeds into this plane at the gateway which can
-	indicate the nature of the Wyld beyond.
-      </p>	
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 26</check>
-	<overcharge>DC + 6</overcharge>	
-        <prereqabilitylevel>magic.greater_portal_1</prereqabilitylevel>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 1 vs DDC 26</check>
-	<overcharge>DC + 7</overcharge>	
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>magic.eldritch_push_2</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg>8 +Level</abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
   
-
   <ability>
-    <abilitytitle>Phantasmal Leech</abilitytitle>
-    <abilityid>magic.phantasmal_leech</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><conjuration/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-
-      <p noindent="true">
-	<emph>Like one who, on a lonely road, Doth walk in fear	and dread,
-	And, having once turned round, walks on, And turns no more his head;
-	Because he knows a frightful fiend Doth close behind him tread.</emph>
-      </p>
-      
-      <p>
-	Given an object with a contagious connection to a target, the caster
-	summons a Phantasmal Leech to track the target.  A Phantasmal Leech is
-	a cat sized, snake-like demon with membraneous wings and a cyclostomatic head
-	with five lidless black eyes.  It is translucent, and insubstantial.  The starving
-	Leech craves the blood of the target and the caster sees through its eyes as it
-	tracks the target.   The leeches projection onto this plane is volatile and it
-	is easily destroyed by magic.  If not dismissed	it will involuntarily return
-	to its home plane after ten minutes. Furthermore the leech cannot interact with
-	objects in this plane and may pass through walls, doors <etc/>   The leech cannot
-	attack.
-      </p>
-      
-      <p>
-	If successfully cast the target gets a perception check to notice the presence
-	of the leech following.  if the target has magical attacks these will almost
-	certainly work against the leech, sending it back from whence it came.  If the
-	target has no magical attacks it cannot harm the creature.  
-      </p>
-
-      <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
-	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
-
-	<tableheaderrow>
-	  <td>Roll d88</td>
-	  <td>Overcharge Effect</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>11-28</td>
-	  <td>The caster summons a Phantasmal Vulture instead (as per the spell of the
-	  same name).</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>31-38</td>
-	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
-	  d6 health damage.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>41-48</td>
-	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
-	  3d6 health damage.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>51-88</td>
-	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
-	</tablerow>
-	<tablelabel>fig:leech-overcharge</tablelabel>
-      </table>
-      
-
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqtag>Cleric</prereqtag>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool versus DDC 8</check>
-        <effect>Target makes a perception check with DC 12.</effect>
-        <overcharge>DC + 5</overcharge>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool + 2 versus DDC 8</check>
-        <effect>Target makes a perception check with DC 14.</effect>
-        <overcharge>DC + 7.</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-
-
-  <ability>
-    <abilitytitle>Phantasmal Vulture</abilitytitle>
-    <abilityid>magic.phantasmal_vulture</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><conjuration/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-
-      <p noindent="true">
-	Given an object with a contagious connection to a target, the caster
-	summons a Phantasmal Vulture to track the target.  A Phantasmal Vulture is
-	a dog sized, vulture-like demon with membraneous wings, a tentacled face and
-	stinging tail. 	Like a Phantasmal Leech it is translucent, susceptible to magical
-	attacks and has the same difficulty of detection.  Unlike the Leech the Vulture
-	can summon its magical reserves to phase into this plane momentarilly to attack.
-	It may attack once before being dispelled to its home plane and will automatically
-	do so when it finds its prey (it is not up to the caster).
-      </p>
-
-      <p>
-	The vulture makes a single Std 2d8 + 2 attack versus AC for 1d8 damage (if
-	the target has not perceived the vulture it is considered to be Blind to the attack,
-	-4 to AC).
-      </p>
-      <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
-	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
-
-	<tableheaderrow>
-	  <td>Roll d49</td>
-	  <td>Overcharge Effect</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>10-19</td>
-	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
-	  d6 health damage.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>20-29</td>
-	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
-	  3d6 health damage.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>30-49</td>
-	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
-	</tablerow>
-	<tablelabel>fig:vulture-overcharge</tablelabel>
-      </table>
-
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqtag>Cleric</prereqtag>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool versus DDC 8</check>
-        <effect>Target makes a perception check with DC 12.</effect>
-        <overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic.phantasmal_leech_2</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool + 2 versus DDC 8</check>
-        <effect>Target makes a perception check with DC 14.</effect>
-        <overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Summon</abilitytitle>
-    <abilityid>magic.summon</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><conjuration/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Scry</abilitytitle>
+    <abilityid>magic.scry</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><conjuration/><pool/></tags>
     <abilitydescription>
       <p>
-	The character opens a minute portal into one of the near planes.
-	This allows some creature on the other side to project a simulacrum
-	of themselves into this plane.  It is highly likely that the
-	entity will be ravenous and seek to devour the animus of the caster or
-	others nearby.  For this reason the caster usually also casts a circle
-	of protection immediately after.  For the caster to have control over
-	the portal they must use a specially prepared fetish that is placed inside
-	the circle before the summoning.  The fetish provides a channel to the portal
-	spell via an external plane, thereby circumventing the circle of protection.
+    	The character can view events from the past.  Viewing events in
+    	the future is incredibly difficult and unreliable (See Scry, Greater).
       </p>
 
       <p>
-	If the caster does not commune with an entity before the summoning they may
-	summon any extra planar creature.  This can be incredibly dangerous.  In addition
-	demons may lie about their names and their capabailites.  So the only, even
-	moderately safe way of summoning demons is to: commune with a demon of a known
-	name, then to summon them into a circle of protection.  Note that demons are
-	deceitful creatures and will jump at the chance to try to trick a summoner into
-	calling them into the world and once here they will try to establish a foothold
-	and not leave.   They will try to break the circle of protection or bargain
-	for information about the caster which will allow them to break the circle via
-	contagion.
+    	The caster first names a target, holding items with contagious links to the target,
+    	then checks to see whether the spell succeeds. If it does, they see an important
+    	scene from targets life (the GM narrates the scene to the player). The caster may
+    	then choose to look far forward, forward, back or far back in time.  Each time
+    	the player attempts to view another scene from the targets life they
+    	make another check with their remaining magic pool against a DC 9.
+    	The caster may continue to view scenes from the targets life until they
+    	fail or choose to stop scrying.
       </p>
 
       <p>
-	Closing the portal cuts the simulacrums link to the demon.  Powerful demons
-	may be able to keep the portal open themselves, once they have created a
-	simulacrum.  Note that the demons simulacrum need not look like the demon
-	who created it and often times it does not as the demon will wish to disguise
-	their identity.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 20</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>A single demon enters the plane</effect>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 20</check>
-	<overcharge>DC + 10</overcharge>
-	<effect>A single demon enters the plane</effect>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Bind</abilitytitle>
-    <abilityid>magic.bind</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><conjuration/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Bind holds an opponent using magical energies.  
-	The target makes a will	check versus the spells difficulty and are held
-	until they succeed.   The difficulty decreases by two every round the target
-	is held.  The caster may release the target at any time.  
+    	Contagion is very important to this spell.  A good contagious link, the
+    	targets blood, or hair for example, can	reduce the difficulty of this
+    	spell by five or more.  Subsequent contagious items have reduced effectiveness.
+    	For example the GM might rule that if the caster has the blood and hair of the target
+    	an item of their clothes and their diary the DC is reduced by from fifteen by ten down
+    	to five.  These contagious links diminish rapidly and so will be of little advantage
+    	after a day or two.  Most intelligent adversaries will take care not to allow contagious
+    	items to be obtained by their opponents.
+    	If the caster fails any checks while scrying their contagious link is destroyed.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 10 or opponents Willpower</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Magic Pool + 2 vs DDC 10 or opponents Willpower</check>
-	<overcharge>DC + 10</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-60" y="60"/></spline>
+    <prereqabilitylevel>conjuration_2</prereqabilitylevel>
+    <abilitycheck dc="9 initial, 5 subsequent" overcharge="14+Level initial, 10+Level subsequent"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
+
+
+  <ability>
+    <abilitytitle>Scry, Greater</abilitytitle>
+    <abilityid>magic.scry_greater</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><conjuration/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The character can view events from a targets present and their future as well
+	as their past. 	This spell works like the lesser Scry but because the future
+	is not predetermined the results are often very unreliable and inaccurate.
+      </p>
+    </abilitydescription>    
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>magic.scry_2</prereqabilitylevel>	
+    <abilitycheck dc="7 initial, 5 subsequent" overcharge="9+Level initial, 10+Level subsequent" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Wither</abilitytitle>
+    <abilityid>magic.wither</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><conjuration/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The caster grabs an opponent.
+	On success the caster acts as a conduit to one of the dread
+	planes,	life is drained from the target.  Anything that
+	increases contagion will increase damage for this spell.
+	The target is momentarily transfixed (checks Will vs the casters
+	successful magic roll +13 or loses their turn).	
+      </p>
+
+      <p>
+	If the check is successful the target suffers 2d8 damage.
+	On overcharge the caster suffers 1d8 damage.
+      </p>      
+    </abilitydescription>    
+    <spline><p x="-90" y="30"/></spline>
+    <prereqabilitylevel>conjuration_2</prereqabilitylevel>
+    <abilitycheck dc="4"
+    overcharge="9 +Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>    
 </abilitygroup>

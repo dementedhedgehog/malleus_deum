@@ -1,0 +1,1352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<archetype>
+  <archetypetitle>Skald</archetypetitle>
+  <archetypeid>skald</archetypeid>
+  <archetypedescription>     
+    
+    <p>
+      Skalds are itinerant entertainers, they travel the countryside playing music, reciting poetry
+      and making fun of the church and the nobility for their keep.  They seek out heros and adventure,
+      the subjects of the great epics they wish to write.  Often they desire fame and fortune through
+      their craft.  Skalds are typically not backward in coming forward.  They are a light in the
+      darkness, assuaging the fears of the people and bastioning them against the creatures of the night.
+    </p>
+    
+
+  </archetypedescription>
+  <archetypeprimaryabilities>    
+    <list> 
+      <li>Str:-1, End:-1, Ag:+1, Spd:+1, Per:+1 or</li>
+      <li>Str:-1, End:+0, Ag:+0, Spd:+1, Per:+1</li>
+    </list>
+  </archetypeprimaryabilities>
+
+  <archetypeinitialabilities>
+    <p>
+      All Skalds start with the following skills:
+      Merovingian IV.
+    </p>
+    
+    <p>      
+      Choose one of Musician - Strings II, Musician - Keyed II, or
+      Musician - Wind Instrument II.  Choose one of Dance I or Oratory I.
+      Choose one of Aquilonian I or Dwarven I.  Choose one of History I or
+      Theology I.
+    </p>    
+  </archetypeinitialabilities>
+  <archetypemovedistance>6</archetypemovedistance>
+  <startingcash>20 + d4 sp</startingcash>
+  <startinggear>Gambeson, one of flail, mace or morning star, dagger, rations for a week.</startinggear>
+
+  <height>
+    <metric>162 + 3d10 cm</metric>
+    <imperial>5'5" + 2d6 inches</imperial>
+  </height>
+  <weight>
+    <metric>65 + 3d10 kg</metric>
+    <imperial>143 + 3d20 pounds</imperial>
+  </weight>
+  <age>26 + 2d6 years</age>
+  <gender>Your gender is male.</gender>
+
+  <aspectexamples>You must choose: Brother of Mithras, other suggestions are: I have been Chosen,
+  Unshakeable Belief, Faith for my Heart the Bottle for my Head, Do not speak her name, Do Not Tempt Me.
+  It is a Long Story, Sudden in Choler.
+  </aspectexamples>
+  <archetypetags>
+    <human/>
+    <humanoid/>    
+    <medium/>
+  </archetypetags>
+
+  
+  <archetypebio>
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>Origin</subsectiontitle> -->
+
+    <!--   <p> -->
+    <!-- 	Determine where the character came from by rolling once on the Homeland table below. -->
+    <!--   </p> -->
+
+    <!--   <table> -->
+    <!--   	<tablecategory>Standard</tablecategory> -->
+    <!--   	<tablespec> -->
+    <!--   	  <fixed>0.18</fixed> -->
+    <!--   	  <fixed>0.71</fixed> -->
+    <!--   	</tablespec> -->
+    <!--   	<tabletitle>Homelands</tabletitle> -->
+
+    <!--   	<tableheaderrow> -->
+    <!--   	  <td>Roll 1D12</td> -->
+    <!--   	  <td>Homeland</td> -->
+    <!--   	</tableheaderrow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>1</td> -->
+    <!--   	  <td><bold>Tinkers</bold>: Smith II, Common III, two of Thulish II, Hibernian II or Poitevin II, Adversery I [Greenskins], Adversery I [Giants]. Roll on the City Story Table or Wilderness Story Table</td> -->
+    <!--   	</tablerow> -->
+	
+    <!--   	<tablerow> -->
+    <!--   	  <td>2-5</td> -->
+    <!--   	  <td><bold>Dwarven Mountain Stronghold</bold>: Common II, Mining III, Adversery II [Greenskins, Giants].  Roll on the Delvers Story Table</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>6-9</td> -->
+    <!--   	  <td><bold>Mining Outpost</bold>: Common III, Mining II, Adversery II-Greenskins, -->
+    <!--   	  Adversery II-Giants, Wilderness Lore [Mountains]. Roll on ane one of the Story Tables</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>10-11</td> -->
+    <!--   	  <td><bold>Dwarven District of a Human Town</bold>: Common III, Etiquette IV [Merchants], Contacts III-[Town], Mining I, one of Mason III, Cooper III, Cartwright III, Sword Strike II. Roll on City Story Table</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>12</td> -->
+    <!--   	  <td><bold>Choose</bold></td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablelabel>table:{{ doc_name }}-homeland</tablelabel> -->
+    <!--   </table> -->
+
+    <!--   <p> -->
+    <!-- 	Roll on once on one of the following three tables depending on your Homeland result. -->
+    <!--   </p> -->
+      
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>City Story</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Story</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1-2</td> -->
+    <!-- 	  <td><bold>Gang Member</bold>: the character gains Contacts [Low?] II, and two of -->
+    <!-- 	  Sneak III, Pick Locks III, Sleight of Hand III, or Cloak Fighting III (and gets a cloak -->
+    <!-- 	  if they did not already have one).</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>3-4</td> -->
+    <!-- 	  <td><bold>Business Takeovers</bold>: the character gains Contacts [Medium?] II, -->
+    <!-- 	  Etiquette [Medium?] II,  One of Horse Riding III, Carter III, or Sailor III, -->
+    <!-- 	  One of Book Keeping III, Book Learning III, Antiquarian III or Mathematics III.   -->
+    <!-- 	  Two of Leadership III, Rally III, Deceive III, or Negotiate III</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>5-7</td> -->
+    <!-- 	  <td><bold>Trader</bold>: the character gains Contacts [Low?] II, -->
+    <!-- 	  Etiquette [Low?] II,  Search III, Concealment III.  One of Carter III, or Sailor III, -->
+    <!-- 	  One of Book Keeping III, Book Learning III, Antiquarian III.   -->
+    <!-- 	  Two of Yield III, Rally III, Deceive III, Negotiate III, or Search III</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>8-9</td> -->
+    <!-- 	  <td><bold>Metalworking</bold>: Str+1, Smith III and one of Weapon Smith I, or Armour Smith I or Mining I, -->
+    <!-- 	  Choose two of Armour I, Alchemy III, Craft I</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10-12</td> -->
+    <!-- 	  <td><bold>Stonemason</bold>: Str+1, Mason III, Ropecraft III, Two of Book-Learning II, Mathematics II, -->
+    <!-- 	  Craft I.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+
+
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Wilderness Story</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Story</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1-3</td> -->
+    <!-- 	  <td><bold>Prospector</bold>: Mining III, Natural History II, Wilderness Lore [Type] II, -->
+    <!-- 	  Wayfinding II, Crossbow II and Two of Stealth II, Scout II, Survivalism II or Hunting II</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4-6</td> -->
+    <!-- 	  <td><bold>Lumberjack</bold>: Str+1, Craft II, Wilderness Lore [Type] II, Axe Cleave III, Axe Strike II, -->
+    <!-- 	  Natural History I, Carter II, Scout II, One of Juggernaut II or Headbutt II.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>7-9</td> -->
+    <!-- 	  <td><bold>Wagoneer</bold>: Str+1, Carter III, Craft II, Ropecraft II, Scout II, Sleep II, One of Sure -->
+    <!-- 	  Feet III or Kick III, two of Animal Handler III, Horse-Riding III, Wayfinding III, two of Adversery -->
+    <!-- 	  [Bandits] III, Adversery [Greenskins] III, or Adversery [Beasts] III.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10-11</td> -->
+    <!-- 	  <td><bold>Trader</bold>: the character gains Contacts [Low?] II, -->
+    <!-- 	  Etiquette [Low?] II,  Search III, Concealment III.  One of Carter III, or Sailor III, -->
+    <!-- 	  One of Book Keeping III, Book Learning III, Antiquarian III.   -->
+    <!-- 	  Two of Yield III, Rally III, Deceive III, Negotiate III, or Search III</td>	   -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>Grifter</bold>: Rogues Strike II, three of Sleight of Hand III, Sneak III, Disguise III, -->
+    <!-- 	  Trapwork III, and Pick Locks III, One of Arts Lore III, Antiquarian III, Book Learning III, -->
+    <!-- 	  Law [Society] III, or Politics III.  One of Dodge I, or Run III.  Two of Negotiate III, -->
+    <!-- 	  Deceive III, or Interrogate III. -->
+    <!-- 	  </td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+      
+
+      
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Delvers Story</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Story</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1-8</td> -->
+    <!-- 	  <td>Dilligent Work - One of Book Learning II, Craft II or Smith II.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9</td> -->
+    <!-- 	  <td><bold>Great Work</bold>: The character has created something requiring notable skills.  Gains -->
+    <!-- 	  Fame [Society] II, Arts Lore I, Craft II, and one of Builder II, Mason II, Smith III, Weapon Smith II, -->
+    <!-- 	  Armour Smith II, Fine Art II, or Oratory II.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10</td> -->
+    <!-- 	  <td><bold>Rockfall</bold>: PC trapped alone in the dark depth for months.  Mining III, Blindsight III, -->
+    <!-- 	  Listen III, Sure Feet III, Concealment III, Dungeoneering III.  Two of Adversery [Greenskins] III, -->
+    <!-- 	  Ropecraft III,  Sixth Sense III, Sneak II.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>11</td> -->
+    <!-- 	  <td><bold>Famous Discovery</bold>: The character is notable within their society for having discovered -->
+    <!-- 	  a new subterannean feature, or a rich vein of ore, or some long lost Dwarven treasure. Gains Fame -->
+    <!-- 	  [Society] II, One of Antiquarian II, Alchemy II, Mining II.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>Faithful Adept</bold>: Rune Magic 1, may use weapon skills to gain Rune Magic spells at -->
+    <!-- 	  higher levels. Gains an extra magic dice to their dice pool.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table>       -->
+    <!-- </subsection> -->
+
+    
+    
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>Youth</subsectiontitle> -->
+    <!--   <p> -->
+    <!-- 	Now work out the characters nature as a youth by rolling once on the Nature table below. -->
+    <!--   </p> -->
+      
+    <!--   <table> -->
+    <!--   	<tablecategory>Standard</tablecategory> -->
+    <!--   	<tablespec> -->
+    <!--   	  <fixed>0.18</fixed> -->
+    <!--   	  <fixed>0.71</fixed> -->
+    <!--   	</tablespec> -->
+    <!--   	<tabletitle>Nature</tabletitle> -->
+
+    <!--   	<tableheaderrow> -->
+    <!--   	  <td>Roll 1D12</td> -->
+    <!--   	  <td>Birth</td> -->
+    <!--   	</tableheaderrow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>1-2</td> -->
+    <!--   	  <td><bold>Downtrodden</bold>: Mettle Pool +1d</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>3-4</td> -->
+    <!--   	  <td><bold>Fortunate</bold>: Luck Pool +1d</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>5-6</td> -->
+    <!--   	  <td><bold>Stout</bold>: Endurance+1</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>7</td> -->
+    <!--   	  <td><bold>Observant</bold>: Perception+1</td> -->
+    <!--   	</tablerow> -->
+	
+    <!--   	<tablerow> -->
+    <!--   	  <td>8</td> -->
+    <!--   	  <td><bold>Deft</bold>: Agile+1</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>9</td> -->
+    <!--   	  <td><bold>Fast</bold>: Speed+1</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>10</td> -->
+    <!--   	  <td><bold>Strong</bold>: Strength+1</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>11</td> -->
+    <!--   	  <td><bold>Reroll</bold> d10 twice (Reroll duplicates)</td> -->
+    <!--   	</tablerow> -->
+
+    <!--   	<tablerow> -->
+    <!--   	  <td>12</td> -->
+    <!--   	  <td><bold>Reroll</bold> d10 and Pick<leqsymbol/>10 (No duplicates)</td> -->
+    <!--   	</tablerow> -->
+	
+    <!--   	<tablelabel>table:{{ doc_name }}-nature</tablelabel> -->
+    <!--   </table> -->
+
+      
+    <!--   <p> -->
+    <!-- 	See whether the character received an inheritance or any -->
+    <!-- 	hand-me-down starting gear from their parents by rolling on the -->
+    <!-- 	Fortune table below. -->
+    <!--   </p> -->
+      
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Fortune</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Fortune</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1-2</td> -->
+    <!-- 	  <td>Tallow Candle, Bicorne Hat, Sack, Wineskin</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>3</td> -->
+    <!-- 	  <td>Cossack Hat, Wool Sash, Leather Purse, Hip Flask</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4-5</td> -->
+    <!-- 	  <td>Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, -->
+    <!-- 	  Straw Hat, Paper and ink</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6-7</td> -->
+    <!-- 	  <td>Cavalier Hat, Kettle, Book of Poetry</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>8-9</td> -->
+    <!-- 	  <td>Garibaldi Hat, Small Hammer and Chisel, Scarf</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10</td> -->
+    <!-- 	  <td>Chaperon, Playing Cards, Small Pot</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>11-12</td> -->
+    <!-- 	  <td>Heirloom: Roll on the Trinket Table, </td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+
+    <!--   <p> -->
+    <!-- 	See whether any misfortune befell the character as a youth by rolling -->
+    <!-- 	on the Misfortune table below. -->
+    <!--   </p> -->
+
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Misfortune</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Misfortune</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1</td> -->
+    <!-- 	  <td><bold>Cursed</bold>: roll twice on this table ignoring ones and duplicates</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>2</td> -->
+    <!-- 	  <td><bold>Laid Low</bold>: The character was struct down with the White Plague in their youth. -->
+    <!-- 	  Lose one Stamina permanently. The character learns either Natural History I -->
+    <!-- 	  or Alchemy I during the time they spent under care.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>3</td> -->
+    <!-- 	  <td><bold>Sickly</bold>: Lose one Health permanently.  The character spent time abed -->
+    <!-- 	  gain Booklearning I or Musician Strings I or Musician Wind Intrument I (if they -->
+    <!-- 	  take the Musician skill they get an appropriate instrument for free).</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4</td> -->
+    <!-- 	  <td><bold>Parent Died</bold>: Roll on the Parental Death table. -->
+    <!-- 	  Roll on the Trinket table (reroll incase of duplicate items).</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4-5</td> -->
+    <!-- 	  <td><bold>Bankruptcy</bold>: The character has invested unwisely or been unlucky with money. -->
+    <!-- 	  Lose -2d6gp. Gain the Bookkeeping skill</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6</td> -->
+    <!-- 	  <td><bold>Brawl/Accidental Death</bold>:  The character was involved in a either an accident or -->
+    <!-- 	  a brawl that led to the death of one of his fellow dwarves.  The character has to -->
+    <!-- 	  pay a Zwerggild -10gp, and gains the Infamy I skill in that society</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>7-8</td> -->
+    <!-- 	  <td><bold>Market Glut</bold>:  An investment fails to deliver. Lose -1d4gp.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9</td> -->
+    <!-- 	  <td><bold>Gambling Debt</bold>: -4sp. Gain the Problem Gambler aspect.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10-11</td> -->
+    <!-- 	  <td><bold>So Far So Good</bold>: no effect</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>A Lucky Life</bold>: Gain Lucky III ability.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table>       -->
+    <!-- </subsection> -->
+
+
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>Adulthood</subsectiontitle> -->
+
+    <!--   <p> -->
+    <!-- 	Now let's see the path the character has taken in their young adulthood -->
+    <!-- 	by rolling on the Path table. -->
+    <!--   </p> -->
+
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Path</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Inciting Incident</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1-2</td> -->
+    <!-- 	  <td><bold>Landstreicher</bold>: Plague strikes, disrupting markets and causing widespread job -->
+    <!-- 	  loss and hardship. The character has had to learn a range of skills to get by.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>3</td> -->
+    <!-- 	  <td><bold>Einzelgänger</bold>: the dwarf has left home on a voyage of self-discovery.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4</td> -->
+    <!-- 	  <td><bold>Verbannt</bold>: Political machinations force the character to move on.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>5-6</td> -->
+    <!-- 	  <td><bold>Pechvogel</bold>: Golden opportunity in a far off city that turned out to be a dud.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>7-8</td> -->
+    <!-- 	  <td><bold>Vanderzwerg</bold>: the dwarf, struck by wanderlust, set out for distant horizons.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9-10</td> -->
+    <!-- 	  <td><bold>Kaufzwerg</bold>: the dwarf travels seeking to become a marchant trader.</td> -->
+    <!-- 	</tablerow>	 -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9-10</td> -->
+    <!-- 	  <td><bold>Grudgebound</bold>: some offence has been made to the individual, their family, their -->
+    <!-- 	  clan or their race that they can no longer countenance.  It's time for a reckoning and for the -->
+    <!-- 	  books to be balanced</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>Freimazon</bold>: the dwarf has joined one of the liveried companies (guilds). -->
+    <!-- 	  These guilds are political machines and send their younger members on a variety -->
+    <!-- 	  of assignments and fact-finding missions.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>Zöltnar</bold>: Joined a Free Company of mercenaries for a period.</td> -->
+    <!-- 	</tablerow> -->
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+
+
+    <!--   <p> -->
+    <!-- 	During this time the character has picked up extra techniques in fighting.  Roll -->
+    <!-- 	once on the Further Weapon Training. -->
+    <!--   </p> -->
+      
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Further Weapons Training</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Further Training</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1-3</td> -->
+    <!-- 	  <td>Shield Push I</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4-5</td> -->
+    <!-- 	  <td>Shield Support I</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6-8</td> -->
+    <!-- 	  <td>Axe Cleave</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9-8</td> -->
+    <!-- 	  <td>Axe Hook</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10-12</td> -->
+    <!-- 	  <td>Hammer Smash</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+      
+      
+    <!--   <p> -->
+    <!-- 	During this time the character has picked up extra techniques in fighting.  Roll -->
+    <!-- 	once on the Further Weapon Training. -->
+    <!--   </p> -->
+      
+      
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Journey</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td><bold>Journey</bold>: Gain one of Sailor II, Horse-Riding II or Wilderness Lore [Terrain]</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1</td> -->
+    <!-- 	  <td><bold>Comedy</bold>: The character has made ends meet from time to time by clowning.  Gain Jester III.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>2-3</td> -->
+    <!-- 	  <td><bold>The Getting of Wisdom</bold>: The character has studied under a master - Gain Physics II, -->
+    <!-- 	  Natural History II, or Theology II</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4-5</td> -->
+    <!-- 	  <td><bold>The Quest</bold>: Gain Aquilonian II or Hibernian II</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>7-8</td> -->
+    <!-- 	  <td><bold>Tragedy</bold>: The character suffers a deep personal tradegy. Gain one dice to the characters -->
+    <!-- 	  willpower pool.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9-11</td> -->
+    <!-- 	  <td><bold>Voyage and Return</bold>: The character has travelled abroad.  Gain one of Hibernian I or Aquilonian I.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>Sharp Practice</bold>: The character has studied combat under an old soldier.  Gain -->
+    <!-- 	  one of Kick III, Punch III, or Grapple III.  Gain (Dagger Strike II and Throw Dagger II) or -->
+    <!-- 	  Shoot II.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+      
+    <!-- </subsection> -->
+    
+    
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>Events Tables</subsectiontitle> -->
+
+    <!--   <p> -->
+    <!-- 	To determine if any interesting events have occurred to the character recently -->
+    <!-- 	roll on one of the following tables.  The choice of which table has to be an option -->
+    <!-- 	that is available to the characters Origin.  Tinkers can roll on either the City or -->
+    <!-- 	Wilderness Events Tables, Mountain Strongholders must roll on the Delvers Event Table, -->
+    <!-- 	Mining Outposters can choose any of the Events tables to roll on, and Town Dwellers -->
+    <!-- 	must roll on the City Events table. -->
+    <!--   </p> -->
+
+      
+    <!--   <!-\-  -\-> -->
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>City Events</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Event</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1-2</td> -->
+    <!-- 	  <td><bold>Market Bust</bold>: -5g</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>3</td> -->
+    <!-- 	  <td><bold>Riots</bold>: The character was caught in a riot and had to fight to get out. -->
+    <!-- 	  Gain Infamy [Rioters] II</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4-5</td> -->
+    <!-- 	  <td><bold>Nothing</bold>: Recently the characters life has been uneventful.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6-7</td> -->
+    <!-- 	  <td><bold>Market Boom</bold>: +10g</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>8-9</td> -->
+    <!-- 	  <td><bold>Plague</bold>: The character has helped during an outbreak. Gain Physician I</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10</td> -->
+    <!-- 	  <td><bold>Minor Accounting Discrepency</bold>: Character gains 5gp and Book Keeping I</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>11</td> -->
+    <!-- 	  <td><bold>Merchant Seaman</bold>: Character gains one of Sailing I, Negotiate I, or Law [Society] I</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>Pogrom</bold>: The character has been the victim of racial or religious persecution. -->
+    <!-- 	  Gain one of Headbutt III, Juggernaut III, or Sure Feet III</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+      
+
+    <!--   <!-\-  -\-> -->
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Wilderness Events</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Event</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1</td> -->
+    <!-- 	  <td><bold>Fur Trading</bold>: Gain one of Hunting III, Survivalism III or Negotiate III</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>2-3</td> -->
+    <!-- 	  <td><bold>Floods</bold>: The character spent some weeks saving people from flood waters - Swimming III.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>5</td> -->
+    <!-- 	  <td><bold>Animal Attack</bold>: The charcter gains Adversary [Beasts] III, or Suvivalism III</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6-7</td> -->
+    <!-- 	  <td><bold>Bandits</bold>: The character has been attacked by bandits on one or more occasions.  Gain -->
+    <!-- 	  Adversary [Bandits] III</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>8-11</td> -->
+    <!-- 	  <td><bold>Teamster</bold>: Gain Carter III or Animal Handling III.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td><bold>Traveller in a Foreign Land</bold>: Gain Hibernian II or Poitevin II</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table>      -->
+
+    <!--   <figure position="h"> -->
+    <!-- 	<img id="allom_cistern" scale="0.14"/> -->
+    <!--   </figure>  -->
+
+    <!--   <!-\-  -\-> -->
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Delver Events</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Event</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1</td> -->
+    <!-- 	  <td><bold>Political Dissident</bold>: Political machinations have resulted in the character being -->
+    <!-- 	  persona non-grata in their place of birth.  They have had to move on.  Gain Infamy [Locale] III.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>2-3</td> -->
+    <!-- 	  <td>Rich Vein +100g.  The character struck it rich.</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4-5</td> -->
+    <!-- 	  <td><bold>Epiphany</bold>: Gain Runic Magic I</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6-8</td> -->
+    <!-- 	  <td><bold>Fast Thinker</bold>: Gain Nick of Time I</td> -->
+    <!-- 	</tablerow>	 -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9-10</td> -->
+    <!-- 	  <td><bold>Adept</bold>: Gain Theurgic Lore I</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10-11</td> -->
+    <!-- 	  <td>Establish Trade Route.  The character established a trade route for one of the dwarven companies. -->
+    <!-- 	  Gain Contacts [Locale] II</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10-11</td> -->
+    <!-- 	  <td>Apprenticeship.  The character spent some time helping out in a crafting field.  Cooper III, Smith I, -->
+    <!-- 	  Miner II.</td> -->
+    <!-- 	</tablerow>	 -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td>Delved Too Deep.  The character was involved in an incident where </td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table>      -->
+      
+    <!-- </subsection> -->
+    
+    
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>Miscellaneous Tables</subsectiontitle> -->
+
+    <!--   <p> -->
+    <!-- 	The following tables are only used in special circumstances.  Do not roll on these -->
+    <!-- 	tables unless instructed to do so. -->
+    <!--   </p> -->
+      
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Trinket - See Magic Items in the PHB</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 1D12</td> -->
+    <!-- 	  <td>Trinket</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>1</td> -->
+    <!-- 	  <td>High Quality Weapon FIXME</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>2-4</td> -->
+    <!-- 	  <td>Dwarven Compass</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>5</td> -->
+    <!-- 	  <td>Bile of the White Worm</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6</td> -->
+    <!-- 	  <td>Foaming Plaster</td> -->
+    <!-- 	</tablerow>	 -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>7</td> -->
+    <!-- 	  <td>Bag of Smoked Sniglets</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>8</td> -->
+    <!-- 	  <td>Compendium Maleficarum</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9</td> -->
+    <!-- 	  <td>Steel Termites</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10</td> -->
+    <!-- 	  <td>Limaceous Grease</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>11</td> -->
+    <!-- 	  <td>Petard</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td>Orcbane, Axe or Hammer</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table> -->
+
+    <!--   <!-\-  -\-> -->
+    <!--   <table> -->
+    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablespec> -->
+    <!-- 	  <fixed>0.18</fixed> -->
+    <!-- 	  <fixed>0.71</fixed> -->
+    <!-- 	</tablespec> -->
+    <!-- 	<tabletitle>Parental Death</tabletitle> -->
+
+    <!-- 	<tableheaderrow> -->
+    <!-- 	  <td>Roll 2D12</td> -->
+    <!-- 	  <td>Parent Death</td> -->
+    <!-- 	</tableheaderrow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>2-3</td> -->
+    <!-- 	  <td>Mother died in child birth</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>4</td> -->
+    <!-- 	  <td>Mother died of the white plague.</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>5</td> -->
+    <!-- 	  <td>Father died of the white plague</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>6</td> -->
+    <!-- 	  <td>Both parents died of the white plague</td> -->
+    <!-- 	</tablerow> -->
+
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>7</td> -->
+    <!-- 	  <td>Wilderness/Delver: Mother killed in an Orcish Raid,  -->
+    <!-- 	  City: Mother killed by thieves/bandits</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>8</td> -->
+    <!-- 	  <td>Wilderness/Delver: Father killed in an Orcish Raid, -->
+    <!-- 	  City: Father killed by thieves/bandits</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>9</td> -->
+    <!-- 	  <td>Wilderness/Delver: Both parents killed in an Orcish Raid, -->
+    <!-- 	  City: Both parents killed by thieves/bandits</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10</td> -->
+    <!-- 	  <td>Wilderness/Delver: Parents died in a rock fall, -->
+    <!-- 	  City: Parents died in a fire. -->
+    <!-- 	  </td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>10</td> -->
+    <!-- 	  <td>Father left on a business trip and never returned</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>11</td> -->
+    <!-- 	  <td>Father banished as political dissident</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablerow> -->
+    <!-- 	  <td>12</td> -->
+    <!-- 	  <td>Father Grudgebound</td> -->
+    <!-- 	</tablerow> -->
+	
+    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
+    <!--   </table>               -->
+    <!-- </subsection> -->
+
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>Equipment</subsectiontitle> -->
+    <!--   <p> -->
+    <!-- 	Start with the following equipment: Chain Mail, Large or Small Shield, Backpack, Cloak, -->
+    <!-- 	Tunic, Hose, Leather Boots, Sack or Leather Belt Pouch, Flint and a Hammer or an Axe.    -->
+    <!-- 	Now you can purchase any common equipment from the equipment list and you are finished. -->
+    <!--   </p>     -->
+    <!-- </subsection>     -->
+  </archetypebio>
+
+
+  <levelprogressiontable>
+    <level>
+      <levelnumber>1</levelnumber>
+      <levelmettle>4</levelmettle>
+      <levelmettlerefresh>+2</levelmettlerefresh>
+      <levelstamina>d3+9</levelstamina>
+      <levelhealth>d3+9</levelhealth>
+      <levelhealthrefresh>1d4</levelhealthrefresh>
+      <levelluck>2</levelluck>
+      <levelluckrefresh>+1</levelluckrefresh>
+      <levelmagicpool>2</levelmagicpool>
+      <levelmagicrefresh>+1</levelmagicrefresh>
+      <leveldescription></leveldescription>
+      <levelabilities></levelabilities>
+      <levelpromotions>
+        +1 Hammer I, +1 Axe I, +1 Hammer II or Axe II, +1 Martial I
+      </levelpromotions>
+    </level>
+
+    <!-- <level> -->
+    <!--   <levelnumber>2</levelnumber> -->
+    <!--   <levelmettle>4</levelmettle> -->
+    <!--   <levelmettlerefresh>+1</levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>3</levelluck> -->
+    <!--   <levelluckrefresh>+1</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!--   <levelabilities> -->
+    <!--   </levelabilities> -->
+    <!--   <levelpromotions> -->
+    <!-- 	Melee II,  -->
+    <!--   </levelpromotions> -->
+    <!-- </level> -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>3</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>3</levelluck> -->
+    <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>4</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>4</levelluck> -->
+    <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>5</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>4</levelluck> -->
+    <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>6</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>4</levelluck> -->
+    <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>7</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>4</levelluck> -->
+    <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>8</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>4</levelluck> -->
+    <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>9</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>5</levelluck> -->
+    <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>10</levelnumber> -->
+    <!--   <levelmettle>5</levelmettle> -->
+    <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+    <!--   <levelstamina>+6</levelstamina> -->
+    <!--   <levelhealth>+6</levelhealth> -->
+    <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+    <!--   <levelluck>5</levelluck> -->
+    <!--   <levelluckrefresh>+3</levelluckrefresh> -->
+    <!--   <levelmagicpool>2</levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+  </levelprogressiontable>
+  
+
+  
+
+<!--   <archetypeac>7</archetypeac> -->
+<!--   <archetypemove>6</archetypemove> -->
+<!--   <archetypeinitiative>11</archetypeinitiative> -->
+<!--   <startingcash>20 + 2d4 gp</startingcash> -->
+<!--   <startinggear>Leather armour, long sword, dagger, rations for a week, musical instrument of your choice.</startinggear> -->
+
+<!--   <height> -->
+<!--     <metric>150 + 2d20 cm</metric>  -->
+<!--     <imperial>4'8" + 2d8 inches</imperial> -->
+<!--   </height> -->
+<!--   <weight> -->
+<!--     <metric>60 + 3d10 kg</metric>  -->
+<!--     <imperial>130 + 4d20 pounds</imperial> -->
+<!--   </weight> -->
+<!--   <age>23 + 2d6 years</age> -->
+<!--   <appearance>Dashing, handsome,  </appearance> -->
+
+
+
+
+<!--   <aspectexamples></aspectexamples> -->
+<!--   <archetypetags> -->
+<!--     <tag>Human</tag> -->
+<!--   </archetypetags> -->
+
+<!--   <levelprogressiontable>     -->
+<!--     <level> -->
+<!--       <levelnumber>1</levelnumber> -->
+<!--       <levelmettle>2<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>1<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>6+d4</levelstamina> -->
+<!--       <levelhealth>6+d4</levelhealth> -->
+<!--       <levelhealthrefresh>2d4</levelhealthrefresh> -->
+<!--       <levelluck>3<d6/></levelluck> -->
+<!--       <levelluckrefresh>+1<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+	
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+<!--     <level> -->
+<!--       <levelnumber>2</levelnumber> -->
+<!--       <levelmettle>3<d6/></levelmettle> -->
+<!--       <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+4</levelstamina> -->
+<!--       <levelhealth>+4</levelhealth> -->
+<!--       <levelhealthrefresh>2d4</levelhealthrefresh> -->
+<!--       <levelluck>4<d6/></levelluck> -->
+<!--       <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!-- 	Enchantment I -->
+<!--       </leveldescription> -->
+<!--     </level> -->
+    
+<!--     <level> -->
+<!--       <levelnumber>3</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>2d4</levelhealthrefresh> -->
+<!--       <levelluck>4<d6/></levelluck> -->
+<!--       <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+<!--     <level> -->
+<!--       <levelnumber>4</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>3d4</levelhealthrefresh> -->
+<!--       <levelluck>4<d6/></levelluck> -->
+<!--       <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+<!--     <level> -->
+<!--       <levelnumber>5</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+2<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>3d4</levelhealthrefresh> -->
+<!--       <levelluck>4<d6/></levelluck> -->
+<!--       <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+
+<!--     <level> -->
+<!--       <levelnumber>6</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+2<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>4d4</levelhealthrefresh> -->
+<!--       <levelluck>4<d6/></levelluck> -->
+<!--       <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+
+<!--     <level> -->
+<!--       <levelnumber>7</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+2<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>4d4</levelhealthrefresh> -->
+<!--       <levelluck>5<d6/></levelluck> -->
+<!--       <levelluckrefresh>+3<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+<!--     <level> -->
+<!--       <levelnumber>8</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+2<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>5d4</levelhealthrefresh> -->
+<!--       <levelluck>5<d6/></levelluck> -->
+<!--       <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+
+<!--     <level> -->
+<!--       <levelnumber>9</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+2<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>5d4</levelhealthrefresh> -->
+<!--       <levelluck>5<d6/></levelluck> -->
+<!--       <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level>     -->
+
+<!--     <level> -->
+<!--       <levelnumber>10</levelnumber> -->
+<!--       <levelmettle>4<d8/></levelmettle> -->
+<!--       <levelmettlerefresh>+2<dany/></levelmettlerefresh> -->
+<!--       <levelstamina>+5</levelstamina> -->
+<!--       <levelhealth>+5</levelhealth> -->
+<!--       <levelhealthrefresh>6d4</levelhealthrefresh> -->
+<!--       <levelluck>5<d6/></levelluck> -->
+<!--       <levelluckrefresh>+3<dany/></levelluckrefresh> -->
+<!--       <levelmagicpool>3<d6/></levelmagicpool> -->
+<!--       <levelmagicrefresh>+2<dany/></levelmagicrefresh>       -->
+<!--       <leveldescription> -->
+<!--       </leveldescription> -->
+<!--     </level> -->
+  <!-- </levelprogressiontable> -->
+
+</archetype>
+
+
+
+

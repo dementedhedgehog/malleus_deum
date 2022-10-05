@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+
+  {% from "docs/macro_npcs.xml" import build_npcs with context %}
+  
+  <chapter>
+    <chaptertitle>The Tower of Laibstadt</chaptertitle>
+
+
+    <section>
+      <sectiontitle>Setup</sectiontitle>
+
+      <p>
+      </p>
+    </section>
+
+
+    <section>
+      <sectiontitle>The Main Hall</sectiontitle>      
+
+      <p>
+
+	i) The wall in the sewers.
+
+	ii) Finding lots of people in the dungeon...
+	
+	Maester Gimmel
+	- found in multiple breaches of the Poor Laws. Convicted of mendicancy.
+
+	Ronald
+	- "Larceny gov"  Death.
+
+	Roland Von Bauer
+	- Taken from his bed and thrown into solitary by Guard Captain XX without charge
+	- Von Bauers are one of the richest familes in Laibstadt
+
+	Godolfus..
+	- six other minor witch-hunters
+	
+	Brechtold and Ulf.
+	- members of the The Honest-Men (thieves).
+
+	- Himlstoss, captain of the Open Hand (thieves).
+	   gang of the open hand (kept in a separate cell).
+	
+	   - twenty or thirty other criminals, murderers and thugs.
+
+      iii) Sun comes up.
+	
+      </p>
+
+      {{ build_npcs("the_tower_of_laibstadt.tower_guards") }}
+      
+    </section>    
+  </chapter>  
+</book>

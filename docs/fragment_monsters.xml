@@ -1,56 +1,150 @@
 <section>
   <sectiontitle>Introduction</sectiontitle>
 
-<p>
-  This chapter contains information about the various monsters and
-  NPCs the characters might encounter.
-</p>
+  <p>
+    This chapter contains information about the various monsters and
+    NPCs the characters might encounter.
+  </p>
 
+
+  <subsection>
+    <subsectiontitle>Monster Tags</subsectiontitle>
+
+    <!-- FIXME add monster size tags -->
+      <descriptions>
+        <term>Beast</term>
+        <description>
+	  The creature is an animal without a great deal of intellect.  Driven by hunger, fear,
+	  protection of its young.
+        </description>
+	
+        <term>Demon</term>
+        <description>
+	  The creature is an extra planar creature from the demon realms.  This creatures primary
+	  goals are to escape from the demon realms and to reap vengence on those who have not
+	  suffered as they have.  The creatures intellect varies from mindlessness hunger to
+	  cold hard genius.
+        </description>
+	
+        <term>Elemental</term>
+        <description>
+	  This creature hails from the raw elemental plains.
+        </description>
+
+        <term>Extra-planar</term>
+        <description>
+	  Creatures who originate from other planes of existance.
+        </description>
+
+        <term>Fey</term>
+        <description>
+	  Fey creatures are from the Wyld.
+        </description>
+
+        <term>Greenskins</term>
+        <description>
+	  Orcs, goblins and their kin.
+        </description>
+	
+        <term>Human</term>
+        <description>
+	  Humans are the dominant race in the game.
+        </description>
+	
+        <term>Jötunn</term>
+        <description>
+	  The Jötunn are one a group of giant varieties that hail from the Jötunheimr plane that borders
+	  our plane the closest in the lands to the north.
+        </description>
+
+        <term>Lycan</term>
+        <description>
+	  Creatures cursed with lycanthropy.
+        </description>
+
+        <term>Undead</term>
+        <description>
+	  Necromantically empowered creatures.
+        </description>
+      </descriptions>
+  </subsection>
+
+  <subsection>
+    <subsectiontitle>Monster Conditions</subsectiontitle>
+
+      <descriptions>
+
+        <term>Mook</term>
+        <description>
+	  Mooks are monsters that go down easy.  Any boon that hits, kills a mook instantly.
+        </description>
+
+        <term>Plot-Armour</term>
+        <description>
+	  The monster is important to the story.  Critical successes will not instantly kill them.
+	  These monsters can reroll checks to escape or die at the GMs discretion.  Rerolls are
+	  made with the addition of the ability level on top of any other modifiers.  This does not
+	  mean the monster is unkillable, just harder to kill.
+	  This protection	lasts until such time as the GM deems it is dramatically appropriate for
+	  the monster to die.
+        </description>
+
+        <term>Swarm</term>
+        <description>
+	  This monster is actually a swarm of small individuals acting as one.  Most weapons do only
+	  one point of damage.  Crushing weapons do half damage.  Area of effect attacks do maximum
+	  damage against a swarm.	
+        </description>	
+      </descriptions>
+  </subsection>
+
+
+
+  
 </section>
-
 
 {% for monster_group in monster_groups %}
 <section>
   <sectiontitle>{{ monster_group.get_title() }}</sectiontitle>
 
-  {{ monster_group.get_description() }}    
+  {{ monster_group.get_description() }}
 
-  {% for monster in monster_group %}
+  {% for monster in monster_group %}  
   <monsterblock>
     <mbtitle>{{ monster.get_title() }}</mbtitle>
     <mbtags>{{ monster.get_tags_str() }}</mbtags>
-    <mbac>{{ monster.get_ac() }}</mbac>
+    <mbdefence>{{  monster.get_defences() }}</mbdefence>
     <mbhp>{{ monster.get_stamina() }}/{{ monster.get_health() }}</mbhp>
     <mbmove>{{ monster.get_move() }}</mbmove>
     <mbinitiativebonus>{{ monster.get_initiative_bonus() }}</mbinitiativebonus>
-    <mbresolve>{{ monster.get_resolve_pool() }}</mbresolve>
+    <mbmettle>{{ monster.get_mettle_pool() }}</mbmettle>
     <mbmagic>{{ monster.get_magic_pool() }}</mbmagic>
     <mbstr>{{ monster.get_strength() }}</mbstr>
     <mbend>{{ monster.get_endurance() }}</mbend>
     <mbag>{{ monster.get_agility() }}</mbag>
     <mbspd>{{ monster.get_speed() }}</mbspd>
     <mbluck>{{ monster.get_luck() }}</mbluck>
-    <mbwil>{{ monster.get_willpower() }}</mbwil>
     <mbper>{{ monster.get_perception() }}</mbper>
     <mbabilities>
     {% for ability_level_id in monster.get_ability_level_ids() %}
        <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
-       {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
-       <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
-       {% endif -%}       
+      <bold>Checks:</bold> {% for check in ability_groups.get_ability_level(ability_level_id).get_checks()  %}
+      {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
+      {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}
+      {%- if check.overcharge is not none  -%}/{{check.overcharge}}{%- endif -%}
+      {% if not loop.last %}, {% endif -%}
+      {% endfor -%}
+
        {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
        <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
        {% endif -%}       
-       {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
-       <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
-       {% endif -%}
     {% endfor %}
     </mbabilities>
     {% if monster.get_aspects_str() != "" %}
     <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
     {% endif %}
     <mbdescription>{{ monster.description }}</mbdescription>
-  </monsterblock>    
+  </monsterblock>
   {% endfor %}      
   
 </section>   

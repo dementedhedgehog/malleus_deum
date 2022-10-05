@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<archetype>
+  <archetypetitle>Chevalier</archetypetitle>
+  <archetypeid>chevalier</archetypeid>
+  <archetypedescription>           
+    <p>
+      The Chevaliers are Averoignian knights, refugees from that land since it fell under the
+      shadow of the nefarious Froschmeisters.  Landed gentry with no land, noble partiots with
+      no country.  They are rabid opponents of the current Averoignee regime.  Without a source
+      of living many have become mercenaries.
+    </p>
+
+    <p>
+      The Chevaliers are generally well liked throughout Westenreich, they are seen as
+      allies in the ongoing conflict with Averoigne, and their gentlemanly code of conduct
+      means that they are seldom involved in altercations, causing few problems for the establishemnt.
+      Their ellaborate coiffure, seeming love of lace trim on their collars, outlandish
+      foreign accents, flamboyant displays of emotion, and slightly antiquated armour, makes them
+      the subject of a small amout of derision, and inclusion as a stock character in many
+      romantic tragedies and comedies.  Despite this, it is well known that the Chevaliers are
+      hard-fighting warriors, trained for combat from an early age.  No one troubles with a
+      Chevalier lightly.
+    </p>
+      
+    <p>
+      The Chevaliers take their noble status very seriously.  Intrinsic to this identity is the Chevalier
+      code of conduct, called <emph>Le Comportement</emph>.  This describes a range of ideal behaviour
+      of a gentleman which include a sense of noblesse oblige, a chivalrous attitude to the poor, the weak
+      and the infirm, and an appreciation of self-sacrifice for the greater good.
+    </p>
+
+    <figure>
+      <img id="pyle_chevalier" scale="0.7"/>
+    </figure>    
+  </archetypedescription>
+
+<!--
+give them some art talents
+a forced Le Comportement aspect.
+Averoignian
+some anti froschmeister abilities.. that opponent-of ability.
+-->
+  
+
+  <archetypeprimaryabilities>
+    <list> 
+      <li>Str:+1, End:+1, Ag:-1, Spd:-1, Per:+1, or</li>
+      <li>Str:+1, End:+1, Ag:+0, Spd:-1, Per:+1</li>
+    </list>
+    <!-- <figure> -->
+    <!--   <img id="ford_chevalier" scale="0.7"/> -->
+    <!-- </figure>     -->
+  </archetypeprimaryabilities>
+  <archetypeinitialabilities>
+    <p>
+      All Witchhunters start with the following skills: Sword Strike II,
+      Sword Parry I, Aquilonian II, Etiquette II [Church of Mithras], Merovingian III.
+    </p>
+    
+    <p>
+      Choose one of Law I or Antiquarian I.  Choose one of Jump I or Notice I.
+      Choose one of Trap Work I or Sleight of Hand I.   Choose one of Nick of Time I or
+      Reroll II.
+    </p>           
+    <!-- <figure> -->
+    <!--   <img id="dore_chevalier" scale="0.7"/> -->
+    <!-- </figure>     -->
+  </archetypeinitialabilities>
+  <archetypemovedistance>6</archetypemovedistance>
+  <startingcash>20 + d4 sp</startingcash>
+  <startinggear>Chain armour, mace, (eating) dagger, rations for a week.</startinggear>
+
+  <height>
+    <metric>150 + 2d20 cm</metric> 
+    <imperial>4'8" + 2d8 inches</imperial>
+  </height>
+  <weight>
+    <metric>60 + 3d10 kg</metric> 
+    <imperial>130 + 4d20 pounds</imperial>
+  </weight>
+  <age>20 + 2d6 years</age>
+
+  <aspectexamples>Blasphemy!, In the Name of Mithras!</aspectexamples>
+  <archetypetags>
+    <human/>
+    <humanoid/>    
+    <medium/>    
+  </archetypetags>
+  
+  <archetypebio>
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>Origin</subsectiontitle> -->
+
+      <!-- <abilitymodifiers> -->
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>archery.archery</abilityid> -->
+      <!-- 	  <martialpointmodifier>+1</martialpointmodifier> -->
+      <!-- 	  <abilitylevelmodifier> -->
+      <!-- 	    <level>2</level> -->
+      <!-- 	    <martialpointmodifier>+1</martialpointmodifier>	 -->
+      <!-- 	    <successesmodifier>+1</successesmodifier> -->
+      <!-- 	  </abilitylevelmodifier>	 -->
+      <!-- 	</abilitymodifier> -->
+	
+
+      <!-- 	<abilitygroupmodifier> -->
+      <!-- 	  <abilitygroupid>craft</abilitygroupid> -->
+      <!-- 	  <generalpointmodifier>+1</generalpointmodifier> -->
+      <!-- 	</abilitygroupmodifier> -->
+
+
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>language.brythinian</abilityid> -->
+      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
+      <!-- 	</abilitymodifier> -->
+	
+      <!-- 	<innate> -->
+      <!-- 	  <abilityid>magic.circle_of_protection</abilityid> -->
+      <!-- 	  <level>1</level> -->
+      <!-- 	</innate> -->
+
+      <!-- 	<innate> -->
+      <!-- 	  <abilityid>magic.incendo</abilityid> -->
+      <!-- 	  <level>1</level> -->
+      <!-- 	</innate> -->
+
+
+      <!-- 	<innate> -->
+      <!-- 	  <abilityid>magic.cloak_of_shadows</abilityid> -->
+      <!-- 	  <level>1</level> -->
+      <!-- 	</innate> -->
+
+      <!-- 	<innate> -->
+      <!-- 	  <abilityid>language.inochian</abilityid> -->
+      <!-- 	  <level>1</level> -->
+      <!-- 	</innate> -->
+	
+      <!-- 	<innate> -->
+      <!-- 	  <abilityid>language.brythinian</abilityid> -->
+      <!-- 	  <level>2</level> -->
+      <!-- 	</innate> -->
+
+
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>language.inochian</abilityid> -->
+      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
+      <!-- 	</abilitymodifier>     -->
+
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>lore.alchemy</abilityid> -->
+      <!-- 	  <lorepointmodifier>-1</lorepointmodifier> -->
+      <!-- 	</abilitymodifier> -->
+	
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>lore.politics</abilityid> -->
+      <!-- 	  <lorepointmodifier>-1</lorepointmodifier> -->
+      <!-- 	</abilitymodifier> -->
+
+      <!-- 	<!-\- -->
+      <!-- 	    <abilitygroupmodifier> -->
+      <!-- 	    <abilitygroupid>magic</abilitygroupid> -->
+      <!-- 	    <generalpointmodifier>-1</generalpointmodifier> -->
+      <!-- 	    </abilitygroupmodifier> -->
+      <!-- 	-\-> -->
+
+      <!-- 	<disable> -->
+      <!-- 	  <abilityid>magic.turn_undead</abilityid> -->
+      <!-- 	</disable> -->
+	
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>magic_school.arcana</abilityid> -->
+      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
+      <!-- 	</abilitymodifier> -->
+
+      <!-- 	<abilitygroupmodifier> -->
+      <!-- 	  <abilitygroupid>physical</abilitygroupid> -->
+      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
+      <!-- 	</abilitygroupmodifier> -->
+
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>skullduggery.cryptography</abilityid> -->
+      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
+      <!-- 	</abilitymodifier>     -->
+
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>social.interrogate</abilityid> -->
+      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
+      <!-- 	</abilitymodifier>     -->
+
+      <!-- 	<innate> -->
+      <!-- 	  <abilityid>social.etiquette</abilityid> -->
+      <!-- 	  <level>1</level> -->
+      <!-- 	</innate> -->
+
+      <!-- 	<disable> -->
+      <!-- 	  <abilitygroupid>special</abilitygroupid> -->
+      <!-- 	</disable> -->
+
+      <!-- 	<abilitygroupmodifier> -->
+      <!-- 	  <abilitygroupid>sword</abilitygroupid> -->
+      <!-- 	  <martialpointmodifier>+1</martialpointmodifier> -->
+      <!-- 	</abilitygroupmodifier> -->
+
+      <!-- 	<abilitymodifier> -->
+      <!-- 	  <abilityid>sword.strike</abilityid> -->
+      <!-- 	  <abilitylevelmodifier> -->
+      <!-- 	    <level>1</level> -->
+      <!-- 	    <martialpointmodifier>+1</martialpointmodifier>	 -->
+      <!-- 	    <recommended/> -->
+      <!-- 	  </abilitylevelmodifier>       -->
+      <!-- 	</abilitymodifier> -->	
+      <!-- </abilitymodifiers> -->
+    <!-- </subsection> -->
+  </archetypebio>
+
+
+  <levelprogressiontable>
+    <level>
+      <levelnumber>1</levelnumber>
+      <levelmettle>2<d8/></levelmettle>
+      <levelmettlerefresh>+1<dany/></levelmettlerefresh>
+      <levelstamina>4+d4</levelstamina>
+      <levelhealth>4+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <!-- <levellore>0</levellore> -->
+      <!-- <levelmartial>0</levelmartial> -->
+      <!-- <levelgeneral>0</levelgeneral> -->
+      <!-- <levelmagical>0</levelmagical> -->
+      <levelluck>2<d6/></levelluck>
+      <levelluckrefresh>+1<dany/></levelluckrefresh>
+      <levelmagicpool>5<d6/></levelmagicpool>
+      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
+      <leveldescription>
+      </leveldescription>
+    </level>
+
+    <!-- <level> -->
+    <!--   <levelnumber>2</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>2<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+1<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>3</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>2<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+1<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>4</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>3<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+1<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>5</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>3<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+1<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>6</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>3<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>7</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>3<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>8</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>4<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>9</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>4<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+
+    <!-- <level> -->
+    <!--   <levelnumber>10</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <!-\- <levellore>10</levellore> -\-> -->
+    <!--   <!-\- <levelmartial>5</levelmartial> -\-> -->
+    <!--   <!-\- <levelgeneral>10</levelgeneral> -\-> -->
+    <!--   <!-\- <levelmagical>10</levelmagical> -\-> -->
+    <!--   <levelluck>4<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+3<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>5<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+3<dany/></levelmagicrefresh> -->
+    <!--   <leveldescription></leveldescription> -->
+    <!-- </level>     -->
+  </levelprogressiontable>
+  
+  <!-- <archetypeac>8</archetypeac> -->
+  <!-- <archetypemove>6</archetypemove> -->
+  <!-- <archetypeinitiative>11</archetypeinitiative> -->
+  <!-- <startingcash>20 + 2d4 gp</startingcash> -->
+  <!-- <startinggear>Leather armour, long sword, dagger, capotain hat, cloak, rations for a week.</startinggear> -->
+
+  <!-- <height> -->
+  <!--   <metric>155 + 2d20 cm</metric>  -->
+  <!--   <imperial>4'10" + 2d10 inches</imperial> -->
+  <!-- </height> -->
+  <!-- <weight> -->
+  <!--   <metric>60 + 3d10 kg</metric>  -->
+  <!--   <imperial>130 + 4d20 pounds</imperial> -->
+  <!-- </weight> -->
+  <!-- <age>23 + 2d6 years</age> -->
+  
+  <!-- <aspectexamples></aspectexamples> -->
+  <!-- <archetypetags> -->
+  <!--   <tag>Human</tag> -->
+  <!-- </archetypetags> -->
+
+
+
+  
+  <!-- <levelprogressiontable>     -->
+  <!--   <level> -->
+  <!--     <levelnumber>1</levelnumber> -->
+  <!--     <levelmettle>2<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>6+d4</levelstamina> -->
+  <!--     <levelhealth>6+d4</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>0</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>0</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>0</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>0</levelmagical> -\-> -->
+  <!--     <levelluck>3<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+
+  <!--   <level> -->
+  <!--     <levelnumber>2</levelnumber> -->
+  <!--     <levelmettle>3<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+4</levelstamina> -->
+  <!--     <levelhealth>+4</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>15</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>10</levelmagical> -\-> -->
+  <!--     <levelluck>3<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level> -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>3</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>3<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>4</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>3<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>5</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>4<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>6</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>4<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+3<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>7</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>4<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+3<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>+3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>8</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>5<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+3<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>9</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>5<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+3<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>10</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <!-\- <levellore>8</levellore> -\-> -->
+  <!--     <!-\- <levelmartial>8</levelmartial> -\-> -->
+  <!--     <!-\- <levelgeneral>14</levelgeneral> -\-> -->
+  <!--     <!-\- <levelmagical>20</levelmagical> -\-> -->
+  <!--     <levelluck>6<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+3<dany/></levelluckrefresh>       -->
+  <!--     <levelmagicpool>3<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+  <!-- </levelprogressiontable> -->
+</archetype>
+
+
+
+

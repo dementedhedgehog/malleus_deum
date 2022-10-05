@@ -230,7 +230,7 @@ class Patron:
             #                 if all_ability_levels_disabled:
             #                     ability.set_enabled(False)
         except:
-            print "Problem trying to parse patron file: %s" % self.fname
+            print("Problem trying to parse patron file: %s" % self.fname)
             raise
 
         # after we've loaded all the archertype ability information
@@ -484,7 +484,7 @@ if __name__ == "__main__":
     #patrons.write_abilities_xml_to_dir(build_dir)
 
     for patron in patrons:
-        print patron.get_title()
+        print(patron.get_title())
 
         #if "Outrider" not in patron.get_title():
         #    continue

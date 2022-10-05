@@ -4,55 +4,124 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Elemental Magic</abilitygrouptitle>
     <abilitygroupid>elemental</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	XXXX
+	Elemental magic is a special sub-type of evocation that uses
+	the limited, but more stable magic from the nearby elemental planes.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
 
 
   <ability>
-    <abilitytitle>Elemental Magic</abilitytitle>
-    <abilityid>magic_school.elemental</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><elemental/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Black Colossus</abilitytitle>
+    <abilityid>elemental.black_colossus</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><elemental/><pool/></tags>
     <abilitydescription>
-      <p noindent="true">
-	Elemental magic is a special sub-type of evocation that uses
-	the limited, but more stable magic from the nearby elemental planes.
+      <p>
+	The chaster creates a giant humanoid construct out of
+	soil.
       </p>
     </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
+    <spline><p x="30" y="45"/></spline>
+    <prereqabilitylevel>elemental.summon_elemental_2</prereqabilitylevel>
+    <abilitycheck dc="12" overcharge="19+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
+
+  <ability>
+    <abilitytitle>Burning Hands</abilitytitle>
+    <abilityid>elemental.burning_hands</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><elemental/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The casters hands become engulfed in primal fire.  In hand
+	to hand combat their hands gain the Fire tag and do extra damage.
+      </p>
+    </abilitydescription>    
+    <spline><p x="-60" y="30"/></spline>
+    <prereqabilitylevel>elemental.fyre_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="8+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
   
   <ability>
-    <abilitytitle>Kiss of the Deep</abilitytitle>
-    <abilityid>magic.kiss_of_the_deep</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><elemental/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Elemental Lore</abilitytitle>
+    <abilityid>elemental</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><elemental/><lore/></tags>
+    <abilitydescription>
+      <p noindent="true">
+	This ability represents knowledge of elemental magic, the elemental
+	planes and its inhabitants.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Fyre</abilitytitle>
+    <abilityid>elemental.fyre</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitycheck dc="5" overcharge="9+Level"/>
+    <tags><elemental/><pool/></tags>
     <abilitydescription>
       <p>
-	The caster kisses a target on the lips and then
-	casts this spell.  Casting is close to instantaneous
-	but the spell cannot be used in combat due to the difficulty
-	of kissing people while in a fight.  
+	The caster ignites something flammable with a touch of their hand.
+	This is not an attack and cannot be used in combat against an opponent.
+
+	FIXME.. duplicate of ignis ?? is that ok?
+      </p>
+    </abilitydescription>    
+    <spline><p x="0" y="75"/></spline>
+    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Gaseous Form</abilitytitle>
+    <abilityid>elemental.gaseous_form</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitycheck dc="7" overcharge="14+Level"/>
+    <tags><elemental/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The caster and all their carried goods turn into a smoke which
+	allows them to pass through doors, up chimneys etc. 
+      </p>
+    </abilitydescription>    
+    <spline><p x="-75" y="70"/></spline>
+    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+    
+  <ability>
+    <abilitytitle>Kiss of the Deep</abilitytitle>
+    <abilityid>elemental.kiss_of_the_deep</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><elemental/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The caster touches a target and then casts this spell.  Casting
+	is close to instantaneous.  
       </p>
 
       <p>
@@ -60,104 +129,83 @@
 	breath, they fall to the ground coughing and gagging.  The
 	effects of this spell depend on the narrative imperative and
 	the whim of the GM.  Either the target falls to the ground
-	choking for 1d3+1 rounds, or the target dies, no save. 
+	choking for 1d3+1 rounds, or the target dies, no save.
+	FIXME: TIE THE BEHAVIOUR TO THE TYPE OF THE TARGET (SEE GMG).
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 6</overcharge>
-	<effect>See description above</effect>
-        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>0</attempts>
-	<check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 7</overcharge>	
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>1</successes>
-        <attempts>0</attempts>
-	<check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 8</overcharge>	
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-75" y="15"/></spline>
+    <prereqabilitylevel>elemental_1</prereqabilitylevel>	
+    <abilitycheck dc="4" overcharge="9+Level"/>    
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
 
 
 
+  
+  <ability>
+    <abilitytitle>Mist</abilitytitle>
+    <abilityid>elemental.mist</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><elemental/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The caster causes a fog to form by draining the temperature from the surrounds.
+	If fog is peculiar at that location and time then people may notice something
+	strange about the fog.
+      </p>
+    </abilitydescription>    
+    <spline><p x="-30" y="45"/></spline>
+    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <abilitycheck dc="7" overcharge="14+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>  
+  
+
   <ability>
     <abilitytitle>Shatter</abilitytitle>
-    <abilityid>magic.shatter</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><elemental/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityid>elemental.shatter</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><elemental/><pool/></tags>
     <abilitydescription>
       <p>
 	When casting shatter the caster intones magical words
 	and strikes a target of stone, metal or ice (in fact anything
-	elemental in nature, even including wood).
+	elemental in nature, including wood).
       </p>
 
       <p>
 	This spell is particularly effective for bringing down structures
-	supported be columns or arches.  A city wall or a tower is designed
-	to suffer a lot of damage without failing.
+	supported by columns or arches.  However city walls and tower are
+	designed to take a lot of damage without failing.
       </p>
 
       <p>
 	This spell may also be used to attack a subset of monsters, including
 	earth and water elementals, metalic, stone or earthen constructs, and
 	natural wooden animates.  For most other creatures this spell does no
-	damage.
+	damage. Against these monsters roll to hit with a grounding weapon
+	(staff or spear) and the spell does Weapon damage plus an additional
+	20+7xLevel damage.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 10</check>
-	<overcharge>DC + 7</overcharge>
-	<effect>The target is shattered (see above)</effect>
-        <prereqabilitylevel>magic_school.elemental_2</prereqabilitylevel>
-	<leveldescription>
-	  Against certain monsters roll to hit with a grounding weapon (staff or spear)
-	  and does an additional 4d10 damage.
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 10</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>The target is shattered (see above)</effect>
-	<leveldescription>
-	  Against certain monsters roll to hit with a grounding weapon (staff or spear)
-	  and does an additional 5d10 damage.
-	</leveldescription>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="60" y="60"/></spline>
+    <prereqabilitylevel>elemental_2</prereqabilitylevel>
+    <abilitycheck dc="10" overcharge="16+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
 
   <ability>
     <abilitytitle>Smoke Weasel</abilitytitle>
-    <abilityid>magic.smoke_weasel</abilityid>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><elemental/></keywords>
+    <abilityid>elemental.smoke_weasel</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <abilitycheck dc="6" overcharge="12+Level"/>
+    <tags><elemental/><pool/></tags>
     <abilitydescription>
       <p>
 	Creates a weasel out of smoke that does what the caster asks of it.
@@ -169,94 +217,50 @@
 	caster.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 8</overcharge>
-        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>		
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool  + 2 vs DDC 8</check>
-	<overcharge>DC + 10</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="0" y="60"/></spline>
+    <prereqabilitylevel>elemental.fyre_1</prereqabilitylevel>    
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
-
 
   <ability>
     <abilitytitle>Stone Skin</abilitytitle>
-    <abilityid>magic.stone_skin</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><elemental/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityid>elemental.stone_skin</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><elemental/><pool/></tags>
     <abilitydescription>
       <p>
 	The targets skin takes on a greyish hue and hardens, providing
-	some protection from physical damage.
+	some protection from physical damage.  If successful this spell
+	provides a bonus of 2 + Level  to armour for five minutes or the
+	rest of the encounter, whichever is longer.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 5</overcharge>
-	<effect>+2 to AC for five minutes</effect>
-        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Magic Pool + 2 vs DDC 8</check>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<overcharge>DC + 6</overcharge>
-	<effect>+3 to AC for five minutes</effect>				
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="45" y="120"/></spline>
+    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="10+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
+
 
   <ability>
-    <abilitytitle>Mist</abilitytitle>
-    <abilityid>magic.mist</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><elemental/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Summon Elemental</abilitytitle>
+    <abilityid>elemental.summon_elemental</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><elemental/><pool/></tags>
     <abilitydescription>
       <p>
-	The caster causes a fog to form by draining the temperature from the surrounds.
-	If that's peculiar then people may notice something strange.  
+	The character summons an elemental.
       </p>
     </abilitydescription>    
-    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-	<successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 10</check>
-	<overcharge>DC + 8</overcharge>
-        <prereqabilitylevel>magic_school.elemental_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 10</check>
-	<overcharge>DC + 9</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="15"/></spline>
+    <prereqabilitylevel>elemental_3</prereqabilitylevel>
+    <abilitycheck dc="8" overcharge="16+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
-  
 </abilitygroup>

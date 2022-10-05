@@ -3,259 +3,169 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Language Abilities</abilitygrouptitle>
     <abilitygroupid>language</abilitygroupid>
-    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        The ability to use a language.
+        The ability to use a language.  In the normal course of events if
+	a character knows a language then they do not have to check to
+	communicate using that language.  If a character knows a language
+	then the only time they need to check is in difficult circumstances,
+	<eg/> the character is rushing, the language is complex, there is
+	a lot of background noise, the writing is on damaged parchment, <etc/>.
       </p>
 
       <p>
-	There are six different categories of language: Native, Foreign, Obscure, 
-	Patois, and Dead.  Which languages fall into which categories depends on your 
-	archetype, your background and your GMs wishes.
+ 	Language ability levels all perform the same way, as follows:
       </p>
+
+      <descriptions>
+        <term>I</term>
+        <description>
+	  The character can speak the language a little.
+	  They know some words and can maybe make their meaning clear.
+	  Test for success for every interaction.
+        </description>
+
+        <term>II</term>
+        <description>
+          The character has the ability to speak the language fairly fluently.
+	  Only check under difficult circumstances (background noise).
+        </description>
+
+        <term>III</term>
+        <description>
+          The character has the ability to read and write some text written in the language.
+	  Check every time the character tries to read or write this language.
+        </description>
+
+        <term>IV</term>
+        <description>
+          The character has the ability to read and write some text written in the language.
+	  Only check under difficult circumstances.
+        </description>
+
+        <term>V</term>
+	<description>
+          The character is fluent in the language.  They can read and write the language 
+	  and perform research in books written in the given language.  Only check in
+	  the most difficult of circumstances.
+	</description>
+      </descriptions>      
     </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
   </abilitygroupinfo>
 
 
   <ability>
-    <abilitytitle>Brythinian/Common</abilitytitle>
-    <abilityid>language.brythinian</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><language/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Aquillonian</abilitytitle>
+    <abilityid>language.aquillonian</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
     <abilitydescription>
       <p>
-	This ability represents the characters ability to speak, read or write
-	Brythinan a langauge in common use in the civilized world and used
-	as a language of trade.
+	Aquillonian is spoken in the by members of the
+	now-fallen Aquillonian Empire.  It is the language of scholarship
+	and used amongst the learned.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>0</attempts>
-        <failures>0</failures>
-	<check>Std 2d8 vs DDC 8</check>
-	<leveldescription>
-	  <p>
-            The ability to speak a little Brythinian.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>0</attempts>
-        <failures>0</failures>
-	<check>Std 2d8 + 3 vs DDC 8</check>
-	<leveldescription>
-	  <p>
-            The ability to speak Brythinian.
-	    Only check under difficult circumstances.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <failures>1</failures>
-	<check>Std 2d8 + 3 vs DDC 8</check>
-	<leveldescription>
-	  <p>
-            The ability to read text written in Brythinian.
-	    Only check under difficult circumstances.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <failures>1</failures>
-	<check>Std 2d8 + 4 vs DDC 8</check>
-	<leveldescription>
-	  <p>
-            The ability to write text written in Brythininian.
-	    Only check under difficult circumstances.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <failures>1</failures>
-	<check>Std 2d8 + 5 vs DDC 8</check>
-	<leveldescription>
-	  <p>
-            The character is fluent in the language.  They can read and write the language 
-	    and perform research in books written in the given language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="0" y="30"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
-
-
+  
   <ability>
-    <abilitytitle>Khuzdern/Dwarvern</abilitytitle>
+    <abilitytitle>Dwarvern</abilitytitle>
     <abilityid>language.dwarven</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><language/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
     <abilitydescription>
       <p>
 	The language of the dwarves.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to speak a bit of Dwarven.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to speak the dwarven language fluently.
-	    Only check against this skill in difficult situations,
-	    for example when speaking to Dwarves with a thick regional
-	    accent, or when there's a storm blowing in the mountains.	    
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to read text written in a dwarven runes.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 +3 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to write Dwarven runes.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>5</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 5 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The character is fluent in the Dwarven.  They can read and write
-	    the language  and perform research in books written in the given
-	    language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="90" y="0"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
 
 
-
   <ability>
-    <abilitytitle>Inochian</abilitytitle>
-    <abilityid>language.inochian</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><language/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Fey</abilitytitle>
+    <abilityid>language.fey</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
     <abilitydescription>
       <p>
-	Spoken by the creatures from beyond this plane and the ancients,
-	Inochian is a dead language now used only for magic.  It is composed
-	of syllables that when intoned resonate with the planes and form
-	contagious conduits through which magic may flow.
+	Fey is the native language of the denizens of the Wyld and the High Elves.
       </p>
     </abilitydescription>
-    
+    <spline></spline>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Lagashi</abilitytitle>
+    <abilityid>language.lagashi</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
+    <abilitydescription>
+      <p>
+	Lagashi is the language of the east.  It is spoken in Ophyr, Arkadia, Vendryha and
+	the Bandit Kingdoms.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Merovingian</abilitytitle>
+    <abilityid>language.merovingian</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
+    <abilitydescription>
+      <p>
+	This ability represents the characters ability to speak, read or write
+	Merovingian, the language of Westreich the language of the Empire in the West,
+	the language of most of Averoigne, and of Albion, and a langauge which is in
+	common use in the civilized world and used as a language of trade.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="0"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
 
-    <abilitylevels>
 
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <attempts>2</attempts>
-	<check>Std 2d8 vs DDC 15</check>
-	<leveldescription>
-	  <p>
-	    The character can attempt to read Inochian aloud.  Doing so
-	    without the proper training is very difficult.  The mastery
-	    requirements for this ability can be skipped for an additional
-	    5 <lore/>.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 1 vs DDC 15</check>
-	<leveldescription>
-	  <p>
-	    The character has a shakey working level understanding
-	    of the phrasing of Inochian.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>0</attempts>
-	<check>Std 2d8 + 3 vs DDC 15</check>
-	<leveldescription>
-	  <p>
-	    The character has a good understanding of Inochian.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>1</successes>
-        <attempts>0</attempts>
-	<check>Std 2d8 + 5 vs DDC 15</check>
-	<leveldescription>
-	  <p>
-	    The character is fluen in Inochian.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+  <ability>
+    <abilitytitle>Poitevin</abilitytitle>
+    <abilityid>language.poitevin</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
+    <abilitydescription>
+      <p>
+	This ability represents the characters ability to speak, read or write
+	Poitevin, the language of south east Averoigne.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="60"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
 
 
@@ -263,280 +173,62 @@
   <ability>
     <abilitytitle>Hibernian</abilitytitle>
     <abilityid>language.hibernian</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><language/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
     <abilitydescription>
       <p>
 	The ability to speak Hibernian.  The language of the Northern
 	Barbarians.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to speak the Hibernian.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to read text written in Hibernian.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 5 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to write text in Hibernian runes.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="-90" y="30"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
 
-  
+
+
   <ability>
-    <abilitytitle>Aquillonian</abilitytitle>
-    <abilityid>language.aquillonian</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><language/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Inochian</abilitytitle>
+    <abilityid>language.inochian</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
     <abilitydescription>
       <p>
-	Aquillonian is a dead language, spoken in the past by members of the
-	now-fallen Aquillonian Empire.  It is the language of scholarship
-	and used amongst the learned.
+	Spoken by the creatures from beyond this plane and the ancients,
+	Inochian is a dead language now used only for magic.  It is composed
+	of syllables that when intoned resonate with the planes and form
+	contagious conduits through which magic may flow.  Inochian is the
+	language of magic.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The ability to partially read the Deutellium language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The ability to read and speak the Deutellium language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The ability to write text written in Arronian.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 5 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The character is fluent in Deutellium.  They can read and write the language 
-	    and perform research in books written in Deutellium.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="90" y="30"/></spline> 
+    <abilitycheck dc="15"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Sylvan</abilitytitle>
     <abilityid>language.sylvan</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><language/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
     <abilitydescription>
       <p>
-	Sylvan is the language of the Elves.  It is
+	Sylvan is the language of the Wood Elves.  It is
 	bastardized form of the Fey language.  That
 	has changed so much over time that it is now
 	a distinct language
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to partially speak Sylvan.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to speak Sylvan.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to read and write the Sylvan.
-	    Also gives the player Fey-I.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 5 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The ability to write text written in Sylvan.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>5</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 5 vs DDC 10</check>
-	<leveldescription>
-	  <p>
-            The character is fluent in Sylvan.  They can read
-	    and write the language and perform research in books
-	    written in the given language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
-
-  
-  <ability>
-    <abilitytitle>Fey</abilitytitle>
-    <abilityid>language.fey</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><language/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Fey is the native language of the denizens of the Wyld and the High Elves.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The ability to partially speak Fey.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The ability to speak Fey well.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The ability to read the Fey language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The ability to write text in the Fey language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>5</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 5 vs DDC 12</check>
-	<leveldescription>
-	  <p>
-            The character is fluent in the language.  They can read
-	    and write the language and perform research in books
-	    written in the given language.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="-90" y="60"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/> 
   </ability>
 </abilitygroup>

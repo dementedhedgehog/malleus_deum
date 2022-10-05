@@ -4,116 +4,183 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Physical Abilities</abilitygrouptitle>
     <abilitygroupid>physical</abilitygroupid>
-    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
         Represents general physical abilities and common non-weapon-specific fighting
         abilities, including boxing, wrestling and other bare handed martial
         arts.
-      </p>
-      
+      </p>      
     </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
   </abilitygroupinfo>
 
   <ability>
-    <abilitytitle>Charge</abilitytitle>
-    <abilityid>physical.charge</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Armour</abilitytitle>
+    <abilityid>physical.armour</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><physical/><martial/><core/></tags>
     <abilitydescription>
       <p>
-        The Charge ability allows the character to move twice their movement rate
-        in the direction of an enemy and then make an additional melee attack.
-        A character cannot Charge and enemy who is within their movement range, there
-        is not enough time.  If the character fails to charge they realize their foolishness
-        half way to the  enemy and must stop without attacking the enemy, moving at least their
-        distance.  Charging may provoke a break test in opponents at the GM's discretion.
+	<label>ability:armour</label>
+        <indexentry>Armour Check</indexentry>	
+	After the character gets attacked they make an <defn>armour check</defn> to see if that attack
+	was successfully defeated by the characters armour. If successful the character takes no damage
+	from the attack.  This can be interpreted as the either the armour taking the force of the blow
+	and protecting the character, or the character moving in such a way that the
+	the character is struck a glancing blow leaving them uninjured.
+      </p>
+
+      <p>	
+	Instead of making an armour check the character may
+	choose to dodge, shield block, parry or use some
+	other attack-reaction ability.   Armour is not a reaction and does not use the characters
+	reaction for the current turn unlike many other defence check abilities.  
+      </p>
+
+      <p>
+	To make an Armour Check the modifier is calculated as follows.  First calculate the bonus
+	for the type of armour worn by the character, <eg/>Plate provides +4, No armour provides +0.
+	The Armour Modifier is then this Armour Level, plus the Armour Bonus minus, +1 if a shield
+	is used, minus three.	
+      </p>
+
+      <p>
+	If the armour result fails and a boon is rolled the attack deals half damage.  If
+	the armour result fails and a bane is rolled the attack deals double damage.
+	If the armour check succeeds the attack does no damage.  If it fails the attack does
+	normal damage.
+      </p>
+
+      <p>
+	Some attacks cannot be defended with armour, <eg/> a dragons breath weapon.  If no other
+	attack-reaction ability is used the attack automatically does normal damage.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Resolve vs DDC 8</check>  
-	<innate/>
-     </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Resolve + 2 vs DDC 8</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Resolve + 3 vs DDC 8</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="0"/></spline> 
+    <abilitycheck dc="Attack DC" />
+    <abilitychecktype>Armour+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="3"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Blindsight</abilitytitle>
+    <abilityid>physical.blindsight</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="12"/>
+    <abilitydescription>
+      <p>
+	The character has heightened senses when fighting unseen
+	opponents.  They are atuned to slight noises and minor
+	air movements that give away the location of unseen attackers.
+      </p>
+
+      <p>
+	When a character with Blindsight is fighting an unseen opponent
+	each time they try and attack the opponent, before they roll to attack,
+	they roll a Blindsight check.   If the Blindsight check is successful
+	the character only suffers a -3 modifier for the rest of the encounter
+	instead of the usual -6.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="0"/></spline> 
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Charge</abilitytitle>
+    <abilityid>physical.charge</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/><martial/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitychecktype>Mettle</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+        The Charge ability allows the character to test their mettle.  If sucessful they
+	may move their movement rate +1d6 in the direction of an enemy and then make an
+	additional melee attack.  A character cannot Charge an enemy who is within their
+	movement range as there is not enough distance to build up speed, (in that case they
+	should just move and attack). If the character fails to reach their attacker
+	then they must move at their full movement plus extra charge moment towards
+	their foe and finish their turn in the open without attacking.  
+      </p>
+
+      <p>
+	Attacks made with this ability gain the Charge tag and any rules that apply to
+	such tags, such as Brace for Charge, can be used against the Charger.  Charging may
+	provoke a break test in opponents at the GM's discretion.  On overcharge the character
+	becomes Enraged.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="0"/></spline> 
+    <abilitylevels from="0" to="3"/>
   </ability>
 
+
+  <ability>
+    <abilitytitle>Climb</abilitytitle>
+    <abilityid>physical.climb</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	This ability represents the characters ability to Climb.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="150"/></spline> 
+    <abilitylevels from="0" to="6"/>
+  </ability>
 
   
 
   <ability>
-    <abilitytitle>Run</abilitytitle>
-    <abilityid>physical.run</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
+    <abilitytitle>Dodge</abilitytitle>
+    <abilityid>physical.dodge</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><physical/><martial/><core/></tags>
+    <abilitycheck dc="Attack DC"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
-        The Run ability represents a double move.  It allows the character to move twice
-	their movement rate during combat or pursuit.  This ability automatically succeeds
-	if the character is not encapacicated in some way.
+	<label>ability:dodge</label>
+	The character may attempt to dodge <emph>instead</emph> of making an armour roll.
+	Doing so uses the characters reaction for the round.
+	If successful the attack is dodged and the character takes no damage.
+	If the dodge fails and a bane is rolled the attack does double damage.
+	If the dodge fails and a boon is rolled the attack does half damage.	
       </p>
 
       <p>
-	In addition, the character may make a check to move a bit further in addition to their
-	double move.  This skill represents the characters fleet footedness.  During combat
-	this is represented by moving an extra 1-3 squares when playing on a grid, or something
-	narrative in a TOTM combat.  During a pursuit the character increases their rank by
-	two if they fail and three if they succeed.
-      </p>      
+	Some types of attack cannot be dodged, e.g. surprise attacks or
+	poisonous gas attacks.  Other types of attack <eg/> the acid or 
+	fire attacks of dragons may be dodgeable depending on the context
+	and deal half or no damage (at the GM's discretion).
+      </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 10</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs DDC 10</check>
-        <effect>
-          As above.
-        </effect>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 10</check>
-        <effect>
-          As above.
-        </effect>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="120"/></spline> 
+    <abilitylevels from="0" to="6"/>
   </ability>
-
+  
 
   <ability>
     <abilitytitle>Flee</abilitytitle>
     <abilityid>physical.flee</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
         The Flee ability allows the character to move more than twice their movement rate
@@ -126,414 +193,16 @@
 	opportunity.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std Check vs DDC 12</check>	
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Std Check + 1 vs DDC 12</check>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std Check + 2 vs DDC 12</check>	
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-  
-
-  <ability>
-    <abilitytitle>Jump</abilitytitle>
-    <abilityid>physical.jump</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 8</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs DDC 8</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 8</check>
-      </abilitylevel>      
-    </abilitylevels>
-    <abilitydescription>
-      <p>
-	This skill represents the characters ability to Jump.
-      </p>
-    </abilitydescription>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Swim</abilitytitle>
-    <abilityid>physical.swim</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers>
-      <attr>Strength</attr>
-      <attr>Endurance</attr>
-      <attr>Willpower</attr>
-    </abilityattrmodifiers>
-    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <check>Std 2d8 vs DDC 10</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <check>Std 2d8 + 1 vs DDC 10</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <check>Std 2d8 + 2 vs DDC 10</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <check>Std 2d8 + 3 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <check>Std 2d8 + 4 vs DDC 10</check>
-      </abilitylevel>      
-    </abilitylevels>
-    <abilitydescription>
-      <p>
-	This skill represents the characters ability to swim (if at all).  Everyone
-	is assumed to be able to dog paddle instinctively.  Failure of this check
-	means that the character is unable to make any progress.  Repeated failures
-	might result in the characters having to make exhaustion or resolve checks
-	as they start to panic.
-      </p>
-    </abilitydescription>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Climb</abilitytitle>
-    <abilityid>physical.climb</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	This skill represents the characters ability to Climb.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs DDC 10</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 2 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 3  vs DDC 10</check>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-	<check>Std 2d8 + 4  vs DDC 10</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Throw</abilitytitle>
-    <abilityid>physical.throw</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	This character attempts to thrown something.  If unsuccessful, and a consequence occurs
-	and they are under some form of pressure the character drops the item at their feet.
-	Otherwise unsuccessful throws scatter one random square five times.  If sucessful the
-	throw is accurate.
-      </p>
-    </abilitydescription>    
-    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 8</check>
-	<innate/>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 2 vs DDC 8</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 3 vs DDC 8</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Notice</abilitytitle>
-    <abilityid>physical.notice</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	This skill represents the characters attention to detail,
-	alertness, and their ability to notice subtle things in urban
-	environments that are not as they should be.
-      </p>
-
-      <p>
-        <indexentry>Detect Traps<subentry>see Notice (Urban)</subentry></indexentry>
-        <indexentry>Traps<subentry>see Notice (Urban)</subentry></indexentry>
-	This skill is used to detect traps.  In the wilderness use the
-	Scout ability and use a Perception Check elsewhere.
-      </p>      
-    </abilitydescription>      
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 10</check>
-	<innate/>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs DDC 10</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 10</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Listen</abilitytitle>
-    <abilityid>physical.listen</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	This is the characters ability to hear faint noise.
-	<indexentry>Hear Noise<subentry>see Notice</subentry></indexentry>    
-	<indexentry>Listen<subentry>see Notice</subentry></indexentry>    
-      </p>
-    </abilitydescription>      
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 12</check>
-	<innate/>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>2</attempts>
-        <check>Std 2d8 + 3 vs DDC 12</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 4 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Dodge</abilitytitle>
-    <abilityid>physical.dodge</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Agility</attr><attr>Speed</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	After the character is hit and/or damage is rolled the character
-	may use their standard action to attempt to dodge the attack.
-	If successful the attack is dodged and the character takes no damage.
-	Note that unlike most other reactions Dodging requires the character
-	to spend their action!
-      </p>
-
-      <p>
-	Some types of attack cannot be dodged, e.g. surprise attacks and
-	poisonous gas attacks.  Other types of attack e.g. the acid or 
-	fire attacks of dragons may be dodgeable depending on the context
-	and deal half or no damage (at the GM's discretion).
-      </p>
-
-      <p>
-	Once the character fails a dodge they are rattled and can no longer
-	dodge for the rest of that combat.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>5</successes>
-        <check>Std 2d8 vs DDC 14</check>
-	<innate/>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>5</successes>
-        <check>Speed Check vs DDC 14</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Speed Check + 1 vs DDC 14</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-  
-
-  <ability>
-    <abilitytitle>Kick</abilitytitle>
-    <abilityid>physical.kick</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The attacker kicks an opponent potentially pushing the opponent back
-	at higher levels. The opponent must be approximately the same sized
-	or smaller as the attacker in order to be pushed.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs opponents Agility</check>
-	<damage>d3</damage>    
-	<innate/>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs opponents Agility</check>
-	<damage>d4</damage>    
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 2 vs opponents Agility</check>
-	<damage>d6 vs opponents Agility</damage>    
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 2 vs opponents Agility</check>
-	<damage>d6 and opponent saves vs Str or is pushed back</damage>    
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <check>Std 2d8 + 3 vs opponents Agility</check>
-	<damage>d8 and opponent saves vs Str-2 or is pushed back</damage>    
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-90" y="30"/></spline> 
+    <abilitylevels from="0" to="6"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Grapple</abilitytitle>
     <abilityid>physical.grapple</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/><nonlethal/><untrained/></tags>
     <abilitydescription>
       <p>
 	Grappling involves grabbing, tackling or wrestling an opponent and holding 
@@ -548,46 +217,22 @@
 	a second character to tie-up, or otherwise constrain, the opponent.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-	<check>Std 2d8 vs max of opponents Str or Grapple</check>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<innate/>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + Str Modifier vs opponents Str or Grapple</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 2 + Str Modifier vs opponents Str or Grapple</check>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-	<check>Std 2d8 + 4 + Str Modifier vs opponents Str or Grapple</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="90"/></spline> 
+    <abilitycheck dc="Targets Str or Grapple"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="3"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Head Butt</abilitytitle>
     <abilityid>physical.head_butt</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/><nonlethal/></tags>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>2 + Str</abilitydmg>
     <abilitydescription>
       <p>
 	A head butt involves the attacker driving the top of their head into the bridge 
@@ -597,45 +242,40 @@
       </p>
 
       <p>
-	Head butts do +2 damage if the attacker is wearing a helmet and -2 damage
-	if the defender is wearing a helmet.
+	Head butts do +1 damage if the attacker is wearing a helmet and -1 damage
+	if the defender is wearing a helmet.  
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs opponents Speed</check>
-	<damage>d4</damage>
-	<innate/>
-      </abilitylevel>
+    <spline><p x="0" y="90"/></spline> 
+    <abilitylevels from="0" to="3"/>
+  </ability>  
 
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs opponents Speed</check>
-	<damage>d6 + opponent saves versus stun</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs opponents Speed</check>
-	<damage>d8 + opponent saves versus stun</damage>
-      </abilitylevel>      
-    </abilitylevels>
+  <ability>
+    <abilitytitle>Jump</abilitytitle>
+    <abilityid>physical.jump</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	This ability represents the characters ability to Jump.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitylevels from="0" to="6"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Juggernaut</abilitytitle>
     <abilityid>physical.juggernaut</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Endurance</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/><nonlethal/></tags>
+    <abilitycheck dc="Opposed Targets Strength + 1 per opponent"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
 	The attacker uses his mass and strength to brush aside those who
@@ -648,74 +288,142 @@
 	similar or smaller size and strength.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-	<successes>2</successes>
-        <check>Std 2d8 vs DDC 8</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <check>Std 2d8 + 1 vs DDC 8</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 8</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-90" y="90"/></spline> 
+    <abilitylevels from="1" to="3"/>
   </ability>
 
-  
-  
 
-  
   <ability>
-    <abilitytitle>Sure Feet</abilitytitle>
-    <abilityid>physical.sure_feet</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Agility</attr><attr>Endurance</attr></abilityattrmodifiers>
+    <abilitytitle>Knockout</abilitytitle>
+    <abilityid>physical.knockout</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><physical/><nonlethal/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
-	When the attacker would be knocked prone they can check whether to resist being
-	knocked over.  If modified by endurance then this entails enduring the blow, if using
-	agility it involves rolling with the blow.
+        <indexentry>Knockout</indexentry>
+	After a character reduces an opponents hit points to zero
+	the character may make an attempt to knock the opponent
+	out instead of killing them.  The opponent must be humanoid and of the same
+	size as the attacker or smaller.  If the character succeeds in
+	their Knockout Check the opponent becomes Unconscious.  If
+	the check fails then the opponent is killed.   Note that Lethal and Nonlethal
+	tagged weapons modify this check.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-	<successes>2</successes>
-        <check>Std 2d8 - 2 vs DDC 10</check>
-      </abilitylevel>
+    <spline><p x="-90" y="180"/></spline> 
+    <abilitylevels from="0" to="3"/>
+  </ability>  
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <check>Std 2d8 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 10</check>
-      </abilitylevel>      
-    </abilitylevels>
+  <ability>
+    <abilitytitle>Kick</abilitytitle>
+    <abilityid>physical.kick</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/><nonlethal/></tags>
+    <abilitydescription>
+      <p>
+	The attacker kicks an opponent potentially pushing the opponent back
+	at higher levels. The opponent must be approximately the same sized
+	or smaller as the attacker in order to be pushed.
+      </p>
+
+      <p>
+	A successful kick at level 3 and above pushes the defender back (provided
+	the defender is the same size as the attacker or smaller).
+      </p>
+    </abilitydescription>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>2 + Speed|Strength</abilitydmg>
+    <spline><p x="-90" y="120"/></spline> 
+    <abilitylevels from="0" to="4"/>
   </ability>
+
+
+
+  <ability>
+    <abilitytitle>Listen</abilitytitle>
+    <abilityid>physical.listen</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	This is the characters ability to hear faint noise.
+	<indexentry>Hear Noise<subentry>see Listen</subentry></indexentry>    
+      </p>
+    </abilitydescription>      
+    <spline><p x="0" y="120"/></spline> 
+    <abilitylevels from="0" to="4"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Move</abilitytitle>
+    <abilityid>physical.move</abilityid>
+    <abilityactiontype><move/></abilityactiontype>
+    <tags><physical/><core/></tags>
+    <abilitydescription>
+      <p>
+        The Move ability describes movement within combat.  It allows the character to move
+	up to their movement rate during combat or pursuit.  This ability automatically
+	succeeds if the character is not incapacicated in some way.  Characters should check if
+	they are suffering some kind of leg injury, or carrying a fallen companion etc.
+      </p>
+
+      <p>
+	Characters who fail to Move.. still move an amount determined by the GM, they just do
+	not move their full movement rate. During a pursuit the character increases their
+	rank by two if they fail and three if they succeed.
+      </p>      
+    </abilitydescription>
+    <spline><p x="0" y="180"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="4"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Notice</abilitytitle>
+    <abilityid>physical.notice</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitydescription>
+      <p>
+	This ability represents the characters attention to detail,
+	alertness, and their ability to notice subtle things in urban
+	environments that are not as they should be.
+      </p>
+
+      <p>
+        <indexentry>Detect Traps<subentry>see Notice (Urban)</subentry></indexentry>
+        <indexentry>Traps<subentry>see Notice (Urban)</subentry></indexentry>
+	This ability is used to detect traps.  In the wilderness use the
+	Scout ability and use a Perception Check elsewhere.
+      </p>      
+    </abilitydescription>      
+    <spline><p x="0" y="150"/></spline> 
+    <abilitylevels from="0" to="4"/>
+  </ability>
+
 
   
   <ability>
     <abilitytitle>Punch</abilitytitle>
     <abilityid>physical.punch</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/><nonlethal/></tags>    
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>d4</abilitydmg>
     <abilitydescription>
       <p>
 	The attacker attempts to hit their opponent using their fists. 
@@ -723,94 +431,106 @@
 	if the attacker is wearing a helmet.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-	<successes>2</successes>
-        <check>Std 2d8 + 2 vs opponents Agility</check>
-	<damage>d4</damage>
-	<innate/>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-	<successes>2</successes>
-        <check>Std 2d8 + 4 vs opponents Agility</check>
-	<damage>d4 + Str</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 5 vs opponents Agility</check>
-	<damage>d4 + 2 + Str Modifier</damage>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="60"/></spline> 
+    <abilitylevels from="0" to="4"/>
   </ability>
-
+  
 
 
   <ability>
     <abilitytitle>Rest</abilitytitle>
     <abilityid>physical.rest</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers><attr>Luck</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Rest</subentry></indexentry>		
         The character takes a moment to catch their breath
         and collect themselves.  This takes five to ten minutes.
         Given time the character succeeds automatically. 
-        If the character only has a few minutes to rest then they
-        must check to see if they are successful.
+        If the character only has a few minutes to rest or they
+	are interupted then they must check to see if they are successful.
       </p>
 
       <p>
         Characters only benefit from up to two Rests between Sleeps.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <check>Std 2d8 vs DDC 8</check>
-        <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
-	<innate/>
-      </abilitylevel>
+    <spline><p x="0" y="60"/></spline> 
+    <abilitylevels from="0" to="4"/>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Run</abilitytitle>
+    <abilityid>physical.run</abilityid>
+    <abilityactiontype><move/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+        The Run ability describes extra movement within combat.  It allows the character
+	to move	twice their movement rate during combat or pursuit.  This ability
+	automatically succeeds if the character is not incapacicated in some way.
+      </p>
 
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <check>Std 2d8 + 1 vs DDC 8</check>
-        <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 8</check>
-        <effect>Character receives their Rest Refresh Rate bonuses for Stamina and two dice pools.</effect>
-      </abilitylevel>      
-    </abilitylevels>
+      <p>
+	In addition, the character may make a check to go for it, and move a bit further in
+	addition to their double move.  This ability represents the characters fleet
+	footedness.  During combat this is represented by moving an extra 1-3 squares when
+	playing on a grid, or some other narrative effect during TOTM combat.  If the character
+	fails their check they need to make an Agility check or suffer a bane.
+      </p>
+
+      <p>
+	During a pursuit the character increases their rank by two if they fail and three
+	if they succeed.
+      </p>      
+    </abilitydescription>
+    <spline><p x="90" y="30"/></spline> 
+    <abilitylevels from="0" to="4"/>
   </ability>
 
-
+  <ability>
+    <abilitytitle>Sixth Sense</abilitytitle>
+    <abilityid>physical.sixth_sense</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><special/></tags>
+    <abilitydescription>
+      <p>
+	If the character makes a successful check they may reroll their
+	surpriseor initiative rolls, or rolls for saving against speed related
+	traps and other similar checks.  
+      </p>
+    </abilitydescription>
+    <abilitycheck dc="15"/>
+    <spline><p x="0" y="0"/></spline> 
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
 
   <ability>
     <abilitytitle>Sleep</abilitytitle>
     <abilityid>physical.sleep</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><physical/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Sleep</subentry></indexentry>	
         The character sleeps for six or more hours.  If the characters
         sleep is uninterrupted then no check is required.  If the characters
-        are attacked or disturbed they may need to 
+        are attacked or disturbed they may need to make a check to see whether
+	they are fully rested.  
       </p>
 
       <p>
@@ -818,31 +538,93 @@
         are required to check and they fail then they only receive one refresh.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <failures>1</failures>
-        <check>Std 2d8 vs DDC 8</check>
-	<innate/>
-        <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
-      </abilitylevel>
+    <spline><p x="-90" y="60"/></spline> 
+    <abilitylevels from="0" to="4"/>
+  </ability>  
 
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 1 vs DDC 8</check>
-        <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
-      </abilitylevel>
+  <ability>
+    <abilitytitle>Sure Feet</abilitytitle>
+    <abilityid>physical.sure_feet</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	When the attacker would be knocked prone they can check to resist being
+	knocked over.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline> 
+    <abilitylevels from="0" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Swim</abilitytitle>
+    <abilityid>physical.swim</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitydescription>
+      <p>
+	This ability represents the characters ability to swim (if at all).  Everyone
+	is assumed to be able to dog paddle instinctively.  Failure of this check
+	means that the character is unable to make any progress.  Repeated failures
+	might result in the characters having to make exhaustion or resolve checks
+	as they start to panic.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="180"/></spline> 
+    <abilitylevels from="0" to="4"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Throw</abilitytitle>
+    <abilityid>physical.throw</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><physical/><martial/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	This character attempts to thrown something.  If unsuccessful, and a bane occurs
+	and they are under some form of pressure the character drops the item at their feet.
+	Otherwise unsuccessful throws scatter one random square five times.  If sucessful the
+	throw is accurate.
+      </p>
+    </abilitydescription>    
+    <spline><p x="-90" y="150"/></spline> 
+    <abilitylevels from="0" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Witness Me</abilitytitle>
+    <abilityid>physical.witness_me</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><physical/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level" />
+    <abilitychecktype>Mettle</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	When the characters hit points drop to 0 they can instantly make a "Witness Me"
+	check and if successful the character may perform a Charge or an Attack.  If
+	a Charge is performed no roll for successfully charging is required.  Default
+	weapon damage is doubled.
+      </p>
+
+      <p>
+	In the event of an overcharge the character gains the Unconscious condition at the
+	end of their action.
+      </p>
       
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 8</check>
-        <effect>Character receives their Rest Refresh Rate bonuses for Stamina, Health and four dice pools.</effect>
-      </abilitylevel>      
-    </abilitylevels>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline> 
+    <abilitylevels from="0" to="4"/>
   </ability>  
 </abilitygroup>

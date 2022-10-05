@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <!--
+      
+      Note this is not a document format.
+      Docs get generated from this.
+      
+  -->
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Social Abilities</abilitygrouptitle>
+    <abilitygroupid>social</abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	Social abilities are used to represent the characters
+	ability and knowledge with interacting with parts of
+	society to achieve their goals.
+      </p>
+
+      <p>
+	There are a number of Social Abilities that the GM
+	should feel to give to players based on their background
+	or interaction with people or time spent in a locale.
+	In particular Fame/Infamy, Etiquette and Contacts can
+	be used to represent a characters knowledge or reputation
+	of various social groups.
+      </p>	
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Adversary</abilitytitle>
+    <abilityid>social.adversary</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitytemplate>monster-type</abilitytemplate>
+    <tags><social/></tags>
+    <abilitydescription>
+      <p>
+	The character bear an animosity towards, and/or have been trained
+	to fight opponents of type [monster-class].  At the start of
+	combat and every following round until they succeeed, characters
+	make an adversary check.  If successful their training kicks in and
+	for the rest of the combat they the characters gains a bonus equal to
+	their adversary level for combat checks against monsters of the given
+	monster-class (the bonus is to the check only and not to damage).
+      </p>
+    </abilitydescription>
+    <spline><p x="70" y="90"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Contacts</abilitytitle>
+    <abilityid>social.contacts</abilityid>
+    <abilitytemplate>society</abilitytemplate>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><social/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <indexentry>High Contacts</indexentry>
+      <indexentry>Low Contacts</indexentry>
+      <indexentry>Middleh Contacts</indexentry>
+
+      <p>
+	The Contacts ability can best be described by the phrase: ``I know a guy...''.
+	It represents the characters knowledge of people who have useful abilities or
+	information within part of society.  For example a character who has
+	Contacts (Thieves Guild) might know a guy who is a fence and can sell
+	stolen goods.  The Contacts abilility does not effect any existing
+	relationships the character has with NPCs.
+      </p>
+
+      <p>	
+	Contacts is a ability template.  That is when you learn
+	the ability you learn it for a particular society.  When
+	you do this replace [society] with an actual campaign
+	specific society, talk to your GM about it, <eg/>
+	Contacts[The Cult of the Black Hand].  You can have multiple
+	different instances of this ability at different levels for any number of
+	societies.
+      </p>      
+
+      <p>
+	If your character has high contacts they know certain people
+	in high places.  These people may be a useful source of
+	information or work.
+      </p>
+      
+      <p>
+	If your character has contacts they know many people
+	in the middle classes.  Business men, religious types,
+	book keepers, wise men, artists and scholars.
+      </p>
+
+      <p>
+	If your character has low contacts they know many people
+	in the lower classes in some town or city.  Thieves, smugglers,
+	stand-over men, beggars, bandits and lepers.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline> 
+    <abilitylevels from="0" to="6"/>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Deceive</abilitytitle>
+    <abilityid>social.deceive</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><social/></tags>
+    <abilitycheck dc="Opposed"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	Lying convincingly can be difficult.  This ability represents
+	how good a liar the character is.  Typically you check against the
+	opponents Perceive.
+      </p>
+    </abilitydescription>
+    <spline><p x="30" y="75"/></spline> 
+    <abilitylevels from="0" to="3"/>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>Etiquette</abilitytitle>
+    <abilityid>social.etiquette</abilityid>
+    <abilitytemplate>society</abilitytemplate>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><social/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <indexentry>High Etiquette</indexentry>
+      <indexentry>Low Etiquette</indexentry>
+      <indexentry>Middle Etiquette</indexentry>
+      <indexentry>Persuasion</indexentry>
+      <indexentry>Diplomacy</indexentry>
+      <p>
+	Etiquette represents knowledge of the code of behaviour and
+	the social norms of a particular group or part of society.
+	Etiquette is required to pass as a member of that society
+	during extended conversations and or periods of time.  Using the
+	wrong dining implements or not knowing the meaning of 
+	common slang words betray the characters true origins.
+monster-type      </p>
+	 
+      <p>
+	Etiquette is a templated ability.
+	A character may simultaneously have multiple Etiquette abilities at
+	different levels, one for each society which they have studied.
+	Each instantiation of the Etiquette ability is annotated with that abilities
+	particular society and level.  For example, a spy type archetype might
+	have Etiquette[Nobility of Verungia] II, Etiquette[The Black Hand] I,
+	and Etiquette[Midheim Docks] I.
+	Characters can train new abilities in Etiquette for new societies, provided
+	that they access to some source of learning that allows the character to
+	learn the social norms of the new social group.  
+      </p>
+
+      <p>
+	For new characters we make a distinction between High, Middle
+	and Low ettiquette.   This is just a short-hand that allows new players
+	to choose an initial campaign-specific Etiquette ability that is from a
+	restricted set of societies congruent with that characters upbringing.
+      </p>
+
+      <p>
+	Etiquette[High] is the knowledge of the social behaviours of 
+	the upper classes.  This might be the Nobility of the Kingdom of Churia,
+	the Church of Bromion, the Dwarven High Council or the Guild of Mages.
+	The player has to choose a specific high society.
+      </p>
+      
+      <p>
+	Etiquette[Middle] is the knowledge of the social behaviours of the middle
+	classes.  Examples might include The Merchants Guild of the City
+	of Verburg, The Artisans of Iron Mountain, Merchant Ship Officers of the North
+	Seas and so on.
+      </p>
+
+      <p>
+	Etiquette[Low] is the knowledge of the social behaviours and
+	norms of the lower classes.  You need to know low ettiquette
+	if you don't want to be noticed when amongst the hoi polloi.
+      </p>      
+
+      <p>
+	Every character also has an implicit Etiquette ability for their own
+	society.  They never need to check on this ability, they automatically
+	succeeed.
+      </p>
+
+      <p>
+	Societies are related to one another, and some societies are more
+	closely related than others.  Societies that are related by class
+	or purpose, for example, nobles or merchants are more closely related
+	than societies that are not.  Societies that are closer geographically
+	are more closely related than societies that are located far apart.
+	The GM should allow players to use Etiquette in one society to
+	make checks for Etiquette in other, closely related societies.  These
+	checks should be made at a higher DC than usual.
+      </p>	      
+    </abilitydescription>
+    <spline><p x="0" y="0"/></spline> 
+    <abilitylevels from="0" to="5"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Fame</abilitytitle>
+    <abilityid>social.fame</abilityid>
+    <abilitytemplate>society</abilitytemplate>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><social/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <indexentry>Renown</indexentry>
+      <indexentry>Fame</indexentry>
+      <indexentry>Infamy</indexentry>
+      <p>
+	Fame is a measure of a characters (or parties) Renown or Infamy
+	within some society.  It represents how well known the characters are within
+	that society.  Within that society the character may be respected or despised
+	or somewhere in between depending on the actions that led to their fame.
+	Renown may be used during social interactions at the GMs discretion.  It is
+	possible to be both famous and infamous within a society. 
+      </p>
+
+      <p>
+	Unlike other abilities the level of Fame increases when the GM dictates.  Usually this
+	should happen immediately after the current level is mastered.  It is a narrative
+	driven ability.  Note that to become famous people within the society need to know of
+	the characters exploits. It is up to the GM to decide when characters receive their
+	first level of Fame for a given society.
+      </p>
+
+      <playexample>
+	<p>
+	  For example Dourli has been helping out the local Dwarven smugglers with some
+	  of their problems. Dourli has Fame IV [Smugglers].  Fame might help Dourli to get
+	  favours from the Smugglers.  In contrast, When Dourli is caught up in a raid
+	  after some fisticuffs in a tavern brawl one of the city guards might recognize
+	  him.  To determine if this is so Dourli rolls a Std 2d12 and tries to roll under
+	  his Fame.  If he rolls over perhaps one of the guards recognizes him.  In this
+	  case that is not the desired option but it does increase his notoriety within
+	  the town marginally (it counts as a success in terms of mastery).
+	</p>
+
+	<p>
+	  Either way, Fame can help to establish ones bona fides.  Later when
+	  Dourli turns up to warn the castellan of the existance of a death cult
+	  based near the docks, the fact that he is recognized by some of the guards
+	  may help confirm parts of his story and his identity.
+	</p>	
+      </playexample>      
+      
+    </abilitydescription>
+    <spline><p x="-90" y="0"/></spline> 
+    <abilitylevels from="1" to="5"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Interrogate</abilitytitle>
+    <abilityid>social.interrogate</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><social/><untrained/></tags>
+    <abilitycheck dc="Opponents Check"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	The character can make a Std check against an opponent.
+	The target opposes the check by making a hidden roll with one of
+	Fortitude, Endurance, Deceive or Willpower.
+      </p>
+
+      <p>
+	If successful the character can determine if the target is answered a question
+	truthfully.  
+      </p>
+
+      <p>
+	Interrogating a subject involves asking them a barrage of questions
+	and sifting through what they say to find the truth, a process which might
+	take days.  Torture involves hurting the target until they answer
+	questions.  Torture is a deeply disturbing process that may well have
+	a lasting effect on the characters personality.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="105"/></spline> 
+    <abilitylevels untrained="-3" from="0" to="5"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Intimidate</abilitytitle>
+    <abilityid>social.intimidate</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><social/><untrained/></tags>
+    <abilitycheck dc="Opposed"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	The character can make an check against an opponent
+	using strength.  The target opposes the check with 
+	one of Strength, Fortitude, Endurance, Speed or Willpower.
+	If successful the character can boss the target around,
+	extract information from them and so on.  The target
+	will not perform actions that they are strongly morally
+	opposed to, or that are highly detrimental to them.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="105"/></spline> 
+    <abilitylevels untrained="-3" from="0" to="5"/>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Leadership</abilitytitle>
+    <abilityid>social.leadership</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><social/></tags>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>    
+      <p>
+	The character is a leader.  They may
+	yell some encouraging words to an associate who has
+	just failed a morale check, <eg/> ``Fight you Scum''.  If successful the target
+	may reroll their morale check.  Only one such reroll is	permitted per character
+	per encounter.
+      </p>
+
+      <p>
+	Leadership can be used to
+	try and momentarilly stop a combat so that some form of
+	negotiation can occur: "Yield you scum, you are clearly beat".
+	The GM will specify a difficulty based on the morale of the
+	opponents and their nature.  If successful combat stops
+	and negotiation begins (note this does not mean that the
+	opponents are bound to a peaceful resolution).
+      </p>      
+    </abilitydescription>
+    <spline><p x="0" y="165"/></spline> 
+    <abilitylevels from="0" to="5"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Negotiate</abilitytitle>
+    <abilityid>social.negotiate</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><social/></tags>
+    <abilitycheck dc="Opponents Negotiate"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p>
+	Negotiation is the art of the deal, persuasion and diplomacy.
+	When some arrangement is in both parties favour and one party
+	wants to extend the terms one more time, that is when the
+	negotiate ability comes into play.
+      </p>
+      
+      <p>            
+	<indexentry>negotiation</indexentry>
+	Negotiation during combat is difficult but a quickly yelled
+	proposition or plea for pax is a free action.  In such cases
+	there is a brief lull in fighting while the character yells out
+	a proposition.  This may be handy when characters need to
+	negotiate a more favourable outcome when combat is going badly
+	for them.  Negotiation cannot occur during a surprise round.
+      </p>
+
+      <p>
+	Negotiation requires the consent of both parties involved.
+	After negotiations have commenced either party can break off 
+	negotiation at any time at which point combat recommenses.  
+	The GM should generally encourage negotiation and give the 
+	players a chance to talk their way out of situations.
+      </p>
+
+      <p>
+	Unintelligent creatures will never participate in negotiation.
+	There is no point arguing with a charging wild boar.
+      </p>
+
+      <p>
+	Negotiation need not be limited to verbal communication.  
+	It may be possible to negotiate using signs, mimes, charades, 
+	mimicking sounds etc.
+      </p>
+      
+      <p>
+	Both monsters and players are free to use negotiation in 
+	an attempt to play for time - waiting for the cavalry to arrive.
+	However, if the opponent guesses this is what they are up to
+	they simply ignore the negotiation and continue their attack 
+	instantaneously.
+      </p>
+
+      <p>
+	It is possible for there to be barriers to negotiation: loud 
+	noises, distance, etc.  If that is the case the GM can require 
+	an appropriate check be made before negotiation can commence.
+      </p>
+
+      <p>
+	The negotiation check is opposed by negotiation or the GM can
+	pick a DC for an NPC opponent.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="105"/></spline> 
+    <abilitylevels from="0" to="5"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Rally</abilitytitle>
+    <abilityid>social.rally</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><social/><pool/></tags>
+    <abilitycheck dc="3" overcharge="10+Level"/>
+    <abilitychecktype>Mettle</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>    
+      <p>
+        When characters starts to flee they need to Rally before they can stop.
+	On overcharge the character becomes enraged.
+      </p>	
+    </abilitydescription>
+    <spline><p x="-60" y="165"/></spline> 
+    <abilitylevels from="0" to="5"/>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>Yield</abilitytitle>
+    <abilityid>social.yield</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><social/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>    
+      <p>
+	Vanquished characters may <defn>Yield</defn>.  When characters yield 
+	they acknowledge their defeat and throw their fate at the mercy of their 
+	opponent.  The effectiveness of this strategy depends on the opponent, but 
+	most humans will spare a foe who has yielded.  Orcs will keep the downfallen 
+	until they run out of other meat.  Even a bear (protecting its family) may 
+	lose interest if you play dead.
+      </p>	
+    </abilitydescription>
+    <spline><p x="60" y="165"/></spline> 
+    <abilitylevels from="0" to="5"/>
+  </ability>  
+</abilitygroup>

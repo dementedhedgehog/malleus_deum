@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Archery Proficiency</abilitygrouptitle>
+    <abilitygroupid>martial.archery</abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	These abilities represent training with the use of the bow and arrow.  Initial
+	training is with a short bow.  Use of the long bow requires a fair amount of
+	training.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Archery</abilitytitle>
+    <abilityid>archery.archery</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><bow/><ranged/><weapon/></tags>    
+    <abilitydescription>
+      <p noindent="true">
+        Characters may use Archery to shoot arrows from short bows during combat
+	doing weapon dmg when they hit.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon</abilitydmg>
+    <abilitylevels from="0" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Dead Eye</abilitytitle>
+    <abilityid>archery.dead_eye</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><bow/><ranged/><weapon/></tags>    
+    <abilitydescription>
+      <p>
+	The character has spent many hours working on improving the accuracy of
+	their shots.  Players can choose to call a shot which gives them a large
+	bonus to hit.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="30"/></spline>
+    <prereqabilitylevel>archery.archery_2</prereqabilitylevel>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Fast Shot</abilitytitle>
+    <abilityid>archery.fast_shot</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><ranged/><bow/><weapon/></tags>    
+    <abilitydescription>
+      <p>
+	Holding a pair of arrows in his hand the character
+	is able to shoot them both in quick succession.  Note that this involves
+	less than complete drawing of the bow and therefore causes less dmg.
+	Also note that the speed of these shots occurs because the character is
+	holding the arrows in his firing hand before the combat, so this ability
+	can only be used in the first round of combat and cannot be used when the
+	character is surprised.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>archery.archery_2</prereqabilitylevel>
+    <spline><p x="0" y="30"/></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon</abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Long Bow Proficency</abilitytitle>
+    <abilityid>archery.long_bow</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><bow/><ranged/><weapon/></tags>    
+    <abilitydescription>
+      <p>
+	The character has trained in the use of the long bow.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>archery.archery_1</prereqabilitylevel>
+    <prereqattr><strength>14</strength></prereqattr>
+    <spline><p x="-90" y="30"/></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon</abilitydmg>
+    <prereqnottag>Short</prereqnottag>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
+  
+  <ability>
+    <abilitytitle>Rain of Arrows</abilitytitle>
+    <abilityid>archery.rain_of_arrows</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><ranged/><bow/><weapon/></tags>    
+    <abilitydescription>
+      <p>
+	This ability allows the character to fire three arrows as one action.
+	The speed of these shots occurs because the character is holding the arrows
+	in his firing hand before the combat begins, so this ability can only be used in
+	the first round of combat and cannot be used when the character is surprised
+	or otherwise unprepared.  The character can fire a number of arrows equal to
+	their level in this ability.  The character rolls to hit for each arrow.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>archery.fast_shot_2</prereqabilitylevel>
+    <spline><p x="0" y="30"/></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>  
+</abilitygroup>

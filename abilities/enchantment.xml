@@ -2,76 +2,34 @@
 <abilitygroup>
 
   <abilitygroupinfo>
-    <abilitygrouptitle>Enchantments</abilitygrouptitle>
+    <abilitygrouptitle>Enchantment</abilitygrouptitle>
     <abilitygroupid>enchantment</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	XXXX
+	Enchantment is the use of magic to control the minds of others.
+	This form of magic is a specialty of the fae.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
 
-  <ability>
-    <abilitytitle>Enchantment</abilitytitle>
-    <abilityid>magic_school.enchantment</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	Enchantment is the use of magic to control the minds of others.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <prereqabilitylevel>language.fey_1</prereqabilitylevel>	
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
 
-
-  <ability>
-    <abilitytitle>Zoolingualism</abilitytitle>
-    <abilityid>magic_school.zoolingualism</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	A sub-class of magic used to communicate with animals.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
-        <check>Std 2d8 vs DDC 14</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-  
-  
   <ability>
     <abilitytitle>Auri Fames</abilitytitle>
     <abilityid>magic.auri_fames</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p>
 	The caster attempts to curse the target, if successful the target
 	gains a <emph>Hunger for Gold</emph> aspect with a difficulty
-	equal to the magic pool result minus the targets willpower.
-	This spell requires some item of contagion with the target in
-	order to cast, preferably blood or hair (other items may be used
-	with penalties to the check).
+	equal to the magic pool result.  This spell requires some item of
+	contagion with the target in order to cast, preferably blood or hair
+	(other items may be used with penalties to the check).  The target
+	may make a difficult will save at the GMs discretion.
       </p>
-
+      
       <p>
 	If an overcharge occurs one or more of the following occur:
 	<list>
@@ -88,7 +46,7 @@
 	  </li>
 	  <li>
 	    The spell nearly gets away from the caster and they must attempt
-	    assert control of the magical energies.  Reroll any remaining dice
+	    to assert control of the magical energies.  Reroll any remaining dice
 	    used in the check and lose any dice with a face value of 1.
 	  </li>
 	  <li>
@@ -97,357 +55,247 @@
 	</list>
       </p>
     </abilitydescription>    
-    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs Opponents WillPower</check>
-	<overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 3 vs Opponents WillPower</check>
-	<overcharge>DC + 6</overcharge>	
-      </abilitylevel>      
-    </abilitylevels>
+    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="8+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <spline><p x="90" y="0"/></spline>    
+    <abilitylevels from="1" to="5"/>
   </ability>
-
-
+  
+  <ability>
+    <abilitytitle>Enchantment Lore</abilitytitle>
+    <abilityid>enchantment</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><lore/></tags>
+    <abilitydescription>
+      <p noindent="true">
+	This ability represents knowledge of enchantment magic.
+      </p>
+    </abilitydescription>    
+    <spline></spline>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitycheck dc="12"/>
+    <abilitylevels from="1" to="5"/>
+  </ability>
+  
   
   <ability>
     <abilitytitle>Glamour</abilitytitle>
     <abilityid>magic.glamour</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p>
 	The caster magically takes the appearance of a person, creature or thing.
-	The glamour is illusiary in nature... a character taking the form of a
-	great eagle cannot fly.
+	The glamour is illusiary in nature... <eg/> a character taking the form of a
+	great eagle cannot fly.  The caster may take the form of a person, creature
+	or thing of similar size to the character.  The DDC to break the glamour
+	is the spells result versus Perception (a group check).
+      </p>
+
+      <p>
+	At level 3 and above the caster may take the form of a person, creature of
+	thing of significantly (50%) larger or smaller size to the character.	    
+	The difficulty of seeing through the glamour with True Sight is 25.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool versus DDC 14</check>
-        <overcharge>DC + 10</overcharge>
-	<leveldescription>
-	  <p>
-	    The caster may take the form of a person, creature of thing
-	    of similar size to the character.  The difficulty of seeing
-	    through the glamour with True Sight is 15 DC.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool + 2 versus DDC 14</check>
-        <overcharge>DC + 11</overcharge>
-        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>	
-	<leveldescription>
-	  <p>
-	    The caster may take the form of a person, creature of thing
-	    of similar size to the character.  The difficulty of seeing
-	    through the glamour with True Sight is 20 DC.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool versus DDC 14</check>
-        <overcharge>DC + 12</overcharge>
-	<leveldescription>
-	  <p>
-	    The caster may take the form of a person, creature of thing
-	    of significantly (50%) larger or smaller size to the character.	    
-	    The difficulty of seeing through the glamour with True Sight is 25.
-	  </p>
-	</leveldescription>
-      </abilitylevel>      
-    </abilitylevels>
+    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
+    <spline><p x="0" y="45"/></spline>
+    <abilitycheck dc="15" overcharge="5+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
 
+  <ability>
+    <abilitytitle>Hex</abilitytitle>
+    <abilityid>magic.hex</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
+    <abilitydescription>
+      <p>
+	Target breaks out in small pustules, loses something important to them,
+	or some other annoying but not life threatening consequence.  The caster
+	must have at least one item that links the target to the caster by contagion:
+	hair, blood etc.
+      </p>
+
+      <p>
+	FIXME: useless and vague?
+      </p>	
+    </abilitydescription>    
+    <prereqabilitylevel>enchantment_1</prereqabilitylevel>			
+    <spline><p x="-90" y="0"/></spline>
+    <abilitycheck dc="2" overcharge="9+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
 
   <ability>
     <abilitytitle>Mind Worm</abilitytitle>
     <abilityid>magic.mind_worm</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p>
 	The caster attempts to insinutate an idea into the targets mind.
 	In order to succeed the caster must first make a check to cast
 	the spell and then at the point that the idea changes the targets
-	normal behaviour the target must make a Willpower check against
-	the characters magic pool result or behave in accordance with the
+	normal behaviour the caster must make a Magic check against
+	the targets Willpower pool result or behave in accordance with the
 	mind worm.  On overcharge the target realizes they are being
 	compelled at the time the mind worm effects their behaviour.  Other
 	overcharge effects might also apply (for example the caster might
 	create a two-way mind worm).
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 7</overcharge>
-        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>			
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 9</overcharge>			
-      </abilitylevel>      
-    </abilitylevels>
+    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitycheck dc="9" overcharge="6+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
 
-
-
-  <ability>
-    <abilitytitle>Hex</abilitytitle>
-    <abilityid>magic.hex</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Target breaks out in small pustules, loses something important to them,
-	or some other annoying but not life threatening consequence.  The caster
-	must have at least one item of the targets: hair, blood etc.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 6</check>
-	<overcharge>DC + 8</overcharge>
-        <prereqabilitylevel>magic_school.enchantment_1</prereqabilitylevel>			
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 6</check>	
-	<overcharge>DC + 9</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
 
 
 
   <ability>
     <abilitytitle>Speak with Amphibians</abilitytitle>
     <abilityid>magic.speak_with_amphibians</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p noindent="true">
-	The character can converse with amphibian and reptile animals.
+	The character can converse with amphibians and reptiles.
 	Note however that these creatures are not that smart.
       </p>
     </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <spline><p x="90" y="15"/></spline>
+    <abilitycheck dc="6" overcharge="4+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
   </ability>
-  
-
 
   <ability>
-    <abilitytitle>Speak with Wolves</abilitytitle>
-    <abilityid>magic.speak_with_wolves</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitytitle>Speak with Birds</abilitytitle>
+    <abilityid>magic.speak_with_birds</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p noindent="true">
-	The character can converse with canine animals: bears,
-	wolves, dogs and foxes.
+	The character can converse with birds.  Note that birds are
+	not very smart.
       </p>
-
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    </abilitydescription>
+    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <spline><p x="-45" y="90"/></spline>
+    <abilitycheck dc="6"
+    overcharge="5+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>   
+    <abilitylevels from="1" to="5"/>
   </ability>
   
+  
+
+  <ability>
+    <abilitytitle>Speak with Cats</abilitytitle>
+    <abilityid>magic.speak_with_cats</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with cats and other felines.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <spline><p x="15" y="60"/></spline>
+    <abilitycheck dc="6" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
+
   <ability>
     <abilitytitle>Speak with Horses</abilitytitle>
     <abilityid>magic.speak_with_horses</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with ungulates: horses, goats,
 	cows, deers, antelope, pigs, rhinoceroses, pigs, hipopotomai
 	and the like.
       </p>
-
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-  
-
-  <ability>
-    <abilitytitle>Speak with Cats</abilitytitle>
-    <abilityid>magic.speak_with_cats</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	The character can converse with cats and other felines.
-      </p>
-
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    </abilitydescription>
+    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <spline><p x="-90" y="60"/></spline>
+    <abilitycheck dc="5" overcharge="4+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/> 
   </ability>
 
 
-  <ability>
-    <abilitytitle>Speak with Birds</abilitytitle>
-    <abilityid>magic.speak_with_birds</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	The character can converse with birds.  Note that birds are
-	not very smart.
-      </p>
-
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-  
 
   <ability>
     <abilitytitle>Speak with Rodents</abilitytitle>
     <abilityid>magic.speak_with_rodents</abilityid>
-    <abilityclass>Immediate</abilityclass>
-    <keywords><enchantment/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with rodents: rats and mice etc.
       </p>
-
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool vs DDC 3</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    </abilitydescription>
+    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <spline><p x="90" y="90"/></spline>
+    <abilitycheck dc="6" overcharge="4+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/> 
   </ability>
+  
+  <ability>
+    <abilitytitle>Speak with Wolves</abilitytitle>
+    <abilityid>magic.speak_with_wolves</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+	The character can converse with canine animals: bears,
+	wolves, dogs and foxes.
+      </p>
+    </abilitydescription>    
+    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <spline><p x="-90" y="15"/></spline>
+    <abilitycheck dc="4" overcharge="4+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/> 
+  </ability>
+
+  <ability>
+    <abilitytitle>Zoolingualism</abilitytitle>
+    <abilityid>magic_school.zoolingualism</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><enchantment/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+	A sub-class of magic used to communicate with animals.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
+    <spline><p x="60" y="60"/></spline>
+    <abilitycheck dc="10" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/> 
+  </ability>  
 </abilitygroup>

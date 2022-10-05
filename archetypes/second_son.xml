@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Bad-Ass Normal
+  Luck
+  Reasonable Fighting
+  Some noble type skills and education
+-->
+<archetype>
+  <archetypetitle>Second Son</archetypetitle>
+  <archetypeid>second_son</archetypeid>
+  <archetypedescription>           
+    <p>
+      Second sons are extranumenary young nobles, the product of too much money and not
+      enough to do.  Indolent nare-do-wells roaming the lands, living off their wits
+      and their quick reactions, looking for adventure and a handfull of silver
+      whereever they might find it.  On occassion they make a name for themselves,
+      and possibly a fortune, if they are lucky.  More often their lot is an early grave.
+    </p>
+
+    <figure>
+      <img src="./resources/rake/caleb_the_witch_hunter__second_take_by_solidtom-d5v025x.jpg" scale="0.8"/>
+    </figure>    
+  </archetypedescription>
+
+  
+  <archetypeprimaryabilities>
+      <list> 
+        <li>Str:+1, End:-1, Ag:+1, Spd:+0, Per:+0, or</li>
+        <li>Str:+1, End:+0, Ag:+0, Spd:+0, Per:+0</li>
+      </list>
+  </archetypeprimaryabilities>
+  <archetypeinitialabilities>
+    <p>
+      All Second Sons start with the following skills: Sword Strike II, Sword Parry I, Dodge I, 
+      Etiquette[Westreich Nobility] III, Merovingian IV, Lucky III, I Think I'm OK I, Nick of Time I,
+      Book Learning I, and Horse-Riding I.
+    </p>
+    
+  </archetypeinitialabilities>  
+  <archetypemovedistance>6</archetypemovedistance>
+  <startingcash>50 + 2d4 gp</startingcash>
+  <startinggear>Leather armour, long sword, Fine cloak, fine clothes, leather belt, dagger, rations for a week.</startinggear>
+
+  <height>
+    <metric>170 + 3d10 cm</metric> 
+    <imperial>5'4" + 2d6 inches</imperial>
+  </height>
+  <weight>
+    <metric>60 + 2d8 kg</metric> 
+    <imperial>130 + 4d20 pounds</imperial>
+  </weight>
+  <age>18 + 1d8 years</age>
+
+  <aspectexamples>Life is Short, In for a Penny in for a Noble, Time For A Quick Hand of Cards, As My Daddy Used to
+  Say..,  There Is Always Time to Be A Gentleman, Fortune Favours the Bold!</aspectexamples>
+  <archetypetags>
+    <human/>
+    <humanoid/>    
+    <medium/>
+  </archetypetags>
+
+  <archetypebio>
+
+    <subsection>
+      <subsectiontitle>Origin</subsectiontitle>
+      <p>
+    	Determine where the character came from by rolling once on the Homeland table below.
+      </p>
+          
+      <table>
+      	<tablecategory>Standard</tablecategory>
+      	<tablespec>
+      	  <fixed>0.94</fixed>
+      	</tablespec>
+      	<tabletitle>Homelands</tabletitle>
+
+      	<tableheaderrow>
+      	  <td>Homeland - Roll 1D12 </td>
+      	</tableheaderrow>
+
+      	<tablerow>
+      	  <td><bold>1-2 Almaignee</bold>: Adversary[Greenskins] I, Adversary[Giants] I,
+	  Etiquette[Almaignee] III</td>
+      	</tablerow>
+	
+      	<tablerow>
+      	  <td><bold>3-4 Albion</bold>: Hybernian I, Etiquette[Albion] III, Etiquette[Hybernia] I,
+	  Contacts[Albion] I, Adversary[Greenskins] I</td>
+      	</tablerow>
+	
+      	<tablerow>
+      	  <td><bold>5-11 Westreich</bold>: Etiquette[Westreich] III, Contacts[Westreich] II</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td><bold>12 Choose</bold></td>
+      	</tablerow>
+
+      	<tablelabel>table:{{ doc_name }}-homeland</tablelabel>
+      </table>
+    </subsection>
+
+    <subsection>
+      <subsectiontitle>Upbringing Tables</subsectiontitle>      
+      <p>
+    	Roll on once on one of the following table.
+      </p>      
+      
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Study I</tabletitle>
+
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Study</td>
+    	</tableheaderrow>
+	
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Horse-Riding II, Rest II, Grapple II or Head-Butt II, Punch II or Throw II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>3-4</td>
+    	  <td>Listen II, Horse-Riding II or Wayfinding I, Sure Feet II or Jump II, Intimidate II or Negotiate II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>5-6</td>
+    	  <td>Survivalism I, Rally II, Sleep II or Rest I, Sneak II or Charge II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>7-8</td>
+    	  <td>Scout I, Notice II, Charge II or Dodge II, Climb I or Swim II, Musician-Singing II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>9-10</td>
+    	  <td>Horse-Riding II, Animal Handling I, Juggernaut II, Move II or Charge II, Punch II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose one of the above</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-study-i</tablelabel>
+      </table>
+    </subsection>
+
+
+    <subsection>
+      <subsectiontitle>Training Tables</subsectiontitle>      
+      <p>
+    	Roll once on each of the following tables.
+      </p>      
+      
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Study I</tabletitle>
+
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Study</td>
+    	</tableheaderrow>
+	
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Fine Arts III,
+	  One of History[Westenreich] III or Politics[Westenreich] II,
+	  One of Kick I or Grapple I.
+	  One of Dodge II or Cloak Fighting III.</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>3-4</td>
+    	  <td>Oratory III,
+	  One of History[Aquillonia] III or History [Averoigne] III,
+	  One of Run II or Sure Feet I.
+	  One of Dodge II or Cloak Fighting III.
+	  </td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>5-6</td>
+    	  <td>Poitevin III,
+	  One of Natural History II or Mathematics II,
+	  Archery II or (Shoot II and Gun Maintenance II),
+	  One of Kick I or Grapple I.
+	  </td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>7-8</td>
+    	  <td>Aquilonian II,
+	  One of History[Albion] II or History [Hibernia] II,
+	  One of Dagger III or Archery II.
+	  One of Dodge II or Cloak Fighting III.
+	  One of Kick I or Grapple I.
+	  </td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>9-10</td>
+    	  <td>Law [Westenreich] II,
+	  One of History[Aquillonia] III or Politics[Westenreich] II.
+	  Sword Strike III and one of Sword Feint I or Sword Parry II.
+	  One of Kick I or Grapple I.
+	  </td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose one of the above</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-study-i</tablelabel>
+      </table>
+
+
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Study II</tabletitle>
+
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Study</td>
+    	</tableheaderrow>
+	
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Choose one of Listen I or Notice I.  Concealment II or Pick Locks I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>3-4</td>
+    	  <td>Choose one of Disguise I or Climb I. One of Leadership I or Fame[Westenreich] III</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>5-6</td>
+    	  <td>Jump II, Choose one of Move I or Run I, One of Leadership I or Dodge II or Archery I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>7-8</td>
+    	  <td>One of Swim III or Charge I, One of Ropecraft II or Sneak I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>9-10</td>
+    	  <td>Choose one of Knockout I or Punch I.  One of Sleight of Hand I or Negotiate I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose one of the above</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-study-ii</tablelabel>
+      </table>
+    </subsection>
+      
+
+    <subsection>
+      <subsectiontitle>Youth</subsectiontitle>
+      <p>
+	Now work out the character's backgroun in their youth by rolling once on the
+	Nature table below.
+      </p>
+      
+      <table>
+      	<tablecategory>Standard</tablecategory>
+      	<tablespec>
+      	  <fixed>0.18</fixed>
+      	  <fixed>0.71</fixed>
+      	</tablespec>
+      	<tabletitle>Nature</tabletitle>
+
+      	<tableheaderrow>
+      	  <td>Roll 1D12</td>
+      	  <td>Birth</td>
+      	</tableheaderrow>
+
+      	<tablerow>
+      	  <td>1-2</td>
+      	  <td><bold>Sterner Stuff</bold>: Mettle Pool +1d</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td>3-4</td>
+      	  <td><bold>Fortunate</bold>: Luck Pool +1d</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td>5-6</td>
+      	  <td><bold>Stout</bold>: Endurance+1</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td>7</td>
+      	  <td><bold>Observant</bold>: Perception+1</td>
+      	</tablerow>
+	
+      	<tablerow>
+      	  <td>8</td>
+      	  <td><bold>Deft</bold>: Agile+1</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td>9</td>
+      	  <td><bold>Fast</bold>: Speed+1</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td>10</td>
+      	  <td><bold>Strong</bold>: Strength+1</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td>11</td>
+      	  <td><bold>Reroll</bold> d10 twice (Reroll duplicates)</td>
+      	</tablerow>
+
+      	<tablerow>
+      	  <td>12</td>
+      	  <td><bold>Reroll</bold> d10 and Pick<leqsymbol/>10 (No duplicates)</td>
+      	</tablerow>
+	
+      	<tablelabel>table:{{ doc_name }}-nature</tablelabel>
+      </table>
+      
+      <p>
+	See what the characters fortune holds.
+      </p>
+      
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Fortune</tabletitle>
+
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Fortune</td>
+    	</tableheaderrow>
+
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Bicorne Hat, Wax Candles, Sack, Wineskin, Book - Tales of Heroes</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>3</td>
+    	  <td>Cossack Hat, Cashmere Sash, Leather Purse, Hip Flask</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>4-5</td>
+    	  <td>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>,
+    	  Paper and ink</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>6-7</td>
+    	  <td>Kettle, Book of Poetry</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>8-9</td>
+    	  <td>Cavalier Hat, Tin Cup, Scarf</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>10</td>
+    	  <td>Playing Cards, Small Pot</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-fortune</tablelabel>
+      </table>
+    </subsection>      
+  </archetypebio>
+
+
+
+  
+  <levelprogressiontable>    
+    <level>
+      <levelnumber>1</levelnumber>
+      <levelmettle>2</levelmettle>
+      <levelmettlerefresh>+1</levelmettlerefresh>
+      <levelstamina>8+d4</levelstamina>
+      <levelhealth>9+d4</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levelluck>3</levelluck>
+      <levelluckrefresh>+1</levelluckrefresh>
+      <levelmagicpool>2</levelmagicpool>
+      <levelmagicrefresh>+1</levelmagicrefresh>
+      <leveldescription>
+      </leveldescription>
+    </level>
+
+    <!-- <level> -->
+    <!--   <levelnumber>2</levelnumber> -->
+    <!--   <levelmettle>3<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+4</levelstamina> -->
+    <!--   <levelhealth>+4</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <levelluck>3<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+1<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>2<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+    <!--   <leveldescription> -->
+    <!--   </leveldescription> -->
+    <!-- </level> -->
+    
+    <!-- <level> -->
+    <!--   <levelnumber>3</levelnumber> -->
+    <!--   <levelmettle>4<d8/></levelmettle> -->
+    <!--   <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+    <!--   <levelstamina>+5</levelstamina> -->
+    <!--   <levelhealth>+5</levelhealth> -->
+    <!--   <levelhealthrefresh>2d4</levelhealthrefresh> -->
+    <!--   <levelluck>3<d6/></levelluck> -->
+    <!--   <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+    <!--   <levelmagicpool>2<d6/></levelmagicpool> -->
+    <!--   <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+    <!--   <leveldescription> -->
+    <!--   </leveldescription> -->
+    <!-- </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>4</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <levelluck>3<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+  <!--     <levelmagicpool>2<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>5</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <levelluck>4<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+  <!--     <levelmagicpool>2<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>6</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <levelluck>4<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+  <!--     <levelmagicpool>2<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>7</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <levelluck>4<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+  <!--     <levelmagicpool>2<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>8</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <levelluck>5<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+2<dany/></levelluckrefresh> -->
+  <!--     <levelmagicpool>2<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh> -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>9</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <levelluck>5<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+3<dany/></levelluckrefresh> -->
+  <!--     <levelmagicpool>2<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+    
+  <!--   <level> -->
+  <!--     <levelnumber>10</levelnumber> -->
+  <!--     <levelmettle>4<d8/></levelmettle> -->
+  <!--     <levelmettlerefresh>+1<dany/></levelmettlerefresh> -->
+  <!--     <levelstamina>+5</levelstamina> -->
+  <!--     <levelhealth>+5</levelhealth> -->
+  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
+  <!--     <levelluck>5<d6/></levelluck> -->
+  <!--     <levelluckrefresh>+3<dany/></levelluckrefresh> -->
+  <!--     <levelmagicpool>2<d6/></levelmagicpool> -->
+  <!--     <levelmagicrefresh>+1<dany/></levelmagicrefresh>       -->
+  <!--     <leveldescription> -->
+  <!--     </leveldescription> -->
+  <!--   </level>     -->
+  </levelprogressiontable>
+</archetype>
+
+
+
+

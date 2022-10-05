@@ -3,156 +3,95 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Axe Proficiency</abilitygrouptitle>
     <abilitygroupid>axe</abilitygroupid>
-    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        These skills represent training in the use of axes in combat.  This
+        These abilities represent training in the use of axes in combat.  This
 	includes the use of single handed war axes, two handed battle axes, 
 	and throwing axes.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
-  
-  <ability>
-    <abilitytitle>Axe Strike</abilitytitle>
-    <abilityid>axe.strike</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/><heavy-weapon/></keywords>
-    <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-        Characters equipped with an axe can strike with it during combat
-	doing weapon damage.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier</damage>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 2 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 2 + Str modifier</damage>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Axe Hook</abilitytitle>
-    <abilityid>axe.hook</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/><heavy-weapon/></keywords>
-    <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-        Characters equipped with an axe can use the axe to attempt to disarm
-	an opponent or remove their shield by using the axes beard as a hook.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>3</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage and opponent drops weapon/shield</damage>
-        <prereqabilitylevel>axe.strike_1</prereqabilitylevel>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier and opponent drops weapon/shield</damage>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
 
   <ability>
     <abilitytitle>Axe Cleave</abilitytitle>
     <abilityid>axe.cleave</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/><heavy-weapon/></keywords>
-    <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><axe/><heavy/><weapon/><martial/></tags>
     <abilitydescription>
       <p>
 	The character strikes at their opponent with great vengeance and
-	furious anger.
+	furious anger.  Damage from this attack beyond the amount that
+	kills the target is then applied to all other targets adjacent to the
+	character.
       </p>
     </abilitydescription>    
-    <abilitylevels>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <prereqabilitylevel>axe.strike_2</prereqabilitylevel>
-	<prereqattr><attr>Strength</attr><value>8</value></prereqattr>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage + 3 + Str modifier</damage>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage + 5 + Str modifier</damage>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="60" y="30"/></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength|Endurance</abilitydmg>
+    <prereqabilitylevel>axe_2</prereqabilitylevel>
+    <prereqattr><strength>13</strength></prereqattr>
+    <abilitylevels from="1" to="4"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Axe Frenzy</abilitytitle>
     <abilityid>axe.frenzy</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/><heavy-weapon/></keywords>
-    <abilityattrmodifiers><attr>Endurance</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><axe/><heavy/><weapon/><martial/><pool/></tags>
+    <abilitycheck dc="5" overcharge="9+Level" />
+    <abilitychecktype>Mettle</abilitychecktype>
+    <abilitydmg>None</abilitydmg>
     <abilitydescription>
       <p>
 	When a character makes a frenzied attack with an axe, they make
-	a morale check.  If they pass they make two attacks that round.
+	a Mettle Check.  If they pass they make two attacks that round.
+	On overcharge the character goes beserk.
       </p>
     </abilitydescription>
-    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<prereqattr><attr>Willpower</attr><value>9</value></prereqattr>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage</damage>
-        <prereqabilitylevel>axe.strike_1</prereqabilitylevel>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier</damage>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>  
+    <prereqabilitylevel>axe_1</prereqabilitylevel>
+    <prereqattr><strength>13</strength></prereqattr>
+    <spline><p x="-75" y="30"/></spline>    
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Axe Hook</abilitytitle>
+    <abilityid>axe.hook</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><axe/><heavy/><weapon/><martial/></tags>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength|Endurance, target saves vs Str or drops weapon/shield</abilitydmg>
+    <abilitydescription>
+      <p>
+        Characters equipped with an axe can use the axe to attempt to disarm
+	an opponent or remove their shield by using the axes beard as a hook.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>axe_1</prereqabilitylevel>
+    <spline><p x="0" y="30"/></spline>    
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Axe Strike</abilitytitle>
+    <abilityid>axe</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><axe/><heavy/><martial/><weapon/></tags>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with an axe can strike with it during combat
+	doing weapon damage.
+      </p>
+    </abilitydescription>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength|Endurance</abilitydmg>
+    <spline></spline>
+    <abilitylevels from="0" to="4"/>
+  </ability>
 </abilitygroup>

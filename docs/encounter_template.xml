@@ -1,0 +1,30 @@
+<hline>
+<p>
+  <bold>Encounter: {{ encounter.name }}</bold>
+  <newline/><bold>Precis:</bold> {{ encounter.precis }}
+  {% if encounter.details %}
+  <bold>Details:</bold> {{ encounter.details }},
+  {% endif %}  
+  <bold>Motivation:</bold> {{ encounter.motivation }},
+  <bold>Progression:</bold> {{ encounter.progression }},
+  <bold>Difficulty:</bold> {{ encounter.difficulty }},
+  <bold>Strategy:</bold> {{ encounter.strategy }},
+  <bold>Outs:</bold> {{ encounter.outs }},
+  <bold>Monsters:</bold>
+  {%- for m in encounter.get_monsters(monster_groups) %}
+  <bold>{{ m.get_name() }}</bold>
+  Str: {{ m.strength }},  Ag: {{ m.agility }}, End: {{ m.endurance }},
+  Spd: {{ m.speed }}, Per: {{ m.perception }}, Mettle: {{ m.mettle_pool }},
+  Luck: {{ m.luck_pool }}, Magic: {{ m.magic_pool }},
+  Armour: {{ m.armour }}, 
+  {% if m.dodge %}Dodge:{{ m.dodge }}, {% endif -%}
+  {% if m.dodge %}Parry:{{ m.parry }}, {% endif -%}
+  {% if m.dodge %}Block:{{ m.block }}, {% endif -%}
+  HP: {{ m.health }}/{{ m.stamina }},
+  Abilities: {% for ability_level_id in m.get_ability_level_ids() %}
+  {% set a = ability_groups.get_ability_level(ability_level_id) %}
+  {{- "," if not loop.first }} {{ a.get_title() -}}    
+  {% endfor %}
+  {% endfor %}
+</p>
+</hline>

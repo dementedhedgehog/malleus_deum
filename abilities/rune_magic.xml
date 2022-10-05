@@ -4,69 +4,75 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Rune Magic</abilitygrouptitle>
     <abilitygroupid>runes</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	XXXX
+	Rune magic is a type of earth elemental based magic.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
 
+
+
   <ability>
-    <abilitytitle>Rune Magic</abilitytitle>
-    <abilityid>magic_school.runes</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><runemagic/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Hold Door</abilitytitle>
+    <abilityid>magic.hold_portal</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><runemagic/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The character can carve or mark with chalk or paint
+	a sign upon a door.  That door is warded shut until
+	the following sunrise.  The door gains a magical protective
+	barrier with 10 hit points for each level of the spell cast.
+      </p>
+    </abilitydescription>    
+    <abilitycheck dc="8" overcharge="15+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <spline><p x="60" y="30"/></spline>
+    <prereqabilitylevel>rune_magic_1</prereqabilitylevel>	
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Rune Lore</abilitytitle>
+    <abilityid>rune_magic</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><runemagic/><lore/></tags>
     <abilitydescription>
       <p noindent="true">
 	Rune magic is a very specific form of elemental ritual magic
 	used mainly by dwarves and shamen.
       </p>
     </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>	
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <spline></spline>
+    <abilitylevels from="1" to="4"/>
   </ability>
   
 
   <ability>
     <abilitytitle>Sign of Idreshein</abilitytitle>
     <abilityid>magic.sign_of_idreshein</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><runemagic/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><runemagic/><pool/></tags>
     <abilitydescription>
       <p>
 	The Sign of Idreshein is a sigil that stores energy
-	that can be released when something touches the sign.
+	that can be released in a fiery explosion when something
+	touches the sign.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 7</overcharge>
-	<effect>2d6 Thaumic damage to those near the blast</effect>
-        <prereqabilitylevel>magic_school.runes_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 8</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>3d6 Thaumic damage to those near the blast</effect>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-30" y="30"/></spline>
+    <abilitycheck dc="8" overcharge="14+Level Thaumic Dmg" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg>d6 x Level + 4</abilitydmg>
+    <prereqabilitylevel>rune_magic_1</prereqabilitylevel>	
+    <abilitylevels from="1" to="4"/>
   </ability>
+
 </abilitygroup>

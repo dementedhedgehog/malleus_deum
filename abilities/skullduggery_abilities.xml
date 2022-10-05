@@ -1,265 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Skullduggery Abilities</abilitygrouptitle>
     <abilitygroupid>skullduggery</abilitygroupid>
-    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	Skullduggery involve skills associated with larceny, thievery
+	Skullduggery involve abilities associated with larceny, thievery
 	and spycraft.
       </p>
     </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
   </abilitygroupinfo>
-
 
   <ability>
     <abilitytitle>Cloak Fighting</abilitytitle>
     <abilityid>skullduggery.cloak_fighting</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><skullduggery/><untrained/></tags>
     <abilitydescription>
       <p>
-	Reaction to being hit with a Piercing weapon.  The character
-        can make a cloak fighting check to use their cloak to block the
-        attack.
+	Reaction to being attacked with a <emph>Piercing</emph> weapon.  The character
+        makes a cloak fighting check to use their cloak to <emph>Block</emph> the
+        attack.  The character should be wearing a cloak, but a
+	character can improvise by using a blanket, curtain, tablecloth <etc/> if they
+	have to.  On a success the attack does no damage, with boon the character can
+	perform an opposed Strength check to disarm the attacker, with bane the
+	character performs an Agility check + Level vs 13 or falls prone.  On
+	a failure the character takes damage as normal, with boon they take half damage,
+	with bane they take double damage.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs opponents Agility</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 2 vs opponents Agility</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
-  
-  <ability>
-    <abilitytitle>Sleight of Hand</abilitytitle>
-    <abilityid>skullduggery.sleight_of_hand</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	This skill involves palming and concealing small objects about
-	ones person and picking pockets.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <failures>1</failures>
-	<check>Std 2d8 - 2 vs opponents Perception</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs opponents Perception</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 2 vs opponents Perception</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 + 4 vs opponents Perception</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-  
-  <ability>
-    <abilitytitle>Sneak</abilitytitle>
-    <abilityid>skullduggery.sneak</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Hiding in urban environments.  Shadowing people and remainging undetected.
-	The character rolls against the highest opponents perception and is undetected
-	if they succeed.  Can also be used to evade pursuit in urban environments.
-      </p>
-
-      <p>
-	In wilderness use the Stealth ability, and use an Agility Check in other cases.
-      </p>	
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>2</attempts>
-	<check>Std 2d8 vs opponents Perception</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 3 vs opponents Perception</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 5 vs opponents Perception</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-  <ability>
-    <abilitytitle>Disguise</abilitytitle>
-    <abilityid>skullduggery.disguise</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Disquise is the art of hiding in plain sight.  This covers anything
-	from throwing their hood over the heads through to assuming the dress,
-	mannerisms and style of speach of some class of people.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs opponents Perception or DDC 9</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 2 vs opponents Perception or DDC 9</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 3 vs opponents Perception or DDC 9</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-  <ability>
-    <abilitytitle>Trap Work</abilitytitle>
-    <abilityid>skullduggery.trap_work</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers> 
-    <abilitydescription>
-      <p>
-	Creating, arming and disarming traps in urban environs.
-        <indexentry>Traps<subentry>create Trap Work (Urban)</subentry></indexentry>	
-      </p>
-    </abilitydescription>
-    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <check>Std 2d8 vs Trap Difficulty</check>
-        <successes>3</successes>
-        <attempts>3</attempts>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <check>Std 2d8 + 2 vs Trap Difficulty</check>
-        <successes>3</successes>
-        <attempts>3</attempts>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 4 vs Trap Difficulty</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Pick Locks</abilitytitle>
-    <abilityid>skullduggery.pick_locks</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr><attr>Agility</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Pick locks encompases lock smith skills, primarily
-	opening locks but it also includes lock repair.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>2</attempts>
-        <check>Std 2d8 - 4 vs Lock Difficulty</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs Lock Difficulty</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 2 vs Lock Difficulty</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 4 vs Lock Difficulty</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <check>Std 2d8 + 6 vs Lock Difficulty</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="90"/></spline> 
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitylevels untrained="-3" from="1" to="3"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Concealment</abilitytitle>
     <abilityid>skullduggery.concealment</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/></tags>
     <abilitydescription>
       <p>
 	<indexentry>concealment</indexentry>
@@ -280,156 +65,23 @@
 
       <p>
 	If the party remains still then no further concealment checks need
-	be made.  If the party would like to move, sneak past say, then the
-	lowest checks for concealment.
-      </p>
-
-      <p>
-	Attacks from concealment would usually grant surprise.  Back stabbing
-	is a notable example of attacking from concealment.
+	be made.  If the party would like to move, someone needs to make a
+	sneak check.  Attacks from concealment should usually grant surprise.  
       </p>
     </abilitydescription>    
-    <abilitylevels>
-
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs opponents Perception</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>2</attempts>
-	<check>Std 2d8 + 2 vs opponents Perception</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 4 vs opponents Perception</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="0" y="90"/></spline> 
+    <abilitycheck dc="Targets Perception"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="9"/>
   </ability>
 
-
-  <ability>
-    <abilitytitle>Search</abilitytitle>
-    <abilityid>skullduggery.search</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	There is quite a skill to finding carefully hidden
-	artifacts, equal parts experience, regimentation and
-	perception.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 2 vs DDC 12</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 4 vs DDC 12</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-	<check>Std 2d8 + 6 vs DDC 12</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-  <ability>
-    <abilitytitle>Ropecraft</abilitytitle>
-    <abilityid>skullduggery.ropecraft</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	This skill involves tying knots and working with ropes.
-	Most people can use ropes fairly well.  You only need to test
-	against this skill in exceptional circumstances.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs DDC 8</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
- 	<check>Std 2d8 + 2 vs DDC 8</check>
-     </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 4 vs DDC 8</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-  <ability>
-    <abilitytitle>Cryptogrtaphy</abilitytitle>
-    <abilityid>skullduggery.cryptography</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Knowledge of reading and writing ciphers and deciphering.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 2  vs DDC 12</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
 
   <ability>
     <abilitytitle>Contortionist/Escape Artist</abilitytitle>
     <abilityid>skullduggery.escapist</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><skullduggery/></keywords>
-    <abilityattrmodifiers><attr>Agility</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/><untrained/></tags>
     <abilitydescription>
       <p>
 	The character is supple and or double jointed.  They have
@@ -438,28 +90,205 @@
 	performing shows.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 2 vs DDC 12</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>2</successes>
-        <attempts>2</attempts>
-	<check>Std 2d8 + 4 vs DDC 12</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="0" y="60"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="2"/>
   </ability>  
+
+
+  <ability>
+    <abilitytitle>Cryptogrtaphy</abilitytitle>
+    <abilityid>skullduggery.cryptography</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/></tags>
+    <abilitydescription>
+      <p>
+	Knowledge of reading and writing ciphers and
+	deciphering.  
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="0"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Disguise</abilitytitle>
+    <abilityid>skullduggery.disguise</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/><untrained/></tags>
+    <abilitydescription>
+      <p>
+	Disquise is the art of hiding in plain sight.  This covers anything
+	from throwing their hood over the heads through to assuming the dress,
+	mannerisms and style of speach of some class of people.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="30"/></spline> 
+    <abilitycheck dc="Perception"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="2"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Pick Locks</abilitytitle>
+    <abilityid>skullduggery.pick_locks</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/></tags>
+    <abilitydescription>
+      <p>
+	Pick locks encompases lock smith abilities, primarily
+	opening locks but it also includes lock repair.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="60"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="4"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Back Stab</abilitytitle>
+    <abilityid>skullduggery.back_stab</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><skullduggery/><untrained/></tags>
+    <abilitydescription>
+      <p>
+	A character can attempt to attack an opponent that is unaware of the attacker
+	using the Roques Strike ability.  In order to do so the character makes
+	a back stab attempt against the opponents perception and then a normal
+	attack.   If the backstab is succsesful the opponent can only defend using
+	Armour (not Dodge, Parry etc) and a hit will do double the weapons damage.
+	If the Back Stab check is unsuccessful then the attack proceeds as usual.  If
+	the opponent is flanked then the flanking bonuses to hit are added irrespective
+	of whether the backstab was successful.  The Backstab ability can only be used
+	once per combat per character.
+      </p>
+
+      <p>
+	An opponent can be <emph>unaware</emph> if an attacker for a number of reasons:
+	the attacker is invisible, the attacker has made a successful Conceal, or
+	Sneak check before the combat, or if the opponent is unaware that the attacker
+	is a an enemy of theirs	(perhaps the character has infiltrated the opponents
+	group using Deceive or Disguise).  
+      </p>
+	
+    </abilitydescription>
+    <spline><p x="-90" y="0"/></spline> 
+    <abilitycheck dc="Targets Perception"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="1" to="3"/>
+  </ability>
+
+  
+  
+  <ability>
+    <abilitytitle>Ropecraft</abilitytitle>
+    <abilityid>skullduggery.ropecraft</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><skullduggery/><untrained/></tags>
+    <abilitydescription>
+      <p>
+	This ability involves tying knots and working with ropes.
+	Most people can use ropes fairly well.  You only need to test
+	against this ability in exceptional circumstances.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="2"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Search</abilitytitle>
+    <abilityid>skullduggery.search</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/></tags>
+    <abilitydescription>
+      <p>
+	There is quite a ability to finding carefully hidden
+	artifacts, equal parts experience, regimentation and
+	perception.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="60"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="4"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Sleight of Hand</abilitytitle>
+    <abilityid>skullduggery.sleight_of_hand</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/><untrained/></tags>
+    <abilitydescription>
+      <p>
+	This ability involves palming and concealing small objects about
+	ones person and picking pockets.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="90"/></spline> 
+    <abilitycheck dc="Targets Perception"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="3"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Sneak</abilitytitle>
+    <abilityid>skullduggery.sneak</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/></tags>
+    <abilitydescription>
+      <p>
+	Hiding in urban environments.  Shadowing people and remainging undetected.
+	The character rolls against the highest opponents perception and is undetected
+	if they succeed.  Can also be used to evade pursuit in urban environments.
+      </p>
+
+      <p>
+	In wilderness use the Stealth ability instead, and use an Agility Check in other cases.
+      </p>	
+    </abilitydescription>
+    <spline></spline>
+    <abilitycheck dc="Targets Perception"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="2"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Trap Work</abilitytitle>
+    <abilityid>skullduggery.trap_work</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><skullduggery/><untrained/></tags>
+    <abilitydescription>
+      <p>
+	Creating, arming and disarming traps in urban environs.
+        <indexentry>Traps<subentry>create Trap Work (Urban)</subentry></indexentry>	
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="30"/></spline> 
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="2"/>
+  </ability>
 </abilitygroup>

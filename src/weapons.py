@@ -9,11 +9,8 @@ from utils import (
     validate_xml,
     node_to_string,
     COMMENT,
-    contents_to_string
-#     children_to_string,
-#     convert_to_roman_numerals,
-#     convert_str_to_bool
-)
+    contents_to_string,
+    contents_to_comma_separated_list)
         
 src_dir = abspath(join(dirname(__file__)))
 root_dir = abspath(join(src_dir, ".."))
@@ -32,6 +29,10 @@ class Weapon:
         # Weapons save
         self.save = None
 
+    def __str__(self):
+        return (f"{self.name} - dmg:{self.damage}, price:{self.price}, " +
+                f"save:{self.save}, tags:{self.tags}" +
+                "" if self.missile_range is None else f" range:{self.missile_range}")
 
     def load(self, node):
         # check it's the right sort of element
@@ -79,9 +80,9 @@ class Weapon:
                if self.tags is not None:
                   raise Exception("Only one tags per weapon.")
                else:
-                   print(self.name)
-                   #self.tags = child.text.strip()
-                   self.tags = contents_to_string(child)
+                   #print(contents_to_string(child))
+                   self.tags = contents_to_comma_separated_list(child)
+                   #self.tags = child.tag[1:-2]
 
            elif tag is COMMENT:               
                pass # ignore comments!
@@ -148,6 +149,9 @@ class Weapons:
     
 if __name__ == "__main__":
 
-    weapons_xml = join(root_dir, "items", "weapons.xml")
+    weapons_xml = join(root_dir, "items", "melee_weapons.xml")
+    #weapons_xml = join(root_dir, "items", "weapons.xml")
     weapons = Weapons(fname=weapons_xml)
     weapons.load()
+    for weapon in weapons:
+        print(weapon)

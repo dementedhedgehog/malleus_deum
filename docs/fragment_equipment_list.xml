@@ -1,4 +1,3 @@
-
 <section>
   <sectiontitle>Introduction</sectiontitle>  
   <p>
@@ -35,41 +34,7 @@
 	<td> = 1 Copper Groat</td>
       </tablerow>
   </table>
-  
-  <subsection>
-    <subsectiontitle>Historical Note</subsectiontitle>
-
-    <p noindent="true">
-      If your campaign is set in a medieval European style setting
-      then the following information may be of interest:
-    </p>
-
-    <list>
-      <li>
-	There was no inflation.  You could bury money and it would still
-	be worth the same amount a hundred years later.
-      </li>
-      
-      <li>
-	People were far from starving and spent a quarter of their
-	money on beer!  Average folk had disposable income, but
-	would not be able to save enough to go up a social class.
-	Housing was expensive, especially houses where one lived
-	and worked.      
-      </li>
-      
-      <li>
-	Income inequality was extreme.
-      </li>
-
-      <li>
-	Banks existed and were very powerful organizations.  They provided financing
-	(loans) and unwriting (insurance), accepted deposits,  changed money, and
-	provided bills of exchange (cheques).
-      </li>
-    </list>  
-  </subsection>
-
+ 
 
   <subsection>
     <subsectiontitle>Equipment Tags</subsectiontitle>
@@ -80,22 +45,23 @@
     </p>
 
     <descriptions>      
-      <term>Asanguinous
-      <indexentry>Asanguinous</indexentry>
-      <indexentry>Weapon Tags<subentry>Asanguinous</subentry></indexentry>
+      <term>Asanguineous
+      <indexentry>Asanguineous</indexentry>
+      <indexentry>Weapon Tags<subentry>Asanguineous</subentry></indexentry>
       </term>
       <description>    
 	After much lobbying by a number of powerful militant sects;
 	this weapon has been determined by various ecclesiastical councils
-	not to breach the prohibition on shedding blood if used by the clergy.
-      </description>
+	not to breach any prohibitions on shedding blood during combat if
+	used by the clergy.
+      </description>      
 
-      <term>As-Club
-      <indexentry>As-Club</indexentry>
+      <term>As-Mace
+      <indexentry>As-Mace</indexentry>
       <indexentry>Weapon Tags<subentry>As-Club</subentry></indexentry>
       </term>
       <description>
-	Weapons with this tag use the club skills to fight.  Club-like weapons
+	Weapons with this tag use the mace skills to fight.  Mace-like weapons
 	include clubs, maces, flails, morning stars and improvised weapons.
       </description>
 
@@ -105,8 +71,8 @@
       </term>
       <description>
 	Weapons with this tag use the spear abilities to fight.  Spear like weapons
-	include spears, staffs and pole-arms.
-      </description>      
+	include spears, staffs and pole-arms.  
+      </description>
 
       <term>Block
       <indexentry>Block</indexentry>
@@ -137,15 +103,16 @@
       <indexentry>Weapon Tags<subentry>Crushing</subentry></indexentry>
       </term>
       <description>
-	Weapon causes crushing damage.
-      </description>      
+	Weapon causes crushing damage.  Crushing weapons gain +3 to-hit against
+	Parry or Shield Block Defences.
+      </description>
 
       <term>Disarm
       <indexentry>Disarm</indexentry>
       <indexentry>Weapon Tags<subentry>Disarm</subentry></indexentry>
       </term>
       <description>
-	May be used with the disarm ability.
+	May be used with the appropriate disarm ability.
       </description>      
 
       <term>Deny-Flank
@@ -153,8 +120,8 @@
       <indexentry>Weapon Tags<subentry>Deny-Flank</subentry></indexentry>
       </term>
       <description>
-	When flanked characters with large shields only suffer a -1 to AC,
-	instead of the usual -3.  Section<ref>sec:flanking</ref>
+	When flanked, characters with large shields only suffer a -1 to armour
+	checks, instead of the usual -3.  Section<ref>sec:flanking</ref>
 	on page<pageref>sec:flanking</pageref> for more information.
       </description>      
 
@@ -163,8 +130,9 @@
       <indexentry>Weapon Tags<subentry>Fast</subentry></indexentry>
       </term>
       <description>
-	Can be used during pursuit with minimal effect to movement.
-	Player characters get +2 to initiative when using this weapon.
+	Player characters get +3 modifier to initiative when using this weapon.
+	Fast weapons can use Agility instead of Speed to determine bonuses to
+	melee damage. Can be used during pursuit with minimal effect to movement.
       </description>
       
       <term>Grounding
@@ -174,13 +142,14 @@
       <description>
 	Can be used to ground out magic.  See the chapter on Magic for futher information.
       </description>
-
+      
       <term>Heavy
       <indexentry>Heavy</indexentry>
       <indexentry>Weapon Tags<subentry>Heavy</subentry></indexentry>
       </term>
       <description>
-	The weapon is heavy +1 to Encumberance.
+	If a skill uses a heavy weapon and adds damage based on a choice of abilities, <eg/>
+	Str|Spd, then the character <emph>must</emph> use the strength bonus.
       </description>
       
       <term>Improvised
@@ -188,7 +157,16 @@
       <indexentry>Weapon Tags<subentry>Improvished</subentry></indexentry>
       </term>
       <description>
-	A club can be an improvised weapon, <eg/> a heavy chair leg or the branch of a tree.
+	A club or staff can be an improvised weapon, <eg/> from a heavy chair leg, the shaft of a scythe,
+	or the branch of a tree.
+      </description>
+      
+      <term>Inaccurate
+      <indexentry>Inaccurate</indexentry>
+      <indexentry>Weapon Tags<subentry>Inaccurate</subentry></indexentry>
+      </term>
+      <description>
+	The weapon is inaccurate.  A sucessful to-hit roll which suffers a bane instead misses.
       </description>
       
       <term>Iron
@@ -204,7 +182,17 @@
       <indexentry>Weapon Tags<subentry>Large</subentry></indexentry>
       </term>
       <description>
-	The item goes in a large slot on the character sheet.
+	The item counts as a large item for encumberance rules.	
+      </description>
+
+      <term>Lethal
+      <indexentry>Lethal</indexentry>
+      <indexentry>Weapon Tags<subentry>Lethal</subentry></indexentry>
+      </term>
+      <description>
+	Lethal weapons are more likely to kill an opponent when the
+	wielder is attempting to Subdue an opponent.  Lethal weapons
+	gain a -3 to Subdue Checks.
       </description>
       
       <term>Medium
@@ -215,6 +203,15 @@
 	The item goes in a medium slot on the character sheet.
       </description>
       
+      <term>Non-Lethal
+      <indexentry>Non-Lethal</indexentry>
+      <indexentry>Weapon Tags<subentry>Non-Lethal</subentry></indexentry>
+      </term>
+      <description>
+	Non-lethal weapons are less likely to accidentally kill an opponent
+	during non-lethal combat.  Non-lethal weapons gain a +3 to Subdue Checks.
+      </description>
+      
       <term>Parry
       <indexentry>Parry</indexentry>
       <indexentry>Weapon Tags<subentry>Parry</subentry></indexentry>
@@ -222,13 +219,15 @@
       <description>
 	Weapon can be used to parry an attack.
       </description>
-
+            
       <term>Piercing
       <indexentry>Piercing</indexentry>
       <indexentry>Weapon Tags<subentry>Piercing</subentry></indexentry>
+      <indexentry>Tags<subentry>Piercing</subentry></indexentry>
       </term>
       <description>
-	Weapon causes piercing damage.
+	Weapon causes piercing damage.  Piercing weapons have +3 to hit against
+	Armour Defence.
       </description>
 
       <term>Reach
@@ -236,11 +235,9 @@
       <indexentry>Weapon Tags<subentry>Reach</subentry></indexentry>
       </term>
       <description>
-        <indexentry>Reach Weapons</indexentry>
-        Some weapons, like spears, have <defn>reach</defn>. During combat weapons 
-        with reach get a +3 to initiative <emph>on the first round of combat</emph>
-        if attacking with this weapon behaves as a normal weapon attacking with no additional
-	initiative advantage.
+        <indexentry>Reach</indexentry>
+        Some weapons, like spears, have <defn>reach</defn>.  Weapons with reach can
+	be used from the second rank of a formation.  
       </description>
       
       <term>Silvered
@@ -255,10 +252,11 @@
       <term>Slashing
       <indexentry>Slashing</indexentry>
       <indexentry>Weapon Tags<subentry>Slashing</subentry></indexentry>
+      <indexentry>Tags<subentry>Slashing</subentry></indexentry>
       </term>
       <description>
-	Weapon causes slashing damage.  This is a type of damage that some foes might
-	be more or less susceptible to.
+	Weapon causes slashing damage.  Slashing weapons gain +3 to hit
+	versus a Dodge Defence.
       </description>
       
       <term>Slow-Reload
@@ -274,7 +272,8 @@
       <indexentry>Weapon Tags<subentry>Slow</subentry></indexentry>
       </term>      
       <description>
-	Player character goes second when tied for initiative.
+	Weapon gets a -3 modifier on parry checks.
+	Weapon gets a -3 modifier on initiative checks.
       </description>
       
       <term>Support
@@ -291,7 +290,7 @@
       </term>      
       <description>
 	The item is a tool not a weapon, <eg/> a wood axe or a carpenters hammer.  The
-	item can be used in combat as a club if required.
+	item can be used in combat as a mace if required.
       </description>
 
       <term>Two Handed
@@ -300,6 +299,15 @@
       </term>
       <description>
 	Must be used with two hands.
+      </description>
+      
+      <term>One or Two Handed
+      <indexentry>One or Two Handed</indexentry>
+      <indexentry>Weapon Tags<subentry>One or Two Handed</subentry></indexentry>
+      </term>
+      <description>
+	Can be used with one or two hands.  If used with one hand the weapon does one
+	less damage.
       </description>
       
       <term>Unparryable
@@ -317,6 +325,99 @@
 
 <section>
   <sectiontitle>Adventuring Equipment</sectiontitle>
+
+  
+  <subsection>
+    <subsectiontitle>Clothes</subsectiontitle>    
+    
+    <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.35</fixed><fixed>0.1</fixed><fixed>0.32</fixed></tablespec>
+	<tabletitle>Clothing</tabletitle>
+
+	<tableheaderrow>
+	  <td>Name</td>
+	  <td>Price</td>
+	  <td>Notes</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>Boots, Leather</td>
+	  <td>10c</td>
+	  <td></td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Cloak</td>
+	  <td>30c</td>
+	  <td></td>
+	</tablerow>      
+	
+	<tablerow>
+	  <td>Chaperon</td>
+	  <td>30c</td>
+	  <td>Linen hat</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Hat, Straw</td>
+	  <td>1c</td>
+	  <td></td>
+	</tablerow>      	
+	
+	<tablerow>
+	  <td>Dress</td>
+	  <td>30c</td>
+	  <td></td>
+	</tablerow>      
+		
+	<tablerow>
+	  <td>Coat</td>
+	  <td>30c</td>
+	  <td></td>
+	</tablerow>      
+	
+	<tablerow>
+	  <td>Grappling Hook</td>
+	  <td>60c</td>
+	  <td>Save 4</td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Hat, Bicorne</td>
+	  <td>30c</td>
+	  <td></td>
+	</tablerow>      
+	
+	<tablerow>
+	  <td>Hat, Tricorn</td>
+	  <td>30c</td>
+	  <td></td>
+	</tablerow>      
+
+	<tablerow>
+	  <td>Hose</td>
+	  <td>30c</td>
+	  <td>Woolen leggings</td>
+	</tablerow>      
+
+	<tablerow>
+	  <td>Tunic</td>
+	  <td>30c</td>
+	  <td>Woolen</td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Wimple</td>
+	  <td>30c</td>
+	  <td>Linen headress</td>
+	</tablerow>      	
+
+	<tablelabel>table:common_equipment</tablelabel>
+    </table>
+  </subsection>
+  
+
   
   <subsection>
     <subsectiontitle>Common Equipment</subsectiontitle>    
@@ -351,12 +452,6 @@
 	</tablerow>
 
 	<tablerow>
-	  <td>Block and Tackle</td>
-	  <td>100c</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
 	  <td>Candle. Tallow</td>
 	  <td>5c</td>
 	  <td></td>
@@ -387,40 +482,16 @@
 	</tablerow>
 	
 	<tablerow>
-	  <td>Cloak</td>
-	  <td>30c</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Coat</td>
-	  <td>30c</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
 	  <td>Grappling Hook</td>
 	  <td>60c</td>
 	  <td>Save 4</td>
 	</tablerow>
 	
 	<tablerow>
-	  <td>Flint and Steel</td>
+	  <td>Flint</td>
 	  <td>10c</td>
-	  <td></td>
+	  <td>Flint, steel and tinder</td>
 	</tablerow>
-
-	<tablerow>
-	  <td>Hat, Tricorn</td>
-	  <td>30c</td>
-	  <td></td>
-	</tablerow>      
-
-	<tablerow>
-	  <td>Hat, Gumbardine</td>
-	  <td>30c</td>
-	  <td></td>
-	</tablerow>      
 	
 	<tablerow>
 	  <td>Lantern</td>
@@ -439,12 +510,6 @@
 	  <td>10c</td>
 	  <td></td>
 	</tablerow>
-
-	<tablerow>
-	  <td>Lock Picks</td>
-	  <td>10c</td>
-	  <td></td>
-	</tablerow>      
 
 	<tablerow>
 	  <td>Needle and Thread</td>
@@ -472,7 +537,7 @@
 	
 	<tablerow>
 	  <td>Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement></td>
-	  <td>2c</td>
+	  <td>20c</td>
 	  <td>Medium</td>
 	</tablerow>
 
@@ -514,8 +579,165 @@
 	<tablelabel>table:common_equipment</tablelabel>
     </table>
   </subsection>
-  
 
+  
+  <subsection>
+    <subsectiontitle>Barrels</subsectiontitle>
+    <p>
+      <indexentry>Barrels</indexentry>      
+      Barrels are the main form of transportation for many goods: salted fish, wine, ale, spirits,
+      lantern oil, gunpowder, vinegar, skins, grains, and water.  Their sizes are standized for easy
+      packing in ships holds and for tax purposes.
+    </p>
+    <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.16</fixed><fixed>0.1</fixed><fixed>0.5</fixed></tablespec>
+	<tabletitle>Barrels</tabletitle>
+
+	<tableheaderrow>
+	  <td>Name</td>
+	  <td>Price</td>
+	  <td>Notes</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>Firkin<indexentry>Firkin</indexentry></td>
+	  <td></td>
+	  <td><measurement><metric>41 litres</metric><imperial>11 gal</imperial></measurement>
+	  A quarter of the size of a British Barrel. Traditionally used for dispensing cask ale.
+	  Firkins are <measurement><metric>45cm</metric><imperial>18"</imperial></measurement> tall,
+	  and <measurement><metric>41cm</metric><imperial>16½"</imperial></measurement> in diameter at
+	  their widest point.
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Barrel</td>
+	  <td></td>
+	  <td><measurement><metric>160 litres</metric><imperial>43 gal</imperial></measurement>
+	  Traditionally used to store ale or lager.
+	  Barrels are <measurement><metric>88cm</metric><imperial>35"</imperial></measurement> tall,
+	  and <measurement><metric>60cm</metric><imperial>24"</imperial></measurement> in diameter at
+	  their widest point.
+	  </td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Hogshead<indexentry>Hogshead</indexentry></td>
+	  <td></td>
+	  <td><measurement><metric>250 litres</metric><imperial>66 gal</imperial></measurement>
+	  Twice the size of a Barrel, half the size of a Butt, quarter of a Tun.
+	  Hogsheads are <measurement><metric>92cm</metric><imperial>37"</imperial></measurement> tall,
+	  and <measurement><metric>68cm</metric><imperial>27"</imperial></measurement> in diameter at
+	  their widest point.
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Butt<indexentry>Butt</indexentry></td>
+	  <td></td>
+	  <td><measurement><metric>500 litres</metric><imperial>132 gal</imperial></measurement>
+	  Butts are <measurement><metric>125cm</metric><imperial>50"</imperial></measurement> tall,
+	  and <measurement><metric>95cm</metric><imperial>36"</imperial></measurement> in diameter at
+	  their widest point.
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Tun<indexentry>Tun</indexentry></td>
+	  <td></td>
+	  <td><measurement><metric>1000 litres</metric><imperial>250 gal</imperial>
+	  Roughly twice the size of a Butt and equal to four Hogsheads. Traditionally used for
+	  the fermentation of beer</measurement>.  Tuns are
+	  <measurement><metric>107cm</metric><imperial>42"</imperial></measurement> tall, and 
+	  <measurement><metric>107cm</metric><imperial>42"</imperial></measurement> in diameter at
+	  their widest point.
+	  </td>
+	</tablerow>
+	
+	<tablelabel>table:barrels</tablelabel>
+    </table>
+
+      <figure fullwidth="true" >
+        <img src="./resources/durer_barrels/durer_barrels.png" scale="1.0"/>
+	<caption>Barrel Sizes</caption>			
+      </figure>
+    
+  </subsection>
+
+  
+  <subsection>
+    <subsectiontitle>Artillery</subsectiontitle>
+    <p>
+      <indexentry>Artillery</indexentry>      
+    </p>
+    <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.16</fixed><fixed>0.1</fixed><fixed>0.5</fixed></tablespec>
+	<tabletitle>Artillery</tabletitle>
+
+	<tableheaderrow>
+	  <td>Name</td>
+	  <td>Price</td>
+	  <td>Notes</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>Swivel Gun<indexentry>Swiverl Gun</indexentry></td>
+	  <td></td>	  
+	  <td>
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Falconet<indexentry>Falconet</indexentry></td>
+	  <td></td>
+	  <td>
+	    Its barrel is approximately <measurement><metric>1.2m</metric><imperial>4 feet</imperial></measurement>
+	    long, has a calibre of <measurement><metric>5cm</metric><imperial>2 inches</imperial></measurement>
+	    and weighs <measurement><metric>80 to 200 kg</metric><imperial>180 to 440 pounds</imperial></measurement>.  The falconet uses <measurement><metric>225g</metric><imperial>0.5 pounds</imperial></measurement> of black powder to fire a <measurement><metric>450 g</metric><imperial>1 pound</imperial></measurement>round shot at a maximum range of approximately <measurement><metric>1.5km</metric><imperial>5,000 feet</imperial></measurement>.
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Cannon<indexentry>Cannon</indexentry></td>
+	  <td></td>
+	  <td>
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Mortar<indexentry>Mortar</indexentry></td>
+	  <td></td>
+	  <td>
+	  </td>
+	</tablerow>
+	
+	<tablelabel>table:artillery</tablelabel>
+    </table>
+
+      <figure>
+        <img src="./resources/anon_culverin/anon_culverin.png" scale="0.20"/>
+	<caption>Culverin</caption>	
+      </figure>
+        
+      <figure>
+        <img src="./resources/anon_falconet/anon_falconet.png" scale="0.6"/>
+	<caption>Falconet</caption>	
+      </figure>
+
+      <figure>
+        <img src="./resources/morel-fatio_cannon/morel-fatio_cannon.png" scale="0.4"/>
+	<caption>Cannon</caption>	
+      </figure>
+    
+      <figure>
+        <img src="./resources/anon_mortar/anon_mortar.png" scale="0.9"/>
+	<caption>Mortar</caption>	
+      </figure>    
+  </subsection>
+
+  
   <subsection>
     <subsectiontitle>Uncommon Equipment</subsectiontitle>    
 
@@ -535,17 +757,29 @@
 	  <td>20g</td>
 	  <td>Large x2!!</td>
 	</tablerow>
+
+	<tablerow>
+	  <td>Block and Tackle</td>
+	  <td>100c</td>
+	  <td></td>
+	</tablerow>
 	
 	<tablerow>
 	  <td>Book</td>
 	  <td>2-200g</td>
 	  <td></td>
 	</tablerow>
-
+	
 	<tablerow>
 	  <td>Grappling Hook Small</td>
 	  <td>3s</td>
 	  <td>Can be fired from a Heavy Crossbow, Save 8</td>
+	</tablerow>      
+
+	<tablerow>
+	  <td>Lock Picks</td>
+	  <td>10c</td>
+	  <td></td>
 	</tablerow>      
 	
 	<tablerow>
@@ -591,14 +825,6 @@
 	
 	<tablelabel>table:uncommon_equipment</tablelabel>
     </table>
-
-    <!--
-	<figure position="b">
-	<img src="./resources/equipment/cart.png" scale="2.8"/>
-	</figure>
-
-    -->
-    
   </subsection>
   
   
@@ -625,7 +851,7 @@
 	</tablerow>
         
 	<tablerow>
-	  <td>Caltrops, 1 dozen</td>
+	  <td>Caltrops, 2 dozen</td>
 	  <td>1gp</td>
 	  <td>Medium</td>
 	</tablerow>
@@ -639,7 +865,7 @@
 	<tablerow>
 	  <td>Grenade</td>
 	  <td>2gp</td>
-	  <td>Medium</td>
+	  <td>Medium, glass globes filled with gunpowder</td>
 	</tablerow>
         
 	<tablerow>
@@ -651,18 +877,18 @@
 	<tablerow>
 	  <td>Petard</td>
 	  <td>2gp</td>
-	  <td>Medium</td>
+	  <td>Large, explosive for breaching doors</td>
 	</tablerow>
 	
 	<tablerow>
 	  <td>Spectacles</td>
-	  <td>10gp</td>
+	  <td>2gp</td>
 	  <td></td>
 	</tablerow>
 
 	<tablerow>
 	  <td>War Fire</td>
-	  <td>1gp</td>
+	  <td>10gp</td>
 	  <td></td>
 	</tablerow>            
 	<tablelabel>table:rare_equipment</tablelabel>
@@ -708,7 +934,7 @@
 
 	<p>
 	  When a character stands on a caltrop they suffer 1d3 damage and must
-	  make a resolve check for each additional square of movement they make
+	  make a Mettle check for each additional square of movement they make
 	  before removing the caltrop (an action).  When a horse stands on a caltrop
 	  a rider must make a difficult horse-riding or animal handling check or
 	  the horse panics or falls (50% chance for each).  If the horse falls the
@@ -755,7 +981,7 @@
 	</p>
       </description>
       
-      <term>Laundanum
+      <term>Laudanum
       <indexentry>Laudanum</indexentry>
       </term>
       <description>
@@ -793,7 +1019,7 @@
 	  When they land they thrower makes a Std Check vs 4 and if successful
 	  the jar breaks and ignites.  Any character in the target square suffers
 	  d6 damage each round until the fire is extinguished, and gains the
-	  Aflame condition (they must make a resolve check to ignore the fire).
+	  Aflame condition (they must make a Mettle check to ignore the fire).
 	  If they attempt to put out the fire they make a Std Check vs DC 10.
 	</p>
       </description>      
@@ -826,61 +1052,6 @@
     {% include "docs/tables/prices_treasures.xml" %}  
   </subsection>
 
-  <!--
-
-trip costs .. e.g. ship ticket
-
-spell ingredients
-mandragora
-shade of a newt
-
-inn costs
-
-  -->  
-  
-  <!--
-      https://medium.com/@zavidovych/what-we-can-learn-by-looking-at-prices-and-wages-in-medieval-england-8dc207cfd20a#.4f197hjln
-  -->
-  <!--
-
-<p>    
-XXXXXXXXXXX
-
-named weapons.. 
-when you name the weapon in combat
-kills?
-
-epic weapons.. 
-animus..
-
-boats
-
-furniture
-
-achievements
-medals?
-accolades?
-knighthoods?
-</p>
-
-http://www.petesqbsite.com/sections/tutorials/tuts/m_econ.htm
-http://medieval.ucdavis.edu/120D/Money.html
-http://www.historyextra.com/feature/time-traveller%E2%80%99s-guide-medieval-shopping
-http://www.medievalcoinage.com/prices/medievalprices.htm
-http://regia.org/research/misc/costs.htm
-  -->
-
-  <!--
-      <figure position="b">
-      <img src="./resources/equipment/drinking_horn.png" scale="0.03"/>
-      </figure>
-  -->
-
-
-
-
-
-
 
 
   <subsection>
@@ -891,9 +1062,9 @@ http://regia.org/research/misc/costs.htm
     <subsubsection>
       <subsubsectiontitle>Gloves, Gauntlets and Helmets</subsubsectiontitle>
       <p>
-	Gauntlets and Helmets provide no AC bonus but help to negate certain
-	effects in the event of specific results in the to-hit benefits
-	table, see Table <ref>table:core_to_hit_benefits</ref>.
+	Gauntlets and Helmets provide no Armour bonus but help to negate certain
+	effects in the event of specific results in the to-hit boons
+	table, see Table <ref>table:core_to_hit_boons</ref>.
       </p>
     </subsubsection>
   </subsection>
@@ -904,7 +1075,6 @@ http://regia.org/research/misc/costs.htm
 
     <subsubsection>
       <subsubsectiontitle>Rapier</subsubsectiontitle>
-
       <p>
 	A rapier is a very thin bladed duelling swords.  They are made by skilled
 	craftsmen who use the finest steel in order to make the thin blades so strong.
@@ -918,7 +1088,6 @@ http://regia.org/research/misc/costs.htm
 
     <subsubsection>
       <subsubsectiontitle>Broad Sword</subsubsectiontitle>
-
       <p>
 	Broad swords are one handed, doubled edged, straight bladed swords.  They are
 	used in close formation fighting by heavy infantry.
@@ -926,15 +1095,13 @@ http://regia.org/research/misc/costs.htm
 
       <figure>
         <img src="./resources/equipment_broadsword/broadsword.png" scale="0.4"/>
-      </figure>
-      
+      </figure>      
     </subsubsection>
 
 
 
     <subsubsection>
       <subsubsectiontitle>Crossbows</subsubsectiontitle>
-
       <p>
 	For game purposes we distinguish between light and heavy 
 	crossbows.  Light crossbows are loaded in one motion
@@ -943,11 +1110,9 @@ http://regia.org/research/misc/costs.htm
 	the string back.
       </p>
 
-
       <figure>
         <img src="./resources/equipment_light_crossbow/light_crossbow.png" scale="0.14"/>
-      </figure>
-      
+      </figure>      
     </subsubsection>
 
 
@@ -973,18 +1138,16 @@ http://regia.org/research/misc/costs.htm
     <subsubsection>
       <subsubsectiontitle>Firearms</subsubsectiontitle>
       <p>
-	There are two different types of firearms used in the game: Pistols and Muskets.
-	Pistols are single handed and weapons and Musketts are a primitive long barrelled
+	There are two different types of firearms used in the game: Pistols and Arquebuses.
+	Pistols are single handed and weapons and Arquebuses are a primitive long barrelled
 	firearm.  Both of these weapons are smooth bore, muzzle loaded, black powder weapons
 	and are very slow to load.
       </p>      
     </subsubsection>
     
-    
-
 
     <subsubsection>
-      <subsubsectiontitle>Polearm <fightreach/></subsubsectiontitle>
+      <subsubsectiontitle>Polearm</subsubsectiontitle>
 
       <p>
 	A pole arm is a heavy spear with a spear tip and an axe or hammer head
@@ -992,13 +1155,6 @@ http://regia.org/research/misc/costs.htm
 	spetums, ox tongue spears, ranseurs, partisans, bills, guisarmes, glaives,
 	and bec de corbins.
       </p>
-
-      <!--
-	  <figure fullwidth="true">
-          <img src="./resources/equipment/glaive.png" scale="0.4" />
-          <<img src="" alt="" /> src="./resources/equipment/bec_de_corbin.png" scale="0.4" />
-	  </figure>
-      -->
     </subsubsection>
     
 
@@ -1055,13 +1211,11 @@ http://regia.org/research/misc/costs.htm
 
     <subsubsection>
       <subsubsectiontitle>Dagger</subsubsectiontitle>
-
       <p>
 	Daggers include weapons, such as the Rondel, and the Dirk.  They
 	are small piercing weapons.
       </p>
-    </subsubsection>
-    
+    </subsubsection>    
     
     <subsubsection>
       <subsubsectiontitle>Battle Axes</subsubsectiontitle>
@@ -1072,10 +1226,8 @@ http://regia.org/research/misc/costs.htm
 
       <figure>
         <img src="./resources/equipment_axe/axe.png" scale="0.4"/>
-      </figure>
-      
+      </figure>      
     </subsubsection>
-
 
     <subsubsection>
       <subsubsectiontitle>War Hammer</subsubsectiontitle>
@@ -1085,15 +1237,17 @@ http://regia.org/research/misc/costs.htm
       </p>
     </subsubsection>
 
-
     <subsubsection>
       <subsubsectiontitle>Mace, Morning Star</subsubsectiontitle>
       <p>
-	A mace is similar to a war hammer.  They are heavy crushing weapons that
-	work well against heavily armoured foes.
+	A mace is a club-like weapon that has specifically been constructed
+	as a weapon.  For the purposes of this game, though perhaps historically inaccurately,
+	maces are wooden clubs with metal spikes or bands for extra weight and hardness
+	(clubs are all wooden and are improvised or very cheap).  Maces are heavy crushing
+	weapons that work well against heavily armoured foes.   Morning Stars are all metal
+	are more expensive and a little less likely to break.
       </p>
     </subsubsection>
-
 
     <subsubsection>
       <subsubsectiontitle>Flail</subsubsectiontitle>
@@ -1103,13 +1257,12 @@ http://regia.org/research/misc/costs.htm
       </p>
     </subsubsection>
 
-
     <subsubsection>
       <subsubsectiontitle>Club</subsubsectiontitle>
       <p>	
 	Clubs are single handed, weapons constructd from heavy pieces of wood.
-	They can be constructed with metal bands and spikes or easily improvised
-	from wood lying about.
+	easily improvised from wood lying about.  If a club is constructed with
+	metal bands, spikes or even just nails then it qualifies as a Mace.
       </p>
     </subsubsection>
 
@@ -1118,16 +1271,78 @@ http://regia.org/research/misc/costs.htm
   </subsection>
   
   <subsection>
-    <subsectiontitle>Weapon and Armour Quality</subsectiontitle>
+    <subsectiontitle>Weapon and Armour Quality (Optional)</subsectiontitle>
 
     <p>
-      Weapons have a Save value that can be used as the difficulty in a
-      Std Check 
+      Weapons and armour have a Save DC value that can be used as the difficulty in a
+      Std Check when the character has rolled a Boon or Bane on their attack,
+      parry, dodge, block or armour roll.  The values for the Saves and the Prices of
+      standard weapons are presented in these tables.  However, not all things are
+      created with the same level of skill and craftsmanship.
     </p>
+
+    <p>
+      We distinguish five levels of weapon and armour quality: Masterwork, Good Quality,
+      Average Quality, Poor Quality, and Shoddy Quality.  In practice the item quality
+      manifests itself in three ways.  Firstly, the quality of the weapons and armour are
+      obvious to observers. So having high quality weapons and items is likely to impress
+      and intimidate people.  Secondly, price.  The cost of higher quality items is much
+      greater than the cost of average quality items.  Finally, item quality determines
+      the items save DC.  The prices and saves of items in the weapons and armour
+      tables above are for average quality items.  Finally note that the prices of these
+      goods varies from place to place and time to time.
+    </p>
+
+    <descriptions>
+      <term>Masterwork</term>
+      <description>
+        <indexentry>Masterwork Weapons/Armour</indexentry>	
+        <indexentry>Weapon Quality<subentry></subentry></indexentry>
+	Masterwork items have been made by a very experienced artisan out of the
+	finest materials.  Often they will be ornately decorated metal filligree,
+	or inlaid with semi-precious stones such as lapis lazuli, or ivory and
+	the like.  The cost of masterwork items is typically from four to ten times
+	the listed price of the items in the tables above.  The Save DC for these
+	items reduced by two.
+      </description>
+
+      <term>Good Quality</term>
+      <description>
+        <indexentry>Good Quality Weapons/Armour</indexentry>	
+	<indexentry>Weapon Quality<subentry>Good</subentry></indexentry>
+	Good quality items are made by competent or better craftsmen out of
+	decent materials.  The cost of these items is twice the listed price
+	in the tables above and the items Save DC is reduced by one.
+      </description>
+      
+      <term>Average</term>
+      <description>
+        <indexentry>Average Quality Weapons/Armour</indexentry>
+        <indexentry>Weapon Quality<subentry></subentry></indexentry>
+	Average quality items are the default.  They are created, often en masse,
+	by work-a-day craftsmen.  
+      </description>
+      
+      <term>Poor</term>
+      <description>
+        <indexentry>Poor Quality Weapons/Armour</indexentry>	
+        <indexentry>Weapon Quality<subentry>Poor</subentry></indexentry>
+	Poor quality items either old, poorly constructed or created from poorly
+	smelted metals.  These items cost about half price to buy and sell for the
+	price of the metals used in their construction.  Poor quality wooden weapons
+	have virtually no resale value.  These items have their Save DC increased by
+	three. 
+      </description>
+      
+      <term>Shoddy</term>
+      <description>
+        <indexentry>Shoddy Quality Weapons/Armour</indexentry>	
+        <indexentry>Weapon Quality<subentry>Shoddy</subentry></indexentry>
+	Shoddy items are of terrible quality.  Like Poor Quality items they
+	have little resale value.  The items Save DC is increased by six.
+      </description>
+    </descriptions>    
   </subsection>  
 </section>
-
-
-
 
 

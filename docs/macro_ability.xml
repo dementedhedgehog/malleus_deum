@@ -1,71 +1,45 @@
 {% macro build_ability(ability) %}
+<subsubsection>
+  <abilitytitle>
+    {{- ability.get_title() -}}
+    {%- if ability.is_templated() -%} <bold>[{{- ability.get_template() }}]</bold>{%- endif %}
+    <indexentry>{{- ability.get_title() }} Ability</indexentry> 
+    <indexentry>Ability<subentry>{{- ability.get_title() }}</subentry></indexentry>
+  </abilitytitle>
 
-      <subsection>
-        <subsectiontitle>
-          {{- ability.get_title() -}}
-	  {{ ' ' }}
-	  {{- ability.get_ability_class_symbol() -}}
-	  {{ ' ' }}
-          {%- if ability.get_skill_point_type() is not none -%}
-	  {{- ability.get_skill_point_type() -}}
-          {% endif -%}
-          <indexentry>{{- ability.get_title() }} Ability</indexentry> 
-          <indexentry>Ability<subentry>{{- ability.get_title() }}</subentry></indexentry>
-          <smaller>
-	    {{ ability.get_attr_modifiers_str() }}
-	  </smaller>
-        </subsectiontitle>
-        
-        {% if ability.description is not none %}
-        {{ ability.description }}
-        {% endif %}
-
-        <table>
-          <tablecategory>Standard</tablecategory>
-
-          <tablespec>
-            <fixed>0.06</fixed>
-            <fixed>0.83</fixed>
-          </tablespec>
-
-          {% for ability_level in ability.get_levels()  %}
-          <tablerow>
-            <td>
-              {{- ability_level.get_level_number() | convert_to_roman_numerals }}
-              {%- if ability_level.is_innate() %} <innateabilitylevelsymbol/>{% endif -%}
-            </td>
-            <td>
-              {%- if ability_level.has_prerequisites() %}
-              <bold>Prereq:</bold>
-              {%-     for prereq in ability_level.get_prerequisites()  %}
-              {{-         prereq.to_string() }}
-              {%-         if not loop.last %}, {% endif %}          
-              {%-     endfor %}
-
-              {% endif %}
-              {%- if ability_level.check is not none -%}
-              <bold>Check:</bold> {{ ability_level.check -}}
-              {% endif %}
-              {%- if ability_level.overcharge is not none %}
-	      
-              <bold>Overcharge:</bold> {{ ability_level.overcharge -}}
-              {% endif %}
-              {%- if ability_level.damage is not none %}
-	      
-              <bold>Dmg:</bold> {{- ability_level.damage }}
-              {% endif %}
-              {%- if ability_level.effect is not none %}
-              
-              <bold>Effect:</bold> {{ ability_level.effect -}}
-              {% endif -%}
-              {%- if ability_level.description is not none %}
-	      
-              {{ ability_level.description }}
-              {%- endif -%}
-            </td>
-          </tablerow>
-          {% endfor %}                
-        </table>    
-      </subsection>      
-
+  <p>
+    <smaller>
+      <bold>Action Type:</bold> {{ ability.action_type }},  
+      {% if ability.is_untrained() %}
+      <bold>Untrained:</bold> {{ ability.get_untrained_level() }},
+      {%- endif %}
+      <bold>Levels:</bold> {{ ability.get_ability_level_range() }}, 
+      <bold>Checks:</bold> {% for check in ability.get_checks() %}
+      {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
+      {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}            
+      {%- if check.overcharge is not none  -%}/{{check.overcharge}}{%- endif -%}
+      {% if not loop.last %}, {% endif -%}
+      {% endfor -%}
+      {%- if ability.ddc and ability.ddc != "0" -%}
+      ,  <bold>DDC:</bold> {{ ability.ddc }}
+      {%- endif %}              
+      {%- if ability.overcharge  -%}
+      ,  <bold>Overcharge:</bold> {{ ability.overcharge }}
+      {%- endif %}              
+      {%- if ability.damage -%}
+      , <bold>Damage:</bold> {{ ability.get_damage() }}
+      {%- endif -%}              
+      {%- if ability.mastery -%}
+      , <bold>Mastery:</bold> {% for i in range(ability.mastery) %}<success/>{% endfor -%}
+      {%- endif %}
+      {%- if ability.prerequisites -%}
+      , <bold>Prereqs:</bold> {{ ability.get_prerequisites_str() }}
+      {% endif -%}      
+      {%- if ability.has_tags() -%}
+      , <bold>Tags:</bold> {{ ability.get_tags_str() }}
+      {%- endif -%}      
+    </smaller>
+  </p>
+  {{ ability.description }}  
+</subsubsection>
 {% endmacro %}

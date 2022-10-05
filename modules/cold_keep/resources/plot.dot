@@ -1,0 +1,87 @@
+#! /usr/bin/env /usr/bin/dot -Tps plot.dot -o plot.ps
+digraph G {
+        node [shape="box", style="rounded"];
+	
+        cold_keep
+	[label = <Cold Keep<br/><font point-size="10">
+	 PCs arrive in Cold Keep<br/>
+	 Commander greets PCs<br/>
+	 Sends them on patrol to see the lay of the land.
+	 </font>>];
+	
+         patrol
+	 [label = <Cross Bridge<br/><font point-size="10">
+	  Patrol sets out from the Bridge</font>>];
+	 
+        farmstead [label = <Farmstead<br/><font point-size="10">Meet the family</font>>];
+        ridge [label = <Ridge<br/><font point-size="10">Perception Check</font>>];
+        watchtower [label = <Watchtower<br/><font point-size="10">They're dead</font>>];
+        light_the_signal_fire
+	[label = <Light the Signal Fire<br/><font point-size="10">xx</font>>];
+	
+        warn_farmstead
+	[label = <Warn Farmstead<br/><font point-size="10">Orcs I!</font>>];
+	
+        //warn_cold_keep [label = <Warn Cold Keep<br/><font point-size="10">Orcs II!</font>>];
+        flee_the_watchtower
+	[label = <Flee the Watchtower<br/><font point-size="10">Orcs II!</font>>];
+
+	flee_the_ridge
+	[label = <Flee the Ridge<br/><font point-size="10">x</font>>];
+
+        warn_cold_keep
+	[label = <Warn Cold Keep<br/><font point-size="10">If signal fire not lit</font>>];
+	
+        hold_the_bridge
+	[label = <Hold the Bridge<br/><font point-size="10">x</font>>];
+	
+        flanked
+	[label = <Flanked<br/><font point-size="10">x</font>>];
+	
+        hold_the_gate
+	[label = <Hold the Gate<br/><font point-size="10">x</font>>];
+	
+	
+	//warnfarmstead [label = <Warn Farmstead<br/><font point-size="10"></font>>];
+
+
+	cold_keep -> patrol;	
+	patrol -> farmstead;
+	farmstead -> ridge;
+	ridge -> watchtower;
+	ridge -> flee_the_ridge;
+
+//	warn_farmstead;
+//	ridge -> warn_cold_keep;
+	watchtower -> flee_the_watchtower;
+	watchtower -> light_the_signal_fire;
+	light_the_signal_fire -> flee_the_watchtower;	
+	flee_the_watchtower-> flee_the_ridge;	
+	flee_the_ridge->warn_farmstead;
+	flee_the_ridge->warn_cold_keep;
+	warn_farmstead->warn_cold_keep;
+	warn_farmstead->hold_the_bridge;
+	warn_cold_keep->hold_the_bridge;
+	hold_the_bridge->flanked;
+	hold_the_bridge->hold_the_gate;
+	flanked->hold_the_gate;
+	
+	
+	 // <Meet the family<br/><font point-size=\"10\">See also: American Revolution</small>>"];
+
+	/*
+	farmstead -> "on the ridge" [ label = "perception check" ];
+	"on the ridge" -> lookout ["they're dead jim"];	
+	"perception check" -> "orcs1";
+	"orcs1" -> "fast road" -> "orcs2";
+	"orcs1" -> "warn farmstead" -> "orcs2";	
+	"orcs2" -> 
+	"warn cold keep";
+	
+	"warn cold keep";
+	
+	"warn cold keep" -> "hold the wall"
+	orc ambush  -> warn cold keep
+	cheapside -> cellar -> pantry;
+	*/
+}

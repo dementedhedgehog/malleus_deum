@@ -1,72 +1,72 @@
-
 <weapons>
-
   <weapon>
     <name>Axe, Thrown</name>
-    <damage>1d8</damage>
+    <damage>6</damage>
     <price>8s</price>
     <range><measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement></range>
     <save>5</save>
-    <tags></tags>
+    <tags>
+      <axe/>
+    </tags>
   </weapon> 
 
   <weapon>
     <name>Bow, Long</name>
-    <damage>1d10</damage>
+    <damage>5</damage>
     <price>2gp</price>
     <range><measurement>
 	<metric>20/50/200m</metric><imperial>60/160/600'</imperial>
       </measurement></range>
     <save>5</save>
     <tags>
-      <tag>Long-Bow Prof</tag>
-      <tag>Standing</tag>
+      <long-bow/>
+      <standing/>
     </tags>
   </weapon>
 
   <weapon>
     <name>Bow, Short</name>
-    <damage>1d8</damage>
+    <damage>4</damage>
     <price>1gp</price>
     <range><measurement><metric>10/25/100m</metric><imperial>30/80/300'</imperial>
     </measurement></range>
     <save></save>
     <tags>
-      <tag>Short-Bow Prof</tag>
-      <tag>Fast</tag>
+      <bow/>
+      <fast/>
     </tags>
   </weapon>   
 
   <weapon>
     <name>Crossbow, Light</name>
-    <damage>2d4</damage>
+    <damage>4</damage>
     <price>4gp</price>
     <range><measurement><metric>10/20/80m</metric><imperial>30/60/180'</imperial></measurement>
     </range>
     <save></save>
     <tags>
-      <tag>Crossbow Prof</tag>
+      <crossbow/>
     </tags>
   </weapon>
      
   <weapon>
     <name>Crossbow, Heavy</name>
-    <damage>2d6</damage>
+    <damage>5</damage>
     <price>7gp</price>
     <range><measurement>
       <metric>10/20/100m</metric><imperial>30/60/300'</imperial>
     </measurement></range>
     <save></save>
     <tags>
-      <tag>Heavy Crossbow Prof</tag>
-      <tag>Standing</tag>
-      <tag>Slow-Reload</tag>
+      <heavy-crossbow/>
+      <standing/>
+      <slow-reload/>
     </tags>
   </weapon>
    
   <weapon>
     <name>Dagger, Thrown</name>
-    <damage>1d6</damage>
+    <damage>4</damage>
     <price>3sp</price>
     <range><measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement></range>
     <save></save>
@@ -75,7 +75,7 @@
 
   <weapon>
     <name>Javelin</name>
-    <damage>2d4</damage>
+    <damage>6</damage>
     <price>3sp</price>
     <range><measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement></range>
     <save></save>
@@ -83,40 +83,38 @@
   </weapon>
 
   <weapon>
-    <name>Muskett</name>
-    <damage>2d8</damage>
+    <name>Arquebus</name>
+    <damage>8</damage>
     <price>30gp</price>
     <range>
 	<measurement><metric>10/20/40m</metric><imperial>30/60/120'</imperial></measurement>
     </range>
     <save></save>
     <tags>
-      <tag>Black-Powder</tag>
-      <tag>Slow-Reload</tag>
-      <tag>Slow</tag>
+      <black-powder/>
+      <slow-reload/>
+      <slow/>
+      <inaccurate/>
     </tags>
   </weapon>
 
   <weapon>
     <name>Pistol</name>
-    <damage>2d6</damage>
+    <damage>7</damage>
     <price>25gp</price>
     <range>
-	<measurement>
-	  <metric>10/20/30m</metric>
-	  <imperial>30/60/90'</imperial>
-	</measurement>
+	<measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement>
     </range>
     <save></save>
     <tags>
-      <tag>Black-Powder</tag>
-      <tag>Slow-Reload</tag>
+      <black-powder/>
+      <slow-reload/>
     </tags>
   </weapon>
 
   <weapon>
     <name>Rock, Thrown</name>
-    <damage>1d4</damage>
+    <damage>2</damage>
     <price>-</price>
     <range><measurement><metric>10/20/30m</metric><imperial>30/60/90'</imperial></measurement></range>
     <save></save>
@@ -125,13 +123,12 @@
 
   <weapon>
     <name>Sling</name>
-    <damage>5sp</damage>
-    <price>2d4</price>
+    <damage>4</damage>
+    <price>5sp</price>
     <range><measurement><metric>10/20/100m</metric><imperial>30/60/300'</imperial></measurement></range>
     <save></save>
     <tags>
-      <tag>Standing</tag>
+      <standing/>
     </tags>
   </weapon>
 </weapons>
-    

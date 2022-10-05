@@ -37,7 +37,7 @@
               <bold>Check:</bold> {{ ability_level.check -}}
               {%- endif %}
               {%- if ability_level.overcharge is not none -%}
-              <bold> Overcharge:</bold> {{ ability_level.overcharge -}}
+              <bold> <leq/> </bold> {{ ability_level.overcharge -}}
               {%- endif %}
             </td>
 	  </tablerow>

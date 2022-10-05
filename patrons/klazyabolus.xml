@@ -111,7 +111,7 @@ More flavourful to have a per patron thing?
     <abilitygroupinfo>
       <abilitygrouptitle>Patron Abilities</abilitygrouptitle>
       <abilitygroupid>klazyabolous</abilitygroupid>
-      <abilitygroupfamily>Magic</abilitygroupfamily>
+      <abilitygroupfamily><magical/></abilitygroupfamily>
       <abilitygroupdescription>
 	<p>
 	  Klazyabolous is a virtuous and generous master, only punishing his
@@ -119,15 +119,18 @@ More flavourful to have a per patron thing?
 	  to his servants with magnanimity.
 	</p>
       </abilitygroupdescription>
+      <enabled/>
     </abilitygroupinfo>
     
 
   <ability>
     <abilitytitle>Invoke Klazyabolous</abilitytitle>
     <abilityid>klazyabolous.invoke</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><klazyabolus/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><klazyabolus/></tags>
+    <prereqabilitylevel>evocation_1</prereqabilitylevel>
+    <abilitycheck dc="10" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
     <abilitydescription>
       <p>
 	This first time this spell is cast it must be used to forge
@@ -148,63 +151,36 @@ More flavourful to have a per patron thing?
 	of the casters Servant of Klazyabolous aspect.
       </p>	
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>See above</effect> 
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool + 2 vs DDC 10</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline></spline>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>  
   
-
   <ability>
-    <abilitytitle>Batracian Leap</abilitytitle>
+    <abilitytitle>Batrachian Leap</abilitytitle>
     <abilityid>klazyabolous.leap</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><klazyabolus/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><klazyabolus/></tags>
+    <abilitycheck dc="3" overcharge="9+Level"/>    
     <abilitydescription>
       <p>
 	This magical leap allows the character to jump
 	up to <measurement><metric>20m</metric><imperial>60'</imperial></measurement>.
       </p>      
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 4</overcharge>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool + 2 vs DDC 7</check>
-	<overcharge>DC + 5</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline></spline>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>  
 
+ 
   <ability>
     <abilitytitle>Incorporal Mist</abilitytitle>
     <abilityid>klazyabolous.incorporal_mist</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><klazyabolus/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><klazyabolus/></tags>
+    <abilitycheck dc="3" overcharge="9+Level"/>    
     <abilitydescription>
       <p>
 	The character transforms into a cloud of green mist.  Their clothes
@@ -212,23 +188,11 @@ More flavourful to have a per patron thing?
 	form for up to half an hour.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool vs DDC 20</check>
-	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.evocation_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool + 2 vs DDC 20</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <prereqabilitylevel>evocation_1</prereqabilitylevel>	
+    <spline></spline>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>  
 </abilitygroup>
 </patron>

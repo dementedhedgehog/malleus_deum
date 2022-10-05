@@ -78,9 +78,8 @@
 	      
               {% endif %}
               {%- if ability_level.overcharge is not none -%}
-              <bold>Overcharge:</bold> {{ ability_level.overcharge }}
-	      
-              {% endif %}          
+              , ><leq/> {{ ability_level.overcharge }}	      
+              {% endif %}
               {%- if ability_level.damage is not none %}          
               <bold>Dmg:</bold> {{- ability_level.damage }}
 	      

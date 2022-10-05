@@ -1,0 +1,108 @@
+<section>
+  <sectiontitle>Introduction</sectiontitle>
+
+  <p>
+    This chapter contains information about the various monsters and
+    NPCs the characters might encounter.
+  </p>
+
+
+  <subsection>
+    <subsectiontitle>Monster Tags</subsectiontitle>
+
+      <descriptions>
+        <term>Beast</term>
+        <description>
+	  FIXME:
+        </description>
+	
+        <term>Demon</term>
+        <description>
+	  FIXME:
+        </description>
+	
+        <term>Elemental</term>
+        <description>
+	  FIXME:
+        </description>
+
+        <term>Fey</term>
+        <description>
+	  FIXME:
+        </description>
+
+        <term>Greenskins</term>
+        <description>
+	  FIXME:
+        </description>
+
+        <term>Giant</term>
+        <description>
+	  FIXME:
+        </description>
+	
+        <term>Human</term>
+        <description>
+	  FIXME:
+        </description>
+
+        <term>Lycan</term>
+        <description>
+	  FIXME:
+        </description>
+
+        <term>Undead</term>
+        <description>
+	  FIXME:
+        </description>
+      </descriptions>
+  </subsection>
+
+</section>
+
+{% for monster_group in monster_groups %}
+<section>
+  <sectiontitle>{{ monster_group.get_title() }}</sectiontitle>
+
+  {{ monster_group.get_description() }}    
+
+  {% for monster in monster_group %}  
+  <monsterblock>
+    <mbtitle>{{ monster.get_title() }}</mbtitle>
+    <mbtags>{{ monster.get_tags_str() }}</mbtags>
+    <mbdefence>{{  monster.get_defences() }}</mbdefence>
+    <mbhp>{{ monster.get_stamina() }}/{{ monster.get_health() }}</mbhp>
+    <mbmove>{{ monster.get_move() }}</mbmove>
+    <mbinitiativebonus>{{ monster.get_initiative_bonus() }}</mbinitiativebonus>
+    <mbmettle>{{ monster.get_mettle_pool() }}</mbmettle>
+    <mbmagic>{{ monster.get_magic_pool() }}</mbmagic>
+    <mbstr>{{ monster.get_strength() }}</mbstr>
+    <mbend>{{ monster.get_endurance() }}</mbend>
+    <mbag>{{ monster.get_agility() }}</mbag>
+    <mbspd>{{ monster.get_speed() }}</mbspd>
+    <mbluck>{{ monster.get_luck() }}</mbluck>
+    <!-- <mbwil>{X { monster.get_willpower() } X}</mbwil> -->
+    <mbper>{{ monster.get_perception() }}</mbper>
+    <mbabilities>
+    {% for ability_level_id in monster.get_ability_level_ids() %}
+       <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
+       {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
+       <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
+       {% endif -%}       
+       {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
+       <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
+       {% endif -%}       
+       {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
+       <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
+       {% endif -%}
+    {% endfor %}
+    </mbabilities>
+    {% if monster.get_aspects_str() != "" %}
+    <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
+    {% endif %}
+    <mbdescription>{{ monster.description }}</mbdescription>
+  </monsterblock>
+  {% endfor %}      
+  
+</section>   
+{% endfor %}    

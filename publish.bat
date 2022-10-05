@@ -1,1 +1,1 @@
-python src/publish.py %*
+python3 src/publish.py %*

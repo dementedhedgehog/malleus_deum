@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+  {% set MODULE_NAME = "Lonely Road" %}
+  {% set MODULE_FNAME = "lonely_road" %}
+  {% set GANG_NAME = "" %}
+  {% set LEADER_NAME = "" %}
+  {% set TOUGH1_NAME = "" %}
+  {% set COWARD_NAME = "Timo" %}
+
+  <chapter>
+    <chaptertitle>{{ MODULE_NAME }}</chaptertitle>
+    <section>        
+      <sectiontitle>Overview</sectiontitle>
+
+
+      <subsection>
+	<subsectiontitle>Overview</subsectiontitle>
+
+	<p>
+	  Witch in the woods.  Will attempt to drug the players, take them
+	  into the basement and torture them before killing them and turning
+	  them into sausages and jerky.
+	</p>
+      </subsection>
+      
+      <subsection>
+	<subsectiontitle>Dramatis Personae</subsectiontitle>        
+
+	<descriptions>
+	  <term>{{ LEADER_NAME }}</term>
+	  <description>
+	    Leader of the {{ GANG_NAME }}.  He carries a demon-mark carved on his chest
+	    by devil worshippers and is trying to work out how to save his soul before it
+	    is too late.
+	  </description>
+
+	  <term>{{ TOUGH1_NAME }}</term>
+	  <description>
+	    Tough psycopath who's looking for a fight.  Plays the bad-cop
+	    in any negotiation.
+	  </description>
+
+	  <term>{{ COWARD_NAME }}</term>
+	  <description>
+	    This guy is looking out for his own skin.  Plays the good-cop
+	    in any negotiation.
+ 	  </description>
+	</descriptions>
+      </subsection>
+
+
+
+      <subsection>
+	<subsectiontitle>Intro</subsectiontitle>
+	<p>
+	  {{ LEADER_NAME }} approaches the party on a deserted road.  He is a big man
+	  but he seems down on his luck and as he talks he will give off an air of
+	  despair and despondency.  At first he is friendly and helpful.  Providing
+	  information if he knows it and warning the group that there are
+	  devil-worshippers and robbers in the area, and that there rumours of accurse'd
+	  creatures in the woods.  Finally he asks them for food.  If they give him food
+	  he will be better disposed towards them should the robbers be victorious.
+	</p>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>The Negotiation</subsectiontitle>
+	<p>	  
+	  After {{ LEADER_NAME }} has finished appraising the characters threat
+	  he calls his men out of the bushes.  The thieves will begin asking for
+	  all the characters stuff and will negotiate down to food and some decent
+	  amount of money.
+	</p>	
+      </subsection>
+      
+      <subsection>
+	<subsectiontitle>The Fight</subsectiontitle>
+	<p>
+	  The robbers will put up a half hearted fight and flee into the woods in a
+	  number of directions if they feel they are losing.  {{ COWARD_NAME }} will be
+	  the first to flee if he is still alive.
+	</p>
+
+	{% set encounter=encounters.get('lonely_road.robbers') %}
+	{% include "docs/encounter_template.xml" %}	
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Resolution</subsectiontitle>        
+	<p>
+	  If the robbers are victorious they will take the characters weapons, money
+	  and food.  If anyone is wearing man-sized light armour they will take that as
+	  well.  If the players gave {{ LEADER_NAME }} food at the start then he will
+	  let them keep their weapons. 
+	</p>
+
+	<p>
+	  If the PCs look like winning and the robbers start to flee then {{ LEADER_NAME }}
+	  will start his transformation.
+	</p>
+      </subsection>
+
+
+
+      <subsection>
+	<subsectiontitle>Transformation</subsectiontitle>
+	<p>
+	  {{ LEADER_NAME }} once dropped will clutch at his chest and tear at his shirt
+	  revealing the demon mark which will start to bleed profusely.
+
+	  transform into a demonic creature.
+	</p>
+	
+	{% set encounter=encounters.get('lonely_road.accursed_man') %}
+	{% include "docs/encounter_template.xml" %}
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Reward</subsectiontitle>
+	<p>
+	  The robbers are carrying a small amount of money and food and some second
+	  rate weapons: clubs, short-bows.  {{ LEADER_NAME }} has a small bound manuscript
+	  of prayers that he has found - he seeks redemption - from which a clerical type
+	  might gain a spell of the GM's choosing.
+	</p>
+      </subsection>
+    </section>
+  </chapter>
+</book>

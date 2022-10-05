@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Mace Proficiency</abilitygrouptitle>
+    <abilitygroupid>mace</abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use maces, clubs, flails,
+	morning stars, virges, and improvised club-like weapons in combat.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Mace Smash</abilitytitle>
+    <abilityid>mace.smash</abilityid> 
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><mace/><crushing/></tags>     
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength</abilitydmg>
+    <abilitydescription>
+      <p>
+        Characters equipped with a mace or similar weapon can attempt
+	to disarm an opponent or remove their shield.
+      </p>
+      <p>
+	If the attack is successful an opposed Strength check is made.  If the opponent
+	fails they drop their weapon or shield.
+      </p>	
+    </abilitydescription>
+    <prereqabilitylevel>mace.strike_2</prereqabilitylevel>
+    <spline><p x="-75" y="30"/></spline>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Mace Strike</abilitytitle>
+    <abilityid>mace.strike</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><mace/><mace/><crushing/></tags>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength</abilitydmg>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Mace or similar weapon can strike
+	with it during combat doing weapon damage.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitylevels from="0" to="3"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Mace Wild Swing</abilitytitle>
+    <abilityid>mace.wild_swing</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><mace/><crushing/></tags>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon+Strength+Level</abilitydmg>
+    <abilitydescription>
+      <p>
+	The character swings the mace wildly keeping their opponents at bay.
+	If the attack hits the target must make a Mettle Check in order to make
+	melee attacks against the character until the characters next turn.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>mace.strike_1</prereqabilitylevel>
+    <spline><p x="75" y="30"/></spline>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Mace Parry</abilitytitle>
+    <abilityid>mace.parry</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><weapon/></tags>
+    <abilitydescription>
+      <p>
+	<label>ability:mace.parry</label>
+        When a character is attacked they may attempt to parry the blow using their weapon
+	instead of making an armour roll.  If the parry check succeeds the attack does no damage.
+	If the parry result fails and a boon is rolled the attack deals half damage.  If the parry
+	result fails and a bane is rolled the attack deals double damage. 
+      </p>
+    </abilitydescription>
+    <spline><p x="-30" y="60"/></spline>
+    <prereqabilitylevel>mace.strike_1</prereqabilitylevel>	
+    <abilitycheck dc="Targets Attack"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="6"/>
+  </ability>    
+</abilitygroup>

@@ -5,405 +5,500 @@
   <archetypeid>hedge_wizard</archetypeid>
   <archetypedescription>     
     <p>
-      Hedge Wizards are wandering mages of little raw talent, they make their money
-      in side shows, by grifting, in displays of magics for the entertainment of young
-      children and by providing mystic readings for housewives and the love-lorn.
+      Hedge Wizards are wandering mages, they make their money in side shows, by grifting, in displays
+      of minor magical feats for the entertainment of young children, by providing mystic readings for
+      young women and the love-lorn, or through the application of their craft in illegal or martial roles.
     </p>
 
     <figure>
-      <img src="./resources/archetypes/hedge_wizard/the_crooked_staff_by_dw_miller_by_conceptsbymiller-day36nr.png"
-	   scale="0.58"/>
+      <img src="./resources/hedge_wizard/the_crooked_staff_by_dw_miller_by_conceptsbymiller-day36nr.png"
+	   scale="0.28"/>
     </figure>        
 
     <p>
-      Not displaying enough ability to be considered a threat, Hedge wizards are usually
-      left to their own business. They are however required to be licensed as users of
-      magick and produce said license upon request from the law.
+      The College of Mages offers membership to most powerful magical practitioners.  They
+      are a political body that exists for the protection and advancement of its members.
+      Hedge wizards are not members of the college, though they may become so later in their career.
     </p>
-  </archetypedescription>
 
-  <archetypeac>7</archetypeac>
-  <archetypemove>6</archetypemove>
-  <archetypeinitiative>11</archetypeinitiative>
+    <p>
+      There are many reasons practioners may not be members of the College, they may have pursued
+      their craft without drawing attention to themselves, they may have been excluded out of
+      spite or jealousy from some member in power, they may wish to pursue their studies away from the eyes
+      of others, or they may have been offered membership and rejected it.  Hedge wizards are usually left
+      to their own business.  They are however required to be licensed as users of magick and produce said
+      license upon request from the law.  They are required to practice their craft in accordance with a
+      set of rules know as the Lex Arcanaum, which for example prohibts the practice of necromancy, mind
+      control and the like. They are referred to officially as non-collegiate magical practitioners.
+      Possesion of the license grants immunity from persecution by the Witch Hunters provided there
+      has been infringement of the Lex Arcanum.
+    </p>
+
+  </archetypedescription>
+  <archetypeprimaryabilities>
+      <list> 
+        <li>Str:-1, End:-1, Ag:+1, Spd:+0, Per:+2, or</li>
+        <li>Str:+0, End:-1, Ag:+1, Spd:+0, Per:+1</li>
+      </list>
+  </archetypeprimaryabilities>
+  <archetypeinitialabilities>
+    <p>
+      All Hedge Wizards start with the following skills: Merovingian IV, Inochian II,
+      Dodge II, Staff Strike I, Sword Strike I, Run II, Notice II, Jump I, Climb I, Arcana I,
+      Conjuration I, True Sight I, and Reroll I.
+    </p>
+
+  </archetypeinitialabilities>
+  <archetypemovedistance>6</archetypemovedistance>
   <startingcash>20 + d4 sp</startingcash>
   <startinggear>
-    Gambeson, staff, long sword, hat, dagger, rope, rations for a week.
+    Cloak, staff, long sword, dagger, flint, Non-Collegiate Magical Practitioner License, rations for a week.
   </startinggear>
-
+  
   <height>
-    <metric>150 + 2d20 cm</metric> 
+    <metric>160 + 3d10 cm</metric>
     <imperial>4'8" + 2d8 inches</imperial>
   </height>
   <weight>
-    <metric>60 + 3d10 kg</metric> 
-    <imperial>120 + 4d20 pounds</imperial>
+    <metric>50 + 3d10 kg</metric>
+    <imperial>100 + 4d20 pounds</imperial>
   </weight>
-  <age>20 + 2d6 years</age>
-  <appearance>Aloof, wild-eyed, watchful.</appearance>
+  <age>24 + 2d6 years</age>
 
-  <aspectexamples></aspectexamples>
+  <aspectexamples>Knowledge is Power, No One Must Know of My Work, The Smartest Man in the Room, I have been Chosen</aspectexamples>
   <archetypetags>
-    <tag>Magic-User</tag>
-    <tag>Human</tag>
-  </archetypetags>
+    <human/>
+    <humanoid/>
+    <medium/> 
+    <magicuser/> 
+  </archetypetags> 
   
+  <archetypebio>
+    <subsection>
+      <subsectiontitle>Origin</subsectiontitle>
+      <p>
+    	Determine where the character came from by rolling once on the Homeland table below.
+      </p>
+      
+      <table>
+      	<tablecategory>Standard</tablecategory>
+      	<tablespec>
+      	  <fixed>0.94</fixed>
+      	</tablespec>
+      	<tabletitle>Homelands</tabletitle>
 
-  <archetypeinitialabilities>
-    <p>
-      Choose one of Wither I or Eldritch Push I.  Choose one of Conjuration I or Abjuration I.
-      Choose one of Reroll I or Conjuration I.
-    </p>
-  </archetypeinitialabilities>
+      	<tableheaderrow>
+      	  <td>Homeland - Roll 1D12 </td>
+      	</tableheaderrow>
 
-  <levelprogressiontable>
-    <level>
-      <levelnumber>1</levelnumber>
-      <levelresolve>2<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>d4+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>d4+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>0</levellore> -->
-      <!-- <levelmartial>0</levelmartial> -->
-      <!-- <levelgeneral>0</levelgeneral> -->
-      <!-- <levelmagical>0</levelmagical> -->
-      <levelfate>3<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>
-      <leveldescription>
-      </leveldescription>
-    </level>
+      	<tablerow>
+      	  <td><bold>1 Hybernia</bold>: Hybernian III,  Etiquette[Hybernia] III</td>
+      	</tablerow>
 
-    <level>
-      <levelnumber>2</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>3<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
+      	<tablerow>
+      	  <td><bold>2 Almaignee</bold>: Etiquette[Almaignee] III</td>
+      	</tablerow>
+	
+      	<tablerow>
+      	  <td><bold>3 Poitevein</bold>: Poitevein IV, Etiquette[Poitevein] III</td>
+      	</tablerow>
 
-    <level>
-      <levelnumber>3</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>4<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
+      	<tablerow>
+      	  <td><bold>4 Averoigne</bold>: Averoigne IV, Etiquette[Averoigne] III</td>
+      	</tablerow>
 
-    <level>
-      <levelnumber>4</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>4<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
+      	<tablerow>
+      	  <td><bold>5 Albion</bold>: Hybernian I, Etiquette[Albion] III, Etiquette[Hybernia] II,
+	  Contacts[Albion] II</td>
+      	</tablerow>
+	
+      	<tablerow>
+      	  <td><bold>6-11 Westreich</bold>: Etiquette[Westreich] III, 
+	  Contacts[Westreich] II, Averoigne I and Etiquette[Averoigne] I,
+	  or Hibernian I and Etiquette[Hybernia] I</td>
+      	</tablerow>
 
-    <level>
-      <levelnumber>5</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>4<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
+      	<tablerow>
+      	  <td><bold>12 Choose</bold></td>
+      	</tablerow>
 
-    <level>
-      <levelnumber>6</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>5<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
-
-    <level>
-      <levelnumber>7</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>5<d6/></levelfate>
-      <levelfaterefresh>+3<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
-
-    <level>
-      <levelnumber>8</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>6<d6/></levelfate>
-      <levelfaterefresh>+3<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
-
-    <level>
-      <levelnumber>9</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>6<d6/></levelfate>
-      <levelfaterefresh>+3<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
-
-    <level>
-      <levelnumber>10</levelnumber>
-      <levelresolve>3<d6/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>10</levellore> -->
-      <!-- <levelmartial>5</levelmartial> -->
-      <!-- <levelgeneral>10</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>6<d6/></levelfate>
-      <levelfaterefresh>+3<dany/></levelfaterefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
-      <leveldescription></leveldescription>
-    </level>    
-  </levelprogressiontable>
-
-  <abilitymodifiers>
-
-    <abilitymodifier>
-      <abilityid>archery.archery</abilityid>
-      <martialpointmodifier>+1</martialpointmodifier>
-      <abilitylevelmodifier>
-	      <level>2</level>
-	      <martialpointmodifier>+1</martialpointmodifier>	
-	      <successesmodifier>+1</successesmodifier>
-      </abilitylevelmodifier>	
-    </abilitymodifier>
-    
-    <abilitygroupmodifier>
-      <abilitygroupid>craft</abilitygroupid>
-      <generalpointmodifier>+1</generalpointmodifier>
-    </abilitygroupmodifier>
+      	<tablelabel>table:{{ doc_name }}-homeland</tablelabel>
+      </table>
+    </subsection>
 
 
-    
-    <innate>
-      <abilityid>magic.cloak_of_shadows</abilityid>
-      <level>1</level>
-    </innate>
+    <subsection>
+      <subsectiontitle>Study Tables</subsectiontitle>      
+      <p>
+	Roll once on each of the following tables.
+      </p>      
 
-    <innate>
-      <abilityid>lore.natural_history</abilityid>
-      <level>1</level>
-    </innate>
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Study Arcana and Conjuration</tabletitle>
 
-    <innate>
-      <abilityid>magic.scry</abilityid>
-      <level>1</level>
-    </innate>
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Study</td>
+    	</tableheaderrow>	
+	
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Wither I or Eldritch Push I</td>
+    	</tablerow>
 
-    <innate>
-      <abilityid>lore.natural_history</abilityid>
-      <level>1</level>
-    </innate>
+    	<tablerow>
+    	  <td>3-4</td>
+    	  <td>Two of Ignis I or Aegis I or Alarum I</td>
+    	</tablerow>
 
-    <!--
-	FIXME
-    <innate>
-      <abilityid>language.inochian</abilityid>
-      <level>1</level>
-      </innate>
+    	<tablerow>
+    	  <td>5-6</td>
+    	  <td>Wither I, and Ignis I or Aegis I</td>
+    	</tablerow>
 
-    <abilitymodifier>
-      <abilityid>language.common</abilityid>
-      <lorepointmodifier>-2</lorepointmodifier>
-    </abilitymodifier>
-    
-    <innate>
-      <abilityid>language.common</abilityid>
-      <level>2</level>
-    </innate>
+    	<tablerow>
+    	  <td>7-8</td>
+    	  <td>Ignis I and Scry I</td>
+    	</tablerow>
 
-    <innate>
-      <abilityid>magic.incendo</abilityid>
-      <level>1</level>
-    </innate>
+    	<tablerow>
+    	  <td>9-10</td>
+    	  <td>Eldritch Push I and Aegis I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose one of the above</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-study-i</tablelabel>
+      </table>
+
+      
+      
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Study </tabletitle>
+
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Study</td>
+    	</tableheaderrow>
+	
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Circle of Protection I, Banishment I or Wither I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>3-4</td>
+    	  <td>Circle of Protection I, Eldritch Shield I or Ignis I and Aegis I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>5-6</td>
+    	  <td>Circle of Protection I, Lesser Portal I or Summon I</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>7-8</td>
+    	  <td>Lesser Portal I, Eldritch Shield I or Bind I </td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>9-10</td>
+    	  <td>Flesh Ward I, Phantasmal Leach I or Claok of Shadows</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose one of the above</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-study-i</tablelabel>
+      </table>
+
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Study II</tabletitle>
+
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Study</td>
+    	</tableheaderrow>
+	
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Physician II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>3-4</td>
+    	  <td>Natural History II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>5-6</td>
+    	  <td>Book-Keeping II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>7-8</td>
+    	  <td>Physics II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>9-10</td>
+    	  <td>One of Hibernian II or Poitevin II or Fey II</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose one of the above</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-study-ii</tablelabel>
+      </table>
 
 
-      -->
+      
+      <p>
+	See what the characters fortune holds.
+      </p>
+      
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Fortune</tabletitle>
 
-    
-    <!-- <innate> -->
-    <!--   <abilityid>magic_school.wild_magic</abilityid> -->
-    <!--   <level>1</level> -->
-    <!-- </innate>     -->
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Fortune</td>
+    	</tableheaderrow>
 
-    <!-- <innate> -->
-    <!--   <abilityid>magic_school.evocation</abilityid> -->
-    <!--   <level>1</level> -->
-    <!-- </innate>     -->
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Bicorne Hat, Wool Sash, Leather Purse, Hip Flask</td>
+    	</tablerow>
 
-    <innate>
-      <abilityid>language.inochian</abilityid>
-      <level>1</level>
-    </innate>    
+    	<tablerow>
+    	  <td>3</td>
+    	  <td>Cossack Hat, Sack, Wineskin, Tallow Candle</td>
+    	</tablerow>
 
-    <abilitymodifier>
-      <abilityid>language.inochian</abilityid>
-      <lorepointmodifier>-2</lorepointmodifier>
-    </abilitymodifier>    
+    	<tablerow>
+    	  <td>4-5</td>
+    	  <td>Straw Hat, Kettle, Book of Poetry</td>
+    	</tablerow>
 
-    <abilitymodifier>
-      <abilityid>lore.alchemy</abilityid>
-      <lorepointmodifier>-1</lorepointmodifier>
-    </abilitymodifier>
-    
-    <abilitymodifier>
-      <abilityid>lore.politics</abilityid>
-      <lorepointmodifier>-1</lorepointmodifier>
-    </abilitymodifier>
+    	<tablerow>
+    	  <td>6-7</td>
+    	  <td>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, 
+	  Paper and ink</td>
+    	</tablerow>
 
-    <abilitygroupmodifier>
-      <abilitygroupid>arcana</abilitygroupid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitygroupmodifier>
+    	<tablerow>
+    	  <td>8-9</td>
+    	  <td>Garibaldi Hat, Playing Cards, Small Pot</td>
+    	</tablerow>
 
-    <disable>
-      <abilityid>magic.turn_undead</abilityid>
-      <abilityid>magic.augury</abilityid>
-    </disable>
+    	<tablerow>
+    	  <td>10</td>
+    	  <td>Chaperon, Tin Cup, Scarf</td>
+    	</tablerow>
 
-    <!--
-    <abilitymodifier>
-      <abilityid>magic.arcana</abilityid>
-      <lorepointmodifier>-2</lorepointmodifier>
-      </abilitymodifier>
-      -->
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-fortune</tablelabel>
+      </table>
+    </subsection>
+</archetypebio>
 
-    <abilitygroupmodifier>
-      <abilitygroupid>physical</abilitygroupid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitygroupmodifier>
 
-    <abilitymodifier>
-      <abilityid>skullduggery.cryptography</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
+<levelprogressiontable>
+  <level>
+    <levelnumber>1</levelnumber>
+    <levelmettle>4</levelmettle>
+    <levelmettlerefresh>+2</levelmettlerefresh>
+    <levelstamina>d4+6</levelstamina>
+    <levelhealth>d4+8</levelhealth>
+    <levelhealthrefresh>1d4</levelhealthrefresh>
+    <levelluck>2</levelluck>
+    <levelluckrefresh>+1</levelluckrefresh>
+    <levelmagicpool>3</levelmagicpool>
+    <levelmagicrefresh>+1</levelmagicrefresh>
+    <leveldescription></leveldescription>
+    <levelabilities></levelabilities>
+    <levelpromotions></levelpromotions>
+  </level>
 
-    <abilitymodifier>
-      <abilityid>social.interrogate</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
+  <!-- <level> -->
+  <!--   <levelnumber>1</levelnumber> -->
+  <!--   <levelmettle>4</levelmettle> -->
+  <!--   <levelmettlerefresh>+1</levelmettlerefresh> -->
+  <!--   <levelstamina>4</levelstamina> -->
+  <!--   <levelhealth>4</levelhealth> -->
+  <!--   <levelhealthrefresh>+d4</levelhealthrefresh> -->
+  <!--   <levelluck>3</levelluck> -->
+  <!--   <levelluckrefresh>+1</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh> -->
+  <!--   <leveldescription></leveldescription> -->
+  <!--   <levelabilities> -->
+  <!--   </levelabilities> -->
+  <!--   <levelpromotions> -->
+  <!--     Any Weapon I, Any Martial II, Any Lore I -->
+  <!--   </levelpromotions> -->
+  <!-- </level> -->
+  
+  <!-- <level> -->
+  <!--   <levelnumber>2</levelnumber> -->
+  <!--   <levelmettle>4</levelmettle> -->
+  <!--   <levelmettlerefresh>+1</levelmettlerefresh> -->
+  <!--   <levelstamina>4</levelstamina> -->
+  <!--   <levelhealth>4</levelhealth> -->
+  <!--   <levelhealthrefresh>+d4</levelhealthrefresh> -->
+  <!--   <levelluck>3</levelluck> -->
+  <!--   <levelluckrefresh>+1</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh> -->
+  <!--   <leveldescription></leveldescription> -->
+  <!--   <levelabilities> -->
+  <!--   </levelabilities> -->
+  <!--   <levelpromotions> -->
+  <!--     Melee II,  -->
+  <!--   </levelpromotions> -->
+  <!-- </level> -->
 
-    <innate>
-      <abilityid>social.etiquette</abilityid>
-      <level>1</level>
-    </innate>
+  <!-- <level> -->
+  <!--   <levelnumber>3</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>6</levelstamina> -->
+  <!--   <levelhealth>6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>3</levelluck> -->
+  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
 
-    <innate>
-      <abilityid>social.low_contacts</abilityid>
-      <level>1</level>
-    </innate>
+  <!-- <level> -->
+  <!--   <levelnumber>4</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>6</levelstamina> -->
+  <!--   <levelhealth>6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>4</levelluck> -->
+  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
 
-    <disable>
-      <abilitygroupid>special</abilitygroupid>
-    </disable>
+  <!-- <level> -->
+  <!--   <levelnumber>5</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>+6</levelstamina> -->
+  <!--   <levelhealth>+6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>4</levelluck> -->
+  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
 
-    <abilitygroupmodifier>
-      <abilitygroupid>sword</abilitygroupid>
-      <martialpointmodifier>+1</martialpointmodifier>
-    </abilitygroupmodifier>
+  <!-- <level> -->
+  <!--   <levelnumber>6</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>+6</levelstamina> -->
+  <!--   <levelhealth>+6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>4</levelluck> -->
+  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
 
-    <abilitymodifier>
-      <abilityid>sword.strike</abilityid>
-      <abilitylevelmodifier>
-	<level>1</level>
-	<martialpointmodifier>+1</martialpointmodifier>	
-	<recommended/>
-      </abilitylevelmodifier>      
-    </abilitymodifier>
-    
-  </abilitymodifiers>
+  <!-- <level> -->
+  <!--   <levelnumber>7</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>+6</levelstamina> -->
+  <!--   <levelhealth>+6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>4</levelluck> -->
+  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
+
+  <!-- <level> -->
+  <!--   <levelnumber>8</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>+6</levelstamina> -->
+  <!--   <levelhealth>+6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>4</levelluck> -->
+  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
+
+  <!-- <level> -->
+  <!--   <levelnumber>9</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>+6</levelstamina> -->
+  <!--   <levelhealth>+6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>5</levelluck> -->
+  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
+
+  <!-- <level> -->
+  <!--   <levelnumber>10</levelnumber> -->
+  <!--   <levelmettle>5</levelmettle> -->
+  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
+  <!--   <levelstamina>+6</levelstamina> -->
+  <!--   <levelhealth>+6</levelhealth> -->
+  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
+  <!--   <levelluck>5</levelluck> -->
+  <!--   <levelluckrefresh>+3</levelluckrefresh> -->
+  <!--   <levelmagicpool>2</levelmagicpool> -->
+  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
+  <!--   <leveldescription></leveldescription> -->
+  <!-- </level>     -->
+</levelprogressiontable>
 </archetype>
-
-

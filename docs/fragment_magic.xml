@@ -1,329 +1,377 @@
-
 <section>
-  <sectiontitle>Fundamental Principles of Magic</sectiontitle>
+  <sectiontitle>Introduction</sectiontitle>
 
   <p>
-    <indexentry>magic</indexentry>
+    <indexentry>Magic</indexentry>
     Magic infuses this and all worlds.  It links and binds all things, tying entities 
     together and creating invisible bonds between the planes.  The utilization of magic
     is concerned with controlling the flow of thaumaturgical energies along these paths.
     Magic appears to be goverened by well known principles and is as much a science 
-    as physics, mathematics, theosophy astrology, phrenology or even biology.  However,
+    as Physicks, Mathematics, Theosophy, Astrology, Phrenology or even Biology.  However,
     due to the chaotic nature of thaumic energies the application of these laws
-    is unreliable, and very frequently dangerous.  
+    is unreliable, and frequently dangerous.  
   </p>
 
   <p>
-    In this chapter we outline the fundamental laws of transfiguration, channelling,
-    ensorcellment, evocation, summoning and the like.  But the reader should beware,
-    verily it is said that those who play with the devil's toys will be brought by
-    degrees to wield his sword.   The basic principles of magic are as follows:
+    The basic principles of magic are as follows:    
   </p>
-
   <descriptions>
-    <term>The Principle of Potentials</term>
+    <term>Law of Potentials</term>
     <description>
       In order for magic to occur there must be a difference in thaumaturgical 
-      potentials.
+      potentials, a high potential and a low potential.
     </description>
 
-    <term>The Principle of Flux</term>
+    <term>Law of Flux</term>
     <description>
       Magic occurs when thaumaturgical energies flow from a high potential to a 
       low potential along a line of flux.
     </description>
 
-    <term>The Law of Contagion</term>
+    <term>Law of Conductivity</term>
     <description>
-      Magic shapes all things.  Logically it follows that similar things 
-      are linked by the lines of flux that created them.
+      Lines of magical flux may be created, broken or enhanced using a variety of techniques.
+      Different materials conduct magical energies better than others.
     </description>
 
-    <term>The Law of Conductivity</term>
+    <term>Law of Contagion</term>
     <description>
-      Lines of flux may be broken or enhanced using a variety of techniques.
-      Different materials conduct magic better than others.   Natural and biological 
-      materials such as flesh, wood, and water conduct magic very well, as does silver.
-      Ferrous metals and rock do not conduct magic well and can interfere with its casting
-      in unpredictable ways.
+      As magic shapes all things it follows logically that similar things are linked by the
+      lines of flux that created them.  The relationship between things can be used to gain
+      more control over magic.
     </description>
 
-    <term>The Corollary of Knowledge</term>
+    <term>Law of Knowledge</term>
     <description>
       The more you know about a subject the greater your knowledge about the 
-      lines of flux that bind them.
+      lines of flux that bind them, and the more power you have over them.  This can be
+      considered to be a corollary of the Law of Contagion.
+    </description>
+  </descriptions>
+  
+  <p>
+    Later in this chapter we explore in more depth how the fundamental laws of magic effect casting.
+  </p>
+
+  <figure position="!b">
+    <img id="rackham_frogs" scale="0.38"/>
+  </figure>
+  
+</section>
+
+<section>
+  <sectiontitle>Casting Spells</sectiontitle>
+  
+  <p>
+    <label>sec:magic-dice</label>
+    Mechanically, magical spells are abilities.  Casting magic uses a pool of magic dice, and
+    magic checks are dice pool checks.  Characters that do not cast spells also have a magic pool 
+    that represents their life-energy, their animus.  Non-casting characters will have no
+    magic abilities that use their magic pool.  However their magic pools can be used as a 
+    a defence against certain magical effects.  Specialized magic casting characters will have
+    larger magic dice pools, greater energy, and a variety of skills that allow them to use that pool.
+  </p>
+
+  
+  <p>
+    Follow these steps to cast a spell:
+  </p>
+  <descriptions>
+    <term>Roll Magic Check</term>
+    <description>The player chooses any number of dice from their pool
+    and rolls them and sums the face values of the dice to get a result.</description>
+    <term>Grounding</term><description>Optionally, the caster can try and ground a single die from
+    the check if the result is too high if they are holding a staff or spear.  The grounded die is
+    immediately exhausted and removed from the check.</description>
+    <term>Check Success</term>
+    <description>If the sum of the magic dice is less than the difficulty then the spell is 
+    under-powered, sputters out and fails without further effect.   If the result is greater or equal to 
+    the difficulty the spell check succeeds and the spell is cast.  The spells effects apply now.
+    <equation>
+      <line>Difficulty <leqqsymbol/> Result <leqqsymbol/> Overcharge</line>
+    </equation>    
+    </description>    
+    <term>Check Overcharge</term>
+    <description>
+      If the result of the magic check is greater than the Overcharge amount then the spell
+      succeeds but the extra theurgical energies are too great for the caster to handle, the caster loses
+      control over the casting and the extra energies must be disipated somehow.  
+      At that point a range of strange and usually bad things can happen.  GM determines an overcharge effect. See
+      Table<ref>figure:{{ doc_name }}-overcharge-effects</ref> for some suggested overcharge effects to inspire
+      the GM.
+    </description>
+    <term>Remove Dice</term>
+    <description>
+      Finally any remaining Exhausted dice are removed from the casters magic dice pool.
     </description>
   </descriptions>
 
-  <p>
-    <label>sec:magic-dice</label>
-    Mechanically, magical spells are skills.  Casting magic uses a pool of magic dice, and
-    magic checks are dice pool checks.  Each character has a different dice pool depending 
-    on their archetype, their abilities and their skills. Most non-magical characters will 
-    only have animus dice and no way of using them.  Other characters will have greater 
-    energy and a variety of ways of using it.
-  </p>
-
-  <figure position="h">
-    <img id="demon" scale="0.7"/>
-  </figure>
+  {% include "docs/tables/grounding.xml" %}  
   
-  <p>
-    In order to cast spells the player chooses a set of dice from their pool, rolls them and 
-    attempts to roll greater than its difficulty level, and less than its over-charge 
-    value if specified.
+  {% include "docs/tables/overcharge_effects.xml" %}
+  {% include "docs/tables/overcharge_effects_pt2.xml" %}
 
-    <equation>
-      <line>Cast:</line>
-      <line>Over-Charge <geqqsymbol/> Dice Result <geqqsymbol/> Difficulty</line>
-    </equation>
-    
-    If the sum of the magic dice is less than the difficulty then the spell is 
-    under-powered, sputters out and fails.  If the sum of the magic power is greater than 
-    the spell difficulty then the extra theurgical energies must be disipated somehow.
-  </p>
-
-  <p>
-    These magical checks are affected by the complex, chaotic nature of thaumaturgic
-    energies.  We now describe how the laws of magic effect the casting of spells
-    by increasing or decreasing their power depending on circumstance.
-  </p>
 </section>
 
 
-
 <section>
-  <sectiontitle>The Law of Potentials</sectiontitle>
+  <sectiontitle>Principles of Magic (Optional)</sectiontitle>
 
   <p>
-    The first law of magic is that <indexentry>Rules of Magic<subentry>First</subentry></indexentry>
-    <emph>magic requires a potential difference in magical energy levels as a 
-    prerequisite</emph>.  Furthermore, <indexentry>Rules of Magic<subentry>Second</subentry></indexentry>
-    <emph>the productive use of magic requires the construction of a thaumaturgical 
-    conduit between potentialities</emph> through which the magic can flow. 
+    Magical checks are affected by the complex, chaotic nature of thaumaturgic
+    energies.  We now explain the laws of magic, which describe how magic is effected by
+    context and circumstance.  But the reader should beware; magic is a dark art; those
+    who play with the devil's toys will be brought by degrees to wield his sword.
   </p>
 
-  <p>
-    There are many different sources of thaumaturgical potentialities, such as the 
-    potential difference between planes of existance, energy from stored thaumaturgical
-    sources, the animus (a persons spark of life) and so on.  We examine the most
-    important, the most widely used, of these potentialities here.
-  </p>
-
+  
   <subsection>
-    <subsectiontitle>Sources of Magical Potentialities</subsectiontitle>
+    <subsectiontitle>The Law of Potentials</subsectiontitle>
+    <p>
+      The first law of magic is that <indexentry>Rules of Magic<subentry>First</subentry></indexentry>
+      <emph>magic requires a potential difference in energy levels as a prerequisite</emph>.
+      Furthermore, <indexentry>Rules of Magic<subentry>Second</subentry></indexentry>
+      <emph>the productive use of magic requires the construction of a thaumaturgical 
+      conduit between potentialities</emph> through which magical energies can flow. 
+    </p>
+
+    <p>
+      There are many different sources of thaumaturgical potentialities, such as the 
+      potential difference between planes of existance, energy from stored thaumaturgical
+      sources, the animus (a person or animals spark of life) and so on.  We examine the most
+      important, and the most widely used, of these potentialities here.
+    </p>
 
     <subsubsection>
       <subsubsectiontitle>Raw/Planar Magical Sources</subsubsectiontitle>
-
       <p>
-	Planar Magicks are those that use the raw potential differences between planes
-	directly, these so-called Protinus magics, are the most powerful and the most
-	dangerous to magical sources to use:
+	Planar Magicks are those that use the raw potential differences between two
+	planes directly, these so-called Protinus magics, are the most powerful, the
+	most volatile, and most dangerous of the magical sources to use.  Casters
+	attempt to harness the flow from planes of higher energy to planes of
+	lower energy.  There are two main dangers to using this form of thatumaturgical
+	energy.  The first is its volatility. Casters using this energy source are more
+	likely to overcharge their spells.  The second danger are the lurkers in the dark.
+	There are a myriad of creatures lurking in the frigid abyssal planes who hunger
+	eternally to escape to higher planes and feed indiscriminately.  They wait for the
+	opportunity a miscast might provide.
+      </p>
+      
+      <p>
+	<defn>Elemental Magic</defn> is a subset of planar magic that uses the potential
+	between a particular set of well-known planes of existance, the so-called
+	elementatal planes.  The advantage of this energy source is that these planes are
+	comparatively stable and their behaviour is fairly well-understood.  Unfortunately,
+	elemental magic is less	versatile than, the more general, planar magic.
       </p>
 
-      <descriptions>
-	<term>Planar Potentialities</term> 
-	<description>are the most volatile and perhaps the most dangerous means of
-	controlling magical energies.  They employ the the potentiality across two
-	planes.  That is they harness the flow from planes of higher energy to planes of
-	lower energy.  There are two main dangers of 
-	using this form of thatumaturgical energy.   The first is its volatility.  
-	Casters using this energy source are more likely to over charge their spells.
-	The second danger are the lurkers in the dark.  There are a myriad of creatures
-	lurking in the frigid abyssal planes who hunger eternally to escape to higher planes
-	to feed indiscriminately.  They wait for the opportunity a miscast might provide.
-	</description>
-
-	<term>Elemental Magic</term>
-	<description>is a subset of planar magic that uses the potential between a particular 
-	set of well-known planes of existance, the so-called elementatal planes.  The 
-	advantage of this energy source is that these planes are comparatively stable and
-	their behaviour is fairly well-understood.  Unfortunately, elemental magic is less
-	versatile than, the more general, planar magic.
-	</description>
-      </descriptions>
+      <p>
+	If a magical act uses extra-planar differentials, and the flow of energies
+	is from this plane to some other lower 
+	potential plane then energies are expended from this plane, the temperature  
+	drops, lights dim and ice may form.  We call such an action an endothaumic 
+	reaction.  In contradistinction, if energy flows to this plane from some higher 
+	plane then the magic is of a type named exothaumic and the tell-tale side effects 
+	of such practice are bright lights, heat are sometimes smoke of a sulfurous nature.
+	No other magic sources have such side-effects.
+      </p>      
     </subsubsection>
+
+    <figure position="!" fullwidth="true">
+      <img id="skull" scale="0.34"/>
+    </figure>
     
-    {% include "docs/tables/principles_of_magic.xml" %}
+    
+    {% include "docs/tables/magic_modifiers.xml" %}
     
     <subsubsection>
       <subsubsectiontitle>Magic Items and their Power Sources</subsubsectiontitle>
       <p>
-	Magical items use thaumaturgical energies stored  within the device itself.
-	Magic by its very natures is evanescent - it has a tendency to dissipate after
-	a period of time.  Magical items tend to be made of thaumic insulating materials
-	in order to minimize the rate at which magic is dissipated.
+	Magical items typically use thaumaturgical energies stored within the device itself.
+	Magic by its very nature is evanescent - it has a tendency to dissipate after
+	a period of time.  Magical items, therefore, tend to be made of thaumic insulating
+	materials in order to minimize the rate at which magic is dissipated.
       </p>
 
       <p>
-	In game, this stored magical potential is representated by each magical device
-	having its own magic pool and refresh rate.  The item used to store magical energies
+	In game, this stored magical potential is representated by some magical devices
+	having their own magic pool and refresh rates.  The item used to store magical energies
 	may be one use, rechargeable or self recharging.  One use magic items will have no
-	refresh rate.  When a one-use items pool is depleted the device is spent.
-      </p>
-
-      <p>
-	Powerful magical devices may be embued with the residual animus of their
-	creators, or tainted with by the nature of their magical source.  In either case,
-	this is represented in game by the item having one or more aspects that are applied
-	to characters when they interact with the item.  The nature of the interaction
-	required to transfer the items aspects to the character depends on the item,
-	e.g. the aspects might be applied when they touch the item, or when they have used
-	the item a number of times, etc.
+	refresh rate.  When a one-use items dice pool is depleted the device is spent.
       </p>
 
       <descriptions>
-
-	<term>Scrolls</term>
-	<description>
-	  <p>
-	  Like rune spells, scrolls contain the written incantations that must be entoned
-	  to cast a spell.  Unlike runes they do not contain any magical energies with
-	  which to automatically trigger or power the spell.  A scroll user must be able to
-	  read the language in which the scroll is written, checking to do so if necessary,
-	  and must be able to read the scroll aloud.  Furthermore scroll users must power
-	  the scroll with their own magic pool.  These requirements make them difficult
-	  for non-casters to use.  Scrolls may be reused unless they become damaged, or
-	  the creator has built some limit into the scroll (which may be done in order to
-	  reduce the danger of misuse or limit competition with the creator).
-	  </p>
-
-	  <p>
-	    In order to cast a spell from a scroll the character must make a successful
-	    Inochian check.
-	  </p>
-	</description>
-
-	<term>Potions</term>
-	<description>
-	  Potions store thaumic energy in liquid form.  The magic is enfused in a liquid
-	  solvent, and contained within a glass flask with binding magical inscriptions.
-	  Energy stored in a potion begins to escape as soon as the flask is opened.  Potions
-	  are generally created by magic users for the use of non magic users as potions
-	  are easy to use and moderately easy to create.
-	</description>
-	
-	<term>Wands</term>
-	<description>
-	  A wand is a slight baton made from a thaumic conducting material that is used to
-	  better focus and control raw thaumic energy.  Using a wand allows the caster to
-	  reroll one of their spell dice.
-	</description>
-
-	<term>Rods</term>
-	<description>
-	  A rod is a short, <measurement><metric>30-60cm</metric><imperial>1'-2'</imperial></measurement>,
-	  heavy staff that is used to store and direct the flow of thaumic energy.  They are
-	  constructed from a thaumically conductive core encircled in an outer thaumic insulating
-	  shell.  Typically, rods can store an extra two dice worth of thaumic energy.  Magical
-	  rods can be used in combat and are equivalent to a club.  Once used the caster needs
-	  to recharge the rod.
-	</description>
-
-	<term>Staffs and Spears</term>
-	<description>
-	  Staffs are long sticks, <measurement><metric>150-180cm</metric>
-	  <imperial>5'-6'</imperial>
-	  </measurement>, that can be used in combat.  In addition because they are
-	  constructed from a conductive material, typically wood, they can be used to ground
-	  out a spell, in order to mitigate the problems associated with over-charging a spell.
-	  When using a staff to ground out dice you may remove either the highest or lowest die
-	  from the roll.  A spear may also be used for this purpose but its metal tip effects
-	  the flow and so when grounding with a spear only the lowest die result may be grounded
-	  out.
-	</description>      
-
-	<term>Holy Symbol</term>
-	<description>
-	  Holy symbols use contagion to increase the strength of the conduit between a
-	  theurgical caster and their sponsor.  It is assumed that theurgical casters have a
-	  magical symbol and there are penalties for casting theurgical magic without a holy
-	  symbol of the appropriate type.
-	</description>      
-
 	<term>Runic Magic</term>
 	<description>
 	  <p>
-            Magical runes are essentially spells that automatically cast 
-	    themselves when a certain triggering event occurs, usually within the vicinity of 
-	    the runes.
+            are essentially spells that automatically cast 
+	    themselves when a certain triggering event occurs, <ie/> the runes are read or
+	    touched.  The effects of runic magic are typically limited to the vicinity of the
+	    runes.
 	  </p>
 
 	  <p>
 	    The small amount of magic required to cast the runespell is stored in the runes 
 	    themselves when they are created.  Overtime this magic will leach from the rune
 	    and it will no longer be viable, but may still be replenished by a skilled
-	    Runemaster.  For this reason runes are usually carved into materials which are
+	    Runemaster.  Depleted runic magic will have limited or even no effect.
+	    For this reason runes are typically carved into materials which are
 	    highly thaumaturgically non-conductive such as ferrous metals or rock.  Once the
 	    runespell is cast it behaves as any other spell, drawing the energy for the spell
-	    itself from some second source.  For runes carved in stone and steel this is almost 
-	    always from the elemental planes of earth as the spells powers are enhanced 
-	    by the contagious nature of the substrate.
+	    itself from some second source.  For runes carved in stone, glass and steel this
+	    is almost always from the elemental planes of earth as the spells powers are
+	    enhanced by the contagious nature of the substrate.
 	  </p>
 
 	  <p>
 	    Magical swords, armour, rings and the like are typically runic in nature.
+	    See Section<ref>sec:attunement</ref> on page<pageref>sec:attunement</pageref>
+	    for information on using magic items and attunement.
 	  </p>
 	</description>	
+	
+	<term>Scrolls</term>
+	<description>
+	  <p>	     
+	    contain the written incantations that must be entoned to cast a spell <label>sec:scrolls</label>.
+	    They often also contain background thaumic theory, notes on the casters experiences with casting
+	    the spell, other bits of information relevant to the spell, and sometimes bits of information
+	    completely irrelevant to the spell.  Unlike runes they do not contain any magical energies with
+	    which to automatically trigger or power the spell instead drawing their energy from
+	    the readers magic pool.  Most scrolls are written in Inochian, though some
+	    are written in languages like Aquillonian, Lagashi, and Fey, and the caster must be able to read
+	    from the scroll to cast it.  These requirements make scrolls difficult for non-casters to use.
+	  </p>
+
+	  <p>
+	    Scrolls may be used in the following ways: a caster may cast a spell from a scroll, or
+	    they may learn that spell from that scroll, or both.
+	  </p>
+    
+	  <p>
+	    <emph>When casting a spell from a scroll the caster must first make a successful language
+	    check in the language that the scroll is written in to read the scroll</emph>.  If they
+	    fail then the spell is not cast and no magic energy is
+	    expended.  If they fail with a boon they receive +3 to the next attempt.  If they
+	    fail with a bane they must expend an extra magic die after the spell is cast.  If they
+	    succeed with a boon they may add or subtract 3 to their roll or return a magic die exhausted
+	    in the casting to their magic pool.  <emph>After reading the scroll
+	    the spell is cast normally using the casters own magic pool as a a Level 0 spell</emph>.
+	    Casting spells at 0 level overrides the spells normal level range so if a spell has a
+	    minimum level of 1 then it can still be cast at 0 level from a scroll.
+	  </p>
+
+	  <p>
+	    A caster may learn a spell from a scroll given time to study it, and with the use of an 
+	    ability promotion of the appropriate level.    
+	  </p>
+
+	  <p>
+	    Scrolls may be reused unless they become damaged, or the creator has written some
+	    limiting clause into the scroll.  This may be done in order to reduce the danger
+	    of misuse or limit competition with the creator.  A common example of scroll
+	    limitation is to include a glyph of destruction in the scroll so that it may not
+	    be used more than once and cannot be learned.  Another example, are cursed scrolls
+	    designed as a trap to protect the author's trade secrets from others.  Note that the
+	    proliferation of magic is seen as a dangerous thing.  Their unfettered use is frowned
+	    upon and policed by both the College of Mages and the Witchhunters.
+	  </p>
+	</description>
+
+	<term>Potions</term>
+	<description>
+	  store thaumic energy in liquid form.  The magic is enfused in a liquid
+	  solvent, and contained within a glass flask with binding magical inscriptions.
+	  At the best of times potions have a limited shelf-life.  However, the energy stored
+	  in a potion begins to escape rapidly as soon as the flask is opened.  Potions
+	  are generally created by magic users for the use of non magic users as potions
+	  are easy to use and moderately easy to create.  
+	</description>
+	
+	<term>Wands</term>
+	<description>
+	  are slight batons made from thaumic conducting materials that are used to
+	  better focus and control raw thaumic energy. Wands are not intrinsically magical
+	  but are instead tools to better focus and control magic.
+	  See Section<ref>sec:wands</ref> on page<pageref>sec:wands</pageref>.
+	</description>
+
+	<term>Rods</term>
+	<description>
+	  A rod is a short, <measurement><metric>60cm</metric><imperial>2'</imperial></measurement>,
+	  heavy baton that is used to store and direct the flow of thaumic energy.  Casters who
+	  use rods recharge the energy stored within them on a regular basis.
+	  See Section<ref>sec:rods</ref> on page<pageref>sec:rods</pageref>.
+	</description>
+
+	<term>Staffs and Spears</term>
+	<description>
+	  Staffs and spears may be used to ground out magic.   Like wands, staffs do not need
+	  to be intrinsically magical to be used in this manner.  
+	  See Section<ref>sec:staves</ref> on page<pageref>sec:staves</pageref>.
+	</description>
+
+	<term>Holy Symbol</term>
+	<description>
+	  Holy symbols use contagion to increase the strength of the conduit between a
+	  theurgical caster and their sponsor.  They need not be inherantly magical.
+	</description>      
       </descriptions>
     </subsubsection>
 
 
     <subsubsection>
       <subsubsectiontitle>The Animus</subsubsectiontitle>
-
+      
       <p>
 	<indexentry>animus</indexentry>
 	Every living creature is imbued with a store of thaumic energy within and of
-	themselves, their <emph>Animus</emph>.   This energy is used by a number of 
+	themselves, their <emph>Animus</emph>.  This is why even non-magical archetypes
+	have a magic pool.   This energy is used by a number of 
 	forms of magic, the most widely know examples are: necromantic draining, blood 
-	magic, death curses, human sacrifices, and ingestion.
+	magic, death curses, and human sacrifices.
       </p>
 
       <p>
-	It has been postulated that the phenomenon of life is a trickle of magical power 
-	from some higher plane through to some lower plane.  In such a model each creatures
-	life can be construed as a conduit through which magical energies flow.  An alternate
-	model holds that living creatures are wellsprings of magical energies, i.e.\ that
+	It has been postulated that the phenomenon of life is the flow of magical power 
+	from some higher plane through to some lower plane.  In such a model the body is
+	the conduit through which magical energies flow.  An alternate
+	model holds that living creatures are wellsprings of magical energies, <ie/> that
 	they are the sources of magical energies themselves.  A third model holds that both
-	of the first two models are holds true.  Which of these models, if any, are correct
-	remains an extremely contentious area of debate amongst students of these dark arts.
-	In any case, it is widely believed that their exists an animatic flow that replenishes 
-	the animus from some source.
+	of the first two models hold true.  Which of these models, if any, are correct
+	remains an extremely contentious area of debate amongst scholars of the dark arts.
+	In any case, it is widely believed that their exists an animatic flow that is
+	replenishes the animus from some source.
       </p>
 
       <p>
 	The rate of the animatic flow is proportional to the strength of emotions that 
 	the living creature is feeling.  For this reason many thaumatergical predators 
-	will enhance these emotions while feeding.  
+	will enhance these emotions while feeding.
       </p>
 
       <p>
-	It has been hypothesized that apparations, ghosts, banshees and other spiritual 
-	manifestions are the reminants of powerful residual animatic flow, eddies in the
-	animatic flow, if you like.
+	Further, it has been hypothesized that apparations, ghosts, banshees and other
+	spiritual manifestions are the remnants of powerful residual animatic flow.  They
+	are the eddies in the animatic flow, left by the passing of highly magical or highly
+	emotive creatures.
       </p>
     </subsubsection>
 
-
     <subsubsection>
       <subsubsectiontitle>The Biome</subsubsectiontitle>
-
       <p>
 	Rather than draw magical power from a particular animus, some animistic casters,
 	such as	Druids, are able to draw very small amounts of magic from all surrounding
 	living creatures.  While very powerful these magics can be difficult to use if the
-	biome is not in balance. The type of biothaumic magic dice changes depending on the
-	environmental balance.
+	biome is not in balance. 
       </p>
 
       <p>
-	Biothaumic magic uses different dice depending on the environment the caster is in.
-	In biomes with a great deal of balanced animistic energy, forests, swamps etc, each
-	dice in biothaumic magic pool use d8s.  In a biome that is out of balance, like a
-	city, use d4s.  In biomes that are slightly out of balance, e.g.villages and dungens,
-	use d6s.
+	Wild magic is effected by the environment in which it is cast.  In biomes with a
+	great deal of balanced animistic energy, forests, swamps etc, Wild Magic spells
+	receive a +1 DC modifier.  In cities and deserts wild magic suffers a -1 DC
+	modifier.
       </p>
     </subsubsection>
 
@@ -332,17 +380,18 @@
       <subsubsectiontitle>Channelled Magic</subsubsectiontitle>
       <p>
 	Theurgic, Channelled, or Sponsored Magic is magic whose power has been channelled 
-	from a third party ``god'', demon or celestial agent of some description.  Often
-	a shared symbol is used to establish or strengthen the conduit between a caster
-	and the third-party source.  In this type of magic the caster typically acts as
-	an agent for the third-party, allowing the third-party to project their power and
-	their influence.
+	from a third party one of the so-called ``gods'', demons or celestial agents.  It is 
+	assumed that the caster of channeled magic is using a shared ``holy'' symbol to
+	establish or strengthen the conduit between a caster and the third-party source.  In
+	this type of magic the caster typically acts as	an agent for the third-party, allowing
+	the third-party to project their power and their influence.  See
+	Section<ref>sec:holy-symbol</ref> on page<pageref>sec:holy-symbol</pageref>
       </p>
 
       <p>
 	Those with an enquiring mind may be wondering where the third-party gets their
 	energy from.  It seems clear that many gain their power from planar magics.
-	For the so-called 'gods' it has been surmised that the act of prayer forms a
+	For these 'gods' it has been surmised that the act of prayer forms a 
 	conduit with the god through which some small part of the devotees animus travels.
 	Thus people pray to a god,  the god gains animus,  the god grants power to clerics
 	to project the gods interest, the clerics use this power to protect those of their
@@ -353,292 +402,278 @@
       </p>
 
     </subsubsection>
-
-<!--
-    <subsubsection>
-      <subsubsectiontitle>Triggered Conduits</subsubsectiontitle>
-
-      <p>
-	Linked things have potential.
-      </p>
-
-</subsubsection>
-
-Recharging.. roll a dice. on a 6 you charge the item one dice.  on a one you lose the dice.
-
-      <p>
-	Magic has a colour.  The colour is determined by its original source.  Ultimately
-	all magic comes from planar 
-      </p>
--->
-</subsection>
-
-
-
-</section>
-
-<section>
-  <sectiontitle>The Laws of Flux</sectiontitle>
-
-  <p>
-    In order for magic to happen thaumic energies must flow.  
-    It does not matter in which direction magic flows across a potential difference it 
-    may still be harnessed, as a water mill may be located upstream or downstream from a 
-    waterfall and still do work, all that is required is that the magic flows.
-  </p>
-
-  <p>
-    Stopping the flow stops the magic.  Hindering the flow hinders the magic.
-    <bold>To use magic there must be a potential and a flow.</bold>  Certain magical
-    symbols, chiefly the pentagram and the circle, when carved, drawn or laid out upon
-    the ground in salt will stop the flow of magic (salt is used because it is
-    non-conductive, granular, common, cheap, and white.. which makes it easier to see
-    any discontinuities in the sumbols).
-  </p>
-
-  <p>
-    An alternate problem happens when there is too much conductivity.  In practice
-    this happens when there is too much water around, e.g. when it rains, or when
-    the caster is standing in a puddle.  Here the caster is likely to dissipate more
-    energy than they otherwise would.
-  </p>
-
-  
-  
-</section>
-
-<section>
-  <sectiontitle>The Law of Contagion</sectiontitle>
-
-  <p>
-    Magic shapes and binds all things.  Objects that share similarities are linked by 
-    magical ties.  These ties can be used to strengthen magical spells.  For example, having 
-    the blood or hair of a person can be used to strengthen a spell used on that subject.  
-  </p>
-
-
-  <subsection>
-    <subsectiontitle>Blood Magic</subsectiontitle>
-  
-  <p>
-    Note that a characters magic dice pool represents the amount of inner magical energy
-    the character has available to draw upon when resisting magical effects.
-    However, that is only a small fraction of the total creatures life force, their
-    <defn>Animus</defn>.
-  </p>
-
-  <p>
-    The power of <defn>Blood Magic</defn> is derived from thaumaturgical contagion between
-    the blood and the animus of the subject.  Blood magic drains the animus from the subject.
-    When a caster or monster uses a form of blood magic to drain a targets animus roll the
-    targets magic pool.  The caster or monster then receives extra blood magic dice equal to
-    the total of the subjects magic roll, e.g. a character with a 2d6 magic pool is drained,
-    rolls 7 on their magic pool, then the the caster receives an extra 7 temporary blood
-    magic dice.
-  </p>    
-  
-
-  <p>
-    Blood magic is temporary.  Once lost the only way the caster or monster can get more
-    dice is to drain more subjects.
-  </p>
   </subsection>
 
-
   <subsection>
-    <subsectiontitle>Symbolic Contagion</subsectiontitle>
-  
+    <subsectiontitle>The Law of Flux</subsectiontitle>
+
     <p>
-      Similar symbols form flux lines connected by contagion.  Ritual use of special
-      patterns can form an association to other locations and other realms.  Holy symbols
-      form conduits between theurgic source, a deity or demon, and the caster.  Shared
-      symbols carved into portals tie one portal end point to another.
-    </p>
-      
-  </subsection>
-
-
-  <subsection>
-    <subsectiontitle>Temporal Contagion</subsectiontitle>
-    <p>
-      Events that occur at the same time are connected by contagion.  This allows
-      casters to draw on the power of great celestial and planar events, e.g. the
-      alignment of the planets, in order to increase the power of specific spells.
-      Similarly, various times of the year are more auspicious for casting
-      certain rituals because of the contagion with the previous castings of the
-      spell at the same time of the year.      
-    </p>
-  </subsection>
-
-
-  <subsection>
-    <subsectiontitle>Words of Power</subsectiontitle>
-    <p>
-      Words are the key to magic.  When the first great spell casters,
-      monumentally powerful inter-planar beings, cast their spells they
-      did so while intoning in Innochian, the language of magic.  Intoning
-      the same words forms a contagious link with the original castings
-      and other castings of this spell through time.
+      In order for magic to happen thaumic energies must flow, as water must flow for
+      a water mill to grind flour.  
     </p>
 
     <p>
-      Magic words may also be used to train the invokers thoughts and 
-      to gain the attention of other worldly beings, like ringing a bell
-      in the dark.      
+      Stopping the flow stops the magic.  Hindering the flow hinders the magic.
+      <bold>To use magic there must be a potential difference and a flow.</bold>  Certain
+      magical symbols, chiefly the pentagram and the circle, when carved, drawn or laid out
+      upon the ground in salt will stop the flow of magic (salt is used because it is
+      non-conductive, granular, common, cheap, and white.. which makes it easier to see
+      any discontinuities in the symbols).
+    </p>
+
+    <p>
+      An alternate problem happens when there is too much conductivity.  In practice
+      this happens most often when there is too much water around, e.g. when it rains, or
+      when the caster is standing in water.  Here the caster is likely to dissipate more
+      energy than they otherwise would.  In practice this means that dice are exhausted
+      on rolls higher than the usual value.  In rain the exhaust value increases by one,
+      if you are standing in water (above your ankles) the exhaust value increases by two,
+      if you are swimming the exhaust value increases by three.  For example, typically,
+      magic dice are exhausted on a roll of 1 or 2.  If the character is standing knee-deep
+      in "water" in a sewer they exhaust dice on a roll of 4 or less.  If they cast a four
+      dice spell and rolled 1, 3, 4, 6 they would exhaust three dice.
+    </p>  
+  </subsection>
+
+  <subsection>
+    <subsectiontitle>The Law of Conductivity</subsectiontitle>
+
+    <p>
+      Magic shapes and binds all things.  Objects that share similarities are linked by 
+      magical ties.  These ties can be used to strengthen magical spells.  For example, having 
+      the blood or hair of a person can be used to strengthen certain spells when used upon
+      that subject.
+    </p>
+
+    <wrapimg position="r" id="demon" scale="0.14"/>
+    
+    <p>
+      Different materials affect the flow of magic differently.  Natural and biological 
+      materials such as flesh, wood, and water conduct magic very well.   Ferrous metals 
+      glass, and rock do not conduct magic well and can interfere with its casting in
+      unpredictable ways.
+    </p>
+    
+    <p>
+      Iron interferes with the flow of magic.  Magical creatures,
+      particularly the Fey, do not like it.  In contrast non-ferrous metals.. Platinum,
+      Gold, Silver, Copper, conduct magic, though scholars are in disagreement as to why
+      these do so, given iron does not.  Silver, is a particularly excellent conductor and
+      so adversely affects those possessed by extra planar entities such as the undead and
+      lycanthropes.
+    </p>
+
+    <p>
+      Magical circles break conductivity (and therefore also break contagion).
+      What the circle is made of generally doesn't matter.  Though there are specialized 
+      protective circles for the protection of particular beings that while more 
+      powerful require special ingredients, (e.g. salt for vampires).
+    </p>
+
+    <p>
+      Ferrous armour disrupts the flow of magical energies and adversly affects 
+      grounding.  It is impossible to ground-out magic when wearing armour.
+      Similarly, if using a wooden shafted spear with a ferrous head then only the 
+      lowest die may be removed as the metal head interferes with the thaumaturgical 
+      conductivity of the shaft.
+    </p>
+    
+    <p>
+      Water, and particularly running water, is an excellent magical channel.
+      Characters casting magic in standing water or casting in the rain exhaust dice
+      from their result on a roll of a 1 or 2.  In running water they exhaust dice on a
+      result of 1-3.  In addition, running water breaks contagion.
     </p>
   </subsection>
-</section>
-
-
-<section>
-  <sectiontitle>The Law of Conductivity</sectiontitle>
-
-  <p>
-    Different materials effect the flow of magic differently.  Natural and biological 
-    materials such as flesh, wood, and water conduct magic very well.   Ferrous metals 
-    glass, and rock do not conduct magic well and can interfere with its casting in
-    unpredictable ways.  
-  </p>
-
-  <p>
-    Iron interferes with the flow of magic.  Magical creatures, particularly the Fey,
-    do not like it.  In contrast non-ferrous metals.. Platinum, Gold, Silver, Copper,
-    conduct magic, though scholars are in disagreement as to why these do so,
-    given iron does not.  Silver, is a particularly excellent conductor and so
-    adversely affects those possessed by extra planar beings such as the undead and
-    lycanthropes.
-  </p>
-
-  <p>
-    Magical circles break conductivity (and therefore also break contagion).
-    What the circle is made of generally doesn't matter.  Though there are specialized 
-    protective circles for the protection of particular beings that while more 
-    powerful require special ingredients, (e.g. salt for vampires).
-  </p>
-
-  <p>
-    If a spell is over-charged it may be possible to <defn>Ground-Out</defn>
-    the spell.  By using a conductive tool, typically a wooden staff, carved 
-    appropriately, a character can ground-out a spell by holding it and planting 
-    the end on the earth.  This removes either the highest or lowest die from the 
-    result, at the characters discretion, and places it back in the characters pool.
-  </p>
-
-  <p>
-    Ferrous armour disrupts the flow of magical energies and adversly affects 
-    grounding.  It is impossible to ground-out magic when wearing armour.
-    Similarly, if using a wooden shafted spear with a ferrous head then only the 
-    lowest die may be removed as the metal head interferes with the thaumaturgical 
-    conductivity of the shaft.
-  </p>
-  
-  <p>
-    Water, and particularly running water, is an excellent magical channel.
-    Characters casting magic in standing water lose dice from their result 
-    when rolling a 1 or 2.  In running water they lose dice on a result of 1-3.
-    In addition, running water breaks contagion.
-  </p>
 
   
   <subsection>
-    <subsectiontitle>Conduits</subsectiontitle>
+    <subsectiontitle>The Law of Contagion</subsectiontitle>
+
+    <p>
+      Magical contagion refers to the conduits that exist between similar things.
+      All things are bound by magic, and magic binds all things.  But some things
+      are much more closely bound than others.  These sympathetic ties effect the
+      casting of spells for good or ill.
+    </p>
+
     
     <subsubsection>
-      <subsubsectiontitle>Proximal Contagion</subsubsectiontitle>
+      <subsubsectiontitle>Blood Magic</subsubsectiontitle>  
       <p>
-	Things that are close to one another are linked by proximal contagion.
-	This is why many spells have a range.  Beyond that range it becomes
-	difficult to form a decent conduit.  Magic at great distance is very difficult.
+	The power of <defn>Blood Magic</defn> is derived from thaumaturgical contagion between
+	the blood and the animus of the subject.  Blood magic drains the animus from the subject.
+	This allows necromancers and the like to use someone elses magic pool in spells
+	without	their consent (see the rules for shared magic pools).  Blood for this purpose has to be
+	fresh - remember magic is evanescent.  Casting blood magic without a specially prepared
+	sacrificial dagger, an athamé, is done with a -2 DC Modifier.  You do not have to be a
+	caster to cast blood magic.  Some shamen use their own blood as a potential pool of energy.
+      </p>
+
+      <figure position="h">
+	<img id="jordan_cultist" scale="0.18"/>
+      </figure>      
+    </subsubsection>
+
+
+    <subsubsection>
+      <subsubsectiontitle>Symbolic Contagion</subsubsectiontitle>  
+      <p>
+	Similar symbols form flux lines connected by contagion.  Ritual use of special
+	patterns can form an association to other locations and other realms.  Holy symbols
+	form conduits between theurgic source, a deity or demon, and the caster.  Shared
+	symbols carved into portals tie one portal end point to another.  Contagion is
+	the motivation for the use of all symbology in magic. .
+      </p>
+    </subsubsection>
+
+
+    <subsubsection>
+      <subsubsectiontitle>Magical Ingredients</subsubsectiontitle>  
+      <p>
+	Magical ingredients are used to bind a spell to its target or purpose
+	or bind a spell to previous castings of that spell.  Theurgical magic users
+	rarely need or use magical ingredients.	Non-theurgical magic
+	casters are assumed to have a small cache of reasonably general purpose
+	spell casting ingredients about their person at most times (mistletoe,
+	salt, spiders web, mandragora, iron powder, coffin nails, adders tongue
+	and the like).  There are enough suitable substitutes for most ingredients
+	that we can assume that the caster is reasonably well stocked with something
+	that will do at any time.  If however the magic caster has had his stock
+	of ingredients removed then his spells will be cast with a -1 DC Modifier.
+	If the ingredients exhibit strong and unusual contagion with the spell in
+	question the GM might grant a +1 DC Modifier to the check.
+      </p>
+    </subsubsection>
+    
+
+    <subsubsection>
+      <subsubsectiontitle>Somatic Hand Gestures</subsubsectiontitle>  
+      <p>
+	Spells are usually cast using somatic hand gestures.  These gestures tie
+	the spell to other castings of the same spell in the past and in the future,
+	increasing their power.  Magic Checks are performed with a -3 DC Modifier if
+	the caster does not use somatic hand gestures when casting.
+      </p>
+    </subsubsection>
+
+
+    <subsubsection>
+      <subsubsectiontitle>Words of Power</subsubsectiontitle>
+      <p>
+	<indexentry>Words of Power</indexentry>	
+	Words are the key to magic.  When the first great spell casters,
+	monumentally powerful inter-planar beings, cast their spells they
+	did so while intoning in Innochian, the language of magic.  Intoning
+	the same words forms a contagious link with the original castings
+	and other castings of this spell through time. Magic words may also
+	be used to train the invokers thoughts and to gain the attention of
+	other worldly beings, like ringing a bell in the dark.  Casting a
+	spell without verbally intoning the correct words of power
+	is done so at a -1 DC Modifier.
+      </p>
+      
+      <p>
+	Truely powerful creatures are very strongly bound to their true
+	names.  Knowing the true name of a being is a powerful connection
+	when it comes to casting spells that target that indivdual.
       </p>
     </subsubsection>
 
     
-    
-    <p>
-    WHAT ARE WE SAYING HERE?
-    
-      Establishing a conduit .
-      Evocation
+    <subsubsection>
+      <subsubsectiontitle>Temporal Contagion</subsubsectiontitle>  
+      <p>
+	Events that occur at the same time are connected by contagion.  This allows
+	casters to draw on the power of great celestial and planar events, <eg/>
+	eclipses, syzygy, and aniversaries are all potent times due temporal contagion,
+	in order to increase the power of specific spells.
+	Similarly, various times of the year are more auspicious for the casting
+	certain rituals because of the contagion with the castings of the
+	spell at the same time of in prior years, <eg/> the solstices.  The GM
+	should feel free to apply modifiers to casting as they see fit at such times.
+      </p>
+    </subsubsection>
 
-      Blood, Flesh and Indulgence?
+      
+    <subsubsection>
+      <subsubsectiontitle>Proximal Contagion</subsubsectiontitle>
+      <p>
+      	Things that are close to one another are linked by proximal contagion.
+      	This is why many spells have a range.  Beyond that range it becomes
+      	difficult to form a decent conduit.  Magic at great distance is very difficult.
+	If something has been close to the subject of a spell for a long time then
+	that item might make a good spell component.
+      </p>
+    </subsubsection>
 
-      running water.. 
+    <subsubsection>
+      <subsubsectiontitle>Portals</subsubsectiontitle>
+      <p>
+      	Portals are ethereal pathways between or within planes that allow travel
+      	or projection through those portals.   A portal, once established, allows the caster
+      	to overcome many of the barriers of proximal contagion.  Portals are geographically
+	distributed points bound by powerful contagious energies.  
+      	There are two types of porta, those that are known as Greater Portals, True Portals or
+      	simply just Portals, through which corporeal travel is possible, and Lesser Portals,
+      	sometimes called conduits, which are purely magical conduits through which spells may
+	be cast. Opening a portal of any size is such a difficult and dangerous practice that
+	it usually requires assistance at the destination.
+      </p>
 
-      sunrises
-
-      talking through planes.
-    </p>
-
-
-    <p>
-      If a magical act draws upon a flow of energies from this plane to some other lower 
-      potential plane then energies are expended from this plane, then the temperature will 
-      drop, lights will dim and ice may form.  We call such an action an endothaumic 
-      reaction.  In contradistinction, if energy flows to this plane from some higher 
-      plane then the magic is of a type named exothaumic and the tell-tale side effects 
-      of such practice are smoke of a sulfurous nature, bright lights and heat.  Magic 
-      that results from intra-planar sources, that is magic from stored sources has no 
-      such side-effects.
-    </p>
-
-    <p>
-      Name can be used to create a conduit to allow channelling of energy.
-    </p>
-
-    <p>
-      Possession - conduit from some external entity to a person.
-      Gates - opens a door to a different dimension and the creature itself can arrive.
-    </p>
-
-    <p>
-      gestures, ingredients, verbalization .. a form of contagion.
-    </p>
+      <p>
+      	Greater portals require huge amounts of thaumaturgical energy to create and to keep
+      	open.  Once open they allow beings to physically pass from one plane to another.
+      </p>
+      
+      <p>
+	Lesser portals are used for communication.  Devils and demons may create a simulacrum
+	of themselves through a lesser portal.
+      	Their facsimile is created by congealling ectoplasm from the environment.
+      	When the lesser portal is shut this breaks any link through the portal.  However,
+      	the simulacrum remains linked with their parent by contagion for some time afterwards.
+      	Possession is also made possible by lesser portals.
+      </p>
+      
+      <p>
+      	Opening portals is extremely dangerous as their are countless beings lying
+      	in wait, in a manner not to disimilar to the way the monstrous glowing demon fish
+	hungrily await their hapless prey in the cold and the dark of the deep oceans.
+      </p>
+    </subsubsection>
   </subsection>
-
 
   <subsection>
-    <subsectiontitle>Portals</subsectiontitle>
-
+    <subsectiontitle>The Law of Knowledge</subsectiontitle>
     <p>
-      Portals are pathways between or within planes that allow travel or projection 
-      through those portals.  There are two types of portal, Lesser and Greater Portals.  
-      Lesser portals are pin-hole sized, that are too small for physical travel and only 
-      allow communication of for beings to project their will through.  The lesser portal 
-      is briefly opened, usually requiring assistance at the destination, and 
-      the being uses this channel to create a simulacrum of themselves through the portal.
-      The facsimile is created by congealling ectoplasm from the environment.
-      When the lesser portal is shut this breaks any link through the portal.  However, 
-      the simulacrum remains linked with their parent by contagion.
+      Thaumaturgical fluxes bind all things.  The better a caster understands a subject,
+      the better he understands the contagious influences that effect that subject, and
+      the easier it is for the magic user to cast spells that effect the subject.
+      The greater the knowledge the magical practitioner has about his subject the more
+      power they have over that subject <indexentry>Rules of Magic<subentry>Third</subentry>
+      </indexentry>, knowledge is power.
     </p>
 
     <p>
-      Greater portals require huge amounts of thaumaturgical energy to create and to keep 
-      open.  Once open they allow beings to physically pass from one plane to another.
+      The GM, at their discretion, should apply modifiers to the DC if the caster can
+      demonstrate deep or special knowledge about the subject.  Similarly, having an accurate
+      physical or mental model or representation of the target of a spell may grant an
+      additional modifier.
     </p>
 
     <p>
-      Opening portals is extremely dangerous as their are countless beings lying 
-      in wait, in a manner not to disimilar to the way the barbarians of the north fish
-      for seal through the ice.  Hungrilly waiting through the eons.  
+      <indexentry>True Name</indexentry>
+      Over time and with repetition the name of a being forms a contagious conduit with the
+      being.  The names of truely ancient or powerful beings are spoken many many times and
+      their name comes to hold significant power over them.  Knowing the True Name of a magical
+      being grants an additional modifiers to the spell, at the GMs discretion and proportional
+      to the beings age and power.  It is for this reason that many of these beings shroud
+      themselves in the shadows of anonymity, and why many great casters seek solitude.  This
+      is why it pleases the creatures of the night to be known by many names.  It is also why
+      clerics invoke the names of their deities when casting.  The True Name of a creature is
+      a Word of Power bound to that creature.
     </p>
   </subsection>
-</section>
-
-
-<section>
-  <sectiontitle>The Corollary of Knowledge</sectiontitle>
-
-  <p>
-    Theurgical fluxes bind all things.  The better a caster understands these fluxes 
-    for a subject the easier it is for the magic user to cast spells that effect the subject.
-    Knowledege is power.  The greater the knowledge the magical practitioner has about 
-    his subject the more power they have over that subject <indexentry>Rules of Magic<subentry>Third</subentry></indexentry>, 
-    knowledge is power.  The GM, at their discretion, should grant one or 
-    two extra dice to the magical practitioner, if the practioner can demonstrate 
-    special knowledge about the subject. Knowing the true name of a magical being 
-    grants an additional dice.  Similarly having an accurate physical or mental model
-    or representation of the target of a spell gives you an extra dice.
-  </p>
 </section>
 
 
@@ -646,29 +681,158 @@ Recharging.. roll a dice. on a 6 you charge the item one dice.  on a one you los
   <sectiontitle>Other Rules</sectiontitle>
 
   <subsection>
-    <subsectiontitle>Overcharge</subsectiontitle>
+    <subsectiontitle>Assisting a Cast</subsectiontitle>
+    <p>
+      It is possible to cast spells cooperatively.  In order to do so the caster and one or
+      more assistants simultaneously perform a Shared Dice Pool Check.  The result is the sum
+      of all the dice rolled.  In order to assist a conduit must exist between any assistants and
+      the caster, for example via physical contact, or some other magically conductive path (e.g.
+      a staff).  Only the caster may ground out any magic.  Any assistants exhaust
+      dice on a 3 or less, by default, as the conduit from assistant to caster is leaky.  In the
+      event of an overcharge, any assisting casters will also be effected by the overcharge
+      unless they make a Speed DC 14 Check to break the conduit with the caster.
+    </p>    
+  </subsection>
+
+  <subsection>
+    <subsectiontitle>Rituals</subsectiontitle>
+    <p>
+      Rituals are spells cast cooperatively over a long period of time.  A ritual is cast by
+      one or more participants over a period of hours.  There is always one leader of the spell
+      who controls the magic.  The participants in a ritual must be casters or blood magic
+      practioners.  Every hour the participants contribute one dice towards a shared pool, one
+      die per hour.  For every hour after the first the participants must
+      make a Willpower DC 9 check.  If they fail they lose concentration and the ritual fizzles.
+    </p>
 
     <p>
-      If a magical spell is overcharged the caster loses control over it.  At that
-      point a range of strange and usually bad things can happen.
+      Ritual spells receive a +1 DC Modifier for each hour spent casting.  Only the ritual
+      leader may exhaust dice or use items during a spell.  Ritual magic may also gain a +1 DC
+      Modifier from the use of effigies, prepared casting circle, etc.
     </p>
-    
-    {% include "docs/tables/overcharge_effects.xml" %}       
-    {% include "docs/tables/overcharge_effects_pt2.xml" %}       
-    
+  </subsection> 
+
+  
+  <subsection>
+    <subsectiontitle>Influence, Possession and Domination</subsectiontitle>
+    <p>
+      Magic items embued with essence of other beings may come to exert pressure on
+      the bearer of the item.  There are three levels of control a magic item may have
+      over a PC: influence, possession, and domination.  Influence are purely story
+      based effects.  The character has dreams or nightmares and feels the urge to do certain
+      things or is drawn to certain people or locations.   Possession is represented
+      in game by the character gaining a new Aspect to reflect the control of the item
+      over the character.  If the character is dominated then the GM takes the characters
+      sheet and runs the character, usually for a short period of time. The character may
+      or may not be allowed a will-power save against these effects, depending on the item.
+    </p>
+  </subsection>
+
+
+  <subsection>
+    <subsectiontitle>Interaction of Magical Items</subsectiontitle>
+    <p>
+      Controlling magic during the casting of spells is a difficult process
+      at the best of times.  Doing so with multiple casting aids is nearly impossible.
+      For example, a caster should not use a wand and a rod in the same casting, or
+      a wand and a staff.  The caster may carry and even hold multiple
+      items but using more than one at a time is very difficult.  Woe betide the fool
+      who attempts to make play things of such dark and potent energies.  
+    </p>
+  </subsection>
+
+
+  <subsection>
+    <subsectiontitle>Holy Symbols <indexentry>Holy Symbols</indexentry></subsectiontitle>
+    <p>
+      <label>sec:holy-symbol</label>
+      Holy symbols use contagion to increase the strength of the conduit between a
+      theurgical caster and their sponsor.  It is assumed that theurgical casters have a
+      magical symbol.  If a theurgical caster is not using a holy symbol they suffer a
+      -2 DC Modifier.  This is reduced to a -1 DC Modifier if the caster has time to
+      improvise a holy symbol.
+    </p>
+  </subsection>
+
+  
+  
+  <subsection>
+    <subsectiontitle>Staves, Spears and Groundig<indexentry>Grounding - Staffs/Spears</indexentry></subsectiontitle>
+    <p>
+      Staffs are long sticks, <measurement><metric>150-180cm</metric>
+      <imperial>5'-6'</imperial></measurement>, that can be used in combat.  In addition
+      because they are constructed from a conductive material, typically wood, they can be
+      used to ground out spells, to mitigate the effects of overcharging spells.
+      When using a staff to ground out dice you may remove any die from the roll.  A spear may
+      also be used for this purpose but its metal tip effects the flow and so when grounding with
+      a spear dice which rolled a six cannot be grounded out.  
+    </p>
+
+
+    <p>
+      By using a conductive tool, typically a wooden staff, carved 
+      appropriately, a character can ground-out a spell by holding it and planting 
+      the end on the earth.  This removes either the highest or lowest die from the 
+      result, at the characters discretion, and places it back in the characters pool.
+    </p>
+
+   
+    <p>
+      After the dice have been rolled the result may be greater than the overcharge value for the spell.
+      When this occurs the caster may be able to <emph>ground</emph> out extra
+      overcharge energy.  This involves disipating some of the magical energy by creating a conduit for
+      magic to flow into the earth.  This is typically done using a wooden staff or spear.  Grounding
+      allows the caster to exhaust any single die from the check before the results of the check are
+      finalized. <indexentry>Grounding</indexentry> 
+      <indexentry>Spell Casting<subentry>Grounding</subentry></indexentry>    
+    </p>
+
+    <p>
+      The process of grounding requires a well controlled magical flux.  This flux is highly sensitive
+      to metal.  Metal adversely effects the flow of magic and casters wearing armour cannot ground out
+      spells.  Casters wearing light armours are mildly effected due to buckles, studs etc and suffer a
+      -1 DC Modifier.  Spears with their metal tips are not as good at grounding as staves and suffer a
+      -1 DC Modifier.  
+    </p>
+  </subsection> 
+
+  <subsection>
+    <subsectiontitle>Wands</subsectiontitle>
+    <p>
+      Using a wand allows the caster to reroll one of their spell dice.
+    </p>
+  </subsection> 
+
+  <subsection>
+    <subsectiontitle>Rods</subsectiontitle>
+    <p>
+      Rods are
+	  constructed from a thaumically conductive core encircled in an outer thaumic
+	  insulating shell.  Typically, rods can store an extra die worth of thaumic
+	  energy.  Magical rods can be used in combat and are equivalent to a club.  Once used
+	  the caster needs to recharge the rod which they may do when they rest as if it were
+	  their own pool.  The die used for the rod in a spell check should be rolled separetly
+	  from the casters pool (the dice in these pools exhaust independently).
+    </p>
+  </subsection> 
+
+  
+  <subsection>
+    <subsectiontitle>Attunement</subsectiontitle>
+
+    <p>
+      Powerful magical devices may be embued with the residual animus of their
+      creators, or tainted by the nature of their magical source.  In either case,
+      this is represented in game by the item having one or more aspects that are applied
+      to characters when they attune with the item.  The nature of the interaction
+      required to transfer the items aspects to the character depends on the item,
+      <eg/> the aspects might be applied when they touch the item, or when they have used
+      the item a number of times, <etc/>.
+    </p>
   </subsection> 
 
 
 
-  <subsection>
-    <subsectiontitle>Cooperative Casting</subsectiontitle>
-    <p>
-      It is possible to cast spells co-operatively for non-combat spells.  In order
-      to do so the caster and one or more assistants simultaneously roll their magic
-      dice for the check.  The result is the sum of all the dice rolled.  Only the
-      caster may ground out any magic.  The assistant exhausts dice on a 1 or 2 as
-      the channel from assistant to caster is leaky.
-    </p>    
-  </subsection>
+
 </section>
 

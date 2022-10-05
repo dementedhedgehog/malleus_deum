@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+
+  {% from "docs/macro_npcs.xml" import build_npcs with context %}
+  
+  <chapter>
+    <chaptertitle>Von Bauer Chateau</chaptertitle>
+
+
+    <section>
+      <sectiontitle>Setup</sectiontitle>
+
+      <p>
+	Magic users can check when they enter the yard, Perception vs DC 10.
+	If they succeed they feel a brief movement over them as a veil being pulled past
+	their faces.
+      </p>
+      
+      <p>
+	Chateau von Bauer, situated in High Town.  In the inner city, surrounded by
+	walls.  Lots of city guards.  It's a four story, large house with a large stairwell
+	in the middle.
+      </p>
+
+
+      <p>
+	Everyone is in the main hall.  That's the only place there's any lights.  They can
+	see the lights from the stairwell.	
+      </p>
+      
+
+      <p>
+	Out: Guards turn up.  Trial.
+      </p>
+    </section>
+
+
+    <section>
+      <sectiontitle>The Main Hall</sectiontitle>
+
+      <p>
+	Versullio, Roland's Tutor (Shape shifting, Illithid) with the Tongue of the
+	Gatewalkers.   The family is sitting at the table.  Their meal uneaten.
+	The servants are standing in the back.  All are possessed by Pilichin the
+	Phage.
+      </p>
+
+      <p>
+	"We've been expecting you?".  Playing for time so the guards can get here.
+	Will try and bribe them.  
+      </p>
+
+      {{ build_npcs("von_bauer_chateau.versullio") }}
+      
+    </section>    
+  </chapter>  
+</book>

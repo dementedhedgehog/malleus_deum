@@ -11,22 +11,74 @@
   </monstergroupinfo>
 
   <monster>    
-    <monstertitle>Bat, Swarm</monstertitle>
-    <monsterid>animal.bat_swarm</monsterid>
-    <monstertag>Animal</monstertag>
-    <monstermove>5</monstermove>
+    <monstertitle>Baboon</monstertitle>
+    <monsterid>animal.baboon</monsterid>
+    <monstertags><animal/></monstertags>
+    <monstermove>7</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>20</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>2d8</monsterresolve>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><soldier/></monsterrole>
+    <armour>9</armour>
     <strength>3</strength>
     <endurance>3</endurance>
     <agility>3</agility>
     <speed>3</speed>
-    <luck>3</luck>
-    <willpower>3</willpower>
+    <perception>3</perception>    
+    <monsterdescription>
+      <p>
+	Baboons are fierce animals that attack quickly and
+	in numbers.
+      </p>
+    </monsterdescription>    
+  </monster>  
+
+  <monster>    
+    <monstertitle>Howlers</monstertitle>
+    <monsterid>animal.howlers</monsterid>
+    <monstertags><animal/></monstertags>
+    <monstermove>7</monstermove>
+    <monsterhealth>10</monsterhealth>
+    <monsterstamina>20</monsterstamina>
+    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
+    <monstermagic>3d6</monstermagic>
+    <monsterrole><soldier/></monsterrole>
+    <armour>9</armour>
+    <strength>3</strength>
+    <endurance>3</endurance>
+    <agility>3</agility>
+    <speed>3</speed>
+    <perception>3</perception>    
+    <monsterdescription>
+      <p>
+	Howlers attack from the trees using surprise when they can.
+	They will steal whatever food they can.
+      </p>
+    </monsterdescription>    
+  </monster>  
+
+  <monster>    
+    <monstertitle>Bat, Swarm</monstertitle>
+    <monsterid>animal.bat_swarm</monsterid>
+    <monstertags><animal/></monstertags>
+    <monstermove>5</monstermove>
+    <monsterhealth>10</monsterhealth>
+    <monsterstamina>20</monsterstamina>
+    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
+    <monstermagic>3d6</monstermagic>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
+    <strength>3</strength>
+    <endurance>3</endurance>
+    <agility>3</agility>
+    <speed>3</speed>
     <perception>3</perception>    
     <abilitylevelid>monster.swarm_1</abilitylevelid>
     <abilitylevelid>monster.countless_bites_2</abilitylevelid>
@@ -43,20 +95,20 @@
   <monster>    
     <monstertitle>Bear</monstertitle>
     <monsterid>animal.bear</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>8</monstermove>
     <monsterhealth>50</monsterhealth>
     <monsterstamina>20</monsterstamina>
     <monsterinitiativebonus>+2</monsterinitiativebonus>
-    <monsterresolve>2d8</monsterresolve>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>2d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
     <strength>15</strength>
     <endurance>14</endurance>
     <agility>9</agility>
     <speed>14</speed>
-    <luck>9</luck>
-    <willpower>7</willpower>
     <perception>11</perception>
     <monsterdescription>
       <p>
@@ -71,20 +123,20 @@
   <monster>    
     <monstertitle>Bee, Swarm</monstertitle>
     <monsterid>animal.bee_swarm</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>5</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>10</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>3d8</monsterresolve>
+    <monstermettle>3d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
     <strength>3</strength>
     <endurance>3</endurance>
     <agility>3</agility>
     <speed>3</speed>
-    <luck>3</luck>
-    <willpower>3</willpower>
     <perception>3</perception>    
     <abilitylevelid>monster.swarm_1</abilitylevelid>
     <abilitylevelid>monster.fly_1</abilitylevelid>
@@ -99,20 +151,20 @@
   <monster>    
     <monstertitle>Beetle, Swarm</monstertitle>
     <monsterid>animal.beetle_swarm</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>5</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>10</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>3d8</monsterresolve>
+    <monstermettle>3d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
     <strength>3</strength>
     <endurance>3</endurance>
     <agility>3</agility>
     <speed>3</speed>
-    <luck>3</luck>
-    <willpower>3</willpower>
     <perception>3</perception>    
     <abilitylevelid>monster.swarm_1</abilitylevelid>
     <abilitylevelid>monster.countless_bites_4</abilitylevelid>
@@ -122,25 +174,51 @@
       </p>
     </monsterdescription>    
   </monster>  
+
+  <monster>    
+    <monstertitle>Eels, Shreiking</monstertitle>
+    <monsterid>animal.eels_shreiking</monsterid>
+    <monstertags><animal/></monstertags>
+    <monstermove>5</monstermove>
+    <monsterhealth>10</monsterhealth>
+    <monsterstamina>10</monsterstamina>
+    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monstermettle>3d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
+    <monstermagic>3d6</monstermagic>
+    <monsterrole><grunt/></monsterrole>
+    <armour>9</armour>
+    <strength>3</strength>
+    <endurance>3</endurance>
+    <agility>3</agility>
+    <speed>3</speed>
+    <perception>3</perception>    
+    <abilitylevelid>physical.swim_2</abilitylevelid>
+    <monsterdescription>
+      <p>
+      </p>
+    </monsterdescription>    
+  </monster>  
+  
   
 
   <monster>    
     <monstertitle>Fly, Swarm</monstertitle>
     <monsterid>animal.fly_swarm</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>5</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>10</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>3d8</monsterresolve>
+    <monstermettle>3d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
     <strength>3</strength>
     <endurance>3</endurance>
     <agility>3</agility>
     <speed>3</speed>
-    <luck>3</luck>
-    <willpower>3</willpower>
     <perception>3</perception>    
     <abilitylevelid>monster.swarm_1</abilitylevelid>
     <abilitylevelid>monster.fly_1</abilitylevelid>
@@ -155,20 +233,20 @@
   <monster>    
     <monstertitle>Rat, Swarm</monstertitle>
     <monsterid>animal.rat_swarm</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>5</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>10</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>3d8</monsterresolve>
+    <monstermettle>3d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
     <strength>3</strength>
     <endurance>3</endurance>
     <agility>3</agility>
     <speed>3</speed>
-    <luck>3</luck>
-    <willpower>3</willpower>
     <perception>3</perception>    
     <abilitylevelid>monster.swarm_1</abilitylevelid>
     <abilitylevelid>monster.countless_bites_4</abilitylevelid>
@@ -179,24 +257,46 @@
     </monsterdescription>    
   </monster>  
   
-
   <monster>    
-    <monstertitle>Spider, Giant</monstertitle>
-    <monsterid>animal.spider_giant</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertitle>Shark</monstertitle>
+    <monsterid>animal.shark</monsterid>
+    <monstertags><animal/></monstertags>
     <monstermove>8</monstermove>
     <monsterhealth>30</monsterhealth>
     <monsterstamina>20</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>2d8</monsterresolve>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>8</armour>
     <strength>16</strength>
     <endurance>14</endurance>
     <agility>11</agility>
     <speed>15</speed>
-    <luck>7</luck>
-    <willpower>8</willpower>
+    <perception>12</perception>    
+    <monsterdescription>
+    </monsterdescription>    
+  </monster>  
+
+  
+  <monster>    
+    <monstertitle>Spider, Giant</monstertitle>
+    <monsterid>animal.spider_giant</monsterid>
+    <monstertags><animal/></monstertags>
+    <monstermove>8</monstermove>
+    <monsterhealth>30</monsterhealth>
+    <monsterstamina>20</monsterstamina>
+    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
+    <monstermagic>3d6</monstermagic>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
+    <strength>16</strength>
+    <endurance>14</endurance>
+    <agility>11</agility>
+    <speed>15</speed>
     <perception>12</perception>    
     <abilitylevelid>monster.poison_bite_2</abilitylevelid>
     <abilitylevelid>monster.web_2</abilitylevelid>
@@ -221,20 +321,20 @@
   <monster>    
     <monstertitle>Spider, Large</monstertitle>
     <monsterid>animal.spider_large</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>8</monstermove>
     <monsterhealth>5</monsterhealth>
     <monsterstamina>5</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>2d8</monsterresolve>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
     <strength>16</strength>
     <endurance>14</endurance>
     <agility>11</agility>
     <speed>15</speed>
-    <luck>7</luck>
-    <willpower>8</willpower>
     <perception>12</perception>    
     <abilitylevelid>monster.poison_bite_1</abilitylevelid>
     <abilitylevelid>physical.jump_1</abilitylevelid>
@@ -252,20 +352,20 @@
   <monster>    
     <monstertitle>Spider, Swarm</monstertitle>
     <monsterid>animal.spider_swarm</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>3</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>10</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>3d8</monsterresolve>
+    <monstermettle>3d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><solo/></monsterrole>
+    <armour>9</armour>
     <strength>3</strength>
     <endurance>3</endurance>
     <agility>3</agility>
     <speed>3</speed>
-    <luck>3</luck>
-    <willpower>3</willpower>
     <perception>3</perception>    
     <abilitylevelid>monster.swarm_2</abilitylevelid>
     <abilitylevelid>monster.countless_bites_3</abilitylevelid>
@@ -282,20 +382,20 @@
   <monster>    
     <monstertitle>Wolf</monstertitle>
     <monsterid>animal.wolf</monsterid>
-    <monstertag>Animal</monstertag>
+    <monstertags><animal/></monstertags>
     <monstermove>3</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>10</monsterstamina>
     <monsterinitiativebonus>+3</monsterinitiativebonus>
-    <monsterresolve>3d8</monsterresolve>
+    <monstermettle>3d8</monstermettle>
+    <monsterluck>3d6</monsterluck>
     <monstermagic>3d6</monstermagic>
-    <ac>9</ac>
+    <monsterrole><soldier/></monsterrole>
+    <armour>9</armour>
     <strength>3</strength>
     <endurance>3</endurance>
     <agility>3</agility>
     <speed>3</speed>
-    <luck>3</luck>
-    <willpower>3</willpower>
     <perception>3</perception>    
     <abilitylevelid>monster.swarm_2</abilitylevelid>
     <abilitylevelid>monster.countless_bites_3</abilitylevelid>

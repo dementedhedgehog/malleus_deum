@@ -4,66 +4,139 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Wilderness Abilities</abilitygrouptitle>
     <abilitygroupid>wilderness</abilitygroupid>
-    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Represents skills used to live in the wilderness: hunting, tracking,
+        Represents those abilities used to live in the wilderness: hunting, tracking,
 	wayfinding, survivalism and woodcraft.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
-  
 
+
+  
+  <ability>
+    <abilitytitle>Dungeoneering</abilitytitle>
+    <abilityid>wilderness.dungeoneering</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/><untrained/></tags>
+    <abilitydescription>
+      <p>
+	Skills used for living under the ground: detect slope, detect depth,
+	find direction.
+      </p>
+    </abilitydescription>
+    <spline><p x="-60" y="30"/></spline>
+    <prereqabilitylevel>wilderness.lore_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitylevels untrained="-3" from="0" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Hunting</abilitytitle>
+    <abilityid>wilderness.hunting</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/></tags>
+    <abilitydescription>
+      <p>
+	This ability involves finding and hunting animals with a bow
+	or spear.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>wilderness.tracking_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitylevels from="0" to="4"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Scout</abilitytitle>
+    <abilityid>wilderness.scout</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/></tags>
+    <abilitydescription>
+      <p>
+	Scout is the ability to notice things that are out of
+	place in the wilderness.  The character becomes aware of
+	any subtle but strange changes in the environment.  
+      </p>
+      <p>
+        <indexentry>Detect Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
+        <indexentry>Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
+	Scout can be used to detect traps, snares, lures etc in the wilderness.
+	In urban environments use the Notice ability, and use a
+	Perception Check in other cases.
+      </p>	
+    </abilitydescription>
+    <spline><p x="60" y="30"/></spline>
+    <prereqabilitylevel>wilderness.lore_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="4"/>
+  </ability>
+  
   <ability>
     <abilitytitle>Stealth</abilitytitle>
     <abilityid>wilderness.stealth</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><wilderness/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr><attr>Agility</attr></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/></tags>
     <abilitydescription>
       <p>
-	Stealth ia the skill of moving silently, avoiding detection, while
+	Stealth ia the ability to move silently, avoiding detection, while
 	not leaving a trace of the characters passage in the wilderness.
-	This ability is used to avoiding being tracked.  Stealth can also
+	This ability is used to avoid being tracked.  Stealth can also
 	be used for evading pursuit in the wilderness.
       </p>
 
       <p>
 	In urban or built environments use the Sneak ability, and use an Agility Check
 	in other cases.
-      </p>	
-      
+      </p>	      
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <failures>0</failures>
-        <check>Std 2d8 vs opponents Tracking or Scout</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <failures>3</failures>
-        <check>Std 2d8 + 3 vs opponents Tracking or Scout</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 5 vs opponents Tracking or Scout</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="30"/></spline>
+    <prereqabilitylevel>wilderness.lore_2</prereqabilitylevel>
+    <abilitycheck dc="Opponents Tracking or Scout"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitylevels from="0" to="4"/>
   </ability>
 
 
   <ability>
+    <abilitytitle>Survivalism</abilitytitle>
+    <abilityid>wilderness.survivalism</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/><untrained/></tags>
+    <abilitydescription>
+      <p>
+	Constructing make-shift shelters, starting fires in challenging conditions, 
+	finding water, trapping and the use of snares.  Normally this is not an issue 
+	for characters.  However, when the cold north winds start to howl and the 
+	snow falls, when food runs low, or when alone in the burning deserts survival
+	becomes	difficult and someone should test against this ability.
+        <indexentry>Traps<subentry>create Survivalism (Wilderness)</subentry></indexentry>	
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>wilderness.wayfinding_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitylevels untrained="-3" from="1" to="4"/>
+  </ability>
+
+  <ability>
     <abilitytitle>Tracking</abilitytitle>
     <abilityid>wilderness.tracking</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><wilderness/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/></tags>
     <abilitydescription>
       <p>
 	Tracking is the art of following trails left by others.
@@ -77,35 +150,20 @@
 	a trail of blood.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 vs opponents Stealth or Hide</check>
-      </abilitylevel>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Std 2d8 + 3 vs opponents Stealth or Hide</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 5 vs opponents Stealth or Hide</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="15" y="30"/></spline>
+    <prereqabilitylevel>wilderness.lore_1</prereqabilitylevel>   
+    <abilitycheck dc="Opponents Stealth or Hide"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="4"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Wayfinding</abilitytitle>
     <abilityid>wilderness.wayfinding</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><wilderness/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>        
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/></tags>
     <abilitydescription>
       <p>
 	Wayfinding is the art of finding paths through 
@@ -118,189 +176,33 @@
 	test much easier.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs DDC 12</check>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 3 vs DDC 12</check>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 5 vs DDC 12</check>	
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-30" y="60"/></spline>
+    <prereqabilitylevel>wilderness.lore_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="4"/>
   </ability>
-
   
-  <ability>
-    <abilitytitle>Scout</abilitytitle>
-    <abilityid>wilderness.scout</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><wilderness/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
-    <abilitydescription>
-      <p>
-	Scout is the ability to notice things that are out of
-	place in the wilderness.  The character becomes aware of
-	any subtle but strange changes in the environment.  
-      </p>
-
-      <p>
-        <indexentry>Detect Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
-        <indexentry>Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
-	Scout can be used to detect traps, snares, lures etc in the wilderness.
-	In urban environments use the Notice ability, and use a
-	Perception Check in other cases.
-      </p>	
-      
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 vs DDC 12</check>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Std 2d8 + 3 vs DDC 12</check>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Std 2d8 + 5 vs DDC 12</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
 
   <ability>
-    <abilitytitle>Survivalism</abilitytitle>
-    <abilityid>wilderness.survivalism</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><wilderness/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
+    <abilitytitle>Wilderness Lore [Type]</abilitytitle>
+    <abilityid>wilderness.lore</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wilderness/></tags>
     <abilitydescription>
       <p>
-	Constructing make-shift shelters, starting fires in challenging conditions, 
-	finding water, trapping and the use of snares.  Normally this is not an issue 
-	for characters.  However, when the cold north winds start to howl and the 
-	snow falls, when food runs low, or when alone in the burning deserts survival
-	becomes	difficult and someone should test against this skill.
-        <indexentry>Traps<subentry>create Survivalism (Wilderness)</subentry></indexentry>	
+	This ability represents knowledge of a particular biome.   The (Type)
+	will be a tag that is a rather broad geographical region.  The GM
+	determines available wilderness types but some suggested regions are
+	The Frozen Barrens, The Blasted Deserts, The Four Seas, and the
+	Lands of Civilized Men.  There should not be too many.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>wilderness.wayfinding_1</prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 3 vs DDC 12</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 5 vs DDC 12</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Hunting</abilitytitle>
-    <abilityid>wilderness.hunting</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><wilderness/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
-    <abilitydescription>
-      <p>
-	The skill involves finding and hunting animals with a bow
-	or spear.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 10</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>wilderness.tracking_1</prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>2</attempts>
-        <check>Std 2d8 + 3 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 5 vs DDC 10</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Dungeoneering</abilitytitle>
-    <abilityid>wilderness.dungeoneering</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><wilderness/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>    
-    <abilitydescription>
-      <p>
-	Skills used for living under the ground: detect slope, detect depth,
-	find direction.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-	<successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 10</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 3 vs DDC 10</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 4 vs DDC 10</check>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 + 5 vs DDC 10</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
+    <spline></spline>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
 </abilitygroup>

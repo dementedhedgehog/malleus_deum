@@ -1,0 +1,350 @@
+<section>
+  <sectiontitle>Death and Damage<label>sec:death</label></sectiontitle>
+
+  <p>
+    The GM is the final arbiter of who lives and dies in the game.  However
+    these decisions are not made in a vacuum.  The GM should understand the
+    expectations of the players about the lethality of the campaign.  It is
+    perhaps best if the GM discusses campaign lethality with the players
+    before the campaign starts.  Whatever lethality is acceptable it behooves
+    the GM to exagerate the lethality of the game to the players while playing
+    in order to maximise suspense. Any decisions about character death should
+    be made with careful consideration and never made arbitrarily or maliciously.
+    If possible delay the outcome to the next session to give you time to think of
+    an alternative result.
+  </p>
+
+  <p>
+    There are six game mechanisms by which we handle character death, injury
+    and insanity.  They are Hit Points, Fractional Damage, Near Death, Instant Death,
+    Aspects (for phobias, insanity, disease, chronic illnesses and disabilities) and
+    Divine Intervention.
+  </p>
+
+  <descriptions>
+    <term>Hit Points</term>
+    <description>
+      <p>
+       Hit points, that is Stamina and Health, are used to determine the players
+       well-being, mainly during combat and combat-like scenarios.  These are scenarios
+       where the player's skill and experience would be pertinent to avoiding injury.
+       Combat is one example of this.  Another example might be avoiding
+       poison darts from a trap.
+      </p>
+    </description>
+
+    <term>Fractional Damage</term>
+    <description>
+      <p>
+       Fractional damage occurs to a character when the character suffers damage outside
+       of combat.  For example a character that falls off a roof may take two thirds
+       of their total full hit points damage.  When calculating fractional damage
+       round down any remainder so that damage is minimized.
+      </p>
+    </description>
+
+    <term>Near Death</term>
+    <description>
+      Once the characters hit points reach zero they gain the Down condition.  Each round
+      they roll on the Near Death Table until their situation is resolved; see
+      Table<ref>table:gmg-near-death-table</ref> on page
+      <pageref>table:gmg-near-death-table</pageref>.  If an effect reduces a character
+      to Near Death then all their hit points are reduced to zero.
+    </description>
+
+    <term>Instant Death</term>
+    <description>
+      There are some situations where the character cannot possibly survive, <eg/>
+      falling from a great height into a sea of lava.  In this case the GM can
+      rule that the character has died instantly.   The GM should remember that
+      the characters are supposed to be epic heroes and give them every chance
+      of saving themselves before having them die like this.
+      <p>
+	Before killing a character outright the GM may consider the following:
+	<olist>
+	  <li>Declare an alternate outcome of some sort, or</li>
+	  <li>Negotiating an outcome with the player and the party, or</li>
+	  <li>Ending the session to gain time to ponder the best response at length.</li>
+	</olist>
+      </p>
+    </description>
+    
+    <term>Aspects</term>
+    <description>
+      One use of aspects is to encode ongoing effects to a character.  A character
+      who nearly drowns might gain a hydrophobia aspect.  A charcter who falls
+      off a building might gain a crippled aspect.  A character with a disease might
+      gain a Coughs aspect.  Because these aspects have an ongoing effect on a character
+      the GM should assign them sparingly to characters.
+      We suggest only doing so in the case of banes rolled while saving.
+    </description>
+
+    <term>Divine Intervention (Optional)</term>
+    <description>
+      Divine intervention is a special rule where the characters last act is to plead
+      for intervention from a God or patron before they die.  They make a Std Check with
+      a difficulty of 24, if successful the God intervenes, usually indirectly, on the
+      characters behalf somehow.  Particularly religious characters gain a +1
+      on this roll.    If the character has donated to the gods church recently they gain
+      an additional +1.  Such intervention, when it happens, is never free of obligation
+      and the god will surely require something in return.
+    </description>
+  </descriptions>
+
+
+  <p>
+    FIXME: 
+    Outside of combat
+    
+    HP only in combat?
+    - hit points are the enemy of narrative.
+    - plot armour.
+    - sword to the throat.
+    - outs!!!
+
+    The GM should choose the option that is most reasonable and narratively satisfying.
+    If a character falls into a pool of lava they are dead.  If they have been knocked
+    down by Orcs then roll on the Near Death Table.  
+
+    How should we handle falling, drowning damage etc.   In short the
+    answer is don't.  Whenever there's a chance of failure in potentially
+    fatal checks like this you're doing it wrong.  Establish the potential
+    consequences ahead of time and possible outs.  If they fail then their
+    party members might have a chance to save them?  Possibly failure just
+    means they can't perform the action (e.g. climb the cliff).
+  </p>
+  
+  
+  {% include "docs/tables/near_death_table.xml" %}
+</section>
+
+
+<section>
+  <sectiontitle>Combat Damage
+    <indexentry>Death <subentry>see Zero Health</subentry></indexentry>
+    <indexentry>Zero Hit Points</indexentry>
+    <indexentry>Banes</indexentry>
+  </sectiontitle>
+
+  <p>
+    We make a distinction between damage dealt to characters within combat, and
+    damage dealt to characters outside of combat.  The GM should handle damage dealt within
+    combat using Hit Points and Near Death Rolls.  That is, when a character is hit
+    they take the damage from the weapon and they subtract that damage from the characters
+    hit points. A characters Health has a minimum value of zero.  When the characters
+    Health is reduced to zero they are <defn>Down</defn>, and enter a
+    <emph>Near Death</emph> state.  
+  </p>
+  
+  <p>           
+    This does <emph>not</emph> apply to damage dealt outside of combat, including danger
+    to the character due to things like drowning, falling, fire, poison, assasination,
+    coup de grâce etc.  In these situations, hit points are the enemy of the narrative,
+    they kill suspense, and they should not be used.  Besides, it makes no sense that a
+    10th level fighter character should be more resistant to drowning than a 1st level
+    fighter.
+  </p>    
+  
+  {% include "docs/tables/near_death_table.xml" %}
+</section>
+
+
+<section>
+  <sectiontitle>Falling Damage</sectiontitle>
+
+  <p>
+    When a character falls the type of damage they receive depends on how
+    far they fall, see Table <ref>table:falling</ref> on page
+    <pageref>table:falling-table</pageref>.  The GM should feel free to
+    make allowances for the character slowing their fall, or the surface that
+    the character is landing on as they see fit.  For example the characters
+    should be allowed to make a Luck check to see if they fall on something
+    soft or at least not to damaging or perhaps hitting an awning half way down.
+    The characters could make an agility check to see if they are able to grab
+    something to reduce the speed of their fall.  Each such success should reduce
+    the fall damage by one tier in the Falling Damage table.
+  </p>
+
+  <p>
+    For example, a character falls off the top of a five story building. They make
+    an agility check and hit an awning on the way down.  They make a further Luck
+    check and land in a stack of hay.
+  </p>
+
+  {% include "docs/tables/falling_damage.xml" %}    
+</section> 
+
+
+<section>
+  <sectiontitle>Suffication and Drowning</sectiontitle>
+  <p>
+    Most people can hold their breath for 2 minutes, 12 combat rounds.
+    Beyond that they must start to roll on the Near Death table.  Once
+    they can breathe again then they are restored completely.  No hit points
+    are lost.  If they rolled a bane on any of their death rolls
+    the GM might consider giving them an aspect or a temporary condition.
+  </p>
+</section>
+
+
+<section>
+  <sectiontitle>Fire Damage</sectiontitle>
+  <p>
+    XXXX FIXME
+  </p>
+</section>
+
+
+<section>
+  <sectiontitle>Coup de Grâce and Assassination</sectiontitle>
+  <p>
+    Narrative imperative...
+  </p>
+</section>
+
+
+<section>
+  <sectiontitle>Poison</sectiontitle>
+  <p>
+    XXXX
+  </p>
+</section>
+
+
+
+
+<section>
+  <sectiontitle>Diseases<label>sec:diseases</label></sectiontitle>
+
+  <subsection>
+    <subsectiontitle>
+      The Red Death
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      Wasting Murrain
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+      From zombies?
+    </p>
+  </subsection>
+  
+  <subsection>
+    <subsectiontitle>
+      The Wasting Sickness
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+  <subsection>
+    <subsectiontitle>
+      Leprosy
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      Confutatis Maledictis
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      Sweating Sickness
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      Bad Humours
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      Hemophilia
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      Hysterical Blindness
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      Rabies
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+  
+  <subsection>
+    <subsectiontitle>
+      Spotted Fever
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+  
+
+  <subsection>
+    <subsectiontitle>
+      The Ague
+    </subsectiontitle>
+    <p>
+      FIXME: TO DO
+    </p>
+  </subsection>
+</section>
+
+
+<section>
+  <sectiontitle>Insanity<label>sec:insanity</label></sectiontitle>
+  <p>
+    When under stress or in the face of great danger a character might
+    succumb to insanity.  See the section on Insanities below.
+    Insanity might at the GMs discretion lead to sudden insights or
+    vice versa.
+  </p>
+  
+
+  {% include "docs/tables/insanities.xml" %}  
+</section>

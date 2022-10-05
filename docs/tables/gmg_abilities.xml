@@ -1,0 +1,28 @@
+<smaller>
+{% for ability_family in db.ability_families %}
+{# paginate the lists of abilities #}
+{% for abilities_page in
+   ability_groups.get_abilities_by_family_paginated(ability_family.family_type, page_size=20) %}
+<table>
+<tablecategory>FullWidth</tablecategory>
+<tablespec>
+  <fixed>0.23</fixed>
+  <fixed>0.27</fixed>
+  <fixed>0.4</fixed>
+</tablespec>
+<tabletitle>{{ ability_family.name }} Abilities</tabletitle>
+<tableheaderrow>
+  <td>Name</td>
+  <td>Tags</td>
+  <td>DDC</td>
+</tableheaderrow>
+{% for ability in abilities_page %}
+<tablerow><td>{{ ability.get_title() }}</td>
+<td>{{ ability.get_tags_str() }}</td>
+<td>{{ ability.ddc }}{% if ability.overcharge %} <leqsymbol/>{{ ability.overcharge }}{% endif %}</td>
+</tablerow>
+{% endfor %}
+</table>
+{% endfor %}
+{% endfor %}
+</smaller>

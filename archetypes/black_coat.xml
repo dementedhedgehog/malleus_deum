@@ -1,401 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-
-cleric/flagellant/fighter/barbarian-type/sage
-
-high willpower
-endurance
-haunted?
-
--->
 <archetype>
 
   <archetypetitle>Black Coat</archetypetitle>
   <archetypeid>black_coat</archetypeid>
   <archetypedescription>
     <p>
-      The end of times is upon us brothers.   All we have left is
-      to meet our makers on terms of our own choosing; fighting
-      against the darkness or cowering in our beds.  May
-      the gods give us strength to hold our course.
-    </p>
-
-    <!--
-    <figure>
-      <img src="./resources/halfling_rascal.jpg"/>
-    </figure>
-    -->
-    
-    <p>
-      Black Coats are itinerant preachers that have eschewed the
-      bureaucratic, and often corrupt, church organizations in order
-      to take the message of the gods directly to the people.
-      <!--
-      Trade off aspects from their gods for their spell dice.
-
-      e.g. 
-      purge the unclean
-      by the letter of the book
-      holy number of X
-      aescetic.. keeps almost no money.
-      shed no blood
-      chaste
-
-      Get thee hence.      
-      God provides.. roll to have a required item.
-      aspect... Shed no blood - Not a drop by mine hand.
-      -->
+      <emph>
+	The end of times is upon us brothers.   All we have left is
+	to meet our makers on terms of our own choosing; fighting
+	against the darkness or cowering in our beds.  May
+	Mithras grant us the strength to hold our course.
+      </emph>      
     </p>
   </archetypedescription>
+  <archetypeprimaryabilities>
+      <list> 
+        <li>Str:-1, End:+0, Ag:+0, Spd:+0, Per:+2, or</li>
+        <li>Str:-1, End:-1, Ag:+0, Spd:+0, Per:+3</li>
+      </list>
+  </archetypeprimaryabilities>
+  <archetypeinitialabilities>    
+    <p>
+      All Black Coats start with the following skills: ✱mace.strike_1 or ✱staff.strike_1, ✱physical.dodge_2,
+      ✱luck.lucky_1, ✱luck.reroll_1, ✱luck.brilliant_planner_2, ✱luck.nabail_1, ✱physical.search_1,
+      ✱social.etiquette_2 [Church of Mithras], Etiquette[Westenreich Nobility] III, Negotiate I, Deceive I,
+      Politics II, Book Learning III,  Theology II, Theurgic Lore I, Merovingian IV, Aquillonian III,
+      History[Westreich] II, and Mathematics I, Arcana Lore I, True Sight I
+    </p>
 
-  <archetypeac>7</archetypeac>
-  <archetypemove>6</archetypemove>
-  <archetypeinitiative>10</archetypeinitiative>
+  </archetypeinitialabilities>
+  <archetypemovedistance>6</archetypemovedistance>
   <startingcash>20 + d4 sp</startingcash>
-  <startinggear>Chain armour, mace, shield, hat, dagger, backpack, rations for a week.</startinggear>
+  <startinggear>
+    Start with the following equipment: Cloak, Backpack, Tunic, Hose, Leather Boots, Sack or
+    Leather Belt Pouch, Flint, a Mace,  or Staff, Dagger, rations for a week.
+  </startinggear>
 
   <height>
-    <metric>150 + 2d20 cm</metric> 
+    <metric>160 + 3d10 cm</metric> 
     <imperial>4'8" + 2d8 inches</imperial>
   </height>
   <weight>
-    <metric>60 + 3d10 kg</metric> 
-    <imperial>130 + 4d20 pounds</imperial>
+    <metric>60 + 2d10 kg</metric> 
+    <imperial>130 + 3d20 pounds</imperial>
   </weight>
-  <age>16 + 3d6 years</age>
-  <appearance>Grim, watchful, .</appearance>
+  <age>28 + 2d6 years</age>
+  
 
-  <aspectexamples>Purity of Mind above All, I will shed no blood.</aspectexamples>
+  <aspectexamples>
+    The Pen is Mightier than the Sword, By the letter of the Book, Why hast thou forsaken me?,
+    My work has only just begun!, Purity of Mind above All, I Will Shed no Blood of Man.
+  </aspectexamples>
+  
   <archetypetags>
-    <tag>Human</tag>
-    <tag>Magic-User</tag>
-    <tag>Cleric</tag>
+    <human/>
+    <humanoid/>
+    <magicuser/>    
+    <medium/>
   </archetypetags>
 
-  <archetypeinitialabilities>
-    <p>
-      Choose one of Shield Block I, Hammer Strike I or Crossbow I.  Choose one of
-      Elemental Magic I or Rune Magic I.
-    </p>
-  </archetypeinitialabilities>
   
-  <levelprogressiontable>    
+  <archetypebio>
+  </archetypebio>
+
+  <levelprogressiontable>
     <level>
       <levelnumber>1</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>6+d3</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>6+d3</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>0</levellore> -->
-      <!-- <levelmartial>0</levelmartial> -->
-      <!-- <levelgeneral>0</levelgeneral> -->
-      <!-- <levelmagical>0</levelmagical> -->
-      <levelfate>3<d6/></levelfate>
-      <levelfaterefresh>+1<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>    
-
-    <level>
-      <levelnumber>2</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>3<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>    
-
-
-    <level>
-      <levelnumber>3</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>3<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
+      <levelmettle>4</levelmettle>
+      <levelmettlerefresh>+2</levelmettlerefresh>
+      <levelstamina>d4+6</levelstamina>
+      <levelhealth>d4+8</levelhealth>
+      <levelhealthrefresh>1d4</levelhealthrefresh>
+      <levelluck>2</levelluck>
+      <levelluckrefresh>+1</levelluckrefresh>
+      <levelmagicpool>3</levelmagicpool>
+      <levelmagicrefresh>+1</levelmagicrefresh>
+      <leveldescription></leveldescription>
+      <levelabilities></levelabilities>
+      <levelpromotions></levelpromotions>
     </level>
-
-    <level>
-      <levelnumber>4</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>3<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>
-
-    <level>
-      <levelnumber>5</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>4<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>
-
-    <level>
-      <levelnumber>6</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>4<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>
-
-    <level>
-      <levelnumber>7</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>4<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>
-
-    <level>
-      <levelnumber>8</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>5<d6/></levelfate>
-      <levelfaterefresh>+2<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>
-
-    <level>
-      <levelnumber>9</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>5<d6/></levelfate>
-      <levelfaterefresh>+3<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>
-
-    <level>
-      <levelnumber>10</levelnumber>
-      <levelresolve>2<d8/></levelresolve>
-      <levelresolverefresh>+1<dany/></levelresolverefresh>
-      <levelstamina>+4</levelstamina>
-      <levelstaminarefresh>2d4</levelstaminarefresh>
-      <levelhealth>+4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <!-- <levellore>15</levellore> -->
-      <!-- <levelmartial>8</levelmartial> -->
-      <!-- <levelgeneral>8</levelgeneral> -->
-      <!-- <levelmagical>10</levelmagical> -->
-      <levelfate>5<d6/></levelfate>
-      <levelfaterefresh>+3<dany/></levelfaterefresh>
-      <levelmagicpool>4<d6/></levelmagicpool>
-      <levelmagicrefresh>+2<dany/></levelmagicrefresh>      
-      <leveldescription>
-      </leveldescription>
-    </level>
-  </levelprogressiontable>
-
-
-  <abilitymodifiers>
-
-    <innate>
-      <abilityid>club.smash</abilityid>
-      <level>1</level>      
-    </innate>
-
-    <innate>
-      <abilityid>club.strike</abilityid>
-      <level>1</level>      
-    </innate>
-        
-    <innate>
-      <abilityid>lore.theology</abilityid>
-      <level>2</level>      
-    </innate>
-
-    <innate>
-      <abilityid>magic.turn_undead</abilityid>
-      <level>1</level> 
-    </innate>
-    
-    <innate>
-      <abilityid>magic.heal</abilityid>
-      <level>1</level>      
-    </innate>
-
-    <innate>
-      <abilityid>language.inochian</abilityid>
-      <level>1</level>      
-    </innate>
-
-    <innate>
-      <abilityid>magic_school.arcana</abilityid>
-      <level>1</level>      
-    </innate>
-
-    <innate>
-      <abilityid>magic_school.theurgic</abilityid>
-      <level>1</level>      
-    </innate>
-    
-    <innate>
-      <abilityid>shield.block</abilityid>
-      <level>1</level>      
-    </innate>
-    
-    <abilitygroupmodifier>
-      <abilitygroupid>hammer</abilitygroupid>
-      <martialpointmodifier>-1</martialpointmodifier>
-    </abilitygroupmodifier>
-
-    <abilitymodifier>
-      <abilityid>language.brythinian</abilityid>
-      <lorepointmodifier>-1</lorepointmodifier>
-    </abilitymodifier>    
-
-    <abilitymodifier>
-      <abilityid>lore.theology</abilityid>
-      <lorepointmodifier>-3</lorepointmodifier>
-    </abilitymodifier>
-
-    <abilitymodifier>
-      <abilityid>luck.nabail</abilityid>
-      <lorepointmodifier>-1</lorepointmodifier>
-      <abilitylevelmodifier>
-	<level>1</level>
-	<generalpointmodifier>-1</generalpointmodifier>	
-	<recommended/>
-      </abilitylevelmodifier>      
-    </abilitymodifier>
-
-    <abilitymodifier>
-      <abilityid>social.leadership</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
-    
-    <disable>
-      <abilitygroupid>necromancy</abilitygroupid>
-    </disable>
-    <enable>
-      <abilityid>necromancy.commune</abilityid>
-    </enable>
-
-    <abilitymodifier>
-      <abilityid>social.intimidate</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
-
-    <abilitymodifier>
-      <abilityid>social.negotiate</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
-    
-    <innate>
-      <abilityid>social.etiquette</abilityid>
-      <level>1</level>
-    </innate>
-
-    <disable>
-      <abilitygroupid>special</abilitygroupid>
-    </disable>
-      
-    <abilitygroupmodifier>
-      <abilitygroupid>sword</abilitygroupid>
-      <martialpointmodifier>+1</martialpointmodifier>
-    </abilitygroupmodifier>
-    
-    <abilitymodifier>
-      <abilityid>fine_arts.oratory</abilityid>
-      <generalpointmodifier>-1</generalpointmodifier>
-    </abilitymodifier>    
-  </abilitymodifiers>
+</levelprogressiontable>
 </archetype>
 
 

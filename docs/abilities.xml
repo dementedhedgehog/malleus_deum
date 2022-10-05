@@ -5,45 +5,25 @@
 
    
   -->
+{% from "docs/macro_ability.xml" import build_ability with context %}    
 <book>
   <chapter>
     <chaptertitle>Abilities</chaptertitle>
     
-    {% from "docs/macro_ability.xml" import build_ability with context %}    
     <section>
-      <sectiontitle>Lore Abilities</sectiontitle>
-      {% for ability in ability_groups.get_abilities()
-      if ability.is_lore_ability() and not ability.is_gmg_ability() %}
-      {{ build_ability(ability) }}    
-      {% endfor %}      
+      <sectiontitle>Lore Abilities</sectiontitle> 
+
+      {% for ability_group in ability_groups %}
+      <subsection>
+	<subsectiontitle>{{ ability_group.title }} XXX</subsectiontitle>
+	{{ str(ability_group) }}
+	
+	<p>AAA</p>
+
+      </subsection>
+      {% endfor %}
+      
     </section>
 
-    <section>
-      <sectiontitle>Defense Abilities</sectiontitle>
-    </section>
-
-    <section>
-      <sectiontitle>Martial Abilities</sectiontitle>
-      {% for ability in ability_groups.get_abilities()
-      if ability.is_martial_ability() and not ability.is_gmg_ability() %}
-      {{ build_ability(ability) }}    
-      {% endfor %}      
-    </section>
-
-    <section>
-      <sectiontitle>General Abilities</sectiontitle>
-      {% for ability in ability_groups.get_abilities()
-      if ability.is_general_ability() and not ability.is_gmg_ability() %}
-      {{ build_ability(ability) }}    
-      {% endfor %}      
-    </section>
-
-    <section>
-      <sectiontitle>Magic Abilities</sectiontitle>
-      {% for ability in ability_groups.get_abilities()
-      if ability.is_magic_ability() and not ability.is_gmg_ability() %}
-      {{ build_ability(ability) }}    
-      {% endfor %}      
-    </section>
   </chapter>  
 </book>

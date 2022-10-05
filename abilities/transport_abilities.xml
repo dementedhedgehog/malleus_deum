@@ -10,22 +10,22 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Transport Abilities</abilitygrouptitle>
     <abilitygroupid>transport</abilitygroupid>
-    <abilitygroupfamily>Mundane</abilitygroupfamily>
+    <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
         Transport abilities involve riding horses, driving carts and 
 	the operation of boats and ships.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
   
 
   <ability>
     <abilitytitle>Animal Handling</abilitytitle>
     <abilityid>transport.animal_handling</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><transport/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><transport/><untrained/></tags>
     <abilitydescription>
       <p>
 	The character has experience caring for animals.  Particularly
@@ -33,241 +33,112 @@
 	and they can diagnose and treat common ails.	 
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <check>Std 2d8 vs DDC 10</check>
-        <successes>2</successes>
-        <attempts>1</attempts>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 10</check>
-        <successes>1</successes>
-        <attempts>1</attempts>
-     </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 3 vs DDC 10</check>
-        <successes>1</successes>
-        <attempts>1</attempts>
-      </abilitylevel>
-      
-    </abilitylevels>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <spline><p x="-30" y="0"/></spline>
+    <abilitylevels untrained="-3" from="0" to="4"/>
   </ability>
 
-
+  <ability>
+    <abilitytitle>Carter</abilitytitle>
+    <abilityid>transport.carter</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><transport/><untrained/></tags>
+    <abilitydescription>
+      <p>
+  	This represents the ability to drive a cart.  Under normal
+  	circumstances this ability need not be checked.  Make a check
+  	on muddy roads, in the event of broken axles or harnesses,
+  	when trying to drive the cart fast or when the cart is overloaded.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>transport.animal_handling_1</prereqabilitylevel>
+    <spline><p x="30" y="30"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="2"/>
+  </ability>
+ 
   <ability>
     <abilitytitle>Horse-Riding</abilitytitle>
     <abilityid>transport.horse_riding</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><transport/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><transport/><untrained/></tags>
     <abilitydescription>
       <p>
-	The ability to ride a horse.
+  	The ability to ride a horse.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 10</check>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>transport.animal_handling_1</prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 2 vs DDC 10</check>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 3 vs DDC 10</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Drive Cart</abilitytitle>
-    <abilityid>transport.drive_cart</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><transport/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	This represents the ability to drive a cart.  Under normal 
-	circumstances this ability need not be checked.  Make a check
-	on muddy roads, in the event of broken axles or harnesses, 
-	when trying to drive the cart fast or when the cart is overloaded.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 8</check>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <check>Std 2d8 + 2 vs DDC 8</check>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Sailor</abilitytitle>
-    <abilityid>transport.sailor</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><transport/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Sailing involves the use of a ship.  This ability includes the use of small craft 
-	and galleys.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs DDC 10</check>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 + 3 vs DDC 10</check>
-      </abilitylevel>
-
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 4 vs DDC 10</check>	
-	<leveldescription>
-	  <p>
-	    The character has experience with large craft crewed by dozens of 
-	    sailors.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <check>Std 2d8 + 5 vs DDC 10</check>	
-	<leveldescription>
-	  <p>
-	    The character has risen to a notable position within a large ship,
-	    e.g. a mate or a boatswain, quartermaster, etc.  While at sea 
-	    one of the mates keeps watch at all times.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-
-
-      <abilitylevel>
-        <levelnumber>4</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <check>Std 2d8 + 5 vs DDC 10</check>	
-	<leveldescription>
-	  <p>
-	    The character is able to perform the role of Captain of a medium to large 
-	    ship has a lot of experience on the water is is naturally adept as a sailor.
-	    The characters exploits garner him respect from fellow sailors.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="-30" y="30"/></spline>
+    <prereqabilitylevel>transport.animal_handling_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="4"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Master</abilitytitle>
     <abilityid>transport.master</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><transport/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><transport/></tags>
     <abilitydescription>
       <p>
-	Masters are navigators.  They learn to plot a ships course, first through local waters
-	and then across the chartered oceans.
+  	Masters are navigators.  They learn to plot a ships course, first through local waters
+  	and then across the chartered oceans.
+      </p>
+
+      <p>
+  	At low levels the character is a pilot.  They know one particular area; a river, bay or harbour;
+  	well.  They know lore pertaining to that place and are able to navigate
+  	ships within that area safely in normal weather conditions.  The character has spent a lot of
+	time in the presence of sailors from ports around the world.  They have sea/river lore for
+	all the bodies of water commonly sailed by the men with whom they have spoken.
+      </p>
+
+      <p>
+  	At level three the character is a Master navigator.  They have passed some theoretical and
+  	pratical tests to obtain a certificate from a guild at no small pecuniary price.
+  	They have the ability to navigate a ship using charts, the stars and/or
+  	dead reckoning.
       </p>
     </abilitydescription>
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>transport.sailor_1</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
 
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>transport.sailor_1</prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 vs DDC 12</check>	
-	<leveldescription>
-	  <p>
-	    The character is a pilot.  They know one particular area; a river, bay or harbour;
-	    well.  They know lore pertaining to that place and are able to navigate 
-	    ships within that area safely in normal weather conditions.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 3 vs DDC 12</check>	
-	<leveldescription>
-	  <p>
-	    The character has spent a lot of time in the presence of sailors 
-	    from ports around the world.  They have sea/river lore for all the bodies 
-	    of water commonly sailed by the men with whom they have spoken.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
+  <ability>
+    <abilitytitle>Sailor</abilitytitle>
+    <abilityid>transport.sailor</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><transport/><untrained/></tags>
+    <abilitydescription>
+      <p>
+  	Sailing involves the use of a ship.  This ability includes the use of small craft
+  	and galleys.  At higher levels the character has experience with large craft crewed
+	by dozens of sailors.
+      </p>
 
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-        <check>Std 2d8 + 6 vs DDC 12</check>	
-	<leveldescription>
-	  <p>
-	    The character is a Master navigator.  They have passed some theoretical and 
-	    pratical tests to obtain a certificate from a guild at no small pecuniary price.  
-	    They have the ability to navigate a ship using charts, the stars and/or 
-	    dead reckoning.
-	  </p>
-	</leveldescription>
-      </abilitylevel>
-    </abilitylevels>
+      <p>
+  	At level four the character is capable enought to perform a role requiring significant
+	ability within the ship <eg/> a mate or a boatswain, quartermaster, etc.  At fifth level
+  	the character is able to perform the role of Captain of a medium to large
+  	ship has a lot of experience on the water is is naturally adept as a sailor.
+  	The characters exploits and knowledge garner him respect from fellow sailors.
+      </p>      
+    </abilitydescription>
+    <spline><p x="60" y="0"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="0" to="5"/>
   </ability>
 </abilitygroup>

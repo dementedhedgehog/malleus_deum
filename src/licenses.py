@@ -17,10 +17,6 @@ import codecs
 import sys
 from utils import COMMENT
 
-# Handle utf-8 characters on ascii consoles.
-#UTF8Writer = codecs.getwriter('utf8')
-#sys.stdout = UTF8Writer(sys.stdout)
-
 # Set this True to make missing license stuff a fatal error
 fail_fast = True
 
@@ -29,7 +25,7 @@ def fail(msg):
     if fail_fast:
         raise Exception(msg)
     else:
-        print msg
+        print(msg)
     return
 
 def sanitize(text):
@@ -49,7 +45,6 @@ class ResourceInfo:
         self.url = None # url where the resource came from.
         self.notes = None
         return
-
 
     def get_contents_desc(self):
         # NOTE: need to sanitize fields with underscores in them!
@@ -106,8 +101,6 @@ class ResourceInfo:
         if root.tag != "licenseinfo":
             raise Exception("Bad xml looking for xml with a root tag of licenseinfo "
                             "in %s" % license_fname)
-
-        print "----@@@@@@@@@@@@@@@@@@ %s" % license_fname
         
         for child in list(root):
            tag = child.tag
@@ -118,7 +111,8 @@ class ResourceInfo:
                else:
                    text = u""
            else:
-               text = unicode(child.text.strip())
+               #text = unicode(child.text.strip())
+               text = str(child.text.strip())
         
            #for attr, value in json_info.items():
            if tag is COMMENT:
@@ -185,20 +179,23 @@ class Licenses:
         return
 
     def find(self, name):
-        print("____________________________________")
-        print(self.lookup.keys())
         return self.lookup[name]
     
     def load(self, resource_dirs):
+        print("-----------------")
+        print(resource_dirs)
         for resource_dir in resource_dirs:
             for dir_name, sub_dirs, files in os.walk(resource_dir):
 
+                print((dir_name, sub_dirs, files))
                 #if dir_name == resource_dir:
                 #    continue
 
                 # look for a resource file.
                 license_fnames = [fname for fname in files
-                                        if fname.endswith(".xml")]        
+                                        if fname.endswith(".xml")]
+                #print(dir_name)
+                #print(license_fnames)
                 for license_fname in license_fnames:
 
                     # 
@@ -207,11 +204,7 @@ class Licenses:
                     info.parse(license_fname=license_fname)
                     key, _ = splitext(basename(license_fname))
 
-
-                    if key == "dragon.xml":
-                        print "cc %s" % dir_name
-                        print "ccxxxx %s" % files
-                        print " --- %s" % self.lookup.keys()
+                    print(license_fname)
 
                     # Check for duplicate resource license names.
                     if key in self.lookup:
@@ -264,7 +257,6 @@ class Licenses:
 
     #             if dir_name == resource_dir:
     #                 continue
-    #             print("---- %s" % dir_name)
 
     #             resource_extensions = (".png", ".svg", ".jpg", "gif")
     #             resource_files = [fname for fname in files
@@ -309,7 +301,6 @@ class Licenses:
         Check licenses for art in the given list of resource dirs.
 
         """
-        print "\n----"
         n_chars = len(root_dir) + 1
         for resource_info in self.lookup.values():
 
@@ -318,12 +309,12 @@ class Licenses:
             else:
                 status = "*** MISSING LICENSE INFO ***"
 
-            print "%s %s %s %s %s" % (
+            print("%s %s %s %s %s" % (
                 status,
                 resource_info.fname,
                 resource_info.get_license(),
                 resource_info.get_artist(),
-                resource_info.source)
+                resource_info.source))
         return    
 
 
@@ -343,14 +334,11 @@ if __name__ == "__main__":
         else:
             status = "*** MISSING LICENSE INFO ***"
 
-        #if img_info.artist is not None:
-        #    print img_info.artist.encode("ascii", "replace")
-            
-        print "%s %s %s %s %s" % (
+        print("%s %s %s %s %s" % (
             status,
             img_info.resource_fname,
             img_info.get_license(),
             img_info.get_artist(),
-            img_info.source)
+            img_info.source))
         
     

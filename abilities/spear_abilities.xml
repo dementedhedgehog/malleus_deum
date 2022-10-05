@@ -2,137 +2,97 @@
 <abilitygroup>
   <abilitygroupinfo>
     <abilitygrouptitle>Spear Use</abilitygrouptitle>
-    <abilitygroupid>aspears</abilitygroupid>
-    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupid>spears</abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        These skills represent training in the use of spears, 
+        These abilities represent training in the use of spears, 
 	halberds, bill hooks, glaives and other pole-arms in combat.
+	Spears and Polearms can also use Staff abilities.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
-
-
-  <ability>
-    <abilitytitle>Spear Strike</abilitytitle>
-    <abilityid>spear.strike</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <keywords><weapon/><spear/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-        Characters equipped with a spear or polearm can strike with
-	it during combat doing weapon damage.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage</damage>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 2 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 2 + Str modifier</damage>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
 
 
   <ability>
     <abilitytitle>Polearm - Hook</abilitytitle>
     <abilityid>spear.hook</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <keywords><weapon/><spear/></keywords>
-    <abilityattrmodifiers><attr>Speed</attr><attr>Agility</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><spear/><reach/><piercing/></tags>
     <abilitydescription>
       <p>
         Characters equipped with a polearm, but <bold>not a spear</bold>, can
 	use the hooked edge of this weapon to attempt to disarm an opponent
 	or remove their shield.
       </p>
+      <p>
+	If the character successfuly hits the attacker makes an opposed Strength
+	test against the opponent.  If successful the defender drops their weapon/shield.
+      </p>
     </abilitydescription>
+    <spline><p x="90" y="30"/></spline>
+    <abilitycheck dc="Targets Defence DC"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon</abilitydmg>
+    <prereqabilitylevel>spear.strike_1</prereqabilitylevel>    
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
 
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>3</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage and opponent drops weapon/shield</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier and opponent drops weapon/shield</damage>
-      </abilitylevel>      
-    </abilitylevels>
+  <ability>
+    <abilitytitle>Spear Strike</abilitytitle>
+    <abilityid>spear.strike</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><spear/><reach/><piercing/></tags>
+    <abilitycheck dc="Targets Defence DC"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength</abilitydmg>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a spear or polearm can strike with
+	it during combat doing weapon damage.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitylevels from="0" to="4"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Spear - Brace for Charge</abilitytitle>
     <abilityid>spear.brace</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <keywords><weapon/><spear/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><weapon/><spear/><reach/><piercing/></tags>
     <abilitydescription>
       <p>
         Characters equipped with a spear or polearm can brace against
-	a charge striking first and doing extra damage.
+	a charge striking first and doing extra damage.  To use this
+	the attack must be directed at an opponent that is Charging
+	in the direction of the character.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>3</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Double weapon damage, opponent must be charging.</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Double weapon damage + Str modifier, opponent must be charging.</damage>
-      </abilitylevel>      
-    </abilitylevels>
+    <abilitycheck dc="Targets Defence DC"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>2x(Weapon + Strength)</abilitydmg>
+    <spline><p x="-75" y="30"/></spline>
+    <prereqabilitylevel>spear.strike_2</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
   </ability>
 
 
   <ability>
-    <abilitytitle>Spear - Circle of Death</abilitytitle>
-    <abilityid>spear.circle_of_death</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <keywords><weapon/><spear/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilitytitle>Spear - Fend</abilitytitle>
+    <abilityid>spear.fend</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><spear/></tags>
     <abilitydescription>
       <p>
 	The character swings their weapon in large arcs keeping foes at bay.
-	Opponents must make a morale check to attack and the character may
-	roll to hit the first opponent who tries to do so in the round as a
-	reaction.  If successful the opponent cannot close to attack.
+	Opponents must make a Mettle Check with DDC 10+Level the first time
+	they declare a melee attack on a character, if they fail their attack
+	fails. In addition, the character may make a Spear Strike counter attack
+	as a reaction against the first opponent that tries to strike them.
       </p>
 
       <p>
@@ -140,54 +100,11 @@
 	weapon, and it only works when the opponents are within a 180° arc.  
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>3</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Each opponent must make a Resolve Check vs DDC 10 to attack the first time,
-	reaction counter-attack</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Each opponent must make a Resolve Check vs DDC 10 to attack the first time,
-	reaction counter-attack</damage>
-      </abilitylevel>      
-    </abilitylevels>
+    <abilitycheck dc="Targets Defence DC"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength</abilitydmg>
+    <spline><p x="-30" y="75"/></spline>
+    <prereqabilitylevel>spear.strike_2</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
   </ability>
-
-
-  <ability>
-    <abilitytitle>Spear Parry</abilitytitle>
-    <abilityid>spear.parry</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><weapon/><spear/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-        The player parrys a blow using their weapon.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>spear.strike_1</prereqabilitylevel>	
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Opposed Speed Check</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Opposed Speed Check + 2</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>  
 </abilitygroup>

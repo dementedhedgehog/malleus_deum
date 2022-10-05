@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+
+{% from "docs/macro_npcs.xml" import build_npcs with context %}
+  
+  <chapter>
+    <chaptertitle>The Dwarven Mines under Laibstadt</chaptertitle>
+
+
+    <section>
+      <sectiontitle>Setup</sectiontitle>
+
+      <p>
+	The dwarves keep a subset of the old mines functional and free from
+	vermin for smuggling goods into the city.  They don't want to clear
+	out the rest of the mines because they act as a deterent to people.
+	There is an entrance to the tunnels in the basement of the Murengers Arms.
+      </p>
+
+      <p>
+	After a while in the tunnels Grundewald will lead them up to a tee intersection,
+	one arm of which is walled off.  Grundewald will knock a hole in the wall to
+	allow the characters to climb through.  But he will stay by the hole to stop
+	any intrusions into the safe tunnels.   Grundewald offers to come in if he hears
+	any trouble (this is the out).
+      </p>	
+    </section>
+    
+
+    <section>
+      <sectiontitle>Spiders in the Sewers</sectiontitle>
+
+      <p>
+	They find an old rats skull the size of a football.
+      </p>
+
+      <p>
+	Characters in the mines under the city make a perception or dungeoneering
+	check.. difficulty 15.  If successful they notice strands of a web like substance
+	running along the ground.  If they touch it they feel it give a quick jerk.. like
+	a fishing line.  Next round the spiders charge in.  If the characters didn't succeed
+	then they are surprised.  Grundewald hands the characters an old dwarven map with the
+	relevant path lined out.
+      </p>
+
+      <p>
+	Out: The ratmen turn up.  
+      </p>	
+
+      {{ build_npcs("dwarven_mines.spider") }}
+	
+    </section>
+
+
+
+    <section>
+      <sectiontitle>The Ratmen Cometh</sectiontitle>
+
+      <p>
+	Hearing the commotion a local gang of ratmen slavers come running in and try and
+	capture the party.  If captured they will be taken via tunnels down to the docks
+	and sold to the 
+      </p>
+
+
+      <p>
+	Out: Grundewald turns up.
+      </p>	
+      
+      {{ build_npcs("dwarven_mines.ratmen") }}
+	
+    </section>
+    
+  </chapter>  
+</book>

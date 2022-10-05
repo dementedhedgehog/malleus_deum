@@ -1,15 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding=utf-8
 """
-  Builds pdfs from the xml files.
- 
-  Xelatex installer for windows.
-  http://www.texts.io/support/0002/
-  (May need to set up the proxy for downloading packages)
 
-   Erroneous fontspec error:
-   This is quite likely caused by mismatched versions of fontspec and expl3.
-   Update at least those packages using the MikTeX Update tool.
+    Builds pdfs from the xml files.
+ 
+    Xelatex installer for windows.
+    http://www.texts.io/support/0002/
+    (May need to set up the proxy for downloading packages)
+
+    Erroneous fontspec error:
+    This is quite likely caused by mismatched versions of fontspec and expl3.
+    Update at least those packages using the MikTeX Update tool.
 
 """
 import sys
@@ -18,16 +19,15 @@ from getopt import getopt, GetoptError
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import mkdir, makedirs
 import codecs
+import subprocess
 from subprocess import call, check_output, CalledProcessError
 from copy import deepcopy
 from shutil import copy
-from io import BytesIO
+import io 
 import re
 import platform
 
-# handle utf 8 output on ascii consoles
-#UTF8Writer = codecs.getwriter('utf8')
-#sys.stdout = UTF8Writer(sys.stdout)
+
 
 src_dir = abspath(join(dirname(__file__)))
 third_party_dir = join(src_dir, "third_party")
@@ -35,33 +35,42 @@ sys.path.append(src_dir)
 sys.path.append(third_party_dir)
 
 from jinja2 import Template, Environment, FileSystemLoader
+from jinja2.lexer import Token
+from  jinja2 import lexer
 
+# local
 from doc import Doc
 from db import DB
 from latex_formatter import LatexFormatter
+from epub_formatter import EPubFormatter
 from html_formatter import HtmlFormatter
-# from spreadsheet_writer import write_summary_to_spreadsheet
-from spreadsheet_writer2 import write_game_balance_spreadsheet #####
+from spreadsheet_writer import write_game_balance_spreadsheet
+
+# Creates graphs as a side effect of the imports (FIXME: yucky.. fix it later)
+import graphs
+import dice_pool_graph
 
 # FIXME: didn't want to deal with pdftk at the moment.
-# from character_sheet_writer import (
-#     create_character_sheets_for_all_archetypes,
-#     create_empty_abilities_sheet)
+from character_sheet_writer import (
+    create_character_sheet_for_archetype,
+    create_blank_character_sheet)
 
-# from licenses import generate_license_report
-from generate_skill_tree import Page, SkillTreeBuilder #generate_skill_tree
+from generate_skill_tree import build_skill_tree
 import config
 import utils
-from abilities import SKILL_POINT_TYPE
+from utils import (
+    root_dir,
+    build_dir,
+    pdfs_dir,
+    docs_dir,
+    styles_dir,
+    encounters_dir,
+    modules_dir,
+)
 
-
-root_dir = abspath(join(src_dir, ".."))
-build_dir = join(root_dir, "build")
-docs_dir = join(root_dir, "docs")
-pdfs_dir = join(root_dir, "pdfs")
-styles_dir = join(root_dir, "styles").replace("\\", "/")
-archetype_template_fname = join("docs", "archetype_template.xml")
-patron_template_fname = join("docs", "patron_template.xml")
+# Jinja2 doesn't like absolute paths.  We must supply a relative path
+ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
+PATRON_TEMPLATE_FNAME = join(docs_dir, "patron_template.xml")
 
 
 # latex preamble for the index.
@@ -79,21 +88,56 @@ index_str = """
 
 """
 
+def die():
+    raise Exception("Fatal Error")
+
+
+def jinja_recursive_render(template, jinja_env, **values):
+    """
+    Recurse into expanded template variables .. so our templates can
+    include templates which can include templates... etc and all the
+    templates will be evaluated.
+
+    """
+    MAX_DEPTH=5
+    depth = 0
+    prev = template.render(**values)
+    while True:
+
+        ###prev = jinja_env.get_template(
+
+        #loader=BaseLoader        
+        new_template = jinja_env.from_string(prev)
+        #f = io.StringIO(prev)
+        #new_template = jinja_env.get_template(f)
+        curr = new_template.render(**values)
+        #curr = Template(prev).render(**values)
+        #.render(**values)
+        if curr != prev:
+            prev = curr
+        else:
+            return curr
+
+        depth += 1
+        if depth >= MAX_DEPTH:
+            break
+        
 
 def usage(msg = "", return_code = 0):
     prog_name = basename(sys.argv[0])
     print(("Usage: %s -h | -s | -t | -x \n"
-          "\n"
-          "\t-h\tHelp! print this message.\n"
-          "\t-c\tClean all the files before building, e.g. pdfs etc\n"
-          "\t-C\tClean all the files and exit.\n"
-          "\t-s\tFail slow!  Ignore xml errors and try and build the doc anyway.\n"
-          "\t-t\tOnly do the template substitution don't parse the xml.\n"
-          "\t-x\tDo the template substitution and parse the xml; don't build the doc.\n"
-          "\t-l\tOnly build the latex doc; don't build the pdf.\n"
-          "\n"
-          "%s" % (prog_name, msg)))
-    exit(return_code)
+           "\n"
+           "\t-h\tHelp! print this message.\n"
+           "\t-c\tClean all the files before building, e.g. pdfs etc\n"
+           "\t-C\tClean all the files and exit.\n"
+           "\t-s\tFail slow!  Ignore xml errors and try and build the doc anyway.\n"
+           "\t-t\tOnly do the template substitution don't parse the xml.\n"
+           "\t-x\tDo the template substitution and parse the xml; don't build the doc.\n"
+           "\t-l\tOnly build the latex doc; don't build the pdf.\n"
+           "\t-v\tVerbose.\n"
+           "\n"
+           "%s" % (prog_name, msg)))
+    exit(return_code)    
 
 
 def find_xelatex():
@@ -104,6 +148,7 @@ def find_xelatex():
     if platform.system() == "Linux":
         xelatex_executable = "/usr/bin/xelatex"
     else:
+        # ??
         xelatex_executable = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/xelatex.exe"
     return xelatex_executable
 
@@ -144,28 +189,34 @@ def xelatex(tex_fname, verbosity=0):
         if verbosity > 0:
             print("\n\nRun with:\n%s" % " ".join(cmd_line))
 
-    xelatex_output = ""
-    xelatex_error = False
+    succeeded = False
     try:
-        xelatex_output = check_output(cmd_line, env=env)
+        xelatex_output = check_output(cmd_line, env=env,
+                                      stderr=subprocess.STDOUT,
+                                      universal_newlines=True)            
+        assert isinstance(xelatex_output, str)
+        succeeded = True
     except CalledProcessError as e:
         xelatex_output = e.output
-        xelatex_error = True
-
+    
     # print xelatex output (filter out some of the spammy messages)
     if verbosity > 1:
-        assert False
         print(xelatex_output)
-    else:        
+    else:  
         filter_xelatex_output(xelatex_output)
 
-    if xelatex_error:
-        sys.exit("Failed to run xelatex on doc: %s" % tex_fname)
-
+    if not succeeded:
+        sys.exit(f"Failed to run xelatex on doc: {tex_fname} with error:\n{xelatex_output}")
+        
     # Rerun once to try and get cross-references right
     # (Throw away the trace this time)
-    check_output(cmd_line)
-    return
+    try:
+        check_output(cmd_line)
+    except:
+        succeded = False
+        xelatex_output = e.output.decode()
+        print(xelatex_output)
+    return succeeded
 
 
 def find_makeindex():
@@ -176,6 +227,7 @@ def find_makeindex():
     if platform.system() == "Linux":
         makeindex = "/usr/bin/makeindex"
     else:
+        # This is a guess.
         makeindex = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/makeindex.exe"
     return makeindex
 
@@ -187,18 +239,16 @@ def filter_xelatex_output(xelatex_output):
     # one error per line 
     lines = []
     current_line = None
-    for line in xelatex_output.split("\n"):
-
-        # end 
+    for line in xelatex_output.split("\n"):        
         if line.strip() == "":        
             if current_line is not None:
                 lines.append(current_line)
                 current_line = None
         else:
             if current_line is not None:
-                current_line += line
+                current_line += " " + line
             else:
-                 current_line = line
+                current_line = line
 
     if current_line is not None:
         lines.append(current_line)
@@ -218,17 +268,14 @@ def filter_xelatex_output(xelatex_output):
     for line in lines:
         if not isinstance(line, str):        
             line = line.encode("ascii", "replace")            
-        print line
+            print(line)
     return
-
 
 
 def create_index(verbosity=0):
     print()
     print("===============================================")
-    print("===============================================")
     print("     Create Index")
-    print("===============================================")
     print("===============================================")
     
     # combine indexes
@@ -239,11 +286,11 @@ def create_index(verbosity=0):
         "\}\{"
         "(?P<index_page>\d+)"
         "\}$")
-    for fname, build_index, index_name in config.files_to_build:
+    for fname, build_index, index_name in config.doc_files_to_build:
         base_fname, _ = splitext(basename(fname))
         idx_fname = join(build_dir, base_fname + ".idx")
 
-        with file(idx_fname) as f:
+        with open(idx_fname) as f:
             for line in f.readlines():
                 match_obj = index_regex.match(line)
                 if match_obj is not None:
@@ -253,33 +300,28 @@ def create_index(verbosity=0):
                         match_obj.group("index_page"))
                     index_entries.append(new_index_line)
                 else:
-                    print "no match " + line[:-1]
+                    print("no match " + line[:-1])
 
     # write the combined .idx file
     index_idx = join(build_dir, "index.idx")
-    with file(index_idx, "w") as f:
+    with open(index_idx, "w") as f:
         f.write("".join(index_entries))
 
     # create an index.tex
     index_tex = join(build_dir, "index.tex")
-    with file(index_tex, "w") as f:
+    with open(index_tex, "w") as f:
         f.write(index_str)
 
-    # run makeindex to ah make the index
+    # run makeindex to, ah, make the index
     # (makeindex won't let you build an index outside of the cwd!)
-    cmd_line = [makeindex, 
-                #"-q",
-                basename(index_idx)]
-                #index_idx]
-    print " ".join(cmd_line)
-    
+    cmd_line = [makeindex, basename(index_idx)]
     if verbosity > 0:
         print(("\n\n\n" + " ".join(cmd_line)))
-    call(cmd_line, cwd = build_dir)
+        call(cmd_line, cwd = build_dir)
 
-    print "-------------------------"
-    xelatex(index_tex)
-
+    if not xelatex(index_tex):
+        return
+    
     # move the pdf from the build dir to the pdfs dir
     pdf_fname = join(build_dir, "index.pdf")
     if exists(pdf_fname):
@@ -290,64 +332,128 @@ def create_index(verbosity=0):
 
 
 
-def build_pdf_doc(template_fname, doc_fname, verbosity,
-                  db,                  
-                  archetype=None,
-                  patron=None):
-    # base name .. no extension
-    doc_base_fname, _ = splitext(basename(doc_fname))
-    xml_fname = join(build_dir, "%s.xml" % doc_base_fname)
-    pdf_fname = join(build_dir, "%s.pdf" % doc_base_fname)
-    tex_fname = join(build_dir, "%s.tex" % doc_base_fname) 
-    
-    # makeindex won't write to files outside of the cwd.
-    # We don't want a path here.  Just a filename
-    idx_fname = "%s.idx" % doc_base_fname
+def apply_template_to_xml(jinja_env,
+                          db,
+                          xml_fname_in,
+                          verbosity,
+                          template_fname=None,
+                          archetype=None,
+                          patron=None):
+    """
+    Run the xml through a templating system.
 
-    print("===============================================")
-    print("Building %s " % doc_fname)
-    print("===============================================")
+    """
+    xml_base_fname, _ = splitext(basename(xml_fname_in))
+    xml_fname_out = join(build_dir, "%s.xml" % xml_base_fname)
 
     # the very first thing we do is run the xml through a template engine 
     # (Doing it like this allows us to include files relative to the doc 
-    # dir using Jinjas include directive).
+    # dir using Jinjas include directive). 
+    if template_fname is None:
+        template_fname = xml_fname_in
     template = jinja_env.get_template(template_fname)
-    xml = template.render(db=db,
-                          monster_groups=db.monster_groups,                          
-                          ability_groups=db.ability_groups,
-                          npc_gangs=db.npc_gangs,
-                          archetype=archetype,
-                          patron=patron,
-                          config=config,
-                          add_index_to_core = config.add_index_to_core,
-                          doc_name = doc_base_fname)
+    if template is None:
+        print(f"Problem reading template file {template_fname}.")
+        exit(0)
+        
+    xml = jinja_recursive_render(
+        template=template,
+        jinja_env=jinja_env,
+        db=db,
+        monster_groups=db.monster_groups,                          
+        ability_groups=db.ability_groups,
+        npc_gangs=db.npc_gangs,
+        archetype=archetype,
+        patron=patron,
+        config=config,
+        encounters=db.encounters,
+        add_index_to_core=config.add_index_to_core,
+        doc_name=xml_fname_in)
+
+    # process Λ abilities
+    xml = db.filter_abilities(xml)
+
     # write the post-processed xml to the build dir 
     # (has all the included files in it).
-    with codecs.open(xml_fname, "w", "utf-8") as f:
-       f.write(xml)
-
-    # drop out early?
-    if template_only:
-        print("Template only! ...")
-        print(xml.encode('ascii', 'xmlcharrefreplace'))
-        return
+    with codecs.open(xml_fname_out, "w", "utf-8") as f:
+        f.write(xml)
 
     # parse an xml document
-    doc = Doc(xml_fname)
-    print xml_fname
+    doc = Doc(xml_fname_out)
     if not doc.parse():
-        print("Problem parsing the xml.")
+        print(f"Problem parsing the xml.")
         exit(0)
+    return doc
 
-    if not doc.validate() and fail_fast:
-        print("Fatal: xml errors are fatal!")
-        print("Run with the -s cmd line option to ignore xml errors.")
-        exit(0)
 
-    # drop out early?
-    if parse_only:
-        print("Parse only!")
-        return            
+def build_epub(xml_fname,
+               verbosity,
+               doc,
+               db,                  
+               archetype=None,
+               patron=None):
+    # base name .. no extension
+    doc_base_fname, _ = splitext(basename(xml_fname))
+    epub_fname = join(build_dir, "%s.epub" % doc_base_fname)
+
+    print((f"\tBuilding {epub_fname}"))
+
+    # check we have a book_node to format
+    if not doc.has_book_node():
+        if verbosity >= 1:
+            print("No book node to format in document: %s IGNORING!" % doc_fname)
+        return
+
+    # build the epub document 
+    #with codecs.open(tex_fname, "w", "utf-8") as f:
+    epub_formatter = EPubFormatter(epub_fname=epub_fname, db=db)
+
+    errors = doc.format(epub_formatter)
+    if len(errors) > 0:
+        print("Errors:")
+        for error in errors:
+            print("\t%s\n\n\n" % error)                
+            exit()
+
+    # Copy the pdf from the build dir to the pdfs dir
+    copy(epub_fname, pdfs_dir)
+    
+    print((f"\tFinished building {epub_fname}"))
+    return True
+
+
+def build_pdf(
+        xml_fname,
+        verbosity,
+        doc,
+        db,
+        archetype=None,
+        patron=None):
+    # base name .. no extension
+    doc_base_fname, _ = splitext(basename(xml_fname))
+    pdf_fname = join(build_dir, "%s.pdf" % doc_base_fname)
+    tex_fname = join(build_dir, "%s.tex" % doc_base_fname) 
+
+    print(f"\tBuilding {pdf_fname}")
+    
+    # makeindex won't write to files outside of the cwd,
+    # so we don't want a path here.  Just a filename
+    idx_fname = "%s.idx" % doc_base_fname
+
+    # create an empty index if one does not exist.
+    full_idx_fname = join(build_dir, idx_fname)
+    if not exists(full_idx_fname):
+        f = open(full_idx_fname, 'w')
+        f.write('')
+
+    # run makeindex to, ah, make the index
+    # (makeindex won't let you build an index outside of the cwd!)
+    cmd_line = [makeindex, idx_fname]
+    if verbosity > 0:
+        print((f"\n\n\nIn {build_dir} run:\n") + " ".join(cmd_line))
+        return_code = call(cmd_line, cwd=build_dir)
+        if return_code != 0:
+            sys.exit("Failed to run makeindex on %s" % idx_fname)    
 
     # check we have a book_node to format
     if not doc.has_book_node():
@@ -362,35 +468,19 @@ def build_pdf_doc(template_fname, doc_fname, verbosity,
         if len(errors) > 0:
             print("Errors:")
             for error in errors:
-                print("\t%s\n\n\n" % error)
-                
-            if fail_fast:
-                sys.exit()
-
-    # exit early if we don't build pdfs
-    if latex_only:
-        return
+                print("\t%s\n\n\n" % error)                
+                exit()
 
     # converts the latex to pdf
-    xelatex(tex_fname, verbosity=verbosity)
-
-    # run makeindex to, ah, make the index
-    # (makeindex won't let you build an index outside of the cwd!)
-    return_code = call([makeindex, 
-                        # "-q", 
-                        idx_fname], cwd = build_dir)
-    if return_code != 0:
-        sys.exit("Failed to run makeindex on %s" % idx_fname)
+    if not xelatex(tex_fname, verbosity=verbosity):
+        return False
 
     # Copy the pdf from the build dir to the pdfs dir
     copy(pdf_fname, pdfs_dir)
     
+    print((f"\tFinished building {pdf_fname}"))
+    return True
 
-    print("===============================================")
-    print(("   Finished building %s " % doc_fname))
-    print("===============================================\n")
-    return
-    
 
 
 def build_html_doc(template_fname, verbosity, archetype = None):
@@ -416,12 +506,11 @@ def build_html_doc(template_fname, verbosity, archetype = None):
         print("Problem parsing the xml.")
         exit(0)
 
-    if not doc.validate() and fail_fast:
+    if not doc.validate():
         print("Fatal: xml errors are fatal!")
         print("Run with the -s cmd line option to ignore xml errors.")
         exit(0)
-    
-    
+        
     # build the html document by converting the xml into tex
     with codecs.open(html_fname, "w", "utf-8") as f:
         html_formatter = HtmlFormatter(f)
@@ -430,9 +519,7 @@ def build_html_doc(template_fname, verbosity, archetype = None):
             print("Errors:")
             for error in errors:
                 print("\t%s\n\n\n" % error)
-                
-            if fail_fast:
-                sys.exit()
+                exit()
     return
 
 
@@ -449,10 +536,41 @@ def clean():
             os.remove(fname)
 
     for fname in os.listdir(pdfs_dir):
-        #print fname
         if fname.endswith(".pdf"):
             fname = join(pdfs_dir, fname)
             os.remove(fname)
+    return
+
+
+def build_book(dir_name, xml_fname, verbosity=0):
+    """
+    Build a single book/document.
+
+    """
+    full_doc_xml_fname = join(dir_name, xml_fname)
+    print(" ==================================== ")
+    print(f" Processing {xml_fname}")
+    print(f"\tReading {full_doc_xml_fname}")
+    doc = apply_template_to_xml(
+        jinja_env,
+        xml_fname_in = full_doc_xml_fname,
+        db=db,
+        verbosity=verbosity) or die()
+
+    print(f"\tBuilding {full_doc_xml_fname}")
+    print(f"\t\tBuilding pdf")
+    build_pdf(
+        xml_fname=full_doc_xml_fname,
+        doc=doc,
+        db=db,
+        verbosity=verbosity) or die()
+
+    # build_epub(
+    #     xml_fname=archetype.get_id(),
+    #     verbosity=verbosity,
+    #     doc=doc,
+    #     db=db,
+    #     archetype=archetype) or die()
     return
 
 
@@ -460,67 +578,38 @@ if __name__ == "__main__":
     try:
         opts, args = getopt(
             sys.argv[1:],
-            "chxvtslC",
-            ["help", "clean", "template_only", "parse_xml", "verbose", "fail_slow",
-             "no_index", "clobber", "build_latex"])
+            "vhcC",
+            ["verbose", "help", "clean", "clobber"])
 
     except GetoptError as err:
         usage(msg = str(err), return_code = 2)        
 
     verbosity = 0
-    template_only = False
-    parse_only = False
-    fail_fast = True
-    no_index = False
-    latex_only = False
     debug = True
     for o, a in opts:
         if o in ("-v", "--verbose"):
-            verbosity += 1
-            
+            verbosity += 1            
         elif o in ("-h", "--help"):
             usage()
-
         elif o in ("-c", "--clean"):
             clean()            
-
         elif o in ("-C", "--clobber"):
             clean()
             sys.exit()
-
-        elif o in ("-s", "--fail_slow"):
-            fail_fast = False
-            
-        elif o in ("-t", "--template_only"):
-            # create the template  only (don't build the doc
-            template_only = True
-
-        elif o in ("-p", "-x", "--parse_only"):
-            # parse only (don't build the doc)
-            parse_only = True
-
-        elif o in ("-l", "--build_latex"):
-            # parse only (don't build the doc)
-            latex_only = True
-
-        elif o in ("--no_index", ):
-            # don't create the index
-            no_index = True
-            
         else:
-            raise Exception("unhandled option")
+            raise Exception(f"unhandled option {o}")
 
     # check xelatex exists.
     xelatex_executable = find_xelatex()
     assert exists(xelatex_executable)
     if verbosity > 1:
-        print "Using xelatex at %s" % xelatex_executable
+        print("Using xelatex at %s" % xelatex_executable)
 
     # check makeindex exists.
     makeindex = find_makeindex()
     assert exists(makeindex), "Can't find makeindex at %s" % makeindex
     if verbosity > 1:
-        print "Using makeindex at %s" % makeindex
+        print("Using makeindex at %s" % makeindex)
 
     # make any dirs we need
     if not exists(build_dir):
@@ -529,9 +618,14 @@ if __name__ == "__main__":
     if not exists(pdfs_dir):
         mkdir(pdfs_dir)
 
+    # Conditionally build some graphs we mostly won't need?
+    if "rationale.xml" in [t[0] for t in config.doc_files_to_build]:
+        print("Building dice pool graphs.")
+        dice_pool_graph.generate_dice_pool_graphs()
+
     # load the game database (archetypes, abilties etc).
     db = DB()
-    db.load(root_dir=root_dir, fail_fast=fail_fast)
+    db.load(root_dir=root_dir, fail_fast=True)
 
     # generate the skill tree images
     # skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
@@ -545,14 +639,18 @@ if __name__ == "__main__":
     #                          fname=join(build_dir, "ability_tree2.eps"))
     # skill_tree_builder.build(db.ability_groups,
     #                          fname=join(build_dir, "ability_tree2.pdf"))
-        
+    
     # get a jinja environment
     jinja_env = Environment(
-        loader = FileSystemLoader(root_dir),
+        loader = FileSystemLoader([root_dir, ]),
         keep_trailing_newline = True,
         trim_blocks = False,
-        lstrip_blocks = False)
+        lstrip_blocks = False,
+    )
+    
     jinja_env.filters['convert_to_roman_numerals'] = utils.convert_to_roman_numerals
+    jinja_env.filters['ab'] = db.filter_abilities
+    jinja_env.filters['abilities'] = db.filter_abilities
 
     # Add the local styles dir
     # The trailing // means that TeX programs will search recursively in that 
@@ -564,45 +662,84 @@ if __name__ == "__main__":
     env = deepcopy(os.environ)
     env["TEXINPUTS"] = tex_inputs
 
+    # Build the ability trees
+    build_skill_tree(db.ability_groups)
+    
     #
     # Build Pdf Files.
     #
     
-    # Build latex/pdf files.
-    for doc_xml_fname, _, _ in config.files_to_build:
-        full_doc_xml_fname = join("docs", doc_xml_fname)        
-        build_pdf_doc(full_doc_xml_fname,
-                      doc_fname=doc_xml_fname,
-                      db=db,
-                      verbosity=verbosity)
+    # Build doc books (in the docs dir)
+    for doc_xml_fname, _, _ in config.doc_files_to_build:
+        build_book("docs", doc_xml_fname, verbosity)
 
-    # Build latex/pdf archetype files.
+    # Build background books (in the background dir)
+    for doc_xml_fname, _, _ in config.background_files_to_build:
+        print("--------------------- " + doc_xml_fname)
+        build_book("background", doc_xml_fname, verbosity)
+        
+    # Build archetypes
     for archetype_id, _, _ in config.archetypes_to_build:
         archetype = db.archetypes[archetype_id]
-        build_pdf_doc(template_fname=archetype_template_fname,                      
-                      doc_fname=archetype.get_id(),
-                      verbosity=verbosity,
-                      db=db,
-                      archetype=archetype)
+        assert archetype is not None
+        
+        full_doc_xml_fname = join("archetypes", archetype.get_id() + ".xml")
+        doc = apply_template_to_xml(
+            jinja_env,
+            xml_fname_in=full_doc_xml_fname,
+            template_fname=ARCHETYPE_TEMPLATE_FNAME,           
+            archetype=archetype,
+            db=db,
+            verbosity=verbosity) or die()
+        
+        build_pdf(
+            xml_fname=archetype.get_id(),
+            verbosity=verbosity,
+            doc=doc,
+            db=db,
+            archetype=archetype) or die()
 
-    # Build latex/pdf patron files.
-    for patron_id, _, _ in config.patrons_to_build:
-        patron = db.patrons[patron_id]
-        build_pdf_doc(template_fname=patron_template_fname,
-                      doc_fname=patron.get_id(), 
-                      verbosity=verbosity,
-                      db=db,
-                      patron=patron)
+        build_epub(
+            xml_fname=archetype.get_id(),
+            verbosity=verbosity,
+            doc=doc,
+            db=db,
+            archetype=archetype) or die()
 
-    # Build latex/pdf encounter files.
-    for encounter_id, _, _ in config.encounters_to_build:
-        encounter_fname = join("encounters",
-                               encounter_id,
-                               "%s.xml" % encounter_id)
-        build_pdf_doc(encounter_fname,
-                      db=db,
-                      doc_fname=encounter_fname, 
-                      verbosity=verbosity)
+
+    # Build latex/pdf module files.
+    for module_id, _, _ in config.modules_to_build:
+        build_book(join("modules", module_id), f"{module_id}.xml", verbosity)
+
+        
+    # # Build latex/pdf patron files.
+    # for patron_id, _, _ in config.patrons_to_build:
+    #     patron = db.patrons[patron_id]
+    #     build_pdf_doc(template_fname=PATRON_TEMPLATE_FNAME,
+    #                   doc_fname=patron.get_id(), 
+    #                   verbosity=verbosity,
+    #                   db=db,
+    #                   patron=patron) or die()
+
+    # # Build latex/pdf encounter files.
+    # for encounter_id, _, _ in config.encounters_to_build:
+    #     encounter_fname = join(#encounters_dir,
+    #         "encounters",
+    #         encounter_id,
+    #         "%s.xml" % encounter_id)
+    #     build_pdf_doc(encounter_fname,
+    #                   db=db,
+    #                   doc_fname=encounter_fname, 
+    #                   verbosity=verbosity) or die()
+
+
+
+#         doc,
+#         db,
+#         archetype=None,
+#         patron=None):
+# -
+
 
     #
     # Build HTML Files (mostly a placeholder at this stage)
@@ -612,16 +749,13 @@ if __name__ == "__main__":
     #for doc_xml_fname, _, _ in config.files_to_build:
     #    build_html_doc(doc_xml_fname, verbosity=verbosity)
         
-    # Exit early if we've been configured to only do a partial build.
-    if parse_only or template_only or latex_only:
-        sys.exit()
     
     #
-    # Create the index.pdf
+    # Create the index.pdf file
     #
-    if not no_index:
-        create_index(verbosity=verbosity)
-        
+    print(" Creating index.pdf")
+    create_index(verbosity=verbosity)
+    
     #
     # Create Summary.xslx
     # (a table of ability costs by archetype for working on balance)
@@ -639,13 +773,17 @@ if __name__ == "__main__":
     
     #
     # Create the character sheets
-    #
-    # FIXME: pdftk not installed!
-    #create_character_sheets_for_all_archetypes(archetypes=db.archetypes)
-    #create_empty_abilities_sheet()
-
+    # 
+    create_blank_character_sheet()
+    for archetype in db.archetypes:
+        print(f"CREATING {archetype}")
+        create_character_sheet_for_archetype(db, archetype)
+        
+    #sys.exit(0)
+    #create_empty_abilities_sheet()        
+    
     #
     # Generate the license report
     #
     db.licenses.generate_license_report(root_dir)
-        
+    

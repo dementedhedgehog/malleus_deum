@@ -4,13 +4,17 @@
 
 """
 # print without newline at the end.
-from __future__ import print_function
+from __future__ import print_function # FIXME: should be able to get rid of this?
 
 from os.path import join, exists, dirname
 from os import makedirs
 from copy import deepcopy
 import sys
 import codecs
+# third party
+from config import use_imperial
+
+
 from utils import (
     normalize_ws,
     parse_xml, validate_xml,
@@ -18,9 +22,6 @@ from utils import (
     node_to_string,
     get_error_context
 )
-
-
-from latex_formatter import LatexFormatter
 
 
 # These are tags we want to walk into.
@@ -31,32 +32,40 @@ from latex_formatter import LatexFormatter
 # and closing tags and descending into tags recursively rather than
 # hard coding element.text in the latex_writer.  Ultimately
 # this would be all tags.. in the meanwhile that would cause chaos.
+#
+# In the long run this should be all tags.
 TEXT_TAGS = (
-
     "corollary", "corollarytitle", "corollarybody",
     "mbtitle", "mbtags",
     "mbac", "mbhp", "mbmove",
     "mbstr", "mbend", "mbag", "mbspd", "mbluck", "mbwil", "mbper",    
     "mbabilities", "mbaspects", "mbdescription", "mbinitiativebonus",
     "npcname", "npchps", "mbresolve", "mbmagic",
-    "sectiontitle", "subsectiontitle", "subsubsectiontitle",
+    "sectiontitle", "subsectiontitle", "subsubsectiontitle", "abilitytitle",
     "descriptions", "term", "description", 
     "p", 
     "principle", "principletitle", "principlebody",
     "td", "th", "version",
     "inspiration", "attribution",
-    "label",
+    "label", "smaller",
+    "hline",
     )
+
+# These are image type tags.
+IMG_TAGS = ("img", "handout")
 
 
 class Doc:
+    """
+    Represents an xml doc.  We build pdfs etc from these.
 
+    """
     def __init__(self, fname):
         # remember the filename for logging errors
         self.fname = fname
+
+        # the doc xml dom
         self.doc = None
-        # stack of ability groups 
-        # self.ability_groups = []
 
         # list of resource ids.
         self.resource_ids = []
@@ -64,7 +73,8 @@ class Doc:
 
     def parse(self):
         self.doc = parse_xml(self.fname)
-        self._find_resource_ids()
+        if self.doc is not None:
+            self._find_resource_ids()
         return self.doc
 
     def _find_resource_ids(self):
@@ -85,7 +95,7 @@ class Doc:
         if tag is COMMENT:
             # i_formatter.start_comment(element)
             in_comment = True
-        elif element_name == "img":
+        elif element_name in IMG_TAGS:
             if not in_comment and "id" in element.attrib:
                 resource_id = element.get("id")
                 self.resource_ids.append(resource_id)
@@ -106,11 +116,10 @@ class Doc:
             print(error)
 
             # print out the context
-            #print(get_error_context(self.fname, error.line))
             valid = False
         return valid
 
-        
+
     def has_book_node(self):
         root = self.doc.getroot()
         book_nodes = root.xpath("//book")
@@ -119,8 +128,11 @@ class Doc:
 
     def get_book_node(self):
         """Returns the book in this doc (or None)."""
-        # if it contains a book then format it!
+        # if the xml contains a book then we'll want to format it!
         # otherwise carry on
+        if self.doc is None:
+            return None
+        
         root = self.doc.getroot()
         book_nodes = root.xpath("//book")
         if len(book_nodes) == 0:
@@ -167,7 +179,7 @@ class Doc:
                 except Exception as err:
                     context = get_error_context(self.fname, element.sourceline)
                     raise Exception("%s element %s formatter <%s> at %s:%s\n%s" % 
-                              (str(err.message), i_formatter.__class__,
+                              (str(err), i_formatter.__class__,
                                tag, self.fname, element.sourceline, context))
             else:
                 errors.append("Unknown %s open element: <%s> at %s:%s\n%s" % 
@@ -176,7 +188,7 @@ class Doc:
 
         # handle trailing text.
         if element.tag in TEXT_TAGS and element.text:
-            text = element.text # .strip()
+            text = element.text
             i_formatter.handle_text(text)
                 
         # handle all the children
@@ -207,6 +219,7 @@ if __name__ == "__main__":
     doc = Doc(fname)
     doc.validate()
 
+    from latex_formatter import LatexFormatter
     with codecs.open("core.tex", "w", "utf-8") as f:               
         latex_formatter = LatexFormatter(f)
         doc.format(latex_formatter)

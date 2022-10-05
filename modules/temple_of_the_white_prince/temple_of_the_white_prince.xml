@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+  {% set MODULE_FNAME = "temple_of_the_white_prince" %}
+  {% set DEITY_NAME = "White Prince" %}
+  {% set TEMPLE_NAME = "Temple of the White Prince" %}
+  {% set GOBLIN_BOSS_NAME = "Gotbolt" %}
+  {% set UNDEAD_PRIEST_NAME = "August Kemplemeyer" %}
+  {% set SQUID_BOSS_NAME = "Fisher of Men" %}
+
+  <chapter>
+    <chaptertitle>{{ TEMPLE_NAME }}</chaptertitle>
+    <section>        
+      <sectiontitle>Overview</sectiontitle>
+
+      <subsection>
+	<subsectiontitle>Dramatis Personae</subsectiontitle>        
+
+	<descriptions>
+	  <term>{{ GOBLIN_BOSS_NAME }}</term>
+	  <description>
+	    Goblin Boss.  Heads a gang of half a dozen or so goblins.
+	  </description>
+
+	  <term>{{ UNDEAD_PRIEST_NAME }}</term>
+	  <description>
+	    Undead priest of {{ DEITY_NAME }}.
+	  </description>
+
+	  <term>{{ SQUID_BOSS_NAME }}</term>
+	  <description>
+	    A subterranean giant squid.
+	  </description>
+	</descriptions>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Overview</subsectiontitle>        
+
+	<descriptions>
+	  <term>Entrance (1)</term>
+	  <description>
+	    The entrance room is the current lair of a small band of goblins.
+	  </description>
+
+	  <term>Vestibule (2)</term>
+	  <description>
+	    A small chamber, the scene of past slaughter.
+	  </description>
+
+	  <term>Painted Corridor (3)</term>
+	  <description>	    
+	  </description>
+	  
+	  <term>Antechamber (4)</term>
+	  <description>
+	  </description>
+	  
+	  <term>Dormitory (5)</term>
+	  <description>
+	  </description>
+
+	  <term>Scriptorum (6)</term>
+	  <description>
+	  </description>
+
+	  <term>Cavern (7)</term>
+	  <description>
+	  </description>
+
+	  <term>Altar Room (8)</term>
+	  <description>
+	  </description>
+
+	  <term>Hall of Secrets (9)</term>
+	  <description>
+	    A 
+	  </description>
+	</descriptions>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Intro</subsectiontitle>        
+
+	<p>
+	  Provides some background and exposition.
+	</p>
+	
+	<p>
+	</p>
+
+
+	<figure fullwidth="true" sideways="true" position="!b">
+          <img id="shrine_of_the_white_prince_map" scale="9"/>
+	</figure>
+	
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Entrance (1)</subsectiontitle>        	
+	<p>
+	</p>
+
+	{% set encounter=encounters.get('temple_of_the_white_prince.goblins') %}
+	{% include "docs/encounter_template.xml" %}	
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Vestibule (2)</subsectiontitle>        	
+	<p>
+	  
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle></subsectiontitle>        	
+	<p>
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle></subsectiontitle>
+	<p>
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Dormitory (5)</subsectiontitle>
+	<p>
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Scriptorum (6)</subsectiontitle>
+	<p>
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Cavern (7)</subsectiontitle>
+	<p>
+	  Lair of the Fisher of Men.
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Altar Room (8)</subsectiontitle>
+	<p>
+	  He holds in his hands the rod that commands the fisher of men.	  
+	</p>
+
+	{% set encounter=encounters.get('temple_of_the_white_prince.fisher_of_men') %}
+	{% include "docs/encounter_template.xml" %}
+
+	{% set encounter=encounters.get('temple_of_the_white_prince.the_priest_who_sleeps') %}
+	{% include "docs/encounter_template.xml" %}
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Hall of Secrets (9)</subsectiontitle>        	
+	<p>
+	  Contains 4 large black marble stellae.
+
+	  Text states... Here you may sate your thirst for knowledge.
+
+
+	  Stellai do damage and teach you things.. read.. get an insanity.. open a gate?
+
+	  A little learning is a dangerous thing;
+	  drink deep, or taste not the Pierian spring:
+	  there shallow draughts intoxicate the brain,
+	  and drinking largely sobers us again.
+	</p>
+      </subsection>
+
+    </section>
+  </chapter>
+</book>

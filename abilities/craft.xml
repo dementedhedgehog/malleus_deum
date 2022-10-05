@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <!--
+      Note this is not a document format.
+      Docs get generated from this.      
+  -->
+  <abilitygroupinfo>
+    <abilitygrouptitle>Craft Abilities</abilitygrouptitle>
+    <abilitygroupid>craft</abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Craft abilities involve making and building things.  Mostly these abilities
+	can be used to appraise things to provide more information to the players.
+	Occassionally the characters may use these abilities to actually build or design 
+	something in the game.  Finally, some of them might be useful, given the right 
+	context, during the Act stage of combat.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Armour Smith</abilitytitle>
+    <abilityid>craft.armour_smith</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	An armour smith can make, repair and evaluate metal armour.
+      </p>
+    </abilitydescription>
+    <spline><p x="60" y="30"/></spline>
+    <prereqabilitylevel>craft.smith_2</prereqabilitylevel>    
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Builder</abilitytitle>
+    <abilityid>craft.builder</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	Builder of large wooden structures: houses, barns etc.
+	Can be used to detect secret doors in buildings.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>	
+    <spline><p x="20" y="60"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Carpentry</abilitytitle>
+    <abilityid>craft.carpentry</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	Carpenters craft things from wood.  Specialization leads to fine
+	wood-working, cabinet-making and furniture building.
+	Can be used to find secret compartments in furniture.
+      </p>
+
+      <p>
+	Level I allows Basic carpentry abilities, Level II encompasses
+	word turning and cabinet making, and Level III means you are
+	an excellent furniture builder.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>craft.craft_1</prereqabilitylevel>
+    <spline><p x="-50" y="30"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+  
+  
+
+  <ability>
+    <abilitytitle>Cartwright</abilitytitle>
+    <abilityid>craft.cartwright</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	Cartwrights build and repair carts and cartwheels.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>
+    <spline><p x="-30" y="60"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Cooper</abilitytitle>
+    <abilityid>craft.cooper</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	Coopers make barrels. Barrels are used to ship a wide range of goods.
+	A lot of barrels are needed!
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>
+    <spline><p x="-50" y="30"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Craft</abilitytitle>
+    <abilityid>craft.craft</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+  	This ability represents general handiness with tools.
+	This ability may be used in place of a more specific craft ability.
+      </p>
+    </abilitydescription>
+    <abilitycheck dc="15"/>
+    <spline></spline>
+    <prereqabilitylevel></prereqabilitylevel>    
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="0" to="4"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Smith</abilitytitle>
+    <abilityid>craft.smith</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	Smiths craft metals using heat.  There are a range of smith specializations. 
+	Tin smiths created and repaired pots and pans.  Blacksmiths worked with iron.
+	Goldsmiths worked with gold and so on.  This ability represents basic familiarity
+	with metalworking and smithing.
+      </p>
+    </abilitydescription>
+    <spline><p x="30" y="30"/></spline>
+    <abilitycheck dc="12"/>
+    <prereqabilitylevel>craft.craft_2</prereqabilitylevel>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Shipwright</abilitytitle>
+    <abilityid>craft.shipwright</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	Shipwrights are carpenters who specialize in ship-building and repair.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>craft.carpentry_1</prereqabilitylevel>
+    <spline><p x="50" y="30"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
+
+
+
+  <ability>
+    <abilitytitle>Farmer</abilitytitle>
+    <abilityid>craft.farmer</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	Basic argricultural abilities: ploughing, etc.	
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>craft.craft_2</prereqabilitylevel>
+    <spline><p x="90" y="30"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Mason</abilitytitle>
+    <abilityid>craft.mason</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	The character has experience as a Stonemason, repairing,
+	appraising, and crafting stone structures.
+      </p>
+
+      <p>
+	Level I covers basic stone-working abilities, at Level II
+	the character has an understanding of architecture and
+	load bearing structures.  The character gets a passive
+	check to discover secret doors in stone.  At Level III
+	the character has a deep understanding of architecture
+	and the design of buildings.
+      </p>
+    </abilitydescription>
+    <prereqabilitylevel>craft.craft_1</prereqabilitylevel>
+    <spline><p x="0" y="30"/></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Miner</abilitytitle>
+    <abilityid>lore.miner</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><scholar/></tags>
+    <abilitydescription>
+      <p>
+	This ability encompases the study of the earth, mining and minerals.
+	Characters with this ability have a good understanding of mineralogy and
+	can identify metals, common stone types, and common greographical structures.
+	The character can read and create technical maps.  Can be used to detect secret
+	doors underground. At higher levels the character gains a deep understanding of civil
+	engineering, load distribution, sapping, bridge or dam building, and so on.
+      </p>
+
+      <p>
+	At Level I the character understands the basics of mining.  Can identify
+	precious metals and gems and value them.  At Level II the character is adept at
+	moving over rocky terrain.  If the character makes this check then no movement
+	penalties apply when moving across rocky terrain during a terrain.  At Level III
+	the character can intuit depth underground.  The character can accurately estimate
+	the depth they have travelled underground relative to their entry point.  At
+	Level IV the character gets a passive check to discover secret doors in stone
+	(as per Masonary II).  At Level V the character has a deep understanding of
+	mine operations, economics and of structural engineering.  This makes the
+	character excellent at demolition and discovering weak points in structures,
+	sapping, bringing down unstable tunnels etc.	    
+      </p>      
+    </abilitydescription>
+    <spline><p x="-100" y="30"/></spline>
+    <prereqabilitylevel>craft.craft_0</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Weapon Smith</abilitytitle>
+    <abilityid>craft.weapon_smith</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><craft/></tags>
+    <abilitydescription>
+      <p>
+	A weapon smith can make, repair and evaluate non magical metal weapons.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="60"/></spline>
+    <prereqabilitylevel>craft.smith_2</prereqabilitylevel>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+</abilitygroup>

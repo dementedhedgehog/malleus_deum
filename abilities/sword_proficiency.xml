@@ -4,194 +4,136 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Sword Proficiency</abilitygrouptitle>
     <abilitygroupid>sword</abilitygroupid>
-    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
         Represents training the ability to use swords in combat.  This includes
 	the use of two handed swords.
       </p>      
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Daring Thrust</abilitytitle>
+    <abilityid>sword.daring_thrust</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><weapon/></tags>
+    <abilitydescription>
+      <p>
+	The character can make a Mettle check.  If successful they can
+	make a Sword Strike check as a minor action.  Allowing them to make two
+	attacks in a turn.
+      </p>
+    </abilitydescription>
+    <spline><p x="15" y="30"/></spline>
+    <prereqabilitylevel>sword.strike_2</prereqabilitylevel>
+    <abilitycheck dc="Targets Agility"/>
+    <abilitychecktype>Mettle</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Mighty Blow</abilitytitle>
+    <abilityid>sword.mighty_blow</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/></tags>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Sword can strike with it using enormous force during combat.
+	It costs the character 2 Stamina to do this,  If they do not have any remaining stamina
+	they cannot perform this action.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="30"/></spline>
+    <prereqabilitylevel>sword.strike_3</prereqabilitylevel>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + 3xStr</abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Sword Disarm</abilitytitle>
+    <abilityid>sword.disarm</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/></tags>
+    <abilitydescription>
+      <p>
+	The character attempts to disarm their opponent.  If
+	successful the opponent is disarmed. 
+      </p>
+    </abilitydescription>
+    <spline><p x="-80" y="30"/></spline>
+    <prereqabilitylevel>sword.strike_2</prereqabilitylevel>	
+    <abilitycheck dc="Targets Speed"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>  
+
+  <ability>
+    <abilitytitle>Sword Feint</abilitytitle>
+    <abilityid>sword.feint</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><weapon/></tags>
+    <abilitydescription>
+      <p>
+	The character makes an opposed check when an opponent attacks
+	them with a melee weapon. If they are successful thet act before their
+	opponent.  This action cannot be taken if surprised.
+      </p>
+    </abilitydescription>
+    <spline><p x="15" y="30"/></spline>
+    <prereqabilitylevel>sword.strike_2</prereqabilitylevel>
+    <abilitycheck dc="Targets Agility"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
   
 
   <ability>
     <abilitytitle>Sword Strike</abilitytitle>
     <abilityid>sword.strike</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/></tags>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a Sword can strike with it during combat doing
 	weapon damage.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-	<!-- level 0 is innate! -->
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage</damage>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 2 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 2 + Str modifier</damage>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 3 + Str modifier</damage>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength|Speed</abilitydmg>
+    <abilitylevels from="0" to="3"/>
   </ability>
 
 
-  <ability>
-    <abilitytitle>Mighty Blow</abilitytitle>
-    <abilityid>sword.mighty_blow</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-        Characters equipped with a Sword can strike with it during combat doing
-	weapon damage.
-      </p>
-
-      <p>
-	When attacking a Mook the usual benefit is that the mook is insta-killed.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 3 + Str modifier</damage>
-	<prereqabilitylevel>sword.strike_3</prereqabilitylevel>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 4 + Str modifier</damage>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 5 + Str modifier</damage>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Sword Feint</abilitytitle>
-    <abilityid>sword.feint</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Speed</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The character makes an opposed agility check when an opponent attacks
-	them with a melee weapon. If they succeed they swap initiative order
-	with their opponent.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>sword.strike_2</prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Opposed Agility Check</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Opposed Agility Check +2</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
 
 
   <ability>
     <abilitytitle>Sword Parry</abilitytitle>
     <abilityid>sword.parry</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><weapon/><untrained/></tags>
     <abilitydescription>
       <p>
-        The player parrys a blow using a weapon.
+	<label>ability:sword.parry</label>
+        When a character is attacked they may attempt to parry the blow using their weapon
+	instead of making an armour roll.  If the parry result fails and a boon is rolled
+	the attack deals half damage.  If the parry result fails and a bane is rolled
+	the attack deals double	damage. If the parry check succeeds the attack does no damage.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Opposed Speed Check</check>
-        <prereqabilitylevel>sword.strike_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Opposed Speed Check + 2</check>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-30" y="60"/></spline>
+    <prereqabilitylevel>sword.strike_1</prereqabilitylevel>	
+    <abilitycheck dc="Targets Attack"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels untrained="-3" from="1" to="2"/>
   </ability>
-
-
-  <ability>
-    <abilitytitle>Sword Disarm</abilitytitle>
-    <abilityid>sword.disarm</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Speed</attr><attr>Agility</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The character attempts to disarm their opponent.
-      </p>
-    </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Opposed Speed Check at -3</check>
-	<effect>The opponent drops their weapon.</effect>
-        <prereqabilitylevel>sword.strike_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Opposed Speed Check -1</check>
-	<effect>The opponent drops their weapon.</effect>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>  
 </abilitygroup>

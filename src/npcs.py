@@ -381,17 +381,10 @@ class NPCGang:
                 if name.startswith(".#"):
                     continue
             
-                xml_fname = join(root, name)
-                #print xml_fname
-                
+                xml_fname = join(root, name)                
                 doc = parse_xml(xml_fname)
                 root = doc.getroot()
-
-                #print root.tag
-
                 if root.tag == "npcs":
-                    #print "XXX"
-
                     npcs = NPCs(monster_groups=monster_groups)
                     npcs.parse(root)
                     if not npcs.validate():
@@ -477,6 +470,5 @@ if __name__ == "__main__":
                    fail_fast=fail_fast)
     
     for npc_like in npc_gangs:
-        print npc_like
-
-    print 
+        print(npc_like)
+    print()

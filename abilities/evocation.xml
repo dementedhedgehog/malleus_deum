@@ -1,286 +1,378 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
 
+
   <abilitygroupinfo>
     <abilitygrouptitle>Evocation</abilitygrouptitle>
     <abilitygroupid>evocation</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
-      <p>
-	Evocation involves the unsophisticated use of raw magic powers.
-      </p>
-    </abilitygroupdescription>
-  </abilitygroupinfo>
-  
-  
-  <ability>
-    <abilitytitle>Eldritch Push</abilitytitle>
-    <abilityid>magic.eldritch_push</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><evocation/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The caster shoots a raw stream of thaumic energy from
-	their hands at a target.  If successful the target may
-	make a Dodge, agility, or speed check to avoid the stream.
+
+      <p noindent="true">
+	Demons inhabit the cold lower planes.  There is much recorded
+	of their nature and their history in old and long forgotten tomes.
+	Evocation represents the study of that lore.  
+	Such books are not easily come by, nor should they be read lightly.
+	<indexentry>Demonic Lore<subentry>See Evocation</subentry></indexentry>
       </p>
 
       <p>
-	If the stream hits the target the target suffers d6 damage
-	and is pushed  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
-	away from the caster.  If the caster hits and a benefit occurs
-	roll on the overcharge effects table and apply the result to the
-	<emph>target</emph>.  The caster can choose whether or not to apply
-	the overcharge effect to the target or to control the magical energies
-	and supress the result.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 6</check>
-	<overcharge>DC + 6</overcharge>		
-	<effect>d6 damage and pushed back </effect>		
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 1 vs DDC 6</check>
-	<overcharge>DC + 7</overcharge>		
-	<effect>d6 damage and pushed back</effect>		
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Eldritch Grasp</abilitytitle>
-    <abilityid>magic.eldritch_grasp</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><evocation/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The caster uses a raw stream of thaumic energy to grab a target
-	crushing it and pulling it towards him. If successful the target may
-	make a Dodge, agility, or speed check to avoid the stream.
+	Evocation magic specializes in summoning or communicating with extra planar
+	entities, binding extra planar entities, opening gates and the like.
       </p>
 
       <p>
-	If the stream hits the target the target suffers d6 damage
-	and is pulled  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
-	towards the caster.  If the caster hits and a benefit occurs
-	roll on the overcharge effects table and apply the result to the
-	<emph>target</emph>.  The caster can choose whether or not to apply
-	the overcharge effect to the target or to control the magical energies
-	and supress the result.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 6</check>
-	<overcharge>DC + 6</overcharge>		
-	<effect>d6 damage and pulled</effect>		
-        <prereqabilitylevel>magic.eldritch_push_2</prereqabilitylevel>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 1 vs DDC 6</check>
-	<overcharge>DC + 7</overcharge>		
-	<effect>d6 damage and pulled</effect>		
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-  
-  <ability>
-    <abilitytitle>Incendo</abilitytitle>
-    <abilityid>magic.incendo</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><evocation/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	Incendo allows the caster to create fire by heating the air.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 7</overcharge>		
-	<leveldescription>
-	  <p>
-	    Creates a fire of torch intensity.
-	  </p>
-	</leveldescription>
-     </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<check>Magic Pool + 2 vs DDC 8</check>
-	<overcharge>DC + 8</overcharge>		
-	<leveldescription>
-	  <p>
-	    Allows the user to make a weapon flame for the duration of a combat.
-	    Flaming weapons do +d6 extra fire damage.
-	  </p>
-	</leveldescription>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>  
-
-
-  <ability>
-    <abilitytitle>Scry</abilitytitle>
-    <abilityid>magic.scry</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><evocation/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The character can view events from the past.  Viewing events in
-	the future is incredibly difficult and unreliable (See Scry, Greater). 
-      </p>
-
-      <p>
-	The caster first names a target then checks to see whether the spell
-	succeeds. If it does, they see an important scene from targets life
-	(the GM narrates the scene to the player). The caster may then choose
-	to look far forward, forward, back or far back in time.  Each time
-	the player attempts to view another scene from the targets life they
-	make another check with their remaining magic pool against a DC 10.
-	The caster may continue to view scenes from the targets life until they
-	fail or choose to stop scrying.
-      </p>
-
-      <p>
-	Contagion is very important to this spell.  A good contagious link, the
-	targets blood, or hair for example, can	reduce the difficulty of this
-	spell by 10!  If the caster fails any checks while scrying their contagious
-	link is destroyed.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 32</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>The caster views scences from the targets past.</effect>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 27</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>The caster views scences from the targets past.</effect>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Scry, Greater</abilitytitle>
-    <abilityid>magic.scry_greater</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><evocation/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The character can view events from a targets present and their future as well
-	as their past. 	This spell works like the lesser Scry but because the future
-	is not predetermined the results are often very unreliable and inaccurate.
-      </p>
-    </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 36</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>The caster views scences from the targets past, present or future.</effect>
-        <prereqabilitylevel>magic.scry_2</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 31</check>
-	<overcharge>DC + 10</overcharge>
-	<effect>The caster views scences from the targets past, present or future</effect>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Wither</abilitytitle>
-    <abilityid>magic.wither</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><evocation/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
-    <abilitydescription>
-      <p>
-	The caster grabs an opponent.
-	On success the caster acts as a conduit to one of the dread
-	planes,	life is drained from the target.  Anything that
-	increases contagion will increase damage for this spell.
-	The target is momentarily transfixed (checks Will versus the casters
-	successful magic roll or loses their turn).	
+        Magic abilities involve the use of the characters magic pool and
+	are only available to certain archetypes.
       </p>      
-    </abilitydescription>    
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
 
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>
-	  Target saves versus Willpower or suffers 2d8 damage.
-	  On overcharge the caster suffers 1d8 damage.
-	</effect> 
-      </abilitylevel>
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool + 2 vs DDC 10</check>
-	<overcharge>DC + 4</overcharge>
-	<effect>
-	  Target saves versus Willpower or suffers 3d8 damage.
-	  On overcharge the caster suffers 1d12 damage.
-	</effect> 
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>  
+
+  <ability>
+    <abilitytitle>Bind</abilitytitle>
+    <abilityid>evocation.bind</abilityid>
+    <abilityactiontype><minor/></abilityactiontype> 
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="4" overcharge="7+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	Bind holds an opponent using magical energies.  
+	If successful The target makes a will check DC 6 in the first round and are held 
+	until they succeed.   The difficulty decreases by two every round the target
+	is held.  The caster may release the target at any time.  
+      </p>
+    </abilitydescription>
+    <spline><p x="15" y="30"/></spline>
+    <prereqabilitylevel>evocation_1</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
   
+  <ability>
+    <abilitytitle>Evocation Lore</abilitytitle>
+    <abilityid>evocation</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><evocation/><pool/><lore/></tags>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	This ability represents the characters knowledge of the theory and
+	history of evocation magick.  Players can make this check to
+	see if their characters have pertinent information about the situation
+	in which they find themselves.  For this ability, exhausted dice are
+	not removed from the pool but exhausted dice and overcharge increases
+	the unreliablility of the information that the GM provides to the players.
+	If the check fails the character has no useful additional information.
+      </p>
+    </abilitydescription>    
+    <spline></spline>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Greater Portal</abilitytitle>
+    <abilityid>evocation.greater_portal</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="26" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	This is a very rapid invocation of the normal portal spell.
+	The spell is cast in one action.  The character can open a portal
+	between two well known places in this plane.
+      </p>
+    </abilitydescription>    
+    <spline><p x="0" y="15"/></spline>
+    <prereqabilitylevel>evocation.portal_2</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Lesser Portal</abilitytitle>
+    <abilityid>evocation.lesser_portal</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><evocation/><ritual/><pool/></tags>
+    <abilitycheck dc="20" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	The user creates a portal in a wall or floor.   The portal remains
+	open for 2d4 minutes or until the caster wills the gate shut.  Casting
+	portal requires marking a magical circle in the ground or against a wall
+	which takes minutes to prepare.
+	The portal opens a path within the current plane, to a point up to
+	<measurement><metric>three meters</metric>
+	<imperial>ten feet</imperial></measurement> per level of the spell.
+	Note that this is a non-combat spell though it only takes a minute or
+	two to cast.
+      </p>
+    </abilitydescription>
+    <spline><p x="-30" y="60"/></spline>
+    <prereqabilitylevel>evocation_1</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
+
+  <ability>
+    <abilitytitle>Phantasmal Leech</abilitytitle>
+    <abilityid>evocation.phantasmal_leech</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="8" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>    
+    <abilitydescription>
+      <p noindent="true">
+	<emph>Like one who, on a lonely road, Doth walk in fear	and dread,
+	And, having once turned round, walks on, And turns no more his head;
+	Because he knows a frightful fiend Doth close behind him tread.</emph>
+      </p>
+      
+      <p>
+	Given an object with a contagious connection to a target, the caster
+	summons a Phantasmal Leech to track the target.  A Phantasmal Leech is
+	a cat sized, snake-like demon with membraneous wings and a cyclostomatic head
+	with five lidless black eyes.  It is translucent, and insubstantial.  The starving
+	Leech craves the blood of the target and the caster sees through its eyes as it
+	tracks the target.   The leeches projection onto this plane is volatile and it
+	is easily destroyed by magic.  If not dismissed	it will involuntarily return
+	to its home plane after ten minutes. Furthermore the leech cannot interact with
+	objects in this plane and may pass through walls, doors <etc/>   The leech cannot
+	attack.
+      </p>
+      
+      <p>
+	If successfully cast the target gets a perception check with DC 14+level to notice the presence
+	of the leech following.  if the target has magical attacks these will almost
+	certainly work against the leech, sending it back from whence it came.  If the
+	target has no magical attacks it cannot harm the creature.  
+      </p>
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-28</td>
+	  <td>The caster summons a Phantasmal Vulture instead (as per the spell of the
+	  same name).</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-38</td>
+	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
+	  d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>41-48</td>
+	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
+	  3d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>51-88</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>
+	<tablelabel>fig:leech-overcharge</tablelabel>
+      </table>
+    </abilitydescription>    
+    <spline><p x="90" y="30"/></spline>
+    <prereqabilitylevel>evocation_1</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Phantasmal Vulture</abilitytitle>
+    <abilityid>evocation.phantasmal_vulture</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="8" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p noindent="true">
+	Given an object with a contagious connection to a target, the caster
+	summons a Phantasmal Vulture to track the target.  A Phantasmal Vulture is
+	a dog sized, vulture-like demon with membraneous wings, a tentacled face and
+	stinging tail. 	Like a Phantasmal Leech it is translucent, susceptible to magical
+	attacks and has the same difficulty of detection.  Unlike the Leech the Vulture
+	can summon its magical reserves to phase into this plane momentarilly to attack.
+	It may attack once before being dispelled to its home plane and will automatically
+	do so when it finds its prey (it is not up to the caster).
+      </p>
+
+      <p>
+	The vulture makes a single Std + 2 attack vs AC for 1d8 damage (if
+	the target has not perceived the vulture, Perception Check 12+Level, it is considered
+	to be Blind to the attack, -4 to AC).
+      </p>
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
+
+	<tableheaderrow>
+	  <td>Roll d49</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>10-19</td>
+	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
+	  d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>20-29</td>
+	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
+	  3d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>30-49</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>
+	<tablelabel>fig:vulture-overcharge</tablelabel>
+      </table>
+    </abilitydescription>
+    <spline><p x="0" y="15"/></spline>
+    <prereqabilitylevel>evocation.phantasmal_leech_2</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Portal</abilitytitle>
+    <abilityid>evocation.portal</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="26" overcharge="5+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	This is a very rapid invocation of the lesser portal spell.
+	The spell is cast in one action.  The character can open a portal
+	in a wall or floor.
+      </p>
+    </abilitydescription>    
+    <spline><p x="0" y="15"/></spline>
+    <prereqabilitylevel>evocation.lesser_portal_2</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Shade</abilitytitle>
+    <abilityid>evocation.shade</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="16" overcharge="24+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	A shade is one of the lesser demons.  It can be summoned to attack
+	a living creature.  If there are no living opponents left it will turn on
+	its attacker.   Shades are insubstantial and visible only as a lack of light.
+	Shades take double damage from fire and magical based attacks.
+      </p>
+    </abilitydescription>    
+    <spline><p x="-30" y="15"/></spline>
+    <prereqabilitylevel>evocation.lesser_portal_1</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Summon</abilitytitle>
+    <abilityid>evocation.summon</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype> 
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="6" overcharge="9+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	The character makes a check to open a minute portal into one of the near planes.
+	This allows some creature on the other side to project a simulacrum
+	of themselves into this plane.  If successful a single demon manifests in
+	this plane. It is highly likely that the entity will be ravenous and seek to
+	devour the animus of the caster or others nearby.  For this reason the caster
+	usually also casts a Circle of Containment immediately before summoning the demon.
+	For the caster to create and control the portal they must use a specially prepared
+	fetish that is placed inside the circle before the summoning.  The fetish provides
+	a channel to the Summon spell via an external plane, thereby circumventing the
+	Circle of Containment.
+      </p>
+      
+      <p>
+	If the caster does not commune with an entity before the summoning they may
+	summon any extra planar creature.  This can be incredibly dangerous.  In addition
+	demons may lie about their names and their capabailites.  So the only, even
+	moderately safe way of summoning demons is to: commune with a demon of a known
+	name, then to summon them into a circle of protection.  Note that demons are
+	deceitful creatures and will jump at the chance to try to trick a summoner into
+	calling them into the world and once here they will try to establish a foothold
+	and not leave.   They will try to break the circle of protection or bargain
+	for information about the caster which will allow them to break the circle via
+	contagion.
+      </p>
+
+      <p>
+	Closing the portal cuts the simulacrums link to the demon.  Powerful demons
+	may be able to keep the portal open themselves, once they have created a
+	simulacrum.  Note that the demons simulacrum need not look like the demon
+	who created it and often times it does not as the demon will wish to disguise
+	their identity.
+      </p>
+    </abilitydescription>
+    <spline><p x="-75" y="30"/></spline>
+    <prereqabilitylevel>evocation_1</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Wyld Portal</abilitytitle>
+    <abilityid>evocation.wyld_portal</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><evocation/><pool/></tags>
+    <abilitycheck dc="8" overcharge="13+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydescription>
+      <p>
+	This ability enables the user to recognize gateways,
+	areas with an affinity with the Wyld.  At
+	these places the caster may cast a portal which opens to
+	the Wyld.
+      </p>
+
+      <p>	
+      	It is not known how many such gateways exist. Given
+	the near suicidal nature of travelling in the Wyld
+	the knowledge of their locations is quickly forgotten.
+      </p>
+
+      <p>	
+	Finally, it should be added that the Wyld is a
+	many-varied place.  Gateways can be found in swamps,
+	deserts and sewers, as well as forested groves.
+	Often the presence of a gateway is indicated by an incongrousness
+	in the environment as the gateway forms a contagious link
+	between the two planes at its locus.  The nature of the
+	Wyld bleeds into this plane at the gateway which can
+	indicate the nature of the Wyld beyond.
+      </p>	
+    </abilitydescription>    
+    <spline><p x="0" y="15"/></spline>
+    <prereqabilitylevel>evocation.greater_portal_1</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
 </abilitygroup>

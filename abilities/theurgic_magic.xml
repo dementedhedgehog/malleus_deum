@@ -2,200 +2,510 @@
 <abilitygroup>
 
   <abilitygroupinfo>
-    <abilitygrouptitle>Magic Abilities</abilitygrouptitle>
+    <abilitygrouptitle>Theurgic Abilities</abilitygrouptitle>
     <abilitygroupid>theurgic</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Magic abilities involve the use of the characters magic pool and
+	Theurgic magic is magic channelled from a powerful deity.
+        They involve the use of the characters magic pool and
 	are only available to certain archetypes.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
-  
-  
+
   <ability>
-    <abilitytitle>Theurgic Magic</abilitytitle>
-    <abilityid>magic_school.theurgic</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><theurgic/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilitytitle>Air of Beatitude</abilitytitle>
+    <abilityid>theurgic.air_of_beatitude</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><minor/></abilityactiontype>
     <abilitydescription>
       <p noindent="true">
-	Theurgic magic is magic channelled from a powerful deity.
+  	If successful those observing the character
+  	will be struck by their holiness and devoutness.
+  	This will grant a +Level bonus to Negotiate actions
+  	or Charm spells.
       </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
+
+      <p>
+  	Demons and undead monsters will need to make an
+  	optional Mettle Check DDC 10+Level or become Enraged and
+  	Charge the caster.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="6+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Augury</abilitytitle>
+    <abilityid>theurgic.augury</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><theurgic/><ritual/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitydescription>
+      <p noindent="true">
+  	Augury involves petitioning a deity or powerful being for
+  	information or insight.  Auguries are performed by
+  	interpretation of the stars, palmistry, tea leaf reading,
+  	dream interpretation, use of cards, the entrails of a sacrificial
+  	victim etc.  The character should choose one method per message
+  	deity and use that method thereafter.
+      </p>
+
+      <p>
+  	The augury process follows the following steps. First, the
+  	character asks a question, then they prepare the augury,
+  	and finally they examine the auspicies for the answer.
+      </p>
+
+      <p>
+  	When asking the question it is important that the augure
+  	specify to whom they are directing their question otherwise
+  	nameless eavesdroppers may respond.  Asking the question is
+  	usually done in one of the old languages.  Firstly because
+  	it may be easier to communicate to the entity in that language,
+  	and second because it makes for good theatre.
+      </p>
+
+      <p>
+  	The steps to prepare an augury depend on the method of
+  	divination, but could include making a cup of tea, or
+  	sacrificing someone on an alter.  The Gods are more likely
+  	to answer the character if a method appropriate to the God is
+  	used.
+      </p>
+
+      <p>
+  	Finally, the auspices can be examined. The GM will answer the
+  	characters question in a three words or less or provide no
+  	response.  If the augury is unsuccessful those words may have
+  	nothing to do with the question being asked.  The check is
+  	made as an hidden opposed check modified by how likely it is for the god
+  	to know the answer and the likelihood that the god cares enough to
+  	answer. At higher levels the character may be gifted visions as a response.
+      </p>
+
+      <p>
+  	It is important to know that in Malleus Deum the Gods are
+  	capricious, are not omniscient or in general, particularly caring.
+  	So they may not answer the characters augury.
+      </p>
+      
+      <p>
+  	A character may keep making checks and asking questions until they
+  	fail, at which point they feel they have lost the attention of the
+  	god and no more attempts may be made to contact that deity for
+  	next day.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="100"/><p x="-30" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Back! Thou Creature From the Abyss</abilitytitle>
+    <abilityid>theurgic.back</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+  	The character calls on their deity to repel demons.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
+    <prereqabilitylevel>theurgic.lore_2</prereqabilitylevel>
+    <abilitycheck dc="5" overcharge="10+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg>Demon makes Mettle Check vs 5×Level</abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Blessed Arms</abilitytitle>
+    <abilityid>theurgic.blessed_arms</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+  	Renders all weapons so blessed as magical for the next ten minutes (granting them the magic tag).
+  	Grants +level damage for these weapons against demons and the undead during that time.  In the event of
+  	overcharge the weapons will glow with radiant light.  The spell effects level+1 weapons that 
+        can be seen by the caster.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="6+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Create Holy Water</abilitytitle>
+    <abilityid>theurgic.create_holy_water</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><standard/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+  	If successful the character creates a vial of holy water.  The
+  	deity that cleric follows cannot be evil.  The character usually carries
+  	a number of vials of holy water upon their person.  When required they
+  	may make an ability check.  If successful they are carrying two vials,
+  	if unsuccessful they are carrying one.  A boon add one to the number of vials
+  	carried, a bane reduces the number of vials carried by one.  So the
+  	character may be carrying from zero to three vials.  Note that the
+  	character must have down time before they can make this check again.  They
+  	can't just produce a never ending stream of holy water vials.  Also note
+  	that the character must have access to vials and water to create holy water.
+  	They cannot produce water in the desert.
+      </p>
+      
+      <p>
+  	Holy water should be kept in a special font.  If kept in a vial
+  	it lasts one week.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="9" overcharge="5+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
   </ability>
 
 
   <ability>
-    <abilitytitle>Augury</abilitytitle>
-    <abilityid>magic.augury</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><theurgic/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Divine Retribution</abilitytitle>
+    <abilityid>theurgic.divine_retribution</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><theurgic/><pool/></tags>
     <abilitydescription>
       <p noindent="true">
-	Augury involves petitioning a deity or powerful being for
-	information or insight.  Augurys are performed by
-	interpretation of the stars, palmistry, tea leaf reading,
-	dream interpretation, use of cards, the entrails of a sacraficial
-	victim etc.  The character should choose one method per message
-	recipient and use that method thereafter.
+  	When struck the character may check and if successful make an
+  	immediate counter-attack.  On overcharge the character is Enraged.
+      </p>
+    </abilitydescription>
+    <spline><p x="-60" y="45"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Exorcise</abilitytitle>
+    <abilityid>theurgic.exorcise</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+  	The character can cast this spell to purge evil spirits from
+	a possessed person or a location such as a burial site, or demon temple.
       </p>
 
       <p>
-	The augury process follows the following steps. First, the
-	character asks a question, then they prepare the augury,
-	and finally they examine the auspicies for the answer.
-      </p>
+  	When purifying a person or an area the difficulty of the check is
+  	determined by the GM based on how evil the site is.  This works as
+  	follows: first the character commits, but does not roll, at least
+  	three dice to the purification, then the GM reveals the difficulty of
+  	the check to the player, at this point the caster may choose to add
+  	additional dice to their check.  Then the character rolls the magic
+  	check as usual.
+      </p>      
+    </abilitydescription>
+    <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="6" overcharge="9+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+  
 
-      <p>
-	When asking the question it is important that the augure
-	specify to whom they are directing their question otherwise
-	nameless eavesdroppers may respond.  Asking the question is
-	usually done in one of the old languages.  Firstly because
-	it may be easier to communicate to the entity in that language,
-	and second because it makes for good theatre.	
+  <ability>
+    <abilitytitle>Grace of Mithras</abilitytitle>
+    <abilityid>theurgic.grace_of_mithras</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+  	If called upon Mithras will grant a +Level bonus to the caster to hit rolls and damage.
       </p>
+    </abilitydescription>
+    <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="4" overcharge="9+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+  
 
-      <p>
-	The steps to prepare an augury depend on the method of
-	divination, but could include making a cup of tea, or
-	sacrificing someone on an alter (players should not do this).
+  <ability>
+    <abilitytitle>Guiding Hand</abilitytitle>
+    <abilityid>theurgic.guiding_hand</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><theurgic/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+  	After a missle is fired and it would have missed.  The caster
+  	uses his powers to try to guide a missile to its target.  This spell
+	does not work on bullets, which fly so fast the character has no time
+	to react.
       </p>
-
-      <p>
-	Finally, the auspices can be examined. The GM will answer the
-	characters question in a three words or less or provide no
-	response.  If the augury is unsuccessful those worfs may have
-	nothing to do with the question being asked.  The player gets
-	to see their roll, but does not know the difficulty of the augury.
-      </p>
-
-      <p>
-	It is important to know that in Malleus Deum the Gods are
-	capricious,are not omniscient or in general, particularly caring.
-	So they may not answer the characters augury.
-      </p>
-      
-      <p>
-	A character may keep performing auguries until they fail, at which
-	point they feel they have lost the attention of the god.
-      </p>
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs DDC 10</check>
-	<overcharge>DC + 5</overcharge>
-	<prereqtag>Cleric</prereqtag>
-        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs DDC 10</check>
-	<overcharge>DC + 6</overcharge>	
-      </abilitylevel>      
-      
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <check>Std 2d8 + 3 vs DDC 10</check>
-	<overcharge>DC + 7</overcharge>
-	<leveldescription>
-	  <p>
-	    The character may be gifted with visions from their deity.
-	  </p>
-	</leveldescription>
-      </abilitylevel>      
-    </abilitylevels>
+    </abilitydescription>
+    <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="4+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
   </ability>
 
 
 
   <ability>
     <abilitytitle>Heal</abilitytitle>
-    <abilityid>magic.heal</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><theurgic/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityid>theurgic.heal</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><non-combat/></abilityactiontype>
     <abilitydescription>
       <p noindent="true">
-	The healing character places their hands on a bloodied target
-	and makes a check.  If successful the bloodied character heals
-	Health.  On overcharge the healer accidentaly uses their own animus
-	in order to heal the bloodied character.  On overcharge the character
-	may lose d6 hitpoints.
+  	The healing character places their hands on a bloodied target
+  	and makes a check.  If successful the bloodied character heals
+  	1d6+Level Health.  On overcharge the healer accidentaly uses their own animus
+  	in order to heal the bloodied character and loses d6 hitpoints.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="0"/></spline>
+    <prereqabilitylevel>theurgic.lore_2</prereqabilitylevel>
+    <abilitycheck dc="7" overcharge="11+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Light of Mithras</abilitytitle>
+    <abilityid>theurgic.light_of_mithras</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+  	The character creates a bright divine light attached to some object.
+  	The light burns for an hour.  It is as bright as a pitch torch.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="4+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Litany of Redemption</abilitytitle>
+    <abilityid>theurgic.litany_of_redemption</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><theurgic/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+  	Once per day the caster may attempt the Litany of Redemption.  This is a
+	five minute ritual where the caster quotes passages from the Book of Light
+	and reflects on the lessons within. If successful participants refresh a
+	mettle dice if able.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>No - Take Me!</abilitytitle>
+    <abilityid>theurgic.no_take_me</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+  	The character implores their patron to take them in the stead of some
+  	other individual Near Death.   If the character succeeds, up to 2d6
+  	Health (or the targets maximum health whichever is smaller) is
+  	added to the targets health and removed from the casters Health. In the
+  	event of an overcharge the caster loses remaining health and enters the
+  	Near Death state themselves.
+      </p>
+    </abilitydescription>
+    <spline><p x="75" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="4" overcharge="8+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Purify</abilitytitle>
+    <abilityid>theurgic.purify</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+  	The character can casts this spell to purify food or water that
+  	has gone rancid, rotten, is poisoned, or is brackish. The caster
+  	can purify enough food for three people for a day per level of the
+  	spell.  Most deities will not take kindly to being continuously hassled
+  	because a follower cannot be bothered to organize provisions. In such
+  	cases the caster may lose favour with their god.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>Theurgic Lore</abilitytitle>
+    <abilityid>theurgic.lore</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><theurgic/><lore/></tags>
+    <abilitydescription>
+      <p noindent="true">
+  	Theirgic lore is the study of how to cast theological, or clerical, spells.  There is a
+  	separate ability called Theology that represents study of the the deities, the history of
+  	religion, and of the teleolical origins of the world.  In most cases both abilities are
+  	required to cast theurgic spells.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitycheck dc="12"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <prereqabilitylevel></prereqabilitylevel>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Hold Undead</abilitytitle>
+    <abilityid>theurgic.hold_undead</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+  	The character calls on their deity to keep beings animated by
+  	necrotic forces at bay.  Successfully casting this spell will
+	cause the undead to make a DC 20 Mettle check or be held,
+	stopping them from advancing towards, or attacking the character or
+	their allies for three rounds.  On overcharge the caster is transfixed
+	by the spell, and unable to move for its duration.  The caster
+	may end the spell <emph>at any time after</emph> the turn they cast the spell.
+	This spell will work on any number of undead at a time.
       </p>
 
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqtag>Cleric</prereqtag>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Magic Pool versus DDC 8</check>
-        <effect>Bloodied character heals 2d6 damage</effect>
-        <overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Magic Pool + 2 versus DDC 8</check>
-        <effect>Bloodied character heals 3d6 damage</effect>
-        <overcharge>DC + 7, Caster takes 2d6 damage.</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    </abilitydescription>
+    <spline><p x="-60" y="5"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="7" overcharge="17+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Turn Undead</abilitytitle>
-    <abilityid>magic.turn_undead</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><theurgic/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityid>theurgic.turn_undead</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><pool/></tags>
     <abilitydescription>
       <p noindent="true">
-	The character calls on their deity to repel beings animated by
-	necrotic forces.
+  	The character calls on their deity to repel beings animated by
+  	necrotic forces.  Successfully casting this spell will
+	cause the undead to make a DC 20 Mettle check or be turned,
+	forcing them to retreat away from the character or their allies for three rounds.	
+	On overcharge the caster is transfixed by the spell, and unable to move for its duration.
+	The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
+	This spell will work on any number of the same type of undead at one time.
       </p>
 
-      <!--
-	  at low levels hold, then turn then destroy the undead
-      -->
-    </abilitydescription>    
-    <abilitylevels>
-       <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqtag>cleric</prereqtag>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs opponents Will</check>
-	<overcharge>DC + 8</overcharge>
-        <prereqabilitylevel>magic_school.theurgic_1</prereqabilitylevel>	
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 2 vs opponents Will</check>
-	<overcharge>DC + 9</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    </abilitydescription>
+    <spline><p x="-60" y="5"/></spline>
+    <prereqabilitylevel>theurgic.hold_undead_3</prereqabilitylevel>
+    <abilitycheck dc="7" overcharge="17+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
   </ability>
+
+  <ability>
+    <abilitytitle>Destroy Undead</abilitytitle>
+    <abilityid>theurgic.destroy_undead</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><pool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+  	The character calls on their deity to destroy beings animated by
+  	necrotic forces.
+	Successfully casting this spell will cause the undead to make a DC 20 Mettle check
+	or be destroyed, forcing them to retreat away from the character or be destroyed.
+	On overcharge the caster is transfixed by the spell, and unable to move for its duration.
+	The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
+	This spell will work on any number of the same type of undead at one time.
+      </p>
+    </abilitydescription>
+    <spline><p x="-60" y="5"/></spline>
+    <prereqabilitylevel>theurgic.turn_undead_2</prereqabilitylevel>
+    <abilitycheck dc="7" overcharge="17+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>
+
   
+  <ability>
+    <abilitytitle>Witness Me!</abilitytitle>
+    <abilityid>theurgic.witness_me</abilityid>
+    <tags><theurgic/><pool/></tags>
+    <abilityactiontype><minor/></abilityactiontype>
+    <abilitydescription>
+      <p noindent="true">
+	The character calls on their patron for support in the hour of their death!
+	If the characters health is less than 10 they can use the Witness Me! ability
+	to gain three melee attacks in that round.
+      </p>
+    </abilitydescription>
+    <spline><p x="75" y="90"/></spline>
+    <prereqabilitylevel>theurgic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
+  </ability>    
 </abilitygroup>
+

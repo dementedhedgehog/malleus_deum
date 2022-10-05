@@ -5,49 +5,23 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Necromancy</abilitygrouptitle>
     <abilitygroupid>necromancy</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
         The art of communing with the unquiet dead is at best the province of shysters 
 	and charlatans and at worst an art that plays with things that no man ought.  
 	It's practice is viewed with disdain by all right thinking peoples.
       </p>
-    </abilitygroupdescription>      
+    </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
 
-    
-
-  <ability>
-    <abilitytitle>Necromancy</abilitytitle>
-    <abilityid>magic_school.necromancy</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><necromancy/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
-    <abilitydescription>
-      <p noindent="true">
-	The school of necromancy is concerned with the use of death or blood magic.
-	Necromantic lore is the study of the legends of the dread necromancers
-	and the unquiet dead.  Characters may provide useful information about these
-	topics on occasion: identifying undead, and or their weaknesses, and providing
-	the relevant mythology around these creatures.
-      </p>      
-    </abilitydescription>    
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel></prereqabilitylevel>
-        <prereqabilitylevel>language.inochian_1</prereqabilitylevel>	
-        <check>Std 2d8 vs DDC 12</check>
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
   
   <ability>
     <abilitytitle>Commune with the Dead</abilitytitle>
     <abilityid>necromancy.commune</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><necromancy/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><necromancy/><pool/></tags>
     <abilitydescription>
       <p>
 	While holding part of the deceased's body the necromancer may ask questions of the 
@@ -82,17 +56,12 @@
         handle failure of magic
       </p>	  
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 8</check>
-	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>	
-      </abilitylevel>
-    </abilitylevels>
+    <spline><p x="-60" y="60"/></spline>
+    <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
+    <abilitycheck dc="9" overcharge="14+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="2"/>
   </ability>
 
 
@@ -100,9 +69,8 @@
   <ability>
     <abilitytitle>Graft Flesh</abilitytitle>
     <abilityid>magic.graft_flesh</abilityid>
-    <abilityclass>Non-Combat</abilityclass>
-    <keywords><necromancy/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><necromancy/><pool/></tags>
     <abilitydescription>
       <p>
 	The caster grafts the fresh flesh of one creature onto another.
@@ -115,83 +83,63 @@
 	the creature is dead.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>0</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool versus DDC 5</check>
-        <overcharge>DC + 5</overcharge>
-        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>	
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>0</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool versus DDC 5</check>
-        <overcharge>DC + 7</overcharge>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>0</successes>
-        <attempts>1</attempts>
-        <check>Magic Pool versus DDC 5</check>
-        <overcharge>DC + 9</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="30" y="75"/></spline>
+    <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>	
+    <abilitycheck dc="9" overcharge="5+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
 
+
+  <ability>
+    <abilitytitle>Necromancy</abilitytitle>
+    <abilityid>magic_school.necromancy</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><necromancy/><lore/></tags>
+    <abilitydescription>
+      <p noindent="true">
+	The school of necromancy is concerned with the use of death or blood magic.
+	Necromantic lore is the study of the legends of the dread necromancers
+	and the unquiet dead.  Characters may provide useful information about these
+	topics on occasion: identifying undead, and or their weaknesses, and providing
+	the relevant mythology around these creatures.
+      </p>      
+    </abilitydescription>    
+    <abilitycheck dc="12"/>
+    <spline></spline>    
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+  
   <ability>
     <abilitytitle>Stay Death</abilitytitle>
     <abilityid>magic.stay_death</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><necromancy/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><necromancy/><pool/></tags>
     <abilitydescription>
       <p>
 	The character holds death at bay for a moment.  The target
 	can reroll a single near-death roll.  This spell may be cast
-	once per character per day.
+	once per character per day.  If successful the target may
+	reroll a death roll.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <check>Magic Pool versus DDC 7</check>
-	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
-	<effect>Reroll a near-death roll.</effect>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <check>Magic Pool +2 versus DDC 7</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>1</successes>
-        <check>Magic Pool +3 versus DDC 7</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>See above.</effect>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-90" y="15"/></spline>
+    <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
+    <abilitycheck dc="6" overcharge="10+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>
   
 
   <ability>
     <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
     <abilityid>magic.blood_soucriant</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><necromancy/></keywords>
-    <abilityattrmodifiers></abilityattrmodifiers>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><necromancy/><pool/></tags>
     <abilitydescription>
       <p>
 	In the presence of a lot of blood the character can summon
@@ -201,31 +149,11 @@
 	will attack the caster.
       </p>
     </abilitydescription>    
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>1</successes>
-        <check>Magic Pool versus DDC 9</check>
-	<overcharge>DC + 6</overcharge>
-        <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
-	<effect>Reroll a near-death roll.</effect>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <check>Magic Pool +2 versus DDC 9</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-
-      <abilitylevel>
-        <levelnumber>3</levelnumber>
-        <successes>1</successes>
-        <check>Magic Pool +3 versus DDC 9</check>
-	<overcharge>DC + 8</overcharge>
-	<effect>See above.</effect>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="90" y="15"/></spline>
+    <prereqabilitylevel>magic_school.necromancy_1</prereqabilitylevel>
+    <abilitycheck dc="9" overcharge="5+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
   </ability>  
 </abilitygroup>

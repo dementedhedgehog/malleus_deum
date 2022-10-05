@@ -19,7 +19,7 @@ directly if you have a good understanding of Python/Latex and Xml.
 
 ## Windows
 
- * Install Python 2.7+
+ * Install Python 3.+
  * Install MikTek
  * Update MikTek as administrator.
  * Install git.

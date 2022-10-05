@@ -1,99 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Wild Magic</abilitygrouptitle>
     <abilitygroupid>wild_magic</abilitygroupid>
-    <abilitygroupfamily>Magic</abilitygroupfamily>
+    <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	Wild Magic magic is the use of the residual life magic in a region.
+	Wild Magic magic involves harnessing the residual life magic in a region,
+	drawing energy for casting from the characters environment.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
 
   <ability>
-    <abilitytitle>Spider Climb</abilitytitle>
-    <abilityid>magic.spider_climb</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><wildmagic/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Call of the Wild</abilitytitle>
+    <abilityid>wild_magic.call_of_the_wild</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><pool/></tags>
     <abilitydescription>
       <p>
-	The caster uses magical energies to help him climb a surface
-	as per the Climb ability. 
+	The caster calls to the local animals for help.
       </p>
-    </abilitydescription>    
 
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 12</check>
-	<overcharge>DC + 8</overcharge>	
-	<effect>+3 to Climb check</effect>	
-      </abilitylevel>
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Call of the Wild Overcharge Table</tabletitle>
 
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <successes>1</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool + 2 vs DDC 12</check>
-	<overcharge>DC + 7</overcharge>	
-	<effect>+4 to Climb check</effect>	
-      </abilitylevel>
-    </abilitylevels>
-  </ability>
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-28</td>
+	  <td>The animals hear the call but are swayed by their own self-interest.
+	  None answer the call.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-38</td>
+	  <td>The casters mind is linked to the animals.  They can either banish the animals
+	  or control them, but that is all.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>41-58</td>
+	  <td>Something from beyond takes a bite out of the caster.  Caster suffers
+	  2d6 damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>61-88</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>
+	<tablelabel>fig:call-of-the-wild-overcharge</tablelabel>	  
+      </table>      
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>wild_magic.vermin_swarm_2</prereqabilitylevel>
+    <abilitycheck dc="9" overcharge="15+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
+  
 
 
   <ability>
+    <abilitytitle>Howl of the Hunt</abilitytitle>
+    <abilityid>wild_magic.howl_of_the_hunt</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The caster lets loose a loud howling sound that resembles
+	the sound of a wolves howl.   If the howl is made successfully,
+	opponents must make a DC 2 Mettle check or flee.
+      </p>
+
+    </abilitydescription>
+    <spline><p x="60" y="30"/></spline>
+    <prereqabilitylevel>wild_magic.lore_2</prereqabilitylevel>
+    <abilitycheck dc="4" overcharge="9+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>  
+  
+
+  <ability>
     <abilitytitle>Hyperosmia</abilitytitle>
-    <abilityid>magic.hyperosmia</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><wildmagic/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityid>wild_magic.hyperosmia</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><pool/></tags>
     <abilitydescription>
       <p>
 	The character gains a very enhanced sense of smell, temporarily.
-	This spell gives them advantges to fighting when they cannot see
-	(+2 to hit, more against strongly smelling opponents),
-	+2 tracking, saves against illusions, +4 to Ambush roles, and +2 to Interogate and
-	Perceive checks.  The spell lasts half an hour.
+	This spell gives them advantages to fighting when they cannot see
+	(+2 to hit, more against strongly smelling opponents), +2 tracking,
+	saves against illusions, +4 to Ambush roles, and +2 to Interogate
+	and Perceive checks.  The spell lasts half an hour.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 6</overcharge>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Magic Pool + 2 vs DDC 4</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="0" y="60"/></spline>
+    <prereqabilitylevel>wild_magic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="4" overcharge="6+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>    
+    <abilitylevels from="1" to="4"/>
   </ability>  
 
 
 
   <ability>
+    <abilitytitle>Therianthropy</abilitytitle>
+    <abilityid>magic.therianthropy</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><pool/></tags>
+    <abilitydescription>
+      <indexentry>Shapeshifting<subentry>see Therianthropy</subentry></indexentry>
+
+      <figure position="h">
+        <img id="dore_therianthropy" scale="0.6"/>
+      </figure>
+      
+      <p>
+	The caster takes animal form for up to a few hours.  The first
+	time the caster casts the spell they roll on the appropriate Therianthropy
+	table to choose the animal to which they are atuned.  	That is the animal
+	that they will always change into when casting this spell.  It should be
+	noted that therianthropy is a very different thing from lycanthropy.
+      </p>
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.2</fixed><fixed>0.7</fixed></tablespec>
+	<tabletitle>Therianthropy Temperate Table</tabletitle>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Animal</td>
+	</tableheaderrow>
+
+	<tablerow> <td>11</td><td>Cockroach</td></tablerow>
+	<tablerow> <td>12</td><td>Beetle</td></tablerow>
+	<tablerow> <td>13-14</td><td>House fly or Firefly</td></tablerow>
+	<tablerow> <td>15-18</td><td>Spider</td></tablerow>
+
+	<tablerow> <td>21-25</td><td>Frog, Toad, Lizard or Newt</td></tablerow>
+	<tablerow> <td>26-27</td><td>Squirrel, Mouse, Mole or Hedgehog</td></tablerow>
+	<tablerow> <td>28</td><td>Hare or Rabbit</td></tablerow>
+	
+	<tablerow> <td>31</td><td>Goat or Ibex</td></tablerow>
+	<tablerow> <td>32-34</td><td>Sparrow, Crow, or Pidgeon</td></tablerow>
+	<tablerow> <td>35-36</td><td>Weasel, Polecat or Ferret</td></tablerow>
+	<tablerow> <td>37-38</td><td>Bat</td></tablerow>
+
+	<tablerow> <td>41-42</td><td>Yak, Musk Ox, Bison</td></tablerow>
+	<tablerow> <td>43-44</td><td>Deer, Reindeer, or Elk</td></tablerow>
+	<tablerow> <td>45-46</td><td>Pig or Wild Boar</td></tablerow>	
+	<tablerow> <td>47-48</td><td>Horse</td></tablerow>
+	
+	<tablerow> <td>51-52</td><td>Fox or Jackal</td></tablerow>
+	<tablerow> <td>53-54</td><td>Owl or Vulture</td></tablerow>
+	<tablerow> <td>55-58</td><td>Dog or Hound</td></tablerow>
+	
+	<tablerow> <td>61-63</td><td>House Cat</td></tablerow>
+	<tablerow> <td>64-65</td><td>Lynx</td></tablerow>
+	<tablerow> <td>66-68</td><td>Hawk</td></tablerow>
+	
+	<tablerow> <td>71-72</td><td>Otter or Badger</td></tablerow>
+	<tablerow> <td>73-74</td><td>Wolverine</td></tablerow>
+	<tablerow> <td>75-76</td><td>Adder</td></tablerow>
+	<tablerow> <td>77-78</td><td>Moose or Aurochs</td></tablerow>
+	
+	<tablerow> <td>81-83</td><td>Wolf</td></tablerow>
+	<tablerow> <td>84-85</td><td>Lion, Snow Leopard, or Panther</td></tablerow>
+	<tablerow> <td>86</td><td>Bear Black, Brown or Polar</td></tablerow>
+	<tablerow> <td>88</td><td>Mammoth</td></tablerow>
+	<tablelabel>fig:therianthropy</tablelabel>
+      </table>
+
+
+      
+      <p>
+	Northern druid style casters should roll on the Therianthropy Temperate Table.
+	Casters from the tropics should roll on the Therianthropy Tropical/Subtropical Table.
+	If the caster comes from somewhere in-between they can roll and choose which table.
+      </p>
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.2</fixed><fixed>0.7</fixed></tablespec>
+	<tabletitle>Therianthropy Tropical/Subtropical Table</tabletitle>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Animal</td>
+	</tableheaderrow>
+
+	<tablerow> <td>11</td><td>Cockroach</td></tablerow>
+	<tablerow> <td>12</td><td>Beetle</td></tablerow>
+	<tablerow> <td>13-14</td><td>House fly or Firefly</td></tablerow>
+	<tablerow> <td>15-18</td><td>Spider or Scorpion</td></tablerow>
+
+	<tablerow> <td>21-25</td><td>Frog, Toad, Lizard or Newt</td></tablerow>
+	<tablerow> <td>26</td><td>Squirrel, Mouse, Rat, or Mole</td></tablerow>
+	<tablerow> <td>28</td><td>Hare or Rabbit</td></tablerow>
+	
+	<tablerow> <td>31</td><td>Buffalo, Bull or Cow</td></tablerow>
+	<tablerow> <td>32-34</td><td>Sparrow, Crow, Parrot, Pidgeon</td></tablerow>
+	<tablerow> <td>35-36</td><td>Weasel</td></tablerow>
+	<tablerow> <td>37-38</td><td>Bat</td></tablerow>
+
+	<tablerow> <td>41</td><td>Antelope</td></tablerow>
+	<tablerow> <td>42-43</td><td>Goat or Ibex</td></tablerow>
+	<tablerow> <td>44-45</td><td>Pig or Wild Boar</td></tablerow>	
+	<tablerow> <td>46-47</td><td>Horse or Wild Horse</td></tablerow>
+	<tablerow> <td>48</td><td>Python</td></tablerow>
+	
+	<tablerow> <td>51-52</td><td>Jackal</td></tablerow>
+	<tablerow> <td>53-54</td><td>Hawk or Vulture</td></tablerow>
+	<tablerow> <td>55</td><td>Monkey</td></tablerow>
+	<tablerow> <td>56-58</td><td>Wild Dog</td></tablerow>
+	
+	<tablerow> <td>61-63</td><td>Jungle/Desert Cat</td></tablerow>
+	<tablerow> <td>64-65</td><td>Crocodile</td></tablerow>
+	<tablerow> <td>66-68</td><td>Eagle</td></tablerow>
+	
+	<tablerow> <td>71-73</td><td>Otter or Badger</td></tablerow>
+	<tablerow> <td>74-75</td><td>Baboon, Gibbon or Chimpanzee</td></tablerow>
+	<tablerow> <td>76-78</td><td>Viper</td></tablerow>
+	
+	<tablerow> <td>81-82</td><td>Rhino</td></tablerow>
+	<tablerow> <td>83-84</td><td>Gorilla</td></tablerow>
+	<tablerow> <td>85</td><td>Elephant</td></tablerow>
+	<tablerow> <td>86</td><td>Lion or Tiger</td></tablerow>
+	<tablerow> <td>87-88</td><td>Bear</td></tablerow>
+	<tablelabel>fig:therianthropy</tablelabel>
+      </table>
+
+
+      <p>
+	If a character rolls one of the results with multiple animals then it
+	is the GMs role to choose which of the animals the caster becomes based
+	on their character and the environs from which they came, <eg/> a northern
+	barbarian might become a polar bear given the bear result.	
+      </p>
+     
+
+      <table>
+	<tablecategory>Standard</tablecategory>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Therianthropy Overcharge Table</tabletitle>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow> <td>13-14</td><td>Roll on the random overcharge table</td></tablerow>
+	<tablerow> <td>14-18</td><td>The character is trapped in the animal form until the spell can be removed.</td></tablerow>
+	<tablerow> <td>21-28</td><td>The caster is trapped in animal form for d3 days or until the spell is removed.</td></tablerow>
+	<tablerow> <td>31-68</td><td>The character gains an aspect that their animal might have.</td></tablerow>
+	<tablerow> <td>71-88</td><td>No Effect</td></tablerow>
+	<tablelabel>fig:therianthropy_overcharge</tablelabel>
+      </table>
+
+      <p>
+	In the event the spell is overcharged roll on the table above.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline>
+    <prereqabilitylevel>wild_magic.hyperosmia_2</prereqabilitylevel>
+    <abilitycheck dc="3"    
+    overcharge="9 +Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+  
+  
+  <ability>
     <abilitytitle>Vermin Swarm</abilitytitle>
-    <abilityid>magic.vermin_swarm</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><wildmagic/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilityid>wild_magic.vermin_swarm</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><pool/></tags>
     <abilitydescription>
       <p>
 	The character summons a swarm of vermin.  The GM should choose one 
 	of the following types of swarms either randomly or as appropriate to
-	the context: Spider, Beetle, Rat, Bees, Flys, Bats.  Swarms stay until
-	the end of combat or 5 minutes which-ever is longer. 
+	the context: Spiders, Beetles, Rats, Bees, Flys, Bats, Ravens, Maggots.
+	Swarms remain in play until the end of combat.   If there are no vermin
+	in the vicinity then none can be summoned.  The caster can sense the
+	presence of vermin before attempting to cast this spell.
       </p>
 
       <table>
@@ -130,211 +332,83 @@
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
 	</tablerow>
 	<tablelabel>fig:vermin-swarm-overcharge</tablelabel>
-      </table>
-      
+      </table>      
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 4</check>
-	<overcharge>DC + 6</overcharge>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Magic Pool + 2 vs DDC 4</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline><p x="-45" y="30"/></spline>
+    <prereqabilitylevel>wild_magic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="4" overcharge="10+Level"/>
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>
 
 
+  
+  
   <ability>
-    <abilitytitle>Call of the Wild</abilitytitle>
-    <abilityid>magic.call_of_the_wild</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><wildmagic/></keywords>
-    <abilityattrmodifiers><attr>Perception</attr></abilityattrmodifiers>
+    <abilitytitle>Spider Climb</abilitytitle>
+    <abilityid>wild_magic.spider_climb</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><pool/></tags>
     <abilitydescription>
       <p>
-	The caster calls to the local animals for help.
+	The caster uses magical energies to help him climb a surface
+	as per the Climb ability. 
       </p>
-
-      <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
-	<tabletitle>Call of the Wild Overcharge Table</tabletitle>
-
-	<tableheaderrow>
-	  <td>Roll d88</td>
-	  <td>Overcharge Effect</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>11-28</td>
-	  <td>The animals here the call but are swayed by their own self-interest.
-	  None answer the call.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>31-38</td>
-	  <td>The casters mind is linked to the animals.  They can either banish the animals
-	  or control them, but that is all.
-	  </td>
-	</tablerow>
-
-	<tablerow>
-	  <td>41-58</td>
-	  <td>Something from beyond takes a bite out of the caster.  Caster suffers
-	  2d6 damage.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>61-88</td>
-	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
-	</tablerow>
-	<tablelabel>fig:call-of-the-wild-overcharge</tablelabel>	  
-      </table>      
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 13</check>
-	<overcharge>DC + 6</overcharge>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Magic Pool + 2 vs DDC 13</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>  
+    </abilitydescription>    
+    <spline><p x="-60" y="0"/></spline>
+    <prereqabilitylevel>wild_magic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="8" overcharge="13+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
   
 
   <ability>
-    <abilitytitle>Therianthropy</abilitytitle>
-    <abilityid>magic.therianthropy</abilityid>
-    <abilityclass>Melee</abilityclass>
-    <keywords><wildmagic/></keywords>
-    <abilityattrmodifiers><attr>Willpower</attr></abilityattrmodifiers>
+    <abilitytitle>Wild Magic Lore</abilitytitle>
+    <abilityid>wild_magic.lore</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><wildmagic/><lore/></tags>
     <abilitydescription>
-      <indexentry>Shapeshifting<subentry>see Therianthropy</subentry></indexentry>      
       <p>
-	The caster takes animal form for up to a few hours.  The first
-	time the caster casts the spell they roll on the Therianthropy
-	table to choose the animal to which they are atuned.  That is the
-	animal that they will always change into when casting this spell.
+	This ability represents the characters knowledge about wild magic.
+	This includes the use of herbs and natural medicines.
       </p>
-      <!--
-	  Therianthropy
-	  differs from lycanthropy in that the caster
-      -->
+    </abilitydescription>    
+    <abilitycheck dc="12"/>
+    <spline></spline>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
 
-      <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
-	<tabletitle>Therianthropy Table</tabletitle>
-
-	<tableheaderrow>
-	  <td>Roll d88</td>
-	  <td>Animal</td>
-	</tableheaderrow>
-
-	<tablerow> <td>11</td><td>Cockroach</td></tablerow>
-	<tablerow> <td>12</td><td>Beetle</td></tablerow>
-	<tablerow> <td>13-14</td><td>House fly or Firefly</td></tablerow>
-	<tablerow> <td>15-18</td><td>Spider or Scorpion</td></tablerow>
-
-	<tablerow> <td>21-22</td><td>Frog or Toad</td></tablerow>
-	<tablerow> <td>23-25</td><td>Lizard or Newt</td></tablerow>
-	<tablerow> <td>26</td><td>Squirrel, Mouse, Rat or Hamster</td></tablerow>
-	<tablerow> <td>27</td><td>Mole, Vole or Hedgehog</td></tablerow>
-	<tablerow> <td>28</td><td>Hare or Rabbit</td></tablerow>
-	
-	<tablerow> <td>31</td><td>Yak, Musk Ox, Bison, Bull or Cow</td></tablerow>
-	<tablerow> <td>32-34</td><td>Sparrow, Crow, Parrot, Pidgeon</td></tablerow>
-	<tablerow> <td>35-36</td><td>Weasel or Ferret</td></tablerow>
-	<tablerow> <td>37-38</td><td>Bat</td></tablerow>
-
-	<tablerow> <td>41</td><td>Deer, Elk</td></tablerow>
-	<tablerow> <td>42-43</td><td>Goat or Ibex</td></tablerow>
-	<tablerow> <td>44-45</td><td>Pig or Wild Boar</td></tablerow>	
-	<tablerow> <td>46-47</td><td>Pony, Mule, Donkey or Draft Horse</td></tablerow>
-	<tablerow> <td>48</td><td>Python</td></tablerow>
-	
-	<tablerow> <td>51-52</td><td>Fox or Jackal</td></tablerow>
-	<tablerow> <td>53-54</td><td>Owl or Vulture</td></tablerow>
-	<tablerow> <td>55</td><td>Baboon, Gibbon, Orangutan or Chimpanzee</td></tablerow>
-	<tablerow> <td>56-58</td><td>Mastiff, Terrier, Sheepdog, Scent Hound, Lapdog, Retriever</td></tablerow>
-	
-	<tablerow> <td>61-63</td><td>House Cat</td></tablerow>
-	<tablerow> <td>64-65</td><td>Crocodile</td></tablerow>
-	<tablerow> <td>66-68</td><td>Hawk</td></tablerow>
-	
-	<tablerow> <td>71-72</td><td>Otter or Badger</td></tablerow>
-	<tablerow> <td>73-74</td><td>Wolverine</td></tablerow>
-	<tablerow> <td>75</td><td>Thorough-bred Horse</td></tablerow>
-	<tablerow> <td>76-78</td><td>Viper (poisonous)</td></tablerow>
-	
-	<tablerow> <td>81-83</td><td>Wolf</td></tablerow>
-	<tablerow> <td>84</td><td>Gorilla</td></tablerow>
-	<tablerow> <td>85-86</td><td>Lion, Snow Leopard, Panther etc.</td></tablerow>
-	<tablerow> <td>87-88</td><td>Bear Black, Brown or Polar</td></tablerow>
-	<tablelabel>fig:therianthropy</tablelabel>
-      </table>
+  <ability>
+    <abilitytitle>Warp Wood</abilitytitle>
+    <abilityid>wild_magic.warp_wood</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><pool/></tags>
+    <abilitydescription>
+      <p>
+	The caster can warp wood at a distance.  This spell can be used
+	to warp a wooden door.. rendering it unclosable if it was open at the
+	time of casting, or unopenable if it was shut at the time of casting.
+	It can render a quiver of arrows extremely inaccurate, -6 to hit, or
+	destroy a bow.
+      </p>
 
       <p>
-	If a character rolls one of the results with multiple animals then it
-	is the GMs role to choose which of the animals the caster becomes based
-	on their character and the environs from which they came, <eg/> a northern
-	barbarian might become a polar bear given the bear result.	
-      </p>
-     
-
-      <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
-	<tabletitle>Therianthropy Overcharge Table</tabletitle>
-
-	<tableheaderrow>
-	  <td>Roll d88</td>
-	  <td>ThaOvercharge Effect</td>
-	</tableheaderrow>
-
-	<tablerow> <td>13-14</td><td>Roll on the random overcharge table</td></tablerow>
-	<tablerow> <td>14-18</td><td>The character is trapped in the animal form until the spell can be removed.</td></tablerow>
-	<tablerow> <td>21-28</td><td>The caster is trapped in animal form for d3 days or until the spell is removed.</td></tablerow>
-	<tablerow> <td>31-58</td><td>The character gains an aspect that their animal might have.</td></tablerow>
-	<tablerow> <td>61-88</td><td>No Effect</td></tablerow>
-	<tablelabel>fig:therianthropy_overcharge</tablelabel>
-      </table>
-
-      <p>
-	In the event the spell is overcharged roll on the table above.
-      </p>
-    </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>2</successes>
-        <attempts>1</attempts>
-	<check>Magic Pool vs DDC 13</check>
-	<overcharge>DC + 6</overcharge>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Magic Pool + 2 vs DDC 13</check>
-	<overcharge>DC + 7</overcharge>
-      </abilitylevel>      
-    </abilitylevels>
+	The spell has a range of <measurement><metric>30m</metric><imperial>100'</imperial></measurement>.
+	The spell can effect one item For each level of the spell.  The spells abilities linger on the
+	character.. they cast the spell, and then they can choose which items to warp anytime as a free action
+	over the next five minutes/30 turns. 
+      </p>	
+    </abilitydescription>    
+    <spline><p x="-60" y="0"/></spline>
+    <prereqabilitylevel>wild_magic.lore_1</prereqabilitylevel>
+    <abilitycheck dc="3" overcharge="9+Level" />
+    <abilitychecktype>Magic</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>
 </abilitygroup>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+<chapter>
+<chaptertitle>Calibration</chaptertitle>
+<section>        
+<sectiontitle>Overview</sectiontitle>
+
+<p>
+  A list of encounters per level used to calibrate archetype strength or encounter strength.
+</p>
+
+</section>
+
+
+<section>        
+<sectiontitle>Archetype Calibration Encounters</sectiontitle>
+
+<p>
+  A list of encounters per level used to calibrate character strength.
+  These are single character encounters that a first level character should have
+  a reasonable chance of winning.  Combat centric characters ideally would have
+  an easier time of these than the combat-lite archetypes.
+</p>
+
+
+<subsection>
+  <subsectiontitle>Level 1 Archetype Calibration Encounters</subsectiontitle>
+{% set encounter=encounters.get('calibration.level_1_robbers') %}
+{% include "docs/encounter_template.xml" %}
+
+{% set encounter=encounters.get('calibration.level_1_pit) %}
+{% include "docs/encounter_template.xml" %}
+</subsection>
+
+
+</section>
+</chapter>
+</book>

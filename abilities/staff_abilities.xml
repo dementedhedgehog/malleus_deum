@@ -3,99 +3,64 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Staves</abilitygrouptitle>
     <abilitygroupid>staves</abilitygroupid>
-    <abilitygroupfamily>Combat</abilitygroupfamily>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        These skills represent training in the use of staves,
+        These abilities represent training in the use of staves,
 	halberds, bill hooks, glaives and other pole-arms in combat.
       </p>
     </abilitygroupdescription>
+    <enabled/>
   </abilitygroupinfo>
 
   <ability>
     <abilitytitle>Staff Strike</abilitytitle>
     <abilityid>staff.strike</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/></tags>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a staff, staff or polearm can strike with
 	it during combat doing weapon damage.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>0</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Weapon damage</damage>
-      </abilitylevel>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <successes>3</successes>
-        <attempts>3</attempts>
-	<prereqattr><attr>Strength</attr><value>11</value></prereqattr>	
-        <check>Std 2d8 + 2 vs opponents AC</check>
-        <damage>Weapon damage + Str modifier</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 + 4 vs opponents AC</check>
-        <damage>Weapon damage + 2 + Str modifier</damage>
-      </abilitylevel>      
-    </abilitylevels>
+    <spline></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Speed|Strength</abilitydmg>    
+    <abilitylevels from="0" to="4"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Staff - Brace for Charge</abilitytitle>
     <abilityid>staff.brace</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Willpower</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><untrained/></tags>
     <abilitydescription>
       <p>
         Characters equipped with a staff can brace against
 	a charge striking first and doing extra damage.
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>3</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Double weapon damage, opponent must be charging.</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Double weapon damage + Str modifier, opponent must be charging.</damage>
-      </abilitylevel>      
-    </abilitylevels>
+    <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
+    <spline><p x="15" y="60"/></spline> 
+    <abilitycheck dc="Opponents Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>2x(Weapon + Speed|Strength), opponent must be charging.</abilitydmg>
+    <abilitylevels untrained="-3" from="1" to="4"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Staff - Circle of Death</abilitytitle>
     <abilityid>staff.circle_of_death</abilityid>
-    <abilityclass>Fight-Reach</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/></tags>
     <abilitydescription>
       <p>
 	The character swings their weapon in large arcs keeping foes at bay.
-	Opponents must make a morale check to attack and the character may
+	Opponents must make a Mettle check to attack and the character may
 	roll to hit the first opponent who tries to do so in the round as a
 	reaction.  If successful the opponent cannot close to attack.
       </p>
@@ -105,52 +70,34 @@
 	weapon, and it only works when the opponents are within a 180° arc.  
       </p>
     </abilitydescription>
-
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
-        <successes>2</successes>
-        <attempts>3</attempts>
-        <failures>1</failures>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Each opponent must make a Resolve Check + 2 vs DDC 10 to attack the first time,
-	reaction counter-attack</damage>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-        <check>Std 2d8 vs opponents AC</check>
-        <damage>Each opponent must make a Resolve Check + 2 vs DDC 10 to attack the first time,
-	reaction counter-attack</damage>
-      </abilitylevel>      
-    </abilitylevels>
+    <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
+    <spline><p x="-60" y="30"/></spline> 
+    <abilitycheck dc="Opponents Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon</abilitydmg>
+    <abilitylevels from="1" to="4"/>
   </ability>
 
   <ability>
     <abilitytitle>Staff Parry</abilitytitle>
     <abilityid>staff.parry</abilityid>
-    <abilityclass>Reaction</abilityclass>
-    <keywords><weapon/></keywords>
-    <abilityattrmodifiers><attr>Strength</attr><attr>Speed</attr></abilityattrmodifiers>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><weapon/></tags>
     <abilitydescription>
       <p>
-        The player parrys a blow using their weapon.
+	<label>ability:staff.parry</label>
+        When a character is attacked they may attempt to parry the blow using their weapon
+	instead of making an armour roll.  This ability spends the characters reaction for
+	the round.  If the parry result fails and a boon is rolled the attack deals half
+	damage.  If the parry result fails and a bane is rolled the attack deals double
+	damage. If the parry check succeeds the attack does no damage.
       </p>
     </abilitydescription>
-    <abilitylevels>
-      <abilitylevel>
-        <levelnumber>1</levelnumber>
-        <prereqabilitylevel>staff.strike_1</prereqabilitylevel>	
-        <successes>3</successes>
-        <attempts>1</attempts>
-	<check>Opposed Speed Check</check>
-      </abilitylevel>
-      
-      <abilitylevel>
-        <levelnumber>2</levelnumber>
-	<check>Opposed Speed Check + 2</check>
-      </abilitylevel>      
-    </abilitylevels>
-  </ability>  
+    <prereqabilitylevel>staff.strike_1</prereqabilitylevel>	
+    <spline><p x="90" y="30"/></spline> 
+    <abilitycheck dc="Opponents Attack DC"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
 </abilitygroup>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Hammer Proficiency</abilitygrouptitle>
+    <abilitygroupid>martial.hammer</abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitytags><weapon/><melee/><heavy/><crushing/><hammer/></abilitytags>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use war hammers in combat.  This includes
+	the use of two handed warhammers, single handed hammers and throwing hammers.
+	Warhammers tend to be designed as armour piercing weapons.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Hammer Smash</abilitytitle>
+    <abilityid>hammer.smash</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><heavy/><hammer/></tags>
+    <abilitydescription>
+      <p>
+        Characters equipped with a hammer can use the hammer
+	to "smash" a humanoid opponent hitting them and pushing them back.
+	If the attack roll hits and is a boon the target takes double damage and is also
+	knocked prone and stunned if they fail their save..
+	If the attack roll hits and is a bane then the target takes half damage.
+	If the attack misses and a boon is rolled then the attacker still manages to force the defender back.
+	If the attack misses and a bane is rolld then the attacked must save or be knocked prone.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="30"/></spline>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength|Endurance, and Target saves verses Agility DC 12 + Level or is knocked back</abilitydmg>
+    <prereqabilitylevel>hammer.hammer_2</prereqabilitylevel>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Hammer Strike</abilitytitle>
+    <abilityid>hammer.hammer</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><weapon/><heavy/><hammer/></tags>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with an Hammer can strike with it during combat doing weapon 
+	damage.
+      </p>
+    </abilitydescription>
+    <abilitycheck dc="Targets Defence"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg>Weapon + Strength|Endurance</abilitydmg>
+    <spline></spline>
+    <abilitylevels from="0" to="4"/>
+  </ability>
+</abilitygroup>

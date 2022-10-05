@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+"""
+
+  Draws the ability hierarchy graph
+  (Doesn't appear in any docs?)
+
+  Candidate for removal?
+
+"""
 import sys
 import re
 from os.path import abspath, join, splitext, dirname, exists, basename
@@ -23,15 +31,6 @@ def _get_ability_label_html(ability):
 
 
 def _get_ability_level_html(ability_level):
-    # return """
-    # <tr>
-    # <td bgcolor="white" align="right" colspan="2" port="{ability_level_id}">
-    # <font color="black">
-    # {ability_level_id} 
-    # {ability_level}
-    # </font>
-    # </td>
-    # </tr>""".format(
     return """
     <tr>
     <td align="right" port="{ability_level_id}">
@@ -60,28 +59,15 @@ def _get_ability_html(ability):
 def draw_skill_tree(build_dir, ability_groups):
         
     dot = Digraph(
-        #engine = "dot",
-        #engine = "circo",
-        #engine = "sfdp",
         engine = "fdp",
-        #engine = "osage",
-        #repulsiveforce = 2.0,
         comment = "Ability Dependencies",
-        #node_attr={'shape': 'record'}
         node_attr={'shape': 'plaintext'},
     )
-
-    #dot.graph_attr["repulsiveforce"] = "1.5"
-    #dot.graph_attr["K"] = "2.0"
 
     # Fill an A4 sheet
     dot.graph_attr["size"] = "8.3,11.7!"
     dot.graph_attr["margin"] = "0.5"
     dot.graph_attr["ratio"] = "fill"
-
-        # size="8.3,11.7!",
-        # margin=0,
-
     edges = []
 
     # add the nodes
@@ -92,25 +78,26 @@ def draw_skill_tree(build_dir, ability_groups):
             dot.node(ability.get_id(), node_str)
 
     # add the prereq arrows
-    for ability_group in ability_groups:        
+    for ability_group in ability_groups:
         for ability in ability_group.get_abilities():            
             for ability_level in ability.get_levels():
                 for prereq in ability_level.get_prerequisites():
-                    prereq_id = prereq.ability.get_id() + ":" + prereq.get_id()
+                    prereq_ability = prereq.get_ability()
+                    if prereq_ability is None:
+                        continue                    
+                    prereq_id = prereq_ability.get_id() + ":" + prereq.get_id()
                     ability_level_id = ability.get_id() + ":" + ability_level.get_id()
                     edges.append((ability_level_id, prereq_id))
 
-    dot.edges(edges)
-                
+    dot.edges(edges)                
     dot.render(join(build_dir, "abilities.gv"), view = True)
     return
 
 
 
 if __name__ == "__main__":
-
     ability_groups = AbilityGroups()
     ability_groups_dir = join(root_dir, "abilities")
-    ability_groups.load(ability_groups_dir)    
+    ability_groups.load(ability_groups_dir, fail_fast=True)
     build_dir = join(root_dir, "build")
     draw_skill_tree(build_dir, ability_groups)

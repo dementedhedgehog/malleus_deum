@@ -9,30 +9,57 @@
 	Their settlements spread across the lands encroaching on that of the other
 	species.
       </p>
-
     </monstergroupdescription>
   </monstergroupinfo>
 
-  
   <monster>    
-    <monstertitle>Thugs</monstertitle>
-    <monsterid>human.thug</monsterid>
-    <monstertag>Human</monstertag>
+    <monstertitle>Peasant</monstertitle>
+    <monsterid>human.peasant</monsterid>
+    <monstertags><human/></monstertags>
     <monstermove>6</monstermove>
-    <monsterhealth>15</monsterhealth>
-    <monsterstamina>7</monsterstamina>
+    <monsterhealth>3</monsterhealth>
+    <monsterstamina>3</monsterstamina>
     <monsterinitiativebonus>+0</monsterinitiativebonus>
-    <monsterresolve>2d6</monsterresolve>
-    <monstermagic>2d6</monstermagic>
-    <ac>8</ac>
+    <monstermettle>2d4</monstermettle>
+    <monsterluck>2d4</monsterluck>
+    <monstermagic>2d4</monstermagic>
+    <monsterrole><grunt/></monsterrole>
+    <armour>8</armour>
     <strength>11</strength>
     <endurance>8</endurance>
     <agility>9</agility>
     <speed>9</speed>
-    <luck>9</luck>
-    <willpower>9</willpower>
     <perception>9</perception>
-    <abilitylevelid>dagger.strike_2</abilitylevelid> 
+    <abilitylevelid>dagger.dagger_0</abilitylevelid>    
+    <monsterdescription>
+      <p>
+	These are common farmers and townsfolk with no military
+	training and no special abilities.
+      </p>
+    </monsterdescription>    
+  </monster>
+
+ 
+  <monster>    
+    <monstertitle>Thugs</monstertitle>
+    <monsterid>human.thug</monsterid>
+    <monstertags><human/></monstertags>
+    <monstermove>6</monstermove>
+    <monsterhealth>15</monsterhealth>
+    <monsterstamina>7</monsterstamina>
+    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermettle>3d4</monstermettle>
+    <monsterluck>3d4</monsterluck>
+    <monstermagic>3d4</monstermagic>
+    <monsterrole><grunt/></monsterrole>
+    <armour>8</armour>
+    <parry>12</parry>
+    <strength>11</strength>
+    <endurance>8</endurance>
+    <agility>9</agility>
+    <speed>9</speed>
+    <perception>9</perception>
+    <abilitylevelid>dagger.dagger_2</abilitylevelid> 
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -42,54 +69,103 @@
 	tough and hard, throwing their weight around, looking
 	for trouble and some coin.  Thugs are your average street
 	toughs, unprofessional, but cheap, muscle for hire.
-
-	Resolve 2d8
-	AC 8
-	Damage 
-	
       </p>
     </monsterdescription>    
   </monster>
-
-
 
   
   <monster>    
     <monstertitle>Town Guards</monstertitle>
     <monsterid>human.town_guards</monsterid>
-    <monstertag>Human</monstertag>
+    <monstertags><human/></monstertags>
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
     <monsterinitiativebonus>+0</monsterinitiativebonus>
-    <monsterresolve>2d6</monsterresolve>
-    <monstermagic>2d6</monstermagic>
-    <ac>8</ac>
+    <monstermettle>4d4</monstermettle>
+    <monsterluck>4d4</monsterluck>
+    <monstermagic>2d4</monstermagic>
+    <monsterrole><soldier/></monsterrole>
+    <armour>8</armour>
+    <dodge>8</dodge>
     <strength>11</strength>
     <endurance>8</endurance>
     <agility>9</agility>
     <speed>9</speed>
-    <luck>9</luck>
-    <willpower>9</willpower>
     <perception>9</perception>
-    <abilitylevelid>dagger.strike_2</abilitylevelid> 
+    <abilitylevelid>dagger.dagger_2</abilitylevelid> 
     
     <!-- resolve/break info? -->
     <monsterdescription>
       <p>
-	In every inn, port, gambling den and brothel you will find
-	locals who have fallen under the delusion that they are
-	tough and hard, throwing their weight around, looking
-	for trouble and some coin.  Thugs are your average street
-	toughs, unprofessional, but cheap, muscle for hire.
-
-	Resolve 2d8
-	AC 8
-	Damage 
-	
+	Large towns hire guards to keep the streets safe, and maintain law
+	and order as far as possible.  Town guards are trained militia
+	with some military training and knowledge of the law.
       </p>
     </monsterdescription>    
   </monster>
 
+  <monster>    
+    <monstertitle>Beldam</monstertitle>
+    <monsterid>human.beldam</monsterid>
+    <monstertags><human/></monstertags>
+    <monstermove>6</monstermove>
+    <monsterhealth>15</monsterhealth>
+    <monsterstamina>7</monsterstamina>
+    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermettle>2d4</monstermettle>
+    <monsterluck>4d4</monsterluck>
+    <monstermagic>5d4</monstermagic>
+    <monsterrole><grunt/></monsterrole>
+    <armour>8</armour>
+    <dodge>16</dodge>
+    <strength>11</strength>
+    <endurance>8</endurance>
+    <agility>9</agility>
+    <speed>9</speed>
+    <perception>9</perception>
+    <abilitylevelid>dagger.dagger_2</abilitylevelid> 
+    
+    <!-- resolve/break info? -->
+    <monsterdescription>
+      <p>
+	A Beldam is a malicious and loathsome old women who has
+	made a deal with a patron of the shadow realms in exchange
+	for immortality.  They must regularly sacrifice children
+	in order to keep their end of the bargin.
+      </p>
+    </monsterdescription>    
+  </monster>
+
+
+
+  <monster>    
+    <monstertitle>Doomsayer</monstertitle>
+    <monsterid>human.doomsayer</monsterid>
+    <monstertags><human/></monstertags>
+    <monstermove>6</monstermove>
+    <monsterhealth>15</monsterhealth>
+    <monsterstamina>7</monsterstamina>
+    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermettle>3d4</monstermettle>
+    <monsterluck>3d4</monsterluck>
+    <monstermagic>3d4</monstermagic>
+    <monsterrole><grunt/></monsterrole>
+    <armour>8</armour>
+    <parry>12</parry>
+    <strength>11</strength>
+    <endurance>8</endurance>
+    <agility>9</agility>
+    <speed>9</speed>
+    <perception>9</perception>
+    <abilitylevelid>dagger.dagger_2</abilitylevelid> 
+    
+    <!-- resolve/break info? -->
+    <monsterdescription>
+      <p>
+	
+      </p>
+    </monsterdescription>    
+  </monster>  
 </monstergroup>    
     
