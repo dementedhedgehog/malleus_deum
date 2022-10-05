@@ -18,6 +18,7 @@ directly if you have a good understanding of Python/Latex and Xml.
 
 
 ## Windows
+Probably doesn't work without problems .. but it has done in the past.
 
  * Install Python 3.+
  * Install MikTek
