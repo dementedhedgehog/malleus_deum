@@ -6,6 +6,13 @@ or push changes you make to the rules.  However, currently the document build
 is a little complex.   I suggest that you only try and edit the documents
 directly if you have a good understanding of Python/Latex and Xml.
 
+This is a work in progress.. Check out build/phb.pdf for the players handbook,
+build/gmg.pdf for the Game Masters Guide.. and see build/archetypes.pdf for a
+list of the archetypes (that's a class+race).
+
+Currently running two campaigns of this game.  It plays pretty well but the
+balance needs some tweaking, and the archetypes only go to level 1 at the moment.
+
 
 # Installation
 
