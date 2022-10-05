@@ -129,20 +129,49 @@ release_files = (
     "rationale.pdf",
 
     "black_coat.pdf",
+    "black_coat_char_sheet.pdf",
+
     "chevalier.pdf",
+    "chevalier_char_sheet.pdf",
+
     "champion_of_mithras.pdf",
+    "champion_of_mithras_char_sheet.pdf",
+
     "confessor_militant.pdf",
+    "confessor_militant_char_sheet.pdf",
+
     "elven_scion.pdf", 
+    "elven_scion_char_sheet.pdf", 
+
     "fyrdzwerg.pdf", 
+    "fyrdzwerg_char_sheet.pdf", 
+
     "halfling_rover.pdf",
+    "halfling_rover_char_sheet.pdf",
+
     "hedge_wizard.pdf", 
+    "hedge_wizard_char_sheet.pdf", 
+
     "outrider.pdf", 
+    "outrider_char_sheet.pdf", 
+
     "penitent_brother.pdf", 
+    "penitent_brother_char_sheet.pdf", 
+
     "red_mage.pdf", 
+    "red_mage_char_sheet.pdf", 
+
     "second_son.pdf", 
+    "second_son_char_sheet.pdf", 
+
     "skald.pdf", 
+    "skald_char_sheet.pdf", 
+
     "summoner.pdf", 
+    "summoner_char_sheet.pdf", 
+
     "witch_hunter.pdf",
+    "witch_hunter_char_sheet.pdf",
 )
 
     
