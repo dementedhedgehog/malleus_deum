@@ -83,17 +83,17 @@ archetypes_to_build = (
     #("chevalier", True, "[Ch]"),
     # ("champion_of_mithras", True, "[CoM]"),
     #("confessor_militant", True, "[FC]"), 
-    #("elven_scion", True, "[ESc]"),
-    #("fyrdzwerg", True, "[FZW]"),
+    ("elven_scion", True, "[ESc]"),
+    ("fyrdzwerg", True, "[FZW]"),
     #("halfling_rover", True, "[HR]"),
 #    ("hedge_wizard", True, "[HW]"),
     #("outrider", True, "[OR]"),
     # ("penitent_brother", True, "[PB]"),
-    #("red_mage", True, "[RM]"),
+    ("red_mage", True, "[RM]"),
 #    ("second_son", True, "[SS]"),
     #("skald", True, "[SKL]"),
     #("summoner", True, "[SM]"),
-    #("witch_hunter", True, "[WH]"),
+    ("witch_hunter", True, "[WH]"),
 )
 
 encounters_to_build = (
