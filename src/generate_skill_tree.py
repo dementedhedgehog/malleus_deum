@@ -2,7 +2,7 @@
 """
 
   Draws Skill/Ability Trees.   
-
+   - these are the eps diagrams that should skill prereqs
 
 """
 import sys
@@ -132,7 +132,11 @@ class AbilityNode:
         return self.outgoing_connector_offsets[level_number]
 
 
-def layout(ability_groups, ability_group, ability, context, offset=None, max_y=0):
+def draw_skill_tree(ability_groups, ability_group, ability, context, offset=None, max_y=0):
+    """
+    Lays out and draws the skill tree on the given context.
+
+    """
     assert ability is not None
     node = AbilityNode(ability)
 
@@ -172,15 +176,15 @@ def layout(ability_groups, ability_group, ability, context, offset=None, max_y=0
 
            try:
                child_pos = node.get_outgoing_offset(ability_level_number)
-               new_max_y = layout(ability_groups, ability_group, child_ability,
-                                  context, offset=child_pos, max_y=max_y)
+               new_max_y = draw_skill_tree(ability_groups, ability_group, child_ability,
+                                           context, offset=child_pos, max_y=max_y)
                max_y = max(max_y, new_max_y)
            except KeyError:
                pass
     return max_y
 
 
-def _build_skill_tree(ability_groups, ability_group, fname, height=HEIGHT):
+def _build_skill_tree(ability_groups, ability_group, fname, height=HEIGHT, draw_frame=False):
 
     # set up cairo surface
     _, ext = splitext(fname)
@@ -217,11 +221,10 @@ def _build_skill_tree(ability_groups, ability_group, fname, height=HEIGHT):
     root_abilities = ability_group.get_root_abilities()
     max_y = 0
     for ability in root_abilities:
-        new_max_y = layout(ability_groups, ability_group, ability, context)
+        new_max_y = draw_skill_tree(ability_groups, ability_group, ability, context)
         max_y = max(new_max_y, max_y)
 
     # draw a frame
-    draw_frame = False
     if draw_frame:
         FRAME_LINE_WIDTH = 1
         context.set_line_width(FRAME_LINE_WIDTH)
@@ -242,7 +245,7 @@ def _build_skill_tree(ability_groups, ability_group, fname, height=HEIGHT):
     return max_y
 
 
-def build_skill_tree(ability_groups):
+def build_skill_trees(ability_groups):
     for ability_group in ability_groups: 
         ability_group_id = ability_group.info.ability_group_id
         fname = join(build_dir, ability_group_id + "_skill_tree.eps")
@@ -258,5 +261,5 @@ if __name__ == "__main__":
     ability_groups = AbilityGroups()
     ability_groups.load(abilities_dir, fail_fast=True)
 
-    build_skill_tree(ability_groups)
+    build_skill_trees(ability_groups)
 

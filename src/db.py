@@ -125,10 +125,12 @@ class DB:
 
     def filter_abilities(self, xml):
         """
-        Filters xml replacing magical tokens starting with ✱ with values from the db.
+        Filters xml replacing magical tokens starting with '✱' with values from the db.
         We could have done this with xml or jinja filters but it's a lot of typing.
+
         """
-        tokens = re.split("(✱[a-zA-Z\._0-9]+)", xml)
+        remove_templates_regex = re.compile("\[.*?\]")
+        tokens = re.split("(✱[a-zA-Z]+\.[a-zA-Z_0-9\[\]]+)", xml)
         new_tokens = []
         for token in tokens:
 
@@ -139,13 +141,15 @@ class DB:
             
             # try and translate the token
             token = token[1:]
-            # toks = token.split("_")
-            # try:
-            #     level_number = int(toks[-1])
-            #     token_xml = f'<abilityref id="{token} level="{level_number}""/>'
-            # except ValueError:
-            #     # not a level.            
-            #     token_xml = f'<abilityref id="{token}"/>'
+
+            # remove template info if there is any
+            # e.g. ✱social.etiquette[Dwarven]_3 --> social.etiquette_3
+            # (no abilities should have templated abilities as prereqs).
+            token = remove_templates_regex.sub("", token)
+            
+            # check this is a valid ability level id?
+            if self.ability_groups.get_ability_level(token) is None:
+                raise Exception(f"Invalid ability level {token}")
             
             token_xml = f'<abilityref id="{token}"/>'
             new_tokens.append(token_xml)

@@ -88,6 +88,7 @@ class ActionType:
     STANDARD = "Standard"
     MINOR = "Minor"
     MOVE = "Move"
+    FREE = "free"
     REACTION = "Reaction"
     REACTION_OR_MINOR = "Reaction|Minor"
     NON_COMBAT = "Non-Combat"
@@ -111,6 +112,8 @@ class ActionType:
         elif action_type_str == "<non-combat/>":
             action_type = ActionType.NON_COMBAT
         elif action_type_str == "<full-turn/>":
+            action_type = ActionType.FREE
+        elif action_type_str == "<free/>":
             action_type = ActionType.FULL_TURN
         elif action_type_str == "<multi-turn/>":
             action_type = ActionType.MULTI_TURN
@@ -335,10 +338,11 @@ class AbilityCheck:
                                     "doesn't modify the overcharge?")
 
             if "level" in check:
-                problems.append("Ability looks like a pool check and level modifies the DC?")
+                problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
+                                "level modifies the DC?")
 
         if not self.ability.is_pool() and self.overcharge is not None:
-            problems.append("Ability looks like a std check and has an overcharge?")
+            problems.append(f"Ability  {self.ability.ability_id} looks like a std check and has an overcharge?")
 
         #
         # Check the tags are set properly.
@@ -368,7 +372,7 @@ class AbilityCheck:
 
         # Check ability levels are sane
         if len(self.ability.levels) == 0:
-            problems.append("No ability levels set?")
+            problems.append(f"Ability  {self.ability.ability_id} has no ability levels set?")
 
         # Check for untrained abilities.
         elif UNTRAINED in tags and self.ability.levels[0].get_level_number() >= 0:
@@ -382,7 +386,7 @@ class AbilityCheck:
             
         # check dcs are standard
         if check in (STD_CHECK, ACCURATE) and self.dc not in ("3", "6", "9", "12", "15", "18", "21"):
-            problems.append(f"Non-standard DC {self.dc}")
+            problems.append(f"Ability  {self.ability.ability_id} has a non-standard DC {self.dc}")
 
         return problems
 

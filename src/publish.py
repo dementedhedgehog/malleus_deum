@@ -55,7 +55,7 @@ from character_sheet_writer import (
     create_character_sheet_for_archetype,
     create_blank_character_sheet)
 
-from generate_skill_tree import build_skill_tree
+from generate_skill_tree import build_skill_trees
 import config
 import utils
 from utils import (
@@ -373,7 +373,11 @@ def apply_template_to_xml(jinja_env,
         doc_name=xml_fname_in)
 
     # process Λ abilities
-    xml = db.filter_abilities(xml)
+    try:
+        xml = db.filter_abilities(xml)
+    except Exception as err:
+        print(f"Problem filtering abilities in {xml_fname_in}")
+        raise err
 
     # write the post-processed xml to the build dir 
     # (has all the included files in it).
@@ -684,8 +688,8 @@ if __name__ == "__main__":
     env = deepcopy(os.environ)
     env["TEXINPUTS"] = tex_inputs
 
-    # Build the ability trees
-    build_skill_tree(db.ability_groups)
+    # Build the ability trees (these are the eps diagrams that should skill prereqs)
+    build_skill_trees(db.ability_groups)
     
     #
     # Build Pdf Files.

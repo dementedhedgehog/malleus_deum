@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Special Abilities</abilitygrouptitle>
+    <abilitygroupid>special</abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	Special abilities are extraordinary abilities or racial abilities not available 
+	to most characters in the usual course of events.
+      </p>
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>  
+
+  <ability>
+    <abilitytitle>Sixth Sense</abilitytitle>
+    <abilityid>special.sixth_sense</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><special/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level"/>    
+    <abilitydescription>
+      <p>
+	If the character makes a successful Luck check they may reroll their surprise
+	roll.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="0"/></spline> 
+    <abilitychecktype>Luck</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Natural Sprinter</abilitytitle>
+    <abilityid>special.natural_sprinter</abilityid>
+    <abilityactiontype><free/></abilityactiontype>
+    <tags><special/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitydescription>
+      <p>
+	Dwarves are natural sprinters.  While slow to get moving,
+	and not the most agile when it comes to dodging and
+	quick changes of direction, Dwarves can build up a fair
+	amount of speed in a straight line over time.	
+      </p>
+
+      <p>
+	Each round when sprinting or fleeing Dwarves may a mettle checkto attempt to increase
+	to sprint.  If successful their speed increases by +1, to maximum speed of 7.  This
+	increase in speed is cumulative as long as the Dwarf continues to Sprint/Flee.  If
+	for any reason they stop running/fleeing their speed returns to normal.  In the event
+	of overcharge the Dwarf loses a mettle die, they've run too fast and are winded.
+      </p>
+    </abilitydescription>    
+    <abilitychecktype>Mettle</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="4"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Fey Immunity/Vulnerability</abilitytitle>
+    <abilityid>special.fey_resilience</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><special/><pool/></tags>
+    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitydescription>
+      <p>
+	The fey are resistant to damage from non-magically conductive sources.
+	They reduce damage from non-ferrous metal weapons by their ability level for each hit.
+	They are also vulnerable to cold iron/ferrous attacks.  Suffering an extra
+	+level damage per hit from iron weapons.
+      </p>
+
+      <p>
+	Fey creatures may make a mettle check to magically heal +d6 health.  In the event of
+	an overcharge the Fey creature loses a mettle die.
+      </p>
+    </abilitydescription>    
+    <spline><p x="0" y="60"/></spline> 
+    <abilitychecktype>Mettle</abilitychecktype>
+    <abilitylevels from="1" to="4"/>
+  </ability> 
+</abilitygroup>
