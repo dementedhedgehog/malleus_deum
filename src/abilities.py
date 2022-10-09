@@ -1208,8 +1208,12 @@ if __name__ == "__main__":
     #ability_groups.draw_skill_tree(build_dir)
     #ability_groups.draw_skill_tree2(build_dir)
 
-    ag = ability_groups.get_ability_group("primary")
-    print(ag.info.draw_skill_tree)
+    #ag = ability_groups.get_ability_group("primary")
+    ag = ability_groups.get_ability_group("transport")
+    #print(ag.info.draw_skill_tree)
+
+    for ability in ag:
+        print(f" {ability}  {ability.ability_id}")
 
     # for abilities_page in ability_groups.get_abilities_by_family_paginated("<primary/>"):
     #     print(abilities_page)

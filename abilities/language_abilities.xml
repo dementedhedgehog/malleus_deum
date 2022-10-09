@@ -58,15 +58,36 @@
 
 
   <ability>
-    <abilitytitle>Aquillonian</abilitytitle>
-    <abilityid>language.aquillonian</abilityid>
+    <abilitytitle>Alemanic</abilitytitle>
+    <abilityid>language.alemanic</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><language/></tags>
     <abilitydescription>
       <p>
-	Aquillonian is spoken in the by members of the
-	now-fallen Aquillonian Empire.  It is the language of scholarship
+	Alemanic is spoken by the natives of Almaignia, north of Fafnir's Tusks and to the east of Westreich.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Aquilonian</abilitytitle>
+    <abilityid>language.aquilonian</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
+    <abilitydescription>
+      <p>
+	Aquilonian is spoken in the by members of the
+	now-fallen Aquilonian Empire.  It is the language of scholarship
 	and used amongst the learned.
+	Aquillonian is related to Occitan and Leonese.  If you have Aquilonian then you
+	can undestand and speak Occitan and Leonese at two levels lower than your
+	Aquilonian level.
       </p>
     </abilitydescription>
     <spline><p x="0" y="30"/></spline> 
@@ -101,7 +122,8 @@
     <tags><language/></tags>
     <abilitydescription>
       <p>
-	Fey is the native language of the denizens of the Wyld and the High Elves.
+	Fey is the native language of the Fey and other denizens of the Wyld, the High Elves
+	and the Dark Elves.
       </p>
     </abilitydescription>
     <spline></spline>
@@ -120,6 +142,26 @@
       <p>
 	Lagashi is the language of the east.  It is spoken in Ophyr, Arkadia, Vendryha and
 	the Bandit Kingdoms.
+      </p>
+    </abilitydescription>
+    <spline></spline>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Leonese</abilitytitle>
+    <abilityid>language.leonese</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
+    <abilitydescription>
+      <p>
+	The language spoken in the Border Principalities and the Wild Coast.
+	It is related to Aquillonian.  If you have Leonese then you
+	can undestand and speak Aquillonian at two levels lower than your
+	Leonese level.	
       </p>
     </abilitydescription>
     <spline></spline>
@@ -169,15 +211,35 @@
   </ability>
 
 
-
   <ability>
-    <abilitytitle>Hibernian</abilitytitle>
-    <abilityid>language.hibernian</abilityid>
+    <abilitytitle>Occitan</abilitytitle>
+    <abilityid>language.occitan</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><language/></tags>
     <abilitydescription>
       <p>
-	The ability to speak Hibernian.  The language of the Northern
+	Occitan is spoken in southern Averoigne and Castria.
+	It is related to Aquillonian.  If you have Occitan then you
+	can undestand and speak Aquillonian at two levels lower than your
+	Occitan level.
+      </p>
+    </abilitydescription>
+    <spline><p x="0" y="30"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Hybernian</abilitytitle>
+    <abilityid>language.hybernian</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
+    <abilitydescription>
+      <p>
+	The ability to speak Hybernian.  The language of the Northern
 	Barbarians.
       </p>
     </abilitydescription>
@@ -231,4 +293,25 @@
     <abilitydmg></abilitydmg>
     <abilitylevels from="1" to="5"/> 
   </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Thule</abilitytitle>
+    <abilityid>language.thule</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><language/></tags>
+    <abilitydescription>
+      <p>
+	The ability to speak Thule.  The language of the North
+	Eastern lands.
+      </p>
+    </abilitydescription>
+    <spline><p x="-90" y="30"/></spline> 
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="5"/>
+  </ability>  
 </abilitygroup>

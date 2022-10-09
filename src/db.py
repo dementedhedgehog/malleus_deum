@@ -125,35 +125,88 @@ class DB:
 
     def filter_abilities(self, xml):
         """
-        Filters xml replacing magical tokens starting with '✱' with values from the db.
-        We could have done this with xml or jinja filters but it's a lot of typing.
+        Filters xml replacing magical ability references (starting with '✱')
+        with values from the db.  We could have done this with xml or jinja
+        filters but it's a lot of typing.
 
         """
-        remove_templates_regex = re.compile("\[.*?\]")
-        tokens = re.split("(✱[a-zA-Z]+\.[a-zA-Z_0-9\[\]]+)", xml)
+        templates_regex = re.compile("\[.*?\]")
+        ability_group_regex = re.compile("^(?P<ability_group>[^.]*)\.")
+        ability_level_regex = re.compile("_[0-9]+$")
+        tokens = re.split("(✱[a-zA-Z]+\.[a-zA-Z_0-9\-\?\[\]]+)", xml)
         new_tokens = []
-        for token in tokens:
+        for i, token in enumerate(tokens):
 
-            #
+            # ability refs are tokens that start with the special character ✱
             if not token.startswith("✱"):
                 new_tokens.append(token)
                 continue
             
-            # try and translate the token
-            token = token[1:]
+            # try and translate the token (drop leading ✱)
+            ability_level_id = token[1:]
 
             # remove template info if there is any
             # e.g. ✱social.etiquette[Dwarven]_3 --> social.etiquette_3
             # (no abilities should have templated abilities as prereqs).
-            token = remove_templates_regex.sub("", token)
+            ability_level_id = templates_regex.sub("", ability_level_id)
             
-            # check this is a valid ability level id?
-            if self.ability_groups.get_ability_level(token) is None:
-                raise Exception(f"Invalid ability level {token}")
-            
-            token_xml = f'<abilityref id="{token}"/>'
-            new_tokens.append(token_xml)
-        return "".join(new_tokens)
-    
+            # check if this is a good valid ability level id?
+            try:
+                self.ability_groups.get_ability_level(ability_level_id)
+            except KeyError:
 
-    
+                # build debug context..
+                start = max(i -3, 0)
+                end = min(i + 3, len(tokens))
+                # truncate context in case it's big.
+                before = " ".join(tokens[start:i])[-50:]
+                after = " ".join(tokens[i+1:end])[:50]
+                context = f"{before} ❰{token}❱ {after}"
+                                
+                # it's bad, so try dropping the level and looking for the ability
+                # (so we can log some extra debug info)
+                ability_id = ability_level_regex.sub("", ability_level_id)
+                try:
+                    self.ability_groups.get_ability(ability_id)
+                except KeyError:
+                    # Bad ability
+                    raise Exception(
+                        f"Invalid ability id in reference {ability_id}. "
+                        f"Check the ability level is valid. Near:\n{context}")
+                else:
+
+                    # Check the ability group exists
+                    match = ability_group_regex.search(ability_level_id)
+                    if match is not None:                        
+                        ability_group_name = match.group("ability_group")
+                        print(f"... {token} ----- {ability_group_name} ------------------- ")
+                        ability_group = self.ability_groups.get_ability_group(ability_group_name)
+                        if ability_group is None:
+                            # Then it must be a missing/misspelled ability group
+                            raise Exception(
+                                "Invalid ability_level_id in reference. \n"
+                                f"Ability Group {ability_group_name} does not exist or is mispelled "
+                                f"in {ability_level_id}. Near:\n{context}")
+
+
+                    # Check the ability exists.
+                    if self.ability_groups.get_ability(ability_id) is None:
+                        # Then it's a missing/misspelled ability
+                        raise Exception(
+                            f"Missing/misspelled ability! {ability_id} in {ability_level_id}. Near:\n{context}")
+                                                
+                    # Do we have an ability level?
+                    if ability_level_regex.search(ability_level_id):
+                        # Then it must be a bad ability level
+                        raise Exception(
+                            "Invalid ability_level_id in reference. "
+                            f"Ability level out of range? {ability_level_id}. Near:\n{context}")
+                    else:
+                        # Dunno!?
+                        raise Exception(
+                            "Bug in db.py !! looking up ability. "
+                            f"Ability level out of range? {ability_level_id}. Near:\n{context}")
+            
+            ability_ref_xml = f'<abilityref id="{ability_level_id}"/>'
+            new_tokens.append(ability_ref_xml)
+        return "".join(new_tokens)

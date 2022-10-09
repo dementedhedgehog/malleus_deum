@@ -23,22 +23,22 @@
       <p>
 	The character is dual wielding, holding the dagger in their off hand.
 	They attack with both weapons.  Attack with the dagger, if successful
-	they can take a	non-reaction action with their primary weapon.
+	they can take an extra standard action attack with their primary weapon.
       </p>
     </abilitydescription>
     <spline><p x="75" y="30"/></spline>
-    <prereqabilitylevel>dagger.dagger_2</prereqabilitylevel>
+    <prereqabilitylevel>dagger.strike_2</prereqabilitylevel>
     <prereqattr><speed>13</speed><agility>13</agility></prereqattr>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Level</abilitychecktype>
     <abilitydmg>Weapon + Speed|Agility</abilitydmg>
-    <abilitylevels from="1" to="5"/>
+    <abilitylevels untrained="-3" from="1" to="5"/>
   </ability>
   
 
   <ability>
     <abilitytitle>Dagger Strike</abilitytitle>
-    <abilityid>dagger.dagger</abilityid>
+    <abilityid>dagger.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><dagger/></tags>
     <abilitydescription>
@@ -67,10 +67,10 @@
       </p>
     </abilitydescription>
     <spline><p x="-75" y="30"/></spline> 
-    <prereqabilitylevel>dagger.dagger_1</prereqabilitylevel>
+    <prereqabilitylevel>dagger.strike_1</prereqabilitylevel>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Level</abilitychecktype>
     <abilitydmg>Weapon</abilitydmg>
-    <abilitylevels from="0" to="5"/>
+    <abilitylevels untrained="-3" from="1" to="5"/>
   </ability>  
 </abilitygroup>

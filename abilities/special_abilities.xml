@@ -15,6 +15,34 @@
   </abilitygroupinfo>  
 
   <ability>
+    <abilitytitle>Blindsight</abilitytitle>
+    <abilityid>special.blindsight</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><physical/></tags>
+    <abilitycheck dc="12"/>
+    <abilitydescription>
+      <p>
+	The character has heightened senses when fighting unseen
+	opponents.  They are atuned to slight noises and minor
+	air movements that give away the location of unseen attackers.
+      </p>
+
+      <p>
+	When a character with Blindsight is fighting an unseen opponent
+	each time they try and attack the opponent, before they roll to attack,
+	they roll a Blindsight check.   If the Blindsight check is successful
+	the character only suffers a -3 modifier for the rest of the encounter
+	instead of the usual -6.
+      </p>
+    </abilitydescription>
+    <spline><p x="90" y="0"/></spline> 
+    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitydmg></abilitydmg>
+    <abilitylevels from="1" to="3"/>
+  </ability>
+
+  
+  <ability>
     <abilitytitle>Sixth Sense</abilitytitle>
     <abilityid>special.sixth_sense</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>

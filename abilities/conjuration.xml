@@ -17,7 +17,7 @@
   
   <ability>
     <abilitytitle>Conjuration Lore</abilitytitle>
-    <abilityid>conjuration</abilityid>
+    <abilityid>conjuration.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><conjuration/><lore/></tags>
     <abilitydescription>
@@ -36,7 +36,7 @@
   
   <ability>
     <abilitytitle>Eldritch Push</abilitytitle>
-    <abilityid>magic.eldritch_push</abilityid>
+    <abilityid>conjuration.eldritch_push</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><pool/></tags>
     <abilitydescription>
@@ -53,7 +53,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="90" y="30"/></spline>
-    <prereqabilitylevel>conjuration_2</prereqabilitylevel>
+    <prereqabilitylevel>conjuration.lore_2</prereqabilitylevel>
     <abilitycheck dc="2" overcharge="5+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg>4 +Level</abilitydmg>
@@ -63,7 +63,7 @@
 
   <ability>
     <abilitytitle>Eldritch Grasp</abilitytitle>
-    <abilityid>magic.eldritch_grasp</abilityid>
+    <abilityid>conjuration.eldritch_grasp</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><pool/></tags>
     <abilitydescription>
@@ -81,7 +81,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="0" y="30"/></spline>
-    <prereqabilitylevel>magic.eldritch_push_2</prereqabilitylevel>
+    <prereqabilitylevel>conjuration.eldritch_push_2</prereqabilitylevel>
     <abilitycheck dc="2" overcharge="5+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg>8 +Level</abilitydmg>
@@ -90,7 +90,7 @@
   
   <ability>
     <abilitytitle>Scry</abilitytitle>
-    <abilityid>magic.scry</abilityid>
+    <abilityid>conjuration.scry</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><conjuration/><pool/></tags>
     <abilitydescription>
@@ -123,7 +123,7 @@
       </p>
     </abilitydescription>
     <spline><p x="-60" y="60"/></spline>
-    <prereqabilitylevel>conjuration_2</prereqabilitylevel>
+    <prereqabilitylevel>conjuration.lore_2</prereqabilitylevel>
     <abilitycheck dc="9 initial, 5 subsequent" overcharge="14+Level initial, 10+Level subsequent"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
@@ -133,7 +133,7 @@
 
   <ability>
     <abilitytitle>Scry, Greater</abilitytitle>
-    <abilityid>magic.scry_greater</abilityid>
+    <abilityid>conjuration.scry_greater</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><conjuration/><pool/></tags>
     <abilitydescription>
@@ -144,7 +144,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="0" y="30"/></spline>
-    <prereqabilitylevel>magic.scry_2</prereqabilitylevel>	
+    <prereqabilitylevel>conjuration.scry_2</prereqabilitylevel>	
     <abilitycheck dc="7 initial, 5 subsequent" overcharge="9+Level initial, 10+Level subsequent" />
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
@@ -154,7 +154,7 @@
 
   <ability>
     <abilitytitle>Wither</abilitytitle>
-    <abilityid>magic.wither</abilityid>
+    <abilityid>conjuration.wither</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><pool/></tags>
     <abilitydescription>
@@ -173,9 +173,8 @@
       </p>      
     </abilitydescription>    
     <spline><p x="-90" y="30"/></spline>
-    <prereqabilitylevel>conjuration_2</prereqabilitylevel>
-    <abilitycheck dc="4"
-    overcharge="9 +Level" />
+    <prereqabilitylevel>conjuration.lore_2</prereqabilitylevel>
+    <abilitycheck dc="4" overcharge="9+Level" />
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitylevels from="1" to="3"/>

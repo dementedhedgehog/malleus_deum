@@ -45,3 +45,9 @@ Probably doesn't work without problems .. but it has done in the past.
  * Update MikTek as administrator.
  * Install git.
  * publish.bat       
+
+
+# Other Notes
+
+ * The sla docs are edited using Scribus.
+ * The svg ones are edited using Inkscape.

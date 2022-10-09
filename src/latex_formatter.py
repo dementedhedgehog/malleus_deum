@@ -344,6 +344,12 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 #  %%within=section, %% activate it if you want
 #  %%chapterlistsgaps=on, %% meaningful only if chapters exist
 
+
+
+# def replace_underscores(label):
+#     """Latex doesn't like non-latex text with underscores.. replace underscore with hyphen)"""
+#     return label.replace("_", "-")
+
 # Global table state
 table_state = None
 
@@ -1455,8 +1461,7 @@ class LatexFormatter:
         # Add labels for references
         if table_state.label is not None:
             label = self.latex_file.write("\\label{%s}" % table_state.label)
-            #label = self.latex_file.write("\\label{%s}\\medskip\\medskip"  % table_state.label)
-            #label = self.latex_file.write("\\vskip{1ex}\\label{%s}\\medskip"  % table_state.label)
+            #label = self.latex_file.write("\\label{%s}" % replace_underscores(table_state.label))
 
         self.latex_file.write(" \\end{center}")
 
@@ -1649,12 +1654,9 @@ class LatexFormatter:
     end_learning_symbol = no_op
 
     def start_label(self, label):
-        #self.latex_file.write("\n\\label{%s} " % normalize_ws(label.text))
-        #self.latex_file.write("\n\\begin{label}")
         self.latex_file.write("\n\\label{")
         return
     def end_label(self, label):
-        #self.latex_file.write("\\end{label}")
         self.latex_file.write("}")
         return
 
