@@ -130,7 +130,7 @@ class DB:
         filters but it's a lot of typing.
 
         """
-        templates_regex = re.compile("\[.*?\]")
+        templates_regex = re.compile("\[(?P<template>.*?)\]")
         ability_group_regex = re.compile("^(?P<ability_group>[^.]*)\.")
         ability_level_regex = re.compile("_[0-9]+$")
         tokens = re.split("(✱[a-zA-Z]+\.[a-zA-Z_0-9\-\?\[\]]+)", xml)
@@ -144,6 +144,15 @@ class DB:
             
             # try and translate the token (drop leading ✱)
             ability_level_id = token[1:]
+
+
+            # try and find template info..
+            match = templates_regex.search(ability_level_id)
+            if match is not None:                        
+                template = match.group("template")
+            else:
+                template = None
+            
 
             # remove template info if there is any
             # e.g. ✱social.etiquette[Dwarven]_3 --> social.etiquette_3
@@ -179,7 +188,6 @@ class DB:
                     match = ability_group_regex.search(ability_level_id)
                     if match is not None:                        
                         ability_group_name = match.group("ability_group")
-                        print(f"... {token} ----- {ability_group_name} ------------------- ")
                         ability_group = self.ability_groups.get_ability_group(ability_group_name)
                         if ability_group is None:
                             # Then it must be a missing/misspelled ability group
@@ -206,7 +214,11 @@ class DB:
                         raise Exception(
                             "Bug in db.py !! looking up ability. "
                             f"Ability level out of range? {ability_level_id}. Near:\n{context}")
-            
-            ability_ref_xml = f'<abilityref id="{ability_level_id}"/>'
+
+            if template is None:
+                ability_ref_xml = f'<abilityref id="{ability_level_id}"/>'
+            else:
+                ability_ref_xml = f'<abilityref id="{ability_level_id}" template="{template}"/>'
+                
             new_tokens.append(ability_ref_xml)
         return "".join(new_tokens)

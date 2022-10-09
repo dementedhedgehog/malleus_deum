@@ -60,8 +60,8 @@
 	    {{ archetype.get_primary_abilities() }}
 	    Then for each ability roll an <emph>unmodified</emph> Std-Check against a DC of 13.
 	    Add one to the ability level for that ability if the check is successful.  Add an
-	    additional level if a boon is rolled.  Subtract one from the level if a bane is rolled.
-	    E.g. if you get a result of +2 in Strength you should write down Strength II in the
+	    additional one if a boon is rolled.  Subtract one from the level if a bane is rolled.
+	    <eg/> if you get a result of +2 in Strength you should write down Strength II in the
 	    primary abilities section of the character sheet.
 	  </p>	  
 	</li>
@@ -104,22 +104,22 @@
 	  <descriptions>
 	    
 	    <term>Luck Pool Maximum/Refresh = </term>
-	    <description>{{ archetype.get_progression_data_for_level(0).level_luck -}}<d6/>
-	    /{{- archetype.get_progression_data_for_level(0).level_luck_refresh }}<d6/>
+	    <description>{{ archetype.get_progression_data_for_level(0).level_luck -}}d6
+	    /{{- archetype.get_progression_data_for_level(0).level_luck_refresh }}d6
 	    </description>
 
 	    <term>Magic Pool Maximum/Refresh = </term>
 	    <description>
-	    {{ archetype.get_progression_data_for_level(0).level_magic -}}<d6/>
+	    {{ archetype.get_progression_data_for_level(0).level_magic -}}d6
 	    /
-	    {{- archetype.get_progression_data_for_level(0).level_magic_refresh }}<d6/>
+	    {{- archetype.get_progression_data_for_level(0).level_magic_refresh }}d6
 	    </description>
 
 	    <term>Mettle Pool Maximum/Refresh = </term>
 	    <description>
-	      {{archetype.get_progression_data_for_level(0).level_mettle -}}<d6/>
+	      {{archetype.get_progression_data_for_level(0).level_mettle -}}d6
 	      /
-	      {{- archetype.get_progression_data_for_level(0).level_mettle_refresh }}<d6/>
+	      {{- archetype.get_progression_data_for_level(0).level_mettle_refresh }}d6
 	    </description>
 	  </descriptions>      
 	    
@@ -168,14 +168,9 @@
 
 
     <section>
-      <sectiontitle>Character Background</sectiontitle>
-      
-      <!-- <subsection> -->
-      <!-- <subsectiontitle>Bio</subsectiontitle> -->
+      <sectiontitle>Character Background</sectiontitle>      
       {{ archetype.get_bio() }} 
-      <!-- </subsection> -->
     </section>
-
 
     
     <section>

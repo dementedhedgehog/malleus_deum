@@ -1999,6 +1999,7 @@ class LatexFormatter:
     def start_abilityref(self, ability_ref):
         try:
             ability_id = ability_ref.attrib["id"]
+            template = ability_ref.attrib.get("template")
             ab = self.db.lookup_ability_or_ability_level(ability_id)
 
             print(ab)
@@ -2019,24 +2020,25 @@ class LatexFormatter:
                 level_num = utils.convert_to_roman_numerals(level_num)
                 
             if ab.is_innate():
-                print("INNATE")
                 if level_num is None:
                     self.latex_file.write(f"{name}^i")
                 else:
-                    print(f"--- {name}^i {level_num}")
                     self.latex_file.write(f"{name}^i {level_num}")
             else:
                 if level_num is None:
-                    self.latex_file.write(f"{name}")
+                    if template is None:
+                        self.latex_file.write(f"{name}")
+                    else:
+                        self.latex_file.write(f"{name}[{template}]")
                 else:
-                    self.latex_file.write(f"{name} {level_num}")
+                    if template is None:
+                        self.latex_file.write(f"{name} {level_num}")
+                    else:
+                        self.latex_file.write(f"{name}[{template}] {level_num}")
             
         except KeyError:
             # bad ability ref...
-            raise Exception("Bad abilityref!!  Missing ability id.")
-        
-            
-        
+            raise Exception("Bad abilityref!!  Missing ability id.")        
         return    
     def end_abilityref(self, _):
         return    

@@ -4,7 +4,7 @@
   <archetypeid>witch_hunter</archetypeid>
   <archetypedescription>
     <p>
-      Witch Hunter are avowed to remove the foul taint of magic from these lands. A disciplined, well-organized
+      Witch Hunter are avowed to remove the foul taint of corruption from these lands. A disciplined, well-organized
       and fanatical group they frequently draw the ire of local monarchs as they can become a credible threat to
       their power. Similarly the relationship of this group to the College of Magic is one of fractious detante.
       Each city has a witch-hunter general who oversees operations, coordinates, and shares information
@@ -28,30 +28,35 @@
   <archetypeinitialabilities>
     <p>
       All Witchhunters start with the following skills: ✱sword.strike_2,
-      Sword Parry I, ✱language.aquilonian_2, ✱social.etiquette_2 [Church of Mithras], ✱language.merovingian_3.
+      ✱sword.parry_2, ✱language.aquilonian_2, ✱social.etiquette[Witch-Hunters]_3, ✱social.etiquette[Church-of-Mithras]_1,
+      ✱language.merovingian_3, ✱theurgic.lore_1,  ✱theurgic.divine_retribution_1, ✱theurgic.grace_of_mithras_1, and
+      ✱theurgic.no_take_me_1.
     </p>
-
+    
     <p>
       Choose one of ✱lore.law_1 or ✱lore.antiquarian_1.  Choose one of ✱physical.jump_1 or ✱physical.notice_1.
-      Choose one of Trap Work I or Sleight of Hand I.   Choose one of ✱luck.nick_of_time_1 or
-      ✱luck.reroll_2.
+      Choose one of ✱skulduggery.trap_work_1 or ✱skulduggery.sleight_of_hand_1.  Choose one of
+      ✱social.adversary[Dark-Cults]_3 or ✱social.adversary[Spell-Casters]_1.  Choose one of ✱luck.nick_of_time_1 or
+      ✱luck.reroll_2.  Choose one of ✱theurgic.light_of_mithras_1 or ✱theurgic.turn_undead_1.  Choose one of
+      ✱sword.feint_1 or ✱gun.shoot_1.
     </p>           
   </archetypeinitialabilities>
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>20 + d4 sp</startingcash>
-  <startinggear>Chain armour, mace, (eating) dagger, rations for a week.</startinggear>
-
+  <startinggear>Cloak, Backpack, Tunic, Hose, Leather Boots, Sack or Leather Belt Pouch,
+  Flint, a Long Sword,Dagger, (eating) dagger, and rations for a week.
+  </startinggear>
   <height>
-    <metric>150 + 2d20 cm</metric> 
+    <metric>170 + 2d20 cm</metric> 
     <imperial>4'8" + 2d8 inches</imperial>
   </height>
   <weight>
-    <metric>60 + 3d10 kg</metric> 
+    <metric>65 + 3d10 kg</metric> 
     <imperial>130 + 4d20 pounds</imperial>
   </weight>
   <age>20 + 2d6 years</age>
 
-  <aspectexamples>Blasphemy!, In the Name of Mithras!</aspectexamples>
+  <aspectexamples>Blasphemy!, In the Name of Mithras!  Suffer not a Witch to live!, I am not worthy!</aspectexamples>
   <archetypetags>
     <human/>
     <humanoid/>    
@@ -59,144 +64,21 @@
   </archetypetags>
   
   <archetypebio>
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Origin</subsectiontitle> -->
-
-      <!-- <abilitymodifiers> -->
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>archery.archery</abilityid> -->
-      <!-- 	  <martialpointmodifier>+1</martialpointmodifier> -->
-      <!-- 	  <abilitylevelmodifier> -->
-      <!-- 	    <level>2</level> -->
-      <!-- 	    <martialpointmodifier>+1</martialpointmodifier>	 -->
-      <!-- 	    <successesmodifier>+1</successesmodifier> -->
-      <!-- 	  </abilitylevelmodifier>	 -->
-      <!-- 	</abilitymodifier> -->
-	
-
-      <!-- 	<abilitygroupmodifier> -->
-      <!-- 	  <abilitygroupid>craft</abilitygroupid> -->
-      <!-- 	  <generalpointmodifier>+1</generalpointmodifier> -->
-      <!-- 	</abilitygroupmodifier> -->
-
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>language.brythinian</abilityid> -->
-      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-	
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>magic.circle_of_protection</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>magic.incendo</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>magic.cloak_of_shadows</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>language.inochian</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-	
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>language.brythinian</abilityid> -->
-      <!-- 	  <level>2</level> -->
-      <!-- 	</innate> -->
-
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>language.inochian</abilityid> -->
-      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
-      <!-- 	</abilitymodifier>     -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>lore.alchemy</abilityid> -->
-      <!-- 	  <lorepointmodifier>-1</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-	
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>lore.politics</abilityid> -->
-      <!-- 	  <lorepointmodifier>-1</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-
-      <!-- 	<!-\- -->
-      <!-- 	    <abilitygroupmodifier> -->
-      <!-- 	    <abilitygroupid>magic</abilitygroupid> -->
-      <!-- 	    <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	    </abilitygroupmodifier> -->
-      <!-- 	-\-> -->
-
-      <!-- 	<disable> -->
-      <!-- 	  <abilityid>magic.turn_undead</abilityid> -->
-      <!-- 	</disable> -->
-	
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>magic_school.arcana</abilityid> -->
-      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-
-      <!-- 	<abilitygroupmodifier> -->
-      <!-- 	  <abilitygroupid>physical</abilitygroupid> -->
-      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	</abilitygroupmodifier> -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>skulduggery.cryptography</abilityid> -->
-      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	</abilitymodifier>     -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>social.interrogate</abilityid> -->
-      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	</abilitymodifier>     -->
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>social.etiquette</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-      <!-- 	<disable> -->
-      <!-- 	  <abilitygroupid>special</abilitygroupid> -->
-      <!-- 	</disable> -->
-
-      <!-- 	<abilitygroupmodifier> -->
-      <!-- 	  <abilitygroupid>sword</abilitygroupid> -->
-      <!-- 	  <martialpointmodifier>+1</martialpointmodifier> -->
-      <!-- 	</abilitygroupmodifier> -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>sword.strike</abilityid> -->
-      <!-- 	  <abilitylevelmodifier> -->
-      <!-- 	    <level>1</level> -->
-      <!-- 	    <martialpointmodifier>+1</martialpointmodifier>	 -->
-      <!-- 	    <recommended/> -->
-      <!-- 	  </abilitylevelmodifier>       -->
-      <!-- 	</abilitymodifier> -->	
-      <!-- </abilitymodifiers> -->
-    <!-- </subsection> -->
   </archetypebio>
 
 
   <levelprogressiontable>
     <level>
       <levelnumber>1</levelnumber>
-      <levelmettle>2<d8/></levelmettle>
-      <levelmettlerefresh>+1<dany/></levelmettlerefresh>
-      <levelstamina>4+d4</levelstamina>
-      <levelhealth>4+d4</levelhealth>
-      <levelhealthrefresh>2d4</levelhealthrefresh>
-      <levelluck>2<d6/></levelluck>
-      <levelluckrefresh>+1<dany/></levelluckrefresh>
-      <levelmagicpool>5<d6/></levelmagicpool>
-      <levelmagicrefresh>+3<dany/></levelmagicrefresh>
+      <levelmettle>2</levelmettle>
+      <levelmettlerefresh>+1</levelmettlerefresh>
+      <levelstamina>4 + d4</levelstamina>
+      <levelhealth>5 + d4</levelhealth>
+      <levelhealthrefresh>1d4</levelhealthrefresh>
+      <levelluck>2</levelluck>
+      <levelluckrefresh>+1</levelluckrefresh>
+      <levelmagicpool>4</levelmagicpool>
+      <levelmagicrefresh>+1</levelmagicrefresh>
       <leveldescription>
       </leveldescription>
     </level>

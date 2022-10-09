@@ -307,6 +307,7 @@
 
   <xs:complexType name="abilityrefType">
     <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="template" type="xs:string" use="optional"/>
     <xs:attribute name="level" type="xs:int" />
   </xs:complexType>
   
@@ -1124,6 +1125,7 @@ labels and references.
       <xs:element name="wildmagic" type="emptyType"/>
       <xs:element name="versatile" type="emptyType"/> <!-- spells which are open to interpretation -->
       <xs:element name="untrained" type="emptyType"/>
+      
 
       <!-- ability meta -->
       <xs:element name="lore" type="emptyType"/>
