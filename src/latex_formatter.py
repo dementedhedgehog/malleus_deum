@@ -2013,8 +2013,8 @@ class LatexFormatter:
 
 
             rank_num = ab.get_rank_number()
-            if rank_num is not None:
-                rank_num = utils.convert_to_roman_numerals(rank_num)
+            # if rank_num is not None:
+            #     rank_num = utils.convert_to_roman_numerals(rank_num)
                 
             if ab.is_innate():
                 if rank_num is None:

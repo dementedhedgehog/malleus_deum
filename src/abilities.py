@@ -20,7 +20,7 @@ from utils import (
     node_to_string,
     COMMENT,
     children_to_string,
-    convert_to_roman_numerals,
+    #convert_to_roman_numerals,
     convert_str_to_bool,
     contents_to_string,
 )
@@ -285,8 +285,10 @@ class AbilityRank:
         return self.ability.get_template()
     
     def get_title(self):
-        rank_num = convert_to_roman_numerals(self.rank_number)
-        return "%s %s" % (self.ability.get_title(), rank_num)
+        # rank_num = convert_to_roman_numerals(self.rank_number)
+        # return "%s %s" % (self.ability.get_title(), rank_num)
+        #rank_num = convert_to_roman_numerals(self.rank_number)
+        return "%s %s" % (self.ability.get_title(), self.rank_number)
 
     def get_id(self):
         return "%s_%s" % (self.ability.get_id(), self.rank_number)
@@ -498,8 +500,10 @@ class Ability:
         return self.damage if self.damage is not None else ""
     
     def get_ability_rank_range(self):
-        first_ability_rank = convert_to_roman_numerals(self.ranks[0].get_rank_number())
-        last_ability_rank = convert_to_roman_numerals(self.ranks[-1].get_rank_number())
+        # first_ability_rank = convert_to_roman_numerals(self.ranks[0].get_rank_number())
+        # last_ability_rank = convert_to_roman_numerals(self.ranks[-1].get_rank_number())
+        first_ability_rank = self.ranks[0].get_rank_number()
+        last_ability_rank = self.ranks[-1].get_rank_number()
         return f"{first_ability_rank}-{last_ability_rank}"
 
     def is_core(self):
@@ -577,7 +581,6 @@ class Ability:
     def get_template(self):
         return self.template
     
-
     def get_id(self):
         return self.ability_id
 
