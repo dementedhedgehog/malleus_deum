@@ -17,17 +17,18 @@
 
   <ability>
     <abilitytitle>Auri Fames</abilitytitle>
-    <abilityid>magic.auri_fames</abilityid>
+    <abilityid>enchantment.auri_fames</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
       <p>
-	The caster attempts to curse the target, if successful the target
-	gains a <emph>Hunger for Gold</emph> aspect with a difficulty
-	equal to the magic pool result.  This spell requires some item of
-	contagion with the target in order to cast, preferably blood or hair
-	(other items may be used with penalties to the check).  The target
-	may make a difficult will save at the GMs discretion.
+	The caster attempts to curse the target, if successful cast the caster
+	makes an opposed standard check against the targets will power adding the magic pool result
+	as a bonus to the check.  If successful the subject gains the <emph>Hunger for Gold</emph>
+	aspect with a difficulty equal to the std check plus magic pool result.  This aspect
+	lasts twenty four hours.  This spell requires some item of contagion with the target
+	in order to cast, preferably blood or hair (other items may be used with penalties
+	to the check.
       </p>
       
       <p>
@@ -55,8 +56,8 @@
 	</list>
       </p>
     </abilitydescription>    
-    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
-    <abilitycheck dc="3" overcharge="8+Level"/>
+    <prereqabilitylevel>enchantment.lore_1</prereqabilitylevel>
+    <abilitycheck dc="2" overcharge="8+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
     <spline><p x="90" y="0"/></spline>    
@@ -65,7 +66,7 @@
   
   <ability>
     <abilitytitle>Enchantment Lore</abilitytitle>
-    <abilityid>enchantment</abilityid>
+    <abilityid>enchantment.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><lore/></tags>
     <abilitydescription>
@@ -83,7 +84,7 @@
   
   <ability>
     <abilitytitle>Glamour</abilitytitle>
-    <abilityid>magic.glamour</abilityid>
+    <abilityid>enchantment.glamour</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -101,7 +102,7 @@
 	The difficulty of seeing through the glamour with True Sight is 25.
       </p>
     </abilitydescription>    
-    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
+    <prereqabilitylevel>enchantment.lore_1</prereqabilitylevel>
     <spline><p x="0" y="45"/></spline>
     <abilitycheck dc="15" overcharge="5+Level" />
     <abilitychecktype>Magic</abilitychecktype>
@@ -111,7 +112,7 @@
 
   <ability>
     <abilitytitle>Hex</abilitytitle>
-    <abilityid>magic.hex</abilityid>
+    <abilityid>enchantment.hex</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -126,7 +127,7 @@
 	FIXME: useless and vague?
       </p>	
     </abilitydescription>    
-    <prereqabilitylevel>enchantment_1</prereqabilitylevel>			
+    <prereqabilitylevel>enchantment.lore_1</prereqabilitylevel>			
     <spline><p x="-90" y="0"/></spline>
     <abilitycheck dc="2" overcharge="9+Level" />
     <abilitychecktype>Magic</abilitychecktype>
@@ -136,7 +137,7 @@
 
   <ability>
     <abilitytitle>Mind Worm</abilitytitle>
-    <abilityid>magic.mind_worm</abilityid>
+    <abilityid>enchantment.mind_worm</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -152,7 +153,7 @@
 	create a two-way mind worm).
       </p>
     </abilitydescription>    
-    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
+    <prereqabilitylevel>enchantment.lore_1</prereqabilitylevel>
     <spline><p x="-60" y="30"/></spline>
     <abilitycheck dc="9" overcharge="6+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
@@ -165,7 +166,7 @@
 
   <ability>
     <abilitytitle>Speak with Amphibians</abilitytitle>
-    <abilityid>magic.speak_with_amphibians</abilityid>
+    <abilityid>enchantment.speak_with_amphibians</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -174,7 +175,7 @@
 	Note however that these creatures are not that smart.
       </p>
     </abilitydescription>    
-    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <prereqabilitylevel>enchantment.zoolingualism_1</prereqabilitylevel>	
     <spline><p x="90" y="15"/></spline>
     <abilitycheck dc="6" overcharge="4+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
@@ -184,7 +185,7 @@
 
   <ability>
     <abilitytitle>Speak with Birds</abilitytitle>
-    <abilityid>magic.speak_with_birds</abilityid>
+    <abilityid>enchantment.speak_with_birds</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -193,7 +194,7 @@
 	not very smart.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <prereqabilitylevel>enchantment.zoolingualism_1</prereqabilitylevel>	
     <spline><p x="-45" y="90"/></spline>
     <abilitycheck dc="6"
     overcharge="5+Level" />
@@ -206,7 +207,7 @@
 
   <ability>
     <abilitytitle>Speak with Cats</abilitytitle>
-    <abilityid>magic.speak_with_cats</abilityid>
+    <abilityid>enchantment.speak_with_cats</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -214,7 +215,7 @@
 	The character can converse with cats and other felines.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <prereqabilitylevel>enchantment.zoolingualism_1</prereqabilitylevel>	
     <spline><p x="15" y="60"/></spline>
     <abilitycheck dc="6" overcharge="5+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
@@ -224,7 +225,7 @@
 
   <ability>
     <abilitytitle>Speak with Horses</abilitytitle>
-    <abilityid>magic.speak_with_horses</abilityid>
+    <abilityid>enchantment.speak_with_horses</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -234,7 +235,7 @@
 	and the like.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <prereqabilitylevel>enchantment.zoolingualism_1</prereqabilitylevel>	
     <spline><p x="-90" y="60"/></spline>
     <abilitycheck dc="5" overcharge="4+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
@@ -246,7 +247,7 @@
 
   <ability>
     <abilitytitle>Speak with Rodents</abilitytitle>
-    <abilityid>magic.speak_with_rodents</abilityid>
+    <abilityid>enchantment.speak_with_rodents</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -254,7 +255,7 @@
 	The character can converse with rodents: rats and mice etc.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <prereqabilitylevel>enchantment.zoolingualism_1</prereqabilitylevel>	
     <spline><p x="90" y="90"/></spline>
     <abilitycheck dc="6" overcharge="4+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
@@ -264,7 +265,7 @@
   
   <ability>
     <abilitytitle>Speak with Wolves</abilitytitle>
-    <abilityid>magic.speak_with_wolves</abilityid>
+    <abilityid>enchantment.speak_with_wolves</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -273,7 +274,7 @@
 	wolves, dogs and foxes.
       </p>
     </abilitydescription>    
-    <prereqabilitylevel>magic_school.zoolingualism_1</prereqabilitylevel>	
+    <prereqabilitylevel>enchantment.zoolingualism_1</prereqabilitylevel>	
     <spline><p x="-90" y="15"/></spline>
     <abilitycheck dc="4" overcharge="4+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
@@ -283,7 +284,7 @@
 
   <ability>
     <abilitytitle>Zoolingualism</abilitytitle>
-    <abilityid>magic_school.zoolingualism</abilityid>
+    <abilityid>enchantment.zoolingualism</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><enchantment/><pool/></tags>
     <abilitydescription>
@@ -291,7 +292,7 @@
 	A sub-class of magic used to communicate with animals.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>enchantment_1</prereqabilitylevel>
+    <prereqabilitylevel>enchantment.lore_1</prereqabilitylevel>
     <spline><p x="60" y="60"/></spline>
     <abilitycheck dc="10" overcharge="5+Level"/>
     <abilitychecktype>Magic</abilitychecktype>

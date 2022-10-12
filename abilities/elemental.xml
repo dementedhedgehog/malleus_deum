@@ -43,7 +43,9 @@
     <abilitydescription>
       <p>
 	The casters hands become engulfed in primal fire.  In hand
-	to hand combat their hands gain the Fire tag and do extra damage.
+	to hand combat their hands gain the Fire tag and do d6 extra damage.
+
+	FIXME: clone of ignis?
       </p>
     </abilitydescription>    
     <spline><p x="-60" y="30"/></spline>
@@ -56,7 +58,7 @@
   
   <ability>
     <abilitytitle>Elemental Lore</abilitytitle>
-    <abilityid>elemental</abilityid>
+    <abilityid>elemental.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><elemental/><lore/></tags>
     <abilitydescription>
@@ -87,7 +89,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="0" y="75"/></spline>
-    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <prereqabilitylevel>elemental.lore_1</prereqabilitylevel>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitylevels from="1" to="3"/>
@@ -107,7 +109,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="-75" y="70"/></spline>
-    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <prereqabilitylevel>elemental.lore_1</prereqabilitylevel>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitylevels from="1" to="3"/>
@@ -134,7 +136,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="-75" y="15"/></spline>
-    <prereqabilitylevel>elemental_1</prereqabilitylevel>	
+    <prereqabilitylevel>elemental.lore_1</prereqabilitylevel>	
     <abilitycheck dc="4" overcharge="9+Level"/>    
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
@@ -157,7 +159,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="-30" y="45"/></spline>
-    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <prereqabilitylevel>elemental.lore_1</prereqabilitylevel>
     <abilitycheck dc="7" overcharge="14+Level" />
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
@@ -193,7 +195,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="60" y="60"/></spline>
-    <prereqabilitylevel>elemental_2</prereqabilitylevel>
+    <prereqabilitylevel>elemental.lore_2</prereqabilitylevel>
     <abilitycheck dc="10" overcharge="16+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
@@ -238,7 +240,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="45" y="120"/></spline>
-    <prereqabilitylevel>elemental_1</prereqabilitylevel>
+    <prereqabilitylevel>elemental.lore_1</prereqabilitylevel>
     <abilitycheck dc="3" overcharge="10+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
@@ -257,7 +259,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="90" y="15"/></spline>
-    <prereqabilitylevel>elemental_3</prereqabilitylevel>
+    <prereqabilitylevel>elemental.lore_3</prereqabilitylevel>
     <abilitycheck dc="8" overcharge="16+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>

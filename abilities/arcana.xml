@@ -21,7 +21,7 @@
     <abilityid>arcana.aegis</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><arcana/><ranged/><pool/></tags>
-    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitycheck dc="2" overcharge="9+Level"/>
     <abilitydescription>
       <p noindent="true">
 	The aegis spell is perhaps optimistically named.   It briefly forms
@@ -40,7 +40,6 @@
   </ability>
   
   
-
   <ability>
     <abilitytitle>Alarum</abilitytitle>
     <abilityid>arcana.alarum</abilityid>
@@ -142,12 +141,18 @@
       <p>
 	Allows the user to make a weapon flame for the
 	duration of a combat. Flaming weapons do +d6 extra
-	fire damage.
+	fire damage.  The flame is magical and will not burn
+	wooden weapons.
+      </p>
+
+      <p>
+	In the event of overcharge the caster suffers 2d6 fire
+	damage.
       </p>
     </abilitydescription>    
     <spline><p x="0" y="30"/></spline>
     <prereqabilitylevel>arcana.ignis_1</prereqabilitylevel>
-    <abilitycheck dc="3" overcharge="9+Level"/>
+    <abilitycheck dc="4" overcharge="9+Level"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitylevels from="1" to="4"/>
