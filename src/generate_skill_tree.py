@@ -26,7 +26,7 @@ ABILITY_MARGIN_RIGHT = 4
 ABILITY_MARGIN_BOTTOM = 4
 CIRCLE_RADIUS = 4
 CIRCLE_HORIZONTAL_SEPARATOR = 2
-ABILITY_LEVEL_SEPARATOR = CIRCLE_RADIUS + 2
+ABILITY_RANK_SEPARATOR = CIRCLE_RADIUS + 2
 
 
 class AbilityNode:
@@ -41,7 +41,7 @@ class AbilityNode:
         self.width = None
         self.height = None
 
-        # map of ability_level_id -> arrow connection position *relative* to
+        # map of ability_rank_id -> arrow connection position *relative* to
         # the incoming connection position of this node.
         self.outgoing_connector_offsets = {}        
         return
@@ -95,41 +95,41 @@ class AbilityNode:
         context.arc(x, y, black_ball_radius, 0, black_ball_radius*math.pi)        
         context.fill()
 
-        # draw the ability levels.
-        level_x = x0 + ABILITY_LEVEL_SEPARATOR
-        level_y = y1 + ABILITY_MARGIN_TOP + CIRCLE_RADIUS
-        for level in self.ability.get_levels():
-            number = level.get_level_number()
+        # draw the ability ranks.
+        rank_x = x0 + ABILITY_RANK_SEPARATOR
+        rank_y = y1 + ABILITY_MARGIN_TOP + CIRCLE_RADIUS
+        for rank in self.ability.get_ranks():
+            number = rank.get_rank_number()
             number_str = str(number)
             (xt, yt, width, height, dx, dy) = context.text_extents(number_str)
-            context.move_to(level_x - dx/2 + width/2, level_y)
+            context.move_to(rank_x - dx/2 + width/2, rank_y)
             
             # draw outgoing circle
-            context.arc(level_x, level_y, CIRCLE_RADIUS, 0, 2.0*math.pi)
+            context.arc(rank_x, rank_y, CIRCLE_RADIUS, 0, 2.0*math.pi)
             context.stroke_preserve()        
             context.set_source_rgb(1, 1, 1)
             context.fill()
             context.set_source_rgb(0, 0, 0)
 
-            # draw outgoing level number
-            context.move_to(level_x - dx/2, level_y + height/2)
+            # draw outgoing rank number
+            context.move_to(rank_x - dx/2, rank_y + height/2)
             context.show_text(number_str)
             context.stroke()
 
             # remember where to connect to            
-            self.outgoing_connector_offsets[number] = (level_x, level_y + CIRCLE_RADIUS)
-            level_x += 2 * CIRCLE_RADIUS + CIRCLE_HORIZONTAL_SEPARATOR
+            self.outgoing_connector_offsets[number] = (rank_x, rank_y + CIRCLE_RADIUS)
+            rank_x += 2 * CIRCLE_RADIUS + CIRCLE_HORIZONTAL_SEPARATOR
 
-        if len(self.ability.get_levels()) > 0:
-            max_y = level_y + CIRCLE_RADIUS
+        if len(self.ability.get_ranks()) > 0:
+            max_y = rank_y + CIRCLE_RADIUS
         else:
             max_y = y1
         max_y += ABILITY_MARGIN_BOTTOM
             
         return starting_pos, max_y
 
-    def get_outgoing_offset(self, level_number):
-        return self.outgoing_connector_offsets[level_number]
+    def get_outgoing_offset(self, rank_number):
+        return self.outgoing_connector_offsets[rank_number]
 
 
 def draw_skill_tree(ability_groups, ability_group, ability, context, offset=None, max_y=0):
@@ -166,16 +166,16 @@ def draw_skill_tree(ability_groups, ability_group, ability, context, offset=None
     children = ability_groups.get_abilities_children(ability)
     if children is not None:
        for child_ability in children:
-           prereq_ability_level = child_ability.ability_level_prereq
+           prereq_ability_rank = child_ability.ability_rank_prereq
 
-           if prereq_ability_level is not None:
-               ability_level_number = prereq_ability_level.get_level_number()
-               assert isinstance(ability_level_number, int)
+           if prereq_ability_rank is not None:
+               ability_rank_number = prereq_ability_rank.get_rank_number()
+               assert isinstance(ability_rank_number, int)
            else:
-               ability_level_number = 0
+               ability_rank_number = 0
 
            try:
-               child_pos = node.get_outgoing_offset(ability_level_number)
+               child_pos = node.get_outgoing_offset(ability_rank_number)
                new_max_y = draw_skill_tree(ability_groups, ability_group, child_ability,
                                            context, offset=child_pos, max_y=max_y)
                max_y = max(max_y, new_max_y)

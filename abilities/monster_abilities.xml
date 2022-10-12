@@ -9,7 +9,7 @@
       <p>
 	These abilities describe monsters special abilities.  Monster
 	abilities can break some of the standard constraints on abilities
-	as monsters do not have to level up, and we typically want their
+	as monsters do not have to rank up, and we typically want their
 	abilities to be simple and easy to run.
       </p>      
     </abilitygroupdescription>
@@ -24,14 +24,14 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="13 + Level"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>5 + 2*Level</abilitydmg>
     <abilitydescription>
       <p noindent="true">
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
 
   
@@ -42,7 +42,7 @@
     <tags><monster/><crushing/><piercing/></tags>
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>4+Level</abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -50,7 +50,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="6"/>
+    <abilityranks from="1" to="6"/>
   </ability>
   
   <ability>
@@ -60,7 +60,7 @@
     <tags><monster/><crushing/><piercing/></tags>
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>4+Level</abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -69,7 +69,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="6"/>
+    <abilityranks from="1" to="6"/>
   </ability>
 
   <ability>
@@ -98,7 +98,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -108,7 +108,7 @@
     <tags><monster/><crushing/><piercing/></tags>
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>4+Level</abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -116,7 +116,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="6"/>
+    <abilityranks from="1" to="6"/>
   </ability>
   
   
@@ -152,7 +152,7 @@
     <abilitychecktype>Mettle</abilitychecktype>
     <abilitydmg></abilitydmg>
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>  
 
   <ability>
@@ -162,16 +162,16 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="8"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
-        The NPC takes an additional move action each round for each level of
+        The NPC takes an additional move action each round for each rank of
 	fleet they have..
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
   
@@ -183,7 +183,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="8"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -195,7 +195,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
   
   
@@ -206,7 +206,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>3 + Level</abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -215,7 +215,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
     
   <ability>
@@ -225,7 +225,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>3 + 2xLevel</abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -234,7 +234,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
   
   
@@ -251,10 +251,10 @@
       </p>
     </abilitydescription>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>2 + 2*Level</abilitydmg>
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -264,7 +264,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="7 + Level or target is Poisoned"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>4 + 2*Level</abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -273,7 +273,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
 
 
@@ -284,18 +284,18 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="8"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	The monster has a prehensile tail that they can use to climb, grab
-	things.  At higher levels the monster can wield a weapon using
+	things.  At higher ranks the monster can wield a weapon using
 	the tail. 
       </p>
     </abilitydescription>
     
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
   
 
@@ -306,7 +306,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="Targets Dodge"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -317,7 +317,7 @@
       </p>
     </abilitydescription>     
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -335,7 +335,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -345,7 +345,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="8"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>    
     <abilitydescription>
       <p noindent="true">
@@ -353,7 +353,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
 
 
@@ -364,7 +364,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="8"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -378,7 +378,7 @@
     </abilitydescription>
      
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>  
   
 
@@ -389,16 +389,16 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>    
     <abilitydescription>
       <p noindent="true">
 	The creature once revealed in their true form is terrifying.  The
-	characters have to make a will check vs level or lose their turn.
+	characters have to make a will check vs rank or lose their turn.
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="9"/>
+    <abilityranks from="1" to="9"/>
   </ability>  
 
   <ability>
@@ -413,11 +413,11 @@
     <abilitydescription>
       <p noindent="true">
 	The creature has a terrifying roar or battle cry. The
-	characters have to make a will check vs level or lose their turn.
+	characters have to make a will check vs rank or lose their turn.
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="1" to="9"/>
+    <abilityranks from="1" to="9"/>
   </ability>  
 
   <ability>
@@ -427,7 +427,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -438,7 +438,7 @@
     </abilitydescription>
      
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>  
   
 
@@ -450,7 +450,7 @@
     <tags><monster/></tags>
     <gmgability/>
     <abilitycheck dc="Targets Defence not Parry/Armour"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -462,6 +462,6 @@
     </abilitydescription>
      
     <spline></spline>
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>  
 </abilitygroup>

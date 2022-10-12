@@ -81,7 +81,7 @@
       
       <tablerow>
 	<td>26-27</td>
-	<td>The character gains a level of Leap.</td>
+	<td>The character gains a rank of Leap.</td>
       </tablerow>
       
       <tablerow>
@@ -128,8 +128,8 @@ More flavourful to have a per patron thing?
     <abilityid>klazyabolous.invoke</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><klazyabolus/></tags>
-    <prereqabilitylevel>evocation_1</prereqabilitylevel>
-    <abilitycheck dc="10" overcharge="5+Level"/>
+    <prereqabilityrank>evocation_1</prereqabilityrank>
+    <abilitycheck dc="10" overcharge="5+Rank"/>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydescription>
       <p>
@@ -153,7 +153,7 @@ More flavourful to have a per patron thing?
     </abilitydescription>    
     <spline></spline>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>  
   
   <ability>
@@ -161,7 +161,7 @@ More flavourful to have a per patron thing?
     <abilityid>klazyabolous.leap</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><klazyabolus/></tags>
-    <abilitycheck dc="3" overcharge="9+Level"/>    
+    <abilitycheck dc="3" overcharge="9+Rank"/>    
     <abilitydescription>
       <p>
 	This magical leap allows the character to jump
@@ -171,7 +171,7 @@ More flavourful to have a per patron thing?
     <spline></spline>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>  
 
  
@@ -180,7 +180,7 @@ More flavourful to have a per patron thing?
     <abilityid>klazyabolous.incorporal_mist</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><klazyabolus/></tags>
-    <abilitycheck dc="3" overcharge="9+Level"/>    
+    <abilitycheck dc="3" overcharge="9+Rank"/>    
     <abilitydescription>
       <p>
 	The character transforms into a cloud of green mist.  Their clothes
@@ -188,11 +188,11 @@ More flavourful to have a per patron thing?
 	form for up to half an hour.
       </p>
     </abilitydescription>    
-    <prereqabilitylevel>evocation_1</prereqabilitylevel>	
+    <prereqabilityrank>evocation_1</prereqabilityrank>	
     <spline></spline>
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>  
 </abilitygroup>
 </patron>

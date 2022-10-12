@@ -29,11 +29,11 @@
     </abilitydescription>    
     <spline><p x="60" y="30"/></spline>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon + Strength|Endurance</abilitydmg>
-    <prereqabilitylevel>axe.strike_2</prereqabilitylevel>
+    <prereqabilityrank>axe.strike_2</prereqabilityrank>
     <prereqattr><strength>13</strength></prereqattr>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -52,10 +52,10 @@
 	On overcharge the character goes beserk.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>axe.strike_1</prereqabilitylevel>
+    <prereqabilityrank>axe.strike_1</prereqabilityrank>
     <prereqattr><strength>13</strength></prereqattr>
     <spline><p x="-75" y="30"/></spline>    
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -64,7 +64,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><axe/><heavy/><weapon/><martial/></tags>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon + Strength|Endurance, target saves vs Str or drops weapon/shield</abilitydmg>
     <abilitydescription>
       <p>
@@ -72,9 +72,9 @@
 	an opponent or remove their shield by using the axes beard as a hook.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>axe.strike_1</prereqabilitylevel>
+    <prereqabilityrank>axe.strike_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>    
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -89,9 +89,9 @@
       </p>
     </abilitydescription>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon + Strength|Endurance</abilitydmg>
     <spline></spline>
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 </abilitygroup>

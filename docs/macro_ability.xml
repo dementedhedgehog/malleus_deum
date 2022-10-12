@@ -11,9 +11,9 @@
     <smaller>
       <bold>Action Type:</bold> {{ ability.action_type }},  
       {% if ability.is_untrained() %}
-      <bold>Untrained:</bold> {{ ability.get_untrained_level() }},
+      <bold>Untrained:</bold> {{ ability.get_untrained_rank() }},
       {%- endif %}
-      <bold>Levels:</bold> {{ ability.get_ability_level_range() }}, 
+      <bold>Ranks:</bold> {{ ability.get_ability_rank_range() }}, 
       <bold>Checks:</bold> {% for check in ability.get_checks() %}
       {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
       {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}            

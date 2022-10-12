@@ -655,7 +655,7 @@ Creating a Monster
 	<subsectiontitle>Approach</subsectiontitle>
 	<p>
 	  Our approach to game balance is to choose some ranges for ability stats,
-	  for skill levels and for weapon damage.  The rest of the game statistics,
+	  for skill ranks and for weapon damage.  The rest of the game statistics,
 	  <eg/> hit points, armour DCs <etc/>, can all be derived from these initial
 	  decisions.  Our aim here is to make sure that the combat specialists are not
 	  too much better at combat than the non-combat specialists.
@@ -671,31 +671,31 @@ Creating a Monster
 	</p>
 
 	<figure position="!htbp" fullwidth="true">
-	  <img src="./build/ability_range_by_level.png" scale="0.45"/>
-	  <caption>PC Ability Range by Level</caption>
-	  <label>figure:ability_range_by_level</label>
+	  <img src="./build/ability_range_by_rank.png" scale="0.45"/>
+	  <caption>PC Ability Range by Rank</caption>
+	  <label>figure:ability_range_by_rank</label>
 	</figure>
 	
 	<figure position="!htbp" fullwidth="true">
-	  <img src="./build/ability_bonus_by_level.png" scale="0.45"/>
-	  <caption>PC Ability Bonus by Level</caption>
-	  <label>figure:ability_bonus_by_level</label>
+	  <img src="./build/ability_bonus_by_rank.png" scale="0.45"/>
+	  <caption>PC Ability Bonus by Rank</caption>
+	  <label>figure:ability_bonus_by_rank</label>
 	</figure>	
       </subsection>
 
       
       <subsection>
-	<subsectiontitle>Skill Level Bonuses</subsectiontitle>
+	<subsectiontitle>Skill Rank Bonuses</subsectiontitle>
 	
 	<p>	  
-	  We can also limit skill levels to a given range for each level.
-	  Each skill provides a bonus equal to the level of the skill.
+	  We can also limit skill ranks to a given range for each level.
+	  Each skill provides a bonus equal to the rank of the skill.
 	</p>
 	
 	<figure position="!htbp" fullwidth="true">
-	  <img src="./build/skill_bonus_by_level.png" scale="0.45"/>
-	  <caption>Skill Bonus by Level</caption>
-	  <label>figure:skill_bonus_by_level</label>
+	  <img src="./build/skill_bonus_by_rank.png" scale="0.45"/>
+	  <caption>Skill Bonus by Rank</caption>
+	  <label>figure:skill_bonus_by_rank</label>
 	</figure>	
       </subsection>
       
@@ -706,7 +706,7 @@ Creating a Monster
 	  To-Hit rolls are a kind of Std Check.  We can calculate a range for
 	  the to hit bonuses for melee attacks, and from there we can calculate
 	  ranges for defensive checks.  The to-hit bonus is the sum of an ability
-	  bonus and the skill level bonus.  Since the attacker usually gets to
+	  bonus and the skill rank bonus.  Since the attacker usually gets to
 	  choose their weapon we can assume that they will choose a weapon that
 	  they are decent with.  We imagine that the character chooses a weapon
 	  for which their skill bonus is in the average to max range and the
@@ -719,19 +719,19 @@ Creating a Monster
 	  <label>figure:to_hit_bonus_by_level</label>
 	</figure>
 
-
+	
 	<p>
 	  In order to make the maths more tractable we will introduce the simplifying
 	  constraint that the only thing that changes To-Hit and Defence Checks is the
-	  skill level.
+	  skill rank.
 	</p>
 
 	<corollary>
 	  <corollarytitle>To-Hit and to Defence Check Bonuses</corollarytitle>
 	  <corollarybody>
 	    When designing to-hit and defensive checks, the bonuses for these checks should
-	    be restricted to ability level only.  By keeping the bonuses for to-hit and
-	    defence checks dependent only on level we make the maths and complexity of
+	    be restricted to ability rank only.  By keeping the bonuses for to-hit and
+	    defence checks dependent only on rank we make the maths and complexity of
 	    balancing combat much simpler.  It also helps prevent min-maxing.  Hopefully this
 	    will force the characters to concentrate more on strategy within the combat.
 	  </corollarybody>

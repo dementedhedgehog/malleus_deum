@@ -19,7 +19,7 @@ from utils import (
     parse_measurement_to_str,
     children_to_string,
     contents_to_string)    
-from abilities import AbilityLevel
+from abilities import AbilityRank
 
 
 DEFAULT_GENDER = "Choose whatever gender you want."
@@ -280,7 +280,7 @@ class Archetype:
         self.tags = []
         
         # update these after a load
-        self.innate_ability_levels = []
+        self.innate_ability_ranks = []
                 
         # what advantages you get at what levels.
         self.level_progression_table = LevelProgressionTable(self.fname)        
@@ -346,13 +346,13 @@ class Archetype:
         return has_magical_abilities
     
 
-    def get_archetype_specific_innate_ability_levels(self):
+    def get_archetype_specific_innate_ability_ranks(self):
         """
-        Returns the innate ability levels specific to this archetype.
+        Returns the innate ability ranks specific to this archetype.
 
         """
-        return [ ability_level for ability_level in self.innate_ability_levels if 
-                 ability_level.is_innate_for_this_archetype() ]
+        return [ ability_rank for ability_rank in self.innate_ability_ranks if 
+                 ability_rank.is_innate_for_this_archetype() ]
  
     def get_move_distance(self):
         return self.move_distance
@@ -413,29 +413,29 @@ class Archetype:
         try:
             self._load(archetype_node, fail_fast)
 
-            # sort the ability levels
-            self.innate_ability_levels.sort(key = lambda mal: mal.get_title())
+            # sort the ability ranks
+            self.innate_ability_ranks.sort(key = lambda mal: mal.get_title())
 
             # update the innate abilities
             # for ability in list(self.modified_abilities_lookup.values()):
-            #     levels = ability.get_levels()
-            #     max_level = None
-            #     for level in levels:
-            #         if not level.is_innate():
+            #     ranks = ability.get_ranks()
+            #     max_rank = None
+            #     for rank in ranks:
+            #         if not rank.is_innate():
             #             continue
 
-            #         if (max_level is None or 
-            #             (max_level.get_level_number() < level.get_level_number())):
-            #             max_level = level
+            #         if (max_rank is None or 
+            #             (max_rank.get_rank_number() < rank.get_rank_number())):
+            #             max_rank = rank
 
-            #     if max_level is not None:
-            #         self.innate_ability_levels.append(max_level)
+            #     if max_rank is not None:
+            #         self.innate_ability_ranks.append(max_rank)
 
-            # update the enabled flag in all the ability groups, abilities and levels
+            # update the enabled flag in all the ability groups, abilities and ranks
             # (it might be out of date here)
             # for ability_group in self.modified_ability_groups:
 
-            #     # if a group is disabled all it's levels and abilities are also disabled.
+            #     # if a group is disabled all it's ranks and abilities are also disabled.
             #     if not ability_group.is_enabled():
             #         for ability in ability_group.get_abilities():                    
             #             ability.set_enabled(False)
@@ -458,14 +458,14 @@ class Archetype:
             #                 if not ability.is_enabled():
             #                     ability.set_enabled(False)
 
-            #             # also an ability is disabled if all its levels are.
-            #             all_ability_levels_disabled = True
-            #             for ability_level in ability:
-            #                 if ability_level.is_enabled():
-            #                     all_ability_levels_disabled = False
+            #             # also an ability is disabled if all its ranks are.
+            #             all_ability_ranks_disabled = True
+            #             for ability_rank in ability:
+            #                 if ability_rank.is_enabled():
+            #                     all_ability_ranks_disabled = False
             #                     break
 
-            #                 if all_ability_levels_disabled:
+            #                 if all_ability_ranks_disabled:
             #                     ability.set_enabled(False)
         except:
             print("Problem trying to parse archetype file: %s" % self.fname)
@@ -475,8 +475,8 @@ class Archetype:
         # go through and set the innate information for prerequisites
         #self.set_innate_abilities() ###########################################
         # for ability in self.modified_abilities_lookup.values():
-        #     for ability_level in ability:
-        #         ability_level.check_consistency()
+        #     for ability_rank in ability:
+        #         ability_rank.check_consistency()
 
         self.check_consistency()                
         return True
@@ -743,9 +743,9 @@ if __name__ == "__main__":
         #     #     #    continue
                 
         #     #     print("\t\t%s" % ability.get_title())
-        #     #     print("\t\tHighest innate level %s" % ability.get_highest_innate_level())
+        #     #     print("\t\tHighest innate rank %s" % ability.get_highest_innate_rank())
                 
-        #     #     for mal in ability.get_levels():
+        #     #     for mal in ability.get_rankns():
         #     #         print("\t\t\t%s %s" % (mal.get_title(), mal.get_total_point_cost()))
         #     #         print("\t\t\tIS INNATE %s" % mal.is_innate(d = True))
         #     #         print("\t\t\t\tRecommended: %s" % mal.is_recommended())        

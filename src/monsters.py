@@ -270,7 +270,7 @@ class Monster:
         self.mettle_pool = None
         self.magic_pool = None
         self.luck_pool = None
-        self.ability_level_ids = []
+        self.ability_rank_ids = []
         self.strength = None
         self.endurance = None
         self.agility = None
@@ -319,8 +319,8 @@ class Monster:
     def get_description(self):
         return self.description
 
-    def get_ability_level_ids(self):
-        return self.ability_level_ids
+    def get_ability_rank_ids(self):
+        return self.ability_rank_ids
 
     def get_title(self):
         return self.title
@@ -370,8 +370,8 @@ class Monster:
 
     def has_prerequisites(self):
         has_prereqs = False
-        for level in self.levels:
-            if level.has_prerequisites():
+        for rank in self.ranks:
+            if rank.has_prerequisites():
                 has_prereqs = True
                 break
         return has_prereqs
@@ -518,9 +518,9 @@ class Monster:
                else:
                    self.perception = convert_str_to_int(child.text)
 
-           elif tag == "abilitylevelid":
-               ability_level_id = child.text
-               self.ability_level_ids.append(ability_level_id)
+           elif tag == "abilityrankid":
+               ability_rank_id = child.text
+               self.ability_rank_ids.append(ability_rank_id)
 
            elif tag == "monsterclass":
                self.monster_class = MonsterClass.load(child.text)
@@ -579,11 +579,11 @@ if __name__ == "__main__":
     #         #print("\t\t\tMonster Class: %s" % monster.get_monster_class())
     #         #print("\t\t\t\t: %s" % monster.get_monster_class())
             
-    #         for monster_level in monster.get_levels():
-    #             print("\t\t\t\t%s" % monster_level.get_title())
-    #             print("\t\t\t\t%s" % monster_level.check)
-    #             print("\t\t\t\t%s" % monster_level.description)
-    #         #    #print("\t\t\tLore: %s" % monster_level.get_default_lore())
+    #         for monster_rank in monster.get_ranks():
+    #             print("\t\t\t\t%s" % monster_rank.get_title())
+    #             print("\t\t\t\t%s" % monster_rank.check)
+    #             print("\t\t\t\t%s" % monster_rank.description)
+    #         #    #print("\t\t\tLore: %s" % monster_rank.get_default_lore())
 
 
 

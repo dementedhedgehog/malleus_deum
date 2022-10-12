@@ -1552,9 +1552,9 @@ class EPubFormatter:
 
         try:
             ability_id = ability_ref.attrib["id"]
-            ab = self.db.lookup_ability_or_ability_level(ability_id)
+            ab = self.db.lookup_ability_or_ability_rank(ability_id)
 
-            # if isinstance(ab, abilities.AbilityLevel):
+            # if isinstance(ab, abilities.AbilityRank):
             #     name = ab.get_ability().get_title()
                 
             # elif isinstance(ab, abilities.Ability):
@@ -1564,18 +1564,18 @@ class EPubFormatter:
             #     raise Exception(f"Bad abilityref!!  No ability has id: {ability_id}")
 
 
-            # level_num = ab.get_level_number()
-            # if level_num is not None:
-            #     level_num = convert_to_roman_numerals(level_num)
+            # rank_num = ab.get_rank_number()
+            # if rank_num is not None:
+            #     rank_num = convert_to_roman_numerals(rank_num)
                 
             # if ab.is_innate():
-            #     if level_num is None:
+            #     if rank_num is None:
             #         self.latex_file.write(f"{name}^i")
             #     else:
-            #         self.latex_file.write(f"{name}^i {level_num}")
+            #         self.latex_file.write(f"{name}^i {rank_num}")
             # else:
-            #     if level_num is None:
-            #         self.latex_file.write(f"{name} {level_num}")
+            #     if rank_num is None:
+            #         self.latex_file.write(f"{name} {rank_num}")
             #     else:
             #         self.latex_file.write(f"{name}")
             

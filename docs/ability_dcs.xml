@@ -26,18 +26,18 @@
 	    </td>
 	    </tablerow>
 
-	    {% for ability_level in ability.get_levels()  %}	    
+	    {% for ability_rank in ability.get_ranks()  %}	    
 	  <tablerow>
             <td>
-            {{- ability_level.get_level_number() | convert_to_roman_numerals }}
-	    {%- if ability_level.is_innate() %} <innateabilitylevelsymbol/>{% endif -%}
+            {{- ability_rank.get_rank_number() | convert_to_roman_numerals }}
+	    {%- if ability_rank.is_innate() %} <innateabilityranksymbol/>{% endif -%}
             </td>
             <td>
-              {%- if ability_level.check is not none -%}
-              <bold>Check:</bold> {{ ability_level.check -}}
+              {%- if ability_rank.check is not none -%}
+              <bold>Check:</bold> {{ ability_rank.check -}}
               {%- endif %}
-              {%- if ability_level.overcharge is not none -%}
-              <bold> <leq/> </bold> {{ ability_level.overcharge -}}
+              {%- if ability_rank.overcharge is not none -%}
+              <bold> <leq/> </bold> {{ ability_rank.overcharge -}}
               {%- endif %}
             </td>
 	  </tablerow>

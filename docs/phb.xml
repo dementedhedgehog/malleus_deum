@@ -368,16 +368,27 @@
 	Abilities are divided using tags into a number of categorizes. For example, the Axe Strike
 	ability	is tagged Weapon, Heavy, Martial, Axe.  This means that if the character gains a
 	martial ability	when they go up a level they may take the Axe Strike ability or any of the
-  	other martial abilities of the given level.  If the character gains an axe ability
+  	other martial abilities of the given rank.  If the character gains an axe ability
   	they may only choose from the abilities tagged with <emph>axe</emph>.  In order to take
 	an ability the abilities prerequisites must be met.
       </p>
 
       <p>
-	Abilities have levels and the higher the ability level the easier it is for the character
-	to succeed at those ability checks.  Ability levels are written as Roman numerals after
-	the ability.  So, for example, we might say that Dourli has Axe Cleave III, which means
-	that he has Axe Cleave at level 3.
+	<indexentry>Ability Rank</indexentry>
+	<indexentry>Rank - Ability</indexentry>
+	Abilities have ranks and the higher the ability rank the easier it is for the character
+	to succeed at those ability checks.  Ability ranks are written after
+	the ability.  So, for example, we might say that Dourli has Axe Cleave 3, which means
+	that he has Axe Cleave at rank 3.  
+      </p>
+
+      <p>
+	<indexentry>Ability[Templates]</indexentry>
+	<indexentry>Template - Ability</indexentry>
+	Some abilities may be templated.  In this case the template will follow the ability name
+	and be written in square brackets, <eg/> History[Westreich] 2.  The template indicates that
+	the knowledge is narrower than the ability name alone suggests.  The GM can choose whatever
+	template values they like for templated abilities.
       </p>
     </section>
 
@@ -430,7 +441,7 @@
           <term>Increased Stamina or Health</term><description>The player increases the amount of the relevant hit points on their character sheet.</description>
           <term>Gain Ability</term><description><indexentry>Ability<subentry>Gaining</subentry></indexentry><indexentry>Gaining an Ability</indexentry>
 	  The character may gain a completely new ability.  The character must be able to learn the ability, and the character must have mastered any prerequisites.</description>
-          <term>Ability Promotion</term><description><indexentry>Ability<subentry>Promotions</subentry></indexentry><indexentry>Promoting an Ability</indexentry>An ability promotion allows the character to increase the level of an already mastered ability by one.</description>
+          <term>Ability Promotion</term><description><indexentry>Ability<subentry>Promotions</subentry></indexentry><indexentry>Promoting an Ability</indexentry>An ability promotion allows the character to increase the rank of an already mastered ability by one.</description>
         </descriptions>	
       </p>
     </section>
@@ -474,7 +485,7 @@
         <equation>
           <line>Std Check:</line>
           <line>2d12 + Bonus <geqqsymbol/> DC - Modifiers</line>
-          <line>... the Bonus is usually the Ability Level</line>
+          <line>... the Bonus is usually the Ability Rank</line>
         </equation>	
       </p>
 
@@ -593,9 +604,9 @@
   	      Strength.  So Dourli attempts to control the horse using a Strength Ability
   	      Check.  The GM decides that the task has a difficulty of 14, so Dourli must
   	      roll a 14 or more in order to get the horse under control.  Dourli has a
-  	      Strength II, <ie/>he has the Strength ability at level 2, and so he gets a
+  	      Strength 2, <ie/>he has the Strength ability at rank 2, and so he gets a
 	      bonus to his role of +2.  Dourli rolls a pair of
-  	      fives on his 2d12, for a total of 10 and adds his Strength Level of 2 to get 12
+  	      fives on his 2d12, for a total of 10 and adds his Strength Rank of 2 to get 12
 	      which isn't enough to make the 14 required to control the horse.   In addition,
 	      because he rolled double odds he suffers a bane.  The GM declares that the
 	      horse bolts, smashing through the burning stable doors and running into the night.
@@ -627,8 +638,8 @@
         <sectiontitle>Some Exceptions</sectiontitle>
   	<p>
 	  Abilities tagged <defn>Untrained</defn> or <defn>Primary</defn> can be used without training.
-	  In these cases the lowest ability level is used.  Abilities tagged <defn>Inaccurate</defn>
-	  do not add the level to their check.
+	  In these cases the lowest ability rank is used.  Abilities tagged <defn>Inaccurate</defn>
+	  do not add their rank to their checks.
   	</p>
       </subsection>
     </section>
@@ -733,8 +744,8 @@
         <playexample>
           <p>
   	    Dourli attempts to strike a thug with his axe using the Axe Strike ability
-  	    which he has at Level 1.  He rolls 2d12+1 and the difficulty is the thugs
-  	    defence DC.  The +1 bonus is provided by his level with the Axe Strike ability.
+  	    which he has at Rank 1.  He rolls 2d12+1 and the difficulty is the thugs
+  	    defence DC.  The +1 bonus is provided by his rank with the Axe Strike ability.
           </p>
         </playexample>
       </subsection>
@@ -756,7 +767,7 @@
 
         <p>
 	  These checks work the same as other ability checks, the character rolls a Std Check
-  	  which is modified by the characters Primary Ability level and the result is compared
+  	  which is modified by the characters Primary Ability Rank and the result is compared
 	  against a DC  chosen by the GM as they see fit.  For inspiration
   	  see Table<ref>table:std-check-difficulties</ref> on
           page<pageref>table:std-check-difficulties</pageref> for a list of
@@ -769,8 +780,8 @@
   	    Dourli tries to shift a large wine barrel that is sitting on a trap door
   	    in a cellar.  The GM declares that in order to do so Dourli must make a Strength
   	    Check with a difficulty of 12.  The player rolls a 4 and a 5 on their 2d12.
-  	    Dourli has Strength II, and so gets a bonus of +2 for a total of 11.  Dourli
-  	    fails to move the wine barrel.  If he had a Strength III he would have succeeded.
+  	    Dourli has Strength 2, and so gets a bonus of +2 for a total of 11.  Dourli
+  	    fails to move the wine barrel.  If he had a Strength 3 he would have succeeded.
           </p>
         </playexample>
 
@@ -804,7 +815,7 @@
   	  secretly make those checks for them, and the player is a passive participant.
 	  We call this a passive check.  A good example of this is a passive perception
 	  check.  In order to make a passive perception check, the GM rolls a Std Check
-	  and adds the characters perception level for the character and compares it with
+	  and adds the characters perception rank for the character and compares it with
 	  the nominated DC.
         </p>
       </subsection>
@@ -1265,7 +1276,7 @@
           <indexentry>Inaccurate Condition</indexentry> 
           <indexentry>Conditions<subentry>Inaccurate</subentry></indexentry>
 	  Inaccurate weapons get -3 to hit.  Very Inaccurate weapons get -6 to hit.
-	  Abilities tagged <defn>Inaccurate</defn> do not add the weapons level to their
+	  Abilities tagged <defn>Inaccurate</defn> do not add the weapons rank to their
 	  check.
         </description>
 	
@@ -2117,8 +2128,8 @@
 
 	<p>
 	  One of the thugs attacks Dourli with an Axe Strike I.  Dourli defends with a
-	  Shield Block III, since he is level III he rolls 2D12 with a +3 bonus to his
-	  block, the attack has a DC of 13 + 1 for the Axe Strike level.  He needs an
+	  Shield Block 3, since he has rank 3 so he rolls 2D12 with a +3 bonus to his
+	  block, the attack has a DC of 13 + 1 for the Axe Strike rank.  He needs an
 	  11 or more on his roll to succeed.  He roll double fours.  That is a failure
 	  and also a boon.  The GM declares that Dourli takes half damage which for an axe
 	  is 3 hit points.  That has used Dourlis one reaction for the round.
@@ -2441,40 +2452,34 @@
       </p>
 
       <p>
-  	Abilities have levels.  Some abilities start at level zero.  Abilities that have a zero
-  	level can be attempted without training.  All characters automatically have
-  	all zero-th level abilities at level zero.
+  	Abilities have ranks.  Some abilities start with an untrained rank, often 0 or -3.
+	Abilities that have an untraind rank can be attempted without training.  All characters
+	automatically have all untrained abilities but we do not usually bother to write these
+	down on the character sheet until they reach rank one.
       </p>
 
       <p>
   	<indexentry>Mastering an Ability</indexentry>
   	<indexentry>Ability<subentry>Mastery</subentry></indexentry>
   	Some abilities have prerequisites.  You cannot learn an ability unless you have
-  	satisfied the prerequisites for that ability.  A prerequisite for all ability levels
-  	is mastery of the previous levels of the ability.  That is, in order to gain level II
-  	of an ability, level I must first be mastered.  In order to master the ability the
-  	player must have successfully used the ability a number of times (called the mastery).
-  	If a skill requires another ability level as a prerequisite that ability level must
-  	also first be mastered.  Every time an unmastered ability level is used the character
+  	satisfied the prerequisites for that ability.  A prerequisite for all ability ranks
+  	is mastery of the previous rank of the ability.  That is, in order to gain rank 2
+  	of an ability, rank 1 must first be mastered.  In order to master the ability the
+  	player must have successfully used the ability three times.
+  	If a skill requires another ability rank as a prerequisite that ability rank must
+  	also first be mastered.  Every time an unmastered ability rank is used the character
   	should mark off the success on their character sheet.
       </p>
 
       <p>
   	When the character goes up a level they gain promotions in certain classes of abilities
-  	up to certain levels.  For example a character might gain the following promotions:
+  	up to certain ranks.  For example a character might gain the following promotions:
   	Martial<leqqsymbol/>3, Hammer<leqqsymbol/>4, Transport or Craft<leqqsymbol/>6.  What
-  	this means is that the character can raise the level of any one ability from the Martial
-  	section up to a maximum level of 3 provided that they have satisfied all of that
-  	ability levels prerequisites.  The only time prerequisite requirements are waivered is
-  	when the text states that the character gains an ability at a given level.
+  	this means is that the character can raise the rank of any one ability from the Martial
+  	section up to a maximum rank of 3 provided that they have satisfied all of that
+  	ability ranks prerequisites.  The only time prerequisite requirements are waivered is
+  	when the text states that the character gains an ability at a given rank.
       </p>
-      
-      <!-- <p> -->
-      <!-- 	Many abilities have a cost that players must pay in order to acquire the ability. -->
-      <!-- 	As players increase in level they get more points to purchase additional abilities. -->
-      <!-- 	Some abilities are innate - they have zero cost and the character is assumed to -->
-      <!-- 	automatically have the ability at first level.     -->
-      <!-- </p> -->
 
       <p>
   	All abilities have a type.  The type of the ability is mainly used to determine when
@@ -2670,7 +2675,7 @@
   	<indexentry>Encumbrance</indexentry>
   	<indexentry>Check<subentry>Encumbrance</subentry></indexentry>
   	Encumbrance is an optional rule.  The characters total encumbrance is a
-  	difficulty level that tests may be made against.  For example, characters
+  	difficulty that tests may be made against.  For example, characters
   	climbing a mountain may be made to make an Endurance check against their
   	encumbrance or become exhausted.   A character leaping from one roof
   	to another who gets a bane in their check may be forced to roll

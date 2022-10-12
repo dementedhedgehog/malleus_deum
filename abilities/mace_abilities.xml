@@ -21,7 +21,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><crushing/></tags>     
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon + Strength</abilitydmg>
     <abilitydescription>
       <p>
@@ -33,9 +33,9 @@
 	fails they drop their weapon or shield.
       </p>	
     </abilitydescription>
-    <prereqabilitylevel>mace.strike_2</prereqabilitylevel>
+    <prereqabilityrank>mace.strike_2</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
-    <abilitylevels from="1" to="3"/>
+    <abilityranks from="1" to="3"/>
   </ability>
 
   
@@ -45,7 +45,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><mace/><crushing/></tags>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon + Strength</abilitydmg>
     <abilitydescription>
       <p noindent="true">
@@ -54,7 +54,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="0" to="3"/>
+    <abilityranks from="0" to="3"/>
   </ability>
 
 
@@ -64,8 +64,8 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><crushing/></tags>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
-    <abilitydmg>Weapon+Strength+Level</abilitydmg>
+    <abilitychecktype>Std+Rank</abilitychecktype>
+    <abilitydmg>Weapon+Strength+Rank</abilitydmg>
     <abilitydescription>
       <p>
 	The character swings the mace wildly keeping their opponents at bay.
@@ -73,9 +73,9 @@
 	melee attacks against the character until the characters next turn.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>mace.strike_1</prereqabilitylevel>
+    <prereqabilityrank>mace.strike_1</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
-    <abilitylevels from="1" to="3"/>
+    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -93,10 +93,10 @@
       </p>
     </abilitydescription>
     <spline><p x="-30" y="60"/></spline>
-    <prereqabilitylevel>mace.strike_1</prereqabilitylevel>	
+    <prereqabilityrank>mace.strike_1</prereqabilityrank>	
     <abilitycheck dc="Targets Attack"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="6"/>
+    <abilityranks from="1" to="6"/>
   </ability>    
 </abilitygroup>

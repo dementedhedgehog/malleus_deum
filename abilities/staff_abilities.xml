@@ -26,9 +26,9 @@
     </abilitydescription>
     <spline></spline>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon + Speed|Strength</abilitydmg>    
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 
 
@@ -43,12 +43,12 @@
 	a charge striking first and doing extra damage.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
+    <prereqabilityrank>staff.strike_1</prereqabilityrank>
     <spline><p x="15" y="60"/></spline> 
     <abilitycheck dc="Opponents Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>2x(Weapon + Speed|Strength), opponent must be charging.</abilitydmg>
-    <abilitylevels untrained="-3" from="1" to="4"/>
+    <abilityranks untrained="-3" from="1" to="4"/>
   </ability>
 
 
@@ -70,12 +70,12 @@
 	weapon, and it only works when the opponents are within a 180° arc.  
       </p>
     </abilitydescription>
-    <prereqabilitylevel>staff.strike_1</prereqabilitylevel>
+    <prereqabilityrank>staff.strike_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline> 
     <abilitycheck dc="Opponents Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon</abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -93,11 +93,11 @@
 	damage. If the parry check succeeds the attack does no damage.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>staff.strike_1</prereqabilitylevel>	
+    <prereqabilityrank>staff.strike_1</prereqabilityrank>	
     <spline><p x="90" y="30"/></spline> 
     <abilitycheck dc="Opponents Attack DC"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 </abilitygroup>

@@ -60,9 +60,9 @@
     </abilitydescription>
     <spline><p x="90" y="0"/></spline> 
     <abilitycheck dc="Attack DC" />
-    <abilitychecktype>Armour+Level</abilitychecktype>
+    <abilitychecktype>Armour+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="0" to="3"/>
+    <abilityranks from="0" to="3"/>
   </ability>
   
   
@@ -93,7 +93,7 @@
       </p>
     </abilitydescription>
     <spline><p x="-90" y="0"/></spline> 
-    <abilitylevels from="0" to="3"/>
+    <abilityranks from="0" to="3"/>
   </ability>
 
 
@@ -103,7 +103,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -111,7 +111,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="150"/></spline> 
-    <abilitylevels from="0" to="6"/>
+    <abilityranks from="0" to="6"/>
   </ability>
 
   
@@ -122,7 +122,7 @@
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
     <abilitycheck dc="Attack DC"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -142,7 +142,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="120"/></spline> 
-    <abilitylevels from="0" to="6"/>
+    <abilityranks from="0" to="6"/>
   </ability>
   
 
@@ -152,7 +152,7 @@
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -167,7 +167,7 @@
       </p>
     </abilitydescription>
     <spline><p x="-90" y="30"/></spline> 
-    <abilitylevels from="0" to="6"/>
+    <abilityranks from="0" to="6"/>
   </ability>
 
 
@@ -192,9 +192,9 @@
     </abilitydescription>
     <spline><p x="90" y="90"/></spline> 
     <abilitycheck dc="Targets Str or Grapple"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels untrained="-3" from="0" to="3"/>
+    <abilityranks untrained="-3" from="0" to="3"/>
   </ability>
 
 
@@ -204,7 +204,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>2 + Str</abilitydmg>
     <abilitydescription>
       <p>
@@ -220,7 +220,7 @@
       </p>
     </abilitydescription>
     <spline><p x="0" y="90"/></spline> 
-    <abilitylevels from="0" to="3"/>
+    <abilityranks from="0" to="3"/>
   </ability>  
 
   <ability>
@@ -229,7 +229,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -237,7 +237,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitylevels from="0" to="6"/>
+    <abilityranks from="0" to="6"/>
   </ability>
 
 
@@ -247,7 +247,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
     <abilitycheck dc="Opposed Targets Strength + 1 per opponent"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -262,7 +262,7 @@
       </p>
     </abilitydescription>
     <spline><p x="-90" y="90"/></spline> 
-    <abilitylevels from="1" to="3"/>
+    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -272,7 +272,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -287,7 +287,7 @@
       </p>
     </abilitydescription>
     <spline><p x="-90" y="180"/></spline> 
-    <abilitylevels from="0" to="3"/>
+    <abilityranks from="0" to="3"/>
   </ability>  
 
   <ability>
@@ -298,20 +298,20 @@
     <abilitydescription>
       <p>
 	The attacker kicks an opponent potentially pushing the opponent back
-	at higher levels. The opponent must be approximately the same sized
+	at higher ranks. The opponent must be approximately the same sized
 	or smaller as the attacker in order to be pushed.
       </p>
 
       <p>
-	A successful kick at level 3 and above pushes the defender back (provided
+	A successful kick at rank 3 and above pushes the defender back (provided
 	the defender is the same size as the attacker or smaller).
       </p>
     </abilitydescription>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>2 + Speed|Strength</abilitydmg>
     <spline><p x="-90" y="120"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 
 
@@ -322,7 +322,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -331,7 +331,7 @@
       </p>
     </abilitydescription>      
     <spline><p x="0" y="120"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
   
   
@@ -341,7 +341,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>    
     <abilitydescription>
       <p>
@@ -358,7 +358,7 @@
       </p>      
     </abilitydescription>      
     <spline><p x="0" y="150"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 
 
@@ -369,7 +369,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>    
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>d4</abilitydmg>
     <abilitydescription>
       <p>
@@ -379,7 +379,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="60"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
   
 
@@ -390,7 +390,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -407,7 +407,7 @@
       </p>
     </abilitydescription>
     <spline><p x="0" y="60"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
   
   
@@ -417,7 +417,7 @@
     <abilityactiontype><move/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -440,7 +440,7 @@
       </p>      
     </abilitydescription>
     <spline><p x="90" y="30"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 
   <ability>
@@ -457,9 +457,9 @@
     </abilitydescription>
     <abilitycheck dc="15"/>
     <spline><p x="0" y="0"/></spline> 
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -469,7 +469,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -486,7 +486,7 @@
       </p>
     </abilitydescription>
     <spline><p x="-90" y="60"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>  
 
   <ability>
@@ -495,7 +495,7 @@
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -504,7 +504,7 @@
       </p>
     </abilitydescription>
     <spline><p x="0" y="30"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 
   <ability>
@@ -513,7 +513,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>    
     <abilitydescription>
       <p>
@@ -525,7 +525,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="180"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
   
   <ability>
@@ -534,7 +534,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><martial/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -545,7 +545,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="-90" y="150"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 
 
@@ -572,6 +572,6 @@
       
     </abilitydescription>
     <spline><p x="0" y="30"/></spline> 
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>  
 </abilitygroup>

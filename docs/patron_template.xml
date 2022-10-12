@@ -58,49 +58,49 @@
               {% endif %}
 	  -->
 
-	  {% for ability_level in ability.get_levels()  %}
+	  {% for ability_rank in ability.get_ranks()  %}
 	  <tablerow>
             <td>
-              {{- ability_level.get_level_number() | convert_to_roman_numerals }}
-              {%- if ability_level.is_innate() %} <innateabilitylevelsymbol/>{% endif -%}
+              {{- ability_rank.get_rank_number() | convert_to_roman_numerals }}
+              {%- if ability_rank.is_innate() %} <innateabilityranksymbol/>{% endif -%}
             </td>
             <td>
-              {%- if ability_level.has_prerequisites() %}
+              {%- if ability_rank.has_prerequisites() %}
               <bold>Prereq:</bold>
-              {%-     for prereq in ability_level.get_prerequisites()  %}
+              {%-     for prereq in ability_rank.get_prerequisites()  %}
               {{-         prereq.to_string() }}
               {%-         if not loop.last %}, {% endif %}
               {%-     endfor %}
 
               {% endif %}
-              {%- if ability_level.check is not none -%}
-              <bold>Check:</bold> {{ ability_level.check }}
+              {%- if ability_rank.check is not none -%}
+              <bold>Check:</bold> {{ ability_rank.check }}
 	      
               {% endif %}
-              {%- if ability_level.overcharge is not none -%}
-              , ><leq/> {{ ability_level.overcharge }}	      
+              {%- if ability_rank.overcharge is not none -%}
+              , ><leq/> {{ ability_rank.overcharge }}	      
               {% endif %}
-              {%- if ability_level.damage is not none %}          
-              <bold>Dmg:</bold> {{- ability_level.damage }}
+              {%- if ability_rank.damage is not none %}          
+              <bold>Dmg:</bold> {{- ability_rank.damage }}
 	      
               {% endif %}
-              {%- if ability_level.effect is not none %}              
-              <bold>Effect:</bold> {{ ability_level.effect }}
+              {%- if ability_rank.effect is not none %}              
+              <bold>Effect:</bold> {{ ability_rank.effect }}
 	      
               {% endif %}              
-              {%- if ability_level.description is not none %}
-              {{ ability_level.description }}
+              {%- if ability_rank.description is not none %}
+              {{ ability_rank.description }}
               {%- endif %}
-              {%- if ability_level.is_masterable() %}
+              {%- if ability_rank.is_masterable() %}
 	      
               <bold>Mastery:</bold>
-              {%- for x in range(ability_level.get_mastery_successes()) -%}
+              {%- for x in range(ability_rank.get_mastery_successes()) -%}
               <success/>
               {%- endfor -%}
-              {%- for x in range(ability_level.get_mastery_attempts()) -%}
+              {%- for x in range(ability_rank.get_mastery_attempts()) -%}
               <attempt/>
               {%- endfor -%}
-              {%- for x in range(ability_level.get_mastery_failures()) -%}
+              {%- for x in range(ability_rank.get_mastery_failures()) -%}
               <fail/>
               {%- endfor -%}
               {%- endif %}

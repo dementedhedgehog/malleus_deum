@@ -28,9 +28,9 @@
     </abilitydescription>
     <spline></spline>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon</abilitydmg>
-    <abilitylevels from="0" to="4"/>
+    <abilityranks from="0" to="4"/>
   </ability>
 
 
@@ -47,11 +47,11 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="30"/></spline>
-    <prereqabilitylevel>archery.shoot_2</prereqabilitylevel>
+    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
   
@@ -71,12 +71,12 @@
 	character is surprised.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>archery.shoot_2</prereqabilitylevel>
+    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon</abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -89,14 +89,14 @@
 	The character has trained in the use of the long bow.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>archery.shoot_1</prereqabilitylevel>
+    <prereqabilityrank>archery.shoot_1</prereqabilityrank>
     <prereqattr><strength>14</strength></prereqattr>
     <spline><p x="-90" y="30"/></spline>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg>Weapon</abilitydmg>
     <prereqnottag>Short</prereqnottag>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>  
   
   <ability>
@@ -111,14 +111,14 @@
 	in his firing hand before the combat begins, so this ability can only be used in
 	the first round of combat and cannot be used when the character is surprised
 	or otherwise unprepared.  The character can fire a number of arrows equal to
-	their level in this ability.  The character rolls to hit for each arrow.
+	their rank in this ability.  The character rolls to hit for each arrow.
       </p>
     </abilitydescription>
-    <prereqabilitylevel>archery.fast_shot_2</prereqabilitylevel>
+    <prereqabilityrank>archery.fast_shot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="3"/>
+    <abilityranks from="1" to="3"/>
   </ability>  
 </abilitygroup>

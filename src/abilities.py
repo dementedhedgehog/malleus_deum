@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 
-  I was going to have ability levels have their own settings for 
+  I was going to have ability ranks have their own settings for 
   checks and damage and promotions etc .. but that's way too
   complicated.  All that's move into Ability now so this code 
   is currently a mess.
@@ -33,7 +33,7 @@ sys.path.append(src_dir)
 def xor(a, b):
     return not b if a else bool(b)
 
-# This is the high level action tag for broad classification of skills.
+# This is the high rank action tag for broad classification of skills.
 class FAMILY_TYPE:
     LORE = "<lore/>"
     MARTIAL = "<martial/>"
@@ -44,14 +44,14 @@ class FAMILY_TYPE:
     NPC = "<npc/>"
 FAMILY_TYPES = ("<lore/>", "<martial/>", "<magical/>", "<general/>",  "<primary/>", "<npc/>")
 
-MIN_INITIAL_ABILITY_LEVEL = 0
-MAX_INITIAL_ABILITY_LEVEL = 1
+MIN_INITIAL_ABILITY_RANK = 0
+MAX_INITIAL_ABILITY_RANK = 1
 
 # ability tags
-ACCURATE = "Std+3×Level"
+ACCURATE = "Std+3×Rank"
 INACCURATE_CHECK_TYPE = "Std"
 MONSTER_CHECK_TYPE = "No-Check"
-STD_CHECK = "Std\+Level"
+STD_CHECK = "Std\+Rank"
 UNTRAINED = "Untrained"
 INNATE = "Innate"
 
@@ -63,8 +63,8 @@ class AbilityFamily:
 
 ability_families = [AbilityFamily(family_type) for family_type in FAMILY_TYPES]
 
-# ability level id -> ability level lookup table
-ability_level_lookup = {}
+# ability rank id -> ability rank lookup table
+ability_rank_lookup = {}
 
 # atributes
 valid_attrs = ("Strength", "Endurance", "Agility", "Speed", "Perception")               
@@ -129,40 +129,40 @@ class Prerequisite(object):
         return None
 
 
-class AbilityLevelPrereq(Prerequisite):
+class AbilityRankPrereq(Prerequisite):
 
-    def __init__(self, ability_level_id):
-        assert ability_level_id is not None
-        self.ability_level_id = ability_level_id
-        self.ability_level = None
+    def __init__(self, ability_rank_id):
+        assert ability_rank_id is not None
+        self.ability_rank_id = ability_rank_id
+        self.ability_rank = None
         return
 
     def get_ability(self):        
-        return self.get_ability_level().ability
+        return self.get_ability_rank().ability
 
-    def get_ability_level(self):
-        if self.ability_level is None:
-            self.ability_level = ability_level_lookup[self.ability_level_id]
-        return self.ability_level
+    def get_ability_rank(self):
+        if self.ability_rank is None:
+            self.ability_rank = ability_rank_lookup[self.ability_rank_id]
+        return self.ability_rank
     
     def to_string(self):         
-        return str(self.get_ability_level())
+        return str(self.get_ability_rank())
 
-    def get_ability_level_id(self): 
-        return self.ability_level_id
+    def get_ability_rank_id(self): 
+        return self.ability_rank_id
 
     def get_title(self):
-        return self.get_ability_level().get_title()
+        return self.get_ability_rank().get_title()
 
     def __str__(self):
         return self.to_string()
 
-    def get_level_number(self):
-        if self.ability_level_id is not None:
-            level = int(self.ability_level_id.split("_")[-1])
+    def get_rank_number(self):
+        if self.ability_rank_id is not None:
+            rank = int(self.ability_rank_id.split("_")[-1])
         else:
-            level = 0
-        return level
+            rank = 0
+        return rank
 
 
 class AttrPrereq(Prerequisite):
@@ -195,7 +195,7 @@ class AttrPrereq(Prerequisite):
            else:
                #
                raise Exception("UNKNOWN (%s) %s\n" % (child.tag,
-                                                      level.ability.fname))
+                                                      rank.ability.fname))
         return prereqs
     
     def to_string(self):
@@ -243,24 +243,24 @@ class NotTagPrereq(Prerequisite):
         return self.to_string()
 
 
-class AbilityLevel:
+class AbilityRank:
     """
-    Every ability has a number of levels.
-    Abilities which have a level 0 are innate.
+    Every ability has a number of ranks.
+    Abilities which have a rank 0 are innate.
 
     """
 
     @classmethod
-    def get_level(cls, ability_level_id):
+    def get_rank(cls, ability_rank_id):
         """
-        Get the level with the given id or None.
+        Get the rank with the given id or None.
 
         """
-        assert(ability_level_id.__class__ is str)
-        return ability_level_lookup.get(ability_level_id, None)
+        assert(ability_rank_id.__class__ is str)
+        return ability_rank_lookup.get(ability_rank_id, None)
 
     def __init__(self):
-        self.level_number = None        
+        self.rank_number = None        
         self.ability = None
 
     def get_checks(self):
@@ -276,7 +276,7 @@ class AbilityLevel:
         return self.get_title()
 
     def is_innate(self):
-        return self.level_number == 0
+        return self.rank_number == 0
     
     def is_templated(self):
         return self.ability.is_templated()
@@ -285,14 +285,14 @@ class AbilityLevel:
         return self.ability.get_template()
     
     def get_title(self):
-        level_num = convert_to_roman_numerals(self.level_number)
-        return "%s %s" % (self.ability.get_title(), level_num)
+        rank_num = convert_to_roman_numerals(self.rank_number)
+        return "%s %s" % (self.ability.get_title(), rank_num)
 
     def get_id(self):
-        return "%s_%s" % (self.ability.get_id(), self.level_number)
+        return "%s_%s" % (self.ability.get_id(), self.rank_number)
 
-    def get_level_number(self):
-        return self.level_number
+    def get_rank_number(self):
+        return self.rank_number
     
 
 class AbilityCheck:
@@ -333,13 +333,13 @@ class AbilityCheck:
 
             else:
                 overcharge = self.overcharge.casefold()
-                if "level" not in overcharge:
-                    problems.append("Ability looks like a pool check but level "
+                if "rank" not in overcharge:
+                    problems.append("Ability looks like a pool check but rank "
                                     "doesn't modify the overcharge?")
 
-            if "level" in check:
+            if "rank" in check:
                 problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
-                                "level modifies the DC?")
+                                "rank modifies the DC?")
 
         if not self.ability.is_pool() and self.overcharge is not None:
             problems.append(f"Ability  {self.ability.ability_id} looks like a std check and has an overcharge?")
@@ -365,23 +365,23 @@ class AbilityCheck:
             problems.append(f"Ability {self.ability.ability_id} has a {MONSTER} check type but "
                             "is not tagged with the monster tag.")
 
-        # Check Std+Level has no overcharge
+        # Check Std+Rank has no overcharge
         if check_type in (STD_CHECK, ACCURATE) and self.overcharge is not None:
             problems.append(f"Ability {self.ability.ability_id} has a standard check type and an "
                             f"overcharge '{self.overcharge}'")
 
-        # Check ability levels are sane
-        if len(self.ability.levels) == 0:
-            problems.append(f"Ability  {self.ability.ability_id} has no ability levels set?")
+        # Check ability ranks are sane
+        if len(self.ability.ranks) == 0:
+            problems.append(f"Ability  {self.ability.ability_id} has no ability ranks set?")
 
         # Check for untrained abilities.
-        elif UNTRAINED in tags and self.ability.levels[0].get_level_number() >= 0:
+        elif UNTRAINED in tags and self.ability.ranks[0].get_rank_number() >= 0:
             problems.append(f"Ability {self.ability.ability_id} is tagged 'Untrained' but does not "
-                            f"have a negative ability level")
+                            f"have a negative ability rank")
             
         # Check for innate abilities.
-        elif xor(self.ability.levels[0].get_level_number() == 0, INNATE in tags):
-            problems.append(f"Ability {self.ability.ability_id} has a zero ability level and is "
+        elif xor(self.ability.ranks[0].get_rank_number() == 0, INNATE in tags):
+            problems.append(f"Ability {self.ability.ability_id} has a zero ability rank and is "
                             f"not tagged 'innate' or visa versa")
             
         # check dcs are standard
@@ -418,7 +418,7 @@ class Ability:
         self.damage = None
         
         # prereq.
-        self.ability_level_prereq = None
+        self.ability_rank_prereq = None
 
         # all the prerequisites
         self.prerequisites = []        
@@ -436,11 +436,11 @@ class Ability:
         # the players handbook
         self.gmg_ability = False        
 
-        # list of ability levels.
-        # if the first element of this list is level number 0 then the ability is innate.
-        # if the first element has a negative level number that's the untrained modifier
+        # list of ability ranks.
+        # if the first element of this list is rank number 0 then the ability is innate.
+        # if the first element has a negative rank number that's the untrained modifier
         # if the first element is a postive int it means that the ability must be trained.
-        self.levels = []
+        self.ranks = []
 
         # list of spline points
         self.spline = []
@@ -458,30 +458,30 @@ class Ability:
             for check in self.checks.values():
                 problems += check.get_problems()
 
-        # level numbers can have an optional initial untrained/negative level, after that the
+        # rank numbers can have an optional initial untrained/negative rank, after that the
         # should be a continuous range of increasing positive ints (or zero), e.g. -3, 0, 1, 2, 3
         # or 1, 2, 3, 4 are both valid.
-        last_level_number = None
-        is_first_level = True
-        for ability_level in self.levels:
-            level_number = ability_level.get_level_number()
+        last_rank_number = None
+        is_first_rank = True
+        for ability_rank in self.ranks:
+            rank_number = ability_rank.get_rank_number()
 
             # untrained
-            if level_number < 0:
+            if rank_number < 0:
                 continue
                 
-            # check the first level is always 0 or 1
-            if is_first_level:
-                if level_number < MIN_INITIAL_ABILITY_LEVEL or level_number > MAX_INITIAL_ABILITY_LEVEL:
+            # check the first rank is always 0 or 1
+            if is_first_rank:
+                if rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK:
                     problems.append(
-                        f"First level for ability {self.get_title()} is {level_number} "
-                        f"should be {MIN_INITIAL_ABILITY_LEVEL} to {MAX_INITIAL_ABILITY+1}")
-                is_first_level = False
+                        f"First rank for ability {self.get_title()} is {rank_number} "
+                        f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY+1}")
+                is_first_rank = False
             else:
-                if last_level_number + 1 != level_number:
-                    problems.append("Bad level numbers for ability %s around level  %s"
-                                    % (self.get_title(), level_number))
-            last_level_number = level_number
+                if last_rank_number + 1 != rank_number:
+                    problems.append("Bad rank numbers for ability %s around rank  %s"
+                                    % (self.get_title(), rank_number))
+            last_rank_number = rank_number
 
         return problems
 
@@ -491,16 +491,16 @@ class Ability:
             raise Exception(", ".join([str(p) for p in problems]))
         return    
 
-    def get_ability_level_prereq(self):
-        return self.ability_level_prereq
+    def get_ability_rank_prereq(self):
+        return self.ability_rank_prereq
 
     def get_damage(self):
         return self.damage if self.damage is not None else ""
     
-    def get_ability_level_range(self):
-        first_ability_level = convert_to_roman_numerals(self.levels[0].get_level_number())
-        last_ability_level = convert_to_roman_numerals(self.levels[-1].get_level_number())
-        return f"{first_ability_level}-{last_ability_level}"
+    def get_ability_rank_range(self):
+        first_ability_rank = convert_to_roman_numerals(self.ranks[0].get_rank_number())
+        last_ability_rank = convert_to_roman_numerals(self.ranks[-1].get_rank_number())
+        return f"{first_ability_rank}-{last_ability_rank}"
 
     def is_core(self):
         return "core" in self.tags
@@ -508,9 +508,9 @@ class Ability:
     def is_pool(self):
         return "pool" in self.tags
 
-    def get_level_number(self):
+    def get_rank_number(self):
         """
-        Make ability look like ability level so we can treat them the same-ish in other code
+        Make ability look like ability rank so we can treat them the same-ish in other code
         (duck-typing ftw).
 
         """
@@ -520,24 +520,24 @@ class Ability:
         """Return the abilities name."""
         return self.title
         
-    def get_innate_level(self):
+    def get_innate_rank(self):
         """
-        Returns the highest innate ability level or None.
+        Returns the highest innate ability rank or None.
 
         """
-        for ability_level in self.levels:
-            if ability_level.is_innate():
-                return ability_level
+        for ability_rank in self.ranks:
+            if ability_rank.is_innate():
+                return ability_rank
         return None
             
-    def get_ability_level(self, level_number):
-        for ability_level in self.levels:
-            if ability_level.get_level_number() == level_number:
-                return ability_level            
+    def get_ability_rank(self, rank_number):
+        for ability_rank in self.ranks:
+            if ability_rank.get_rank_number() == rank_number:
+                return ability_rank            
         return None
 
     def is_innate(self):
-        return len(self.levels) > 0 and self.levels[0].is_innate()
+        return len(self.ranks) > 0 and self.ranks[0].is_innate()
 
     def get_tags(self):
         tags = []
@@ -561,8 +561,8 @@ class Ability:
     def get_description(self):
         return self.description
 
-    def get_levels(self):
-        return self.levels
+    def get_ranks(self):
+        return self.ranks
 
     def get_title(self):
         return self.title
@@ -586,14 +586,14 @@ class Ability:
     
     def has_prerequisites(self):
         has_prereqs = False
-        for level in self.levels:
-            if level.has_prerequisites():
+        for rank in self.ranks:
+            if rank.has_prerequisites():
                 has_prereqs = True
                 break
         return has_prereqs
 
     def __iter__(self):
-        return iter(self.get_levels())
+        return iter(self.get_ranks())
 
     def has_tags(self):
         return len(self.tags) > 0
@@ -667,12 +667,12 @@ class Ability:
                    raise Exception("Unknown action type: (%s) %s in %s\n" %
                                    (child.tag, child.text, self.fname))
 
-           elif tag == "abilitylevels":
-               if len(self.levels) > 0: #  is not None:
-                   raise Exception("Only one abilitylevels per ability. (%s) %s\n" %
+           elif tag == "abilityranks":
+               if len(self.ranks) > 0: #  is not None:
+                   raise Exception("Only one abilityranks per ability. (%s) %s\n" %
                                    (child.tag, str(child)))
                else:
-                   self.load_ability_levels(child)
+                   self.load_ability_ranks(child)
 
            elif tag == "abilityddc":
                if self.ddc is not None:
@@ -716,11 +716,11 @@ class Ability:
                else:
                    self.template = child.text
 
-           elif tag == "prereqabilitylevel":
-               ability_level_id = child.text
-               if ability_level_id is not None:
-                   prereq = AbilityLevelPrereq(ability_level_id)
-                   self.ability_level_prereq = prereq
+           elif tag == "prereqabilityrank":
+               ability_rank_id = child.text
+               if ability_rank_id is not None:
+                   prereq = AbilityRankPrereq(ability_rank_id)
+                   self.ability_rank_prereq = prereq
                    self.prerequisites.append(prereq)
 
            elif tag == "prereqattr":
@@ -778,30 +778,30 @@ class Ability:
         return self.gmg_ability
 
 
-    def _add_ability_level(self, level_number):
-        """Add an ability level."""
-        level = AbilityLevel()
-        level.ability = self
-        level.level_number = level_number            
-        ability_level_lookup[level.get_id()] = level
-        self.levels.append(level)
+    def _add_ability_rank(self, rank_number):
+        """Add an ability rank."""
+        rank = AbilityRank()
+        rank.ability = self
+        rank.rank_number = rank_number            
+        ability_rank_lookup[rank.get_id()] = rank
+        self.ranks.append(rank)
         return
         
     def is_untrained(self):
-        return len(self.levels) > 0 and self.levels[0].level_number < 0
+        return len(self.ranks) > 0 and self.ranks[0].rank_number < 0
     
-    def get_untrained_level(self):
-        return self.levels[0] if len(self.levels) > 0 else None
+    def get_untrained_rank(self):
+        return self.ranks[0] if len(self.ranks) > 0 else None
     
-    def load_ability_levels(self, ability_levels):
-        untrained_level = ability_levels.attrib.get("untrained", None)
-        if untrained_level is not None:
-            self._add_ability_level(int(untrained_level))
+    def load_ability_ranks(self, ability_ranks):
+        untrained_rank = ability_ranks.attrib.get("untrained", None)
+        if untrained_rank is not None:
+            self._add_ability_rank(int(untrained_rank))
 
-        from_level = int(ability_levels.attrib["from"])
-        to_level = int(ability_levels.attrib["to"])
-        for level_number in range(from_level, to_level+1):
-            self._add_ability_level(level_number)
+        from_rank = int(ability_ranks.attrib["from"])
+        to_rank = int(ability_ranks.attrib["to"])
+        for rank_number in range(from_rank, to_rank+1):
+            self._add_ability_rank(rank_number)
         return
 
 class AbilityGroupInfo:
@@ -940,7 +940,7 @@ class AbilityGroup:
         """
         root_abilities = []
         for ability in self.abilities:
-            if ability.ability_level_prereq is None:
+            if ability.ability_rank_prereq is None:
                 root_abilities.append(ability)
 
         return root_abilities
@@ -1072,8 +1072,8 @@ class AbilityGroups:
             a1 = group.get_ability(ability_id)
             if a1 is not None:
                 for a2 in group:
-                    if a2.ability_level_prereq is not None:
-                        ability_prereq = a2.ability_level_prereq.get_ability()
+                    if a2.ability_rank_prereq is not None:
+                        ability_prereq = a2.ability_rank_prereq.get_ability()
                         if ability_prereq == ability:
                             children.append(a2)
         return children                
@@ -1082,8 +1082,8 @@ class AbilityGroups:
     def __iter__(self):
         return iter(self.ability_groups)
 
-    def get_ability_level(self, ability_level_id):
-        return ability_level_lookup[ability_level_id]
+    def get_ability_rank(self, ability_rank_id):
+        return ability_rank_lookup[ability_rank_id]
 
     def get_abilities(self):
         for group in self.ability_groups:
@@ -1160,8 +1160,8 @@ class AbilityGroups:
                 ability.check_sanity()
         return                        
     
-    def get_ability_level(self, ability_level_id):
-        return ability_level_lookup[ability_level_id]
+    def get_ability_rank(self, ability_rank_id):
+        return ability_rank_lookup[ability_rank_id]
 
     def get_ability_groups(self):
         return self.ability_groups
@@ -1170,28 +1170,28 @@ class AbilityGroups:
         return self.ability_groups[key]
 
 
-def get_ability_level_total_prereqs(ability_groups, ability_level, prereqs=None):
+def get_ability_rank_total_prereqs(ability_groups, ability_rank, prereqs=None):
     """
-    Gets a list of all the prereqs for this ability level (including this ability level.
+    Gets a list of all the prereqs for this ability rank (including this ability rank.
 
     """
     if prereqs is None:
         prereqs = set()
-    level_number = ability_level.get_level_number()
-    prereqs.add(ability_level)
+    rank_number = ability_rank.get_rank_number()
+    prereqs.add(ability_rank)
     
-    ability = ability_level.get_ability()
-    for i in range(1, level_number):
-        pal = ability.get_ability_level(i)
-        get_ability_level_total_prereqs(ability_groups,
+    ability = ability_rank.get_ability()
+    for i in range(1, rank_number):
+        pal = ability.get_ability_rank(i)
+        get_ability_rank_total_prereqs(ability_groups,
                                         pal,
                                         prereqs=prereqs)
         
-    for prereq in ability_level.get_prerequisites():
-        if isinstance(prereq, AbilityLevelPrereq):
-            prereq_ability_level = ability_groups.get_ability_level(prereq.ability_level_id)
-            get_ability_level_total_prereqs(ability_groups,
-                                            prereq_ability_level,
+    for prereq in ability_rank.get_prerequisites():
+        if isinstance(prereq, AbilityRankPrereq):
+            prereq_ability_rank = ability_groups.get_ability_rank(prereq.ability_rank_id)
+            get_ability_rank_total_prereqs(ability_groups,
+                                            prereq_ability_rank,
                                             prereqs=prereqs)
     return prereqs
     
@@ -1247,18 +1247,18 @@ if __name__ == "__main__":
     #     #     # # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
     #     #     # # #print("\t\t\t\t: %s" % ability.get_ability_class())
             
-    #     #     for ability_level in ability.get_levels():
-    #     #         print("\t\t\t\t title %s" % ability_level.get_title())
-    #     #         print("\t\t\t\t prereqs %s" % ability_level.get_prerequisites())
+    #     #     for ability_rank in ability.get_ranks():
+    #     #         print("\t\t\t\t title %s" % ability_rank.get_title())
+    #     #         print("\t\t\t\t prereqs %s" % ability_rank.get_prerequisites())
 
-    #     #         pd = get_ability_level_total_prereqs(ability_groups, ability_level)
+    #     #         pd = get_ability_rank_total_prereqs(ability_groups, ability_rank)
     #     #         #print("\t\t\t\t pd %s" % str(pd))
     #     #         print("\t\t\t\t pd %s" % ", ".join([p.get_title() for p in pd]))
                 
-    #     #     #     print("\t\t\t\t id %s" % ability_level.get_id())
-    #     #     # #     print("\t\t\t\t2 %s" % ability_level.check)
-    #     #     # #     print("\t\t\t\t3 %s" % ability_level.description)
-    #     #     # # #    #print("\t\t\tLore: %s" % ability_level.get_default_lore())
+    #     #     #     print("\t\t\t\t id %s" % ability_rank.get_id())
+    #     #     # #     print("\t\t\t\t2 %s" % ability_rank.check)
+    #     #     # #     print("\t\t\t\t3 %s" % ability_rank.description)
+    #     #     # # #    #print("\t\t\tLore: %s" % ability_rank.get_default_lore())
             
 
 

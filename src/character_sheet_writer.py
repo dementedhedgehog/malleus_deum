@@ -34,7 +34,7 @@ from subprocess import call, check_output, CalledProcessError
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from PyPDF2 import PdfFileMerger
 from archetypes import Archetypes
-from abilities import FAMILY_TYPES, AbilityLevel
+from abilities import FAMILY_TYPES, AbilityRank
 
 from utils import (
     char_sheet_dir,
@@ -201,7 +201,7 @@ def pdf_merge(pdfs, pdf_out):
 
 def create_first_page_fdf(fdf_name, archetype=None):
     with open(fdf_name, "wb") as f:
-        # if we have another ability level put fill in the form for
+        # if we have another ability rank put fill in the form for
         # that ability, otherwise make it blank.
         if archetype is not None:        
             # write info from the ability
@@ -232,23 +232,23 @@ def get_ability_check_name(check, no_name=False):
 
 
 
-def create_abilities_fdf(fdf_name, ability_levels=None):
+def create_abilities_fdf(fdf_name, ability_ranks=None):
     with open(fdf_name, "wb") as f:
         f.write(fdf_header)
 
         for i in range(ABILITIES_PER_PAGE):
-            if ability_levels is None:
-                ability_level = None
+            if ability_ranks is None:
+                ability_rank = None
             else:
                 try:
-                    ability_level = next(ability_levels)
+                    ability_rank = next(ability_ranks)
                 except StopIteration:
-                    ability_level = None                        
+                    ability_rank = None                        
 
-            # if we have another ability level put fill in the form for
+            # if we have another ability rank put fill in the form for
             # that ability, otherwise make it blank.
-            if isinstance(ability_level, AbilityLevel):
-                ability = ability_level.get_ability()
+            if isinstance(ability_rank, AbilityRank):
+                ability = ability_rank.get_ability()
                 description = ""
                 description += "Type: " + ability.check_type
                 #description += ", Check: " + ability.check_type
@@ -284,15 +284,15 @@ def create_abilities_fdf(fdf_name, ability_levels=None):
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
                     ability_number=i,
-                    ability_name=ability_level.get_title(),
+                    ability_name=ability_rank.get_title(),
                     ability_description=description,
                     ability_mastery=mastery,
                 )
-            elif isinstance(ability_level, str):
+            elif isinstance(ability_rank, str):
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
                     ability_number=i,
-                    ability_name=ability_level,
+                    ability_name=ability_rank,
                     ability_description="",
                     ability_mastery="",
                 )                
@@ -318,9 +318,9 @@ def cmp_titles(ability, ability2):
 
 
 
-class MockAbilityLevel:
+class MockAbilityRank:
     """
-    Rather ugly hack to allow titles in our ability level lists..
+    Rather ugly hack to allow titles in our ability rank lists..
 
     """
 
@@ -335,22 +335,22 @@ class MockAbilityLevel:
 def create_character_sheet_for_archetype(db, archetype):
     # build a list containing all the archetypes available abilities.
 
-    # Sort by (family, ability name, ability level)
+    # Sort by (family, ability name, ability rank)
     info = []
     families_seen = set()
     for ability_group in db.ability_groups:
         for ability in ability_group:
             if ability.is_innate():
-                ability_level = ability.get_ability_level(0)
-                if ability_level is not None and not ability_level.get_ability().is_templated():
+                ability_rank = ability.get_ability_rank(0)
+                if ability_rank is not None and not ability_rank.get_ability().is_templated():
                     family = ability_group.get_family()
-                    info.append((family, ability_level.get_title(), ability_level))
+                    info.append((family, ability_rank.get_title(), ability_rank))
                     families_seen.add(family)
                 
-            # ability_level = ability.get_highest_innate_level()
-            # if ability_level is not None and not ability_level.get_ability().is_templated():
+            # ability_rank = ability.get_highest_innate_rank()
+            # if ability_rank is not None and not ability_rank.get_ability().is_templated():
             #     family = ability_group.get_family()
-            #     info.append((family, ability_level.get_title(), ability_level))
+            #     info.append((family, ability_rank.get_title(), ability_rank))
             #     families_seen.add(family)
 
     # Add titles to groups of abilities also add some extra space at the end of groups of abilities
@@ -366,7 +366,7 @@ def create_character_sheet_for_archetype(db, archetype):
                 info.append((family, after, ""))
      
     info.sort()
-    ability_levels = [x[2] for x in info]
+    ability_ranks = [x[2] for x in info]
     
     # the pages we want to stick together.
     pdf_pages = []
@@ -381,10 +381,10 @@ def create_character_sheet_for_archetype(db, archetype):
 
     # work out how many ability pages we need
     # (+2 because we want a whole extra clean sheet of abilities)
-    n_pages = (len(ability_levels) + EXTRA_ABILITIES) // ABILITIES_PER_PAGE + 1
+    n_pages = (len(ability_ranks) + EXTRA_ABILITIES) // ABILITIES_PER_PAGE + 1
     
     # create all the ability pages    
-    ability_level_iterator = iter(ability_levels)
+    ability_rank_iterator = iter(ability_ranks)
     for i in range(n_pages):
         page_number = i + 2
         pdf_fname_out = join(build_dir,"%s_abilities_pg%s.pdf" % (archetype_id, page_number))
@@ -392,7 +392,7 @@ def create_character_sheet_for_archetype(db, archetype):
         pdf_pages.append(pdf_fname_out)
 
         # create one character sheet abilities pdf page
-        create_abilities_fdf(fdf_fname, ability_level_iterator)
+        create_abilities_fdf(fdf_fname, ability_rank_iterator)
         pdftk_fill(ABILITIES_TEMPLATE, fdf_fname, pdf_fname_out)        
         
     # now compose the pdf.

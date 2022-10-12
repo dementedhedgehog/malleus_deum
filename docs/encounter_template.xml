@@ -21,8 +21,8 @@
   {% if m.dodge %}Parry:{{ m.parry }}, {% endif -%}
   {% if m.dodge %}Block:{{ m.block }}, {% endif -%}
   HP: {{ m.health }}/{{ m.stamina }},
-  Abilities: {% for ability_level_id in m.get_ability_level_ids() %}
-  {% set a = ability_groups.get_ability_level(ability_level_id) %}
+  Abilities: {% for ability_rank_id in m.get_ability_rank_ids() %}
+  {% set a = ability_groups.get_ability_rank(ability_rank_id) %}
   {{- "," if not loop.first }} {{ a.get_title() -}}    
   {% endfor %}
   {% endfor %}

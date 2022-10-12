@@ -77,10 +77,10 @@
   <xs:complexType name="inspirationType">
   </xs:complexType>
   
-  <xs:complexType name="abilitylevelidType">
+  <xs:complexType name="abilityrankidType">
     <xs:sequence>
       <xs:element name="abilityid" type="xs:string"/>
-      <xs:element name="level" type="xs:nonNegativeInteger"/>
+      <xs:element name="rank" type="xs:nonNegativeInteger"/>
     </xs:sequence>
   </xs:complexType>    
 
@@ -289,7 +289,7 @@
       <xs:element name="maxdice" type="emptyType"/>
       <xs:element name="pageref" type="pagerefType"/>
       <xs:element name="ref" type="refType"/>
-      <xs:element name="recommendedabilitylevelsymbol" type="symbolType"/>
+      <xs:element name="recommendedabilityranksymbol" type="symbolType"/>
       <xs:element name="ambush" type="symbolType"/>
       <xs:element name="surprise" type="symbolType"/>
       <xs:element name="initiative" type="symbolType"/>
@@ -308,7 +308,7 @@
   <xs:complexType name="abilityrefType">
     <xs:attribute name="id" type="xs:string" use="required"/>
     <xs:attribute name="template" type="xs:string" use="optional"/>
-    <xs:attribute name="level" type="xs:int" />
+    <xs:attribute name="rank" type="xs:int" />
   </xs:complexType>
   
   <!-- block of stuff (stuff at the subsection contents level) -->
@@ -431,7 +431,7 @@
       <xs:element name="abilitytemplate" type="xs:string" minOccurs="0" maxOccurs="1"/>      
       <xs:element name="abilityactiontype" type="abilityactionType"/>
       <xs:element name="tags" type="tagsType"/>
-      <xs:element name="abilitylevels" type="abilitylevelsType"/>
+      <xs:element name="abilityranks" type="abilityranksType"/>
       <!-- Which book does this ability go in? phb or gmg? -->
       <xs:element name="gmgability" type="emptyType" minOccurs="0" maxOccurs="1"/>      
       <xs:element name="abilitycheck" type="abilityCheckType" minOccurs="1"/>
@@ -440,14 +440,14 @@
       <!-- <xs:element name="abilitymastery" type="xs:int" minOccurs="1"/> -->
       <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
       <xs:element name="spline" type="splineType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="prereqabilitylevel" type="prerequisiteType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="prereqabilityrank" type="prerequisiteType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="prereqtag" type="xs:string" minOccurs="0"/>
       <xs:element name="prereqnottag" type="xs:string" minOccurs="0"/>       
       <xs:element name="prereqattr" type="prereqAttrType" minOccurs="0"/> <!-- e.g. Str > 13 -->
     </xs:all>
   </xs:complexType>
 
-  <xs:complexType name="abilitylevelsType">
+  <xs:complexType name="abilityranksType">
     <xs:attribute name="untrained" type="xs:int"/>
     <xs:attribute name="from" type="xs:int" />
     <xs:attribute name="to" type="xs:int" />
@@ -462,11 +462,11 @@
       <xs:pattern value="No-Check"/> <!-- Monster abilities only -->
       <xs:pattern value="Opposed"/> <!-- DC depends on the target -->
       <xs:pattern value="Any Std"/> <!-- Lucky ability only -->
-      <xs:pattern value="Armour\+Level"/> <!-- Armour ability only -->
-      <xs:pattern value="Speed\+Level"/> <!-- Non-attack abilities only -->
-      <xs:pattern value="Strength\+Level"/> <!-- Non-attack abilities only -->
-      <xs:pattern value="Std\+3×Level"/>  <!-- note the times symbol .. not an X -->
-      <xs:pattern value="Std\+Level"/>
+      <xs:pattern value="Armour\+Rank"/> <!-- Armour ability only -->
+      <xs:pattern value="Speed\+Rank"/> <!-- Non-attack abilities only -->
+      <xs:pattern value="Strength\+Rank"/> <!-- Non-attack abilities only -->
+      <xs:pattern value="Std\+3×Rank"/>  <!-- note the times symbol .. not an X -->
+      <xs:pattern value="Std\+Rank"/>
       <xs:pattern value="Std"/> <!-- for inaccurate attacks only -->
     </xs:restriction>
   </xs:simpleType>  
@@ -1093,7 +1093,7 @@ labels and references.
       <xs:element name="verylarge" type="emptyType"/>      
 
       <!-- ability groups -->
-      <xs:element name="accurate" type="emptyType"/> <!-- Std+3xLevel -->
+      <xs:element name="accurate" type="emptyType"/> <!-- Std+3xRank -->
       <xs:element name="inaccurate" type="emptyType"/> <!-- Std -->
       <xs:element name="no-check" type="emptyType"/> <!-- No Check .. monster abilities only -->
       
@@ -1440,7 +1440,7 @@ tags
       <xs:element name="agility" type="xs:positiveInteger"/>
       <xs:element name="speed" type="xs:positiveInteger"/>
       <xs:element name="perception" type="xs:positiveInteger"/>
-      <xs:element name="abilitylevelid" type="idType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="abilityrankid" type="idType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="monsterdescription" type="descriptionType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>

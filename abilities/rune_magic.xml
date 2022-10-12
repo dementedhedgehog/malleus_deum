@@ -25,15 +25,15 @@
 	The character can carve or mark with chalk or paint
 	a sign upon a door.  That door is warded shut until
 	the following sunrise.  The door gains a magical protective
-	barrier with 10 hit points for each level of the spell cast.
+	barrier with 10 hit points for each rank of the spell cast.
       </p>
     </abilitydescription>    
     <abilitycheck dc="8" overcharge="15+Level" />
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg></abilitydmg>
     <spline><p x="60" y="30"/></spline>
-    <prereqabilitylevel>rune.lore_1</prereqabilitylevel>	
-    <abilitylevels from="1" to="4"/>
+    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <abilityranks from="1" to="4"/>
   </ability>
   
   <ability>
@@ -48,10 +48,10 @@
       </p>
     </abilitydescription>    
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <spline></spline>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -71,8 +71,8 @@
     <abilitycheck dc="8" overcharge="14+Level Thaumic Dmg" />
     <abilitychecktype>Magic</abilitychecktype>
     <abilitydmg>d6 x Level + 4</abilitydmg>
-    <prereqabilitylevel>rune.lore_1</prereqabilitylevel>	
-    <abilitylevels from="1" to="4"/>
+    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <abilityranks from="1" to="4"/>
   </ability>
 
 </abilitygroup>

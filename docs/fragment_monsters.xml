@@ -83,7 +83,7 @@
         <description>
 	  The monster is important to the story.  Critical successes will not instantly kill them.
 	  These monsters can reroll checks to escape or die at the GMs discretion.  Rerolls are
-	  made with the addition of the ability level on top of any other modifiers.  This does not
+	  made with the addition of the ability rank on top of any other modifiers.  This does not
 	  mean the monster is unkillable, just harder to kill.
 	  This protection	lasts until such time as the GM deems it is dramatically appropriate for
 	  the monster to die.
@@ -126,17 +126,17 @@
     <mbluck>{{ monster.get_luck() }}</mbluck>
     <mbper>{{ monster.get_perception() }}</mbper>
     <mbabilities>
-    {% for ability_level_id in monster.get_ability_level_ids() %}
-       <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
-      <bold>Checks:</bold> {% for check in ability_groups.get_ability_level(ability_level_id).get_checks()  %}
+    {% for ability_rank_id in monster.get_ability_rank_ids() %}
+       <bold>{{ ability_groups.get_ability_rank(ability_rank_id).get_title() }}</bold>
+      <bold>Checks:</bold> {% for check in ability_groups.get_ability_rank(ability_rank_id).get_checks()  %}
       {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
       {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}
       {%- if check.overcharge is not none  -%}/{{check.overcharge}}{%- endif -%}
       {% if not loop.last %}, {% endif -%}
       {% endfor -%}
 
-       {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
-       <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
+       {% if ability_groups.get_ability_rank(ability_rank_id).get_damage() != "" -%}
+       <newline/>Dmg: {{ ability_groups.get_ability_rank(ability_rank_id).get_damage() }}
        {% endif -%}       
     {% endfor %}
     </mbabilities>

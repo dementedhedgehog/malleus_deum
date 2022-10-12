@@ -45,15 +45,15 @@
 	combat and every following round until they succeeed, characters
 	make an adversary check.  If successful their training kicks in and
 	for the rest of the combat they the characters gains a bonus equal to
-	their adversary level for combat checks against monsters of the given
+	their adversary rank for combat checks against monsters of the given
 	monster-class (the bonus is to the check only and not to damage).
       </p>
     </abilitydescription>
     <spline><p x="70" y="90"/></spline>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
-    <abilitylevels from="1" to="4"/>
+    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -64,7 +64,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <indexentry>High Contacts</indexentry>
@@ -86,7 +86,7 @@
 	you do this replace [society] with an actual campaign
 	specific society, talk to your GM about it, <eg/>
 	Contacts[The Cult of the Black Hand].  You can have multiple
-	different instances of this ability at different levels for any number of
+	different instances of this ability at different ranks for any number of
 	societies.
       </p>      
 
@@ -109,7 +109,7 @@
       </p>
     </abilitydescription>
     <spline><p x="0" y="30"/></spline> 
-    <abilitylevels from="0" to="6"/>
+    <abilityranks from="0" to="6"/>
   </ability>
 
 
@@ -120,7 +120,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="Opposed"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -130,7 +130,7 @@
       </p>
     </abilitydescription>
     <spline><p x="30" y="75"/></spline> 
-    <abilitylevels from="0" to="3"/>
+    <abilityranks from="0" to="3"/>
   </ability>
 
   
@@ -142,7 +142,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <indexentry>High Etiquette</indexentry>
@@ -162,9 +162,9 @@ monster-type      </p>
       <p>
 	Etiquette is a templated ability.
 	A character may simultaneously have multiple Etiquette abilities at
-	different levels, one for each society which they have studied.
+	different ranks, one for each society which they have studied.
 	Each instantiation of the Etiquette ability is annotated with that abilities
-	particular society and level.  For example, a spy type archetype might
+	particular society and rank.  For example, a spy type archetype might
 	have Etiquette[Nobility of Verungia] II, Etiquette[The Black Hand] I,
 	and Etiquette[Midheim Docks] I.
 	Characters can train new abilities in Etiquette for new societies, provided
@@ -217,7 +217,7 @@ monster-type      </p>
       </p>	      
     </abilitydescription>
     <spline><p x="0" y="0"/></spline> 
-    <abilitylevels from="0" to="5"/>
+    <abilityranks from="0" to="5"/>
   </ability>
 
   <ability>
@@ -227,7 +227,7 @@ monster-type      </p>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <indexentry>Renown</indexentry>
@@ -243,11 +243,11 @@ monster-type      </p>
       </p>
 
       <p>
-	Unlike other abilities the level of Fame increases when the GM dictates.  Usually this
-	should happen immediately after the current level is mastered.  It is a narrative
+	Unlike other abilities the rank of Fame increases when the GM dictates.  Usually this
+	should happen immediately after the current rank is mastered.  It is a narrative
 	driven ability.  Note that to become famous people within the society need to know of
 	the characters exploits. It is up to the GM to decide when characters receive their
-	first level of Fame for a given society.
+	first rank of Fame for a given society.
       </p>
 
       <playexample>
@@ -272,7 +272,7 @@ monster-type      </p>
       
     </abilitydescription>
     <spline><p x="-90" y="0"/></spline> 
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
 
 
@@ -283,7 +283,7 @@ monster-type      </p>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <indexentry>Infamy</indexentry>
@@ -292,7 +292,7 @@ monster-type      </p>
       </p>
     </abilitydescription>
     <spline><p x="-90" y="0"/></spline> 
-    <abilitylevels from="1" to="5"/>
+    <abilityranks from="1" to="5"/>
   </ability>
   
 
@@ -302,7 +302,7 @@ monster-type      </p>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/><untrained/></tags>
     <abilitycheck dc="Opponents Check"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -325,7 +325,7 @@ monster-type      </p>
       </p>
     </abilitydescription>
     <spline><p x="90" y="105"/></spline> 
-    <abilitylevels untrained="-3" from="0" to="5"/>
+    <abilityranks untrained="-3" from="0" to="5"/>
   </ability>
   
 
@@ -335,7 +335,7 @@ monster-type      </p>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><social/><untrained/></tags>
     <abilitycheck dc="Opposed"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -349,7 +349,7 @@ monster-type      </p>
       </p>
     </abilitydescription>
     <spline><p x="0" y="105"/></spline> 
-    <abilitylevels untrained="-3" from="0" to="5"/>
+    <abilityranks untrained="-3" from="0" to="5"/>
   </ability>
 
 
@@ -360,7 +360,7 @@ monster-type      </p>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="12"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>    
       <p>
@@ -382,7 +382,7 @@ monster-type      </p>
       </p>      
     </abilitydescription>
     <spline><p x="0" y="165"/></spline> 
-    <abilitylevels from="0" to="5"/>
+    <abilityranks from="0" to="5"/>
   </ability>
 
 
@@ -392,7 +392,7 @@ monster-type      </p>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="Opponents Negotiate"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
@@ -451,7 +451,7 @@ monster-type      </p>
       </p>
     </abilitydescription>
     <spline><p x="-90" y="105"/></spline> 
-    <abilitylevels from="0" to="5"/>
+    <abilityranks from="0" to="5"/>
   </ability>
 
 
@@ -470,7 +470,7 @@ monster-type      </p>
       </p>	
     </abilitydescription>
     <spline><p x="-60" y="165"/></spline> 
-    <abilitylevels from="0" to="5"/>
+    <abilityranks from="0" to="5"/>
   </ability>
 
   
@@ -481,7 +481,7 @@ monster-type      </p>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><social/></tags>
     <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Level</abilitychecktype>
+    <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>    
       <p>
@@ -494,6 +494,6 @@ monster-type      </p>
       </p>	
     </abilitydescription>
     <spline><p x="60" y="165"/></spline> 
-    <abilitylevels from="0" to="5"/>
+    <abilityranks from="0" to="5"/>
   </ability>  
 </abilitygroup>
