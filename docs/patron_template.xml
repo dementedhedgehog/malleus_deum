@@ -61,8 +61,7 @@
 	  {% for ability_rank in ability.get_ranks()  %}
 	  <tablerow>
             <td>
-              {{- ability_rank.get_rank_number() | convert_to_roman_numerals }}
-              {%- if ability_rank.is_innate() %} <innateabilityranksymbol/>{% endif -%}
+              {{- ability_rank.get_rank_number() }}
             </td>
             <td>
               {%- if ability_rank.has_prerequisites() %}

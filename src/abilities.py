@@ -37,14 +37,13 @@ def xor(a, b):
 class FAMILY_TYPE:
     LORE = "<lore/>"
     MARTIAL = "<martial/>"
-    INNATE = "<innate/>" # Born with this ability..  everyone gets them.
     GENERAL = "<general/>"
     PRIMARY = "<primary/>"
     MAGICAL = "<magical/>"
     NPC = "<npc/>"
 FAMILY_TYPES = ("<lore/>", "<martial/>", "<magical/>", "<general/>",  "<primary/>", "<npc/>")
 
-MIN_INITIAL_ABILITY_RANK = 0
+MIN_INITIAL_ABILITY_RANK = 1
 MAX_INITIAL_ABILITY_RANK = 1
 
 # ability tags
@@ -53,7 +52,6 @@ INACCURATE_CHECK_TYPE = "Std"
 MONSTER_CHECK_TYPE = "No-Check"
 STD_CHECK = "Std\+Rank"
 UNTRAINED = "Untrained"
-INNATE = "Innate"
 
 
 class AbilityFamily:
@@ -246,7 +244,6 @@ class NotTagPrereq(Prerequisite):
 class AbilityRank:
     """
     Every ability has a number of ranks.
-    Abilities which have a rank 0 are innate.
 
     """
 
@@ -275,9 +272,6 @@ class AbilityRank:
     def __str__(self):
         return self.get_title()
 
-    def is_innate(self):
-        return self.rank_number == 0
-    
     def is_templated(self):
         return self.ability.is_templated()
 
@@ -358,13 +352,13 @@ class AbilityCheck:
                             f"have a {ACCURATE} check type, or vice versa")
 
         # Check inaccurate tag
-        if xor(check_type == INACCURATE_CHECK_TYPE, "Inaccurate" in tags):
+        if xor(check_type == INACCURATE_CHECK_TYPE, "inaccurate" in tags):
             problems.append(f"Ability {self.ability.ability_id} is tagged inaccurate and does not "
-                            f"have a {INACCURATE} check type {check_type} {tags}, or vice versa")
+                            f"have a {INACCURATE_CHECK_TYPE} check type {check_type} {tags}, or vice versa")
 
         # Check no-check std ability. (for monsters only)  
-        if check_type == MONSTER_CHECK_TYPE and "Monster" not in tags:
-            problems.append(f"Ability {self.ability.ability_id} has a {MONSTER} check type but "
+        if check_type == MONSTER_CHECK_TYPE and "monster" not in tags:
+            problems.append(f"Ability {self.ability.ability_id} has a {MONSTER_CHECK_TYPE} check type but "
                             "is not tagged with the monster tag.")
 
         # Check Std+Rank has no overcharge
@@ -380,11 +374,6 @@ class AbilityCheck:
         elif UNTRAINED in tags and self.ability.ranks[0].get_rank_number() >= 0:
             problems.append(f"Ability {self.ability.ability_id} is tagged 'Untrained' but does not "
                             f"have a negative ability rank")
-            
-        # Check for innate abilities.
-        elif xor(self.ability.ranks[0].get_rank_number() == 0, INNATE in tags):
-            problems.append(f"Ability {self.ability.ability_id} has a zero ability rank and is "
-                            f"not tagged 'innate' or visa versa")
             
         # check dcs are standard
         if check in (STD_CHECK, ACCURATE) and self.dc not in ("3", "6", "9", "12", "15", "18", "21"):
@@ -428,21 +417,16 @@ class Ability:
         # list of tags for the ability
         self.tags = []
 
-        # Is the ability a special racial/class ability?
-        #
-        # This differs from the concept of innateness in that an ability
-        # can be innate to one archetype X and a second archetype Y can
-        # learn that ability.
-        #
         # If this is true put the ability in the GMG otherwise put it in
         # the players handbook
         self.gmg_ability = False        
 
-        # list of ability ranks.
-        # if the first element of this list is rank number 0 then the ability is innate.
-        # if the first element has a negative rank number that's the untrained modifier
-        # if the first element is a postive int it means that the ability must be trained.
+        # list of ability ranks. positive ints.
         self.ranks = []
+
+        # if this element is not none it should be a number in -9 to 0.. the rank
+        # at which untrained players make the check
+        self.untrained_rank = None
 
         # list of spline points
         self.spline = []
@@ -465,27 +449,32 @@ class Ability:
         # or 1, 2, 3, 4 are both valid.
         last_rank_number = None
         is_first_rank = True
-        for ability_rank in self.ranks:
+        for ability_rank in self.get_trained_ranks():
             rank_number = ability_rank.get_rank_number()
-
-            # untrained
-            if rank_number < 0:
-                continue
                 
-            # check the first rank is always 0 or 1
+            # check the first rank is always 0 or 1 (primary abilities can be lower).
             if is_first_rank:
-                if rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK:
+                if ((rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK)
+                    and "physical" not in self.tags):
                     problems.append(
                         f"First rank for ability {self.get_title()} is {rank_number} "
-                        f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY+1}")
+                        f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY_RANK+1}")
                 is_first_rank = False
             else:
                 if last_rank_number + 1 != rank_number:
                     problems.append("Bad rank numbers for ability %s around rank  %s"
                                     % (self.get_title(), rank_number))
             last_rank_number = rank_number
-
         return problems
+
+    def get_trained_ranks(self):
+        if self.is_untrained():
+            if len(self.ranks) > 1:
+                return self.ranks[1:]
+            else:
+                return []
+        else:
+            return self.ranks
 
     def check_sanity(self):
         problems = self.get_problems()
@@ -500,11 +489,10 @@ class Ability:
         return self.damage if self.damage is not None else ""
     
     def get_ability_rank_range(self):
-        # first_ability_rank = convert_to_roman_numerals(self.ranks[0].get_rank_number())
-        # last_ability_rank = convert_to_roman_numerals(self.ranks[-1].get_rank_number())
         first_ability_rank = self.ranks[0].get_rank_number()
         last_ability_rank = self.ranks[-1].get_rank_number()
-        return f"{first_ability_rank}-{last_ability_rank}"
+        untrained_rank = "N/A" if self.untrained_rank is None else str(self.untrained_rank)
+        return f"untrained: {untrained_rank} {first_ability_rank}-{last_ability_rank}"
 
     def is_core(self):
         return "core" in self.tags
@@ -524,31 +512,14 @@ class Ability:
         """Return the abilities name."""
         return self.title
         
-    def get_innate_rank(self):
-        """
-        Returns the highest innate ability rank or None.
-
-        """
-        for ability_rank in self.ranks:
-            if ability_rank.is_innate():
-                return ability_rank
-        return None
-            
     def get_ability_rank(self, rank_number):
         for ability_rank in self.ranks:
             if ability_rank.get_rank_number() == rank_number:
                 return ability_rank            
         return None
 
-    def is_innate(self):
-        return len(self.ranks) > 0 and self.ranks[0].is_innate()
-
     def get_tags(self):
-        tags = []
-        if self.is_innate():
-            tags.append("Innate")
-        tags += [tag.title() for tag in self.tags]
-        return tags
+        return self.tags
 
     def get_tags_str(self):
         return [",".join(self.get_tags())]
@@ -755,7 +726,6 @@ class Ability:
            else:
                raise Exception("UNKNOWN (%s) in file %s\n" % 
                                (child.tag, self.fname))
-
         # sanity check.
         #self.validate()
         return
@@ -767,11 +737,6 @@ class Ability:
                 self.tags.append(child.tag)
         return
     
-    # def validate(self):
-    #     # if self.ddc is None:
-    #     #     raise Exception(f"Ability {self.title} has no ddc defined")
-    #     return
-
     def is_gmg_ability(self):
         """
         Returns True if this is a special ability that should go in the GMG and not 
@@ -791,15 +756,18 @@ class Ability:
         return
         
     def is_untrained(self):
-        return len(self.ranks) > 0 and self.ranks[0].rank_number < 0
+        return self.untrained_rank is not None
     
     def get_untrained_rank(self):
-        return self.ranks[0] if len(self.ranks) > 0 else None
+        if self.untrained_rank is None:
+            return None
+        return self.ranks[0]
     
     def load_ability_ranks(self, ability_ranks):
         untrained_rank = ability_ranks.attrib.get("untrained", None)
         if untrained_rank is not None:
-            self._add_ability_rank(int(untrained_rank))
+            self.untrained_rank = int(untrained_rank)
+            self._add_ability_rank(self.untrained_rank)
 
         from_rank = int(ability_ranks.attrib["from"])
         to_rank = int(ability_ranks.attrib["to"])
@@ -1105,10 +1073,6 @@ class AbilityGroups:
 
     def get_abilities_by_family_paginated(self, family_type, page_size=30):
         abilities = self.get_abilities_by_family(family_type)
-        print(abilities)
-        print([a.get_title() for a in abilities])
-        print([abilities[i:i+page_size] for i in range(0, len(abilities), page_size)])
-        print([ [a.get_title() for a in abilities[i:i+page_size]] for i in range(0, len(abilities), page_size)])
         return [abilities[i:i+page_size] for i in range(0, len(abilities), page_size)]
     
     def get_ability(self, ability_id):
@@ -1243,8 +1207,7 @@ if __name__ == "__main__":
     #         print("\t%i %s %s %s"
     #               % (count,
     #                  ability.get_title(),
-    #                  ability.get_id(),
-    #                  ability.is_innate()))
+    #                  ability.get_id())
     #     #     # # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
     #     #     # # print("\t\t\tAbility Desc: %s" % ability.description)
     #     #     # # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())

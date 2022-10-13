@@ -241,8 +241,6 @@ latex_frontmatter = r"""
 \begingroup\rpgdice\selectfont{}g\endgroup}
 \newcommand{\magical}{%%
 \begingroup\rpgdice\selectfont{}z\endgroup}
-\newcommand{\innate}{%%
-\begingroup\rpgdice\selectfont{}z\endgroup}
 
 
 %% special provenance symbol
@@ -643,11 +641,6 @@ class LatexFormatter:
         self.latex_file.write("\\martial{}")
         return    
     end_martial = no_op
-
-    def start_innate(self, element):
-        self.latex_file.write("\\innate{}")
-        return    
-    end_innate = no_op
 
     def start_percent(self, element):
         self.latex_file.write("\\%")
@@ -1628,16 +1621,6 @@ class LatexFormatter:
         return
     end_combat_symbol = no_op
 
-    def start_innateabilitylevelsymbol(self, innate_ability_symbol):
-        self.latex_file.write("\\rpginnateabilitysymbol{}")
-        return
-    end_innateabilitylevelsymbol = no_op
-
-    def start_innatearchetypeabilitylevelsymbol(self, innate_ability_symbol):
-        self.latex_file.write("\\rpginnatearchetypeabilitysymbol{}")
-        return
-    end_innatearchetypeabilitylevelsymbol = no_op
-
     def start_recommendedabilitylevelsymbol(self, recommended_ability_level_symbol):
         self.latex_file.write("\\rpgrecommendedabilitylevelsymbol{}")
         return
@@ -2016,22 +1999,16 @@ class LatexFormatter:
             # if rank_num is not None:
             #     rank_num = utils.convert_to_roman_numerals(rank_num)
                 
-            if ab.is_innate():
-                if rank_num is None:
-                    self.latex_file.write(f"{name}^i")
+            if rank_num is None:
+                if template is None:
+                    self.latex_file.write(f"{name}")
                 else:
-                    self.latex_file.write(f"{name}^i {rank_num}")
+                    self.latex_file.write(f"{name}[{template}]")
             else:
-                if rank_num is None:
-                    if template is None:
-                        self.latex_file.write(f"{name}")
-                    else:
-                        self.latex_file.write(f"{name}[{template}]")
+                if template is None:
+                    self.latex_file.write(f"{name} {rank_num}")
                 else:
-                    if template is None:
-                        self.latex_file.write(f"{name} {rank_num}")
-                    else:
-                        self.latex_file.write(f"{name}[{template}] {rank_num}")
+                    self.latex_file.write(f"{name}[{template}] {rank_num}")
             
         except KeyError:
             # bad ability ref...

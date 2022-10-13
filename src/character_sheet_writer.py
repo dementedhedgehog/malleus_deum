@@ -238,12 +238,12 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
 
         for i in range(ABILITIES_PER_PAGE):
             if ability_ranks is None:
-                ability_rank = None
+                ability_rank = None                
             else:
                 try:
                     ability_rank = next(ability_ranks)
                 except StopIteration:
-                    ability_rank = None                        
+                    ability_rank = None
 
             # if we have another ability rank put fill in the form for
             # that ability, otherwise make it blank.
@@ -251,7 +251,6 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                 ability = ability_rank.get_ability()
                 description = ""
                 description += "Type: " + ability.check_type
-                #description += ", Check: " + ability.check_type
 
                 # add any check configurations
                 checks = ability.get_checks()
@@ -269,7 +268,6 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                 ability_class = ability.__class__
                 #if ability.overcharge:
                 if check.overcharge:
-                    #description += " <= DC + " + ability.overcharge
                     description += " <= DC + " + check.overcharge
 
                 # Damage?
@@ -277,10 +275,8 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                 if dmg:
                     description += " Dmg: " + dmg
 
-                #if ability.mastery:
-                #    mastery = ability.mastery * "o"
                 mastery = "ooo"
-                
+
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
                     ability_number=i,
@@ -340,13 +336,13 @@ def create_character_sheet_for_archetype(db, archetype):
     families_seen = set()
     for ability_group in db.ability_groups:
         for ability in ability_group:
-            if ability.is_innate():
-                ability_rank = ability.get_ability_rank(0)
+            if ability.is_untrained():                
+                ability_rank = ability.get_untrained_rank()
                 if ability_rank is not None and not ability_rank.get_ability().is_templated():
                     family = ability_group.get_family()
                     info.append((family, ability_rank.get_title(), ability_rank))
                     families_seen.add(family)
-                
+                    
             # ability_rank = ability.get_highest_innate_rank()
             # if ability_rank is not None and not ability_rank.get_ability().is_templated():
             #     family = ability_group.get_family()
@@ -367,7 +363,7 @@ def create_character_sheet_for_archetype(db, archetype):
      
     info.sort()
     ability_ranks = [x[2] for x in info]
-    
+
     # the pages we want to stick together.
     pdf_pages = []
 

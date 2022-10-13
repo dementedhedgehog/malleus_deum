@@ -280,7 +280,7 @@ class Archetype:
         self.tags = []
         
         # update these after a load
-        self.innate_ability_ranks = []
+        #self.innate_ability_ranks = []
                 
         # what advantages you get at what levels.
         self.level_progression_table = LevelProgressionTable(self.fname)        
@@ -346,13 +346,13 @@ class Archetype:
         return has_magical_abilities
     
 
-    def get_archetype_specific_innate_ability_ranks(self):
-        """
-        Returns the innate ability ranks specific to this archetype.
+    # def get_archetype_specific_innate_ability_ranks(self):
+    #     """
+    #     Returns the innate ability ranks specific to this archetype.
 
-        """
-        return [ ability_rank for ability_rank in self.innate_ability_ranks if 
-                 ability_rank.is_innate_for_this_archetype() ]
+    #     """
+    #     return [ ability_rank for ability_rank in self.innate_ability_ranks if 
+    #              ability_rank.is_innate_for_this_archetype() ]
  
     def get_move_distance(self):
         return self.move_distance
@@ -414,7 +414,7 @@ class Archetype:
             self._load(archetype_node, fail_fast)
 
             # sort the ability ranks
-            self.innate_ability_ranks.sort(key = lambda mal: mal.get_title())
+            #self.innate_ability_ranks.sort(key = lambda mal: mal.get_title())
 
             # update the innate abilities
             # for ability in list(self.modified_abilities_lookup.values()):

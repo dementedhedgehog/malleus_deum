@@ -345,11 +345,6 @@ class EPubFormatter:
         return    
     end_martial = no_op
 
-    def start_innate(self, element):
-        #self.latex_file.write("\\innate{}")
-        return    
-    end_innate = no_op
-
     def start_percent(self, element):
         #self.latex_file.write("\\%")
         return    
@@ -1194,16 +1189,6 @@ class EPubFormatter:
         #self.latex_file.write("\\rpgcombatsymbol{}")
         return
     end_combat_symbol = no_op
-
-    def start_innateabilitylevelsymbol(self, innate_ability_symbol):
-        #self.latex_file.write("\\rpginnateabilitysymbol{}")
-        return
-    end_innateabilitylevelsymbol = no_op
-
-    def start_innatearchetypeabilitylevelsymbol(self, innate_ability_symbol):
-        #self.latex_file.write("\\rpginnatearchetypeabilitysymbol{}")
-        return
-    end_innatearchetypeabilitylevelsymbol = no_op
 
     def start_recommendedabilitylevelsymbol(self, recommended_ability_level_symbol):
         #self.latex_file.write("\\rpgrecommendedabilitylevelsymbol{}")
