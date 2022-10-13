@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-d4# from os import exists
 from os.path import join, splitext, exists
 import sys
 import config
