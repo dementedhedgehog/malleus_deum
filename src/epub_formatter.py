@@ -1255,41 +1255,6 @@ class EPubFormatter:
         return
     end_notapplicable = no_op
 
-    def start_d4(self, fail):
-        #self.latex_file.write("\\dfour{}")
-        return
-    end_d4 = no_op
-
-    def start_d6(self, fail):
-        #self.latex_file.write("\\dsix{}")
-        return
-    end_d6 = no_op
-
-    def start_d8(self, fail):
-        #self.latex_file.write("\\deight{}")
-        return
-    end_d8 = no_op
-    
-    def start_d10(self, fail):
-        #self.latex_file.write("\\dten{}")
-        return
-    end_d10 = no_op
-
-    def start_d12(self, fail):
-        #self.latex_file.write("\\dtwelve{}")
-        return
-    end_d12 = no_op
-
-    def start_d20(self, fail):
-        #self.latex_file.write("\\dtwenty{}")
-        return
-    end_d20 = no_op
-
-    def start_dany(self, fail):
-        #self.latex_file.write("\\dany{}")
-        return
-    end_dany = no_op
-
     def start_dpool(self, fail):
         #self.latex_file.write("\\dpool{}")
         return
