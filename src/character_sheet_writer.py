@@ -221,14 +221,17 @@ def create_first_page_fdf(fdf_name, archetype=None):
 
 def get_ability_check_name(check, no_name=False):
     if check.overcharge is not None:
-        if no_name: 
-            return f"ddc: {check.dc}/{check.overcharge}"
+        if no_name:
+            if check.dc is not None:
+                return f"DDC: {check.dc}/{check.overcharge}"
+            else:
+                return f"DDC: {check.dc}/{check.overcharge}"
         else:
-            return f"{check.name}: ddc {check.dc}/{check.overcharge}"
+            return f"{check.name}: DDC {check.dc}/{check.overcharge}"
     if no_name:
-        return f"ddc {check.dc}"
+        return f"DDC: {check.dc}"
     else:
-        return f"ddc {check.name}: {self.dc}"
+        return f"DDC {check.name}: {self.dc}"
 
 
 
@@ -263,17 +266,14 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     check_strings.append(get_ability_check_name(check, no_name=True))
                 description += ", " + ", ".join(check_strings)
                     
-                #description += ", DDC: " + str(check.dc)
-                
                 ability_class = ability.__class__
-                #if ability.overcharge:
                 if check.overcharge:
                     description += " <= DC + " + check.overcharge
 
                 # Damage?
                 dmg = ability.damage
                 if dmg:
-                    description += " Dmg: " + dmg
+                    description += ", Dmg: " + dmg
 
                 mastery = "ooo"
 
