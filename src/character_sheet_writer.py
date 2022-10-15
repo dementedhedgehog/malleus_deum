@@ -31,8 +31,7 @@ from shutil import copy
 from os.path import join, dirname, abspath, exists
 import platform
 from subprocess import call, check_output, CalledProcessError
-from PyPDF2 import PdfFileWriter, PdfFileReader
-from PyPDF2 import PdfFileMerger
+#from PyPDF2 import PdfWriter, PdfReader, PdfMerger
 from archetypes import Archetypes
 from abilities import FAMILY_TYPES, AbilityRank
 
@@ -275,12 +274,12 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                 if dmg:
                     description += ", Dmg: " + dmg
 
-                mastery = "ooo"
+                mastery = "Mastery: [][][]"
 
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
                     ability_number=i,
-                    ability_name=ability_rank.get_title(),
+                    ability_name=ability_rank.get_title(long_form=True),
                     ability_description=description,
                     ability_mastery=mastery,
                 )

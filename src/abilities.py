@@ -278,11 +278,15 @@ class AbilityRank:
     def get_template(self):
         return self.ability.get_template()
     
-    def get_title(self):
+    def get_title(self, long_form=False):
         # rank_num = convert_to_roman_numerals(self.rank_number)
         # return "%s %s" % (self.ability.get_title(), rank_num)
         #rank_num = convert_to_roman_numerals(self.rank_number)
-        return "%s %s" % (self.ability.get_title(), self.rank_number)
+        if long_form:
+            str_template = "%s Rank: %s"
+        else:
+            str_template = "%s %s"
+        return  str_template % (self.ability.get_title(), self.rank_number)
 
     def get_id(self):
         return "%s_%s" % (self.ability.get_id(), self.rank_number)
