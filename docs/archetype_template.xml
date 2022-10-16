@@ -103,9 +103,11 @@
 	  initially set to the maximum values:
 	  <descriptions>
 	    
-	    <term>Luck Pool Maximum/Refresh = </term>
-	    <description>{{ archetype.get_progression_data_for_level(0).level_luck -}}d6
-	    /{{- archetype.get_progression_data_for_level(0).level_luck_refresh }}d6
+	    <term>Magic Pool Maximum/Refresh = </term>
+	    <description>
+	    {{ archetype.get_progression_data_for_level(0).level_magic -}}d6
+	    /
+	    {{- archetype.get_progression_data_for_level(0).level_magic_refresh }}d6
 	    </description>
 
 	    <term>Mettle Pool Maximum/Refresh = </term>
@@ -115,11 +117,9 @@
 	      {{- archetype.get_progression_data_for_level(0).level_mettle_refresh }}d6
 	    </description>
 
-	    <term>Magic Pool Maximum/Refresh = </term>
-	    <description>
-	    {{ archetype.get_progression_data_for_level(0).level_magic -}}d6
-	    /
-	    {{- archetype.get_progression_data_for_level(0).level_magic_refresh }}d6
+	    <term>Luck Pool Maximum/Refresh = </term>
+	    <description>{{ archetype.get_progression_data_for_level(0).level_luck -}}d6
+	    /{{- archetype.get_progression_data_for_level(0).level_luck_refresh }}d6
 	    </description>
 	  </descriptions>      
 	    
