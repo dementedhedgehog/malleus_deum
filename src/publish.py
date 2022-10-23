@@ -647,7 +647,7 @@ if __name__ == "__main__":
     # Conditionally build some graphs we mostly won't need?
     if "rationale.xml" in [t[0] for t in config.doc_files_to_build]:
         print("Building dice pool graphs.")
-        dice_pool_graph.generate_dice_pool_graphs()
+        dice_pool_graph.build_dice_pool_graphs()
 
     # load the game database (archetypes, abilties etc).
     db = DB()

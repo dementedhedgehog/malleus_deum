@@ -13,32 +13,33 @@
     
     <tablerow>
       <td>Wand</td>
-      <td>Reroll a dice.</td>
+      <td>Immediately after rolling change the face value of a die rolled by one
+      (<eg/> from a two to a three, or from a six to a fice).</td>
     </tablerow>
 
     <tablerow>
       <td>Ground with Staff</td>
-      <td>Exhaust a die before the Check Result is finalized.</td>
+      <td>Immediately after rolling, reroll one die.</td>
     </tablerow>
 
     <tablerow>
       <td>Ground with Spear</td>
-      <td>-1 Modifier and Exhaust a die before the Check Result is finalized.</td>
+      <td>Immediately after rolling, reroll one die with a face value of six.</td>
     </tablerow>
 
     <tablerow>
-      <td>Ground with Non-Metallic Armour</td>
-      <td>-1 Modifier</td>
+      <td>Ground wearing Non-Metallic Armour</td>
+      <td>Do not count the lowest die rolled in the result towards the total.  It may still be exhausted</td>
     </tablerow>
 
     <tablerow>
       <td>Metal Armour</td>
-      <td>Stops grounding.</td>
+      <td>Do not count the lowest two dice rolled in the result.  They may still be exhausted.</td>
     </tablerow>
     
     <tablerow>
       <td>Casting Theurgical Spell without Holy Symbol</td>
-      <td>-2 Modifier</td>
+      <td>-2 DC Modifier</td>
     </tablerow>
 
     <tablerow>
@@ -53,32 +54,32 @@
 
     <tablerow>
       <td>Wyld Magic in Forests and Swamps</td>
-      <td>+2 DC Modifier</td>
+      <td>+1 DC Modifier</td>
     </tablerow>
 
-    <tablerow>
-      <td>Wyld Magic cast in Towns/Dungeons/Deserts</td>
-      <td>-2 DC Modifier</td>
-    </tablerow>
+    <!-- <tablerow> -->
+    <!--   <td>Wyld Magic cast in Towns/Dungeons/Deserts</td> -->
+    <!--   <td>-1 DC Modifier</td> -->
+    <!-- </tablerow> -->
     
     <tablerow>
       <td>Raining/Puddles</td>
-      <td>Exhaust dice at +1 value</td>
+      <td>-1 DC Modifier</td>
     </tablerow>
     
     <tablerow>
       <td>Standing in Water</td>
-      <td>Exhaust dice at +2 value</td>
+      <td>-2 DC Modifier</td>
     </tablerow>
     
     <tablerow>
       <td>Swimming</td>
-      <td>Exhaust dice at +3 value</td>
+      <td>-3 DC Modifier</td>
     </tablerow>
     
     <tablerow>
       <td>Blood Magic</td>
-      <td>Allows the forced use of Shared Magic Pools</td>
+      <td>Allows the forced use of Shared Magic Pools.  Take dice from the target.</td>
     </tablerow>
     
     <tablerow>
@@ -86,24 +87,23 @@
       <td>-1 DC Modifier</td>
     </tablerow>
 
-
     <tablerow>
       <td>Using multiple items while casting rod/staff/wand</td>
       <td>Not possible</td>
     </tablerow>
-    
+
     <tablerow>
-      <td>Non-Theurgic cast with no Ingredient</td>
-      <td>-1 DC Modifier</td>
+      <td>Non-Theurgic cast with no Ingredient (when ingredients required)</td>
+      <td>-2 DC Modifier</td>
     </tablerow>
 
     <tablerow>
       <td>Non-Theurgic cast with unusually good Ingredients</td>
-      <td>+1 DC Modifier</td>
+      <td>-1 DC Modifier</td>
     </tablerow>
 
     <tablerow>
-      <td>Casting a spell without the correct verbal intonation</td>
+      <td>Casting a spell without the correct verbal intonations</td>
       <td>-1 DC Modifier</td>
     </tablerow>
 
@@ -154,6 +154,8 @@
 
     <tablerow>
       <td>Casting spells over-range with no contagion</td>
-      <td>+7 to difficulty and overcharge.</td>
+      <td>+5 to difficulty and overcharge.</td>
     </tablerow>
+
+    <tablelabel>table:{{ doc_name }}-magic-modifiers</tablelabel>
 </table>

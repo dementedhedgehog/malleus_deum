@@ -72,6 +72,8 @@
     larger magic dice pools, greater energy, and a variety of skills that allow them to use that pool.
   </p>
 
+
+
   
   <p>
     Follow these steps to cast a spell:
@@ -80,25 +82,26 @@
     <term>Roll Magic Check</term>
     <description>The player chooses any number of dice from their pool
     and rolls them and sums the face values of the dice to get a result.</description>
-    <term>Grounding</term><description>Optionally, the caster can try and ground a single die from
-    the check if the result is too high if they are holding a staff or spear.  The grounded die is
-    immediately exhausted and removed from the check.</description>
     <term>Check Success</term>
     <description>If the sum of the magic dice is less than the difficulty then the spell is 
     under-powered, sputters out and fails without further effect.   If the result is greater or equal to 
     the difficulty the spell check succeeds and the spell is cast.  The spells effects apply now.
     <equation>
-      <line>Difficulty <leqqsymbol/> Result <leqqsymbol/> Overcharge</line>
+      <line>Difficulty <leqqsymbol/> Result + Ability Rank</line>
     </equation>    
     </description>    
     <term>Check Overcharge</term>
     <description>
-      If the result of the magic check is greater than the Overcharge amount then the spell
-      succeeds but the extra theurgical energies are too great for the caster to handle, the caster loses
-      control over the casting and the extra energies must be disipated somehow.  
-      At that point a range of strange and usually bad things can happen.  GM determines an overcharge effect. See
-      Table<ref>figure:{{ doc_name }}-overcharge-effects</ref> for some suggested overcharge effects to inspire
-      the GM.
+      If the magic check succeeds check for overcharge.  Thematically an overcharge occurs when the caster
+      embues a spell with too much power and the extra theurgical energies become too great for the caster
+      to handle, the caster loses control over the casting and the extra energies must be disipated somehow.        
+      Mechanically, an overcharge occurs if the number of sixes rolled in the check exceeds the casters
+      <emph>Control</emph>.  The characters base control is their spell ability rank, though Control may
+      effected by a number of other factors.  See the table of Magic Modifiers,
+      Table<ref>figure:{{ doc_name }}-magic-modifiers</ref>,  for details.
+      At that point a range of strange and usually bad things can happen.  The GM
+      determines an overcharge effect. See Table<ref>figure:{{ doc_name }}-overcharge-effects</ref> for some
+      suggested overcharge effects to inspire the GM.
     </description>
     <term>Remove Dice</term>
     <description>
@@ -106,8 +109,6 @@
     </description>
   </descriptions>
 
-  {% include "docs/tables/grounding.xml" %}  
-  
   {% include "docs/tables/overcharge_effects.xml" %}
   {% include "docs/tables/overcharge_effects_pt2.xml" %}
 

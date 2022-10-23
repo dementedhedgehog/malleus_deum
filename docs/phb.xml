@@ -82,7 +82,7 @@
           </li>
           <li>Four or more Defensive Abilities: Armour, Dodge, Block and Parry.</li>
           <li>Two Hit Point stats: Stamina and Health.</li>
-          <li>Three Dice Pool stats: Mettle, Magic, and Luck.</li>
+          <li>Three Dice Pool stats: Magic, Mettle, and Luck.</li>
           <li>A set of Aspects. Aspects are statements that describe some facet of the
   	  characters personality, relationships, or philosophy e.g:
   	  Silent Outcast, Naive Appeaser, Dipsomaniac, Declared vengeance
@@ -239,15 +239,6 @@
       </p>
 
       <descriptions>
-        <term>Mettle</term>
-        <description>
-          <indexentry>Pools<subentry>see Mettle</subentry></indexentry>
-          This dice pool measures the characters strength of character,
-  	  their spirits and will-power, their mental well-being, morale, fear, shock,
-  	  sanity and determination.
-        </description>
-
-
         <term>Magic</term>
         <description>
           <indexentry>Pools<subentry>see Magic</subentry></indexentry>
@@ -261,6 +252,14 @@
   	    This pool represents their animus, their spark of life, and can be use to resist
   	    spells.
   	  </p>
+        </description>
+	
+        <term>Mettle</term>
+        <description>
+          <indexentry>Pools<subentry>see Mettle</subentry></indexentry>
+          This dice pool measures the characters strength of character,
+  	  their spirits and will-power, their mental well-being, morale, fear, shock,
+  	  sanity and determination.
         </description>
 	
         <term>Luck</term>
@@ -497,8 +496,7 @@
 	The value on the left in the equation above is calculated by the player making the check,
 	the value on the right is calculated by the GM.  Note that <emph>the modifier is subtracted from
 	the DC</emph>. That means that modifiers for the players that are good are always positive, modifiers
-	that are bad for the players are negative.  This distinction becomes important for dice pool checks
-	which have an overcharge value.
+	that are bad for the players are negative.  
       </p>
 
       <p>	
@@ -651,7 +649,7 @@
         <sectiontitle>Some Exceptions</sectiontitle>
   	<p>
 	  Abilities tagged <defn>Untrained</defn> or <defn>Primary</defn> can be used without training.
-	  In these cases the lowest ability rank is used.  Abilities tagged <defn>Inaccurate</defn>
+	  In these cases the ``untrained'' ability rank is used.  Abilities tagged <defn>Inaccurate</defn>
 	  do not add their rank to their checks.
   	</p>
       </subsection>
@@ -672,7 +670,7 @@
 	however a bane occurs.
         <equation>
           <line>Dice Pool Check:</line>
-          <line>DC - Modifiers <leqqsymbol/> Dice Result <ltsymbol/> Over-Charge</line>
+          <line>DC + Ability Rank - Modifiers <leqqsymbol/> Dice Result</line>
         </equation>
       </p>
       
@@ -685,6 +683,21 @@
 	Though exhaustion for magic dice pools is more complicated, and magic dice may be
 	exhausted at even higher values depending on the context of the casting, see the
 	rules of magic for more information.
+      </p>
+      
+      <p>
+        <indexentry>Dice Pool Check<subentry>Overcharge</subentry></indexentry>
+        <indexentry>Check<subentry>Overcharge</subentry></indexentry>
+        <indexentry>Dice Pool Check<subentry>Control</subentry></indexentry>
+        <indexentry>Check<subentry>Control</subentry></indexentry>
+	Magic dice pool checks can be overcharged.  This happens when the character puts too
+	much energy into the cast and they lose control of it.  When this happens we
+	say that the spell is <defn>Overcharged</defn>.  To be overcharged the number of
+	sixes rolled has to be greated than the characters ability to contain the magic,
+	called their <defn>Control</defn>.  A characters basic Control is their  ability rank but this
+	may be modifed by their magical equipment or surroundings, see the rules of magic for
+	more information and the table of Magic Modifiers,
+	Table<ref>figure:{{ doc_name }}-magic-modifiers</ref>, for further details.
       </p>
       
       <p>
@@ -724,9 +737,7 @@
         <indexentry>Modifier to a Dice Pool Check</indexentry>
   	Like a Std Check, a Dice Pool Check can have modifiers.  These modifiers effect the DC for
   	the check and are suggestions for the GM.  For example a +1 DC modifier <emph>reduces</emph> a
-  	dice pools checks difficulty by one, making the check easier, but does not effect the
-  	checks overcharge.  A -1 DC modifier makes the check harder and does not effect the checks
-  	overcharge.
+  	dice pools checks difficulty by one, making the check easier.  A -1 DC modifier makes the check harder.
       </p>
     </section>
 

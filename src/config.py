@@ -58,10 +58,10 @@ doc_files_to_build = (
     #("magic_items.xml", True, "MI"),
     #("abilities.xml", True, "Ab"),
     #("ability_dcs.xml", False, "X"),
-    #("tables.xml", True, "[TBL]"),
+    #("tables.xml", True, "[TBL]"),a
     #("gms_screen.xml", False, "GMS"),
-    #("gmg.xml", True, "[GMG]"),
-    #("rationale.xml", True, "[R]"),
+    ("gmg.xml", True, "[GMG]"),
+    ("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
 )
 

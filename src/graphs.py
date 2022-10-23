@@ -269,7 +269,7 @@ ability_hist.add('Min Ability Score',  min_abilities.values())
 ability_hist.add('Average Ability Score',  avg_abilities.values())
 ability_hist.add('Max Ability Score',  max_abilities.values())
 ability_hist.x_labels = map(str, LEVELS)
-fname = join(build_dir, 'ability_range_by_level.png')
+fname = join(build_dir, 'primary_ability_range_by_pc_level.png')
 ability_hist.render_to_png(fname)
 
 
@@ -302,7 +302,7 @@ ability_hist.add('Min Ability Bonus',  min_ability_bonuses.values())
 ability_hist.add('Average Ability Bonus',  avg_ability_bonuses.values())
 ability_hist.add('Max Ability Bonus',  max_ability_bonuses.values())
 ability_hist.x_labels = map(str, LEVELS)
-fname = join(build_dir, 'ability_bonus_by_level.png')
+fname = join(build_dir, 'primary_ability_bonus_by_pc_level.png')
 ability_hist.render_to_png(fname)
 
 
@@ -361,7 +361,7 @@ skill_hist.add('Min',  min_skill)
 skill_hist.add('Avg',  avg_skill)
 skill_hist.add('Max',  max_skill)
 skill_hist.x_labels = map(str, LEVELS)
-skill_fname = join(build_dir, 'skill_bonus_by_level.png')
+skill_fname = join(build_dir, 'ability_bonus_by_pc_level.png')
 skill_hist.render_to_png(skill_fname)
 
 
