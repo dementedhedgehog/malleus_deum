@@ -307,17 +307,13 @@ class AbilityCheck:
         # can be None for the default
         self.name = None
         self.dc = None
-        self.overcharge = None
 
     def _load(self, ability_check_element):
         self.name = ability_check_element.attrib.get("name", "Default")
         self.dc = ability_check_element.attrib.get("dc")
-        self.overcharge = ability_check_element.attrib.get("overcharge")        
         return
 
     def __str__(self):
-        if self.overcharge is not None:
-            return f"{self.name}: {self.dc}/{self.overcharge}"
         return f"{self.name}: {self.dc}"
 
     def get_problems(self):
@@ -328,21 +324,9 @@ class AbilityCheck:
             if not self.is_pool():
                 problems.append("Ability looks like a pool check but isn't tagged as such")
 
-            if self.overcharge is None:
-                problems.append("Ability looks like a pool check but doesn't have an overcharge")
-
-            else:
-                overcharge = self.overcharge.casefold()
-                if "rank" not in overcharge:
-                    problems.append("Ability looks like a pool check but rank "
-                                    "doesn't modify the overcharge?")
-
             if "rank" in check:
                 problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
                                 "rank modifies the DC?")
-
-        if not self.ability.is_pool() and self.overcharge is not None:
-            problems.append(f"Ability  {self.ability.ability_id} looks like a std check and has an overcharge?")
 
         #
         # Check the tags are set properly.
@@ -364,11 +348,6 @@ class AbilityCheck:
         if check_type == MONSTER_CHECK_TYPE and "monster" not in tags:
             problems.append(f"Ability {self.ability.ability_id} has a {MONSTER_CHECK_TYPE} check type but "
                             "is not tagged with the monster tag.")
-
-        # Check Std+Rank has no overcharge
-        if check_type in (STD_CHECK, ACCURATE) and self.overcharge is not None:
-            problems.append(f"Ability {self.ability.ability_id} has a standard check type and an "
-                            f"overcharge '{self.overcharge}'")
 
         # Check ability ranks are sane
         if len(self.ability.ranks) == 0:
@@ -665,20 +644,6 @@ class Ability:
                                    (child.tag, str(child)))
                else:
                    self.damage = child.text.strip() if child.text is not None else None
-
-           elif tag == "abilityovercharge":
-               if self.overcharge is not None:
-                   raise Exception("Only one abilityovercharge per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.overcharge = child.text.strip() if child.text else None
-
-           # elif tag == "abilitymastery":
-           #     if self.mastery is not None:
-           #         raise Exception("Only one abilitymastery per ability. (%s) %s\n" %
-           #                         (child.tag, str(child)))
-           #     else:
-           #         self.mastery = int(child.text.strip())
 
            elif tag == "abilitydescription":
                if self.description is not None:
