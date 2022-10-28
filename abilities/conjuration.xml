@@ -38,7 +38,7 @@
     <abilitytitle>Eldritch Push</abilitytitle>
     <abilityid>conjuration.eldritch_push</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><conjuration/><pool/></tags>
+    <tags><conjuration/><magicpool/></tags>
     <abilitydescription>
       <p>
 	The caster shoots a raw stream of thaumic energy from
@@ -65,7 +65,7 @@
     <abilitytitle>Eldritch Grasp</abilitytitle>
     <abilityid>conjuration.eldritch_grasp</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><conjuration/><pool/></tags>
+    <tags><conjuration/><magicpool/></tags>
     <abilitydescription>
       <p>
 	The caster uses a raw stream of thaumic energy to grab a target
@@ -92,7 +92,7 @@
     <abilitytitle>Scry</abilitytitle>
     <abilityid>conjuration.scry</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><conjuration/><pool/></tags>
+    <tags><conjuration/><magicpool/></tags>
     <abilitydescription>
       <p>
     	The character can view events from the past.  Viewing events in
@@ -135,7 +135,7 @@
     <abilitytitle>Scry, Greater</abilitytitle>
     <abilityid>conjuration.scry_greater</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><conjuration/><pool/></tags>
+    <tags><conjuration/><magicpool/></tags>
     <abilitydescription>
       <p>
 	The character can view events from a targets present and their future as well
@@ -156,21 +156,21 @@
     <abilitytitle>Wither</abilitytitle>
     <abilityid>conjuration.wither</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><conjuration/><pool/></tags>
+    <tags><conjuration/><magicpool/></tags>
     <abilitydescription>
       <p>
-	The caster grabs an opponent.
+	The caster rolls a standard check plus Wither Rank to grab an opponent.
 	On success the caster acts as a conduit to one of the dread
 	planes,	life is drained from the target.  Anything that
 	increases contagion will increase damage for this spell.
-	The target is momentarily transfixed (checks Will vs the casters
-	successful magic roll +13 or loses their turn).	
+	If the check is successful the target suffers 2d8 damage.
+	On overcharge both the caster and the target suffer an extra 1d8 damage.
       </p>
 
       <p>
-	If the check is successful the target suffers 2d8 damage.
-	On overcharge the caster suffers 1d8 damage.
-      </p>      
+	The target is momentarily transfixed, they check Mettle vs DDC of 12+Rank
+	or lose their turn.
+      </p>
     </abilitydescription>    
     <spline><p x="-90" y="30"/></spline>
     <prereqabilityrank>conjuration.lore_2</prereqabilityrank>

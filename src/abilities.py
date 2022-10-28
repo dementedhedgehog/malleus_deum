@@ -53,6 +53,22 @@ MONSTER_CHECK_TYPE = "No-Check"
 STD_CHECK = "Std\+Rank"
 UNTRAINED = "Untrained"
 
+# A lst of valid ddcs
+# We limit the range of values to reduce complexity in the system.  This should make 
+# it easier to remember dcs?  We choose odd ddcs because 5 is the lowest ddc you can
+# fail at Rank 3.
+VALID_DDCS = (3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39)
+
+
+def is_valid_ddc(rank):
+    """
+    Returns True if the rank is an acceptable rank.
+    """
+    try:
+        i = int(rank)
+        return i in VALID_DDCS
+    except ValueError:
+        return False
 
 class AbilityFamily:
     def __init__(self, family_type):
@@ -306,7 +322,7 @@ class AbilityCheck:
 
         # can be None for the default
         self.name = None
-        self.dc = None
+        self.dc = None # ddc?
 
     def _load(self, ability_check_element):
         self.name = ability_check_element.attrib.get("name", "Default")
@@ -327,6 +343,10 @@ class AbilityCheck:
             if "rank" in check:
                 problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
                                 "rank modifies the DC?")
+
+        if not is_valid_ddc(self.dc):
+            problems.append(f"Ability {self.ability.ability_id} has an invalid ddc.  It should be "
+                            f"in the range {VALID_DDCS}.")
 
         #
         # Check the tags are set properly.

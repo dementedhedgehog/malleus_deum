@@ -273,7 +273,7 @@
       <xs:element name="ellipsis" type="symbolType"/>
       <xs:element name="notapplicable" type="acronymType"/>
       <xs:element name="percent" type="symbolType"/>
-      <xs:element name="dpool" type="acronymType"/>
+      <!-- <xs:element name="dpool" type="acronymType"/> -->
       <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="success" type="symbolType"/>
       <!-- <xs:element name="fail" type="symbolType"/> -->
@@ -399,7 +399,7 @@
       <xs:element name="fightreach" type="symbolType"/>      
       <xs:element name="arrowleft" type="symbolType"/>            
       <xs:element name="img" type="imgType"/>
-      <xs:element name="dpool" type="acronymType"/>
+      <!-- <xs:element name="dpool" type="acronymType"/> -->
     </xs:choice>
     <!-- the number of columns the table data takes -->
     <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
@@ -442,16 +442,16 @@
   <!-- type of check to use in an ability (patterns are regexes) -->
   <xs:simpleType name="checkType">
     <xs:restriction base="xs:string">
-      <xs:pattern value="Magic"/>
-      <xs:pattern value="Mettle"/>
-      <xs:pattern value="Luck"/>
+      <xs:pattern value="Magic\+Rank"/>
+      <xs:pattern value="Mettle\+Rank"/>
+      <xs:pattern value="Luck\+Rank"/>
       <xs:pattern value="No-Check"/> <!-- Monster abilities only -->
       <xs:pattern value="Opposed"/> <!-- DC depends on the target -->
-      <xs:pattern value="Any Std"/> <!-- Lucky ability only -->
+      <xs:pattern value="Any-Std"/> <!-- Lucky ability only -->
       <xs:pattern value="Armour\+Rank"/> <!-- Armour ability only -->
       <xs:pattern value="Speed\+Rank"/> <!-- Non-attack abilities only -->
       <xs:pattern value="Strength\+Rank"/> <!-- Non-attack abilities only -->
-      <xs:pattern value="Std\+3×Rank"/>  <!-- note the times symbol .. not an X -->
+      <xs:pattern value="Std\+3×Rank"/>  <!-- note the multiplication symbol .. not an X -->
       <xs:pattern value="Std\+Rank"/>
       <xs:pattern value="Std"/> <!-- for inaccurate attacks only -->
     </xs:restriction>
@@ -852,34 +852,93 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="poolType" mixed="true">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="d4" type="acronymType"/>
-      <xs:element name="d6" type="acronymType"/>
-      <xs:element name="d8" type="acronymType"/>
-      <xs:element name="d10" type="acronymType"/>
-      <xs:element name="d12" type="acronymType"/>
-      <xs:element name="d20" type="acronymType"/>      
-      <xs:element name="dany" type="acronymType"/>      
-      <xs:element name="dpool" type="acronymType"/>            
-    </xs:choice>
-  </xs:complexType>
+  <!-- <xs:complexType name="poolType" mixed="true"> -->
+  <!--   <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
+  <!--     <xs:element name="d4" type="acronymType"/> -->
+  <!--     <xs:element name="d6" type="acronymType"/> -->
+  <!--     <xs:element name="d8" type="acronymType"/> -->
+  <!--     <xs:element name="d10" type="acronymType"/> -->
+  <!--     <xs:element name="d12" type="acronymType"/> -->
+  <!--     <xs:element name="d20" type="acronymType"/>       -->
+  <!--     <xs:element name="dany" type="acronymType"/>       -->
+  <!--     <xs:element name="dpool" type="acronymType"/>             -->
+  <!--   </xs:choice> -->
+  <!-- </xs:complexType> -->
   
+
+  <!-- <xs:complexType name="levelType"> -->
+  <!--   <xs:sequence> -->
+  <!--     <xs:element name="levelnumber" type="xs:unsignedInt" minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element  -->
+  <!--         name="levelmettle"  -->
+  <!--         type="poolType"  -->
+  <!--         minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element  -->
+  <!--         name="levelmettlerefresh"  -->
+  <!--         type="poolType"  -->
+  <!--         minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element  -->
+  <!--         name="levelstamina"  -->
+  <!--         type="xs:string"  -->
+  <!--         minOccurs="1" maxOccurs="1"/> -->
+  <!--     <!-\- <xs:element  -\-> -->
+  <!--     <!-\-     name="levelstaminarefresh"  -\-> -->
+  <!--     <!-\-     type="xs:string"  -\-> -->
+  <!--     <!-\-     minOccurs="1" maxOccurs="1"/> -\-> -->
+  <!--     <xs:element  -->
+  <!--         name="levelhealth"  -->
+  <!--         type="xs:string"  -->
+  <!--         minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element  -->
+  <!--         name="levelhealthrefresh"  -->
+  <!--         type="xs:string"  -->
+  <!--         minOccurs="1" maxOccurs="1"/>       -->
+  <!--     <xs:element  -->
+  <!--         name="levelluck"  -->
+  <!--         type="poolType"  -->
+  <!--         minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element  -->
+  <!--         name="levelluckrefresh"  -->
+  <!--         type="poolType"  -->
+  <!--         minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element  -->
+  <!--         name="levelmagicpool"  -->
+  <!--         type="poolType"  -->
+  <!--         minOccurs="0" maxOccurs="1"/> -->
+  <!--     <xs:element  -->
+  <!--         name="levelmagicrefresh"  -->
+  <!--         type="poolType"  -->
+  <!--         minOccurs="0" maxOccurs="1"/> -->
+  <!--     <xs:element name="leveldescription" type="levelDescriptionType" -->
+  <!-- 		  minOccurs="0" maxOccurs="1"/> -->
+
+  <!--     <xs:element name="levelabilities" -->
+  <!--     		  type="xs:string" -->
+  <!--                 minOccurs="0" -->
+  <!--                 maxOccurs="1"/> -->
+    
+  <!--     <xs:element name="levelpromotions" -->
+  <!-- 		  type="xs:string" -->
+  <!--                 minOccurs="0"  -->
+  <!--                 maxOccurs="1"/>       -->
+  <!--   </xs:sequence> -->
+  <!-- </xs:complexType> -->
+
 
   <xs:complexType name="levelType">
     <xs:sequence>
       <xs:element name="levelnumber" type="xs:unsignedInt" minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelmettle" 
-          type="poolType" 
+          type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelmettlerefresh" 
-          type="poolType" 
+          type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelstamina" 
-          type="xs:string" 
+          type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
       <!-- <xs:element  -->
       <!--     name="levelstaminarefresh"  -->
@@ -887,27 +946,27 @@
       <!--     minOccurs="1" maxOccurs="1"/> -->
       <xs:element 
           name="levelhealth" 
-          type="xs:string" 
+          type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelhealthrefresh" 
-          type="xs:string" 
+          type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>      
       <xs:element 
           name="levelluck" 
-          type="poolType" 
+          type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelluckrefresh" 
-          type="poolType" 
+          type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelmagicpool" 
-          type="poolType" 
+          type="xs:positiveInteger" 
           minOccurs="0" maxOccurs="1"/>
       <xs:element 
           name="levelmagicrefresh" 
-          type="poolType" 
+          type="xs:positiveInteger" 
           minOccurs="0" maxOccurs="1"/>
       <xs:element name="leveldescription" type="levelDescriptionType"
 		  minOccurs="0" maxOccurs="1"/>
@@ -924,6 +983,7 @@
     </xs:sequence>
   </xs:complexType>
 
+  
   
 
   <!--
@@ -1111,12 +1171,15 @@ labels and references.
       <xs:element name="versatile" type="emptyType"/> <!-- spells which are open to interpretation -->
       <xs:element name="untrained" type="emptyType"/>
       
-
       <!-- ability meta -->
       <xs:element name="lore" type="emptyType"/>
       <xs:element name="martial" type="emptyType"/>
+      <xs:element name="brutal" type="emptyType"/>
       <xs:element name="core" type="emptyType"/>
-      <xs:element name="pool" type="emptyType"/>  <!-- dice pool ability -->
+      <xs:element name="basic" type="emptyType"/>  <!-- standard vanilla attack ability for a weapon -->
+      <xs:element name="luckpool" type="emptyType"/>  <!-- dice pool ability -->
+      <xs:element name="mettlepool" type="emptyType"/>  <!-- dice pool ability -->
+      <xs:element name="magicpool" type="emptyType"/>  <!-- dice pool ability -->
       
       <!-- weapons -->
       <xs:element name="axe" type="emptyType"/>
