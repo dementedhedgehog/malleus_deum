@@ -319,7 +319,7 @@ def create_index(verbosity=0):
     cmd_line = [makeindex, basename(index_idx)]
     if verbosity > 0:
         print(("\n\n\n" + " ".join(cmd_line)))
-        call(cmd_line, cwd = build_dir)
+    call(cmd_line, cwd = build_dir)
 
     if not xelatex(index_tex):
         return
