@@ -50,7 +50,7 @@
       </p>
     </abilitydescription>
     <spline><p x="70" y="90"/></spline>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks from="1" to="4"/>
@@ -119,7 +119,7 @@
     <abilityid>social.deceive</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
-    <abilitycheck dc="Opposed"/>
+    <abilitycheck dc="Targets Perception"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -141,7 +141,7 @@
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -226,7 +226,7 @@ monster-type      </p>
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -282,7 +282,7 @@ monster-type      </p>
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -297,34 +297,34 @@ monster-type      </p>
   
 
   <ability>
-    <abilitytitle>Interrogate</abilitytitle>
+    <abilitytitle>Interrogate</abilitytitle> 
     <abilityid>social.interrogate</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/><untrained/></tags>
-    <abilitycheck dc="Opponents Check"/>
+    <abilitycheck dc="None"/> <!-- FIXME -->
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
-	The character can make a Std check against an opponent.
-	The target opposes the check by making a hidden roll with one of
-	Fortitude, Endurance, Deceive or Willpower.
+  	The character can make a Std check against an opponent.
+  	The target opposes the check by making a hidden roll with one of
+  	Fortitude, Endurance, Deceive or Willpower.
       </p>
 
       <p>
-	If successful the character can determine if the target is answered a question
-	truthfully.  
+  	If successful the character can determine if the target is answered a question
+  	truthfully.
       </p>
 
       <p>
-	Interrogating a subject involves asking them a barrage of questions
-	and sifting through what they say to find the truth, a process which might
-	take days.  Torture involves hurting the target until they answer
-	questions.  Torture is a deeply disturbing process that may well have
-	a lasting effect on the characters personality.
+  	Interrogating a subject involves asking them a barrage of questions
+  	and sifting through what they say to find the truth, a process which might
+  	take days.  Torture involves hurting the target until they answer
+  	questions.  Torture is a deeply disturbing process that may well have
+  	a lasting effect on the characters personality.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="105"/></spline> 
+    <spline><p x="90" y="105"/></spline>
     <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
   
@@ -334,21 +334,21 @@ monster-type      </p>
     <abilityid>social.intimidate</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><social/><untrained/></tags>
-    <abilitycheck dc="Opposed"/>
+    <abilitycheck dc="None"/>  <!-- FIXME -->
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
-	The character can make an check against an opponent
-	using strength.  The target opposes the check with 
-	one of Strength, Fortitude, Endurance, Speed or Willpower.
-	If successful the character can boss the target around,
-	extract information from them and so on.  The target
-	will not perform actions that they are strongly morally
-	opposed to, or that are highly detrimental to them.
+  	The character can make an check against an opponent
+  	using strength.  The target opposes the check with
+  	one of Strength, Fortitude, Endurance, Speed or Willpower.
+  	If successful the character can boss the target around,
+  	extract information from them and so on.  The target
+  	will not perform actions that they are strongly morally
+  	opposed to, or that are highly detrimental to them.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="105"/></spline> 
+    <spline><p x="0" y="105"/></spline>
     <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
 
@@ -359,7 +359,7 @@ monster-type      </p>
     <abilityid>social.leadership</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><social/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>    
@@ -391,66 +391,66 @@ monster-type      </p>
     <abilityid>social.negotiate</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
-    <abilitycheck dc="Opponents Negotiate"/>
+    <abilitycheck dc="None"/> <!-- FIXME Opponents Negotiate -->
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
-	Negotiation is the art of the deal, persuasion and diplomacy.
-	When some arrangement is in both parties favour and one party
-	wants to extend the terms one more time, that is when the
-	negotiate ability comes into play.
-      </p>
-      
-      <p>            
-	<indexentry>negotiation</indexentry>
-	Negotiation during combat is difficult but a quickly yelled
-	proposition or plea for pax is a free action.  In such cases
-	there is a brief lull in fighting while the character yells out
-	a proposition.  This may be handy when characters need to
-	negotiate a more favourable outcome when combat is going badly
-	for them.  Negotiation cannot occur during a surprise round.
-      </p>
-
-      <p>
-	Negotiation requires the consent of both parties involved.
-	After negotiations have commenced either party can break off 
-	negotiation at any time at which point combat recommenses.  
-	The GM should generally encourage negotiation and give the 
-	players a chance to talk their way out of situations.
-      </p>
-
-      <p>
-	Unintelligent creatures will never participate in negotiation.
-	There is no point arguing with a charging wild boar.
-      </p>
-
-      <p>
-	Negotiation need not be limited to verbal communication.  
-	It may be possible to negotiate using signs, mimes, charades, 
-	mimicking sounds etc.
+  	Negotiation is the art of the deal, persuasion and diplomacy.
+  	When some arrangement is in both parties favour and one party
+  	wants to extend the terms one more time, that is when the
+  	negotiate ability comes into play.
       </p>
       
       <p>
-	Both monsters and players are free to use negotiation in 
-	an attempt to play for time - waiting for the cavalry to arrive.
-	However, if the opponent guesses this is what they are up to
-	they simply ignore the negotiation and continue their attack 
-	instantaneously.
+  	<indexentry>negotiation</indexentry>
+  	Negotiation during combat is difficult but a quickly yelled
+  	proposition or plea for pax is a free action.  In such cases
+  	there is a brief lull in fighting while the character yells out
+  	a proposition.  This may be handy when characters need to
+  	negotiate a more favourable outcome when combat is going badly
+  	for them.  Negotiation cannot occur during a surprise round.
       </p>
 
       <p>
-	It is possible for there to be barriers to negotiation: loud 
-	noises, distance, etc.  If that is the case the GM can require 
-	an appropriate check be made before negotiation can commence.
+  	Negotiation requires the consent of both parties involved.
+  	After negotiations have commenced either party can break off
+  	negotiation at any time at which point combat recommenses.
+  	The GM should generally encourage negotiation and give the
+  	players a chance to talk their way out of situations.
       </p>
 
       <p>
-	The negotiation check is opposed by negotiation or the GM can
-	pick a DC for an NPC opponent.
+  	Unintelligent creatures will never participate in negotiation.
+  	There is no point arguing with a charging wild boar.
+      </p>
+
+      <p>
+  	Negotiation need not be limited to verbal communication.
+  	It may be possible to negotiate using signs, mimes, charades,
+  	mimicking sounds etc.
+      </p>
+      
+      <p>
+  	Both monsters and players are free to use negotiation in
+  	an attempt to play for time - waiting for the cavalry to arrive.
+  	However, if the opponent guesses this is what they are up to
+  	they simply ignore the negotiation and continue their attack
+  	instantaneously.
+      </p>
+
+      <p>
+  	It is possible for there to be barriers to negotiation: loud
+  	noises, distance, etc.  If that is the case the GM can require
+  	an appropriate check be made before negotiation can commence.
+      </p>
+
+      <p>
+  	The negotiation check is opposed by negotiation or the GM can
+  	pick a DC for an NPC opponent.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="105"/></spline> 
+    <spline><p x="-90" y="105"/></spline>
     <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
@@ -459,7 +459,7 @@ monster-type      </p>
     <abilitytitle>Rally</abilitytitle>
     <abilityid>social.rally</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><social/><pool/></tags>
+    <tags><social/><mettlepool/></tags>
     <abilitycheck dc="3"/>
     <abilitychecktype>Mettle+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>

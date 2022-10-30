@@ -24,8 +24,8 @@
     <abilitytitle>Brilliant Planner</abilitytitle>
     <abilityid>luck.brilliant_planner</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><luck/><pool/></tags>
-    <abilitycheck dc="6"/>
+    <tags><luck/><luckpool/></tags>
+    <abilitycheck dc="7"/>
     <abilitychecktype>Luck+Rank</abilitychecktype>
     <abilitydescription>            
       <p>
@@ -48,11 +48,6 @@
 	If the GM allows it, the player checks to see if their planning
 	was successful.
       </p>
-
-      <p>
-	On overcharge lose an additional luck dice.  The character cannot
-	lose more dice than they commited to the check.
-      </p>
     </abilitydescription>
     <spline><p x="60" y="60"/></spline> 
     <prereqabilityrank>luck.lucky_1</prereqabilityrank>	
@@ -63,9 +58,9 @@
     <abilitytitle>Lucky</abilitytitle>
     <abilityid>luck.lucky</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><luck/><pool/></tags>
+    <tags><luck/><luckpool/></tags>
     <abilitycheck dc="Critical Success"/>
-    <abilitychecktype>Any Std</abilitychecktype>
+    <abilitychecktype>Any-Std</abilitychecktype>
     <abilitydescription>
       <p>
 	The character was born lucky.  Whenever the character rolls a critical succces (double 12s)
@@ -81,7 +76,7 @@
     <abilitytitle>I Think I'm OK!</abilitytitle>
     <abilityid>luck.itiok</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><luck/><pool/></tags>
+    <tags><luck/><luckpool/></tags>
     <abilitycheck dc="5"/>
     <abilitychecktype>Luck+Rank</abilitychecktype>
     <abilitydescription>
@@ -101,7 +96,7 @@
     <abilitytitle>Misfortune</abilitytitle>
     <abilityid>luck.misfortune</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><luck/><pool/></tags>
+    <tags><luck/><luckpool/></tags>
     <abilitycheck dc="5"/>
     <abilitychecktype>Luck+Rank</abilitychecktype>
     <abilitydescription>            
@@ -131,9 +126,7 @@
       </p>
 
       <p>
-	Misfortune is usable once per day for the whole party.  In the case
-	of overcharge the characters are out of luck and exhaust a die from their
-	luck pool.
+	Misfortune is usable once per day for the whole party.
       </p>
     </abilitydescription>
     <spline><p x="90" y="30"/></spline> 
@@ -146,7 +139,7 @@
     <abilitytitle>Nick of Time</abilitytitle>
     <abilityid>luck.nick_of_time</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><luck/><pool/></tags>
+    <tags><luck/><luckpool/></tags>
     <abilitycheck dc="5"/>
     <abilitychecktype>Luck+Rank</abilitychecktype>
     <abilitydescription>
@@ -170,7 +163,7 @@
     <abilitytitle>Not As Bad As It Looks</abilitytitle>
     <abilityid>luck.nabail</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><luck/><pool/></tags>
+    <tags><luck/><luckpool/></tags>
     <abilitycheck dc="5"/>
     <abilitychecktype>Luck+Rank</abilitychecktype>
     <abilitydescription>
@@ -180,11 +173,6 @@
 	wounded character heals D4+4 hit points, starting with health.  Only one
 	such wound can be examined per encounter.
       </p>
-
-      <p>
-	In the case of overcharge the characters are out of luck and exhaust a
-	die from their fate pool.
-      </p>      
     </abilitydescription>
     <spline><p x="0" y="35"/></spline> 
     <prereqabilityrank>luck.itiok_1</prereqabilityrank>	
@@ -196,7 +184,7 @@
     <abilitytitle>Reroll</abilitytitle>
     <abilityid>luck.reroll</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><luck/><pool/></tags>
+    <tags><luck/><luckpool/></tags>
     <abilitycheck dc="5"/>
     <abilitychecktype>Luck+Rank</abilitychecktype>
     <abilitydescription>
@@ -213,11 +201,6 @@
 	of 4 on his second roll. Dourli cannot reroll the second roll because he can
 	reroll the dice in a check at most once and must accept the 4 (and not the previously
 	rolled 9).
-      </p>
-
-      <p>
-	In the case of overcharge the characters are out of luck and exhaust a die from their
-	fate pool.
       </p>
     </abilitydescription>
     <spline><p x="-90" y="30"/></spline> 

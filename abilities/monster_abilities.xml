@@ -9,7 +9,7 @@
       <p>
 	These abilities describe monsters special abilities.  Monster
 	abilities can break some of the standard constraints on abilities
-	as monsters do not have to rank up, and we typically want their
+	as monsters do not have to level up, and we typically want their
 	abilities to be simple and easy to run.
       </p>      
     </abilitygroupdescription>
@@ -23,9 +23,9 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="13 + Level"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>5 + 2*Level</abilitydmg>
+    <abilitydmg>5+2*Rank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
       </p>
@@ -43,7 +43,7 @@
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>4+Level</abilitydmg>
+    <abilitydmg>4+Rank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	When bloodied the monster rages using this ability to attack a second time in melee.
@@ -61,11 +61,11 @@
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>4+Level</abilitydmg>
+    <abilitydmg>4+Rank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	Claws are an attack that are particularly effective against
-	Claws get an +Level to hit against Block or Armour Defences.
+	Claws get an +Rank to hit against Block or Armour Defences.
       </p>
     </abilitydescription>
     <spline></spline>
@@ -76,25 +76,23 @@
     <abilitytitle>Countless Bites</abilitytitle>
     <abilityid>monster.countless_bites</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><monster/><pool/></tags>
+    <tags><monster/><mettlepool/></tags>
     <gmgability/>
-    <abilitycheck dc="2"/>
-    <abilitychecktype>Mettle+Rank</abilitychecktype>
-    <abilitydmg>2 + Level</abilitydmg>
+    <abilitycheck dc="5"/>
+    <abilitychecktype>Mettle+Endurance</abilitychecktype>
+    <abilitydmg>2+Rank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	The monster makes dozens of attacks per round.  No to-hit
 	roll is required.  No block or dodge saves apply.  The monster does
 	a fixed amount of damage to each character, friend or foe, adjacent
-	to it at the end of the monsters turn.  The monster makes an automatic
-	attack when making an opportunity attack.  The characters are Dazed and
-	Distracted.
+	to it at the end of the monsters turn equal to the abilities Rank.  The monster
+	makes an automatic attack when making an opportunity attack.  The
+	characters are Dazed and Distracted.
       </p>
 
       <p>
-	The first round characters have to make a mettle check or retreat.
-	On overcharge the characters take double damage but are neither dazed nor
-	distracted.
+	The first round characters have to make a morale check or retreat.
       </p>
     </abilitydescription>
     <spline></spline>
@@ -109,7 +107,7 @@
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>4+Level</abilitydmg>
+    <abilitydmg>4+Rank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	When the character dies they get one last additional attack.
@@ -124,7 +122,7 @@
     <abilitytitle>Demon Instability</abilitytitle>
     <abilityid>monster.demon_instability</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><monster/><pool/></tags>
+    <tags><monster/><mettlepool/></tags>
     <gmgability/>
     <abilitydescription>
       <p noindent="true">
@@ -140,13 +138,9 @@
 	In game, the way this works is that whenever a demon is hit
 	they make a Mettle Check and if they fail they become
 	unstable the demon's connection to the simulacrum is broken and
-	the simulacrum dissipates into foul smelling ooze.	
+	the simulacrum dissipates into foul smelling ooze.  A demon's
+	simulacrum has no hit points per se, only a mettle pool.
       </p>
-
-      <p>
-	On overcharge the demon remains, heals d6 hit points,  but loses
-	a mettle die.
-      </p>      
     </abilitydescription>
     <abilitycheck dc="3"/>
     <abilitychecktype>Mettle+Rank</abilitychecktype>
@@ -161,7 +155,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="8"/>
+    <abilitycheck dc="9"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -182,7 +176,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="8"/>
+    <abilitycheck dc="9"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -207,7 +201,7 @@
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>3 + Level</abilitydmg>
+    <abilitydmg>3+2xRank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	This powerfull built monster has a set of horns
@@ -226,7 +220,7 @@
     <gmgability/>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>3 + 2xLevel</abilitydmg>
+    <abilitydmg>3+3xRank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	This large monster has a set of horns
@@ -252,7 +246,7 @@
     </abilitydescription>
     <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>2 + 2*Level</abilitydmg>
+    <abilitydmg>3+Rank</abilitydmg>
     <spline></spline>
     <abilityranks from="1" to="5"/>
   </ability>
@@ -263,9 +257,9 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="7 + Level or target is Poisoned"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>4 + 2*Level</abilitydmg>
+    <abilitycheck dc="7"/>
+    <abilitychecktype>Std+Endurance</abilitychecktype>
+    <abilitydmg>4+2*Rank</abilitydmg>
     <abilitydescription>
       <p noindent="true">
 	FIXME: we need to work out what poisoned should look like.  (Tempted to
@@ -283,7 +277,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="8"/>
+    <abilitycheck dc="9"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -293,7 +287,6 @@
 	the tail. 
       </p>
     </abilitydescription>
-    
     <spline></spline>
     <abilityranks from="1" to="5"/>
   </ability>
@@ -305,7 +298,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="Targets Dodge"/>
+    <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -313,7 +306,7 @@
 	The monster has a tongue that they can shoot out a distance of
 	<measurement><metric>5m</metric><imperial>15'</imperial></measurement>
 	and grab things with.  If successful the target is grabbed with a
-	Strength 8 + 3 x Level DC.
+	Strength 8+3xRank DC.
       </p>
     </abilitydescription>     
     <spline></spline>
@@ -326,12 +319,12 @@
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="0"/>
+    <abilitycheck dc="None"/>
     <abilitychecktype>No-Check</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p noindent="true">
-    	At the start of the creatures turn it regenerates Level Hit Points.
+    	At the start of the creatures turn it regenerates Rank hit points.
       </p>
     </abilitydescription>
     <spline></spline>
@@ -344,7 +337,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="8"/>
+    <abilitycheck dc="9"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>    
     <abilitydescription>
@@ -363,7 +356,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="8"/>
+    <abilitycheck dc="9"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -426,7 +419,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -449,7 +442,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><monster/></tags>
     <gmgability/>
-    <abilitycheck dc="Targets Defence not Parry/Armour"/>
+    <abilitycheck dc="Targets Defence"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>

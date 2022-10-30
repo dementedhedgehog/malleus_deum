@@ -59,7 +59,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="0"/></spline> 
-    <abilitycheck dc="Attack DC" />
+    <abilitycheck dc="Targets Attack" />
     <abilitychecktype>Armour+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks untrained="0" from="1" to="3"/>
@@ -70,7 +70,7 @@
     <abilitytitle>Charge</abilitytitle>
     <abilityid>physical.charge</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><martial/><pool/></tags>
+    <tags><physical/><martial/><mettlepool/></tags>
     <abilitycheck dc="3"/>
     <abilitychecktype>Mettle+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
@@ -102,7 +102,7 @@
     <abilityid>physical.climb</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -121,7 +121,7 @@
     <abilityid>physical.dodge</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
-    <abilitycheck dc="Attack DC"/>
+    <abilitycheck dc="Targets Attack"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -151,7 +151,7 @@
     <abilityid>physical.flee</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -178,20 +178,20 @@
     <tags><physical/><nonlethal/><untrained/></tags>
     <abilitydescription>
       <p>
-	Grappling involves grabbing, tackling or wrestling an opponent and holding 
-	them without harming them.  Other attacks against a grappled opponent
-	are hindered by the grappler being close to the opponent and the opponents
-	struggling.
+  	Grappling involves grabbing, tackling or wrestling an opponent and holding
+  	them without harming them.  Other attacks against a grappled opponent
+  	are hindered by the grappler being close to the opponent and the opponents
+  	struggling.
       </p>
 
       <p>
-	Every round that an opponent is grappled they may make an opposed Str test 
-	against their grappler to escape.  Once grappled it takes a round for 
-	a second character to tie-up, or otherwise constrain, the opponent.
+  	Every round that an opponent is grappled they may make an opposed Str test
+  	against their grappler to escape.  Once grappled it takes a round for
+  	a second character to tie-up, or otherwise constrain, the opponent.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="90"/></spline> 
-    <abilitycheck dc="Targets Str or Grapple"/>
+    <spline><p x="90" y="90"/></spline>
+    <abilitycheck dc="None"/>  <!-- FIXME -->
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks untrained="-3" from="1" to="3"/>
@@ -245,23 +245,23 @@
     <abilitytitle>Juggernaut</abilitytitle>
     <abilityid>physical.juggernaut</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><nonlethal/></tags>
-    <abilitycheck dc="Opposed Targets Strength + 1 per opponent"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
+    <tags><physical/><nonlethal/><accurate/></tags>
+    <abilitycheck dc="Targets Strength"/>
+    <abilitychecktype>Std+3×Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
       <p>
-	The attacker uses his mass and strength to brush aside those who
-	stand in his way.  Such is the force of his unstoppable charge that
-	at most one opportunity attack can be made against him.
+  	The attacker uses his mass and strength to brush aside those who
+  	stand in his way.  Such is the force of his unstoppable charge that
+  	at most one opportunity attack can be made against him.
       </p>
 
       <p>
-	Note that the Juggernaut ability may only be used against opponents of
-	similar or smaller size and strength.
+  	Note that the Juggernaut ability may only be used against opponents of
+  	similar or smaller size and strength.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="90"/></spline> 
+    <spline><p x="-90" y="90"/></spline>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -321,7 +321,7 @@
     <abilityid>physical.listen</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -340,7 +340,7 @@
     <abilityid>physical.notice</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>    
     <abilitydescription>
@@ -494,7 +494,7 @@
     <abilityid>physical.sure_feet</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -533,7 +533,7 @@
     <abilityid>physical.throw</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><martial/></tags>
-    <abilitycheck dc="12"/>
+    <abilitycheck dc="13"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilitydescription>
@@ -553,7 +553,7 @@
     <abilitytitle>Witness Me</abilitytitle>
     <abilityid>physical.witness_me</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><physical/><pool/></tags>
+    <tags><physical/><mettlepool/></tags>
     <abilitycheck dc="3"/>
     <abilitychecktype>Mettle+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>

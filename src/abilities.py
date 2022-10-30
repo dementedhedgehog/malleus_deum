@@ -57,18 +57,17 @@ UNTRAINED = "Untrained"
 # We limit the range of values to reduce complexity in the system.  This should make 
 # it easier to remember dcs?  We choose odd ddcs because 5 is the lowest ddc you can
 # fail at Rank 3.
-VALID_DDCS = (3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39)
+VALID_DDCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
+              "31", "33", "35", "37", "39",
+              "Targets Defence", "Targets Attack", "Critical Success", "None", "Context Dependent",
+              "Targets Strength", "Targets Agility", "Targets Perception", "Targets Speed")
 
 
 def is_valid_ddc(rank):
     """
     Returns True if the rank is an acceptable rank.
     """
-    try:
-        i = int(rank)
-        return i in VALID_DDCS
-    except ValueError:
-        return False
+    return rank in VALID_DDCS
 
 class AbilityFamily:
     def __init__(self, family_type):
@@ -151,12 +150,16 @@ class AbilityRankPrereq(Prerequisite):
         self.ability_rank = None
         return
 
-    def get_ability(self):        
-        return self.get_ability_rank().ability
+    def get_ability(self):
+        ability_rank = self.get_ability_rank()
+        if ability_rank is None:
+            return None
+        return ability_rank.ability
 
     def get_ability_rank(self):
+        """Returns None if the rank does not exist!"""
         if self.ability_rank is None:
-            self.ability_rank = ability_rank_lookup[self.ability_rank_id]
+            self.ability_rank = ability_rank_lookup.get(self.ability_rank_id)
         return self.ability_rank
     
     def to_string(self):         
@@ -345,8 +348,8 @@ class AbilityCheck:
                                 "rank modifies the DC?")
 
         if not is_valid_ddc(self.dc):
-            problems.append(f"Ability {self.ability.ability_id} has an invalid ddc.  It should be "
-                            f"in the range {VALID_DDCS}.")
+            problems.append(f"Ability {self.ability.ability_id} has an invalid ddc '{self.dc}'.  "
+                            f"It should be one of {VALID_DDCS}.")
 
         #
         # Check the tags are set properly.
@@ -1029,11 +1032,15 @@ class AbilityGroups:
         found = None
         ability_id = ability.get_id()
         for group in self.ability_groups:
-            a1 = group.get_ability(ability_id)
-            if a1 is not None:
+            ability = group.get_ability(ability_id)
+            if ability is not None:
                 for a2 in group:
                     if a2.ability_rank_prereq is not None:
                         ability_prereq = a2.ability_rank_prereq.get_ability()
+                        if ability_prereq is None:
+                            prereq_id = a2.ability_rank_prereq.get_ability_rank_id()
+                            raise Exception(f"Ability prereq {prereq_id} does not exist for "
+                                            f"ability: {ability.get_title()} {a2.get_title()}")
                         if ability_prereq == ability:
                             children.append(a2)
         return children                

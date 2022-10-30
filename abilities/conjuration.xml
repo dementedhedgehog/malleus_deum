@@ -43,11 +43,12 @@
       <p>
 	The caster shoots a raw stream of thaumic energy from
 	their hands at a target.  If successful the caster makes
-	a second Std Check +6+Level bonus attack against the targets Dodge, Agility, or Strength Defence.
+	a second Std Chec +6+Rank bonus attack against the targets Dodge, Agility, or
+	Strength Defence.
       </p>
 
       <p>
-	If they hit the target, the target suffers 8 damage
+	If they hit the target, the target suffers 7+Rank damage.
 	and is pushed  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
 	away from the caster.
       </p>
@@ -56,7 +57,34 @@
     <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
     <abilitycheck dc="3"/>
     <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg>4 +Level</abilitydmg>
+    <abilitydmg>7+Rank</abilitydmg>
+    <abilityranks from="1" to="3"/>
+  </ability>
+
+  <ability>
+    <abilitytitle>Chain Lightning</abilitytitle>
+    <abilityid>conjuration.chain_lightning</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><conjuration/><magicpool/></tags>
+    <abilitydescription>
+      <p>
+	The caster acts as a conduit for eldritch energies, directing them in an arc at a target.
+	First the caster checks magic to gather the energy.  Then they roll to a Std+Rank against the
+	targets defence.  If the arc successfuls hits, the caster can arc the lightning to a subsequent
+	target making another to hit roll, and so on until the caster misses or runs out of potential
+	targets.  The initial target can be any opponent within range <measurement><imperial>60'</imperial><metric>20m</metric></measurement>.  When choosing subsequent targets the caster must choose the closest untargeted
+	enemy to the last target.   No target can be struck more than once.
+      </p>
+
+      <p>
+	On overcharge the caster is also struck.
+      </p>
+    </abilitydescription>    
+    <spline><p x="90" y="30"/></spline>
+    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <abilitycheck dc="9"/>
+    <abilitychecktype>Magic+Rank</abilitychecktype>
+    <abilitydmg>d12+Rank</abilitydmg>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -124,7 +152,7 @@
     </abilitydescription>
     <spline><p x="-60" y="60"/></spline>
     <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
-    <abilitycheck dc="9 initial, 6 subsequent"/>
+    <abilitycheck dc="7"/>
     <abilitychecktype>Magic+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks from="1" to="3"/>
@@ -145,7 +173,7 @@
     </abilitydescription>    
     <spline><p x="0" y="30"/></spline>
     <prereqabilityrank>conjuration.scry_2</prereqabilityrank>	
-    <abilitycheck dc="7 initial, 5 subsequent"/>
+    <abilitycheck dc="7"/>
     <abilitychecktype>Magic+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks from="1" to="2"/>
@@ -168,7 +196,7 @@
       </p>
 
       <p>
-	The target is momentarily transfixed, they check Mettle vs DDC of 12+Rank
+	The target is momentarily transfixed, they check Mettle vs DDC of 9+Rank
 	or lose their turn.
       </p>
     </abilitydescription>    

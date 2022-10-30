@@ -15,17 +15,24 @@
   
 
   <ability>
-    <abilitytitle></abilitytitle>
-    <abilityid></abilityid>
-    <abilityactiontype><combat/></abilityactiontype>
-    <tags><martial/><brutal/><pool/></tags>
+    <abilitytitle>Blood Frenzy</abilitytitle>
+    <abilityid>brutal.blood_frenzy</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><martial/><brutal/><mettlepool/></tags>
     <abilitydescription>
       <p>
+	After your character makes a successful melee attack you can make a
+	a Blood Frenzy Check.  If successful you enter a Blood Frenzy and
+	get advantage for standard basic melee attacks.  While in a frenzy the character
+	must perform a basic melee attack every turn.  If the character does
+	not perform a basic melee attack in their turn or if their are no opponents left
+	the character automatically recovers from their frenzy.	The character must make a
+	morale check to voluntarily recover from their frenzy.  
       </p>      
     </abilitydescription>
     <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>brutal.shoot_1</prereqabilityrank>
-    <abilitycheck dc="12"/>
+    <prereqabilityrank></prereqabilityrank>
+    <abilitycheck dc="5"/>
     <abilitychecktype>Mettle+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks from="1" to="3"/>

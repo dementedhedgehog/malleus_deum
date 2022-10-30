@@ -37,7 +37,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="Attack"/>
+    <abilitycheck dc="Targets Attack"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>    
     <abilityranks untrained="0" from="1" to="4"/>
@@ -50,16 +50,16 @@
     <tags><weapon/></tags>
     <abilitydescription>
       <p>
-	<indexentry>Shield Push</indexentry>
-	The character can use the shield to push an adjacent opponent
-	back in a direction chosen by the character.  The opponent must
-	be corporeal, humanoind, capable of being moved, and not too much larger
-	than the character.
+  	<indexentry>Shield Push</indexentry>
+  	The character can use the shield to push an adjacent opponent
+  	back in a direction chosen by the character.  The opponent must
+  	be corporeal, humanoind, capable of being moved, and not too much larger
+  	than the character.
       </p>
     </abilitydescription>
     <spline><p x="60" y="30"/></spline>
-    <prereqabilityrank>shield.block_1</prereqabilityrank>	
-    <abilitycheck dc="Opponents Strength"/>
+    <prereqabilityrank>shield.block_1</prereqabilityrank>
+    <abilitycheck dc="Targets Strength"/> <!-- FIXME -->
     <abilitychecktype>Strength+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks from="1" to="4"/>
@@ -72,16 +72,16 @@
     <tags><weapon/></tags>
     <abilitydescription>
       <p>
-	<indexentry>support</indexentry>
-	Large shields provide <defn>Support</defn>.
-	The character wielding a large shield can use their reaction to block attacks on adjacent allies.
-	In order to use this ability the ally must be standing shoulder to shoulder
-	with the character.  In other respects this ability works like Shield Block.
+  	<indexentry>support</indexentry>
+  	Large shields provide <defn>Support</defn>.
+  	The character wielding a large shield can use their reaction to block attacks on adjacent allies.
+  	In order to use this ability the ally must be standing shoulder to shoulder
+  	with the character.  In other respects this ability works like Shield Block.
       </p>
     </abilitydescription>
     <spline><p x="-60" y="30"/></spline>
-    <prereqabilityrank>shield.block_1</prereqabilityrank>	
-    <abilitycheck dc="Attack"/>
+    <prereqabilityrank>shield.block_1</prereqabilityrank>
+    <abilitycheck dc="Targets Attack"/>
     <abilitychecktype>Std+Rank</abilitychecktype>
     <abilitydmg></abilitydmg>
     <abilityranks from="1" to="4"/>

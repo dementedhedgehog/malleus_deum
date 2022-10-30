@@ -451,8 +451,10 @@
       <xs:pattern value="Armour\+Rank"/> <!-- Armour ability only -->
       <xs:pattern value="Speed\+Rank"/> <!-- Non-attack abilities only -->
       <xs:pattern value="Strength\+Rank"/> <!-- Non-attack abilities only -->
-      <xs:pattern value="Std\+3×Rank"/>  <!-- note the multiplication symbol .. not an X -->
+      <xs:pattern value="Std\+3×Rank"/>  <!-- for accurate attacks, note the multiplication symbol (not an x) -->
       <xs:pattern value="Std\+Rank"/>
+      <xs:pattern value="Std\+Endurance"/> <!-- for monster attacks --> 
+      <xs:pattern value="Mettle\+Endurance"/> <!-- for monster attacks --> 
       <xs:pattern value="Std"/> <!-- for inaccurate attacks only -->
     </xs:restriction>
   </xs:simpleType>  
@@ -930,15 +932,15 @@
       <xs:element name="levelnumber" type="xs:unsignedInt" minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelmettle" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelmettlerefresh" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelstamina" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="1" maxOccurs="1"/>
       <!-- <xs:element  -->
       <!--     name="levelstaminarefresh"  -->
@@ -946,27 +948,27 @@
       <!--     minOccurs="1" maxOccurs="1"/> -->
       <xs:element 
           name="levelhealth" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelhealthrefresh" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="1" maxOccurs="1"/>      
       <xs:element 
           name="levelluck" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelluckrefresh" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="levelmagicpool" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="0" maxOccurs="1"/>
       <xs:element 
           name="levelmagicrefresh" 
-          type="xs:positiveInteger" 
+          type="xs:string" 
           minOccurs="0" maxOccurs="1"/>
       <xs:element name="leveldescription" type="levelDescriptionType"
 		  minOccurs="0" maxOccurs="1"/>
