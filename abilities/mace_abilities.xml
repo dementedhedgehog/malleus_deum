@@ -20,9 +20,7 @@
     <abilityid>mace.smash</abilityid> 
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><crushing/></tags>     
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
         Characters equipped with a mace or similar weapon can attempt
@@ -44,9 +42,7 @@
     <abilityid>mace.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><mace/><crushing/></tags>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a Mace or similar weapon can strike
@@ -63,9 +59,7 @@
     <abilityid>mace.wild_swing</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><crushing/></tags>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon+Strength+Rank</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength+Rank">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	The character swings the mace wildly keeping their opponents at bay.
@@ -94,9 +88,7 @@
     </abilitydescription>
     <spline><p x="-30" y="60"/></spline>
     <prereqabilityrank>mace.strike_1</prereqabilityrank>	
-    <abilitycheck dc="Targets Attack"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
     <abilityranks from="1" to="6"/>
   </ability>    
 </abilitygroup>

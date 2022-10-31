@@ -32,9 +32,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="30"/></spline>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
     <prereqabilityrank>spear.strike_1</prereqabilityrank>    
     <abilityranks from="1" to="4"/>
   </ability>
@@ -45,9 +43,7 @@
     <abilityid>spear.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><spear/><reach/><piercing/></tags>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a spear or polearm can strike with
@@ -72,9 +68,7 @@
 	in the direction of the character.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>2x(Weapon + Strength)</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="2x(Weapon+Rank)">Std+Rank</abilitycheck>
     <spline><p x="-75" y="30"/></spline>
     <prereqabilityrank>spear.strike_2</prereqabilityrank>
     <abilityranks from="1" to="4"/>
@@ -100,9 +94,7 @@
 	weapon, and it only works when the opponents are within a 180° arc.  
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
     <spline><p x="-30" y="75"/></spline>
     <prereqabilityrank>spear.strike_2</prereqabilityrank>
     <abilityranks from="1" to="4"/>

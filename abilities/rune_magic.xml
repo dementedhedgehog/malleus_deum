@@ -28,9 +28,7 @@
 	barrier with 10 hit points for each rank of the spell cast.
       </p>
     </abilitydescription>    
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
     <spline><p x="60" y="30"/></spline>
     <prereqabilityrank>rune.lore_1</prereqabilityrank>	
     <abilityranks from="1" to="4"/>
@@ -47,9 +45,7 @@
 	used mainly by dwarves and shamen.
       </p>
     </abilitydescription>    
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline></spline>
     <abilityranks from="1" to="4"/>
   </ability>
@@ -68,9 +64,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="-30" y="30"/></spline>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg>d6 x Level + 4</abilitydmg>
+    <abilitycheck dc="9" dmg="d6xRank+4">Magic+Rank</abilitycheck>
     <prereqabilityrank>rune.lore_1</prereqabilityrank>	
     <abilityranks from="1" to="4"/>
   </ability>

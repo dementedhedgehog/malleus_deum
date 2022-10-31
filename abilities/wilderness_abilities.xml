@@ -10,6 +10,52 @@
         Represents those abilities used to live in the wilderness: hunting, tracking,
 	wayfinding, survivalism and woodcraft.
       </p>
+
+      <table>
+	<tablecategory>FullWidth</tablecategory>
+	<tablespec>
+	  <fixed>0.08</fixed>
+	  <fixed>0.08</fixed>
+	  <fixed>0.08</fixed>
+	  <fixed>0.08</fixed>
+	  <fixed>0.08</fixed>
+	  <fixed>0.08</fixed>
+	  <fixed>0.10</fixed>
+	  <fixed>0.08</fixed>
+	  <fixed>0.08</fixed>
+	  <fixed>0.08</fixed>
+	</tablespec>
+	<tabletitle>Terrain Modifiers</tabletitle>
+
+	<tableheaderrow>
+	  <td>Deserts</td>
+	  <td>Plains</td>
+	  <td>Marshes</td>
+	  <td>Hills</td>
+	  <td>Woods</td>
+	  <td>Mountains</td>
+	  <td>Tundra</td>
+	  <td>Jungles</td>
+	  <td>Sea</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>Deserts</td><td>Rank</td><td>-</td><td>Rank-1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+	</tablerow>
+	<tablerow>
+	  <td>Plains</td><td>Rank-2</td><td>Rank</td><td>Rank-2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+	</tablerow>
+	  <!-- <td>Marshes</td><td></td><td></td><td>Rank</td><td></td><td></td><td></td><td></td><td></td> -->
+	  <!-- <td>Hills</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td> -->
+	  <!-- <td>Woods</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td> -->
+	  <!-- <td>Mountains</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td> -->
+	  <!-- <td>Tundra</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td> -->
+	  <!-- <td>Jungles</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td> -->
+	  <!-- <td>Sea</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td> -->
+	<!-- </tablerow> -->
+	<tablelabel>table:{{ doc_name }}-terrain</tablelabel>
+      </table>       
+      
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
@@ -29,142 +75,36 @@
     </abilitydescription>
     <spline><p x="-60" y="30"/></spline>
     <prereqabilityrank>wilderness.lore_1</prereqabilityrank>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>    
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilityranks untrained="-3" from="1" to="4"/>
   </ability>
 
-  <ability>
-    <abilitytitle>Hunting</abilitytitle>
-    <abilityid>wilderness.hunting</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wilderness/></tags>
-    <abilitydescription>
-      <p>
-	This ability involves finding and hunting animals with a bow
-	or spear.
-      </p>
-    </abilitydescription>
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>wilderness.lore_1</prereqabilityrank>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>    
-    <abilityranks untrained="0" from="1" to="4"/>
-  </ability>
-
   
-  <ability>
-    <abilitytitle>Scout</abilitytitle>
-    <abilityid>wilderness.scout</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wilderness/></tags>
-    <abilitydescription>
-      <p>
-	Scout is the ability to notice things that are out of
-	place in the wilderness.  The character becomes aware of
-	any subtle but strange changes in the environment.  
-      </p>
-      <p>
-        <indexentry>Detect Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
-        <indexentry>Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
-	Scout can be used to detect traps, snares, lures etc in the wilderness.
-	In urban environments use the Notice ability, and use a
-	Perception Check in other cases.
-      </p>	
-    </abilitydescription>
-    <spline><p x="60" y="30"/></spline>
-    <prereqabilityrank>wilderness.lore_1</prereqabilityrank>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks untrained="0" from="1" to="4"/>
-  </ability>
-  
-  <ability>
-    <abilitytitle>Stealth</abilitytitle>
-    <abilityid>wilderness.stealth</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wilderness/></tags>
-    <abilitydescription>
-      <p>
-  	Stealth ia the ability to move silently, avoiding detection, while
-  	not leaving a trace of the characters passage in the wilderness.
-  	This ability is used to avoid being tracked.  Stealth can also
-  	be used for evading pursuit in the wilderness.
-      </p>
-
-      <p>
-  	In urban or built environments use the Sneak ability, and use an Agility Check
-  	in other cases.
-      </p>
-    </abilitydescription>
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>wilderness.lore_2</prereqabilityrank>
-    <abilitycheck dc="None"/> <!-- FIXME ccccccccccccccccccc -->
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks untrained="0" from="1" to="4"/>
-  </ability>
-
 
   <ability>
     <abilitytitle>Survivalism</abilitytitle>
     <abilityid>wilderness.survivalism</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wilderness/><untrained/></tags>
+    <abilitytemplate>terrain-type</abilitytemplate>
+    <tags><wilderness/></tags>
     <abilitydescription>
+
       <p>
-	Constructing make-shift shelters, starting fires in challenging conditions, 
-	finding water, trapping and the use of snares.  Normally this is not an issue 
+	Survivalism encompasses a range of skills used to survive in the
+	wilds, including but not limited to: Wayfinding, Tracking, Hunting
+	and Scouting.
+      </p>
+
+      <p>
+	This ability includes constructing make-shift shelters, starting fires in
+	challenging conditions, finding water, trapping and the use of snares.  Normally this is not an issue 
 	for characters.  However, when the cold north winds start to howl and the 
 	snow falls, when food runs low, or when alone in the burning deserts survival
 	becomes	difficult and someone should test against this ability.
         <indexentry>Traps<subentry>create Survivalism (Wilderness)</subentry></indexentry>	
       </p>
-    </abilitydescription>
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>wilderness.wayfinding_1</prereqabilityrank>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>    
-    <abilityranks untrained="-3" from="1" to="4"/>
-  </ability>
-
-  <ability>
-    <abilitytitle>Tracking</abilitytitle>
-    <abilityid>wilderness.tracking</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wilderness/></tags>
-    <abilitydescription>
-      <p>
-  	Tracking is the art of following trails left by others.
-  	It applies mainly to the wilderness but given the right
-  	circumstances may be used in cities or beneath the earths
-  	surface.  Tracking involves observing changes in the
-  	environment caused by the individuals being tracked.
-  	For example, it might be impossible to track someone
-  	who had moved down a corridor unless they had just walked
-  	through mud or water, or were wounded and leaving
-  	a trail of blood.
-      </p>
-    </abilitydescription>
-    <spline><p x="15" y="30"/></spline>
-    <prereqabilityrank>wilderness.lore_1</prereqabilityrank>
-    <abilitycheck dc="None"/>  <!-- FIXME !!!!!!!!!!!!!!!! -->
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks untrained="0" from="1" to="4"/>
-  </ability>
-
-
-  <ability>
-    <abilitytitle>Wayfinding</abilitytitle>
-    <abilityid>wilderness.wayfinding</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wilderness/></tags>
-    <abilitydescription>
+      
+      
       <p>
 	Wayfinding is the art of finding paths through 
 	the wilderness to a destination.  Along major roads
@@ -175,18 +115,53 @@
 	or being in view of landmarks should also make the 
 	test much easier.
       </p>
+
+      <p>
+  	Tracking involves following trails left by others.
+  	It applies mainly to the wilderness but given the right
+  	circumstances may be used in cities or beneath the earths
+  	surface.  The tracker observes changes in the
+  	environment caused by the individuals being tracked.
+  	For example, it might be impossible to track someone
+  	who had moved down a corridor unless they had just walked
+  	through mud or water, or were wounded and leaving
+  	a trail of blood.
+      </p>
+
+      <p>
+  	Stealth ia the ability to move silently in the wilderness, avoiding
+	detection, while not leaving a trace of the characters passage in
+	the wilderness.  This ability is used to avoid being tracked.
+	Stealth can also be used for evading pursuit in the wilderness.
+      </p>
+
+      <p>
+	Hunting involves finding and killing animals with a bow
+	or spear.
+      </p>
+
+      <p>
+	Scouting is the ability to notice things that are out of
+	place in the wilderness.  The character becomes aware of
+	any subtle but strange changes in the environment.  
+      </p>
+      <p>
+        <indexentry>Detect Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
+        <indexentry>Traps<subentry>see Scout (Wilderness)</subentry></indexentry>
+	Scout can be used to detect traps, snares, lures etc in the wilderness.
+	In urban environments use the Notice ability, and use a
+	Perception Check in other cases.
+      </p>	            
     </abilitydescription>
     <spline><p x="-30" y="60"/></spline>
     <prereqabilityrank>wilderness.lore_1</prereqabilityrank>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilityranks untrained="-3" from="1" to="4"/>
   </ability>
   
-
+  
   <ability>
-    <abilitytitle>Wilderness Lore</abilitytitle>
+    <abilitytitle>Wilderness Lore [Terrain]</abilitytitle>
     <abilityid>wilderness.lore</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <abilitytemplate>terrain</abilitytemplate>
@@ -201,9 +176,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <abilityranks untrained="-3" from="1" to="4"/>
   </ability>  
 </abilitygroup>

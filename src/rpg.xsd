@@ -300,7 +300,7 @@
 
   <xs:complexType name="abilityrefType">
     <xs:attribute name="id" type="xs:string" use="required"/>
-    <xs:attribute name="template" type="xs:string" use="optional"/>
+    <!-- <xs:attribute name="template" type="xs:string" use="optional"/> -->
     <xs:attribute name="rank" type="xs:int" />
   </xs:complexType>
   
@@ -420,9 +420,10 @@
       <xs:element name="abilityranks" type="abilityranksType"/>
       <!-- Which book does this ability go in? phb or gmg? -->
       <xs:element name="gmgability" type="emptyType" minOccurs="0" maxOccurs="1"/>      
-      <xs:element name="abilitycheck" type="abilityCheckType" minOccurs="1"/>
-      <xs:element name="abilitychecktype" type="checkType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="abilitydmg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <!-- <xs:element name="abilitycheck" type="abilityCheckType" minOccurs="1"/> -->
+      <!-- <xs:element name="abilitychecktype" type="checkType" minOccurs="1" maxOccurs="1"/> -->
+      <xs:element name="abilitycheck" type="abilitycheckType" minOccurs="1"/>
+      <!-- <xs:element name="abilitydmg" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
       <!-- <xs:element name="abilitymastery" type="xs:int" minOccurs="1"/> -->
       <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
       <xs:element name="spline" type="splineType" minOccurs="0" maxOccurs="1"/>
@@ -439,8 +440,10 @@
     <xs:attribute name="to" type="xs:int" />
   </xs:complexType>
 
+
   <!-- type of check to use in an ability (patterns are regexes) -->
-  <xs:simpleType name="checkType">
+  <!-- N.B the multiplication symbol × is *NOT* an x!! -->
+  <xs:simpleType name="_abilitycheckType">
     <xs:restriction base="xs:string">
       <xs:pattern value="Magic\+Rank"/>
       <xs:pattern value="Mettle\+Rank"/>
@@ -451,13 +454,85 @@
       <xs:pattern value="Armour\+Rank"/> <!-- Armour ability only -->
       <xs:pattern value="Speed\+Rank"/> <!-- Non-attack abilities only -->
       <xs:pattern value="Strength\+Rank"/> <!-- Non-attack abilities only -->
-      <xs:pattern value="Std\+3×Rank"/>  <!-- for accurate attacks, note the multiplication symbol (not an x) -->
+      <xs:pattern value="Std\+3×Rank"/>  <!-- for accurate attacks,  -->
       <xs:pattern value="Std\+Rank"/>
-      <xs:pattern value="Std\+Endurance"/> <!-- for monster attacks --> 
-      <xs:pattern value="Mettle\+Endurance"/> <!-- for monster attacks --> 
+      <xs:pattern value="Std\+Endurance"/> <!-- for monster attacks -->
+      <xs:pattern value="Mettle\+Endurance"/> <!-- for monster attacks -->
+      <xs:pattern value="Mettle\+3×Rank"/> <!-- for  -->
+      <xs:pattern value="Std\+Agility\+Rank"/>
+      <xs:pattern value="Std\+Strength"/>
+      <xs:pattern value="Std\+Endurance"/>
+      <xs:pattern value="Std\+Agility"/>
+      <xs:pattern value="Std\+Speed"/>
+      <xs:pattern value="Std\+Perception"/>
       <xs:pattern value="Std"/> <!-- for inaccurate attacks only -->
     </xs:restriction>
-  </xs:simpleType>  
+  </xs:simpleType>
+  
+  <!-- This is the only way to define restrictions and attributes smh. -->
+  <xs:complexType name="abilitycheckType">
+    <xs:simpleContent>
+      <xs:extension base="_abilitycheckType">
+	<xs:attribute name="name" type="abilityCheckNameType" use="optional"/>
+	<xs:attribute name="dc" type="xs:string" use="required"/>
+	<xs:attribute name="dmg" type="xs:string" use="optional"/>
+	<xs:attribute name="effect" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- <!-\- type that describes an ability check.. -\-> -->
+  <!-- <xs:complexType name="checkType"> -->
+  <!--   <xs:simpleContent> -->
+  <!--     <xs:restriction base="xs:string"> -->
+  <!-- 	<xs:pattern value="Magic\+Rank"/> -->
+  <!-- 	<xs:pattern value="Mettle\+Rank"/> -->
+  <!-- 	<xs:pattern value="Luck\+Rank"/> -->
+  <!-- 	<xs:pattern value="No-Check"/> <!-\- Monster abilities only -\-> -->
+  <!-- 	<xs:pattern value="Opposed"/> <!-\- DC depends on the target -\-> -->
+  <!-- 	<xs:pattern value="Any-Std"/> <!-\- Lucky ability only -\-> -->
+  <!-- 	<xs:pattern value="Armour\+Rank"/> <!-\- Armour ability only -\-> -->
+  <!-- 	<xs:pattern value="Speed\+Rank"/> <!-\- Non-attack abilities only -\-> -->
+  <!-- 	<xs:pattern value="Strength\+Rank"/> <!-\- Non-attack abilities only -\-> -->
+  <!-- 	<xs:pattern value="Std\+3×Rank"/>  <!-\- for accurate attacks, note the multiplication symbol (not an x) -\-> -->
+  <!-- 	<xs:pattern value="Std\+Rank"/> -->
+  <!-- 	<xs:pattern value="Std\+Endurance"/> <!-\- for monster attacks -\->  -->
+  <!-- 	<xs:pattern value="Mettle\+Endurance"/> <!-\- for monster attacks -\->  -->
+  <!-- 	<xs:pattern value="Std"/> <!-\- for inaccurate attacks only -\-> -->
+  <!--     </xs:restriction> -->
+  <!--   </xs:simpleContent> -->
+  <!--   <xs:attribute name="name" type="abilityCheckNameType" use="optional"/> -->
+  <!--   <xs:attribute name="dc" type="xs:string" use="required"/>  -->
+  <!-- </xs:complexType> -->
+
+  
+
+  <!-- <!-\- type that describes an ability check.. -\-> -->
+  <!-- <xs:complexType name="abilityCheckType"> -->
+  <!--   <xs:attribute name="name" type="abilityCheckNameType" use="optional"/> -->
+  <!--   <xs:attribute name="dc" type="xs:string" use="required"/> -->
+  <!-- </xs:complexType> -->
+  
+
+  <!-- <!-\- type of check to use in an ability (patterns are regexes) -\-> -->
+  <!-- <xs:simpleType name="checkType"> -->
+  <!--   <xs:restriction base="xs:string"> -->
+  <!--     <xs:pattern value="Magic\+Rank"/> -->
+  <!--     <xs:pattern value="Mettle\+Rank"/> -->
+  <!--     <xs:pattern value="Luck\+Rank"/> -->
+  <!--     <xs:pattern value="No-Check"/> <!-\- Monster abilities only -\-> -->
+  <!--     <xs:pattern value="Opposed"/> <!-\- DC depends on the target -\-> -->
+  <!--     <xs:pattern value="Any-Std"/> <!-\- Lucky ability only -\-> -->
+  <!--     <xs:pattern value="Armour\+Rank"/> <!-\- Armour ability only -\-> -->
+  <!--     <xs:pattern value="Speed\+Rank"/> <!-\- Non-attack abilities only -\-> -->
+  <!--     <xs:pattern value="Strength\+Rank"/> <!-\- Non-attack abilities only -\-> -->
+  <!--     <xs:pattern value="Std\+3×Rank"/>  <!-\- for accurate attacks, note the multiplication symbol (not an x) -\-> -->
+  <!--     <xs:pattern value="Std\+Rank"/> -->
+  <!--     <xs:pattern value="Std\+Endurance"/> <!-\- for monster attacks -\->  -->
+  <!--     <xs:pattern value="Mettle\+Endurance"/> <!-\- for monster attacks -\->  -->
+  <!--     <xs:pattern value="Std"/> <!-\- for inaccurate attacks only -\-> -->
+  <!--   </xs:restriction> -->
+  <!-- </xs:simpleType>   -->
 
   <!-- type of check to use in an ability -->
   <xs:simpleType name="abilityCheckNameType">
@@ -470,12 +545,6 @@
       <xs:pattern value="Extremely-Difficult"/>
     </xs:restriction>
   </xs:simpleType>  
-
-  <!-- type that describes an ability check.. -->
-  <xs:complexType name="abilityCheckType">
-    <xs:attribute name="name" type="abilityCheckNameType" use="optional"/>
-    <xs:attribute name="dc" type="xs:string" use="required"/>
-  </xs:complexType>
 
   <xs:complexType name="levelDescriptionType" mixed="true">
     <xs:sequence>

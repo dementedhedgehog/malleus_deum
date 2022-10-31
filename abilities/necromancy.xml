@@ -58,9 +58,7 @@
     </abilitydescription>
     <spline><p x="-60" y="60"/></spline>
     <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
-    <abilitycheck dc="11"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="11" effect="Talk with a corpse">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -79,15 +77,13 @@
 	an extra arm to a subject but they will not be able to use it.
 	You can however replace an existing limb with another or
 	restore a previously amputated limb.  Note that you cannot
-	use this spell to replace a head on a creature.  Once decapitated
+	use this spell to replace the head of a creature.  Once decapitated
 	the creature is dead.
       </p>
     </abilitydescription>
     <spline><p x="30" y="75"/></spline>
     <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>	
-    <abilitycheck dc="11"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="11" effect="Replace amputated limbs and heal">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -106,10 +102,8 @@
 	the relevant mythology around these creatures.
       </p>      
     </abilitydescription>    
-    <abilitycheck dc="13"/>
+    <abilitycheck dc="13" effect="Answer questions about necromancy.">Std+Rank</abilitycheck>
     <spline></spline>    
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
     <abilityranks from="1" to="3"/>
   </ability>
   
@@ -128,9 +122,7 @@
     </abilitydescription>    
     <spline><p x="-90" y="15"/></spline>
     <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
-    <abilitycheck dc="7"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="7" effect="Reroll one Near-Death roll.">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
   
@@ -151,9 +143,7 @@
     </abilitydescription>    
     <spline><p x="90" y="15"/></spline>
     <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
-    <abilitycheck dc="11"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight.">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>  
 </abilitygroup>

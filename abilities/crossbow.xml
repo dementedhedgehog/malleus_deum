@@ -19,9 +19,7 @@
     <abilitytitle>Crossbow Shoot</abilitytitle>
     <abilityid>crossbow.shoot</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon+Agility</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
     <tags><weapon/><crossbow/><ranged/></tags>
     <abilitydescription>
       <p noindent="true">
@@ -39,9 +37,7 @@
     <abilityid>crossbow.fast_loader</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><crossbow/><ranged/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Speed+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Speed+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	The character has spent a long time practicing reloading a heavy
@@ -61,9 +57,7 @@
     <abilityid>crossbow.heavy</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><crossbow/><ranged/></tags>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Agility</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	Character has trained in the use of the heavy crossbow.  Heavy

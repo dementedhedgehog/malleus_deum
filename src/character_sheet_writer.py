@@ -244,14 +244,20 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
             if isinstance(ability_rank, AbilityRank):
                 ability = ability_rank.get_ability()
                 description = ""
-                description += "Type: " + ability.check_type
 
                 # add any check configurations
                 checks = ability.get_checks()
                 check_strings = []
                 if len(checks) > 1:
                     for check in check:
+                        description += "Type: " + check.check_type
                         check_strings.append(get_ability_check_name(check))
+
+                        # Damage?
+                        dmg = ability.get_damage()
+                        if dmg:
+                            check_strings.append(", Dmg: " + dmg)
+                        
                 else:                
                     check = list(ability.get_checks())[0]
                     check_strings.append(get_ability_check_name(check, no_name=True))
@@ -261,10 +267,6 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                 # if check.overcharge:
                 #     description += " <= DC + " + check.overcharge
 
-                # Damage?
-                dmg = ability.damage
-                if dmg:
-                    description += ", Dmg: " + dmg
 
                 mastery = "Mastery: [][][]"
 

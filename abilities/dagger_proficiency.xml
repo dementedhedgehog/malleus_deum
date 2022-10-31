@@ -29,9 +29,7 @@
     <spline><p x="75" y="30"/></spline>
     <prereqabilityrank>dagger.strike_2</prereqabilityrank>
     <prereqattr><speed>13</speed><agility>13</agility></prereqattr>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Speed|Agility</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Agility">Std+Rank</abilitycheck>
     <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
   
@@ -48,9 +46,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Speed|Agility</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Agility">Std+Rank</abilitycheck>
     <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
@@ -68,9 +64,7 @@
     </abilitydescription>
     <spline><p x="-75" y="30"/></spline> 
     <prereqabilityrank>dagger.strike_1</prereqabilityrank>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
     <abilityranks untrained="-3" from="1" to="5"/>
   </ability>  
 </abilitygroup>

@@ -282,8 +282,9 @@ class AbilityRank:
     def get_checks(self):
         return self.ability.get_checks()
 
-    def get_damage(self):
-        return self.ability.get_damage()
+    # def get_damage(self):
+    #     return self.ability.get_damage()
+    #     #return self.ability.get_damage()
     
     def get_ability(self):
         return self.ability
@@ -319,21 +320,29 @@ class AbilityCheck:
     An ability check configiuration.
 
     """
-
     def __init__(self, ability):
         self.ability = ability
 
         # can be None for the default
         self.name = None
         self.dc = None # ddc?
+        self.check_type = None
+        self.dmg = None
+        self.effect = None
+
+    def get_damage(self):
+        return self.dmg
 
     def _load(self, ability_check_element):
         self.name = ability_check_element.attrib.get("name", "Default")
         self.dc = ability_check_element.attrib.get("dc")
+        self.dmg = ability_check_element.attrib.get("dmg")
+        self.effect = ability_check_element.attrib.get("effect")
+        self.check_type = ability_check_element.text
         return
 
     def __str__(self):
-        return f"{self.name}: {self.dc}"
+        return f"{self.name}: {self.dc} vs DDC {self.dc}"
 
     def get_problems(self):
         problems = []
@@ -355,20 +364,20 @@ class AbilityCheck:
         # Check the tags are set properly.
         #
         tags = self.ability.get_tags()
-        check_type = self.ability.get_check_type()
+        #check_type = self.ability.get_check_type()
 
         # Check accurate tag
-        if xor(check_type == ACCURATE, "accurate" in tags):
+        if xor(self.check_type == ACCURATE, "accurate" in tags):
             problems.append(f"Ability {self.ability.ability_id} is tagged accurate and does not "
                             f"have a {ACCURATE} check type, or vice versa")
 
         # Check inaccurate tag
-        if xor(check_type == INACCURATE_CHECK_TYPE, "inaccurate" in tags):
+        if xor(self.check_type == INACCURATE_CHECK_TYPE, "inaccurate" in tags):
             problems.append(f"Ability {self.ability.ability_id} is tagged inaccurate and does not "
                             f"have a {INACCURATE_CHECK_TYPE} check type {check_type} {tags}, or vice versa")
 
         # Check no-check std ability. (for monsters only)  
-        if check_type == MONSTER_CHECK_TYPE and "monster" not in tags:
+        if self.check_type == MONSTER_CHECK_TYPE and "monster" not in tags:
             problems.append(f"Ability {self.ability.ability_id} has a {MONSTER_CHECK_TYPE} check type but "
                             "is not tagged with the monster tag.")
 
@@ -412,7 +421,7 @@ class Ability:
         self.check_type = None                 
         
         # the check associated with this ability
-        self.damage = None
+        #self.damage = None
         
         # prereq.
         self.ability_rank_prereq = None
@@ -491,8 +500,8 @@ class Ability:
     def get_ability_rank_prereq(self):
         return self.ability_rank_prereq
 
-    def get_damage(self):
-        return self.damage if self.damage is not None else ""
+    # def get_damage(self):
+    #     return self.damage if self.damage is not None else ""
     
     def get_ability_rank_range(self):
         first_ability_rank = self.ranks[0].get_rank_number()
@@ -630,12 +639,12 @@ class Ability:
                ability_check._load(child)
                self.checks[ability_check.name] = ability_check
 
-           elif tag == "abilitychecktype":
-               if self.check_type is not None:
-                   raise Exception("Only one abilitycheck per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.check_type = child.text
+           # elif tag == "abilitychecktype":
+           #     if self.check_type is not None:
+           #         raise Exception("Only one abilitycheck per ability. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.check_type = child.text
 
            elif tag == "gmgability":
                 self.gmg_ability = True
@@ -661,12 +670,12 @@ class Ability:
                else:
                    self.ddc = child.text.strip() if child.text is not None else None
 
-           elif tag == "abilitydmg":
-               if self.damage is not None:
-                   raise Exception("Only one abilitydmg per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.damage = child.text.strip() if child.text is not None else None
+           # elif tag == "abilitydmg":
+           #     if self.damage is not None:
+           #         raise Exception("Only one abilitydmg per ability. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.damage = child.text.strip() if child.text is not None else None
 
            elif tag == "abilitydescription":
                if self.description is not None:

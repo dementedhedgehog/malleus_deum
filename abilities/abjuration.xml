@@ -19,9 +19,7 @@
     <abilityid>abjuration</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><abjuration/><lore/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>    
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <abilitydescription>
       <p noindent="true">
 	This ability represents the knowledge of the theoretical foundations
@@ -39,8 +37,7 @@
     <abilityid>abjuration.banish</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitycheck dc="7"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <abilitydescription>
       <p>
   	Banishing is an attempt to disrupt a demons tenuous contagious
@@ -62,9 +59,7 @@
     <abilityid>abjuration.circle_of_protection</abilityid>
     <abilityactiontype><full-turn/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
-    <abilitycheck dc="7"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <abilitydescription>
       <p>
   	A circle of protection is a circle drawn upon the ground and infused
@@ -75,7 +70,7 @@
       </p>
 
       <p>
-  	If successful Creates a DC 25 + 5xLevel protective barrier against extra planar
+  	If successful Creates a DC 25+5xRank protective barrier against extra planar
 	creatures.  To pass through the barrier the extra-planar character must roll above
 	the DC using their Magic pool.  Creatures striking the protective barrier will
 	lose D4 hit points for each attempt.
@@ -100,16 +95,14 @@
     <abilityid>magic.contego</abilityid>
     <abilityactiontype><reaction-or-minor/></abilityactiontype>
     <tags><abjuration/><ranged/><magicpool/></tags>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>    
     <abilitydescription>
       <p noindent="true">
 	The caster creates a magical shield around a person, or anything tagged medium or small.
 	The barrier from outside appears as a blurred humanoid shape.  Kinetic
 	weapons do half damage to the character thus shielded.  It also provides
 	brief protection from fires, poisonous gases <etc/>.  The shield is ablative
-	and is represented in game by 8 + 3xLevel temporary Stamina.  
+	and is represented in game by 8+3xRank temporary Staamina.  
 	It lasts five minutes/30 rounds.
       </p>
 
@@ -132,9 +125,7 @@
     <abilityid>magic.commune</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
-    <abilitycheck dc="7"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <abilitydescription>
       <p>
   	Commune is a spell that communicates with a named entity from beyond.
@@ -159,9 +150,7 @@
     <abilityid>magic.eldritch_shield</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck>
     <abilitydescription>
       <p>
   	The caster uses raw magical energy to knock arrows and crossbow bolts out
@@ -185,9 +174,7 @@
     <abilityid>magic.flesh_ward</abilityid>
     <abilityactiontype><reaction-or-minor/></abilityactiontype>
     <tags><abjuration/><touch/><magicpool/></tags>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <abilitydescription>
       <p>
   	The Flesh Ward spell provides magical protection

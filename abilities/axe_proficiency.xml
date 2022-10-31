@@ -28,9 +28,7 @@
       </p>
     </abilitydescription>    
     <spline><p x="60" y="30"/></spline>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength|Endurance</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon + Strength|Endurance">Std+Rank</abilitycheck>
     <prereqabilityrank>axe.strike_2</prereqabilityrank>
     <prereqattr><strength>13</strength></prereqattr>
     <abilityranks from="1" to="4"/>
@@ -42,9 +40,7 @@
     <abilityid>axe.frenzy</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><axe/><heavy/><weapon/><martial/><mettlepool/></tags>
-    <abilitycheck dc="7"/>
-    <abilitychecktype>Mettle+Rank</abilitychecktype>
-    <abilitydmg>None</abilitydmg>
+    <abilitycheck dc="7">Mettle+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	When a character makes a frenzied attack with an axe, they make
@@ -63,9 +59,9 @@
     <abilityid>axe.hook</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><axe/><heavy/><weapon/><martial/></tags>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength|Endurance, target saves vs Str or drops weapon/shield</abilitydmg>
+    <abilitycheck
+	dc="Targets Defence"
+	dmg="Weapon + Strength|Endurance, target saves vs Str or drops weapon/shield">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
         Characters equipped with an axe can use the axe to attempt to disarm
@@ -88,9 +84,7 @@
 	doing weapon damage.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength|Endurance</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance">Std+Rank</abilitycheck>
     <spline></spline>
     <abilityranks untrained="0" from="1" to="4"/>
   </ability>

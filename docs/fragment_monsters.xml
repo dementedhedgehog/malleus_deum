@@ -132,12 +132,11 @@
       {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
       {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}
       {%- if check.overcharge is not none  -%}/{{check.overcharge}}{%- endif -%}
+      {%- if check.get_damage() is not none  -%}
+      <newline/>Dmg: {{ check.get_damage() }}
+      {%- endif -%}      
       {% if not loop.last %}, {% endif -%}
       {% endfor -%}
-
-       {% if ability_groups.get_ability_rank(ability_rank_id).get_damage() != "" -%}
-       <newline/>Dmg: {{ ability_groups.get_ability_rank(ability_rank_id).get_damage() }}
-       {% endif -%}       
     {% endfor %}
     </mbabilities>
     {% if monster.get_aspects_str() != "" %}

@@ -59,9 +59,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="0"/></spline> 
-    <abilitycheck dc="Targets Attack" />
-    <abilitychecktype>Armour+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Attack">Armour+Rank</abilitycheck>
     <abilityranks untrained="0" from="1" to="3"/>
   </ability>
   
@@ -71,9 +69,7 @@
     <abilityid>physical.charge</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><martial/><mettlepool/></tags>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Mettle+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3">Mettle+Rank</abilitycheck>
     <abilitydescription>
       <p>
         The Charge ability allows the character to test their mettle.  If sucessful they
@@ -102,9 +98,7 @@
     <abilityid>physical.climb</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	This ability represents the characters ability to Climb.
@@ -121,9 +115,7 @@
     <abilityid>physical.dodge</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
-    <abilitycheck dc="Targets Attack"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	<label>ability:dodge</label>
@@ -151,9 +143,7 @@
     <abilityid>physical.flee</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
         The Flee ability allows the character to move more than twice their movement rate
@@ -191,9 +181,7 @@
       </p>
     </abilitydescription>
     <spline><p x="90" y="90"/></spline>
-    <abilitycheck dc="None"/>  <!-- FIXME -->
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="None">Std+Rank</abilitycheck> <!-- FIXME -->
     <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 
@@ -203,9 +191,7 @@
     <abilityid>physical.head_butt</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>2 + Str</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="2+Strength">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	A head butt involves the attacker driving the top of their head into the bridge 
@@ -228,9 +214,7 @@
     <abilityid>physical.jump</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	This ability represents the characters ability to Jump.
@@ -246,9 +230,7 @@
     <abilityid>physical.juggernaut</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/><accurate/></tags>
-    <abilitycheck dc="Targets Strength"/>
-    <abilitychecktype>Std+3×Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Strength">Std+3×Rank</abilitycheck>
     <abilitydescription>
       <p>
   	The attacker uses his mass and strength to brush aside those who
@@ -271,9 +253,7 @@
     <abilityid>physical.knockout</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Knockout</indexentry>
@@ -307,9 +287,7 @@
 	the defender is the same size as the attacker or smaller).
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>2 + Speed|Strength</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="2+Speed|Strength">Std+Rank</abilitycheck>
     <spline><p x="-90" y="120"/></spline> 
     <abilityranks untrained="0" from="1" to="4"/>
   </ability>
@@ -321,9 +299,7 @@
     <abilityid>physical.listen</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	This is the characters ability to hear faint noise.
@@ -340,9 +316,7 @@
     <abilityid>physical.notice</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>    
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	This ability represents the characters attention to detail,
@@ -368,9 +342,7 @@
     <abilityid>physical.punch</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>    
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>d4</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="d4">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	The attacker attempts to hit their opponent using their fists. 
@@ -389,9 +361,7 @@
     <abilityid>physical.rest</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Rest</subentry></indexentry>		
@@ -416,9 +386,7 @@
     <abilityid>physical.run</abilityid>
     <abilityactiontype><move/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
         The Run ability describes extra movement within combat.  It allows the character
@@ -455,10 +423,8 @@
 	traps and other similar checks.  
       </p>
     </abilitydescription>
-    <abilitycheck dc="15"/>
     <spline><p x="0" y="0"/></spline> 
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="15">Std+Rank</abilitycheck>
     <abilityranks from="1" to="4"/>
   </ability>
   
@@ -468,9 +434,7 @@
     <abilityid>physical.sleep</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Sleep</subentry></indexentry>	
@@ -494,9 +458,7 @@
     <abilityid>physical.sure_feet</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	When the attacker would be knocked prone they can check to resist being
@@ -512,9 +474,7 @@
     <abilityid>physical.swim</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/></tags>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>    
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	This ability represents the characters ability to swim (if at all).  Everyone
@@ -533,9 +493,7 @@
     <abilityid>physical.throw</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><martial/></tags>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	This character attempts to thrown something.  If unsuccessful, and a bane occurs
@@ -554,9 +512,7 @@
     <abilityid>physical.witness_me</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/><mettlepool/></tags>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Mettle+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3">Mettle+Rank</abilitycheck>
     <abilitydescription>
       <p>
 	When the characters hit points drop to 0 they can instantly make a "Witness Me"

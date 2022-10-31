@@ -28,9 +28,7 @@
     </abilitydescription>    
     <spline><p x="30" y="45"/></spline>
     <prereqabilityrank>elemental.summon_elemental_2</prereqabilityrank>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -44,15 +42,11 @@
       <p>
 	The casters hands become engulfed in primal fire.  In hand
 	to hand combat their hands gain the Fire tag and do d6 extra damage.
-
-	FIXME: clone of ignis?
       </p>
     </abilitydescription>    
     <spline><p x="-60" y="30"/></spline>
     <prereqabilityrank>elemental.fyre_1</prereqabilityrank>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck> 
     <abilityranks from="1" to="3"/>
   </ability>
   
@@ -68,30 +62,23 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
-    <abilitytitle>Fyre</abilitytitle>
+    <abilitytitle>Fyre Bolt</abilitytitle>
     <abilityid>elemental.fyre</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <abilitycheck dc="7"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <tags><elemental/><magicpool/></tags>
     <abilitydescription>
       <p>
-	The caster ignites something flammable with a touch of their hand.
-	This is not an attack and cannot be used in combat against an opponent.
-
-	FIXME.. duplicate of ignis ?? is that ok?
+	The caster shoots a ball for fire from their hands at an opponent.
       </p>
     </abilitydescription>    
     <spline><p x="0" y="75"/></spline>
     <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -100,7 +87,7 @@
     <abilitytitle>Gaseous Form</abilitytitle>
     <abilityid>elemental.gaseous_form</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <abilitycheck dc="9"/>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
     <tags><elemental/><magicpool/></tags>
     <abilitydescription>
       <p>
@@ -110,8 +97,6 @@
     </abilitydescription>    
     <spline><p x="-75" y="70"/></spline>
     <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
     <abilityranks from="1" to="3"/>
   </ability>
     
@@ -137,9 +122,7 @@
     </abilitydescription>    
     <spline><p x="-75" y="15"/></spline>
     <prereqabilityrank>elemental.lore_1</prereqabilityrank>	
-    <abilitycheck dc="5"/>    
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -160,9 +143,7 @@
     </abilitydescription>    
     <spline><p x="-30" y="45"/></spline>
     <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>  
   
@@ -196,9 +177,7 @@
     </abilitydescription>    
     <spline><p x="60" y="60"/></spline>
     <prereqabilityrank>elemental.lore_2</prereqabilityrank>
-    <abilitycheck dc="11"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="11">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -206,7 +185,7 @@
     <abilitytitle>Smoke Weasel</abilitytitle>
     <abilityid>elemental.smoke_weasel</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <abilitycheck dc="7"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <tags><elemental/><magicpool/></tags>
     <abilitydescription>
       <p>
@@ -221,8 +200,6 @@
     </abilitydescription>    
     <spline><p x="0" y="60"/></spline>
     <prereqabilityrank>elemental.fyre_1</prereqabilityrank>    
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -241,9 +218,7 @@
     </abilitydescription>    
     <spline><p x="45" y="120"/></spline>
     <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -260,9 +235,7 @@
     </abilitydescription>    
     <spline><p x="90" y="15"/></spline>
     <prereqabilityrank>elemental.lore_3</prereqabilityrank>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 </abilitygroup>

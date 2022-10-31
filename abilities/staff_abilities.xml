@@ -25,9 +25,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Speed|Strength</abilitydmg>    
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
     <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
@@ -45,9 +43,7 @@
     </abilitydescription>
     <prereqabilityrank>staff.strike_1</prereqabilityrank>
     <spline><p x="15" y="60"/></spline> 
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>2x(Weapon + Speed|Strength), opponent must be charging.</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="2x(Weapon + Speed|Strength), opponent must be charging.">Std+Rank</abilitycheck>
     <abilityranks untrained="-3" from="1" to="4"/>
   </ability>
 
@@ -72,9 +68,7 @@
     </abilitydescription>
     <prereqabilityrank>staff.strike_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline> 
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
     <abilityranks from="1" to="4"/>
   </ability>
 
@@ -95,9 +89,7 @@
     </abilitydescription>
     <prereqabilityrank>staff.strike_1</prereqabilityrank>	
     <spline><p x="90" y="30"/></spline> 
-    <abilitycheck dc="Targets Attack"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
     <abilityranks from="1" to="4"/>
   </ability>
 </abilitygroup>

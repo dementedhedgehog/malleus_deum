@@ -34,9 +34,7 @@
     </abilitydescription>
     <spline><p x="0" y="30"/></spline>
     <prereqabilityrank>gun.shoot_1</prereqabilityrank>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon</abilitydmg>
+    <abilitycheck dc="13" dmg="Weapon">Std+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
   
@@ -53,9 +51,7 @@
       </p>
     </abilitydescription>
     <spline><p x="60" y="30"/></spline>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon+Level+Agility</abilitydmg>    
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank+Agility">Std+Rank</abilitycheck>
     <prereqabilityrank>gun.shoot_2</prereqabilityrank>
     <abilityranks from="1" to="5"/>
   </ability>
@@ -74,9 +70,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std</abilitychecktype>
-    <abilitydmg>Weapon+Level</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank">Std</abilitycheck>
     <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 </abilitygroup>

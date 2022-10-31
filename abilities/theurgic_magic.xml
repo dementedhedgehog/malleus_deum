@@ -24,21 +24,19 @@
       <p noindent="true">
   	If successful those observing the character
   	will be struck by their holiness and devoutness.
-  	This will grant a +Level bonus to Negotiate actions
+  	This will grant a +Rank bonus to Negotiate actions
   	or Charm spells.
       </p>
 
       <p>
   	Demons and undead monsters will need to make an
-  	optional Mettle Check DDC 10+Level or become Enraged and
+  	optional Mettle Check DDC 10+Rank or become Enraged and
   	Charge the caster.
       </p>
     </abilitydescription>
     <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -47,9 +45,7 @@
     <abilityid>theurgic.augury</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><theurgic/><ritual/><magicpool/></tags>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>    
     <abilitydescription>
       <p noindent="true">
   	Augury involves petitioning a deity or powerful being for
@@ -124,10 +120,8 @@
     </abilitydescription>
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
-    <abilitycheck dc="7"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg>Demon makes Mettle Check vs 5×Level</abilitydmg>
-    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="7" effect="Demon makes Mettle Check vs 5×Rank">Magic+Rank</abilitycheck>
+    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -138,17 +132,15 @@
     <abilitydescription>
       <p noindent="true">
   	Renders all weapons so blessed as magical for the next ten minutes (granting them the magic tag).
-  	Grants +rank damage for these weapons against demons and the undead during that time.  In the event of
-  	overcharge the weapons will glow with radiant light.  The spell effects rank+1 weapons that 
+  	Grants +Rank damage for these weapons against demons and the undead during that time.  In the event of
+  	overcharge the weapons will glow with radiant light.  The spell effects Rank+1 weapons that 
         can be seen by the caster.
       </p>
     </abilitydescription>
     <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="3" effect="Rank+1 weapons receive +Rank dmg vs demons and undead">Magic+Rank</abilitycheck>
+    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -161,26 +153,22 @@
   	If successful the character creates a vial of holy water.  The
   	deity that cleric follows cannot be evil.  The character usually carries
   	a number of vials of holy water upon their person.  When required they
-  	may make an ability check.  If successful they are carrying two vials,
-  	if unsuccessful they are carrying one.  A boon add one to the number of vials
-  	carried, a bane reduces the number of vials carried by one.  So the
-  	character may be carrying from zero to three vials.  Note that the
+  	may make an ability check.  If successful they are carrying 1+Rank vials,
+  	if unsuccessful they are carrying one.  A boon adds one to the number of vials
+  	carried, a bane reduces the number of vials carried by one. Note that the
   	character must have down time before they can make this check again.  They
-  	can't just produce a never ending stream of holy water vials.  Also note
+  	cannot just produce a never ending stream of holy water vials.  Also note
   	that the character must have access to vials and water to create holy water.
   	They cannot produce water in the desert.
       </p>
       
       <p>
-  	Holy water should be kept in a special font.  If kept in a vial
-  	it lasts one week.
+  	Holy water should be kept in a special font.  If kept in a vial	it lasts one week.
       </p>
     </abilitydescription>
     <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="11"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="7" effect="Rank+1 holy water vials">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -198,9 +186,7 @@
     </abilitydescription>
     <spline><p x="-60" y="45"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5" effect="Check to counter attack">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -227,11 +213,9 @@
       </p>      
     </abilitydescription>
     <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="7"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks from="1" to="2"/>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank> 
+    <abilitycheck dc="Context Dependent" effect="Exorcise evil spirit">Magic+Rank</abilitycheck>
+   <abilityranks from="1" to="2"/>
   </ability>
   
 
@@ -242,14 +226,12 @@
     <abilityactiontype><minor/></abilityactiontype>
     <abilitydescription>
       <p noindent="true">
-  	If called upon Mithras will grant a +Level bonus to the caster to hit rolls and damage.
+  	If called upon Mithras will grant a +Rank bonus to the caster to hit rolls and damage.
       </p>
     </abilitydescription>
     <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5" effect="+Rank to hit and dmg">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
   
@@ -261,17 +243,27 @@
     <tags><theurgic/><magicpool/></tags>
     <abilitydescription>
       <p noindent="true">
-  	After a missle is fired and it would have missed.  The caster
-  	uses his powers to try to guide a missile to its target.  This spell
-	does not work on bullets, which fly so fast the character has no time
-	to react.
+	This spell can be used offensively or defensively.
+      </p>
+
+      <p>
+  	In defence, after a missle is fired, hits and the damage is rolled,
+	the caster, predicting the outcome of the shot,  uses his powers to deflect
+	the missile instead so that it now misses. 
+      </p>
+      
+      <p>
+  	In offence, after a missle is fired and it would have missed.  The caster
+  	uses his powers to try to guide a missile to its target.  The shot is rerolled.
+      </p>
+
+      <p>
+	This spell does not work on bullets, which fly so fast the character has no time to react.
       </p>
     </abilitydescription>
     <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3" effect="arrow or bolt misses or is rerolled">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -286,16 +278,14 @@
       <p noindent="true">
   	The healing character places their hands on a bloodied target
   	and makes a check.  If successful the bloodied character heals
-  	1d6+Level Health.  On overcharge the healer accidentaly uses their own animus
+  	2d4+Rank Hit Points.  On overcharge the healer accidentaly uses their own animus
   	in order to heal the bloodied character and loses d6 hitpoints.
       </p>
     </abilitydescription>
     <spline><p x="90" y="0"/></spline>
     <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="9" effect="heal 2d4+Rank">Magic+Rank</abilitycheck>
+    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -312,9 +302,7 @@
     </abilitydescription>
     <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3" effect="Create light">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -329,14 +317,12 @@
   	Once per day the caster may attempt the Litany of Redemption.  This is a
 	five minute ritual where the caster quotes passages from the Book of Light
 	and reflects on the lessons within. If successful participants refresh a
-	mettle dice if able.
+	mettle die if able.
       </p>
     </abilitydescription>
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5" effect="Prayer refreshes a mettle die">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -351,15 +337,12 @@
   	other individual Near Death.   If the character succeeds, up to 2d6
   	Health (or the targets maximum health whichever is smaller) is
   	added to the targets health and removed from the casters Health. In the
-  	event of an overcharge the caster loses remaining health and enters the
-  	Near Death state themselves.
+  	event of an overcharge the caster loses remaining health and is Down.
       </p>
     </abilitydescription>
     <spline><p x="75" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="5" effect="Transfers damage">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -381,9 +364,7 @@
     </abilitydescription>
     <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="7"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="7" effect="Purifies food or drink">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -403,9 +384,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="13"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="13" effect="Background knowledge">Std+Rank</abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <abilityranks from="1" to="3"/>
   </ability>
@@ -420,20 +399,17 @@
       <p noindent="true">
   	The character calls on their deity to keep beings animated by
   	necrotic forces at bay.  Successfully casting this spell will
-	cause the undead to make a DC 20 Mettle check or be held,
-	stopping them from advancing towards, or attacking the character or
+	cause the undead to make a DC Mettle check greater than the magic check result
+	or be held.  Held undead cannot advance towards, or attack the character or
 	their allies for three rounds.  On overcharge the caster is transfixed
 	by the spell, and unable to move for its duration.  The caster
 	may end the spell <emph>at any time after</emph> the turn they cast the spell.
 	This spell will work on any number of undead at a time.
       </p>
-
     </abilitydescription>
     <spline><p x="-60" y="5"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9" effect="Undead make mettle check or are held">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -447,8 +423,8 @@
       <p noindent="true">
   	The character calls on their deity to repel beings animated by
   	necrotic forces.  Successfully casting this spell will
-	cause the undead to make a DC 20 Mettle check or be turned,
-	forcing them to retreat away from the character or their allies for three rounds.	
+	cause the undead to make a DC Mettle check greater than the magic check result or be turned,
+	forcing them to flee from the character or their allies for three rounds.	
 	On overcharge the caster is transfixed by the spell, and unable to move for its duration.
 	The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
 	This spell will work on any number of the same type of undead at one time.
@@ -457,9 +433,7 @@
     </abilitydescription>
     <spline><p x="-60" y="5"/></spline>
     <prereqabilityrank>theurgic.hold_undead_3</prereqabilityrank>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9" effect="Undead make mettle check or are turned">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -481,9 +455,7 @@
     </abilitydescription>
     <spline><p x="-60" y="5"/></spline>
     <prereqabilityrank>theurgic.turn_undead_2</prereqabilityrank>
-    <abilitycheck dc="9"/>
-    <abilitychecktype>Magic+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="9" effect="Undead make mettle check or are destroyed">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>
 
@@ -496,15 +468,13 @@
     <abilitydescription>
       <p noindent="true">
 	The character calls on their patron for support in the hour of their death!
-	If the characters health is less than 10 they can use the Witness Me! ability
-	to gain three melee attacks in that round.
+	If the characters health is 6 or less they can use the Witness Me! ability
+	to make three melee attacks in that round instead of their usual standard action.
       </p>
     </abilitydescription>
     <spline><p x="75" y="90"/></spline>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="11"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="3" effect="Make three melee attacks if Health≤6">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="2"/>
   </ability>    
 </abilitygroup>

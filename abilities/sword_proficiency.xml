@@ -28,9 +28,7 @@
     </abilitydescription>
     <spline><p x="15" y="30"/></spline>
     <prereqabilityrank>sword.strike_2</prereqabilityrank>
-    <abilitycheck dc="Targets Agility"/>
-    <abilitychecktype>Mettle+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Agility" effect="Extra Sword Strike attack as Minor.">Mettle+3×Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
   
@@ -48,9 +46,7 @@
     </abilitydescription>
     <spline><p x="90" y="30"/></spline>
     <prereqabilityrank>sword.strike_3</prereqabilityrank>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + 3xStr</abilitydmg>
+    <abilitycheck dc="5" effect="Sword Strike with +3xStrength+Rank extra damage">Mettle+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
 
@@ -67,9 +63,7 @@
     </abilitydescription>
     <spline><p x="-80" y="30"/></spline>
     <prereqabilityrank>sword.strike_2</prereqabilityrank>	
-    <abilitycheck dc="Targets Speed"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Speed" effect="Opponent disarmed">Mettle+3×Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>  
 
@@ -87,9 +81,7 @@
     </abilitydescription>
     <spline><p x="15" y="30"/></spline>
     <prereqabilityrank>sword.strike_2</prereqabilityrank>
-    <abilitycheck dc="Targets Agility"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
+    <abilitycheck dc="Targets Agility" effect="Character acts before target.">Std+Agility+Rank</abilitycheck>
     <abilityranks from="1" to="3"/>
   </ability>
   
@@ -106,9 +98,7 @@
       </p>
     </abilitydescription>
     <spline></spline>
-    <abilitycheck dc="Targets Defence"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg>Weapon + Strength|Speed</abilitydmg>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Speed.">Std+Rank</abilitycheck>
     <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 
@@ -131,9 +121,7 @@
     </abilitydescription>
     <spline><p x="-30" y="60"/></spline>
     <prereqabilityrank>sword.strike_1</prereqabilityrank>	
-    <abilitycheck dc="Targets Attack"/>
-    <abilitychecktype>Std+Rank</abilitychecktype>
-    <abilitydmg></abilitydmg>
-    <abilityranks untrained="-3" from="1" to="2"/>
+    <abilitycheck dc="Targets Attack" effect="Attack blocked.">Std+Rank</abilitycheck>
+    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 </abilitygroup>
