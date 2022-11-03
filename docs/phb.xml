@@ -336,7 +336,7 @@
       <p>
 	Both of Stamina and Health have a minimum value of zero, they cannot be
 	negative numbers.  A character with zero Stamina gains the <defn>Bloodied</defn> condition.
-	A character with zero Health is <defn>Down</defn>, see page<pageref>sec:conditions</pageref>
+	A character with zero Health is <defn>Near-Death</defn>, see page<pageref>sec:conditions</pageref>
 	for more information on conditions.  Characters who are down are effectively
   	too hurt and too weak to defend themselves or do too much and are in danger of dying,
   	see Section<ref>sec:death</ref> on page<pageref>sec:death</pageref> of the GMG.	See
@@ -1115,14 +1115,6 @@
       </p>
 
       <descriptions>
-        <term>Aflame</term>
-        <description>
-          <indexentry>Aflame Condition</indexentry> 
-          <indexentry>Conditions<subentry>Aflame</subentry></indexentry>
-	  The character is on fire.  They must attempt to put out the fire or make
-	  a Morale Check each round to resist doing so.
-        </description>
-
         <term>Alert</term>
         <description>
           <indexentry>Alert Condition</indexentry> 
@@ -1170,6 +1162,14 @@
           can.  This condition occurs after a character has failed two morale checks
           in combat.
         </description>
+
+        <term>Burning</term>
+        <description>
+          <indexentry>Burning Condition</indexentry> 
+          <indexentry>Conditions<subentry>Burning</subentry></indexentry>
+	  The character is on fire.  They must attempt to put out the fire or make
+	  a Morale Check each round to resist doing so.
+        </description>
         
         <term>Checked</term>
         <description>
@@ -1188,14 +1188,6 @@
 	  The character receives a -3 modifer to all Checks.
 	  This often occurs when the character has suffered a nasty injury and are suffering a great deal of pain
 	  Endurance check DDC 12 ends the condition.
-        </description>
-
-        <term>Drunk</term>
-        <description>
-          <indexentry>Drunk Condition</indexentry> 
-          <indexentry>Conditions<subentry>Drunk</subentry></indexentry>       
-          The character has had too much alcohol to drink.  They make Agility and Perception
-          checks at -3 and they make Luck checks at +3.
         </description>
 
         <term>Distracted</term>
@@ -1220,12 +1212,22 @@
         <description>
           <indexentry>Down Condition</indexentry> 
           <indexentry>Conditions<subentry>Down</subentry></indexentry>
-	  The character is very badly hurt, semi-conscious and is only capable of
-	  making a single minor action in their turn.  Characters who are Down
-	  also have the Near-Death condition and usually have the Prone condition
-	  as well.
-        </description>
+	  Characters who are down are effectively too hurt and too weak to defend themselves or do too
+	  much and are in danger of dying.  Characters who are Down may check Endurance DC 13 to make a minor
+	  action each turn.  Combatants will tend to leave down opponents alone until
+	  the end of combat when they can be dispatched, eaten, saved for later, ransomed or sold into
+	  slavery.	  
+        </description>	
 
+        <term>Drunk</term>
+        <description>
+          <indexentry>Drunk Condition</indexentry> 
+          <indexentry>Conditions<subentry>Drunk</subentry></indexentry>       
+          The character has had too much alcohol to drink.  They make Agility and Perception
+          checks at -3 and they make Luck Checks at +3.  A character that is very drunk makes
+	  Agility and Perception checks at -6 and Luck Checks at +3.
+        </description>
+	
         <term>Enraged</term>
         <description>
           <indexentry>Enraged Condition</indexentry> 
@@ -1325,6 +1327,8 @@
           <indexentry>Conditions<subentry>Near-Death</subentry></indexentry>
 	  The player must make rolls on the Near-Death table for the character
 	  each round until the condition is removed of their character dies.
+	  Characters who are Near-Death also have the Down condition and usually
+	  will have the Prone condition as well.
         </description>    
         
         <term>Prone</term>
@@ -1375,7 +1379,7 @@
           <indexentry>Slowed Condition</indexentry> 
           <indexentry>Conditions<subentry>Slowed</subentry></indexentry>       
           For some reason the character has trouble moving.  They must make
-	  an Agility Check vs 10 or their move distance is reduced by 3.
+	      an Agility Check vs 11 each round or their move distance is reduced by 3.
         </description>
 
         <term>Stunned</term>
@@ -2350,7 +2354,6 @@
       </p>
     </section>
     
-    
 
     <section>
       <sectiontitle>Morale Checks <label>sec:mettle-checks</label></sectiontitle>      
@@ -2368,8 +2371,8 @@
 	  <indexentry>Breaking</indexentry>
 	  <label>sec:breaking</label>	  
 	  For player characters <defn>Morale Checks</defn> are a <emph>Mettle Check</emph>
-	  with a target of 5.  When a character fails a morale check another
-	  <bold>two</bold> characters must make a check.  Morale checks continue until
+	  with a DC of 5.  When a character fails a morale check another
+	  character must make a check.  Morale checks continue until
 	  there are no more fails or everyone has made a morale check.  Morale Checks do not
 	  count as an action.
 	  <equation>
