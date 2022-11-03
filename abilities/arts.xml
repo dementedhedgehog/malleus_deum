@@ -153,6 +153,13 @@
   	The character can play the tambor, or some form of drums,
   	etc.
       </p>
+
+      <p>
+	Tribal percussionists may be able to use this ability
+	to communicate with other tribe members
+	up to <measurement><metric>3 kilometers</metric><imperial>2 miles</imperial></measurement>
+	away in any direction.
+      </p>
     </abilitydescription>
     <spline><p x="10" y="90"/></spline>
     <prereqabilityrank>arts.music_1</prereqabilityrank>
@@ -230,4 +237,32 @@
     <prereqabilityrank>arts.lore_1</prereqabilityrank>
     <abilityranks from="1" to="6"/>
   </ability>
+
+    <ability>
+    <abilitytitle>Soothe the Savage Beast</abilitytitle>
+    <abilityid>arts.soothe_the_savage_beast</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><arts/></tags>
+    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <abilitydescription>
+      <p>
+	It is widely known that music has charms to soothe
+	the savage beast.  Natural animals may be calmed
+	by a musician successfully playing them a melody.
+	This ability does not work on starving animals
+	attacking for food, animals trained to attack and
+	so on.  Nor does it work in the middle of combat.
+	It may be used to preempt a combat though.
+      </p>
+
+      <p>
+	The prerequisite for this ability is the ability to
+	play any non-percussion musical instrument at Rank 2
+	or greater.
+      </p>
+    </abilitydescription>
+    <spline><p x="-20" y="50"/></spline>
+    <prereqabilityrank></prereqabilityrank>
+    <abilityranks from="1" to="6"/>
+  </ability>  
 </abilitygroup>
