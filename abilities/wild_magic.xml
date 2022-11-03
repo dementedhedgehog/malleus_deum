@@ -107,6 +107,35 @@
   </ability>  
 
 
+  <ability>
+    <abilitytitle>Mandragora</abilitytitle>
+    <abilityid>wild_magic.mandragora</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><lore/></tags>
+    <prereqabilityrank>wild_magic.lore_2</prereqabilityrank>
+    <abilitydescription>
+      <p>
+	If the character has access to a tree root, turnip <etc/> the
+	character can infuse it with an evil spirit for a short an 10+Rank minutes.
+	The animated Mandragora behaves like a small servant and will perform
+	actions as directed by the caster.  The Mandragora is a malevolent and
+	will attempt to misconstrue instructions in such a way as to allow it
+	to hurt others.
+      </p>
+
+      <p>
+	In a fight the Mandragora has HP: 5, AC: 15, and attacks automatically
+	for 1 hp of biting damage each round.  If the Mandragora is made from
+	an actual mandragora root then the creature has HP: 9 and does 2 HP damage
+	per round.
+      </p>
+    </abilitydescription>    
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <spline></spline>
+    <abilityranks from="1" to="4"/>
+  </ability> 
+ 
+
 
   <ability>
     <abilitytitle>Therianthropy</abilitytitle>
@@ -350,6 +379,51 @@
     <abilitycheck dc="9">Magic+Rank</abilitycheck>
     <abilityranks from="1" to="4"/>
   </ability>
+
+
+  
+  <ability>
+    <abilitytitle>Tanglefoot</abilitytitle>
+    <abilityid>wild_magic.tanglefoot</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><wildmagic/><magicpool/></tags>
+    <abilitydescription>
+      <p>
+	This spell can be cast only in woods, bushlands and
+	gardens.  The caster calls upon the trees and bushes
+	to slow a group of individuals travelling through
+	the landscape.  They gain the Slowed condition.
+      </p>
+      
+    </abilitydescription>    
+    <spline><p x="-60" y="0"/></spline>
+    <prereqabilityrank>wild_magic.lore_1</prereqabilityrank>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <abilityranks from="1" to="4"/>
+  </ability>
+
+
+  <!-- <ability> -->
+  <!--   <abilitytitle>Tanglebriar</abilitytitle> -->
+  <!--   <abilityid>wild_magic.tanglebriar</abilityid> -->
+  <!--   <abilityactiontype><minor/></abilityactiontype> -->
+  <!--   <tags><wildmagic/><magicpool/></tags> -->
+  <!--   <abilitydescription> -->
+  <!--     <p> -->
+  <!-- 	This spell can be cast only in woods, bushlands and -->
+  <!-- 	gardens.  The caster calls upon the trees and bushes -->
+  <!-- 	to hold a group of individuals travelling through -->
+  <!-- 	the landscape.  They gain the Slowed condition. -->
+  <!--     </p> -->
+      
+  <!--   </abilitydescription>     -->
+  <!--   <spline><p x="-60" y="0"/></spline> -->
+  <!--   <prereqabilityrank>wild_magic.lore_1</prereqabilityrank> -->
+  <!--   <abilitycheck dc="9">Magic+Rank</abilitycheck> -->
+  <!--   <abilityranks from="1" to="4"/> -->
+  <!-- </ability> -->
+  
+  
   
 
   <ability>
