@@ -71,7 +71,7 @@ from utils import (
 
 # Jinja2 doesn't like absolute paths.  We must supply a relative path
 ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
-PATRON_TEMPLATE_FNAME = join(docs_dir, "patron_template.xml")
+PATRON_TEMPLATE_FNAME = join("docs", "patron_template.xml")
 
 
 # latex preamble for the index.
@@ -353,6 +353,7 @@ def apply_template_to_xml(jinja_env,
     # dir using Jinjas include directive). 
     if template_fname is None:
         template_fname = xml_fname_in
+    print(f"---  {template_fname}")
     template = jinja_env.get_template(template_fname)
     if template is None:
         print(f"Problem reading template file {template_fname}.")
@@ -738,15 +739,35 @@ if __name__ == "__main__":
         build_book(join("modules", module_id), f"{module_id}.xml", verbosity)
 
         
-    # # Build latex/pdf patron files.
-    # for patron_id, _, _ in config.patrons_to_build:
-    #     patron = db.patrons[patron_id]
-    #     build_pdf_doc(template_fname=PATRON_TEMPLATE_FNAME,
-    #                   doc_fname=patron.get_id(), 
-    #                   verbosity=verbosity,
-    #                   db=db,
-    #                   patron=patron) or die()
+    # Build latex/pdf patron files.
+    for patron_id, _, _ in config.patrons_to_build:
+        patron = db.patrons[patron_id]
+        full_doc_xml_fname = join("docs", patron.get_id() + ".xml")
+        doc = apply_template_to_xml(
+            jinja_env,
+            xml_fname_in=full_doc_xml_fname,
+            template_fname=PATRON_TEMPLATE_FNAME,           
+            #archetype=archetype,
+            patron=patron,
+            db=db,
+            verbosity=verbosity) or die()
+        
+        build_pdf(
+            xml_fname=patron.get_id(),
+            verbosity=verbosity,
+            doc=doc,
+            db=db,
+            patron=patron) or die()
+        
+        # build_pdf(template_fname=PATRON_TEMPLATE_FNAME,
+        #           doc_fname=patron.get_id(), 
+        #           verbosity=verbosity,
+        #           db=db,
+        #           patron=patron) or die()
 
+
+        
+        
     # # Build latex/pdf encounter files.
     # for encounter_id, _, _ in config.encounters_to_build:
     #     encounter_fname = join(#encounters_dir,

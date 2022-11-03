@@ -16,100 +16,22 @@
     <!-- *************************************** -->
     <section>
       <sectiontitle>{{ patron.ability_group.get_title() }}</sectiontitle>
-      
+
       {{ patron.ability_group.get_description() }}
 
-      {% for ability in patron.ability_group  %}
+      {% from "docs/macro_ability.xml" import build_ability with context %}      
+      {% for ability in patron.ability_group.get_abilities()%}
+
       <subsection>
-        <subsectiontitle>
-	  {{ ability.get_title() }} {{ ability.get_ability_class_symbol() }}
-	</subsectiontitle>    
-	
-	{% if ability.description is not none %}
-	{{ ability.description }}
-	{% endif %}
+      <subsectiontitle>
+	{{ ability.get_title() }}
+      </subsectiontitle>
+      
+      {{ build_ability(ability) }}
 
-
-
-	<table>
-	  <tablecategory>Standard</tablecategory>
-
-	  <tablespec>
-            <fixed>0.05</fixed>
-            <fixed>0.85</fixed>
-	  </tablespec>
-
-	  <tabletitle>X</tabletitle>
-
-	  <!--
-              <tablerow>
-              <td width="2" align="l">
-              <tablesection>{{ ability.get_title() }}</tablesection>
-              </td>
-              </tablerow>
-	  -->
-
-	  <!--
-              {% if loop.index0 == 0 %}   
-              <tableheaderrow>
-              <th>Level</th>
-              <th>Check</th>
-              </tableheaderrow>
-              {% endif %}
-	  -->
-
-	  {% for ability_rank in ability.get_ranks()  %}
-	  <tablerow>
-            <td>
-              {{- ability_rank.get_rank_number() }}
-            </td>
-            <td>
-              {%- if ability_rank.has_prerequisites() %}
-              <bold>Prereq:</bold>
-              {%-     for prereq in ability_rank.get_prerequisites()  %}
-              {{-         prereq.to_string() }}
-              {%-         if not loop.last %}, {% endif %}
-              {%-     endfor %}
-
-              {% endif %}
-              {%- if ability_rank.check is not none -%}
-              <bold>Check:</bold> {{ ability_rank.check }}
-	      
-              {% endif %}
-              {%- if ability_rank.overcharge is not none -%}
-              , ><leq/> {{ ability_rank.overcharge }}	      
-              {% endif %}
-              {%- if ability_rank.damage is not none %}          
-              <bold>Dmg:</bold> {{- ability_rank.damage }}
-	      
-              {% endif %}
-              {%- if ability_rank.effect is not none %}              
-              <bold>Effect:</bold> {{ ability_rank.effect }}
-	      
-              {% endif %}              
-              {%- if ability_rank.description is not none %}
-              {{ ability_rank.description }}
-              {%- endif %}
-              {%- if ability_rank.is_masterable() %}
-	      
-              <bold>Mastery:</bold>
-              {%- for x in range(ability_rank.get_mastery_successes()) -%}
-              <success/>
-              {%- endfor -%}
-              {%- for x in range(ability_rank.get_mastery_attempts()) -%}
-              <attempt/>
-              {%- endfor -%}
-              {%- for x in range(ability_rank.get_mastery_failures()) -%}
-              <fail/>
-              {%- endfor -%}
-              {%- endif %}
-
-            </td>
-	  </tablerow>
-	  {% endfor %}
-	</table>	
-      </subsection>      
+      </subsection>
       {% endfor %}
+      
     </section>    
   </chapter>
 </book>

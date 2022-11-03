@@ -15,8 +15,25 @@ from utils import (
 
 from abilities import AbilityGroup, AbilityGroups
 
+"""
+ 
+ sponge.
+ oil black and brown
+ inks?
 
+      {% from "docs/macro_ability.xml" import build_ability with context %}
 
+      
+      {% for ability in ability_group.get_abilities()%}
+
+      <subsectiontitle>
+	{{ ability.get_title() }} {{ ability.get_ability_class_symbol() }}
+      </subsectiontitle>    
+
+      {{ build_ability(ability) }}
+      {% endfor %}
+
+"""
 
 class Patron:
     """

@@ -75,7 +75,7 @@ background_files_to_build = (
 )
 
 patrons_to_build = (
-    #("klazyabolus", True, "[KL]"),
+    ("klazyabolus", True, "[KL]"),
 )
 
 archetypes_to_build = (
