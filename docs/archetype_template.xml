@@ -92,10 +92,15 @@
 	    <description>
 	      {{ archetype.get_progression_data_for_level(0).level_health }} + Strength Modifier 
 	    </description>
+
+	    <term>Health Refresh Rate = </term>
+	    <description>
+	      {{ archetype.get_progression_data_for_level(0).level_health_refresh }}
+	    </description>
 	  </descriptions>
 	  Your current stamina and health are the same as your full stamina and health.  The temporary
-	  values are zero, and the refresh rate is
-	  {{ archetype.get_progression_data_for_level(0).level_health_refresh }}
+	  values are zero.  Write the health refresh rate as is in the refresh rate
+	  box on the character sheet.
 	</li>
 
 	<li>
