@@ -14,6 +14,22 @@
   </abilitygroupinfo>
 
 
+  <ability>
+    <abilitytitle>Bladesharp</abilitytitle>
+    <abilityid>rune.bladesharp</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><runemagic/><magicpool/></tags>
+    <abilitydescription>
+      <p>
+	An invocation that sharpens a blade.
+      </p>
+    </abilitydescription>    
+    <spline><p x="-30" y="30"/></spline>
+    <abilitycheck dc="3" effect="+Rank dmg for one edged weapon">Magic+Rank</abilitycheck>
+    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <abilityranks from="1" to="2"/>
+  </ability>
+
 
   <ability>
     <abilitytitle>Hold Door</abilitytitle>
