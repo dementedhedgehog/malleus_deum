@@ -1019,7 +1019,7 @@
 	  When they land they thrower makes a Std Check vs 4 and if successful
 	  the jar breaks and ignites.  Any character in the target square suffers
 	  d6 damage each round until the fire is extinguished, and gains the
-	  Aflame condition (they must make a Mettle check to ignore the fire).
+	  Burning condition (they must make a Mettle check to ignore the fire).
 	  If they attempt to put out the fire they make a Std Check vs DC 10.
 	</p>
       </description>      
@@ -1271,15 +1271,31 @@
   </subsection>
   
   <subsection>
-    <subsectiontitle>Weapon and Armour Quality (Optional)</subsectiontitle>
-
+    <subsectiontitle>Break Saves (Optional)</subsectiontitle>
+    <indexentry>Break Save (Armour and Weapons)</indexentry>	
+    <indexentry>Armour<subentry>Break Save</subentry></indexentry>
+    <indexentry>Weapon<subentry>Break Save</subentry></indexentry>    
+    
     <p>
-      Weapons and armour have a Save DC value that can be used as the difficulty in a
-      Std Check when the character has rolled a Boon or Bane on their attack,
-      parry, dodge, block or armour roll.  The values for the Saves and the Prices of
-      standard weapons are presented in these tables.  However, not all things are
-      created with the same level of skill and craftsmanship.
+      One of the possible outcomes when a boon or a bane is rolled is that a Break Save must be made
+      for a piece of equipment.  This might occur when any of the following happens:
+      <list>
+        <li>When the player attacks with a boon roll a save for the opponents weapon or armour.</li>
+        <li>When the player defends using armour with a bane roll a save for their armour.</li>
+        <li>When a player defends using parry with a bane roll a save for their weapon.</li>
+        <li>When a player defends using block with a bane roll a save for their shield.</li>
+      </list>      
+      To make a Break Save make a Std Check against the Save DC for the weapon or armour.
+      The values for the Save DCs for standard weapons are presented in the equipment tables
+      alongside their prices.  If the weapon save fails the weapon or armour is broken.
+      Broken armour has a reduced Armour Bonus until it is repaired.  Broken weapons might
+      have reduced damage or be completely useless at the GMs discretion.
     </p>
+  </subsection>
+
+  
+  <subsection>
+    <subsectiontitle>Weapon and Armour Quality (Optional)</subsectiontitle>
 
     <p>
       We distinguish five levels of weapon and armour quality: Masterwork, Good Quality,
@@ -1287,7 +1303,7 @@
       manifests itself in three ways.  Firstly, the quality of the weapons and armour are
       obvious to observers. So having high quality weapons and items is likely to impress
       and intimidate people.  Secondly, price.  The cost of higher quality items is much
-      greater than the cost of average quality items.  Finally, item quality determines
+      greater than the cost of average quality items.  Finally, item quality affects
       the items save DC.  The prices and saves of items in the weapons and armour
       tables above are for average quality items.  Finally note that the prices of these
       goods varies from place to place and time to time.
@@ -1296,8 +1312,8 @@
     <descriptions>
       <term>Masterwork</term>
       <description>
-        <indexentry>Masterwork Weapons/Armour</indexentry>	
-        <indexentry>Weapon Quality<subentry></subentry></indexentry>
+        <indexentry>Masterwork Weapons/Armour</indexentry>
+        <indexentry>Weapon Quality<subentry>Masterwork</subentry></indexentry>
 	Masterwork items have been made by a very experienced artisan out of the
 	finest materials.  Often they will be ornately decorated metal filligree,
 	or inlaid with semi-precious stones such as lapis lazuli, or ivory and
