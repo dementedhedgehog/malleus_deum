@@ -77,6 +77,23 @@
     <abilityranks from="1" to="5"/>
   </ability>
   
+  <ability>
+    <abilitytitle>Ghost Step</abilitytitle>
+    <abilityid>enchantment.ghost_step</abilityid>
+    <abilityactiontype><immediate/></abilityactiontype>
+    <tags><enchantment/><magicpool/></tags>
+    <abilitydescription>
+      <p noindent="true">
+	The character barely disturbs the ground when they move.
+	They are untrackable and walk silently.  Their feet are not muddied
+	when they walk, and they do not sink into mud or snow.
+      </p>
+    </abilitydescription>    
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>	
+    <spline><p x="90" y="15"/></spline>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilityranks from="1" to="3"/>
+  </ability>
   
   <ability>
     <abilitytitle>Glamour</abilitytitle>
