@@ -26,6 +26,9 @@
     <abilityid>transport.animal_handling</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><transport/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="-30" y="0"/></spline>
     <abilitydescription>
       <p>
 	The character has experience caring for animals.  Particularly
@@ -33,9 +36,6 @@
 	and they can diagnose and treat common ails.	 
       </p>
     </abilitydescription>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <spline><p x="-30" y="0"/></spline>
-    <abilityranks untrained="-3" from="1" to="4"/>
   </ability>
 
   <ability>
@@ -43,6 +43,10 @@
     <abilityid>transport.carter</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><transport/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>transport.animal_handling_1</prereqabilityrank>
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
   	This represents the ability to drive a cart.  Under normal
@@ -51,10 +55,6 @@
   	when trying to drive the cart fast or when the cart is overloaded.
       </p>
     </abilitydescription>
-    <prereqabilityrank>transport.animal_handling_1</prereqabilityrank>
-    <spline><p x="30" y="30"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
  
   <ability>
@@ -62,15 +62,15 @@
     <abilityid>transport.horse_riding</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><transport/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>transport.animal_handling_1</prereqabilityrank>
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
   	The ability to ride a horse.
       </p>
     </abilitydescription>
-    <spline><p x="-30" y="30"/></spline>
-    <prereqabilityrank>transport.animal_handling_1</prereqabilityrank>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="4"/>
   </ability>
 
 
@@ -79,6 +79,10 @@
     <abilityid>transport.master</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><transport/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>transport.sailor_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
   	Masters are navigators.  They learn to plot a ships course, first through local waters
@@ -100,10 +104,6 @@
   	dead reckoning.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>transport.sailor_1</prereqabilityrank>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -112,6 +112,9 @@
     <abilityid>transport.sailor</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><transport/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="60" y="0"/></spline>
     <abilitydescription>
       <p>
   	Sailing involves the use of a ship.  This ability includes the use of small craft
@@ -127,8 +130,5 @@
   	The characters exploits and knowledge garner him respect from fellow sailors.
       </p>      
     </abilitydescription>
-    <spline><p x="60" y="0"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
 </abilitygroup>

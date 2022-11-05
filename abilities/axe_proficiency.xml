@@ -19,6 +19,11 @@
     <abilityid>axe.cleave</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><axe/><heavy/><weapon/><martial/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon + Strength|Endurance">Std+Rank</abilitycheck>
+    <prereqabilityrank>axe.strike_2</prereqabilityrank>
+    <prereqattr><strength>13</strength></prereqattr>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character strikes at their opponent with great vengeance and
@@ -27,11 +32,6 @@
 	character.
       </p>
     </abilitydescription>    
-    <spline><p x="60" y="30"/></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon + Strength|Endurance">Std+Rank</abilitycheck>
-    <prereqabilityrank>axe.strike_2</prereqabilityrank>
-    <prereqattr><strength>13</strength></prereqattr>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -40,7 +40,11 @@
     <abilityid>axe.frenzy</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><axe/><heavy/><weapon/><martial/><mettlepool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="7">Mettle+Rank</abilitycheck>
+    <prereqabilityrank>axe.strike_1</prereqabilityrank>
+    <prereqattr><strength>13</strength></prereqattr>
+    <spline><p x="-75" y="30"/></spline>    
     <abilitydescription>
       <p>
 	When a character makes a frenzied attack with an axe, they make
@@ -48,10 +52,6 @@
 	On overcharge the character goes beserk.
       </p>
     </abilitydescription>
-    <prereqabilityrank>axe.strike_1</prereqabilityrank>
-    <prereqattr><strength>13</strength></prereqattr>
-    <spline><p x="-75" y="30"/></spline>    
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -59,18 +59,18 @@
     <abilityid>axe.hook</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><axe/><heavy/><weapon/><martial/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck
 	dc="Targets Defence"
 	dmg="Weapon + Strength|Endurance, target saves vs Str or drops weapon/shield">Std+Rank</abilitycheck>
+    <prereqabilityrank>axe.strike_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>    
     <abilitydescription>
       <p>
         Characters equipped with an axe can use the axe to attempt to disarm
 	an opponent or remove their shield by using the axes beard as a hook.
       </p>
     </abilitydescription>
-    <prereqabilityrank>axe.strike_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>    
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -78,14 +78,14 @@
     <abilityid>axe.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><axe/><heavy/><martial/><weapon/><basic/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with an axe can strike with it during combat
 	doing weapon damage.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance">Std+Rank</abilitycheck>
-    <spline></spline>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 </abilitygroup>

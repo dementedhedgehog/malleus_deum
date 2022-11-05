@@ -25,18 +25,16 @@
     <abilityid>craft.armour_smith</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.smith_2</prereqabilityrank>    
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	An armour smith can make, repair and evaluate metal armour.
       </p>
     </abilitydescription>
-    <spline><p x="60" y="30"/></spline>
-    <prereqabilityrank>craft.smith_2</prereqabilityrank>    
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
-
-
 
 
   <ability>
@@ -44,16 +42,16 @@
     <abilityid>craft.builder</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>	
+    <spline><p x="20" y="60"/></spline>
     <abilitydescription>
       <p>
 	Builder of large wooden structures: houses, barns etc.
 	Can be used to detect secret doors in buildings.
       </p>
     </abilitydescription>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>	
-    <spline><p x="20" y="60"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -61,6 +59,10 @@
     <abilityid>craft.carpentry</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.craft_1</prereqabilityrank>
+    <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
       <p>
 	Carpenters craft things from wood.  Specialization leads to fine
@@ -74,12 +76,7 @@
 	an excellent furniture builder.
       </p>
     </abilitydescription>
-    <prereqabilityrank>craft.craft_1</prereqabilityrank>
-    <spline><p x="-50" y="30"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
-  
   
 
   <ability>
@@ -87,15 +84,15 @@
     <abilityid>craft.cartwright</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
+    <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
 	Cartwrights build and repair carts and cartwheels.
       </p>
     </abilitydescription>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
-    <spline><p x="-30" y="60"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -104,16 +101,16 @@
     <abilityid>craft.cooper</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
+    <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
       <p>
 	Coopers make barrels. Barrels are used to ship a wide range of goods.
 	A lot of barrels are needed!
       </p>
     </abilitydescription>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
-    <spline><p x="-50" y="30"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -121,16 +118,16 @@
     <abilityid>craft.craft</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <prereqabilityrank></prereqabilityrank>    
+    <spline></spline>
     <abilitydescription>
       <p>
   	This ability represents general handiness with tools.
 	This ability may be used in place of a more specific craft ability.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <prereqabilityrank></prereqabilityrank>    
-    <abilitycheck dc="15">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
   
 
@@ -139,6 +136,10 @@
     <abilityid>craft.smith</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.craft_2</prereqabilityrank>
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
 	Smiths craft metals using heat.  There are a range of smith specializations. 
@@ -147,10 +148,6 @@
 	with metalworking and smithing.
       </p>
     </abilitydescription>
-    <spline><p x="30" y="30"/></spline>
-    <prereqabilityrank>craft.craft_2</prereqabilityrank>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -159,15 +156,15 @@
     <abilityid>craft.shipwright</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
+    <spline><p x="50" y="30"/></spline>
     <abilitydescription>
       <p>
 	Shipwrights are carpenters who specialize in ship-building and repair.
       </p>
     </abilitydescription>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
-    <spline><p x="50" y="30"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>  
 
 
@@ -177,16 +174,16 @@
     <abilityid>craft.farmer</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.craft_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	Basic argricultural abilities: ploughing, harvesting, hay bailing,
 	bee keeping, etc.	
       </p>
     </abilitydescription>
-    <prereqabilityrank>craft.craft_2</prereqabilityrank>
-    <spline><p x="90" y="30"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -194,6 +191,10 @@
     <abilityid>craft.mason</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.craft_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character has experience as a Stonemason, repairing,
@@ -209,10 +210,6 @@
 	and the design of buildings.
       </p>
     </abilitydescription>
-    <prereqabilityrank>craft.craft_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -221,6 +218,10 @@
     <abilityid>craft.mining</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><scholar/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.craft_1</prereqabilityrank>
+    <spline><p x="-100" y="30"/></spline>
     <abilitydescription>
       <p>
 	This ability encompases the study of the earth, mining and minerals.
@@ -245,10 +246,6 @@
 	sapping, bringing down unstable tunnels etc.	    
       </p>      
     </abilitydescription>
-    <spline><p x="-100" y="30"/></spline>
-    <prereqabilityrank>craft.craft_1</prereqabilityrank>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -256,14 +253,14 @@
     <abilityid>craft.weapon_smith</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><craft/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>craft.smith_2</prereqabilityrank>
+    <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
 	A weapon smith can make, repair and evaluate non magical metal weapons.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="60"/></spline>
-    <prereqabilityrank>craft.smith_2</prereqabilityrank>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 </abilitygroup>

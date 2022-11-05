@@ -20,15 +20,15 @@
     <abilityid>archery.shoot</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><bow/><ranged/><weapon/></tags>    
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters may use Archery to shoot arrows from short bows during combat
 	doing weapon dmg when they hit.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
 
@@ -37,6 +37,10 @@
     <abilityid>archery.dead_eye</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><bow/><ranged/><weapon/></tags>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
+    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character has spent many hours working on improving the accuracy of
@@ -44,10 +48,6 @@
 	bonus to hit.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
-    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   
@@ -56,6 +56,10 @@
     <abilityid>archery.fast_shot</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><ranged/><bow/><weapon/></tags>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
+    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	Holding a pair of arrows in his hand the character
@@ -67,10 +71,6 @@
 	character is surprised.
       </p>
     </abilitydescription>
-    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -78,17 +78,17 @@
     <abilityid>archery.long_bow</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><bow/><ranged/><weapon/></tags>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
+    <prereqabilityrank>archery.shoot_1</prereqabilityrank>
+    <prereqnottag>Short</prereqnottag>
+    <prereqattr><strength>14</strength></prereqattr>
+    <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character has trained in the use of the long bow.
       </p>
     </abilitydescription>
-    <prereqabilityrank>archery.shoot_1</prereqabilityrank>
-    <prereqattr><strength>14</strength></prereqattr>
-    <spline><p x="-90" y="30"/></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqnottag>Short</prereqnottag>
-    <abilityranks from="1" to="4"/>
   </ability>  
   
   <ability>
@@ -96,6 +96,10 @@
     <abilityid>archery.rain_of_arrows</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><ranged/><bow/><weapon/></tags>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
+    <prereqabilityrank>archery.fast_shot_2</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	This ability allows the character to fire three arrows as one action.
@@ -106,9 +110,5 @@
 	their rank in this ability.  The character rolls to hit for each arrow.
       </p>
     </abilitydescription>
-    <prereqabilityrank>archery.fast_shot_2</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
-    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>  
 </abilitygroup>

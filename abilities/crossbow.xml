@@ -19,16 +19,16 @@
     <abilitytitle>Crossbow Shoot</abilitytitle>
     <abilityid>crossbow.shoot</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
     <tags><weapon/><crossbow/><ranged/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with an Crossbow can shoot it during combat
 	doing weapon damage.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
 
@@ -37,7 +37,10 @@
     <abilityid>crossbow.fast_loader</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><crossbow/><ranged/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="9">Speed+Rank</abilitycheck>
+    <prereqabilityrank>crossbow.shoot_2</prereqabilityrank>
+    <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character has spent a long time practicing reloading a heavy
@@ -46,9 +49,6 @@
 	spend the round reloading instead.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="30"/></spline>
-    <prereqabilityrank>crossbow.shoot_2</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -57,15 +57,15 @@
     <abilityid>crossbow.heavy</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><crossbow/><ranged/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
+    <prereqabilityrank>crossbow.shoot_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	Character has trained in the use of the heavy crossbow.  Heavy
 	crossbows are slow to reload and take a full turn to reload.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>crossbow.shoot_2</prereqabilityrank>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>  
 </abilitygroup>

@@ -22,14 +22,14 @@
     <abilityid>monster.bite</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
-    <abilitycheck dc="13" dmg="5+2*Rank">Std+Rank</abilitycheck>
+    <abilitycheck dc="13" dmg="5+2×Rank">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>
 
   
@@ -38,15 +38,15 @@
     <abilityid>monster.blood_rage</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><monster/><crushing/><piercing/></tags>
+    <abilityranks from="1" to="6"/>
     <gmgability/>
     <abilitycheck dc="Targets Defence" dmg="4+Rank">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	When bloodied the monster rages using this ability to attack a second time in melee.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="6"/>
   </ability>
   
   <ability>
@@ -54,16 +54,16 @@
     <abilityid>monster.claw</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/><crushing/><piercing/></tags>
+    <abilityranks from="1" to="6"/>
     <gmgability/>
     <abilitycheck dc="Targets Defence" dmg="4+Rank">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	Claws are an attack that are particularly effective against
 	Claws get an +Rank to hit against Block or Armour Defences.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="6"/>
   </ability>
 
   <ability>
@@ -71,8 +71,10 @@
     <abilityid>monster.countless_bites</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/><mettlepool/></tags>
+    <abilityranks from="1" to="4"/>
     <gmgability/>
     <abilitycheck dc="5"  dmg="2+Rank">Mettle+Endurance</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster makes dozens of attacks per round.  No to-hit
@@ -87,8 +89,6 @@
 	The first round characters have to make a morale check or retreat.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -96,15 +96,15 @@
     <abilityid>monster.death_blow</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><monster/><crushing/><piercing/></tags>
+    <abilityranks from="1" to="6"/>
     <gmgability/>
     <abilitycheck dc="Targets Defence" dmg="4+Rank">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	When the character dies they get one last additional attack.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="6"/>
   </ability>
   
   
@@ -113,7 +113,10 @@
     <abilityid>monster.demon_instability</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/><mettlepool/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
+    <abilitycheck dc="3">Mettle+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	Demons project their wills into this plane and create
@@ -132,9 +135,6 @@
 	simulacrum has no hit points per se, only a mettle pool.
       </p>
     </abilitydescription>
-    <abilitycheck dc="3">Mettle+Rank</abilitycheck>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>  
 
   <ability>
@@ -142,16 +142,16 @@
     <abilityid>monster.fleet</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="4"/>
     <gmgability/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         The NPC takes an additional move action each round for each rank of
 	fleet they have..
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   
@@ -161,8 +161,10 @@
     <abilityid>monster.fly</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="4"/>
     <gmgability/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster can fly.   They can move over terrain that they
@@ -172,26 +174,23 @@
 	strong winds.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="4"/>
-  </ability>
-  
+  </ability>  
   
   <ability>
     <abilitytitle>Horns</abilitytitle>
     <abilityid>monster.horns</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="4"/>
     <gmgability/>
     <abilitycheck dc="Targets Defence" dmg="3+2xRank">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This powerfull built monster has a set of horns
 	that it may use to charge.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="4"/>
   </ability>
     
   <ability>
@@ -199,16 +198,16 @@
     <abilityid>monster.horns_greater</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="Targets Defence" dmg="3+3xRank">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This large monster has a set of horns
 	that it may use when charging to great effect.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>
   
   
@@ -217,16 +216,16 @@
     <abilityid>monster.horns_lesser</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
+    <abilitycheck dc="Targets Defence" dmg="3+Rank">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This small to medium sized monster has a set of horns
 	that it may use when charging.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence" dmg="3+Rank">Std+Rank</abilitycheck>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -234,16 +233,16 @@
     <abilityid>monster.poison_bite</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="7" dmg="4+2*Rank">Std+Endurance</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	FIXME: we need to work out what poisoned should look like.  (Tempted to
 	make it save or take fractional damage).
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>
 
 
@@ -252,8 +251,10 @@
     <abilityid>monster.prehensile_tail</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster has a prehensile tail that they can use to climb, grab
@@ -261,8 +262,6 @@
 	the tail. 
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>
   
 
@@ -271,8 +270,10 @@
     <abilityid>monster.prehensile_tongue</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster has a tongue that they can shoot out a distance of
@@ -280,9 +281,7 @@
 	and grab things with.  If successful the target is grabbed with a
 	Strength 8+3xRank DC.
       </p>
-    </abilitydescription>     
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
+    </abilitydescription>
   </ability>
 
   <ability>
@@ -290,15 +289,15 @@
     <abilityid>monster.regeneration</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="None">No-Check</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
     	At the start of the creatures turn it regenerates Rank hit points.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -306,15 +305,15 @@
     <abilityid>monster.summon_demon</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	A demon is summoned
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>
 
 
@@ -323,8 +322,10 @@
     <abilityid>monster.swarm</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster is composed of a large number of smaller individuals.
@@ -335,8 +336,6 @@
 	of the check should depend on the integrity of the barrier.
       </p>
     </abilitydescription>     
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>  
   
 
@@ -345,16 +344,16 @@
     <abilityid>monster.terrifying</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="9"/>
     <gmgability/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The creature once revealed in their true form is terrifying.  The
 	characters have to make a will check vs rank or lose their turn.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="9"/>
   </ability>  
 
   <ability>
@@ -362,16 +361,16 @@
     <abilityid>monster.terrifying_clarion</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="9"/>
     <gmgability/>
     <abilitycheck dc="13">Mettle+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The creature has a terrifying roar or battle cry. The
 	characters have to make a will check vs rank or lose their turn.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="9"/>
   </ability>  
 
   <ability>
@@ -379,8 +378,10 @@
     <abilityid>monster.watch_out_sir</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster grabs one of his lesser comrades and uses them as a meat shield
@@ -388,8 +389,6 @@
 	the meat shield takes all the damage from one attack.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>  
   
   <ability>
@@ -397,8 +396,10 @@
     <abilityid>monster.web</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><monster/></tags>
+    <abilityranks from="1" to="5"/>
     <gmgability/>
     <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster can shoot a sticky web-like substance that slows
@@ -407,7 +408,5 @@
 	slowed.
       </p>
     </abilitydescription>     
-    <spline></spline>
-    <abilityranks from="1" to="5"/>
   </ability>  
 </abilitygroup>

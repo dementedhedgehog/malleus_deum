@@ -24,6 +24,9 @@
     <abilityid>shield.block</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p>
 	<label>ability:block</label>
@@ -36,9 +39,6 @@
 	2 damage.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
   <ability>
@@ -46,6 +46,10 @@
     <abilityid>shield.push</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Strength">Strength+Rank</abilitycheck> <!-- FIXME -->
+    <prereqabilityrank>shield.block_1</prereqabilityrank>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
   	<indexentry>Shield Push</indexentry>
@@ -55,10 +59,6 @@
   	than the character.
       </p>
     </abilitydescription>
-    <spline><p x="60" y="30"/></spline>
-    <prereqabilityrank>shield.block_1</prereqabilityrank>
-    <abilitycheck dc="Targets Strength">Strength+Rank</abilitycheck> <!-- FIXME -->
-    <abilityranks from="1" to="4"/>
   </ability>
   
   <ability>
@@ -66,6 +66,10 @@
     <abilityid>shield.support</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
+    <prereqabilityrank>shield.block_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
   	<indexentry>support</indexentry>
@@ -75,9 +79,5 @@
   	with the character.  In other respects this ability works like Shield Block.
       </p>
     </abilitydescription>
-    <spline><p x="-60" y="30"/></spline>
-    <prereqabilityrank>shield.block_1</prereqabilityrank>
-    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 </abilitygroup>

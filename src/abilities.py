@@ -20,7 +20,6 @@ from utils import (
     node_to_string,
     COMMENT,
     children_to_string,
-    #convert_to_roman_numerals,
     convert_str_to_bool,
     contents_to_string,
 )
@@ -44,7 +43,7 @@ class FAMILY_TYPE:
 FAMILY_TYPES = ("<lore/>", "<martial/>", "<magical/>", "<general/>",  "<primary/>", "<npc/>")
 
 MIN_INITIAL_ABILITY_RANK = 1
-MAX_INITIAL_ABILITY_RANK = 1
+MAX_INITIAL_ABILITY_RANK = 3
 
 # ability tags
 ACCURATE = "Std+3×Rank"
@@ -60,7 +59,8 @@ UNTRAINED = "Untrained"
 VALID_DDCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
               "31", "33", "35", "37", "39",
               "Targets Defence", "Targets Attack", "Critical Success", "None", "Context Dependent",
-              "Targets Strength", "Targets Agility", "Targets Perception", "Targets Speed")
+              "Targets Strength", "Targets Agility", "Targets Perception", "Targets Speed",
+              "Targets Mettle", )
 
 
 def is_valid_ddc(rank):
@@ -334,7 +334,7 @@ class AbilityCheck:
         return self.dmg
 
     def _load(self, ability_check_element):
-        self.name = ability_check_element.attrib.get("name", "Default")
+        self.name = ability_check_element.attrib.get("name")
         self.dc = ability_check_element.attrib.get("dc")
         self.dmg = ability_check_element.attrib.get("dmg")
         self.effect = ability_check_element.attrib.get("effect")
@@ -346,15 +346,17 @@ class AbilityCheck:
 
     def get_problems(self):
         problems = []
-        check = self.name.casefold()
-        looks_like_a_pool_check = "luck" in check or "mettle" in check or "magic" in check
-        if looks_like_a_pool_check:
-            if not self.is_pool():
-                problems.append("Ability looks like a pool check but isn't tagged as such")
+        #check_type = self.check_type.casefold() # FIXME
+        #check = self.check.casefold() # FIXME
+        #looks_like_a_pool_check = "luck" in check or "mettle" in check or "magic" in check
+        # looks_like_a_pool_check =  any(t in check_type for t in ("luck", "mettle", "magic"))
+        # if looks_like_a_pool_check:
+        #     if not self.is_pool():
+        #         problems.append("Ability looks like a pool check but isn't tagged as such")
 
-            if "rank" in check:
-                problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
-                                "rank modifies the DC?")
+        #     if "rank" in check:
+        #         problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
+        #                         "rank modifies the DC?")
 
         if not is_valid_ddc(self.dc):
             problems.append(f"Ability {self.ability.ability_id} has an invalid ddc '{self.dc}'.  "
@@ -364,7 +366,6 @@ class AbilityCheck:
         # Check the tags are set properly.
         #
         tags = self.ability.get_tags()
-        #check_type = self.ability.get_check_type()
 
         # Check accurate tag
         if xor(self.check_type == ACCURATE, "accurate" in tags):
@@ -391,7 +392,7 @@ class AbilityCheck:
                             f"have a negative ability rank")
             
         # check dcs are standard
-        if check in (STD_CHECK, ACCURATE) and self.dc not in ("3", "6", "9", "12", "15", "18", "21"):
+        if self.dc in (STD_CHECK, ACCURATE) and self.dc not in ("3", "6", "9", "12", "15", "18", "21"):
             problems.append(f"Ability  {self.ability.ability_id} has a non-standard DC {self.dc}")
 
         return problems
@@ -415,7 +416,8 @@ class Ability:
 
         # checks .. a dictionary from name->check details.
         # an ability can have multiple check configurations
-        self.checks = {}
+        self.checks = []
+        #self.checks = {}
         
         # the check associated with this ability (Std, Magic, etc)
         self.check_type = None                 
@@ -456,7 +458,7 @@ class Ability:
         if len(self.checks) == 0:
             problems.append("Ability has no checks!")
         else:
-            for check in self.checks.values():
+            for check in self.checks:
                 problems += check.get_problems()
 
         # rank numbers can have an optional initial untrained/negative rank, after that the
@@ -471,9 +473,11 @@ class Ability:
             if is_first_rank:
                 if ((rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK)
                     and "physical" not in self.tags):
+                    print(f"UNTRAINED {[str(a) for a in self.get_trained_ranks()]}")
+                    print(f"ALL {[str(a) for a in self.ranks]}")
                     problems.append(
                         f"First rank for ability {self.get_title()} is {rank_number} "
-                        f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY_RANK+1}")
+                        f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY_RANK}")
                 is_first_rank = False
             else:
                 if last_rank_number + 1 != rank_number:
@@ -499,15 +503,18 @@ class Ability:
 
     def get_ability_rank_prereq(self):
         return self.ability_rank_prereq
-
-    # def get_damage(self):
-    #     return self.damage if self.damage is not None else ""
     
     def get_ability_rank_range(self):
-        first_ability_rank = self.ranks[0].get_rank_number()
-        last_ability_rank = self.ranks[-1].get_rank_number()
-        untrained_rank = "N/A" if self.untrained_rank is None else str(self.untrained_rank)
-        return f"untrained: {untrained_rank} {first_ability_rank}-{last_ability_rank}"
+        trained_ranks = self.get_trained_ranks()
+        first_ability_rank = trained_ranks[0].get_rank_number()
+        last_ability_rank = trained_ranks[-1].get_rank_number()
+        if self.is_untrained():
+            untrained_rank = self.get_untrained_rank() # .get_ability_rank_number()
+            ability_ranks =  f"untrained: {untrained_rank}, {first_ability_rank}-{last_ability_rank}"
+        else:
+            ability_ranks = f"{first_ability_rank}-{last_ability_rank}"
+        return ability_ranks
+    
 
     def is_core(self):
         return "core" in self.tags
@@ -571,7 +578,7 @@ class Ability:
         return self.ability_id
 
     def get_checks(self):
-        return self.checks.values()
+        return self.checks
     
     def has_prerequisites(self):
         has_prereqs = False
@@ -637,14 +644,8 @@ class Ability:
            elif tag == "abilitycheck":
                ability_check = AbilityCheck(ability=self)
                ability_check._load(child)
-               self.checks[ability_check.name] = ability_check
-
-           # elif tag == "abilitychecktype":
-           #     if self.check_type is not None:
-           #         raise Exception("Only one abilitycheck per ability. (%s) %s\n" %
-           #                         (child.tag, str(child)))
-           #     else:
-           #         self.check_type = child.text
+               #self.checks[ability_check.name] = ability_check
+               self.checks.append(ability_check)
 
            elif tag == "gmgability":
                 self.gmg_ability = True

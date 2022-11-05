@@ -20,15 +20,15 @@
     <abilityid>conjuration.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><conjuration/><lore/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p>
 	This ability represents the characters knowledge of conjuration
 	magic and its theory.
       </p>
     </abilitydescription>    
-    <abilitycheck dc="9">Std+Rank</abilitycheck>
-    <spline></spline>
-    <abilityranks from="1" to="3"/>
   </ability>
   
   
@@ -37,6 +37,10 @@
     <abilityid>conjuration.eldritch_push</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="3" dmg="7+Rank">Magic+Rank</abilitycheck>
+    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster shoots a raw stream of thaumic energy from
@@ -51,10 +55,6 @@
 	away from the caster.
       </p>
     </abilitydescription>    
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
-    <abilitycheck dc="3" dmg="7+Rank">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -62,6 +62,10 @@
     <abilityid>conjuration.chain_lightning</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="9" dmg="d12+Rank">Magic+Rank</abilitycheck>
+    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster acts as a conduit for eldritch energies, directing them in an arc at a target.
@@ -75,11 +79,7 @@
       <p>
 	On overcharge the caster is also struck.
       </p>
-    </abilitydescription>    
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
-    <abilitycheck dc="9" dmg="d12+Rank">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
+    </abilitydescription>
   </ability>
 
 
@@ -88,6 +88,10 @@
     <abilityid>conjuration.eldritch_grasp</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="3" dmg="8+Rank">Magic+Rank</abilitycheck>
+    <prereqabilityrank>conjuration.eldritch_push_2</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster uses a raw stream of thaumic energy to grab a target
@@ -102,10 +106,6 @@
 	in any direction.  
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>conjuration.eldritch_push_2</prereqabilityrank>
-    <abilitycheck dc="3" dmg="8+Rank">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -113,6 +113,10 @@
     <abilityid>conjuration.scry</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
     	The character can view events from the past.  Viewing events in
@@ -142,10 +146,6 @@
     	If the caster fails any checks while scrying their contagious link is destroyed.
       </p>
     </abilitydescription>
-    <spline><p x="-60" y="60"/></spline>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -154,6 +154,10 @@
     <abilityid>conjuration.scry_greater</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>conjuration.scry_2</prereqabilityrank>	
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character can view events from a targets present and their future as well
@@ -161,10 +165,6 @@
 	is not predetermined the results are often very unreliable and inaccurate.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>conjuration.scry_2</prereqabilityrank>	
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
 
@@ -173,6 +173,10 @@
     <abilityid>conjuration.wither</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster rolls a standard check plus Wither Rank to grab an opponent.
@@ -188,9 +192,5 @@
 	or lose their turn.
       </p>
     </abilitydescription>    
-    <spline><p x="-90" y="30"/></spline>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>    
 </abilitygroup>

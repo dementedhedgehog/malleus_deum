@@ -21,6 +21,10 @@
     <abilityid>hammer.smash</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><heavy/><hammer/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon + Strength|Endurance, and Target saves verses Agility DC 12 + Level or is knocked back">Std+Rank</abilitycheck>
+    <prereqabilityrank>hammer.strike_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a hammer can use the hammer
@@ -32,10 +36,6 @@
 	If the attack misses and a bane is rolld then the attacked must save or be knocked prone.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon + Strength|Endurance, and Target saves verses Agility DC 12 + Level or is knocked back">Std+Rank</abilitycheck>
-    <prereqabilityrank>hammer.strike_2</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -43,14 +43,14 @@
     <abilityid>hammer.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><heavy/><hammer/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with an Hammer can strike with it during combat doing weapon 
 	damage.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance">Std+Rank</abilitycheck>
-    <spline></spline>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 </abilitygroup>

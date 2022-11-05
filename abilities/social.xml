@@ -35,9 +35,12 @@
   <ability>
     <abilitytitle>Adversary</abilitytitle>
     <abilityid>social.adversary</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
     <abilitytemplate>monster-type</abilitytemplate>
+    <abilityactiontype><minor/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="70" y="90"/></spline>
     <abilitydescription>
       <p>
 	The character bear an animosity towards, and/or have been trained
@@ -49,9 +52,6 @@
 	monster-class (the bonus is to the check only and not to damage).
       </p>
     </abilitydescription>
-    <spline><p x="70" y="90"/></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -61,7 +61,9 @@
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <indexentry>High Contacts</indexentry>
       <indexentry>Low Contacts</indexentry>
@@ -104,8 +106,6 @@
 	stand-over men, beggars, bandits and lepers.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline> 
-    <abilityranks untrained="0" from="1" to="6"/>
   </ability>
 
 
@@ -115,7 +115,9 @@
     <abilityid>social.deceive</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
+    <spline><p x="30" y="75"/></spline> 
     <abilitydescription>
       <p>
 	Lying convincingly can be difficult.  This ability represents
@@ -123,8 +125,6 @@
 	opponents Perceive.
       </p>
     </abilitydescription>
-    <spline><p x="30" y="75"/></spline> 
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 
   
@@ -135,7 +135,9 @@
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="0" y="0"/></spline> 
     <abilitydescription>
       <indexentry>High Etiquette</indexentry>
       <indexentry>Low Etiquette</indexentry>
@@ -208,8 +210,6 @@
 	checks should be made at a higher DC than usual.
       </p>	      
     </abilitydescription>
-    <spline><p x="0" y="0"/></spline> 
-    <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
   <ability>
@@ -218,7 +218,9 @@
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <indexentry>Renown</indexentry>
       <indexentry>Fame</indexentry>
@@ -260,8 +262,6 @@
 	</p>	
       </playexample>
     </abilitydescription>
-    <spline><p x="-90" y="0"/></spline> 
-    <abilityranks from="1" to="5"/>
   </ability>
 
 
@@ -271,15 +271,15 @@
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <indexentry>Infamy</indexentry>
       <p>
 	Infamy .. see Fame above.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="0"/></spline> 
-    <abilityranks from="1" to="5"/>
   </ability>
   
 
@@ -288,7 +288,9 @@
     <abilityid>social.interrogate</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck dc="None">Std+Rank</abilitycheck> <!-- FIXME -->
+    <spline><p x="90" y="105"/></spline>
     <abilitydescription>
       <p>
   	The character can make a Std check against an opponent.
@@ -309,8 +311,6 @@
   	a lasting effect on the characters personality.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="105"/></spline>
-    <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
   
 
@@ -319,7 +319,9 @@
     <abilityid>social.intimidate</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><social/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck dc="None">Std+Rank</abilitycheck>  <!-- FIXME -->
+    <spline><p x="0" y="105"/></spline>
     <abilitydescription>
       <p>
   	The character can make an check against an opponent
@@ -331,8 +333,6 @@
   	opposed to, or that are highly detrimental to them.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="105"/></spline>
-    <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
 
 
@@ -342,7 +342,9 @@
     <abilityid>social.leadership</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="0" y="165"/></spline> 
     <abilitydescription>    
       <p>
 	The character is a leader.  They may
@@ -362,8 +364,6 @@
 	opponents are bound to a peaceful resolution).
       </p>      
     </abilitydescription>
-    <spline><p x="0" y="165"/></spline> 
-    <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
 
@@ -372,7 +372,9 @@
     <abilityid>social.negotiate</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck dc="None">Std+Rank</abilitycheck> <!-- FIXME Opponents Negotiate -->
+    <spline><p x="-90" y="105"/></spline>
     <abilitydescription>
       <p>
   	Negotiation is the art of the deal, persuasion and diplomacy.
@@ -429,8 +431,6 @@
   	pick a DC for an NPC opponent.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="105"/></spline>
-    <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
 
@@ -439,15 +439,15 @@
     <abilityid>social.rally</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><social/><mettlepool/></tags>
+    <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck dc="3">Mettle+Rank</abilitycheck>
+    <spline><p x="-60" y="165"/></spline> 
     <abilitydescription>    
       <p>
         When characters starts to flee they need to Rally before they can stop.
 	On overcharge the character becomes enraged.
       </p>	
     </abilitydescription>
-    <spline><p x="-60" y="165"/></spline> 
-    <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
   
@@ -457,7 +457,9 @@
     <abilityid>social.yield</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><social/></tags>
+    <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline><p x="60" y="165"/></spline> 
     <abilitydescription>    
       <p>
 	Vanquished characters may <defn>Yield</defn>.  When characters yield 
@@ -468,7 +470,5 @@
 	lose interest if you play dead.
       </p>	
     </abilitydescription>
-    <spline><p x="60" y="165"/></spline> 
-    <abilityranks untrained="0" from="1" to="5"/>
   </ability>  
 </abilitygroup>

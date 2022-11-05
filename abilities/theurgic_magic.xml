@@ -18,8 +18,12 @@
   <ability>
     <abilitytitle>Air of Beatitude</abilitytitle>
     <abilityid>theurgic.air_of_beatitude</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	If successful those observing the character
@@ -34,10 +38,6 @@
   	Charge the caster.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   <ability>
@@ -45,7 +45,10 @@
     <abilityid>theurgic.augury</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><theurgic/><ritual/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>    
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="100"/><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	Augury involves petitioning a deity or powerful being for
@@ -102,9 +105,6 @@
   	next day.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="100"/><p x="-30" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilityranks from="1" to="3"/>
   </ability>
   
 
@@ -113,22 +113,26 @@
     <abilityid>theurgic.back</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7" effect="Demon makes Mettle Check vs 5×Rank">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
+    <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character calls on their deity to repel demons.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
-    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
-    <abilitycheck dc="7" effect="Demon makes Mettle Check vs 5×Rank">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
     <abilitytitle>Blessed Arms</abilitytitle>
     <abilityid>theurgic.blessed_arms</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="3" effect="Rank+1 weapons receive +Rank dmg vs demons and undead">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
     <abilitydescription>
       <p noindent="true">
   	Renders all weapons so blessed as magical for the next ten minutes (granting them the magic tag).
@@ -137,17 +141,17 @@
         can be seen by the caster.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3" effect="Rank+1 weapons receive +Rank dmg vs demons and undead">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
     <abilitytitle>Create Holy Water</abilitytitle>
     <abilityid>theurgic.create_holy_water</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><standard/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="7" effect="Rank+1 holy water vials">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	If successful the character creates a vial of holy water.  The
@@ -166,10 +170,6 @@
   	Holy water should be kept in a special font.  If kept in a vial	it lasts one week.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="7" effect="Rank+1 holy water vials">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
 
@@ -178,24 +178,28 @@
     <abilityid>theurgic.divine_retribution</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="5" effect="Check to counter attack">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="-60" y="45"/></spline>
     <abilitydescription>
       <p noindent="true">
   	When struck the character may check and if successful make an
   	immediate counter-attack.  On overcharge the character is Enraged.
       </p>
     </abilitydescription>
-    <spline><p x="-60" y="45"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5" effect="Check to counter attack">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Exorcise</abilitytitle>
     <abilityid>theurgic.exorcise</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="Context Dependent" effect="Exorcise evil spirit">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank> 
+    <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character can cast this spell to purge evil spirits from
@@ -212,27 +216,23 @@
   	check as usual.
       </p>      
     </abilitydescription>
-    <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank> 
-    <abilitycheck dc="Context Dependent" effect="Exorcise evil spirit">Magic+Rank</abilitycheck>
-   <abilityranks from="1" to="2"/>
   </ability>
   
 
   <ability>
     <abilitytitle>Grace of Mithras</abilitytitle>
     <abilityid>theurgic.grace_of_mithras</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="5" effect="+Rank to hit and dmg">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	If called upon Mithras will grant a +Rank bonus to the caster to hit rolls and damage.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5" effect="+Rank to hit and dmg">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
   
 
@@ -241,6 +241,10 @@
     <abilityid>theurgic.guiding_hand</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="3" effect="arrow or bolt misses or is rerolled">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	This spell can be used offensively or defensively.
@@ -261,10 +265,6 @@
 	This spell does not work on bullets, which fly so fast the character has no time to react.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3" effect="arrow or bolt misses or is rerolled">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
 
@@ -272,8 +272,12 @@
   <ability>
     <abilitytitle>Heal</abilitytitle>
     <abilityid>theurgic.heal</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="9" effect="heal 2d4+Rank">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
+    <spline><p x="90" y="0"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The healing character places their hands on a bloodied target
@@ -282,28 +286,24 @@
   	in order to heal the bloodied character and loses d6 hitpoints.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="0"/></spline>
-    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
-    <abilitycheck dc="9" effect="heal 2d4+Rank">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
   <ability>
     <abilitytitle>Light of Mithras</abilitytitle>
     <abilityid>theurgic.light_of_mithras</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="3" effect="Create light">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character creates a bright divine light attached to some object.
   	The light burns for an hour.  It is as bright as a pitch torch.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3" effect="Create light">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   
@@ -312,6 +312,10 @@
     <abilityid>theurgic.litany_of_redemption</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="5" effect="Prayer refreshes a mettle die">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	Once per day the caster may attempt the Litany of Redemption.  This is a
@@ -320,17 +324,17 @@
 	mettle die if able.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5" effect="Prayer refreshes a mettle die">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   <ability>
     <abilitytitle>No - Take Me!</abilitytitle>
     <abilityid>theurgic.no_take_me</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><reaction/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="5" effect="Transfers damage">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character implores their patron to take them in the stead of some
@@ -340,18 +344,18 @@
   	event of an overcharge the caster loses remaining health and is Down.
       </p>
     </abilitydescription>
-    <spline><p x="75" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="5" effect="Transfers damage">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   
   <ability>
     <abilitytitle>Purify</abilitytitle>
     <abilityid>theurgic.purify</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="7" effect="Purifies food or drink">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character can casts this spell to purify food or water that
@@ -362,12 +366,7 @@
   	cases the caster may lose favour with their god.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="7" effect="Purifies food or drink">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
-
   
 
   <ability>
@@ -375,6 +374,10 @@
     <abilityid>theurgic.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><theurgic/><lore/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13" effect="Background knowledge">Std+Rank</abilitycheck>
+    <prereqabilityrank></prereqabilityrank>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
   	Theirgic lore is the study of how to cast theological, or clerical, spells.  There is a
@@ -383,10 +386,6 @@
   	required to cast theurgic spells.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="13" effect="Background knowledge">Std+Rank</abilitycheck>
-    <prereqabilityrank></prereqabilityrank>
-    <abilityranks from="1" to="3"/>
   </ability>
   
 
@@ -395,6 +394,10 @@
     <abilityid>theurgic.hold_undead</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="9" effect="Undead make mettle check or are held">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character calls on their deity to keep beings animated by
@@ -407,10 +410,6 @@
 	This spell will work on any number of undead at a time.
       </p>
     </abilitydescription>
-    <spline><p x="-60" y="5"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="9" effect="Undead make mettle check or are held">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -419,6 +418,10 @@
     <abilityid>theurgic.turn_undead</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="9" effect="Undead make mettle check or are turned">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.hold_undead_3</prereqabilityrank>
+    <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character calls on their deity to repel beings animated by
@@ -431,10 +434,6 @@
       </p>
 
     </abilitydescription>
-    <spline><p x="-60" y="5"/></spline>
-    <prereqabilityrank>theurgic.hold_undead_3</prereqabilityrank>
-    <abilitycheck dc="9" effect="Undead make mettle check or are turned">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   <ability>
@@ -442,6 +441,10 @@
     <abilityid>theurgic.destroy_undead</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="9" effect="Undead make mettle check or are destroyed">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.turn_undead_2</prereqabilityrank>
+    <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character calls on their deity to destroy beings animated by
@@ -453,18 +456,18 @@
 	This spell will work on any number of the same type of undead at one time.
       </p>
     </abilitydescription>
-    <spline><p x="-60" y="5"/></spline>
-    <prereqabilityrank>theurgic.turn_undead_2</prereqabilityrank>
-    <abilitycheck dc="9" effect="Undead make mettle check or are destroyed">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   
   <ability>
     <abilitytitle>Witness Me!</abilitytitle>
     <abilityid>theurgic.witness_me</abilityid>
-    <tags><theurgic/><magicpool/></tags>
     <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="3" effect="Make three melee attacks if Health≤6">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="75" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character calls on their patron for support in the hour of their death!
@@ -472,10 +475,6 @@
 	to make three melee attacks in that round instead of their usual standard action.
       </p>
     </abilitydescription>
-    <spline><p x="75" y="90"/></spline>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
-    <abilitycheck dc="3" effect="Make three melee attacks if Health≤6">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>    
 </abilitygroup>
 

@@ -21,7 +21,10 @@
     <abilityid>arcana.aegis</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><arcana/><ranged/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
+    <spline><p x="-45" y="45"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The aegis spell is perhaps optimistically named.   It briefly forms
@@ -32,9 +35,6 @@
 	It can also aditionally protect one adjacent medium or small creature.
       </p>
     </abilitydescription>    
-    <spline><p x="-45" y="45"/></spline>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
-    <abilityranks from="1" to="4"/>
   </ability>
   
   
@@ -43,7 +43,10 @@
     <abilityid>arcana.alarum</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><arcana/><ranged/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
+    <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The caster designates a volume of space no larger
@@ -58,9 +61,6 @@
 	provided they maintain a contagious link with the area
       </p>
     </abilitydescription>    
-    <spline><p x="-90" y="30"/></spline>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
-    <abilityranks from="1" to="4"/>
   </ability>
   
   <ability>
@@ -68,7 +68,9 @@
     <abilityid>arcana.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><arcana/><lore/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This is the entry rank for all magic.  It represents a basic understanding
@@ -76,8 +78,6 @@
 	history and lore.
       </p>
     </abilitydescription>        
-    <spline></spline>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -85,7 +85,10 @@
     <abilityid>arcana.cloak_of_shadows</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><arcana/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
+    <spline><p x="-75" y="50"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character creates a cloak of darkness around themselves.
@@ -94,9 +97,6 @@
 	Checks in the dark.
       </p>
     </abilitydescription>    
-    <spline><p x="-75" y="50"/><p x="0" y="30"/></spline>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
-    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -105,6 +105,10 @@
     <abilityid>arcana.ignis</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck>    
+    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
+    <spline><p x="0" y="45"/></spline>
     <abilitydescription>
       <p>
 	Ignis allows the caster to create fire of torch
@@ -115,10 +119,6 @@
         it has a range of a five meters.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="45"/></spline>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>    
-    <abilityranks from="1" to="2"/>
   </ability>  
 
 
@@ -127,6 +127,10 @@
     <abilityid>arcana.incendo</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>arcana.ignis_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	Allows the user to make a weapon flame for the
@@ -140,10 +144,6 @@
 	damage.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>arcana.ignis_1</prereqabilityrank>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>  
   
   <ability>
@@ -151,6 +151,10 @@
     <abilityid>arcana.true_sight</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><arcana/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
+    <spline><p x="60" y="75"/></spline>
     <abilitydescription>
       <p>
 	The character is able to discern the true nature of a being, seeing
@@ -163,10 +167,6 @@
 	that it effects the observers sanity.
       </p>	
     </abilitydescription>    
-    <spline><p x="60" y="75"/></spline>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -175,15 +175,15 @@
     <abilityid>arcana.scrolls</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><arcana/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character knows how to make magical scrolls given
 	sufficent time, and writing materials.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>  
 </abilitygroup>

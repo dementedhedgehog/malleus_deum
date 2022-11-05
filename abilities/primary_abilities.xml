@@ -20,6 +20,9 @@
     <abilityid>primary.strength</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/><primary/><core/></tags>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck dc="Context Dependent">Std+Strength</abilitycheck>
+    <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <indexentry>Strength</indexentry>
       <indexentry>Abilities<subentry>Strength</subentry></indexentry>
@@ -28,9 +31,6 @@
       the characters Health.
       </p>      
     </abilitydescription>
-    <spline><p x="90" y="0"/></spline> 
-    <abilitycheck dc="Context Dependent">Std+Strength</abilitycheck>
-    <abilityranks from="-3" to="6"/>
   </ability>
   
   <ability>
@@ -38,6 +38,8 @@
     <abilityid>primary.endurance</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/><primary/><core/></tags>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck dc="Context Dependent">Std+Endurance</abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Endurance</indexentry>
@@ -48,8 +50,6 @@
         modifies the characters Stamina.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Context Dependent">Std+Endurance</abilitycheck>
-    <abilityranks from="-3" to="6"/>
   </ability>
   
   <ability>
@@ -57,6 +57,8 @@
     <abilityid>primary.agility</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/><primary/><core/></tags>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck dc="Context Dependent">Std+Agility</abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Agility</indexentry>
@@ -65,8 +67,6 @@
         Agility modifies the characters Dodge Checks.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Context Dependent">Std+Agility</abilitycheck>
-    <abilityranks from="-3" to="6"/>
   </ability>
   
   <ability>
@@ -74,6 +74,8 @@
     <abilityid>primary.speed</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck dc="Context Dependent">Std+Speed</abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Speed</indexentry>
@@ -83,8 +85,6 @@
         character's Sprint and Parry checks.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Context Dependent">Std+Speed</abilitycheck>
-    <abilityranks from="-3" to="6"/>
   </ability>
   
   <ability>
@@ -92,6 +92,8 @@
     <abilityid>primary.perception</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck dc="Context Dependent">Std+Perception</abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Perception</indexentry>
@@ -107,10 +109,7 @@
 
       <p>
 	Perception can be used in social situations to see if a person is being deceptive.
-      </p>
-      
+      </p>      
     </abilitydescription>
-    <abilitycheck dc="Context Dependent">Std+Perception</abilitycheck>
-    <abilityranks from="-3" to="6"/>
   </ability>  
 </abilitygroup>

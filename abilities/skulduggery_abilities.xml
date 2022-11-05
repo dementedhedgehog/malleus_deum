@@ -19,6 +19,9 @@
     <abilityid>skulduggery.cloak_fighting</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><skulduggery/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
+    <spline><p x="90" y="90"/></spline> 
     <abilitydescription>
       <p>
 	Reaction to being attacked with a <emph>Piercing</emph> weapon.  The character
@@ -32,9 +35,6 @@
 	with bane they take double damage.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="90"/></spline> 
-    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 
 
@@ -43,6 +43,9 @@
     <abilityid>skulduggery.concealment</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/></tags>
+    <abilityranks untrained="0" from="1" to="9"/>
+    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
+    <spline><p x="0" y="90"/></spline> 
     <abilitydescription>
       <p>
 	<indexentry>concealment</indexentry>
@@ -67,9 +70,6 @@
 	sneak check.  Attacks from concealment should usually grant surprise.  
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="90"/></spline> 
-    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="9"/>
   </ability>
 
 
@@ -78,6 +78,9 @@
     <abilityid>skulduggery.escapist</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="2"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
       <p>
 	The character is supple and or double jointed.  They have
@@ -86,9 +89,6 @@
 	performing shows.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="60"/></spline> 
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="2"/>
   </ability>  
 
 
@@ -97,15 +97,15 @@
     <abilityid>skulduggery.cryptography</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
 	Knowledge of reading and writing ciphers and
 	deciphering.  
       </p>
     </abilitydescription>
-    <spline><p x="90" y="0"/></spline> 
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
   
   
@@ -114,6 +114,9 @@
     <abilityid>skulduggery.disguise</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
       <p>
 	Disquise is the art of hiding in plain sight.  This covers anything
@@ -121,9 +124,6 @@
 	mannerisms and style of speach of some class of people.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="30"/></spline> 
-    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 
 
@@ -132,15 +132,15 @@
     <abilityid>skulduggery.pick_locks</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/></tags>
+    <abilityranks untrained="0" from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="90" y="60"/></spline> 
     <abilitydescription>
       <p>
 	Pick locks encompases lock smith abilities, primarily
 	opening locks but it also includes lock repair.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="60"/></spline> 
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
   
@@ -149,6 +149,9 @@
     <abilityid>skulduggery.back_stab</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><skulduggery/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <p>
 	A character can attempt to attack an opponent that is unaware of the attacker
@@ -169,11 +172,7 @@
 	is a an enemy of theirs	(perhaps the character has infiltrated the opponents
 	group using Deceive or Disguise).  
       </p>
-	
     </abilitydescription>
-    <spline><p x="-90" y="0"/></spline> 
-    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 
   
@@ -183,6 +182,9 @@
     <abilityid>skulduggery.ropecraft</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><skulduggery/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p>
 	This ability involves tying knots and working with ropes.
@@ -190,9 +192,6 @@
 	against this ability in exceptional circumstances.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline> 
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="5"/>
   </ability>
 
 
@@ -201,6 +200,9 @@
     <abilityid>skulduggery.search</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
       <p>
 	There is quite a ability to finding carefully hidden
@@ -208,9 +210,6 @@
 	perception.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="60"/></spline> 
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
   
@@ -219,15 +218,15 @@
     <abilityid>skulduggery.sleight_of_hand</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="90"/></spline> 
     <abilitydescription>
       <p>
 	This ability involves palming and concealing small objects about
 	ones person and picking pockets.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="90"/></spline> 
-    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
   
   <ability>
@@ -235,6 +234,9 @@
     <abilityid>skulduggery.sneak</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/></tags>
+    <abilityranks untrained="0" from="1" to="5"/>
+    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p>
 	Hiding in urban environments.  Shadowing people and remainging undetected.
@@ -246,9 +248,6 @@
 	In wilderness use the Stealth ability instead, and use an Agility Check in other cases.
       </p>	
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="5"/>
   </ability>
 
 
@@ -257,14 +256,14 @@
     <abilityid>skulduggery.trap_work</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><skulduggery/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>
 	Creating, arming and disarming traps in urban environs.
         <indexentry>Traps<subentry>create Trap Work (Urban)</subentry></indexentry>	
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline> 
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 </abilitygroup>

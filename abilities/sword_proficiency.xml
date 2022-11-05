@@ -19,6 +19,10 @@
     <abilityid>sword.daring_thrust</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="Targets Agility" effect="Extra Sword Strike attack as Minor.">Mettle+3×Rank</abilitycheck>
+    <prereqabilityrank>sword.strike_2</prereqabilityrank>
+    <spline><p x="15" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character can make a Mettle check.  If successful they can
@@ -26,10 +30,6 @@
 	attacks in a turn.
       </p>
     </abilitydescription>
-    <spline><p x="15" y="30"/></spline>
-    <prereqabilityrank>sword.strike_2</prereqabilityrank>
-    <abilitycheck dc="Targets Agility" effect="Extra Sword Strike attack as Minor.">Mettle+3×Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -37,6 +37,10 @@
     <abilityid>sword.mighty_blow</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5" effect="Sword Strike with +3xStrength+Rank extra damage">Mettle+Rank</abilitycheck>
+    <prereqabilityrank>sword.strike_3</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a Sword can strike with it using enormous force during combat.
@@ -44,10 +48,6 @@
 	they cannot perform this action.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>sword.strike_3</prereqabilityrank>
-    <abilitycheck dc="5" effect="Sword Strike with +3xStrength+Rank extra damage">Mettle+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -55,16 +55,16 @@
     <abilityid>sword.disarm</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="Targets Speed" effect="Opponent disarmed">Mettle+3×Rank</abilitycheck>
+    <prereqabilityrank>sword.strike_2</prereqabilityrank>	
+    <spline><p x="-80" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character attempts to disarm their opponent.  If
 	successful the opponent is disarmed. 
       </p>
     </abilitydescription>
-    <spline><p x="-80" y="30"/></spline>
-    <prereqabilityrank>sword.strike_2</prereqabilityrank>	
-    <abilitycheck dc="Targets Speed" effect="Opponent disarmed">Mettle+3×Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>  
 
   <ability>
@@ -72,6 +72,10 @@
     <abilityid>sword.feint</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="Targets Agility" effect="Character acts before target.">Std+Agility+Rank</abilitycheck>
+    <prereqabilityrank>sword.strike_2</prereqabilityrank>
+    <spline><p x="15" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character makes an opposed check when an opponent attacks
@@ -79,10 +83,6 @@
 	opponent.  This action cannot be taken if surprised.
       </p>
     </abilitydescription>
-    <spline><p x="15" y="30"/></spline>
-    <prereqabilityrank>sword.strike_2</prereqabilityrank>
-    <abilitycheck dc="Targets Agility" effect="Character acts before target.">Std+Agility+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
   
 
@@ -91,18 +91,16 @@
     <abilityid>sword.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Speed.">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a Sword can strike with it during combat doing
 	weapon damage.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Speed.">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
-
-
 
 
   <ability>
@@ -110,6 +108,10 @@
     <abilityid>sword.parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <abilitycheck dc="Targets Attack" effect="Attack blocked.">Std+Rank</abilitycheck>
+    <prereqabilityrank>sword.strike_1</prereqabilityrank>	
+    <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
 	<label>ability:sword.parry</label>
@@ -119,9 +121,5 @@
 	the attack deals double	damage. If the parry check succeeds the attack does no damage.
       </p>
     </abilitydescription>
-    <spline><p x="-30" y="60"/></spline>
-    <prereqabilityrank>sword.strike_1</prereqabilityrank>	
-    <abilitycheck dc="Targets Attack" effect="Attack blocked.">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 </abilitygroup>

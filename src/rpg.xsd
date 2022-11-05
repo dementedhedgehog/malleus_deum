@@ -411,7 +411,7 @@
       Tags for abilities.
   -->
   <xs:complexType name="abilityType">
-    <xs:all>
+    <xs:sequence>
       <xs:element name="abilitytitle" type="titleType"/>
       <xs:element name="abilityid" type="abilityidType"/>
       <xs:element name="abilitytemplate" type="xs:string" minOccurs="0" maxOccurs="1"/>      
@@ -419,19 +419,15 @@
       <xs:element name="tags" type="tagsType"/>
       <xs:element name="abilityranks" type="abilityranksType"/>
       <!-- Which book does this ability go in? phb or gmg? -->
-      <xs:element name="gmgability" type="emptyType" minOccurs="0" maxOccurs="1"/>      
-      <!-- <xs:element name="abilitycheck" type="abilityCheckType" minOccurs="1"/> -->
-      <!-- <xs:element name="abilitychecktype" type="checkType" minOccurs="1" maxOccurs="1"/> -->
-      <xs:element name="abilitycheck" type="abilitycheckType" minOccurs="1"/>
-      <!-- <xs:element name="abilitydmg" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
-      <!-- <xs:element name="abilitymastery" type="xs:int" minOccurs="1"/> -->
-      <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
-      <xs:element name="spline" type="splineType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="gmgability" type="emptyType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="abilitycheck" type="abilitycheckType" minOccurs="1" maxOccurs="2"/>
       <xs:element name="prereqabilityrank" type="prerequisiteType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="prereqtag" type="xs:string" minOccurs="0"/>
-      <xs:element name="prereqnottag" type="xs:string" minOccurs="0"/>       
+      <xs:element name="prereqnottag" type="xs:string" minOccurs="0"/>
       <xs:element name="prereqattr" type="prereqAttrType" minOccurs="0"/> <!-- e.g. Str > 13 -->
-    </xs:all>
+      <xs:element name="spline" type="splineType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="abilityranksType">

@@ -21,6 +21,9 @@
     <abilityid>physical.armour</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
+    <abilitycheck dc="Targets Attack">Armour+Rank</abilitycheck>
+    <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
 	<label>ability:armour</label>
@@ -58,9 +61,6 @@
 	attack-reaction ability is used the attack automatically does normal damage.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="0"/></spline> 
-    <abilitycheck dc="Targets Attack">Armour+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
   
   
@@ -69,7 +69,9 @@
     <abilityid>physical.charge</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><martial/><mettlepool/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="3">Mettle+Rank</abilitycheck>
+    <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <p>
         The Charge ability allows the character to test their mettle.  If sucessful they
@@ -88,8 +90,6 @@
 	becomes Enraged.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="0"/></spline> 
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 
 
@@ -98,14 +98,14 @@
     <abilityid>physical.climb</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="90" y="150"/></spline> 
     <abilitydescription>
       <p>
 	This ability represents the characters ability to Climb.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="150"/></spline> 
-    <abilityranks untrained="0" from="1" to="6"/>
   </ability>
 
   
@@ -115,7 +115,9 @@
     <abilityid>physical.dodge</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
+    <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
+    <spline><p x="90" y="120"/></spline> 
     <abilitydescription>
       <p>
 	<label>ability:dodge</label>
@@ -133,8 +135,6 @@
 	and deal half or no damage (at the GM's discretion).
       </p>
     </abilitydescription>
-    <spline><p x="90" y="120"/></spline> 
-    <abilityranks untrained="0" from="1" to="6"/>
   </ability>
   
 
@@ -143,7 +143,9 @@
     <abilityid>physical.flee</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
       <p>
         The Flee ability allows the character to move more than twice their movement rate
@@ -156,8 +158,6 @@
 	opportunity.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="30"/></spline> 
-    <abilityranks untrained="0" from="1" to="6"/>
   </ability>
 
 
@@ -166,6 +166,9 @@
     <abilityid>physical.grapple</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <abilitycheck dc="None">Std+Rank</abilitycheck> <!-- FIXME -->
+    <spline><p x="90" y="90"/></spline>
     <abilitydescription>
       <p>
   	Grappling involves grabbing, tackling or wrestling an opponent and holding
@@ -180,9 +183,6 @@
   	a second character to tie-up, or otherwise constrain, the opponent.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="90"/></spline>
-    <abilitycheck dc="None">Std+Rank</abilitycheck> <!-- FIXME -->
-    <abilityranks untrained="-3" from="1" to="3"/>
   </ability>
 
 
@@ -191,7 +191,9 @@
     <abilityid>physical.head_butt</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Targets Defence" dmg="2+Strength">Std+Rank</abilitycheck>
+    <spline><p x="0" y="90"/></spline> 
     <abilitydescription>
       <p>
 	A head butt involves the attacker driving the top of their head into the bridge 
@@ -205,23 +207,22 @@
 	if the defender is wearing a helmet.  
       </p>
     </abilitydescription>
-    <spline><p x="0" y="90"/></spline> 
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>  
+
 
   <ability>
     <abilitytitle>Jump</abilitytitle>
     <abilityid>physical.jump</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p>
 	This ability represents the characters ability to Jump.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks untrained="0" from="1" to="6"/>
   </ability>
 
 
@@ -230,7 +231,9 @@
     <abilityid>physical.juggernaut</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/><accurate/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Strength">Std+3×Rank</abilitycheck>
+    <spline><p x="-90" y="90"/></spline>
     <abilitydescription>
       <p>
   	The attacker uses his mass and strength to brush aside those who
@@ -243,8 +246,6 @@
   	similar or smaller size and strength.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="90"/></spline>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -253,7 +254,9 @@
     <abilityid>physical.knockout</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="180"/></spline> 
     <abilitydescription>
       <p>
         <indexentry>Knockout</indexentry>
@@ -266,8 +269,6 @@
 	tagged weapons modify this check.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="180"/></spline> 
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>  
 
   <ability>
@@ -275,6 +276,9 @@
     <abilityid>physical.kick</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="2+Speed|Strength">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="120"/></spline> 
     <abilitydescription>
       <p>
 	The attacker kicks an opponent potentially pushing the opponent back
@@ -287,9 +291,6 @@
 	the defender is the same size as the attacker or smaller).
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence" dmg="2+Speed|Strength">Std+Rank</abilitycheck>
-    <spline><p x="-90" y="120"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
 
@@ -299,15 +300,15 @@
     <abilityid>physical.listen</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="0" y="120"/></spline> 
     <abilitydescription>
       <p>
 	This is the characters ability to hear faint noise.
 	<indexentry>Hear Noise<subentry>see Listen</subentry></indexentry>    
       </p>
     </abilitydescription>      
-    <spline><p x="0" y="120"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
   
   
@@ -316,7 +317,9 @@
     <abilityid>physical.notice</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="0" y="150"/></spline> 
     <abilitydescription>
       <p>
 	This ability represents the characters attention to detail,
@@ -331,8 +334,6 @@
 	Scout ability and use a Perception Check elsewhere.
       </p>      
     </abilitydescription>      
-    <spline><p x="0" y="150"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
 
@@ -342,7 +343,9 @@
     <abilityid>physical.punch</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><nonlethal/></tags>    
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="d4">Std+Rank</abilitycheck>
+    <spline><p x="90" y="60"/></spline> 
     <abilitydescription>
       <p>
 	The attacker attempts to hit their opponent using their fists. 
@@ -350,8 +353,6 @@
 	if the attacker is wearing a helmet.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="60"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
   
 
@@ -361,7 +362,9 @@
     <abilityid>physical.rest</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Rest</subentry></indexentry>		
@@ -376,8 +379,6 @@
         Characters only benefit from up to two Rests between Sleeps.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="60"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
   
   
@@ -386,7 +387,9 @@
     <abilityid>physical.run</abilityid>
     <abilityactiontype><move/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>
         The Run ability describes extra movement within combat.  It allows the character
@@ -407,8 +410,6 @@
 	if they succeed.
       </p>      
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
   <ability>
@@ -416,6 +417,9 @@
     <abilityid>physical.sixth_sense</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><special/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <spline><p x="0" y="0"/></spline> 
     <abilitydescription>
       <p>
 	If the character makes a successful check they may reroll their
@@ -423,9 +427,6 @@
 	traps and other similar checks.  
       </p>
     </abilitydescription>
-    <spline><p x="0" y="0"/></spline> 
-    <abilitycheck dc="15">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -434,7 +435,9 @@
     <abilityid>physical.sleep</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
       <p>
         <indexentry>Healing<subentry>Sleep</subentry></indexentry>	
@@ -449,8 +452,6 @@
         are required to check and they fail then they only receive one refresh.
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="60"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>  
 
   <ability>
@@ -458,15 +459,15 @@
     <abilityid>physical.sure_feet</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p>
 	When the attacker would be knocked prone they can check to resist being
 	knocked over.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
   <ability>
@@ -474,7 +475,9 @@
     <abilityid>physical.swim</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline><p x="90" y="180"/></spline> 
     <abilitydescription>
       <p>
 	This ability represents the characters ability to swim (if at all).  Everyone
@@ -484,8 +487,6 @@
 	as they start to panic.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="180"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
   
   <ability>
@@ -493,7 +494,9 @@
     <abilityid>physical.throw</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><physical/><martial/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="-90" y="150"/></spline> 
     <abilitydescription>
       <p>
 	This character attempts to thrown something.  If unsuccessful, and a bane occurs
@@ -502,8 +505,6 @@
 	throw is accurate.
       </p>
     </abilitydescription>    
-    <spline><p x="-90" y="150"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
 
@@ -512,7 +513,9 @@
     <abilityid>physical.witness_me</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><physical/><mettlepool/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="3">Mettle+Rank</abilitycheck>
+    <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p>
 	When the characters hit points drop to 0 they can instantly make a "Witness Me"
@@ -527,7 +530,5 @@
       </p>
       
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline> 
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>  
 </abilitygroup>

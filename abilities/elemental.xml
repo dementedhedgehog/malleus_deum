@@ -20,16 +20,16 @@
     <abilityid>elemental.black_colossus</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.summon_elemental_2</prereqabilityrank>
+    <spline><p x="30" y="45"/></spline>
     <abilitydescription>
       <p>
 	The chaster creates a giant humanoid construct out of
 	soil.
       </p>
     </abilitydescription>    
-    <spline><p x="30" y="45"/></spline>
-    <prereqabilityrank>elemental.summon_elemental_2</prereqabilityrank>
-    <abilitycheck dc="13">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -38,16 +38,16 @@
     <abilityid>elemental.burning_hands</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck> 
+    <prereqabilityrank>elemental.fyre_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The casters hands become engulfed in primal fire.  In hand
 	to hand combat their hands gain the Fire tag and do d6 extra damage.
       </p>
     </abilitydescription>    
-    <spline><p x="-60" y="30"/></spline>
-    <prereqabilityrank>elemental.fyre_1</prereqabilityrank>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck> 
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -55,31 +55,31 @@
     <abilityid>elemental.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><elemental/><lore/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This ability represents knowledge of elemental magic, the elemental
 	planes and its inhabitants.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
     <abilitytitle>Fyre Bolt</abilitytitle>
     <abilityid>elemental.fyre</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
+    <spline><p x="0" y="75"/></spline>
     <abilitydescription>
       <p>
 	The caster shoots a ball for fire from their hands at an opponent.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="75"/></spline>
-    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -87,17 +87,17 @@
     <abilitytitle>Gaseous Form</abilitytitle>
     <abilityid>elemental.gaseous_form</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
+    <spline><p x="-75" y="70"/></spline>
     <abilitydescription>
       <p>
 	The caster and all their carried goods turn into a smoke which
 	allows them to pass through doors, up chimneys etc. 
       </p>
     </abilitydescription>    
-    <spline><p x="-75" y="70"/></spline>
-    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilityranks from="1" to="3"/>
   </ability>
     
   <ability>
@@ -105,6 +105,10 @@
     <abilityid>elemental.kiss_of_the_deep</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.lore_1</prereqabilityrank>	
+    <spline><p x="-75" y="15"/></spline>
     <abilitydescription>
       <p>
 	The caster touches a target and then casts this spell.  Casting
@@ -120,10 +124,6 @@
 	FIXME: TIE THE BEHAVIOUR TO THE TYPE OF THE TARGET (SEE GMG).
       </p>
     </abilitydescription>    
-    <spline><p x="-75" y="15"/></spline>
-    <prereqabilityrank>elemental.lore_1</prereqabilityrank>	
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -134,6 +134,10 @@
     <abilityid>elemental.mist</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
+    <spline><p x="-30" y="45"/></spline>
     <abilitydescription>
       <p>
 	The caster causes a fog to form by draining the temperature from the surrounds.
@@ -141,10 +145,6 @@
 	strange about the fog.
       </p>
     </abilitydescription>    
-    <spline><p x="-30" y="45"/></spline>
-    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>  
   
 
@@ -153,6 +153,10 @@
     <abilityid>elemental.shatter</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="11">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.lore_2</prereqabilityrank>
+    <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p>
 	When casting shatter the caster intones magical words
@@ -175,18 +179,17 @@
 	20+7xLevel damage.
       </p>
     </abilitydescription>    
-    <spline><p x="60" y="60"/></spline>
-    <prereqabilityrank>elemental.lore_2</prereqabilityrank>
-    <abilitycheck dc="11">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
     <abilitytitle>Smoke Weasel</abilitytitle>
     <abilityid>elemental.smoke_weasel</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.fyre_1</prereqabilityrank>    
+    <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
 	Creates a weasel out of smoke that does what the caster asks of it.
@@ -198,9 +201,6 @@
 	caster.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="60"/></spline>
-    <prereqabilityrank>elemental.fyre_1</prereqabilityrank>    
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -208,6 +208,10 @@
     <abilityid>elemental.stone_skin</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
+    <spline><p x="45" y="120"/></spline>
     <abilitydescription>
       <p>
 	The targets skin takes on a greyish hue and hardens, providing
@@ -216,10 +220,6 @@
 	rest of the encounter, whichever is longer.
       </p>
     </abilitydescription>    
-    <spline><p x="45" y="120"/></spline>
-    <prereqabilityrank>elemental.lore_1</prereqabilityrank>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -228,14 +228,14 @@
     <abilityid>elemental.summon_elemental</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><elemental/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>elemental.lore_3</prereqabilityrank>
+    <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>
 	The character summons an elemental.
       </p>
     </abilitydescription>    
-    <spline><p x="90" y="15"/></spline>
-    <prereqabilityrank>elemental.lore_3</prereqabilityrank>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 </abilitygroup>

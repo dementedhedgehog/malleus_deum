@@ -25,7 +25,10 @@
     <abilityid>luck.brilliant_planner</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><luck/><luckpool/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="7">Luck+Rank</abilitycheck>
+    <prereqabilityrank>luck.lucky_1</prereqabilityrank>	
+    <spline><p x="60" y="60"/></spline> 
     <abilitydescription>            
       <p>
 	The character is a brilliant planner.  They may have thought
@@ -48,9 +51,6 @@
 	was successful.
       </p>
     </abilitydescription>
-    <spline><p x="60" y="60"/></spline> 
-    <prereqabilityrank>luck.lucky_1</prereqabilityrank>	
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -58,7 +58,9 @@
     <abilityid>luck.lucky</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><luck/><luckpool/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Critical Success">Any-Std</abilitycheck>
+    <spline><p x="0" y="0"/></spline> 
     <abilitydescription>
       <p>
 	The character was born lucky.  Whenever the character rolls a critical succces (double 12s)
@@ -66,8 +68,6 @@
 	number of dice that are refreshed is equal to the Lucky rank plus one.
       </p>      
     </abilitydescription>
-    <spline><p x="0" y="0"/></spline> 
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 
   <ability>
@@ -75,16 +75,16 @@
     <abilityid>luck.itiok</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><luck/><luckpool/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Luck+Rank</abilitycheck>
+    <prereqabilityrank>luck.lucky_1</prereqabilityrank>	
+    <spline><p x="0" y="40"/></spline> 
     <abilitydescription>
       <p>
 	This ability works in the same way as <emph>Not As Bad As It Looks</emph> (above),
 	except that it can only be applied to one's self.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="40"/></spline> 
-    <prereqabilityrank>luck.lucky_1</prereqabilityrank>	
-    <abilityranks from="1" to="3"/>
   </ability>
 
   
@@ -94,7 +94,10 @@
     <abilityid>luck.misfortune</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><luck/><luckpool/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Luck+Rank</abilitycheck>
+    <prereqabilityrank>luck.lucky_1</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline> 
     <abilitydescription>            
       <p>
         It is said that "Anything that can go wrong, will go wrong" and in this case 
@@ -125,9 +128,6 @@
 	Misfortune is usable once per day for the whole party.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline> 
-    <prereqabilityrank>luck.lucky_1</prereqabilityrank>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -136,7 +136,10 @@
     <abilityid>luck.nick_of_time</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><luck/><luckpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="5">Luck+Rank</abilitycheck>
+    <prereqabilityrank>luck.lucky_1</prereqabilityrank>	
+    <spline><p x="-70" y="60"/></spline> 
     <abilitydescription>
       <p>
         Sometimes all you need is a little luck to get something done in the nick of 
@@ -149,9 +152,6 @@
 	Usable once per encounter for the whole party.
       </p>      
     </abilitydescription>
-    <spline><p x="-70" y="60"/></spline> 
-    <prereqabilityrank>luck.lucky_1</prereqabilityrank>	
-    <abilityranks from="1" to="4"/>
   </ability>
   
   <ability>
@@ -159,7 +159,10 @@
     <abilityid>luck.nabail</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><luck/><luckpool/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Luck+Rank</abilitycheck>
+    <prereqabilityrank>luck.itiok_1</prereqabilityrank>	
+    <spline><p x="0" y="35"/></spline> 
     <abilitydescription>
       <p>
         The character examines a wound, checks against Luck and if successful 
@@ -168,9 +171,6 @@
 	such wound can be examined per encounter.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="35"/></spline> 
-    <prereqabilityrank>luck.itiok_1</prereqabilityrank>	
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -179,7 +179,10 @@
     <abilityid>luck.reroll</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><luck/><luckpool/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="5">Luck+Rank</abilitycheck>
+    <prereqabilityrank></prereqabilityrank>	
+    <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
       <p>
 	The character gets a lucky break and gets to reroll.
@@ -196,8 +199,5 @@
 	rolled 9).
       </p>
     </abilitydescription>
-    <spline><p x="-90" y="30"/></spline> 
-    <prereqabilityrank></prereqabilityrank>	
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 </abilitygroup>

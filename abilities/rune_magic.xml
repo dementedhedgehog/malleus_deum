@@ -19,15 +19,15 @@
     <abilityid>rune.bladesharp</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><runemagic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="3" effect="+Rank dmg for one edged weapon">Magic+Rank</abilitycheck>
+    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
 	An invocation that sharpens a blade.
       </p>
     </abilitydescription>    
-    <spline><p x="-30" y="30"/></spline>
-    <abilitycheck dc="3" effect="+Rank dmg for one edged weapon">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
-    <abilityranks from="1" to="2"/>
   </ability>
 
 
@@ -36,6 +36,10 @@
     <abilityid>rune.hold_portal</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><runemagic/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character can carve or mark with chalk or paint
@@ -44,10 +48,6 @@
 	barrier with 10 hit points for each rank of the spell cast.
       </p>
     </abilitydescription>    
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
-    <spline><p x="60" y="30"/></spline>
-    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
-    <abilityranks from="1" to="4"/>
   </ability>
   
   <ability>
@@ -55,15 +55,15 @@
     <abilityid>rune.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><runemagic/><lore/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	Rune magic is a very specific form of elemental ritual magic
 	used mainly by dwarves and shamen.
       </p>
     </abilitydescription>    
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <spline></spline>
-    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -72,6 +72,10 @@
     <abilityid>rune.sign_of_idreshein</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><runemagic/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="9" dmg="d6xRank+4">Magic+Rank</abilitycheck>
+    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
 	The Sign of Idreshein is a sigil that stores energy
@@ -79,10 +83,6 @@
 	touches the sign.
       </p>
     </abilitydescription>    
-    <spline><p x="-30" y="30"/></spline>
-    <abilitycheck dc="9" dmg="d6xRank+4">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
-    <abilityranks from="1" to="4"/>
   </ability>
 
 </abilitygroup>

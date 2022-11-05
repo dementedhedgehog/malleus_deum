@@ -18,15 +18,15 @@
     <abilityid>staff.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a staff, staff or polearm can strike with
 	it during combat doing weapon damage.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
 
@@ -35,16 +35,16 @@
     <abilityid>staff.brace</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="2x(Weapon + Speed|Strength), opponent must be charging.">Std+Rank</abilitycheck>
+    <prereqabilityrank>staff.strike_1</prereqabilityrank>
+    <spline><p x="15" y="60"/></spline> 
     <abilitydescription>
       <p>
         Characters equipped with a staff can brace against
 	a charge striking first and doing extra damage.
       </p>
     </abilitydescription>
-    <prereqabilityrank>staff.strike_1</prereqabilityrank>
-    <spline><p x="15" y="60"/></spline> 
-    <abilitycheck dc="Targets Defence" dmg="2x(Weapon + Speed|Strength), opponent must be charging.">Std+Rank</abilitycheck>
-    <abilityranks untrained="-3" from="1" to="4"/>
   </ability>
 
 
@@ -53,6 +53,10 @@
     <abilityid>staff.circle_of_death</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
+    <prereqabilityrank>staff.strike_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline> 
     <abilitydescription>
       <p>
 	The character swings their weapon in large arcs keeping foes at bay.
@@ -66,10 +70,6 @@
 	weapon, and it only works when the opponents are within a 180° arc.  
       </p>
     </abilitydescription>
-    <prereqabilityrank>staff.strike_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline> 
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -77,6 +77,10 @@
     <abilityid>staff.parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
+    <prereqabilityrank>staff.strike_1</prereqabilityrank>	
+    <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>
 	<label>ability:staff.parry</label>
@@ -87,9 +91,5 @@
 	damage. If the parry check succeeds the attack does no damage.
       </p>
     </abilitydescription>
-    <prereqabilityrank>staff.strike_1</prereqabilityrank>	
-    <spline><p x="90" y="30"/></spline> 
-    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="4"/>
   </ability>
 </abilitygroup>

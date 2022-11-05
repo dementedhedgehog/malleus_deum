@@ -33,7 +33,10 @@
     <abilityid>evocation.bind</abilityid>
     <abilityactiontype><minor/></abilityactiontype> 
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation_1</prereqabilityrank>
+    <spline><p x="15" y="30"/></spline>
     <abilitydescription>
       <p>
 	Bind holds an opponent using magical energies.  
@@ -42,9 +45,6 @@
 	is held.  The caster may release the target at any time.  
       </p>
     </abilitydescription>
-    <spline><p x="15" y="30"/></spline>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
   
   <ability>
@@ -52,7 +52,9 @@
     <abilityid>evocation</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><evocation/><magicpool/><lore/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p>
 	This ability represents the characters knowledge of the theory and
@@ -64,8 +66,6 @@
 	If the check fails the character has no useful additional information.
       </p>
     </abilitydescription>    
-    <spline></spline>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -74,7 +74,10 @@
     <abilityid>evocation.greater_portal</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="27">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation.portal_2</prereqabilityrank>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
 	This is a very rapid invocation of the normal portal spell.
@@ -82,9 +85,6 @@
 	between two well known places in this plane.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="15"/></spline>
-    <prereqabilityrank>evocation.portal_2</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
   
   <ability>
@@ -92,7 +92,10 @@
     <abilityid>evocation.lesser_portal</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><evocation/><ritual/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="21">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation_1</prereqabilityrank>
+    <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
 	The user creates a portal in a wall or floor.   The portal remains
@@ -106,9 +109,6 @@
 	two to cast.
       </p>
     </abilitydescription>
-    <spline><p x="-30" y="60"/></spline>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>  
 
   <ability>
@@ -116,7 +116,10 @@
     <abilityid>evocation.phantasmal_leech</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation_1</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	<emph>Like one who, on a lonely road, Doth walk in fear	and dread,
@@ -179,9 +182,6 @@
 	<tablelabel>fig:leech-overcharge</tablelabel>
       </table>
     </abilitydescription>    
-    <spline><p x="90" y="30"/></spline>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -190,7 +190,10 @@
     <abilityid>evocation.phantasmal_vulture</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation.phantasmal_leech_2</prereqabilityrank>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
 	Given an object with a contagious connection to a target, the caster
@@ -237,9 +240,6 @@
 	<tablelabel>fig:vulture-overcharge</tablelabel>
       </table>
     </abilitydescription>
-    <spline><p x="0" y="15"/></spline>
-    <prereqabilityrank>evocation.phantasmal_leech_2</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -247,7 +247,10 @@
     <abilityid>evocation.portal</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="27">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation.lesser_portal_2</prereqabilityrank>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
 	This is a very rapid invocation of the lesser portal spell.
@@ -255,9 +258,6 @@
 	in a wall or floor.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="15"/></spline>
-    <prereqabilityrank>evocation.lesser_portal_2</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -266,7 +266,10 @@
     <abilityid>evocation.shade</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="17">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation.lesser_portal_1</prereqabilityrank>
+    <spline><p x="-30" y="15"/></spline>
     <abilitydescription>
       <p>
 	A shade is one of the lesser demons.  It can be summoned to attack
@@ -275,9 +278,6 @@
 	Shades take double damage from fire and magical based attacks.
       </p>
     </abilitydescription>    
-    <spline><p x="-30" y="15"/></spline>
-    <prereqabilityrank>evocation.lesser_portal_1</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   <ability>
@@ -285,7 +285,10 @@
     <abilityid>evocation.summon</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype> 
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation_1</prereqabilityrank>
+    <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character makes a check to open a minute portal into one of the near planes.
@@ -321,9 +324,6 @@
 	their identity.
       </p>
     </abilitydescription>
-    <spline><p x="-75" y="30"/></spline>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
   
@@ -332,7 +332,10 @@
     <abilityid>evocation.wyld_portal</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><evocation/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>evocation.greater_portal_1</prereqabilityrank>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
 	This ability enables the user to recognize gateways,
@@ -358,8 +361,5 @@
 	indicate the nature of the Wyld beyond.
       </p>	
     </abilitydescription>    
-    <spline><p x="0" y="15"/></spline>
-    <prereqabilityrank>evocation.greater_portal_1</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 </abilitygroup>

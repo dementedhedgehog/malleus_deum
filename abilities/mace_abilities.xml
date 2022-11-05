@@ -20,7 +20,10 @@
     <abilityid>mace.smash</abilityid> 
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><crushing/></tags>     
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
+    <prereqabilityrank>mace.strike_2</prereqabilityrank>
+    <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a mace or similar weapon can attempt
@@ -31,9 +34,6 @@
 	fails they drop their weapon or shield.
       </p>	
     </abilitydescription>
-    <prereqabilityrank>mace.strike_2</prereqabilityrank>
-    <spline><p x="-75" y="30"/></spline>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   
@@ -42,15 +42,15 @@
     <abilityid>mace.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><mace/><crushing/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a Mace or similar weapon can strike
 	with it during combat doing weapon damage.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 
 
@@ -59,7 +59,10 @@
     <abilityid>mace.wild_swing</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><mace/><crushing/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength+Rank">Std+Rank</abilitycheck>
+    <prereqabilityrank>mace.strike_1</prereqabilityrank>
+    <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character swings the mace wildly keeping their opponents at bay.
@@ -67,9 +70,6 @@
 	melee attacks against the character until the characters next turn.
       </p>
     </abilitydescription>
-    <prereqabilityrank>mace.strike_1</prereqabilityrank>
-    <spline><p x="75" y="30"/></spline>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -77,6 +77,10 @@
     <abilityid>mace.parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/></tags>
+    <abilityranks from="1" to="6"/>
+    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
+    <prereqabilityrank>mace.strike_1</prereqabilityrank>	
+    <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
 	<label>ability:mace.parry</label>
@@ -86,9 +90,5 @@
 	result fails and a bane is rolled the attack deals double damage. 
       </p>
     </abilitydescription>
-    <spline><p x="-30" y="60"/></spline>
-    <prereqabilityrank>mace.strike_1</prereqabilityrank>	
-    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="6"/>
   </ability>    
 </abilitygroup>

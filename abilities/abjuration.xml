@@ -19,7 +19,9 @@
     <abilityid>abjuration</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><abjuration/><lore/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This ability represents the knowledge of the theoretical foundations
@@ -28,8 +30,6 @@
 	about this field of study and its history. 
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks from="1" to="3"/>
   </ability>
 
   <ability>
@@ -37,7 +37,10 @@
     <abilityid>abjuration.banish</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>abjuration_2</prereqabilityrank>
+    <spline><p x="120" y="30"/></spline>
     <abilitydescription>
       <p>
   	Banishing is an attempt to disrupt a demons tenuous contagious
@@ -49,9 +52,6 @@
 	energy used to control the simulacrum.
       </p>
     </abilitydescription>
-    <spline><p x="120" y="30"/></spline>
-    <prereqabilityrank>abjuration_2</prereqabilityrank>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   <ability>
@@ -59,7 +59,10 @@
     <abilityid>abjuration.circle_of_protection</abilityid>
     <abilityactiontype><full-turn/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>abjuration_1</prereqabilityrank>
+    <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
   	A circle of protection is a circle drawn upon the ground and infused
@@ -85,9 +88,6 @@
 	a Circle of Containment.
       </p>
     </abilitydescription>
-    <spline><p x="-75" y="30"/></spline>
-    <prereqabilityrank>abjuration_1</prereqabilityrank>
-    <abilityranks from="1" to="2"/>
   </ability>
   
   <ability>
@@ -95,7 +95,10 @@
     <abilityid>magic.contego</abilityid>
     <abilityactiontype><reaction-or-minor/></abilityactiontype>
     <tags><abjuration/><ranged/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>    
+    <prereqabilityrank>abjuration.circle_of_protection_2</prereqabilityrank>
+    <spline><p x="30" y="30"/></spline> 
     <abilitydescription>
       <p noindent="true">
 	The caster creates a magical shield around a person, or anything tagged medium or small.
@@ -113,9 +116,6 @@
 	to take half damage.
       </p>
     </abilitydescription>    
-    <spline><p x="30" y="30"/></spline> 
-    <prereqabilityrank>abjuration.circle_of_protection_2</prereqabilityrank>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -125,7 +125,10 @@
     <abilityid>magic.commune</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>abjuration_2</prereqabilityrank>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
   	Commune is a spell that communicates with a named entity from beyond.
@@ -140,9 +143,6 @@
   	the truth.
       </p>
     </abilitydescription>
-    <spline><p x="60" y="30"/></spline>
-    <prereqabilityrank>abjuration_2</prereqabilityrank>
-    <abilityranks from="1" to="2"/>
   </ability>
 
   <ability>
@@ -150,7 +150,10 @@
     <abilityid>magic.eldritch_shield</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <prereqabilityrank>abjuration_1</prereqabilityrank>
+    <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p>
   	The caster uses raw magical energy to knock arrows and crossbow bolts out
@@ -163,9 +166,6 @@
   	and acts accordingly before it does.
       </p>
     </abilitydescription>
-    <spline><p x="60" y="60"/></spline>
-    <prereqabilityrank>abjuration_1</prereqabilityrank>
-    <abilityranks from="1" to="2"/>
   </ability>
   
 
@@ -174,7 +174,10 @@
     <abilityid>magic.flesh_ward</abilityid>
     <abilityactiontype><reaction-or-minor/></abilityactiontype>
     <tags><abjuration/><touch/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>abjuration_2</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
   	The Flesh Ward spell provides magical protection
@@ -194,9 +197,6 @@
 	their roll.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>abjuration_2</prereqabilityrank>
-    <abilityranks from="1" to="3"/>
   </ability>
 </abilitygroup>
 

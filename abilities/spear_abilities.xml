@@ -20,6 +20,10 @@
     <abilityid>spear.hook</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><spear/><reach/><piercing/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
+    <prereqabilityrank>spear.strike_1</prereqabilityrank>    
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a polearm, but <bold>not a spear</bold>, can
@@ -31,10 +35,6 @@
 	test against the opponent.  If successful the defender drops their weapon/shield.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="30"/></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>spear.strike_1</prereqabilityrank>    
-    <abilityranks from="1" to="4"/>
   </ability>
   
 
@@ -43,15 +43,15 @@
     <abilityid>spear.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><spear/><reach/><piercing/></tags>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a spear or polearm can strike with
 	it during combat doing weapon damage.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilityranks untrained="0" from="1" to="4"/>
   </ability>
 
 
@@ -60,6 +60,10 @@
     <abilityid>spear.brace</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><weapon/><spear/><reach/><piercing/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="2x(Weapon+Rank)">Std+Rank</abilitycheck>
+    <prereqabilityrank>spear.strike_2</prereqabilityrank>
+    <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a spear or polearm can brace against
@@ -68,10 +72,6 @@
 	in the direction of the character.
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence" dmg="2x(Weapon+Rank)">Std+Rank</abilitycheck>
-    <spline><p x="-75" y="30"/></spline>
-    <prereqabilityrank>spear.strike_2</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -80,6 +80,10 @@
     <abilityid>spear.fend</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><spear/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
+    <prereqabilityrank>spear.strike_2</prereqabilityrank>
+    <spline><p x="-30" y="75"/></spline>
     <abilitydescription>
       <p>
 	The character swings their weapon in large arcs keeping foes at bay.
@@ -94,9 +98,5 @@
 	weapon, and it only works when the opponents are within a 180° arc.  
       </p>
     </abilitydescription>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
-    <spline><p x="-30" y="75"/></spline>
-    <prereqabilityrank>spear.strike_2</prereqabilityrank>
-    <abilityranks from="1" to="4"/>
   </ability>
 </abilitygroup>

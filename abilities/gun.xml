@@ -19,6 +19,10 @@
     <abilityid>gun.maintenance</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><weapon/><gun/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13" dmg="Weapon">Std+Rank</abilitycheck>
+    <prereqabilityrank>gun.shoot_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	Represents the characters ability to reload and repair the gun.
@@ -32,10 +36,6 @@
 	caused by misfires).
       </p>      
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank>gun.shoot_1</prereqabilityrank>
-    <abilitycheck dc="13" dmg="Weapon">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -43,6 +43,10 @@
     <abilityid>gun.sharp_shooter</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><gun/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank+Agility">Std+Rank</abilitycheck>
+    <prereqabilityrank>gun.shoot_2</prereqabilityrank>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character has spent many hours working on improving the accuracy of
@@ -50,10 +54,6 @@
 	bonus to hit, but takes an extra turn to aim.
       </p>
     </abilitydescription>
-    <spline><p x="60" y="30"/></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank+Agility">Std+Rank</abilitycheck>
-    <prereqabilityrank>gun.shoot_2</prereqabilityrank>
-    <abilityranks from="1" to="5"/>
   </ability>
   
   <ability>
@@ -61,6 +61,9 @@
     <abilityid>gun.shoot</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><gun/><inaccurate/></tags>
+    <abilityranks untrained="0" from="1" to="3"/>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank">Std</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a gun can shoot with it during combat
@@ -69,8 +72,5 @@
 	results in double damage.
       </p>
     </abilitydescription>
-    <spline></spline>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank">Std</abilitycheck>
-    <abilityranks untrained="0" from="1" to="3"/>
   </ability>
 </abilitygroup>

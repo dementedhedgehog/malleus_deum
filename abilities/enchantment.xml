@@ -20,6 +20,10 @@
     <abilityid>enchantment.auri_fames</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <spline><p x="90" y="0"/></spline>    
     <abilitydescription>
       <p>
 	The caster attempts to curse the target, if successful cast the caster
@@ -56,10 +60,6 @@
 	</list>
       </p>
     </abilitydescription>    
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>
-    <spline><p x="90" y="0"/></spline>    
-    <abilityranks from="1" to="5"/>
   </ability>
   
   <ability>
@@ -67,14 +67,14 @@
     <abilityid>enchantment.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><lore/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This ability represents knowledge of enchantment magic.
       </p>
     </abilitydescription>    
-    <spline></spline>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
   
   <ability>
@@ -82,6 +82,10 @@
     <abilityid>enchantment.ghost_step</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>	
+    <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character barely disturbs the ground when they move.
@@ -89,10 +93,6 @@
 	when they walk, and they do not sink into mud or snow.
       </p>
     </abilitydescription>    
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>	
-    <spline><p x="90" y="15"/></spline>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -100,6 +100,10 @@
     <abilityid>enchantment.glamour</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <spline><p x="0" y="45"/></spline>
     <abilitydescription>
       <p>
 	The caster magically takes the appearance of a person, creature or thing.
@@ -115,10 +119,6 @@
 	The difficulty of seeing through the glamour with True Sight is 25.
       </p>
     </abilitydescription>    
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
-    <spline><p x="0" y="45"/></spline>
-    <abilitycheck dc="17">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -126,6 +126,10 @@
     <abilityid>enchantment.hex</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>			
+    <spline><p x="-90" y="0"/></spline>
     <abilitydescription>
       <p>
 	Target breaks out in small pustules, loses something important to them,
@@ -138,10 +142,6 @@
 	FIXME: useless and vague?
       </p>	
     </abilitydescription>    
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>			
-    <spline><p x="-90" y="0"/></spline>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -149,6 +149,10 @@
     <abilityid>enchantment.mind_worm</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster attempts to insinutate an idea into the targets mind.
@@ -162,30 +166,23 @@
 	create a two-way mind worm).
       </p>
     </abilitydescription>    
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
-
-
-
 
   <ability>
     <abilitytitle>Speak with Amphibians</abilitytitle>
     <abilityid>enchantment.speak_with_amphibians</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with amphibians and reptiles.
 	Note however that these creatures are not that smart.
       </p>
     </abilitydescription>    
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
-    <spline><p x="90" y="15"/></spline>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -193,16 +190,16 @@
     <abilityid>enchantment.speak_with_birds</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <spline><p x="-45" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with birds.  Note that birds are
 	not very smart.
       </p>
     </abilitydescription>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
-    <spline><p x="-45" y="90"/></spline>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
   
 
@@ -211,15 +208,15 @@
     <abilityid>enchantment.speak_with_cats</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <spline><p x="15" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with cats and other felines.
       </p>
     </abilitydescription>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
-    <spline><p x="15" y="60"/></spline>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
 
   <ability>
@@ -227,6 +224,10 @@
     <abilityid>enchantment.speak_with_horses</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <spline><p x="-90" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with ungulates: horses, goats,
@@ -234,28 +235,22 @@
 	and the like.
       </p>
     </abilitydescription>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
-    <spline><p x="-90" y="60"/></spline>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
-
-
 
   <ability>
     <abilitytitle>Speak with Rodents</abilitytitle>
     <abilityid>enchantment.speak_with_rodents</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <spline><p x="90" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with rodents: rats and mice etc.
       </p>
     </abilitydescription>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
-    <spline><p x="90" y="90"/></spline>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
   
   <ability>
@@ -263,32 +258,58 @@
     <abilityid>enchantment.speak_with_wolves</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with canine animals: bears,
 	wolves, dogs and foxes.
       </p>
     </abilitydescription>    
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
-    <spline><p x="-90" y="15"/></spline>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>
 
+  <ability>
+    <abilitytitle>Vox Imperium</abilitytitle>
+    <abilityid>enchantment.vox_imperium</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Mettle">Mettle+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <spline><p x="60" y="60"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The Vox Imperium spell, or Voice of Command, allows the
+	character to implant a short but strong mental suggestion
+	into the mind of the target.   If Vox is successfully cast then
+	an opposed Mettle Check is to command the target.  The
+	opposed check is modified as follows: -6 if the command is self
+	destructive, -3 if the command is counter to the creatures nature
+	and desires, +3 if the command is something aligned with the
+	creatures desires, +6 if the command is strongly aligned with the
+	creatures desires.  If successful the target performs the action
+	they were commanded to perform.
+      </p>
+    </abilitydescription>
+  </ability>  
+  
   <ability>
     <abilitytitle>Zoolingualism</abilitytitle>
     <abilityid>enchantment.zoolingualism</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="11">Magic+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
 	A sub-class of magic used to communicate with animals.
 	FIXME.. when can you check this
       </p>
     </abilitydescription>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
-    <spline><p x="60" y="60"/></spline>
-    <abilitycheck dc="11">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="5"/>
   </ability>  
 </abilitygroup>

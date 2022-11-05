@@ -19,7 +19,9 @@
     <abilityid>special.blindsight</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><physical/></tags>
+    <abilityranks from="1" to="3"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
 	The character has heightened senses when fighting unseen
@@ -35,8 +37,6 @@
 	instead of the usual -6.
       </p>
     </abilitydescription>
-    <spline><p x="90" y="0"/></spline> 
-    <abilityranks from="1" to="3"/>
   </ability>
 
   
@@ -45,15 +45,15 @@
     <abilityid>special.sixth_sense</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><special/><luckpool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="3">Luck+Rank</abilitycheck>
+    <spline><p x="0" y="0"/></spline>     
     <abilitydescription>
       <p>
 	If the character makes a successful Luck check they may reroll their surprise
 	roll.
       </p>
     </abilitydescription>
-    <spline><p x="0" y="0"/></spline>     
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -62,6 +62,7 @@
     <abilityid>special.natural_sprinter</abilityid>
     <abilityactiontype><free/></abilityactiontype>
     <tags><special/><mettlepool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="3">Mettle+Rank</abilitycheck>
     <abilitydescription>
       <p>
@@ -79,7 +80,6 @@
 	of overcharge the Dwarf loses a mettle die, they've run too fast and are winded.
       </p>
     </abilitydescription>    
-    <abilityranks from="1" to="4"/>
   </ability>
 
 
@@ -88,7 +88,9 @@
     <abilityid>special.fey_resilience</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><special/><mettlepool/></tags>
+    <abilityranks from="1" to="4"/>
     <abilitycheck dc="3">Mettle+Rank</abilitycheck>
+    <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
       <p>
 	The fey are resistant to damage from non-magically conductive sources.
@@ -102,7 +104,5 @@
 	an overcharge the Fey creature loses a mettle die.
       </p>
     </abilitydescription>    
-    <spline><p x="0" y="60"/></spline> 
-    <abilityranks from="1" to="4"/>
   </ability> 
 </abilitygroup>

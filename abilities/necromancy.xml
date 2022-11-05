@@ -22,6 +22,10 @@
     <abilityid>necromancy.commune</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="11" effect="Talk with a corpse">Magic+Rank</abilitycheck>
+    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
+    <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
 	While holding part of the deceased's body the necromancer may ask questions of the 
@@ -56,19 +60,35 @@
         handle failure of magic
       </p>	  
     </abilitydescription>
-    <spline><p x="-60" y="60"/></spline>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
-    <abilitycheck dc="11" effect="Talk with a corpse">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="2"/>
   </ability>
 
-
+  <ability>
+    <abilitytitle>Eye for an Eye</abilitytitle>
+    <abilityid>magic.eye_for_an_eye</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><necromancy/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5" effect="Melee dmg dealt to caster is also dealt to attacker">Magic+Rank</abilitycheck>
+    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>	
+    <spline><p x="30" y="95"/></spline>
+    <abilitydescription>
+      <p>
+	The caster is warded.  Any attacker doing damage in melee to the caster
+	also suffers the same amount of damage.  This spell lasts for the length
+	of combat.
+      </p>
+    </abilitydescription>
+  </ability>
 
   <ability>
     <abilitytitle>Graft Flesh</abilitytitle>
     <abilityid>magic.graft_flesh</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="11" effect="Replace amputated limbs and heal">Magic+Rank</abilitycheck>
+    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>	
+    <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
 	The caster grafts the fresh flesh of one creature onto another.
@@ -81,10 +101,6 @@
 	the creature is dead.
       </p>
     </abilitydescription>
-    <spline><p x="30" y="75"/></spline>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>	
-    <abilitycheck dc="11" effect="Replace amputated limbs and heal">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 
 
@@ -93,6 +109,9 @@
     <abilityid>magic_school.necromancy</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><necromancy/><lore/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="13" effect="Answer questions about necromancy.">Std+Rank</abilitycheck>
+    <spline></spline>    
     <abilitydescription>
       <p noindent="true">
 	The school of necromancy is concerned with the use of death or blood magic.
@@ -102,9 +121,6 @@
 	the relevant mythology around these creatures.
       </p>      
     </abilitydescription>    
-    <abilitycheck dc="13" effect="Answer questions about necromancy.">Std+Rank</abilitycheck>
-    <spline></spline>    
-    <abilityranks from="1" to="3"/>
   </ability>
   
   <ability>
@@ -112,6 +128,10 @@
     <abilityid>magic.stay_death</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7" effect="Reroll one Near-Death roll.">Magic+Rank</abilitycheck>
+    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
+    <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
       <p>
 	The character holds death at bay for a moment.  The target
@@ -120,10 +140,6 @@
 	reroll a death roll.
       </p>
     </abilitydescription>    
-    <spline><p x="-90" y="15"/></spline>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
-    <abilitycheck dc="7" effect="Reroll one Near-Death roll.">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
   
 
@@ -132,6 +148,10 @@
     <abilityid>magic.blood_soucriant</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight.">Magic+Rank</abilitycheck>
+    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
+    <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>
 	In the presence of a lot of blood the character can summon
@@ -141,9 +161,5 @@
 	will attack the caster.
       </p>
     </abilitydescription>    
-    <spline><p x="90" y="15"/></spline>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
-    <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight.">Magic+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>  
 </abilitygroup>

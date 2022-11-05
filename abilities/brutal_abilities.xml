@@ -19,6 +19,10 @@
     <abilityid>brutal.blood_frenzy</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><martial/><brutal/><mettlepool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5">Mettle+Rank</abilitycheck>
+    <prereqabilityrank></prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	After your character makes a successful melee attack you can make a
@@ -30,9 +34,5 @@
 	morale check to voluntarily recover from their frenzy.  
       </p>      
     </abilitydescription>
-    <spline><p x="0" y="30"/></spline>
-    <prereqabilityrank></prereqabilityrank>
-    <abilitycheck dc="5">Mettle+Rank</abilitycheck>
-    <abilityranks from="1" to="3"/>
   </ability>
 </abilitygroup>
