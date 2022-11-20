@@ -2,7 +2,7 @@
 <abilitygroup>
   <abilitygroupinfo>
     <abilitygrouptitle>Hammer Proficiency</abilitygrouptitle>
-    <abilitygroupid>martial.hammer</abilitygroupid>
+    <abilitygroupid>hammer</abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitytags><weapon/><melee/><heavy/><crushing/><hammer/></abilitytags>
     <abilitygroupdescription>
@@ -22,7 +22,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><weapon/><heavy/><hammer/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon + Strength|Endurance, and Target saves verses Agility DC 12 + Level or is knocked back">Std+Rank</abilitycheck>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance, and Target saves verses Agility DC 12 + Level or is knocked back">Std+Rank</abilitycheck>
     <prereqabilityrank>hammer.strike_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -34,6 +34,28 @@
 	If the attack roll hits and is a bane then the target takes half damage.
 	If the attack misses and a boon is rolled then the attacker still manages to force the defender back.
 	If the attack misses and a bane is rolld then the attacked must save or be knocked prone.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Stunning Blow</abilitytitle>
+    <abilityid>hammer.stunning_blow</abilityid>
+    <abilityactiontype><free/></abilityactiontype>
+    <tags><weapon/><heavy/><hammer/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck
+	effect="On a hit with doubles the character makes an opposed Endurance check, if successfull the target is stunned"
+	dmg="+1d8"
+	dc="Targets Endurance">Std+Endurance+Rank</abilitycheck>
+    <prereqabilityrank>hammer.strike_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	On a noteworthy hit, that is any doubles roll that hits, the character does an extra
+	+1d8 damage, and makes an opposed endurance check.  If successful the opponent is stunned
+	(loses their Move, Minor and Reaction for the turn).
       </p>
     </abilitydescription>
   </ability>
