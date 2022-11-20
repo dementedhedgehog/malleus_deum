@@ -11,14 +11,11 @@
     <smaller>
       <bold>Action Type:</bold> {{ ability.action_type }},  
       <bold>Ranks:</bold> {{ ability.get_ability_rank_range() }}, 
-      <bold>Checks:</bold> {% for check in ability.get_checks() %}
-      {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
-      {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}            
+      <bold>Checks:</bold> {% for check in ability.get_checks() %} 
+      {%- if check.name is not none  -%}{{check.name}}, {%- endif -%}
+      DC: {{check.dc}}, Check: {{check.check_type}}
       {% if not loop.last %}, {% endif -%}
       {% endfor -%}
-      {%- if ability.ddc and ability.ddc != "0" -%}
-      ,  <bold>DDC:</bold> {{ ability.ddc }}
-      {%- endif %}              
       {%- if ability.overcharge  -%}
       ,  <bold>Overcharge:</bold> {{ ability.overcharge }}
       {%- endif %}              
