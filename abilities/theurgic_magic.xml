@@ -21,7 +21,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <abilitycheck dc="3" type="Magic+Rank" range="self">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
     <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -29,13 +29,13 @@
   	If successful those observing the character
   	will be struck by their holiness and devoutness.
   	This will grant a +Rank bonus to Negotiate actions
-  	or Charm spells.
+  	or Charm spells against good creatures.
       </p>
 
       <p>
-  	Demons and undead monsters will need to make an
-  	optional Mettle Check DDC 10+Rank or become Enraged and
-  	Charge the caster.
+  	Demons and undead monsters will become Enraged and
+  	Charge the caster or make an optional Mettle Check DDC:5+Rank
+	to resist.
       </p>
     </abilitydescription>
   </ability>
@@ -130,7 +130,11 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="3" effect="Rank+1 weapons receive +Rank dmg vs demons and undead">Magic+Rank</abilitycheck>
+    <abilitycheck
+	dc="3"
+	range="touch"
+	effect="weapons receive +Rank dmg vs demons and undead"
+	type="Magic+Rank">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
     <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
     <abilitydescription>
@@ -144,30 +148,48 @@
   </ability>
 
   <ability>
-    <abilitytitle>Create Holy Water</abilitytitle>
-    <abilityid>theurgic.create_holy_water</abilityid>
+    <abilitytitle>Canticle of Mithras</abilitytitle>
+    <abilityid>theurgic.canticle_of_mithras</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/><maintain/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7" effect="Alies make defensive checks against evil opponents.">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
+    <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The caster calls on Mithras to protect the faithful.  Allies gain +Rank to defensive checks against
+	evil creatures.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Holy Water</abilitytitle>
+    <abilityid>theurgic.holy_water</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7" effect="Rank+1 holy water vials">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Rank+1 holy water vials">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	If successful the character creates a vial of holy water.  The
-  	deity that cleric follows cannot be evil.  The character usually carries
-  	a number of vials of holy water upon their person.  When required they
-  	may make an ability check.  If successful they are carrying 1+Rank vials,
-  	if unsuccessful they are carrying one.  A boon adds one to the number of vials
-  	carried, a bane reduces the number of vials carried by one. Note that the
-  	character must have down time before they can make this check again.  They
-  	cannot just produce a never ending stream of holy water vials.  Also note
-  	that the character must have access to vials and water to create holy water.
+  	The character has about his person some number of vials of holy water they
+	had created earlier for just such an occasion.  When required the caster
+  	makes a magic check.  If successful they are carrying 2+Rank vials of holy water, otherwise
+	they are only carrying one vial. Note that the character must have a long rest before they
+	can make this check again.  Holy water takes time to prepare so the caster cannot produce
+	a never ending stream of holy water vials.
+	To cast this spell the deity that cleric follows cannot be evil.    
+	Also note that the character must have access to vials and water to create holy water.
   	They cannot produce water in the desert.
       </p>
       
       <p>
-  	Holy water should be kept in a special font.  If kept in a vial	it lasts one week.
+	Holy Water can be prepared before it is needed.  In this case Rank+1d4 vials are created.
+  	Holy water should be kept in a special font.  If kept in a vial	it lasts a few days.
       </p>
     </abilitydescription>
   </ability>
@@ -219,6 +241,24 @@
   </ability>
   
 
+  <ability>
+    <abilitytitle>Gentle Repose</abilitytitle>
+    <abilityid>theurgic.gentle_repose</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="2"/>
+    <abilitycheck dc="5" effect="+Rank to Near Death saves">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	Provides a +Rank bonus to Near-Death saves.  If the character recovers hit points
+	as a result of their Near Death rolls they gain an additional +Rank hit points.
+	While stop a corpse from turning to undeath if cast early enough.
+      </p>
+    </abilitydescription>
+  </ability>
+  
   <ability>
     <abilitytitle>Grace of Mithras</abilitytitle>
     <abilityid>theurgic.grace_of_mithras</abilityid>
@@ -321,7 +361,7 @@
   	Once per day the caster may attempt the Litany of Redemption.  This is a
 	five minute ritual where the caster quotes passages from the Book of Light
 	and reflects on the lessons within. If successful participants refresh a
-	mettle die if able.
+	single mettle die if able.
       </p>
     </abilitydescription>
   </ability>
@@ -388,6 +428,24 @@
     </abilitydescription>
   </ability>
   
+
+  <ability>
+    <abilitytitle>Hammer of the Hierophant</abilitytitle>
+    <abilityid>theurgic.hammer_of_the_hierophant</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><theurgic/><magicpool/><maintain/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7" effect="Mace or Hammer">Magic+Rank</abilitycheck>
+    <prereqabilityrank>theurgic.blessed_arms_1</prereqabilityrank>
+    <spline><p x="-60" y="5"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	If successfully cast, the caster gains +Rank to attack checks and +Rank to damage
+	with attacks made using a hammer or mace for the rest of the combat.  These bonuses stack
+	with any other bonuses the caster has for those attacks.
+      </p>
+    </abilitydescription>
+  </ability>
 
   <ability>
     <abilitytitle>Hold Undead</abilitytitle>
