@@ -18,7 +18,7 @@
     <abilitytitle>Alchemy</abilitytitle>
     <abilityid>lore.alchemy</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_lesser_2</prereqabilityrank>
@@ -31,12 +31,30 @@
       </p>
     </abilitydescription>
   </ability>
+
+
+  <ability>
+    <abilitytitle>Artillery</abilitytitle>
+    <abilityid>lore.artillery</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><lore/><scholar/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
+    <abilitycheck dc="Targets Defence" effect="Attack using artillery pieces.">Std+Rank</abilitycheck>
+    <prereqabilityrank>lore.alchemy_lesser_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character is trained in the use of artillery in sieges or naval warfare.
+	The can arm, aim, fire and on some occasions repair artillery pieces.
+      </p>
+    </abilitydescription>
+  </ability>
   
   <ability>
     <abilitytitle>Alchemy, Lesser</abilitytitle>
     <abilityid>lore.alchemy_lesser</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.natural_history_1</prereqabilityrank>
@@ -78,7 +96,7 @@
     <abilitytitle>Alchemy, Greater</abilitytitle>
     <abilityid>lore.alchemy_greater</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_2</prereqabilityrank>
@@ -98,7 +116,7 @@
     <abilitytitle>Antiquarian</abilitytitle>
     <abilityid>lore.antiquarian</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.history_1</prereqabilityrank>
@@ -117,7 +135,7 @@
     <abilitytitle>Barber</abilitytitle>
     <abilityid>lore.barber</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags></tags>
+    <tags><lore/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
@@ -135,7 +153,7 @@
     <abilitytitle>Book Keeping</abilitytitle>
     <abilityid>lore.book_keeping</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.mathematics_1</prereqabilityrank>
@@ -156,7 +174,7 @@
     <abilitytitle>Book Learning</abilitytitle>
     <abilityid>lore.book_learning</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="15">Std+Rank</abilitycheck>
     <spline></spline>    
@@ -168,12 +186,62 @@
     </abilitydescription>
   </ability>
 
+  <ability>
+    <abilitytitle>Explosives</abilitytitle>
+    <abilityid>lore.explosives</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><lore/><scholar/></tags>    
+    <abilityranks untrained="-6" from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>lore.smoke_bomb_1</prereqabilityrank>
+    <spline><p x="-60" y="60"/></spline>
+    <abilitydescription>
+      <p>
+  	The character knows how create explosives.  They keep on their person some explosive material at all times
+	which may be used to create an ersatz grenade or petard.  A grenade is an anti personal explosive
+	thrown at a target which does an area of effect damage.  A petard is a breaching charge used to blow
+	a hole in a door or thin wall.  When required the character makes a check.  If unsuccesful the bomb is
+	a dud and fails to ignite.  If successful the bomb they are carrying lights successfully and performs
+	as the equipment item of the same name.  Note that these explosives are a little unstable, and a little
+	unweildy.  The character only carries enough ingredients to create one of these items, after which they
+	must create more in their lab.
+      </p>      
+    </abilitydescription>
+  </ability>  
+  
+
+  <!-- <ability> -->
+  <!--   <abilitytitle>Flesh Golem</abilitytitle> -->
+  <!--   <abilityid>lore.flesh_golem</abilityid> -->
+  <!--   <abilityactiontype><non-combat/></abilityactiontype> -->
+  <!--   <tags><scholar/></tags> -->
+  <!--   <abilityranks from="1" to="5"/> -->
+  <!--   <abilitycheck dc="17">Std+Rank</abilitycheck> -->
+  <!--   <prereqabilityrank>lore.alchemy_2</prereqabilityrank> -->
+  <!--   <spline><p x="-60" y="60"/></spline> -->
+  <!--   <abilitydescription> -->
+  <!--     <p> -->
+  <!--   DO WE WANT THIS IN THE GAME .. what will it do to gameplay? -->
+  <!-- 	The character has worked out how to control reanimated humans using wyrd science and brain implants. -->
+  <!-- 	In order to create a Flesh Golem the character needs access to a laboratory. -->
+
+  <!-- 	Wyrd Rats have a telepathic bond with their master, they can perform minor -->
+  <!-- 	tasks and can attack on command.   Wyrd Rats have HP:1, AC:13+Rank, Bite DC:13+Rank, Dmg:1. -->
+  <!-- 	They can try to create a Wyrd Rat once per day.  If they fail, the rat survives but it is impossible -->
+  <!-- 	to make a telepathic link with the creature.  Each day spent in preparation gives the character +1 to -->
+  <!-- 	their check, up to a maximum of +3.  They get an additional +1 for naming the rat, which strengthens -->
+  <!-- 	the chance that the telepathic bond will hold.  The character can have and control up to Rank Wyrd Rats -->
+  <!-- 	after this it is impossible for the character to maintain the telepathic link with the rats. -->
+  <!--     </p> -->
+  <!--   </abilitydescription> -->
+  <!-- </ability>   -->
+
 
   <ability>
     <abilitytitle>Grand Discovery</abilitytitle>
     <abilityid>lore.grand_discovery</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="None">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_2</prereqabilityrank>
@@ -275,7 +343,7 @@
     <abilitytitle>History</abilitytitle>
     <abilityid>lore.history</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
@@ -293,7 +361,7 @@
     <abilitytitle>Homunculus</abilitytitle>
     <abilityid>lore.homunculus</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_3</prereqabilityrank>
@@ -319,7 +387,7 @@
       </p>
 
       <p>
-	When assisting in combat the homunculus has 3 hit points, no stamina an armour of +2 (they're small
+	When assisting in combat the homunculus has 3 hit points, no stamina, an armour of +2 (they're small
 	and nasty) and provides a +1 to hit and damage bonus to one character fighting in melee hand to hand.
 	That character need not be its master.  Homunculi love fighting and their master must make a
 	Mettle DC2 check to control them when any physical combat begins or the homuculus will automatically
@@ -361,7 +429,7 @@
     <abilityid>lore.law</abilityid>
     <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_2</prereqabilityrank>    
@@ -395,7 +463,7 @@
     <abilitytitle>Mathematics</abilitytitle>
     <abilityid>lore.mathematics</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
@@ -415,7 +483,7 @@
     <abilitytitle>Natural History</abilitytitle>
     <abilityid>lore.natural_history</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
@@ -441,7 +509,7 @@
     <abilitytitle>Physician</abilitytitle>
     <abilityid>lore.physician</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
@@ -462,7 +530,7 @@
     <abilitytitle>Physics</abilitytitle>
     <abilityid>lore.physics</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.mathematics_1</prereqabilityrank>
@@ -481,7 +549,7 @@
     <abilitytitle>Politics [Society]</abilitytitle>
     <abilityid>lore.politics</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="60" y="210"/></spline>
@@ -513,7 +581,7 @@
     <abilitytitle>Potion Making</abilitytitle>
     <abilityid>magic.potions</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_2</prereqabilityrank>	
@@ -526,12 +594,41 @@
     </abilitydescription>
   </ability>
 
+
+  <ability>
+    <abilitytitle>Smoke Bomb</abilitytitle>
+    <abilityid>lore.smoke_bomb</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><lore/><scholar/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="11" effect="Defensive checks against missile attacks made at +3×Rank">Std+Rank</abilitycheck>
+    <prereqabilityrank>lore.alchemy_lesser_1</prereqabilityrank>
+    <spline><p x="30" y="75"/></spline>
+    <abilitydescription>
+      <p>
+  	The character has on his person a smoke bomb that he had created earlier.  When required the
+	character makes a check.  If unsuccesful the bomb is a dud and fails to ignite. 
+	If successful the smoke bomb they are carrying lights successfully creates a billowing cloud
+	of grey smoke surrounding the bomb with a radius of <measurement><imperial>20'</imperial><metric>6m</metric></measurement>.  This cloud gives +3×Rank to defensive rolls against missile attacks.  It is clearly visible during
+	the day, but may not be noticeable at night depending on the lighting.    The cloud also provides
+	+Rank against area-of-effect attacks.   Note that the character must have a long rest before they
+	can make this check again.  Smoke bombs take time to prepare and so the character cannot produce
+	a never ending stream of smoke bombs.   Furthermore smoke bombs require a small amount of specialised
+	equipment and the character must have access to this equipemnt to create smoke bombs.  The smoke
+	bomb may be thrown as if it were a rock.  If the character uses a thurible this grants a +1 to the
+	check and also allows the smoke bomb to be thown as if it were a sling (if not retrieved the thurible
+	will then be lost).
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
   
   <ability>
     <abilitytitle>Theology</abilitytitle>
     <abilityid>lore.theology</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><scholar/></tags>
+    <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
@@ -558,4 +655,28 @@
       </p>	
     </abilitydescription>
   </ability>
+
+  <ability>
+    <abilitytitle>Wyrd Rats</abilitytitle>
+    <abilityid>lore.wyrd_rat</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><lore/><scholar/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>lore.alchemy_1</prereqabilityrank>
+    <spline><p x="-60" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	The character has worked out how to control rats using wyrd
+	science and brain implants.  In order to create a Wyrd Rat the character needs access
+	to a laboratory. Wyrd Rats have a telepathic bond with their master, they can perform minor
+	tasks and can attack on command.   Wyrd Rats have HP:1, AC:13+Rank, Bite DC:13+Rank, Dmg:1.
+	They can try to create a Wyrd Rat once per day.  If they fail, the rat survives but it is impossible
+	to make a telepathic link with the creature.  Each day spent in preparation gives the character +1 to
+	their check, up to a maximum of +3.  They get an additional +1 for naming the rat, which strengthens
+	the chance that the telepathic bond will hold.  The character can have and control up to Rank Wyrd Rats
+	after this it is impossible for the character to maintain the telepathic link with the rats.
+      </p>
+    </abilitydescription>
+  </ability>  
 </abilitygroup>
