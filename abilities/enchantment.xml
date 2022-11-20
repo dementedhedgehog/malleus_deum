@@ -26,8 +26,9 @@
     <spline><p x="90" y="0"/></spline>    
     <abilitydescription>
       <p>
-	The caster attempts to curse the target, if successful cast the caster
-	makes an opposed standard check against the targets will power adding the magic pool result
+	FIXME: BROKEN
+	The mage attempts to curse the target, if successful cast the mage
+	makes an opposed standard check against the targets mettle adding the magic pool result
 	as a bonus to the check.  If successful the subject gains the <emph>Hunger for Gold</emph>
 	aspect with a difficulty equal to the std check plus magic pool result.  This aspect
 	lasts twenty four hours.  This spell requires some item of contagion with the target
@@ -309,6 +310,24 @@
       <p noindent="true">
 	A sub-class of magic used to communicate with animals.
 	FIXME.. when can you check this
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  <ability>
+    <abilitytitle>Wrack</abilitytitle>
+    <abilityid>enchantment.wrack</abilityid>
+    <abilityactiontype><minor/></abilityactiontype>
+    <tags><enchantment/><magicpool/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Endurance">Std+Endurance+Rank</abilitycheck>
+    <prereqabilityrank>enchantment.lore_2</prereqabilityrank>
+    <spline><p x="60" y="60"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	If the character casts the spell the target must make a endurance save
+	or lose their turn.. wracked with phantasmal agony.
       </p>
     </abilitydescription>
   </ability>  
