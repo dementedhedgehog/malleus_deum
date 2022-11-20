@@ -124,7 +124,7 @@ WHAT ABOUT RAW DC FOR DEFENSIVE THINGS?
       <li>
         <p>
           Medium-weight rules complexity means that the rules are a little more 
-          complicated than, for example, FATE, FUDGE, or Dungeon World, and a 
+          complicated than, for example, FATE or Dungeon World, and a 
           little less complicated than say DnD4e or Pathfinder.   Combat should be easy
 	  enough that GMs can throw challenging encounters together on the fly.  But the
 	  rules for character progression need to be rich enough to capture and keep the
@@ -153,6 +153,26 @@ WHAT ABOUT RAW DC FOR DEFENSIVE THINGS?
         </p>
       </li>
 
+      <li>
+        <p>
+	  Realistic-ish.  We want to make some compromise between fantasy and realism, between
+	  escapism and reality.   If the game is too fantasical then suspension of belief
+	  becomes difficult and so to does immersion.  If the game is too realistic then
+	  where is the fun?  Use historical names when you can.
+        </p>
+      </li>
+      
+      <li>
+        <p>
+	  Following from the previous point we aim for a medium grim-dark tone.  In the Matrix
+	  movie Agent Smith says <quote>Did you know that the first Matrix was designed to be
+	  a perfect human world? Where none suffered, where everyone would be happy. It was a
+	  disaster. No one would accept the program.</quote>.  We want hope.  But at the same
+	  time we want there to be darkness so that the player characters can be the light in
+	  that darkness.  All societies are faulty; hedonistic or corrupt, or blood-thirsty.
+	  Take society and turn it up to 11.	  
+        </p>
+      </li>
 
       <li>
         <p>
@@ -1330,15 +1350,62 @@ WHAT ABOUT RAW DC FOR DEFENSIVE THINGS?
 </chapter>
 
 <chapter>
+  <chaptertitle>Leveling Up</chaptertitle>
+
+  <section>
+    <sectiontitle>New Abilities</sectiontitle>
+
+    <p>
+      The following table is used as a general guide for designing leveling up benefits for
+      archetypes in an attempt to keep their powers approximately the same.  Note the advances
+      and new abilities are generic.. the variability here should be constrained by limiting
+      the advances by tag and by providing choices, e.g One of ↳Mace×1 or  ↳Hammer×1 
+    </p>
+
+    <table>
+      <tablecategory>FullWidth</tablecategory>
+      <tablespec><fixed>0.05</fixed><fixed>0.15</fixed><fixed>0.15</fixed><fixed>0.15</fixed><fixed>0.15</fixed><fixed>0.15</fixed></tablespec>
+      <tabletitle>Currency Conversion Table</tabletitle>
+      <tableheaderrow>
+	<td>Level</td>
+	<td>Everyone</td>
+	<td>Fighter</td>
+	<td>Spell Caster</td>
+	<td>Loremaster</td>
+	<td>Generalist</td>
+      </tableheaderrow>
+
+      <tablerow>
+      	<td>2</td>
+      	<td>&gt;Martial×1 +Martial×1 &gt;Lore×1 +Lore×1 &gt;Language×1 +Physical×1 Health+1</td>
+      	<td>&gt;Martial×2 +Martial×2 Stamina+1</td>
+      	<td>&gt;Spell×1 +Spell×2 ↠Lore×1</td>
+      	<td>&gt;Lore×2 +Lore×2 +Language×1</td>
+      	<td>&gt;Lore×1 +Lore×1 &gt;Language×1 ↠Physical×1</td>
+      </tablerow>
+
+    </table>
+    
+  </section>
+</chapter>
+
+<chapter>
   <chaptertitle>Economics</chaptertitle>
 
   <section>
     <sectiontitle>Historical Basis</sectiontitle>
 
     <p>
-      We'll base our prices off historical prices, around the 1400s, pegging the conversion from
-      one penny to one copper piece.  This gives us the following conversion from in-game currency
-      to 14th century English currency.    Here are some historical prices
+      <!-- FIXME; in history stuff is too cheap.. !!  we'll change from a cp->1penny to a cp-> 1farthing  -->
+      We will base our prices off historical prices, around the 1400s, pegging the conversion from
+      one farthing to one copper piece.  This gives us the following conversion from in-game currency
+      to 14th century English currency.  Doing this provides two benefits, first the pricing should be
+      reasonably internally consistent, and secondly it will communicate the disparate wealth distribution
+      present at the times.  Both of these should contribute to the realism without any extra
+      in game overhead.  When adding equipment feel free to approximate the cost to some close but nice
+      and round value to make life easy.
+
+      Here are some historical prices
       http://medieval.ucdavis.edu/120D/Money.html
 
       <!--
@@ -1354,7 +1421,7 @@ WHAT ABOUT RAW DC FOR DEFENSIVE THINGS?
 
     <table>
       <tablecategory>Standard</tablecategory>
-      <tablespec><fixed>0.4</fixed><fixed>0.4</fixed></tablespec>
+      <tablespec><fixed>0.44</fixed><fixed>0.44</fixed></tablespec>
       <tabletitle>Currency Conversion Table</tabletitle>
       <tableheaderrow>
 	<td>14th C English Currency</td>
@@ -1362,37 +1429,35 @@ WHAT ABOUT RAW DC FOR DEFENSIVE THINGS?
       </tableheaderrow>
 
       <tablerow>
-	<td>1 Penny (d)</td>
+	<td>1 Farthing</td>
 	<td>1 Copper Piece</td>
       </tablerow>
 
       <tablerow>
-	<td>1 Farthing</td>
-	<td>¼ Copper Piece</td>
+	<td>1 Penny (d)</td>
+	<td>4 Copper Piece</td>
       </tablerow>
 
       <tablerow>
 	<td>1 Shilling (s)</td>
-	<td>12 Copper, Approx 1 Silver</td>
+	<td>48 Copper, Approx 5 Silver</td>
       </tablerow>
 
       <tablerow>
 	<td>1 Crown</td>
-	<td>6 Silver Pieces</td>
+	<td>24 Silver Pieces</td>
       </tablerow>
 
       <tablerow>
 	<td>1 Pound (L)</td>
-	<td>24 Silver Pieces, about 2½ Gold Pieces</td>
+	<td>100 Silver Pieces, 10 Gold Pieces</td>
       </tablerow>
 
       <tablerow>
 	<td>1 Mark</td>
-	<td>160 Copper, 16 Silver</td>
+	<td>640 Copper, 64 Silver</td>
       </tablerow>
     </table>
     </section>
-
-  </chapter>
-  
+  </chapter>  
 </book>
