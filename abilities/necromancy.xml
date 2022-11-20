@@ -24,7 +24,7 @@
     <tags><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="11" effect="Talk with a corpse">Magic+Rank</abilitycheck>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -64,12 +64,12 @@
 
   <ability>
     <abilitytitle>Eye for an Eye</abilitytitle>
-    <abilityid>magic.eye_for_an_eye</abilityid>
+    <abilityid>necromancy.eye_for_an_eye</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5" effect="Melee dmg dealt to caster is also dealt to attacker">Magic+Rank</abilitycheck>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>	
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
     <spline><p x="30" y="95"/></spline>
     <abilitydescription>
       <p>
@@ -82,12 +82,12 @@
 
   <ability>
     <abilitytitle>Graft Flesh</abilitytitle>
-    <abilityid>magic.graft_flesh</abilityid>
+    <abilityid>necromancy.graft_flesh</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="11" effect="Replace amputated limbs and heal">Magic+Rank</abilitycheck>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>	
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -105,8 +105,31 @@
 
 
   <ability>
-    <abilitytitle>Necromancy</abilitytitle>
-    <abilityid>magic_school.necromancy</abilityid>
+    <abilitytitle>Forbidden Psalm</abilitytitle>
+    <abilityid>necromancy.forbidden_psalm</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><necromancy/><magicpool/><accurate/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5" effect="">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Perception" range="sight" effect="Save or cannot hit">Std+3×Rank</abilitycheck>
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
+    <spline><p x="30" y="75"/></spline>
+    <abilitydescription>
+      <p>
+	If successfully cast, chanting this psalm makes it hard for the undead to see and hear the
+	caster.   After an attack is made against the character by an undead creature, the caster can
+	make a save against that attack by making a Std+3×Rank	check against the undeads perception.
+	If successful the undead creature cannot make the attack and loses their attack for that round.
+	This save is a free action that happens before any defensive ability, <eg/> dodge, made by the
+	caster.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Necromancy Lore</abilitytitle>
+    <abilityid>necromancy.lore</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><necromancy/><lore/></tags>
     <abilityranks from="1" to="3"/>
@@ -125,12 +148,12 @@
   
   <ability>
     <abilitytitle>Stay Death</abilitytitle>
-    <abilityid>magic.stay_death</abilityid>
+    <abilityid>necromancy.stay_death</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7" effect="Reroll one Near-Death roll.">Magic+Rank</abilitycheck>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
     <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -145,12 +168,12 @@
 
   <ability>
     <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
-    <abilityid>magic.blood_soucriant</abilityid>
+    <abilityid>necromancy.blood_soucriant</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight.">Magic+Rank</abilitycheck>
-    <prereqabilityrank>magic_school.necromancy_1</prereqabilityrank>
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -159,6 +182,47 @@
 	The demon will not tarry long and once summoned will drink of the
 	blood of the living.   If the Blood Sucreant does not drink she
 	will attack the caster.
+      </p>
+    </abilitydescription>    
+  </ability>  
+
+  <ability>
+    <abilitytitle>Pall of Darkness</abilitytitle>
+    <abilityid>necromancy.pall_of_darkness</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><necromancy/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="7" effect="Defensive checks against missile attacks made at +3×Rank">Magic+Rank</abilitycheck>
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
+    <spline><p x="30" y="75"/></spline>
+    <abilitydescription>
+      <p>
+	If successfully cast, chanting this psalm creates a dark cloud
+	surrounding the caster with a radius of <measurement><imperial>20'</imperial><metric>6m</metric></measurement>.  This cloud gives +3×Rank to defensive rolls against missile attacks.  It is clearly visible during
+	the day, but may not be noticeable at night depending on the lighting.    The cloud also provides
+	+Rank against area-of-effect attacks.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>Veil of Corruption</abilitytitle>
+    <abilityid>necromancy.veil_of_corruption</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><necromancy/><magicpool/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="5" effect="Resembles a corpse.">Magic+Rank</abilitycheck>
+    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
+    <spline><p x="90" y="15"/></spline>
+    <abilitydescription>
+      <p>
+	The character appears as if dead.  This is not an illusion.  They
+	look, smell, and feel like a corpse.  They may also adopt a preternatural
+	stillness.  At rank 1 the character can appear as a fresh corpse, dead for
+	a few hours, at rank 3 they can appear as a corpse that has been rotting
+	in the weather for a few weeks.
       </p>
     </abilitydescription>    
   </ability>  
