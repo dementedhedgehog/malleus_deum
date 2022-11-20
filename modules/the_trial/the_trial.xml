@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+
+  {% from "docs/macro_npcs.xml" import build_npcs with context %}
+  
+  <chapter>
+    <chaptertitle>The Trial</chaptertitle>
+
+
+    <section>
+      <sectiontitle>Setup</sectiontitle>
+
+      <p>
+	The characters are taken to the courthouse before <bold>Magister Ottmar Fulcade</bold>.
+	(old, fat, bouffant, rosacae).   The court is run by <bold>Scribe Ernst
+	Hoffman</bold>, (old, wise, bald, pince nez) constantly making suggestions to the
+	magister in sotto voce.  There's a jury
+	sitting in a box to one side, and a large crowd of onlookers ready to cheer any pithy comments
+	here to see the trial of Wolfgang Minz.
+	Courts try half	a dozen cases a day.  
+
+	<!--
+	Advocate for the Witchhunters Guild, Wigand Lange	
+	with the captain of the guard.
+	-->
+      </p>
+
+
+      <olist>
+
+	<li>Magister asks for Initial Accusations.  <emph>Shall we get this going then?</emph>
+	<olist>
+	  <li>Public Prosecutor Liutger Neidhart introduces himself and takes a cheap shot at
+	  the characters.  Thin humourless sycophantic man.</li>
+	  <li>Establish the identities of the individuals.</li>	
+	  <li>Magister <emph>Can we hurry this along.. I am feeling a bit peckish and would
+	  like to pot these contemptible rascals before lunch</emph></li>	
+	  <li>Ernst Hoffman.. <emph>yes sire .. but first some necessary preliminaries..</emph>
+	  The reading of the charges:
+	  <list>
+	    <li>Wolfram Minz: failure to pay taxes owed to the city.</li>
+	    <li>Wolfram Minz and Otto, Ethelwald? will be framed for High Treason, cowardice in the face of the enemy and abandoning the outer walls of Cold Keep.</li>	    
+	  </list>
+	  </li>	
+	</olist>
+	</li>
+
+	<li>Defendents Plea Guilty or Not Guilty.	
+	For people who remain silent .. trial by the weight of his sins (weights placed
+	on their chest until they confess).  If they've hired Betram Doosterberg he will immediately plea guilty.
+	(Betram will note that sometimes the best are paid more).  Characters can plead not guilty but must defend themselves.</li>
+	
+	<li>Prosecutor presents his case..
+	Various witnesses..  Characters are allowed to question the witnesses.
+
+	<olist>
+          <li>Hubert written testimony "I saw them with my own two eyes.  They were yellow cowards.  Ran like dogs for the main walls when the Orcs came.  It were lucky his honour that Lord Manegold went for help when 'e did."  Need to refute his testimony (under duress), irregular trial at 3 in the morning.</li>
+	  <li>Manegold Fulcade will give testimony how he "Fought off the Orcs, then charged through their lines so that he could go for help. While these cowards stayed behind to flee from the walls and abandon the town"... heresay</li>
+	  <li>Hanke Jost - an Affidavit Men in the hire of Ottmar  (PCs have never seen him before, Perception check Brumbar will let them know, he runs cock fights down the docks).  He'll be lead off in chains.. shall wear papers with great letters denouncing his character, before being whipped and thrown into the Aelfwin river. </li>
+	  <li>Ronald - youth and affadavit man.  Will change sides.  "Doin' my duty as a true citizen I came to report that Hanke Jost did offer me monies to come here today and give false testiment." .. he'll be excused</li>
+	  <li>Prosecutor will put one of them on the stand and try and get them to turn on the others ... charges will be dropped</li>
+	</olist>
+	</li>
+		
+	<li>Summary remarks... keep it short please.  Remember my lunch.</li>	
+	<li>Jury adjourns..  they must make a DC 15 (oratry?) check with +1 for each of the witnesses successfully discredited will be found guilty.. 
+
+	If found guilty.. reading of the punishment: a fine of 5 gold pieces per for failure to pay taxes with the balance
+	  due within the week, and death by beheading for Munz and hanging for the commoners for the treason.
+
+          (thinking) except of course the young lady.  I can't bear the thought
+	of the noose around her young neck .. (pause) In our mercy we will
+	have her drowned as an adulteress.. Ernst could you amend the
+	record accordingly please..  Right I'm off to lunch, Grundewald
+
+	
+	Thrown into prison. <emph>Have them hanged with the rest on St Mael the Elders day.
+	has a roasting partridge and some fine Aquilonian red waiting for
+	me I believe.</emph>
+	</li>	
+      </olist>
+
+      {{ build_npcs("the_trial.guards") }}
+
+      <p>XXX
+      </p>
+    </section>
+    
+  </chapter>  
+</book>

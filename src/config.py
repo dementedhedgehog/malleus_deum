@@ -75,7 +75,7 @@ background_files_to_build = (
 )
 
 patrons_to_build = (
-    ("klazyabolus", True, "[KL]"),
+    #("klazyabolus", True, "[KL]"),
 )
 
 archetypes_to_build = (
@@ -83,17 +83,17 @@ archetypes_to_build = (
     # ("champion_of_mithras", True, "[CoM]"),
     # ("chevalier", True, "[Ch]"),
     # ("confessor_militant", True, "[FC]"), 
-    ("elven_scion", True, "[ESc]"),
-    ("fyrdzwerg", True, "[FZW]"),
+    #("elven_scion", True, "[ESc]"),
+    #("fyrdzwerg", True, "[FZW]"),
     # ("halfling_rover", True, "[HR]"),
     # ("hedge_wizard", True, "[HW]"),
     # ("outrider", True, "[OR]"),
     # ("penitent_brother", True, "[PB]"),
-    ("red_mage", True, "[RM]"),
+    #("red_mage", True, "[RM]"),
     # ("second_son", True, "[SS]"),
     # ("skald", True, "[SKL]"),
     # ("summoner", True, "[SM]"),
-    ("witch_hunter", True, "[WH]"),
+    #("witch_hunter", True, "[WH]"),
 )
 
 encounters_to_build = (
@@ -116,8 +116,10 @@ modules_to_build = (
     #("temple_of_the_white_prince", False, "[totwp]"),
     #("lonely_road", False, "[lonr]"),
     #("half_cask", False, "[hcask]"),
-    ("cold_keep", False, "[ck]"),
-    # ("brummbär_money_lender", False, "[bml]"),    
+    #("cold_keep", False, "[ck]"),
+    #("the_trial", False, "[ck]"),
+    # ("brummbär_money_lender", False, "[bml]"),
+    #("wendlers_shoppe_of_esoterica", False, "[wse]"),
 )
 
 

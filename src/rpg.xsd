@@ -116,6 +116,7 @@
       <xs:element name="masquerade" type="symbolType"/>
       <xs:element name="serpentmen" type="symbolType"/>
       <xs:element name="undead" type="symbolType"/>
+      <xs:element name="evil" type="symbolType"/> <!-- intrinsically evil creatures -->
     </xs:choice>
   </xs:complexType>
 
@@ -176,6 +177,28 @@
       <xs:element name="non-combat" type="emptyType"/>
       <xs:element name="free" type="emptyType"/>
       <xs:element name="tag" type="emptyType"/>
+    </xs:choice>
+  </xs:complexType>
+  
+  <xs:complexType name="abilityrangeType">
+    <xs:choice maxOccurs="unbounded">
+      <!-- <xs:element name="immediate" type="emptyType"/> -->
+      <!-- <xs:element name="standard" type="emptyType"/> -->
+      <!-- <xs:element name="minor" type="emptyType"/> -->
+      <!-- <xs:element name="multi-turn" type="emptyType"/> -->
+      <!-- <xs:element name="full-turn" type="emptyType"/> -->
+      <!-- <xs:element name="move" type="emptyType"/> -->
+      <!-- <xs:element name="reaction" type="emptyType"/> -->
+      <!-- <xs:element name="reaction-or-minor" type="emptyType"/> -->
+      <!-- <xs:element name="non-combat" type="emptyType"/> -->
+      <!-- <xs:element name="free" type="emptyType"/> -->
+      <!-- <xs:element name="tag" type="emptyType"/> -->
+      <xs:element name="range-touch" type="emptyType"/>
+      <xs:element name="range-weapon" type="emptyType"/>
+      <xs:element name="range-short" type="emptyType"/>
+      <xs:element name="range-medium" type="emptyType"/>
+      <xs:element name="range-long" type="emptyType"/>
+      <!-- <xs:element name="range-" type="emptyType"/> -->
     </xs:choice>
   </xs:complexType>
   
@@ -416,6 +439,7 @@
       <xs:element name="abilityid" type="abilityidType"/>
       <xs:element name="abilitytemplate" type="xs:string" minOccurs="0" maxOccurs="1"/>      
       <xs:element name="abilityactiontype" type="abilityactionType"/>
+      <!-- <xs:element name="abilityrange" type="abilityrangeType"/> -->
       <xs:element name="tags" type="tagsType"/>
       <xs:element name="abilityranks" type="abilityranksType"/>
       <!-- Which book does this ability go in? phb or gmg? -->
@@ -453,6 +477,7 @@
       <xs:pattern value="Std\+3×Rank"/>  <!-- for accurate attacks,  -->
       <xs:pattern value="Std\+Rank"/>
       <xs:pattern value="Std\+Endurance"/> <!-- for monster attacks -->
+      <xs:pattern value="Std\+Endurance\+Rank"/>
       <xs:pattern value="Mettle\+Endurance"/> <!-- for monster attacks -->
       <xs:pattern value="Mettle\+3×Rank"/> <!-- for  -->
       <xs:pattern value="Std\+Agility\+Rank"/>
@@ -472,6 +497,8 @@
 	<xs:attribute name="name" type="abilityCheckNameType" use="optional"/>
 	<xs:attribute name="dc" type="xs:string" use="required"/>
 	<xs:attribute name="dmg" type="xs:string" use="optional"/>
+	<xs:attribute name="type" type="xs:string" use="optional"/>
+	<xs:attribute name="range" type="xs:string" use="optional"/>
 	<xs:attribute name="effect" type="xs:string" use="optional"/>
       </xs:extension>
     </xs:simpleContent>
@@ -1226,7 +1253,7 @@ labels and references.
       <xs:element name="primary" type="emptyType"/>
       <xs:element name="handtohand" type="emptyType"/>
       <xs:element name="ritual" type="emptyType"/>
-      <xs:element name="runemagic" type="emptyType"/>
+      <xs:element name="rune" type="emptyType"/>
       <xs:element name="theurgic" type="emptyType"/>
       <xs:element name="scholar" type="emptyType"/>
       <xs:element name="skulduggery" type="emptyType"/>
@@ -1234,8 +1261,9 @@ labels and references.
       <xs:element name="special" type="emptyType"/>
       <xs:element name="transport" type="emptyType"/>
       <xs:element name="wilderness" type="emptyType"/>
-      <xs:element name="wildmagic" type="emptyType"/>
+      <xs:element name="wild-magic" type="emptyType"/>
       <xs:element name="versatile" type="emptyType"/> <!-- spells which are open to interpretation -->
+      <xs:element name="maintain" type="emptyType"/> <!-- requires the minor action to keep going each round -->
       <xs:element name="untrained" type="emptyType"/>
       
       <!-- ability meta -->
@@ -1251,13 +1279,17 @@ labels and references.
       <!-- weapons -->
       <xs:element name="axe" type="emptyType"/>
       <xs:element name="long-bow" type="emptyType"/>
-      <xs:element name="bow" type="emptyType"/>
+      <xs:element name="archery" type="emptyType"/>
       <xs:element name="mace" type="emptyType"/>
+      <xs:element name="bow" type="emptyType"/>
       <xs:element name="dagger" type="emptyType"/>
       <xs:element name="crossbow" type="emptyType"/>
       <xs:element name="hammer" type="emptyType"/>
       <xs:element name="heavy-crossbow" type="emptyType"/>
       <xs:element name="spear" type="emptyType"/>
+      <xs:element name="staff" type="emptyType"/>
+      <xs:element name="shield" type="emptyType"/>
+      <xs:element name="sword" type="emptyType"/>
       <xs:element name="weapon" type="emptyType"/>
 
       <!-- action type -->

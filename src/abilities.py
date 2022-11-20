@@ -52,22 +52,22 @@ MONSTER_CHECK_TYPE = "No-Check"
 STD_CHECK = "Std\+Rank"
 UNTRAINED = "Untrained"
 
-# A lst of valid ddcs
+# A lst of valid dcs
 # We limit the range of values to reduce complexity in the system.  This should make 
-# it easier to remember dcs?  We choose odd ddcs because 5 is the lowest ddc you can
+# it easier to remember dcs?  We choose odd ddcs because 5 is the lowest dc you can
 # fail at Rank 3.
-VALID_DDCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
-              "31", "33", "35", "37", "39",
-              "Targets Defence", "Targets Attack", "Critical Success", "None", "Context Dependent",
-              "Targets Strength", "Targets Agility", "Targets Perception", "Targets Speed",
-              "Targets Mettle", )
+VALID_DCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
+             "31", "33", "35", "37", "39",
+             "Targets Defence", "Targets Attack", "Critical Success", "None", "Context Dependent",
+             "Targets Strength", "Targets Agility", "Targets Perception", "Targets Speed", "Targets Endurance",
+             "Targets Mettle", )
 
 
-def is_valid_ddc(rank):
+def is_valid_dc(rank):
     """
     Returns True if the rank is an acceptable rank.
     """
-    return rank in VALID_DDCS
+    return rank in VALID_DCS
 
 class AbilityFamily:
     def __init__(self, family_type):
@@ -325,7 +325,7 @@ class AbilityCheck:
 
         # can be None for the default
         self.name = None
-        self.dc = None # ddc?
+        self.dc = None
         self.check_type = None
         self.dmg = None
         self.effect = None
@@ -342,7 +342,7 @@ class AbilityCheck:
         return
 
     def __str__(self):
-        return f"{self.name}: {self.dc} vs DDC {self.dc}"
+        return f"{self.name}: {self.dc} vs DC {self.dc}"
 
     def get_problems(self):
         problems = []
@@ -358,9 +358,9 @@ class AbilityCheck:
         #         problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
         #                         "rank modifies the DC?")
 
-        if not is_valid_ddc(self.dc):
-            problems.append(f"Ability {self.ability.ability_id} has an invalid ddc '{self.dc}'.  "
-                            f"It should be one of {VALID_DDCS}.")
+        if not is_valid_dc(self.dc):
+            problems.append(f"Ability {self.ability.ability_id} has an invalid dc '{self.dc}'.  "
+                            f"It should be one of {VALID_DCS}.")
 
         #
         # Check the tags are set properly.
@@ -368,9 +368,11 @@ class AbilityCheck:
         tags = self.ability.get_tags()
 
         # Check accurate tag
-        if xor(self.check_type == ACCURATE, "accurate" in tags):
-            problems.append(f"Ability {self.ability.ability_id} is tagged accurate and does not "
-                            f"have a {ACCURATE} check type, or vice versa")
+        # if xor(self.check_type == ACCURATE, "accurate" in tags):
+        #     problems.append(f"Ability {self.ability.ability_id} is tagged accurate and does not "
+        #                     f"have a {ACCURATE} check type, or vice versa")
+
+        
 
         # Check inaccurate tag
         if xor(self.check_type == INACCURATE_CHECK_TYPE, "inaccurate" in tags):
@@ -417,13 +419,9 @@ class Ability:
         # checks .. a dictionary from name->check details.
         # an ability can have multiple check configurations
         self.checks = []
-        #self.checks = {}
         
         # the check associated with this ability (Std, Magic, etc)
         self.check_type = None                 
-        
-        # the check associated with this ability
-        #self.damage = None
         
         # prereq.
         self.ability_rank_prereq = None
@@ -438,14 +436,14 @@ class Ability:
         # the players handbook
         self.gmg_ability = False        
 
-        # list of ability ranks. positive ints.
+        # list of available ability ranks.
         self.ranks = []
 
         # if this element is not none it should be a number in -9 to 0.. the rank
         # at which untrained players make the check
         self.untrained_rank = None
 
-        # list of spline points
+        # list of spline points .. used for laying out the ability in a graph in the phb.
         self.spline = []
         return
             
@@ -472,7 +470,7 @@ class Ability:
             # check the first rank is always 0 or 1 (primary abilities can be lower).
             if is_first_rank:
                 if ((rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK)
-                    and "physical" not in self.tags):
+                    and "primary" not in self.tags):
                     print(f"UNTRAINED {[str(a) for a in self.get_trained_ranks()]}")
                     print(f"ALL {[str(a) for a in self.ranks]}")
                     problems.append(
@@ -508,9 +506,10 @@ class Ability:
         trained_ranks = self.get_trained_ranks()
         first_ability_rank = trained_ranks[0].get_rank_number()
         last_ability_rank = trained_ranks[-1].get_rank_number()
-        if self.is_untrained():
-            untrained_rank = self.get_untrained_rank() # .get_ability_rank_number()
-            ability_ranks =  f"untrained: {untrained_rank}, {first_ability_rank}-{last_ability_rank}"
+        untrained_rank = self.get_untrained_rank()
+        if untrained_rank is not None:
+            untrained_rank_str = str(untrained_rank.rank_number)
+            ability_ranks =  f"untrained: {untrained_rank_str}, {first_ability_rank}-{last_ability_rank}"
         else:
             ability_ranks = f"{first_ability_rank}-{last_ability_rank}"
         return ability_ranks
@@ -664,12 +663,12 @@ class Ability:
                else:
                    self.load_ability_ranks(child)
 
-           elif tag == "abilityddc":
-               if self.ddc is not None:
-                   raise Exception("Only one abilityddc per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.ddc = child.text.strip() if child.text is not None else None
+           # elif tag == "abilityddc":
+           #     if self.ddc is not None:
+           #         raise Exception("Only one abilityddc per ability. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.ddc = child.text.strip() if child.text is not None else None
 
            # elif tag == "abilitydmg":
            #     if self.damage is not None:
@@ -1020,6 +1019,33 @@ class AbilityGroup:
     def draw_skill_tree(self):
         return self.info.draw_skill_tree
 
+    def get_problems(self):
+        """
+        Perform some sanity checks.
+
+        """
+        problems = []
+        # group_name = self.info.title.casefold()
+        # group_name = group_name.replace(" ", "_")
+        group_id = self.info.ability_group_id
+
+        if "_" in group_id:
+            problems.append(f"Group id {group_id} contains an underscore.  "
+                            "Latex doesn't like underscores. "
+                            "Use a hyphen instead.")
+
+        for ability in self.abilities:
+            tags = ability.get_tags()
+        #     if group_name not in tags:
+        #         problems.append(f"Ability {ability.get_id()} is in group {group_name} but "
+        #                         f"the tags for that ability do not contain the group name. f{tags}")
+        # return problems
+            if group_id not in tags:
+                problems.append(f"Ability {ability.get_id()} is in group {group_id} but "
+                                f"the tags for that ability do not contain the group name. f{tags}")
+        return problems
+    
+
 class AbilityGroups:
     """
     A list of all abilities.
@@ -1142,6 +1168,8 @@ class AbilityGroups:
     def __getitem__(self, key):
         return self.ability_groups[key]
 
+    
+
 
 def get_ability_rank_total_prereqs(ability_groups, ability_rank, prereqs=None):
     """
@@ -1182,11 +1210,15 @@ if __name__ == "__main__":
     #ability_groups.draw_skill_tree2(build_dir)
 
     #ag = ability_groups.get_ability_group("primary")
-    ag = ability_groups.get_ability_group("transport")
+    #ag = ability_groups.get_ability_group("transport")
     #print(ag.info.draw_skill_tree)
 
-    for ability in ag:
-        print(f" {ability}  {ability.ability_id}")
+    for ag in ability_groups:
+        problems = ag.get_problems()
+        print(", ".join(problems))
+    
+    #for ability in ag:
+    #    print(f" {ability}  {ability.ability_id}")
 
     # for abilities_page in ability_groups.get_abilities_by_family_paginated("<primary/>"):
     #     print(abilities_page)
