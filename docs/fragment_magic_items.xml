@@ -203,23 +203,26 @@
     <subsectiontitle>Black Candle</subsectiontitle>
     <descriptions>
       <term>Type</term><description>Small Item</description>
-      <term>Dice Pool</term><description>1d4 or 2d4</description>
+      <term>Dice Pool</term><description>1d6</description>
       <term>Refresh</term><description>No</description>
       <term>Difficulty</term><description>As per spell</description>
-      <term>Price</term><description>100gp</description>
+      <term>Price</term><description>50gp</description>
     </descriptions>
     <p>
-      A black candle has been specially crafted for use in necromantic spells.
-      When used while casting a necromantic spell the candle adds 2d4 to
-      the magic check result.
+      A black candle has been specially crafted for use in necromantic and arcane spells.
+      When used while casting a necromantic or arcana spell  the candle adds 1d6 to
+      the magic pool prior to the check to cast the spell (use a different
+      coloured die to represent the candle).
     </p>
 
     <p>
       Any number of candles may be used per casting but their combined
       contribution is the maximum result of the candles. For example suppose
-      three candles are used in a necromantic spell, each candle rolls 2d4 and
-      gets the following results: 3, 6, and 4.  The combined contribution to
-      the casting of all three candles is 6.
+      three candles are used in a necromantic spell, each candle rolls 1d6 towards
+      the magic and
+      gets the following results: 3, 6, and 1.  The combined contribution to
+      the casting of all three candles is 6.  The candle that rolled the 1 is exhausted
+      and cannot be used again.
     </p>
   </subsection>
   
@@ -362,8 +365,6 @@
     </p>
   </subsection>
 
-  cultist candle
-  black candle
   
   
   <subsection>
@@ -461,24 +462,27 @@
     <subsectiontitle>Cultist's Candle</subsectiontitle>
     <descriptions>
       <term>Type</term><description>Small Item</description>
-      <term>Dice Pool</term><description>1d4 or 2d4</description>
+      <term>Dice Pool</term><description>1d6</description>
       <term>Refresh</term><description>No</description>
       <term>Difficulty</term><description>As per spell</description>
-      <term>Price</term><description>100gp</description>
+      <term>Price</term><description>50gp</description>
     </descriptions>
     <p>
       This candle has been specially crafted for use in dark magics.
-      When used in an abjuration, arcana or conjuration spell the candle adds 1d4 to
-      the magic check result.  When used in an evocation spell the candle adds 2d4 to
-      the magic check result.
+      When used in a conjuration or evocation spell the candle adds 1d6 to
+      the magic pool prior to the check to cast the spell (use a different
+      coloured die to represent the candle).
     </p>
 
     <p>
       Any number of candles may be used per casting but their combined
       contribution is the maximum result of the candles. For example suppose
-      three candles are used in a summoning, each candle rolls 2d4 and gets the
-      following results: 3, 6, and 4.  The contribution to the casting of all
-      three candles is 6.
+      three candles are used in a evocation, each candle rolls 1d6 and gets the
+      following results: 3, 2, and 5.  The contribution to the casting of all
+      three candles is 5.  The candle that rolled 2 is exhausted and may not
+      be used again.  The use of the candles must be declared before the
+      spell is cast and takes a round to light each candle (assuming the
+      caster already has a method to light the candles.
     </p>
   </subsection>
   
@@ -593,6 +597,25 @@
       This set of steel keys is marked with runic passages that swim before the eye.
       Occult literature states that they can open the gates to hell, though it is
       vague is which hell they are referring to.
+    </p>
+  </subsection>
+
+
+
+  <subsection>
+    <subsectiontitle>Elixir contenant un tentacule squameux</subsectiontitle>
+    <descriptions>
+      <term>Type</term><description>Potion, One-Use</description>
+      <term>Dice Pool</term><description>2d6</description>
+      <term>Refresh</term><description>N/A</description>
+      <term>Difficulty</term><description>3</description>
+    </descriptions>        
+    <p>
+      A small vial containing an opaque green liquid, in which is suspended a,
+      still twitching, sample of a squidlike tentacle.
+      When ingested this potion heals 2d6 damage caused by burn type injuries
+      including acid and electrical attacks.  These potions are created
+      by the Frosch using some unknown dark magics.
     </p>
   </subsection>
   
@@ -743,6 +766,20 @@
       will write upon its pages the answers if it knows them, which it may well
       do. The reader should beware, however, as the book twists words just as it
       twists the souls of men.
+    </p>
+  </subsection>
+
+
+
+  <subsection>
+    <subsectiontitle>Iron Crown</subsectiontitle>
+    <descriptions>
+      <term>Type</term><description>Small Item</description>
+      <term>Dice Pool</term><description>5d4</description>
+      <term>Refresh</term><description>N/A</description>
+    </descriptions>    
+    <p>
+      FIXME? 
     </p>
   </subsection>
   
@@ -1206,6 +1243,26 @@
 
 
   <subsection>
+    <subsectiontitle>Rabbits Foot</subsectiontitle>
+    <descriptions>
+      <term>Type</term><description>Potion</description>
+      <term>Dice Pool</term><description>N/A</description>
+      <term>Refresh</term><description>N/A</description>
+      <term>Difficulty</term><description>N/A</description>
+    </descriptions> 
+    <p>
+      A specially ensorcelled rabbits foot created using
+      secret rituals. After a check has been rerolled using
+      the luck based Reroll ability, the rabbits foot allows
+      a free second reroll of a check.    One use only.
+      This item is the only way that a check may be rerolled
+      twice.
+    </p>
+  </subsection>
+  
+
+
+  <subsection>
     <subsectiontitle>Ring of Gyges</subsectiontitle>
     <p>
       A ring of invisibility.. FIXME.
@@ -1390,7 +1447,7 @@
     <p>
       Silver shackles interfere with the casting of magic making
       overcasts far more likely.  A caster wearing silver shackles
-      casts all spells with an overcast modified by -4.
+      casts all spells with an overcast modified by -3.
     </p>
   </subsection>
   
@@ -1543,6 +1600,19 @@
     </p>
   </subsection>
 
+  <subsection>
+    <subsectiontitle>Tincture of Dhampyr Spleen</subsectiontitle>
+    <descriptions>
+      <term>Type</term><description>Potion</description>
+      <term>Dice Pool</term><description>2d6</description>
+      <term>Refresh</term><description>N/A</description>
+      <term>Difficulty</term><description>3</description>
+    </descriptions> 
+    <p>
+      Small vial of liqiod containing a sample of Dhampyr spleen.
+      Heals 2d6 hit points when ingested.
+    </p>
+  </subsection>
 
 
   <subsection>
