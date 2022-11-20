@@ -23,7 +23,7 @@
     <abilitytitle>Shield Block</abilitytitle>
     <abilityid>shield.block</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><weapon/></tags>
+    <tags><shield/><weapon/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
     <spline></spline>
@@ -45,7 +45,7 @@
     <abilitytitle>Shield Push</abilitytitle>
     <abilityid>shield.push</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><weapon/></tags>
+    <tags><shield/><weapon/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Strength">Strength+Rank</abilitycheck> <!-- FIXME -->
     <prereqabilityrank>shield.block_1</prereqabilityrank>
@@ -65,7 +65,7 @@
     <abilitytitle>Shield Support</abilitytitle>
     <abilityid>shield.support</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><weapon/></tags>
+    <tags><shield/><weapon/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
     <prereqabilityrank>shield.block_1</prereqabilityrank>
