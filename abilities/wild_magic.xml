@@ -72,14 +72,14 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><wild-magic/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9">Magic+Rank</abilitycheck>
     <prereqabilityrank>wild-magic.lore_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster lets loose a loud howling sound that resembles
 	the sound of a wolves howl.   If the howl is made successfully,
-	opponents must make a DC 2 Mettle check or flee.
+	opponents must make DC 5+Rank morale check.
       </p>
     </abilitydescription>
   </ability>
@@ -384,7 +384,8 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><wild-magic/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Agility">Std+Rank</abilitycheck>
     <prereqabilityrank>wild-magic.lore_1</prereqabilityrank>
     <spline><p x="-60" y="0"/></spline>
     <abilitydescription>
@@ -392,7 +393,10 @@
 	This spell can be cast only in woods, bushlands and
 	gardens.  The caster calls upon the trees and bushes
 	to slow a group of individuals travelling through
-	the landscape.  They gain the Slowed condition.
+	the landscape.  If the spell is successfully cast
+	and the target fails their agility check then they
+	gain the Slowed condition.  This spell can target
+	d4 individuals for each rank of the spell.	
       </p>      
     </abilitydescription>    
   </ability>

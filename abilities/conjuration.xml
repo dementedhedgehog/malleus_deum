@@ -97,7 +97,7 @@
 	The caster uses a raw stream of thaumic energy to grab a target
 	crushing it and pulling it towards him.  If successful the caster makes
 	a second attack against the targets Dodge, Agility, or Strength Defence Check,
-	with a +6+Level bonus.
+	with a +6+Rank bonus.
       </p>
 
       <p>
@@ -174,7 +174,9 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><conjuration/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
+    <abilitycheck dc="5" dmg="2d8">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
     <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
@@ -188,8 +190,8 @@
       </p>
 
       <p>
-	The target is momentarily transfixed, they check Mettle vs DDC of 9+Rank
-	or lose their turn.
+	The caster then makes a Std+Rank check against the opponents willpower.
+	If successfuk the target is momentarily transfixed and lose their turn.
       </p>
     </abilitydescription>    
   </ability>    

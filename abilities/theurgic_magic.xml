@@ -33,10 +33,14 @@
       </p>
 
       <p>
-  	Demons and undead monsters will become Enraged and
-  	Charge the caster or make an optional Mettle Check DDC:5+Rank
-	to resist.
+  	Demons must make an Mettle Check DDC:5+Rank to resist or become
+	Enraged and Charge the caster.
       </p>
+
+      <p>
+  	Undead monsters must make a Willpower DC 15 check or become
+	Enraged and Charge the caster.
+      </p>      
     </abilitydescription>
   </ability>
 
@@ -119,7 +123,10 @@
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character calls on their deity to repel demons.
+  	The character calls on their deity to repel demons.  Demons must make a
+	DC 9 Mettle Check the first time they come within a radius of 
+	<measurement><metric>3+Rank meters</metric><imperial>10'+Rank×3'</imperial></measurement>.
+	Many demons will avoid making this check.
       </p>
     </abilitydescription>
   </ability>
@@ -453,19 +460,18 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9" effect="Undead make mettle check or are held">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="To cast">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character calls on their deity to keep beings animated by
-  	necrotic forces at bay.  Successfully casting this spell will
-	cause the undead to make a DC Mettle check greater than the magic check result
-	or be held.  Held undead cannot advance towards, or attack the character or
-	their allies for three rounds.  On overcharge the caster is transfixed
-	by the spell, and unable to move for its duration.  The caster
-	may end the spell <emph>at any time after</emph> the turn they cast the spell.
-	This spell will work on any number of undead at a time.
+  	The character calls on their deity to repel beings animated by
+  	necrotic forces.  Successfully casting this spell will
+	cause the undead to make a DC Mettle check greater with a DC of 7+Rank.	If they fail this roll
+	they must not come any closer to the caster than they currently are.  If the caster moves towards them
+	they must retreat.  On overcharge the caster is transfixed by the spell, and unable to move for its
+	duration. The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
+	This spell will work on any number of the same type of undead at one time.
       </p>
     </abilitydescription>
   </ability>
@@ -477,15 +483,15 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="9" effect="Undead make mettle check or are turned">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" effect="To cast">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.hold_undead_3</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character calls on their deity to repel beings animated by
   	necrotic forces.  Successfully casting this spell will
-	cause the undead to make a DC Mettle check greater than the magic check result or be turned,
-	forcing them to flee from the character or their allies for three rounds.	
+	cause the undead to make a DC Mettle check greater with a DC of 7+Rank.	If they fail this roll
+	they must retreat from the caster.  They will not return for some time.
 	On overcharge the caster is transfixed by the spell, and unable to move for its duration.
 	The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
 	This spell will work on any number of the same type of undead at one time.
@@ -499,16 +505,16 @@
     <abilityid>theurgic.destroy_undead</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
     <tags><theurgic/><magicpool/></tags>
-    <abilityranks from="1" to="2"/>
-    <abilitycheck dc="9" effect="Undead make mettle check or are destroyed">Magic+Rank</abilitycheck>
+    <abilityranks from="2" to="5"/>
+    <abilitycheck dc="9" effect="To cast">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.turn_undead_2</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character calls on their deity to destroy beings animated by
-  	necrotic forces.
-	Successfully casting this spell will cause the undead to make a DC 20 Mettle check
-	or be destroyed, forcing them to retreat away from the character or be destroyed.
+  	The character calls on their deity to repel beings animated by
+  	necrotic forces.  Successfully casting this spell will
+	cause the undead to make a DC Mettle check greater with a DC of 7+Rank.	If they fail this roll
+	they are destroyed. 
 	On overcharge the caster is transfixed by the spell, and unable to move for its duration.
 	The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
 	This spell will work on any number of the same type of undead at one time.

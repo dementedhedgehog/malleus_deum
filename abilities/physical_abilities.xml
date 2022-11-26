@@ -19,7 +19,7 @@
   <ability>
     <abilitytitle>Armour</abilitytitle>
     <abilityid>physical.armour</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
+    <abilityactiontype><free/></abilityactiontype>
     <tags><physical/><martial/><core/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Targets Attack">Armour+Rank</abilitycheck>
@@ -30,7 +30,7 @@
         <indexentry>Armour Check</indexentry>	
 	After the character gets attacked they make an <defn>armour check</defn> to see if that attack
 	was successfully defeated by the characters armour. If successful the character takes no damage
-	from the attack.  This can be interpreted as the either the armour taking the force of the blow
+	from the attack.  This can be interpreted as either the armour taking the force of the blow
 	and protecting the character, or the character moving in such a way that the
 	the character is struck a glancing blow leaving them uninjured.
       </p>
@@ -45,8 +45,8 @@
       <p>
 	To make an Armour Check the modifier is calculated as follows.  First calculate the bonus
 	for the type of armour worn by the character, <eg/>Plate provides +4, No armour provides +0.
-	The Armour Modifier is then this Armour Level, plus the Armour Bonus minus, +1 if a shield
-	is used, minus three.	
+	The Armour Modifier is then the Armour Rank of this ability, plus the Armour Bonus, +1 if a
+	shieldis used, minus three.
       </p>
 
       <p>

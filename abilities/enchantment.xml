@@ -22,18 +22,18 @@
     <tags><enchantment/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
     <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>    
     <abilitydescription>
       <p>
-	FIXME: BROKEN
 	The mage attempts to curse the target, if successful cast the mage
-	makes an opposed standard check against the targets mettle adding the magic pool result
+	makes an opposed standard check against the targets willpower adding the spells result
 	as a bonus to the check.  If successful the subject gains the <emph>Hunger for Gold</emph>
 	aspect with a difficulty equal to the std check plus magic pool result.  This aspect
-	lasts twenty four hours.  This spell requires some item of contagion with the target
-	in order to cast, preferably blood or hair (other items may be used with penalties
-	to the check.
+	lasts twenty four hours.  The use of some item of contagion from the target
+	should result in a significant bonus to the Willpower check, preferably blood or hair,
+	though other items may be used with the GMs discretion.
       </p>
       
       <p>
@@ -53,7 +53,8 @@
 	  <li>
 	    The spell nearly gets away from the caster and they must attempt
 	    to assert control of the magical energies.  Reroll any remaining dice
-	    used in the check and lose any dice with a face value of 1.
+	    used in the check after any dice have been exhausted.  On a roll of one or
+	    two that die is also exhausted.
 	  </li>
 	  <li>
 	    Roll on the magical overcharge table.
@@ -278,7 +279,7 @@
     <tags><enchantment/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Mettle">Mettle+Rank</abilitycheck>
+    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
     <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
@@ -286,11 +287,11 @@
 	The Vox Imperium spell, or Voice of Command, allows the
 	character to implant a short but strong mental suggestion
 	into the mind of the target.   If Vox is successfully cast then
-	an opposed Mettle Check is to command the target.  The
-	opposed check is modified as follows: -6 if the command is self
-	destructive, -3 if the command is counter to the creatures nature
-	and desires, +3 if the command is something aligned with the
-	creatures desires, +6 if the command is strongly aligned with the
+	a Std+Rank check is made against the targets willpower to command
+	the target.  The opposed check is modified as follows: -6 if the
+	command is self	destructive, -3 if the command is counter to the
+	creatures nature and desires, +3 if the command is something aligned
+	with the creatures desires, +6 if the command is strongly aligned with the
 	creatures desires.  If successful the target performs the action
 	they were commanded to perform.
       </p>

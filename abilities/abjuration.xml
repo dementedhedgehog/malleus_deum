@@ -38,7 +38,8 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><abjuration/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>
     <spline><p x="120" y="30"/></spline>
     <abilitydescription>
@@ -46,10 +47,10 @@
   	Banishing is an attempt to disrupt a demons tenuous contagious
 	connection with its simulacrum.  If the banishment succeeds the demon must make
 	a DC 7 Mettle check or its simulacrum is destroyed.  In the event of an overcharge make
-	a Std Check and the Demon must make a DC 3 Morale Check.  Take 2d4 damage on a fail, 1d4
-	on a success, on a bane make an additional roll onthe Magic Overcharge Effects table, on
-	a boon the character may refresh a magic dice into their pool, snatched from the demon
-	energy used to control the simulacrum.
+	Demon must make a second DC 3 Morale Check and make a DC 15 Willpower Check on, a fail
+	the caster takes 2d4 damage, on a bane make an additional roll on the Magic Overcharge
+	Effects table, on a boon the character may refresh a magic dice into their pool, snatched
+	from the energy the demon is using to control their simulacrum.
       </p>
     </abilitydescription>
   </ability>

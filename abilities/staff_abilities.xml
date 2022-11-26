@@ -54,13 +54,14 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><staff/><weapon/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
+    <abilitycheck dc="Targets Willpower" effect="Check before target can attack">Std+Rank</abilitycheck>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
     <prereqabilityrank>staff.strike_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline> 
     <abilitydescription>
       <p>
 	The character swings their weapon in large arcs keeping foes at bay.
-	Opponents must make a Mettle check to attack and the character may
+	Opponents must make a Willpower check to attack and the character may
 	roll to hit the first opponent who tries to do so in the round as a
 	reaction.  If successful the opponent cannot close to attack.
       </p>

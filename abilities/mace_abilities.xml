@@ -60,14 +60,18 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><mace/><weapon/><crushing/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength+Rank">Std+Rank</abilitycheck>
+    <abilitycheck dc="Targets Willpower">Std+Willpower+Rank</abilitycheck>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Willpower+Rank">Std+Rank</abilitycheck>
     <prereqabilityrank>mace.strike_1</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character swings the mace wildly keeping their opponents at bay.
-	If the attack hits the target must make a Mettle Check in order to make
-	melee attacks against the character until the characters next turn.
+	When attacked the character makes a free willpower check against the first
+	opponent that attacks them in a round.	If successful the opponent loses
+	their attack, being unable to approach.  If the willpower check is not successful
+	the character makes a free attack against the opponents defence before the opponents
+	attack.
       </p>
     </abilitydescription>
   </ability>
