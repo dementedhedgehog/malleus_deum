@@ -444,7 +444,7 @@
       <xs:element name="abilityranks" type="abilityranksType"/>
       <!-- Which book does this ability go in? phb or gmg? -->
       <xs:element name="gmgability" type="emptyType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="abilitycheck" type="abilitycheckType" minOccurs="1" maxOccurs="2"/>
+      <xs:element name="abilitycheck" type="abilitycheckType" minOccurs="1" maxOccurs="3"/>
       <xs:element name="prereqabilityrank" type="prerequisiteType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="prereqtag" type="xs:string" minOccurs="0"/>
       <xs:element name="prereqnottag" type="xs:string" minOccurs="0"/>
@@ -478,6 +478,7 @@
       <xs:pattern value="Std\+Rank"/>
       <xs:pattern value="Std\+Endurance"/> <!-- for monster attacks -->
       <xs:pattern value="Std\+Endurance\+Rank"/>
+      <xs:pattern value="Std\+Willpower\+Rank"/>
       <xs:pattern value="Mettle\+Endurance"/> <!-- for monster attacks -->
       <xs:pattern value="Mettle\+3×Rank"/> <!-- for  -->
       <xs:pattern value="Std\+Agility\+Rank"/>
