@@ -60,7 +60,7 @@ VALID_DCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25",
              "31", "33", "35", "37", "39",
              "Targets Defence", "Targets Attack", "Critical Success", "None", "Context Dependent",
              "Targets Strength", "Targets Agility", "Targets Perception", "Targets Speed", "Targets Endurance",
-             "Targets Mettle", )
+             "Targets Mettle", "Targets Willpower")
 
 
 def is_valid_dc(rank):
