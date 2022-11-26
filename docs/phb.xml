@@ -77,8 +77,8 @@
           the character is.</li>
           <li>
             <indexentry>Primary Abilities</indexentry>
-            A set of five Primary Abilities: Strength, Endurance, Agility, Speed,
-            and Perception.
+            A set of six Primary Abilities: Strength, Endurance, Agility, Speed,
+            Perception, and Willpower.
           </li>
           <li>Four or more Defensive Abilities: Armour, Dodge, Block and Parry.</li>
           <li>Two Hit Point stats: Stamina and Health.</li>
@@ -127,8 +127,8 @@
       </p>
       
       <design>
-        Archetypes are indivisible because it makes them more modular and allows us to balance
-        one archetype without effecting existing archetypes.
+        Archetypes are indivisible because it makes them more modular and allows us to
+	balance one archetype without effecting existing archetypes.
       </design>
     </section>
 
@@ -148,11 +148,11 @@
     <section>
       <sectiontitle>Primary Abilities</sectiontitle>
       <p>
-        All characters share a set of <defn>Primary Abilities</defn> that describe the characters
-  	physical capabilities.  These provide a bonus to certain checks and may be
-  	prerequisites for other abilities.   In Malleus Deum primary attributes are treated like all
-	other abilities, see
-	Section<ref>sec:primary_abilities</ref> on page<pageref>sec:primary_abilities</pageref>.	
+        All characters share a set of <defn>Primary Abilities</defn> that describe the
+	characters physical capabilities.  These provide a bonus to certain checks and may
+	be prerequisites for other abilities.   In Malleus Deum primary attributes are
+	treated like all other abilities, see Section<ref>sec:primary_abilities</ref>
+	on page<pageref>sec:primary_abilities</pageref>.
       </p>
 
         <descriptions>
@@ -161,6 +161,7 @@
           <term>Agility</term><description>nimbleness and fine motor control</description>
           <term>Speed</term><description>swiftness and fleetness of movement</description> 
           <term>Perception</term><description>insight and ability to notice things</description>
+          <term>Willpower</term><description>determination, strength of character and self-control.</description>
         </descriptions>
 
       <figure position="b">
@@ -257,9 +258,8 @@
         <term>Mettle</term>
         <description>
           <indexentry>Pools<subentry>see Mettle</subentry></indexentry>
-          This dice pool measures the characters strength of character,
-  	  their spirits and will-power, their mental well-being, morale, fear, shock,
-  	  sanity and determination.
+          This dice pool measures the characters current confidence in their
+	  situation, their morale.
         </description>
 	
         <term>Luck</term>
@@ -352,8 +352,8 @@
       <p>
         <indexentry>Abilities</indexentry>
         In addition to primary and defensive abilities, each character has a range of other
-	<defn>Abilities</defn> represent learned skills which allow them to perform actions within
-	the game.
+	<defn>Abilities</defn> represent learned skills which allow them to perform actions
+	within the game.
       </p>
 
       <p>
@@ -914,13 +914,11 @@
       </subsection>
       
       <subsection>
-        <subsectiontitle>Morale Checks</subsectiontitle>
+        <subsectiontitle>Resolve Checks</subsectiontitle>
         <p>
-          <indexentry>Morale Check</indexentry>
-          <indexentry>Break Check<subentry>Morale Check</subentry></indexentry>
-          <indexentry>Checks<subentry>Morale</subentry></indexentry>
-          <indexentry>Checks<subentry>Break see Morale Check</subentry></indexentry>
-          Morale Checks occur when characters have to face their fears.  This
+          <indexentry>Resolve Check</indexentry>
+          <indexentry>Checks<subentry>Resolve (PCs)</subentry></indexentry>
+          Resolve Checks occur when characters have to face their fears.  This
   	  process is described further in Section<ref>sec:mettle-checks</ref> on
   	  page<pageref>sec:mettle-checks</pageref>.
         </p>
@@ -1153,7 +1151,7 @@
           <indexentry>Bloodied Condition</indexentry> 
           <indexentry>Conditions<subentry>Bloodied</subentry></indexentry>       
           The character has suffered damage to their Health.  When a character first
-	  suffers health damage in a fight they must make a morale check.
+	  suffers health damage in a fight they must make a resolve check.
         </description>    
         
         <term>Broken</term>
@@ -1163,7 +1161,7 @@
           <indexentry>Conditions<subentry>Broken</subentry></indexentry>       
           The character has lost the will to fight and must withdraw from battle.
           On their turn they may attack but must move away from the enemy if they
-          can.  This condition occurs after a character has failed two morale checks
+          can.  This condition occurs after a character has failed two resolve checks
           in combat.
         </description>
 
@@ -1172,7 +1170,7 @@
           <indexentry>Burning Condition</indexentry> 
           <indexentry>Conditions<subentry>Burning</subentry></indexentry>
 	  The character is on fire.  They must attempt to put out the fire or make
-	  a Morale Check each round to resist doing so.
+	  a Resolve Check each round to resist doing so.
         </description>
         
         <term>Checked</term>
@@ -1181,8 +1179,8 @@
           <indexentry>Checked Condition</indexentry> 
           <indexentry>Conditions<subentry>Checked</subentry></indexentry>       
           The character has lost momentum in a fight. The character must make an 
-	  additional Morale Check to charge or pursue.  This condition occurs after the
-	  character has failed a single morale check in combat.
+	  additional Resolve Check to charge or pursue.  This condition occurs after the
+	  character has failed a single resolve check in combat.
         </description>
         
         <term>Dazed</term>
@@ -1259,7 +1257,7 @@
         <description>
           <indexentry>Fearless Condition</indexentry> 
           <indexentry>Conditions<subentry>Fearless</subentry></indexentry>       
-          The character has no fear and automatically succeeds any morale checks.
+          The character has no fear and automatically succeeds any resolve checks.
         </description>    
         
         <term>Fey Resilience</term>
@@ -1366,7 +1364,7 @@
           <indexentry>Conditions<subentry>Routed</subentry></indexentry>
           The character has been defeated in combat.  If they can Flee they do so.
           Otherwise they will Yield or do something desperate.  This occurs
-          when the player has failed three morale checks in combat.
+          when the player has failed three resolve checks in combat.
         </description>
 
         <term>Sick</term>
@@ -1588,11 +1586,11 @@
           compel</emph> as follows:
 	  <olist>
 	    <li>Roll an unmodified 2d12 if the result is less than the aspects difficulty the character is compelled.</li>
+	    <li>If the player compelled themselves then decrease the aspects difficulty by one.</li>
 	    <li>If the check fails, increase the aspects difficulty by one.</li>
 	    <li>If the check succeeds, decrease the aspects difficulty by one.</li>
 	    <li>If a bane is rolled, increase the aspects difficulty by one.</li>
 	    <li>If a boon is rolled, decrease the aspects difficulty by one.</li>
-	    <li>If the player compelled themselves then decrease the aspects difficulty by one.</li>
 	    <li>If the aspects difficulty is less than ten, then it becomes ten.</li>
 	    <li>If the aspects difficulty is greater than fifteen, then it becomes fifteen.</li>
 	  </olist>
@@ -1738,11 +1736,11 @@
           <p>
 	    Suppose Dourli is fighting an ogre, and a large amount of treasure is 
 	    at stake if Dourli can win.  The ogre is nearly defeated but Dourli fails 
-	    his morale check.  Dourli's player might try to compel his 
-	    <emph>Gold is my Lodestone</emph> aspect to try to get the GM to give 
-	    Dourli some bonus to his morale check in that fight.  He rolls a 5.
-	    Well under the aspects difficulty and so is bound by the aspect.
-	    The GM decides that Dourli gets a +3 bonus to his morale check as his
+	    his resolve check putting him at a serious disadvantage.  Dourli's player
+	    might try to compel his <emph>Gold is my Lodestone</emph> aspect to try
+	    to get the GM to give  Dourli some bonus to his resolve check in that fight.
+	    He rolls a 5.  Well under the aspects difficulty and so is bound by the aspect.
+	    The GM decides that Dourli gets a +3 bonus to his resolve check as his
 	    greed overcomes his sense of self-preservation.
           </p>
         </playexample>
@@ -1889,10 +1887,10 @@
 	<p>
 	  <emph>
 	    <emph>When a group is surprised it gets no actions for the first round of combat,
-	    and then must make a morale check.  The attackers gain advantage on Std Checks
-	    during a Surprise Roll.  Additionally, whether the surprise attempt
-	    is successful or not the would be surpriser goes first during combat as if they
-	    had won initiative.</emph>
+	    and then must make a resolve check for PCs or a morale check for monsters.  The
+	    attackers gain advantage on Std Checks during a Surprise Roll.  Additionally,
+	    whether the surprise attempt is successful or not the would be surpriser goes first
+	    during combat as if they had won initiative.</emph>
 	  </emph>
 	</p>
 	
@@ -1980,7 +1978,7 @@
 	  characters movement.  Note that there is also a Run action that essentially just
 	  allows the character to move twice their normal distance, a Charge action for
 	  attacking at a run, and a Flee action.  In addition, the characters movement
-	  options may be curtailed if they have failed one or more Morale Checks.
+	  options may be curtailed if they have failed one or more Resolve Checks.
 	</p>
       </subsection>
       
@@ -2360,87 +2358,58 @@
     
 
     <section>
-      <sectiontitle>Morale Checks <label>sec:mettle-checks</label></sectiontitle>      
+      <sectiontitle>Resolve Checks <label>sec:mettle-checks</label></sectiontitle>      
       <p>
-	<indexentry>Morale Checks</indexentry>
-	Both player characters and monsters may, from time to time, be forced to make a 
-	morale check.  In order to make life more manageable, the GM and player characters
-	make morale checks differently.  The difference between the two checks is that
-	the GM checks for groups of monsters while the PCs check on a per character basis.
+	<indexentry>Resolve Checks</indexentry>
+	Player characters may, from time to time, be forced to make a Resolve Check,
+	which is different from Morale Checks that monsters may be forced to make.	
       </p>
 
       <subsection>
-	<subsectiontitle>Player Character Morale Check</subsectiontitle>       
+	<subsectiontitle>Resolve Check</subsectiontitle>       
 	<p>
-	  <indexentry>Breaking</indexentry>
-	  <label>sec:breaking</label>	  
-	  For player characters <defn>Morale Checks</defn> are a <emph>Mettle Check</emph>
-	  with a DC of 5.  When a character fails a morale check another
-	  character must make a check.  Morale checks continue until
-	  there are no more fails or everyone has made a morale check.  Morale Checks do not
-	  count as an action.
+	  <indexentry>Resolve</indexentry>
+	  <label>sec:resolve_checks</label>	  
+	  <defn>Resolve Checks</defn> are a <emph>Mettle+Willpower Check</emph>
+	  against a fixed DC of 5 that player characters make when they are forced to
+	  face their fears.
+	  When a character fails a resolve check another character, chosen at random,
+	  must also make a resolve check.  Resolve checks continue to cascade until
+	  someone succeeds or everyone has failed a resolve check.  Resolve Checks are
+	  free actions.
 	  <equation>
-	    <line>Break if:</line>
-	    <line>Mettle Pool <ltsymbol/> DC 5</line>
+	    <line>Resolve Check:</line>
+	    <line>Mettle Pool<ltsymbol/> DC 5</line>
 	  </equation>      
 	</p>
 
 	<p>
-	  As characters fail morale checks they gain conditions that limit what they can
-	  do during combat, see Table<ref>table:break-difficulties</ref> on
-	  page<pageref>table:break-difficulties</pageref> for a list of morale check
-	  difficulties and conditions.
-	</p>
-
-	<p>
-	  For example, looking at the table, the first time a character fails a morale check
-	  they gain the Checked condition.
-	</p>
-
-	<p>
-	  The GM should feel free to modify the break difficulty as he pleases, <ie/>
+	  The GM should feel free to modify the Resolve DC as he pleases, <ie/>
 	  to reflect being attacked at night, being vastly outnumbered, the horrible
 	  visage of the characters opponents, the party being in good spirits etc.
-	</p>    
-
-	{% include "docs/tables/break_table.xml" %}    
+	  As characters fail resolve checks the party starts to lose dice from their Mettle
+	  Pools and their fighting options become somewhat diminished.
+	</p>
 
 	<p>
-	  Morale checks for players should be made at the GMs discretion.  But some
-	  suggested times to make morale checks are:
+	  Some suggested times to make resolve checks are:
 	  <list>
 	    <li>When any party member becomes bloodied,</li>
 	    <li>When the party enters combat against a fear causing opponent,</li>
 	    <li>Whenever the party is surprised or ambushed.</li>
 	  </list>
-	  Ultimately, however, it is up to the GM to decide when the players should make a 
-	  morale check and the GM should feel free to force morale checks sooner or later
+	  Ultimately, however, it is up to the GMs discretion  to decide when the players should
+	  make a resolve check and the GM should feel free to force resolve checks sooner or later
 	  in the combat to satisfy the narrative imperative.	  
 	</p>
-      </subsection>
-
-      <subsection>
-	<subsectiontitle>Monster and NPC Morale Checks</subsectiontitle>
-	<p>
-	  Monsters make Morale Checks as a group.
-	  Morale checks for monsters and opposing NPCs should be made when:
-	  <list>
-	    <li>After a third of the monsters have died,</li>
-	    <li>After two thirds of the monsters have died,</li>
-	    <li>Whenever the monsters are surprised.</li>
-	  </list>          
-	  When monsters fail their morale checks they should attempt to break off combat,
-	  yield, negotiate or flee, at the GMs discretion.
-	</p>
-	
       </subsection>
     </section>
     
 
     <section>
-      <sectiontitle>Fighting in Groups</sectiontitle>
+      <sectiontitle>Fighting in Formation</sectiontitle>
       <p>
-	It is possible to fight in groups.  While fighting in a group the
+	It is possible to fight in formation.  While fighting in a formation the
 	front row provides hard cover to the back row.  The front row must
 	have at least as many people in it as the back row.  To make melee
 	attacks from the back row you must be using a weapon with reach.
@@ -2448,7 +2417,7 @@
 	on two fronts, provided that the number of people in each front row
 	is greater than or equal to the number of people in the back row.
 	Furthermore, characters in the back row add a temporary bonus die to
-	their morale checks.
+	their resolve checks.
       </p>
     </section>
   </chapter>
