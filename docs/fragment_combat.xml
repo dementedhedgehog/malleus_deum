@@ -46,6 +46,82 @@ FIXME:  monster pool checks how do you deal with it?  Answer pool per monster gr
 
 
   <subsection>
+    <subsectiontitle>Morale Checks</subsectiontitle>
+
+    <p>
+      <indexentry>Morale Check</indexentry>
+      <indexentry>Checks<subentry>Morale (Monsters)</subentry></indexentry>
+      Monsters make Morale Checks as a group.	
+      Morale checks for monsters and opposing NPCs should be made, at the GMs discretion,
+      on some of the following ocassions:
+      <list>
+	<li>After a solo monster becomes bloodied,</li>
+	<li>After the first monster dies (for cowardly foes),</li>
+	<li>After a third of the monsters have died,</li>
+	<li>After two thirds of the monsters have died,</li>
+	<li>Whenever the monsters are surprised or ambushed,</li>
+	<li>An allied group of monsters flees,</li>
+	<li>Whenever a player rolls critical success on a Std Check.</li>
+      </list>          
+      When monsters fail their morale checks they should attempt to break off combat,
+      yield, negotiate or flee, at the GMs discretion.
+    </p>
+
+    <p>
+      The Morale DC of a group of monsters is the highest Morale of all the monsters in
+      the group.  When the monster with the highest morale in the group dies or is
+      incapacitated the group morale ir recalculated.
+    </p>
+
+    <p>
+      <indexentry>Morale Check Count</indexentry>
+      The GM should keep track of the number of morale checks a group of monsters has
+      previously made.  This count effects the morale check for the group.  The more times
+      they have to check the harder the check becomes.  This count should start at zero
+      (as no checks have been made yet).  
+    </p>
+    
+    <p>
+      A monster groups morale check is usually rolled by a PC against the monster groups Morale.
+      <equation>
+        <line>Monster Morale Check:</line>
+        <line>Std Check<geqqsymbol/> Morale DC -3×Break Check Count</line>
+      </equation>
+    </p> 
+
+    <playexample>
+      <p>
+	Consider a group of six Orcs having Morale of 18 and their Chief
+	with Morale of 21.   Their Group Morale DC is 21. 
+      </p>
+
+      <p>
+  	Dourli runs in, rolls a critical success with his axe against the Chief.  That
+	is an instant kill result and the Chief goes down.  At this point the GM decides
+	the Orcs might well flee in the face of this awesome display of skill.  The
+	GM recalculates the Group Morale DC to find it is 18.   The Morale Check Count is zero
+	at the moment, so Dourli has to roll an 18 on a Std Check for the Orcs to break.
+	He rolls a 16.  Not good enough.
+      </p>
+
+      <p>
+	Later there are only two orcs left.  The GM decides they should make a morale check.
+	The morale DC of the group is still 18.  The number of checks is now one.  So the target
+	DC is 18 -3×1 = 15.  Dourli rolls a 10.  Not good enough.  So he uses his luck based Reroll
+	ability and this time he gets a 20.  The orcs flee.
+      </p>
+    </playexample>
+
+    <p>
+      The GM is the final arbiter of when the monsters flee.  He can decide if it makes sense
+      to do so or not.  No roll is necessary.  Break checks are just to decide if the monsters
+      flee early.  Morale checks are just a guide.
+    </p>
+  </subsection>
+  
+
+
+  <subsection>
     <subsectiontitle>Combat Underwater</subsectiontitle>
 
     <p>
@@ -200,7 +276,7 @@ FIXME:  monster pool checks how do you deal with it?  Answer pool per monster gr
       we will cover that here.
     </p>
   </subsection>
-
+  
   <subsection>
     <subsectiontitle>Chasing</subsectiontitle>
     
