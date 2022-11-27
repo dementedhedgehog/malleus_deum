@@ -49,6 +49,7 @@ from spreadsheet_writer import write_game_balance_spreadsheet
 # Creates graphs as a side effect of the imports (FIXME: yucky.. fix it later)
 import graphs
 import dice_pool_graph
+import morale_graph
 
 # FIXME: didn't want to deal with pdftk at the moment.
 from character_sheet_writer import (
@@ -649,6 +650,9 @@ if __name__ == "__main__":
     if "rationale.xml" in [t[0] for t in config.doc_files_to_build]:
         print("Building dice pool graphs.")
         dice_pool_graph.build_dice_pool_graphs()
+
+        # build the morale graph if it is missing.
+        morale_graph.build_morale_graph()
 
     # load the game database (archetypes, abilties etc).
     db = DB()

@@ -2,15 +2,60 @@
 from collections import defaultdict
 from itertools import product
 from functools import lru_cache as cache
-from os.path import join
+from os.path import join, exists
 
 import pygal
 from PIL import Image
+import cairo
 
 from utils import build_dir
 
 FAIL = -1
 
+FONT_FAMILY = 'googlefont:Raleway'
+FONT_SIZE = 22
+
+
+class BarSegmentInfo:
+    """
+    Each bar in our bar graphs can be composed of 
+    multiple segments.  This class holds that segment
+    information.
+
+    """    
+    def __init__(self, title, colour):
+        # segment legend text
+        self.title = title
+
+        # rgb 0-255 triple
+        self.colour = colour
+
+    def get_cairo_colour(self):
+        return self.colour[0]/255.0, self.colour[1]/255.0, self.colour[2]/255.0
+
+    def get_pygal_colour(self):
+        return pygal.colors.unparse_color(
+            self.colour[0],
+            self.colour[1],
+            self.colour[2],
+            0.0,
+            "#rrggbb")
+
+# colour map colour scheme from here.
+# https://colorbrewer2.org/?type=sequential&scheme=PuBuGn&n=5
+# failed is not in the colourmap.. basically the colourmap is
+# sequential except for failed which is in its own "qualitative space"
+failed_seg = BarSegmentInfo("Failed", (189,0,38))
+
+bar_segments = [
+    # different degrees of success
+    BarSegmentInfo("Succeeded",  (4,90,141)),
+    BarSegmentInfo("Overcharge 1", (43,140,190)),
+    BarSegmentInfo("Overcharge 2", (116,169,207)),
+    BarSegmentInfo("Overcharge 3", (166,189,219)),
+    BarSegmentInfo("Overcharge 4", (208,209,230)),
+    BarSegmentInfo("Overcharge 5", (241,238,246)),
+]
 
 
 
@@ -138,11 +183,73 @@ def draw_morale_graph(fname, n_dice):
         probs = calculate_morale_iterations(n_dice=n_dice, dc=dc, n_iterations=n_iterations)
         fail_probs = get_fail_probs_from_morale_iterations(probs)
         line_chart.add(f'DC:{dc}',fail_probs)
-
     line_chart.render_to_png(fname)
 
-# for n_dice in (2, 3, 4, 5, 6, 7):
-#     draw_morale_graph(n_dice)
+    
+def generate_legend(fname, width, height):
+    """Draw the legend for the combined graph."""
+
+    # Make a context with dimensions scaled from 0.0 to 1.0
+    surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
+    ctx = cairo.Context(surface)
+    ctx.scale(width, height)  
+    
+    # Paint the background white.
+    pat = cairo.SolidPattern(1.0, 1.0, 1.0, 1.0)
+    ctx.rectangle(0, 0, 1, 1)
+    ctx.set_source(pat)
+    ctx.fill()
+
+    # Change the current transformation matrix (add a border)
+    ctx.translate(0.1, 0.1)
+
+    # approximate text height
+    ctx.select_font_face(FONT_FAMILY, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+
+    # layout the legend
+    x = 0.0
+    y = 0.05
+    y_step = 0.08
+    square_dimension = 0.08
+    _, _, _, text_height, _, _ = ctx.text_extents("lg")
+    text_x_offset = 0.05
+    text_y_offset = y
+
+    # Legend title
+    ctx.set_font_size(0.06)
+    ctx.set_source_rgb(0, 0, 0) 
+    ctx.move_to(0, 0)      
+    ctx.show_text("Legend")
+    ctx.stroke()
+    
+    # swatches
+    ctx.set_font_size(0.04)
+    for segment in [failed_seg, ] + bar_segments:
+        
+        # draw segment color swatch
+        colour = segment.get_cairo_colour()
+        ctx.set_source_rgb(*colour)        
+        ctx.rectangle(x, y, x+square_dimension, y+square_dimension)
+        ctx.fill()
+
+        # draw legend label
+        ctx.set_source_rgb(0, 0, 0) 
+        ctx.move_to(x + square_dimension + text_x_offset, y + text_y_offset)      
+        ctx.show_text(segment.title)
+        ctx.stroke()
+
+        # next line
+        y += y_step
+
+    # draw explanatory text
+    for line in ("X axis is number of d6 rolled.", "Y axis is percent chance."):
+        ctx.set_source_rgb(0, 0, 0) 
+        ctx.move_to(0, y + text_y_offset)      
+        ctx.show_text(line)
+        y += y_step
+
+    surface.write_to_png(fname)
+    return
 
 
 def generate_morale_comparisons_graph(from_dice_pool_size, to_dice_pool_size, out_fname):
@@ -155,8 +262,6 @@ def generate_morale_comparisons_graph(from_dice_pool_size, to_dice_pool_size, ou
     # write out a bunch of little graphs, one per dc.
     for n_dice in range(from_dice_pool_size, to_dice_pool_size+1):
         fname = join(build_dir, f'morale_dice_pool_{n_dice}.png')
-        #fname = f"morale_dice_pool_{n_dice}.png"    
-        #graph_dc(fname, dc)
         draw_morale_graph(fname, n_dice)
         fnames.append(fname)
 
@@ -167,12 +272,12 @@ def generate_morale_comparisons_graph(from_dice_pool_size, to_dice_pool_size, ou
         imgs.append(img)
 
     # create a legend image the same size as the other graphs
-    # first_img = imgs[0]
-    # width, height = first_img.size
-    # legend_fname = join(build_dir, 'oc_pool_legend.png')
-    # generate_legend(legend_fname, width, height)
-    # img = Image.open(legend_fname)
-    # imgs.append(img)
+    first_img = imgs[0]
+    width, height = first_img.size
+    legend_fname = join(build_dir, 'morale_graph_legend.png')
+    generate_legend(legend_fname, width, height)
+    img = Image.open(legend_fname)
+    imgs.append(img)
         
     # arrange the per-dc-graph imgs into rows of 2
     step = 2
@@ -209,7 +314,13 @@ def generate_morale_comparisons_graph(from_dice_pool_size, to_dice_pool_size, ou
 
 
     
+def build_morale_graph():
+    out_fname = join(build_dir, "morale_dc_comparison.png")
 
-#for n_dice in (2, 3, 4, 5, 6, 7):
-#    draw_morale_graph(n_dice)
-generate_morale_comparisons_graph(2, 7, "morale_dc_comparison.png")
+    # only build this graph if it is missing..
+    # It takes a while cause the underlying prob stuff is simple and stupid.
+    if not exists(out_fname):
+        generate_morale_comparisons_graph(1, 7, out_fname)
+    else:
+        print(f"Not building {out_fname} .. delete that file to force a rebuild.")
+    return
