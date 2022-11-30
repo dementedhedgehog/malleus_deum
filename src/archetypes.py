@@ -47,9 +47,6 @@ class LevelProgressionData:
         # this level number
         self.level_number = None
 
-        # description
-        self.level_description = ""
-
         # hit points
         self.level_stamina = None
         self.level_health = None
@@ -153,13 +150,6 @@ class LevelProgressionData:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
                    self.level_magical = convert_str_to_int(child.text.strip())
-
-           elif tag == "leveldescription":
-               if self.level_description != "":
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   if child.text is not None:
-                       self.level_description = contents_to_string(child)
 
            elif tag == "levelabilities":
                if len(self.level_abilities) > 0:
