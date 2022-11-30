@@ -1377,15 +1377,19 @@ WHAT ABOUT RAW DC FOR DEFENSIVE THINGS?
       The following table is used as a general guide for designing leveling up benefits for
       archetypes in an attempt to keep their powers approximately the same.  Note the advances
       and new abilities are generic.. the variability here should be constrained by limiting
-      the advances by tag and by providing choices, e.g One of ↳Mace×1 or  ↳Hammer×1 
+      the advances by tag and by providing choices, e.g +Hammer1 means gain a first rank ability
+      with the hammer tag, +Hammer1×2 means gain two first rank ability with the hammer tag,
+      >Hammer2 means upgrade a first rank hammer ability to a second rank hammer ability provided
+      the first rank has been mastered. >Hammer3 means upgrade a first or second rank hammer
+      ability provided the prerequisite rank has been mastered.  When adding new skills there
+      should be some plausible way the character acquired those skills.
     </p>
 
     <table>
       <tablecategory>FullWidth</tablecategory>
-      <tablespec><fixed>0.05</fixed><fixed>0.15</fixed><fixed>0.15</fixed><fixed>0.15</fixed><fixed>0.15</fixed><fixed>0.15</fixed></tablespec>
-      <tabletitle>Currency Conversion Table</tabletitle>
+      <tablespec><fixed>0.17</fixed><fixed>0.17</fixed><fixed>0.17</fixed><fixed>0.17</fixed><fixed>0.17</fixed></tablespec>
+      <tabletitle>Level 2 Advances</tabletitle>
       <tableheaderrow>
-	<td>Level</td>
 	<td>Everyone</td>
 	<td>Fighter</td>
 	<td>Spell Caster</td>
@@ -1394,16 +1398,77 @@ WHAT ABOUT RAW DC FOR DEFENSIVE THINGS?
       </tableheaderrow>
 
       <tablerow>
-      	<td>2</td>
-      	<td>&gt;Martial×1 +Martial×1 &gt;Lore×1 +Lore×1 &gt;Language×1 +Physical×1 Health+1</td>
-      	<td>&gt;Martial×2 +Martial×2 Stamina+1</td>
-      	<td>&gt;Spell×1 +Spell×2 ↠Lore×1</td>
-      	<td>&gt;Lore×2 +Lore×2 +Language×1</td>
-      	<td>&gt;Lore×1 +Lore×1 &gt;Language×1 ↠Physical×1</td>
+      	<td>Martial ▲3</td>
+      	<td>Martial +1</td>
+      	<td>Spell +1</td>
+      	<td>Lore ▲3</td>
+      	<td>Lore ▲3</td>
       </tablerow>
 
+      <tablerow>
+      	<td>+Martial1</td>
+      	<td>&gt;Martial3</td>
+      	<td>&gt;Spell3</td>
+      	<td>&gt;Lore3</td>
+      	<td>+Lore×1</td>
+      </tablerow>
+
+      <tablerow>
+      	<td>&gt;Lore3</td>
+      	<td>Stamina+1</td>
+      	<td>&gt;Lore3</td>
+      	<td>+Language1</td>
+      	<td>+Language1</td>
+      </tablerow>
+
+      <tablerow>
+      	<td>+Lore1</td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      	<td>&gt;Physical3</td>
+      </tablerow>
+
+      <tablerow>
+      	<td>&gt;Language3</td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      	<td>&gt;Primary2</td>
+      </tablerow>
+
+      <tablerow>
+      	<td>&gt;Physical1</td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      </tablerow>
+
+      <tablerow>
+      	<td>Health+1</td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      </tablerow>
+      
+      <tablerow>
+      	<td>+Arts1|+Crafts1</td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      </tablerow>
+
+      <tablerow>
+      	<td>&gt;Primary1</td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      	<td></td>
+      </tablerow>
     </table>
-    
   </section>
 </chapter>
 
