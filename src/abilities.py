@@ -282,10 +282,6 @@ class AbilityRank:
     def get_checks(self):
         return self.ability.get_checks()
 
-    # def get_damage(self):
-    #     return self.ability.get_damage()
-    #     #return self.ability.get_damage()
-    
     def get_ability(self):
         return self.ability
 
@@ -299,9 +295,6 @@ class AbilityRank:
         return self.ability.get_template()
     
     def get_title(self, long_form=False):
-        # rank_num = convert_to_roman_numerals(self.rank_number)
-        # return "%s %s" % (self.ability.get_title(), rank_num)
-        #rank_num = convert_to_roman_numerals(self.rank_number)
         if long_form:
             str_template = "%s Rank: %s"
         else:
@@ -643,7 +636,6 @@ class Ability:
            elif tag == "abilitycheck":
                ability_check = AbilityCheck(ability=self)
                ability_check._load(child)
-               #self.checks[ability_check.name] = ability_check
                self.checks.append(ability_check)
 
            elif tag == "gmgability":
