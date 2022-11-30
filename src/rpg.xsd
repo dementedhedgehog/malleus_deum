@@ -570,22 +570,6 @@
     </xs:restriction>
   </xs:simpleType>  
 
-  <xs:complexType name="levelDescriptionType" mixed="true">
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="p" type="textType" />
-        <xs:element name="include" type="includeType" />
-        <xs:element name="table" type="tableType" />        
-        <xs:element name="img" type="imgType"/>
-        <xs:element name="figure" type="figureType"/>
-        <xs:element name="wrapimg" type="wrapimgType"/>
-        <xs:element name="indexentry" type="indexentryType"/>
-        <xs:element name="list" type="itemizedListType"/>
-        <xs:element name="defn" type="defnType"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="abilitydescriptionType" mixed="true">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -1035,10 +1019,6 @@
           name="levelstamina" 
           type="xs:string" 
           minOccurs="1" maxOccurs="1"/>
-      <!-- <xs:element  -->
-      <!--     name="levelstaminarefresh"  -->
-      <!--     type="xs:string"  -->
-      <!--     minOccurs="1" maxOccurs="1"/> -->
       <xs:element 
           name="levelhealth" 
           type="xs:string" 
@@ -1063,14 +1043,10 @@
           name="levelmagicrefresh" 
           type="xs:string" 
           minOccurs="0" maxOccurs="1"/>
-      <xs:element name="leveldescription" type="levelDescriptionType"
-		  minOccurs="0" maxOccurs="1"/>
-
       <xs:element name="levelabilities"
       		  type="xs:string"
                   minOccurs="0"
-                  maxOccurs="1"/>
-    
+                  maxOccurs="1"/>    
       <xs:element name="levelpromotions"
 		  type="xs:string"
                   minOccurs="0" 
