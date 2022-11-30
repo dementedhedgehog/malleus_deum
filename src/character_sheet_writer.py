@@ -31,7 +31,6 @@ from shutil import copy
 from os.path import join, dirname, abspath, exists
 import platform
 from subprocess import call, check_output, CalledProcessError
-#from PyPDF2 import PdfWriter, PdfReader, PdfMerger
 from archetypes import Archetypes
 from abilities import FAMILY_TYPES, AbilityRank
 
@@ -210,50 +209,69 @@ def create_first_page_fdf(fdf_name, archetype=None):
     return
 
 
-def get_ability_check_name(check, no_name=False):
-    if no_name:
-        return f"DDC: {check.dc}"
+
+def check_to_str(check):
+    """Format a check for the char sheet."""
+    check_strings = []
+    
+    if check.name is None:
+        if check.check_type is None:
+            check_str = f"DDC: {check.dc}"
+        else:
+            check_str = f"DDC: {check.dc}/{check.check_type}"
     else:
-        return f"DDC {check.name}: {self.dc}"
+        if check.check_type is None:
+            check_str = f"DDC {check.name}: {check.dc}"
+        else:
+            check_str = f"DDC {check.name}/{check.check_type}: {check.dc}"
+    check_strings.append(check_str)
+    
+    # Damage?
+    if check.dmg is not None:
+        check_strings.append(f"Dmg: {check.dmg}")
 
+    if check.effect is not None:
+        check_strings.append(f"Effect: {check.effect}")
 
+    return ", ".join(check_strings)
+    
+    
 
 def create_abilities_fdf(fdf_name, ability_ranks=None):
     with open(fdf_name, "wb") as f:
         f.write(fdf_header)
 
         for i in range(ABILITIES_PER_PAGE):
+
+            # Grab the next ability rank for the form
+            # Complicated a little because we throw in some strings as "chapter headers"
             if ability_ranks is None:
                 ability_rank = None                
             else:
-                try:
-                    ability_rank = next(ability_ranks)
-                except StopIteration:
-                    ability_rank = None
+                while True:
+                    try:
+                        ability_rank = next(ability_ranks)
+                    except StopIteration:
+                        ability_rank = None
+                        break
+
+                    if isinstance(ability_rank, AbilityRank) and ability_rank.rank_number >= 0:
+                        break
+                        
+                    if isinstance(ability_rank, str):
+                        break
 
             # if we have another ability rank put fill in the form for
             # that ability, otherwise make it blank.
             if isinstance(ability_rank, AbilityRank):
                 ability = ability_rank.get_ability()
-                description = ""
 
                 # add any check configurations
                 checks = ability.get_checks()
-                check_strings = []
-                if len(checks) > 1:
-                    for check in check:
-                        description += "Type: " + check.check_type
-                        check_strings.append(get_ability_check_name(check))
-
-                        # Damage?
-                        dmg = ability.get_damage()
-                        if dmg:
-                            check_strings.append(", Dmg: " + dmg)
-                        
-                else:                
-                    check = list(ability.get_checks())[0]
-                    check_strings.append(get_ability_check_name(check, no_name=True))
-                description += ", " + ", ".join(check_strings)
+                check_strings = []                
+                for check in checks:
+                    check_strings.append(check_to_str(check))
+                description = "\n".join(check_strings)
                     
                 ability_class = ability.__class__
                 mastery = "Mastery: [][][]"
@@ -266,6 +284,7 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     ability_mastery=mastery,
                 )
             elif isinstance(ability_rank, str):
+                # This is an Ability Seperator, like --- General ---
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
                     ability_number=i,
@@ -273,7 +292,7 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     ability_description="",
                     ability_mastery="",
                 )                
-            else:
+            elif ability_rank is None:
                 # write empty info
                 fdf_info = FDF_ABILITY_BODY % {
                     "ability_number": i,
@@ -281,13 +300,13 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     "ability_description": "",
                     "ability_mastery": "",
                 }
+            else:
+                # Never gets here
+                raise Exception(f"Unknown ability rank {ability_rank}")
                 
             f.write(fdf_info.encode())
         f.write(fdf_footer)
     return
-
-
-from PyPDF2.generic import BooleanObject, NameObject, IndirectObject, TextStringObject
 
 
 def cmp_titles(ability, ability2):
@@ -362,6 +381,7 @@ def create_character_sheet_for_archetype(db, archetype):
     
     # create all the ability pages    
     ability_rank_iterator = iter(ability_ranks)
+    #ability_rank_iterator = [r for r in ability_ranks if r.rank >= 0]
     for i in range(n_pages):
         page_number = i + 2
         pdf_fname_out = join(build_dir,"%s_abilities_pg%s.pdf" % (archetype_id, page_number))
