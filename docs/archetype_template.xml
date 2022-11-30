@@ -193,13 +193,13 @@
       <table>
       	<tablecategory>FullWidth</tablecategory>
       	<tablespec>
-      	  <fixed>0.085</fixed> 
-      	  <fixed>0.085</fixed> 
-      	  <fixed>0.085</fixed> 
-      	  <fixed>0.085</fixed> 
-      	  <fixed>0.085</fixed> 
-      	  <fixed>0.085</fixed> 
-      	  <fixed>0.30</fixed>
+      	  <fixed>0.05</fixed> 
+      	  <fixed>0.07</fixed> 
+      	  <fixed>0.07</fixed> 
+      	  <fixed>0.05</fixed> 
+      	  <fixed>0.05</fixed> 
+      	  <fixed>0.05</fixed> 
+      	  <fixed>0.48</fixed>
      	</tablespec>
       	<tabletitle>Level Progression Table</tabletitle>
 
@@ -220,7 +220,7 @@
           {{ level_progression_data.level_health }}/{{ level_progression_data.level_health_refresh }}
 	  </td>
       	  <td>
-          {{ level_progression_data.level_stamina }}/full,
+          {{ level_progression_data.level_stamina }}/full
 	  </td>
       	  <td>
 	  {{ level_progression_data.level_mettle }}/{{ level_progression_data.level_mettle_refresh }}
@@ -236,6 +236,7 @@
           {{ level_progression_data.level_luck }}/{{ level_progression_data.level_luck_refresh }}
 	  </td>
       	  <td>
+            {{ level_progression_data.level_promotions }}
 	  </td>
       	</tablerow>
 	{% endfor %}
