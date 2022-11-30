@@ -275,7 +275,7 @@ def filter_xelatex_output(xelatex_output):
     return
 
 
-def create_index(verbosity=0):
+def create_index(verbosity=0, fail_fast=True):
     print()
     print("===============================================")
     print("     Create Index")
@@ -320,9 +320,29 @@ def create_index(verbosity=0):
     cmd_line = [makeindex, basename(index_idx)]
     if verbosity > 0:
         print(("\n\n\n" + " ".join(cmd_line)))
-    call(cmd_line, cwd = build_dir)
+    #call(cmd_line, cwd = build_dir)
 
+    succeeded = False
+    try:
+        makeindex_output = check_output(cmd_line, env=env,
+                                        stderr=subprocess.STDOUT,
+                                        universal_newlines=True)            
+        assert isinstance(xelatex_output, str)
+        succeeded = True
+    except CalledProcessError as e:
+        makeindex_output = e.output
+
+        if fail_fast:
+            raise Exception(f"Failed to makeindex {e.output}")
+
+    print("------------------------------------v")
+    print(makeindex_output)
+    print("------------------------------------^")
+            
     if not xelatex(index_tex):
+        if fail_fast:
+            raise Exception("Failed to run latex on index_tex!")
+        print("Failed to run latex on index_tex!")
         return
     
     # move the pdf from the build dir to the pdfs dir
@@ -481,6 +501,7 @@ def build_pdf(
 
     # converts the latex to pdf
     if not xelatex(tex_fname, verbosity=verbosity):
+        print((f"\fFailed to build {pdf_fname}"))
         return False
 
     # Copy the pdf from the build dir to the pdfs dir
