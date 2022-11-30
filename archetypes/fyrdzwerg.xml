@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Counts as a Fighter -->
 <archetype>
   <archetypetitle>Fyrdzwerg</archetypetitle>
   <archetypeid>fyrdzwerg</archetypeid>
@@ -35,14 +36,14 @@
     </p>
 
     <figure>
-    <img src="./resources/galmacci_dwarf/galmacci_dwarf.png" scale="0.2"/>
+    <img src="./resources/mj_dwarf/mj_dwarf.png" scale="0.2"/>
     </figure>
 
   </archetypedescription>
   <archetypeprimaryabilities>
     <list> 
-      <li>Str:+1, End:+2, Ag:+0, Spd:-1, Per:-1, Wpr:+1 or</li>
-      <li>Str:+1, End:+1, Ag:+0, Spd:-1, Per:+0, Wpr:+1</li>
+      <li>Str:+1 End:+2 Ag:+0 Spd:-1 Per:-1 Wpr:+2 or</li>
+      <li>Str:+1 End:+1 Ag:+0 Spd:-1 Per:+0 Wpr:+2</li>
     </list>
   </archetypeprimaryabilities>
   <archetypeinitialabilities>
@@ -1056,167 +1057,37 @@
   <level>
     <levelnumber>1</levelnumber>
     <levelmettle>4</levelmettle>
-    <levelmettlerefresh>+2</levelmettlerefresh>
-    <levelstamina>d3 + 6</levelstamina>
-    <levelhealth>d3 + 5</levelhealth>
+    <levelmettlerefresh>+1d6</levelmettlerefresh>
+    <levelstamina>d3+6</levelstamina>
+    <levelhealth>d3+5</levelhealth>
     <levelhealthrefresh>1d6</levelhealthrefresh>
     <levelluck>2</levelluck>
     <levelluckrefresh>+1</levelluckrefresh>
     <levelmagicpool>2</levelmagicpool>
-    <levelmagicrefresh>+1</levelmagicrefresh>
-    <leveldescription></leveldescription>
-    <levelabilities></levelabilities>
+    <levelmagicrefresh>+1d6</levelmagicrefresh>
     <levelpromotions>
+      See character creation above.
     </levelpromotions>
   </level>
 
   <level>
     <levelnumber>2</levelnumber>
     <levelmettle>4</levelmettle>
-    <levelmettlerefresh>+1</levelmettlerefresh>
-    <levelstamina>+1</levelstamina>
-    <levelhealth>+1</levelhealth>
-    <levelhealthrefresh>+d4</levelhealthrefresh>
-    <levelluck>3</levelluck>
+    <levelmettlerefresh>+1d6</levelmettlerefresh>
+    <levelstamina>d3+6</levelstamina>
+    <levelhealth>d3+5</levelhealth>
+    <levelhealthrefresh>1d6</levelhealthrefresh>
+    <levelluck>2</levelluck>
     <levelluckrefresh>+1</levelluckrefresh>
     <levelmagicpool>2</levelmagicpool>
-    <levelmagicrefresh>+1</levelmagicrefresh>
-    <leveldescription></leveldescription>
-    <levelabilities>
-    </levelabilities>
+    <levelmagicrefresh>+1d6</levelmagicrefresh>
     <levelpromotions>
+      Martial +1, Martial +1,
+      Martial ▲2, Martial ▲3,
+      Lore +1, Lore ▲3, Language ▲3,
+      Physical ▲1, Arts +1 | Craft +1,
+      Primary ▲1, Health +1, Stamina +1
     </levelpromotions>
-  </level>
-  
-  <!-- <level> -->
-  <!--   <levelnumber>2</levelnumber> -->
-  <!--   <levelmettle>4</levelmettle> -->
-  <!--   <levelmettlerefresh>+1</levelmettlerefresh> -->
-  <!--   <levelstamina>4</levelstamina> -->
-  <!--   <levelhealth>4</levelhealth> -->
-  <!--   <levelhealthrefresh>+d4</levelhealthrefresh> -->
-  <!--   <levelluck>3</levelluck> -->
-  <!--   <levelluckrefresh>+1</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh> -->
-  <!--   <leveldescription></leveldescription> -->
-  <!--   <levelabilities> -->
-  <!--   </levelabilities> -->
-  <!--   <levelpromotions> -->
-  <!--     Melee_2,  -->
-  <!--   </levelpromotions> -->
-  <!-- </level> -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>3</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>6</levelstamina> -->
-  <!--   <levelhealth>6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>3</levelluck> -->
-  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>4</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>6</levelstamina> -->
-  <!--   <levelhealth>6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>4</levelluck> -->
-  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>5</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>+6</levelstamina> -->
-  <!--   <levelhealth>+6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>4</levelluck> -->
-  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>6</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>+6</levelstamina> -->
-  <!--   <levelhealth>+6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>4</levelluck> -->
-  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>7</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>+6</levelstamina> -->
-  <!--   <levelhealth>+6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>4</levelluck> -->
-  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>8</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>+6</levelstamina> -->
-  <!--   <levelhealth>+6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>4</levelluck> -->
-  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>9</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>+6</levelstamina> -->
-  <!--   <levelhealth>+6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>5</levelluck> -->
-  <!--   <levelluckrefresh>+2</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
-
-  <!-- <level> -->
-  <!--   <levelnumber>10</levelnumber> -->
-  <!--   <levelmettle>5</levelmettle> -->
-  <!--   <levelmettlerefresh>+2</levelmettlerefresh> -->
-  <!--   <levelstamina>+6</levelstamina> -->
-  <!--   <levelhealth>+6</levelhealth> -->
-  <!--   <levelhealthrefresh>+d6</levelhealthrefresh> -->
-  <!--   <levelluck>5</levelluck> -->
-  <!--   <levelluckrefresh>+3</levelluckrefresh> -->
-  <!--   <levelmagicpool>2</levelmagicpool> -->
-  <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
-  <!--   <leveldescription></leveldescription> -->
-  <!-- </level>     -->
+  </level>  
 </levelprogressiontable>
 </archetype>
