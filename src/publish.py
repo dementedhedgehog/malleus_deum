@@ -326,8 +326,9 @@ def create_index(verbosity=0, fail_fast=True):
     try:
         makeindex_output = check_output(cmd_line, env=env,
                                         stderr=subprocess.STDOUT,
+                                        cwd=build_dir,
                                         universal_newlines=True)            
-        assert isinstance(xelatex_output, str)
+        assert isinstance(makeindex_output, str)
         succeeded = True
     except CalledProcessError as e:
         makeindex_output = e.output
