@@ -11,10 +11,8 @@ from os import makedirs
 from copy import deepcopy
 import sys
 import codecs
-# third party
+
 from config import use_imperial
-
-
 from utils import (
     normalize_ws,
     parse_xml, validate_xml,
