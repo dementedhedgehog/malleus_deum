@@ -1036,7 +1036,7 @@ class LatexFormatter:
         self.latex_file.write("\t\\begin{center}\n")
 
         if config.draw_imgs:
-            if config.debug_outline_images:
+            if config.debug_outline_images:                
                 self.latex_file.write("\\fbox{")
 
         # 
@@ -1129,6 +1129,13 @@ class LatexFormatter:
 
     def start_figure(self, figure):
         position = "ht"
+        
+        # sanity check for attributes
+        figure_attributes = {"position", "fullwidth", "sideways"}
+        attribs = set(figure.attrib.keys())
+        if not attribs.issubset(figure_attributes):
+            raise Exception("Unknown attributes for figure! {attribs-figure_attributes}")
+        
         if "position" in figure.attrib:
             position = figure.get("position")
 
