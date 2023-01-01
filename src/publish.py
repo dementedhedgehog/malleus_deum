@@ -30,19 +30,14 @@ import zipfile
 
 
 src_dir = abspath(join(dirname(__file__)))
-third_party_dir = join(src_dir, "third_party")
 sys.path.append(src_dir)
-sys.path.append(third_party_dir)
 
-from jinja2 import Template, Environment, FileSystemLoader
-from jinja2.lexer import Token
-from  jinja2 import lexer
 
 # local
 from doc import Doc
 from db import DB
 from latex_formatter import LatexFormatter
-from epub_formatter import EPubFormatter
+#from epub_formatter import EPubFormatter
 from html_formatter import HtmlFormatter
 from spreadsheet_writer import write_game_balance_spreadsheet
 
@@ -68,7 +63,14 @@ from utils import (
     encounters_dir,
     modules_dir,
     release_dir,
+    third_party_dir
 )
+
+sys.path.append(third_party_dir)
+from jinja2 import Template, Environment, FileSystemLoader
+from jinja2.lexer import Token
+from  jinja2 import lexer
+
 
 # Jinja2 doesn't like absolute paths.  We must supply a relative path
 ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
@@ -415,40 +417,40 @@ def apply_template_to_xml(jinja_env,
     return doc
 
 
-def build_epub(xml_fname,
-               verbosity,
-               doc,
-               db,                  
-               archetype=None,
-               patron=None):
-    # base name .. no extension
-    doc_base_fname, _ = splitext(basename(xml_fname))
-    epub_fname = join(build_dir, "%s.epub" % doc_base_fname)
+# def build_epub(xml_fname,
+#                verbosity,
+#                doc,
+#                db,                  
+#                archetype=None,
+#                patron=None):
+#     # base name .. no extension
+#     doc_base_fname, _ = splitext(basename(xml_fname))
+#     epub_fname = join(build_dir, "%s.epub" % doc_base_fname)
 
-    print((f"\tBuilding {epub_fname}"))
+#     print((f"\tBuilding {epub_fname}"))
 
-    # check we have a book_node to format
-    if not doc.has_book_node():
-        if verbosity >= 1:
-            print("No book node to format in document: %s IGNORING!" % doc_fname)
-        return
+#     # check we have a book_node to format
+#     if not doc.has_book_node():
+#         if verbosity >= 1:
+#             print("No book node to format in document: %s IGNORING!" % doc_fname)
+#         return
 
-    # build the epub document 
-    #with codecs.open(tex_fname, "w", "utf-8") as f:
-    epub_formatter = EPubFormatter(epub_fname=epub_fname, db=db)
+#     # build the epub document 
+#     #with codecs.open(tex_fname, "w", "utf-8") as f:
+#     epub_formatter = EPubFormatter(epub_fname=epub_fname, db=db)
 
-    errors = doc.format(epub_formatter)
-    if len(errors) > 0:
-        print("Errors:")
-        for error in errors:
-            print("\t%s\n\n\n" % error)                
-            exit()
+#     errors = doc.format(epub_formatter)
+#     if len(errors) > 0:
+#         print("Errors:")
+#         for error in errors:
+#             print("\t%s\n\n\n" % error)                
+#             exit()
 
-    # Copy the pdf from the build dir to the pdfs dir
-    copy(epub_fname, pdfs_dir)
+#     # Copy the pdf from the build dir to the pdfs dir
+#     copy(epub_fname, pdfs_dir)
     
-    print((f"\tFinished building {epub_fname}"))
-    return True
+#     print((f"\tFinished building {epub_fname}"))
+#     return True
 
 
 def build_pdf(
@@ -679,7 +681,7 @@ if __name__ == "__main__":
     # load the game database (archetypes, abilties etc).
     db = DB()
     db.load(root_dir=root_dir, fail_fast=True)
-
+    
     # generate the skill tree images
     # skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
     # skill_tree_builder.build(db.ability_groups,
@@ -752,12 +754,12 @@ if __name__ == "__main__":
             db=db,
             archetype=archetype) or die()
 
-        build_epub(
-            xml_fname=archetype.get_id(),
-            verbosity=verbosity,
-            doc=doc,
-            db=db,
-            archetype=archetype) or die()
+        # build_epub(
+        #     xml_fname=archetype.get_id(),
+        #     verbosity=verbosity,
+        #     doc=doc,
+        #     db=db,
+        #     archetype=archetype) or die()
 
 
     # Build latex/pdf module files.

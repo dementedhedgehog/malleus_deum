@@ -22,6 +22,7 @@ from utils import (
     children_to_string,
     convert_str_to_bool,
     contents_to_string,
+    strip_xml,
 )
 
 src_dir = abspath(join(dirname(__file__)))
@@ -438,9 +439,23 @@ class Ability:
 
         # list of spline points .. used for laying out the ability in a graph in the phb.
         self.spline = []
-        return
-            
 
+        # the group this ability belongs to.
+        self.ability_group = None
+        return
+    
+    def __str__(self):
+        return f"✱{self.ability_id}"
+
+    # def __repr__(self):
+    #     return f"✱{self.title}"
+
+    def set_group(self, ability_group):
+        self.ability_group = ability_group
+            
+    def get_group_id(self):
+        return self.ability_group.get_id()
+        
     # FIXME: what has this got to do whith check_sanity?
     def get_problems(self):
         """Checks for malformed abilities.. returns a list of problems."""
@@ -464,8 +479,8 @@ class Ability:
             if is_first_rank:
                 if ((rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK)
                     and "primary" not in self.tags):
-                    print(f"UNTRAINED {[str(a) for a in self.get_trained_ranks()]}")
-                    print(f"ALL {[str(a) for a in self.ranks]}")
+                    # print(f"UNTRAINED {[str(a) for a in self.get_trained_ranks()]}")
+                    # print(f"ALL {[str(a) for a in self.ranks]}")
                     problems.append(
                         f"First rank for ability {self.get_title()} is {rank_number} "
                         f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY_RANK}")
@@ -475,6 +490,7 @@ class Ability:
                     problems.append("Bad rank numbers for ability %s around rank  %s"
                                     % (self.get_title(), rank_number))
             last_rank_number = rank_number
+
         return problems
 
     def get_trained_ranks(self):
@@ -494,6 +510,9 @@ class Ability:
 
     def get_ability_rank_prereq(self):
         return self.ability_rank_prereq
+
+    def is_valid_rank(self, rank):
+        return int(rank) in self.ranks
     
     def get_ability_rank_range(self):
         trained_ranks = self.get_trained_ranks()
@@ -655,20 +674,6 @@ class Ability:
                else:
                    self.load_ability_ranks(child)
 
-           # elif tag == "abilityddc":
-           #     if self.ddc is not None:
-           #         raise Exception("Only one abilityddc per ability. (%s) %s\n" %
-           #                         (child.tag, str(child)))
-           #     else:
-           #         self.ddc = child.text.strip() if child.text is not None else None
-
-           # elif tag == "abilitydmg":
-           #     if self.damage is not None:
-           #         raise Exception("Only one abilitydmg per ability. (%s) %s\n" %
-           #                         (child.tag, str(child)))
-           #     else:
-           #         self.damage = child.text.strip() if child.text is not None else None
-
            elif tag == "abilitydescription":
                if self.description is not None:
                    raise Exception("Only one abilitydescription per ability. (%s) %s\n" %
@@ -727,6 +732,7 @@ class Ability:
         for child in list(tags_node):
             if child.tag is not COMMENT:
                 tag = child.tag[1:-2]
+                #print(f"[{child.tag}]")
                 self.tags.append(child.tag)
         return
     
@@ -996,6 +1002,7 @@ class AbilityGroup:
            elif tag == "ability":
                ability = Ability(self.fname)
                ability.load(child)
+               ability.set_group(self)
                self.abilities.append(ability)
 
            elif tag is COMMENT:               
@@ -1017,8 +1024,6 @@ class AbilityGroup:
 
         """
         problems = []
-        # group_name = self.info.title.casefold()
-        # group_name = group_name.replace(" ", "_")
         group_id = self.info.ability_group_id
 
         if "_" in group_id:
@@ -1028,14 +1033,25 @@ class AbilityGroup:
 
         for ability in self.abilities:
             tags = ability.get_tags()
-        #     if group_name not in tags:
-        #         problems.append(f"Ability {ability.get_id()} is in group {group_name} but "
-        #                         f"the tags for that ability do not contain the group name. f{tags}")
-        # return problems
             if group_id not in tags:
                 problems.append(f"Ability {ability.get_id()} is in group {group_id} but "
                                 f"the tags for that ability do not contain the group name. f{tags}")
+
+        # the ability group family must also be a tag!
+        for ability in self.abilities:
+            family_str = strip_xml(self.info.family) 
+            if family_str not in ability.tags:
+                problems.append(
+                    f"The tags for ability {ability.get_title()} are: [{', '.join(ability.tags)}]. "
+                    f"They should include the abilities family {family_str}!")
+                
         return problems
+
+    def check_sanity(self):
+        problems = self.get_problems()
+        if len(problems) > 0:
+            raise Exception(", ".join([str(p) for p in problems]))
+        return    
     
 
 class AbilityGroups:
@@ -1146,9 +1162,15 @@ class AbilityGroups:
         return True    
 
     def check_sanity(self):
+        """
+        Checks the "correctness" of the configuration.  Complains if it doesn't like it.
+
+        """
         for ability_group in self:
             for ability in ability_group:
                 ability.check_sanity()
+                
+            ability_group.check_sanity()
         return                        
     
     def get_ability_rank(self, ability_rank_id):

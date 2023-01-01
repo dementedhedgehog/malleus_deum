@@ -9,14 +9,18 @@ import sys
 from os.path import abspath, join, dirname
 import codecs
 import lxml
+import re
+
 # third party
 from lxml import etree
 COMMENT = etree.Comment
+
 # local
 from config import use_imperial
 
 # directory constants
 root_dir = abspath(join(dirname(__file__), ".."))
+src_dir = abspath(join(dirname(__file__)))
 build_dir = join(root_dir, "build")
 pdfs_dir = join(root_dir, "pdfs")
 docs_dir = join(root_dir, "docs")
@@ -24,11 +28,12 @@ fonts_dir = join(root_dir, "fonts")
 resources_dir = join(root_dir, "resources")
 char_sheet_dir = join(resources_dir, "character_sheets")
 archetypes_dir = join(root_dir, "archetypes")
-ability_groups_dir = join(root_dir, "abilities")
+abilities_dir = join(root_dir, "abilities")
 encounters_dir = join(root_dir, "encounters")
 modules_dir = join(root_dir, "modules")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 release_dir = join(root_dir, "releases")
+third_party_dir = join(src_dir, "third_party")
 
 # load the xml schema
 def load_schema(schema_fname):
@@ -94,7 +99,7 @@ def validate_xml(doc):
 
 def node_to_string(node):
     """
-    Returns the nodes contents and its children as a string.
+    Returns all the nodes contents and its children as a string.
 
     """
     return etree.tostring(node, pretty_print=True, encoding="unicode")
@@ -175,6 +180,13 @@ def convert_str_to_bool(str_bool):
     return str_bool.lower() != "false"
 
 
+def strip_xml(element):
+    """Removes the < and /> around elements."""
+    if element.startswith("<") and element.endswith("/>"):
+        return element[1:-2]
+    return element
+
+
 def convert_str_to_int(str_int):
     # later we might want some error handling!
     return int(str_int)
@@ -224,3 +236,21 @@ def get_text_for_child(element, child_name):
         text = child.text.strip()
     return text
 
+
+_ability_regex = re.compile(
+    "✱"
+    "([a-zA-Z]+)" # ability family
+    "\."
+    "([a-zA-Z_0-9\-\?]+)" # ability name
+    "(?:\[([a-zA-Z_0-9\-\?]*)\])?" # optional template?
+    "(?:_([0-9]+))" # optional level
+)
+
+def parse_ability_str(ability_str):
+    """
+    Takes something like this .. ✱lore.history[westreich]_2 and returns a tuple
+    ("lore", "history", "westreich", 2).
+
+    """    
+    match = _ability_regex.match(ability_str)
+    return None if match is None else match.groups()

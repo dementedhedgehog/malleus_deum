@@ -40,6 +40,7 @@ TEXT_TAGS = (
     "mbabilities", "mbaspects", "mbdescription", "mbinitiativebonus",
     "npcname", "npchps", "mbresolve", "mbmagic",
     "sectiontitle", "subsectiontitle", "subsubsectiontitle", "abilitytitle",
+    "leveltitle", "branchtitle", "pathtitle", 
     "descriptions", "term", "description", 
     "p", 
     "principle", "principletitle", "principlebody",
@@ -51,6 +52,22 @@ TEXT_TAGS = (
 
 # These are image type tags.
 IMG_TAGS = ("img", "handout")
+
+# These tags don't need to go to the document formatter
+# (They contain metadata.. e.g. archetype metadata).
+NON_DOC_TAGS = (
+    "streams",
+    "stream",
+    "levelstamina",
+    "levelhealth",
+    "levelhealthrefresh",
+    "levelluck",
+    "levelluckrefresh",
+    "levelmagic",
+    "levelmagicrefresh",
+    "levelmettle",
+    "levelmettlerefresh",
+)
 
 
 class Doc:
@@ -152,6 +169,7 @@ class Doc:
 
         methods = {}
         for fn_name in dir(i_formatter):
+
             if fn_name.startswith("start_") or fn_name.startswith("end_"):
                 fn = getattr(i_formatter, fn_name)
                 if callable(fn):
@@ -162,9 +180,17 @@ class Doc:
 
 
     def _format(self, element, i_formatter, methods, errors):
+        """
+        Recursively descend into the doc structure.. handing nodes off to 
+        the formatter to  deal with.
+        """
         tag = element.tag
         element_name =  ("%s" % tag).lower()
 
+        # Don't bother passing these metadata tags to the formater.
+        if tag in NON_DOC_TAGS:
+            return        
+        
         if tag is COMMENT:
             i_formatter.start_comment(element)
         else:            

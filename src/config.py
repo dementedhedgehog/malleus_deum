@@ -94,6 +94,7 @@ archetypes_to_build = (
     # ("skald", True, "[SKL]"),
     # ("summoner", True, "[SM]"),
     #("witch_hunter", True, "[WH]"),
+    ("night_gauner", True, "[NG]"),
 )
 
 encounters_to_build = (

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/bin/env python3
 """
 
  An Archetype is a class+race, e.g. Dwarven Shield Warrior.
@@ -20,6 +20,8 @@ from utils import (
     children_to_string,
     contents_to_string)    
 from abilities import AbilityRank
+from streams import StreamConfig
+from levels import Levels
 
 
 DEFAULT_GENDER = "Choose whatever gender you want."
@@ -32,211 +34,6 @@ class NonUniqueTagError(Exception):
         super(NonUniqueTagError, self).__init__(
             "Only one tag: %s per file. %s:%s" % (tag, fname, line_number))
         return
-
-class LevelProgressionData:
-    """
-    Information about going up a level for an Archetype.
-
-    """
-
-    def __init__(self, fname):
-
-        # filename where this information is defined.
-        self.fname = fname
-
-        # this level number
-        self.level_number = None
-
-        # hit points
-        self.level_stamina = None
-        self.level_health = None
-        self.level_health_refresh = None
-
-        # level up ability gains and promotions
-        self.level_abilities = ""
-        self.level_promotions = ""
-
-        # mettle pool
-        self.level_mettle = None
-        self.level_mettle_refresh = None
-        
-        # luck pool
-        self.level_luck = None
-        self.level_luck_refresh = None
-        
-        # magic pool
-        self.level_magic = None        
-        self.level_magic_refresh = None
-
-        self.tags = []
-        return
-
-    def get_level_number(self):
-        return self.level_number
-
-    def load_level_abilities(self, node):
-        self.level_abilities = contents_to_string(node)
-
-    def load_level_promotions(self, node):
-        self.level_promotions = contents_to_string(node)
-
-    def load(self, archetype_node, fail_fast):
-        # handle all the children
-        for child in list(archetype_node):
-        
-           tag = child.tag
-           if tag == "levelnumber":
-               if self.level_number is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_number = int(child.text.strip())
-
-           elif tag == "levelmettle":
-               if self.level_mettle is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_mettle = contents_to_string(child)                   
-
-           elif tag == "levelmettlerefresh":
-               if self.level_mettle_refresh is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_mettle_refresh = contents_to_string(child)
-
-           elif tag == "levelstamina":
-               if self.level_stamina is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_stamina = normalize_ws(child.text.strip())
-
-           # elif tag == "levelstaminarefresh":
-           #     if self.level_stamina_refresh is not None:
-           #         raise NonUniqueTagError(tag, self.fname, child.sourceline)
-           #     else:
-           #         self.level_stamina_refresh = normalize_ws(child.text.strip())
-
-           elif tag == "levelhealth":
-               if self.level_health is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                self.level_health = normalize_ws(child.text.strip())
-
-           elif tag == "levelhealthrefresh":
-               if self.level_health_refresh is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                self.level_health_refresh = normalize_ws(child.text.strip())
-
-           elif tag == "levellore":
-               if self.level_lore is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_lore = convert_str_to_int(child.text.strip())
-
-           elif tag == "levelmartial":
-               if self.level_martial is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_martial = convert_str_to_int(child.text.strip())
-
-           elif tag == "levelgeneral":
-               if self.level_general is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_general = convert_str_to_int(child.text.strip())
-
-           elif tag == "levelmagical":
-               if self.level_magical is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_magical = convert_str_to_int(child.text.strip())
-
-           elif tag == "levelabilities":
-               if len(self.level_abilities) > 0:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   if child.text is not None:
-                       self.load_level_abilities(child)
-
-           elif tag == "levelpromotions":
-               if len(self.level_promotions) > 0:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   if child.text is not None:
-                       self.load_level_promotions(child)
-
-           elif tag == "levelmagicpool":
-               if self.level_magic is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_magic = contents_to_string(child)
-                       
-           elif tag == "levelmagicrefresh":
-               if self.level_magic_refresh is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_magic_refresh = contents_to_string(child)
-
-           elif tag == "levelluck":
-               if self.level_luck is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_luck = contents_to_string(child)
-
-           elif tag == "levelluckrefresh":
-               if self.level_luck_refresh is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.level_luck_refresh = contents_to_string(child)
-                       
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
-           
-           else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
-                               (child.tag, self.fname, child.sourceline))
-        return
-            
-
-
-class LevelProgressionTable:
-    """
-    A list of level progression data for the Archetype, one for each level.
-
-    """
-    def __init__(self, fname):
-        self.level_progression_data_list = []
-        self.fname = fname
-        return
-
-    def load(self, level_progression_table_node, fail_fast):        
-
-        # handle all the children
-        for child in list(level_progression_table_node):
-        
-           tag = child.tag
-           if tag == "level":
-               level_progression_data = LevelProgressionData(self.fname)
-               level_progression_data.load(child, fail_fast)
-               self.level_progression_data_list.append(level_progression_data)
-
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
-           
-           else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
-                               (child.tag, self.fname, child.sourceline))
-
-        self.level_progression_data_list.sort(key = lambda lpd: lpd.level_number)
-        return
-
-    def __iter__(self):
-        return iter(self.level_progression_data_list)
-
-    def __getitem__(self, index):
-        return self.level_progression_data_list[index]
 
 
 class Archetype:
@@ -261,26 +58,35 @@ class Archetype:
         # text describing the abilities that all members of the archetype initially get.
         self.initial_abilities = None
         
-        self.bio = None        
+        #self.bio = None        
         self.height = None
         self.weight = None
         self.age = None
         self.gender = DEFAULT_GENDER
 
+        # Archetype streams
+        # These are sets of ability constraints to help manage the complexity/balance
+        # of leveling up.
+        self.stream_config = None
+
         self.tags = []
         
-        # update these after a load
-        #self.innate_ability_ranks = []
-                
         # what advantages you get at what levels.
-        self.level_progression_table = LevelProgressionTable(self.fname)        
+        #self.level_progression_table = LevelProgressionTable(self.fname)        
+        self.levels = Levels()        
         return
 
-    def get_progression_data_for_level(self, level):
-        return self.level_progression_table.level_progression_data_list[level]
+    def get_stream_config(self):
+        return self.stream_config
 
-    def get_bio(self):
-        return self.bio
+    # def get_progression_data_for_level(self, level):
+    #     if (self.level_progression_table is not None and
+    #         level in self.level_progression_table.level_progression_data_list):
+    #         return self.level_progression_table.level_progression_data_list[level]
+    #     return []
+
+    # def get_bio(self):
+    #     return self.bio
 
     def get_attribute_limits_str(self):
         if len(self.attr_limits) == 0:
@@ -288,16 +94,6 @@ class Archetype:
         else:
             attr_limits_str = ", ".join([str(limit) for limit in self.attr_limits])
         return attr_limits_str
-
-    # def get_modified_abilities(self):
-    #     # abilities = self.modified_abilities_lookup.values()
-
-    #     # def sort_fn(a, b):
-    #     #     return cmp(a.get_title(), b.get_title())
-        
-    #     # abilities.sort(sort_fn)
-    #     # return abilities
-    #     return []        
 
     def load_tags(self, tags_node, fail_fast):
         for child in list(tags_node):
@@ -308,23 +104,6 @@ class Archetype:
         self.tags.sort()
         return
     
-    # def load_tags(self, tags_node, fail_fast):        
-    #     # handle all the children
-    #     for child in list(tags_node):
-    #        tag = child.tag
-    #        if tag == "tag":
-    #            tag = child.text.strip().lower()
-    #            self.tags.append(tag)
-    #        elif tag is COMMENT:
-    #            # ignore comments!
-    #            pass
-    #        else:
-    #            raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
-    #                            (child.tag, self.fname, child.sourceline))
-    #     self.tags.sort()
-    #     return
-
-    
     def has_magical_abilities(self):
         has_magical_abilities = False
         for modified_ability_group in self.modified_ability_groups:
@@ -334,15 +113,6 @@ class Archetype:
                         has_magical_abilities = True
                         break
         return has_magical_abilities
-    
-
-    # def get_archetype_specific_innate_ability_ranks(self):
-    #     """
-    #     Returns the innate ability ranks specific to this archetype.
-
-    #     """
-    #     return [ ability_rank for ability_rank in self.innate_ability_ranks if 
-    #              ability_rank.is_innate_for_this_archetype() ]
  
     def get_move_distance(self):
         return self.move_distance
@@ -393,8 +163,8 @@ class Archetype:
     def get_initiative(self):
         return self.initiative
     
-    def get_level_progression_table(self):
-        return self.level_progression_table
+    # def get_level_progression_table(self):
+    #     return self.level_progression_table
 
     def get_id(self):
         return self.archetype_id
@@ -402,79 +172,15 @@ class Archetype:
     def load(self, archetype_node, fail_fast):
         try:
             self._load(archetype_node, fail_fast)
-
-            # sort the ability ranks
-            #self.innate_ability_ranks.sort(key = lambda mal: mal.get_title())
-
-            # update the innate abilities
-            # for ability in list(self.modified_abilities_lookup.values()):
-            #     ranks = ability.get_ranks()
-            #     max_rank = None
-            #     for rank in ranks:
-            #         if not rank.is_innate():
-            #             continue
-
-            #         if (max_rank is None or 
-            #             (max_rank.get_rank_number() < rank.get_rank_number())):
-            #             max_rank = rank
-
-            #     if max_rank is not None:
-            #         self.innate_ability_ranks.append(max_rank)
-
-            # update the enabled flag in all the ability groups, abilities and ranks
-            # (it might be out of date here)
-            # for ability_group in self.modified_ability_groups:
-
-            #     # if a group is disabled all it's ranks and abilities are also disabled.
-            #     if not ability_group.is_enabled():
-            #         for ability in ability_group.get_abilities():                    
-            #             ability.set_enabled(False)
-
-            #     else:
-            #         # otherwise an ability group is disabled if all it's abilities are.
-            #         all_abilities_disabled = True
-            #         for ability in ability_group.get_abilities():
-            #             if ability.is_enabled():
-            #                 all_abilities_disabled = False
-            #                 break
-
-            #         if all_abilities_disabled:
-            #             ability_group.set_enabled(False)
-
-            #         else:
-
-            #             # now disable abilities on a per ability basis
-            #             for ability in ability_group.get_abilities():
-            #                 if not ability.is_enabled():
-            #                     ability.set_enabled(False)
-
-            #             # also an ability is disabled if all its ranks are.
-            #             all_ability_ranks_disabled = True
-            #             for ability_rank in ability:
-            #                 if ability_rank.is_enabled():
-            #                     all_ability_ranks_disabled = False
-            #                     break
-
-            #                 if all_ability_ranks_disabled:
-            #                     ability.set_enabled(False)
         except:
             print("Problem trying to parse archetype file: %s" % self.fname)
             raise
-
-        # after we've loaded all the archertype ability information
-        # go through and set the innate information for prerequisites
-        #self.set_innate_abilities() ###########################################
-        # for ability in self.modified_abilities_lookup.values():
-        #     for ability_rank in ability:
-        #         ability_rank.check_consistency()
 
         self.check_consistency()                
         return True
     
 
     def check_consistency(self):        
-        # if self.initial_abilities is None:
-        #     raise Exception("Missing 'initial_abilities' in file: %s" % self.fname)
         return
 
 
@@ -522,11 +228,11 @@ class Archetype:
                else:
                    self.initial_abilities = contents_to_string(child)
 
-           elif tag == "archetypebio":
-               if self.bio is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.bio = children_to_string(child)
+           # elif tag == "archetypebio":
+           #     if self.bio is not None:
+           #         raise NonUniqueTagError(tag, self.fname, child.sourceline)
+           #     else:
+           #         self.bio = children_to_string(child)
     
            elif tag == "archetypeinitiative":
                if self.initiative is not None:
@@ -573,19 +279,30 @@ class Archetype:
            elif tag == "aspectexamples":
                if self.aspect_examples is not None:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.aspect_examples = child.text
+               self.aspect_examples = child.text
 
            elif tag == "archetypetags":
                self.load_tags(child, fail_fast)
 
-           elif tag == "levelprogressiontable":
-               self.level_progression_table.load(child, fail_fast)
+           # elif tag == "levelprogressiontable":
+           #     self.level_progression_table.load(child, fail_fast)
+
+           elif tag == "archetypelevels":
+               self.levels.load(child, self.fname, fail_fast)
 
            elif tag == "attrbonus":
                bonus = AttrBonus()
                bonus.parse(self.fname, child)
                self.attr_bonuses.append(bonus)
+
+           elif tag == "attrbonus":
+               bonus = AttrBonus()
+               bonus.parse(self.fname, child)
+               self.attr_bonuses.append(bonus)
+
+           elif tag == "streamconfig":
+               self.stream_config = StreamConfig()
+               self.stream_config.parse(self.fname, child)
 
            elif tag is COMMENT:
                # ignore comments!

@@ -45,9 +45,6 @@ class EPubFormatter:
         self.epub_fname = epub_fname
         self.book = None
         
-        # internal state
-        #self._drop_capped_first_letter_of_chapter = False
-
         # for tables
         self._number_of_columns_in_table = 0
         self._current_column_in_table = 0
@@ -442,39 +439,48 @@ class EPubFormatter:
     
     def end_level(self, level):
         #self.latex_file.write(" \\\\\n")
-        return        
-        
-    def start_level_xp(self, element):
-        #self.latex_file.write(" %s &" % element.text)
-        return    
-    end_level_xp = no_op
-    
-    def start_level_number(self, element):
-        #self.latex_file.write(" %s &" % element.text)
-        return    
-    end_level_number = no_op
-
-    def start_level_combat(self, element):
-        #self.latex_file.write("\\rpgcombatsymbol %s " % element.text)
-        return    
-    end_level_combat = no_op
-
-    def start_level_training(self, element):
-        #self.latex_file.write("\\rpgtrainingsymbol %s " % element.text)
-        return    
-    end_level_training = no_op
-
-    def start_level_learning(self, element):
-        #self.latex_file.write("\\rpglearningsymbol %s " % element.text)
-        return    
-    end_level_learning = no_op
-    
-    def start_level_description(self, element):
-        #self.latex_file.write(" %s " % element.text)
         return
 
-    def end_level_description(self, element):
-        pass
+    def start_leveltitle(self, level_title_node):
+        #self.latex_file.write("\\subsection{")
+        return
+    def end_leveltitle(self, level_title_node):
+        #self.latex_file.write("}")
+        return
+
+    
+        
+    # def start_level_xp(self, element):
+    #     #self.latex_file.write(" %s &" % element.text)
+    #     return    
+    # end_level_xp = no_op
+    
+    # def start_level_number(self, element):
+    #     #self.latex_file.write(" %s &" % element.text)
+    #     return    
+    # end_level_number = no_op
+
+    # def start_level_combat(self, element):
+    #     #self.latex_file.write("\\rpgcombatsymbol %s " % element.text)
+    #     return    
+    # end_level_combat = no_op
+
+    # def start_level_training(self, element):
+    #     #self.latex_file.write("\\rpgtrainingsymbol %s " % element.text)
+    #     return    
+    # end_level_training = no_op
+
+    # def start_level_learning(self, element):
+    #     #self.latex_file.write("\\rpglearningsymbol %s " % element.text)
+    #     return    
+    # end_level_learning = no_op
+    
+    # def start_level_description(self, element):
+    #     #self.latex_file.write(" %s " % element.text)
+    #     return
+
+    # def end_level_description(self, element):
+    #     pass
 
     def start_titlepage(self, chapter):
         #self.latex_file.write("\\begin{titlepage}\n"

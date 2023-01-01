@@ -329,24 +329,6 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 """
 
 
-# %% for List of Art
-# \DeclareFloatingEnvironment[
-#   fileext=loa,
-#   listname={List of Art},
-#   name=Art,
-#   placement=tp,
-# ]{art}
-
-
-#  %%within=section, %% activate it if you want
-#  %%chapterlistsgaps=on, %% meaningful only if chapters exist
-
-
-
-# def replace_underscores(label):
-#     """Latex doesn't like non-latex text with underscores.. replace underscore with hyphen)"""
-#     return label.replace("_", "-")
-
 # Global table state
 table_state = None
 
@@ -469,7 +451,7 @@ class LatexFormatter:
     end_immediate = no_op
 
     #
-    # Corollarys
+    # Corollaries
     #
     def start_corollary(self, symbol):
         self.latex_file.write("\\begin{corollary}")
@@ -626,10 +608,10 @@ class LatexFormatter:
         self.latex_file.write("%s\n" % normalize_ws(action_points.text))
         return
 
-    def start_and(self, and_element):
+    def start_ampersand(self, and_element):
         self.latex_file.write("\\&")
         return
-    end_and = no_op
+    end_ampersand = no_op
 
     def start_lore(self, element):
         self.latex_file.write("\\lore{}")
@@ -724,6 +706,17 @@ class LatexFormatter:
         self.latex_file.write("}")
         return
 
+    start_archetypelevel = no_op
+    end_archetypelevel = no_op
+    
+    def start_leveltitle(self, archetype_level_title):
+        levelnumber = archetype_level_title.get("levelnumber", -1)        
+        self.latex_file.write("\\subsection{Level {%s}}" % levelnumber)
+        return
+    def end_leveltitle(self, archetype_level_title):
+        return
+    
+
     def start_playexample(self, playexample):
         self.latex_file.write("\\begin{playexample}\n")
         return
@@ -732,50 +725,63 @@ class LatexFormatter:
         self.latex_file.write(playexample.text)                
         self.latex_file.write("\\end{playexample}\n")        
         return
-        
-    def start_level(self, level):
-        self._current_row_in_level_table += 1
-        if self._current_row_in_level_table % 2 == 1:            
-            self.latex_file.write("\\rowcolor{blue!20} \n")
-        else:
-            self.latex_file.write("\\rowcolor{white!20} \n")
+
+    start_level = no_op
+    end_level = no_op
+
+    def start_leveltitle(self, level_title):
+        self.latex_file.write("\\subsection*{")
         return
-    
-    def end_level(self, level):
-        self.latex_file.write(" \\\\\n")
-        return        
-        
-    def start_level_xp(self, element):
-        self.latex_file.write(" %s &" % element.text)
-        return    
-    end_level_xp = no_op
-    
-    def start_level_number(self, element):
-        self.latex_file.write(" %s &" % element.text)
-        return    
-    end_level_number = no_op
-
-    def start_level_combat(self, element):
-        self.latex_file.write("\\rpgcombatsymbol %s " % element.text)
-        return    
-    end_level_combat = no_op
-
-    def start_level_training(self, element):
-        self.latex_file.write("\\rpgtrainingsymbol %s " % element.text)
-        return    
-    end_level_training = no_op
-
-    def start_level_learning(self, element):
-        self.latex_file.write("\\rpglearningsymbol %s " % element.text)
-        return    
-    end_level_learning = no_op
-    
-    def start_level_description(self, element):
-        self.latex_file.write(" %s " % element.text)
+    def end_leveltitle(self, level_title):
+        self.latex_file.write("}")
         return
 
-    def end_level_description(self, element):
-        pass
+    
+
+    
+    # def start_level(self, level):
+    #     self._current_row_in_level_table += 1
+    #     if self._current_row_in_level_table % 2 == 1:            
+    #         self.latex_file.write("\\rowcolor{blue!20} \n")
+    #     else:
+    #         self.latex_file.write("\\rowcolor{white!20} \n")
+    #     return
+    
+    # def end_level(self, level):
+    #     self.latex_file.write(" \\\\\n")
+    #     return        
+        
+    # def start_level_xp(self, element):
+    #     self.latex_file.write(" %s &" % element.text)
+    #     return    
+    # end_level_xp = no_op
+    
+    # def start_level_number(self, element):
+    #     self.latex_file.write(" %s &" % element.text)
+    #     return    
+    # end_level_number = no_op
+
+    # def start_level_combat(self, element):
+    #     self.latex_file.write("\\rpgcombatsymbol %s " % element.text)
+    #     return    
+    # end_level_combat = no_op
+
+    # def start_level_training(self, element):
+    #     self.latex_file.write("\\rpgtrainingsymbol %s " % element.text)
+    #     return    
+    # end_level_training = no_op
+
+    # def start_level_learning(self, element):
+    #     self.latex_file.write("\\rpglearningsymbol %s " % element.text)
+    #     return    
+    # end_level_learning = no_op
+    
+    # def start_level_description(self, element):
+    #     self.latex_file.write(" %s " % element.text)
+    #     return
+
+    # def end_level_description(self, element):
+    #     pass
 
     def start_titlepage(self, chapter):
         self.latex_file.write("\\begin{titlepage}\n"
@@ -1295,6 +1301,61 @@ class LatexFormatter:
     def end_comment(self, comment):
         return
 
+    def start_branch(self, branch_node):
+        return
+
+    def start_branchtitle(self, branchtitle_node):
+        self.latex_file.write("\\subsubsection*{")
+        return
+
+    def end_branchtitle(self, branchtitle_node):
+        
+        self.latex_file.write("}")
+        return
+
+    def start_branchdescription(self, branchdescription_node):
+        # self.latex_file.write("\\subsubsection*{")
+        return
+
+    def end_branchdescription(self, branchtitle_node):
+        #self.latex_file.write("\\begin{description}[style=multiline,leftmargin=3cm,font=\\normalfont]\n")
+        self.latex_file.write("\\begin{description}\n")
+        return
+
+    def end_branch(self, branch_node):
+        self.latex_file.write("\\end{description}\n")
+        return
+
+    
+    def start_path(self, path_node):
+        # pathtitle is optional
+        has_pathtitle = False
+        for child in path_node:
+            if child.tag == "pathtitle":
+                has_pathtitle = True
+        if not has_pathtitle:
+            self.latex_file.write(f"\\item[\\em❧] ")
+        return
+
+    def end_path(self, path_node):
+        return
+
+    def start_pathtitle(self, pathtitle_node):
+        self.latex_file.write(f"\\item[\\em❧ ")
+        return
+
+    def end_pathtitle(self, pathtitle_node):
+        self.latex_file.write("]")
+        return
+
+    def start_choice(self, choice_node):
+        return
+
+    def end_choice(self, choice_node):
+        return
+
+    
+
     #
     # Table
     #
@@ -1355,8 +1416,8 @@ class LatexFormatter:
                 table_spec_str += "p{%s\\hsize}" % percent_width
                 
             elif child.tag is COMMENT:
-               # ignore comments!
-               pass
+                # ignore comments!
+                pass
 
             else:
                 raise Exception("Unknown table spec: %s" % child.tag)
@@ -1416,7 +1477,6 @@ class LatexFormatter:
             self.latex_file.write(r" \hline ")
         return
 
-
     def end_table(self, table):
         global table_state
 
@@ -1448,7 +1508,7 @@ class LatexFormatter:
 
         else:
             raise Exception("Unknown table category: '%s'" % category)
-                
+
         if figure:
             self.latex_file.write("\\bottomrule ")
         else:
@@ -1482,12 +1542,9 @@ class LatexFormatter:
                 self.latex_file.write("\n\\\\\n")
         else:
             self.latex_file.write("\\end{table}")
-        
-                
 
         # Force the caption and the table to be on the same page.
-        #self.latex_file.write(r"\end{minipage}")        
-                
+        #self.latex_file.write(r"\end{minipage}")                        
             
         self.latex_file.write("\n\n")
 
@@ -1556,6 +1613,9 @@ class LatexFormatter:
         align = table_data.get("align")
         if align is None:
             align = "l"
+
+        # print("  %s  %s   %s" %
+        #       (self._current_column_in_table, width, self._number_of_columns_in_table))
 
         self._current_column_in_table = (
             (self._current_column_in_table + width) % self._number_of_columns_in_table)
