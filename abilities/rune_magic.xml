@@ -18,10 +18,10 @@
     <abilitytitle>Bladesharp</abilitytitle>
     <abilityid>rune.bladesharp</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><rune/><magicpool/></tags>
+    <tags><magical/><rune/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="3" effect="+Rank dmg for one edged weapon">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -35,10 +35,10 @@
     <abilitytitle>Hold Door</abilitytitle>
     <abilityid>rune.hold_portal</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><rune/><magicpool/></tags>
+    <tags><magical/><rune/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="9">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -55,10 +55,10 @@
     <abilitytitle>Hex Hammer</abilitytitle>
     <abilityid>rune.hex_hammer</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><rune/><magicpool/></tags>
+    <tags><magical/><rune/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -71,10 +71,10 @@
   </ability>
   
   <ability>
-    <abilitytitle>Rune Lore</abilitytitle>
-    <abilityid>rune.lore</abilityid>
+    <abilitytitle>Runecraft</abilitytitle>
+    <abilityid>rune.runecraft</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><rune/><lore/></tags>
+    <tags><magical/><rune/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline></spline>
@@ -86,15 +86,14 @@
     </abilitydescription>    
   </ability>
   
-
   <ability>
     <abilitytitle>Sign of Idreshein</abilitytitle>
     <abilityid>rune.sign_of_idreshein</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><rune/><magicpool/></tags>
+    <tags><magical/><rune/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="9" dmg="d6xRank+4">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.lore_1</prereqabilityrank>	
+    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -104,5 +103,4 @@
       </p>
     </abilitydescription>    
   </ability>
-
 </abilitygroup>

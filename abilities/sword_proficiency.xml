@@ -18,7 +18,7 @@
     <abilitytitle>Daring Thrust</abilitytitle>
     <abilityid>sword.daring_thrust</abilityid>
     <abilityactiontype><free/></abilityactiontype>
-    <tags><sword/><weapon/></tags>
+    <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck
 	effect="When missed by melee attack make an extra Sword Strike attack as a minor action."
@@ -37,7 +37,7 @@
     <abilitytitle>Follow Through</abilitytitle>
     <abilityid>sword.follow_through</abilityid>
     <abilityactiontype><free/></abilityactiontype>
-    <tags><sword/><weapon/></tags>
+    <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck
 	effect="After hitting with a melee attack make an additional Sword Strike attack on an adjacent opponent."
@@ -56,7 +56,7 @@
     <abilitytitle>Mighty Blow</abilitytitle>
     <abilityid>sword.mighty_blow</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><sword/><weapon/></tags>
+    <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5" effect="Sword Strike with +3xStrength+Rank extra damage">Mettle+Rank</abilitycheck>
     <prereqabilityrank>sword.strike_3</prereqabilityrank>
@@ -74,7 +74,7 @@
     <abilitytitle>Sword Disarm</abilitytitle>
     <abilityid>sword.disarm</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><sword/><weapon/></tags>
+    <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Speed" effect="Opponent disarmed">Mettle+3×Rank</abilitycheck>
     <prereqabilityrank>sword.strike_2</prereqabilityrank>	
@@ -91,7 +91,7 @@
     <abilitytitle>Sword Feint</abilitytitle>
     <abilityid>sword.feint</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><sword/><weapon/></tags>
+    <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Agility" effect="Character acts before target.">Std+Agility+Rank</abilitycheck>
     <prereqabilityrank>sword.strike_2</prereqabilityrank>
@@ -110,7 +110,7 @@
     <abilitytitle>Sword Strike</abilitytitle>
     <abilityid>sword.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><sword/><weapon/></tags>
+    <tags><martial/><sword/><weapon/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Speed.">Std+Rank</abilitycheck>
     <spline></spline>
@@ -127,7 +127,7 @@
     <abilitytitle>Sword Parry</abilitytitle>
     <abilityid>sword.parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><sword/><weapon/><untrained/></tags>
+    <tags><martial/><sword/><weapon/><untrained/></tags>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck dc="Targets Attack" effect="Attack blocked.">Std+Rank</abilitycheck>
     <prereqabilityrank>sword.strike_1</prereqabilityrank>	

@@ -15,10 +15,10 @@
   </abilitygroupinfo>
 
   <ability>
-    <abilitytitle>Abjuration Lore</abilitytitle>
+    <abilitytitle>Abjuration</abilitytitle>
     <abilityid>abjuration</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><abjuration/><lore/></tags>
+    <tags><magical/><abjuration/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline></spline>
@@ -36,7 +36,7 @@
     <abilitytitle>Banish</abilitytitle>
     <abilityid>abjuration.banish</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><abjuration/><magicpool/></tags>
+    <tags><magical/><abjuration/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
@@ -59,7 +59,7 @@
     <abilitytitle>Circle of Protection</abilitytitle>
     <abilityid>abjuration.circle_of_protection</abilityid>
     <abilityactiontype><full-turn/></abilityactiontype>
-    <tags><abjuration/><magicpool/></tags>
+    <tags><magical/><abjuration/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <prereqabilityrank>abjuration_1</prereqabilityrank>
@@ -95,7 +95,7 @@
     <abilitytitle>Contego</abilitytitle>
     <abilityid>magic.contego</abilityid>
     <abilityactiontype><reaction-or-minor/></abilityactiontype>
-    <tags><abjuration/><ranged/><magicpool/></tags>
+    <tags><magical/><abjuration/><ranged/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>    
     <prereqabilityrank>abjuration.circle_of_protection_2</prereqabilityrank>
@@ -125,7 +125,7 @@
     <abilitytitle>Commune</abilitytitle>
     <abilityid>magic.commune</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><abjuration/><magicpool/></tags>
+    <tags><magical/><abjuration/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>
@@ -150,7 +150,7 @@
     <abilitytitle>Eldritch Shield</abilitytitle>
     <abilityid>magic.eldritch_shield</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><abjuration/><magicpool/></tags>
+    <tags><magical/><abjuration/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>abjuration_1</prereqabilityrank>
@@ -174,7 +174,7 @@
     <abilitytitle>Flesh Ward</abilitytitle>
     <abilityid>magic.flesh_ward</abilityid>
     <abilityactiontype><reaction-or-minor/></abilityactiontype>
-    <tags><abjuration/><touch/><magicpool/></tags>
+    <tags><magical/><abjuration/><touch/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>

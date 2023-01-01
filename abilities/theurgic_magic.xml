@@ -19,10 +19,10 @@
     <abilitytitle>Air of Beatitude</abilitytitle>
     <abilityid>theurgic.air_of_beatitude</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="3" type="Magic+Rank" range="self">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -48,10 +48,10 @@
     <abilitytitle>Augury</abilitytitle>
     <abilityid>theurgic.augury</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><theurgic/><ritual/><magicpool/></tags>
+    <tags><magical/><theurgic/><ritual/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>    
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="100"/><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -116,10 +116,10 @@
     <abilitytitle>Back! Thou Creature From the Abyss</abilitytitle>
     <abilityid>theurgic.back</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7" effect="Demon makes Mettle Check vs 5×Rank">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -135,14 +135,14 @@
     <abilitytitle>Blessed Arms</abilitytitle>
     <abilityid>theurgic.blessed_arms</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck
 	dc="3"
 	range="touch"
 	effect="weapons receive +Rank dmg vs demons and undead"
 	type="Magic+Rank">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -158,10 +158,10 @@
     <abilitytitle>Canticle of Mithras</abilitytitle>
     <abilityid>theurgic.canticle_of_mithras</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/><maintain/></tags>
+    <tags><magical/><theurgic/><magicpool/><maintain/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7" effect="Alies make defensive checks against evil opponents.">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -176,10 +176,10 @@
     <abilitytitle>Holy Water</abilitytitle>
     <abilityid>theurgic.holy_water</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="5" effect="Rank+1 holy water vials">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -206,10 +206,10 @@
     <abilitytitle>Divine Retribution</abilitytitle>
     <abilityid>theurgic.divine_retribution</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="5" effect="Check to counter attack">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="-60" y="45"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -224,10 +224,10 @@
     <abilitytitle>Exorcise</abilitytitle>
     <abilityid>theurgic.exorcise</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="Context Dependent" effect="Exorcise evil spirit">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank> 
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank> 
     <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -252,10 +252,10 @@
     <abilitytitle>Gentle Repose</abilitytitle>
     <abilityid>theurgic.gentle_repose</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="5" effect="+Rank to Near Death saves">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -270,10 +270,10 @@
     <abilitytitle>Grace of Mithras</abilitytitle>
     <abilityid>theurgic.grace_of_mithras</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="5" effect="+Rank to hit and dmg">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -287,10 +287,10 @@
     <abilitytitle>Guiding Hand</abilitytitle>
     <abilityid>theurgic.guiding_hand</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="3" effect="arrow or bolt misses or is rerolled">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -320,10 +320,10 @@
     <abilitytitle>Heal</abilitytitle>
     <abilityid>theurgic.heal</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="9" effect="heal 2d4+Rank">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_2</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -340,10 +340,10 @@
     <abilitytitle>Light of Mithras</abilitytitle>
     <abilityid>theurgic.light_of_mithras</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="3" effect="Create light">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -358,10 +358,10 @@
     <abilitytitle>Litany of Redemption</abilitytitle>
     <abilityid>theurgic.litany_of_redemption</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="5" effect="Prayer refreshes a mettle die">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -377,10 +377,10 @@
     <abilitytitle>No - Take Me!</abilitytitle>
     <abilityid>theurgic.no_take_me</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="5" effect="Transfers damage">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -398,10 +398,10 @@
     <abilitytitle>Purify</abilitytitle>
     <abilityid>theurgic.purify</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="7" effect="Purifies food or drink">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -417,17 +417,17 @@
   
 
   <ability>
-    <abilitytitle>Theurgic Lore</abilitytitle>
-    <abilityid>theurgic.lore</abilityid>
+    <abilitytitle>Theurgy</abilitytitle>
+    <abilityid>theurgic.theurgy</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><theurgic/><lore/></tags>
+    <tags><magical/><theurgic/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="13" effect="Background knowledge">Std+Rank</abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
-  	Theirgic lore is the study of how to cast theological, or clerical, spells.  There is a
+  	Theurgy is the study of how to cast theological, or clerical, spells.  There is a
   	separate ability called Theology that represents study of the the deities, the history of
   	religion, and of the teleolical origins of the world.  In most cases both abilities are
   	required to cast theurgic spells.
@@ -440,7 +440,7 @@
     <abilitytitle>Hammer of the Hierophant</abilitytitle>
     <abilityid>theurgic.hammer_of_the_hierophant</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/><maintain/></tags>
+    <tags><magical/><theurgic/><magicpool/><maintain/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7" effect="Mace or Hammer">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.blessed_arms_1</prereqabilityrank>
@@ -458,10 +458,10 @@
     <abilitytitle>Hold Undead</abilitytitle>
     <abilityid>theurgic.hold_undead</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5" effect="To cast">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -481,7 +481,7 @@
     <abilitytitle>Turn Undead</abilitytitle>
     <abilityid>theurgic.turn_undead</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="7" effect="To cast">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.hold_undead_3</prereqabilityrank>
@@ -504,7 +504,7 @@
     <abilitytitle>Destroy Undead</abilitytitle>
     <abilityid>theurgic.destroy_undead</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="2" to="5"/>
     <abilitycheck dc="9" effect="To cast">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.turn_undead_2</prereqabilityrank>
@@ -527,10 +527,10 @@
     <abilitytitle>Witness Me!</abilitytitle>
     <abilityid>theurgic.witness_me</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><theurgic/><magicpool/></tags>
+    <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="3" effect="Make three melee attacks if Health≤6">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.lore_1</prereqabilityrank>
+    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="75" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">

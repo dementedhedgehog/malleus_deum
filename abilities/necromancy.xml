@@ -21,10 +21,10 @@
     <abilitytitle>Commune with the Dead</abilitytitle>
     <abilityid>necromancy.commune</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><necromancy/><magicpool/></tags>
+    <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="11" effect="Talk with a corpse">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -66,10 +66,10 @@
     <abilitytitle>Eye for an Eye</abilitytitle>
     <abilityid>necromancy.eye_for_an_eye</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><necromancy/><magicpool/></tags>
+    <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5" effect="Melee dmg dealt to caster is also dealt to attacker">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="95"/></spline>
     <abilitydescription>
       <p>
@@ -84,10 +84,10 @@
     <abilitytitle>Graft Flesh</abilitytitle>
     <abilityid>necromancy.graft_flesh</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><necromancy/><magicpool/></tags>
+    <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="11" effect="Replace amputated limbs and heal">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -108,11 +108,11 @@
     <abilitytitle>Forbidden Psalm</abilitytitle>
     <abilityid>necromancy.forbidden_psalm</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><necromancy/><magicpool/><accurate/></tags>
+    <tags><magical/><necromancy/><magicpool/><accurate/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5" effect="">Magic+Rank</abilitycheck>
     <abilitycheck dc="Targets Perception" range="sight" effect="Save or cannot hit">Std+3×Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -128,20 +128,19 @@
 
 
   <ability>
-    <abilitytitle>Necromancy Lore</abilitytitle>
-    <abilityid>necromancy.lore</abilityid>
+    <abilitytitle>Necromancy</abilitytitle>
+    <abilityid>necromancy.necromancy</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><necromancy/><lore/></tags>
+    <tags><magical/><necromancy/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="13" effect="Answer questions about necromancy.">Std+Rank</abilitycheck>
     <spline></spline>    
     <abilitydescription>
       <p noindent="true">
-	The school of necromancy is concerned with the use of death or blood magic.
-	Necromantic lore is the study of the legends of the dread necromancers
-	and the unquiet dead.  Characters may provide useful information about these
-	topics on occasion: identifying undead, and or their weaknesses, and providing
-	the relevant mythology around these creatures.
+	The school of necromancy is concerned with the use of death or blood magic, 
+	the legends of the dread necromancers and the unquiet dead.  Characters may provide
+	useful information about these topics on occasion: identifying undead, and or
+	their weaknesses, and providing the relevant mythology around these creatures.
       </p>      
     </abilitydescription>    
   </ability>
@@ -150,10 +149,10 @@
     <abilitytitle>Stay Death</abilitytitle>
     <abilityid>necromancy.stay_death</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><necromancy/><magicpool/></tags>
+    <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7" effect="Reroll one Near-Death roll.">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -170,10 +169,10 @@
     <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
     <abilityid>necromancy.blood_soucriant</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><necromancy/><magicpool/></tags>
+    <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight.">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -190,10 +189,10 @@
     <abilitytitle>Pall of Darkness</abilitytitle>
     <abilityid>necromancy.pall_of_darkness</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><necromancy/><magicpool/></tags>
+    <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7" effect="Defensive checks against missile attacks made at +3×Rank">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>	
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -205,16 +204,14 @@
     </abilitydescription>
   </ability>
 
-  
-
   <ability>
     <abilitytitle>Veil of Corruption</abilitytitle>
     <abilityid>necromancy.veil_of_corruption</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><necromancy/><magicpool/></tags>
+    <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5" effect="Resembles a corpse.">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.lore_1</prereqabilityrank>
+    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>

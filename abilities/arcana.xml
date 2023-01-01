@@ -20,10 +20,10 @@
     <abilitytitle>Aegis</abilitytitle>
     <abilityid>arcana.aegis</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><arcana/><ranged/><magicpool/></tags>
+    <tags><magical/><arcana/><ranged/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
+    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>    
     <spline><p x="-45" y="45"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -42,10 +42,10 @@
     <abilitytitle>Alarum</abilitytitle>
     <abilityid>arcana.alarum</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><arcana/><ranged/><magicpool/></tags>
+    <tags><magical/><arcana/><ranged/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
+    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>    
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -64,10 +64,10 @@
   </ability>
   
   <ability>
-    <abilitytitle>Arcana Lore</abilitytitle>
-    <abilityid>arcana.lore</abilityid>
+    <abilitytitle>Arcana</abilitytitle>
+    <abilityid>arcana.arcana</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><arcana/><lore/></tags>
+    <tags><magical/><arcana/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline></spline>
@@ -75,7 +75,7 @@
       <p noindent="true">
 	This is the entry rank for all magic.  It represents a basic understanding
 	of the principles of magic.  The character has read extensively of magic
-	history and lore.
+	history and theory.
       </p>
     </abilitydescription>        
   </ability>
@@ -84,10 +84,10 @@
     <abilitytitle>Cloak of Shadows</abilitytitle>
     <abilityid>arcana.cloak_of_shadows</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><arcana/><magicpool/></tags>
+    <tags><magical/><arcana/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>    
+    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>    
     <spline><p x="-75" y="50"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -104,10 +104,10 @@
     <abilitytitle>Ignis</abilitytitle>
     <abilityid>arcana.ignis</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><arcana/><magicpool/></tags>
+    <tags><magical/><arcana/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>    
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
+    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>
     <spline><p x="0" y="45"/></spline>
     <abilitydescription>
       <p>
@@ -126,7 +126,7 @@
     <abilitytitle>Incendo</abilitytitle>
     <abilityid>arcana.incendo</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><arcana/><magicpool/></tags>
+    <tags><magical/><arcana/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <prereqabilityrank>arcana.ignis_1</prereqabilityrank>
@@ -150,10 +150,10 @@
     <abilitytitle>True Sight</abilitytitle>
     <abilityid>arcana.true_sight</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><arcana/><magicpool/></tags>
+    <tags><magical/><arcana/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
+    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>
     <spline><p x="60" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -174,10 +174,10 @@
     <abilitytitle>Scroll Writing</abilitytitle>
     <abilityid>arcana.scrolls</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arcana/></tags>
+    <tags><magical/><arcana/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arcana.lore_1</prereqabilityrank>
+    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">

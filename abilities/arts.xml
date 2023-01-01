@@ -14,7 +14,7 @@
     <abilitygroupdescription>
       <p>
 	Acting, singing, poetry, reading an audience, moving people
-	and knowing the lore.
+	and knowing the history and theories of art.
       </p>
     </abilitygroupdescription>
     <enabled/>
@@ -22,10 +22,10 @@
 
 
   <ability>
-    <abilitytitle>Arts Lore</abilitytitle>
-    <abilityid>arts.lore</abilityid>
+    <abilitytitle>Art Theory</abilitytitle>
+    <abilityid>arts.theory</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="-60" y="0"/></spline>    
@@ -42,7 +42,7 @@
     <abilitytitle>Dance</abilitytitle>
     <abilityid>arts.dance</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>arts.music_1</prereqabilityrank>
@@ -59,10 +59,10 @@
     <abilitytitle>Fine Art</abilitytitle>
     <abilityid>arts.fine_art</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.lore_1</prereqabilityrank>
+    <prereqabilityrank>arts.theory_1</prereqabilityrank>
     <spline><p x="120" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -86,10 +86,10 @@
     <abilitytitle>Jester</abilitytitle>
     <abilityid>arts.jester</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.lore_1</prereqabilityrank>
+    <prereqabilityrank>arts.theory_1</prereqabilityrank>
     <spline><p x="-40" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -107,7 +107,7 @@
     <abilitytitle>Music</abilitytitle>
     <abilityid>arts.music</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="50" y="100"/></spline>
@@ -124,7 +124,7 @@
     <abilitytitle>Musician - Keyed</abilitytitle>
     <abilityid>arts.keyed</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>arts.music_1</prereqabilityrank>
@@ -143,7 +143,7 @@
     <abilitytitle>Musician - Percussion</abilitytitle>
     <abilityid>arts.percussion</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>arts.music_1</prereqabilityrank>
@@ -168,7 +168,7 @@
     <abilitytitle>Musician - Singing</abilitytitle>
     <abilityid>arts.singing</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>arts.music_1</prereqabilityrank>
@@ -185,7 +185,7 @@
     <abilitytitle>Musician - Strings</abilitytitle>
     <abilityid>arts.strings</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>arts.music_2</prereqabilityrank>
@@ -203,7 +203,7 @@
     <abilitytitle>Musician - Wind Instrument</abilitytitle>
     <abilityid>arts.wind</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>arts.music_1</prereqabilityrank>
@@ -222,10 +222,10 @@
     <abilitytitle>Oratory</abilitytitle>
     <abilityid>arts.oratory</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.lore_1</prereqabilityrank>
+    <prereqabilityrank>arts.theory_1</prereqabilityrank>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -240,7 +240,7 @@
     <abilitytitle>Soothe the Savage Beast</abilitytitle>
     <abilityid>arts.soothe_the_savage_beast</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><arts/></tags>
+    <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="15">Std+Rank</abilitycheck>
     <prereqabilityrank></prereqabilityrank>

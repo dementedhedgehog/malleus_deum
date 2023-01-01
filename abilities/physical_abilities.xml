@@ -20,7 +20,7 @@
     <abilitytitle>Armour</abilitytitle>
     <abilityid>physical.armour</abilityid>
     <abilityactiontype><free/></abilityactiontype>
-    <tags><physical/><martial/><core/></tags>
+    <tags><general/><physical/><martial/><core/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Targets Attack">Armour+Rank</abilitycheck>
     <spline><p x="90" y="0"/></spline> 
@@ -68,7 +68,7 @@
     <abilitytitle>Charge</abilitytitle>
     <abilityid>physical.charge</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><martial/><mettlepool/></tags>
+    <tags><general/><physical/><martial/><mettlepool/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="3">Mettle+Rank</abilitycheck>
     <spline><p x="-90" y="0"/></spline> 
@@ -97,7 +97,7 @@
     <abilitytitle>Climb</abilitytitle>
     <abilityid>physical.climb</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="90" y="150"/></spline> 
@@ -114,7 +114,7 @@
     <abilitytitle>Dodge</abilitytitle>
     <abilityid>physical.dodge</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><physical/><martial/><core/></tags>
+    <tags><general/><physical/><martial/><core/></tags>
     <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
     <spline><p x="90" y="120"/></spline> 
@@ -142,7 +142,7 @@
     <abilitytitle>Flee</abilitytitle>
     <abilityid>physical.flee</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="-90" y="30"/></spline> 
@@ -165,7 +165,7 @@
     <abilitytitle>Grapple</abilitytitle>
     <abilityid>physical.grapple</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><nonlethal/><untrained/></tags>
+    <tags><general/><physical/><nonlethal/><untrained/></tags>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck dc="None">Std+Rank</abilitycheck> <!-- FIXME -->
     <spline><p x="90" y="90"/></spline>
@@ -190,7 +190,7 @@
     <abilitytitle>Head Butt</abilitytitle>
     <abilityid>physical.head_butt</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><nonlethal/></tags>
+    <tags><general/><physical/><nonlethal/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="Targets Defence" dmg="2+Strength">Std+Rank</abilitycheck>
     <spline><p x="0" y="90"/></spline> 
@@ -214,7 +214,7 @@
     <abilitytitle>Jump</abilitytitle>
     <abilityid>physical.jump</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline></spline>
@@ -230,7 +230,7 @@
     <abilitytitle>Juggernaut</abilitytitle>
     <abilityid>physical.juggernaut</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><nonlethal/><accurate/></tags>
+    <tags><general/><physical/><nonlethal/><accurate/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Strength">Std+3×Rank</abilitycheck>
     <spline><p x="-90" y="90"/></spline>
@@ -253,7 +253,7 @@
     <abilitytitle>Knockout</abilitytitle>
     <abilityid>physical.knockout</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><physical/><nonlethal/></tags>
+    <tags><general/><physical/><nonlethal/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline><p x="-90" y="180"/></spline> 
@@ -275,7 +275,7 @@
     <abilitytitle>Kick</abilitytitle>
     <abilityid>physical.kick</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><nonlethal/></tags>
+    <tags><general/><physical/><nonlethal/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="2+Speed|Strength">Std+Rank</abilitycheck>
     <spline><p x="-90" y="120"/></spline> 
@@ -299,7 +299,7 @@
     <abilitytitle>Listen</abilitytitle>
     <abilityid>physical.listen</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="0" y="120"/></spline> 
@@ -316,7 +316,7 @@
     <abilitytitle>Notice</abilitytitle>
     <abilityid>physical.notice</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="0" y="150"/></spline> 
@@ -342,7 +342,7 @@
     <abilitytitle>Punch</abilitytitle>
     <abilityid>physical.punch</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><nonlethal/></tags>    
+    <tags><general/><physical/><nonlethal/></tags>    
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="d4">Std+Rank</abilitycheck>
     <spline><p x="90" y="60"/></spline> 
@@ -361,7 +361,7 @@
     <abilitytitle>Rest</abilitytitle>
     <abilityid>physical.rest</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline><p x="0" y="60"/></spline> 
@@ -386,7 +386,7 @@
     <abilitytitle>Run</abilitytitle>
     <abilityid>physical.run</abilityid>
     <abilityactiontype><move/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline><p x="90" y="30"/></spline> 
@@ -416,7 +416,7 @@
     <abilitytitle>Sixth Sense</abilitytitle>
     <abilityid>physical.sixth_sense</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="15">Std+Rank</abilitycheck>
     <spline><p x="0" y="0"/></spline> 
@@ -434,7 +434,7 @@
     <abilitytitle>Sleep</abilitytitle>
     <abilityid>physical.sleep</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline><p x="-90" y="60"/></spline> 
@@ -458,7 +458,7 @@
     <abilitytitle>Sure Feet</abilitytitle>
     <abilityid>physical.sure_feet</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="0" y="30"/></spline> 
@@ -474,7 +474,7 @@
     <abilitytitle>Swim</abilitytitle>
     <abilityid>physical.swim</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/></tags>
+    <tags><general/><physical/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline><p x="90" y="180"/></spline> 
@@ -493,7 +493,7 @@
     <abilitytitle>Throw</abilitytitle>
     <abilityid>physical.throw</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><physical/><martial/></tags>
+    <tags><general/><physical/><martial/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline><p x="-90" y="150"/></spline> 
@@ -512,7 +512,7 @@
     <abilitytitle>Witness Me</abilitytitle>
     <abilityid>physical.witness_me</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><physical/><mettlepool/></tags>
+    <tags><general/><physical/><mettlepool/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="3">Mettle+Rank</abilitycheck>
     <spline><p x="0" y="30"/></spline> 

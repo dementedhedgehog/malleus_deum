@@ -16,10 +16,10 @@
   </abilitygroupinfo>
   
   <ability>
-    <abilitytitle>Conjuration Lore</abilitytitle>
-    <abilityid>conjuration.lore</abilityid>
+    <abilitytitle>Conjuration</abilitytitle>
+    <abilityid>conjuration.conjuration</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><conjuration/><lore/></tags>
+    <tags><magical/><conjuration/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline></spline>
@@ -36,10 +36,10 @@
     <abilitytitle>Eldritch Push</abilitytitle>
     <abilityid>conjuration.eldritch_push</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><conjuration/><magicpool/></tags>
+    <tags><magical/><conjuration/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="3" dmg="7+Rank">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -61,10 +61,10 @@
     <abilitytitle>Chain Lightning</abilitytitle>
     <abilityid>conjuration.chain_lightning</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><conjuration/><magicpool/></tags>
+    <tags><magical/><conjuration/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="9" dmg="d12+Rank">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -87,7 +87,7 @@
     <abilitytitle>Eldritch Grasp</abilitytitle>
     <abilityid>conjuration.eldritch_grasp</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><conjuration/><magicpool/></tags>
+    <tags><magical/><conjuration/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="3" dmg="8+Rank">Magic+Rank</abilitycheck>
     <prereqabilityrank>conjuration.eldritch_push_2</prereqabilityrank>
@@ -112,10 +112,10 @@
     <abilitytitle>Scry</abilitytitle>
     <abilityid>conjuration.scry</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><conjuration/><magicpool/></tags>
+    <tags><magical/><conjuration/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -153,7 +153,7 @@
     <abilitytitle>Scry, Greater</abilitytitle>
     <abilityid>conjuration.scry_greater</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><conjuration/><magicpool/></tags>
+    <tags><magical/><conjuration/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
     <prereqabilityrank>conjuration.scry_2</prereqabilityrank>	
@@ -172,12 +172,12 @@
     <abilitytitle>Wither</abilitytitle>
     <abilityid>conjuration.wither</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><conjuration/><magicpool/></tags>
+    <tags><magical/><conjuration/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
     <abilitycheck dc="5" dmg="2d8">Magic+Rank</abilitycheck>
     <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.lore_2</prereqabilityrank>
+    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>

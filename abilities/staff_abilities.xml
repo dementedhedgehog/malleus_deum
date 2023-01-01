@@ -17,7 +17,7 @@
     <abilitytitle>Staff Strike</abilitytitle>
     <abilityid>staff.strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><staff/><weapon/></tags>
+    <tags><martial/><staff/><weapon/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
     <spline></spline>
@@ -34,7 +34,7 @@
     <abilitytitle>Staff - Brace for Charge</abilitytitle>
     <abilityid>staff.brace</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><staff/><weapon/><untrained/></tags>
+    <tags><martial/><staff/><weapon/><untrained/></tags>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="2x(Weapon + Speed|Strength), opponent must be charging.">Std+Rank</abilitycheck>
     <prereqabilityrank>staff.strike_1</prereqabilityrank>
@@ -52,7 +52,7 @@
     <abilitytitle>Staff - Circle of Death</abilitytitle>
     <abilityid>staff.circle_of_death</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><staff/><weapon/></tags>
+    <tags><martial/><staff/><weapon/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Willpower" effect="Check before target can attack">Std+Rank</abilitycheck>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
@@ -77,7 +77,7 @@
     <abilitytitle>Staff Parry</abilitytitle>
     <abilityid>staff.parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><staff/><weapon/></tags>
+    <tags><martial/><staff/><weapon/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
     <prereqabilityrank>staff.strike_1</prereqabilityrank>	
