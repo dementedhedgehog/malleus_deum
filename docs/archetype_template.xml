@@ -85,17 +85,17 @@
 	  <descriptions>
 	    <term>Stamina = </term>
 	    <description>
-	      {{ archetype.get_progression_data_for_level(0).level_stamina }} + Endurance Modifier 
+	      {{ archetype.levels[0].level_stamina }} + Endurance Modifier 
 	    </description>
 
 	    <term>Health = </term>
 	    <description>
-	      {{ archetype.get_progression_data_for_level(0).level_health }} + Strength Modifier 
+	      {{ archetype.levels[0].level_health }} + Strength Modifier 
 	    </description>
 
 	    <term>Health Refresh Rate = </term>
 	    <description>
-	      {{ archetype.get_progression_data_for_level(0).level_health_refresh }}
+	      {{ archetype.levels[0].level_health_refresh }}
 	    </description>
 	  </descriptions>
 	  Your current stamina and health are the same as your full stamina and health.  The temporary
@@ -110,21 +110,21 @@
 	    
 	    <term>Magic Pool Maximum/Refresh = </term>
 	    <description>
-	    {{ archetype.get_progression_data_for_level(0).level_magic -}}d6
+	    {{ archetype.levels[0].level_magic -}}d6
 	    /
-	    {{- archetype.get_progression_data_for_level(0).level_magic_refresh }}d6
+	    {{- archetype.levels[0].level_magic_refresh }}d6
 	    </description>
 
 	    <term>Mettle Pool Maximum/Refresh = </term>
 	    <description>
-	      {{archetype.get_progression_data_for_level(0).level_mettle -}}d6
+	      {{archetype.levels[0].level_mettle -}}d6
 	      /
-	      {{- archetype.get_progression_data_for_level(0).level_mettle_refresh }}d6
+	      {{- archetype.mettle_refresh }}d6
 	    </description>
 
 	    <term>Luck Pool Maximum/Refresh = </term>
-	    <description>{{ archetype.get_progression_data_for_level(0).level_luck -}}d6
-	    /{{- archetype.get_progression_data_for_level(0).level_luck_refresh }}d6
+	    <description>{{ archetype.levels[0].level_luck -}}d6
+	    /{{- archetype.levels[0].level_luck_refresh }}d6
 	    </description>
 	  </descriptions>      
 	    
@@ -171,77 +171,11 @@
       <p>You are now finished character creation.</p>
     </section>
 
+    {{ archetype.levels.xml }}
 
-    <section>
-      <sectiontitle>Character Background</sectiontitle>      
-      {{ archetype.get_bio() }} 
-    </section>
+    <!-- <section> -->
+    <!--   <sectiontitle>Character Background</sectiontitle> -->
+    <!-- </section> -->
 
-    
-    <section>
-      <sectiontitle>Level Progression</sectiontitle>
-
-      <subsection>
-        <subsectiontitle>Level Progression</subsectiontitle>
-	<p>
-	  The level progression table contains a list of new abilities and promotions
-	  the character gets when they gain a new level. Your character 
-	  may automatically perform abilities which allow checks when untrained.
-	</p>
-      </subsection>
-
-      <table>
-      	<tablecategory>FullWidth</tablecategory>
-      	<tablespec>
-      	  <fixed>0.05</fixed> 
-      	  <fixed>0.07</fixed> 
-      	  <fixed>0.07</fixed> 
-      	  <fixed>0.05</fixed> 
-      	  <fixed>0.05</fixed> 
-      	  <fixed>0.05</fixed> 
-      	  <fixed>0.48</fixed>
-     	</tablespec>
-      	<tabletitle>Level Progression Table</tabletitle>
-
-      	<tableheaderrow>
-      	  <td>Level</td>
-      	  <td>Stamina</td>
-      	  <td>Health</td>
-      	  <td>Mettle</td>
-      	  <td>Magic</td>
-      	  <td>Luck</td>
-      	  <td>Promotions</td>
-      	</tableheaderrow>
-
-	{% for level_progression_data in archetype.level_progression_table %}	
-      	<tablerow>
-      	  <td>{{ level_progression_data.get_level_number() }}</td>
-      	  <td>
-          {{ level_progression_data.level_health }}/{{ level_progression_data.level_health_refresh }}
-	  </td>
-      	  <td>
-          {{ level_progression_data.level_stamina }}/full
-	  </td>
-      	  <td>
-	  {{ level_progression_data.level_mettle }}/{{ level_progression_data.level_mettle_refresh }}
-	  </td>
-      	  <td>
-          {{ level_progression_data.level_magic if level_progression_data.level_magic is not none else "N/A"
-	  }}/{{
-	  level_progression_data.level_magic_refresh
-	  if level_progression_data.level_magic_refresh is not none else "N/A"
-	  }}
-	  </td>
-      	  <td>
-          {{ level_progression_data.level_luck }}/{{ level_progression_data.level_luck_refresh }}
-	  </td>
-      	  <td>
-            {{ level_progression_data.level_promotions }}
-	  </td>
-      	</tablerow>
-	{% endfor %}
-      	<tablelabel>table:{{ doc_name }}-homeland</tablelabel>
-      </table>
-    </section>
   </chapter>
 </book>
