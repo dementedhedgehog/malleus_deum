@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<archetype>
+
+  <archetypetitle>Night Gauner</archetypetitle>
+  <archetypeid>night_gauner</archetypeid>
+  <archetypedescription>     
+    <p>
+      You will find no greater concentration of thieves, whores,
+      brigands, and confidence tricksters, than in
+      the slums of Laibstadt.   In all the Empire, it is she who
+      whelps reprobates of every description with a fecundity
+      that can scarce be believed.  Out of this crucible come the
+      Night Gauners, professional criminals, that run the hidden
+      economy lurking beneath the surface of the great city.
+    </p>
+
+    <figure>
+      <img id="mj_night_gauner" scale="0.24"/>
+    </figure>        
+
+    <p>
+    </p>
+
+    <p>
+    </p>
+
+  </archetypedescription>
+  <archetypeprimaryabilities>
+    <list> 
+      <li>Str:-1, End:-1, Ag:+1, Spd:+0, Per:+2, Wpr:+0 or</li>
+      <li>Str:+0, End:-1, Ag:+1, Spd:+0, Per:+1, Wpr:+0</li>
+    </list>
+  </archetypeprimaryabilities>
+  <archetypeinitialabilities>
+    <p>
+      All Hedge Wizards start with the following skills: ✱language.merovingian_4, ✱language.inochian_2,
+      ✱physical.dodge_2, ✱staff.strike_1, ✱sword.strike_1, ✱physical.run_2, ✱physical.notice_2, ✱physical.jump_1, ✱physical.climb_1, ✱arcana.arcana_1,
+      ✱conjuration.conjuration_1, ✱arcana.true_sight_1, and ✱luck.reroll_1.
+    </p>
+
+  </archetypeinitialabilities>
+  <archetypemovedistance>6</archetypemovedistance>
+
+  
+  
+  <startingcash>20 + d4 sp</startingcash>
+  <startinggear>
+    Cloak, staff, long sword, dagger, flint, rope, rations for a week.
+  </startinggear>
+  
+  <height>
+    <metric>160 + 3d10 cm</metric>
+    <imperial>4'8" + 2d8 inches</imperial>
+  </height>
+  <weight>
+    <metric>50 + 3d10 kg</metric>
+    <imperial>100 + 4d20 pounds</imperial>
+  </weight>
+  <age>24 + 2d6 years</age>
+
+  <aspectexamples>Knowledge is Power, No One Must Know of My Work, The Smartest Man in the Room, I have been Chosen</aspectexamples>
+  <archetypetags>
+    <human/>
+    <humanoid/>
+    <medium/> 
+    <magicuser/> 
+  </archetypetags> 
+  
+  <archetypelevels>
+    <!-- <sectiontitle>Leveling Up</sectiontitle> -->
+    <subsection>
+      <subsectiontitle>Origin</subsectiontitle>
+      <p>
+    	Determine where the character came from by rolling once on the Homeland table below.
+      </p>
+
+    </subsection>
+
+
+    <subsection>
+      <subsectiontitle>Study</subsectiontitle>      
+
+      
+      <figure>
+	<img id="mj_night_gauner_climbing" scale="0.2"/>
+      </figure>        
+
+
+
+      
+      <p>
+	See what the characters fortune holds.
+      </p>
+      
+      <table>
+    	<tablecategory>Standard</tablecategory>
+    	<tablespec>
+    	  <fixed>0.18</fixed>
+    	  <fixed>0.71</fixed>
+    	</tablespec>
+    	<tabletitle>Fortune</tabletitle>
+
+    	<tableheaderrow>
+    	  <td>Roll 1D12</td>
+    	  <td>Fortune</td>
+    	</tableheaderrow>
+
+    	<tablerow>
+    	  <td>1-2</td>
+    	  <td>Bicorne Hat, Wool Sash, Leather Purse, Hip Flask</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>3</td>
+    	  <td>Cossack Hat, Sack, Wineskin, Tallow Candle</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>4-5</td>
+    	  <td>Straw Hat, Kettle, Book of Poetry</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>6-7</td>
+    	  <td>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, 
+	  Paper and ink</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>8-9</td>
+    	  <td>Garibaldi Hat, Playing Cards, Small Pot</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>10</td>
+    	  <td>Chaperon, Tin Cup, Scarf</td>
+    	</tablerow>
+
+    	<tablerow>
+    	  <td>11-12</td>
+    	  <td>Choose</td>
+    	</tablerow>
+	
+    	<tablelabel>table:{{ doc_name }}-fortune</tablelabel>
+      </table>
+    </subsection>
+
+    <archetypelevel>
+      <leveltitle levelnumber="1"/>
+      <levelstamina>2d4+9</levelstamina>
+      <levelhealth>1d4+6</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levelluck>3</levelluck>
+      <levelluckrefresh>1</levelluckrefresh>
+      <levelmagic>2</levelmagic>
+      <levelmagicrefresh>1</levelmagicrefresh>
+      <levelmettle>3</levelmettle>
+      <levelmettlerefresh>1</levelmettlerefresh>
+      
+
+      <branch>
+	<branchtitle>Common</branchtitle>
+	<branchdescription>
+	  <p>
+	    In a word, I was too cowardly to do what I knew to be right, as I had been too cowardly
+	    to avoid doing what I knew to be wrong.      
+	  </p>
+	</branchdescription>
+	<path chance="12">
+	  <choice>✱language.merovingian_2, ✱sword.strike_1, ✱dagger.thrust_1, ✱social.intimidate_1</choice>
+	</path>
+      </branch>
+
+
+
+      
+
+
+      <branch>
+      	<branchtitle>Origins</branchtitle>
+      	<branchdescription>
+      	  <p>
+	    XXXX
+      	  </p>
+      	</branchdescription>
+      	<path chance="1">
+      	  <pathtitle>Almaignee</pathtitle>
+      	  <choice>✱social.etiquette[Almaignee]_2, ✱lore.history[Almaignee]_2</choice>
+      	  <choice></choice>
+      	</path>
+      	<path chance="1">
+      	  <pathtitle>Poitevin</pathtitle>
+      	  <choice>✱language.poitevin_1, ✱social.etiquette[Averoigne]_2,  ✱lore.history[Averoigne]_2</choice>
+      	</path>
+      	<path chance="2">
+      	  <pathtitle>Rural Westreich</pathtitle>
+      	  <choice>✱craft.farmer_1</choice>
+      	</path>
+      	<path chance="4">
+      	  <pathtitle>Laibstadt</pathtitle>
+	  <choice>✱language.merovingian_3</choice>
+      	</path>
+      	<path chance="1">
+      	  <pathtitle>Hybernian</pathtitle>
+      	  <choice>✱language.hybernian_2, ✱social.etiquette[Albion]_2, ✱social.etiquette[Hybernia]_2</choice>
+      	</path>
+      	<path chance="1">
+      	  <pathtitle>Albion</pathtitle>
+      	  <choice>✱language.hybernian_1, ✱social.etiquette[Albion]_2, ✱social.etiquette[Hybernia]_1</choice>
+      	</path>
+      	<path chance="1">
+      	  <pathtitle>Noord</pathtitle>
+      	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice>
+      	</path>
+      	<path chance="1">
+      	  <pathtitle>Averoigne</pathtitle>
+      	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice>
+      	</path>
+      </branch>
+      
+
+      <branch>
+	<branchtitle>The Crucible</branchtitle>
+	<branchdescription>
+	  <p>
+	    In a word, I was too cowardly to do what I knew to be right, as I had been too cowardly
+	    to avoid doing what I knew to be wrong.      
+	  </p>
+	</branchdescription>
+	<path chance="3">
+      	  <pathtitle>Robbery under Arms</pathtitle>
+	  <choice>✱archery.shoot_1</choice>
+	  <choice>✱gun.shoot_1</choice>
+	  <choice>✱crossbow.shoot_1</choice>
+	</path>
+	<path chance="4">
+      	  <pathtitle>Burglar</pathtitle>
+	  <choice>✱physical.climbing_3</choice>
+	  <choice>✱skulduggery.ropecraft_2</choice>
+	</path>
+      </branch>
+      
+      <branch>
+      	<branchtitle>Misfortune</branchtitle>
+      	<branchdescription>
+      	  <p>
+	    Suffering has been stronger than all other teaching. I have been bent and broken, but
+	    – I hope -into a better shape...
+      	  </p>
+      	</branchdescription>
+      	<path chance="4">
+      	  <pathtitle>Woe</pathtitle>
+      	</path>
+      	<path chance="5">
+      	  <pathtitle>Loss</pathtitle>
+      	</path>
+      	<path chance="3">
+      	  <pathtitle>Hardship</pathtitle>
+      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	  <choice></choice>
+      	  <choice></choice>
+      	  <choice></choice>
+      	</path>
+      </branch>
+
+      <branch>
+      	<branchtitle>Reflection</branchtitle>
+      	<branchdescription>
+      	  <p>
+	    Pause you who read this, and think for a moment of the long chain of iron or gold, of
+	    thorns or flowers, that would never have bound you, but for the formation of the first
+	    link on one memorable day.
+      	  </p>
+      	</branchdescription>
+      	<path chance="3">
+      	  <pathtitle>Woe</pathtitle>
+      	</path>
+      	<path chance="5">
+      	  <pathtitle>Loss</pathtitle>
+      	</path>
+      	<path chance="6">
+      	  <pathtitle>Hardship</pathtitle>
+      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	</path>
+      </branch>
+
+
+      
+      <branch>
+      	<branchtitle>Darkness</branchtitle>
+      	<branchdescription>
+      	  <p>
+	    There are dark shadows on the earth, but its lights are stronger in the contrast.
+      	  </p>
+      	</branchdescription>
+      	<path chance="4">
+      	  <pathtitle>Woe</pathtitle>
+      	</path>
+      	<path chance="6">
+      	  <pathtitle>Loss</pathtitle>
+      	</path>
+      	<path chance="2">
+      	  <pathtitle>Hardship</pathtitle>
+      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	</path>
+      </branch>
+
+
+      <!-- <branch> -->
+      <!-- 	<branchtitle>Gratitude</branchtitle> -->
+      <!-- 	<branchdescription> -->
+      <!-- 	  <p> -->
+      <!-- 	    Reflect upon your present blessings -\- of which every man has many -\- not on your -->
+      <!-- 	    past misfortunes, of which all men have some. -->
+      <!-- 	  </p> -->
+      <!-- 	</branchdescription> -->
+      <!-- 	<path> -->
+      <!-- 	  <pathtitle>1-3 Woe</pathtitle> -->
+      <!-- 	</path> -->
+      <!-- 	<path> -->
+      <!-- 	  <pathtitle>4-9 Loss</pathtitle> -->
+      <!-- 	</path> -->
+      <!-- 	<path> -->
+      <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
+      <!-- 	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice> -->
+      <!-- 	  <choice></choice> -->
+      <!-- 	  <choice></choice> -->
+      <!-- 	  <choice></choice> -->
+      <!-- 	</path> -->
+      <!-- </branch> -->
+      
+
+
+      <!-- <branch> -->
+      <!-- 	<branchtitle>Redemption</branchtitle> -->
+      <!-- 	<branchdescription> -->
+      <!-- 	  <p> -->
+      <!-- 	    No man can walk so long in the shadow that he cannot come again to the light.       -->
+      <!-- 	  </p> -->
+      <!-- 	</branchdescription> -->
+      <!-- 	<path> -->
+      <!-- 	  <pathtitle>1-3 Woe</pathtitle> -->
+      <!-- 	</path> -->
+      <!-- 	<path> -->
+      <!-- 	  <pathtitle>4-9 Loss</pathtitle> -->
+      <!-- 	</path> -->
+      <!-- 	<path> -->
+      <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
+      <!-- 	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice> -->
+      <!-- 	  <choice></choice> -->
+      <!-- 	  <choice></choice> -->
+      <!-- 	  <choice></choice> -->
+      <!-- 	</path> -->
+      <!-- </branch> -->
+    </archetypelevel>
+  </archetypelevels>
+
+  
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>
+</archetype>
