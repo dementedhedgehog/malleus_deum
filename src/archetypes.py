@@ -7,6 +7,7 @@
 
 """
 import sys
+import functools
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
 from utils import (
@@ -72,9 +73,17 @@ class Archetype:
         self.tags = []
         
         # what advantages you get at what levels.
-        #self.level_progression_table = LevelProgressionTable(self.fname)        
         self.levels = Levels()        
         return
+
+
+    @functools.lru_cache(maxsize=None)
+    def get_level(self, level_number):
+        for level in self.levels:
+            if level.level_number == level_number:
+                return level
+        return None
+                
 
     def get_stream_config(self):
         return self.stream_config
@@ -437,7 +446,10 @@ if __name__ == "__main__":
         #if "Outrider" not in archetype.get_title():
         #    continue
         
-        print("Archetype: %s" % archetype.get_title())        
+        print("Archetype: %s" % archetype.get_title())
+        for level in archetype.levels:
+            print(level)
+        print()
         # print("initial abilities: %s\n" % archetype.get_initial_abilities())
         # for ability_group in archetype.modified_ability_groups:
         #     #if "onster" not in ability_group.get_title():
