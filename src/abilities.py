@@ -40,8 +40,9 @@ class FAMILY_TYPE:
     GENERAL = "<general/>"
     PRIMARY = "<primary/>"
     MAGICAL = "<magical/>"
+    WYRD_SCIENCE = "<wyrdscience/>"
     NPC = "<npc/>"
-FAMILY_TYPES = ("<lore/>", "<martial/>", "<magical/>", "<general/>",  "<primary/>", "<npc/>")
+FAMILY_TYPES = ("<lore/>", "<martial/>", "<magical/>", "<general/>",  "<primary/>", "<npc/>", "<wyrdscience/>")
 
 MIN_INITIAL_ABILITY_RANK = 1
 MAX_INITIAL_ABILITY_RANK = 3
@@ -305,6 +306,9 @@ class AbilityRank:
     def get_id(self):
         return "%s_%s" % (self.ability.get_id(), self.rank_number)
 
+    def get_short_id(self):        
+        return "%s_%s" % (self.ability.get_short_id(), self.rank_number)    
+
     def get_rank_number(self):
         return self.rank_number
     
@@ -447,9 +451,6 @@ class Ability:
     def __str__(self):
         return f"✱{self.ability_id}"
 
-    # def __repr__(self):
-    #     return f"✱{self.title}"
-
     def set_group(self, ability_group):
         self.ability_group = ability_group
             
@@ -586,7 +587,12 @@ class Ability:
         return self.template
     
     def get_id(self):
+        """Returns something like conjuration.ignis_2"""
         return self.ability_id
+
+    def get_short_id(self):
+        """For conjuration.ignis_2 this will return the string ignis_2"""
+        return self.ability_id.split(".")[-1]
 
     def get_checks(self):
         return self.checks
@@ -732,7 +738,6 @@ class Ability:
         for child in list(tags_node):
             if child.tag is not COMMENT:
                 tag = child.tag[1:-2]
-                #print(f"[{child.tag}]")
                 self.tags.append(child.tag)
         return
     
@@ -749,8 +754,12 @@ class Ability:
         """Add an ability rank."""
         rank = AbilityRank()
         rank.ability = self
-        rank.rank_number = rank_number            
+        rank.rank_number = rank_number
+
+        # Store it twice .. once as ability_group.ability.rank
+        # and once as ability.rank
         ability_rank_lookup[rank.get_id()] = rank
+        ability_rank_lookup[rank.get_short_id()] = rank
         self.ranks.append(rank)
         return
         
@@ -938,6 +947,9 @@ class AbilityGroup:
 
     def is_npc_family(self):
         return self.info.family == FAMILY_TYPE.NPC
+
+    def is_wyrd_science_family(self):
+        return self.info.family == FAMILY_TYPE.WYRD_SCIENCE
 
     def validate(self):
         valid = True
@@ -1173,9 +1185,6 @@ class AbilityGroups:
             ability_group.check_sanity()
         return                        
     
-    def get_ability_rank(self, ability_rank_id):
-        return ability_rank_lookup[ability_rank_id]
-
     def get_ability_groups(self):
         return self.ability_groups
     
