@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+
+  <abilitygroupinfo>
+    <abilitygrouptitle>Wyrd Science Abilities</abilitygrouptitle>
+    <abilitygroupid>wyrdscience</abilitygroupid>
+    <abilitygroupfamily><wyrdscience/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Wyrd Science is based on five sacred pillars: Biology,
+	Electrochemistry, Blaylock Valves, Humoural Theory, and Leeches.
+	Upon this foundation great minds strive to create a brave new world.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Eldritch Hand</abilitytitle>
+    <abilityid>wyrdscience.eldritch_hand</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME: disembodied hand.. like the Thing,
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+
+  <ability>
+    <abilitytitle>Flesh Golem</abilitytitle>
+    <abilityid>wyrdscience.flesh_golem</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.homunculus_2</prereqabilityrank>
+    <spline><p x="-60" y="60"/></spline>
+    <abilitydescription>
+      <p>
+  	The character has worked out how to control reanimated humans using wyrd science and brain implants.
+  	In order to create a Flesh Golem the character needs access to a laboratory.  Flesh Golems behave
+  	like Homonculi but are much much larger.
+      </p>
+
+      <p>
+  	When assisting in combat a flesh golem has 20 hit points, 10 stamina, an armour of +2.  They attack
+  	using their bare hands with +3 to hit and do damage of 2d10 (they are not very coordinated but quite strong).
+  	Flesh Golems love fighting and their master must make a Mettle DC2 check to control them when any physical
+  	combat begins or the flesh golem will automatically attack.  A similar check may be made to control the
+  	Flseh Golem when they get excited for other reasons.
+      </p>
+
+      <p>
+  	In all other ways Flesh Golems behave as if they were homunculi.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Homunculus</abilitytitle>
+    <abilityid>wyrdscience.homunculus</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.wyrdscience_2</prereqabilityrank>
+    <spline><p x="0" y="60"/></spline>
+    <abilitydescription>
+      <p>
+  	The character is able to create a
+  	<measurement><metric>50cm</metric><imperial>20"</imperial></measurement> tall humanoid
+  	servitor from flesh.  The homunculus has a mental link with its creator but has
+  	limited intelligence.  The homonculus always knows where its master is and will be able
+  	to find its master when it pleases.  It is capable of running errands and assisting in combat.
+  	Homunculi must do what their creator tells them, unless they get really excited.  Homunculi are
+  	very hard to contain.  They often escape from enclosures through unknown devious means.
+      </p>
+
+      <p>
+  	When creating an homunculus a character gathers the requisite material, off-cuts from a fresh corpse,
+  	a variety of alchemical reagents and a manual for the binding,  They make the check to create the
+  	homoculus.  If they fail the ingredients are wasted and must be destroyed.  If successful the
+  	creation will rise within a few hours.  An homunculus can have only one master.  It will only
+  	do as directed by others if it feels its master	would want that.  If someone creates two homuculi
+  	they will both try and destroy the other.  This never ends well.
+      </p>
+
+      <p>
+  	When assisting in combat the homunculus has 3 hit points, no stamina, an armour of +2 (they're small
+  	and nasty) and provides a +1 to hit and damage bonus to one character fighting in melee hand to hand.
+  	That character need not be its master.  Homunculi love fighting and their master must make a
+  	Mettle DC2 check to control them when any physical combat begins or the homuculus will automatically
+  	attack.  A similar check may be made to control the homunculus when they get excited for other reasons.
+      </p>
+
+      <p>
+  	Homonculi are basically an ambulatory fetish, possessed by some minor demon from beyond.  Their
+  	actions are strongly curtailed by the rigourous, standardized and very lengthy binding that is part
+  	of their creation ritual.  However, homoculi frequently resort to type, eating the flesh of humans
+  	or excrement when they can, laughing loudly at the misfortune of others, and if left on their own the
+  	might resort to theft, or the mutilation of animals. They have been known to murder small children or
+  	light fires, but it is believed that all such loopholes	have now been covered in their binding ritual.
+      </p>
+
+      <p>
+  	Homoculi attract a certain amount of attention.  Clothes should be made for them so as not to attract
+  	more attention than is absolutely necessary as their bodies are hideous.  Alternatively they may be
+  	carried around in a box.
+      </p>
+
+      <p>
+  	Thankfully, homonculi do not talk a great deal. When they do they usually being sycophantic, or sarcastic.
+  	They delight in the misfortune of others which really excites them.  They may get jealous if their master
+  	pays too much attention to others.
+      </p>
+
+      <p>
+  	Homunculi do not really die unless their body is destroyed beyond recognition, is burned or eaten <etc/>.
+  	They can be healed by simply sewing them back together.  If someone chooses to do this they will regain
+  	all health after a long rest.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Wyrd Rats</abilitytitle>
+    <abilityid>wyrdscience.wyrd_rat</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	The character has worked out how to control rats using wyrd
+  	science and brain implants.  In order to create a Wyrd Rat the character needs access
+  	to a laboratory. Wyrd Rats have a telepathic bond with their master, they can perform minor
+  	tasks and can attack on command.   Wyrd Rats have HP:1, AC:13+Rank, Bite DC:13+Rank, Dmg:1.
+  	They can try to create a Wyrd Rat once per day.  If they fail, the rat survives but it is impossible
+  	to make a telepathic link with the creature.  Each day spent in preparation gives the character +1 to
+  	their check, up to a maximum of +3.  They get an additional +1 for naming the rat, which strengthens
+  	the chance that the telepathic bond will hold.  The character can have and control up to Rank Wyrd Rats
+  	after this it is impossible for the character to maintain the telepathic link with the rats.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Splice Flesh</abilitytitle>
+    <abilityid>wyrdscience.splice_flesh</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <spline><p x="-30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+
+  <ability>
+    <abilitytitle>Reanimation</abilitytitle>
+    <abilityid>wyrdscience.reanimation</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.wyrdscience_3</prereqabilityrank>
+    <spline><p x="90" y="120"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME: like a zombie.. but doesn't last
+      </p>
+    </abilitydescription>
+  </ability>
+    
+
+  <ability>
+    <abilitytitle>Wyrd Science</abilitytitle>
+    <abilityid>wyrdscience.wyrdscience</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <prereqabilityrank></prereqabilityrank>
+    <spline><p x="0" y="0"/></spline>
+    <abilitydescription>
+      <p>
+	This represents general theoretical knowledge of the foundational principles of Wyrd Science.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

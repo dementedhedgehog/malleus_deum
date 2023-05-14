@@ -2,8 +2,8 @@
 <abilitygroup>
 
   <abilitygroupinfo>
-    <abilitygrouptitle>Enchantment</abilitygrouptitle>
-    <abilitygroupid>enchantment</abilitygroupid>
+    <abilitygrouptitle>Enchantments</abilitygrouptitle>
+    <abilitygroupid>enchantments</abilitygroupid>
     <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -17,13 +17,13 @@
 
   <ability>
     <abilitytitle>Auri Fames</abilitytitle>
-    <abilityid>enchantment.auri_fames</abilityid>
+    <abilityid>enchantments.auri_fames</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
     <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <prereqabilityrank>enchantments.enchantments_1</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>    
     <abilitydescription>
       <p>
@@ -65,28 +65,28 @@
   </ability>
   
   <ability>
-    <abilitytitle>Enchantment Lore</abilitytitle>
-    <abilityid>enchantment.lore</abilityid>
+    <abilitytitle>Enchantments</abilitytitle>
+    <abilityid>enchantments.enchantments</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><lore/></tags>
+    <tags><magical/><enchantments/><lore/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
-	This ability represents knowledge of enchantment magic.
+	This ability represents knowledge of enchantment and charm magic.
       </p>
     </abilitydescription>    
   </ability>
   
   <ability>
     <abilitytitle>Ghost Step</abilitytitle>
-    <abilityid>enchantment.ghost_step</abilityid>
+    <abilityid>enchantments.ghost_step</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>	
+    <prereqabilityrank>enchantments.enchantments_1</prereqabilityrank>	
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -99,12 +99,12 @@
   
   <ability>
     <abilitytitle>Glamour</abilitytitle>
-    <abilityid>enchantment.glamour</abilityid>
+    <abilityid>enchantments.glamour</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="17">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <prereqabilityrank>enchantments.enchantments_1</prereqabilityrank>
     <spline><p x="0" y="45"/></spline>
     <abilitydescription>
       <p>
@@ -125,12 +125,12 @@
 
   <ability>
     <abilitytitle>Hex</abilitytitle>
-    <abilityid>enchantment.hex</abilityid>
+    <abilityid>enchantments.hex</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>			
+    <prereqabilityrank>enchantments.enchantments_1</prereqabilityrank>			
     <spline><p x="-90" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -148,12 +148,12 @@
 
   <ability>
     <abilitytitle>Mind Worm</abilitytitle>
-    <abilityid>enchantment.mind_worm</abilityid>
+    <abilityid>enchantments.mind_worm</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="9">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <prereqabilityrank>enchantments.enchantments_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -174,10 +174,10 @@
     <abilitytitle>Speak with Amphibians</abilitytitle>
     <abilityid>enchantment.speak_with_amphibians</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <prereqabilityrank>enchantments.zoolingualism_1</prereqabilityrank>	
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -189,12 +189,12 @@
 
   <ability>
     <abilitytitle>Speak with Birds</abilitytitle>
-    <abilityid>enchantment.speak_with_birds</abilityid>
+    <abilityid>enchantments.speak_with_birds</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <prereqabilityrank>enchantments.zoolingualism_1</prereqabilityrank>	
     <spline><p x="-45" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -207,12 +207,12 @@
 
   <ability>
     <abilitytitle>Speak with Cats</abilitytitle>
-    <abilityid>enchantment.speak_with_cats</abilityid>
+    <abilityid>enchantments.speak_with_cats</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <prereqabilityrank>enchantments.zoolingualism_1</prereqabilityrank>	
     <spline><p x="15" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -223,12 +223,12 @@
 
   <ability>
     <abilitytitle>Speak with Horses</abilitytitle>
-    <abilityid>enchantment.speak_with_horses</abilityid>
+    <abilityid>enchantments.speak_with_horses</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <prereqabilityrank>enchantments.zoolingualism_1</prereqabilityrank>	
     <spline><p x="-90" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -241,12 +241,12 @@
 
   <ability>
     <abilitytitle>Speak with Rodents</abilitytitle>
-    <abilityid>enchantment.speak_with_rodents</abilityid>
+    <abilityid>enchantments.speak_with_rodents</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="7">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <prereqabilityrank>enchantments.zoolingualism_1</prereqabilityrank>	
     <spline><p x="90" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -257,12 +257,12 @@
   
   <ability>
     <abilitytitle>Speak with Wolves</abilitytitle>
-    <abilityid>enchantment.speak_with_wolves</abilityid>
+    <abilityid>enchantments.speak_with_wolves</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <prereqabilityrank>enchantments.zoolingualism_1</prereqabilityrank>	
     <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -274,13 +274,13 @@
 
   <ability>
     <abilitytitle>Vox Imperium</abilitytitle>
-    <abilityid>enchantment.vox_imperium</abilityid>
+    <abilityid>enchantments.vox_imperium</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <prereqabilityrank>enchantments.enchantments_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -300,12 +300,12 @@
   
   <ability>
     <abilitytitle>Zoolingualism</abilitytitle>
-    <abilityid>enchantment.zoolingualism</abilityid>
+    <abilityid>enchantments.zoolingualism</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="11">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_1</prereqabilityrank>
+    <prereqabilityrank>enchantments.enchantments_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -317,13 +317,13 @@
 
   <ability>
     <abilitytitle>Wrack</abilitytitle>
-    <abilityid>enchantment.wrack</abilityid>
+    <abilityid>enchantments.wrack</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <tags><magical/><enchantments/><magicpool/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="5">Magic+Rank</abilitycheck>
     <abilitycheck dc="Targets Endurance">Std+Endurance+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.lore_2</prereqabilityrank>
+    <prereqabilityrank>enchantments.enchantments_2</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">

@@ -1,0 +1,13 @@
+
+
+
+
+{% macro monster(monster_id) %}
+{% set monster = db.monster_groups.get_monster_by_id(monster_id) %}
+<p><bold>{{ monster.get_title() }}</bold> Armour: {{ monster.armour|no_nones}}, 
+{% if monster.dodge  -%}Dodge: {{ monster.dodge }}, {% endif -%}
+{% if monster.block  -%}Block: {{ monster.block }}, {% endif -%}
+{% if monster.parry  -%}Dodge: {{ monster.parry }}, {% endif -%} Str: {{ monster.strength|no_nones}}, End: {{ monster.endurance|no_nones}}, Ag: {{ monster.agility|no_nones}}, Spd: {{ monster.speed|no_nones}}, Per: {{ monster.perception|no_nones}},
+Stamina: {{monster.stamina}}, Health: {{ monster.health }}, Mettle: {{monster.mettle_pool|no_nones}}, Magic: {{ monster.magic_pool|no_nones}}, Luck: {{monster.luck_pool|no_nones}}, Tags: {{monster.tags|join(', ')}}, Abilities: {{ monster.abilities }}
+</p>
+{% endmacro %}

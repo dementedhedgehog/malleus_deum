@@ -2,7 +2,7 @@
 """
 
   This represents the game state.
-
+  It's kind of an umbrella object that contains a bunch of little tables.
 
 """
 import re
@@ -110,71 +110,75 @@ class DB:
         try:
             ability_rank = self.ability_groups.get_ability_rank(ability_id)
             return ability_rank
-            #ability_str = ability_rank.get_title()
         except KeyError:
             return self.ability_groups.get_ability(ability_id)
-        #     ability = self.ability_groups.get_ability(ability_id)
-        #     return ability
-        #     if ability is not None:
-        #         ability_str = ability.get_title()
-        #     else:
-        #         # dunno what this is .. just pass it through unmodified.
-        #         ability_str = ability_id
-        # return ability_str
-        
+
+
 
     def filter_abilities(self, xml):
         """
-        Filters xml replacing magical ability references (starting with '✱')
-        with values from the db.  We could have done this with xml or jinja
-        filters but it's a lot of typing.
+        Filters xml replacing magical ability (e.g. ✱✱dagger.strike) or ability-rank references 
+        (e.g.  ✱dagger.strike_1), with values from the db.  We could have done this with xml or
+        jinja filters but it's a lot of typing.
 
         """
-        templates_regex = re.compile("\[(?P<template>.*?)\]")
+        templates_regex = re.compile("\[(?P<template>.*?)\]")        
         ability_group_regex = re.compile("^(?P<ability_group>[^.]*)\.")
         ability_rank_regex = re.compile("_[0-9]+$")
-        tokens = re.split("(✱[a-zA-Z]+\.[a-zA-Z_0-9\-\?\[\]]+)", xml)
+        tokens = re.split("(✱✱?(?:[a-zA-Z]+\.)?[a-zA-Z_0-9\-\?\[\]]+)", xml)
         new_tokens = []
-        for i, token in enumerate(tokens):
+        for i, token in enumerate(tokens):                
 
             # ability refs are tokens that start with the special character ✱
             if not token.startswith("✱"):
                 new_tokens.append(token)
-                continue
+                continue            
             
-            # try and translate the token (drop leading ✱)
-            ability_rank_id = token[1:]
+            # try and translate the token
 
+            # if it starts with two ✱✱ it's an ability id,
+            # if it starts with one it's an ability+rank id.
+            is_ability_id = token.startswith("✱✱")
+            
+            # first drop leading ✱'s
+            token = token.lstrip("✱")
 
             # try and find template info..
-            match = templates_regex.search(ability_rank_id)
+            match = templates_regex.search(token)
             if match is not None:                        
                 template = match.group("template")
             else:
                 template = None
-            
 
             # remove template info if there is any
             # e.g. ✱social.etiquette[Dwarven]_3 --> social.etiquette_3
             # (no abilities should have templated abilities as prereqs).
-            ability_rank_id = templates_regex.sub("", ability_rank_id)
+            _id = templates_regex.sub("", token)
             
-            # check if this is a good valid ability rank id?
-            try:
-                self.ability_groups.get_ability_rank(ability_rank_id)
+            try: 
+                # check if it's valid.
+                if is_ability_id:
+                    self.ability_groups.get_ability(_id)
+                else:
+                    self.ability_groups.get_ability_rank(_id)
             except KeyError:
+
+                #
+                # Here we do quite a bit of work to provide useful contextual information
+                # when we fail lookup the given ability or ability rank id.
+                #
 
                 # build debug context..
                 start = max(i -3, 0)
-                end = min(i + 3, len(tokens))
-                # truncate context in case it's big.
+                end = min(i+3, len(tokens))
+                # truncate the debug context if it's too long.
                 before = " ".join(tokens[start:i])[-50:]
-                after = " ".join(tokens[i+1:end])[:50]
+                after = " ".join(tokens[i+1:i])[:50]
                 context = f"{before} ❰{token}❱ {after}"
-                                
+
                 # it's bad, so try dropping the rank and looking for the ability
                 # (so we can log some extra debug info)
-                ability_id = ability_rank_regex.sub("", ability_rank_id)
+                ability_id = ability_rank_regex.sub("", _id)
                 try:
                     self.ability_groups.get_ability(ability_id)
                 except KeyError:
@@ -182,10 +186,9 @@ class DB:
                     raise Exception(
                         f"Invalid ability id in reference {ability_id}. "
                         f"Check the ability rank is valid. Near:\n{context}")
-                else:
-
+                else:                
                     # Check the ability group exists
-                    match = ability_group_regex.search(ability_rank_id)
+                    match = ability_group_regex.search(_id)
                     if match is not None:                        
                         ability_group_name = match.group("ability_group")
                         ability_group = self.ability_groups.get_ability_group(ability_group_name)
@@ -194,31 +197,49 @@ class DB:
                             raise Exception(
                                 "Invalid ability_rank_id in reference. \n"
                                 f"Ability Group {ability_group_name} does not exist or is mispelled "
-                                f"in {ability_rank_id}. Near:\n{context}")
-
+                                f"in {_id}. Near:\n{context}")
 
                     # Check the ability exists.
-                    if self.ability_groups.get_ability(ability_id) is None:
+                    if self.ability_groups.get_ability(_id) is None:
                         # Then it's a missing/misspelled ability
                         raise Exception(
-                            f"Missing/misspelled ability! {ability_id} in {ability_rank_id}. Near:\n{context}")
-                                                
-                    # Do we have an ability rank?
-                    if ability_rank_regex.search(ability_rank_id):
-                        # Then it must be a bad ability rank
-                        raise Exception(
-                            "Invalid ability_rank_id in reference. "
-                            f"Ability rank out of range? {ability_rank_id}. Near:\n{context}")
-                    else:
-                        # Dunno!?
-                        raise Exception(
-                            "Bug in db.py !! looking up ability. "
-                            f"Ability rank out of range? {ability_rank_id}. Near:\n{context}")
+                            f"Missing/misspelled ability! {ability_id} in {_id}. Near:\n{context}")
+
+                    if not is_ability_id:
+                        # We're looking for an ability rank id (not an ability id).
+                        # so we can check a few more things..
+
+                        # Do we have an ability rank?
+                        if ability_rank_regex.search(_id):
+                            # Then it must be a bad ability rank
+                            raise Exception(
+                                "Invalid ability_rank_id in reference. "
+                                f"Ability rank out of range? {_id}. Near:\n{context}")
+                        else:
+                            # Dunno!?
+                            raise Exception(
+                                "Bug in db.py !! looking up ability. "
+                                f"Ability rank out of range? {_id}. Near:\n{context}")
+
+                        # it's bad, so try dropping the rank and looking for the ability
+                        # (so we can log some extra debug info)
+                        ability_id = ability_rank_regex.sub("", ability_rank_id)
+                        try:
+                            self.ability_groups.get_ability(ability_id)
+                        except KeyError:
+                            # Bad ability
+                            raise Exception(
+                                f"Invalid ability id in reference {ability_id}. "
+                                f"Check the ability rank is valid. Near:\n{context}")
+                        else:
+                            # Dunno!?
+                            raise Exception(
+                                "Bug in db.py !! looking up ability. "
+                                f"Ability rank out of range? {ability_rank_id}. Near:\n{context}")
 
             if template is None:
-                ability_ref_xml = f'<abilityref id="{ability_rank_id}"/>'
+                ability_ref_xml = f'<abilityref id="{_id}"/>'
             else:
-                ability_ref_xml = f'<abilityref id="{ability_rank_id}" template="{template}"/>'
-                
+                ability_ref_xml = f'<abilityref id="{_id}" template="{template}"/>'
             new_tokens.append(ability_ref_xml)
         return "".join(new_tokens)
