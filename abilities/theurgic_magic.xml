@@ -2,7 +2,7 @@
 <abilitygroup>
 
   <abilitygroupinfo>
-    <abilitygrouptitle>Theurgic Abilities</abilitygrouptitle>
+    <abilitygrouptitle>Theurg Abilities</abilitygrouptitle>
     <abilitygroupid>theurgic</abilitygroupid>
     <abilitygroupfamily><magical/></abilitygroupfamily>
     <abilitygroupdescription>
@@ -337,6 +337,27 @@
 
 
   <ability>
+    <abilitytitle>Hypnotic Gaze</abilitytitle>
+    <abilityid>theurgic.hypnotic_gaze</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck dc="Targets Mettle" effect="target mesmerized">Mettle+3×Rank</abilitycheck>
+    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
+    <spline><p x="90" y="0"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The character gazes into the eyes of their target and makes an opposed Mettle check against them.
+	If successful the target is mesmerized and will perform as the character dictates.  Mesmerized
+	characters will not perform actions that result in self-harm.  Good characters will not harm others
+	if mesmerized.   This effect lasts for as many rounds as the difference between the casters roll and
+	the targets roll.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
     <abilitytitle>Light of Mithras</abilitytitle>
     <abilityid>theurgic.light_of_mithras</abilityid>
     <abilityactiontype><minor/></abilityactiontype>
@@ -442,7 +463,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/><maintain/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Mace or Hammer">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Mace, Hammer or Staff">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.blessed_arms_1</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>

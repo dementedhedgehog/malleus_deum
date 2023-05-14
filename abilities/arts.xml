@@ -22,8 +22,8 @@
 
 
   <ability>
-    <abilitytitle>Art Theory</abilitytitle>
-    <abilityid>arts.theory</abilityid>
+    <abilitytitle>Art History</abilitytitle>
+    <abilityid>arts.art_history</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
@@ -33,7 +33,8 @@
       <p>
  	This ability represents background knowledge in the arts,
  	and arts history.  This ability can be used to answer questions
- 	about art and art history.
+ 	about the provenance of a piece of art, its style, information about
+	prominent artists, its likely country and period of origin etc..
       </p>
     </abilitydescription>
  </ability>
@@ -62,7 +63,7 @@
     <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.theory_1</prereqabilityrank>
+    <prereqabilityrank>arts.art_history_1</prereqabilityrank>
     <spline><p x="120" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -89,7 +90,7 @@
     <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.theory_1</prereqabilityrank>
+    <prereqabilityrank></prereqabilityrank>
     <spline><p x="-40" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -225,7 +226,7 @@
     <tags><general/><arts/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.theory_1</prereqabilityrank>
+    <prereqabilityrank>arts.art_history_1</prereqabilityrank>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>

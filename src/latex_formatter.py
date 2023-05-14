@@ -1054,7 +1054,6 @@ class LatexFormatter:
             try:
                 resource = self.db.licenses.find(resource_id)
             except KeyError:
-                print(self.db.licenses.lookup.keys())
                 raise Exception(f"Image {resource_id} does not exist!")
             filename = resource.get_fname()
             self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
@@ -1102,7 +1101,6 @@ class LatexFormatter:
             try:
                 resource = self.db.licenses.find(resource_id)
             except KeyError:
-                print(self.db.licenses.lookup.keys())
                 raise Exception(f"Handout image {resource_id} does not exist!")
             filename = resource.get_fname()
             self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
@@ -1318,7 +1316,6 @@ class LatexFormatter:
         return
 
     def end_branchdescription(self, branchtitle_node):
-        #self.latex_file.write("\\begin{description}[style=multiline,leftmargin=3cm,font=\\normalfont]\n")
         self.latex_file.write("\\begin{description}\n")
         return
 
@@ -1355,7 +1352,6 @@ class LatexFormatter:
         return
 
     
-
     #
     # Table
     #
@@ -1363,7 +1359,7 @@ class LatexFormatter:
     end_tablespec = no_op
     
     
-    def start_table(self, table):        
+    def start_table(self, table):
         global table_state
         assert table_state is None
         table_state = TableState()
@@ -1441,7 +1437,7 @@ class LatexFormatter:
             elif table_state.fullwidth:
                 self.latex_file.write("\\begin{table*}[ht]")
             else:
-                self.latex_file.write("\\begin{table}")
+                self.latex_file.write("\\begin{table}[h]")
         else:
              self.latex_file.write("\\begin{table}[H]")
         
@@ -1471,7 +1467,6 @@ class LatexFormatter:
 
         # horizontal line
         if table_state.figure:
-            #self.latex_file.write(r" \toprule{}\\")
             self.latex_file.write(r" \toprule ")
         else:
             self.latex_file.write(r" \hline ")
@@ -1613,9 +1608,6 @@ class LatexFormatter:
         align = table_data.get("align")
         if align is None:
             align = "l"
-
-        # print("  %s  %s   %s" %
-        #       (self._current_column_in_table, width, self._number_of_columns_in_table))
 
         self._current_column_in_table = (
             (self._current_column_in_table + width) % self._number_of_columns_in_table)
@@ -2014,7 +2006,8 @@ class LatexFormatter:
         try:
             ability_id = ability_ref.attrib["id"]
             template = ability_ref.attrib.get("template")
-            ab = self.db.lookup_ability_or_ability_rank(ability_id)
+            rank = ability_ref.attrib.get("rank")
+            ab = self.db.lookup_ability_or_ability_rank(ability_id, rank)
 
             if isinstance(ab, abilities.AbilityRank):
                 name = ab.get_ability().get_title()

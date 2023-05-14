@@ -18,12 +18,12 @@
 
   <ability>
     <abilitytitle>Hammer Smash</abilitytitle>
-    <abilityid>hammer.smash</abilityid>
+    <abilityid>hammer.hammer_smash</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><weapon/><heavy/><hammer/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance, and Target saves verses Agility DC 12+Rank or is knocked back">Std+Rank</abilitycheck>
-    <prereqabilityrank>hammer.strike_2</prereqabilityrank>
+    <prereqabilityrank>hammer.hammer_strike_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -49,7 +49,7 @@
 	effect="On a hit with doubles the character makes an opposed Endurance check, if successfull the target is stunned"
 	dmg="+1d8"
 	dc="Targets Endurance">Std+Endurance+Rank</abilitycheck>
-    <prereqabilityrank>hammer.strike_2</prereqabilityrank>
+    <prereqabilityrank>hammer.hammer_strike_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -62,7 +62,7 @@
 
   <ability>
     <abilitytitle>Hammer Strike</abilitytitle>
-    <abilityid>hammer.strike</abilityid>
+    <abilityid>hammer.hammer_strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><weapon/><heavy/><hammer/></tags>
     <abilityranks untrained="0" from="1" to="4"/>

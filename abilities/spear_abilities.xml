@@ -16,13 +16,13 @@
 
 
   <ability>
-    <abilitytitle>Polearm - Hook</abilitytitle>
-    <abilityid>spear.hook</abilityid>
+    <abilitytitle>Polearm Hook</abilitytitle>
+    <abilityid>spear.polearm_hook</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><weapon/><spear/><reach/><piercing/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>spear.strike_1</prereqabilityrank>    
+    <prereqabilityrank>spear.spear_strike_1</prereqabilityrank>    
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -40,7 +40,7 @@
 
   <ability>
     <abilitytitle>Spear Strike</abilitytitle>
-    <abilityid>spear.strike</abilityid>
+    <abilityid>spear.spear_strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><weapon/><spear/><reach/><piercing/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
@@ -56,13 +56,13 @@
 
 
   <ability>
-    <abilitytitle>Spear - Brace for Charge</abilitytitle>
-    <abilityid>spear.brace</abilityid>
+    <abilitytitle>Spear Brace for Charge</abilitytitle>
+    <abilityid>spear.spear_brace</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><martial/><weapon/><spear/><reach/><piercing/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="2x(Weapon+Rank)">Std+Rank</abilitycheck>
-    <prereqabilityrank>spear.strike_2</prereqabilityrank>
+    <prereqabilityrank>spear.spear_strike_2</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -82,7 +82,7 @@
     <tags><martial/><weapon/><spear/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
-    <prereqabilityrank>spear.strike_2</prereqabilityrank>
+    <prereqabilityrank>spear.spear_strike_2</prereqabilityrank>
     <spline><p x="-30" y="75"/></spline>
     <abilitydescription>
       <p>

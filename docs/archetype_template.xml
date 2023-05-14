@@ -37,7 +37,7 @@
 
 	<li>
 	  <p>
-            Fill in the Archetype Value: {{ archetype.get_title() }} 
+            Fill in the Archetype name: {{ archetype.get_title() }} 
 	  </p>            
 	</li>
 
@@ -60,19 +60,18 @@
 	    {{ archetype.get_primary_abilities() }}
 	    Then for each ability roll an <emph>unmodified</emph> Std-Check against a DC of 13.
 	    Add one to the ability rank for that ability if the check is successful.  Add an
-	    additional one if a boon is rolled.  Subtract one from the rank if a bane is rolled,
-	    <eg/> if you get a result of +2 in Strength you should write down Strength 2 in the
+	    additional one if a boon is rolled.  Subtract one from the rank if a bane is rolled.
+	  </p>	  
+	  <p>
+	    For example, if you get a result of +2 in Strength you should write down Strength +2 in the
 	    primary abilities section of the character sheet.
 	  </p>	  
 	</li>
 
 	<li>
-	  {{ archetype.get_initial_abilities() }}
-	</li>
-
-	<li>
-	  Work out your characters background using the tables from the following <emph>Character
-	  Background</emph> Section.  Do this now.  It may effect your abilities.
+	  Work out some details about your characters background and starting skills using the tables
+	  from the <emph>Level 1 Progression</emph> Section below.  Do this now as it may effect your abilities
+	  later in the character creation process.
 	</li>	
 
 	<li>
@@ -85,17 +84,18 @@
 	  <descriptions>
 	    <term>Stamina = </term>
 	    <description>
-	      {{ archetype.levels[0].level_stamina }} + Endurance Modifier 
+	      {% set level_one = archetype.get_level(1) %}
+	      {{ level_one.stamina }} + Endurance Modifier 
 	    </description>
 
 	    <term>Health = </term>
 	    <description>
-	      {{ archetype.levels[0].level_health }} + Strength Modifier 
+	      {{ level_one.health }} + Strength Modifier 
 	    </description>
 
 	    <term>Health Refresh Rate = </term>
 	    <description>
-	      {{ archetype.levels[0].level_health_refresh }}
+	      {{ level_one.health_refresh }}
 	    </description>
 	  </descriptions>
 	  Your current stamina and health are the same as your full stamina and health.  The temporary
@@ -110,24 +110,23 @@
 	    
 	    <term>Magic Pool Maximum/Refresh = </term>
 	    <description>
-	    {{ archetype.levels[0].level_magic -}}d6
-	    /
-	    {{- archetype.levels[0].level_magic_refresh }}d6
+	    {{ level_one.magic -}}d6/+{{- level_one.magic_refresh }}d6
 	    </description>
 
 	    <term>Mettle Pool Maximum/Refresh = </term>
 	    <description>
-	      {{archetype.levels[0].level_mettle -}}d6
-	      /
-	      {{- archetype.mettle_refresh }}d6
+	      {{level_one.mettle -}}d6/+{{- level_one.mettle_refresh }}d6
 	    </description>
 
 	    <term>Luck Pool Maximum/Refresh = </term>
-	    <description>{{ archetype.levels[0].level_luck -}}d6
-	    /{{- archetype.levels[0].level_luck_refresh }}d6
+	    <description>{{ level_one.luck -}}d6/+{{- level_one.luck_refresh }}d6
 	    </description>
-	  </descriptions>      
-	    
+	  </descriptions>
+
+	  <bold>N.B.</bold> Dice pool stats are recorded as number of d6s.  So if you have
+	  3d6 in a pool you write <emph>``3d6''</emph> on your character sheet.	  Similarly
+	  for your refresh values if it says +1d6 for a refresh value, write <emph>``+1d6''</emph>
+	  on your character sheet.  You don't roll any dice here!
 	</li>
 
 	<li>
@@ -137,9 +136,10 @@
 	    aspects have a difficulty of 9 + d6 unless the archetype description or the GM
 	    says otherwise.  
 	  </p>
-
 	  <p>
-	    Some suggested aspects for this archetype are: {{ archetype.aspect_examples }}.
+	    Some suggested aspects for this archetype are: {{ archetype.aspect_examples -}}.
+	  </p>	    
+	  <p>
 	    But feel free to choose an aspect of your own.  Try to create one that will
 	    generate interesting game play.
 	  </p>	    
@@ -171,11 +171,56 @@
       <p>You are now finished character creation.</p>
     </section>
 
-    {{ archetype.levels.xml }}
 
-    <!-- <section> -->
-    <!--   <sectiontitle>Character Background</sectiontitle> -->
-    <!-- </section> -->
+    <section>
+      <sectiontitle>Leveling Up your Character</sectiontitle>      
+      <p>
+	To level up just apply the changes from the existing Level Progression section below
+	to your existing character, <eg/> to level up from Level 1 to Level 2 just apply the
+	changes described in the section titled <emph>Level 2 Progression</emph>.
+      </p>
+    </section>
 
+    {% for level in archetype.levels -%}
+    <section>
+      <sectiontitle>Level {{ level.level_number }} Progression</sectiontitle>
+      
+      {% for branch in level.branches -%}
+      <subsection>
+	<subsectiontitle>{{ branch.title }}</subsectiontitle>
+	{{ branch.description }}
+	
+	{% for path in branch.paths -%}
+	<p>
+	  <emph>{{ path.chance }} {{ path.title }}</emph>
+	  {% if path.choices|length > 0 %}
+	  <list>
+	    {% for choice in path.choices -%}
+	    <li>
+	      {% if choice.number_to_choose is not defined  %}
+	          XXXXX
+	      {% elif choice.number_to_choose == -1 %}
+	      Choose all of:
+	      {% elif choice.number_to_choose == 1 %}
+	      Choose one of:
+
+	      {% elif choice.number_to_choose == 2 %}
+	      Choose two of:
+	      
+	      {% elif choice.number_to_choose == 3 %}
+	      Choose three of:
+	      {% endif %}
+
+	      {{ choice.contents }}
+	    </li>
+	    {% endfor %}      	
+	  </list>
+	  {% endif %}
+	</p>
+	{% endfor %}      	
+      </subsection>
+      {% endfor %}      
+    </section>    
+    {% endfor %}
   </chapter>
 </book>

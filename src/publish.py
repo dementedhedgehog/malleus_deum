@@ -76,6 +76,10 @@ from  jinja2 import lexer
 ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
 PATRON_TEMPLATE_FNAME = join("docs", "patron_template.xml")
 
+def no_nones(x):
+    """Custom jinja filter for formatting nones"""
+    return "-" if (x is None or (type(x) == str and x.strip() == "")) else x
+
 
 # latex preamble for the index.
 index_str = """
@@ -108,15 +112,8 @@ def jinja_recursive_render(template, jinja_env, **values):
     prev = template.render(**values)
     while True:
 
-        ###prev = jinja_env.get_template(
-
-        #loader=BaseLoader        
         new_template = jinja_env.from_string(prev)
-        #f = io.StringIO(prev)
-        #new_template = jinja_env.get_template(f)
         curr = new_template.render(**values)
-        #curr = Template(prev).render(**values)
-        #.render(**values)
         if curr != prev:
             prev = curr
         else:
@@ -377,7 +374,6 @@ def apply_template_to_xml(jinja_env,
     # dir using Jinjas include directive). 
     if template_fname is None:
         template_fname = xml_fname_in
-    print(f"---  {template_fname}")
     template = jinja_env.get_template(template_fname)
     if template is None:
         print(f"Problem reading template file {template_fname}.")
@@ -706,6 +702,7 @@ if __name__ == "__main__":
     jinja_env.filters['convert_to_roman_numerals'] = utils.convert_to_roman_numerals
     jinja_env.filters['ab'] = db.filter_abilities
     jinja_env.filters['abilities'] = db.filter_abilities
+    jinja_env.filters['no_nones'] = no_nones
 
     # Add the local styles dir
     # The trailing // means that TeX programs will search recursively in that 

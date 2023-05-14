@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- fighter spellcaster -->
+<!-- fighter/spellcaster, a throw back to red box elves. -->
 <archetype>
   <archetypetitle>Elven Scion</archetypetitle>
   <archetypeid>elven_scion</archetypeid>
@@ -95,25 +95,10 @@
   </archetypedescription>
   <archetypeprimaryabilities>
     <list> 
-      <li>Str:-1 End:-1 Ag:+1 Spd:+1 Per:+1 Wpr:+0, or</li>
-      <li>Str:+0 End:-1 Ag:+0 Spd:+1 Per:+1 Wpr:+0</li>
+      <li>Str:-1 End:-1 Ag:+1 Spd:+2 Per:+1, or</li>
+      <li>Str:+0 End:-1 Ag:+0 Spd:+1 Per:+1</li>
     </list>
   </archetypeprimaryabilities>
-  <archetypeinitialabilities>    
-    <p>
-      All elven scions start with the following skills: ✱sword.strike_2, ✱wilderness.survivalism[Woods]_2,
-      ✱physical.dodge_2, ✱archery.shoot_2,  ✱language.aquilonian_2, ✱language.sylvan_4,        
-      ✱special.fey_resilience_1, ✱social.etiquette[Elven]_3, ✱luck.nick_of_time_1,
-      ✱physical.flee_3, ✱enchantment.lore_1, ✱enchantment.zoolingualism_1 and ✱arcana.lore_1.
-      Two of ✱physical.jump_2, ✱physical.listen_2, or ✱physical.climb_2.
-      Three of ✱skulduggery.concealment_2, ✱skulduggery.ropecraft_2, ✱skulduggery.sneak_2, ✱skulduggery.trap_work_2 or ✱transport.horse_riding_2.
-      
-      Gain ✱lore.book_learning_1 and two of ✱lore.history_2, ✱lore.natural_history_2, ✱lore.politics[Aquillonia]_2, ✱lore.antiquarian_2.
-      Choose one of ✱enchantment.auri_fames_1 and ✱arcana.ignis_1, ✱arcana.cloak_of_shadows_2 and ✱enchantment.speak_with_birds_1, or ✱enchantment.glamour_1 and ✱arcana.true_sight_1.      
-      Choose one of ✱arts.singing_2, ✱arts.dance_2, ✱arts.strings_2.
-      Choose two of ✱language.merovingian_2, ✱language.occitan_2, ✱language.poitevin_2, or ✱language.leonese_2.
-    </p>
-  </archetypeinitialabilities>
 
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>40 + 2d4 gp</startingcash>
@@ -139,47 +124,61 @@
     <humanoid/>
     <medium/>
   </archetypetags>
-  <archetypebio>
-  </archetypebio>
 
+  <archetypelevels>
+    <archetypelevel>
+      <levelnumber>1</levelnumber>
+      <levelstamina>2d4+9</levelstamina>
+      <levelhealth>1d4+6</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levelluck>3</levelluck>
+      <levelluckrefresh>1</levelluckrefresh>
+      <levelmagic>2</levelmagic>
+      <levelmagicrefresh>1</levelmagicrefresh>
+      <levelmettle>3</levelmettle>
+      <levelmettlerefresh>1</levelmettlerefresh>
+      <branch>
+	<branchtitle>Elven Scion Training</branchtitle>
+	<branchdescription>
+	  <p>
+	    All Elven Scions start with the following skills:
+	  </p>
+	</branchdescription>
+	<path chance="">
+	  <pathtitle></pathtitle>
+	  <choice>✱sword_strike_2, ✱wilderness.survivalism[Woods]_2,
+	  ✱physical.dodge_2, ✱archery_shoot_2,  ✱language.aquilonian_2, ✱language.sylvan_4,        
+	  ✱special.fey_resilience_1, ✱social.etiquette[Elven]_3, ✱luck.nick_of_time_1,
+	  ✱physical.flee_3, ✱enchantment_1, ✱enchantment.zoolingualism_1 and ✱arcana_1.
+	  Two of ✱physical.jump_2, ✱physical.listen_2, or ✱physical.climb_2.
+	  Three of ✱skulduggery.concealment_2, ✱skulduggery.ropecraft_2, ✱skulduggery.sneak_2, ✱skulduggery.trap_work_2 or ✱transport.horse_riding_2.
+	  
+	  Gain ✱book_learning_1 and two of ✱history_2, ✱natural_history_2, ✱politics[Aquillonia]_2, ✱antiquarian_2.
+	  Choose one of ✱enchantment.auri_fames_1 and ✱arcana.ignis_1, ✱arcana.cloak_of_shadows_2 and ✱enchantment.speak_with_birds_1, or ✱enchantment.glamour_1 and ✱arcana.true_sight_1.      
+	  Choose one of ✱arts.singing_2, ✱arts.dance_2, ✱arts.strings_2.
+	  Choose two of ✱language.merovingian_2, ✱language.occitan_2, ✱language.poitevin_2, or ✱language.leonese_2.</choice>
+	</path>
+      </branch>      
+    </archetypelevel>
+  </archetypelevels>
+
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>
   
-<!--   <levelprogressiontable>     -->
-<!--     <level> -->
-<!--       <levelnumber>1</levelnumber> -->
-<!--       <levelmettle>3</levelmettle> -->
-<!--       <levelmettlerefresh>+1</levelmettlerefresh> -->
-<!--       <levelstamina>4+d4</levelstamina> -->
-<!--       <levelhealth>5+d4</levelhealth> -->
-<!--       <levelhealthrefresh>2d4</levelhealthrefresh> -->
-<!--       <levelluck>2</levelluck> -->
-<!--       <levelluckrefresh>+2</levelluckrefresh> -->
-<!--       <levelmagicpool>3</levelmagicpool> -->
-<!--       <levelmagicrefresh>+1</levelmagicrefresh> -->
-<!--     </level> -->
 
-<!--     <level> -->
-<!--       <levelnumber>2</levelnumber> -->
-<!--       <levelmettle>3</levelmettle> -->
-<!--       <levelmettlerefresh>+1</levelmettlerefresh> -->
-<!--       <levelstamina>4+d4</levelstamina> -->
-<!--       <levelhealth>5+d4</levelhealth> -->
-<!--       <levelhealthrefresh>2d4</levelhealthrefresh> -->
-<!--       <levelluck>2</levelluck> -->
-<!--       <levelluckrefresh>+2</levelluckrefresh> -->
-<!--       <levelmagicpool>3</levelmagicpool> -->
-<!--       <levelmagicrefresh>+1</levelmagicrefresh> -->
-<!--       <levelpromotions>	 -->
-<!-- 	Martial +1, Martial +1, Martial ▲3, Martial ▲3, -->
-<!-- 	Lore +1, Lore ▲3, -->
-<!-- 	Language ▲3, -->
-<!-- 	Physical ▲1, -->
-<!-- 	Health +1, -->
-<!-- 	Arts +1 | Craft +1, -->
-<!-- 	Primary ▲1, -->
-<!-- 	✱wild-magic.lore +1, Arcana ▲3 -->
-<!--       </levelpromotions> -->
-<!--     </level> -->
-<!-- </levelprogressiontable> -->
 </archetype>
 
 

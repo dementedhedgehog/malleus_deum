@@ -16,8 +16,8 @@
   </abilitygroupinfo>
 
   <ability>
-    <abilitytitle>Eldritch Hand</abilitytitle>
-    <abilityid>wyrdscience.eldritch_hand</abilityid>
+    <abilitytitle>Wyrd Hand</abilitytitle>
+    <abilityid>wyrdscience.wyrd_hand</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><wyrdscience/></tags>
     <abilityranks from="1" to="5"/>
@@ -162,13 +162,74 @@
     <abilityid>wyrdscience.splice_flesh</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><wyrdscience/></tags>
-    <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="15">Std+Rank</abilitycheck>
     <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
 	FIXME
+	Make the check and you can graft a limb from something to replace
+	an existing limb.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Meld Flesh</abilitytitle>
+    <abilityid>wyrdscience.meld_flesh</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.splice_flesh_2</prereqabilityrank>
+    <spline><p x="-30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	Make the check and you can graft an arm from something onto a 
+	subject.  Maximum one per subject.  No character in their right mind
+	will voluntarily allow themselves to be subject to this surgery, though
+	for the purposes of this ability the plague doctor is not considered to
+	be in their right mind.  
+      </p>
+
+      <p>
+	If the extra limb is an arm it grants an extra hand to the character
+	not an extra action.  So for example, they might be able to use a
+	two handed weapon and a shield, or hold a bomb and a sword and a torch.
+      </p>
+      
+      <p>
+	Each time the character increases the level of
+	this ability they can add extra abilities to their wyrd-limb.
+	FIXME: extra abilities here, e.g. retractable, extendable, stronger,
+	claws, ...
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Inner Eye</abilitytitle>
+    <abilityid>wyrdscience.inner_eye</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.splice_flesh_2</prereqabilityrank>
+    <spline><p x="-30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	Make the check and you can graft an eye from something onto a 
+	subject.  Maximum one per subject.  No character in their right mind
+	will voluntarily allow themselves to be subject to this surgery, though
+	for the purposes of this ability the plague doctor is not considered to
+	be in their right mind.  Each time the character increases the level of
+	this ability they can add extra abilities to their wyrd-limb.
+      </p>
+
+      <p>
+	FIXME: extra abilities here.
       </p>
     </abilitydescription>
   </ability>
@@ -187,7 +248,11 @@
     <spline><p x="90" y="120"/></spline>
     <abilitydescription>
       <p>
-	FIXME: like a zombie.. but doesn't last
+	FIXME: like a zombie.. but doesn't last and isn't necromantic.
+	The character gains +1 to their roll if they proclaim "It's Alive!" while
+	making this check.
+
+	FIXME SEE FLESH GOLEM ABOVE?!
       </p>
     </abilitydescription>
   </ability>

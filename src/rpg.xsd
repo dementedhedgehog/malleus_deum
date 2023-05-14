@@ -92,6 +92,7 @@
       <xs:element name="magical" type="symbolType"/>
       <xs:element name="npc" type="symbolType"/>
       <xs:element name="primary" type="symbolType"/>
+      <xs:element name="wyrdscience" type="symbolType"/>
     </xs:choice>
   </xs:complexType>
 
@@ -713,9 +714,9 @@
   <xs:complexType name="archetypelevelType" >
     <xs:sequence>
       <!-- Title is mandatory and has to come first! -->
-      <xs:element name="leveltitle" type="leveltitleType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="levelnumber" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-	<xs:group ref="blockGroup"/>
+	<!-- <xs:group ref="blockGroup"/> -->
 	<xs:element name="branch" type="branchType"/>
       <xs:element
           name="levelstamina"
@@ -757,13 +758,14 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="leveltitleType"> 
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="levelnumber" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
+
+  <!-- <xs:complexType name="leveltitleType">  -->
+  <!--   <xs:simpleContent> -->
+  <!--     <xs:extension base="xs:string"> -->
+  <!--       <xs:attribute name="levelnumber" type="xs:string"/> -->
+  <!--     </xs:extension> -->
+  <!--   </xs:simpleContent> -->
+  <!-- </xs:complexType> -->
   
   <xs:complexType name="streamConfigType" >
     <xs:sequence>
@@ -839,28 +841,52 @@
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
+
+
+  <xs:complexType name="orChoiceType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+      	<xs:element name="choice" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="all-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="one-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="two-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="three-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType> 
   
 
   <xs:complexType name="pathType">
     <xs:sequence>
-      <xs:element name="pathtitle" type="titleType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="pathtitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-      	<xs:element name="choice" type="choiceType" minOccurs="1" maxOccurs="1"/>
+      	<xs:element name="choice" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="all-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="one-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="two-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="three-of" type="textType" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="or" type="orChoiceType" minOccurs="0" maxOccurs="1"/>
       </xs:choice>
     </xs:sequence>
-    <xs:attribute name="chance" type="xs:integer"/>
-  </xs:complexType>
+    <xs:attribute name="chance" type="xs:string"/>
+  </xs:complexType> 
 
-  <xs:complexType name="choiceType" mixed="true">
-    <xs:sequence>
-      <!-- <xs:element name="pathtitle" type="titleType" minOccurs="1" maxOccurs="1"/> -->
-      <!-- <xs:element name="pathtitle" type="titleType" minOccurs="1" maxOccurs="1"/> -->
-      <!-- <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
-      <!-- 	<xs:group ref="blockGroup"/> -->
-      <!-- </xs:choice> -->
-    </xs:sequence>
-  </xs:complexType>
+
+
   
+  <!-- <xs:complexType name="pathType"> -->
+  <!--   <xs:sequence> -->
+  <!--     <xs:element name="pathtitle" type="titleType" minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
+  <!--     	<xs:element name="choice" type="textType" minOccurs="0" maxOccurs="1"/> -->
+  <!--     	<xs:element name="all-of" type="textType" minOccurs="0" maxOccurs="1"/> -->
+  <!--     	<xs:element name="one-of" type="textType" minOccurs="0" maxOccurs="1"/> -->
+  <!--     	<xs:element name="two-of" type="textType" minOccurs="0" maxOccurs="1"/> -->
+  <!--     	<xs:element name="three-of" type="textType" minOccurs="0" maxOccurs="1"/> -->
+  <!--     </xs:choice> -->
+  <!--   </xs:sequence> -->
+  <!--   <xs:attribute name="chance" type="xs:string"/> -->
+  <!-- </xs:complexType>   -->
 
   <xs:complexType name="corollaryType">
     <xs:sequence>
@@ -1242,6 +1268,7 @@ labels and references.
       <xs:element name="transport" type="emptyType"/>
       <xs:element name="wilderness" type="emptyType"/>
       <xs:element name="wild-magic" type="emptyType"/>
+      <xs:element name="wyrdscience" type="emptyType"/> 
       <xs:element name="versatile" type="emptyType"/> <!-- spells which are open to interpretation -->
       <xs:element name="maintain" type="emptyType"/> <!-- requires the minor action to keep going each round -->
       <xs:element name="untrained" type="emptyType"/>
@@ -1376,10 +1403,6 @@ labels and references.
           type="blockType"
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
-          name="archetypeinitialabilities" 
-          type="blockType"
-          minOccurs="1" maxOccurs="1"/>
-      <xs:element 
           name="archetypemovedistance" 
           type="pointsType" 
           minOccurs="1" maxOccurs="1"/>
@@ -1423,10 +1446,6 @@ labels and references.
           name="archetypelevels"
           type="sectionContentType"
           minOccurs="1" maxOccurs="1"/>
-      <xs:element
-          name="archetypeinitialabilities"
-          type="blockType"
-          minOccurs="0" maxOccurs="1"/>
       <xs:element name="streamconfig" type="streamConfigType" />
     </xs:sequence>
   </xs:complexType>
@@ -1544,6 +1563,7 @@ tags
       <xs:element name="monstertitle" type="titleType"/>
       <xs:element name="monsterid" type="idType"/>
       <xs:element name="monstertags" type="monsterTagType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="monsterabilities" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="monsteraspect" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="monstermove" type="xs:positiveInteger"/>
       <xs:element name="monsterhealth" type="xs:positiveInteger"/>

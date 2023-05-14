@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- northerner bard/barbarian/light fighter/thief -->
 <archetype>
   <archetypetitle>Skald</archetypetitle>
   <archetypeid>skald</archetypeid>
@@ -16,24 +17,11 @@
   </archetypedescription>
   <archetypeprimaryabilities>    
     <list> 
-      <li>Str:-1, End:-1, Ag:+1, Spd:+1, Per:+1, Wpr:+0 or</li>
-      <li>Str:-1, End:+0, Ag:+0, Spd:+1, Per:+1, Wpr:+0</li>
+      <li>Str:-1, End:+0, Ag:+1, Spd:+1, Per:+1 or</li>
+      <li>Str:+0, End:+0, Ag:+0, Spd:+1, Per:+1</li>
     </list>
   </archetypeprimaryabilities>
 
-  <archetypeinitialabilities>
-    <p>
-      All Skalds start with the following skills:
-      ✱language.merovingian_4.
-    </p>
-    
-    <p>      
-      Choose one of ✱arts.strings_2, ✱arts.keyed_2, or
-      ✱arts.wind_2.  Choose one of ✱arts.dance_1 or ✱arts.oratory_1.
-      Choose one of ✱language.aquilonian_1 or ✱language.dwarven_1.  Choose one of ✱lore.history_1 or
-      ✱lore.theology_1.
-    </p>    
-  </archetypeinitialabilities>
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>20 + d4 sp</startingcash>
   <startinggear>Gambeson, one of flail, mace or morning star, dagger, rations for a week.</startinggear>
@@ -59,8 +47,41 @@
     <medium/>
   </archetypetags>
 
+
+
+  <archetypelevels>
+    <archetypelevel>
+      <levelnumber>1</levelnumber>
+      <levelstamina>2d4+9</levelstamina>
+      <levelhealth>1d4+6</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levelluck>3</levelluck>
+      <levelluckrefresh>1</levelluckrefresh>
+      <levelmagic>2</levelmagic>
+      <levelmagicrefresh>1</levelmagicrefresh>
+      <levelmettle>3</levelmettle>
+      <levelmettlerefresh>1</levelmettlerefresh>
+
+      <branch>
+	<branchtitle>Skald Training</branchtitle>
+	<branchdescription>
+	  <p>All Skalds start with the following skills</p>
+	</branchdescription>
+	<path chance="">
+	  <pathtitle></pathtitle>
+	  <choice>✱language.merovingian_4</choice>
+	  <choice>      
+	    Choose one of ✱arts.strings_2, ✱arts.keyed_2, or
+	    ✱arts.wind_2.  Choose one of ✱arts.dance_1 or ✱arts.oratory_1.
+	    Choose one of ✱language.aquilonian_1 or ✱language.dwarven_1.  Choose one of ✱lore.history_1 or
+	    ✱lore.theology_1.
+	  </choice>    	  
+	</path>
+      </branch>      
+    </archetypelevel>
+  </archetypelevels>
+
   
-  <archetypebio>
     <!-- <subsection> -->
     <!--   <subsectiontitle>Origin</subsectiontitle> -->
 
@@ -94,7 +115,7 @@
     <!--   	<tablerow> -->
     <!--   	  <td>6-9</td> -->
     <!--   	  <td><bold>Mining Outpost</bold>: ✱language.merovingian_3, ✱craft.mining_2, ✱social.adversary_2[Greenskins], -->
-    <!--   	  ✱social.adversary[Giants]_2, ✱wilderness.lore[Mountains]_3. Roll on ane one of the Story Tables</td> -->
+    <!--   	  ✱social.adversary[Giants]_2, ✱wilderness_lore[Mountains]_3. Roll on ane one of the Story Tables</td> -->
     <!--   	</tablerow> -->
 
     <!--   	<tablerow> -->
@@ -181,13 +202,13 @@
 
     <!-- 	<tablerow> -->
     <!-- 	  <td>1-3</td> -->
-    <!-- 	  <td><bold>Prospector</bold>: ✱craft.mining_3, ✱lore.natural_history_2, ✱wilderness.lore[Type?]_2, -->
-    <!-- 	  ✱wilderness.wayfinding_2, ✱crossbow.shoot_2 and Two of Stealth_2, ✱wilderness.scout_2, ✱wilderness.survivalism_2 or ✱wilderness.hunting_2</td> -->
+    <!-- 	  <td><bold>Prospector</bold>: ✱craft.mining_3, ✱lore.natural_history_2, ✱wilderness_lore[Type?]_2, -->
+    <!-- 	  ✱wilderness.wayfinding_2, ✱crossbow_shoot_2 and Two of Stealth_2, ✱wilderness.scout_2, ✱wilderness.survivalism_2 or ✱wilderness.hunting_2</td> -->
     <!-- 	</tablerow> -->
 
     <!-- 	<tablerow> -->
     <!-- 	  <td>4-6</td> -->
-    <!-- 	  <td><bold>Lumberjack</bold>: Str+1, ✱craft.craft_2, ✱wilderness.lore[Terrain?]_2, ✱axe.cleave_3, ✱axe.strike_2, -->
+    <!-- 	  <td><bold>Lumberjack</bold>: Str+1, ✱craft.craft_2, ✱wilderness_lore[Terrain?]_2, ✱axe.cleave_3, ✱axe.strike_2, -->
     <!-- 	  ✱lore.natural_history_1, ✱transport.carter_2, ✱wilderness.scout_2, One of ✱physical.juggernaut_2 or ✱physical.head_butt_2.</td> -->
     <!-- 	</tablerow> -->
 
@@ -615,7 +636,7 @@
 
     <!-- 	<tableheaderrow> -->
     <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td><bold>Journey</bold>: Gain one of ✱transport.sailor_2, ✱transport.horse_riding_2 or ✱wilderness.lore[Terrain?]_2</td> -->
+    <!-- 	  <td><bold>Journey</bold>: Gain one of ✱transport.sailor_2, ✱transport.horse_riding_2 or ✱wilderness_lore[Terrain?]_2</td> -->
     <!-- 	</tableheaderrow> -->
 
     <!-- 	<tablerow> -->
@@ -649,7 +670,7 @@
     <!-- 	  <td>12</td> -->
     <!-- 	  <td><bold>Sharp Practice</bold>: The character has studied combat under an old soldier.  Gain -->
     <!-- 	  one of ✱physical.kick_3, ✱physical.punch_3, or ✱physical.grapple_3.  Gain (✱dagger.strike_2 and ✱dagger.throw_2) or -->
-    <!-- 	  ✱gun.shoot_2.</td> -->
+    <!-- 	  ✱gun_shoot_2.</td> -->
     <!-- 	</tablerow> -->
 	
     <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -820,7 +841,7 @@
 
     <!-- 	<tablerow> -->
     <!-- 	  <td>9-10</td> -->
-    <!-- 	  <td><bold>Adept</bold>: Gain ✱theurgic.lore_1</td> -->
+    <!-- 	  <td><bold>Adept</bold>: Gain ✱theurgy_1</td> -->
     <!-- 	</tablerow> -->
 	
     <!-- 	<tablerow> -->
@@ -1006,7 +1027,6 @@
     <!-- 	Now you can purchase any common equipment from the equipment list and you are finished. -->
     <!--   </p>     -->
     <!-- </subsection>     -->
-  </archetypebio>
 
 
   <!-- <levelprogressiontable> -->
@@ -1149,6 +1169,23 @@
     <!--   <levelmagicrefresh>+1</levelmagicrefresh>       -->
     <!-- </level>     -->
   <!-- </levelprogressiontable> -->
+
+  <!-- constraints -->
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>  
 </archetype>
 
 

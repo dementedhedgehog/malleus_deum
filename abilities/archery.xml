@@ -17,7 +17,7 @@
 
   <ability>
     <abilitytitle>Archery</abilitytitle>
-    <abilityid>archery.shoot</abilityid>
+    <abilityid>archery.archery_shoot</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><archery/><ranged/><weapon/></tags>    
     <abilityranks untrained="-3" from="1" to="4"/>
@@ -39,7 +39,7 @@
     <tags><martial/><archery/><ranged/><weapon/></tags>    
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
-    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
+    <prereqabilityrank>archery.archery_shoot_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -58,7 +58,7 @@
     <tags><martial/><archery/><ranged/><weapon/></tags>    
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>archery.shoot_2</prereqabilityrank>
+    <prereqabilityrank>archery.archery_shoot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -80,7 +80,7 @@
     <tags><martial/><archery/><ranged/><weapon/></tags>    
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>archery.shoot_1</prereqabilityrank>
+    <prereqabilityrank>archery.archery_shoot_1</prereqabilityrank>
     <prereqnottag>Short</prereqnottag>
     <prereqattr><strength>14</strength></prereqattr>
     <spline><p x="-90" y="30"/></spline>

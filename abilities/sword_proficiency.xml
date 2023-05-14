@@ -23,7 +23,7 @@
     <abilitycheck
 	effect="When missed by melee attack make an extra Sword Strike attack as a minor action."
 	dc="5">Mettle+Rank</abilitycheck>
-    <prereqabilityrank>sword.strike_2</prereqabilityrank>
+    <prereqabilityrank>sword.sword_strike_2</prereqabilityrank>
     <spline><p x="15" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -42,7 +42,7 @@
     <abilitycheck
 	effect="After hitting with a melee attack make an additional Sword Strike attack on an adjacent opponent."
 	dc="5">Mettle+Rank</abilitycheck>
-    <prereqabilityrank>sword.strike_2</prereqabilityrank>
+    <prereqabilityrank>sword.sword_strike_2</prereqabilityrank>
     <spline><p x="15" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -59,7 +59,7 @@
     <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="5" effect="Sword Strike with +3xStrength+Rank extra damage">Mettle+Rank</abilitycheck>
-    <prereqabilityrank>sword.strike_3</prereqabilityrank>
+    <prereqabilityrank>sword.sword_strike_3</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -77,7 +77,7 @@
     <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Speed" effect="Opponent disarmed">Mettle+3×Rank</abilitycheck>
-    <prereqabilityrank>sword.strike_2</prereqabilityrank>	
+    <prereqabilityrank>sword.sword_strike_2</prereqabilityrank>	
     <spline><p x="-80" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -94,7 +94,7 @@
     <tags><martial/><sword/><weapon/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Agility" effect="Character acts before target.">Std+Agility+Rank</abilitycheck>
-    <prereqabilityrank>sword.strike_2</prereqabilityrank>
+    <prereqabilityrank>sword.sword_strike_2</prereqabilityrank>
     <spline><p x="15" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -108,7 +108,7 @@
 
   <ability>
     <abilitytitle>Sword Strike</abilitytitle>
-    <abilityid>sword.strike</abilityid>
+    <abilityid>sword.sword_strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><sword/><weapon/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
@@ -125,12 +125,12 @@
 
   <ability>
     <abilitytitle>Sword Parry</abilitytitle>
-    <abilityid>sword.parry</abilityid>
+    <abilityid>sword.sword_parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><martial/><sword/><weapon/><untrained/></tags>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck dc="Targets Attack" effect="Attack blocked.">Std+Rank</abilitycheck>
-    <prereqabilityrank>sword.strike_1</prereqabilityrank>	
+    <prereqabilityrank>sword.sword_strike_1</prereqabilityrank>	
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>

@@ -1,245 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- medic/alchemist/mad scientist character --> 
 <archetype>
-  <archetypetitle>Plague Doctor</archetypetitle>
+  <archetypetitle>Fraternitas Aeterna / Plague Doctors</archetypetitle>
   <archetypeid>plague_doctor</archetypeid>
-  <archetypedescription>    
+  <archetypedescription>
     <p>
-
-   Plague Doctor
-
-   Bits of the following:
-     Learned gentleman
-     Necromancer
-     Doctor
-     Scientist
-     Alchemist
-     Thief
-     Misfortune
-     Give them really high perception so they can wander around being like sherlock holmes.
+      <emph>
+	So much has been done — more, far more, will I achieve: treading in the steps already marked,
+	I will pioneer a new way, explore unknown powers, and unfold to the world the deepest mysteries
+	of creation.
+      </emph>
+      The Late Heinrich Khunrath of Amburg (Immolated for Blasphemy in 1399).
     </p>
+    
+    <p>
+      The Eternal Brotherhood, known commonly as the Plague Doctors are a small, mysterious,
+      hermetic and esoteric brotherhood who pursue the mysteries of creation, and immortality.  They
+      dedicate their lives to the study of the sciences,  magicks, and the workings of the worlds.
+      The society is sworn to anonymity.  All members wear a mask in public and adopt a public pseudonym.
+      Roll for your psuedonym using the table below (roll twice, once for the forename and once for the
+      surname), or choose one of your own.
+    </p>
+    
+    <p>
+      The founding principles of the sect are laid out in two documents, the Fama Fraternitatis (the
+      Report of the Brotherhood), and the Confessio Fraternitatis (the Confessions of the Brotherhood).
+      These works were published under the psuedonym Großmütiger Adler, but are believed to have been
+      authored by Philippus Aureolus Theophrastus Bombastus von Hohenheim.
+    </p>
+    
+    <p>
+      Plague Doctors tend to come from a financially independent background.  The middle and lower
+      classes do not have the resources to throw themselves into a lifetime of study with little prospect
+      of financial reward.  
+    </p>
+    
+    <p>
+      The foundations of the brotherhoods research centers on five main pillars: Biology,
+      Electrochemistry, Blaylock Valves, Humoural Theory, and Leeches.  While the theories of
+      Biology and Electrochemistry are known to a certain well-educated subset of society, the
+      other three areas of research are almost entirely the province of the research of the
+      brotherhood of Plague Doctors.  Many Plague Doctors keep appraised of the latest
+      breakthroughs by subscribing to their research gazette, the Lance.
+    </p>
+    
+    <figure>
+    <img id="mj_plague_doctor" scale="0.20"/>
+    </figure>
+
+    {% include "docs/tables/plague_doctor_pseudonyms.xml" %}
     
   </archetypedescription>
   <archetypeprimaryabilities>
     <list> 
-      <li>Str:+0, End:-1, Ag:-1, Spd:+1, Per:+2, Wpr:+0 or</li>
-      <li>Str:+0, End:+0, Ag:-1, Spd:+1, Per:+1, Wpr:+0</li>
+      <li>Str:-1, End:+0, Ag:+1, Spd:+0, Per:+2 or</li>
+      <li>Str:+0, End:+0, Ag:+0, Spd:+0, Per:+2</li>
     </list>
   </archetypeprimaryabilities>
-  <archetypeinitialabilities>
-    <p>
-      All Champions of Mithras start with the following skills: ✱sword.strike_3,
-      ✱shield.block_2, ✱physical.armour_1, ✱language.aquilonian I, ✱social.etiquette_1 [Church of Mithras],
-      ✱physical.knockout_2, ✱social.contacts_2 [Church of Mithras], ✱social.leadership_1, ✱language.merovingian_3,
-      ✱theurgic.lore_1,  ✱theurgic.divine_retribution_1, ✱theurgic.grace_of_mithras_1,
-      ✱social.adversary_2 [Dark-Cults], and ✱social.adversary_2 [Demons].
-    </p>
-
-    <figure>
-    <img src="./resources/keil_champion_of_mithras/keil_champion_of_mithras.png" scale="0.25"/>
-    </figure>
-        
-  </archetypeinitialabilities>
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>20 + d4 sp</startingcash>
-  <startinggear>Chain armour, long sword, dagger (foreating), cloak, pouch, rations for a week.</startinggear>
+  <startinggear>Pest mask, short sword, dagger (for eating), cloak, pouch, rations for a week, chirurgucal tools.</startinggear>
 
   <height>
-    <metric>180 + 1d20 cm</metric> 
-    <imperial>5'8" + 1d10 inches</imperial>
+    <metric>160 + 3d10 cm</metric> 
+    <imperial>4'8" + 2d8 inches</imperial>
   </height>
   <weight>
-    <metric>60 + 3d10 kg</metric> 
-    <imperial>130 + 4d20 pounds</imperial>
+    <metric>50 + 3d10 kg</metric> 
+    <imperial>100 + 4d20 pounds</imperial>
   </weight>
-  <age>18 + 2d6 years</age>
+  <age>24 + 2d6 years</age>
 
-  <aspectexamples>Blasphemy!, In the Name of Mithras!</aspectexamples>
+  <aspectexamples>I must know the answer!, Curiousity killed the cat, </aspectexamples>
   <archetypetags>
     <human/>
     <humanoid/>
     <medium/>
   </archetypetags>
   
-  <archetypebio>
-    <subsection>
-      <subsectiontitle>Origin</subsectiontitle>
-      <p>
-    	Determine where the character came from by rolling once on the Homeland table below.
-      </p>
+  <archetypelevels>
+    <archetypelevel>
+      <levelnumber>1</levelnumber>
+      <levelstamina>2d4+9</levelstamina>
+      <levelhealth>1d4+7</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levelluck>3</levelluck>
+      <levelluckrefresh>1</levelluckrefresh>
+      <levelmagic>2</levelmagic>
+      <levelmagicrefresh>1</levelmagicrefresh>
+      <levelmettle>3</levelmettle>
+      <levelmettlerefresh>1</levelmettlerefresh>
+
+      <branch>
+	<branchtitle>Plague Doctor Training</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      All Plague Doctors start with the following skills: 
+	    </p>
+	  </branchdescription>
+	    
+	  <path chance="">
+	    <pathtitle></pathtitle>
+	    <choice>✱sword_strike_1, ✱sword_parry_1, ✱dodge_1, ✱book_learning_1,
+	    ✱barber_1, ✱physician_1, ✱natural_history_1, ✱alchemy_lesser_3, ✱wyrdscience_1, 
+	    ✱aquilonian_1, ✱etiquette[Fraternitas-Aeterna]_1, ✱contacts[Fraternitas-Aeterna]_1,
+	    ✱merovingian_2, ✱intimidate_1, ✱itiok_1, ✱smoke_bomb_1, ✱throw_1, ✱dagger_strike_1.
+	    </choice>
+	  </path>
+      </branch>
       
-      <table>
-      	<tablecategory>Standard</tablecategory>
-      	<tablespec>
-      	  <fixed>0.94</fixed>
-      	</tablespec>
-      	<tabletitle>Homelands</tabletitle>
+      <branch>
+	<branchtitle>Homelands</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      Where does the character come from?
+	    </p>
 
-      	<tableheaderrow>
-      	  <td>Homeland - Roll 1D12 </td>
-      	</tableheaderrow>
+	    <figure>
+	      <img id="mj_squid_experiment" scale="0.20"/>
+	    </figure>
+	  </branchdescription>
+	    
+	  <path chance="1-9">
+	    <pathtitle>Laibstadt</pathtitle>
+	    <choice>✱etiquette[Westreich]_3, ✱contacts[Westreich]_3,
+	    and ✱etiquette[Westreich]_2, ✱merovingian_3, ✱etiquette[Laibstadt]_1</choice>
+	    <choice>✱contacts[Averoigne]_1, or ✱contacts[Aquilonia]_1</choice>
+	  </path>
+	  <path chance="10">
+	    <pathtitle>Averoigne</pathtitle>
+	    <choice>✱occitan_3, or ✱poitevin_3, or ✱leonese_3</choice>
+	    <choice>✱social.etiquette[Averoigne]_3, ✱contacts[Averoigne]_3,
+	    and ✱etiquette[Averoigne]_3</choice>
+	    <choice>✱contacts[Averoigne]_2, or ✱contacts[Aquilonia]_1</choice>
+	  </path>
+	  <path chance="11">
+	    <pathtitle>Aquilonian</pathtitle>
+	    <choice>✱aquilonian_3</choice>
+	    <choice>✱lagashi_2, or ✱occitan_2,</choice>
+	    <choice>✱etiquette[Aquilonia]_3, ✱contacts[Aquilonia]_3,
+	    and ✱etiquette[Averoigne]_1, ✱occitan_3</choice>
+	    <choice>✱contacts[Averoigne]_1, or ✱contacts[Laibstadt]_1</choice>
+	  </path>
+	  <path chance="12">
+	    <pathtitle>Choose one of the above.</pathtitle>
+	    <choice></choice>
+	  </path>
+      </branch>
 
-      	<tablerow>
-      	  <td><bold>1 Hybernia</bold>: ✱language.hybernian_3, ✱social.adversary[Dark Elves] I, ✱social.adversary[Giants] I,
-	  ✱social.etiquette[Hybernia]_3</td>
-      	</tablerow>
+      <!-- BLOWGUNS -->
 
-      	<tablerow>
-      	  <td><bold>2 Almaignee</bold>: ✱social.adversary[Greenskins] I, ✱social.adversary[Giants] I,
-	  ✱social.etiquette[Almaignee]_3</td>
-      	</tablerow>
-	
-      	<tablerow>
-      	  <td><bold>3 ✱languages.poitevin</bold>: ✱languages.poitevin_3, ✱social.adversary[Der Frosh] I, ✱social.adversary[Dark Elves] I,
-	  ✱social.etiquette[✱languages.poitevin]_2</td>
-      	</tablerow>
 
-      	<tablerow>
-      	  <td><bold>4 Averoigne</bold>: ✱languages.occitan_3, ✱social.etiquette[Averoigne]_2, ✱social.adversary[Der Frosch] I</td>
-      	</tablerow>
+      <branch>
+	<branchtitle>Origin</branchtitle>
+	<branchdescription>
+	  <p>
+	    The characters family background.  Plague doctors tend to come from the rich, no one else has the time or resources to spend on
+	    alchemical research.
+	  </p>
+	</branchdescription>
+	<path chance="1">
+	  <pathtitle>Servant/Lab Assistant</pathtitle>
+	  <choice>✱etiquette[Homeland?-Servants]_2, ✱contacts[Homeland?-Servants]_2</choice>
+	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_2 or ✱nick_of_time_1</choice>
+	  <choice></choice>
+	</path>
+	<path chance="2">
+	  <pathtitle>Purveyor of Perfumes and Salves</pathtitle>
+	  <choice>✱etiquette[Homeland?-Merchants]_1, ✱contacts[Homeland?-Merchants]_1</choice>
+	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>+5gp</choice>
+	  <choice></choice>
+	</path>
+	<path chance="3-7">
+	  <pathtitle>Rich Merchant Family</pathtitle>
+	  <choice>✱etiquette[Homeland?-Merchants]_2, ✱contacts[Homeland?-Merchants]_2</choice>
+	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>+15gp</choice>
+	  <choice></choice>
+	</path>
+	<path chance="8-10">
+	  <pathtitle>Lesser Noble</pathtitle>
+	  <choice>✱etiquette[Homeland?-Nobility]_1, ✱contacts[Homeland?-Nobility]_1</choice>
+	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>+20gp</choice>
+	  <choice></choice>
+	</path>
+	<path chance="11">
+	  <pathtitle>Noble</pathtitle>
+	  <choice>✱etiquette[Homeland?-Nobility]_2, ✱contacts[Homeland?-Nobility]_2</choice>
+	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>+50gp</choice>
+	  <choice></choice>
+	</path>
+	<path chance="12">
+	  <pathtitle>Choose one of the above.</pathtitle>
+	  <choice></choice>
+	</path>
+      </branch>      
 
-      	<tablerow>
-      	  <td><bold>5 Albion</bold>: ✱language.hybernian_1, ✱social.etiquette[Albion]_3, ✱social.etiquette[Hybernia] I,
-	  ✱social.contacts[Albion] I, ✱social.adversary[Greenskins] I</td>
-      	</tablerow>
-	
-      	<tablerow>
-      	  <td><bold>6-11 Westreich</bold>: ✱social.etiquette[Westreich]_3, ✱social.contacts[Westreich]_2</td>
-      	</tablerow>
 
-      	<tablerow>
-      	  <td><bold>12 Choose</bold></td>
-      	</tablerow>
-
-      	<tablelabel>table:{{ doc_name }}-homeland</tablelabel>
-      </table>
-    </subsection>
-
-    <subsection>
-      <subsectiontitle>Upbringing Tables</subsectiontitle>      
-      <p>
-    	Roll on once on one of the following table.
-      </p>      
+      <branch>
+	<branchtitle>Research</branchtitle>
+	<branchdescription>
+	  <p>	    
+	  </p>
+	</branchdescription>
+	<path chance="1-3">
+	  <pathtitle>The Mandragora</pathtitle>
+	  <choice>✱reroll_2</choice>
+	  <choice>✱alchemy_2</choice>
+	  <choice>One of ✱wilderness_lore[Tundra]_1, ✱wilderness_lore[Jungles]_1, or ✱wilderness_lore[Sea]_1</choice>
+	  <choice></choice>
+	</path>
+	<path chance="2-6">
+	  <pathtitle>The Chirurgeon</pathtitle>
+	  <choice>✱luck.nabail_1</choice>
+	  <choice>✱natural_history_2</choice>
+	  <choice>✱barber_2 or ✱physician_2</choice>
+	  <choice></choice>
+	</path>
+	<path chance="7-10">
+	  <pathtitle>The Blaylock Valve</pathtitle>
+	  <choice>✱wyrd_rat_1</choice>
+	  <choice>One of ✱physics_2 or ✱mathematics_2 or ✱artillery_2</choice>
+	  <choice></choice>
+	</path>
+	<path chance="11">
+	  <pathtitle>The Polymath</pathtitle>
+	  <choice>✱wyrd_hand_1</choice>
+	  <choice>✱alchemy_1</choice>
+	  <choice>One of ✱physics_2 or ✱mathematics_2</choice>
+	  <choice>One of ✱wilderness_lore[Tundra]_2, ✱wilderness_lore[Jungles]_2, or ✱wilderness_lore[Sea]_2</choice>
+	  <choice>One of ✱lagashi_2 or ✱aquilonian_2</choice>
+	</path>
+	<path chance="12">
+	  <pathtitle>Choose one of the above.</pathtitle>
+	  <choice></choice>
+	</path>
+      </branch>      
       
-      <table>
-    	<tablecategory>Standard</tablecategory>
-    	<tablespec>
-    	  <fixed>0.18</fixed>
-    	  <fixed>0.71</fixed>
-    	</tablespec>
-    	<tabletitle>Study I</tabletitle>
-
-    	<tableheaderrow>
-    	  <td>Roll 1D12</td>
-    	  <td>Study</td>
-    	</tableheaderrow>
-	
-    	<tablerow>
-    	  <td>1-2</td>
-    	  <td>✱transport.horse_riding_1, ✱physical.rest_2, ✱physical.grapple_2 or ✱physical.head_butt_2, ✱physical.punch_2 or ✱physical.throw_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>3-4</td>
-    	  <td>✱physical.listen_2, ✱transport.horse_riding_1 or ✱wilderness.wayfinding_1, ✱physical.sure_feet_2 or ✱physical.jump_2, ✱social.intimidate_2 or ✱social.negotiate_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>5-6</td>
-    	  <td>✱wilderness.survivalism_1, ✱social.rally_2, ✱physical.sleep_2 or ✱physical.rest_1, ✱skulduggery.sneak_2 or ✱physical.charge_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>7-8</td>
-    	  <td>✱wilderness.scout_1, ✱physical.notice_2, ✱physical.charge_2 or ✱physical.dodge_1, ✱physical.climb_1 or ✱physical.swim_2, ✱arts.singing_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>9-10</td>
-    	  <td>✱transport.horse_riding_1, ✱transport.animal_handling_1, ✱physical.juggernaut_2, ✱physical.move_2 or ✱physical.charge_2, ✱physical.punch_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>11-12</td>
-    	  <td>Choose one of the above</td>
-    	</tablerow>
-	
-    	<tablelabel>table:{{ doc_name }}-study-i</tablelabel>
-      </table>
-    
-
-      <p>
-	See what the characters fortune holds.
-      </p>
       
-      <table>
-    	<tablecategory>Standard</tablecategory>
-    	<tablespec>
-    	  <fixed>0.18</fixed>
-    	  <fixed>0.71</fixed>
-    	</tablespec>
-    	<tabletitle>Fortune</tabletitle>
 
-    	<tableheaderrow>
-    	  <td>Roll 1D12</td>
-    	  <td>Fortune</td>
-    	</tableheaderrow>
 
-    	<tablerow>
-    	  <td>1-2</td>
-    	  <td>Tallow Candle, Sack, Wineskin, Book of Light</td>
-    	</tablerow>
+      <branch>
+	<branchtitle>Extra Training</branchtitle>
+	<branchdescription>
+	  <p>	    
+	  </p>
+	</branchdescription>
+	<path chance="1-3">
+	  <pathtitle>The Way of the Shadow</pathtitle>
+	  <choice>One of ✱cloak_fighting_2 or ✱sneak_1</choice>
+	  <choice>One of ✱punch_2 or ✱grapple_2</choice>
+	  <choice>One of ✱listen_2 or ✱notice_2</choice>
+	  <choice>One of ✱swim_2 or ✱sure_feet_2</choice>
+	</path>
+	<path chance="2-6">
+	  <pathtitle>The Spectre</pathtitle>
+	  <choice>One of ✱pick_locks_2 or ✱sneak_2</choice>
+	  <choice>One of ✱cryptography_2 or ✱climb_2</choice>
+	  <choice>One of ✱punch_2 or ✱throw_2</choice>
+	  <choice>One of ✱swim_2 or ✱sure_feet_2</choice>
+	</path>
+	<path chance="7-10">
+	  <pathtitle>The Crow</pathtitle>
+	  <choice>One of ✱pick_locks_2 or ✱sneak_2</choice>
+	  <choice>One of ✱sleight_of_hand_1 or ✱search_2</choice>
+	  <choice>One of ✱dagger_strike_2 or ✱dagger_throw_1</choice>
+	  <choice>One of ✱cryptography_2 or ✱climb_1</choice>
+	</path>
+	<path chance="11">
+	  <pathtitle>Militia</pathtitle>
+	  <choice>✱sword_strike_2</choice>
+	  <choice>Two of ✱spear_strike_2, ✱shield.block_1 and ✱dagger_strike_2</choice>
+	  <choice>One of ✱punch_2 or ✱head_butt_2</choice>
+	  <choice>One of ✱swim_2 or ✱sure_feet_2</choice>
+	  <choice></choice>
+	</path>
+	<path chance="12">
+	  <pathtitle>Choose one of the above.</pathtitle>
+	</path>
+      </branch>
 
-    	<tablerow>
-    	  <td>3</td>
-    	  <td>Wool Sash, Leather Purse, Hip Flask</td>
-    	</tablerow>
+      <branch>
+	<branchtitle>Fortune</branchtitle>
+	<branchdescription>
+	  <p>What incidental goods does the character have?</p>
+	</branchdescription>
 
-    	<tablerow>
-    	  <td>4-5</td>
-    	  <td>Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>,
-    	  Paper and ink</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>6-7</td>
-    	  <td>Kettle, Book of Poetry</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>8-9</td>
-    	  <td>Tin Cup, Scarf</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>10</td>
-    	  <td>Playing Cards, Small Pot</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>11-12</td>
-    	  <td>Choose</td>
-    	</tablerow>
+	<path chance="1-2">
+	  <pathtitle></pathtitle>
+	  <choice>Wool Sash, Leather Purse, Hip Flask</choice>
+	</path>
+	<path chance="3">
+	  <pathtitle></pathtitle>
+	  <choice>Sack, Wineskin, Tallow Candle</choice>
+	</path>
+	<path chance="4-5">
+	  <pathtitle></pathtitle>
+	  <choice>Kettle, Book of Poetry</choice>
+	</path>
+	<path chance="6-7">
+	  <pathtitle></pathtitle>
+	  <choice>Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, Paper and ink</choice>
+	</path>
+	<path chance="8-9">
+	  <pathtitle></pathtitle>
+	  <choice>Playing Cards, Small Pot</choice>
+	</path>
+	<path chance="10">
+	  <pathtitle></pathtitle>
+	  <choice>Tin Cup, Scarf</choice>
+	</path>
+	<path chance="11-12">
+	  <pathtitle></pathtitle>
+	  <choice>Choose one of the above</choice>
+	</path>
 	
-    	<tablelabel>table:{{ doc_name }}-fortune</tablelabel>
-      </table>
-    </subsection>      
-  </archetypebio>
+      </branch>                 
 
+    </archetypelevel>    
+  </archetypelevels>
 
-  <!-- <levelprogressiontable> -->
-  <!--   <level> -->
-  <!--     <levelnumber>1</levelnumber> -->
-  <!--     <levelmettle>4</levelmettle> -->
-  <!--     <levelmettlerefresh>+1</levelmettlerefresh> -->
-  <!--     <levelstamina>d4+8</levelstamina> -->
-  <!--     <levelhealth>d4+10</levelhealth> -->
-  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
-  <!--     <levelluck>2</levelluck> -->
-  <!--     <levelluckrefresh>+1</levelluckrefresh> -->
-  <!--     <levelmagicpool>2</levelmagicpool> -->
-  <!--     <levelmagicrefresh>+2</levelmagicrefresh> -->
-  <!--   </level> -->
-  <!-- </levelprogressiontable> -->
+  
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>  
 </archetype>
 
 

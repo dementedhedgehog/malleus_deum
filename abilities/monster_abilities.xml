@@ -50,7 +50,7 @@
   </ability>
   
   <ability>
-    <abilitytitle>Claw</abilitytitle>
+    <abilitytitle>Claw(d8)</abilitytitle>
     <abilityid>monster.claw</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><npc/><monster/><crushing/><piercing/></tags>
@@ -66,6 +66,40 @@
     </abilitydescription>
   </ability>
 
+  <ability>
+    <abilitytitle>Large Claw(d12)</abilitytitle>
+    <abilityid>monster.large_claw</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><npc/><monster/><crushing/><piercing/></tags>
+    <abilityranks from="1" to="6"/>
+    <gmgability/>
+    <abilitycheck dc="Targets Defence" dmg="4+Rank">Std+Rank</abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	Claws are an attack that are particularly effective against
+	Claws get an +Rank to hit against Block or Armour Defences.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Small Claw(d4)</abilitytitle>
+    <abilityid>monster.small_claw</abilityid>
+    <abilityactiontype><standard/></abilityactiontype>
+    <tags><npc/><monster/><crushing/><piercing/></tags>
+    <abilityranks from="1" to="6"/>
+    <gmgability/>
+    <abilitycheck dc="Targets Defence" dmg="4+Rank">Std+Rank</abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	Claws are an attack that are particularly effective against
+	Claws get an +Rank to hit against Block or Armour Defences.
+      </p>
+    </abilitydescription>
+  </ability>
+  
   <ability>
     <abilitytitle>Countless Bites</abilitytitle>
     <abilityid>monster.countless_bites</abilityid>

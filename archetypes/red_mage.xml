@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- spellcaster -->
+<!-- elemental spellcaster -->
 <archetype>
 
   <archetypetitle>Red Mage</archetypetitle>
@@ -27,32 +27,11 @@
 
   <archetypeprimaryabilities>
       <list> 
-        <li>Str:+0 End:+0 Ag:+0 Spd:-1 Per:+2 Wpr:+0 or</li>
-        <li>Str:+0 End:+0 Ag:+0 Spd:+0 Per:+1 Wpr:+0</li>
+        <li>Str:+0 End:+0 Ag:+0 Spd:+0 Per:+2 or</li>
+        <li>Str:+0 End:+0 Ag:+1 Spd:+0 Per:+1</li>
       </list>
   </archetypeprimaryabilities>
-  <archetypeinitialabilities>
-    <p>
-      All Red Mages start with the following skills:
-      ✱language.merovingian_4, ✱language.inochian_3, and one of ✱language.aquilonian_3, ✱language.occitan_3 or ✱language.lagashi_3,
-      ✱physical.dodge_2 and one of ✱physical.run_3, ✱physical.sixth_sense_3, or ✱physical.sure_feet_3.
-      Gain ✱social.contacts[College-of-Mages]_3, ✱social.etiquette[Laibstadt]_3 and ✱lore.book_learning_2.
-      Gain two of ✱lore.alchemy_2, ✱lore.antiquarian_2, ✱lore.natural_history_2, or ✱lore.history_2.
-      Gain ✱sword.strike_1, ✱sword.parry_2, ✱staff.strike_1, and ✱staff.parry_2.
-      Gain ✱elemental.lore_2, and one of ✱elemental.smoke_weasel_1 or ✱elemental.burning_hands_1.
-      Gain ✱arcana.lore_1, ✱arcana.true_sight_1 and either ✱arcana.ignis_1 and ✱elemental.mist_1, or ✱arcana.aegis_1 and ✱arcana.incendo_1. 
-    </p>
-
-    <p>
-    </p>
-    <!-- <figure> -->
-    <!-- <img src="./resources/keil_champion_of_mithras/keil_champion_of_mithras.png" scale="0.25"/> -->
-    <!-- </figure> -->
-        
-  </archetypeinitialabilities>
   
-
-
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>20 + d4 sp</startingcash>
   <startinggear>Cloak, staff, long sword, hat, dagger, rope, rations for a week.</startinggear>
@@ -77,26 +56,52 @@
   </archetypetags>
 
 
+  <archetypelevels>
+    <archetypelevel>
+      <levelnumber>1</levelnumber>
+      <levelstamina>d4+3</levelstamina>
+      <levelhealth>d4+4</levelhealth>
+      <levelhealthrefresh>+1d4</levelhealthrefresh>
+      <levelmagic>5</levelmagic>
+      <levelmagicrefresh>+3</levelmagicrefresh>
+      <levelmettle>2</levelmettle>
+      <levelmettlerefresh>+1</levelmettlerefresh>
+      <levelluck>2</levelluck>
+      <levelluckrefresh>+1</levelluckrefresh>
 
-  <archetypebio>
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Origin</subsectiontitle> -->
+    <!-- <figure> -->
+    <!-- <img src="./resources/keil_champion_of_mithras/keil_champion_of_mithras.png" scale="0.25"/> -->
+    <!-- </figure> -->
+        
+      <branch>
+	<branchtitle></branchtitle>
+	<branchdescription>
+	  <p>All Red Mages start with the following skills:</p>
+	</branchdescription>
+	<path chance="">
+	  <pathtitle></pathtitle>
+	  <all-of> ✱language.merovingian_4, ✱language.inochian_3, and one of ✱language.aquilonian_3, ✱language.occitan_3 or ✱language.lagashi_3,
+	  ✱physical.dodge_2, ✱social.contacts[College-of-Mages]_3, ✱social.etiquette[Laibstadt]_3 and ✱lore.book_learning_2, ✱sword_strike_1, ✱sword_parry_2,
+	  ✱staff_strike_1, and ✱staff.parry_2, ✱elemental_magic_2, ✱arcana_1, ✱arcana.true_sight_1</all-of>
+	  <one-of>One of ✱physical.run_3, ✱special.sixth_sense_3, or ✱physical.sure_feet_3</one-of>
+	  <one-of>One of ✱elemental.smoke_weasel_1 or ✱elemental.burning_hands_1.</one-of>
+	  <two-of>Gain two of ✱lore.alchemy_2, ✱lore.antiquarian_2, ✱lore.natural_history_2, or ✱lore.history_2</two-of>
+	  <or><all-of>✱arcana.ignis_1 and ✱elemental.mist_1</all-of><all-of>✱arcana.aegis_1 and ✱arcana.incendo_1</all-of></or>
+	</path>
+      </branch>
+    </archetypelevel>
+  </archetypelevels>
 
-    <!-- </subsection> -->
-  </archetypebio>
+
+  <!-- <archetypebio> -->
+  <!--   <!-\- <subsection> -\-> -->
+  <!--   <!-\-   <subsectiontitle>Origin</subsectiontitle> -\-> -->
+
+  <!--   <!-\- </subsection> -\-> -->
+  <!-- </archetypebio> -->
   
   <!-- <levelprogressiontable> -->
   <!--   <level> -->
-  <!--     <levelnumber>1</levelnumber> -->
-  <!--     <levelmettle>2</levelmettle> -->
-  <!--     <levelmettlerefresh>+1</levelmettlerefresh> -->
-  <!--     <levelstamina>3 + d4</levelstamina> -->
-  <!--     <levelhealth>4 + d4</levelhealth> -->
-  <!--     <levelhealthrefresh>+1d4</levelhealthrefresh> -->
-  <!--     <levelluck>2</levelluck> -->
-  <!--     <levelluckrefresh>+1</levelluckrefresh> -->
-  <!--     <levelmagicpool>5</levelmagicpool> -->
-  <!--     <levelmagicrefresh>+3</levelmagicrefresh> -->
   <!--   </level> -->
 
   <!--   <level> -->
@@ -121,6 +126,22 @@
   <!--   </level> -->
   <!-- </levelprogressiontable> -->
 
+  <!-- constraints -->
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>    
 </archetype>
 
 

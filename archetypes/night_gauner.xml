@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- rogue -->
 <archetype>
 
   <archetypetitle>Night Gauner</archetypetitle>
@@ -27,18 +28,10 @@
   </archetypedescription>
   <archetypeprimaryabilities>
     <list> 
-      <li>Str:-1, End:-1, Ag:+1, Spd:+0, Per:+2, Wpr:+0 or</li>
-      <li>Str:+0, End:-1, Ag:+1, Spd:+0, Per:+1, Wpr:+0</li>
+      <li>Str:-1, End:-1, Ag:+1, Spd:+1, Per:+2 or</li>
+      <li>Str:+0, End:-1, Ag:+1, Spd:+0, Per:+1</li>
     </list>
   </archetypeprimaryabilities>
-  <archetypeinitialabilities>
-    <p>
-      All Hedge Wizards start with the following skills: ✱language.merovingian_4, ✱language.inochian_2,
-      ✱physical.dodge_2, ✱staff.strike_1, ✱sword.strike_1, ✱physical.run_2, ✱physical.notice_2, ✱physical.jump_1, ✱physical.climb_1, ✱arcana.arcana_1,
-      ✱conjuration.conjuration_1, ✱arcana.true_sight_1, and ✱luck.reroll_1.
-    </p>
-
-  </archetypeinitialabilities>
   <archetypemovedistance>6</archetypemovedistance>
 
   
@@ -86,8 +79,6 @@
       </figure>        
 
 
-
-      
       <p>
 	See what the characters fortune holds.
       </p>
@@ -146,7 +137,7 @@
     </subsection>
 
     <archetypelevel>
-      <leveltitle levelnumber="1"/>
+      <levelnumber>1</levelnumber>
       <levelstamina>2d4+9</levelstamina>
       <levelhealth>1d4+6</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
@@ -159,21 +150,17 @@
       
 
       <branch>
-	<branchtitle>Common</branchtitle>
+	<branchtitle>Night Gauner Training</branchtitle>
 	<branchdescription>
 	  <p>
-	    In a word, I was too cowardly to do what I knew to be right, as I had been too cowardly
-	    to avoid doing what I knew to be wrong.      
+	    All Night Gauners gain the following abilities:
 	  </p>
 	</branchdescription>
-	<path chance="12">
-	  <choice>✱language.merovingian_2, ✱sword.strike_1, ✱dagger.thrust_1, ✱social.intimidate_1</choice>
+	<path chance="">
+	  <pathtitle>XXXX</pathtitle>
+	  <choice>✱language.merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱social.intimidate_1</choice>
 	</path>
       </branch>
-
-
-
-      
 
 
       <branch>
@@ -229,13 +216,13 @@
 	</branchdescription>
 	<path chance="3">
       	  <pathtitle>Robbery under Arms</pathtitle>
-	  <choice>✱archery.shoot_1</choice>
-	  <choice>✱gun.shoot_1</choice>
-	  <choice>✱crossbow.shoot_1</choice>
+	  <choice>✱archery_shoot_1</choice>
+	  <choice>✱gun_shoot_1</choice>
+	  <choice>✱crossbow_shoot_1</choice>
 	</path>
 	<path chance="4">
       	  <pathtitle>Burglar</pathtitle>
-	  <choice>✱physical.climbing_3</choice>
+	  <choice>✱physical.climb_3</choice>
 	  <choice>✱skulduggery.ropecraft_2</choice>
 	</path>
       </branch>

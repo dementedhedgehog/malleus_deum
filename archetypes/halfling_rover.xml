@@ -1,1060 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-      
-      Luck based character..??
-      some thievery
-      some fighting
-
- -->
+<!-- Analog of the red box halflings thief/fighter/everyman types -->
 <archetype>
+<!--
 
-  <archetypetitle>Halfling Rover</archetypetitle>
-  <archetypeid>halfling_rover</archetypeid>
-  <archetypedescription>     
-    <p>
-      Halflings are mostly a peaceful and bucolic bunch. However a few,
-      a very few, seem to be embued with a wanderlust, a curiosity
-      to see new things, and meet new cultures that drives them from
-      their holes and out into the wider world beyond the green pastures
-      of their homelands.
-    </p>
+Luck based character..??
+some thievery
+some fighting
 
-    <p>
-      Halflings have no great armies and pose no obvious threat to
-      anyone, and so no one pays an enormous amount of attention to
-      them.  Or at least that would be the case if it were not for
-      their loose understanding of the basic principles of property
-      ownership.
-    </p>
+-->
 
-    <!--
-	aspect unassuming?  unnoticeable.  klepto
+<archetypetitle>Halfling Rover</archetypetitle>
+<archetypeid>halfling_rover</archetypeid>
+<archetypedescription>     
+  <p>
+    Halflings are mostly a peaceful and bucolic bunch. However a few,
+    a very few, seem to be embued with a wanderlust, a curiosity
+    to see new things, and meet new cultures that drives them from
+    their holes and out into the wider world beyond the green pastures
+    of their homelands.
+  </p>
 
-    <figure>
-      <img src="./resources/archetypes/halfling_rascal.jpg"/>
-      </figure>
-      -->
-  </archetypedescription>
+  <p>
+    Halflings have no great armies and pose no obvious threat to
+    anyone, and so no one pays an enormous amount of attention to
+    them.  Or at least that would be the case if it were not for
+    their loose understanding of the basic principles of property
+    ownership.
+  </p>
 
-  <archetypeprimaryabilities>
-    <list> 
-      <li>Str:+1, End:+1, Ag:-1, Spd:-1, Per:+1, Wpr:+0 or</li>
-      <li>Str:+1, End:+1, Ag:+0, Spd:-1, Per:+1, Wpr:+0</li>
-    </list>
-  </archetypeprimaryabilities>
-  <archetypeinitialabilities>
-    <p>
-      All Halfling Rovers start with the following skills: ✱sword.strike_1, ✱physical.dodge_3, 
-      ✱luck.lucky_2, I Think I'm OK? I, ✱luck.reroll_2, ✱physical.sure_feet_2, ✱physical.rest_2, ✱physical.sleep_2,
-      Sleight of Hand I, ✱skulduggery.sneak_2, ✱skulduggery.concealment_2, Pick Locks I, ✱language.merovingian_2.
-    </p>
+  <!--
+      aspect unassuming?  unnoticeable.  klepto
 
-    <figure>
-    <img src="./resources/keil_champion_of_mithras/keil_champion_of_mithras.png" scale="0.25"/>
-    </figure>
-        
-  </archetypeinitialabilities>
+<figure>
+<img src="./resources/archetypes/halfling_rascal.jpg"/>
+</figure>
+  -->
+</archetypedescription>
+
+<archetypeprimaryabilities>
+  <list> 
+    <li>Str:-2, End:+1, Ag:+2, Spd:+0, Per:+1 or</li>
+    <li>Str:-2, End:+0, Ag:+2, Spd:+1, Per:+1</li>
+  </list>
+</archetypeprimaryabilities>
+
+
+<archetypemovedistance>5</archetypemovedistance>
+<startingcash>16 + d4 sp</startingcash>
+<startinggear>Vest, short sword, sling, hat, dagger, rations for a week.</startinggear>
+
+<height>
+  <metric>110 + 2d8 cm</metric> 
+  <imperial>3'4" + 2d4" inches</imperial>
+</height>
+<weight>
+  <metric>40 + 3d6 kg</metric> 
+  <imperial>90 + 3d12 pounds</imperial>
+</weight>
+<age>17 + 2d4 years</age>
+
+<aspectexamples>I wonder what this does?  Surely this won't be missed?  What a wonderful souvenier, I'm feeling a bit peckish.</aspectexamples>
+
+<archetypetags>
+  <halfling/>
+  <humanoid/>
+  <short/>
+  <small/>
+</archetypetags>
+
+<archetypelevels>
   
+  <archetypelevel>
+    <levelnumber>1</levelnumber>
+    <levelstamina>2d4+9</levelstamina>
+    <levelhealth>1d4+6</levelhealth>
+    <levelhealthrefresh>2d4</levelhealthrefresh>
+    <levelluck>3</levelluck>
+    <levelluckrefresh>1</levelluckrefresh>
+    <levelmagic>2</levelmagic>
+    <levelmagicrefresh>1</levelmagicrefresh>
+    <levelmettle>3</levelmettle>
+    <levelmettlerefresh>1</levelmettlerefresh>
 
-  <archetypemovedistance>5</archetypemovedistance>
-  <startingcash>16 + d4 sp</startingcash>
-  <startinggear>Vest, short sword, sling, hat, dagger, rations for a week.</startinggear>
-
-  <height>
-    <metric>110 + 2d8 cm</metric> 
-    <imperial>3'4" + 2d4" inches</imperial>
-  </height>
-  <weight>
-    <metric>40 + 3d6 kg</metric> 
-    <imperial>90 + 3d12 pounds</imperial>
-  </weight>
-  <age>17 + 2d4 years</age>
-
-  <aspectexamples>I wonder what this does?  Surely this won't be missed?  What a wonderful souvenier, I'm feeling a bit peckish.</aspectexamples>
-  
-  <archetypetags>
-    <halfling/>
-    <humanoid/>
-    <short/>
-    <small/>
-  </archetypetags>
-
-  <archetypebio>
-
-      
-    <level>
-    <leveltitle>Level 1</leveltitle>
-
-    </level>
-    
-    
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Origin</subsectiontitle> -->
-
-    <!--   <p> -->
-    <!-- 	Determine where the character came from by rolling once on the Homeland table below. -->
-    <!--   </p> -->
-
-    <!--   <table> -->
-    <!--   	<tablecategory>Standard</tablecategory> -->
-    <!--   	<tablespec> -->
-    <!--   	  <fixed>0.18</fixed> -->
-    <!--   	  <fixed>0.71</fixed> -->
-    <!--   	</tablespec> -->
-    <!--   	<tabletitle>Homelands</tabletitle> -->
-
-    <!--   	<tableheaderrow> -->
-    <!--   	  <td>Roll 1D12</td> -->
-    <!--   	  <td>Homeland</td> -->
-    <!--   	</tableheaderrow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>1</td> -->
-    <!--   	  <td><bold>Tinkers</bold>: ✱craft.smith_2, ✱language.merovingian_3, two of ✱language.thule_2, ✱language.hybernian_2 or ✱language.poitevin_2. -->
-    <!-- 	  Gain ✱social.adversary[Greenskins]_1 , ✱social.adversary[Giants]_1 . Roll on the City Story Table or -->
-    <!-- 	  Wilderness Story Table</td> -->
-    <!--   	</tablerow> -->
-	
-    <!--   	<tablerow> -->
-    <!--   	  <td>2-5</td> -->
-    <!--   	  <td><bold>Dwarven Mountain Stronghold</bold>: ✱language.merovingian_2, ✱craft.mining_3, ✱social.adversary[Greenskins]_2, -->
-    <!-- 	  ✱social.adversary[Giants]_1, ✱wilderness.lore[Mountains]_2.  Roll on the Delvers Story Table</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>6-9</td> -->
-    <!--   	  <td><bold>Mining Outpost</bold>: ✱language.merovingian_3, ✱craft.mining_2, ✱social.adversary[Greenskins]_1, -->
-    <!--   	  ✱social.adversary[Giants]_2, ✱wilderness.lore[Mountains]_2, ✱wilderness.lore[Forests]_1. -->
-    <!-- 	  Roll on ane one of the Story Tables</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>10-11</td> -->
-    <!--   	  <td><bold>Dwarven District of a Human Town</bold>: ✱language.merovingian_3, ✱social.etiquette_4 [Merchants], -->
-    <!-- 	  ✱social.contacts_3 [Town], ✱craft.mining_1, one of ✱craft.mason_3, ✱craft.cooper_3, ✱craft.cartwright_3, ✱sword.strike_2. -->
-    <!-- 	  Roll on City Story Table</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>12</td> -->
-    <!--   	  <td><bold>Choose</bold></td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablelabel>table:{{ doc_name }}-homeland</tablelabel> -->
-    <!--   </table> -->
-    <!-- </subsection> -->
 
     
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Origin Story Tables</subsectiontitle> -->
-     
-    <!--   <p> -->
-    <!-- 	Roll on once on one of the following three tables depending on your Homeland result. -->
-    <!--   </p> -->
-                  
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>City Story</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Story</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1-2</td> -->
-    <!-- 	  <td><bold>Gang Member</bold>: the character gains ✱social.contacts[Low?]_2, and two of -->
-    <!-- 	  ✱skulduggery.sneak_3, ✱skulduggery.pick_locks_3, ✱skulduggery.sleight_of_hand_3, or ✱skulduggery.cloak_fighting_3 (and gets a cloak -->
-    <!-- 	  if they did not already have one).</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>3-4</td> -->
-    <!-- 	  <td><bold>Business Takeovers</bold>: the character gains ✱social.contacts[Medium?]_2, -->
-    <!-- 	  ✱social.etiquette[Medium?]_2,  One of ✱transport.horse_riding_3, ✱transport.carter_3, or ✱transport.sailor_3, -->
-    <!-- 	  One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3 or ✱lore.mathematics_3.   -->
-    <!-- 	  Two of ✱social.leadership_3, ✱social.rally_3, ✱social.deceive_3, or ✱social.negotiate_3</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>5-7</td> -->
-    <!-- 	  <td><bold>Trader</bold>: the character gains ✱social.contacts[Low?]_2, -->
-    <!-- 	  ✱social.etiquette[Low?]_2,  ✱skulduggery.search_3, ✱skulduggery.concealment_3.  One of ✱transport.carter_3, or ✱transport.sailor_3, -->
-    <!-- 	  One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3.   -->
-    <!-- 	  Two of ✱social.yield_3, ✱social.rally_3, ✱social.deceive_3, ✱social.negotiate_3, or ✱skulduggery.search_3</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>8-9</td> -->
-    <!-- 	  <td><bold>Metalworking</bold>: Str+1, ✱craft.smith_3 and one of Weapon ✱craft.smith_1, or Armour ✱craft.smith_1 or ✱craft.mining_1, -->
-    <!-- 	  Choose two of Armour I, ✱lore.alchemy_3, ✱craft.craft_1</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10-12</td> -->
-    <!-- 	  <td><bold>Stonemason</bold>: Str+1, ✱craft.mason_3, ✱skulduggery.ropecraft_3, Two of ✱lore.book_learning_2, ✱lore.mathematics_2, -->
-    <!-- 	  ✱craft.craft_1.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table> -->
-
-    <!--   <figure position="h"> -->
-    <!-- 	<img id="dore_dwarves" scale="5.5"/> -->
-    <!--   </figure> -->
-
-
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Wilderness Story</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Story</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1-3</td> -->
-    <!-- 	  <td><bold>Prospector</bold>: ✱craft.mining_3, ✱lore.natural_history_2, ✱wilderness.lore[Terrain?]_2, -->
-    <!-- 	  ✱wilderness.wayfinding_2, ✱crossbow.shoot_2 and Two of Stealth_2, ✱wilderness.scout_2, ✱wilderness.survivalism_2 or ✱wilderness.hunting_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4-6</td> -->
-    <!-- 	  <td><bold>Lumberjack</bold>: Str+1, ✱craft.craft_2, ✱wilderness.lore[Terrain?]_2, ✱axe.cleave_3, ✱axe.strike_2, -->
-    <!-- 	  ✱lore.natural_history_1, ✱transport.carter_2, ✱wilderness.scout_2, One of ✱physical.juggernaut_2 or ✱physical.head_butt_2.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>7-9</td> -->
-    <!-- 	  <td><bold>Wagoneer</bold>: Str+1, ✱transport.carter_3, ✱craft.craft_2, ✱skulduggery.ropecraft_2, ✱wilderness.scout_2, ✱physical.sleep_2, One of Sure -->
-    <!-- 	  Feet_3 or ✱physical.kick_3, two of Animal Handler_3, ✱transport.horse_riding_3, ✱wilderness.wayfinding_3, two of Adversery -->
-    <!-- 	  [Bandits]_3, ✱social.adversary[Greenskins]_3, or ✱social.adversary[Beasts]_3.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10-11</td> -->
-    <!-- 	  <td><bold>Trader</bold>: the character gains ✱social.contacts[Low?]_2, -->
-    <!-- 	  ✱social.etiquette[Low?]_2,  ✱skulduggery.search_3, ✱skulduggery.concealment_3.  One of ✱transport.carter_3, or ✱transport.sailor_3, -->
-    <!-- 	  One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3.   -->
-    <!-- 	  Two of ✱social.yield_3, ✱social.rally_3, ✱social.deceive_3, ✱social.negotiate_3, or ✱skulduggery.search_3</td>	   -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>Grifter</bold>: ✱skulduggery.back_stab_2, three of ✱skulduggery.sleight_of_hand_3, ✱skulduggery.sneak_3, Disguise_3, -->
-    <!-- 	  Trapwork_3, and ✱skulduggery.pick_locks_3, One of Arts Lore_3, ✱lore.antiquarian_3, ✱lore.book_learning_3, -->
-    <!-- 	  Law [Society]_3, or Politics_3.  One of ✱physical.dodge_1, or ✱physical.run_3.  Two of ✱social.negotiate_3,  -->
-    <!-- 	  ✱social.deceive_3, or ✱social.interrogate_3. -->
-    <!-- 	  </td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table> -->
-      
-
- 
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Delvers Story</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Story</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1-8</td> -->
-    <!-- 	  <td><bold>Dilligent Worker</bold> - One of ✱lore.book_learning_2, ✱craft.craft_2 or ✱craft.smith_2.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9</td> -->
-    <!-- 	  <td><bold>Great Work</bold>: The character has created something requiring notable skills.  Gains -->
-    <!-- 	  Fame [Society]_2, Arts Lore I, ✱craft.craft_2, and one of Builder_2, ✱craft.mason_2, ✱craft.smith_3, Weapon ✱craft.smith_2, -->
-    <!-- 	  Armour ✱craft.smith_2, ✱arts.lore_2, or ✱arts.oratory_2.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10</td> -->
-    <!-- 	  <td><bold>Rockfall</bold>: PC trapped alone in the dark depth for months.  ✱craft.mining_3, ✱special.blindsight_3, -->
-    <!-- 	  ✱physical.listen_3, ✱physical.sure_feet_3, ✱skulduggery.concealment_3, ✱wilderness.dungeoneering_3.  Two of ✱social.adversary[Greenskins]_3, -->
-    <!-- 	  ✱skulduggery.ropecraft_3,  ✱special.sixth_sense_3, ✱skulduggery.sneak_2.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>11</td> -->
-    <!-- 	  <td><bold>Famous Discovery</bold>: The character is notable within their society for having discovered -->
-    <!-- 	  a new subterannean feature, or a rich vein of ore, or some long lost Dwarven treasure. Gains Fame -->
-    <!-- 	  [Society]_2, One of ✱lore.antiquarian_2, ✱lore.alchemy_2, ✱craft.mining_2.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>Faithful Adept</bold>: Rune Magic 1, may use weapon skills to gain Rune Magic spells at -->
-    <!-- 	  higher levels. Gains an extra magic dice to their dice pool.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table>       -->
-    <!-- </subsection> -->
-
-    
-    
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Youth</subsectiontitle> -->
-    <!--   <p> -->
-    <!-- 	Now work out the character's backgroun in their youth by rolling once on the -->
-    <!-- 	Nature table below. -->
-    <!--   </p> -->
-      
-    <!--   <table> -->
-    <!--   	<tablecategory>Standard</tablecategory> -->
-    <!--   	<tablespec> -->
-    <!--   	  <fixed>0.18</fixed> -->
-    <!--   	  <fixed>0.71</fixed> -->
-    <!--   	</tablespec> -->
-    <!--   	<tabletitle>Nature</tabletitle> -->
-
-    <!--   	<tableheaderrow> -->
-    <!--   	  <td>Roll 1D12</td> -->
-    <!--   	  <td>Birth</td> -->
-    <!--   	</tableheaderrow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>1-2</td> -->
-    <!--   	  <td><bold>Downtrodden</bold>: Mettle Pool +1d</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>3-4</td> -->
-    <!--   	  <td><bold>Fortunate</bold>: Luck Pool +1d</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>5-6</td> -->
-    <!--   	  <td><bold>Stout</bold>: Endurance+1</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>7</td> -->
-    <!--   	  <td><bold>Observant</bold>: Perception+1</td> -->
-    <!--   	</tablerow> -->
-	
-    <!--   	<tablerow> -->
-    <!--   	  <td>8</td> -->
-    <!--   	  <td><bold>Deft</bold>: Agile+1</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>9</td> -->
-    <!--   	  <td><bold>Fast</bold>: Speed+1</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>10</td> -->
-    <!--   	  <td><bold>Strong</bold>: Strength+1</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>11</td> -->
-    <!--   	  <td><bold>Reroll</bold> d10 twice (Reroll duplicates)</td> -->
-    <!--   	</tablerow> -->
-
-    <!--   	<tablerow> -->
-    <!--   	  <td>12</td> -->
-    <!--   	  <td><bold>Reroll</bold> d10 and Pick<leqsymbol/>10 (No duplicates)</td> -->
-    <!--   	</tablerow> -->
-	
-    <!--   	<tablelabel>table:{{ doc_name }}-nature</tablelabel> -->
-    <!--   </table> -->
-
-      
-    <!--   <p> -->
-    <!-- 	See whether the character received an inheritance or any -->
-    <!-- 	hand-me-down starting gear from their parents by rolling on the -->
-    <!-- 	Fortune table below. -->
-    <!--   </p> -->
-      
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Fortune</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Fortune</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1-2</td> -->
-    <!-- 	  <td>Tallow Candle, Bicorne Hat, Sack, Wineskin</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>3</td> -->
-    <!-- 	  <td>Cossack Hat, Wool Sash, Leather Purse, Hip Flask</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4-5</td> -->
-    <!-- 	  <td>Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, -->
-    <!-- 	  Straw Hat, Paper and ink</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6-7</td> -->
-    <!-- 	  <td>Cavalier Hat, Kettle, Book of Poetry</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>8-9</td> -->
-    <!-- 	  <td>Garibaldi Hat, Small Hammer and Chisel, Scarf</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10</td> -->
-    <!-- 	  <td>Chaperon, Playing Cards, Small Pot</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>11-12</td> -->
-    <!-- 	  <td>Heirloom: Roll on the Trinket Table, </td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table> -->
-
-
-    <!--   <figure> -->
-    <!-- 	<img src="./resources/dwarf/dwarf.png" scale="0.34"/> -->
-    <!--   </figure> -->
-
-    <!--   <p> -->
-    <!-- 	See whether any misfortune befell the character as a youth by rolling -->
-    <!-- 	on the Misfortune table below. -->
-    <!--   </p> -->
-
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Misfortune</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Misfortune</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1</td> -->
-    <!-- 	  <td><bold>Cursed</bold>: roll twice on this table ignoring ones and duplicates</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>2</td> -->
-    <!-- 	  <td><bold>Laid Low</bold>: The character was struct down with the White Plague in their youth. -->
-    <!-- 	  Lose one Stamina permanently. The character learns either ✱lore.natural_history_1 -->
-    <!-- 	  or ✱lore.alchemy_1 during the time they spent under care.</td> -->
-    <!-- 	</tablerow> -->
-		
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>3</td> -->
-    <!-- 	  <td><bold>Sickly</bold>: Lose one Health permanently.  The character spent time abed -->
-    <!-- 	  gain Booklearning I or Musician Strings I or Musician Wind Intrument I (if they -->
-    <!-- 	  take the Musician skill they get an appropriate instrument for free).</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4</td> -->
-    <!-- 	  <td><bold>Parent Died</bold>: Roll on the Parental Death table. -->
-    <!-- 	  Roll on the Trinket table (reroll incase of duplicate items).</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4-5</td> -->
-    <!-- 	  <td><bold>Bankruptcy</bold>: The character has invested unwisely or been unlucky with money. -->
-    <!-- 	  Lose -2d6gp. Gain the Bookkeeping skill</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6</td> -->
-    <!-- 	  <td><bold>Brawl/Accidental Death</bold>:  The character was involved in a either an accident or -->
-    <!-- 	  a brawl that led to the death of one of his fellow dwarves.  The character has to -->
-    <!-- 	  pay a Zwerggild -10gp, and gains the ✱social.infamy_1 skill in that society</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>7-8</td> -->
-    <!-- 	  <td><bold>Market Glut</bold>:  An investment fails to deliver. Lose -1d4gp.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9</td> -->
-    <!-- 	  <td><bold>Gambling Debt</bold>: -4sp. Gain the Problem Gambler aspect.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10-11</td> -->
-    <!-- 	  <td><bold>So Far So Good</bold>: no effect</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>A Lucky Life</bold>: Gain ✱luck.lucky_3 ability.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table>       -->
-    <!-- </subsection> -->
-
-
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Adulthood</subsectiontitle> -->
-
-    <!--   <p> -->
-    <!-- 	Now let's see the path the character has taken in their young adulthood -->
-    <!-- 	by rolling on the Path table to see why the character left their home, then -->
-    <!-- 	roll on the Journey table. -->
-    <!--   </p> -->
-
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Path</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Inciting Incident</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1-2</td> -->
-    <!-- 	  <td><bold>Landstreicher</bold>: Plague strikes, disrupting markets and causing widespread job -->
-    <!-- 	      loss and hardship. The character has had to learn a range of skills to get by.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>3</td> -->
-    <!-- 	  <td><bold>Einzelgänger</bold>: the dwarf has left home on a voyage of self-discovery.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4</td> -->
-    <!-- 	  <td><bold>Verbannt</bold>: Political machinations force the character to move on.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>5-6</td> -->
-    <!-- 	  <td><bold>Pechvogel</bold>: Golden opportunity in a far off city that turned out to be a dud.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>7-8</td> -->
-    <!-- 	  <td><bold>Vanderzwerg</bold>: the dwarf, struck by wanderlust, set out for distant horizons.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9-10</td> -->
-    <!-- 	  <td><bold>Kaufzwerg</bold>: the dwarf travels seeking to become a marchant trader.</td> -->
-    <!-- 	</tablerow>	 -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9-10</td> -->
-    <!-- 	  <td><bold>Grudgebound</bold>: some offence has been made to the individual, their family, their -->
-    <!-- 	  clan or their race that they can no longer countenance.  It's time for a reckoning and for the -->
-    <!-- 	  books to be balanced</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>Freimazon</bold>: the dwarf has joined one of the liveried companies (guilds). -->
-    <!-- 	  These guilds are political machines and send their younger members on a variety -->
-    <!-- 	  of assignments and fact-finding missions.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>Zöltnar</bold>: Joined a Free Company of mercenaries for a period.</td> -->
-    <!-- 	</tablerow> -->
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table> -->
-
-
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Journey</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Journey</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1</td> -->
-    <!-- 	  <td><bold>The Seas</bold>: Gain ✱transport.sailor_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>2</td> -->
-    <!-- 	  <td><bold>Courier</bold>: Gain ✱transport.horse_riding_2 or ✱wilderness.lore[Terrain?]_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>3</td> -->
-    <!-- 	  <td><bold>Itinerant Worker</bold>: Gain ✱wilderness.lore[Terrain?]_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4</td> -->
-    <!-- 	  <td><bold>Comedy</bold>: The character has made ends meet from time to time by clowning. -->
-    <!-- 	  Gain ✱arts.jester_3.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>5-6</td> -->
-    <!-- 	  <td><bold>The Getting of Wisdom</bold>: The character has studied under a master - Gain ✱lore.physics_2, -->
-    <!-- 	  ✱lore.natural_history_2, or ✱lore.theology_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>7</td> -->
-    <!-- 	  <td><bold>The Quest</bold>: Gain ✱language.aquilonian_2 or ✱language.hybernian_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>8-9</td> -->
-    <!-- 	  <td><bold>Tragedy</bold>: The character suffers a deep personal tradegy. Gain one dice to the characters -->
-    <!-- 	  willpower pool.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10-11</td> -->
-    <!-- 	  <td><bold>Voyage and Return</bold>: The character has travelled abroad.  Gain one of ✱language.hybernian_1 -->
-    <!-- 	  or ✱language.aquilonian_1.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>Sharp Practice</bold>: The character has studied combat under an old soldier.  Gain -->
-    <!-- 	  one of ✱physical.kick_3, ✱physical.punch_3, or ✱physical.grapple_3.  Gain (✱dagger.strike_2 and ✱dagger.throw_2) or -->
-    <!-- 	  ✱gun.shoot_2.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table> -->
-      
-
-    <!--   <p> -->
-    <!-- 	During this time the character has picked up extra techniques in fighting.  Roll -->
-    <!-- 	once on the Further Weapon Training. -->
-    <!--   </p> -->
-      
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Further Weapons Training</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Further Training</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1-3</td> -->
-    <!-- 	  <td>✱shield.push_1</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4-5</td> -->
-    <!-- 	  <td>✱shield.support_1</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6-8</td> -->
-    <!-- 	  <td>✱axe.cleave_1</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9-8</td> -->
-    <!-- 	  <td>✱axe.hook_1</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10-12</td> -->
-    <!-- 	  <td>✱hammer.smash_1</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table>             -->
-    <!-- </subsection> -->
-    
-    
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Events Tables</subsectiontitle> -->
-
-    <!--   <p> -->
-    <!-- 	To determine if any interesting events have occurred to the character recently -->
-    <!-- 	roll on one of the following tables.  The choice of which table has to be an option -->
-    <!-- 	that is available to the characters Origin.  Tinkers can roll on either the City or -->
-    <!-- 	Wilderness Events Tables, Mountain Strongholders must roll on the Delvers Event Table, -->
-    <!-- 	Mining Outposters can choose any of the Events tables to roll on, and Town Dwellers -->
-    <!-- 	must roll on the City Events table. -->
-    <!--   </p> -->
-
-      
-    <!--   <!-\-  -\-> -->
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>City Events</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Event</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1-2</td> -->
-    <!-- 	  <td><bold>Market Bust</bold>: -5g</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>3</td> -->
-    <!-- 	  <td><bold>Riots</bold>: The character was caught in a riot and had to fight to get out. -->
-    <!-- 	  Gain ✱social.infamy[Rioters]_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4-5</td> -->
-    <!-- 	  <td><bold>Nothing</bold>: Recently the characters life has been uneventful.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6-7</td> -->
-    <!-- 	  <td><bold>Market Boom</bold>: +10g</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>8-9</td> -->
-    <!-- 	  <td><bold>Plague</bold>: The character has helped during an outbreak. Gain ✱lore.physician_1</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10</td> -->
-    <!-- 	  <td><bold>Minor Accounting Discrepency</bold>: Character gains 5gp and ✱lore.book_keeping_1</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>11</td> -->
-    <!-- 	  <td><bold>Merchant Seaman</bold>: Character gains one of ✱transport.sailor_1, ✱social.negotiate_1, or Law [Society] I</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>Pogrom</bold>: The character has been the victim of racial or religious persecution. -->
-    <!-- 	  Gain one of ✱physical.head_butt_3, ✱physical.juggernaut_3, or ✱physical.sure_feet_3</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table> -->
-      
-
-    <!--   <!-\-  -\-> -->
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Wilderness Events</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Event</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1</td> -->
-    <!-- 	  <td><bold>Fur Trading</bold>: Gain one of ✱wilderness.hunting_3, ✱wilderness.survivalism_3 or ✱social.negotiate_3</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>2-3</td> -->
-    <!-- 	  <td><bold>Floods</bold>: The character spent some weeks saving people from flood waters - ✱physical.swim_3.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>5</td> -->
-    <!-- 	  <td><bold>Animal Attack</bold>: The charcter gains ✱social.adversary[Beasts]_3, or Suvivalism_3</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6-7</td> -->
-    <!-- 	  <td><bold>Bandits</bold>: The character has been attacked by bandits on one or more occasions.  Gain -->
-    <!-- 	  ✱social.adversary[Bandits]_3</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>8-11</td> -->
-    <!-- 	  <td><bold>Teamster</bold>: Gain ✱transport.carter_3 or ✱transport.animal_handling_3.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td><bold>Traveller in a Foreign Land</bold>: Gain ✱language.hybernian_2 or ✱language.poitevin_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table>      -->
-
-    <!--   <figure position="h"> -->
-    <!-- 	<img id="allom_cistern" scale="0.14"/> -->
-    <!--   </figure>  -->
-
-    <!--   <!-\-  -\-> -->
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Delver Events</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Event</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1</td> -->
-    <!-- 	  <td><bold>Political Dissident</bold>: Political machinations have resulted in the character being -->
-    <!-- 	  persona non-grata in their place of birth.  They have had to move on.  Gain Infamy [Locale]_3.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>2-3</td> -->
-    <!-- 	  <td>Rich Vein +100g.  The character struck it rich.</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4-5</td> -->
-    <!-- 	  <td><bold>Epiphany</bold>: Gain ✱rune.lore_1</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6-8</td> -->
-    <!-- 	  <td><bold>Fast Thinker</bold>: Gain ✱luck.nick_of_time_1</td> -->
-    <!-- 	</tablerow>	 -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9-10</td> -->
-    <!-- 	  <td><bold>Adept</bold>: Gain ✱theurgic.lore_1</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10-11</td> -->
-    <!-- 	  <td>Establish Trade Route.  The character established a trade route for one of the dwarven companies. -->
-    <!-- 	  Gain ✱social.contacts[Locale]_2</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10-11</td> -->
-    <!-- 	  <td>Apprenticeship.  The character spent some time helping out in a crafting field.  ✱craft.cooper_3, ✱craft.smith_1, -->
-    <!-- 	  ✱craft.mining_2.</td> -->
-    <!-- 	</tablerow>	 -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td>Delved Too Deep.  The character was involved in an incident where </td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table>      -->
-            
-    <!-- </subsection> -->
-    
-      
-    <!-- <subsection> -->
-    <!--   <subsectiontitle>Miscellaneous Tables</subsectiontitle> -->
-
-    <!--   <p> -->
-    <!-- 	The following tables are only used in special circumstances.  Do not roll on these -->
-    <!-- 	tables unless instructed to do so. -->
-    <!--   </p> -->
-            
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Trinkets - See descriptions in the Magic Items section of the GMG</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 1D12</td> -->
-    <!-- 	  <td>Trinket</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>1</td> -->
-    <!-- 	  <td>High Quality Weapon FIXME</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>2-4</td> -->
-    <!-- 	  <td>Dwarven Compass</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>5</td> -->
-    <!-- 	  <td>Bile of the White Worm</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6</td> -->
-    <!-- 	  <td>Foaming Plaster</td> -->
-    <!-- 	</tablerow>	 -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>7</td> -->
-    <!-- 	  <td>Bag of Smoked Sniglets</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>8</td> -->
-    <!-- 	  <td>Compendium Maleficarum</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9</td> -->
-    <!-- 	  <td>Steel Termites</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10</td> -->
-    <!-- 	  <td>Limaceous Grease</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>11</td> -->
-    <!-- 	  <td>Petard</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td>Orcbane, Axe or Hammer</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table> -->
-
-    <!--   <!-\-  -\-> -->
-    <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
-    <!-- 	<tablespec> -->
-    <!-- 	  <fixed>0.18</fixed> -->
-    <!-- 	  <fixed>0.71</fixed> -->
-    <!-- 	</tablespec> -->
-    <!-- 	<tabletitle>Parental Death</tabletitle> -->
-
-    <!-- 	<tableheaderrow> -->
-    <!-- 	  <td>Roll 2D12</td> -->
-    <!-- 	  <td>Parent Death</td> -->
-    <!-- 	</tableheaderrow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>2-3</td> -->
-    <!-- 	  <td>Mother died in child birth</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>4</td> -->
-    <!-- 	  <td>Mother died of the white plague.</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>5</td> -->
-    <!-- 	  <td>Father died of the white plague</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>6</td> -->
-    <!-- 	  <td>Both parents died of the white plague</td> -->
-    <!-- 	</tablerow> -->
-
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>7</td> -->
-    <!-- 	  <td>Wilderness/Delver: Mother killed in an Orcish Raid,  -->
-    <!-- 	      City: Mother killed by thieves/bandits</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>8</td> -->
-    <!-- 	  <td>Wilderness/Delver: Father killed in an Orcish Raid, -->
-    <!-- 	      City: Father killed by thieves/bandits</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>9</td> -->
-    <!-- 	  <td>Wilderness/Delver: Both parents killed in an Orcish Raid, -->
-    <!-- 	      City: Both parents killed by thieves/bandits</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10</td> -->
-    <!-- 	  <td>Wilderness/Delver: Parents died in a rock fall, -->
-    <!-- 	      City: Parents died in a fire. -->
-    <!-- 	  </td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>10</td> -->
-    <!-- 	  <td>Father left on a business trip and never returned</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>11</td> -->
-    <!-- 	  <td>Father banished as political dissident</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablerow> -->
-    <!-- 	  <td>12</td> -->
-    <!-- 	  <td>Father Grudgebound</td> -->
-    <!-- 	</tablerow> -->
-	
-    <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
-    <!--   </table>               -->
-    <!-- </subsection> -->
-</archetypebio>
+      <branch>
+	<branchtitle></branchtitle>
+	<branchdescription>
+	  <p>All Halfling Rovers start with the following skills:</p>
+	</branchdescription>
+	<path chance="">
+	  <pathtitle></pathtitle>
+	  <choice>✱sword_strike_1, ✱physical.dodge_3, ✱luck.lucky_2, ✱itiok_1, ✱reroll_2, ✱sure_feet_2, ✱rest_2, ✱sleep_2,
+	  ✱sleight_of_hand_1, ✱sneak_2, ✱concealment_2, ✱pick_locks_1, ✱merovingian_4.</choice>
+	</path>
+      </branch>
+  </archetypelevel>  
+</archetypelevels>
+
+<!-- constraints -->
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>  
 </archetype>

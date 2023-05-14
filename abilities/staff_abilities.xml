@@ -15,7 +15,7 @@
 
   <ability>
     <abilitytitle>Staff Strike</abilitytitle>
-    <abilityid>staff.strike</abilityid>
+    <abilityid>staff.staff_strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><staff/><weapon/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
@@ -31,13 +31,13 @@
 
 
   <ability>
-    <abilitytitle>Staff - Brace for Charge</abilitytitle>
-    <abilityid>staff.brace</abilityid>
+    <abilitytitle>Staff Brace for Charge</abilitytitle>
+    <abilityid>staff.staff_brace</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><staff/><weapon/><untrained/></tags>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="2x(Weapon + Speed|Strength), opponent must be charging.">Std+Rank</abilitycheck>
-    <prereqabilityrank>staff.strike_1</prereqabilityrank>
+    <prereqabilityrank>staff.staff_strike_1</prereqabilityrank>
     <spline><p x="15" y="60"/></spline> 
     <abilitydescription>
       <p>
@@ -56,7 +56,7 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Willpower" effect="Check before target can attack">Std+Rank</abilitycheck>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
-    <prereqabilityrank>staff.strike_1</prereqabilityrank>
+    <prereqabilityrank>staff.staff_strike_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -80,7 +80,7 @@
     <tags><martial/><staff/><weapon/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <prereqabilityrank>staff.strike_1</prereqabilityrank>	
+    <prereqabilityrank>staff.staff_strike_1</prereqabilityrank>	
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>

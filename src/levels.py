@@ -14,28 +14,82 @@ from utils import (
 
 split_regex = re.compile(",\s*")
 
-class Choice:
+CHOOSE_ALL = -1
+CHOICES = {
+    "all-of": CHOOSE_ALL,
+    "one-of": 1,
+    "two-of": 2,
+    "three-of": 3,
+    "choice": 1, # DEPRECATED
+}
 
-    def __init__(self):
+
+class Choice:
+    """
+    The player has to choose between some abilities.
+    For archetype descriptions
+
+    """
+    def __init__(self, number_to_choose=CHOOSE_ALL):  # FIXME: at some point force this to be specified
         self.ability_level_ids = []
+        self.number_to_choose = number_to_choose
         self.contents = None
 
 
     def load(self, choice_node, fname, fail_fast):
-        self.contents = contents_to_string(choice_node)
+        self.contents = contents_to_string(choice_node)          
         self.ability_level_ids = split_regex.split(self.contents)
         return
 
     def __str__(self):
         return f"Choice: {self.contents}"
 
-        
 
+    
+class OrChoice:
+    """
+    Poorly thought out code to allow OR of two or more sets of choices.
+    We're always allowed to choose one and only one of these.
+    For archetype descriptions
+
+    """
+    def __init__(self):
+        self.choices = []
+
+    def load(self, or_choice_node, fname, fail_fast):
+        # we only allow one level of ors.. we don't need to worry about recursion here.
+        for child in list(or_choice_node):
+           tag = child.tag
+           if tag in CHOICES:
+               number_to_choose = CHOICES[tag]
+               choice = Choice(number_to_choose=number_to_choose)
+               choice.load(child, fname, fail_fast)
+               self.choices.append(choice)
+
+           elif tag == "or":
+               raise Exception("WE DONT ALLOW RECURSIVE `OR' ELEMENTS HERE! XML TAG (%s) File: %s Line: %s\n" % 
+                               (child.tag, fname, child.sourceline))        
+
+           elif tag is COMMENT:
+               # ignore comments!
+               pass
+           
+           else:
+               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
+                               (child.tag, fname, child.sourceline))        
+        return
+
+    
 class Path:
+    """
+    Represents one choice in a branch.
+    For archetype descriptions
 
+    """
     def __init__(self):
         # a list of ability level ids.
-        self.choices = []
+        self.title = None
+        self.choices = [] # this is a list of Choice or OrChoice nodes.
         self.chance = None
 
     def load(self, path_node, fname, fail_fast):
@@ -44,20 +98,29 @@ class Path:
             raise Exception("Path missing chance attribute (%s) File: %s Line: %s\n" % 
                             (path_node.tag, fname, path_node.sourceline))
 
-        self.chance = int(path_node.attrib.get("chance"))
+        self.chance = path_node.attrib.get("chance")
 
         # handle all the children
-        for child in list(path_node):
-        
+        for child in list(path_node):        
            tag = child.tag
            if tag == "pathtitle":
                self.title = contents_to_string(child)
 
-           elif tag ==  "choice":
-               choice = Choice()
+           elif tag in CHOICES:
+               number_to_choose = CHOICES[tag]
+               choice = Choice(number_to_choose=number_to_choose)
                choice.load(child, fname, fail_fast)
                self.choices.append(choice)
+
+           elif tag == "or":
+               or_choice_node = OrChoice()
+               or_choice_node.load(child, fname, fail_fast)
+               self.choices.append(or_choice_node)
                           
+           elif tag is COMMENT:
+               # ignore comments!
+               pass
+           
            else:
                raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
                                (child.tag, fname, child.sourceline))
@@ -92,9 +155,13 @@ class Path:
 
     
 class Branch:
+    """
+    One set of paths to choose from.  The player chooses one Path from each Branch.
 
+    """
     def __init__(self):
         self.title = None
+        self.description = None
         self.paths = []
 
     def load(self, branch_node, fname, fail_fast):
@@ -108,6 +175,7 @@ class Branch:
            
            elif tag == "branchdescription":
                # we don't care about these ones.. they're for human consumption.
+               self.description = contents_to_string(child)
                pass
 
            elif tag == "path":
@@ -142,7 +210,7 @@ class Level:
 
     def __init__(self):
         self.level_number = None
-        
+
         self.mettle = None
         self.mettle_refresh = None
         self.stamina = None
@@ -166,11 +234,7 @@ class Level:
         for child in list(level_node):
         
            tag = child.tag
-           if tag in ("leveltitle", ):
-               # ignore..
-               pass
-           
-           elif tag == "levelnumber":
+           if tag == "levelnumber":
                if self.level_number is not None:
                    raise NonUniqueTagError(tag, fname, child.sourceline)
                else:
@@ -276,7 +340,6 @@ class Level:
                        
            elif tag == "branch":
                # FIXME parse this later.
-               #branch = contents_to_string(child)
                branch = Branch()
                branch.load(child, fname, fail_fast)
                self.branches.append(branch)
@@ -290,14 +353,7 @@ class Level:
                                (child.tag, fname, child.sourceline))
         return
 
-    # def get_capacity(self, ability):
-    #     capacity = 0
-    #     #for ability in self.:
-    #         for branch in self.branches:
-    #             capacity += branch.get_branch_capacity(ability)
-    #     return capacity 
     
-
 class Levels:
     """
     A list of level progression data for the Archetype.
@@ -306,12 +362,12 @@ class Levels:
     def __init__(self):
         self.levels = []
 
-        self.xml = None
+        #self.xml = None
         return
 
     def load(self, levels_node, fname, fail_fast):
 
-        self.xml = contents_to_string(levels_node)
+        #self.xml = contents_to_string(levels_node)
 
         # handle all the children
         for child in list(levels_node):

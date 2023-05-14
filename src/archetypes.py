@@ -25,7 +25,7 @@ from streams import StreamConfig
 from levels import Levels
 
 
-DEFAULT_GENDER = "Choose whatever gender you want."
+DEFAULT_GENDER = "Choose a gender for your character."
 
 
 class NonUniqueTagError(Exception):
@@ -55,9 +55,6 @@ class Archetype:
 
         # text describing how to initially set primary abilities for this archetype
         self.primary_abilities = None
-        
-        # text describing the abilities that all members of the archetype initially get.
-        self.initial_abilities = None
         
         #self.bio = None        
         self.height = None
@@ -154,9 +151,6 @@ class Archetype:
     def get_primary_abilities(self):
         return self.primary_abilities
 
-    def get_initial_abilities(self):
-        return self.initial_abilities
-
     def has_tags(self):
         return len(self.tags) > 0
 
@@ -230,12 +224,6 @@ class Archetype:
                    raise NonUniqueTagError(tag, self.fname, child.sourceline)
                else:
                    self.primary_abilities = contents_to_string(child)
-
-           elif tag == "archetypeinitialabilities":
-               if self.initial_abilities is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
-               else:
-                   self.initial_abilities = contents_to_string(child)
 
            # elif tag == "archetypebio":
            #     if self.bio is not None:

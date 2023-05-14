@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Classic heavily armed Dnd clerics (but there's no healing). -->
 <archetype>
   <archetypetitle>Confessor Militant of Mithras</archetypetitle>
   <archetypeid>confessor_militant</archetypeid>
@@ -18,27 +19,15 @@
     </p>    
 
     <figure>
-    <img src="./resources/galmacci_confessor_militant/galmacci_confessor_militant.png" scale="0.35"/>
+      <img src="./resources/galmacci_confessor_militant/galmacci_confessor_militant.png" scale="0.35"/>
     </figure>
   </archetypedescription>
   <archetypeprimaryabilities>
     <list> 
-      <li>Str:+1, End:+1, Ag:-1, Spd:-1, Per:+1, Wpr:+0 or</li>
-      <li>Str:+1, End:+1, Ag:+0, Spd:-1, Per:+1, Wpr:+0</li>
+      <li>Str:+1, End:+2, Ag:-1, Spd:-1, Per:+1 or</li>
+      <li>Str:+1, End:+1, Ag:+0, Spd:-1, Per:+1</li>
     </list>
   </archetypeprimaryabilities>
-  <archetypeinitialabilities>
-    <p>
-      All Confessor Militants start with the following skills: ✱hammer.strike_2,
-      ✱shield.block_2, ✱language.aquilonian_2, ✱social.etiquette_2 [Church of Mithras], Augury I,
-      Litany of Redemption, Light of Mithras I, Blessed Arms of Mithras I, Turn Undead I,
-      ✱language.merovingian_4.
-    </p>
-
-    <p>
-    </p>
-      
-  </archetypeinitialabilities>
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>20 + d4 sp</startingcash>
   <startinggear>Chain armour, mace or warhammer, shield, (eating) dagger, rations for a week.</startinggear>
@@ -59,153 +48,55 @@
     <humanoid/>
     <magicuser/>    
     <medium/>
-  </archetypetags>
+  </archetypetags>  
+
+  <archetypelevels>
+    <archetypelevel>
+      <levelnumber>1</levelnumber>
+      <levelstamina>2d4+9</levelstamina>
+      <levelhealth>1d4+6</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levelluck>3</levelluck>
+      <levelluckrefresh>1</levelluckrefresh>
+      <levelmagic>2</levelmagic>
+      <levelmagicrefresh>1</levelmagicrefresh>
+      <levelmettle>3</levelmettle>
+      <levelmettlerefresh>1</levelmettlerefresh>
+      
+
+      <branch>
+	<branchtitle>Confessor Militant Training</branchtitle>
+	<branchdescription>
+	  <p>
+	    All Confessor Militants start with the following skills:
+	  </p>
+	</branchdescription>
+	<path chance="">
+	  <pathtitle>XXXX</pathtitle>
+	  <choice>✱hammer_strike_2,
+	  ✱shield.block_2, ✱aquilonian_2, ✱etiquette[Church of Mithras]_2 , ✱augury_1,
+	  ✱litany_of_redemption_1, ✱light_of_mithras_1, ✱blessed_arms_1, ✱turn_undead_1,
+	  ✱merovingian_4.</choice>
+	</path>
+      </branch>      
+    </archetypelevel>
+  </archetypelevels>
   
-  <archetypebio>
-    <subsection>
-      <subsectiontitle>Origin</subsectiontitle>
-
-      <!-- <abilitymodifiers> -->
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>archery.archery</abilityid> -->
-      <!-- 	  <martialpointmodifier>+1</martialpointmodifier> -->
-      <!-- 	  <abilitylevelmodifier> -->
-      <!-- 	    <level>2</level> -->
-      <!-- 	    <martialpointmodifier>+1</martialpointmodifier>	 -->
-      <!-- 	    <successesmodifier>+1</successesmodifier> -->
-      <!-- 	  </abilitylevelmodifier>	 -->
-      <!-- 	</abilitymodifier> -->
-	
-
-      <!-- 	<abilitygroupmodifier> -->
-      <!-- 	  <abilitygroupid>craft</abilitygroupid> -->
-      <!-- 	  <generalpointmodifier>+1</generalpointmodifier> -->
-      <!-- 	</abilitygroupmodifier> -->
-
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>language.brythinian</abilityid> -->
-      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-	
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>magic.circle_of_protection</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>magic.incendo</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>magic.cloak_of_shadows</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>language.inochian</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-	
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>language.brythinian</abilityid> -->
-      <!-- 	  <level>2</level> -->
-      <!-- 	</innate> -->
-
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>language.inochian</abilityid> -->
-      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
-      <!-- 	</abilitymodifier>     -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>lore.alchemy</abilityid> -->
-      <!-- 	  <lorepointmodifier>-1</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-	
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>lore.politics</abilityid> -->
-      <!-- 	  <lorepointmodifier>-1</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-
-      <!-- 	<!-\- -->
-      <!-- 	    <abilitygroupmodifier> -->
-      <!-- 	    <abilitygroupid>magic</abilitygroupid> -->
-      <!-- 	    <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	    </abilitygroupmodifier> -->
-      <!-- 	-\-> -->
-
-      <!-- 	<disable> -->
-      <!-- 	  <abilityid>magic.turn_undead</abilityid> -->
-      <!-- 	</disable> -->
-	
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>magic_school.arcana</abilityid> -->
-      <!-- 	  <lorepointmodifier>-2</lorepointmodifier> -->
-      <!-- 	</abilitymodifier> -->
-
-      <!-- 	<abilitygroupmodifier> -->
-      <!-- 	  <abilitygroupid>physical</abilitygroupid> -->
-      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	</abilitygroupmodifier> -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>skulduggery.cryptography</abilityid> -->
-      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	</abilitymodifier>     -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>social.interrogate</abilityid> -->
-      <!-- 	  <generalpointmodifier>-1</generalpointmodifier> -->
-      <!-- 	</abilitymodifier>     -->
-
-      <!-- 	<innate> -->
-      <!-- 	  <abilityid>social.etiquette</abilityid> -->
-      <!-- 	  <level>1</level> -->
-      <!-- 	</innate> -->
-
-      <!-- 	<disable> -->
-      <!-- 	  <abilitygroupid>special</abilitygroupid> -->
-      <!-- 	</disable> -->
-
-      <!-- 	<abilitygroupmodifier> -->
-      <!-- 	  <abilitygroupid>sword</abilitygroupid> -->
-      <!-- 	  <martialpointmodifier>+1</martialpointmodifier> -->
-      <!-- 	</abilitygroupmodifier> -->
-
-      <!-- 	<abilitymodifier> -->
-      <!-- 	  <abilityid>sword.strike</abilityid> -->
-      <!-- 	  <abilitylevelmodifier> -->
-      <!-- 	    <level>1</level> -->
-      <!-- 	    <martialpointmodifier>+1</martialpointmodifier>	 -->
-      <!-- 	    <recommended/> -->
-      <!-- 	  </abilitylevelmodifier>       -->
-      <!-- 	</abilitymodifier> -->	
-      <!-- </abilitymodifiers> -->
-    </subsection>
-  </archetypebio>
-
-
-  <!-- <levelprogressiontable> -->
-  <!--   <level> -->
-  <!--     <levelnumber>1</levelnumber> -->
-  <!--     <levelmettle>2</levelmettle> -->
-  <!--     <levelmettlerefresh>+1</levelmettlerefresh> -->
-  <!--     <levelstamina>4+d4</levelstamina> -->
-  <!--     <levelhealth>4+d4</levelhealth> -->
-  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
-  <!--     <!-\- <levellore>0</levellore> -\-> -->
-  <!--     <!-\- <levelmartial>0</levelmartial> -\-> -->
-  <!--     <!-\- <levelgeneral>0</levelgeneral> -\-> -->
-  <!--     <!-\- <levelmagical>0</levelmagical> -\-> -->
-  <!--     <levelluck>2</levelluck> -->
-  <!--     <levelluckrefresh>+1</levelluckrefresh> -->
-  <!--     <levelmagicpool>5</levelmagicpool> -->
-  <!--     <levelmagicrefresh>+3</levelmagicrefresh> -->
-  <!--   </level> -->
-  <!-- </levelprogressiontable> -->
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>
 </archetype>
 
 

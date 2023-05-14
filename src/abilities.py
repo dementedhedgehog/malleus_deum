@@ -480,8 +480,6 @@ class Ability:
             if is_first_rank:
                 if ((rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK)
                     and "primary" not in self.tags):
-                    # print(f"UNTRAINED {[str(a) for a in self.get_trained_ranks()]}")
-                    # print(f"ALL {[str(a) for a in self.ranks]}")
                     problems.append(
                         f"First rank for ability {self.get_title()} is {rank_number} "
                         f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY_RANK}")
@@ -759,6 +757,10 @@ class Ability:
         # Store it twice .. once as ability_group.ability.rank
         # and once as ability.rank
         ability_rank_lookup[rank.get_id()] = rank
+
+        #assert rank.get_short_id() not in ability_rank_lookup, f" --> {rank.get_id()} {rank.get_short_id()}"
+        if rank.get_short_id() in ability_rank_lookup:
+            raise Exception(f" --> {rank.get_id()} {rank.get_short_id()}")
         ability_rank_lookup[rank.get_short_id()] = rank
         self.ranks.append(rank)
         return
@@ -1105,7 +1107,9 @@ class AbilityGroups:
     def __iter__(self):
         return iter(self.ability_groups)
 
-    def get_ability_rank(self, ability_rank_id):
+    def get_ability_rank(self, ability_rank_id, rank=None):
+        if rank is not None:
+            ability_rank_id = f"{ability_rank_id}_{rank}"
         return ability_rank_lookup[ability_rank_id]
 
     def get_abilities(self):
@@ -1196,7 +1200,7 @@ class AbilityGroups:
 
 def get_ability_rank_total_prereqs(ability_groups, ability_rank, prereqs=None):
     """
-    Gets a list of all the prereqs for this ability rank (including this ability rank.
+    Gets a list of all the prereqs for this ability rank (including this ability rank).
 
     """
     if prereqs is None:
@@ -1236,9 +1240,9 @@ if __name__ == "__main__":
     #ag = ability_groups.get_ability_group("transport")
     #print(ag.info.draw_skill_tree)
 
-    for ag in ability_groups:
-        problems = ag.get_problems()
-        print(", ".join(problems))
+    # for ag in ability_groups:
+    #     problems = ag.get_problems()
+    #     print(", ".join(problems))
     
     #for ability in ag:
     #    print(f" {ability}  {ability.ability_id}")
@@ -1250,25 +1254,22 @@ if __name__ == "__main__":
     #         count += 1
     #         print(f" {count} {ability.get_title()}")
     
-    
-    # for ability_group in ability_groups:
+
+    count = 0
+    for ability_group in ability_groups:
 
     #     if "Transport" not in ability_group.get_title():
     #         continue
 
-    #     # print()
-    #     # print(ability_group.get_title())
-    #     # print(f"lore? {ability_group.is_lore_family()}")
-    #     # print(f"magic? {ability_group.is_magic_family()}")
-    #     # print(f"martial {ability_group.is_martial_family()}")
-    #     # print(f"general {ability_group.is_general_family()}")
+        print()
+        print(ability_group.get_title())
         
-    #     for ability in ability_group:            
-    #         #     count += 1
-    #         print("\t%i %s %s %s"
-    #               % (count,
-    #                  ability.get_title(),
-    #                  ability.get_id())
+        for ability in ability_group:            
+            count += 1
+            print("\t%i %s %s "
+                  % (count,
+                     ability.get_title(),
+                     ability.get_id()))
     #     #     # # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
     #     #     # # print("\t\t\tAbility Desc: %s" % ability.description)
     #     #     # # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())

@@ -21,7 +21,7 @@
     <tags><martial/><weapon/><dagger/></tags>
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Agility">Std+Rank</abilitycheck>
-    <prereqabilityrank>dagger.strike_2</prereqabilityrank>
+    <prereqabilityrank>dagger.dagger_strike_2</prereqabilityrank>
     <prereqattr><speed>13</speed><agility>13</agility></prereqattr>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -36,7 +36,7 @@
 
   <ability>
     <abilitytitle>Dagger Strike</abilitytitle>
-    <abilityid>dagger.strike</abilityid>
+    <abilityid>dagger.dagger_strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><weapon/><dagger/></tags>
     <abilityranks untrained="0" from="1" to="5"/>
@@ -53,12 +53,12 @@
 
   <ability>
     <abilitytitle>Throw Dagger</abilitytitle>
-    <abilityid>dagger.throw</abilityid>
+    <abilityid>dagger.dagger_throw</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><weapon/><dagger/></tags> 
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>dagger.strike_1</prereqabilityrank>
+    <prereqabilityrank>dagger.dagger_strike_1</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline> 
     <abilitydescription>
       <p>

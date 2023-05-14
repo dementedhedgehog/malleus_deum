@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- light fighter/everyman -->
 <!--
   Bad-Ass Normal
   Luck
@@ -18,25 +19,17 @@
     </p>
 
     <figure>
-      <img src="./resources/rake/caleb_the_witch_hunter__second_take_by_solidtom-d5v025x.jpg" scale="0.8"/>
+      <img src="./resources/rake/caleb_the_witch_hunter__second_take_by_solidtom-d5v025x.jpg" scale="1.0"/>
     </figure>    
   </archetypedescription>
 
   
   <archetypeprimaryabilities>
       <list> 
-        <li>Str:+1, End:-1, Ag:+1, Spd:+0, Per:+0, Wpr:+0 or</li>
-        <li>Str:+1, End:+0, Ag:+0, Spd:+0, Per:+0, Wpr:+0</li>
+        <li>Str:+1, End:+0, Ag:+1, Spd:+0, Per:+0 or</li>
+        <li>Str:+1, End:+1, Ag:+0, Spd:+0, Per:+0</li>
       </list>
   </archetypeprimaryabilities>
-  <archetypeinitialabilities>
-    <p>
-      All Second Sons start with the following skills: ✱sword.strike_2, Sword Parry I, ✱physical.dodge_1, 
-      ✱social.etiquette[Westreich-Nobility]_3, ✱language.merovingian_4, ✱luck.lucky_3, I Think I'm OK I, ✱luck.nick_of_time_1,
-      ✱lore.book_learning_1, and ✱transport.horse_riding_1.
-    </p>
-    
-  </archetypeinitialabilities>  
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>50 + 2d4 gp</startingcash>
   <startinggear>Leather armour, long sword, Fine cloak, fine clothes, leather belt, dagger, rations for a week.</startinggear>
@@ -59,365 +52,373 @@
     <medium/>
   </archetypetags>
 
-  <archetypebio>
+  <archetypelevels>
+    <archetypelevel>
+      <levelnumber>1</levelnumber>
+      <levelstamina>d4+8</levelstamina>
+      <levelhealth>1d4+9</levelhealth>
+      <levelhealthrefresh>2d4</levelhealthrefresh>
+      <levelluck>3</levelluck>
+      <levelluckrefresh>1</levelluckrefresh>
+      <levelmagic>2</levelmagic>
+      <levelmagicrefresh>1</levelmagicrefresh>
+      <levelmettle>3</levelmettle>
+      <levelmettlerefresh>1</levelmettlerefresh>
 
-    <subsection>
-      <subsectiontitle>Origin</subsectiontitle>
-      <p>
-    	Determine where the character came from by rolling once on the Homeland table below.
-      </p>
-          
-      <table>
-      	<tablecategory>Standard</tablecategory>
-      	<tablespec>
-      	  <fixed>0.94</fixed>
-      	</tablespec>
-      	<tabletitle>Homelands</tabletitle>
 
-      	<tableheaderrow>
-      	  <td>Homeland - Roll 1D12 </td>
-      	</tableheaderrow>
-
-      	<tablerow>
-      	  <td><bold>1-2 Almaignee</bold>: ✱social.adversary[Greenskins]_1, ✱social.adversary[Giants]_1,
-	  ✱social.etiquette[Almaignee]_3</td>
-      	</tablerow>
-	
-      	<tablerow>
-      	  <td><bold>3-4 Albion</bold>: ✱language.hybernian_1, ✱social.etiquette[Albion]_3, ✱social.etiquette[Hybernia]_1,
-	  ✱social.contacts[Albion]_1, ✱social.adversary[Greenskins]_1</td>
-      	</tablerow>
-	
-      	<tablerow>
-      	  <td><bold>5-11 Westreich</bold>: ✱social.etiquette[Westreich]_3, ✱social.contacts[Westreich]_2</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td><bold>12 Choose</bold></td>
-      	</tablerow>
-
-      	<tablelabel>table:{{ doc_name }}-homeland</tablelabel>
-      </table>
-    </subsection>
-
-    <subsection>
-      <subsectiontitle>Upbringing Tables</subsectiontitle>      
-      <p>
-    	Roll on once on one of the following table.
-      </p>      
+      <branch>
+	<branchtitle>Second Sons Training</branchtitle>
+	<branchdescription>
+	  <p>All Second Sons start with the following skills:</p>
+	</branchdescription>
+	<path chance="">
+	  <pathtitle></pathtitle>
+	  <all-of>✱sword_strike_2, ✱sword_parry_1, ✱dodge_1, 
+      ✱etiquette[Westreich-Nobility]_3, ✱language.merovingian_4, ✱luck.lucky_3, ✱itiok_1, ✱nick_of_time_1,
+      ✱book_learning_1, and ✱horse_riding_1.</all-of>
+	</path>
+      </branch>
       
-      <table>
-    	<tablecategory>Standard</tablecategory>
-    	<tablespec>
-    	  <fixed>0.18</fixed>
-    	  <fixed>0.71</fixed>
-    	</tablespec>
-    	<tabletitle>Study I</tabletitle>
-
-    	<tableheaderrow>
-    	  <td>Roll 1D12</td>
-    	  <td>Study</td>
-    	</tableheaderrow>
-	
-    	<tablerow>
-    	  <td>1-2</td>
-    	  <td>✱transport.horse_riding_2, ✱physical.rest_2, ✱physical.grapple_2 or ✱physical.head_butt_2, ✱physical.punch_2 or ✱physical.throw_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>3-4</td>
-    	  <td>✱physical.listen_2, ✱transport.horse_riding_2 or ✱wilderness.wayfinding_1, ✱physical.sure_feet_2 or ✱physical.jump_2, ✱social.intimidate_2 or ✱social.negotiate_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>5-6</td>
-    	  <td>✱wilderness.survivalism_1, ✱social.rally_2, ✱physical.sleep_2 or ✱physical.rest_1, ✱skulduggery.sneak_2 or ✱physical.charge_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>7-8</td>
-    	  <td>✱wilderness.scout_1, ✱physical.notice_2, ✱physical.charge_2 or ✱physical.dodge_2, ✱physical.climb_1 or ✱physical.swim_2, ✱arts.singing_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>9-10</td>
-    	  <td>✱transport.horse_riding_2, ✱transport.animal_handling_1, ✱physical.juggernaut_2, ✱physical.move_2 or ✱physical.charge_2, ✱physical.punch_2</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>11-12</td>
-    	  <td>Choose one of the above</td>
-    	</tablerow>
-	
-    	<tablelabel>table:{{ doc_name }}-study-i</tablelabel>
-      </table>
-    </subsection>
-
-
-    <subsection>
-      <subsectiontitle>Training Tables</subsectiontitle>      
-      <p>
-    	Roll once on each of the following tables.
-      </p>      
       
-      <table>
-    	<tablecategory>Standard</tablecategory>
-    	<tablespec>
-    	  <fixed>0.18</fixed>
-    	  <fixed>0.71</fixed>
-    	</tablespec>
-    	<tabletitle>Study I</tabletitle>
+      <branch>
+	<branchtitle>Homeland</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      Roll a d12 to determine your homeland.
+	    </p>
+	  </branchdescription>
+	    
+	  <path chance="1-2">
+	    <pathtitle>Laibstadt</pathtitle>
+	    <choice>✱language.merovingian_4, ✱language.aquilonian_2,
+	    ✱lore.history[Westreich]_1, ✱social.etiquette_2[Westreich],
+	    ✱social.etiquette[Westreich-Nobility]_2</choice>
+	  </path>
+	  <path chance="3-9">
+	    <pathtitle>Westreich</pathtitle>
+	    <choice>✱language.merovingian_4, ✱language.aquilonian_2,
+	    ✱lore.history[Westreich]_1, ✱social.etiquette_1[Westreich],
+	    ✱social.etiquette[Westreich-Nobility]_1, ✱craft.farmer_1</choice>
+	  </path>
+	  <path chance="10">
+	    <pathtitle>Alemaigne</pathtitle>
+	    <choice>✱language.merovingian_3, ✱language.aquilonian_1, ✱language.alemagne_4, 
+	    ✱lore.history[Westreich]_1, ✱lore.history[Alemaigne]_1,
+	    ✱social.etiquette_2[Westreich],
+	    ✱social.etiquette[Westreich-Nobility]_1,
+	    ✱social.etiquette[Allemagne-Nobility]_2</choice>
+	  </path>
+	  <path chance="11">
+	    <pathtitle>Albion</pathtitle>
+	    <choice>✱language.merovingian_3, ✱language.aquilonian_1, ✱language.hybernian_2, 
+	    ✱lore.history[Westreich]_1,
+	    ✱lore.history[Albion]_1,
+	    ✱social.etiquette_2[Albion],
+	    ✱social.etiquette_1[Westreich],
+	    ✱social.etiquette[Westreich-Nobility]_2,
+	    ✱social.etiquette[Albion-Nobility]_3</choice>
+	    <choice>✱language.occitan_1, or ✱language.leonese_1, or ✱language.poitevin_1</choice>
+	  </path>
+	  <path chance="12">
+	    <pathtitle>Choose one of the above</pathtitle>
+	  </path>
+      </branch>
 
-    	<tableheaderrow>
-    	  <td>Roll 1D12</td>
-    	  <td>Study</td>
-    	</tableheaderrow>
+
+      <branch>
+	<branchtitle>Upbringing</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      Roll a d12 to determine your upbringing.
+	    </p>
+	  </branchdescription>
+	    
+	  <path chance="1-2">
+	    <pathtitle></pathtitle>
+	    <choice>✱transport.horse_riding_2, ✱physical.rest_2, ✱physical.grapple_2 or ✱physical.head_butt_2, ✱physical.punch_2 or ✱physical.throw_2</choice>
+	  </path>
+
+	  <path chance="3-4">
+	    <pathtitle></pathtitle>
+	    <choice>✱listen_2, ✱horse_riding_2 or ✱survivalism[Plains/Woods]_1, ✱physical.sure_feet_2 or ✱physical.jump_2, ✱intimidate_2 or ✱negotiate_2</choice>
+	  </path>
+
+	  <path chance="5-6">
+	    <pathtitle></pathtitle>
+	    <choice>✱wilderness.survivalism_1, ✱social.rally_2, ✱physical.sleep_2 or ✱physical.rest_1, ✱skulduggery.sneak_2 or ✱physical.charge_2</choice>
+	  </path>
+
+	  <path chance="7-8">
+	    <pathtitle></pathtitle>
+	    <choice>✱survivalism_1, ✱notice_2, ✱charge_2 or ✱dodge_2, ✱climb_1 or ✱swim_2, ✱singing_2</choice>
+	  </path>
+
+	  <path chance="9-11">
+	    <pathtitle></pathtitle>
+	    <choice>✱horse_riding_2, ✱animal_handling_1, ✱juggernaut_2, ✱run_2 or ✱charge_2, ✱punch_2</choice>
+	  </path>
+
+	  <path chance="12">
+	    <pathtitle>Choose one of the above</pathtitle>
+	  </path>
+	</branch>
 	
-    	<tablerow>
-    	  <td>1-2</td>
-    	  <td>✱arts.lore_3,
-	  One of ✱lore.history[Westenreich]_3 or ✱lore.politics[Westenreich]_2,
-	  One of ✱physical.kick_1 or ✱physical.grapple_1.
-	  One of ✱physical.dodge_2 or ✱skulduggery.cloak_fighting_3.</td>
-    	</tablerow>
 
-    	<tablerow>
-    	  <td>3-4</td>
-    	  <td>✱arts.oratory_3,
-	  One of ✱lore.history[Aquilonia]_3 or ✱lore.history[Averoigne]_3,
-	  One of ✱physical.run_2 or ✱physical.sure_feet_1.
-	  One of ✱physical.dodge_2 or ✱skulduggery.cloak_fighting_3.
-	  </td>
-    	</tablerow>
+      <branch>
+	<branchtitle>Training Tables</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      Roll a d12 to determine your training.
+	    </p>
+	  </branchdescription>
+	    
+	  <path chance="1-2">
+	    <pathtitle></pathtitle>
+	    <choice>✱arts.art_history_3,
+  	  One of ✱history[Westreich]_3 or ✱lore.politics[Westreich]_2,
+  	  One of ✱kick_1 or ✱physical.grapple_1.
+  	  One of ✱dodge_2 or ✱cloak_fighting_3.</choice>
+	  </path>
 
-    	<tablerow>
-    	  <td>5-6</td>
-    	  <td>✱language.poitevin_3,
-	  One of ✱lore.natural_history_2 or ✱lore.mathematics_2,
-	  ✱archery.shoot_2 or (✱gun.shoot_2 and ✱gun.maintenance_2),
-	  One of ✱physical.kick_1 or ✱physical.grapple_1.
-	  </td>
-    	</tablerow>
+	  <path chance="3-4">
+	    <pathtitle></pathtitle>
+	    <choice>✱arts.oratory_3,
+  	  One of ✱lore.history[Aquilonia]_3 or ✱lore.history[Averoigne]_3,
+  	  One of ✱physical.run_2 or ✱physical.sure_feet_1.
+  	  One of ✱physical.dodge_2 or ✱skulduggery.cloak_fighting_3.</choice>
+	  </path>
 
-    	<tablerow>
-    	  <td>7-8</td>
-    	  <td>✱language.aquilonian_2,
-	  One of ✱lore.history[Albion]_2 or ✱lore.history[Hibernia]_2,
-	  One of ✱dagger.strike_3 or ✱archery.shoot_2.
-	  One of ✱physical.dodge_2 or ✱skulduggery.cloak_fighting_3.
-	  One of ✱physical.kick_1 or ✱physical.grapple_1.
-	  </td>
-    	</tablerow>
+	  <path chance="5-6">
+	    <pathtitle></pathtitle>
+	    <choice>✱language.poitevin_3,
+  	  One of ✱lore.natural_history_2 or ✱lore.mathematics_2,
+  	  ✱archery.archery_shoot_2 or (✱gun_shoot_2 and ✱gun.maintenance_2),
+  	  One of ✱physical.kick_1 or ✱physical.grapple_1.</choice>
+	  </path>
 
-    	<tablerow>
-    	  <td>9-10</td>
-    	  <td>✱lore.law[Westenreich]_2,
-	  One of ✱lore.history[Aquilonia]_3 or ✱lore.politics[Westenreich]_2.
-	  ✱sword.strike_3 and one of ✱sword.feint_1 or ✱sword.parry_2.
-	  One of ✱physical.kick_1 or ✱physical.grapple_1.
-	  </td>
-    	</tablerow>
+	  <path chance="7-8">
+	    <pathtitle></pathtitle>
+	    <choice>✱language.aquilonian_2,
+  	  One of ✱lore.history[Albion]_2 or ✱lore.history[Hybernia]_2,
+  	  One of ✱dagger.dagger_strike_3 or ✱archery.archery_shoot_2.
+  	  One of ✱physical.dodge_2 or ✱skulduggery.cloak_fighting_3.
+  	  One of ✱physical.kick_1 or ✱physical.grapple_1.</choice>
+	  </path>
 
-    	<tablerow>
-    	  <td>11-12</td>
-    	  <td>Choose one of the above</td>
-    	</tablerow>
-	
-    	<tablelabel>table:{{ doc_name }}-study-i</tablelabel>
-      </table>
+	  <path chance="9-11">
+	    <pathtitle></pathtitle>
+	    <choice>✱lore.law[Westreich]_2,
+  	  One of ✱lore.history[Aquilonia]_3 or ✱lore.politics[Westreich]_2.
+  	  ✱sword.sword_strike_3 and one of ✱sword.feint_1 or ✱sword.sword_parry_2.
+  	  One of ✱physical.kick_1 or ✱physical.grapple_1.</choice>
+	  </path>
+	  
+	  <path chance="12">
+	    <pathtitle></pathtitle>
+	    <choice>Choose one of the above</choice>
+	  </path>
+      </branch>
 
 
-      <table>
-    	<tablecategory>Standard</tablecategory>
-    	<tablespec>
-    	  <fixed>0.18</fixed>
-    	  <fixed>0.71</fixed>
-    	</tablespec>
-    	<tabletitle>Study 2</tabletitle>
 
-    	<tableheaderrow>
-    	  <td>Roll 1D12</td>
-    	  <td>Study</td>
-    	</tableheaderrow>
-	
-    	<tablerow>
-    	  <td>1-2</td>
-    	  <td>Choose one of ✱physical.listen_1 or ✱physical.notice_1.  ✱skulduggery.concealment_2 or ✱skulduggery.pick_locks_1</td>
-    	</tablerow>
+      <branch>
+	<branchtitle>Homeland</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      Roll a d12 to determine your homeland.
+	    </p>
+	  </branchdescription>
+	    
+	  <path chance="1-2">
+	    <pathtitle></pathtitle>
+	    <choice>Choose one of ✱physical.listen_1 or ✱physical.notice_1.  ✱skulduggery.concealment_2 or ✱skulduggery.pick_locks_1</choice>
+	  </path>
+	    
+	  <path chance="3-4">
+	    <pathtitle></pathtitle>
+	    <choice>Choose one of ✱skulduggery.disguise_1 or ✱physical.climb_1. One of ✱social.leadership_1 or ✱social.fame[Westreich]_3</choice>
+	  </path>
+	    
+	  <path chance="5-6">
+	    <pathtitle></pathtitle>
+	    <choice>✱physical.jump_2, Choose one of ✱physical.run_1 or ✱physical.run_1, One of ✱social.leadership_1 or ✱physical.dodge_2 or
+	    ✱archery.archery_shoot_1</choice>
+	  </path>
+	    
+	  <path chance="7-8">
+	    <pathtitle></pathtitle>
+	    <choice>One of ✱physical.swim_3 or ✱physical.charge_1, One of ✱skulduggery.ropecraft_2 or ✱skulduggery.sneak_1</choice>
+	  </path>
+	    
+	  <path chance="9-11">
+	    <pathtitle></pathtitle>
+	    <choice>Choose one of ✱physical.knockout_1 or ✱physical.punch_1.  One of ✱skulduggery.sleight_of_hand_1 or ✱social.negotiate_1.</choice>
+	  </path>
+	    
+	  <path chance="12">
+	    <pathtitle>Choose one of the above</pathtitle>
+	  </path>
+      </branch>
 
-    	<tablerow>
-    	  <td>3-4</td>
-    	  <td>Choose one of ✱skulduggery.disguise_1 or ✱physical.climb_1. One of ✱social.leadership_1 or ✱social.fame[Westenreich]_3</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>5-6</td>
-    	  <td>✱physical.jump_2, Choose one of ✱physical.move_1 or ✱physical.run_1, One of ✱social.leadership_1 or ✱physical.dodge_2 or ✱archery.shoot_1</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>7-8</td>
-    	  <td>One of ✱physical.swim_3 or ✱physical.charge_1, One of ✱skulduggery.ropecraft_2 or ✱skulduggery.sneak_1</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>9-10</td>
-    	  <td>Choose one of ✱physical.knockout_1 or ✱physical.punch_1.  One of ✱skulduggery.sleight_of_hand_1 or ✱social.negotiate_1</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>11-12</td>
-    	  <td>Choose one of the above</td>
-    	</tablerow>
-	
-    	<tablelabel>table:{{ doc_name }}-study-ii</tablelabel>
-      </table>
-    </subsection>
       
-
-    <subsection>
-      <subsectiontitle>Youth</subsectiontitle>
-      <p>
-	Now work out the character's backgroun in their youth by rolling once on the
-	Nature table below.
-      </p>
+      <branch>
+	<branchtitle>Youth</branchtitle>
+	  <branchdescription>
+	    <p>
+	      Roll a d12 to determine your homeland.
+	    </p>
+	  </branchdescription>
+	    
+	  <path chance="1-2">
+	    <pathtitle>Made from Sterner Stuff</pathtitle>
+	    <choice>Mettle Pool +1d6</choice>
+	  </path>
+	    
+	  <path chance="3-4">
+	    <pathtitle>Fortunate</pathtitle>
+	    <choice>Luck Pool +1d6</choice>
+	  </path>
+	    
+	  <path chance="5-6">
+	    <pathtitle>Hardy</pathtitle>
+	    <choice>Endurance +1</choice>
+	  </path>
+	    
+	  <path chance="7">
+	    <pathtitle>Observant</pathtitle>
+	    <choice>Perception+1</choice>
+	  </path>
+	    
+	  <path chance="8">
+	    <pathtitle>Deft</pathtitle>
+	    <choice>Agility +1</choice>
+	  </path>
+	    
+	  <path chance="9">
+	    <pathtitle>Fast</pathtitle>
+	    <choice>Speed +1</choice>
+	  </path>
+	    
+	  <path chance="10">
+	    <pathtitle>Strong</pathtitle>
+	    <choice>Strength +1</choice>
+	  </path>
+	    
+	  <path chance="11">
+	    <pathtitle>Roll d10 twice, reroll duplicates.</pathtitle>
+	  </path>
+	    
+	  <path chance="12">
+	    <pathtitle>Roll d10, then pick one result less than from 1 to 10 without duplication.</pathtitle>
+	  </path>
+      </branch>
+           
       
-      <table>
-      	<tablecategory>Standard</tablecategory>
-      	<tablespec>
-      	  <fixed>0.18</fixed>
-      	  <fixed>0.71</fixed>
-      	</tablespec>
-      	<tabletitle>Nature</tabletitle>
+      <branch>
+	<branchtitle>Fortune</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      Roll a d12 to determine your homeland.
+	    </p>
+	  </branchdescription>
+	    
+	  <path chance="1-2">
+	    <pathtitle></pathtitle>
+	    <choice>Bicorne Hat, Wax Candles, Sack, Wineskin, Book - Tales of Heroes</choice>
+	  </path>
+	    
+	  <path chance="3">
+	    <pathtitle></pathtitle>
+	    <choice>Cossack Hat, Cashmere Sash, Leather Purse, Hip Flask</choice>
+	  </path>
+	    
+	  <path chance="4-5">
+	    <pathtitle></pathtitle>
+	    <choice>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>,
+    	  Paper and ink</choice>
+	  </path>
+	    
+	  <path chance="6-7">
+	    <pathtitle></pathtitle>
+	    <choice>Kettle, Book of Poetry</choice>
+	  </path>
+	    
+	  <path chance="8-9">
+	    <pathtitle></pathtitle>
+	    <choice>Cavalier Hat, Tin Cup, Scarf</choice>
+	  </path>
+	    
+	  <path chance="10">
+	    <pathtitle></pathtitle>
+	    <choice>Playing Cards, Small Pot</choice>
+	  </path>
 
-      	<tableheaderrow>
-      	  <td>Roll 1D12</td>
-      	  <td>Birth</td>
-      	</tableheaderrow>
+	  <path chance="11-12">
+	    <pathtitle>Choose one</pathtitle>
+	  </path>
+      </branch>      
+    </archetypelevel>
 
-      	<tablerow>
-      	  <td>1-2</td>
-      	  <td><bold>Sterner Stuff</bold>: Mettle Pool +1d</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td>3-4</td>
-      	  <td><bold>Fortunate</bold>: Luck Pool +1d</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td>5-6</td>
-      	  <td><bold>Stout</bold>: Endurance+1</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td>7</td>
-      	  <td><bold>Observant</bold>: Perception+1</td>
-      	</tablerow>
-	
-      	<tablerow>
-      	  <td>8</td>
-      	  <td><bold>Deft</bold>: Agile+1</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td>9</td>
-      	  <td><bold>Fast</bold>: Speed+1</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td>10</td>
-      	  <td><bold>Strong</bold>: Strength+1</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td>11</td>
-      	  <td><bold>Reroll</bold> d10 twice (Reroll duplicates)</td>
-      	</tablerow>
-
-      	<tablerow>
-      	  <td>12</td>
-      	  <td><bold>Reroll</bold> d10 and Pick<leqsymbol/>10 (No duplicates)</td>
-      	</tablerow>
-	
-      	<tablelabel>table:{{ doc_name }}-nature</tablelabel>
-      </table>
-      
-      <p>
-	See what the characters fortune holds.
-      </p>
-      
-      <table>
-    	<tablecategory>Standard</tablecategory>
-    	<tablespec>
-    	  <fixed>0.18</fixed>
-    	  <fixed>0.71</fixed>
-    	</tablespec>
-    	<tabletitle>Fortune</tabletitle>
-
-    	<tableheaderrow>
-    	  <td>Roll 1D12</td>
-    	  <td>Fortune</td>
-    	</tableheaderrow>
-
-    	<tablerow>
-    	  <td>1-2</td>
-    	  <td>Bicorne Hat, Wax Candles, Sack, Wineskin, Book - Tales of Heroes</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>3</td>
-    	  <td>Cossack Hat, Cashmere Sash, Leather Purse, Hip Flask</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>4-5</td>
-    	  <td>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>,
-    	  Paper and ink</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>6-7</td>
-    	  <td>Kettle, Book of Poetry</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>8-9</td>
-    	  <td>Cavalier Hat, Tin Cup, Scarf</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>10</td>
-    	  <td>Playing Cards, Small Pot</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>11-12</td>
-    	  <td>Choose</td>
-    	</tablerow>
-	
-    	<tablelabel>table:{{ doc_name }}-fortune</tablelabel>
-      </table>
-    </subsection>      
-  </archetypebio>
+    <archetypelevel>
+      <levelnumber>2</levelnumber>
+      <!-- <levelstamina>2d4+9</levelstamina> -->
+      <!-- <levelhealth>1d4+6</levelhealth> -->
+      <!-- <levelhealthrefresh>2d4</levelhealthrefresh> -->
+      <!-- <levelluck>3</levelluck> -->
+      <!-- <levelluckrefresh>1</levelluckrefresh> -->
+      <!-- <levelmagic>2</levelmagic> -->
+      <!-- <levelmagicrefresh>1</levelmagicrefresh> -->
+      <!-- <levelmettle>3</levelmettle> -->
+      <!-- <levelmettlerefresh>1</levelmettlerefresh> -->
 
 
+      <branch>
+	<branchtitle>Development</branchtitle>	
+	  <branchdescription>
+	    <p>
+	      At level 2 Second Sons get the following advances.
+	    </p>
 
-  
-  <!-- <levelprogressiontable>     -->
-  <!--   <level> -->
-  <!--     <levelnumber>1</levelnumber> -->
-  <!--     <levelmettle>2</levelmettle> -->
-  <!--     <levelmettlerefresh>+1</levelmettlerefresh> -->
-  <!--     <levelstamina>8+d4</levelstamina> -->
-  <!--     <levelhealth>9+d4</levelhealth> -->
-  <!--     <levelhealthrefresh>2d4</levelhealthrefresh> -->
-  <!--     <levelluck>3</levelluck> -->
-  <!--     <levelluckrefresh>+1</levelluckrefresh> -->
-  <!--     <levelmagicpool>2</levelmagicpool> -->
-  <!--     <levelmagicrefresh>+1</levelmagicrefresh> -->
-  <!--   </level> -->
-  <!-- </levelprogressiontable> -->
+	    <figure>
+	      <img id="swain_black_coat" scale="0.60"/>
+	    </figure>	    
+	  </branchdescription>	    
+	  <path chance="">
+	    <pathtitle></pathtitle>
+	    <choice>	      
+	      +1 Stamina,	      	      
+	      
+	    </choice>
+	    <choice>+1 Agility or +1 Speed,</choice>
+	    <choice>
+	      ✱sword.daring_thrust_1 and ✱sword.feint_1, or ✱sword.disarm_1 and ✱sword.mighty_blow_1
+	    </choice>	      	    
+	    <choice>1x new Martial abilities at level 1</choice>
+	    <choice>2x Martial Promotions up to level 3</choice>
+	    <choice>1x new Physical ability at level 1</choice>
+	    <choice>2x Physical Promotions up to level 3</choice>
+	    <choice>1x new Lore ability at level 1</choice>
+	    <choice>1x Lore promotion up to rank 3</choice>
+	  </path>
+      </branch>      
+    </archetypelevel>
+    
+  </archetypelevels>
+  <streamconfig>
+    <stream id="Martial">
+      <stream id="Martial2">
+	<ability>shield.block_2</ability>
+      </stream>	
+      <stream id="Martial3">
+	<tag>dagger</tag>
+	<tag>sword</tag>
+      </stream>	
+      <and>
+	<tag>martial</tag>
+	<not><tag>shield</tag></not>
+      </and>
+    </stream>
+  </streamconfig>
 </archetype>
 
 

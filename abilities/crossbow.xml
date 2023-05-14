@@ -17,7 +17,7 @@
 
   <ability>
     <abilitytitle>Crossbow Shoot</abilitytitle>
-    <abilityid>crossbow.shoot</abilityid>
+    <abilityid>crossbow.crossbow_shoot</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><weapon/><crossbow/><ranged/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
@@ -39,7 +39,7 @@
     <tags><martial/><weapon/><crossbow/><ranged/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="9">Speed+Rank</abilitycheck>
-    <prereqabilityrank>crossbow.shoot_2</prereqabilityrank>
+    <prereqabilityrank>crossbow.crossbow_shoot_2</prereqabilityrank>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -59,7 +59,7 @@
     <tags><martial/><weapon/><crossbow/><ranged/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
-    <prereqabilityrank>crossbow.shoot_2</prereqabilityrank>
+    <prereqabilityrank>crossbow.crossbow_shoot_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>

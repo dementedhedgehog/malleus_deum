@@ -1088,7 +1088,7 @@
       <sectiontitle>Tags</sectiontitle>
       <p>
         <indexentry>Tag</indexentry> 
-        A <emph>Tag</emph> is a label or signifier attached to something  in the world.
+        A <emph>Tag</emph> is a label or signifier attached to something in the world.
 	A cellar might be <emph>dark</emph> and <emph>musty</emph>, or a monsters attack
 	might be <emph>necrotic</emph> <indexentry>Damage Type</indexentry>.
         If the GM describes a cellar as being dark then we say it is tagged dark, a dwarven 
@@ -1509,14 +1509,6 @@
 	    infamy, with aspects like The Heroes of Izenholme, Chosen of the Elvin Council,
 	    Beholden to the Black Hand, or The Scourge of the Serpent People.
           </p>
-
-          <p>
-	    Discuss the role playing milieu with the GM.  Get a feel for the colour of 
-	    the world and the NPCs and organizations within it.  Choose 
-	    an aspect with the GM that ties your character to one of these 
-	    NPCs or organizatio, or  one of the player characters.  Then choose a
-	    Personality or Philosophy aspect for your character.
-          </p>
         </description>        
 
         <term>Insanity, Curses, Diseases, and other effects</term>
@@ -1555,11 +1547,12 @@
           page<pageref>table:{{ doc_name }}-random-aspects</pageref>.
         </p>
 	{% include "docs/tables/random_aspect_table.xml" %}	
+	{% include "docs/tables/random_aspect_table2.xml" %}	
       </subsection>
 
       <subsection>
         <subsectiontitle>Aspect Creation</subsectiontitle>
-
+<!--
         <p>
           <indexentry>Creating Aspects</indexentry> 
           <indexentry>Aspect Creation =9+d6</indexentry> 
@@ -1570,41 +1563,89 @@
           and no longer apply to the character.  The aspect must be removed from the character 
           sheet or demoted to a tag.
         </p>
+-->
+          <p>
+	    We suggest that you start off by choosing two aspects for your characer.
+	    Before choosing any aspects discuss the role playing milieu with the
+	    GM.  Get a feel for the colour of the world and the NPCs and organizations within it.  Then
+	    as a group, choose an aspect with the GM that ties your character to one of these 
+	    NPCs or organizations, or one of the player characters.  Then choose a
+	    Personality or Philosophy based aspect for your character.
+          </p>
+
+        <p>
+          <indexentry>Creating Aspects</indexentry> 
+          <indexentry>Aspect Creation =9+d6</indexentry> 
+	  After an aspect is chosen the starting difficulty of that aspect must be determined.
+          Aspects acquired during character creation have an initial difficulty of $9 + 1d6$. 
+        </p>
+
+	
       </subsection>
 
       <subsection>
         <subsectiontitle>Compelling and Resisting Aspects</subsectiontitle>
+
         <p>
           <indexentry>Compelling an Aspect</indexentry> 
           <indexentry>Aspect<subentry>Compel</subentry></indexentry> 
           Any player, including the GM, may attempt to <defn>Compel</defn> any characters
-	  aspect at any time, this includes a players own PC.  Compelling aspects involves
-	  suggesting to a player that their character should follow a course of action in
+	  aspect at any time, this includes a player compelling their own PC.  Compelling aspects
+	  involves suggesting to a player that their character should follow a course of action in
 	  keeping with one of their aspects.  The player who controls the character may
 	  then choose to <bold>accept</bold> or <bold>resist</bold> the compel.  
         </p>
 
         <p>
           If the player <emph>accepts a compel</emph> for an aspect then they should have 
-          their character behave in accordance with that aspect.
+          their character behave in accordance with that aspect.  Alternatively, players may
+	  have their characters try to <emph>resist the compel</emph>.  When doing so they roll
+	  a Std Check against their Aspect DC.  If successful they <emph>resist the compel</emph>
+	  and their characters behaviour is not bound by their aspect.  If they do <emph>not</emph>
+	  resist the compel then their character's behaviour is bound by the compel.
         </p>
         
-        <p>
-          <indexentry>Resisting an Aspect</indexentry> 
-          <indexentry>Aspect<subentry>Resist</subentry></indexentry> 
-          Alternatively, players may have their characters try to <emph>resist the 
-          compel</emph> as follows:
-	  <olist>
-	    <li>Roll an unmodified 2d12 if the result is less than the aspects difficulty the character is compelled.</li>
-	    <li>If the player compelled themselves then decrease the aspects difficulty by one.</li>
-	    <li>If the check fails, increase the aspects difficulty by one.</li>
-	    <li>If the check succeeds, decrease the aspects difficulty by one.</li>
-	    <li>If a bane is rolled, increase the aspects difficulty by one.</li>
-	    <li>If a boon is rolled, decrease the aspects difficulty by one.</li>
-	    <li>If the aspects difficulty is less than ten, then it becomes ten.</li>
-	    <li>If the aspects difficulty is greater than fifteen, then it becomes fifteen.</li>
-	  </olist>
+	<p>
+	  In the event of either a Bane or a Boon whoever compelled the aspect may recharge a die
+	  into one of their dice pools.  Additionally when a Bane or a Boon occurs that triggers a
+	  change in aspect.  When a Boon is rolled a new aspect is chosen, or the difficulty of the
+	  current aspect is reduced, or the wording of the existing aspect is ``softened''.  When a Bane is 
+	  rolled a new aspect is chosen, or the difficulty of the current aspect is reduced, or the wording
+	  of the existing aspect is ``hardened''.
 	</p>
+
+	
+        <!-- <p> -->
+        <!--   <indexentry>Compelling an Aspect</indexentry>  -->
+        <!--   <indexentry>Aspect<subentry>Compel</subentry></indexentry>  -->
+        <!--   Any player, including the GM, may attempt to <defn>Compel</defn> any characters -->
+	<!--   aspect at any time, this includes a players own PC.  Compelling aspects involves -->
+	<!--   suggesting to a player that their character should follow a course of action in -->
+	<!--   keeping with one of their aspects.  The player who controls the character may -->
+	<!--   then choose to <bold>accept</bold> or <bold>resist</bold> the compel.   -->
+        <!-- </p> -->
+
+        <!-- <p> -->
+        <!--   If the player <emph>accepts a compel</emph> for an aspect then they should have  -->
+        <!--   their character behave in accordance with that aspect. -->
+        <!-- </p> -->
+        
+        <!-- <p> -->
+        <!--   <indexentry>Resisting an Aspect</indexentry>  -->
+        <!--   <indexentry>Aspect<subentry>Resist</subentry></indexentry>  -->
+        <!--   Alternatively, players may have their characters try to <emph>resist the  -->
+        <!--   compel</emph> as follows: -->
+	<!--   <olist> -->
+	<!--     <li>Roll an unmodified 2d12 if the result is less than the aspects difficulty the character is compelled.</li> -->
+	<!--     <li>If the player compelled themselves then decrease the aspects difficulty by one.</li> -->
+	<!--     <li>If the check fails, increase the aspects difficulty by one.</li> -->
+	<!--     <li>If the check succeeds, decrease the aspects difficulty by one.</li> -->
+	<!--     <li>If a bane is rolled, increase the aspects difficulty by one.</li> -->
+	<!--     <li>If a boon is rolled, decrease the aspects difficulty by one.</li> -->
+	<!--     <li>If the aspects difficulty is less than ten, then it becomes ten.</li> -->
+	<!--     <li>If the aspects difficulty is greater than fifteen, then it becomes fifteen.</li> -->
+	<!--   </olist> -->
+	<!-- </p> -->
 
 	<!-- <p> -->
 	<!--   A <emph>Boon</emph> when making an aspect check should reduce the aspects difficulty by a -->
@@ -1631,130 +1672,179 @@
 	<!--   <label>figure:compel-aspect-table</label> -->
 	<!-- </figure> -->
 
+        <!-- <playexample> -->
+        <!--   <p> -->
+	<!--     Dourli hears that someone has offered 20gp for information  -->
+	<!--     about one of Dourli's colleagues.  The GM might decide to try to compel Dourli as  -->
+	<!--     he has an aspect <emph>Gold is my Lodestone</emph>.  The player then decides  -->
+	<!--     whether he will accept the compel and provide the information about his associate -->
+	<!--     or resist the compel somehow. -->
+        <!--   </p> -->
+          
+        <!--   <p> -->
+	<!--     He decides to resist.  So he has to check against the difficulty of that aspect, which is -->
+	<!--     currently 11.  He rolls  -->
+	<!--     2d12 (as aspect checks are standard checks) and rolls a total of 8.  He fails  -->
+	<!--     as his dice result, 8, is lower than the aspects difficulty, 11  So now Dourli has  -->
+	<!--     to provide the information about his associate in order to garner his well earned  -->
+	<!--     gold.  In addition, because he failed the aspect check he increases  -->
+	<!--     the difficulty of the aspect by one, to 12. -->
+        <!--   </p> -->
+          
+        <!--   <p> -->
+	<!--     Dourli now  decides that he cannot,  -->
+	<!--     just hand over the information about his associate, like a despicable cad, and  -->
+	<!--     instead resolves to try and give them bogus information.  This action satisfies  -->
+	<!--     the compel as, if he succeeds, he still gets his gold. -->
+        <!--   </p> -->
+        <!-- </playexample> -->
+
+        <!-- <p> -->
+        <!--   A player may compel their own aspect in order to try to reduce the aspects difficulty, -->
+	<!--   provided the GM agrees to the compel.  When a player compels one of  -->
+        <!--   their own characters aspects they roll the check as normal.  If they fail the aspect  -->
+        <!--   binds the character.   If they succeed the check the aspect does not apply -->
+        <!--   and the <emph>character must now reduce the difficulty of that aspect by one</emph>.  -->
+        <!-- </p> -->
+
+
         <playexample>
           <p>
 	    Dourli hears that someone has offered 20gp for information 
-	    about one of Dourli's colleagues.  The GM might decide to try to compel Dourli as 
-	    he has an aspect <emph>Gold is my Lodestone</emph>.  The player then decides 
+	    about one of Dourli's colleagues.  A second player might decide to try to compel Dourli
+	    as Dourli has an aspect <emph>Gold is my Lodestone</emph>.  The player then decides 
 	    whether he will accept the compel and provide the information about his associate
-	    or resist the compel somehow.
+	    or try to resist the compel.
           </p>
           
           <p>
 	    He decides to resist.  So he has to check against the difficulty of that aspect, which is
 	    currently 11.  He rolls 
-	    2d12 (as aspect checks are standard checks) and rolls a total of 8.  He fails 
-	    as his dice result, 8, is lower than the aspects difficulty, 11  So now Dourli has 
+	    2d12 (as aspect checks are standard checks) and rolls two 4s for a total of 8.  He fails 
+	    the check, as the total is lower than the aspects difficulty of 11.  So now Dourli has 
 	    to provide the information about his associate in order to garner his well earned 
-	    gold.  In addition, because he failed the aspect check he increases 
-	    the difficulty of the aspect by one, to 12.
+	    gold.  
           </p>
           
           <p>
-	    Dourli now  decides that he cannot, 
+	    Dourli now decides that he cannot, 
 	    just hand over the information about his associate, like a despicable cad, and 
 	    instead resolves to try and give them bogus information.  This action satisfies 
-	    the compel as, if he succeeds, he still gets his gold.
+	    the compel as, if he succeeds, he still gets his gold.  Whether this succeeds or
+	    not is resolved separately.
           </p>
+
+	  <p>
+	    Because Dourli rolled a Boon during his check, the player that compelled the aspect
+	    may refresh a die into one of their dice pools.  In addition, this triggers some change
+	    in this aspect of Dourli's character.  If the aspect is working well and leading to
+	    enjoyable game play, then Dourli might keep the aspect and lower the dicculty to 10,
+	    or Dourli might soften the wording to, something like, ``Gold is forever'' which is a
+	    little less proscriptive.  Finally, Dourli might decide to choose a new aspect altogether.
+	    Maybe he decides that Dourli has had an epiphany, realizing the error of his ways
+	    Dourli removes the "Gold is my Lodestone" aspect and replaces it with a new aspect:
+	    "I am a river to my people".  To calculate the new aspects difficulty he rolls a d6,
+	    gets a 5 and so the difficulty of the new aspect is $9 + 5 = 14$.
+	  </p>
         </playexample>
 
-        <p>
-          A player may compel their own aspect in order to try to reduce the aspects difficulty,
-	  provided the GM agrees to the compel.  When a player compels one of 
-          their own characters aspects they roll the check as normal.  If they fail the aspect 
-          binds the character.   If they succeed the check the aspect does not apply
-          and the <emph>character must now reduce the difficulty of that aspect by one</emph>. 
-        </p>
-      </subsection>
+        <!-- <p> -->
+        <!--   A player may compel their own aspect in order to try to reduce the aspects difficulty, -->
+	<!--   provided the GM agrees to the compel.  When a player compels one of  -->
+        <!--   their own characters aspects they roll the check as normal.  If they fail the aspect  -->
+        <!--   binds the character.   If they succeed the check the aspect does not apply -->
+        <!--   and the <emph>character must now reduce the difficulty of that aspect by one</emph>.  -->
+        <!-- </p> -->
+</subsection>
 
 
-      <subsection>
-        <subsectiontitle>Aspect Difficulty and Lifetime</subsectiontitle>
-        <p>
-          Aspects need not last the lifetime of the character.  
-          There are a limited number of aspects a character may have at any one time.
-          Characters grow and over time the beliefs that shape them change and aspects 
-          they once described them may no longer apply.  For example, a character might 
-          hold certain beliefs very strongly and, overtime, the strengths of those beliefs 
-          may wane.  After some period, the character may become disenchanted with their 
-          former philosophy and move on.   Perhaps they grow and realize the error of their 
-          ways, or maybe they continue to believe but their passion for the idea has gone.
-        </p>
+      <!-- <subsection> -->
+      <!--   <subsectiontitle>Aspect Difficulty and Lifetime</subsectiontitle> -->
+      <!--   <p> -->
+      <!--     Aspects need not last the lifetime of the character.   -->
+      <!--     There are a limited number of aspects a character may have at any one time. -->
+      <!--     Characters grow and over time the beliefs that shape them change and aspects  -->
+      <!--     they once described them may no longer apply.  For example, a character might  -->
+      <!--     hold certain beliefs very strongly and, overtime, the strengths of those beliefs  -->
+      <!--     may wane.  After some period, the character may become disenchanted with their  -->
+      <!--     former philosophy and move on.   Perhaps they grow and realize the error of their  -->
+      <!--     ways, or maybe they continue to believe but their passion for the idea has gone. -->
+      <!--   </p> -->
 
-        <p>
-          Alternatively, the GM may at any time declare that a character loses an existing 
-          aspect, gains a new one, or he may reword an existing aspect.  The GM should take
-          care when doing this to keep the players vision of their character intact.
-          You should consider modifying the characters aspects for one of the following
-          reasons:
-          <list>
-	    <li>Manageability: if the character has too many aspects consider removing 
-	    some, preferably starting with those with the lowest difficulties.</li>
-	    <li>To satisfy the narrative imperative: if adding the aspect to the 
-	    character would drive the story forward in interesting ways.  This might 
-	    happen as the result of some traumatic event or epiphany.</li>
-	    <li>To tweak an existing Aspect: if the aspect is constantly being exploited 
-	    by the player then the aspect should be changed.  Remember a good aspect 
-	    has to cause problems for the character occasionally</li>
-          </list>
-        </p>
+      <!--   <p> -->
+      <!--     Alternatively, the GM may at any time declare that a character loses an existing  -->
+      <!--     aspect, gains a new one, or he may reword an existing aspect.  The GM should take -->
+      <!--     care when doing this to keep the players vision of their character intact. -->
+      <!--     You should consider modifying the characters aspects for one of the following -->
+      <!--     reasons: -->
+      <!--     <list> -->
+      <!-- 	    <li>Manageability: if the character has too many aspects consider removing  -->
+      <!-- 	    some, preferably starting with those with the lowest difficulties.</li> -->
+      <!-- 	    <li>To satisfy the narrative imperative: if adding the aspect to the  -->
+      <!-- 	    character would drive the story forward in interesting ways.  This might  -->
+      <!-- 	    happen as the result of some traumatic event or epiphany.</li> -->
+      <!-- 	    <li>To tweak an existing Aspect: if the aspect is constantly being exploited  -->
+      <!-- 	    by the player then the aspect should be changed.  Remember a good aspect  -->
+      <!-- 	    has to cause problems for the character occasionally</li> -->
+      <!--     </list> -->
+      <!--   </p> -->
 
-        <p>
-          Other aspects, such as physical aspects, are usually held for the lifetime of the 
-          character.  For example, suppose Dourli loses a hand in a tragic, yet potentially 
-          foreseeable, drunken axe juggling attempt.  He gains the <emph>Missing Left 
-          Hand</emph> aspect.   Over time this may become much less problematic for him as 
-          he adapts to his new condition however he will very likely retain that aspect until 
-          his death.  Alternatively, the GM can rule that aspect can be diminished and 
-          if Dourli manages to get the aspects difficulty down to 5 then it no longer 
-          affects him in the usual course of play.  That aspect would then become a tag
-          on the character -- just because it no longer effects him in a significant way.
-        </p>
+      <!--   <p> -->
+      <!--     Other aspects, such as physical aspects, are usually held for the lifetime of the  -->
+      <!--     character.  For example, suppose Dourli loses a hand in a tragic, yet potentially  -->
+      <!--     foreseeable, drunken axe juggling attempt.  He gains the <emph>Missing Left  -->
+      <!--     Hand</emph> aspect.   Over time this may become much less problematic for him as  -->
+      <!--     he adapts to his new condition however he will very likely retain that aspect until  -->
+      <!--     his death.  Alternatively, the GM can rule that aspect can be diminished and  -->
+      <!--     if Dourli manages to get the aspects difficulty down to 5 then it no longer  -->
+      <!--     affects him in the usual course of play.  That aspect would then become a tag -->
+      <!--     on the character -\- just because it no longer effects him in a significant way. -->
+      <!--   </p> -->
 
-	<p>
-          <indexentry>Aspect<subentry>Lifecycle</subentry></indexentry> 
-          <indexentry>Aspect<subentry>Ephemeral</subentry></indexentry> 
-          <indexentry>Aspect<subentry>Chronic</subentry></indexentry> 
-          <indexentry>Aspect<subentry>Permanent</subentry></indexentry> 
-          <indexentry>Ephemeral Aspect</indexentry> 
-          <indexentry>Chronic Aspect</indexentry> 
-          <indexentry>Permanent Aspect</indexentry> 
-	  We distinguish three different Aspect lifetimes: Ephemeral, Chronic and Permanent.
-	  Ephemeral aspects last until the aspects difficulty would be reduced below the minimum
-	  aspect difficulty.   Unless otherwise stated new aspects are assumed to be Ephemeral.
-	  Chronic Aspects are active until their difficulty would be reduced
-	  below some minimum difficulty, at which point the Aspect becomes dormant for some period
-	  of time.  Dormant aspects cannot be compelled.  Dormant aspects become active again when
-	  the GM decides.  Permanent Aspects last indefinitely and are always active.   The lifetime
-	  and effects of all aspects regardless of life-cycle are ultimately determined by the GM,
-	  but should be negotiated between players and the GM.
-	</p>
-      </subsection>
+      <!-- 	<p> -->
+      <!--     <indexentry>Aspect<subentry>Lifecycle</subentry></indexentry>  -->
+      <!--     <indexentry>Aspect<subentry>Ephemeral</subentry></indexentry>  -->
+      <!--     <indexentry>Aspect<subentry>Chronic</subentry></indexentry>  -->
+      <!--     <indexentry>Aspect<subentry>Permanent</subentry></indexentry>  -->
+      <!--     <indexentry>Ephemeral Aspect</indexentry>  -->
+      <!--     <indexentry>Chronic Aspect</indexentry>  -->
+      <!--     <indexentry>Permanent Aspect</indexentry>  -->
+      <!-- 	  We distinguish three different Aspect lifetimes: Ephemeral, Chronic and Permanent. -->
+      <!-- 	  Ephemeral aspects last until the aspects difficulty would be reduced below the minimum -->
+      <!-- 	  aspect difficulty.   Unless otherwise stated new aspects are assumed to be Ephemeral. -->
+      <!-- 	  Chronic Aspects are active until their difficulty would be reduced -->
+      <!-- 	  below some minimum difficulty, at which point the Aspect becomes dormant for some period -->
+      <!-- 	  of time.  Dormant aspects cannot be compelled.  Dormant aspects become active again when -->
+      <!-- 	  the GM decides.  Permanent Aspects last indefinitely and are always active.   The lifetime -->
+      <!-- 	  and effects of all aspects regardless of life-cycle are ultimately determined by the GM, -->
+      <!-- 	  but should be negotiated between players and the GM. -->
+      <!-- 	</p> -->
+      <!-- </subsection> -->
 
 
-      <subsection>
-        <subsectiontitle>Aspect Advantages</subsectiontitle>
-        <p>
-          When a player seeks to compel one of their own characters aspects they do so 
-          in the hopes of weakening the hold of that aspect upon their character.
-	  The idea is that it is far better for a character to decide when their
-	  aspect applies to their character than leaving it up to the GM or fellow players
-	  to choose a time that may be very inconvenient.
-        </p>
+      <!-- <subsection> -->
+      <!--   <subsectiontitle>Aspect Advantages</subsectiontitle> -->
+      <!--   <p> -->
+      <!--     When a player seeks to compel one of their own characters aspects they do so  -->
+      <!--     in the hopes of weakening the hold of that aspect upon their character. -->
+      <!-- 	  The idea is that it is far better for a character to decide when their -->
+      <!-- 	  aspect applies to their character than leaving it up to the GM or fellow players -->
+      <!-- 	  to choose a time that may be very inconvenient. -->
+      <!--   </p> -->
 
-        <playexample>
-          <p>
-	    Suppose Dourli is fighting an ogre, and a large amount of treasure is 
-	    at stake if Dourli can win.  The ogre is nearly defeated but Dourli fails 
-	    his resolve check putting him at a serious disadvantage.  Dourli's player
-	    might try to compel his <emph>Gold is my Lodestone</emph> aspect to try
-	    to get the GM to give  Dourli some bonus to his resolve check in that fight.
-	    He rolls a 5.  Well under the aspects difficulty and so is bound by the aspect.
-	    The GM decides that Dourli gets a +3 bonus to his resolve check as his
-	    greed overcomes his sense of self-preservation.
-          </p>
-        </playexample>
-      </subsection>
+      <!--   <playexample> -->
+      <!--     <p> -->
+      <!-- 	    Suppose Dourli is fighting an ogre, and a large amount of treasure is  -->
+      <!-- 	    at stake if Dourli can win.  The ogre is nearly defeated but Dourli fails  -->
+      <!-- 	    his resolve check putting him at a serious disadvantage.  Dourli's player -->
+      <!-- 	    might try to compel his <emph>Gold is my Lodestone</emph> aspect to try -->
+      <!-- 	    to get the GM to give  Dourli some bonus to his resolve check in that fight. -->
+      <!-- 	    He rolls a 5.  Well under the aspects difficulty and so is bound by the aspect. -->
+      <!-- 	    The GM decides that Dourli gets a +3 bonus to his resolve check as his -->
+      <!-- 	    greed overcomes his sense of self-preservation. -->
+      <!--     </p> -->
+      <!--   </playexample> -->
+      <!-- </subsection> -->
 
       <subsection>
         <subsectiontitle>Conflicting Aspects</subsectiontitle>
@@ -1840,7 +1930,7 @@
           <indexentry>Initiative Check</indexentry>
 	  An <defn>Initiative Check</defn> should be made using an ability chosen by the GM,
 	  and based on context.  Some abilities that could be used to make the initiative check
-	  are Perception, Speed, Listen, Notice, and Scout.  We use the term <defn>Initiative Check</defn>
+	  are ✱✱primary.perception, primary.speed, physical.listen, Notice, and Scout.  We use the term <defn>Initiative Check</defn>
 	  to refer to this check irrespective of what underlying ability was used to make the
 	  check.  <emph>Initiative is a group delegate check using one PC's ability checks against
 	  the other groups initiative DC</emph>.  Groups take their turns in order from highest
@@ -2013,7 +2103,7 @@
       <subsection>
 	<subsectiontitle>Immediate Actions</subsectiontitle>
 	<p>
-	  An <defn>Immediate Actions</defn> are Free Actions that the characters can perform
+	  <defn>Immediate Actions</defn> are Free Actions that the characters can perform
 	  once, <emph>at any time</emph> during the round.  Examples of Immediate Actions
 	  are using Leadership to try and cause a halt to combat to allow negotiation,
 	  and Fleeing.
@@ -2031,7 +2121,7 @@
 	</p>
 	
 	<p>
-	  A <defn>Full Turn Action</defn> take a whole turn to complete.  That is one standard
+	  A <defn>Full Turn Action</defn> takes a whole turn to complete.  That is one standard
 	  action, one move action and one minor action.  These actions can be performed in any
 	  order and they can be started in one turn and finished in another.  <defn>Multi Turn
 	  Actions</defn> require some number of full turn actions.  For example, a Two-Turn Action
@@ -2515,7 +2605,7 @@
     
     {% from "docs/macro_ability.xml" import build_ability with context %}
 
-    
+
     <section>
       <sectiontitle>Primary Abilities <indexentry>Abilities<subentry>Primary</subentry></indexentry>
       </sectiontitle>
@@ -2538,35 +2628,8 @@
       </subsection>
       {% endfor %}
     </section>
-    
-    <section>
-      <sectiontitle>General Abilities</sectiontitle>
-      <p>
-        <indexentry>Abilities<subentry>General</subentry></indexentry>
-  	These abilities represent trade-craft and creative abilities: Smithing,
-        Animal Handling, Playing Music, Hunting and so on.
-      </p>
 
-      {% for ability_group in ability_groups if ability_group.is_general_family() %}
-      <subsection>
-  	<subsectiontitle>{{ ability_group.get_title() }}</subsectiontitle>
-  	{{ ability_group.get_description() }}
 
-  	{% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
-  	<figure position="h" fullwidth="false" sideways="false">
-  	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
-  	  <caption>{{ ability_group.get_title() }}</caption>
-  	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
-  	</figure>
-  	{% endif %}
-	
-  	{% for ability in ability_group.get_abilities()%}
-  	{{ build_ability(ability) }}
-  	{% endfor %}
-      </subsection>
-      {% endfor %}
-    </section>
-    
     <section>
       <sectiontitle>Lore Abilities</sectiontitle>
 
@@ -2640,6 +2703,34 @@
       {% endfor %}
     </section>
 
+    <section>
+      <sectiontitle>General Abilities</sectiontitle>
+      <p>
+        <indexentry>Abilities<subentry>General</subentry></indexentry>
+  	These abilities represent trade-craft and creative abilities: Smithing,
+        Animal Handling, Playing Music, Hunting and so on.
+      </p>
+
+      {% for ability_group in ability_groups if ability_group.is_general_family() %}
+      <subsection>
+  	<subsectiontitle>{{ ability_group.get_title() }}</subsectiontitle>
+  	{{ ability_group.get_description() }}
+
+  	{% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
+  	<!-- <figure position="h" fullwidth="false" sideways="false"> -->
+  	<!--   <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/> -->
+  	<!--   <caption>{{ ability_group.get_title() }}</caption> -->
+  	<!--   <label>figure:{{ ability_group.get_id() }}_skill_tree</label> -->
+  	<!-- </figure> -->
+  	{% endif %}
+	
+  	{% for ability in ability_group.get_abilities()%}
+  	{{ build_ability(ability) }}
+  	{% endfor %}
+      </subsection>
+      {% endfor %}
+    </section>
+    
 
     <section>
       <sectiontitle>Magic Abilities</sectiontitle>
@@ -2668,6 +2759,35 @@
       </subsection>
       {% endfor %}
     </section>
+
+    <section>
+      <sectiontitle>Wyrd Science Abilities</sectiontitle>
+      <p>
+	A novel and some same infernal branch of science.
+      </p>
+
+      {% for ability_group in ability_groups if ability_group.is_wyrd_science_family() %}
+      <subsection>
+  	<subsectiontitle>{{ ability_group.get_title() }}</subsectiontitle>
+  	{{ ability_group.get_description() }}
+
+  	{% if ability_group.has_abilities() %}
+  	<figure position="h" fullwidth="false" sideways="false">
+  	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+  	  <caption>{{ ability_group.get_title() }}</caption>
+  	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+  	</figure>
+  	{% endif %}
+
+  	{% for ability in ability_group.get_abilities()%}
+  	{{ build_ability(ability) }}
+  	{% endfor %}	
+      </subsection>
+      {% endfor %}      
+    </section>
+    
+    
+      
   </chapter>
 
   <chapter>

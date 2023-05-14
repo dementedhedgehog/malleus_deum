@@ -50,7 +50,7 @@ add_index_to_core = True
 
 # List of files to build (fname, build_index?, index_name)
 doc_files_to_build = (
-    ("phb.xml", True, "PHB"),
+    #("phb.xml", True, "PHB"),
     #("equipment.xml", True, "Eq"),
     #("magic.xml", True, "Mg"),
     #("monster_manual.xml", True, "MM"),
@@ -79,21 +79,22 @@ patrons_to_build = (
 )
 
 archetypes_to_build = (
-    # ("black_coat", True, "[BC]"),
-    # ("champion_of_mithras", True, "[CoM]"),
-    # ("chevalier", True, "[Ch]"),
-    # ("confessor_militant", True, "[FC]"), 
-    #("elven_scion", True, "[ESc]"),
-    #("fyrdzwerg", True, "[FZW]"),
-    # ("halfling_rover", True, "[HR]"),
-    # ("hedge_wizard", True, "[HW]"),
-    # ("outrider", True, "[OR]"),
-    # ("penitent_brother", True, "[PB]"),
-    #("red_mage", True, "[RM]"),
-    # ("second_son", True, "[SS]"),
-    # ("skald", True, "[SKL]"),
-    # ("summoner", True, "[SM]"),
-    #("witch_hunter", True, "[WH]"),
+    ("black_coat", True, "[BC]"),
+    ("hedge_wizard", True, "[HW]"),
+    ("second_son", True, "[SS]"),
+    ("plague_doctor", True, "[PD]"),
+    ("outrider", True, "[OR]"),
+    ("champion_of_mithras", True, "[CoM]"),
+    ("chevalier", True, "[Ch]"),
+    ("confessor_militant", True, "[FC]"), 
+    ("elven_scion", True, "[ESc]"),
+    ("fyrdzwerg", True, "[FZW]"),
+    ("halfling_rover", True, "[HR]"),
+    ("penitent_brother", True, "[PB]"),
+    ("red_mage", True, "[RM]"),
+    ("skald", True, "[SKL]"),
+    ("summoner", True, "[SM]"),
+    ("witch_hunter", True, "[WH]"),
     ("night_gauner", True, "[NG]"),
 )
 
@@ -113,6 +114,8 @@ modules_to_build = (
     # ("candlemass", False, "[cdm]"),
     # ("reichs_pferdemeister", False, "[rfm]"),
     # ("ottmar_fulcade", False, "[of]"),
+    #("the_will", False, "[tw]"),
+    #("reichs_pfedermeister", False, "[of]"),
     
     #("temple_of_the_white_prince", False, "[totwp]"),
     #("lonely_road", False, "[lonr]"),
@@ -127,54 +130,57 @@ modules_to_build = (
 # These get added to a zip and dropped into the releases dir
 # with the current release number when ./publish -r is run.
 release_files = (
-    "phb.pdf",
-    "archetypes.pdf",
-    "rationale.pdf",
+    #"phb.pdf",
+    #"archetypes.pdf",
+    #"rationale.pdf",
 
-    "black_coat.pdf",
-    "black_coat_char_sheet.pdf",
+    # "black_coat.pdf",
+    # "black_coat_char_sheet.pdf",
 
-    "chevalier.pdf",
-    "chevalier_char_sheet.pdf",
+    # "chevalier.pdf",
+    # "chevalier_char_sheet.pdf",
 
-    "champion_of_mithras.pdf",
-    "champion_of_mithras_char_sheet.pdf",
+    # "champion_of_mithras.pdf",
+    # "champion_of_mithras_char_sheet.pdf",
 
-    "confessor_militant.pdf",
-    "confessor_militant_char_sheet.pdf",
+    # "confessor_militant.pdf",
+    # "confessor_militant_char_sheet.pdf",
 
-    "elven_scion.pdf", 
-    "elven_scion_char_sheet.pdf", 
+    # "elven_scion.pdf", 
+    # "elven_scion_char_sheet.pdf", 
 
-    "fyrdzwerg.pdf", 
-    "fyrdzwerg_char_sheet.pdf", 
+    # "fyrdzwerg.pdf", 
+    # "fyrdzwerg_char_sheet.pdf", 
 
-    "halfling_rover.pdf",
-    "halfling_rover_char_sheet.pdf",
+    # "halfling_rover.pdf",
+    # "halfling_rover_char_sheet.pdf",
 
-    "hedge_wizard.pdf", 
-    "hedge_wizard_char_sheet.pdf", 
+    # "hedge_wizard.pdf", 
+    # "hedge_wizard_char_sheet.pdf", 
 
-    "outrider.pdf", 
-    "outrider_char_sheet.pdf", 
+    # "outrider.pdf", 
+    # "outrider_char_sheet.pdf", 
 
-    "penitent_brother.pdf", 
-    "penitent_brother_char_sheet.pdf", 
+    # "penitent_brother.pdf", 
+    # "penitent_brother_char_sheet.pdf", 
 
-    "red_mage.pdf", 
-    "red_mage_char_sheet.pdf", 
+    #"plague_doctor.pdf", 
+    #"plague_doctor_char_sheet.pdf", 
 
-    "second_son.pdf", 
-    "second_son_char_sheet.pdf", 
+    # "red_mage.pdf", 
+    # "red_mage_char_sheet.pdf", 
 
-    "skald.pdf", 
-    "skald_char_sheet.pdf", 
+    # "second_son.pdf", 
+    # "second_son_char_sheet.pdf", 
 
-    "summoner.pdf", 
-    "summoner_char_sheet.pdf", 
+    # "skald.pdf", 
+    # "skald_char_sheet.pdf", 
 
-    "witch_hunter.pdf",
-    "witch_hunter_char_sheet.pdf",
+    # "summoner.pdf", 
+    # "summoner_char_sheet.pdf", 
+
+    # "witch_hunter.pdf",
+    # "witch_hunter_char_sheet.pdf",
 )
 
     

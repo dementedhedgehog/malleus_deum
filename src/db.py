@@ -106,42 +106,57 @@ class DB:
         return
 
 
-    def lookup_ability_or_ability_rank(self, ability_id):
+    def lookup_ability_or_ability_rank(self, ability_id, rank_id):
+        """Check the ability id exists in our db."""
         try:
-            ability_rank = self.ability_groups.get_ability_rank(ability_id)
+            ability_rank = self.ability_groups.get_ability_rank(ability_id, rank_id)
             return ability_rank
         except KeyError:
             return self.ability_groups.get_ability(ability_id)
 
 
-
     def filter_abilities(self, xml):
         """
-        Filters xml replacing magical ability (e.g. ✱✱dagger.strike) or ability-rank references 
-        (e.g.  ✱dagger.strike_1), with values from the db.  We could have done this with xml or
-        jinja filters but it's a lot of typing.
+        Filters xml replacing our "magical" ability references (e.g. ✱✱dagger.strike)
+        or ability_rank references (e.g.  ✱dagger.strike_1), with values from the db. 
+
+        This is a pretty hacky but convenient approach. We could have done this with
+        xml or jinja filters, but it's a lot of typing.
 
         """
         templates_regex = re.compile("\[(?P<template>.*?)\]")        
         ability_group_regex = re.compile("^(?P<ability_group>[^.]*)\.")
-        ability_rank_regex = re.compile("_[0-9]+$")
-        tokens = re.split("(✱✱?(?:[a-zA-Z]+\.)?[a-zA-Z_0-9\-\?\[\]]+)", xml)
+        tokens = re.split(
+            "("
+            "(?:"
+            "✱✱?"                          # ability prefix
+            "(?:[a-zA-Z]+\.)?"             # optional ability group
+            "[a-zA-Z_]*[a-zA-Z]"           # mandatory ability name (can't end in _)
+            "(?:\[[a-zA-Z_0-9\-\?/ ]+\])?" # optional template
+            "(?:_[0-9]+)?"                 # optional rank
+            ")"
+            "|(?:\n)"                      # we also split on newlines (for line numbers).
+            ")",
+            xml)
         new_tokens = []
-        for i, token in enumerate(tokens):                
+        line_number = 1
+        
+        for i, token in enumerate(tokens):
 
             # ability refs are tokens that start with the special character ✱
             if not token.startswith("✱"):
                 new_tokens.append(token)
+                if token == "\n":
+                    line_number += 1                
                 continue            
             
-            # try and translate the token
-
-            # if it starts with two ✱✱ it's an ability id,
-            # if it starts with one it's an ability+rank id.
+            # try and translate the token...
+            # if it starts with two ✱✱ it's an ability id (i.e. it's supposed to be rankless)
+            # if it starts with one it's an ability_rank id.
             is_ability_id = token.startswith("✱✱")
             
             # first drop leading ✱'s
-            token = token.lstrip("✱")
+            stripped_token = token.lstrip("✱")
 
             # try and find template info..
             match = templates_regex.search(token)
@@ -153,14 +168,18 @@ class DB:
             # remove template info if there is any
             # e.g. ✱social.etiquette[Dwarven]_3 --> social.etiquette_3
             # (no abilities should have templated abilities as prereqs).
-            _id = templates_regex.sub("", token)
-            
+            _id = templates_regex.sub("", stripped_token)
+
+            # strip out the rank.. as well
+            rankless_ability_id, rank = get_ability_rank(_id)
+
             try: 
-                # check if it's valid.
+                # check if the ability exists, and if it exists check if it has the given rank.
                 if is_ability_id:
                     self.ability_groups.get_ability(_id)
                 else:
                     self.ability_groups.get_ability_rank(_id)
+
             except KeyError:
 
                 #
@@ -169,23 +188,23 @@ class DB:
                 #
 
                 # build debug context..
-                start = max(i -3, 0)
-                end = min(i+3, len(tokens))
+                start = max(i-8, 0)
+                end = min(i+8, len(tokens))
                 # truncate the debug context if it's too long.
-                before = " ".join(tokens[start:i])[-50:]
-                after = " ".join(tokens[i+1:i])[:50]
-                context = f"{before} ❰{token}❱ {after}"
+                before = "".join(tokens[start:i])[-60:]
+                after = "".join(tokens[i+1:end])[:60]
+                context = f"On line: {line_number} {before} ❰{token}❱ {after}"
 
                 # it's bad, so try dropping the rank and looking for the ability
                 # (so we can log some extra debug info)
-                ability_id = ability_rank_regex.sub("", _id)
                 try:
-                    self.ability_groups.get_ability(ability_id)
+                    self.ability_groups.get_ability(rankless_ability_id)
                 except KeyError:
                     # Bad ability
                     raise Exception(
-                        f"Invalid ability id in reference {ability_id}. "
-                        f"Check the ability rank is valid. Near:\n{context}")
+                        f"Invalid ability id {rankless_ability_id} in reference {_id}. "
+                        f"Check the ability is exists and not misspelled.\n{context}"
+                    ) from None
                 else:                
                     # Check the ability group exists
                     match = ability_group_regex.search(_id)
@@ -196,50 +215,79 @@ class DB:
                             # Then it must be a missing/misspelled ability group
                             raise Exception(
                                 "Invalid ability_rank_id in reference. \n"
-                                f"Ability Group {ability_group_name} does not exist or is mispelled "
-                                f"in {_id}. Near:\n{context}")
+                                f"Ability Group {ability_group_name} does not exist or is "
+                                f"mispelled in {_id}.\n{context}"
+                            ) from None
 
                     # Check the ability exists.
                     if self.ability_groups.get_ability(_id) is None:
                         # Then it's a missing/misspelled ability
                         raise Exception(
-                            f"Missing/misspelled ability! {ability_id} in {_id}. Near:\n{context}")
+                            f"Missing/misspelled ability? {rankless_ability_id} in {_id}."
+                            f"\n{context}"
+                        ) from None
 
                     if not is_ability_id:
-                        # We're looking for an ability rank id (not an ability id).
+                        # We're looking for an ability_rank id (not an ability id).
                         # so we can check a few more things..
 
                         # Do we have an ability rank?
-                        if ability_rank_regex.search(_id):
+                        if rank is None:
                             # Then it must be a bad ability rank
                             raise Exception(
-                                "Invalid ability_rank_id in reference. "
-                                f"Ability rank out of range? {_id}. Near:\n{context}")
+                                f"Invalid rank '{rank}' in ability_rank reference."
+                                f"\n{context}"
+                            ) from None
                         else:
                             # Dunno!?
                             raise Exception(
                                 "Bug in db.py !! looking up ability. "
-                                f"Ability rank out of range? {_id}. Near:\n{context}")
+                                f"Ability rank out of range? {_id}.\n{context}"
+                            ) from None
 
                         # it's bad, so try dropping the rank and looking for the ability
                         # (so we can log some extra debug info)
-                        ability_id = ability_rank_regex.sub("", ability_rank_id)
                         try:
-                            self.ability_groups.get_ability(ability_id)
+                            self.ability_groups.get_ability(rankless_ability_id)
                         except KeyError:
                             # Bad ability
                             raise Exception(
-                                f"Invalid ability id in reference {ability_id}. "
-                                f"Check the ability rank is valid. Near:\n{context}")
+                                f"Invalid ability id in reference {_id}. "
+                                f"Check the ability rank is valid.\n{context}"
+                            ) from None
                         else:
                             # Dunno!?
                             raise Exception(
                                 "Bug in db.py !! looking up ability. "
-                                f"Ability rank out of range? {ability_rank_id}. Near:\n{context}")
+                                f"Ability rank out of range? {rank} in {_id}. "
+                                f"\n{context}"
+                            ) from None
 
-            if template is None:
-                ability_ref_xml = f'<abilityref id="{_id}"/>'
-            else:
-                ability_ref_xml = f'<abilityref id="{_id}" template="{template}"/>'
+
+            # Build the abilityref xml element 
+            template_str = f' template="{template}"' if template is not None else ''
+            rank_str = f' rank="{rank}"' if rank is not None else ''
+            ability_ref_xml = f'<abilityref id="{rankless_ability_id}"{rank_str}{template_str}/>'
+
+            # and insert the abilityref xml into the stream of tokens we're parsing.
             new_tokens.append(ability_ref_xml)
         return "".join(new_tokens)
+
+
+__ability_rank_regex = re.compile("_[0-9]+$")
+def get_ability_rank(ability_id):
+    """Takes an ability id like ✱luck.lucky_1" and returns a tuple ("✱luck.lucky", "1")"""
+    rankless_ability_id = __ability_rank_regex.sub("", ability_id)
+    ranks = __ability_rank_regex.findall(ability_id)
+    rank = ranks[0].lstrip("_") if len(ranks) > 0 else None
+    return rankless_ability_id, rank
+    
+    
+if __name__ == "__main__":
+
+    # Just some test code.. (should be in a unit test if I were doing this properly).
+    import utils
+    db = DB()
+    db.load(utils.root_dir)
+    #print(db.filter_abilities("this is a test ✱social.etiquette[Church-of-Mithras]_2 and so forth"))
+    print(db.filter_abilities("this is a test ✱social.etiquette[x y]_2 and so forth"))

@@ -27,7 +27,8 @@
       <p>
 	The character may call themselves an Apothecary, and can prepare poisons,
 	Laudanum, War-Fire, Foaming Plaster, Colloidal Silver, and medicines for
-	certain diseases. The character must have alchemical equipment.
+	certain diseases. The character must have alchemical equipment and the requisite
+	ingredients to do this.
       </p>
     </abilitydescription>
   </ability>
@@ -210,33 +211,6 @@
   </ability>  
   
 
-  <!-- <ability> -->
-  <!--   <abilitytitle>Flesh Golem</abilitytitle> -->
-  <!--   <abilityid>lore.flesh_golem</abilityid> -->
-  <!--   <abilityactiontype><non-combat/></abilityactiontype> -->
-  <!--   <tags><scholar/></tags> -->
-  <!--   <abilityranks from="1" to="5"/> -->
-  <!--   <abilitycheck dc="17">Std+Rank</abilitycheck> -->
-  <!--   <prereqabilityrank>lore.alchemy_2</prereqabilityrank> -->
-  <!--   <spline><p x="-60" y="60"/></spline> -->
-  <!--   <abilitydescription> -->
-  <!--     <p> -->
-  <!--   DO WE WANT THIS IN THE GAME .. what will it do to gameplay? -->
-  <!-- 	The character has worked out how to control reanimated humans using wyrd science and brain implants. -->
-  <!-- 	In order to create a Flesh Golem the character needs access to a laboratory. -->
-
-  <!-- 	Wyrd Rats have a telepathic bond with their master, they can perform minor -->
-  <!-- 	tasks and can attack on command.   Wyrd Rats have HP:1, AC:13+Rank, Bite DC:13+Rank, Dmg:1. -->
-  <!-- 	They can try to create a Wyrd Rat once per day.  If they fail, the rat survives but it is impossible -->
-  <!-- 	to make a telepathic link with the creature.  Each day spent in preparation gives the character +1 to -->
-  <!-- 	their check, up to a maximum of +3.  They get an additional +1 for naming the rat, which strengthens -->
-  <!-- 	the chance that the telepathic bond will hold.  The character can have and control up to Rank Wyrd Rats -->
-  <!-- 	after this it is impossible for the character to maintain the telepathic link with the rats. -->
-  <!--     </p> -->
-  <!--   </abilitydescription> -->
-  <!-- </ability>   -->
-
-
   <ability>
     <abilitytitle>Grand Discovery</abilitytitle>
     <abilityid>lore.grand_discovery</abilityid>
@@ -355,74 +329,6 @@
       </p>
     </abilitydescription>
   </ability>
-
-  
-  <ability>
-    <abilitytitle>Homunculus</abilitytitle>
-    <abilityid>lore.homunculus</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
-    <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_3</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
-    <abilitydescription>
-      <p>
-	The character is able to create a
-	<measurement><metric>50cm</metric><imperial>20"</imperial></measurement> tall humanoid
-	servitor from flesh.  The homunculus has a mental link with its creator but has
-	limited intelligence.  The homonculus always knows where its master is and will be able
-	to find its master when it pleases.  It is capable of running errands and assisting in combat.
-	Homunculi must do what their creator tells them, unless they get really excited.  Homunculi are
-	very hard to contain.  They often escape from enclosures through unknown devious means.
-      </p>
-
-      <p>
-	When creating an homunculus a character gathers the requisite material, off-cuts from a fresh corpse,
-	a variety of alchemical reagents and a manual for the binding,  They make the check to create the
-	homoculus.  If they fail the ingredients are wasted and must be destroyed.  If successful the
-	creation will rise within a few hours.  An homunculus can have only one master.  It will only
-	do as directed by others if it feels its master	would want that.  If someone creates two homuculi
-	they will both try and destroy the other.  This never ends well.
-      </p>
-
-      <p>
-	When assisting in combat the homunculus has 3 hit points, no stamina, an armour of +2 (they're small
-	and nasty) and provides a +1 to hit and damage bonus to one character fighting in melee hand to hand.
-	That character need not be its master.  Homunculi love fighting and their master must make a
-	Mettle DC2 check to control them when any physical combat begins or the homuculus will automatically
-	attack.  A similar check may be made to control the homunculus when they get excited for other reasons.
-      </p>
-
-      <p>
-	Homonculi are basically an ambulatory fetish, possessed by some minor demon from beyond.  Their
-	actions are strongly curtailed by the rigourous, standardized and very lengthy binding that is part
-	of their creation ritual.  However, homoculi frequently resort to type, eating the flesh of humans
-	or excrement when they can, laughing loudly at the misfortune of others, and if left on their own the
-	might resort to theft, or the mutilation of animals. They have been known to murder small children or
-	light fires, but it is believed that all such loopholes	have now been covered in their binding ritual.
-      </p>
-
-      <p>
-	Homoculi attract a certain amount of attention.  Clothes should be made for them so as not to attract
-	more attention than is absolutely necessary as their bodies are hideous.  Alternatively they may be
-	carried around in a box.
-      </p>
-
-      <p>
-	Thankfully, homonculi do not talk a great deal. When they do they usually being sycophantic, or sarcastic.
-	They delight in the misfortune of others which really excites them.  They may get jealous if their master
-	pays too much attention to others.
-      </p>
-
-      <p>
-	Homunculi do not really die unless their body is destroyed beyond recognition, is burned or eaten <etc/>.
-	They can be healed by simply sewing them back together.  If someone chooses to do this they will regain
-	all health after a long rest.
-      </p>
-    </abilitydescription>
-  </ability>
-
   
   <ability>
     <abilitytitle>Law</abilitytitle>
@@ -607,17 +513,24 @@
     <abilitydescription>
       <p>
   	The character has on his person a smoke bomb that he had created earlier.  When required the
-	character makes a check.  If unsuccesful the bomb is a dud and fails to ignite. 
+	character makes a check.  If unsuccesful the bomb is a dud and fails to ignite. In the event of failure
+	further attempts at lighting the bomb may be made.
 	If successful the smoke bomb they are carrying lights successfully creates a billowing cloud
-	of grey smoke surrounding the bomb with a radius of <measurement><imperial>20'</imperial><metric>6m</metric></measurement>.  This cloud gives +3×Rank to defensive rolls against missile attacks.  It is clearly visible during
+	of grey smoke surrounding the bomb with a radius of <measurement><imperial>20'</imperial><metric>6m</metric></measurement>
+	on the first turn <measurement><imperial>30'</imperial><metric>9m</metric></measurement> on the second turn
+	and <measurement><imperial>40'</imperial><metric>12m</metric></measurement> on the third turn.
+      </p>
+      
+      <p>
+	This cloud gives +3×Rank to defensive rolls against missile attacks.  It is clearly visible during
 	the day, but may not be noticeable at night depending on the lighting.    The cloud also provides
-	+Rank against area-of-effect attacks.   Note that the character must have a long rest before they
-	can make this check again.  Smoke bombs take time to prepare and so the character cannot produce
-	a never ending stream of smoke bombs.   Furthermore smoke bombs require a small amount of specialised
-	equipment and the character must have access to this equipemnt to create smoke bombs.  The smoke
-	bomb may be thrown as if it were a rock.  If the character uses a thurible this grants a +1 to the
-	check and also allows the smoke bomb to be thown as if it were a sling (if not retrieved the thurible
-	will then be lost).
+	+Rank against area-of-effect attacks.   Note that after successfully lighting the bomb, the character must
+	take a long rest before they can build another bomb which allows them to make this check again.  Smoke bombs
+	take time to prepare and are do not age well, so the character cannot produce a never ending stream of smoke bombs.
+	Furthermore smoke bombs require a small amount of specialised equipment and the character must have access to
+	this equipemnt to create smoke bombs.  The smoke bomb may be thrown as if it were a rock.  If the character uses
+	a thurible this grants a +1 to the check and also allows the smoke bomb to be thown as if it were a sling
+	(if not retrieved the thurible will then be lost).
       </p>
     </abilitydescription>
   </ability>
@@ -657,26 +570,26 @@
   </ability>
 
   <ability>
-    <abilitytitle>Wyrd Rats</abilitytitle>
-    <abilityid>lore.wyrd_rat</abilityid>
+    <abilitytitle>Wilderness Lore [Biome]</abilitytitle>
+    <abilityid>lore.wilderness_lore</abilityid>
+    <abilitytemplate>terrain</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
-    <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_1</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
+    <tags><general/><lore/></tags>
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <spline></spline>
     <abilitydescription>
       <p>
-	The character has worked out how to control rats using wyrd
-	science and brain implants.  In order to create a Wyrd Rat the character needs access
-	to a laboratory. Wyrd Rats have a telepathic bond with their master, they can perform minor
-	tasks and can attack on command.   Wyrd Rats have HP:1, AC:13+Rank, Bite DC:13+Rank, Dmg:1.
-	They can try to create a Wyrd Rat once per day.  If they fail, the rat survives but it is impossible
-	to make a telepathic link with the creature.  Each day spent in preparation gives the character +1 to
-	their check, up to a maximum of +3.  They get an additional +1 for naming the rat, which strengthens
-	the chance that the telepathic bond will hold.  The character can have and control up to Rank Wyrd Rats
-	after this it is impossible for the character to maintain the telepathic link with the rats.
+	This ability represents knowledge of a particular biome, the plants and animals that
+	live there, the weather and so on..
+      </p>
+
+      <p>
+	This knowledge may be obtained through verbal histories or via
+	book learning.  Successful use of this ability provides more detailed,
+	more technical, and less immediately practical information about surviving in
+	the biome than a ✱✱wilderness.survivalism or ✱✱wilderness.hunting check would provide.
       </p>
     </abilitydescription>
-  </ability>  
+  </ability>    
 </abilitygroup>

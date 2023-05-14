@@ -255,6 +255,7 @@ class Monster:
         self.description = None
         self.tags = [] 
         self.aspects = []
+        self.abilities = []
         self.move = None
         self.role = None
 
@@ -313,8 +314,8 @@ class Monster:
     def get_magic_pool(self):
         return self.magic_pool
 
-    def get_monster_class_symbol(self):
-        return MonsterClass.get_symbol(self.monster_class)
+    #def get_monster_class_symbol(self):
+    #    return MonsterClass.get_symbol(self.monster_class)
 
     def get_description(self):
         return self.description
@@ -363,10 +364,10 @@ class Monster:
     def get_id(self):
         return self.monster_id
 
-    def get_monster_class(self):
-        if self.monster_class is None:
-            return "missing"
-        return self.monster_class.lower()
+    # def get_monster_class(self):
+    #     if self.monster_class is None:
+    #         return "missing"
+    #     return self.monster_class.lower()
 
     def has_prerequisites(self):
         has_prereqs = False
@@ -381,6 +382,9 @@ class Monster:
 
     def get_tags_str(self):
         return "" if len(self.tags) == 0 else ", ".join(self.tags)
+
+    def get_abilities_str(self):
+        return "X" if len(self.abilities) == 0 else ", ".join(self.abilities)
 
     def get_aspects_str(self):
         return ", ".join(self.aspects)
@@ -403,7 +407,7 @@ class Monster:
     def _get_location(self, lxml_element):
         return "%s:%s" % (self.fname, lxml_element.sourceline)
     
-    def _load(self, monster_element):        
+    def _load(self, monster_element):
         # handle all the children
         for child in list(monster_element):              
            tag = child.tag
@@ -434,8 +438,12 @@ class Monster:
                    self.monster_id = monster_id
 
            elif tag == "monstertags":
-               if child.text is not None:
-                   self.tags.append(child.text)
+               for tag in child:
+                   self.tags.append(tag.tag)                   
+
+           elif tag == "monsterabilities":               
+               #for tag in child:
+               self.abilities = child.text
 
            elif tag == "monstermove":
                self.move = convert_str_to_int(child.text)

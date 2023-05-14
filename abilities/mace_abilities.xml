@@ -22,7 +22,7 @@
     <tags><martial/><mace/><weapon/><crushing/></tags>     
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
-    <prereqabilityrank>mace.strike_2</prereqabilityrank>
+    <prereqabilityrank>mace.mace_strike_2</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -39,7 +39,7 @@
   
   <ability>
     <abilitytitle>Mace Strike</abilitytitle>
-    <abilityid>mace.strike</abilityid>
+    <abilityid>mace.mace_strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
     <tags><martial/><mace/><weapon/><crushing/></tags>
     <abilityranks untrained="0" from="1" to="3"/>
@@ -62,7 +62,7 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="Targets Willpower">Std+Willpower+Rank</abilitycheck>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Willpower+Rank">Std+Rank</abilitycheck>
-    <prereqabilityrank>mace.strike_1</prereqabilityrank>
+    <prereqabilityrank>mace.mace_strike_1</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -78,12 +78,12 @@
 
   <ability>
     <abilitytitle>Mace Parry</abilitytitle>
-    <abilityid>mace.parry</abilityid>
+    <abilityid>mace.mace_parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><martial/><mace/><weapon/></tags>
     <abilityranks from="1" to="6"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <prereqabilityrank>mace.strike_1</prereqabilityrank>	
+    <prereqabilityrank>mace.mace_strike_1</prereqabilityrank>	
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
