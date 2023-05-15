@@ -73,11 +73,11 @@ FDF_ABILITY_BODY = """
 <<
 /V ({ability_description})
 /T (AbilityDescription{ability_number})
->>
-<<
-/V ({ability_mastery})
-/T (AbilityMastery{ability_number})
 >>"""
+# <<
+# /V ({ability_mastery})
+# /T (AbilityMastery{ability_number})
+# >>"""
 
 # FDF_ABILITY_BODY = """
 # <<
@@ -274,7 +274,7 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                 description = "\n".join(check_strings)
                     
                 ability_class = ability.__class__
-                mastery = "Mastery: [][][]"
+                #mastery = "Mastery: []"
 
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
@@ -290,7 +290,7 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     ability_number=i,
                     ability_name=ability_rank,
                     ability_description="",
-                    ability_mastery="",
+                    #ability_mastery="",
                 )                
             elif ability_rank is None:
                 # write empty info
@@ -298,7 +298,7 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     "ability_number": i,
                     "ability_name": "",
                     "ability_description": "",
-                    "ability_mastery": "",
+                    #"ability_mastery": "",
                 }
             else:
                 # Never gets here
