@@ -24,6 +24,7 @@ CHOICES = {
 }
 
 
+
 class Choice:
     """
     The player has to choose between some abilities.
@@ -45,7 +46,6 @@ class Choice:
         return f"Choice: {self.contents}"
 
 
-    
 class OrChoice:
     """
     Poorly thought out code to allow OR of two or more sets of choices.

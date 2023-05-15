@@ -12,160 +12,160 @@
     <section>
       <sectiontitle>Character Creation</sectiontitle>      
       <p>
-	Follow these steps to create a {{ archetype.get_title() }} character
-	<label>sec:character-creation</label>
+    Follow these steps to create a {{ archetype.get_title() }} character
+    <label>sec:character-creation</label>
       </p>
 
       <olist>
-	<li>
-	  <p>
+    <li>
+      <p>
             Print out the character sheet.  
-	  </p>
-	</li>
-	
-	<li>
-	  <p>
+      </p>
+    </li>
+    
+    <li>
+      <p>
             Choose a name for the character and write it on the character sheet..
-	  </p>            
-	</li>
+      </p>            
+    </li>
 
-	<li>
-	  <p>
+    <li>
+      <p>
             Write your own name in the players name area on the character sheet.
-	  </p>            
-	</li>
+      </p>            
+    </li>
 
-	<li>
-	  <p>
+    <li>
+      <p>
             Fill in the Archetype name: {{ archetype.get_title() }} 
-	  </p>            
-	</li>
+      </p>            
+    </li>
 
-	<li>
-	  Fill in your Height: {{ archetype.height }}, Weight: {{ archetype.weight }}, and Age: 
-	  {{ archetype.age }}. {{ archetype.gender }}
-	</li>
+    <li>
+      Fill in your Height: {{ archetype.height }}, Weight: {{ archetype.weight }}, and Age: 
+      {{ archetype.age }}. {{ archetype.gender }}
+    </li>
 
-	<li>
-	  Fill in your level: 1.
-	</li>
-    	
-	<li>
-	  Fill in your characters tags: {{ archetype.get_tags_str() }}
-	</li>
-	
-	<li>
-	  <p>
-	    Choosing one of the following sets of Primary Ability Ranks:
-	    {{ archetype.get_primary_abilities() }}
-	    Then for each ability roll an <emph>unmodified</emph> Std-Check against a DC of 13.
-	    Add one to the ability rank for that ability if the check is successful.  Add an
-	    additional one if a boon is rolled.  Subtract one from the rank if a bane is rolled.
-	  </p>	  
-	  <p>
-	    For example, if you get a result of +2 in Strength you should write down Strength +2 in the
-	    primary abilities section of the character sheet.
-	  </p>	  
-	</li>
+    <li>
+      Fill in your level: 1.
+    </li>
+        
+    <li>
+      Fill in your characters tags: {{ archetype.get_tags_str() }}
+    </li>
+    
+    <li>
+      <p>
+        Choosing one of the following sets of Primary Ability Ranks:
+        {{ archetype.get_primary_abilities() }}
+        Then for each ability roll an <emph>unmodified</emph> Std-Check against a DC of 13.
+        Add one to the ability rank for that ability if the check is successful.  Add an
+        additional one if a boon is rolled.  Subtract one from the rank if a bane is rolled.
+      </p>      
+      <p>
+        For example, if you get a result of +2 in Strength you should write down Strength +2 in the
+        primary abilities section of the character sheet.
+      </p>      
+    </li>
 
-	<li>
-	  Work out some details about your characters background and starting skills using the tables
-	  from the <emph>Level 1 Progression</emph> Section below.  Do this now as it may effect your abilities
-	  later in the character creation process.
-	</li>	
+    <li>
+      Work out some details about your characters background and starting skills using the tables
+      from the <emph>Level 1 Progression</emph> Section below.  Do this now as it may effect your abilities
+      later in the character creation process.
+    </li>    
 
-	<li>
-	  Record your <bold>Archetype Move Distance</bold>: {{ archetype.get_move_distance() }} and add your
-	  Speed Modifier to get your Move and Move Modifier.
-	</li>
-	
-	<li>
-	  Record your characters Health and Stamina:   
-	  <descriptions>
-	    <term>Stamina = </term>
-	    <description>
-	      {% set level_one = archetype.get_level(1) %}
-	      {{ level_one.stamina }} + Endurance Modifier 
-	    </description>
+    <li>
+      Record your <bold>Archetype Move Distance</bold>: {{ archetype.get_move_distance() }} and add your
+      Speed Modifier to get your Move and Move Modifier.
+    </li>
+    
+    <li>
+      Record your characters Health and Stamina:   
+      <descriptions>
+        <term>Stamina = </term>
+        <description>
+          {% set level_one = archetype.get_level(1) %}
+          {{ level_one.stamina }} + Endurance Modifier 
+        </description>
 
-	    <term>Health = </term>
-	    <description>
-	      {{ level_one.health }} + Strength Modifier 
-	    </description>
+        <term>Health = </term>
+        <description>
+          {{ level_one.health }} + Strength Modifier 
+        </description>
 
-	    <term>Health Refresh Rate = </term>
-	    <description>
-	      {{ level_one.health_refresh }}
-	    </description>
-	  </descriptions>
-	  Your current stamina and health are the same as your full stamina and health.  The temporary
-	  values are zero.  Write the health refresh rate as is in the refresh rate
-	  box on the character sheet.
-	</li>
+        <term>Health Refresh Rate = </term>
+        <description>
+          {{ level_one.health_refresh }}
+        </description>
+      </descriptions>
+      Your current stamina and health are the same as your full stamina and health.  The temporary
+      values are zero.  Write the health refresh rate as is in the refresh rate
+      box on the character sheet.
+    </li>
 
-	<li>
-	  Record your characters dice pool: maximum and refresh values.  The current values are
-	  initially set to the maximum values:
-	  <descriptions>
-	    
-	    <term>Magic Pool Maximum/Refresh = </term>
-	    <description>
-	    {{ level_one.magic -}}d6/+{{- level_one.magic_refresh }}d6
-	    </description>
+    <li>
+      Record your characters dice pool: maximum and refresh values.  The current values are
+      initially set to the maximum values:
+      <descriptions>
+        
+        <term>Magic Pool Maximum/Refresh = </term>
+        <description>
+        {{ level_one.magic -}}d6/+{{- level_one.magic_refresh }}d6
+        </description>
 
-	    <term>Mettle Pool Maximum/Refresh = </term>
-	    <description>
-	      {{level_one.mettle -}}d6/+{{- level_one.mettle_refresh }}d6
-	    </description>
+        <term>Mettle Pool Maximum/Refresh = </term>
+        <description>
+          {{level_one.mettle -}}d6/+{{- level_one.mettle_refresh }}d6
+        </description>
 
-	    <term>Luck Pool Maximum/Refresh = </term>
-	    <description>{{ level_one.luck -}}d6/+{{- level_one.luck_refresh }}d6
-	    </description>
-	  </descriptions>
+        <term>Luck Pool Maximum/Refresh = </term>
+        <description>{{ level_one.luck -}}d6/+{{- level_one.luck_refresh }}d6
+        </description>
+      </descriptions>
 
-	  <bold>N.B.</bold> Dice pool stats are recorded as number of d6s.  So if you have
-	  3d6 in a pool you write <emph>``3d6''</emph> on your character sheet.	  Similarly
-	  for your refresh values if it says +1d6 for a refresh value, write <emph>``+1d6''</emph>
-	  on your character sheet.  You don't roll any dice here!
-	</li>
+      <bold>N.B.</bold> Dice pool stats are recorded as number of d6s.  So if you have
+      3d6 in a pool you write <emph>``3d6''</emph> on your character sheet.      Similarly
+      for your refresh values if it says +1d6 for a refresh value, write <emph>``+1d6''</emph>
+      on your character sheet.  You don't roll any dice here!
+    </li>
 
-	<li>
-	  <p>
+    <li>
+      <p>
             Players should choose a few initial aspects for their character. It is best
-	    to choose your aspects in a group with the other players and GM. Newly acquired 
-	    aspects have a difficulty of 9 + d6 unless the archetype description or the GM
-	    says otherwise.  
-	  </p>
-	  <p>
-	    Some suggested aspects for this archetype are: {{ archetype.aspect_examples -}}.
-	  </p>	    
-	  <p>
-	    But feel free to choose an aspect of your own.  Try to create one that will
-	    generate interesting game play.
-	  </p>	    
-	</li>
+        to choose your aspects in a group with the other players and GM. Newly acquired 
+        aspects have a difficulty of 9 + d6 unless the archetype description or the GM
+        says otherwise.  
+      </p>
+      <p>
+        Some suggested aspects for this archetype are: {{ archetype.aspect_examples -}}.
+      </p>        
+      <p>
+        But feel free to choose an aspect of your own.  Try to create one that will
+        generate interesting game play.
+      </p>        
+    </li>
 
-	<li>
-	  Optionally sketch out a couple of lines of back story with your fellow players and 
-	  GM with a few points about the characters history.  For example, Dourli might come
-	  from the Iron Mountains and be searching for his long lost cousin Grimli.
-	</li>
+    <li>
+      Optionally sketch out a couple of lines of back story with your fellow players and 
+      GM with a few points about the characters history.  For example, Dourli might come
+      from the Iron Mountains and be searching for his long lost cousin Grimli.
+    </li>
 
-	<li>
-	  Determine your starting money: {{ archetype.starting_cash }}.
-	</li>
-	
-	<li>
-	  <p>
-	    You get some starting equipment for free: {{ archetype.starting_gear }}
-	  </p>
-	</li>
+    <li>
+      Determine your starting money: {{ archetype.starting_cash }}.
+    </li>
+    
+    <li>
+      <p>
+        You get some starting equipment for free: {{ archetype.starting_gear }}
+      </p>
+    </li>
 
-	<li>
-	  <p>
-	    Buy equipment. Now you can purchase any common equipment from the equipment list.
-	  </p>	  
-	</li>
+    <li>
+      <p>
+        Buy equipment. Now you can purchase any common equipment from the equipment list.
+      </p>      
+    </li>
       </olist>
 
       <p>You are now finished character creation.</p>
@@ -175,9 +175,9 @@
     <section>
       <sectiontitle>Leveling Up your Character</sectiontitle>      
       <p>
-	To level up just apply the changes from the existing Level Progression section below
-	to your existing character, <eg/> to level up from Level 1 to Level 2 just apply the
-	changes described in the section titled <emph>Level 2 Progression</emph>.
+    To level up just apply the changes from the existing Level Progression section below
+    to your existing character, <eg/> to level up from Level 1 to Level 2 just apply the
+    changes described in the section titled <emph>Level 2 Progression</emph>.
       </p>
     </section>
 
@@ -187,37 +187,53 @@
       
       {% for branch in level.branches -%}
       <subsection>
-	<subsectiontitle>{{ branch.title }}</subsectiontitle>
-	{{ branch.description }}
-	
-	{% for path in branch.paths -%}
-	<p>
-	  <emph>{{ path.chance }} {{ path.title }}</emph>
-	  {% if path.choices|length > 0 %}
-	  <list>
-	    {% for choice in path.choices -%}
-	    <li>
-	      {% if choice.number_to_choose is not defined  %}
-	          XXXXX
-	      {% elif choice.number_to_choose == -1 %}
-	      Choose all of:
-	      {% elif choice.number_to_choose == 1 %}
-	      Choose one of:
-
-	      {% elif choice.number_to_choose == 2 %}
-	      Choose two of:
-	      
-	      {% elif choice.number_to_choose == 3 %}
-	      Choose three of:
-	      {% endif %}
-
-	      {{ choice.contents }}
-	    </li>
-	    {% endfor %}      	
-	  </list>
-	  {% endif %}
-	</p>
-	{% endfor %}      	
+    <subsectiontitle>{{ branch.title }}</subsectiontitle>
+    {{ branch.description }}
+    
+    {% for path in branch.paths -%}
+    <p>
+      <emph>{{ path.chance }} {{ path.title }}</emph>      
+      {% if path.choices|length > 0 %}
+      <list>
+        {% for choice in path.choices -%}
+        <li>
+	  <!-- we can have a tree of choices two levels deep (with OrChoices at the first level only) -->
+          {% if choice.__class__.__name__ == "OrChoice" %}
+              Choose one of the following:
+              <list>
+		{% for choice in choice.choices -%}
+		<li>
+                  {% if choice.number_to_choose == -1 %}
+                  All of:
+		  {% elif choice.number_to_choose == 1 %}
+                  One of:
+		  {% elif choice.number_to_choose == 2 %}
+		  Two of:          
+		  {% elif choice.number_to_choose == 3 %}
+		  Three of:
+		  {% endif %}
+		  {{ choice.contents }}
+		</li>
+		{% endfor %}          
+	      </list>          
+          {% else %}
+              {% if choice.number_to_choose == -1 %}
+              All of:
+              {% elif choice.number_to_choose == 1 %}
+              One of:
+              {% elif choice.number_to_choose == 2 %}
+              Two of:          
+              {% elif choice.number_to_choose == 3 %}
+              Three of:
+              {% endif %}
+              {{ choice.contents }}
+          {% endif %}
+        </li>
+        {% endfor %}          
+      </list>
+      {% endif %}
+    </p>
+    {% endfor %}          
       </subsection>
       {% endfor %}      
     </section>    
