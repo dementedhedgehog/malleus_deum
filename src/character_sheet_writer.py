@@ -74,36 +74,7 @@ FDF_ABILITY_BODY = """
 /V ({ability_description})
 /T (AbilityDescription{ability_number})
 >>"""
-# <<
-# /V ({ability_mastery})
-# /T (AbilityMastery{ability_number})
-# >>"""
 
-# FDF_ABILITY_BODY = """
-# <<
-# /V ({ability_check})
-# /T (AbilityCheck{ability_number})
-# >> 
-# <<
-# /V ({ability_class})
-# /T (AbilityClass{ability_number})
-# >>  
-# <<
-# /V ({ability_name})
-# /T (AbilityName{ability_number})
-# >> 
-# <<
-# /V ({ability_effect_type})
-# /T (AbilityEffectType{ability_number})
-# >> 
-# <<
-# /V ({ability_effect})
-# /T (AbilityEffect{ability_number})
-# >>
-# <<
-# /V ({ability_mastery})
-# /T (AbilityMastery{ability_number})
-# >>"""
 
 fdf_footer = b"""]
 >>
@@ -274,14 +245,12 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                 description = "\n".join(check_strings)
                     
                 ability_class = ability.__class__
-                #mastery = "Mastery: []"
 
                 # write info from the ability
                 fdf_info = FDF_ABILITY_BODY.format(
                     ability_number=i,
                     ability_name=ability_rank.get_title(long_form=True),
                     ability_description=description,
-                    ability_mastery=mastery,
                 )
             elif isinstance(ability_rank, str):
                 # This is an Ability Seperator, like --- General ---
@@ -290,7 +259,6 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     ability_number=i,
                     ability_name=ability_rank,
                     ability_description="",
-                    #ability_mastery="",
                 )                
             elif ability_rank is None:
                 # write empty info
@@ -298,7 +266,6 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
                     "ability_number": i,
                     "ability_name": "",
                     "ability_description": "",
-                    #"ability_mastery": "",
                 }
             else:
                 # Never gets here
@@ -343,12 +310,6 @@ def create_character_sheet_for_archetype(db, archetype):
                     info.append((family, ability_rank.get_title(), ability_rank))
                     families_seen.add(family)
                     
-            # ability_rank = ability.get_highest_innate_rank()
-            # if ability_rank is not None and not ability_rank.get_ability().is_templated():
-            #     family = ability_group.get_family()
-            #     info.append((family, ability_rank.get_title(), ability_rank))
-            #     families_seen.add(family)
-
     # Add titles to groups of abilities also add some extra space at the end of groups of abilities
     # characters that appear before and after letters
     # (so we can make sure things go before or after blocks of abilities).
@@ -381,7 +342,6 @@ def create_character_sheet_for_archetype(db, archetype):
     
     # create all the ability pages    
     ability_rank_iterator = iter(ability_ranks)
-    #ability_rank_iterator = [r for r in ability_ranks if r.rank >= 0]
     for i in range(n_pages):
         page_number = i + 2
         pdf_fname_out = join(build_dir,"%s_abilities_pg%s.pdf" % (archetype_id, page_number))
