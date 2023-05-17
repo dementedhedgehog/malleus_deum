@@ -22,7 +22,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_lesser_2</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character may call themselves an Apothecary, and can prepare poisons,
@@ -33,24 +33,6 @@
     </abilitydescription>
   </ability>
 
-
-  <ability>
-    <abilitytitle>Artillery</abilitytitle>
-    <abilityid>lore.artillery</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
-    <abilityranks untrained="-3" from="1" to="5"/>
-    <abilitycheck dc="Targets Defence" effect="Attack using artillery pieces.">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_lesser_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
-    <abilitydescription>
-      <p>
-	The character is trained in the use of artillery in sieges or naval warfare.
-	The can arm, aim, fire and on some occasions repair artillery pieces.
-      </p>
-    </abilitydescription>
-  </ability>
-  
   <ability>
     <abilitytitle>Alchemy, Lesser</abilitytitle>
     <abilityid>lore.alchemy_lesser</abilityid>
@@ -101,7 +83,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_2</prereqabilityrank>
-    <spline><p x="60" y="40"/><p x="0" y="20"/></spline>
+    <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
 	The character can prepare Alkahest (requires Bile of the White Worm),
@@ -112,6 +94,25 @@
       </p>
     </abilitydescription>
   </ability>
+
+
+  <ability>
+    <abilitytitle>Artillery</abilitytitle>
+    <abilityid>lore.artillery</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><lore/><scholar/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
+    <abilitycheck dc="Targets Defence" effect="Attack using artillery pieces.">Std+Rank</abilitycheck>
+    <prereqabilityrank>lore.alchemy_lesser_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character is trained in the use of artillery in sieges or naval warfare.
+	The can arm, aim, fire and on some occasions repair artillery pieces.
+      </p>
+    </abilitydescription>
+  </ability>
+  
   
   <ability>
     <abilitytitle>Antiquarian</abilitytitle>
@@ -139,8 +140,7 @@
     <tags><lore/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
-    <spline><p x="-75" y="0"/></spline>
+    <spline><p x="-90" y="450"/></spline>
     <abilitydescription>
       <p>
 	The character has an understanding of minor surgery:
@@ -158,7 +158,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.mathematics_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
+    <spline><p x="-40" y="30"/></spline>
     <abilitydescription>
       <p>
 	Book keeping encompasses accounting and financial abilities. 
@@ -195,7 +195,7 @@
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.smoke_bomb_1</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
   	The character knows how create explosives.  They keep on their person some explosive material at all times
@@ -219,7 +219,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="None">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_2</prereqabilityrank>
-    <spline><p x="120" y="30"/></spline>
+    <spline><p x="70" y="30"/></spline>
     <abilitydescription>
       <p>
 	The alchemist makes a Grand Discovery!! (maybe).
@@ -321,7 +321,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
+    <spline><p x="-60" y="45"/></spline>
     <abilitydescription>
       <p>
 	History is the study of the events of the civilized peoples.
@@ -373,7 +373,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
-    <spline><p x="60" y="90"/></spline>
+    <spline><p x="0" y="100"/></spline>
     <abilitydescription>
       <p>
 	Maths is the lingua franca of science.  A basic understanding
@@ -393,7 +393,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
-    <spline><p x="0" y="70"/></spline>
+    <spline><p x="0" y="70"/><p x="50" y="30"/><p x="0" y="90"/></spline>
     <abilitydescription>
       <p>
 	The study of nature. The character has some knowledge of the flora
@@ -418,8 +418,9 @@
     <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
-    <spline><p x="-75" y="30"/></spline>
+    <prereqabilityrank>lore.natural_history_2</prereqabilityrank>
+    <!-- <spline><p x="75" y="30"/></spline> -->
+    <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character is a specialist medical diagnostician.  They
@@ -440,7 +441,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.mathematics_1</prereqabilityrank>
-    <spline><p x="60" y="30"/></spline>
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
 	Physics involves the study of the natural laws of the universe, movement and
@@ -452,13 +453,14 @@
   </ability>
 
   <ability>
-    <abilitytitle>Politics [Society]</abilitytitle>
+    <abilitytitle>Politics [Society?]</abilitytitle>
     <abilityid>lore.politics</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><lore/><scholar/></tags>
-    <abilityranks from="1" to="5"/>
+    <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <spline><p x="60" y="210"/></spline>
+    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <spline><p x="0" y="50"/><p x="120" y="60"/></spline>
     <abilitydescription>
       <p>
 	This ability represents the study of the machinations that occur in the
@@ -490,8 +492,8 @@
     <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_2</prereqabilityrank>	
-    <spline><p x="0" y="30"/></spline>
+    <prereqabilityrank>lore.alchemy_1</prereqabilityrank>	
+    <spline><p x="-40" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character knows how to make magical potions given
@@ -509,7 +511,7 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck dc="11" effect="Defensive checks against missile attacks made at +3×Rank">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.alchemy_lesser_1</prereqabilityrank>
-    <spline><p x="30" y="75"/></spline>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
   	The character has on his person a smoke bomb that he had created earlier.  When required the
@@ -545,7 +547,7 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
-    <spline><p x="75" y="50"/></spline>
+    <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
     <abilitydescription>
       <p>
 	The study of religions, their belief systems, rituals and history.
@@ -570,14 +572,14 @@
   </ability>
 
   <ability>
-    <abilitytitle>Wilderness Lore [Biome]</abilitytitle>
+    <abilitytitle>Wilderness Lore [Biome?]</abilitytitle>
     <abilityid>lore.wilderness_lore</abilityid>
     <abilitytemplate>terrain</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><general/><lore/></tags>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck dc="9">Std+Rank</abilitycheck>
-    <spline></spline>
+    <spline><p x="60" y="450"/></spline>
     <abilitydescription>
       <p>
 	This ability represents knowledge of a particular biome, the plants and animals that
