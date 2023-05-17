@@ -203,29 +203,29 @@
               <list>
 		{% for choice in choice.choices -%}
 		<li>
-                  {% if choice.number_to_choose == -1 %}
+                  {%- if choice.number_to_choose == -1 %}
                   All of:
-		  {% elif choice.number_to_choose == 1 %}
+		  {%- elif choice.number_to_choose == 1 %}
                   One of:
-		  {% elif choice.number_to_choose == 2 %}
+		  {%- elif choice.number_to_choose == 2 %}
 		  Two of:          
-		  {% elif choice.number_to_choose == 3 %}
+		  {%- elif choice.number_to_choose == 3 %}
 		  Three of:
-		  {% endif %}
+		  {%- endif %}
 		  {{ choice.contents }}
 		</li>
 		{% endfor %}          
 	      </list>          
           {% else %}
-              {% if choice.number_to_choose == -1 %}
+              {%- if choice.number_to_choose == -1 %}
               All of:
-              {% elif choice.number_to_choose == 1 %}
+              {%- elif choice.number_to_choose == 1 %}
               One of:
-              {% elif choice.number_to_choose == 2 %}
+              {%- elif choice.number_to_choose == 2 %}
               Two of:          
-              {% elif choice.number_to_choose == 3 %}
+              {%- elif choice.number_to_choose == 3 %}
               Three of:
-              {% endif %}
+              {%- endif %}
               {{ choice.contents }}
           {% endif %}
         </li>

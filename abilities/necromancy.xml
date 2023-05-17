@@ -23,7 +23,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="11" effect="Talk with a corpse">Magic+Rank</abilitycheck>
+    <abilitycheck dc="11" effect="Talk with a corpse" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
@@ -68,7 +68,8 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" effect="Melee dmg dealt to caster is also dealt to attacker">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Melee dmg dealt to caster is also dealt to attacker"
+		  overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="95"/></spline>
     <abilitydescription>
@@ -86,7 +87,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="11" effect="Replace amputated limbs and heal">Magic+Rank</abilitycheck>
+    <abilitycheck dc="11" effect="Replace amputated limbs and heal" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
@@ -110,7 +111,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/><accurate/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" effect="">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
     <abilitycheck dc="Targets Perception" range="sight" effect="Save or cannot hit">Std+3×Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
@@ -151,7 +152,7 @@
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Reroll one Near-Death roll.">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" effect="Reroll one Near-Death roll." overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
@@ -171,7 +172,7 @@
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight.">Magic+Rank</abilitycheck>
+    <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight." overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
@@ -191,7 +192,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Defensive checks against missile attacks made at +3×Rank">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" effect="Defensive checks against missile attacks made at +3×Rank"  overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
@@ -211,7 +212,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><necromancy/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" effect="Resembles a corpse.">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Resembles a corpse." overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>

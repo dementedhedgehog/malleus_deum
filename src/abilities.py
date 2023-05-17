@@ -53,6 +53,7 @@ INACCURATE_CHECK_TYPE = "Std"
 MONSTER_CHECK_TYPE = "No-Check"
 STD_CHECK = "Std\+Rank"
 UNTRAINED = "Untrained"
+MAGIC_CHECK_TYPE = "Magic+Rank"
 
 # A lst of valid dcs
 # We limit the range of values to reduce complexity in the system.  This should make 
@@ -324,6 +325,7 @@ class AbilityCheck:
         # can be None for the default
         self.name = None
         self.dc = None
+        self.overcharge = None
         self.check_type = None
         self.dmg = None
         self.effect = None
@@ -334,6 +336,7 @@ class AbilityCheck:
     def _load(self, ability_check_element):
         self.name = ability_check_element.attrib.get("name")
         self.dc = ability_check_element.attrib.get("dc")
+        self.overcharge = ability_check_element.attrib.get("overcharge")
         self.dmg = ability_check_element.attrib.get("dmg")
         self.effect = ability_check_element.attrib.get("effect")
         self.check_type = ability_check_element.text
@@ -394,6 +397,14 @@ class AbilityCheck:
         # check dcs are standard
         if self.dc in (STD_CHECK, ACCURATE) and self.dc not in ("3", "6", "9", "12", "15", "18", "21"):
             problems.append(f"Ability  {self.ability.ability_id} has a non-standard DC {self.dc}")
+
+        # magic checks have to have an overcharge
+        if self.check_type == MAGIC_CHECK_TYPE and self.overcharge is None:
+            problems.append(f"Ability {self.ability.ability_id} is a magic check but has no overcharge")
+
+        # non-magic checks cannot have an overcharge
+        if self.check_type != MAGIC_CHECK_TYPE and self.overcharge is not None:
+            problems.append(f"Ability {self.ability.ability_id} is not a magic check and has overcharge value")
 
         return problems
 

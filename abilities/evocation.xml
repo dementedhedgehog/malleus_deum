@@ -34,7 +34,7 @@
     <abilityactiontype><minor/></abilityactiontype> 
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="15" y="30"/></spline>
     <abilitydescription>
@@ -51,9 +51,9 @@
     <abilitytitle>Evocation</abilitytitle>
     <abilityid>evocation.evocation</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><evocation/><magicpool/></tags>
+    <tags><magical/><evocation/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9">Std+Rank</abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -75,7 +75,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="27">Magic+Rank</abilitycheck>
+    <abilitycheck dc="27" overcharge="4">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation.portal_2</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -93,7 +93,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><evocation/><ritual/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="21">Magic+Rank</abilitycheck>
+    <abilitycheck dc="21" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
@@ -117,7 +117,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -141,10 +141,10 @@
       </p>
       
       <p>
-	If successfully cast the target gets a perception check with DC 14+rank to notice the presence
-	of the leech following.  if the target has magical attacks these will almost
-	certainly work against the leech, sending it back from whence it came.  If the
-	target has no magical attacks it cannot harm the creature.  
+	If successfully cast the target gets a perception check with DC 14+rank to notice
+	the presence of the leech following.  if the target has magical attacks these
+	will almost certainly work against the leech, sending it back from whence it
+	came.  If the target has no magical attacks it cannot harm the creature.  
       </p>
 
       <table>
@@ -153,30 +153,30 @@
 	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
 
 	<tableheaderrow>
-	  <td>Roll d88</td>
+	  <td>Roll d66</td>
 	  <td>Overcharge Effect</td>
 	</tableheaderrow>
 
 	<tablerow>
-	  <td>11-28</td>
+	  <td>11-26</td>
 	  <td>The caster summons a Phantasmal Vulture instead (as per the spell of the
 	  same name).</td>
 	</tablerow>
 
 	<tablerow>
-	  <td>31-38</td>
+	  <td>31-46</td>
 	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
 	  d6 health damage.</td>
 	</tablerow>
 
 	<tablerow>
-	  <td>41-48</td>
+	  <td>51-65</td>
 	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
-	  3d6 health damage.</td>
+	  2d6 health damage.</td>
 	</tablerow>
 
 	<tablerow>
-	  <td>51-88</td>
+	  <td>66</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
 	</tablerow>
 	<tablelabel>fig:leech-overcharge</tablelabel>
@@ -191,7 +191,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation.phantasmal_leech_2</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -217,24 +217,24 @@
 	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
 
 	<tableheaderrow>
-	  <td>Roll d49</td>
+	  <td>Roll d66</td>
 	  <td>Overcharge Effect</td>
 	</tableheaderrow>
 
 	<tablerow>
-	  <td>10-19</td>
+	  <td>10-26</td>
 	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
 	  d6 health damage.</td>
 	</tablerow>
 
 	<tablerow>
-	  <td>20-29</td>
+	  <td>31-64</td>
 	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
-	  3d6 health damage.</td>
+	  2d6 health damage.</td>
 	</tablerow>
 
 	<tablerow>
-	  <td>30-49</td>
+	  <td>65-66</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
 	</tablerow>
 	<tablelabel>fig:vulture-overcharge</tablelabel>
@@ -248,7 +248,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="27">Magic+Rank</abilitycheck>
+    <abilitycheck dc="31" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation.lesser_portal_2</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -267,7 +267,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="17">Magic+Rank</abilitycheck>
+    <abilitycheck dc="17" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation.lesser_portal_1</prereqabilityrank>
     <spline><p x="-30" y="15"/></spline>
     <abilitydescription>
@@ -286,7 +286,7 @@
     <abilityactiontype><non-combat/></abilityactiontype> 
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="7">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
@@ -333,7 +333,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><magical/><evocation/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation.greater_portal_1</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>

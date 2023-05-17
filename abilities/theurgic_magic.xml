@@ -21,7 +21,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" type="Magic+Rank" range="self">Magic+Rank</abilitycheck>
+    <abilitycheck dc="3" type="Magic+Rank" range="self" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -50,7 +50,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><theurgic/><ritual/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5">Magic+Rank</abilitycheck>    
+    <abilitycheck dc="5" overcharge="3">Magic+Rank</abilitycheck>    
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="100"/><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -118,7 +118,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Demon makes Mettle Check vs 5×Rank">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" effect="Demon makes Mettle Check vs 5×Rank" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
@@ -138,10 +138,11 @@
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
     <abilitycheck
-	dc="3"
+	dc="5"
 	range="touch"
 	effect="weapons receive +Rank dmg vs demons and undead"
-	type="Magic+Rank">Magic+Rank</abilitycheck>
+	type="Magic+Rank"
+	overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
     <abilitydescription>
@@ -160,7 +161,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/><maintain/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Alies make defensive checks against evil opponents.">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" effect="Alies make defensive checks against evil opponents." overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
@@ -178,7 +179,7 @@
     <abilityactiontype><standard/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Rank+1 holy water vials">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Rank+1 holy water vials"  overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -208,7 +209,7 @@
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Check to counter attack">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Check to counter attack" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="-60" y="45"/></spline>
     <abilitydescription>
@@ -226,7 +227,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="Context Dependent" effect="Exorcise evil spirit">Magic+Rank</abilitycheck>
+    <abilitycheck dc="Context Dependent" effect="Exorcise evil spirit" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank> 
     <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
     <abilitydescription>
@@ -254,7 +255,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="+Rank to Near Death saves">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="+Rank to Near Death saves" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -272,7 +273,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="+Rank to hit and dmg">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="+Rank to hit and dmg"  overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -289,7 +290,7 @@
     <abilityactiontype><immediate/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" effect="arrow or bolt misses or is rerolled">Magic+Rank</abilitycheck>
+    <abilitycheck dc="3" effect="arrow or bolt misses or is rerolled" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -322,7 +323,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9" effect="heal 2d4+Rank">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9" effect="heal 2d4+Rank" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>
     <abilitydescription>
@@ -363,7 +364,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" effect="Create light">Magic+Rank</abilitycheck>
+    <abilitycheck dc="3" effect="Create light"  overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -381,7 +382,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Prayer refreshes a mettle die">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Prayer refreshes a mettle die" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -400,7 +401,7 @@
     <abilityactiontype><reaction/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Transfers damage">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="Transfers damage"  overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -409,7 +410,7 @@
   	other individual Near Death.   If the character succeeds, up to 2d6
   	Health (or the targets maximum health whichever is smaller) is
   	added to the targets health and removed from the casters Health. In the
-  	event of an overcharge the caster loses remaining health and is Down.
+  	event of an overcharge the caster loses any remaining health and is Near Death themselves.
       </p>
     </abilitydescription>
   </ability>
@@ -421,7 +422,7 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7" effect="Purifies food or drink">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" effect="Purifies food or drink"  overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -463,7 +464,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/><maintain/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9" effect="Mace, Hammer or Staff">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9" effect="Mace, Hammer or Staff" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.blessed_arms_1</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
@@ -481,7 +482,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" effect="To cast">Magic+Rank</abilitycheck>
+    <abilitycheck dc="5" effect="To cast" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
@@ -504,7 +505,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7" effect="To cast">Magic+Rank</abilitycheck>
+    <abilitycheck dc="7" effect="To cast" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.hold_undead_3</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
@@ -527,7 +528,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="2" to="5"/>
-    <abilitycheck dc="9" effect="To cast">Magic+Rank</abilitycheck>
+    <abilitycheck dc="9" effect="To cast" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.turn_undead_2</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
@@ -550,7 +551,7 @@
     <abilityactiontype><minor/></abilityactiontype>
     <tags><magical/><theurgic/><magicpool/></tags>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" effect="Make three melee attacks if Health≤6">Magic+Rank</abilitycheck>
+    <abilitycheck dc="3" effect="Make three melee attacks if Health≤6" overcharge="2">Magic+Rank</abilitycheck>
     <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
     <spline><p x="75" y="90"/></spline>
     <abilitydescription>
