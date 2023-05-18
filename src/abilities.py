@@ -528,12 +528,12 @@ class Ability:
         trained_ranks = self.get_trained_ranks()
         first_ability_rank = trained_ranks[0].get_rank_number()
         last_ability_rank = trained_ranks[-1].get_rank_number()
-        untrained_rank = self.get_untrained_rank()
-        if untrained_rank is not None:
-            untrained_rank_str = str(untrained_rank.rank_number)
-            ability_ranks =  f"untrained: {untrained_rank_str}, {first_ability_rank}-{last_ability_rank}"
-        else:
-            ability_ranks = f"{first_ability_rank}-{last_ability_rank}"
+        #untrained_rank = self.get_untrained_rank()
+        # if untrained_rank is not None:
+        #     untrained_rank_str = str(untrained_rank.rank_number)
+        #     ability_ranks =  f"untrained: {untrained_rank_str}, {first_ability_rank}-{last_ability_rank}"
+        # else:
+        ability_ranks = f"{first_ability_rank}-{last_ability_rank}"
         return ability_ranks
     
 

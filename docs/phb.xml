@@ -1468,16 +1468,8 @@
       <p>
         <indexentry>Aspect</indexentry> 
         Aspects are special tags that describe some part of a characters personality, 
-        their system of beliefs, or their philosophy of life.  Each aspect has
-        a difficulty and the player can be forced to make checks against that difficulty or
-	be compelled to behave in accordance with the aspect.  The higher the difficulty
-	the harder it is for the character to resist
-        the aspect. For example Dourli might have the following aspects: <emph>Gold is my
-        Lodestone 10</emph>, and <emph>My Word as a Dwarf 13</emph>.
-      </p>
-
-      <p>
-        There are many types of aspects.  They fall loosely into the following categories:
+        their system of beliefs, or their philosophy of life. There are many types of
+	aspects.  They fall loosely into the following categories:
       </p>
       
       <descriptions>
@@ -1563,21 +1555,16 @@
         </p>
 -->
           <p>
+          <indexentry>Creating Aspects</indexentry> 
+          <indexentry>Aspect Creation</indexentry> 
 	    We suggest that you start off by choosing two aspects for your characer.
 	    Before choosing any aspects discuss the role playing milieu with the
 	    GM.  Get a feel for the colour of the world and the NPCs and organizations within it.  Then
-	    as a group, choose an aspect with the GM that ties your character to one of these 
+	    <emph>as a group</emph>, choose an aspect with the GM that ties your character to one of these 
 	    NPCs or organizations, or one of the player characters.  Then choose a
-	    Personality or Philosophy based aspect for your character.
+	    Personality or Philosophy based aspect for your character.  You just write these on your
+	    character sheet in the Aspects section.
           </p>
-
-        <p>
-          <indexentry>Creating Aspects</indexentry> 
-          <indexentry>Aspect Creation =9+d6</indexentry> 
-	  After an aspect is chosen the starting difficulty of that aspect must be determined.
-          Aspects acquired during character creation have an initial difficulty of $9 + 1d6$. 
-        </p>
-
 	
       </subsection>
 
@@ -1598,19 +1585,54 @@
           If the player <emph>accepts a compel</emph> for an aspect then they should have 
           their character behave in accordance with that aspect.  Alternatively, players may
 	  have their characters try to <emph>resist the compel</emph>.  When doing so they roll
-	  a Std Check against their Aspect DC.  If successful they <emph>resist the compel</emph>
+	  a Std Check against a DC of 13.  Aspects always have a DC of 13.
+	  If successful they <emph>resist the compel</emph>
 	  and their characters behaviour is not bound by their aspect.  If they do <emph>not</emph>
 	  resist the compel then their character's behaviour is bound by the compel.
+        <equation>
+          <line>Aspect Check:</line>
+          <line>2d12 <geqqsymbol/> 13</line>
+        </equation>		  
         </p>
+	
         
 	<p>
-	  In the event of either a Bane or a Boon whoever compelled the aspect may recharge a die
-	  into one of their dice pools.  Additionally when a Bane or a Boon occurs that triggers a
-	  change in aspect.  When a Boon is rolled a new aspect is chosen, or the difficulty of the
-	  current aspect is reduced, or the wording of the existing aspect is ``softened''.  When a Bane is 
-	  rolled a new aspect is chosen, or the difficulty of the current aspect is reduced, or the wording
-	  of the existing aspect is ``hardened''.
+	  When a Boon is rolled in an aspect check the following things happen.
+	  <olist>
+	    <li>Whoever compelled the aspect may recharge a die into their Luck Pool.</li>
+	    <li>In addition to the compel something fortuitous happens.</li>
+	    <li>Reevaluate the characters aspects</li>
+	  </olist>
 	</p>
+
+	<p>
+	  When a Bane is rolled in an aspect check the following things happen:
+	  <olist>
+	    <li>In addition to the compel something bad happens.</li>
+	    <li>Reevaluate the characters aspects</li>
+	  </olist>
+	</p>
+
+      <subsubsection>
+        <subsubsectiontitle>Reevaluating an Aspect</subsubsectiontitle>
+        <indexentry>Reevaluating an Aspect</indexentry> 
+        <indexentry>Aspect<subentry>Reevaluating Aspects</subentry></indexentry> 
+        <p>
+	  Aspects are <defn>Reevaluated</defn> when a Boon or a Bane is rolled.  What this means
+	  is that zero or more aspects can be retired, reworded, replaced with a new completely
+	  different aspect, or perhaps the character gains a completely new and additional aspect
+	  entirely.
+        </p>
+
+	<p>
+	  When reevaluating aspects remember that the point of aspects in the game is to drive
+	  the story and character development.  If an aspect is not being used frequently, or if
+	  it is being overused, or abused, if it has just become a little tired, if there is an
+	  opportunity to represent character growth or move the character through some character
+	  arc, then now is the time to consider making changes to the characters aspects.
+	</p>
+      </subsubsection>
+	  
 
 	
         <!-- <p> -->
@@ -1716,10 +1738,9 @@
           </p>
           
           <p>
-	    He decides to resist.  So he has to check against the difficulty of that aspect, which is
-	    currently 11.  He rolls 
-	    2d12 (as aspect checks are standard checks) and rolls two 4s for a total of 8.  He fails 
-	    the check, as the total is lower than the aspects difficulty of 11.  So now Dourli has 
+	    He decides to resist.  So he has to make an Aspect Check.  He rolls 
+	    2d12 (as aspect checks are standard checks) and rolls tweo 4s for a total of 8.  He fails 
+	    the check, as the total is lower than the DC for Aspect Checks of 13.  So now Dourli has 
 	    to provide the information about his associate in order to garner his well earned 
 	    gold.  
           </p>
@@ -1734,15 +1755,16 @@
 
 	  <p>
 	    Because Dourli rolled a Boon during his check, the player that compelled the aspect
-	    may refresh a die into one of their dice pools.  In addition, this triggers some change
-	    in this aspect of Dourli's character.  If the aspect is working well and leading to
-	    enjoyable game play, then Dourli might keep the aspect and lower the dicculty to 10,
-	    or Dourli might soften the wording to, something like, ``Gold is forever'' which is a
-	    little less proscriptive.  Finally, Dourli might decide to choose a new aspect altogether.
-	    Maybe he decides that Dourli has had an epiphany, realizing the error of his ways
+	    may refresh a Luck die into their Luck dice pool.  In addition some additional good thing
+	    happens.  In this case, the GM might decide that the Dourlis fake information will be
+	    eagerly received.  Finally, Dourli's aspects are reevaluated.  If his aspects are working
+	    well in the game, leading to enjoyable game play, then Dourli might keep his aspects,
+	    or Dourli might soften the wording of this aspect to, something like, ``Gold is forever''
+	    which is a little less proscriptive.  Finally, Dourli might decide to choose a new aspect
+	    altogether. Maybe he decides that Dourli has had an epiphany, realizing the error of his ways
 	    Dourli removes the "Gold is my Lodestone" aspect and replaces it with a new aspect:
-	    "I am a river to my people".  To calculate the new aspects difficulty he rolls a d6,
-	    gets a 5 and so the difficulty of the new aspect is $9 + 5 = 14$.
+	    "I am a River to My People".   In any case the decision should be opened up to the table
+	    for input and debate.
 	  </p>
         </playexample>
 
@@ -1850,13 +1872,13 @@
           Sometimes a characters aspects conflict with one another.  In such cases 
           someone can compel one aspect to try and gain a bonus on a second
           aspect check, <eg/> suppose the GM tries to compel Dourli's <emph>Gold is 
-          my lodestone</emph> aspect to make Dourli sell out one of his companions.
+          My Lodestone</emph> aspect to make Dourli sell out one of his companions.
           The player may counter that Dourli has sworn friendship with the 
           companion while imbibing and that the GM's compel conflicts with his other 
-          aspect <emph>My word as a dwarf</emph>.  If Dourli <emph>fails</emph> the 
-          check against <emph>My word as a Dwarf</emph> then he is bound by that aspect
+          aspect <emph>My Word as a Dwarf</emph>.  If Dourli <emph>fails</emph> the 
+          check against <emph>My Word as a Dwarf</emph> then he is bound by that aspect
           and the GM should grant him a bonus in the check against 
-          <emph>Gold is my lodestone</emph> as Dourli's word is worth more to him than
+          <emph>Gold is my Lodestone</emph> as Dourli's word is worth more to him than
 	  a small amount of gold (though maybe not a large amount of gold).
         </p>
       </subsection>

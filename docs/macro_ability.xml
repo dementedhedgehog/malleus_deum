@@ -10,6 +10,9 @@
   <p>
     <smaller>
       <bold>Action Type:</bold> {{ ability.action_type }},  
+      {%- if ability.get_untrained_rank()  -%}
+      <bold>Untrained:</bold> {{ ability.get_untrained_rank() }},
+      {%- endif %}
       <bold>Ranks:</bold> {{ ability.get_ability_rank_range() }}, 
       <bold>Checks:</bold> {% for check in ability.get_checks() %} 
       {%- if check.name is not none  -%}{{check.name}}, {%- endif -%}
@@ -24,6 +27,9 @@
       {%- endif -%}              
       {%- if ability.mastery -%}
       , <bold>Mastery:</bold> {% for i in range(ability.mastery) %}<success/>{% endfor -%}
+      {%- endif %}
+      {%- if ability.overcharge -%}
+      , <bold>Overcharge:</bold> ability.overcharge
       {%- endif %}
       {%- if ability.prerequisites -%}
       , <bold>Prereqs:</bold> {{ ability.get_prerequisites_str() }}
