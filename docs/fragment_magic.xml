@@ -72,9 +72,6 @@
     larger magic dice pools, greater energy, and a variety of skills that allow them to use that pool.
   </p>
 
-
-
-  
   <p>
     Follow these steps to cast a spell:
   </p>
@@ -92,16 +89,16 @@
     </description>    
     <term>Check Overcharge</term>
     <description>
-      If the magic check succeeds check for overcharge.  Thematically an overcharge occurs when the caster
+      Thematically an overcharge occurs when the caster
       embues a spell with too much power and the extra theurgical energies become too great for the caster
-      to handle, the caster loses control over the casting and the extra energies must be disipated somehow.        
-      Mechanically, an overcharge occurs if the number of sixes rolled in the check exceeds the casters
-      <emph>Control</emph>.  The characters base control is their spell ability rank, though Control may
-      effected by a number of other factors.  See the table of Magic Modifiers,
+      to handle, the caster loses control over the casting and the extra energies must be disipated somehow.
+      Mechanically, an overcharge occurs if the number of sixes rolled in the check exceeds the spells
+      overcharge value.  Armour can effect spell overcharge, see the table of Magic Modifiers,
       Table<ref>figure:{{ doc_name }}-magic-modifiers</ref>,  for details.
       At that point a range of strange and usually bad things can happen.  The GM
-      determines an overcharge effect. See Table<ref>figure:{{ doc_name }}-overcharge-effects</ref> for some
-      suggested overcharge effects to inspire the GM.
+      determines an overcharge effect based on the spells overcharge information and possibly referring to
+      Table<ref>figure:{{ doc_name }}-overcharge-effects</ref> for some suggested overcharge effects to
+      inspire the GM.
     </description>
     <term>Remove Dice</term>
     <description>
@@ -109,6 +106,7 @@
     </description>
   </descriptions>
 
+  {% include "docs/tables/magic_modifiers.xml" %}
   {% include "docs/tables/overcharge_effects.xml" %}
   {% include "docs/tables/overcharge_effects_pt2.xml" %}
 
@@ -182,8 +180,6 @@
       <img id="skull" scale="0.34"/>
     </figure>
     
-    
-    {% include "docs/tables/magic_modifiers.xml" %}
     
     <subsubsection>
       <subsubsectiontitle>Magic Items and their Power Sources</subsubsectiontitle>
