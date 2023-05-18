@@ -448,7 +448,7 @@ class Ability:
         # list of available ability ranks.
         self.ranks = []
 
-        # if this element is not none it should be a number in -9 to 0.. the rank
+        # if this element is not none it should be a number in [-9, -6, -3, 0] the rank
         # at which untrained players make the check
         self.untrained_rank = None
 
@@ -1277,10 +1277,12 @@ if __name__ == "__main__":
         
         for ability in ability_group:            
             count += 1
-            print("\t%i %s %s "
+            print("\t%i %s %s [%s] [%s]"
                   % (count,
                      ability.get_title(),
-                     ability.get_id()))
+                     ability.get_id(),
+                     str(ability.get_untrained_rank()),
+                     str(ability.untrained_rank)))
     #     #     # # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
     #     #     # # print("\t\t\tAbility Desc: %s" % ability.description)
     #     #     # # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
