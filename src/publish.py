@@ -77,9 +77,20 @@ from  jinja2 import lexer
 ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
 PATRON_TEMPLATE_FNAME = join("docs", "patron_template.xml")
 
-def no_nones(x):
+def jinja_no_nones(x):
     """Custom jinja filter for formatting nones"""
     return "-" if (x is None or (type(x) == str and x.strip() == "")) else x
+
+def jinja_log_to_console(text):
+    """Custom jinja filter for printing log messages to console."""
+    print(text, flush=True)
+    return ''
+
+def jinja_exit(text):
+    """Custom jinja filter to exit the program (for debugging only)."""
+    print(text, flush=True)
+    sys.exit(1)
+
 
 
 # latex preamble for the index.
@@ -703,7 +714,9 @@ if __name__ == "__main__":
     jinja_env.filters['convert_to_roman_numerals'] = utils.convert_to_roman_numerals
     jinja_env.filters['ab'] = db.filter_abilities
     jinja_env.filters['abilities'] = db.filter_abilities
-    jinja_env.filters['no_nones'] = no_nones
+    jinja_env.filters['no_nones'] = jinja_no_nones
+    jinja_env.filters['log']=jinja_log_to_console
+    jinja_env.filters['exit']=jinja_exit
 
     # Add the local styles dir
     # The trailing // means that TeX programs will search recursively in that 

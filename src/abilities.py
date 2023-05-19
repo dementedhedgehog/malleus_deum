@@ -163,6 +163,7 @@ class AbilityRankPrereq(Prerequisite):
         """Returns None if the rank does not exist!"""
         if self.ability_rank is None:
             self.ability_rank = ability_rank_lookup.get(self.ability_rank_id)
+            print(f" {self.ability_rank_id} ")
         return self.ability_rank
     
     def to_string(self):         
@@ -435,7 +436,7 @@ class Ability:
         # prereq.
         self.ability_rank_prereq = None
 
-        # all the prerequisites
+        # all the prerequisites including the prereq_ability_rank
         self.prerequisites = []        
 
         # list of tags for the ability
@@ -638,107 +639,106 @@ class Ability:
 
     def _load(self, ability_element):
         # handle all the children
-        for child in list(ability_element):
-        
-           tag = child.tag
-           if tag == "abilitytitle":
-               if self.title is not None:
-                   raise Exception("Only one abilitytitle per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:                   
-                   self.title = child.text
+        for child in list(ability_element):            
+            tag = child.tag
+            if tag == "abilitytitle":
+                if self.title is not None:
+                    raise Exception("Only one abilitytitle per ability. (%s) %s\n" %
+                                    (child.tag, str(child)))
+                else:                   
+                    self.title = child.text
 
-           elif tag == "abilityid":
-               if self.ability_id is not None:
-                   raise Exception("Only one abilityid per ability. (%s) %s\n" %
+            elif tag == "abilityid":
+                if self.ability_id is not None:
+                    raise Exception("Only one abilityid per ability. (%s) %s\n" %
                                    (child.tag, str(child)))
-               else:
-                   # check for duplicates!
-                   ability_id = child.text
-                   ability_location = self._get_location(child)
-                   if ability_id in self._ids:
-                       raise Exception("Ability id: %s appears in two places %s and %s"
-                                       % (ability_id,
-                                          ability_location,
-                                          self._ids[ability_id]))
-                   else:
+                else:
+                    # check for duplicates!
+                    ability_id = child.text
+                    ability_location = self._get_location(child)
+                    if ability_id in self._ids:
+                        raise Exception("Ability id: %s appears in two places %s and %s"
+                                        % (ability_id,
+                                           ability_location,
+                                           self._ids[ability_id]))
+                    else:
                         self._ids[ability_id] = ability_location
+                        
+                    # save the id!
+                    self.ability_id = ability_id
 
-                   # save the id!
-                   self.ability_id = ability_id
+            elif tag == "abilitycheck":
+                ability_check = AbilityCheck(ability=self)
+                ability_check._load(child)
+                self.checks.append(ability_check)
 
-           elif tag == "abilitycheck":
-               ability_check = AbilityCheck(ability=self)
-               ability_check._load(child)
-               self.checks.append(ability_check)
-
-           elif tag == "gmgability":
+            elif tag == "gmgability":
                 self.gmg_ability = True
 
-           elif tag == "abilityactiontype":
-               action_type_str = contents_to_string(child)
-               self.action_type = ActionType.load(action_type_str)            
-               if self.action_type == None:
-                   raise Exception("Unknown action type: (%s) %s in %s\n" %
-                                   (child.tag, child.text, self.fname))
+            elif tag == "abilityactiontype":
+                action_type_str = contents_to_string(child)
+                self.action_type = ActionType.load(action_type_str)            
+                if self.action_type == None:
+                    raise Exception("Unknown action type: (%s) %s in %s\n" %
+                                    (child.tag, child.text, self.fname))
 
-           elif tag == "abilityranks":
-               if len(self.ranks) > 0: #  is not None:
-                   raise Exception("Only one abilityranks per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.load_ability_ranks(child)
+            elif tag == "abilityranks":
+                if len(self.ranks) > 0: #  is not None:
+                    raise Exception("Only one abilityranks per ability. (%s) %s\n" %
+                                    (child.tag, str(child)))
+                else:
+                    self.load_ability_ranks(child)
 
-           elif tag == "abilitydescription":
-               if self.description is not None:
-                   raise Exception("Only one abilitydescription per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.description = children_to_string(child)
+            elif tag == "abilitydescription":
+                if self.description is not None:
+                    raise Exception("Only one abilitydescription per ability. (%s) %s\n" %
+                                    (child.tag, str(child)))
+                else:
+                    self.description = children_to_string(child)
 
-           elif tag == "abilitytemplate":
-               if self.template is not None:
-                   raise Exception("Only one abilitytemplate per ability. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.template = child.text
+            elif tag == "abilitytemplate":
+                if self.template is not None:
+                    raise Exception("Only one abilitytemplate per ability. (%s) %s\n" %
+                                    (child.tag, str(child)))
+                else:
+                    self.template = child.text
 
-           elif tag == "prereqabilityrank":
-               ability_rank_id = child.text
-               if ability_rank_id is not None:
-                   prereq = AbilityRankPrereq(ability_rank_id)
-                   self.ability_rank_prereq = prereq
-                   self.prerequisites.append(prereq)
+            elif tag == "prereqabilityrank":
+                ability_rank_id = child.text
+                if ability_rank_id is not None:
+                    prereq = AbilityRankPrereq(ability_rank_id)
+                    self.ability_rank_prereq = prereq
+                    self.prerequisites.append(prereq)
 
-           elif tag == "prereqattr":
-               prereqs = AttrPrereq.parse_xml(child)
-               self.prerequisites += prereqs
+            elif tag == "prereqattr":
+                prereqs = AttrPrereq.parse_xml(child)
+                self.prerequisites += prereqs
 
-           elif tag == "prereqtag":
-               prerequisite_tag = child.text
-               if prerequisite_tag is not None:
-                   prereq = TagPrereq(prerequisite_tag)
-                   self.prerequisites.append(prereq)
+            elif tag == "prereqtag":
+                prerequisite_tag = child.text
+                if prerequisite_tag is not None:
+                    prereq = TagPrereq(prerequisite_tag)
+                    self.prerequisites.append(prereq)
 
-           elif tag == "prereqnottag":
-               prerequisite_tag = child.text
-               if prerequisite_tag is not None:
-                   prereq = NotTagPrereq(prerequisite_tag)
-                   self.prerequisites.append(prereq)
-               
-           elif tag == "tags":
-               self.parse_tags(child)
+            elif tag == "prereqnottag":
+                prerequisite_tag = child.text
+                if prerequisite_tag is not None:
+                    prereq = NotTagPrereq(prerequisite_tag)
+                    self.prerequisites.append(prereq)
 
-           elif tag == "spline":
-               self.spline = parse_spline(child.getchildren())
-               
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
+            elif tag == "tags":
+                self.parse_tags(child)
 
-           else:
-               raise Exception("UNKNOWN (%s) in file %s\n" % 
-                               (child.tag, self.fname))
+            elif tag == "spline":
+                self.spline = parse_spline(child.getchildren())
+
+            elif tag is COMMENT:
+                # ignore comments!
+                pass
+
+            else:
+                raise Exception("UNKNOWN (%s) in file %s\n" % 
+                                (child.tag, self.fname))
         # sanity check.
         #self.validate()
         return
@@ -795,6 +795,7 @@ class Ability:
         for rank_number in range(from_rank, to_rank+1):
             self._add_ability_rank(rank_number)
         return
+
 
 class AbilityGroupInfo:
     """
@@ -1069,7 +1070,24 @@ class AbilityGroup:
                 problems.append(
                     f"The tags for ability {ability.get_title()} are: [{', '.join(ability.tags)}]. "
                     f"They should include the abilities family {family_str}!")
-                
+
+        # the prerequsite, if there is one, should be in the same group.
+        if self.fname == "/home/blaize/proj/malleus_deum/abilities/wilderness_abilities.xml":            
+            for ability in self.abilities:
+                # check if it's a valid ability.
+                prereq = ability.ability_rank_prereq
+
+                # if we have an ability prereq then check its sanity.
+                if prereq is not None:                    
+                    prereq_ability_rank = prereq.get_ability_rank()
+                    if prereq_ability_rank is None:
+                        raise Exception(f"Ability {ability.get_name()} has a prequisite ability "
+                                        f"that does not exist {prereq.ability_rank_id}.")
+
+                    if prereq_abilityrank.get_group() != self:
+                        raise Exception(f"Ability {ability.get_name()} in group {self.get_name()} "
+                                        f"has a prerequisite {prereq_ability_rank.get_name()} in a different "
+                                        f"group {prereq_ability_rank.get_group().get_name()}")                
         return problems
 
     def check_sanity(self):
