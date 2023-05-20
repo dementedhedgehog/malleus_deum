@@ -112,8 +112,8 @@
   <archetypelevels>
     <archetypelevel>
       <levelnumber>1</levelnumber>
-      <levelstamina>2d4+9</levelstamina>
-      <levelhealth>1d4+6</levelhealth>
+      <levelstamina>1d3+6</levelstamina>
+      <levelhealth>1d3+7</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
       <levelluck>3</levelluck>
       <levelluckrefresh>1</levelluckrefresh>
@@ -153,7 +153,7 @@
 	  </branchdescription>
 	    
 	  <path chance="1-9">
-	    <pathtitle>Laibstadt</pathtitle>
+	    <pathtitle>Laibstadt/Westreich</pathtitle>
 	    <choice>✱language.merovingian_4, ✱language.aquilonian_3,
 	    ✱lore.history[Westreich]_3, ✱social.etiquette_4[Westreich], ✱social.etiquette[Westenreich-Nobility]_3</choice>
 	  </path>
@@ -191,15 +191,15 @@
 	  </branchdescription>	    
 	  <path chance="1-6">
 	    <pathtitle>Mace Training</pathtitle>
-	    <choice>✱physical.dodge_2, ✱mace_strike_2, ✱staff_strike_1</choice>
+	    <all-of>✱physical.dodge_2, ✱mace_strike_2, ✱staff_strike_1</all-of>
 	  </path>
 	  <path chance="7-11">
 	    <pathtitle>Staff Training</pathtitle>
-	    <choice>✱physical.dodge_2, ✱mace_strike_1, ✱staff_strike_2</choice>
+	    <all-of>✱physical.dodge_2, ✱mace_strike_1, ✱staff_strike_2</all-of>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Former Soldier</pathtitle>
-	    <choice>✱physical.dodge_3, ✱mace_strike_1, ✱staff_strike_2, ✱dagger_strike_2, and ✱sword_strike_2</choice>
+	    <all-of>✱physical.dodge_3, ✱mace_strike_1, ✱staff_strike_2, ✱dagger_strike_2, and ✱sword_strike_2</all-of>
 	  </path>
       </branch>
       
@@ -213,57 +213,55 @@
 	  </branchdescription>	    
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <choice>✱skulduggery.cloak_fighting_2</choice>
+	    <gain>✱skulduggery.cloak_fighting_2</gain>
 	  </path>
 	  <path chance="6">
 	    <pathtitle></pathtitle>
-	    <choice>✱skulduggery.pick_locks_2</choice>
+	    <gain>✱skulduggery.pick_locks_2</gain>
 	  </path>
 	  <path chance="7">
 	    <pathtitle></pathtitle>
-	    <choice>✱skulduggery.sleight_of_hand_3</choice>
+	    <gain>✱skulduggery.sleight_of_hand_3</gain>
 	  </path>
 	  <path chance="8">
 	    <pathtitle></pathtitle>
-	    <choice>✱skulduggery.sneak_2</choice>
+	    <gain>✱skulduggery.sneak_2</gain>
 	  </path>
 	  <path chance="9">
 	    <pathtitle></pathtitle>
-	    <choice>✱skulduggery.cryptography_3</choice>
+	    <gain>✱skulduggery.cryptography_3</gain>
 	  </path>
 	  <path chance="10-12">
-	    <pathtitle>Choose one</pathtitle>
-	    <choice></choice>
+	    <pathtitle>Choose one of the above</pathtitle>
 	  </path>
       </branch>
       
       <branch>
 	<branchtitle>Study II</branchtitle>	
 	  <branchdescription>
-	  </branchdescription>	    
+	  </branchdescription>
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <choice>✱lore.physician_2</choice>
+	    <gain>✱lore.physician_2</gain>
 	  </path>
 	  <path chance="6-8">
 	    <pathtitle></pathtitle>
-	    <choice>✱lore.natural_history_2</choice>
+	    <gain>✱lore.natural_history_2</gain>
 	  </path>
 	  <path chance="9">
 	    <pathtitle></pathtitle>
-	    <choice>✱lore.book_keeping_2</choice>
+	    <gain>✱lore.book_keeping_2</gain>
 	  </path>
 	  <path chance="10">
 	    <pathtitle></pathtitle>
-	    <choice>✱lore.physics_2</choice>
+	    <gain>✱lore.physics_2</gain>
 	  </path>
 	  <path chance="11">
 	    <pathtitle></pathtitle>
-	    <choice>✱language.hybernian_2 or ✱language.poitevin_2</choice>
+	    <one-of>✱language.hybernian_2 or ✱language.poitevin_2</one-of>
 	  </path>
 	  <path chance="12">
-	    <pathtitle>Choose one</pathtitle>
-	    <choice></choice>
+	    <pathtitle>Choose one of the above</pathtitle>
 	  </path>
       </branch>
       
@@ -273,27 +271,26 @@
 	  </branchdescription>	    
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <choice>✱physical.climb_2</choice>
+	    <gain>✱physical.climb_2</gain>
 	  </path>
 	  <path chance="6-8">
 	    <pathtitle></pathtitle>
-	    <choice>✱physical.grapple_2</choice>
+	    <gain>✱physical.grapple_2</gain>
 	  </path>
 	  <path chance="9">
 	    <pathtitle></pathtitle>
-	    <choice>✱physical.head_butt_2</choice>
+	    <gain>✱physical.head_butt_2</gain>
 	  </path>
 	  <path chance="10">
 	    <pathtitle></pathtitle>
-	    <choice>✱physical.punch_2</choice>
+	    <gain>✱physical.punch_2</gain>
 	  </path>
 	  <path chance="11">
 	    <pathtitle></pathtitle>
-	    <choice>✱physical.throw_2</choice>
+	    <gain>✱physical.throw_2</gain>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Choose one</pathtitle>
-	    <choice></choice>
 	  </path>
       </branch>
       
@@ -303,27 +300,26 @@
 	  </branchdescription>	    
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <choice>Tallow Candle, Sack, Wineskin</choice>
+	    <all-of>Tallow Candle, Sack, Wineskin</all-of>
 	  </path>
 	  <path chance="6-8">
 	    <pathtitle></pathtitle>
-	    <choice>Wool sash, leather purse, hip flask</choice>
+	    <all-of>Wool sash, leather purse, hip flask</all-of>
 	  </path>
 	  <path chance="9">
 	    <pathtitle></pathtitle>
-	    <choice>Rope 20m, straw hat, paper and ink</choice>
+	    <all-of>Rope 20m, straw hat, paper and ink</all-of>
 	  </path>
 	  <path chance="10">
 	    <pathtitle></pathtitle>
-	    <choice>Small kettle, book of poetry</choice>
+	    <all-of>Small kettle, book of poetry</all-of>
 	  </path>
 	  <path chance="11">
 	    <pathtitle></pathtitle>
-	    <choice>Tin cup, Scarf</choice>
+	    <all-of>Tin cup, Scarf</all-of>
 	  </path>
 	  <path chance="12">
-	    <pathtitle>Choose one</pathtitle>
-	    <choice></choice>
+	    <pathtitle>Choose one of the above</pathtitle>
 	  </path>
       </branch>
       
@@ -336,43 +332,42 @@
 	  </branchdescription>	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>✱theurgic.litany_of_redemption_1, ✱arcana.cloak_of_shadows_1,</choice>
-	    <choice>✱theurgic.light_of_mithras_1 or ✱theurgic.blessed_arms_1,</choice>
-	    <choice>✱arcana.aegis_1 or ✱arcana.alarum_1</choice>
+	    <all-of>✱theurgic.litany_of_redemption_1, ✱arcana.cloak_of_shadows_1,</all-of>
+	    <one-of>✱theurgic.light_of_mithras_1 or ✱theurgic.blessed_arms_1,</one-of>
+	    <one-of>✱arcana.aegis_1 or ✱arcana.alarum_1</one-of>
 	  </path>
 	  <path chance="3">
 	    <pathtitle></pathtitle>
-	    <choice>✱theurgic.blessed_arms_1, ✱theurgic.augury_1, </choice>
-	    <choice>✱theurgic.back_1 or ✱theurgic.turn_undead_1,</choice>
-	    <choice>✱arcana.ignis_1 or ✱arcana.alarum_1 or ✱arcana.aegis_1</choice>
+	    <all-of>✱theurgic.blessed_arms_1, ✱theurgic.augury_1, </all-of>
+	    <one-of>✱theurgic.back_1 or ✱theurgic.turn_undead_1,</one-of>
+	    <one-of>✱arcana.ignis_1 or ✱arcana.alarum_1 or ✱arcana.aegis_1</one-of>
 	  </path>
 	  <path chance="4-5">
 	    <pathtitle></pathtitle>
-	    <choice>✱theurgic.blessed_arms_1, ✱theurgic.grace_of_mithras_1,
-	    ✱theurgic.augury_1, ✱theurgic.light_of_mithras_1, ✱theurgic.litany_of_redemption_1</choice>
-	    <choice>✱arcana.alarum_1, or ✱arcana.aegis_1</choice>
+	    <all-of>✱theurgic.blessed_arms_1, ✱theurgic.grace_of_mithras_1,
+	    ✱theurgic.augury_1, ✱theurgic.light_of_mithras_1, ✱theurgic.litany_of_redemption_1</all-of>
+	    <one-of>✱arcana.alarum_1, or ✱arcana.aegis_1</one-of>
 	  </path>
 	  <path chance="6-7">
 	    <pathtitle></pathtitle>
-	    <choice>✱theurgic.back_1, ✱theurgic.litany_of_redemption_1, </choice>
-	    <choice>✱arcana.cloak_of_shadows_1, or ✱arcana.ignis_1,</choice>
-	    <choice>✱arcana.alarum_1, or ✱arcana.aegis_1</choice>
+	    <all-of>✱theurgic.back_1, ✱theurgic.litany_of_redemption_1, </all-of>
+	    <one-of>✱arcana.cloak_of_shadows_1, or ✱arcana.ignis_1,</one-of>
+	    <one-of>✱arcana.alarum_1, or ✱arcana.aegis_1</one-of>
 	  </path>
 	  <path chance="8-9">
 	    <pathtitle></pathtitle>
-	    <choice>✱theurgic.litany_of_redemption_1, ✱theurgic.air_of_beatitude_1,
-	    ✱theurgic.purify_1</choice>
-	    <choice>✱theurgic.back_1, or ✱theurgic.exorcise_1,</choice>
+	    <all-of>✱theurgic.litany_of_redemption_1, ✱theurgic.air_of_beatitude_1,
+	    ✱theurgic.purify_1</all-of>
+	    <one-of>✱theurgic.back_1, or ✱theurgic.exorcise_1,</one-of>
 	  </path>
 	  <path chance="10-11">
 	    <pathtitle></pathtitle>
-	    <choice>✱theurgic.purify_1,  ✱theurgic.blessed_arms_1,</choice>
-	    <choice>✱theurgic.exorcise_1, or ✱theurgic.turn_undead_1,</choice>
-	    <choice>✱theurgic.litany_of_redemption_1, or ✱theurgic.air_of_beatitude_1</choice>
+	    <all-of>✱theurgic.purify_1,  ✱theurgic.blessed_arms_1,</all-of>
+	    <one-of>✱theurgic.exorcise_1, or ✱theurgic.turn_undead_1,</one-of>
+	    <one-of>✱theurgic.litany_of_redemption_1, or ✱theurgic.air_of_beatitude_1</one-of>
 	  </path>
 	  <path chance="12">
-	    <pathtitle>Choose one</pathtitle>
-	    <choice></choice>
+	    <pathtitle>Choose one of the above</pathtitle>
 	  </path>
       </branch>
     </archetypelevel>
@@ -394,51 +389,51 @@
 	  </branchdescription>	    
 	  <path chance="">
 	    <pathtitle></pathtitle>
-	    <choice>
+	    <gain>
 	      +1 Perception
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      +1 Health,
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      ✱theurgic.hammer_of_the_hierophant_1
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      ✱theurgic.hypnotic_gaze_1,
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      2x new Lore abilities at rank 1
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      2x Lore promotions up to rank 3
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      1x new Staff, Mace or Hammer ability at rank 1
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      1x Martial Promotion up to rank 3
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      1x new Theurgic ability
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      2x Theurgic promotion up to rank 3 
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      1x new Arcana ability at rank 1
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      1x Arcana promotion up to rank 3 
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      2x new Physical ability at rank 1
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      1x Physical promotion up to rank 3
-	    </choice>
-	    <choice>
+	    </gain>
+	    <gain>
 	      2x new ✱✱social.contacts ability at rank 1	      		      	      	      
-	    </choice>
+	    </gain>
 	  </path>
       </branch>      
     </archetypelevel>
