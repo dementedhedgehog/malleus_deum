@@ -163,7 +163,6 @@ class AbilityRankPrereq(Prerequisite):
         """Returns None if the rank does not exist!"""
         if self.ability_rank is None:
             self.ability_rank = ability_rank_lookup.get(self.ability_rank_id)
-            print(f" {self.ability_rank_id} ")
         return self.ability_rank
     
     def to_string(self):         
