@@ -14,9 +14,11 @@ from utils import (
 
 split_regex = re.compile(",\s*")
 
-CHOOSE_ALL = -1
+ALL_OF = -1
+GAIN = 0  # synonym for ALL_OF, worded differently in docs
 CHOICES = {
-    "all-of": CHOOSE_ALL,
+    "all-of": ALL_OF,
+    "gain": GAIN, # choose one out of a list of one (we translate it differently).
     "one-of": 1,
     "two-of": 2,
     "three-of": 3,
@@ -31,7 +33,7 @@ class Choice:
     For archetype descriptions
 
     """
-    def __init__(self, number_to_choose=CHOOSE_ALL):  # FIXME: at some point force this to be specified
+    def __init__(self, number_to_choose=ALL_OF):  # FIXME: at some point force this to be specified
         self.ability_level_ids = []
         self.number_to_choose = number_to_choose
         self.contents = None
