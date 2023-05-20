@@ -60,18 +60,21 @@
         {{ archetype.get_primary_abilities() }}
         Then for each ability roll an <emph>unmodified</emph> Std-Check against a DC of 13.
         Add one to the ability rank for that ability if the check is successful.  Add an
-        additional one if a boon is rolled.  Subtract one from the rank if a bane is rolled.
+        additional +1 if a boon is rolled.  Subtract one from the rank if a bane is rolled.
+	If a critical success is rolled then add +2.  On a critical failure subtract one from
+	your attribute and thank you
       </p>      
       <p>
-        For example, if you get a result of +2 in Strength you should write down Strength +2 in the
-        primary abilities section of the character sheet.
+        For example,  say you choose a Strength of +1.  Then you roll a Std-Check anf get a 14. Your
+	Strength is now +2.  Now write +2 down under Strength in the primary abilities section of your
+	character sheet.
       </p>      
     </li>
 
     <li>
-      Work out some details about your characters background and starting skills using the tables
-      from the <emph>Level 1 Progression</emph> Section below.  Do this now as it may effect your abilities
-      later in the character creation process.
+      Level up your character to level 1 using the tables in the <emph>Level 1 Progression</emph> Section,
+      see Section<ref>sec:level_progression_1</ref> on page<pageref>sec:level_progression_1</pageref>.
+      Do this now as it may effect your abilities later in the character creation process.
     </li>    
 
     <li>
@@ -131,16 +134,10 @@
 
     <li>
       <p>
-            Players should choose a few initial aspects for their character. It is best
-        to choose your aspects in a group with the other players and GM. Newly acquired 
-        aspects have a difficulty of 9 + d6 unless the archetype description or the GM
-        says otherwise.  
-      </p>
-      <p>
+        Players should now choose a few initial aspects for their character together with
+	the other players and GM.  
         Some suggested aspects for this archetype are: {{ archetype.aspect_examples -}}.
-      </p>        
-      <p>
-        But feel free to choose an aspect of your own.  Try to create one that will
+        But feel free to choose aspects of your own.  Try to create aspects that will
         generate interesting game play.
       </p>        
     </li>
@@ -183,8 +180,12 @@
 
     {% for level in archetype.levels -%}
     <section>
-      <sectiontitle>Level {{ level.level_number }} Progression</sectiontitle>
-      
+      <sectiontitle>Level {{ level.level_number }} Progression <label>sec:level_progression_{{ level.level_number }}</label></sectiontitle>
+
+      <p>
+	Apply the changes for all the following subsections to your character to level up to level {{ level.level_number }}.
+      </p>
+
       {% for branch in level.branches -%}
       <subsection>
     <subsectiontitle>{{ branch.title }}</subsectiontitle>
@@ -205,6 +206,8 @@
 		<li>
                   {%- if choice.number_to_choose == -1 %}
                   All of:
+		  {%- elif choice.number_to_choose == 0 %}
+                  Gain:
 		  {%- elif choice.number_to_choose == 1 %}
                   One of:
 		  {%- elif choice.number_to_choose == 2 %}
@@ -219,6 +222,8 @@
           {% else %}
               {%- if choice.number_to_choose == -1 %}
               All of:
+              {%- elif choice.number_to_choose == 0 %}
+              Gain:
               {%- elif choice.number_to_choose == 1 %}
               One of:
               {%- elif choice.number_to_choose == 2 %}
