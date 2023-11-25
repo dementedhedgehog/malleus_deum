@@ -14,24 +14,25 @@
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
+  
+
 
   <ability>
-    <abilitytitle>Wyrd Hand</abilitytitle>
-    <abilityid>wyrdscience.wyrd_hand</abilityid>
+    <abilitytitle>Feign Death</abilitytitle>
+    <abilityid>wyrdscience.feign_death</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><wyrdscience/></tags>
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline>
+    <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
-	FIXME: disembodied hand.. like the Thing,
+	The character can enter a death-like state through a special meditative trance.
+	This state should convince people that the character is dead under cursory examination.
       </p>
     </abilitydescription>
   </ability>
-  
-
 
   <ability>
     <abilitytitle>Flesh Golem</abilitytitle>
@@ -129,6 +130,8 @@
       </p>
     </abilitydescription>
   </ability>
+
+
 
   <ability>
     <abilitytitle>Wyrd Rats</abilitytitle>
@@ -257,6 +260,22 @@
     </abilitydescription>
   </ability>
     
+
+  <ability>
+    <abilitytitle>Wyrd Hand</abilitytitle>
+    <abilityid>wyrdscience.wyrd_hand</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><wyrdscience/></tags>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck dc="17">Std+Rank</abilitycheck>
+    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME: disembodied hand.. like the Thing,
+      </p>
+    </abilitydescription>
+  </ability>
 
   <ability>
     <abilitytitle>Wyrd Science</abilitytitle>

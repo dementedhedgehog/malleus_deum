@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+
+Inspired by:  Heralds of Woe for WFRP and Crimson Letter for CoC.
+
+-->
+{% from "docs/monster_macros.xml" import monster with context %}
+
+
+<book>
+  {% set MODULE_FNAME = "the_will" %}
+  {% set MODULE_NAME = "The Will" %}
+  
+  <chapter>
+    <chaptertitle>{{ MODULE_NAME }}</chaptertitle>
+    <section>        
+      <sectiontitle>Overview</sectiontitle>
+
+      <p>
+      </p>
+
+      <subsection>
+	<subsectiontitle>Background</subsectiontitle>        
+	<indexentry></indexentry>
+	<p>
+	  There's been a death in Hohenbach.. and there's some talk about mysterious circumstances
+	  surrounding the death.  The professor has died intestate, apparently, and there have been a number of claimants on the estate.
+	  The College of Heralds has been called in to make a ruling.  The characters are to travel there and investigate under the
+	  guise of herald pursuivants which will give you an excuse to nose about the professors house.  
+	</p>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>The College of Heralds</subsectiontitle>        
+	<indexentry></indexentry>
+	<p>
+	  There are two bodies that can adjudicate estates the College of Heralds and the Landes Commission.  The latter are
+	  known as being rather corrupt and easily bribable.  The former are considered marginally more trustworthy, but their
+	  rulings are almost never challenged.  The rulings of the College of Heralds is the cornerstone to the claims of all the
+	  great houses in the Empire.  If their rulings are questionable then so are the claims to title of the nobility.
+	</p>
+
+	<p>
+	  Their main building of the College is the Grosse Hall in Laibstadt where they store a bunch of land, historical, and
+	  genealogical records.   They usually wear fairly sumptuous clothes often with gold and red trimm, and carry
+	  a caduceus (rod with two entwined snakes topped with wings).
+	</p>
+	
+	
+      </subsection>
+      
+
+
+
+      <subsection>
+	<subsectiontitle>Hohenbach</subsectiontitle>        
+	<indexentry></indexentry>
+	<p>
+	  Hohenbach is a small town, of about 8000, lying on the southern banks of the Aelfwin river, upriver from Laibstadt, just
+	  downriver from the rapids.  It is about 70kms east of Laibstadt.  The river has a large fortified stone bridge that
+	  has a small garrison.  There is quite a large transport industry where goods are loaded onto barges and sent west
+	  to Laibstadt (the river has too many shallow bits for most boats).  There's also some farming, hunting, fishing and
+	  a timber industry.  The countryside in the area is fairly mountainous and the town is fairly thin snaking along the
+	  south side of the river.
+	</p>
+
+	<p>
+	  The town is mainly known for Hohenbach University which sits on about 10 acres.  Which has about 1200 students,
+	  24 professors, maybe 50 other staff from teaching assistants to gardeners, cooks and cleaners.
+	</p>	  
+      </subsection>      
+    </section>
+
+
+
+
+    
+    <section>
+      <sectiontitle>The Journey</sectiontitle>
+
+
+      <subsection>
+    	<subsectiontitle>Dramatis Personae</subsectiontitle>
+
+	<list>
+	  <li>Hyman Kreitman, Pursuivant of Arms (Herald), (Westreich) College of Arms.
+	  He has a horribly scarred face and is missing half his fingers from his right hand.
+	  He is in charge of and initiates armorial matters (in charge of the coats of arms of the various houses).
+	  To get a coat of arms you need to qualify and pay the College of Arms (if you don't already have a coat of arms).
+	  He also arranges and participate in ceremonies of state, and conserves and interpret heraldic and genealogical records.
+	  </li>
+	  
+	  <li>
+	    Ramwold Steinauer.  Aide.  Wiry old army dude.. beard and shaved head.  Carries a spear with the Heralds flag on it.
+	    (Same as the Heralds Medallion). Carries a large satchel with relevant books, ink, pens, parchment, seal etc in it.
+	  </li>
+
+	  <li>
+	    Gumprecht.  80 year old priest of Mithras.
+	  </li>
+
+	  <li>
+	    Margret the donkey.  Carries a lot of wine.
+	  </li>
+	</list>
+      </subsection>
+      
+      <subsection>
+    	<subsectiontitle>Setup</subsectiontitle>
+	<p>
+	  Yohann will introduce them to Hyman and Ramwold.  They'll swear an oath. They then receive their warrants, which
+	  empowers them to go about the College’s business. Hyman will give them  Heralds pins .. (like the pin the Hand has).
+	  These are bronze with the College of Arms coat of arms.   They will also sign a one month indenture binding them to the College.
+	  This is not just a piece of legal fiction. The College calls in Gumprecht to witness.
+	</p>
+      </subsection>
+
+
+      <subsection>
+    	<subsectiontitle>Camping</subsectiontitle>
+
+	<p>
+	  On the night they'll camp.  The characters may find out the following by talking to Hyman and Ramwold.
+
+	  <list>
+	    <li>Burgrave Gelfrat Greniczer has died.</li>
+	    <li>Found in his house, apparently died of a heart attack.</li>
+	    <li>He was a 70 year old widower.  Last of his line.</li>
+	    <li>He was an amateur scholar</li>
+	    <li>A number of parties have come forward to make a claim on his estate.</li>
+	    <li>Hyman received his scars from a bear attack, a fortune teller told him he would be killed by a bear but just goes to show what
+	    a lot of dung fortune telling is.</li>
+	    <li>He was an avid antiquarian.</li>	   
+	    <li>A burgher was a rank or title of a privileged citizen of medieval towns in early modern Europe. Burghers formed the pool from which city officials could be drawn, and their immediate families that formed the social class of the medieval bourgeoisie. Proof of ownership of property in a town and some kind of claim to nobility, fame or achievement is enough to qualify.</li>	      
+	  </list>
+	  The following results the characters will have to make successful checks to learn.
+	  <list>
+	    <li>Rumour has it that he was interested in the of the history of the dark religions.</li>
+	    <li>Hymann has already checked the pertinent records at the Landes Kommission and at Grosse Hall to get a information about the registered
+	    claimants and the deceased.  He carries the information and relevant law in a pack carried by Margret</li>
+	    <li>The real Heralds job here entails confirming the claimants’ identity and line of descent and their family rights to an estate,
+	    then a ruling will be made, at which point it will very likely be formalized by the Landes Kommission.</li>	     
+	  </list>	    
+	</p>
+
+	<p>
+	  While camping in the mountains they'll be set upon by a bear.  60 health, Defence 15 (fat), Attacks Claws, 2d12 and Bite 1d8 (will test
+	  Mettle 5 at 40HP and every ten hit points from then, has a mettle pool of 4 dice).
+	  It will kill Hyman first if given the chance.	      
+	</p>
+
+        {{ monster("animal.bear") }}
+      </subsection>
+
+
+    </section>
+
+    
+
+    
+    <section>
+      <sectiontitle>The Claimants and The Estate</sectiontitle>
+
+      <subsection>
+	<subsectiontitle>Background</subsectiontitle>        	
+    	<p>
+    	  No will for Gelfrat has been found. The Estate consists of 240 acres,
+	  150 acres are farmed and tennanted providing an income, with various cottages and a manor house in town.	    
+    	</p>
+
+	
+    	<p>
+	  There are three main claimants.
+    	</p>
+	<descriptions>
+	  <term>Melchior Fulcade</term>
+	  <description>		
+	    <list>
+	      <li>Staying at the local family manor.</li>
+	      <li>Has a number of thugs staying with him</li>
+	      <li>Has a well forged will claiming that Melchior is the first cousin of Gelfrat and heir.</li>
+	      <li>His plan is to threaten the heralds or otherwise try and bribe them if discovered.</li>
+	      <li>Will claim that Dietmar should not inherit because he is a mendicant.</li>
+	      <li>Fulcades have been the lords in this area for hundreds of years and therefore he is entitled to the land.</li>
+	    </list>
+
+	  </description>
+	  <term>Abbott Dietmar Löwe</term>
+	  <description>
+	    <list>
+	      <li>Boarding at the Temple of Mithras</li>
+	      <li>Family Tree.. he's a second cousin (they share a great grandfather.. Lempkin Greniczer)</li>
+	      <li>Will bequeath the lands to the church..  so that gets around the mendicancy laws.</li>
+	    </list>
+	  </description>
+	  
+	  <term>Osprant Kruger and Pankratz Schenk (ghouls)</term>
+	  <description>
+	    <list>
+	      <li>Staying at the The Golden Feather.</li>
+	      <li>Has a badly forged will saying that claiming that Osprant is the bastard son of Gelfrat.</li>
+	      <li>Osprant looks a lot like Gelfrat .. he's a ghoul trying to get the book by inheritance</li>
+	      <li>Will claim that Dietmar should not inherit because he is a mendicant.</li>
+	      <li>If there's talk of the book around town then they will enquire about it.. and insist it's
+	      part of the estate.  If the book has been destroyed they will appear to lose interest.</li>
+	    </list>
+	  </description>
+	</descriptions>
+	
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>The Ruling</subsectiontitle>
+
+	<p>
+	  There will be a public ruling in the town square after the investigation is finished.
+	</p>
+	
+    	<p>
+    	  This decision is very likely to degenerate into a full scale street war, with the
+    	  party in the middle. Osprant and Melchiore can mobilise nearly two dozen well
+    	  equipped fighters, and nearly 100 drunken rabble.  The parties main aim should be
+	  to survive and possibly to minimize the carnage.  Eventually, the regiment will
+	  arrive, and the streets will run red with blood as their elite heavy cavalry
+	  restores order in their inimitable fashion.
+    	</p>      
+      </subsection>
+    </section>
+
+
+
+    <section>        
+      <sectiontitle>The Death</sectiontitle>
+
+      <p>
+      </p>
+
+      <subsection>
+	<subsectiontitle>Background</subsectiontitle>        
+	<p>
+	</p>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>The Facts</subsectiontitle>        
+	<p>
+	</p>
+
+
+	<descriptions>
+	  <term>F0</term>
+	  <description>Burgrave Gelfrat Greniczer was interested in the occult and antiquities.  Some say he was interested in dark magicks.
+	  </description>		
+	  
+	  <term>F1</term>
+	  <description>
+    	    Six months earlier the Richel Langer, Abbott of the Reikenau Abbey died.  Gelfrat upon learning of this quickly
+    	    headed to the place to meet with the new Abbot Dietmar Löwe, know for his penny pinching.   Gelfrat purchased a
+    	    number of items from the forbidden section of their library and had them transported back to his abode.  Some of
+    	    which have since been donated to the University.
+	  </description>		
+	  
+	  <term>F2</term>
+	  <description>	      
+    	    One of these items was the Liber D'Ivoire by the Mad monk Desiderius Lenz, which prophecies the end of the world.
+	  </description>
+	  
+	  <term>F3</term>
+	  <description>
+    	    Reading the cursed book may have unleashed a demon from beyond that is slowly gathering the strength required to
+    	    materialize a physical body.  It is doing this by drawing the life essence from people who have come into
+    	    contact with the book.	      
+	  </description>		
+	  
+	  <term>F4</term>
+	  <description>
+	    Has held the book.  It made them feel cold as death.
+	  </description>		
+	  
+	  <term>F5</term>
+	  <description>
+	    Knows the death of Burgrave Gelfrat Greniczer was suspicious.. talk of a violent seizure.
+	  </description>		
+	  
+	  <term>F6</term>
+	  <description>		
+    	    Knows that Gelfrat was holding the book when he died.
+    	    Dr Johannes Walkenhorst removed the book and placed it on Gelfrats desk he thinks.. it's no longer there.
+	  </description>		
+
+	  <term>F7</term>
+	  <description>
+	    Gelfrat was very excited about the Black Book and had written to a number of scholars to try to gather more information.
+	  </description>		
+	  
+	  <term>F8</term>
+	  <description>
+	    Knows that there was rivalry between Herman Roth and Gelfrat.  And that Herman hated Gelfrat because of Gelfrats
+    	    success as an amateur.
+	  </description>		
+	  
+	  <term>F9</term>
+	  <description>		
+    	    Arnold Faerber is a creepy dude that hangs around Herman Roth and Gelfrat.
+    	    Rich family.
+    	    Doesn't really fit in.
+    	    Wanted to be a research assistant for either Herman or Gelfrat.  But both declined him because of something about him.
+	  </description>		
+	  
+	  <term>F10</term>
+	  <description>
+	    Saw Herman Roth leaving the University after he arrived to gather the Dr.	      
+	  </description>		
+	  
+	  <term>F11</term>
+	  <description>
+	    Incantation to kill the demon.
+	  </description>		
+	  
+	  <term>F12</term>
+	  <description>
+	    Book can be burnt.
+	  </description>		
+	</descriptions>	
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>The People</subsectiontitle>        
+	<p>
+	</p>
+	
+	<descriptions>
+	  <term>Chancellor - Berold Falkenrath (Ex mathematician)</term>
+	  <description>Knows: F0, F1, F2, F4, F5, F7
+      	  Concerned about what the characters might do if they find out.
+      	  Also concerned about the reputation of the University and his own reputation.
+	  </description>		
+	  
+	  <term>Burgrave Gelfrat Greniczer</term>
+	  <description>
+      	    The deceased.
+      	    Look of horror on his face that is terrifying.
+      	    Has had an autopsy performed (big Y cut on chest)
+      	    Kept in the cellars under ground in the science building..
+
+      	    Will come back to life as a zombie.
+      	    Defence 15, Bite Damage D12, HP 30.
+      	    (Will come back to life until dismembered).
+      	    The corpse is possessed.
+	  </description>		
+
+	  
+	  <term>Dr Johannes Walkenhorst, Professor of Anatomy.</term>
+	  <description>
+    	    (Cliff Clavin)
+    	    Performed the autopsy
+    	    Does not know the Cause of death.
+    	    Has written it down as a heart attack.
+    	    Knows: F0, F4, F5, F6, F8.
+	  </description>		
+
+	  <term>Herman Roth, Professor of Antiquities</term>
+	  <description>
+    	    Like Frank Castanza
+    	    Wants to study the book.
+    	    Jealous of Gelfrat.
+    	    Overheard Arnold Faeber calling for Dr Johannes Walkenhorst on the night of the death.
+    	    Took the opportunity to go into the house and steal the book.  It's in his office.. where he is.
+    	    Is concerned that the demon will come after him unless he finds a way to stop it.
+    	    Knows: F0, F1, F2, F3, F4, F5, F7 (resents this because he feels he should have been given the opportunity to study the book, F8, F9, F11.
+	  </description>		
+
+	  <term>Arnold Faerber, Student of the Occult</term>
+	  <description>
+    	    Creepy Norman Bates type dude.  Clearly a student and comes from nobility.
+    	    He's a secret cultist trying to get his hands on the book
+    	    Being used by the students.
+    	    Will offer to help the party.
+    	    Knows: F0, F1, F2, F5, F10, F11
+
+	    Arnold Faerbers friends
+    	    His new friends Clare Albrecht,  Ute Sieger, Wolf Drechsler,
+    	    two young girls and a young fellow (students).  Studying literature.
+    	    actually Ghouls .. want to get the book for themselves to take back to their queen for study.
+    	    HP 20, Regenerate 3, Move, Attack, Move.  Dmg d8, Defence 14	  
+	  </description>		
+
+	  <term>Elze Keller, Servant</term>
+	  <description>
+    	    Research Assistant/Student.
+    	    Looks like Ruth Wilson.
+    	    She heard Gelfrat screaming at about 6pm and ran to his study.. to see him screaming on the floor, before he died.
+    	    She ran out, saw Arnold Faerber and sent him to get Dr Walkenhorst.
+    	    Was Mrs Mandels night off.
+    	    Was not allowed to hold the book.
+    	    She knows F0, F1, F2, F5, F8.
+	  </description>		
+
+	  <term>Mrs Mandel, House Keeper/Cook</term>
+	  <description>
+    	    Old fat peasant woman.
+    	    Pilichin the Phage .. working for his Master, Kemmler. HP 10, DC 16, True sight.  Stinger.  Poison d6 take that damage each round.
+    	    Wants to make sure the books contents are not available to anyone.
+    	    Will try and be helpful but doesn't know much... really dropped the ball here.
+    	    When no one is looking will try and destroy the book.
+    	    If successful will wander out and switch hosts, leaving the body of Mrs Mandel.
+    	    Mr Mandel is dead in the Mandel house and has been for weeks.
+	  </description>		
+
+	  <term>The Demon</term>
+	  <description>
+    	    How to kill it?  Roth, Roth's notes, or Faerber,  or Test Abjuration?, or check the library.
+    	    Burn the book, or Special incantation to banish it target is magic 2, DC 12 ..  A banish spell might work magic 5, DC 17.
+	    Will attack with surprise.
+    	    Attacksx2 at 13,  Dmg D12.  Defence is 15.  HP 30 only damage is by magic weapon and then it takes 1 hp damage.
+	  </description>		
+	</descriptions>
+      </subsection>
+
+      
+      <subsection>
+	<subsectiontitle>Exciting Events</subsectiontitle>        
+	<p>
+	  Before the book is discovered.
+	</p>
+	<list>
+	  <li>Manifestation of evil - character has an hallucination of a ethereal lamprey head attacking</li>
+	  <li>Dr Johannes Walkenhorst dies.  Strangled on his own tongue</li>	    
+	  <li>Berold Falkenrath dies. Eviscerated</li>
+	  <li>Party discovers the book at Herman Roths place?
+	  <list>
+	    <li>Roth comes to them for protection?</li>
+	    <li>The players work it out?</li>
+	  </list>
+	  </li>
+	  <li>Herman Roth dies.  Shoots himself</li>
+	  <li>Once it is widely known that the book has been found.
+	  <list>
+	    <li>The demon attacks?</li>
+	    <li>Faerber and his friends attack</li>
+	    <li>Pilichin tries to steal the book</li>
+	  </list>
+	  </li>
+	</list>
+      </subsection>
+    </section>
+
+    <section>
+      <sectiontitle>Livre d'Eibon</sectiontitle>
+
+      <p>
+    	Touching the fragment will cause the character to make a mettle check vs DC 13
+    	or gain the Paranoid Schizophrenia temporary aspect.  The black book is a tome of
+    	dark knowledge containing some spells that can be studied.  It also contains this
+    	Ex Libris Baron Paganinus Zerbus of Yvre.  The following loose sheet from the Black Book
+    	is folded into the back and held with a few drops of sealing wax.
+      </p>
+
+      <p>
+    	Through the gate the foe will come,
+    	known by a thousand names and one,
+    	The servant of Vach-Viraj, and the mother of lies,
+    	The Eater, and the Opener of Ways,
+    	The Herald and the End of Times,
+      </p>
+
+      <p>
+    	Mans great hosts will try and fail
+    	for all their plate, for all their mail,
+    	Mankind will try their hand in one last chance,
+    	armed with mighty weapon, the Heilige Lanze
+      </p>
+
+      <p>
+    	And all the hope that man will have
+    	shall be tested in one last stand,
+    	where that weapon terrible and true,
+    	shall fall and fail, or run it through.
+      </p>
+    </section>
+
+
+    <section>
+      <sectiontitle>Scenes</sectiontitle>
+{% set encounter=encounters.get('the_will.fulcades_forgery') %}
+{% include "docs/encounter_template.xml" %}
+
+{% set encounter=encounters.get('the_will.mrs_mandel') %}
+{% include "docs/encounter_template.xml" %}
+
+{% set encounter=encounters.get('the_will.the_chancery_roll') %}
+{% include "docs/encounter_template.xml" %}
+
+{% set encounter=encounters.get('the_will.the_execution') %}
+{% include "docs/encounter_template.xml" %}
+
+
+      
+    </section>
+  </chapter>
+</book>

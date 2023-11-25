@@ -16,6 +16,91 @@
       <img src="./resources/witchhunter/caleb__4th_take_by_solidtom-d5v18eq.jpg"
 	   scale="0.7"/>
     </figure>
+
+
+
+
+
+    <!-- <sectiontitle>Leveling Up</sectiontitle> -->
+    <!--
+    <section>
+      <sectiontitle>XXXXXXXXXXXXXXXXXXX</sectiontitle>
+      <subsection>
+	<subsectiontitle>Origin</subsectiontitle>
+	<p>
+    	  Determine where the character came from by rolling once on the Homeland table below.
+	</p>
+
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Study</subsectiontitle>      
+
+	
+	<figure>
+	  <img id="mj_night_gauner_climbing" scale="0.2"/>
+	</figure>        
+
+
+	<p>
+	  See what the characters fortune holds.
+	</p>
+	
+	<table>
+    	  <tablecategory>Standard</tablecategory>
+    	  <tablespec>
+    	    <fixed>0.18</fixed>
+    	    <fixed>0.71</fixed>
+    	  </tablespec>
+    	  <tabletitle>Fortune</tabletitle>
+
+    	  <tableheaderrow>
+    	    <td>Roll 1D12</td>
+    	    <td>Fortune</td>
+    	  </tableheaderrow>
+
+    	  <tablerow>
+    	    <td>1-2</td>
+    	    <td>Bicorne Hat, Wool Sash, Leather Purse, Hip Flask</td>
+    	  </tablerow>
+
+    	  <tablerow>
+    	    <td>3</td>
+    	    <td>Cossack Hat, Sack, Wineskin, Tallow Candle</td>
+    	  </tablerow>
+
+    	  <tablerow>
+    	    <td>4-5</td>
+    	    <td>Straw Hat, Kettle, Book of Poetry</td>
+    	  </tablerow>
+
+    	  <tablerow>
+    	    <td>6-7</td>
+    	    <td>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, 
+	    Paper and ink</td>
+    	  </tablerow>
+
+    	  <tablerow>
+    	    <td>8-9</td>
+    	    <td>Garibaldi Hat, Playing Cards, Small Pot</td>
+    	  </tablerow>
+
+    	  <tablerow>
+    	    <td>10</td>
+    	    <td>Chaperon, Tin Cup, Scarf</td>
+    	  </tablerow>
+
+    	  <tablerow>
+    	    <td>11-12</td>
+    	    <td>Choose</td>
+    	  </tablerow>
+	  
+    	  <tablelabel>table:{{ doc_name }}-fortune</tablelabel>
+	</table>
+      </subsection>
+    </section>
+-->
   </archetypedescription>
 
 
@@ -102,90 +187,12 @@
 
   <archetypelevels>
 
-
-
-      <!-- <sectiontitle>Leveling Up</sectiontitle> -->
-    <subsection>
-      <subsectiontitle>Origin</subsectiontitle>
-      <p>
-    	Determine where the character came from by rolling once on the Homeland table below.
-      </p>
-
-    </subsection>
-
-
-    <subsection>
-      <subsectiontitle>Study</subsectiontitle>      
-
-      
-      <figure>
-	<img id="mj_night_gauner_climbing" scale="0.2"/>
-      </figure>        
-
-
-      <p>
-	See what the characters fortune holds.
-      </p>
-      
-      <table>
-    	<tablecategory>Standard</tablecategory>
-    	<tablespec>
-    	  <fixed>0.18</fixed>
-    	  <fixed>0.71</fixed>
-    	</tablespec>
-    	<tabletitle>Fortune</tabletitle>
-
-    	<tableheaderrow>
-    	  <td>Roll 1D12</td>
-    	  <td>Fortune</td>
-    	</tableheaderrow>
-
-    	<tablerow>
-    	  <td>1-2</td>
-    	  <td>Bicorne Hat, Wool Sash, Leather Purse, Hip Flask</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>3</td>
-    	  <td>Cossack Hat, Sack, Wineskin, Tallow Candle</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>4-5</td>
-    	  <td>Straw Hat, Kettle, Book of Poetry</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>6-7</td>
-    	  <td>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, 
-	  Paper and ink</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>8-9</td>
-    	  <td>Garibaldi Hat, Playing Cards, Small Pot</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>10</td>
-    	  <td>Chaperon, Tin Cup, Scarf</td>
-    	</tablerow>
-
-    	<tablerow>
-    	  <td>11-12</td>
-    	  <td>Choose</td>
-    	</tablerow>
-	
-    	<tablelabel>table:{{ doc_name }}-fortune</tablelabel>
-      </table>
-    </subsection>
-
     <archetypelevel>
       <levelnumber>1</levelnumber>
       <levelstamina>1d4+9</levelstamina>
       <levelhealth>1d4+6</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
-      <levelluck>3</levelluck>
+      <levelluck>2</levelluck>
       <levelluckrefresh>1</levelluckrefresh>
       <levelmagic>2</levelmagic>
       <levelmagicrefresh>1</levelmagicrefresh>
@@ -200,11 +207,11 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <choice>✱sword_strike_2, ✱language.merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱social.intimidate_1
+	  <choice>✱sword_strike_2, ✱language.merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱negotiate.intimidate
       ✱sword_parry_2, ✱language.aquilonian_2, ✱social.etiquette[Witch-Hunters]_3, ✱social.etiquette[Church-of-Mithras]_1,
       ✱language.merovingian_3, ✱theurgy_1,  ✱theurgic.divine_retribution_1, ✱theurgic.grace_of_mithras_1, and
 	  ✱theurgic.no_take_me_1.</choice>
-	  <one-of>Choose one of ✱lore.law[westreich]_2 or ✱lore.antiquarian_1.  Choose one of ✱physical.jump_1 or ✱physical.notice_1.</one-of>
+	  <one-of>Choose one of ✱lore.law[westreich]_2 or ✱lore.antiquarian_1.  Choose one of ✱speed.jump or .</one-of>
 	  <one-of>Choose one of ✱skulduggery.trap_work_1 or ✱skulduggery.sleight_of_hand_1.</one-of>
 	  <one-of>Choose one of ✱social.adversary[Dark-Cults]_3 or ✱social.adversary[Spell-Casters]_1.</one-of>
 	  <one-of>Choose one of ✱luck.nick_of_time_1 or ✱luck.reroll_2.</one-of>
@@ -226,12 +233,12 @@
       	</branchdescription>
       	<path chance="1">
       	  <pathtitle>Almaignee</pathtitle>
-      	  <choice>✱social.etiquette[Almaignee]_2, ✱lore.history[Almaignee]_2</choice>
+      	  <choice>✱social.etiquette[Almaignee]_2, ✱common.history[Almaignee]_2</choice>
       	  <choice></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Poitevin</pathtitle>
-      	  <choice>✱language.poitevin_1, ✱social.etiquette[Averoigne]_2,  ✱lore.history[Averoigne]_2</choice>
+      	  <choice>✱language.poitevin_1, ✱social.etiquette[Averoigne]_2,  ✱common.history[Averoigne]_2</choice>
       	</path>
       	<path chance="2">
       	  <pathtitle>Rural Westreich</pathtitle>
@@ -276,7 +283,7 @@
 	</path>
 	<path chance="4">
       	  <pathtitle>Burglar</pathtitle>
-	  <choice>✱physical.climb_3</choice>
+	  <choice>✱common.climb_3</choice>
 	  <choice>✱skulduggery.ropecraft_2</choice>
 	</path>
       </branch>

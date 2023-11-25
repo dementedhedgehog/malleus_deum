@@ -19,9 +19,10 @@
       </p>
 
       <p>
-	There is some overlap between biomes so a character with an ability for one biome may make checks for a "related" biome at a
-	higher DC than normal.  For example suppose a character with ✱survivalism[Hills]_1 wants to make a check while in a Forests
-	biome, the GM may allow them to make the check at a harder DC than usual, because of the similarity between these biomes (they
+	There is some overlap between biomes so a character with an ability for one biome may make checks
+	for a "related" biome at a higher DC than normal.  For example suppose a character with
+	FIXME survivalism Hills 1 wants to make a check while in a Forests biome, the GM may allow them
+	to make the check at a harder DC than usual, because of the similarity between these biomes (they
 	may share flora and fauna).
       </p>
       
@@ -54,13 +55,19 @@
   <ability>
     <abilitytitle>Survivalism</abilitytitle>
     <abilityid>wilderness.survivalism</abilityid>
-    <abilitytemplate>terrain-type</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><general/><wilderness/></tags>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <!-- <prereqabilityrank>wilderness.lore_1</prereqabilityrank> -->
     <!-- <spline><p x="-30" y="60"/></spline> -->
+    <specializations>
+      <specialization>Tundra</specialization>
+      <specialization>Jungles</specialization>
+      <specialization>Marine</specialization>
+      <specialization>Woodlands</specialization>
+      <specialization>Mountains</specialization>
+    </specializations>
     <abilitydescription>
       <p>
 	Survivalism encompasses a range of skills used to survive in the
@@ -95,13 +102,19 @@
   <ability>
     <abilitytitle>Hunting, Scouting and Tracking</abilitytitle>
     <abilityid>wilderness.hunting</abilityid>
-    <abilitytemplate>terrain-type</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><general/><wilderness/></tags>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <!-- <prereqabilityrank>wilderness.lore_1</prereqabilityrank> -->
     <!-- <spline><p x="-30" y="60"/></spline> -->
+    <specializations>
+      <specialization>Tundra</specialization>
+      <specialization>Jungles</specialization>
+      <specialization>Marine</specialization>
+      <specialization>Woodlands</specialization>
+      <specialization>Mountains</specialization>
+    </specializations>
     <abilitydescription>
       <p>
   	Tracking involves following trails left by others.

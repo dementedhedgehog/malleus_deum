@@ -1,11 +1,10 @@
 {% macro build_ability(ability) %}
 <subsubsection>
-  <abilitytitle>
+  <subsubsectiontitle>
     {{- ability.get_title() -}}
-    {%- if ability.is_templated() -%} <bold>[{{- ability.get_template() }}]</bold>{%- endif %}
     <indexentry>{{- ability.get_title() }} Ability</indexentry> 
     <indexentry>Ability<subentry>{{- ability.get_title() }}</subentry></indexentry>
-  </abilitytitle>
+  </subsubsectiontitle>
 
   <p>
     <smaller>
@@ -17,7 +16,7 @@
       <bold>Checks:</bold> {% for check in ability.get_checks() %} 
       {%- if check.name is not none  -%}{{check.name}}, {%- endif -%}
       DC: {{check.dc}}, Type: {{check.check_type}}
-      {% if not loop.last %}, {% endif -%}
+      {%- if not loop.last %}, {% endif -%}
       {% endfor -%}
       {%- if ability.overcharge  -%}
       ,  <bold>Overcharge:</bold> {{ ability.overcharge }}
@@ -34,6 +33,9 @@
       {%- if ability.prerequisites -%}
       , <bold>Prereqs:</bold> {{ ability.get_prerequisites_str() }}
       {% endif -%}      
+      {%- if ability.specializations -%}
+      , <bold>Specializations:</bold>{{ ability.get_specializations_str() }}
+      {%- endif -%}      
       {%- if ability.has_tags() -%}
       , <bold>Tags:</bold> {{ ability.get_tags_str() }}
       {%- endif -%}      

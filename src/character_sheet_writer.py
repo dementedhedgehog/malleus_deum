@@ -305,7 +305,7 @@ def create_character_sheet_for_archetype(db, archetype):
         for ability in ability_group:
             if ability.is_untrained():                
                 ability_rank = ability.get_untrained_rank()
-                if ability_rank is not None and not ability_rank.get_ability().is_templated():
+                if ability_rank is not None: #  and not ability_rank.get_ability().is_templated():
                     family = ability_group.get_family()
                     info.append((family, ability_rank.get_title(), ability_rank))
                     families_seen.add(family)

@@ -135,8 +135,8 @@
 	    <pathtitle>Black Coat Standard Skills</pathtitle>
 	    <choice>
 	      ✱luck.lucky_1, ✱luck.reroll_1, ✱luck.brilliant_planner_2, ✱luck.nabail_1, ✱skulduggery.search_1,
-	      ✱social.etiquette[Church-of-Mithras]_2, ✱social.negotiate_1,
-	      ✱social.deceive_1, ✱lore.politics_2, ✱lore.book_learning_3,  ✱lore.theology_2, ✱theurgic.theurgy_1,
+	      ✱social.etiquette[Church-of-Mithras]_2, ✱common.negotiate_1,
+	      ✱social.deceive_1, ✱lore.politics_2, ✱lore.book_learning_3,  ✱common.occult_2, ✱theurgic.theurgy_1,
 	      and ✱lore.mathematics_1, ✱arcana.arcana_1, ✱arcana.true_sight_1
 	    </choice>
 	  </path>
@@ -155,18 +155,18 @@
 	  <path chance="1-9">
 	    <pathtitle>Laibstadt/Westreich</pathtitle>
 	    <choice>✱language.merovingian_4, ✱language.aquilonian_3,
-	    ✱lore.history[Westreich]_3, ✱social.etiquette_4[Westreich], ✱social.etiquette[Westenreich-Nobility]_3</choice>
+	    ✱common.history[Westreich]_3, ✱social.etiquette_4[Westreich], ✱social.etiquette[Westenreich-Nobility]_3</choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Alemagne</pathtitle>
 	    <choice>✱language.merovingian_4, ✱language.aquilonian_3, ✱language.alemagne_4, 
-	    ✱lore.history[Westreich]_2, ✱lore.history[Alemagne]_2, ✱social.etiquette_3[Westreich],
+	    ✱common.history[Westreich]_2, ✱common.history[Alemagne]_2, ✱social.etiquette_3[Westreich],
 	    ✱social.etiquette[Westenreich-Nobility]_2, ✱social.etiquette[Allemagne-Nobility]_3</choice>
 	  </path>
 	  <path chance="11">
 	    <pathtitle>Averoigne</pathtitle>
 	    <choice>✱language.merovingian_3, ✱language.aquilonian_3,
-	    ✱lore.history[Westreich]_2, ✱lore.history[Averoigne]_3, ✱social.etiquette_3[Averoigne],
+	    ✱common.history[Westreich]_2, ✱common.history[Averoigne]_3, ✱social.etiquette_3[Averoigne],
 	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
 	    ✱social.etiquette[Averoigne-Nobility]_3</choice>
 	    <choice>✱language.occitan_4, or ✱language.leonese_4, or ✱language.poitevin_4</choice>
@@ -174,7 +174,7 @@
 	  <path chance="12">
 	    <pathtitle>Aquillonian</pathtitle>
 	    <choice>✱language.merovingian_3, ✱language.aquilonian_4,  ✱language.occitan_2,
-	    ✱lore.history[Westreich]_2, ✱social.etiquette_4[Aquillonian],
+	    ✱common.history[Westreich]_2, ✱social.etiquette_4[Aquillonian],
 	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
 	    ✱social.etiquette[Aquillonian-Nobility]_3</choice>
 	  </path>
@@ -191,15 +191,15 @@
 	  </branchdescription>	    
 	  <path chance="1-6">
 	    <pathtitle>Mace Training</pathtitle>
-	    <all-of>✱physical.dodge_2, ✱mace_strike_2, ✱staff_strike_1</all-of>
+	    <all-of>✱common.dodge_2, ✱mace_strike_2, ✱staff_strike_1</all-of>
 	  </path>
 	  <path chance="7-11">
 	    <pathtitle>Staff Training</pathtitle>
-	    <all-of>✱physical.dodge_2, ✱mace_strike_1, ✱staff_strike_2</all-of>
+	    <all-of>✱common.dodge_2, ✱mace_strike_1, ✱staff_strike_2</all-of>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Former Soldier</pathtitle>
-	    <all-of>✱physical.dodge_3, ✱mace_strike_1, ✱staff_strike_2, ✱dagger_strike_2, and ✱sword_strike_2</all-of>
+	    <all-of>✱common.dodge_3, ✱mace_strike_1, ✱staff_strike_2, ✱dagger_strike_2, and ✱sword_strike_2</all-of>
 	  </path>
       </branch>
       
@@ -225,7 +225,7 @@
 	  </path>
 	  <path chance="8">
 	    <pathtitle></pathtitle>
-	    <gain>✱skulduggery.sneak_2</gain>
+	    <gain>✱common.stealth_2</gain>
 	  </path>
 	  <path chance="9">
 	    <pathtitle></pathtitle>
@@ -271,25 +271,13 @@
 	  </branchdescription>	    
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <gain>✱physical.climb_2</gain>
+	    <gain>✱common.climb_2</gain>
 	  </path>
-	  <path chance="6-8">
+	  <path chance="6-10">
 	    <pathtitle></pathtitle>
-	    <gain>✱physical.grapple_2</gain>
+	    <gain>✱common.brawl_2</gain>
 	  </path>
-	  <path chance="9">
-	    <pathtitle></pathtitle>
-	    <gain>✱physical.head_butt_2</gain>
-	  </path>
-	  <path chance="10">
-	    <pathtitle></pathtitle>
-	    <gain>✱physical.punch_2</gain>
-	  </path>
-	  <path chance="11">
-	    <pathtitle></pathtitle>
-	    <gain>✱physical.throw_2</gain>
-	  </path>
-	  <path chance="12">
+	  <path chance="11-12">
 	    <pathtitle>Choose one</pathtitle>
 	  </path>
       </branch>

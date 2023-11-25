@@ -1,7 +1,7 @@
 import os
 from os.path import split
 
-from utils import parse_xml, validate_xml, COMMENT
+from utils import parse_xml, validate_xml, node_to_string, COMMENT
 
     
 class MonsterPack:
@@ -174,6 +174,7 @@ class Encounter:
                else:
                    # save the id location for debugging (can't have duplicates)!
                    self.details = child.text
+                   #self.details = node_to_string(child)
 
            elif tag == "precis":
                if self.precis is not None:

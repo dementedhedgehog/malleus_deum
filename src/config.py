@@ -50,18 +50,18 @@ add_index_to_core = True
 
 # List of files to build (fname, build_index?, index_name)
 doc_files_to_build = (
-    #("phb.xml", True, "PHB"),
-    #("equipment.xml", True, "Eq"),
-    #("magic.xml", True, "Mg"),
+    #("test.xml", True, "TST"),
+    ("phb.xml", True, "PHB"),
+    # ("equipment.xml", True, "Eq"),
+    # ("magic.xml", True, "Mg"),
     #("monster_manual.xml", True, "MM"),
-    #("archetypes.xml", True, "AR"),
-    #("magic_items.xml", True, "MI"),
-    #("abilities.xml", True, "Ab"),
-    #("ability_dcs.xml", False, "X"),
-    #("tables.xml", True, "[TBL]"),a
-    #("gms_screen.xml", False, "GMS"),
-    #("gmg.xml", True, "[GMG]"),
-    #("rationale.xml", True, "[R]"),
+    # ("archetypes.xml", True, "AR"),
+    # ("magic_items.xml", True, "MI"),
+    # ("abilities.xml", True, "Ab"),
+    # ("ability_dcs.xml", False, "X"),
+    # ("gms_screen.xml", False, "GMS"),
+    # ("gmg.xml", True, "[GMG]"),
+    ("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
 )
 
@@ -79,23 +79,23 @@ patrons_to_build = (
 )
 
 archetypes_to_build = (
-    ("black_coat", True, "[BC]"),
-    ("hedge_wizard", True, "[HW]"),
-    ("second_son", True, "[SS]"),
-    ("plague_doctor", True, "[PD]"),
-    ("outrider", True, "[OR]"),
-    ("champion_of_mithras", True, "[CoM]"),
-    ("chevalier", True, "[Ch]"),
-    ("confessor_militant", True, "[FC]"), 
-    ("elven_scion", True, "[ESc]"),
-    ("fyrdzwerg", True, "[FZW]"),
-    ("halfling_rover", True, "[HR]"),
-    ("penitent_brother", True, "[PB]"),
-    ("red_mage", True, "[RM]"),
-    ("skald", True, "[SKL]"),
-    ("summoner", True, "[SM]"),
-    ("witch_hunter", True, "[WH]"),
-    ("night_gauner", True, "[NG]"),
+    # ("black_coat", True, "[BC]"),
+    # ("hedge_wizard", True, "[HW]"),
+    # ("second_son", True, "[SS]"),
+    # ("plague_doctor", True, "[PD]"),
+    # ("outrider", True, "[OR]"),
+    # ("champion_of_mithras", True, "[CoM]"),
+    # ("chevalier", True, "[Ch]"),
+    # ("confessor_militant", True, "[FC]"), 
+    # ("elven_scion", True, "[ESc]"),
+    # ("fyrdzwerg", True, "[FZW]"),
+    # ("halfling_rover", True, "[HR]"),
+    # ("penitent_brother", True, "[PB]"),
+    # ("red_mage", True, "[RM]"),
+    # ("skald", True, "[SKL]"),
+    # ("summoner", True, "[SM]"),
+    # ("witch_hunter", True, "[WH]"),
+    # ("night_gauner", True, "[NG]"),
 )
 
 encounters_to_build = (
@@ -114,7 +114,7 @@ modules_to_build = (
     # ("candlemass", False, "[cdm]"),
     # ("reichs_pferdemeister", False, "[rfm]"),
     # ("ottmar_fulcade", False, "[of]"),
-    #("the_will", False, "[tw]"),
+    # ("the_will", False, "[tw]"),
     #("reichs_pfedermeister", False, "[of]"),
     
     #("temple_of_the_white_prince", False, "[totwp]"),

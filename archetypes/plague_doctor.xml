@@ -81,10 +81,10 @@
   <archetypelevels>
     <archetypelevel>
       <levelnumber>1</levelnumber>
-      <levelstamina>2d4+9</levelstamina>
+      <levelstamina>1d4+8</levelstamina>
       <levelhealth>1d4+7</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
-      <levelluck>3</levelluck>
+      <levelluck>2</levelluck>
       <levelluckrefresh>1</levelluckrefresh>
       <levelmagic>2</levelmagic>
       <levelmagicrefresh>1</levelmagicrefresh>
@@ -104,7 +104,7 @@
 	    <choice>✱sword_strike_1, ✱sword_parry_1, ✱dodge_1, ✱book_learning_1,
 	    ✱barber_1, ✱physician_1, ✱natural_history_1, ✱alchemy_lesser_3, ✱wyrdscience_1, 
 	    ✱aquilonian_1, ✱etiquette[Fraternitas-Aeterna]_1, ✱contacts[Fraternitas-Aeterna]_1,
-	    ✱merovingian_2, ✱intimidate_1, ✱itiok_1, ✱smoke_bomb_1, ✱throw_1, ✱dagger_strike_1.
+	    ✱merovingian_2, ✱negotiate.intimidate, ✱itiok_1, ✱smoke_bomb_1, ✱strength.throw, ✱dagger_strike_1.
 	    </choice>
 	  </path>
       </branch>
@@ -210,7 +210,7 @@
 	  <pathtitle>The Mandragora</pathtitle>
 	  <choice>✱reroll_2</choice>
 	  <choice>✱alchemy_2</choice>
-	  <choice>One of ✱wilderness_lore[Tundra]_1, ✱wilderness_lore[Jungles]_1, or ✱wilderness_lore[Sea]_1</choice>
+	  <choice>One of ✱survivalism.tundra, ✱survivalism.jungles, or ✱survivalism.marine</choice>
 	  <choice></choice>
 	</path>
 	<path chance="2-6">
@@ -231,7 +231,7 @@
 	  <choice>✱wyrd_hand_1</choice>
 	  <choice>✱alchemy_1</choice>
 	  <choice>One of ✱physics_2 or ✱mathematics_2</choice>
-	  <choice>One of ✱wilderness_lore[Tundra]_2, ✱wilderness_lore[Jungles]_2, or ✱wilderness_lore[Sea]_2</choice>
+	  <choice>One of ✱survivalism.tundra, ✱survivalism.jungles, or ✱survivalism.marine</choice>
 	  <choice>One of ✱lagashi_2 or ✱aquilonian_2</choice>
 	</path>
 	<path chance="12">
@@ -251,21 +251,21 @@
 	</branchdescription>
 	<path chance="1-3">
 	  <pathtitle>The Way of the Shadow</pathtitle>
-	  <choice>One of ✱cloak_fighting_2 or ✱sneak_1</choice>
-	  <choice>One of ✱punch_2 or ✱grapple_2</choice>
-	  <choice>One of ✱listen_2 or ✱notice_2</choice>
-	  <choice>One of ✱swim_2 or ✱sure_feet_2</choice>
+	  <choice>One of ✱cloak_fighting_2 or ✱stealth_1</choice>
+	  <choice>One of ✱brawl_2 or ✱brawl_2</choice>
+	  <choice>One of ✱perception.listen or </choice>
+	  <choice>One of ✱endurance.swim or ✱agility.surefeet</choice>
 	</path>
 	<path chance="2-6">
 	  <pathtitle>The Spectre</pathtitle>
-	  <choice>One of ✱pick_locks_2 or ✱sneak_2</choice>
+	  <choice>One of ✱pick_locks_2 or ✱stealth_2</choice>
 	  <choice>One of ✱cryptography_2 or ✱climb_2</choice>
-	  <choice>One of ✱punch_2 or ✱throw_2</choice>
-	  <choice>One of ✱swim_2 or ✱sure_feet_2</choice>
+	  <choice>One of ✱brawl_2 or ✱strength.throw</choice>
+	  <choice>One of ✱endurance.swim or ✱agility.surefeet</choice>
 	</path>
 	<path chance="7-10">
 	  <pathtitle>The Crow</pathtitle>
-	  <choice>One of ✱pick_locks_2 or ✱sneak_2</choice>
+	  <choice>One of ✱pick_locks_2 or ✱stealth_2</choice>
 	  <choice>One of ✱sleight_of_hand_1 or ✱search_2</choice>
 	  <choice>One of ✱dagger_strike_2 or ✱dagger_throw_1</choice>
 	  <choice>One of ✱cryptography_2 or ✱climb_1</choice>
@@ -274,8 +274,8 @@
 	  <pathtitle>Militia</pathtitle>
 	  <choice>✱sword_strike_2</choice>
 	  <choice>Two of ✱spear_strike_2, ✱shield.block_1 and ✱dagger_strike_2</choice>
-	  <choice>One of ✱punch_2 or ✱head_butt_2</choice>
-	  <choice>One of ✱swim_2 or ✱sure_feet_2</choice>
+	  <choice>One of ✱brawl_2 or ✱brawl_2</choice>
+	  <choice>One of ✱endurance.swim or ✱agility.surefeet</choice>
 	  <choice></choice>
 	</path>
 	<path chance="12">

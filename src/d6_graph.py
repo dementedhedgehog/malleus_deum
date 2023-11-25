@@ -22,7 +22,6 @@ def prob_of_n6s(n_dice, min_prob=None):
         n_not_6 = n_dice - number_of_d6s
         count = comb(n_dice, n_not_6) * pow(5, n_not_6)
         prob = 100.0 * count/total
-        #print(f"dice: {n_dice},  n_6: {number_of_d6s}|{n_not_6},  count:{count} prob:{prob}.")
         if min_prob is not None and prob < min_prob:
             break
         probs.append(prob)        

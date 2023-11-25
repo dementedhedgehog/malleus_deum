@@ -121,7 +121,7 @@
     <tags><lore/><scholar/></tags>
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.history_1</prereqabilityrank>
+    <prereqabilityrank>common.history_1</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -198,8 +198,8 @@
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-  	The character knows how create explosives.  They keep on their person some explosive material at all times
-	which may be used to create an ersatz grenade or petard.  A grenade is an anti personal explosive
+  	The character knows how create explosives.  They keep on their person some explosive material at all
+	times which may be used to create an ersatz grenade or petard.  A grenade is an anti personal explosive
 	thrown at a target which does an area of effect damage.  A petard is a breaching charge used to blow
 	a hole in a door or thin wall.  When required the character makes a check.  If unsuccesful the bomb is
 	a dud and fails to ignite.  If successful the bomb they are carrying lights successfully and performs
@@ -238,6 +238,7 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.09</fixed><fixed>0.8</fixed></tablespec>
 	<tabletitle>Grand Discoveries Table</tabletitle>
+	<tablelabel>fig:grand-discoveries</tablelabel>
 
 	<tableheaderrow>
 	  <td>Std</td>
@@ -307,18 +308,17 @@
 	  <td>24+</td>
 	  <td>Surprise Discovery.  Choose a Grand Discovery - no duplicates allowed.</td>
 	</tablerow>
-	<tablelabel>fig:grand-discoveries</tablelabel>
       </table>      
     </abilitydescription>
   </ability>
 
-  
+
   <ability>
     <abilitytitle>History</abilitytitle>
-    <abilityid>lore.history</abilityid>
+    <abilityid>common.history</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
-    <abilityranks from="1" to="5"/>
+    <tags><common/><lore/><general/><scholar/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
     <spline><p x="-60" y="45"/></spline>
@@ -330,16 +330,20 @@
     </abilitydescription>
   </ability>
   
+  
   <ability>
     <abilitytitle>Law</abilitytitle>
     <abilityid>lore.law</abilityid>
-    <abilitytemplate>society</abilitytemplate>
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><lore/><scholar/></tags>
-    <abilityranks from="1" to="5"/>
+    <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_2</prereqabilityrank>    
     <spline><p x="75" y="15"/></spline>
+    <specializations>
+      <specialization>Laibstadt</specialization>
+      <specialization>Hibernia</specialization>
+    </specializations>    
     <abilitydescription>
       <p>
 	An understanding of the law grants the character insight into the way society
@@ -384,7 +388,6 @@
   </ability>
 
 
-
   <ability>
     <abilitytitle>Natural History</abilitytitle>
     <abilityid>lore.natural_history</abilityid>
@@ -397,7 +400,7 @@
     <abilitydescription>
       <p>
 	The study of nature. The character has some knowledge of the flora
-	and fauna of their homelands.  They may identify many plants and
+	and fauna.  They may identify many plants and
 	may know about useful herbal remedies for certain diseases or for use
 	in the the making of poultices.  They have some understanding
 	of zoology and anatomy.  They may be able to identify interesting
@@ -405,11 +408,46 @@
       </p>
 
       <p>
-	For each higher rank the character gains information on an additional
-	new biome through which they have travelled.
+	Natural History is related to Survivalism.  The former is more
+	technical, based on oral or written sources, the latter is more practical
+	and applicable in the wild.	
       </p>
     </abilitydescription>
   </ability>
+
+
+  <ability>
+    <abilitytitle>Occult</abilitytitle>
+    <abilityid>common.occult</abilityid>
+    <abilityactiontype><non-combat/></abilityactiontype>
+    <tags><common/><lore/><general/><scholar/></tags>
+    <abilityranks untrained="-6" from="1" to="5"/>
+    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
+    <abilitydescription>
+      <p>
+	The study of religions, their belief systems, rituals and history.
+	At rank 1 the character has some knowledge of religious philosophies,
+	legends and lore.  At higher ranks the they can
+	identify most religious symbols and quote from their texts.  In order to
+	cast clerical spells the character also needs Theurgic Lore which deals
+	which deals with the mechanics of theological spell casting.
+      </p>
+      <p>
+	At rank 4 the character has a deep knowledge of numerous religions both
+	living and dead.  The characters depth of knowledge is deep enough that
+	they may pass as a follower of many faiths when questioned.
+      </p>
+      
+      <p>
+	At fifth rank the character can enter a trance that releases stress, appears
+	as if the character is dead, can reduce the characters oxygen consumption,
+	and reduce the effect of poisonous miasmas.
+      </p>	
+    </abilitydescription>
+  </ability>
+  
 
   <ability>
     <abilitytitle>Physician</abilitytitle>
@@ -419,7 +457,6 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.natural_history_2</prereqabilityrank>
-    <!-- <spline><p x="75" y="30"/></spline> -->
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -485,6 +522,7 @@
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Potion Making</abilitytitle>
     <abilityid>magic.potions</abilityid>
@@ -518,80 +556,42 @@
 	character makes a check.  If unsuccesful the bomb is a dud and fails to ignite. In the event of failure
 	further attempts at lighting the bomb may be made.
 	If successful the smoke bomb they are carrying lights successfully creates a billowing cloud
-	of grey smoke surrounding the bomb with a radius of <measurement><imperial>20'</imperial><metric>6m</metric></measurement>
-	on the first turn <measurement><imperial>30'</imperial><metric>9m</metric></measurement> on the second turn
-	and <measurement><imperial>40'</imperial><metric>12m</metric></measurement> on the third turn.
+	of grey smoke surrounding the bomb with a radius of
+	<measurement><imperial>20'</imperial><metric>6m</metric></measurement>
+	on the first turn <measurement><imperial>30'</imperial><metric>9m</metric></measurement> on the
+	second turn and <measurement><imperial>40'</imperial><metric>12m</metric></measurement> on the third
+	turn.
       </p>
       
       <p>
 	This cloud gives +3×Rank to defensive rolls against missile attacks.  It is clearly visible during
 	the day, but may not be noticeable at night depending on the lighting.    The cloud also provides
-	+Rank against area-of-effect attacks.   Note that after successfully lighting the bomb, the character must
-	take a long rest before they can build another bomb which allows them to make this check again.  Smoke bombs
-	take time to prepare and are do not age well, so the character cannot produce a never ending stream of smoke bombs.
-	Furthermore smoke bombs require a small amount of specialised equipment and the character must have access to
-	this equipemnt to create smoke bombs.  The smoke bomb may be thrown as if it were a rock.  If the character uses
-	a thurible this grants a +1 to the check and also allows the smoke bomb to be thown as if it were a sling
-	(if not retrieved the thurible will then be lost).
+	+Rank against area-of-effect attacks.   Note that after successfully lighting the bomb, the character
+	must take a long rest before they can build another bomb which allows them to make this check again.
+	Smoke bombs take time to prepare and are do not age well, so the character cannot produce a never ending
+	stream of smoke bombs.  Furthermore smoke bombs require a small amount of specialised equipment and the
+	character must have access to this equipemnt to create smoke bombs.  The smoke bomb may be thrown as if
+	it were a rock.  If the character uses a thurible this grants a +1 to the check and also allows the
+	smoke bomb to be thown as if it were a sling (if not retrieved the thurible will then be lost).
       </p>
     </abilitydescription>
   </ability>
 
-  
-  
   <ability>
-    <abilitytitle>Theology</abilitytitle>
-    <abilityid>lore.theology</abilityid>
+    <abilitytitle>Thaumaturgy</abilitytitle>
+    <abilityid>common.thaumaturgy</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
-    <abilityranks from="1" to="5"/>
+    <tags><common/><lore/><general/><scholar/></tags>
+    <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck dc="13">Std+Rank</abilitycheck>
     <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
     <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
     <abilitydescription>
       <p>
-	The study of religions, their belief systems, rituals and history.
-	At rank 1 the character has some knowledge of religious philosophies,
-	legends and lore.  At higher ranks the they can
-	identify most religious symbols and quote from their texts.  In order to
-	cast clerical spells the character also needs Theurgic Lore which deals
-	which deals with the mechanics of theological spell casting.
-      </p>
-      <p>
-	At rank 4 the character has a deep knowledge of numerous religions both
-	living and dead.  The characters depth of knowledge is deep enough that
-	they may pass as a follower of many faiths when questioned.
-      </p>
-      
-      <p>
-	At fifth rank the character can enter a trance that releases stress, appears
-	as if the character is dead, can reduce the characters oxygen consumption,
-	and reduce the effect of poisonous miasmas.
+	Thaumaturgy is the academic and theoretical study of magic, mythos
+	and the occult.  This ability does not extend to casting spells though
+	it is a prerequisite to do so.
       </p>	
     </abilitydescription>
-  </ability>
-
-  <ability>
-    <abilitytitle>Wilderness Lore [Biome?]</abilitytitle>
-    <abilityid>lore.wilderness_lore</abilityid>
-    <abilitytemplate>terrain</abilitytemplate>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><lore/></tags>
-    <abilityranks untrained="-3" from="1" to="4"/>
-    <abilitycheck dc="9">Std+Rank</abilitycheck>
-    <spline><p x="60" y="450"/></spline>
-    <abilitydescription>
-      <p>
-	This ability represents knowledge of a particular biome, the plants and animals that
-	live there, the weather and so on..
-      </p>
-
-      <p>
-	This knowledge may be obtained through verbal histories or via
-	book learning.  Successful use of this ability provides more detailed,
-	more technical, and less immediately practical information about surviving in
-	the biome than a ✱✱wilderness.survivalism or ✱✱wilderness.hunting check would provide.
-      </p>
-    </abilitydescription>
-  </ability>    
+  </ability>  
 </abilitygroup>

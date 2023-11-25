@@ -91,19 +91,19 @@
 	  <path chance="1-2">
 	    <pathtitle>Laibstadt</pathtitle>
 	    <choice>✱language.merovingian_4, ✱language.aquilonian_2,
-	    ✱lore.history[Westreich]_1, ✱social.etiquette_2[Westreich],
+	    ✱common.history[Westreich]_1, ✱social.etiquette_2[Westreich],
 	    ✱social.etiquette[Westreich-Nobility]_2</choice>
 	  </path>
 	  <path chance="3-9">
 	    <pathtitle>Westreich</pathtitle>
 	    <choice>✱language.merovingian_4, ✱language.aquilonian_2,
-	    ✱lore.history[Westreich]_1, ✱social.etiquette_1[Westreich],
+	    ✱common.history[Westreich]_1, ✱social.etiquette_1[Westreich],
 	    ✱social.etiquette[Westreich-Nobility]_1, ✱craft.farmer_1</choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Alemaigne</pathtitle>
 	    <choice>✱language.merovingian_3, ✱language.aquilonian_1, ✱language.alemagne_4, 
-	    ✱lore.history[Westreich]_1, ✱lore.history[Alemaigne]_1,
+	    ✱common.history[Westreich]_1, ✱common.history[Alemaigne]_1,
 	    ✱social.etiquette_2[Westreich],
 	    ✱social.etiquette[Westreich-Nobility]_1,
 	    ✱social.etiquette[Allemagne-Nobility]_2</choice>
@@ -111,8 +111,8 @@
 	  <path chance="11">
 	    <pathtitle>Albion</pathtitle>
 	    <choice>✱language.merovingian_3, ✱language.aquilonian_1, ✱language.hybernian_2, 
-	    ✱lore.history[Westreich]_1,
-	    ✱lore.history[Albion]_1,
+	    ✱common.history[Westreich]_1,
+	    ✱common.history[Albion]_1,
 	    ✱social.etiquette_2[Albion],
 	    ✱social.etiquette_1[Westreich],
 	    ✱social.etiquette[Westreich-Nobility]_2,
@@ -135,27 +135,27 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>✱transport.horse_riding_2, ✱physical.rest_2, ✱physical.grapple_2 or ✱physical.head_butt_2, ✱physical.punch_2 or ✱physical.throw_2</choice>
+	    <choice>✱transport.horse_riding_2, ✱common.brawl_2</choice>
 	  </path>
 
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>✱listen_2, ✱horse_riding_2 or ✱survivalism[Plains/Woods]_1, ✱physical.sure_feet_2 or ✱physical.jump_2, ✱intimidate_2 or ✱negotiate_2</choice>
+	    <choice>✱perception.listen, ✱horse_riding_2 or ✱survivalism[Plains/Woods]_1, ✱agility.surefeet or ✱speed.jump, ✱negotiate.intimidate or ✱negotiate_2</choice>
 	  </path>
 
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱wilderness.survivalism_1, ✱social.rally_2, ✱physical.sleep_2 or ✱physical.rest_1, ✱skulduggery.sneak_2 or ✱physical.charge_2</choice>
+	    <choice>✱wilderness.survivalism_1, ✱leadership_2, or  or </choice>
 	  </path>
 
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
-	    <choice>✱survivalism_1, ✱notice_2, ✱charge_2 or ✱dodge_2, ✱climb_1 or ✱swim_2, ✱singing_2</choice>
+	    <choice>✱survivalism_1, ,  or ✱dodge_2, ✱climb_1 or ✱endurance.swim, ✱singing_2</choice>
 	  </path>
 
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>✱horse_riding_2, ✱animal_handling_1, ✱juggernaut_2, ✱run_2 or ✱charge_2, ✱punch_2</choice>
+	    <choice>✱horse_riding_2, ✱animal_handling_1, ✱juggernaut_2,  or , ✱brawl_2</choice>
 	  </path>
 
 	  <path chance="12">
@@ -176,16 +176,16 @@
 	    <pathtitle></pathtitle>
 	    <choice>✱arts.art_history_3,
   	  One of ✱history[Westreich]_3 or ✱lore.politics[Westreich]_2,
-  	  One of ✱kick_1 or ✱physical.grapple_1.
+  	  One of  or .
   	  One of ✱dodge_2 or ✱cloak_fighting_3.</choice>
 	  </path>
 
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
 	    <choice>✱arts.oratory_3,
-  	  One of ✱lore.history[Aquilonia]_3 or ✱lore.history[Averoigne]_3,
-  	  One of ✱physical.run_2 or ✱physical.sure_feet_1.
-  	  One of ✱physical.dodge_2 or ✱skulduggery.cloak_fighting_3.</choice>
+  	  One of ✱common.history[Aquilonia]_3 or ✱common.history[Averoigne]_3,
+  	  One of  or .
+  	  One of ✱common.dodge_2 or ✱skulduggery.cloak_fighting_3.</choice>
 	  </path>
 
 	  <path chance="5-6">
@@ -193,24 +193,24 @@
 	    <choice>✱language.poitevin_3,
   	  One of ✱lore.natural_history_2 or ✱lore.mathematics_2,
   	  ✱archery.archery_shoot_2 or (✱gun_shoot_2 and ✱gun.maintenance_2),
-  	  One of ✱physical.kick_1 or ✱physical.grapple_1.</choice>
+  	  One of  or .</choice>
 	  </path>
 
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
 	    <choice>✱language.aquilonian_2,
-  	  One of ✱lore.history[Albion]_2 or ✱lore.history[Hybernia]_2,
+  	  One of ✱common.history[Albion]_2 or ✱common.history[Hybernia]_2,
   	  One of ✱dagger.dagger_strike_3 or ✱archery.archery_shoot_2.
-  	  One of ✱physical.dodge_2 or ✱skulduggery.cloak_fighting_3.
-  	  One of ✱physical.kick_1 or ✱physical.grapple_1.</choice>
+  	  One of ✱common.dodge_2 or ✱skulduggery.cloak_fighting_3.
+  	  One of  or .</choice>
 	  </path>
 
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
 	    <choice>✱lore.law[Westreich]_2,
-  	  One of ✱lore.history[Aquilonia]_3 or ✱lore.politics[Westreich]_2.
+  	  One of ✱common.history[Aquilonia]_3 or ✱lore.politics[Westreich]_2.
   	  ✱sword.sword_strike_3 and one of ✱sword.feint_1 or ✱sword.sword_parry_2.
-  	  One of ✱physical.kick_1 or ✱physical.grapple_1.</choice>
+  	  One of  or .</choice>
 	  </path>
 	  
 	  <path chance="12">
@@ -231,28 +231,28 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱physical.listen_1 or ✱physical.notice_1.  ✱skulduggery.concealment_2 or ✱skulduggery.pick_locks_1</choice>
+	    <choice>Choose one of ✱perception.listen or .  ✱skulduggery.concealment_2 or ✱skulduggery.pick_locks_1</choice>
 	  </path>
 	    
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱skulduggery.disguise_1 or ✱physical.climb_1. One of ✱social.leadership_1 or ✱social.fame[Westreich]_3</choice>
+	    <choice>Choose one of ✱skulduggery.disguise_1 or ✱common.climb_1. One of ✱social.leadership_1 or ✱social.fame[Westreich]_3</choice>
 	  </path>
 	    
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱physical.jump_2, Choose one of ✱physical.run_1 or ✱physical.run_1, One of ✱social.leadership_1 or ✱physical.dodge_2 or
+	    <choice>✱speed.jump, Choose one of ✱speed.run or ✱speed.run, One of ✱social.leadership_1 or ✱common.dodge_2 or
 	    ✱archery.archery_shoot_1</choice>
 	  </path>
 	    
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
-	    <choice>One of ✱physical.swim_3 or ✱physical.charge_1, One of ✱skulduggery.ropecraft_2 or ✱skulduggery.sneak_1</choice>
+	    <choice>One of ✱endurance.swim or , One of ✱skulduggery.ropecraft_2 or ✱stealth.urban</choice>
 	  </path>
 	    
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱physical.knockout_1 or ✱physical.punch_1.  One of ✱skulduggery.sleight_of_hand_1 or ✱social.negotiate_1.</choice>
+	    <choice>Choose one of ✱brawl_1 or ✱common.brawl_1.  One of ✱skulduggery.sleight_of_hand_1 or ✱negotiate_1.</choice>
 	  </path>
 	    
 	  <path chance="12">

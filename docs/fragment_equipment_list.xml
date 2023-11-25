@@ -11,8 +11,8 @@
   <table>
       <tablecategory>Standard</tablecategory>
       <tablespec>
-	<fixed>0.45</fixed>
-	<fixed>0.45</fixed>
+	<fixed>0.5</fixed>
+	<fixed>0.4</fixed>
       </tablespec>
       <tabletitle>Common Coinage</tabletitle>
 
@@ -22,24 +22,24 @@
       </tableheaderrow>
 
       <tablerow>
-	<td>Gold Sovereign</td>
-	<td> = 100 Copper Groats</td>
+	<td>Platinum Mark</td>
+	<td> = 10gp</td>
       </tablerow>
 
       <tablerow>
-	<td>Silver Noble</td>
-	<td> = 10 Copper Groats</td>
+	<td>Gold Shilling</td>
+	<td> = 10sp</td>
       </tablerow>
 
       <tablerow>
-	<td>Copper Groat</td>
-	<td> = 1 Copper Groat</td>
+	<td>Silver Penny</td>
+	<td> = 10cp</td>
       </tablerow>
 
       <tablerow>
-	<td>1 Farthing</td>
-	<td>= ¼ Copper Piece</td>
-      </tablerow>      
+	<td>Copper Assarii</td>
+	<td>Half Farthing</td>
+      </tablerow>
   </table>
  
 
@@ -315,8 +315,7 @@
       <indexentry>Weapon Tags<subentry>Tool</subentry></indexentry>
       </term>      
       <description>
-	The item is a tool not a weapon, <eg/> a wood axe or a carpenters hammer.  The
-	item can be used in combat as a mace if required.
+	The item is a tool not a weapon, <eg/> a wood axe or a carpenters hammer.  
       </description>
 
       <term>Two Handed
@@ -355,575 +354,61 @@
   
   <subsection>
     <subsectiontitle>Clothes</subsectiontitle>    
+
+    {% include "docs/tables/prices_clothing.xml" %}
     
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.35</fixed><fixed>0.1</fixed><fixed>0.32</fixed></tablespec>
-	<tabletitle>Clothing</tabletitle>
-
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>Boots, Leather</td>
-	  <td>10cpX</td>
-	  <td></td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Cloak</td>
-	  <td>30cpX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Chaperon</td>
-	  <td>30cpX</td>
-	  <td>Linen hat</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Hat, Straw</td>
-	  <td>1cpX</td>
-	  <td></td>
-	</tablerow>      	
-	
-	<tablerow>
-	  <td>Dress</td>
-	  <td>30cpX</td>
-	  <td></td>
-	</tablerow>      
-		
-	<tablerow>
-	  <td>Coat, Fur</td>
-	  <td>30cpX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Coat, Leather</td>
-	  <td>30cpX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Coat, Woolen</td>
-	  <td>30cpX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Grappling Hook</td>
-	  <td>60cpX</td>
-	  <td>Save 4</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Hat, Bicorne</td>
-	  <td>30cpX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Hat, Tricorn</td>
-	  <td>30cpX</td>
-	  <td></td>
-	</tablerow>      
-
-	<tablerow>
-	  <td>Hose</td>
-	  <td>30cpX</td>
-	  <td>Woolen leggings</td>
-	</tablerow>      
-
-	<tablerow>
-	  <td>TunicpX</td>
-	  <td>30cpX</td>
-	  <td>Woolen</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Wimple</td>
-	  <td>30cpX</td>
-	  <td>Linen headress</td>
-	</tablerow>      	
-
-	<tablelabel>table:equipment_clothes</tablelabel>
-    </table>
   </subsection>
 
 
   <subsection>
     <subsectiontitle>Food and Drink</subsectiontitle>
-
     <p>
       As a rough guide the costs of feeding people per day are as follows:
       <list>
-	<li>Lord: 7cp</li>
-	<li>Esquire: 4cp</li>
-	<li>Yeoman: 3cp</li>
-	<li>Groom: 1cp</li>
+	<li>Lord: XXX7cp</li>
+	<li>Esquire: XXX4cp</li>
+	<li>Yeoman: XXX3cp</li>
+	<li>Groom: XXX1cp</li>
       </list>
     </p>
     
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.35</fixed><fixed>0.1</fixed><fixed>0.32</fixed></tablespec>
-	<tabletitle>Food and Drink</tabletitle>
-
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-
-	<tablerow>
-	  <td>Ale, <measurement><imperial>1 Gallon</imperial><metric>4 Litres</metric></measurement></td>
-	  <td>1cp-2cp</td>
-	  <td></td>
-	</tablerow>            
-
-	<tablerow>
-	  <td>Ale, Pint</td>
-	  <td>¼cp</td>
-	  <td></td>
-	</tablerow>            
-
-	<tablerow>
-	  <td>Fruit, Dried <measurement><imperial>1 Pound</imperial><metric>1Kg</metric></measurement></td>
-	  <td><measurement><imperial>1cp-4cp</imperial><metric>2cp-8cp</metric></measurement></td>
-	  <td>Raisins, dates, figs, prunes, almonds</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Cheese, <measurement><imperial>1 Pound</imperial><metric>1 Kg</metric></measurement></td>
-	  <td><measurement><imperial>½cp</imperial><metric>1cp</metric></measurement></td>
-	  <td></td>
-	</tablerow>
-
-
-	<tablerow>
-	  <td>Chicken</td>
-	  <td>½cp</td>
-	  <td></td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Cow</td>
-	  <td>6sp-10sp</td>
-	  <td></td>
-	</tablerow>
-
-
-	<tablerow>
-	  <td>Eel, Salted</td>
-	  <td>5cp</td>
-	  <td>Up to <measurement><imperial>100 Pound</imperial><metric>50 Kg</metric></measurement> each</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Eggs, Dozen</td>
-	  <td>½cp</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Goose</td>
-	  <td>6cp</td>
-	  <td></td>
-	</tablerow>
-	
-
-
-	<tablerow>
-	  <td>Herring, Salted</td>
-	  <td>¼cp</td>
-	  <td><measurement><imperial>2 Pound</imperial><metric>1 Kg</metric></measurement> each</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Pig</td>
-	  <td>2sp-3sp</td>
-	  <td>Will be more expensive in big cities.</td>
-	</tablerow>
-
-
-	<tablerow>
-	  <td>Oats</td>
-	  <td>1cp</td>
-	  <td>Sack of <measurement><imperial>50 Pound</imperial><metric>25 Kg</metric></measurement></td>
-	</tablerow>
-
-
-	<tablerow>
-	  <td>Ox</td>
-	  <td>12-15sp</td>
-	  <td></td>
-	</tablerow>
-
-
-
-	<tablerow>
-	  <td>Saffron, <measurement><imperial>1 Pound</imperial><metric>1Kg</metric></measurement></td>
-	  <td><measurement><imperial>12sp-15sp</imperial><metric>24cp-30cp</metric></measurement></td>
-	  <td>Cultivated in Averoigne and further south.</td>
-	</tablerow>
-
-
-	<tablerow>
-	  <td>Sheep</td>
-	  <td>2sp</td>
-	  <td>Will be more expensive in big cities.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Sheep, Wether</td>
-	  <td>1sp-2sp</td>
-	  <td>Desexed male. Will be more expensive in big cities.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Spices, <measurement><imperial>1 Pound</imperial><metric>1Kg</metric></measurement></td>
-	  <td><measurement><imperial>1sp-3sp</imperial><metric>2cp-6cp</metric></measurement></td>
-	  <td>Cinnamon, cloves, mace, pepper</td>
-	</tablerow>
-
-
-	<tablerow>
-	  <td>Sugar, <measurement><imperial>1 Pound</imperial><metric>1Kg</metric></measurement></td>
-	  <td><measurement><imperial>2sp-5sp</imperial><metric>4cp-10cp</metric></measurement></td>
-	  <td>Grown and refined around the middle seas.  Not popular with farmers because it was demanding of their soils.  Much more expensive are rare in the north.</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Wine, <measurement><imperial>1 Gallon</imperial><metric>4 Litres</metric></measurement></td>
-	  <td>4cp-12cp</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Wine, Cup</td>
-	  <td>¼cp-1cp</td>
-	  <td></td>
-	</tablerow>
-	<tablelabel>table:equipment_food_and_drink</tablelabel>
-    </table>
+    {% include "docs/tables/prices_food_and_drink.xml" %}
   </subsection>
   
   
 
   
   <subsection>
-    <subsectiontitle>Common Equipment</subsectiontitle>    
-    
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.35</fixed><fixed>0.1</fixed><fixed>0.32</fixed></tablespec>
-	<tabletitle>Common Equipment</tabletitle>
-
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>Axe, Wood</td>
-	  <td>5cp</td>
-	  <td>Can be used as a shoddy quality battle axe.</td>
-	</tablerow>            
-
-	<tablerow>
-	  <td>Back Pack</td>
-	  <td>X200cpX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Candle. Tallow</td>
-	  <td>X5cpX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Candle, Wax</td>
-	  <td>X5cpX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Chalk</td>
-	  <td>X5cpX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Chest, Medium</td>
-	  <td>X2e</td>
-	  <td>Medium</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Chest, Large</td>
-	  <td>X5e</td>
-	  <td>Large</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Grappling Hook</td>
-	  <td>X60cpX</td>
-	  <td>Save 4</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Flint</td>
-	  <td>X10cpX</td>
-	  <td>Flint, steel and tinder</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Lantern</td>
-	  <td>X300cpX</td>
-	  <td>Medium</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Lantern, Shuttered</td>
-	  <td>330cX</td>
-	  <td>Medium</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Lantern Oil</td>
-	  <td>10cX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Needle and Thread</td>
-	  <td>1cX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Piton</td>
-	  <td>3cX</td>
-	  <td>Metal spikes.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Playing Cards</td>
-	  <td>10cX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Pot, Small</td>
-	  <td>3s</td>
-	  <td>Iron, Medium</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement></td>
-	  <td>20cX</td>
-	  <td>Medium</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Tent</td>
-	  <td>20cX</td>
-	  <td>Large</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Torch</td>
-	  <td>2cX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Sack</td>
-	  <td>5cX</td>
-	  <td></td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Waterskin</td>
-	  <td>30cX</td>
-	  <td>Medium</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Whetstone</td>
-	  <td>10cX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Wineskin</td>
-	  <td>200cX</td>
-	  <td>Medium</td>
-	</tablerow>
-	<tablelabel>table:common_equipment</tablelabel>
-    </table>
+    <subsectiontitle>Common Equipment</subsectiontitle>        
+    {% include "docs/tables/prices_common.xml" %}
   </subsection>
-
 
 
   <subsection>
-    <subsectiontitle>Transportation</subsectiontitle>    
-
-
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.25</fixed><fixed>0.1</fixed><fixed>0.5</fixed></tablespec>
-	<tabletitle>Transportation</tabletitle>
-
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>Horse, War</td>
-	  <td>5gp-250gp</td>
-	  <td></td>
-	</tablerow>        
-
-	<tablerow>
-	  <td>Horse, Riding</td>
-	  <td>5gp-25gp</td>
-	  <td></td>
-	</tablerow>        
-
-	<tablerow>
-	  <td>Horse, Draught</td>
-	  <td>1gp-2gp</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td></td>
-	  <td></td>
-	  <td></td>
-	</tablerow>        
-
-	<tablerow>
-	  <td></td>
-	  <td></td>
-	  <td></td>
-	</tablerow>        
-
-	<tablerow>
-	  <td></td>
-	  <td></td>
-	  <td></td>
-	</tablerow>        
-
-	<tablerow>
-	  <td></td>
-	  <td></td>
-	  <td></td>
-	</tablerow>        
-
-	<tablerow>
-	  <td></td>
-	  <td></td>
-	  <td></td>
-	</tablerow>        
-    </table>
+    <subsectiontitle>Uncommon Equipment</subsectiontitle>
+    {% include "docs/tables/prices_misc.xml" %}
+    {% include "docs/tables/prices_misc2.xml" %}
   </subsection>
-
-  
   
   
   <subsection>
     <subsectiontitle>Barrels</subsectiontitle>
     <p>
       <indexentry>Barrels</indexentry>      
-      Barrels are the main form of transportation for many goods: salted fish, wine, ale, spirits,
-      lantern oil, gunpowder, vinegar, skins, grains, and water.  Their sizes are standized for easy
+      Wooden casks were the standard means of transporting all manner of liquids and provisions, and
+      the cooper one of the foremost tradesmen, particularly in coastal and riverside towns
+      (Kenneth Kilby, 'The Cooper and His Trade')
+      They are the main form of transportation for many goods: salted fish, wine, ale, spirits,
+      lantern oil, gunpowder, vinegar, skins, grains, and water.  Their sizes are standardized for easy
       packing in ships holds and for tax purposes.
     </p>
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.16</fixed><fixed>0.1</fixed><fixed>0.5</fixed></tablespec>
-	<tabletitle>Barrels</tabletitle>
 
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>Firkin<indexentry>Firkin</indexentry></td>
-	  <td></td>
-	  <td><measurement><metric>41 litres</metric><imperial>11 gal</imperial></measurement>
-	  A quarter of the size of a British Barrel. Traditionally used for dispensing cask ale.
-	  Firkins are <measurement><metric>45cm</metric><imperial>18"</imperial></measurement> tall,
-	  and <measurement><metric>41cm</metric><imperial>16½"</imperial></measurement> in diameter at
-	  their widest point.
-	  </td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Barrel</td>
-	  <td></td>
-	  <td><measurement><metric>160 litres</metric><imperial>43 gal</imperial></measurement>
-	  Traditionally used to store ale or lager.
-	  Barrels are <measurement><metric>88cm</metric><imperial>35"</imperial></measurement> tall,
-	  and <measurement><metric>60cm</metric><imperial>24"</imperial></measurement> in diameter at
-	  their widest point.
-	  </td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Hogshead<indexentry>Hogshead</indexentry></td>
-	  <td></td>
-	  <td><measurement><metric>250 litres</metric><imperial>66 gal</imperial></measurement>
-	  Twice the size of a Barrel, half the size of a Butt, quarter of a Tun.
-	  Hogsheads are <measurement><metric>92cm</metric><imperial>37"</imperial></measurement> tall,
-	  and <measurement><metric>68cm</metric><imperial>27"</imperial></measurement> in diameter at
-	  their widest point.
-	  </td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Butt<indexentry>Butt</indexentry></td>
-	  <td></td>
-	  <td><measurement><metric>500 litres</metric><imperial>132 gal</imperial></measurement>
-	  Butts are <measurement><metric>125cm</metric><imperial>50"</imperial></measurement> tall,
-	  and <measurement><metric>95cm</metric><imperial>36"</imperial></measurement> in diameter at
-	  their widest point.
-	  </td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Tun<indexentry>Tun</indexentry></td>
-	  <td></td>
-	  <td><measurement><metric>1000 litres</metric><imperial>250 gal</imperial>
-	  Roughly twice the size of a Butt and equal to four Hogsheads. Traditionally used for
-	  the fermentation of beer</measurement>.  Tuns are
-	  <measurement><metric>107cm</metric><imperial>42"</imperial></measurement> tall, and 
-	  <measurement><metric>107cm</metric><imperial>42"</imperial></measurement> in diameter at
-	  their widest point.
-	  </td>
-	</tablerow>
-	
-	<tablelabel>table:barrels</tablelabel>
-    </table>
-
-      <figure fullwidth="true" >
-        <img src="./resources/durer_barrels/durer_barrels.png" scale="1.0"/>
-	<caption>Barrel Sizes</caption>			
-      </figure>
+    {% include "docs/tables/prices_barrels.xml" %}
     
+    <figure fullwidth="true" >
+      <img src="./resources/durer_barrels/durer_barrels.png" scale="1.0"/>
+      <caption>Barrel Sizes</caption>			
+    </figure>    
   </subsection>
 
   
@@ -932,92 +417,36 @@
     <p>
       <indexentry>Artillery</indexentry>      
     </p>
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.16</fixed><fixed>0.1</fixed><fixed>0.5</fixed></tablespec>
-	<tabletitle>Artillery</tabletitle>
 
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>Blackpowder, 1 Firkin</td>
-	  <td>5gpX</td>
-	  <td></td>
-	</tablerow>
-        
-
-	<tablerow>
-	  <td>Cannon<indexentry>Cannon</indexentry></td>
-	  <td></td>
-	  <td>
-	  </td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Falconet<indexentry>Falconet</indexentry></td>
-	  <td></td>
-	  <td>
-	    Its barrel is approximately <measurement><metric>1.2m</metric><imperial>4 feet</imperial></measurement>
-	    long, has a calibre of <measurement><metric>5cm</metric><imperial>2 inches</imperial></measurement>
-	    and weighs <measurement><metric>80 to 200 kg</metric><imperial>180 to 440 pounds</imperial></measurement>.  The falconet uses <measurement><metric>225g</metric><imperial>0.5 pounds</imperial></measurement> of black powder to fire a <measurement><metric>450 g</metric><imperial>1 pound</imperial></measurement>round shot at a maximum range of approximately <measurement><metric>1.5km</metric><imperial>5,000 feet</imperial></measurement>.
-	  </td>
-	</tablerow>
-	
-
-	<tablerow>
-	  <td>Grenade</td>
-	  <td>2gpX</td>
-	  <td>Medium, glass globes filled with gunpowder</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Mortar<indexentry>Mortar</indexentry></td>
-	  <td></td>
-	  <td>
-	  </td>
-	</tablerow>
-	
-        
-	<tablerow>
-	  <td>Petard</td>
-	  <td>2gpX</td>
-	  <td>Large, explosive for breaching doors</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Swivel Gun<indexentry>Swiverl Gun</indexentry></td>
-	  <td></td>	  
-	  <td>
-	  </td>
-	</tablerow>
-
-	
-	<tablelabel>table:artillery</tablelabel>
-    </table>
-
-      <figure>
-        <img src="./resources/anon_culverin/anon_culverin.png" scale="0.20"/>
-	<caption>Culverin</caption>	
-      </figure>
-        
-      <figure>
-        <img src="./resources/anon_falconet/anon_falconet.png" scale="0.6"/>
-	<caption>Falconet</caption>	
-      </figure>
-
-      <figure>
-        <img src="./resources/morel-fatio_cannon/morel-fatio_cannon.png" scale="0.35"/>
-	<caption>Cannon</caption>	
-      </figure>
+    {% include "docs/tables/prices_artillery.xml" %}
     
-      <figure>
-        <img src="./resources/anon_mortar/anon_mortar.png" scale="0.9"/>
-	<caption>Mortar</caption>	
-      </figure>
+    
+    <figure>
+      <img src="./resources/anon_culverin/anon_culverin.png" scale="0.20"/>
+      <caption>Culverin</caption>	
+    </figure>
+    
+    <figure>
+      <img src="./resources/anon_falconet/anon_falconet.png" scale="0.6"/>
+      <caption>Falconet</caption>	
+    </figure>
+
+    <figure>
+      <img src="./resources/morel-fatio_cannon/morel-fatio_cannon.png" scale="0.35"/>
+      <caption>Cannon</caption>	
+    </figure>
+    
+    <figure>
+      <img src="./resources/anon_mortar/anon_mortar.png" scale="0.9"/>
+      <caption>Mortar</caption>	
+    </figure>
+
+
+    <p>
+      Artillery is assumed to be constructed from brass.  Brass is stronger, longer-lasting, and two to three times
+      more expensive than iron artillery.  Brass also fails less frequently and less dangerously than iron.  Historically,
+      brass guns predate iron by hundreds of years.
+    </p>
 
     <descriptions>      
       <term>Blackpowder
@@ -1027,9 +456,9 @@
 	<p>
 	  Blackpowder is a mixture of the following compounds: Nitre, Brimstone and Charcoal.
 	  Nitre is produced in a Nitrary where urine is mixed with straw and evaporated in large
-	  covered pools.  Takes six months to produce and is usually done on a large scale.
+	  covered pools.  Nitre takes six months to produce and is usually done on a large scale.
 	  Brimstone can be obtained from volcanoes or by heating sulphurous rocks
-	  in a kiln. Charcoal should be burned in underground stacks over a period of days.
+	  in a kiln. Charcoal is wood burned in stacks underground over a period of days.
 	</p>
 
 	<p>
@@ -1072,205 +501,11 @@
   </subsection>
 
   
-  <subsection>
-    <subsectiontitle>Uncommon Equipment</subsectiontitle>    
-
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.33</fixed><fixed>0.13</fixed><fixed>0.39</fixed></tablespec>
-	<tabletitle>Uncommon Equipment</tabletitle>
-
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>Alchemical Equipment</td>
-	  <td>20g</td>
-	  <td>Large x2!!</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Anvil</td>
-	  <td>2gp</td>
-	  <td>Weighs <measurement><imperial>240 pounds</imperial><metric>100kg</metric></measurement>, Largex5</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Augur</td>
-	  <td>3cp</td>
-	  <td>Hand drill</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Bellows, Blacksmith</td>
-	  <td>3gp</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Blacksmith Tools</td>
-	  <td>1-3gp</td>
-	  <td>Selection of hammers, tongs etc, also requires Bellows and an Anvil.</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Block and Tackle</td>
-	  <td>100cX</td>
-	  <td></td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Book</td>
-	  <td>2gp-200gp</td>
-	  <td>Prices vary enormously.  Most mundane titles will be around 2gp.</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Book, Rent</td>
-	  <td>1cp-2cp</td>
-	  <td>Per month, for copying (100 pages per month may be copied).</td>
-	</tablerow>
-
-
-	<tablerow>
-	  <td>Chirurgucal Tools</td>
-	  <td>20g</td>
-	  <td>Scalpel, leeches, retractors, bone-saw, needle and sutures, auger, rolled leather tool roll.</td>
-	</tablerow>
-
-	
-	<tablerow>
-	  <td>Grappling Hook Small</td>
-	  <td>3sX</td>
-	  <td>Can be fired from a Heavy Crossbow, Save 8</td>
-	</tablerow>      
-
-	<tablerow>
-	  <td>Lock Picks</td>
-	  <td>10cX</td>
-	  <td></td>
-	</tablerow>      
-	
-	<tablerow>
-	  <td>Map, Local</td>
-	  <td>2-5g</td>
-	  <td>
-	    <measurement>
-              <metric>100 x 100 km</metric>
-              <imperial>60 x 60 miles</imperial>
-	    </measurement>
-	  </td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Mortar and Pestle</td>
-	  <td>6cX</td>
-	  <td>Medium</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Stone Carving Tools</td>
-	  <td>3sp</td>
-	  <td>Chisels, hammer, level and plumb line, small leather bag</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Ink</td>
-	  <td>5cX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Paper Sheet</td>
-	  <td>1cX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Quill</td>
-	  <td>1cX</td>
-	  <td></td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Spade or Shovel</td>
-	  <td>2cp</td>
-	  <td>Spade is for digging, shovel is for moving loose earth.</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Spinning Wheel</td>
-	  <td>1sp</td>
-	  <td></td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Vise, Post</td>
-	  <td>13sp</td>
-	  <td>Large metal vise attaches to a bench. Large</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Vellum Sheet</td>
-	  <td>10cX</td>
-	  <td>Thin leather, smooth, difficult to tear.</td>
-	</tablerow>      
-	
-	<tablelabel>table:equipment_uncommon</tablelabel>
-    </table>
-  </subsection>
   
   
 
   <subsection>
     <subsectiontitle>Rare Equipment</subsectiontitle>    
-
-
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.25</fixed><fixed>0.1</fixed><fixed>0.5</fixed></tablespec>
-	<tabletitle>Rare Equipment</tabletitle>
-
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>Caltrops, 2 dozen</td>
-	  <td>1gpX</td>
-	  <td>Medium</td>
-	</tablerow>
-        
-	<tablerow>
-	  <td>Elvish Cloak</td>
-	  <td>100gpX</td>
-	  <td>+1 to conceal rolls.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>Laudanum</td>
-	  <td>1gpX</td>
-	  <td>aka Milk o' the Poppy</td>
-	</tablerow>
-	
-	<tablerow>
-	  <td>Spectacles</td>
-	  <td>2gpX</td>
-	  <td></td>
-	</tablerow>
-
-	<tablerow>
-	  <td>War Fire</td>
-	  <td>10gpX</td>
-	  <td></td>
-	</tablerow>            
-	<tablelabel>table:equipment_rare</tablelabel>
-    </table>
 
 
 
@@ -1361,47 +596,13 @@
   <subsection>
     <subsectiontitle>Services</subsectiontitle>    
 
-    <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.25</fixed><fixed>0.1</fixed><fixed>0.5</fixed></tablespec>
-	<tabletitle>Services</tabletitle>
-
-	<tableheaderrow>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Notes</td>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>School, Boarding per Annum</td>
-	  <td>10gp-15gp</td>
-	  <td>per day.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>School, Boarding per Day</td>
-	  <td>3cp-5cp</td>
-	  <td>per day.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>University, per Annum</td>
-	  <td>5gp-13gp</td>
-	  <td></td>
-	</tablerow>
-    </table>
+    {% include "docs/tables/prices_services.xml" %}
   </subsection>
 
   
 
-
   <subsection>
-    <subsectiontitle>Miscellaneous</subsectiontitle>
-    {% include "docs/tables/prices_misc.xml" %}
-  </subsection>
-
-  <subsection>
-    <subsectiontitle>Transport</subsectiontitle>
+    <subsectiontitle>Transportation</subsectiontitle>
     {% include "docs/tables/prices_transport.xml" %}
   </subsection>
 
@@ -1634,6 +835,7 @@
       </p>
     </subsubsection>
 
+    {% include "docs/tables/prices_weapons.xml" %}
     {% include "docs/tables/melee_weapons.xml" %}
     {% include "docs/tables/missile_weapons.xml" %}        
   </subsection>

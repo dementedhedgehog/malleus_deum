@@ -4,7 +4,7 @@ from os import listdir
 from os.path import abspath, dirname
 
 from utils import (
-    parse_xml, validate_xml, children_to_string, contents_to_string,
+    parse_xml, validate_xml, children_to_string, contents_to_string, node_to_string,
     COMMENT, convert_str_to_int
 )
 
@@ -132,7 +132,6 @@ class MonsterGroupInfo:
            #      self.family = child.text
            #      assert self.family in ("Mundane", "Combat", "Magic")
                 
-
            elif tag == "monstergroupdescription":
                if self.description is not None:
                    raise Exception("Only one monstergroupdescription per file.")
@@ -277,6 +276,8 @@ class Monster:
         self.agility = None
         self.speed = None
         self.perception = None
+
+        self.img = None
         return
 
     def validate(self):
@@ -437,6 +438,15 @@ class Monster:
                    # save the id!
                    self.monster_id = monster_id
 
+           elif tag == "img":
+               if self.img is not None:
+                   raise Exception(
+                       "Only one monsterimg per monster. You can add more in the description or "
+                       "in the monster group description.  (%s) %s\n" %
+                       (child.tag, str(child)))
+               else:
+                   self.img = node_to_string(child)
+
            elif tag == "monstertags":
                for tag in child:
                    self.tags.append(tag.tag)                   
@@ -528,7 +538,9 @@ class Monster:
 
            elif tag == "abilityrankid":
                ability_rank_id = child.text
-               self.ability_rank_ids.append(ability_rank_id)
+               #assert ability_rank_id is not None
+               if ability_rank_id is not None:                   
+                   self.ability_rank_ids.append(ability_rank_id)
 
            elif tag == "monsterclass":
                self.monster_class = MonsterClass.load(child.text)

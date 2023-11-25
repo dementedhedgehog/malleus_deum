@@ -101,6 +101,7 @@
 
 
   
+{% from "docs/macro_monster.xml" import long_monster_block with context %}
 </section>
 
 {% for monster_group in monster_groups %}
@@ -110,41 +111,7 @@
   {{ monster_group.get_description() }}
 
   {% for monster in monster_group %}  
-  <monsterblock>
-    <mbtitle>{{ monster.get_title() }}</mbtitle>
-    <mbtags>{{ monster.get_tags_str() }}</mbtags>
-    <mbdefence>{{  monster.get_defences() }}</mbdefence>
-    <mbhp>{{ monster.get_stamina() }}/{{ monster.get_health() }}</mbhp>
-    <mbmove>{{ monster.get_move() }}</mbmove>
-    <mbinitiativebonus>{{ monster.get_initiative_bonus() }}</mbinitiativebonus>
-    <mbmettle>{{ monster.get_mettle_pool() }}</mbmettle>
-    <mbmagic>{{ monster.get_magic_pool() }}</mbmagic>
-    <mbstr>{{ monster.get_strength() }}</mbstr>
-    <mbend>{{ monster.get_endurance() }}</mbend>
-    <mbag>{{ monster.get_agility() }}</mbag>
-    <mbspd>{{ monster.get_speed() }}</mbspd>
-    <mbluck>{{ monster.get_luck() }}</mbluck>
-    <mbper>{{ monster.get_perception() }}</mbper>
-    <mbabilities>
-    {% for ability_rank_id in monster.get_ability_rank_ids() %}
-       <bold>{{ ability_groups.get_ability_rank(ability_rank_id).get_title() }}</bold>
-      <bold>Checks:</bold> {% for check in ability_groups.get_ability_rank(ability_rank_id).get_checks()  %}
-      {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
-      {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}
-      {%- if check.overcharge is not none  -%}/{{check.overcharge}}{%- endif -%}
-      {%- if check.get_damage() is not none  -%}
-      <newline/>Dmg: {{ check.get_damage() }}
-      {%- endif -%}      
-      {% if not loop.last %}, {% endif -%}
-      {% endfor -%}
-    {% endfor %}
-    </mbabilities>
-    {% if monster.get_aspects_str() != "" %}
-    <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
-    {% endif %}
-    <mbdescription>{{ monster.description }}</mbdescription>
-  </monsterblock>
-  {% endfor %}      
-  
+  {{ long_monster_block(monster) }}
+  {% endfor %}  
 </section>   
 {% endfor %}    

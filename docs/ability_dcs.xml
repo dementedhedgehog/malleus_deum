@@ -22,7 +22,7 @@
 
 	  <tablerow>
             <td width="2">
-	      {{ ability.get_title() }} {{ ability.get_ability_class_symbol() }}
+	      {{ ability.get_title() }}
 	    </td>
 	    </tablerow>
 
@@ -36,7 +36,7 @@
               <bold>Check:</bold> {{ ability_rank.check -}}
               {%- endif %}
               {%- if ability_rank.overcharge is not none -%}
-              <bold> <leq/> </bold> {{ ability_rank.overcharge -}}
+              <leqsymbol/>  {{ ability_rank.overcharge -}}
               {%- endif %}
             </td>
 	  </tablerow>

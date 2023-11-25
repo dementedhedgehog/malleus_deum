@@ -1,0 +1,117 @@
+"wide angle", "long shot", "cinematic", or "full screen view".
+
+
+
+left side blank, right side blank, and negative space
+a photo of a (huge) invisible area in the room while the (subject) stands at the side
+
+
+
+"award winning landscape photograph of the tetons with small people at medium distance. 25mm f8. Hassleblad. --ar 3:2 --q 2 --v 4"
+
+"award winning photograph of a fashion model in the middle distance. Wide angle. Full body distance shot. --q 2 --ar 2:3 --v 4"
+
+
+Dutch Angle, Volumetric Lighting
+
+rule of thirds, golden ratio, asymmetric composition
+
+
+Styles..
+ink dripping drawing
+ink drawing
+da vinci technical sketch
+bas relief
+woodcut
+concept art
+black and white
+
+Art Nouveau
+Alphonse MuchaCopied
+
+Jacobean architecture
+Renaissance architecture
+
+
+
+The --style parameter replaces the default aesthetic of some Midjourney Model Versions. Adding a style parameter can help you create more photo-realistic images, cinematic scenes, or cuter characters.
+
+Default Model Version 5.2 and the previous version 5.1 accept --style raw.
+Model Version Niji 5 accepts --style cute --style scenic --style original or --style expressive
+
+
+Artists?
+HR Giger
+Frazetta
+Bernie Wrightson
+Ethan van Scriver
+Gerald Brom
+Ray Harryhausen
+Greg Rutkowski
+Alvaro Martínez Bueno
+Adrian Smith 
+Alan Lee
+Arthur Rackham
+Hal Foster
+Neal Adams
+Todd McFarlane
+Albrecht Dürer
+Anton Pieck
+Carlo Crivelli
+Hieronymus Bosch
+James McIntosh Patrick
+Leonardo Da Vinci
+Zdzisław Beksiński
+
+Flavour
+grim darkg
+rimm brothers
+dark ages
+surreal
+jon blanche
+
+
+Twilight, vintage coffee house::1.5 
+
+Establishing Shot
+1/2 headshot
+
+Cinematic Haze
+Daguerrotype
+--
+
+ portrait, headshot, ultrawide shot, extreme closeup, macro shot, an expansive view of
+
+
+--v 4 --ar 2:3
+
+negative weights.
+two eyes::-0.5
+
+New Features
+1) V4 now supports --style and --stylize
+
+a) The --stylize arg lets you change the strength of our 'default styling' 
+- You can take it from a value of 0 to 1000 (default is 100)
+- If you set --stylize 0 you may have worse images, but you may gain more fine-grained control 
+
+b) The --style arg lets you pick different 'style biases' for our model
+- The current options are --style 4a and --style 4b
+- 4a is closer to the previous v4 style (from the original v4 release)
+- 4b is currently default (from the second v4 release)
+
+Please note: These features may be very subtle unless you fix the random seed with something like --seed 1 
+- We will release new styles in the future that are more different/extreme from current ones
+- We will also attempt to 'keep the old styles' from previous versions (by holding things like 4a and 4b and moving to 4c)
+
+Model Upgrades
+2) Our models (both regular and upscaler) have been updated
+- Both should be slightly sharper with less undesired visual artifacts
+- Both should do slightly better with small details like eyes and facial features
+
+Bug Fixes:
+3) We fixed some math with the way multiprompts and --no arguments work.
+- Both should act 'smarter' and more literal now
+- The arg --no now has a weight of -0.5 instead of -0.25 (same as --v3 and other models) (edited)
+
+https://medium.com/mlearning-ai/an-advanced-guide-to-writing-prompts-for-midjourney-text-to-image-aa12a1e33b6

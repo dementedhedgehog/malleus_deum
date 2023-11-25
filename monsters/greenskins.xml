@@ -50,10 +50,10 @@
     <perception>13</perception>
     <abilityrankid>skulduggery.concealment_6</abilityrankid>
     <abilityrankid>skulduggery.back_stab_3</abilityrankid>
-    <abilityrankid>sword.strike_1</abilityrankid>
-    <abilityrankid>physical.dodge_6</abilityrankid>    
-    <abilityrankid>physical.climb_6</abilityrankid>    
-    <abilityrankid>physical.flee_6</abilityrankid>    
+    <abilityrankid>sword.sword_strike_1</abilityrankid>
+    <abilityrankid>common.dodge_6</abilityrankid>    
+    <abilityrankid>✱common.climb_6</abilityrankid>    
+    <abilityrankid></abilityrankid>    
     <monsterdescription>
       <p>
 	Steal children, run up walls, can fit in small places.
@@ -87,10 +87,10 @@
     <perception>7</perception>
     <abilityrankid>skulduggery.concealment_6</abilityrankid>
     <abilityrankid>skulduggery.back_stab_3</abilityrankid>
-    <abilityrankid>sword.strike_1</abilityrankid>
-    <abilityrankid>physical.dodge_6</abilityrankid>    
-    <abilityrankid>physical.climb_6</abilityrankid>    
-    <abilityrankid>physical.flee_6</abilityrankid>    
+    <abilityrankid>sword.sword_strike_1</abilityrankid>
+    <abilityrankid>common.dodge_6</abilityrankid>    
+    <abilityrankid>✱common.climb_6</abilityrankid>    
+    <abilityrankid></abilityrankid>    
     <monsterdescription>
       <p>
       </p>
@@ -154,6 +154,36 @@
   </monster>
   
 
+
+  <monster>    
+    <monstertitle>Orc</monstertitle>
+    <monsterid>greenskins.orc</monsterid>
+    <img id="mj_orc" scale="0.2"/>
+    <monstertags><greenskin/></monstertags>
+    <monstermove>6</monstermove>
+    <monsterhealth>8</monsterhealth>
+    <monsterstamina>8</monsterstamina>
+    <monsterinitiativebonus>-1</monsterinitiativebonus>
+    <monstermettle>5d6</monstermettle>
+    <monsterluck>1d6</monsterluck>
+    <monstermagic>1d6</monstermagic>
+    <monsterrole><soldier/></monsterrole>
+    <armour>9</armour>
+    <strength>18</strength>
+    <endurance>10</endurance>
+    <agility>5</agility>
+    <speed>9</speed>
+    <perception>9</perception>    
+    <abilityrankid>monster.death_blow_1</abilityrankid>
+    <abilityrankid>monster.blood_rage_1</abilityrankid>
+    <abilityrankid>sword.sword_strike_1</abilityrankid>
+    <monsterdescription>
+      <p>
+	The vanilla orc.
+      </p>
+    </monsterdescription>    
+  </monster>
+  
   <monster>    
     <monstertitle>Orc Raider</monstertitle>
     <monsterid>greenskins.orc_raider</monsterid>
@@ -174,7 +204,7 @@
     <perception>9</perception>    
     <abilityrankid>monster.death_blow_1</abilityrankid>
     <abilityrankid>monster.blood_rage_1</abilityrankid>
-    <abilityrankid>sword.strike_1</abilityrankid>
+    <abilityrankid>sword.sword_strike_1</abilityrankid>
     <monsterdescription>
       <p>	
 	Orc Raiders attack at +1 to hit, and do d10+5 hitpoints damage.
@@ -203,13 +233,48 @@
     <abilityrankid>monster.death_blow_1</abilityrankid>
     <abilityrankid>monster.blood_rage_1</abilityrankid>
     <abilityrankid>monster.terrifying_clarion_3</abilityrankid>
-    <abilityrankid>sword.strike_1</abilityrankid>
+    <abilityrankid>sword.sword_strike_1</abilityrankid>
     <monsterdescription>
       <p>
 	Orc Vandals attack at +1 to hit, and do d10+5 hitpoints damage.	
       </p>
     </monsterdescription>    
   </monster>
+
+
+
+  <monster>    
+    <monstertitle>Orc Heavy</monstertitle>
+    <monsterid>greenskins.orc_heavy</monsterid>
+    <img id="mj_orc_heavy" scale="0.2"/>
+    <monstertags><greenskin/></monstertags>
+    <monstermove>6</monstermove>
+    <monsterhealth>12</monsterhealth>
+    <monsterstamina>12</monsterstamina>
+    <monsterinitiativebonus>-1</monsterinitiativebonus>
+    <monstermettle>5d6</monstermettle>
+    <monsterluck>1d6</monsterluck>
+    <monstermagic>1d6</monstermagic>
+    <monsterrole><soldier/></monsterrole>
+    <armour>9</armour>
+    <strength>18</strength>
+    <endurance>20</endurance>
+    <agility>5</agility>
+    <speed>9</speed>
+    <perception>9</perception>    
+    <abilityrankid>monster.death_blow_3</abilityrankid>
+    <abilityrankid>monster.terrifying_clarion_3</abilityrankid>
+    <abilityrankid>sword.sword_strike_3</abilityrankid>
+    <abilityrankid>✱dodge_3</abilityrankid>
+    <abilityrankid>agility.surefeet</abilityrankid>       
+    <monsterdescription>
+      <p>	
+      </p>
+    </monsterdescription>    
+  </monster>
+  
+      
+  
 
   <monster>    
     <monstertitle>Orc Boss</monstertitle>
@@ -230,11 +295,10 @@
     <speed>9</speed>
     <perception>9</perception>    
     <abilityrankid>monster.death_blow_3</abilityrankid>
-    <abilityrankid>physical.witness_me_3</abilityrankid>
     <abilityrankid>monster.terrifying_clarion_3</abilityrankid>
-    <abilityrankid>sword.strike_3</abilityrankid>
-    <abilityrankid>physical.dodge_3</abilityrankid>
-    <abilityrankid>physical.sure_feet_3</abilityrankid>       
+    <abilityrankid>sword.sword_strike_3</abilityrankid>
+    <abilityrankid>✱dodge_3</abilityrankid>
+    <abilityrankid>agility.surefeet</abilityrankid>       
     <monsterdescription>
       <p>
 	Orc Bosses attack at +3 to hit, and do d10+5 hitpoints damage.	

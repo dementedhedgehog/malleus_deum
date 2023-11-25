@@ -1,10 +1,7 @@
-<hline>
+<hline/>
 <p>
   <bold>Encounter: {{ encounter.name }}</bold>
   <newline/><bold>Precis:</bold> {{ encounter.precis }}
-  {% if encounter.details %}
-  <bold>Details:</bold> {{ encounter.details }},
-  {% endif %}  
   <bold>Motivation:</bold> {{ encounter.motivation }},
   <bold>Progression:</bold> {{ encounter.progression }},
   <bold>Difficulty:</bold> {{ encounter.difficulty }},
@@ -26,5 +23,8 @@
   {{- "," if not loop.first }} {{ a.get_title() -}}    
   {% endfor %}
   {% endfor %}
+  {% if encounter.details %}
+  <bold>Details:</bold> {{ encounter.details }}
+  {%- endif %}  
 </p>
-</hline>
+<hline/>

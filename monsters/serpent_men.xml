@@ -15,6 +15,7 @@
   <monster>    
     <monstertitle>Kobold</monstertitle>
     <monsterid>serpent_men.kobold</monsterid>
+    <img id="mj_kobolds" scale="0.2"/>    
     <monstertags><serpentmen/></monstertags>
     <monstermove>6</monstermove>
     <monsterhealth>4</monsterhealth>
@@ -30,25 +31,12 @@
     <agility>10</agility>
     <speed>10</speed>
     <perception>9</perception>
-    <abilityrankid>physical.dodge_1</abilityrankid>
-    <abilityrankid>physical.jump_1</abilityrankid>
-    <abilityrankid>physical.climb_3</abilityrankid>
-    <abilityrankid>mace.strike_1</abilityrankid>
+    <abilityrankid>common.dodge_1</abilityrankid>
+    <abilityrankid>speed.jump</abilityrankid>
+    <abilityrankid>✱common.climb_3</abilityrankid>
     <monsterdescription>
-      <p>
-	
+      <p>	
       </p>
-
-      <!--
-      <img src="{{ db.licenses.find('kobolds').get_fname() }}" scale="0.16">
-	<attribution>{{ db.licenses.find('kobolds').get_sig() }}</attribution>
-	</img>
-	<attribution src="kobolds"/>
-	-->
-	
-      <img id="kobolds" scale="0.16">
-	<attribution/>
-      </img>
     </monsterdescription>
   </monster>
   

@@ -46,6 +46,7 @@ import graphs
 import dice_pool_graph
 import morale_graph
 import d6_graph
+import aspect_lifetime_graph
 
 # FIXME: didn't want to deal with pdftk at the moment.
 from character_sheet_writer import (
@@ -194,14 +195,11 @@ def xelatex(tex_fname, verbosity=0):
         env["TEXINPUTS"] = tex_inputs
         #env["TEXMFHOME"] = "/home/blaize/proj/malleus_deum/fonts"
 
-        if verbosity > 0:
-            print(("\n\nRun with:\n%s\n%s" % 
-                   ("export TEXINPUTS=%s" % tex_inputs,
-                    " ".join(cmd_line))))        
+        print(("\n\nRun with:\n%s\n%s" % 
+               ("export TEXINPUTS=%s" % tex_inputs, " ".join(cmd_line))))        
     else:
         args.insert(1, "-include-directory=%s" % styles_dir)
-        if verbosity > 0:
-            print("\n\nRun with:\n%s" % " ".join(cmd_line))
+        print("\n\nRun with:\n%s" % " ".join(cmd_line))
 
     succeeded = False
     try:
@@ -274,7 +272,7 @@ def filter_xelatex_output(xelatex_output):
         if (line.startswith("(/usr/share/texlive/texmf-dist/tex/latex/") or 
             line.startswith("Underfull \hbox ") or 
             line.startswith("Overfull \hbox ") or 
-            line.startswith("Overfull \hbox ") or 
+            line.startswith("Overfull \vbox ") or 
             line.startswith("Overfull \vbox ") or 
             line.startswith("This is XeTeX")):
             del lines[line_index]
@@ -286,84 +284,84 @@ def filter_xelatex_output(xelatex_output):
     return
 
 
-def create_index(verbosity=0, fail_fast=True):
-    print()
-    print("===============================================")
-    print("     Create Index")
-    print("===============================================")
+# def create_shared_index(verbosity=0, fail_fast=True):
+#     print()
+#     print("===============================================")
+#     print("     Create the Index.pdf file")
+#     print("===============================================")
     
-    # combine indexes
-    index_entries = []
-    index_regex = re.compile(
-        "\\\\indexentry\{"
-        "(?P<index_name>.*?)"
-        "\}\{"
-        "(?P<index_page>\d+)"
-        "\}$")
-    for fname, build_index, index_name in config.doc_files_to_build:
-        base_fname, _ = splitext(basename(fname))
-        idx_fname = join(build_dir, base_fname + ".idx")
+#     # combine indexes
+#     index_entries = []
+#     index_regex = re.compile(
+#         "\\\\indexentry\{"
+#         "(?P<index_name>.*?)"
+#         "\}\{"
+#         "(?P<index_page>\d+)"
+#         "\}$")
+#     for fname, build_index, index_name in config.doc_files_to_build:
+#         base_fname, _ = splitext(basename(fname))
+#         idx_fname = join(build_dir, base_fname + ".idx")
 
-        with open(idx_fname) as f:
-            for line in f.readlines():
-                match_obj = index_regex.match(line)
-                if match_obj is not None:
-                    new_index_line = "\\indexentry{%s}{%s-%s}\n" % (
-                        match_obj.group("index_name"), 
-                        index_name,
-                        match_obj.group("index_page"))
-                    index_entries.append(new_index_line)
-                else:
-                    print("no match " + line[:-1])
+#         with open(idx_fname) as f:
+#             for line in f.readlines():
+#                 match_obj = index_regex.match(line)
+#                 if match_obj is not None:
+#                     new_index_line = "\\indexentry{%s}{%s-%s}\n" % (
+#                         match_obj.group("index_name"), 
+#                         index_name,
+#                         match_obj.group("index_page"))
+#                     index_entries.append(new_index_line)
+#                 else:
+#                     print("no match " + line[:-1])
 
-    # write the combined .idx file
-    index_idx = join(build_dir, "index.idx")
-    with open(index_idx, "w") as f:
-        f.write("".join(index_entries))
+#     # write the combined .idx file
+#     index_idx = join(build_dir, "index.idx")
+#     with open(index_idx, "w") as f:
+#         f.write("".join(index_entries))
 
-    # create an index.tex
-    index_tex = join(build_dir, "index.tex")
-    with open(index_tex, "w") as f:
-        f.write(index_str)
+#     # create an index.tex
+#     index_tex = join(build_dir, "index.tex")
+#     with open(index_tex, "w") as f:
+#         f.write(index_str)
 
-    # run makeindex to, ah, make the index
-    # (makeindex won't let you build an index outside of the cwd!)
-    cmd_line = [makeindex, basename(index_idx)]
-    if verbosity > 0:
-        print(("\n\n\n" + " ".join(cmd_line)))
-    #call(cmd_line, cwd = build_dir)
+#     # run makeindex to, ah, make the index
+#     # (makeindex won't let you build an index outside of the cwd!)
+#     cmd_line = [makeindex, basename(index_idx)]
+#     if verbosity > 0:
+#         print(("\n\n\n" + " ".join(cmd_line)))
+#     #call(cmd_line, cwd = build_dir)
 
-    succeeded = False
-    try:
-        makeindex_output = check_output(cmd_line, env=env,
-                                        stderr=subprocess.STDOUT,
-                                        cwd=build_dir,
-                                        universal_newlines=True)            
-        assert isinstance(makeindex_output, str)
-        succeeded = True
-    except CalledProcessError as e:
-        makeindex_output = e.output
+#     succeeded = False
+#     try:
+#         makeindex_output = check_output(cmd_line, env=env,
+#                                         stderr=subprocess.STDOUT,
+#                                         cwd=build_dir,
+#                                         universal_newlines=True)            
+#         assert isinstance(makeindex_output, str)
+#         succeeded = True
+#     except CalledProcessError as e:
+#         makeindex_output = e.output
 
-        if fail_fast:
-            raise Exception(f"Failed to makeindex {e.output}")
+#         if fail_fast:
+#             raise Exception(f"Failed to makeindex {e.output}")
 
-    print("------------------------------------v")
-    print(makeindex_output)
-    print("------------------------------------^")
+#     print("------------------------------------v")
+#     print(makeindex_output)
+#     print("------------------------------------^")
             
-    if not xelatex(index_tex):
-        if fail_fast:
-            raise Exception("Failed to run latex on index_tex!")
-        print("Failed to run latex on index_tex!")
-        return
+#     if not xelatex(index_tex):
+#         if fail_fast:
+#             raise Exception("Failed to run latex on index_tex!")
+#         print("Failed to run latex on index_tex!")
+#         return
     
-    # move the pdf from the build dir to the pdfs dir
-    pdf_fname = join(build_dir, "index.pdf")
-    if exists(pdf_fname):
-        copy(pdf_fname, pdfs_dir)
-    else:
-        print("Missing index pdf: %s" % pdf_fname)
-    return
+#     # move the pdf from the build dir to the pdfs dir
+#     pdf_fname = join(build_dir, "index.pdf")
+#     if exists(pdf_fname):
+#         copy(pdf_fname, pdfs_dir)
+#     else:
+#         print("Missing index pdf: %s" % pdf_fname)
+#     return
 
 
 
@@ -422,6 +420,12 @@ def apply_template_to_xml(jinja_env,
     if not doc.parse():
         print(f"Problem parsing the xml.")
         exit(0)
+
+    if not doc.validate():
+        print("Fatal: xml errors are fatal!")
+        print("Run with the -s cmd line option to ignore xml errors.")
+        exit(0)        
+        
     return doc
 
 
@@ -474,6 +478,12 @@ def build_pdf(
     tex_fname = join(build_dir, "%s.tex" % doc_base_fname) 
 
     print(f"\tBuilding {pdf_fname}")
+
+    # check we have a book_node to format
+    if not doc.has_book_node():
+        if verbosity >= 1:
+            print("No book node to format in document: %s IGNORING!" % doc_fname)
+        return    
     
     # makeindex won't write to files outside of the cwd,
     # so we don't want a path here.  Just a filename
@@ -493,12 +503,6 @@ def build_pdf(
         return_code = call(cmd_line, cwd=build_dir)
         if return_code != 0:
             sys.exit("Failed to run makeindex on %s" % idx_fname)    
-
-    # check we have a book_node to format
-    if not doc.has_book_node():
-        if verbosity >= 1:
-            print("No book node to format in document: %s IGNORING!" % doc_fname)
-        return
 
     # build the latex document by converting the xml into tex
     with codecs.open(tex_fname, "w", "utf-8") as f:           
@@ -541,11 +545,13 @@ def build_html_doc(template_fname, verbosity, archetype = None):
     html_fname = join(build_dir, "%s.html" % doc_base_fname)
 
     # parse an xml document
+    print(f"--------------> PARSING {xml_fname}")
     doc = Doc(xml_fname)        
     if not doc.parse():
         print("Problem parsing the xml.")
         exit(0)
 
+    print(f"--------------> VALIDATING {xml_fname}")
     if not doc.validate():
         print("Fatal: xml errors are fatal!")
         print("Run with the -s cmd line option to ignore xml errors.")
@@ -685,6 +691,7 @@ if __name__ == "__main__":
         dice_pool_graph.build_dice_pool_graphs()
         morale_graph.build_morale_graph()
         d6_graph.draw_d6_graph()
+        aspect_lifetime_graph.draw_aspect_lifetime_graph()
 
     # load the game database (archetypes, abilties etc).
     db = DB()
@@ -710,7 +717,8 @@ if __name__ == "__main__":
         trim_blocks = False,
         lstrip_blocks = False,
     )
-    
+
+    # Use these in jinja templates like this:  {{ "foobar" | log }}
     jinja_env.filters['convert_to_roman_numerals'] = utils.convert_to_roman_numerals
     jinja_env.filters['ab'] = db.filter_abilities
     jinja_env.filters['abilities'] = db.filter_abilities
@@ -833,7 +841,7 @@ if __name__ == "__main__":
     # Create the index.pdf file
     #
     print(" Creating index.pdf")
-    create_index(verbosity=verbosity)
+    #create_shared_index(verbosity=verbosity)
     
     #
     # Create Summary.xslx

@@ -101,20 +101,20 @@
 	    
 	  <path chance="1-9">
 	    <pathtitle>Laibstadt</pathtitle>
-	    <choice>✱language.merovingian_4, ✱lore.history[Westreich]_2,
+	    <choice>✱language.merovingian_4, ✱common.history[Westreich]_2,
 	    ✱social.etiquette_3[Westreich], ✱social.etiquette[Westreich-Nobility]_2</choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Alemagne</pathtitle>
 	    <choice>✱language.merovingian_4, ✱language.alemagne_4, 
-	    ✱lore.history[Westreich]_2, ✱lore.history[Alemagne]_2,
+	    ✱common.history[Westreich]_2, ✱common.history[Alemagne]_2,
 	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
 	    ✱social.etiquette[Allemagne-Nobility]_2</choice>
 	  </path>
 	  <path chance="11">
 	    <pathtitle>Averoigne</pathtitle>
-	    <choice>✱language.merovingian_3, ✱lore.history[Westreich]_1,
-	    ✱lore.history[Averoigne]_3, ✱social.etiquette_2[Averoigne],
+	    <choice>✱language.merovingian_3, ✱common.history[Westreich]_1,
+	    ✱common.history[Averoigne]_3, ✱social.etiquette_2[Averoigne],
 	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
 	    ✱social.etiquette[Averoigne-Nobility]_2</choice>
 	    <choice>✱language.occitan_4, or ✱language.leonese_4, or ✱language.poitevin_4</choice>
@@ -122,7 +122,7 @@
 	  <path chance="12">
 	    <pathtitle>Aquillonian</pathtitle>
 	    <choice>✱language.merovingian_3, ✱language.aquilonian_4,  ✱language.occitan_2,
-	    ✱lore.history[Westreich]_2, ✱social.etiquette_2[Aquillonian],
+	    ✱common.history[Westreich]_2, ✱social.etiquette_2[Aquillonian],
 	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_1,
 	    ✱social.etiquette[Aquillonian-Nobility]_2</choice>
 	  </path>
@@ -138,20 +138,20 @@
 	</branchdescription>
 	<path chance="1-2">
 	  <pathtitle>Prospector</pathtitle>
-	  <choice>✱mining_3, ✱natural_history_1, ✱wilderness_lore[Hills]_2, ✱crossbow_shoot_2</choice>
+	  <choice>✱mining_3, ✱natural_history_1, ✱survivalism.mountains, ✱crossbow_shoot_2</choice>
 	  <choice>Two of ✱hunting[Hills]_2, ✱survivalism[Hills]_2 or ✱hunting[Mountains]_2</choice>
 	</path>
 	<path chance="3-5">
 	  <pathtitle>Lumberjack</pathtitle>
-	  <choice>✱craft.craft_2, ✱wilderness_lore[Woods]_2, ✱axe.cleave_3, ✱axe.strike_2,
+	  <choice>✱craft.craft_2, ✱survivalism.woodlands, ✱axe.cleave_3, ✱axe.strike_2,
 	  ✱lore.natural_history_1, ✱transport.carter_2, ✱wilderness.hunting[Forests]_2</choice>
-	  <choice>One of ✱physical.juggernaut_2 or ✱physical.head_butt_2.</choice>
+	  <choice>One of ✱physical.juggernaut_2 or ✱brawl_2.</choice>
 	  <choice>One of ✱adversary[Greenskins]_3, or ✱adversary[Beasts]_3</choice>
 	</path>
 	<path chance="6-7">
 	  <pathtitle>Wagoneer</pathtitle>
-	  <choice>✱transport.carter_3, ✱craft.craft_2, ✱skulduggery.ropecraft_2, ✱hunting[Plains/Woods]_2, ✱physical.sleep_2, ✱animal_handling_1, ✱transport.horse_riding_1</choice>
-	  <choice>One of ✱sure_feet_3 or ✱physical.kick_3</choice>
+	  <choice>✱transport.carter_3, ✱craft.craft_2, ✱skulduggery.ropecraft_2, ✱hunting.woodlands, , ✱animal_handling_1, ✱transport.horse_riding_1</choice>
+	  <choice>One of ✱agility.surefeet or ✱common.brawl_3</choice>
 	  <choice>Two of ✱animal_handling_3, ✱transport.horse_riding_3, ✱survivalism[Plains/Woods]_3</choice>
 	  <choice>Two of ✱adversary[Bandits]_3, ✱adversary[Greenskins]_3, or ✱adversary[Beasts]_3.
 	  </choice>
@@ -162,16 +162,16 @@
 	  <choice>✱social.contacts[Traders]_2, ✱social.etiquette[Low-Society]_2, ✱skulduggery.search_3, ✱skulduggery.concealment_3</choice>
 	  <choice>One of ✱transport.carter_3, or ✱transport.sailor_3</choice>
 	  <choice>One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3</choice>
-	  <choice>Two of ✱social.yield_3, ✱social.rally_3, ✱social.deceive_3, ✱social.negotiate_3, or ✱skulduggery.search_3</choice>
+	  <choice>Two of , , ✱social.deceive_3, ✱common.negotiate_3, or ✱skulduggery.search_3</choice>
 	</path>
 	
 	<path chance="9">
 	  <pathtitle>Grifter</pathtitle>
 	  <choice>✱skulduggery.back_stab_2</choice>
-	  <choice>Three of ✱skulduggery.sleight_of_hand_2, ✱skulduggery.sneak_2, ✱disguise_3, ✱trap_work_2, and ✱skulduggery.pick_locks_2</choice>
+	  <choice>Three of ✱skulduggery.sleight_of_hand_2, , ✱disguise_3, ✱trap_work_2, and ✱skulduggery.pick_locks_2</choice>
 	  <choice>One of ✱art_history_2, ✱lore.antiquarian_2, ✱lore.book_learning_2, ✱law[Westreich]_2, or ✱politics[Westreich]_1</choice>
-	  <choice>One of ✱physical.dodge_1, or ✱physical.run_3</choice>
-	  <choice>Two of ✱social.negotiate_3, ✱social.deceive_3, or ✱social.interrogate_3</choice>
+	  <choice>One of ✱common.dodge_1, or ✱speed.run</choice>
+	  <choice>Two of ✱common.negotiate_3, ✱social.deceive_3, or ✱negotiate.interogate</choice>
 	</path>
 	<path chance="10">
 	  <pathtitle>Army Scout</pathtitle>

@@ -205,7 +205,7 @@
     <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
       <p>
-	There is quite a ability to finding carefully hidden
+	There is an art to finding carefully hidden
 	artifacts, equal parts experience, regimentation and
 	perception.
       </p>
@@ -228,15 +228,17 @@
       </p>
     </abilitydescription>
   </ability>
-  
+    
+
   <ability>
-    <abilitytitle>Sneak</abilitytitle>
-    <abilityid>skulduggery.sneak</abilityid>
+    <abilitytitle>Stealth</abilitytitle>
+    <abilityid>skulduggery.stealth</abilityid>
     <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><skulduggery/></tags>
-    <abilityranks untrained="0" from="1" to="5"/>
+    <tags><common/><general/><skulduggery/></tags>
+    <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck dc="Targets Perception">Std+Rank</abilitycheck>
     <spline></spline>
+    <specializations><specialization>Urban</specialization><specialization>Wilds</specialization></specializations>
     <abilitydescription>
       <p>
 	Hiding in urban environments.  Shadowing people and remainging undetected.
@@ -245,11 +247,10 @@
       </p>
 
       <p>
-	In wilderness use the Stealth ability instead, and use an Agility Check in other cases.
+	In wilderness you can also use the Hunting ability instead.
       </p>	
     </abilitydescription>
-  </ability>
-
+  </ability>  
 
   <ability>
     <abilitytitle>Trap Work</abilitytitle>

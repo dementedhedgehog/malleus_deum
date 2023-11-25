@@ -61,7 +61,7 @@
   
   <archetypelevels>
     <!-- <sectiontitle>Leveling Up</sectiontitle> -->
-    <subsection>
+<!--    <subsection>
       <subsectiontitle>Origin</subsectiontitle>
       <p>
     	Determine where the character came from by rolling once on the Homeland table below.
@@ -135,13 +135,13 @@
     	<tablelabel>table:{{ doc_name }}-fortune</tablelabel>
       </table>
     </subsection>
-
+-->
     <archetypelevel>
       <levelnumber>1</levelnumber>
       <levelstamina>1d4+8</levelstamina>
       <levelhealth>1d4+8</levelhealth>
       <levelhealthrefresh>2d4</levelhealthrefresh>
-      <levelluck>3</levelluck>
+      <levelluck>2</levelluck>
       <levelluckrefresh>1</levelluckrefresh>
       <levelmagic>2</levelmagic>
       <levelmagicrefresh>1</levelmagicrefresh>
@@ -158,7 +158,7 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle>XXXX</pathtitle>
-	  <choice>✱language.merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱social.intimidate_1</choice>
+	  <choice>✱language.merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱negotiate.intimidate</choice>
 	</path>
       </branch>
 
@@ -172,12 +172,12 @@
       	</branchdescription>
       	<path chance="1">
       	  <pathtitle>Almaignee</pathtitle>
-      	  <choice>✱social.etiquette[Almaignee]_2, ✱lore.history[Almaignee]_2</choice>
+      	  <choice>✱social.etiquette[Almaignee]_2, ✱common.history[Almaignee]_2</choice>
       	  <choice></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Poitevin</pathtitle>
-      	  <choice>✱language.poitevin_1, ✱social.etiquette[Averoigne]_2,  ✱lore.history[Averoigne]_2</choice>
+      	  <choice>✱language.poitevin_1, ✱social.etiquette[Averoigne]_2,  ✱common.history[Averoigne]_2</choice>
       	</path>
       	<path chance="2">
       	  <pathtitle>Rural Westreich</pathtitle>
@@ -222,7 +222,7 @@
 	</path>
 	<path chance="4">
       	  <pathtitle>Burglar</pathtitle>
-	  <choice>✱physical.climb_3</choice>
+	  <choice>✱common.climb_3</choice>
 	  <choice>✱skulduggery.ropecraft_2</choice>
 	</path>
       </branch>

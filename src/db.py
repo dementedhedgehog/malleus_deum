@@ -109,9 +109,11 @@ class DB:
     def lookup_ability_or_ability_rank(self, ability_id, rank_id):
         """Check the ability id exists in our db."""
         try:
+            print("-----------_1")
             ability_rank = self.ability_groups.get_ability_rank(ability_id, rank_id)
             return ability_rank
         except KeyError:
+            print("-----------_2")
             return self.ability_groups.get_ability(ability_id)
 
 
@@ -142,7 +144,6 @@ class DB:
         line_number = 1
         
         for i, token in enumerate(tokens):
-
             # ability refs are tokens that start with the special character ✱
             if not token.startswith("✱"):
                 new_tokens.append(token)

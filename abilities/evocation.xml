@@ -93,20 +93,24 @@
     <abilityactiontype><non-combat/></abilityactiontype>
     <tags><magical/><evocation/><ritual/><magicpool/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="21" overcharge="3">Magic+Rank</abilitycheck>
+    <abilitycheck name="Extemporaneous" dc="7" overcharge="2">Magic+Rank</abilitycheck>
+    <abilitycheck name="Ritual" dc="21" overcharge="3">Magic+Rank</abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
-	The user creates a portal in a wall or floor.   The portal remains
-	open for 2d4 minutes or until the caster wills the gate shut.  Casting
-	portal requires marking a magical circle in the ground or against a wall
-	which takes minutes to prepare.
-	The portal opens a path within the current plane, to a point up to
-	<measurement><metric>three meters</metric>
-	<imperial>ten feet</imperial></measurement> per rank of the spell.
-	Note that this is a non-combat spell though it only takes a minute or
-	two to cast.
+	When casting this spell extemporaneously the user creates a portal in a wall or floor
+	to a destination within the current plane, a distance of no more than
+	<measurement><metric>three meters</metric><imperial>ten feet</imperial></measurement>
+	per rank of the spell away.  The portal remains open for 2d4 minutes or until the caster
+	wills the gate shut.  Casting portal requires marking a magical circle in the ground or
+	against a wall which takes a full round to prepare.  Note that this is a non-combat spell
+	though it only takes a minute or two to cast.
+      </p>
+
+      <p>
+	Lesser Portal may also be cast to open a portal to a nearby coterminous plane as a ritual.
+	Choosing the destination plane is difficult without the use of a fetish and some preparation.
       </p>
     </abilitydescription>
   </ability>  
@@ -151,6 +155,7 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
+	<tablelabel>fig:leech-overcharge</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d66</td>
@@ -179,7 +184,6 @@
 	  <td>66</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
 	</tablerow>
-	<tablelabel>fig:leech-overcharge</tablelabel>
       </table>
     </abilitydescription>    
   </ability>
@@ -215,6 +219,7 @@
 	<tablecategory>Standard</tablecategory>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
+	<tablelabel>fig:vulture-overcharge</tablelabel>
 
 	<tableheaderrow>
 	  <td>Roll d66</td>
@@ -237,7 +242,6 @@
 	  <td>65-66</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
 	</tablerow>
-	<tablelabel>fig:vulture-overcharge</tablelabel>
       </table>
     </abilitydescription>
   </ability>

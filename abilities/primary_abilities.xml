@@ -19,10 +19,13 @@
     <abilitytitle>Strength</abilitytitle>
     <abilityid>primary.strength</abilityid>
     <abilityactiontype><immediate/></abilityactiontype>
-    <tags><primary/><primary/><core/></tags>
+    <tags><primary/><core/></tags>
     <abilityranks from="-3" to="6"/>
     <abilitycheck dc="Context Dependent">Std+Strength</abilitycheck>
     <spline><p x="90" y="0"/></spline> 
+    <specializations>
+      <specialization>Throw</specialization>
+    </specializations>     
     <abilitydescription>
       <indexentry>Strength</indexentry>
       <indexentry>Abilities<subentry>Strength</subentry></indexentry>
@@ -40,6 +43,10 @@
     <tags><primary/><core/></tags>
     <abilityranks from="-3" to="6"/>
     <abilitycheck dc="Context Dependent">Std+Endurance</abilitycheck>
+    <specializations>
+      <specialization>Run</specialization>
+      <specialization>Swim</specialization>
+    </specializations>     
     <abilitydescription>
       <p>
         <indexentry>Endurance</indexentry>
@@ -59,13 +66,22 @@
     <tags><primary/><primary/><core/></tags>
     <abilityranks from="-3" to="6"/>
     <abilitycheck dc="Context Dependent">Std+Agility</abilitycheck>
+    <specializations>
+      <specialization>SureFeet</specialization>
+    </specializations>    
     <abilitydescription>
       <p>
         <indexentry>Agility</indexentry>
         <indexentry>Abilities<subentry>Agility</subentry></indexentry>
+        <indexentry>Acrobatics (use Agility)</indexentry>
         The characters ability to move easily; their nimbleness, athleticism and dexterity.
-        Agility modifies the characters Dodge Checks.
+        Agility modifies the characters Dodge Checks.	
       </p>
+
+      <p>
+	The Sure-Feet specialization is used when the attacker the character would be knocked
+	prone.
+      </p>      
     </abilitydescription>
   </ability>
   
@@ -76,14 +92,23 @@
     <tags><primary/><martial/><core/></tags>
     <abilityranks from="-3" to="6"/>
     <abilitycheck dc="Context Dependent">Std+Speed</abilitycheck>
+    <specializations>
+      <specialization>Jump</specialization>
+      <specialization>Run</specialization>
+      <specialization>Throw</specialization>
+    </specializations>    
     <abilitydescription>
       <p>
         <indexentry>Speed</indexentry>
         <indexentry>Abilities<subentry>Speed</subentry></indexentry>
         <indexentry>Movement<subentry>see Speed</subentry></indexentry>
-        Speed represents how physically fast the character is.  Speed effects the
-        character's Sprint and Parry checks.
+        Speed represents how physically fast the character is.
       </p>
+
+      <p>
+        <indexentry>Jumping (use Speed)</indexentry>
+	Speed checks should be made for characters attempting to sprint, jump, or flee.
+      </p>	
     </abilitydescription>
   </ability>
   
@@ -94,12 +119,19 @@
     <tags><primary/><martial/><core/></tags>
     <abilityranks from="-3" to="6"/>
     <abilitycheck dc="Context Dependent">Std+Perception</abilitycheck>
+    <specializations>
+      <specialization>Listen</specialization>
+      <specialization>Smell</specialization>
+      <specialization>Scout</specialization>
+    </specializations>
     <abilitydescription>
       <p>
         <indexentry>Perception</indexentry>
         <indexentry>Abilities<subentry>Perception</subentry></indexentry>
         <indexentry>Spot Hidden<subentry>use Perception</subentry></indexentry>
         <indexentry>Initiative<subentry>see Perception</subentry></indexentry>
+        <indexentry>Notice (use Perception)</indexentry>
+        <indexentry>Listen (use Perception)</indexentry>	
         The character's awareness, acumen and insight.  Perception represents your
         attentiveness to detail and your unflagging vigilance.  In game this value is used
         socially, for reading people and detecting underhanded motives.  Perception modifies

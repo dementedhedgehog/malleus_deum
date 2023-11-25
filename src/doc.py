@@ -39,7 +39,8 @@ TEXT_TAGS = (
     "mbstr", "mbend", "mbag", "mbspd", "mbluck", "mbwil", "mbper",    
     "mbabilities", "mbaspects", "mbdescription", "mbinitiativebonus",
     "npcname", "npchps", "mbresolve", "mbmagic",
-    "sectiontitle", "subsectiontitle", "subsubsectiontitle", "abilitytitle",
+    "sectiontitle", "subsectiontitle", "subsubsectiontitle", "subsubsubsectiontitle", "abilitytitle",
+    #"scenetitle", "purpose", "conflict", "dilemma", "timers", "stakes", "outs", "stats", "location", "action"
     "leveltitle", "branchtitle", "pathtitle", 
     "descriptions", "term", "description", 
     "p", 
