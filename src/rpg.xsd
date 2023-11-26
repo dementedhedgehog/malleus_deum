@@ -1827,6 +1827,9 @@ tags
     </xs:sequence>
   </xs:complexType>
 
+
+  
+
   <!-- Semantic versioning for the project -->
   <xs:element name="version" type="versionType"/>
   <xs:complexType name="versionType" mixed="false">
@@ -1843,9 +1846,23 @@ tags
           name="revision" 
           type="xs:positiveInteger" 
           minOccurs="1" maxOccurs="1"/>
+      <xs:element 
+          name="change" 
+          type="xs:string" 
+          minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
+  <!-- Semantic versioning for the project -->
+  <xs:element name="changelog" type="changelogType"/>
+  <xs:complexType name="changelogType" mixed="false">
+  <xs:sequence>     
+    <xs:element 
+        name="version" 
+        type="versionType" 
+        minOccurs="1" maxOccurs="1"/>
+  </xs:sequence>
+  </xs:complexType>
 
   <!-- Weapons -->
   <xs:element name="weapons" type="weaponsType"/>
