@@ -16,7 +16,7 @@ from encounters import Encounters
 from patrons import Patrons
 from npcs import NPCGangs
 from attribute_bonuses import attribute_bonuses
-from version import Version
+from changelog import Changelog
 from licenses import Licenses
 from weapons import Weapons
 
@@ -40,9 +40,10 @@ class DB:
     def load(self, root_dir, fail_fast=True):
 
         # load the version
-        version_dir = join(root_dir, "docs")
-        version_fname = join(version_dir, "version.xml")
-        self.version = Version.load(version_fname)
+        changelog_dir = join(root_dir, "docs")
+        changelog_fname = join(changelog_dir, "changelog.xml")
+        changelog = Changelog.load(changelog_fname)
+        self.version = changelog.get_version()
         
         # load the abilities
         print("Loading abilities")
