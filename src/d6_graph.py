@@ -31,6 +31,7 @@ def prob_of_n6s(n_dice, min_prob=None):
 def draw_d6_graph():    
     """
       Graph comparison 
+
     """
     hist = pygal.Line(
         human_readable=True,
