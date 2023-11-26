@@ -76,23 +76,4 @@
     </abilitydescription>
   </ability>
 
-  <ability>
-    <abilitytitle>Mace Parry</abilitytitle>
-    <abilityid>mace.mace_parry</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><martial/><mace/><weapon/></tags>
-    <abilityranks from="1" to="6"/>
-    <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <prereqabilityrank>mace.mace_strike_1</prereqabilityrank>	
-    <spline><p x="-30" y="60"/></spline>
-    <abilitydescription>
-      <p>
-	<label>ability:mace.parry</label>
-        When a character is attacked they may attempt to parry the blow using their weapon
-	instead of making an armour roll.  If the parry check succeeds the attack does no damage.
-	If the parry result fails and a boon is rolled the attack deals half damage.  If the parry
-	result fails and a bane is rolled the attack deals double damage. 
-      </p>
-    </abilitydescription>
-  </ability>    
 </abilitygroup>

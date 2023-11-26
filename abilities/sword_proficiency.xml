@@ -121,25 +121,4 @@
       </p>
     </abilitydescription>
   </ability>
-
-
-  <ability>
-    <abilitytitle>Sword Parry</abilitytitle>
-    <abilityid>sword.sword_parry</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><martial/><sword/><weapon/><untrained/></tags>
-    <abilityranks untrained="-3" from="1" to="3"/>
-    <abilitycheck dc="Targets Attack" effect="Attack blocked.">Std+Rank</abilitycheck>
-    <prereqabilityrank>sword.sword_strike_1</prereqabilityrank>	
-    <spline><p x="-30" y="60"/></spline>
-    <abilitydescription>
-      <p>
-	<label>ability:sword.parry</label>
-        When a character is attacked they may attempt to parry the blow using their weapon
-	instead of making an armour roll.  If the parry result fails and a boon is rolled
-	the attack deals half damage.  If the parry result fails and a bane is rolled
-	the attack deals double	damage. If the parry check succeeds the attack does no damage.
-      </p>
-    </abilitydescription>
-  </ability>
 </abilitygroup>

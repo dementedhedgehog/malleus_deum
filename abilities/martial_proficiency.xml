@@ -197,6 +197,30 @@
 
 
   <ability>
+    <abilitytitle>Parry</abilitytitle>
+    <abilityid>martial.parry</abilityid>
+    <abilityactiontype><reaction/></abilityactiontype>
+    <tags><martial/><mace/><sword/><weapon/><untrained/></tags>
+    <abilityranks untrained="-3" from="1" to="6"/>
+    <abilitycheck dc="Targets Attack"effect="Attack blocked.">Std+Rank</abilitycheck>
+    <prereqabilityrank></prereqabilityrank>	
+    <spline><p x="-30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	<label>ability:martial.parry</label>
+        When a character is attacked they may attempt to parry the blow using their weapon
+	instead of making an armour roll.   This ability applies to the use of pole arms which
+	are sufficiently different to warrant their own ability.  If the parry check succeeds
+	the attack does no damage.  If the parry result fails and a boon is rolled the attack
+	deals half damage.  If the parry result fails and a bane is rolled the attack deals
+	double damage.  It may not be possible to parry certain types of attack, for example
+	breath weapons cannot be parried.
+      </p>
+    </abilitydescription>
+  </ability>   
+
+
+  <ability>
     <abilitytitle>Retribution</abilitytitle>
     <abilityid>martial.retribution</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
