@@ -274,6 +274,7 @@
       <xs:element name="eg" type="acronymType"/>
       <xs:element name="ie" type="acronymType"/>
       <xs:element name="etc" type="acronymType"/>
+      <xs:element name="nb" type="acronymType"/>
       <xs:element name="ellipsis" type="symbolType"/>
       <xs:element name="notapplicable" type="acronymType"/>
       <xs:element name="percent" type="symbolType"/>
@@ -379,7 +380,9 @@
       <xs:element name="descriptions" type="descriptionsType"/>
       <xs:element name="eg" type="acronymType"/>
       <xs:element name="etc" type="acronymType"/>
+      <xs:element name="nb" type="acronymType"/>
       <xs:element name="p" type="textType" />
+      <xs:element name="notapplicable" type="acronymType"/>
       <xs:element name="ampersand" type="symbolType" />
       <xs:element name="leqsymbol" type="symbolType"/>      
       <xs:element name="indexentry" type="indexentryType"/>      
@@ -636,6 +639,7 @@
       <xs:element name="sectiontitle" type="titleType" />
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="subsection" type="subsectionType" />
+        <xs:element name="subsubsection" type="subsubsectionType" />
         <xs:element name="monsterblock" type="monsterblockType" />
         <xs:group ref="blockGroup"/>
       </xs:choice>
@@ -1313,6 +1317,7 @@ labels and references.
       <xs:element name="as-mace" type="emptyType"/>
       <xs:element name="as-spear" type="emptyType"/>
       <xs:element name="reach" type="emptyType"/>
+      <xs:element name="polearm" type="emptyType"/>
       <xs:element name="brace" type="emptyType"/>
       <xs:element name="grounding" type="emptyType"/>
       <xs:element name="fast" type="emptyType"/>
@@ -1826,9 +1831,6 @@ tags
           minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
-
-
-  
 
   <!-- Semantic versioning for the project -->
   <xs:element name="version" type="versionType"/>
