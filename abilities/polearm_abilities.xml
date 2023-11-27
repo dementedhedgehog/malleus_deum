@@ -40,12 +40,12 @@
   
 
   <ability>
-    <abilitytitle>Polearm Strike</abilitytitle>
+    <abilitytitle>Polearm/Staff/Spear Strike</abilitytitle>
     <abilityid>polearm.polearm_strike</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><polearm/><reach/><piercing/></tags>
+    <tags><martial/><weapon/><polearm/><reach/></tags>
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength">Std+Rank</abilitycheck>
+    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -53,8 +53,7 @@
 	it during combat doing weapon damage.
       </p>
     </abilitydescription>
-  </ability>
-
+  </ability>  
 
   <ability>
     <abilitytitle>Brace for Charge</abilitytitle>
@@ -77,14 +76,14 @@
 
 
   <ability>
-    <abilitytitle>Staff - Circle of Death</abilitytitle>
-    <abilityid>staff.circle_of_death</abilityid>
+    <abilitytitle>Circle of Death</abilitytitle>
+    <abilityid>polearm.circle_of_death</abilityid>
     <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><staff/><weapon/></tags>
+    <tags><martial/><weapon/><polearm/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Willpower" effect="Check before target can attack">Std+Rank</abilitycheck>
     <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
-    <prereqabilityrank>staff.staff_strike_1</prereqabilityrank>
+    <prereqabilityrank>polearm.polearm_strike_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -128,13 +127,13 @@
 
 
   <ability>
-    <abilitytitle>Staff Parry</abilitytitle>
-    <abilityid>staff.parry</abilityid>
+    <abilitytitle>Polearm/Staff/Spear Parry</abilitytitle>
+    <abilityid>polearm.polearm_parry</abilityid>
     <abilityactiontype><reaction/></abilityactiontype>
-    <tags><martial/><staff/><weapon/></tags>
+    <tags><martial/><polearm/><weapon/></tags>
     <abilityranks from="1" to="4"/>
     <abilitycheck dc="Targets Attack">Std+Rank</abilitycheck>
-    <prereqabilityrank>staff.staff_strike_1</prereqabilityrank>	
+    <prereqabilityrank>polearm.polearm_strike_1</prereqabilityrank>	
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -148,21 +147,4 @@
     </abilitydescription>
   </ability>
 
-
-  <ability>
-    <abilitytitle>Staff Strike</abilitytitle>
-    <abilityid>staff.staff_strike</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><staff/><weapon/></tags>
-    <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Speed|Strength">Std+Rank</abilitycheck>
-    <spline></spline>
-    <abilitydescription>
-      <p noindent="true">
-        Characters equipped with a staff, staff or polearm can strike with
-	it during combat doing weapon damage.
-      </p>
-    </abilitydescription>
-  </ability>
-  
 </abilitygroup>
