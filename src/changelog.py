@@ -58,7 +58,7 @@ class Version:
                                        "an integer\n" % child.tag)
            elif tag == "change":
                change = child.text.strip()
-               self.changes.append(change)
+               version.changes.append(change)
                
            elif tag is COMMENT:
                # ignore comments!
