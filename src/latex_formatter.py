@@ -1573,6 +1573,11 @@ class LatexFormatter:
         return
     end_etc = no_op
 
+    def start_nb(self, fail):
+        self.latex_file.write("n.b.\@{}")
+        return
+    end_nb = no_op
+
     def start_notapplicable(self, fail):
         self.latex_file.write("ⁿ/ₐ")
         return
