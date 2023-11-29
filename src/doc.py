@@ -122,18 +122,21 @@ class Doc:
         return
 
     
-    def validate(self):
-        valid = True        
-        error = validate_xml(self.doc)
+    def validate(self, dump_errors=True):
+        """
+        Returns True if the doc is valid xml according to our schema.
+
+        """
+        errors = validate_xml(self.doc)
 
         # if there's been a validation error print some information about it
-        if error is not None:
-            print("Invalid xml %s!" % self.fname)
-            print(error)
-
-            # print out the context
-            valid = False
-        return valid
+        print("Invalid xml %s!" % self.fname)
+        if errors is not None:
+            if dump_errors:
+                for i, e in enumerate(errors):
+                    print(f"error: {i}\n{str(e)}\n{ get_error_context(self.fname, e.line) }\n\n")
+            return False
+        return True
 
 
     def has_book_node(self):

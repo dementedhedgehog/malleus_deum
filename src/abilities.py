@@ -17,6 +17,7 @@ from collections import defaultdict
 from utils import (
     parse_xml,
     validate_xml,
+    get_error_context,
     node_to_string,
     COMMENT,
     children_to_string,
@@ -1008,13 +1009,11 @@ class AbilityGroup:
         return self.info.family == FAMILY_TYPE.WYRD_SCIENCE
 
     def validate(self):
-        valid = True
-        error_log = validate_xml(self.doc)
-        if error_log is not None:
-            print("Errors (XSD)!")
-            valid = False
-            print("\t%s" % error_log)
-        return valid
+        """
+        Returns None or a list of errors
+
+        """
+        return validate_xml(self.doc)
 
     def get_family(self):
         return self.info.family
@@ -1185,13 +1184,6 @@ class AbilityGroups:
             ability_rank_id = ability_rank_id[1:]
         if rank is not None:
             ability_rank_id = f"{ability_rank_id}_{rank}"
-
-        # if ability_rank_id not in ability_rank_lookup:
-        #     keys = ability_rank_lookup.keys()
-        #     keys = list(keys)
-        #     keys.sort()
-        #     for key in keys:
-        #         print(key)
         return ability_rank_lookup[ability_rank_id]
 
     def get_abilities(self):
@@ -1238,10 +1230,14 @@ class AbilityGroups:
             
             xml_fname = join(abilities_dir, xml_fname)
             ability_group = AbilityGroup(xml_fname)
-            if not ability_group.validate():
+            errors = ability_group.validate()
+            if errors:
                 if fail_fast:
+                    for i, e in enumerate(errors):
+                        print(f"error: {i}\n{str(e)}\n{ get_error_context(doc.fname, e.line) }\n\n")
                     raise Exception("Problem with xml %s" % xml_fname)
-                return False
+                else:
+                    return False
             ability_group.load()
 
             self.ability_groups.append(ability_group)

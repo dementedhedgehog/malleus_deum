@@ -91,10 +91,13 @@ def parse_xml(fname):
 
 
 def validate_xml(doc):
-    result = None
+    """
+    Return a list (an iterable) of errors or None.
+
+    """
     if not xml_schema.validate(doc):
-        result = "\n".join([str(e) for e in xml_schema.error_log])
-    return result
+        return xml_schema.error_log
+    return None
 
 
 def node_to_string(node):
