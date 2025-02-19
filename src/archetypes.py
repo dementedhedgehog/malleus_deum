@@ -28,12 +28,12 @@ from levels import Levels
 DEFAULT_GENDER = "Choose a gender for your character."
 
 
-class NonUniqueTagError(Exception):
-    """Expecting at most one of this sort of tag."""
+class NonUniqueKeywordError(Exception):
+    """Expecting at most one of this sort of keyword."""
 
-    def __init__(self, tag, fname, line_number):
-        super(NonUniqueTagError, self).__init__(
-            "Only one tag: %s per file. %s:%s" % (tag, fname, line_number))
+    def __init__(self, keyword, fname, line_number):
+        super(NonUniqueKeywordError, self).__init__(
+            "Only one keyword: %s per file. %s:%s" % (keyword, fname, line_number))
         return
 
 
@@ -67,7 +67,7 @@ class Archetype:
         # of leveling up.
         self.stream_config = None
 
-        self.tags = []
+        self.keywords = []
         
         # what advantages you get at what levels.
         self.levels = Levels()        
@@ -101,13 +101,12 @@ class Archetype:
             attr_limits_str = ", ".join([str(limit) for limit in self.attr_limits])
         return attr_limits_str
 
-    def load_tags(self, tags_node, fail_fast):
-        for child in list(tags_node):
+    def load_keywords(self, keywords_node, fail_fast):
+        for child in list(keywords_node):
             if child.tag is not COMMENT:
-                #tag = child.tag[:-1]
-                tag = child.tag
-                self.tags.append(tag)
-        self.tags.sort()
+                keyword = child.tag
+                self.keywords.append(keyword)
+        self.keywords.sort()
         return
     
     def has_magical_abilities(self):
@@ -151,11 +150,11 @@ class Archetype:
     def get_primary_abilities(self):
         return self.primary_abilities
 
-    def has_tags(self):
-        return len(self.tags) > 0
+    def has_keywords(self):
+        return len(self.keywords) > 0
 
-    def get_tags_str(self):
-        return ", ".join(self.tags)
+    def get_keywords_str(self):
+        return ", ".join(self.keywords)
 
     def get_starting_gear(self):
         return self.starting_gear
@@ -191,122 +190,122 @@ class Archetype:
         # handle all the children
         for child in list(archetype_node):
         
-           tag = child.tag
-           if tag == "archetypetitle":
+           keyword = child.tag
+           if keyword == "archetypetitle":
                if self.title is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.title = child.text.strip() 
 
-           elif tag == "archetypeid":
+           elif keyword == "archetypeid":
                if self.archetype_id is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.archetype_id = child.text.strip() 
 
-           elif tag == "archetypemovedistance":
+           elif keyword == "archetypemovedistance":
                if self.move_distance is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.move_distance = child.text.strip() 
 
-           elif tag == "inheritance":
+           elif keyword == "inheritance":
                self._load_inheritance(inheritance = child)
 
-           elif tag == "archetypedescription":
+           elif keyword == "archetypedescription":
                if self.description is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.description = children_to_string(child)
 
-           elif tag == "archetypeprimaryabilities":
+           elif keyword == "archetypeprimaryabilities":
                if self.primary_abilities is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.primary_abilities = contents_to_string(child)
 
-           # elif tag == "archetypebio":
+           # elif keyword == "archetypebio":
            #     if self.bio is not None:
-           #         raise NonUniqueTagError(tag, self.fname, child.sourceline)
+           #         raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
            #     else:
            #         self.bio = children_to_string(child)
     
-           elif tag == "archetypeinitiative":
+           elif keyword == "archetypeinitiative":
                if self.initiative is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.initiative = convert_str_to_int(child.text)
 
-           elif tag == "startingcash":
+           elif keyword == "startingcash":
                if self.starting_cash is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.starting_cash = child.text
 
-           elif tag == "startinggear":
+           elif keyword == "startinggear":
                if self.starting_gear is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.starting_gear = normalize_ws(child.text)
 
-           elif tag == "height":
+           elif keyword == "height":
                if self.height is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.height = parse_measurement_to_str(self.fname, child)
 
-           elif tag == "weight":
+           elif keyword == "weight":
                if self.weight is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.weight = parse_measurement_to_str(self.fname, child)
 
-           elif tag == "age":
+           elif keyword == "age":
                if self.age is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.age = normalize_ws(child.text)
 
-           elif tag == "gender":
+           elif keyword == "gender":
                if self.gender != DEFAULT_GENDER:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                else:
                    self.gender = normalize_ws(child.text)
 
-           elif tag == "aspectexamples":
+           elif keyword == "aspectexamples":
                if self.aspect_examples is not None:
-                   raise NonUniqueTagError(tag, self.fname, child.sourceline)
+                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
                self.aspect_examples = child.text
 
-           elif tag == "archetypetags":
-               self.load_tags(child, fail_fast)
+           elif keyword == "archetypekeywords":
+               self.load_keywords(child, fail_fast)
 
-           # elif tag == "levelprogressiontable":
+           # elif keyword == "levelprogressiontable":
            #     self.level_progression_table.load(child, fail_fast)
 
-           elif tag == "archetypelevels":
+           elif keyword == "archetypelevels":
                self.levels.load(child, self.fname, fail_fast)
 
-           elif tag == "attrbonus":
+           elif keyword == "attrbonus":
                bonus = AttrBonus()
                bonus.parse(self.fname, child)
                self.attr_bonuses.append(bonus)
 
-           elif tag == "attrbonus":
+           elif keyword == "attrbonus":
                bonus = AttrBonus()
                bonus.parse(self.fname, child)
                self.attr_bonuses.append(bonus)
 
-           elif tag == "streamconfig":
+           elif keyword == "streamconfig":
                self.stream_config = StreamConfig()
                self.stream_config.parse(self.fname, child)
 
-           elif tag is COMMENT:
+           elif keyword is COMMENT:
                # ignore comments!
                pass
            
            else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
+               raise Exception("UNKNOWN XML KEYWORD (%s) File: %s Line: %s\n" % 
                                (child.tag, self.fname, child.sourceline))
         return
             
@@ -318,17 +317,17 @@ class Archetype:
         """
         # handle all the children
         for child in list(inheritance):
-           tag = child.tag
+           keyword = child.tag
 
-           if tag == "ancestor":
+           if keyword == "ancestor":
                ancestor_id = child.text.strip()
                self.ancestors.append(ancestor_id)
 
-           elif tag is COMMENT:               
+           elif keyword is COMMENT:               
                pass # ignore comments!
 
            else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
+               raise Exception("UNKNOWN XML KEYWORD (%s) File: %s Line: %s\n" % 
                                (child.tag, self.fname, child.sourceline))
         return
 
@@ -349,7 +348,6 @@ class Archetypes:
     def __getitem__(self, key):
          return self.archetype_lookup[key]
 
- 
     def load_archetypes_from_xml(self, xml_fname, abilities, fail_fast):
         """
         Load all the archetypes in an xml file.

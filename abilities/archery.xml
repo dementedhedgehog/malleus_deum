@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Archery Proficiency</abilitygrouptitle>
-    <abilitygroupid>archery</abilitygroupid>
+    <abilitygroupid><archery/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
+    <keywords></keywords>
     <abilitygroupdescription>
       <p>
 	These abilities represent training with the use of the bow and arrow.  Initial
@@ -15,16 +15,22 @@
     <enabled/>
   </abilitygroupinfo>
 
+  
   <ability>
     <abilitytitle>Archery Shoot</abilitytitle>
-    <abilityid>archery.archery_shoot</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><archery/><ranged/><weapon/></tags>    
+    <abilityid>archery_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
+    <abilitycheck>  
+      <defaults>ranged</defaults>
+      <actiontype><standard/></actiontype>
+      <!-- <range><na/></range> -->
+      <keywords><basic-attack/></keywords>
+      <dmg>Weapon</dmg>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
+	The character has trained in the use of the long bow.
         Characters may use Archery to shoot arrows from short bows during combat
 	doing weapon dmg when they hit.
       </p>
@@ -34,12 +40,21 @@
 
   <ability>
     <abilitytitle>Dead Eye</abilitytitle>
-    <abilityid>archery.dead_eye</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><archery/><ranged/><weapon/></tags>    
+    <abilityid>dead_eye</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
-    <prereqabilityrank>archery.archery_shoot_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>ranged</defaults>
+      <actiontype><standard/></actiontype>
+      <critsuccess>3×Dmg</critsuccess>
+      <righteoussuccess>2×Dmg</righteoussuccess>      
+      <critfail>Roll on Misfire Table</critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords>     -->
+      <dmg>Weapon+Rank</dmg>
+    </abilitycheck>
+    <prereqabilityrank>archery_shoot_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -53,18 +68,27 @@
   
   <ability>
     <abilitytitle>Fast Shot</abilitytitle>
-    <abilityid>archery.fast_shot</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><archery/><ranged/><weapon/></tags>    
+    <abilityid>fast_shot</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>archery.archery_shoot_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>ranged</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>Target's Defence</dc> -->
+      <dmg>Weapon</dmg>      
+    </abilitycheck>
+    <prereqabilityrank>archery_shoot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	Holding a pair of arrows in his hand the character
-	is able to shoot them both in quick succession.  Note that this involves
-	less than complete drawing of the bow and therefore causes less dmg.
+	is able to shoot them both in quick succession.  
 	Also note that the speed of these shots occurs because the character is
 	holding the arrows in his firing hand before the combat, so this ability
 	can only be used in the first round of combat and cannot be used when the
@@ -72,33 +96,26 @@
       </p>
     </abilitydescription>
   </ability>
+ 
 
-  <ability>
-    <abilitytitle>Long Bow Proficency</abilitytitle>
-    <abilityid>archery.long_bow</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><archery/><ranged/><weapon/></tags>    
-    <abilityranks from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>archery.archery_shoot_1</prereqabilityrank>
-    <prereqnottag>Short</prereqnottag>
-    <prereqattr><strength>14</strength></prereqattr>
-    <spline><p x="-90" y="30"/></spline>
-    <abilitydescription>
-      <p>
-	The character has trained in the use of the long bow.
-      </p>
-    </abilitydescription>
-  </ability>  
   
   <ability>
     <abilitytitle>Rain of Arrows</abilitytitle>
-    <abilityid>archery.rain_of_arrows</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><archery/><ranged/><weapon/></tags>    
+    <abilityid>rain_of_arrows</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
-    <prereqabilityrank>archery.fast_shot_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>ranged</defaults>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords>     -->
+      <keywords><basic-attack/></keywords>
+      <dmg>Weapon</dmg>      
+    </abilitycheck>
+    <prereqabilityrank>fast_shot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>

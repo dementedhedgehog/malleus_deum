@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Abjuration</abilitygrouptitle>
-    <abilitygroupid>abjuration</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><abjuration/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
         Abjuration involves the	use of raw magical energies and focuses on casting
@@ -14,13 +13,25 @@
     <enabled/>
   </abilitygroupinfo>
 
+  
   <ability>
-    <abilitytitle>Abjuration</abilitytitle>
-    <abilityid>abjuration.abjuration</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><abjuration/></tags>
+    <abilitytitle>Abjuration Lore</abilitytitle>
+    <abilityid>abjuration</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+      <!-- <actiontype><immediate/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><self/></range> -->
+      <!-- <keywords><lore/></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>13</dc> -->
+      <!-- <dmg></dmg> -->
+      <!-- <effect></effect> -->
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -32,102 +43,176 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Banish</abilitytitle>
-    <abilityid>abjuration.banish</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><magical/><abjuration/><magicpool/></tags>
-    <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5"  overcharge="2">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
+    <abilityid>banish</abilityid>
+    <abilityranks from="1" to="6"/>
+    <abilitycheck>
+      <defaults>abjuration_defaults</defaults>      
+      <!-- <name>Cast</name> -->
+      <actiontype><standard/></actiontype>
+      <critsuccess>+3 Mettle Damage</critsuccess>
+      <righteoussuccess>+2 Mettle Damage</righteoussuccess>
+      <range><ranged-medium/></range>
+      <keywords><magicpool/></keywords>
+      <dc>Target's Willpower</dc>
+      <effect>2 Mettle Damage to Target</effect>
+    </abilitycheck>
+    <!-- <abilitycheck> -->
+    <!--   <name>Effect</name> -->
+    <!--   <actiontype><free/></actiontype> -->
+    <!--   <critfail></critfail> -->
+    <!--   <boon>+1 Mettle Damage</boon> -->
+    <!--   <bane>Draw the ire of the demon.</bane> -->
+    <!--   <!-\- <range><ranged-medium/></range> -\-> -->
+    <!--   <!-\- <keywords></keywords> -\-> -->
+    <!--   <!-\- <indifferent></indifferent> -\-> -->
+    <!-- </abilitycheck> -->
     <prereqabilityrank>abjuration_2</prereqabilityrank>
     <spline><p x="120" y="30"/></spline>
     <abilitydescription>
       <p>
   	Banishing is an attempt to disrupt a demons tenuous contagious
 	connection with its simulacrum.  If the banishment succeeds the demon must make
-	a DC 7 Mettle check or its simulacrum is destroyed.  In the event of an overcharge make
-	Demon must make a second DC 3 Morale Check and make a DC 15 Willpower Check on, a fail
-	the caster takes 2d4 damage, on a bane make an additional roll on the Magic Overcharge
-	Effects table, on a boon the character may refresh a magic dice into their pool, snatched
-	from the energy the demon is using to control their simulacrum.
+	a DC 7 Mettle check or its simulacrum is destroyed.  In the event of an overcharge
+	make Demon must make a second DC 3 Morale Check and make a DC 15 Willpower Check
+	on, a fail the caster takes 2d4 damage, on a bane make an additional roll on the
+	Magic Overcharge Effects table, on a boon the character may refresh a magic dice
+	into their pool, snatched from the energy the demon is using to control their
+	simulacrum.
       </p>
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Circle of Protection</abilitytitle>
-    <abilityid>abjuration.circle_of_protection</abilityid>
-    <abilityactiontype><full-turn/></abilityactiontype>
-    <tags><magical/><abjuration/><magicpool/></tags>
+    <abilityid>circle_of_protection</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7"  overcharge="3">Magic+Rank</abilitycheck>
+    <!-- <abilitycheck> -->
+    <!--   <defaults>abjuration_defaults</defaults>       -->
+    <!--   <name>Cast</name> -->
+    <!--   <actiontype><full-turn/></actiontype> -->
+    <!--   <critsuccess>13 hp</critsuccess> -->
+    <!--   <righteoussuccess>11 hp</righteoussuccess> -->
+    <!--   <success>9 hp</success> -->
+    <!--   <fail>7 hp</fail> -->
+    <!--   <grimfail>5 hp</grimfail> -->
+    <!--   <critfail>3 hp</critfail> -->
+    <!--   <range><self/></range> -->
+    <!--   <effect>Creates a magical barrier with a given number of hit points</effect> -->
+    <!-- </abilitycheck> -->
+    <abilitycheck>
+      <defaults>abjuration_defaults</defaults>      
+      <name>Repel</name>
+      <trigger>A demon or undead tries to enter or leave the circle.</trigger>
+      <actiontype><free/></actiontype>
+      <critsuccess>Target takes 6 Mettle damage and is repelled.</critsuccess>
+      <righteoussuccess>Target takes 4 Mettle damage and is repelled.</righteoussuccess>
+      <success>Target takes 3 Mettle damage and is repelled.</success>
+      <fail>Target takes 2 Mettle damage. Target passes through the barrier.</fail>
+      <grimfail>Target takes 1 Mettle damage. Target passes through the barrier.</grimfail>
+      <critfail>Target passes through the barrier.</critfail>
+      <!-- <blessed>Refresh 1 magic pool.</blessed> -->
+      <!-- <boon>No cost</boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane>2 cost</bane> -->
+      <!-- <damned>3 cost</damned> -->
+      <range><na/></range>
+      <dc>Target's Willpower</dc>
+    </abilitycheck>
     <prereqabilityrank>abjuration_1</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
   	A circle of protection is a circle drawn upon the ground and infused
-  	with magical energy that breaks thaumaturgic contagion.  As such it
-  	is hard for summoned creatures to cross, either in or out.  It takes
-	about three turns to create a circle of protection.  A circle of protection
-	cannot be created while the caster is being attacked in melee.
+  	with magical energy that breaks the link required for thaumaturgic contagion. The
+	circle can be marked using chalk, salt, enscribed in the floor or created in a
+	multitude of other ways.  The circle is hard for summoned creatures to cross,
+	either in either direction. A caster takes the Cast action to create the circle.
+	A cicle of radius 
+	<measurement><metric>3m</metric><imperial>10'</imperial></measurement> can be
+	constructed in one full turn.   A circle of
+	radius <measurement><metric>6m</metric><imperial>20'</imperial></measurement> 
+	takes two full turns to create.
+	A circle of protection cannot be created while the caster is being attacked in melee.
       </p>
 
       <p>
-  	If successful Creates a DC 25+5xRank protective barrier against extra planar
-	creatures.  To pass through the barrier the extra-planar character must roll above
-	the DC using their Magic pool.  Creatures striking the protective barrier will
-	lose D4 hit points for each attempt.
+	When a demon or undead attempts to pass through the barrier the creature may be repelled and
+	suffers	mettle damage.
       </p>
-      
+
       <p>
-  	The circle can be marked using chalk, salt, enscribed in the floor
-  	or a multitude of other ways.
-      </p>
-      <p>
-	It is possible to create an Inverted Circle of Protection which is usually called
+	A Circle of Protection can be used keep creatures out of the circle, or to imprison the
+	entities within the circle.  A circle designed to confine creatures is usually called
 	a Circle of Containment.
+      </p>
+
+      <p>
+	If the target or targets did not see the barrier being cast then it is possible that they
+	do not perceive that it exists.  The caster can roll a
+      </p>
+
+      <p>
+	If the cicle is broken.  To stop the spell it is enough to break the circle.
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Contego</abilitytitle>
-    <abilityid>magic.contego</abilityid>
-    <abilityactiontype><reaction-or-minor/></abilityactiontype>
-    <tags><magical/><abjuration/><ranged/><magicpool/></tags>
+    <abilityid>contego</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>    
-    <prereqabilityrank>abjuration.circle_of_protection_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>abjuration_defaults</defaults>      
+      <actiontype><reaction-or-minor/></actiontype>
+      <critsuccess>+10 Temporary Hit Points</critsuccess>
+      <righteoussuccess>+5 Temporary Hit Points</righteoussuccess>  
+      <range><ranged-short/></range>
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <dc>7</dc> -->
+    </abilitycheck>    
+    <prereqabilityrank>circle_of_protection_2</prereqabilityrank>
     <spline><p x="30" y="30"/></spline> 
     <abilitydescription>
       <p noindent="true">
-	The caster creates a magical shield around a person, or anything tagged medium or small.
-	The barrier from outside appears as a blurred humanoid shape.  Kinetic
+	The caster creates a magical shield around a person, or anything tagged medium
+	or small.  The barrier from outside appears as a blurred humanoid shape.  Kinetic
 	weapons do half damage to the character thus shielded.  It also provides
 	brief protection from fires, poisonous gases <etc/>.  The shield is ablative
-	and is represented in game by 8+3xRank temporary Staamina.  
+	and is represented in game by 8+3xRank temporary Stamina.  
 	It lasts five minutes/30 rounds.
       </p>
 
       <p>
-	If overcharged the shield may explode upon being hit, make a Std Check vs DDC 9 every
-	time the shield is hit or explode.   Explosions do 2d4 damage to all adjacent creatures
-	including the character being shielded.  Adjacent creatures may save, Speed or Dodge vs DDC 12,
-	to take half damage.
+	If overcharged the shield may explode upon being hit, make a Std Check vs DDC 9
+	every time the shield is hit or explode.   Explosions do 2d4 damage to all adjacent
+	creatures including the character being shielded.  Adjacent creatures may save,
+	Speed or Dodge vs DDC 12, to take half damage.
       </p>
     </abilitydescription>    
   </ability>
 
 
-
   <ability>
     <abilitytitle>Commune</abilitytitle>
-    <abilityid>magic.commune</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><abjuration/><magicpool/></tags>
+    <abilityid>commune</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7"  overcharge="3">Magic+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>abjuration_defaults</defaults>      
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <dc>7</dc> -->
+    </abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -146,13 +231,23 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Eldritch Shield</abilitytitle>
-    <abilityid>magic.eldritch_shield</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><abjuration/><magicpool/></tags>
+    <abilityid>eldritch_shield</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3"  overcharge="2">Magic+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>abjuration_defaults</defaults>      
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <keywords><magicpool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck>
     <prereqabilityrank>abjuration_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
@@ -172,11 +267,19 @@
 
   <ability>
     <abilitytitle>Flesh Ward</abilitytitle>
-    <abilityid>magic.flesh_ward</abilityid>
-    <abilityactiontype><reaction-or-minor/></abilityactiontype>
-    <tags><magical/><abjuration/><touch/><magicpool/></tags>
+    <abilityid>flesh_ward</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>abjuration_defaults</defaults>      
+      <actiontype><reaction-or-minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><touch/></range>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -191,9 +294,8 @@
       <p>
   	In game the effect of flesh ward is represented
   	in the form of a limited regeneration.  If the cast
-  	succeeds, for the duration of the combat the character heals
-	1d4 hit-points every time they are hit, note that this does not
-	mean every turn.  If the cast overcharges the spell then the
+  	succeeds, for the duration of the combat every time the character is hit
+	they immediatly heal 1d4 hit-points.  If the cast overcharges the spell then the
 	caster suffers damage equal to the difference between the DC and
 	their roll.
       </p>
@@ -203,5 +305,5 @@
 
 
 
-  
+
 

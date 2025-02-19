@@ -65,12 +65,12 @@
   <age>21 + 2d6 years</age>
 
   <aspectexamples>Dwarves never forget, I would love a pint about now, Gold is my lodestone, My word as a dwarf, Hold Fast, Gold rides an iron horse, Not the beard!, A Bit on the Nose, Let me show you how it's done,  I might just have a little nap.</aspectexamples>
-  <archetypetags>
+  <archetypekeywords>
     <dwarf/>
     <humanoid/>
     <medium/>
     <short/>
-  </archetypetags>
+  </archetypekeywords>
 
   <archetypelevels>
     <archetypelevel>
@@ -95,9 +95,9 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <all-of>All of ✱axe.strike_1, ✱hammer_strike_1,
-      ✱special.natural_sprinter_1, ✱shield.block_3, ✱language.dwarven_3, ✱social.etiquette[Dwarven]_2,
-      ✱language.merovingian_1 and ✱common.armour_1.</all-of>
+	  <all-of>All of ✱axe_strike_1, ✱hammer_strike_1,
+      ✱natural_sprinter_1, ✱block_3, ✱dwarven_3, ✱etiquette[Dwarven]_2,
+      ✱merovingian_1 and ✱armour_1.</all-of>
 	</path>
       </branch>
 
@@ -109,8 +109,8 @@
 	<path chance="1">
 	  <pathtitle>Tinkers</pathtitle>
 	  <choice>Add the tag ``Origin:Tinker'' to your character sheet</choice>
-	  <choice>✱craft.smith_2, ✱language.merovingian_3, two of ✱language.thule_2, ✱language.hybernian_2 or ✱language.poitevin_2.
- 	  Gain ✱social.adversary[Greenskins]_1, ✱social.adversary[Giants]_1 . Roll on the City Story Table or Wilderness Story Table</choice>
+	  <choice>✱craft.smith_2, ✱merovingian_3, two of ✱thule_2, ✱hybernian_2 or ✱poitevin_2.
+ 	  Gain ✱adversary[Greenskins]_1, ✱adversary[Giants]_1 . Roll on the City Story Table or Wilderness Story Table</choice>
 	</path>
 
 	<path chance="2-5">
@@ -118,23 +118,23 @@
 	  <choice>Add the tag ``Origin:Mountain-Stronghold'' to your character sheet</choice>
 	  <choice>Choose one of the following dwarven strongholds: Karrag Kaslan, Bad Dunhmaraiodh, or Taobh Iarainn
 	  Record this information in your  characters background</choice>	  
-	  <choice>✱craft.mining_3, ✱social.adversary[Greenskins]_2, ✱social.adversary[Giants]_1, ✱survivalism.mountains.
+	  <choice>✱craft.mining_3, ✱adversary[Greenskins]_2, ✱adversary[Giants]_1, ✱survivalism.mountains.
 	  Roll on the Delvers Story Table</choice>
 	</path>
 
 	<path chance="6-9">
 	  <pathtitle>Mining Outpost</pathtitle>
 	  <choice>Add the tag ``Origin:Mining Outpost'' to your character sheet</choice>
-	  <choice>✱language.merovingian_2, ✱craft.mining_2, ✱social.adversary[Greenskins]_1,
-      	  ✱social.adversary[Giants]_2, ✱survivalism.mountains, ✱survivalism.woodlands.
+	  <choice>✱merovingian_2, ✱craft.mining_2, ✱adversary[Greenskins]_1,
+      	  ✱adversary[Giants]_2, ✱survivalism.mountains, ✱survivalism.woodlands.
 	  Roll on any one of the Story Tables</choice>
 	</path>
 
 	<path chance="10-11">
 	  <pathtitle>Dwarven District of a Human Town</pathtitle>
 	  <choice>Add the tag ``Origin:Dwarven District'' to your character sheet</choice>
-	  <choice>✱language.merovingian_3, ✱social.etiquette[Merchants]_4,
-	  ✱social.contacts[Town]_3, ✱craft.mining_1, one of ✱craft.mason_2, ✱craft.cooper_3, ✱craft.cartwright_3, and ✱sword_strike_2.
+	  <choice>✱merovingian_3, ✱etiquette[Merchants]_4,
+	  ✱contacts[Town]_3, ✱craft.mining_1, one of ✱craft.mason_2, ✱craft.cooper_3, ✱craft.cartwright_3, and ✱sword_strike_2.
 	  Roll on the City Story Table</choice>
 	</path>
 
@@ -152,30 +152,30 @@
 	</branchdescription>
 	<path chance="1-2">
 	  <pathtitle>Gang Member</pathtitle>
-	  <choice>The character gains ✱social.contacts[Low]_2, and two of
-	  ✱stealth_2, ✱skulduggery.pick_locks_3, ✱skulduggery.sleight_of_hand_3, or ✱skulduggery.cloak_fighting_3.</choice>
+	  <choice>The character gains ✱contacts[Low]_2, and two of
+	  ✱stealth_2, ✱pick_locks_3, ✱sleight_of_hand_3, or ✱cloak_fighting_3.</choice>
 	</path>
 
 	<path chance="3-4">
 	  <pathtitle>Business Takeovers</pathtitle>
-	  <choice>the character gains ✱social.contacts[Middle-Classes]_2,
-	  ✱social.etiquette[Middle-Classes]_2,  One of ✱transport.horse_riding_3, ✱transport.carter_3, or ✱transport.sailor_3,
-	  One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3 or ✱lore.mathematics_3.
-	  Two of ✱social.leadership_3, , ✱social.deceive_3, or ✱common.negotiate_3</choice>
+	  <choice>the character gains ✱contacts[Middle-Classes]_2,
+	  ✱etiquette[Middle-Classes]_2,  One of ✱riding_3, ✱carter_3, or ✱sailor_3,
+	  One of ✱book_keeping_3, ✱book_learning_3, ✱antiquarian_3 or ✱mathematics_3.
+	  Two of ✱leadership_3, , ✱negotiate.deceive_3, or ✱negotiate_3</choice>
 	</path>
 
 	<path chance="5-7">
 	  <pathtitle>Trader</pathtitle>
-	  <choice>the character gains ✱social.contacts[Lower-Classes]_2,
-	  ✱social.etiquette[Lower-Classes]_2,  ✱skulduggery.concealment_3.  One of ✱transport.carter_3, or ✱transport.sailor_3,
-	  One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3.  Two of , , ✱social.deceive_3,
-	  ✱common.negotiate_3, or ✱skulduggery.search_3</choice>
+	  <choice>the character gains ✱contacts[Lower-Classes]_2,
+	  ✱etiquette[Lower-Classes]_2,  ✱concealment_3.  One of ✱carter_3, or ✱sailor_3,
+	  One of ✱book_keeping_3, ✱book_learning_3, ✱antiquarian_3.  Two of , , ✱negotiate.deceive_3,
+	  ✱negotiate_3, or ✱search_3</choice>
 	</path>
 
 	<path chance="8-9">
 	  <pathtitle>Metalworking</pathtitle>
 	  <choice>✱craft.smith_3 and one of ✱craft.weapon_smith_1, or ✱craft.armour_smith_1 or ✱craft.mining_1,
-	  Choose two of ✱craft.armour_smith_2, ✱lore.alchemy_3, ✱craft.craft_3</choice>
+	  Choose two of ✱craft.armour_smith_2, ✱alchemy_3, ✱craft.craft_3</choice>
 	</path>
 
 	<path chance="10-11">
@@ -206,37 +206,37 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1-3</td> -->
-<!-- 	  <td><bold>Prospector</bold>: ✱craft.mining_3, ✱lore.natural_history_2, ✱survivalism.mountains, -->
-<!-- 	   ✱crossbow_shoot_2 and Two of ✱wilderness.survivalism[woods]_2</td> -->
+<!-- 	  <td><bold>Prospector</bold>: ✱craft.mining_3, ✱natural_history_2, ✱survivalism.mountains, -->
+<!-- 	   ✱crossbow_shoot_2 and Two of ✱survivalism[woods]_2</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>4-6</td> -->
-<!-- 	  <td><bold>Lumberjack</bold>: ✱craft.craft_2, ✱survivalism.woodlands, ✱axe.cleave_3, ✱axe.strike_2, -->
-<!-- 	  ✱lore.natural_history_1, ✱transport.carter_2, ✱wilderness.survivalism[Woods]_2. One of ✱physical.juggernaut_2 or ✱brawl_2.</td> -->
+<!-- 	  <td><bold>Lumberjack</bold>: ✱craft.craft_2, ✱survivalism.woodlands, ✱axe_cleave_3, ✱axe_strike_2, -->
+<!-- 	  ✱natural_history_1, ✱carter_2, ✱survivalism[Woods]_2. One of ✱juggernaut_2 or ✱brawl_2.</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>7-9</td> -->
-<!-- 	  <td><bold>Wagoneer</bold>: ✱transport.carter_3, ✱craft.craft_2, ✱skulduggery.ropecraft_2, ✱wilderness.survivalism[Woods]_2, , One of -->
-<!-- 	  ✱agility.surefeet or ✱common.brawl_3, two of ✱transport.animal_handling_3, ✱transport.horse_riding_3, two -->
-<!-- 	  of ✱social.adversary[Bandits]_3, ✱social.adversary[Greenskins]_3, or ✱social.adversary[Beasts]_3.</td> -->
+<!-- 	  <td><bold>Wagoneer</bold>: ✱carter_3, ✱craft.craft_2, ✱ropecraft_2, ✱survivalism[Woods]_2, , One of -->
+<!-- 	  ✱surefeet or ✱brawl_3, two of ✱transport.animal_handling_3, ✱riding_3, two -->
+<!-- 	  of ✱adversary[Bandits]_3, ✱adversary[Greenskins]_3, or ✱adversary[Beasts]_3.</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>10-11</td> -->
-<!-- 	  <td><bold>Trader</bold>: the character gains ✱social.contacts[Low?]_2, -->
-<!-- 	  ✱social.etiquette[Lower-Classes]_2, ✱skulduggery.concealment_3.  One of ✱transport.carter_3, or ✱transport.sailor_3, -->
-<!-- 	  One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3.   -->
-<!-- 	  Two of , , ✱social.deceive_3, ✱common.negotiate_3, or ✱skulduggery.search_3</td>	   -->
+<!-- 	  <td><bold>Trader</bold>: the character gains ✱contacts[Low?]_2, -->
+<!-- 	  ✱etiquette[Lower-Classes]_2, ✱concealment_3.  One of ✱carter_3, or ✱sailor_3, -->
+<!-- 	  One of ✱book_keeping_3, ✱book_learning_3, ✱antiquarian_3.   -->
+<!-- 	  Two of , , ✱negotiate.deceive_3, ✱negotiate_3, or ✱search_3</td>	   -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
-<!-- 	  <td><bold>Grifter</bold>: ✱skulduggery.back_stab_2, three of ✱skulduggery.sleight_of_hand_3, ✱stealth_2, ✱skulduggery.disguise_3, -->
-<!-- 	  ✱skulduggery.trap_work_3, and ✱skulduggery.pick_locks_3, One of ✱arts.lore_3, ✱lore.antiquarian_3, ✱lore.book_learning_3, -->
-<!-- 	  ✱lore.law[Society]_3, or ✱lore.politics_3.  One of ✱common.dodge_1, or  ✱speed.run.  Two of ✱common.negotiate_3, -->
-<!-- 	  ✱social.deceive_3, or ✱negotiate.interogate. -->
+<!-- 	  <td><bold>Grifter</bold>: ✱back_stab_2, three of ✱sleight_of_hand_3, ✱stealth_2, ✱disguise_3, -->
+<!-- 	  ✱trap_work_3, and ✱pick_locks_3, One of ✱3, ✱antiquarian_3, ✱book_learning_3, -->
+<!-- 	  ✱law[Society]_3, or ✱politics_3.  One of ✱dodge_1, or  .  Two of ✱negotiate_3, -->
+<!-- 	  ✱negotiate.deceive_3, or ✱negotiate.interogate. -->
 <!-- 	  </td> -->
 <!-- 	</tablerow> -->
 	
@@ -260,28 +260,28 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1-8</td> -->
-<!-- 	  <td><bold>Dilligent Worker</bold> - One of ✱lore.book_learning_2, ✱craft.craft_2 or ✱craft.smith_2.</td> -->
+<!-- 	  <td><bold>Dilligent Worker</bold> - One of ✱book_learning_2, ✱craft.craft_2 or ✱craft.smith_2.</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>9</td> -->
 <!-- 	  <td><bold>Great Work</bold>: The character has created something requiring notable skills.  Gains -->
-<!-- 	  ✱social.fame[Society]_2, ✱arts.lore_1, ✱craft.craft_2, and one of ✱craft.builder_2, ✱craft.mason_2, ✱craft.smith_3, ✱craft.weapon_smith_2, -->
-<!-- 	  Armour ✱craft.smith_2, ✱arts.lore_2, or ✱arts.oratory_2.</td> -->
+<!-- 	  ✱fame[Society]_2, ✱1, ✱craft.craft_2, and one of ✱craft.builder_2, ✱craft.mason_2, ✱craft.smith_3, ✱craft.weapon_smith_2, -->
+<!-- 	  Armour ✱craft.smith_2, ✱2, or ✱oratory_2.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>10</td> -->
 <!-- 	  <td><bold>Rockfall</bold>: PC trapped alone in the dark depth for months.  ✱craft.mining_3, ✱special.blindsight_3, -->
-<!-- 	  ✱perception.listen_3, ✱agility.surefeet, ✱skulduggery.concealment_3, ✱wilderness.dungeoneering_3.  Two of ✱social.adversary[Greenskins]_3, -->
-<!-- 	  ✱skulduggery.ropecraft_3,  ✱special.sixth_sense_3, .</td> -->
+<!-- 	  ✱perception.listen_3, ✱surefeet, ✱concealment_3, ✱dungeoneering_3.  Two of ✱adversary[Greenskins]_3, -->
+<!-- 	  ✱ropecraft_3,  ✱sixth_sense_3, .</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>11</td> -->
 <!-- 	  <td><bold>Famous Discovery</bold>: The character is notable within their society for having discovered -->
-<!-- 	  a new subterannean feature, or a rich vein of ore, or some long lost Dwarven treasure. Gains ✱social.fame[Society]_2, -->
-<!-- 	  One of ✱lore.antiquarian_2, ✱lore.alchemy_2, ✱craft.mining_2.</td> -->
+<!-- 	  a new subterannean feature, or a rich vein of ore, or some long lost Dwarven treasure. Gains ✱fame[Society]_2, -->
+<!-- 	  One of ✱antiquarian_2, ✱alchemy_2, ✱craft.mining_2.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
@@ -454,8 +454,8 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>2</td> -->
 <!-- 	  <td><bold>Laid Low</bold>: The character was struct down with the White Plague in their youth. -->
-<!-- 	  The character learns either ✱lore.natural_history_1 -->
-<!-- 	  or ✱lore.alchemy_1 during the time they spent under care.</td> -->
+<!-- 	  The character learns either ✱natural_history_1 -->
+<!-- 	  or ✱alchemy_1 during the time they spent under care.</td> -->
 <!-- 	</tablerow> -->
 		
 <!-- 	<tablerow> -->
@@ -474,14 +474,14 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>4-5</td> -->
 <!-- 	  <td><bold>Bankruptcy</bold>: The character has invested unwisely or been unlucky with money. -->
-<!-- 	  Lose -2d6gp. Gain ✱lore.book_keeping_1</td> -->
+<!-- 	  Lose -2d6gp. Gain ✱book_keeping_1</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>6</td> -->
 <!-- 	  <td><bold>Brawl/Accidental Death</bold>:  The character was involved in a either an accident or -->
 <!-- 	  a brawl that led to the death of one of his fellow dwarves.  The character has to -->
-<!-- 	  pay a Zwerggild -10gp, and gains the ✱social.infamy_1 skill in that society</td> -->
+<!-- 	  pay a Zwerggild -10gp, and gains the ✱infamy_1 skill in that society</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
@@ -599,12 +599,12 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1</td> -->
-<!-- 	  <td><bold>The Seas</bold>: Gain ✱transport.sailor_2</td> -->
+<!-- 	  <td><bold>The Seas</bold>: Gain ✱sailor_2</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>2</td> -->
-<!-- 	  <td><bold>Courier</bold>: Gain ✱transport.horse_riding_2 or ✱wilderness_lore[Terrain?]_1</td> -->
+<!-- 	  <td><bold>Courier</bold>: Gain ✱riding_2 or ✱wilderness_lore[Terrain?]_1</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -615,18 +615,18 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>4</td> -->
 <!-- 	  <td><bold>Comedy</bold>: The character has made ends meet from time to time by clowning. -->
-<!-- 	  Gain ✱arts.jester_3.</td> -->
+<!-- 	  Gain ✱jester_3.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>5-6</td> -->
-<!-- 	  <td><bold>The Getting of Wisdom</bold>: The character has studied under a master - Gain ✱lore.physics_2, -->
-<!-- 	  ✱lore.natural_history_2, or ✱common.occult_2</td> -->
+<!-- 	  <td><bold>The Getting of Wisdom</bold>: The character has studied under a master - Gain ✱physics_2, -->
+<!-- 	  ✱natural_history_2, or ✱occult_2</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>7</td> -->
-<!-- 	  <td><bold>The Quest</bold>: Gain ✱language.aquilonian_2 or ✱language.hybernian_2</td> -->
+<!-- 	  <td><bold>The Quest</bold>: Gain ✱aquilonian_2 or ✱hybernian_2</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -637,15 +637,15 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>10-11</td> -->
-<!-- 	  <td><bold>Voyage and Return</bold>: The character has travelled abroad.  Gain one of ✱language.hybernian_1 -->
-<!-- 	  or ✱language.aquilonian_1.</td> -->
+<!-- 	  <td><bold>Voyage and Return</bold>: The character has travelled abroad.  Gain one of ✱hybernian_1 -->
+<!-- 	  or ✱aquilonian_1.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
 <!-- 	  <td><bold>Sharp Practice</bold>: The character has studied combat under an old soldier.  Gain -->
-<!-- 	  ✱common.brawl_2.  Gain (✱dagger_strike_2 and -->
-<!-- 	  ✱dagger.throw_2) or ✱gun_shoot_2.</td> -->
+<!-- 	  ✱brawl_2.  Gain (✱dagger_strike_2 and -->
+<!-- 	  ✱throw_2) or ✱gun_shoot_2.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -682,7 +682,7 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>6-8</td> -->
-<!-- 	  <td>✱axe.cleave_1</td> -->
+<!-- 	  <td>✱axe_cleave_1</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -735,7 +735,7 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>3</td> -->
 <!-- 	  <td><bold>Riots</bold>: The character was caught in a riot and had to fight to get out. -->
-<!-- 	  Gain ✱social.infamy[Rioters]_2</td> -->
+<!-- 	  Gain ✱infamy[Rioters]_2</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -750,24 +750,24 @@
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>8-9</td> -->
-<!-- 	  <td><bold>Plague</bold>: The character has helped during an outbreak. Gain ✱lore.physician_1</td> -->
+<!-- 	  <td><bold>Plague</bold>: The character has helped during an outbreak. Gain ✱physician_1</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>10</td> -->
-<!-- 	  <td><bold>Minor Accounting Discrepency</bold>: Character gains 5gp and ✱lore.book_keeping_1</td> -->
+<!-- 	  <td><bold>Minor Accounting Discrepency</bold>: Character gains 5gp and ✱book_keeping_1</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>11</td> -->
-<!-- 	  <td><bold>Merchant Seaman</bold>: Character gains one of ✱transport.sailor_1, ✱negotiate_1, -->
-<!-- 	  or ✱lore.law[Society?]_1</td> -->
+<!-- 	  <td><bold>Merchant Seaman</bold>: Character gains one of ✱sailor_1, ✱negotiate_1, -->
+<!-- 	  or ✱law[Society?]_1</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
 <!-- 	  <td><bold>Pogrom</bold>: The character has been the victim of racial or religious persecution. -->
-<!-- 	  Gain one of ✱physical.head_butt_3, ✱physical.juggernaut_3, or ✱agility.surefeet</td> -->
+<!-- 	  Gain one of ✱physical.head_butt_3, ✱juggernaut_3, or ✱surefeet</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -790,8 +790,8 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1</td> -->
-<!-- 	  <td><bold>Fur Trading</bold>: Gain one of ✱wilderness.survivalism[Woods]_3, ✱wilderness.survivalism[Mountains]_3 or -->
-<!-- 	  ✱common.negotiate_3</td> -->
+<!-- 	  <td><bold>Fur Trading</bold>: Gain one of ✱survivalism[Woods]_3, ✱survivalism[Mountains]_3 or -->
+<!-- 	  ✱negotiate_3</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -801,23 +801,23 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>5</td> -->
-<!-- 	  <td><bold>Animal Attack</bold>: The charcter gains ✱social.adversary[Beasts]_3, or ✱wilderness.survivalism_3</td> -->
+<!-- 	  <td><bold>Animal Attack</bold>: The charcter gains ✱adversary[Beasts]_3, or ✱survivalism_3</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>6-7</td> -->
 <!-- 	  <td><bold>Bandits</bold>: The character has been attacked by bandits on one or more occasions.  Gain -->
-<!-- 	  ✱social.adversary[Bandits]_3</td> -->
+<!-- 	  ✱adversary[Bandits]_3</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>8-11</td> -->
-<!-- 	  <td><bold>Teamster</bold>: Gain ✱transport.carter_3 or ✱transport.animal_handling_3.</td> -->
+<!-- 	  <td><bold>Teamster</bold>: Gain ✱carter_3 or ✱transport.animal_handling_3.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
-<!-- 	  <td><bold>Traveller in a Foreign Land</bold>: Gain ✱language.hybernian_2 or ✱language.poitevin_2</td> -->
+<!-- 	  <td><bold>Traveller in a Foreign Land</bold>: Gain ✱hybernian_2 or ✱poitevin_2</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -844,7 +844,7 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>1</td> -->
 <!-- 	  <td><bold>Political Dissident</bold>: Political machinations have resulted in the character being -->
-<!-- 	  persona non-grata in their place of birth.  They have had to move on.  Gain ✱social.infamy[Group?]_3.</td> -->
+<!-- 	  persona non-grata in their place of birth.  They have had to move on.  Gain ✱infamy[Group?]_3.</td> -->
 <!-- 	</tablerow> -->
 
 
@@ -862,7 +862,7 @@
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>4</td> -->
-<!-- 	  <td><bold>Epiphany</bold>: Gain ✱speed.rune.lore_1</td> -->
+<!-- 	  <td><bold>Epiphany</bold>: Gain e.lore_1</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -878,7 +878,7 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>9-10</td> -->
 <!-- 	  <td>Establish Trade Route.  The character established a trade route for one of the dwarven companies. -->
-<!-- 	  Gain ✱social.contacts[Group?]_2</td> -->
+<!-- 	  Gain ✱contacts[Group?]_2</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->

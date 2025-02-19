@@ -252,7 +252,7 @@ class Monster:
         self.title = None
         self.monster_id = None
         self.description = None
-        self.tags = [] 
+        self.keywords = [] 
         self.aspects = []
         self.abilities = []
         self.move = None
@@ -276,6 +276,7 @@ class Monster:
         self.agility = None
         self.speed = None
         self.perception = None
+        self.willpower = None
 
         self.img = None
         return
@@ -292,9 +293,12 @@ class Monster:
 
     def get_agility(self):
         return self.agility
-
+ 
     def get_perception(self):
         return self.perception
+
+    def get_willpower(self):
+        return self.willpower
 
     def get_speed(self):
         return self.speed
@@ -378,11 +382,11 @@ class Monster:
                 break
         return has_prereqs
 
-    def has_tags(self):
-        return len(self.tags) > 0
+    def has_keywords(self):
+        return len(self.keywords) > 0
 
-    def get_tags_str(self):
-        return "" if len(self.tags) == 0 else ", ".join(self.tags)
+    def get_keywords_str(self):
+        return "" if len(self.keywords) == 0 else ", ".join(self.keywords)
 
     def get_abilities_str(self):
         return "X" if len(self.abilities) == 0 else ", ".join(self.abilities)
@@ -447,9 +451,9 @@ class Monster:
                else:
                    self.img = node_to_string(child)
 
-           elif tag == "monstertags":
+           elif tag == "monsterkeywords":
                for tag in child:
-                   self.tags.append(tag.tag)                   
+                   self.keywords.append(tag.tag)
 
            elif tag == "monsterabilities":               
                #for tag in child:
@@ -535,6 +539,13 @@ class Monster:
                                    (child.tag, str(child)))
                else:
                    self.perception = convert_str_to_int(child.text)
+
+           elif tag == "willpower":
+               if self.willpower is not None:
+                   raise Exception("Only one willpower per monster. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   self.willpower = convert_str_to_int(child.text)
 
            elif tag == "abilityrankid":
                ability_rank_id = child.text

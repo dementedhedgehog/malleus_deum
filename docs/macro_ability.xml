@@ -8,37 +8,74 @@
 
   <p>
     <smaller>
-      <bold>Action Type:</bold> {{ ability.action_type }},  
-      {%- if ability.untrained_rank  %}
+      {% if ability.untrained_rank  %}
       <bold>Untrained:</bold> {{ ability.untrained_rank }},
       {%- endif %}
       <bold>Ranks:</bold> {{ ability.get_ability_rank_range() }}, 
-      <bold>Checks:</bold> {% for check in ability.get_checks() %} 
-      {%- if check.name is not none  -%}{{check.name}}, {%- endif -%}
-      DC: {{check.dc}}, Type: {{check.check_type}}
+      {% if ability.prerequisites -%}
+      <bold>Prereqs:</bold> {{ ability.get_prerequisites_str() }}
+      {% endif %}      
+      {% if ability.specializations -%}
+      <bold>Specializations:</bold>{{ ability.get_specializations_str() }}
+      {%- endif %}      
+      <bold>Checks:</bold> {% for check in ability.get_checks() %}
+
+      <daggersymbol/>
+      {% if check.name is not none  -%}{{check.name}}, {%- endif -%}
+      <bold>Action:</bold> {{ check.action_type }}
+      {% if check.keywords -%}
+      <bold>Keywords:</bold> {{ check.get_keywords()|join(', ') }}
+      {% endif %}
+      {% if check.range -%}
+      <bold>Range:</bold> {{ check.range }}
+      {% endif %}
+      <bold>Roll:</bold> {{check.check}} ≥ {{check.dc}}
+      {% if check.effect -%}
+      <bold>Effect:</bold> {{ check.effect }}
+      {%- endif %}
+      
+      {% if check.critsuccess -%}
+      <bold>Critical Success:</bold> {{ check.critsuccess }}
+      {%- endif %}
+      {% if check.righteoussuccess -%}
+      <bold>Righteous Success:</bold> {{ check.righteoussuccess }}
+      {%- endif %}
+      {% if check.success -%}
+      <bold>Success:</bold> {{ check.success }}
+      {%- endif %}
+      {% if check.fail -%}
+      <bold>Critical Fail:</bold> {{ check.fail }}
+      {%- endif %}
+      {% if check.grimfail -%}
+      <bold>Grim Fail:</bold> {{ check.grimfail }}
+      {%- endif %}
+      {% if check.critfail -%}
+      <bold>Critical Fail:</bold> {{ check.critfail }}
+      {%- endif %}
+
+      {% if check.blessed -%}
+      <bold>Blessed:</bold> {{ check.boon }}
+      {%- endif %}
+      {% if check.boon -%}
+      <bold>Boon:</bold> {{ check.boon }}
+      {%- endif %}
+      {% if check.indifferent -%}
+      <bold>Indifferent:</bold> {{ check.indifferent }}
+      {%- endif %}
+      {% if check.bane -%}
+      <bold>Bane:</bold> {{ check.bane }}
+      {%- endif %}
+      {% if check.damned -%}
+      <bold>Damned:</bold> {{ check.damned }}
+      {%- endif %}
+      
+      {% if check.damage %}
+      <bold>Damage:</bold> {{ check.get_damage() }}
+      {%- endif %}              
+      
       {%- if not loop.last %}, {% endif -%}
       {% endfor -%}
-      {%- if ability.overcharge  -%}
-      ,  <bold>Overcharge:</bold> {{ ability.overcharge }}
-      {%- endif %}              
-      {%- if ability.damage -%}
-      , <bold>Damage:</bold> {{ ability.get_damage() }}
-      {%- endif -%}              
-      {%- if ability.mastery -%}
-      , <bold>Mastery:</bold> {% for i in range(ability.mastery) %}<success/>{% endfor -%}
-      {%- endif %}
-      {%- if ability.overcharge -%}
-      , <bold>Overcharge:</bold> ability.overcharge
-      {%- endif %}
-      {%- if ability.prerequisites -%}
-      , <bold>Prereqs:</bold> {{ ability.get_prerequisites_str() }}
-      {% endif -%}      
-      {%- if ability.specializations -%}
-      , <bold>Specializations:</bold>{{ ability.get_specializations_str() }}
-      {%- endif -%}      
-      {%- if ability.has_tags() -%}
-      , <bold>Tags:</bold> {{ ability.get_tags_str() }}
-      {%- endif -%}      
+      
     </smaller>
   </p>
   {{ ability.description }}  

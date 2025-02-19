@@ -1,7 +1,7 @@
 {# short monster block.. these are a couple of lines with no images and no description. #}
 {% macro monster_block(monster, show_img=False, show_description=False) %}
   <monsterblock>
-    <mbtitle>{{ monster.get_title() }}</mbtitle>  <mbtags>{{ monster.get_tags_str() }}</mbtags>
+    <mbtitle>{{ monster.get_title() }}</mbtitle>  <mbtags>{{ monster.get_keywords_str() }}</mbtags>
     {% if show_img and monster.img is not none %}
     {{ monster.img }}
     {% endif %}
@@ -9,14 +9,15 @@
     <mbhp>{{ monster.get_stamina() }}/{{ monster.get_health() }}</mbhp>
     <mbmove>{{ monster.get_move() }}</mbmove>
     <mbinitiativebonus>{{ monster.get_initiative_bonus() }}</mbinitiativebonus>
-    <mbmettle>{{ monster.get_mettle_pool() }}</mbmettle>
     <mbmagic>{{ monster.get_magic_pool() }}</mbmagic>
+    <mbmettle>{{ monster.get_mettle_pool() }}</mbmettle>
+    <mbluck>{{ monster.get_luck() }}</mbluck>
     <mbstr>{{ monster.get_strength() }}</mbstr>
     <mbend>{{ monster.get_endurance() }}</mbend>
     <mbag>{{ monster.get_agility() }}</mbag>
     <mbspd>{{ monster.get_speed() }}</mbspd>
-    <mbluck>{{ monster.get_luck() }}</mbluck>
     <mbper>{{ monster.get_perception() }}</mbper>
+    <mbwil>{{ monster.get_willpower() }}</mbwil>
     <mbabilities>
       {% for ability_rank_id in monster.get_ability_rank_ids() %}
       <bold>{{ ability_groups.get_ability_rank(ability_rank_id).get_title() }}</bold>

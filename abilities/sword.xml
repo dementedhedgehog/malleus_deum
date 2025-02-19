@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Sword Proficiency</abilitygrouptitle>
+    <abilitygroupid><sword/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use swords in combat.  This includes
+	the use of two handed swords.
+      </p>      
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  
+  <ability>
+    <abilitytitle>Daring Thrust</abilitytitle>
+    <abilityid>daring_thrust</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>sword_defaults</defaults> 
+      <defaults>pool_cost_1</defaults> 
+      <actiontype><free/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><melee/></range> -->
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+      <effect>When missed by melee attack immediately make an extra Sword Strike attack as a minor action.</effect>
+    </abilitycheck>
+    <prereqabilityrank>sword_strike_2</prereqabilityrank>
+    <spline><p x="15" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	When the character is missed by a melee attack the character makes a Mettle check.  If successful
+	they can make a Sword Strike check as a minor action.  Allowing them to make two attacks in a turn.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Follow Through</abilitytitle>
+    <abilityid>follow_through</abilityid>    
+    <abilityranks from="1" to="2"/>
+    <abilitycheck>
+      <defaults>sword_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><free/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+      <effect>After hitting with a melee attack make an additional Sword Strike attack on an adjacent opponent.</effect>
+    </abilitycheck>
+    <prereqabilityrank>sword_strike_2</prereqabilityrank>
+    <spline><p x="15" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character hits an opponent with a melee attack.  The character makes a Mettle check.
+	If successful they can make a Sword Strike check as a minor action to a second adjacent opponent.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Mighty Blow</abilitytitle>
+    <abilityid>mighty_blow</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>sword_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <keywords><mettlepool/></keywords>      
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+      <effect>Sword Strike with +3xStrength+Rank extra damage</effect>
+    </abilitycheck>
+    <prereqabilityrank>sword_strike_3</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Sword can strike with it using enormous force during combat.
+	It costs the character 2 Stamina to do this,  If they do not have any remaining stamina
+	they cannot perform this action.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Sword Disarm</abilitytitle>
+    <abilityid>disarm</abilityid>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>sword_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>Target's Speed</dc>
+      <effect>Opponent disarmed</effect>
+    </abilitycheck>
+    <prereqabilityrank>sword_strike_2</prereqabilityrank>	
+    <spline><p x="-80" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character attempts to disarm their opponent.  If
+	successful the opponent is disarmed. 
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Sword Feint</abilitytitle>
+    <abilityid>feint</abilityid>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>sword_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><reaction/></actiontype>      
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>Target's Agility</dc>
+      <effect>Character acts before target.</effect>
+    </abilitycheck>
+    <prereqabilityrank>sword_strike_2</prereqabilityrank>
+    <spline><p x="15" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME: after they're hit they've likely used their reaction!!
+	The character makes an opposed check after an opponent successfully attacks
+	them with a melee weapon. The character can attempt If they are successful thet act before their
+	opponent.  This action cannot be taken if surprised.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Sword Strike</abilitytitle>
+    <abilityid>sword_strike</abilityid>    
+    <abilityranks untrained="0" from="1" to="6"/>
+    <abilitycheck>
+      <defaults>sword_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <!-- <name>strike</name> -->
+      <actiontype><standard/></actiontype>
+      <keywords><basic-attack/></keywords>
+      <dmg>Weapon+Strength|Speed</dmg>
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Sword can strike with it during combat doing
+	weapon damage.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

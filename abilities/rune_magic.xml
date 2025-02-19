@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Rune Magic</abilitygrouptitle>
-    <abilitygroupid>rune</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><rune/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	Rune magic is a type of earth elemental based magic.
@@ -16,12 +15,22 @@
 
   <ability>
     <abilitytitle>Bladesharp</abilitytitle>
-    <abilityid>rune.bladesharp</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><rune/><magicpool/></tags>
+    <abilityid>bladesharp</abilityid>    
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" effect="+Rank dmg for one edged weapon" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>rune_magic</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><touch/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+      <effect>+Rank dmg for one edged weapon for the next 5 minutes.</effect>
+    </abilitycheck>
+    <prereqabilityrank>runecraft_1</prereqabilityrank>	
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -33,12 +42,21 @@
 
   <ability>
     <abilitytitle>Hold Door</abilitytitle>
-    <abilityid>rune.hold_portal</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><rune/><magicpool/></tags>
+    <abilityid>hold_portal</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>rune_magic</defaults>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><touch/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>runecraft_1</prereqabilityrank>	
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -53,30 +71,40 @@
 
   <ability>
     <abilitytitle>Hex Hammer</abilitytitle>
-    <abilityid>rune.hex_hammer</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><magical/><rune/><magicpool/></tags>
+    <abilityid>hex_hammer</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>rune_magic</defaults>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><touch/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>runecraft_1</prereqabilityrank>	
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character spends a round tracing a rune of power upon the
-	hammer while charging it with magical energies.  For the
+	The character traces a rune of power upon the
+	hammer while charging it with magical energies.  For 
 	the rest of that combat it does an additional +d8 damage
 	on melee hits and counts as a magic weapon.
       </p>
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Runecraft</abilitytitle>
-    <abilityid>rune.runecraft</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><rune/></tags>
+    <abilityid>runecraft</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -85,21 +113,33 @@
       </p>
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Sign of Idreshein</abilitytitle>
-    <abilityid>rune.sign_of_idreshein</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><rune/><magicpool/></tags>
+    <abilityid>sign_of_idreshein</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9" dmg="d6xRank+4" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>rune.runecraft_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>rune_magic</defaults>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><touch/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+      <dmg>d6x(Rank+4)</dmg>
+    </abilitycheck>
+    <prereqabilityrank>runecraft_1</prereqabilityrank>	
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
 	The Sign of Idreshein is a sigil that stores energy
 	that can be released in a fiery explosion when something
-	touches the sign.
+	touches the sign or by an act of will on the behalf of
+	the caster.
       </p>
     </abilitydescription>    
   </ability>

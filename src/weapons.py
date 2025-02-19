@@ -10,7 +10,8 @@ from utils import (
     node_to_string,
     COMMENT,
     contents_to_string,
-    contents_to_comma_separated_list)
+    contents_to_list,
+    contents_to_comma_separated_str)
         
 src_dir = abspath(join(dirname(__file__)))
 root_dir = abspath(join(src_dir, ".."))
@@ -24,7 +25,7 @@ class Weapon:
         self.name = None
         self.damage = None
         self.price = None
-        self.tags = None
+        self.keywords = None
         self.missile_range = None
         # Weapons save
         self.save = None
@@ -74,15 +75,14 @@ class Weapon:
                   raise Exception("Only one range per weapon.")
                else:
                    #self.missile_range = child.text.strip() 
-                   self.missile_range = contents_to_string(child) # .text.strip() 
+                   #self.missile_range = contents_to_string(child) # .text.strip() 
+                   self.missile_range = contents_to_list(child) # .text.strip() 
 
-           elif tag == "tags":
-               if self.tags is not None:
+           elif tag == "keywords":
+               if self.keywords is not None:
                   raise Exception("Only one tags per weapon.")
                else:
-                   #print(contents_to_string(child))
-                   self.tags = contents_to_comma_separated_list(child)
-                   #self.tags = child.tag[1:-2]
+                   self.keywords = contents_to_comma_separated_str(child)
 
            elif tag is COMMENT:               
                pass # ignore comments!

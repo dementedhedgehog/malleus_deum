@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Elemental Magic</abilitygrouptitle>
-    <abilitygroupid>elemental</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><elemental/></abilitygroupid>    
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	Elemental magic is a special sub-type of evocation that uses
@@ -17,12 +16,22 @@
 
   <ability>
     <abilitytitle>Black Colossus</abilitytitle>
-    <abilityid>elemental.black_colossus</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>black_colossus</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.summon_elemental_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_3</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>3</indifferent> -->
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>summon_elemental_2</prereqabilityrank>
     <spline><p x="30" y="45"/></spline>
     <abilitydescription>
       <p>
@@ -35,12 +44,22 @@
 
   <ability>
     <abilitytitle>Burning Hands</abilitytitle>
-    <abilityid>elemental.burning_hands</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>burning_hands</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="3" overcharge="2">Magic+Rank</abilitycheck> 
-    <prereqabilityrank>elemental.fyre_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><melee/></range> 
+      <keywords><magicpool/><fire/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck> 
+    <prereqabilityrank>fyre_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -49,14 +68,15 @@
       </p>
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Elemental Magic</abilitytitle>
-    <abilityid>elemental.elemental_magic</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><elemental/><lore/></tags>
+    <abilityid>elemental_magic</abilityid>  
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -66,14 +86,39 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Fyre Bolt</abilitytitle>
-    <abilityid>elemental.fyre</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>fyre</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.elemental_magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <name>Cast</name>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <keywords><magicpool/><fire/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck>
+    <abilitycheck>
+      <name>Hit</name>
+      <actiontype><free/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <keywords><fire/></keywords>
+      <dc>Target's Defence</dc>
+      <dmg>3d6</dmg>
+    </abilitycheck>
+    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
     <spline><p x="0" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -85,12 +130,22 @@
 
   <ability>
     <abilitytitle>Gaseous Form</abilitytitle>
-    <abilityid>elemental.gaseous_form</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>gaseous_form</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.elemental_magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
     <spline><p x="-75" y="70"/></spline>
     <abilitydescription>
       <p>
@@ -99,15 +154,26 @@
       </p>
     </abilitydescription>    
   </ability>
-    
+
+  
   <ability>
     <abilitytitle>Kiss of the Deep</abilitytitle>
-    <abilityid>elemental.kiss_of_the_deep</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>kiss_of_the_deep</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.elemental_magic_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><standard/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>Target's Willpower</dc>
+    </abilitycheck>
+    <prereqabilityrank>elemental_magic_1</prereqabilityrank>	
     <spline><p x="-75" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -127,16 +193,24 @@
   </ability>
 
 
-
-  
   <ability>
     <abilitytitle>Mist</abilitytitle>
-    <abilityid>elemental.mist</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>mist</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.elemental_magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><standard/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
     <spline><p x="-30" y="45"/></spline>
     <abilitydescription>
       <p>
@@ -150,12 +224,22 @@
 
   <ability>
     <abilitytitle>Shatter</abilitytitle>
-    <abilityid>elemental.shatter</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>shatter</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="11" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.elemental_magic_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><standard/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>elemental_magic_2</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -165,9 +249,10 @@
       </p>
 
       <p>
-	This spell is particularly effective for bringing down structures
-	supported by columns or arches.  However city walls and tower are
-	designed to take a lot of damage without failing.
+	This spell is particularly effective for bringing down small structures
+	supported by columns or arches, or for breaching doors.  However city
+	walls and towers are designed to take a lot of damage without failing
+	and are effectively immune from the effects of this spell.
       </p>
 
       <p>
@@ -181,14 +266,25 @@
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Smoke Weasel</abilitytitle>
-    <abilityid>elemental.smoke_weasel</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>smoke_weasel</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.fyre_1</prereqabilityrank>    
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>fyre_1</prereqabilityrank>    
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -203,20 +299,31 @@
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Stone Skin</abilitytitle>
-    <abilityid>elemental.stone_skin</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>stone_skin</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.elemental_magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><reaction/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck>
+    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
     <spline><p x="45" y="120"/></spline>
     <abilitydescription>
       <p>
 	The targets skin takes on a greyish hue and hardens, providing
 	some protection from physical damage.  If successful this spell
-	provides a bonus of 2+Rank  to armour for five minutes or the
+	provides a bonus of +2+Rank  to armour for five minutes or the
 	rest of the encounter, whichever is longer.
       </p>
     </abilitydescription>    
@@ -225,12 +332,22 @@
 
   <ability>
     <abilitytitle>Summon Elemental</abilitytitle>
-    <abilityid>elemental.summon_elemental</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><elemental/><magicpool/></tags>
+    <abilityid>summon_elemental</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>elemental.elemental_magic_3</prereqabilityrank>
+    <abilitycheck>
+      <defaults>elemental_defaults</defaults>
+      <defaults>pool_cost_3</defaults>
+      <actiontype><reaction/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>2</indifferent> -->
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>elemental_magic_3</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>

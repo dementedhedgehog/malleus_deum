@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Crossbow Proficiency</abilitygrouptitle>
-    <abilitygroupid>crossbow</abilitygroupid>
+    <abilitygroupid><crossbow/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -16,16 +15,34 @@
   
 
   <ability>
-    <abilitytitle>Crossbow Shoot</abilitytitle>
-    <abilityid>crossbow.crossbow_shoot</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><crossbow/><ranged/></tags>
-    <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
+    <abilitytitle>Light Crossbow Shoot</abilitytitle>
+    <abilityid>crossbow_shoot</abilityid>    
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilitycheck>
+      <actiontype><standard/></actiontype>
+
+      <!-- Mastery -->
+      <critsuccess>Deal 3×Damage</critsuccess>
+      <righteoussuccess>Deal 2×Damage</righteoussuccess>
+      <success>Deal Damage</success>
+      <fail>No Effect</fail>
+      <grimfail></grimfail>
+      <critfail>Roll on the crossbow consequence table</critfail>
+      
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-long/></range>
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>Target's Defence</dc>
+      <dmg>Weapon+Agility</dmg>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
-        Characters equipped with an Crossbow can shoot it during combat
+        Characters equipped with a <emph>Light Crossbow</emph> can shoot it during combat
 	doing weapon damage.
       </p>
     </abilitydescription>
@@ -34,12 +51,20 @@
 
   <ability>
     <abilitytitle>Fast Loader</abilitytitle>
-    <abilityid>crossbow.fast_loader</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><crossbow/><ranged/></tags>
+    <abilityid>fast_loader</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9">Speed+Rank</abilitycheck>
-    <prereqabilityrank>crossbow.crossbow_shoot_2</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>9</dc>
+    </abilitycheck>
+    <prereqabilityrank>crossbow_shoot_2</prereqabilityrank>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -54,17 +79,28 @@
 
   <ability>
     <abilitytitle>Heavy Cross Bow</abilitytitle>
-    <abilityid>crossbow.heavy</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><crossbow/><ranged/></tags>
-    <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Agility">Std+Rank</abilitycheck>
-    <prereqabilityrank>crossbow.crossbow_shoot_2</prereqabilityrank>
+    <abilityid>heavy</abilityid>
+    <abilityranks untrained="-3" from="1" to="1"/>
+    <!-- <abilitycheck> -->
+    <!--   <actiontype><standard/></actiontype> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <boon></boon> -->
+    <!--   <bane></bane> -->
+    <!--   <range><ranged-long/></range> -->
+    <!--   <indifferent></indifferent> -->
+    <!--   <dc>Target's Defence</dc> -->
+    <!--   <dmg>Weapon+Agility</dmg> -->
+    <!-- </abilitycheck> -->
+    <keywords><no-check/></keywords>
+    <prereqabilityrank>crossbow_shoot_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-	Character has trained in the use of the heavy crossbow.  Heavy
-	crossbows are slow to reload and take a full turn to reload.
+	Character has trained in the use of the heavy crossbow.  Characters
+	with this ability can use the Light Crossbow Shoot ability with Heavy
+	Crossbows.  Heavy crossbows are slow to reload and take a full turn
+	to reload.
       </p>
     </abilitydescription>
   </ability>  

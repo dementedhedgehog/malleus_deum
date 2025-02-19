@@ -23,30 +23,26 @@ from utils import (
     children_to_string,
     convert_str_to_bool,
     contents_to_string,
+    contents_to_comma_separated_str,
+    contents_to_list,
     strip_xml,
+    root_dir,
+    src_dir,
+    parse_xml_list,
 )
 
-src_dir = abspath(join(dirname(__file__)))
-root_dir = abspath(join(src_dir, ".."))
-sys.path.append(src_dir)
+from ability_check_defaults import AbilityCheckDefaultsLookup
 
 
 def xor(a, b):
     return not b if a else bool(b)
 
-# This is the high rank action tag for broad classification of skills.
-class FAMILY_TYPE:
-    LORE = "<lore/>"
-    MARTIAL = "<martial/>"
-    GENERAL = "<general/>"
-    PRIMARY = "<primary/>"
-    COMMON = "<common/>"
-    MAGICAL = "<magical/>"
-    WYRD_SCIENCE = "<wyrdscience/>"
-    NPC = "<npc/>"
-FAMILY_TYPES = ("<lore/>", "<martial/>", "<magical/>", "<general/>",  "<primary/>",  "<common/>", "<npc/>", "<wyrdscience/>")
 
-MIN_INITIAL_ABILITY_RANK = 1
+
+
+
+
+MIN_INITIAL_ABILITY_RANK = -6
 MAX_INITIAL_ABILITY_RANK = 3
 
 # ability tags
@@ -56,16 +52,25 @@ MONSTER_CHECK_TYPE = "No-Check"
 STD_CHECK = "Std\+Rank"
 UNTRAINED = "Untrained"
 MAGIC_CHECK_TYPE = "Magic+Rank"
+NO_CHECK = "no-check"
 
 # A list of valid dcs
 # We limit the range of values to reduce complexity in the system.  This should make 
 # it easier to remember dcs?  We choose odd ddcs because 5 is the lowest dc you can
 # fail at Rank 3.
+# FIXME: move into XML enum?
 VALID_DCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
              "31", "33", "35", "37", "39",
-             "Targets Defence", "Targets Attack", "Critical Success", "None", "Context Dependent",
-             "Targets Strength", "Targets Agility", "Targets Perception", "Targets Speed", "Targets Endurance",
-             "Targets Mettle", "Targets Willpower")
+             "GM Fiat",
+             # for NPC abilities
+             "9+Rank", "11+Rank", "13+Rank", 
+             "Target's Defence", "Target's Attack", "Critical Success",
+             "Target's Strength", "Target's Agility", "Target's Perception", "Target's Speed", "Target's Endurance",
+             "Target's Agility or Speed",
+             "Target's Mettle", "Target's Willpower",
+             "Target's Negotiate or 11",
+             "Target's Etiquette or 11",
+             "Triggers Ability")
 
 
 def is_valid_dc(rank):
@@ -74,12 +79,6 @@ def is_valid_dc(rank):
     """
     return rank in VALID_DCS
 
-class AbilityFamily:
-    def __init__(self, family_type):
-        self.family_type = family_type
-        self.name = family_type[1:-2].title()
-
-ability_families = [AbilityFamily(family_type) for family_type in FAMILY_TYPES]
 
 # ability rank id -> ability rank lookup table
 ability_rank_lookup = {}
@@ -109,7 +108,7 @@ class ActionType:
     FREE = "free"
     REACTION = "Reaction"
     REACTION_OR_MINOR = "Reaction|Minor"
-    NON_COMBAT = "Non-Combat"
+    NON_COMBAT = "Noncombat"
     FULL_TURN = "Full-Turn"
     MULTI_TURN = "Multi-Turn"
     
@@ -127,7 +126,7 @@ class ActionType:
             action_type = ActionType.MOVE
         elif action_type_str == "<reaction/>":
             action_type = ActionType.REACTION
-        elif action_type_str == "<non-combat/>":
+        elif action_type_str == "<noncombat/>":
             action_type = ActionType.NON_COMBAT
         elif action_type_str == "<full-turn/>":
             action_type = ActionType.FREE
@@ -290,7 +289,7 @@ class NotTagPrereq(Prerequisite):
 
 class AbilityRank:
     """
-    Every ability has a number of ranks.
+    Every ability has a number of ranks, e.g. 1-6.
 
     """
     @classmethod
@@ -315,12 +314,6 @@ class AbilityRank:
     def __str__(self):
         return self.get_title()
 
-    # def is_templated(self):
-    #     return self.ability.is_templated()
-
-    # def get_template(self):
-    #     return self.ability.get_template()
-    
     def get_title(self, long_form=False):
         if long_form:
             str_template = "%s Rank: %s"
@@ -340,30 +333,188 @@ class AbilityRank:
 
 class AbilityCheck:
     """
-    An ability check configiuration.
+    An ability check configuration.
 
     """
+
+    # The shared ability check defaults lookup table (lazy-load this)
+    defaults_lookup = None
+
+    @classmethod
+    def load_ability_check_defaults(cls, ability_check_defaults_dir):
+        if cls.defaults_lookup is None:
+            cls.defaults_lookup = AbilityCheckDefaultsLookup()
+            cls.defaults_lookup.load(ability_check_defaults_dir)
+        return
+
+    
     def __init__(self, ability):
         self.ability = ability
 
         # can be None for the default
         self.name = None
+        self.ability_check_class = None
         self.dc = None
-        self.overcharge = None
-        self.check_type = None
+        self.action_type = None
+        self.trigger = None        
         self.dmg = None
         self.effect = None
+
+        # Mastery
+        self.critsuccess = None
+        self.righteoussuccess = None
+        self.success = None
+        self.fail = None
+        self.grimfail = None
+        self.critfail = None
+
+        # Fate
+        self.blessed = None
+        self.boon = None
+        self.indifferent = None
+        self.bane = None
+        self.damned = None
+
+        # range of the attack/spell etc
+        self.check_range = None
+
+        # what check is being rolled (for defence).
+
+        # list of tags for the ability
+        self.keywords = []
+
+        # line number of the start of the ability check.
+        self.line_number = None
+
+        # some defaults values for this class of ability.
+        self.defaults = None
+
+    def get_name(self):
+        return self.name
+        
+    def get_action_type(self):
+        return self.action_type
+        
+    def get_keywords(self):
+        return sorted(list(set(self.keywords + self.ability.get_keywords())))
+        
+    def get_range(self):
+        return self.check_range        
 
     def get_damage(self):
         return self.dmg
 
+    def get_trigger(self):
+        return self.trigger
+
     def _load(self, ability_check_element):
-        self.name = ability_check_element.attrib.get("name")
-        self.dc = ability_check_element.attrib.get("dc")
-        self.overcharge = ability_check_element.attrib.get("overcharge")
-        self.dmg = ability_check_element.attrib.get("dmg")
-        self.effect = ability_check_element.attrib.get("effect")
-        self.check_type = ability_check_element.text
+        
+        # handle all the children
+        for child in list(ability_check_element):
+
+            if self.line_number is None:
+                self.line_number = child.sourceline
+            
+            tag = child.tag
+            if tag == "name":
+                self.name = contents_to_string(child)
+
+            elif tag == "defaults":
+                # set a bunch of default values to save on duplicated fields in checks
+                defaults_name = contents_to_string(child)
+                if defaults_name.strip() == "":
+                    raise Exception(f"Ability has an empty <defaults> element on Line: {child.sourceline}")
+                
+                self.defaults = self.defaults_lookup.get(defaults_name)
+                if self.defaults is None:
+                    print(self.defaults_lookup)
+                    raise Exception("Can't find an ability check defaults "
+                                    f"file named {defaults_name}")
+                self.defaults.apply_defaults(self)
+
+            # elif tag == "actiontype":
+            #     self.action_type = contents_to_list(child).pop(0)
+
+            # elif tag == "actiontype":
+            #     action_type_str = contents_to_string(child)
+            #     self.action_type = ActionType.load(action_type_str)            
+            #     if self.action_type == None:
+            #         raise Exception("Unknown action type: (%s) %s in %s\n" %
+            #                         (child.tag, child.text, self.ability.fname))
+
+            elif tag == "actiontype":
+                self.action_type = contents_to_string(child) # FIXME: WHAT DO WE DO WITH THIS???
+            
+            elif tag == "trigger":
+                self.trigger = contents_to_string(child)                
+
+            elif tag == "range":
+                self.check_range = contents_to_comma_separated_str(child)                
+
+            # Mastery
+            elif tag == "critsuccess":
+                self.critsuccess = contents_to_string(child)
+
+            elif tag == "righteoussuccess":
+                self.righteoussuccess = contents_to_string(child)
+
+            elif tag == "success":
+                self.success = contents_to_string(child)
+
+            elif tag == "fail":
+                self.fail = contents_to_string(child)
+
+            elif tag == "grimfail":
+                self.grimfail = contents_to_string(child)
+
+            elif tag == "critfail":
+                self.critfail = contents_to_string(child)
+
+            # Fate
+            elif tag == "blessed":
+                self.blessed = contents_to_string(child)
+                
+            elif tag == "boon":
+                self.boon = contents_to_string(child)
+
+            elif tag == "indifferent":
+                self.indifferent = contents_to_string(child)
+
+            elif tag == "bane":
+                self.bane = contents_to_string(child)
+
+            elif tag == "damned":
+                self.damned = contents_to_string(child)
+
+            elif tag == "check":
+                self.check = contents_to_string(child)
+
+            elif tag == "dc":
+                self.dc = contents_to_string(child)
+                if not self.dc:
+                    raise Exception(f"Ability is missing {self.ability_id} a dc "
+                                    f"on line {child.line}"
+                                    f"It should be one of {VALID_DCS}.")
+                        
+            elif tag == "dmg":
+                self.dmg = contents_to_string(child)
+
+            elif tag == "effect":
+                self.effect = contents_to_string(child)
+
+            elif tag == "range":
+                self.ability_range = contents_to_string(child)
+
+            elif tag == "keywords":
+                self.keywords += parse_xml_list(child)
+
+            elif tag is COMMENT:
+                # ignore comments!
+                pass
+
+            else:
+                raise Exception("UNKNOWN (%s) in file %s\n" % 
+                                (child.tag, self.ability.fname))        
         return
 
     def __str__(self):
@@ -371,26 +522,135 @@ class AbilityCheck:
 
     def get_problems(self):
         problems = []
-        #check_type = self.check_type.casefold() # FIXME
-        #check = self.check.casefold() # FIXME
-        #looks_like_a_pool_check = "luck" in check or "mettle" in check or "magic" in check
-        # looks_like_a_pool_check =  any(t in check_type for t in ("luck", "mettle", "magic"))
-        # if looks_like_a_pool_check:
-        #     if not self.is_pool():
-        #         problems.append("Ability looks like a pool check but isn't tagged as such")
 
-        #     if "rank" in check:
-        #         problems.append(f"Ability {self.ability.ability_id} looks like a pool check and "
-        #                         "rank modifies the DC?")
+        print("----")
+        print(self.keywords)
+        print(self.dc)
+        print(self.defaults)
+        print(self.defaults if self.defaults is None else self.defaults.dc)
+        print(NO_CHECK in self.keywords)
+        if NO_CHECK in self.keywords:
+            if self.dc is not None:
+                problems.append(f"Ability {self.ability.ability_id} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"'no-check' keyword and a non-None dc: '{self.dc}'.\n")
+        else:
+            if not is_valid_dc(self.dc):
+                problems.append(f"Ability {self.ability.ability_id} in "
+                                f"{self.ability.fname}:{self.line_number} has an "
+                                f"invalid dc '{self.dc}'.  "
+                                f"It should be one of {VALID_DCS}.\n")
 
-        if not is_valid_dc(self.dc):
-            problems.append(f"Ability {self.ability.ability_id} has an invalid dc '{self.dc}'.  "
-                            f"It should be one of {VALID_DCS}.")
+        # Every check should have a check type (part of the action economy.. e.g. standard).
+        if self.action_type is None:
+            problems.append(f"Ability {self.ability.title} in "
+                            f"{self.ability.fname}:{self.line_number} has an "
+                            f"invalid actiontype '{self.action_type}'.\n")
+
+            
+        if not self.name:
+            problems.append(f"Ability {self.ability.title} in "
+                            f"{self.ability.fname}:{self.line_number} has a "
+                            f"check without a name. "
+                            "(The name element is required for all checks)!\n")
+            
 
         #
         # Check the tags are set properly.
         #
-        tags = self.ability.get_tags()
+        keywords = self.get_keywords()
+
+        # Normalize 'save' behaviour
+        if "save" in keywords:
+            # Check that Save checks are named Save.
+            if self.name != "Save":
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"a 'save' keyword (one of {keywords}) but is not named 'Save'"
+                                "(The name element for this check should be 'Save')!\n")
+
+            if self.critsuccess is not None:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"a 'save' keyword (one of {keywords}) but <critsuccess> is set "
+                                "(Save checks don't specify Skill results.)!\n")
+
+            if self.righteoussuccess is not None:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"a 'save' keyword (one of {keywords}) but <righteoussuccess> is set "
+                                "(Save checks don't specify Skill results.)!\n")
+
+            if self.success is not None:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"a 'save' keyword (one of {keywords}) but <success> is set "
+                                "(Save checks don't specify Skill results.)!\n")
+                
+            if self.fail is not None:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"a 'save' keyword (one of {keywords}) but <fail> is set "
+                                "(Save checks don't specify Skill results.)!\n")
+                
+            if self.grimfail is not None:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"a 'save' keyword (one of {keywords}) but <grimfail> is set "
+                                "(Save checks don't specify Skill results.)!\n")
+                
+            if self.critfail is not None:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} has a "
+                                f"a 'save' keyword (one of {keywords}) but <critfail> is set "
+                                "(Save checks don't specify Skill results.)!\n")
+                
+        # Check that checks named Save have the save keyword
+        if self.name != "Save": 
+            if "save" not in keywords:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} is named Save "
+                                f"but does not have the 'save' keyword (one of {keywords}) "
+                                "(Keywords for this check should contain the 'save' keyword)!\n")
+
+        # Check that checks named Defence have the defence keyword
+        if self.name != "Defend": 
+            if "defence" not in keywords:
+                problems.append(f"Ability {self.ability.title} in "
+                                f"{self.ability.fname}:{self.line_number} is named Defend "
+                                f"but does not have the 'defend' keyword (one of {keywords}) "
+                                "(Keywords for this check should contain the 'defend' keyword)!\n")
+                
+        # All defence checks are also save checks
+        if "defence" in keywords and "save" not in keywords:
+            problems.append(f"Ability {self.ability.title} in "
+                            f"{self.ability.fname}:{self.line_number} has a "
+                            f"a 'defence' keyword (one of {keywords}) but does not have a 'save'"
+                            "keyword.  (All defence checks are also save checks)!\n")
+        
+        
+        # Can't have a pool based ability without a cost
+        pool_based_check = self.is_pool_check()
+        if pool_based_check and not (self.indifferent or self.grimfail or self.critfail
+                                     or self.righteoussuccess or self.critsuccess):
+            problems.append(f"Ability {self.ability.title} in "
+                            f"{self.ability.fname}:{self.line_number} uses "
+                            f"a pool keyword (one of {keywords}) but has no pool cost "
+                            "(If you have a pool then you muse lose pool points based on "
+                            "the providence die result)!\n")
+
+        # Can't have a cost and not have a pool based activity
+        # if self.cost and not pool_based_check:
+        #     problems.append(f"Ability {self.ability.title} in {self.ability.fname} has a cost "
+        #                     f"but does not have a pool keyword, one of (magicpool, luckpool, mettlepool), "
+        #                     f"but has the following keywords: {keywords}!")
+
+        # Every action should have a range
+        if self.check_range is None:
+            problems.append(f"Ability {self.ability.title} in "
+                            f"{self.ability.fname}:{self.line_number} has an "
+                            f"invalid range '{self.check_range}'.\n")
+        
 
         # Check accurate tag
         # if xor(self.check_type == ACCURATE, "accurate" in tags):
@@ -398,38 +658,46 @@ class AbilityCheck:
         #                     f"have a {ACCURATE} check type, or vice versa")
 
         # Check inaccurate tag
-        if xor(self.check_type == INACCURATE_CHECK_TYPE, "inaccurate" in tags):
-            problems.append(f"Ability {self.ability.ability_id} is tagged inaccurate and does not "
-                            f"have a {INACCURATE_CHECK_TYPE} check type {check_type} {tags}, or vice versa")
+        # if xor(self.action_type == INACCURATE_CHECK_TYPE, "inaccurate" in keywords):
+        #     problems.append(f"Ability {self.ability.ability_id} is tagged inaccurate and does not "
+        #                     f"have a {INACCURATE_CHECK_TYPE} check type {check_type} {keywords}, or vice versa")
 
-        # Check no-check std ability. (for monsters only)  
-        if self.check_type == MONSTER_CHECK_TYPE and "monster" not in tags:
-            problems.append(f"Ability {self.ability.ability_id} has a {MONSTER_CHECK_TYPE} check type but "
-                            "is not tagged with the monster tag.")
+        # # Check no-check std ability. (for monsters only)  
+        # if self.check_type == MONSTER_CHECK_TYPE and "npc" not in keywords:
+        #     problems.append(f"Ability {self.ability.ability_id} has a {MONSTER_CHECK_TYPE} check type but "
+        #                     f"is not tagged with the npc tag.")
 
-        # Check ability ranks are sane
-        if len(self.ability.ranks) == 0:
-            problems.append(f"Ability  {self.ability.ability_id} has no ability ranks set?")
+        # # Check ability ranks are sane
+        # if len(self.ability.ranks) == 0:
+        #     problems.append(f"Ability  {self.ability.ability_id} has no ability ranks set?")
 
-        # Check for untrained abilities.
-        elif UNTRAINED in tags and self.ability.ranks[0].get_rank_number() >= 0:
-            problems.append(f"Ability {self.ability.ability_id} is tagged 'Untrained' but does not "
-                            f"have a negative ability rank")
+        # # Check for untrained abilities.
+        # elif UNTRAINED in keywords and self.ability.ranks[0].get_rank_number() >= 0:
+        #     problems.append(f"Ability {self.ability.ability_id} is tagged 'Untrained' but does not "
+        #                     f"have a negative ability rank")
             
         # check dcs are standard
         if self.dc in (STD_CHECK, ACCURATE) and self.dc not in ("3", "6", "9", "12", "15", "18", "21"):
-            problems.append(f"Ability  {self.ability.ability_id} has a non-standard DC {self.dc}")
+            problems.append(f"Ability  {self.ability.ability_id} has a non-standard DC {self.dc} in "
+                            f"{self.ability.fname}:{self.line_number}\n")
 
-        # magic checks have to have an overcharge
-        if self.check_type == MAGIC_CHECK_TYPE and self.overcharge is None:
-            problems.append(f"Ability {self.ability.ability_id} is a magic check but has no overcharge")
+        # # magic checks have to have an overcharge
+        # if self.check_type == MAGIC_CHECK_TYPE and self.overcharge is None:
+        #     problems.append(f"Ability {self.ability.ability_id} is a magic check but has no overcharge")
 
-        # non-magic checks cannot have an overcharge
-        if self.check_type != MAGIC_CHECK_TYPE and self.overcharge is not None:
-            problems.append(f"Ability {self.ability.ability_id} is not a magic check and has overcharge value")
+        # # non-magic checks cannot have an overcharge
+        # if self.check_type != MAGIC_CHECK_TYPE and self.overcharge is not None:
+        #     problems.append(f"Ability {self.ability.ability_id} is not a magic check and has overcharge value")
 
         return problems
 
+    def is_pool_check(self):
+        keywords = self.get_keywords()
+        for pool in ("magicpool", "mettlepool", "luckpool", "aspectpool"):
+            if pool in keywords:
+                return True
+        return False
+    
     
 class Ability:
     """
@@ -438,14 +706,15 @@ class Ability:
     """
     # set of all ability ids we've seen there should be no duplicates!
     _ids = {}
-
-    def __init__(self, fname):
+    
+    def __init__(self, fname, ability_group_id):
         self.fname = fname
         self.title = None
         self.ability_id = None
         self.description = None
         self.action_type = None
-        #self.template = None # for templated abilities this is the name of the template.
+        self.specializations = []
+        self.group_id = ability_group_id
 
         # checks .. a dictionary from name->check details.
         # an ability can have multiple check configurations
@@ -461,7 +730,7 @@ class Ability:
         self.prerequisites = []        
 
         # list of tags for the ability
-        self.tags = []
+        self.keywords = []
 
         # If this is true put the ability in the GMG otherwise put it in
         # the players handbook
@@ -483,6 +752,24 @@ class Ability:
         # the group this ability belongs to.
         self.ability_group = None
         return
+
+    def get_cost(self):
+        return self.cost
+
+    def get_action_type(self):
+        return self.action_type
+
+    # def get_range(self):
+    #     return self.ability_range
+
+    def get_keywords(self):
+        return sorted(self.keywords + self.ability_group.get_keywords())
+
+    def has_keywords(self):
+        return len(self.get_keywords()) > 0
+
+    def get_keywords_str(self):
+        return ",".join(self.get_keywords())
     
     def __str__(self):
         return f"✱{self.ability_id}"
@@ -496,13 +783,14 @@ class Ability:
     def get_specializations_str(self):
         return ", ".join([s.name for s in self.specializations])
         
-    # FIXME: what has this got to do whith check_sanity?
+    # FIXME: what has this got to do with check_sanity?
     def get_problems(self):
         """Checks for malformed abilities.. returns a list of problems."""
         problems = []                
         
-        if len(self.checks) == 0:
-            problems.append("Ability has no checks!")
+        if len(self.checks) == 0 and NO_CHECK not in self.get_keywords():
+            problems.append(f"Ability {self.title} has no checks and does not have "
+                            f"the <{NO_CHECK}/> keyword! {self.keywords}")
         else:
             for check in self.checks:
                 problems += check.get_problems()
@@ -518,7 +806,7 @@ class Ability:
             # check the first rank is always 0 or 1 (primary abilities can be lower).
             if is_first_rank:
                 if ((rank_number < MIN_INITIAL_ABILITY_RANK or rank_number > MAX_INITIAL_ABILITY_RANK)
-                    and "primary" not in self.tags):
+                    and "primary" not in self.keywords):
                     problems.append(
                         f"First rank for ability {self.get_title()} is {rank_number} "
                         f"should be {MIN_INITIAL_ABILITY_RANK} to {MAX_INITIAL_ABILITY_RANK}")
@@ -528,7 +816,6 @@ class Ability:
                     problems.append("Bad rank numbers for ability %s around rank  %s"
                                     % (self.get_title(), rank_number))
             last_rank_number = rank_number
-
         return problems
 
     def get_trained_ranks(self):
@@ -560,11 +847,11 @@ class Ability:
         return ability_ranks
     
 
-    def is_core(self):
-        return "core" in self.tags
+    def is_core(self):  # FIXME: WHAT DOES THIS MEAN?
+        return "core" in self.keywords
 
     def is_pool(self):
-        return "pool" in self.tags
+        return "pool" in self.keywords
 
     def get_rank_number(self):
         """
@@ -584,15 +871,6 @@ class Ability:
                 return ability_rank            
         return None
 
-    def get_tags(self):
-        return self.tags
-
-    def get_tags_str(self):
-        return [",".join(self.get_tags())]
-
-    def has_tags(self):
-        return len(self.tags) > 0
-
     def get_prerequisites_str(self):
         return ", ".join([str(p) for p in self.prerequisites])
 
@@ -610,21 +888,14 @@ class Ability:
 
     def get_check_type(self):
         return self.check_type
-
-    # def is_templated(self):
-    #     """Is this a templated ability?"""
-    #     return self.template is not None
-
-    # def get_template(self):
-    #     return self.template
     
     def get_id(self):
         """Returns something like conjuration.ignis_2"""
         return self.ability_id
 
-    def get_short_id(self):
-        """For conjuration.ignis_2 this will return the string ignis_2"""
-        return self.ability_id.split(".")[-1]
+    # def get_short_id(self):
+    #     """For conjuration.ignis_2 this will return the string ignis_2"""
+    #     return self.ability_id.split(".")[-1]
 
     def get_checks(self):
         return self.checks
@@ -639,12 +910,6 @@ class Ability:
 
     def __iter__(self):
         return iter(self.get_ranks())
-
-    def has_tags(self):
-        return len(self.tags) > 0
-
-    def get_tags_str(self):
-        return ", ".join(self.tags)
 
 
     def load(self, ability_element):
@@ -693,9 +958,12 @@ class Ability:
                 ability_check = AbilityCheck(ability=self)
                 ability_check._load(child)
                 self.checks.append(ability_check)
-
+                
             elif tag == "gmgability":
                 self.gmg_ability = True
+
+            elif tag == "abilitygroup":
+                self.group = contents_to_string(child)
 
             elif tag == "abilityactiontype":
                 action_type_str = contents_to_string(child)
@@ -718,7 +986,7 @@ class Ability:
                 else:
                     self.description = children_to_string(child)
 
-            # elif tag == "abilitytemplate":
+            # elif tag == "specializations":
             #     if self.template is not None:
             #         raise Exception("Only one abilitytemplate per ability. (%s) %s\n" %
             #                         (child.tag, str(child)))
@@ -748,8 +1016,8 @@ class Ability:
                     prereq = NotTagPrereq(prerequisite_tag)
                     self.prerequisites.append(prereq)
 
-            elif tag == "tags":
-                self.parse_tags(child)
+            elif tag == "keywords":
+                self.keywords += parse_xml_list(child)
 
             elif tag == "spline":
                 self.spline = parse_spline(child.getchildren())
@@ -783,13 +1051,6 @@ class Ability:
         return
 
     
-    def parse_tags(self, tags_node):
-        for child in list(tags_node):
-            if child.tag is not COMMENT:
-                tag = child.tag[1:-2]
-                self.tags.append(child.tag)
-        return
-    
     def is_gmg_ability(self):
         """
         Returns True if this is a special ability that should go in the GMG and not 
@@ -797,7 +1058,6 @@ class Ability:
 
         """
         return self.gmg_ability
-
 
     def _add_ability_rank(self, rank_number):
         """Add an ability rank."""
@@ -807,12 +1067,15 @@ class Ability:
 
         # Store it twice .. once as ability_group.ability.rank
         # and once as ability.rank
+        rank_id = rank.get_id()
         ability_rank_lookup[rank.get_id()] = rank
 
         #assert rank.get_short_id() not in ability_rank_lookup, f" --> {rank.get_id()} {rank.get_short_id()}"
-        if rank.get_short_id() in ability_rank_lookup:
-            raise Exception(f" --> {rank.get_id()} {rank.get_short_id()}")
-        ability_rank_lookup[rank.get_short_id()] = rank
+        #if rank.get_short_id() in ability_rank_lookup:
+        # if rank_id  in ability_rank_lookup:
+        #     #raise Exception(f" --> {rank.get_id()}  {rank.get_short_id()}")
+        #     raise Exception(f" --> {rank_id} ")
+        # ability_rank_lookup[rank_id()] = rank
         self.ranks.append(rank)
         return
         
@@ -851,8 +1114,8 @@ class AbilityGroupInfo:
         self.title = None
         self.ability_group_id = None
         self.description = None
-        self.family = None # one of Combat, Mundane or Magic.
-        self.tags = []
+        self.family_id = None
+        self.keywords = []
 
         # Should we draw a skill tree when documenting the ability group?
         # (Some ability groups are very flat with no relationships)
@@ -865,12 +1128,10 @@ class AbilityGroupInfo:
     def get_title(self):
         return self.title
 
-
     def get_description(self):
         return self.description
 
     def load(self, ability_group_info_element):
-
         # check it's the right sort of element
         if ability_group_info_element.tag != "abilitygroupinfo":
             raise Exception("UNKNOWN (%s) %s\n" % (ability_group_info_element.tag,
@@ -878,14 +1139,12 @@ class AbilityGroupInfo:
         self._load(ability_group_info_element)
         return
 
-
-    def load_ability_tags(self, ability_tags_node):
-        for child in list(ability_tags_node):
-            self.tags.append(child.tag)
+    def load_ability_keywords(self, ability_keywords_node):
+        for child in list(ability_keywords_node):
+            self.keywords.append(child.tag)
         return
 
     def _load(self, ability_group_info_element):
-        
         # handle all the children
         for child in list(ability_group_info_element):
         
@@ -905,7 +1164,12 @@ class AbilityGroupInfo:
                                    (child.tag, str(child)))
                else:
                    # save the id location for debugging (can't have duplicates)!
-                   ability_group_id = child.text
+                   group_ids = contents_to_list(child)
+                   if len(group_ids) != 1:
+                       raise Exception("Expecting 1 ability group id: got %s and %s"
+                                       % (len(group_ids), contents_to_string(child)))
+                       
+                   ability_group_id = group_ids[0]
                    ability_group_location = "%s:%s" % (self.fname, child.sourceline)
                    if ability_group_id in self._ids:
                        previous_location = self._ids[ability_group_id]
@@ -920,11 +1184,37 @@ class AbilityGroupInfo:
                    self.ability_group_id = ability_group_id
                    
            elif tag == "abilitygroupfamily":
-               self.family = contents_to_string(child)
-               assert self.family in FAMILY_TYPES, f"family {self.family} not in FAMILY_TYPES {FAMILY_TYPES}"
+               if self.family_id is not None:
+                   raise Exception("Only one abilitygroupfamily per ability. (%s) %s\n" %
+                                   (child.tag, str(child)))
+               else:
+                   family_ids = contents_to_list(child)
+                   if len(family_ids) != 1:
+                       raise Exception("Expecting 1 family id: got %s and %s"
+                                       % (len(family_ids), contents_to_string(child)))
+                   
+                   # save the id location for debugging (can't have duplicates)!
+                   #family_id = 
+                   # family_id_location = "%s:%s" % (self.fname, child.sourceline)
+                   # if family_id in self._ids:
+                   #     previous_location = self._ids[ability_group_id]
+                   #     raise Exception("Ability group id: '%s' appears in two places %s and %s"
+                   #                     % (ability_group_id,
+                   #                        ability_group_location,
+                   #                        previous_location))
+                   # else:
+                   #      self._ids[ability_group_id] = ability_group_location
 
-           elif tag == "abilitytags":
-               self.load_ability_tags(child)
+                   # save the id!
+                   self.family_id = family_ids[0]
+                   
+                       
+               #self.family_id = contents_to_string(child)
+               #self.family_id = strip_xml(child)
+               #assert self.family_id in FAMILY_TYPES, f"family {self.family} not in FAMILY_TYPES {FAMILY_TYPES}"
+
+           elif tag == "keywords":
+               self.load_ability_keywords(child)
 
            elif tag == "abilitygroupdescription":
                if self.description is not None:
@@ -966,6 +1256,12 @@ class AbilityGroup:
                 return ability
         return None
 
+    def get_keywords(self):
+        return sorted(list(set(self.info.keywords + [self.info.family_id, self.info.ability_group_id])))
+
+    def get_keywords_str(self):
+        return ", ".join(self.get_keywords())
+
     def get_root_abilities(self):
         """
         Return a list of abilities that have no prerequisites.
@@ -985,28 +1281,28 @@ class AbilityGroup:
         return self.abilities
 
     def is_lore_family(self):
-        return self.info.family == FAMILY_TYPE.LORE
+        return self.info.family_id == "lore"
     
     def is_general_family(self):
-        return self.info.family == FAMILY_TYPE.GENERAL
+        return self.info.family_id == "general"
     
     def is_magic_family(self):
-        return self.info.family == FAMILY_TYPE.MAGICAL
+        return self.info.family_id == "magic"
     
     def is_martial_family(self):
-        return self.info.family == FAMILY_TYPE.MARTIAL
+        return self.info.family_id == "martial"
 
     def is_primary_family(self):
-        return self.info.family == FAMILY_TYPE.PRIMARY
+        return self.info.family_id == "primary"
     
     def is_common_family(self):
-        return self.info.family == FAMILY_TYPE.COMMON
+        return self.info.family_id == "common"
 
     def is_npc_family(self):
-        return self.info.family == FAMILY_TYPE.NPC
+        return self.info.family_id == "npc"
 
     def is_wyrd_science_family(self):
-        return self.info.family == FAMILY_TYPE.WYRD_SCIENCE
+        return self.info.family_id == "wyrd_science"
 
     def validate(self):
         """
@@ -1016,7 +1312,7 @@ class AbilityGroup:
         return validate_xml(self.doc)
 
     def get_family(self):
-        return self.info.family
+        return self.info.family_id
     
     def __iter__(self):
         return iter(self.abilities)
@@ -1061,14 +1357,20 @@ class AbilityGroup:
            tag = child.tag
            if tag == "abilitygroupinfo":
                if self.info is not None:
-                   raise Exception("Only one abilitygroupinfo per file.")
+                   raise Exception("Only one abilitygroupinfo per file.  Filename: {self.fname}")
                else:
                    self.info = AbilityGroupInfo(self.fname)
                    self.info.load(child)
 
            elif tag == "ability":
-               ability = Ability(self.fname)
-               ability.load(child)
+               ability = Ability(self.fname, ability_group_id=self.get_id())
+               try:
+                   ability.load(child)
+               except Exception as e:
+                    # Add some extra debug info if we can.
+                    e.add_note(f"File name: {self.fname}")
+                    raise
+                   
                ability.set_group(self)
                self.abilities.append(ability)
 
@@ -1097,38 +1399,6 @@ class AbilityGroup:
             problems.append(f"Group id {group_id} contains an underscore.  "
                             "Latex doesn't like underscores. "
                             "Use a hyphen instead.")
-
-        for ability in self.abilities:
-            tags = ability.get_tags()
-            if group_id not in tags:
-                problems.append(f"Ability {ability.get_id()} is in group {group_id} but "
-                                f"the tags for that ability do not contain the group name. f{tags}")
-
-        # the ability group family must also be a tag!
-        for ability in self.abilities:
-            family_str = strip_xml(self.info.family) 
-            if family_str not in ability.tags:
-                problems.append(
-                    f"The tags for ability {ability.get_title()} are: [{', '.join(ability.tags)}]. "
-                    f"They should include the abilities family {family_str}!")
-
-        # the prerequsite, if there is one, should be in the same group.
-        if self.fname == "/home/blaize/proj/malleus_deum/abilities/wilderness_abilities.xml":            
-            for ability in self.abilities:
-                # check if it's a valid ability.
-                prereq = ability.ability_rank_prereq
-
-                # if we have an ability prereq then check its sanity.
-                if prereq is not None:                    
-                    prereq_ability_rank = prereq.get_ability_rank()
-                    if prereq_ability_rank is None:
-                        raise Exception(f"Ability {ability.get_name()} has a prequisite ability "
-                                        f"that does not exist {prereq.ability_rank_id}.")
-
-                    if prereq_abilityrank.get_group() != self:
-                        raise Exception(f"Ability {ability.get_name()} in group {self.get_name()} "
-                                        f"has a prerequisite {prereq_ability_rank.get_name()} in a different "
-                                        f"group {prereq_ability_rank.get_group().get_name()}")                
         return problems
 
     def check_sanity(self):
@@ -1145,6 +1415,8 @@ class AbilityGroups:
     """
     def __init__(self):
         self.ability_groups = []
+
+        # id -> ability, e.g. ✱primary.perception -> Perception Ability obj
         self.ability_lookup = {}
         return
 
@@ -1178,12 +1450,23 @@ class AbilityGroups:
         return iter(self.ability_groups)
 
     def get_ability_rank(self, ability_rank_id, rank=None):
+        """
+
+        Throws a key error if the rank is not found!
+        """
         if ability_rank_id is None:
             return None
         if ability_rank_id.startswith("✱"):
             ability_rank_id = ability_rank_id[1:]
         if rank is not None:
             ability_rank_id = f"{ability_rank_id}_{rank}"
+        #try:
+        x = ability_rank_lookup[ability_rank_id]
+        #except KeyError:
+        #    for v in ability_rank_lookup.keys():
+        #        print(v)
+        #    print("Y2\n")
+            
         return ability_rank_lookup[ability_rank_id]
 
     def get_abilities(self):
@@ -1195,7 +1478,7 @@ class AbilityGroups:
     def get_abilities_by_family(self, family_type):
         abilities = []
         for ability_group in self.ability_groups:
-            if ability_group.info.family == family_type:
+            if ability_group.info.family_id == family_type:
                 for ability in ability_group.get_abilities():
                     abilities.append(ability)
         abilities = sorted(abilities, key=lambda ability: ability.title)
@@ -1207,6 +1490,7 @@ class AbilityGroups:
     
     def get_ability(self, ability_id):
         for group in self.ability_groups:
+            #print(f"\t{group.fname}  {group.info.ability_group_id}")
             ability =  group.get_ability(ability_id)
             if ability is not None:
                 return ability
@@ -1218,7 +1502,11 @@ class AbilityGroups:
                 return group
         return None
 
-    def load(self, abilities_dir, fail_fast):        
+    def load(self, abilities_dir, fail_fast):
+
+        # Before we do anything load the default ability check classes.
+        AbilityCheck.load_ability_check_defaults(abilities_dir)
+        
         # load all the ability groups
         for xml_fname in listdir(abilities_dir):
 
@@ -1234,7 +1522,7 @@ class AbilityGroups:
             if errors:
                 if fail_fast:
                     for i, e in enumerate(errors):
-                        print(f"error: {i}\n{str(e)}\n{ get_error_context(doc.fname, e.line) }\n\n")
+                        print(f"error: {i}\n{str(e)}\n{ get_error_context(xml_fname, e.line) }\n\n")
                     raise Exception("Problem with xml %s" % xml_fname)
                 else:
                     return False
@@ -1303,6 +1591,10 @@ def get_ability_rank_total_prereqs(ability_groups, ability_rank, prereqs=None):
     
 if __name__ == "__main__":
 
+    # src_dir = abspath(join(dirname(__file__)))
+    # root_dir = abspath(join(src_dir, ".."))
+    #sys.path.append(src_dir)
+    
     ability_groups = AbilityGroups()
     ability_groups_dir = join(root_dir, "abilities")
     ability_groups.load(ability_groups_dir, fail_fast = True)
@@ -1331,23 +1623,23 @@ if __name__ == "__main__":
     #         print(f" {count} {ability.get_title()}")
     
 
-    count = 0
-    for ability_group in ability_groups:
+    # count = 0
+    # for ability_group in ability_groups:
 
-    #     if "Transport" not in ability_group.get_title():
-    #         continue
+    # #     if "Transport" not in ability_group.get_title():
+    # #         continue
 
-        print()
-        print(ability_group.get_title())
+    #     print()
+    #     print(ability_group.get_title())
         
-        for ability in ability_group:            
-            count += 1
-            print("\t%i %s %s [%s] [%s]"
-                  % (count,
-                     ability.get_title(),
-                     ability.get_id(),
-                     str(ability.get_untrained_rank()),
-                     str(ability.untrained_rank)))
+    #     for ability in ability_group:            
+    #         count += 1
+    #         print("\t%i %s %s [%s] [%s]"
+    #               % (count,
+    #                  ability.get_title(),
+    #                  ability.get_id(),
+    #                  str(ability.get_untrained_rank()),
+    #                  str(ability.untrained_rank)))
     #     #     # # print("\t\t\tAbility Class: %s" % ability.get_ability_class())
     #     #     # # print("\t\t\tAbility Desc: %s" % ability.description)
     #     #     # # #print("\t\t\tAbility Class: %s" % ability.get_ability_class())
@@ -1368,3 +1660,5 @@ if __name__ == "__main__":
             
 
 
+    for k,v in ability_rank_lookup.items():
+        print(f"{k} --> {v}")

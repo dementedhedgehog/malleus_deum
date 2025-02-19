@@ -1,8 +1,543 @@
 
+ADD SAVING THROWS FOR ALL ABILITIES
+DO WE WANT TO REPLACE METTLE CHECKS WITH WILLPOWER CHECKS?
+WHAT DO WE DO WITH LUCK (constant DC?) AND MAGIC CHECKS???
+
+
+CHECK, SAVING-THROW, EFFECT
+CHECK well understood has all the fields
+SAVING-THROW always d20+rank
+COUNTER-ACTION OR REACTION??? "trigger" and "effect"
+
+
+
+
+DEFENCE SAVE
+  Player rolls
+  OPTIONAL? Boons/Banes ... Attacker
+  Crits ... Attacker?
+
+
+
+**** WHEN CHECKING WHO SPECIFIES THE DC, BOONS AND CRIT BEHAVIOUR? ***
+
+
+Simple Check.  The Check specifices everything.
+
+Check with Opposed Save.
+ - e.g. Sword Strike vs Shield Block
+ 
+
+
+
+
+What about monster actions that have nothing to do with a particular party member?
+
+
+ Action economy..
+ - having three actions the same like pathfinder provides more strategic engagement.  *****
+ - Also need free actions and reactions and the 1/2/3 action count from pf2e
+output [lowest 1 of 3d20] named "double disadvantage"
+output [lowest 1 of 2d20] named "disadvantage"
+output [lowest 1 of 1d20] named "normal d20"
+
+
+
+CURRENT QUESTION..
+  - SHOULD WE DO FOLLOW UP EFFECTS LIKE HAMMER SMASH (1 ability 2 checks) OR LIKE RIGHTEOUS BLOW (2 abilities with a trigger) OR BOTH?  ADs vs DisADs?
+  - I THINK THE (2 abilities with a trigger) IS BETTER (each ability is simpler)
+  - PROBLEM method 2 doesn't require the player to make strategic decisions
+
+
+
+FIXME: sort out npc attacks.. (SPELLS ETC.. DO WE NEED A SPECIAL VERSION OF EACH?)
+  does the pc want to roll high or low (high).
+  PC rolls a DC against the DC of the passive attack
+  Monster abilities should basically be a range, an effect, keywords, dmg (crits etc .. determined by players save? or crit fails??)
+  SAVE ABILITIES DONT IMPOSE A CRIT FAIL ETC.  THATS IMPOSED BY THE MONSTER ATTACK?? WHAT ABOUT PVP?
+  COUNTERACTION ... 
+How do monsters cast spells???  .. The PCs save against the effect.
+
+RENAME COUNTERCHECK TO SAVING THROW
+
+ANOTHER QUESTION .. DEFENCE ABILITIES...
+
+
+tasks... enforce counterchecks SAVES -> have only a bonus (rank) and a DC , and npcchecks have a dc, crits, boons etc (but the crit successes are good for the players and bad for the NPCs).  defence is a special class of countercheck/save used for physical attacks (includes dodge, shield block, parry, etc) where the DC is the Target's Attack.
+
+
+
+ NOTE: during PVP players are considered to have the plot-armour ability.   DEFINE PLOT ARMOUR
+
+
+*Player-Facing* abilities are abilities where an NPC performs an ability and the roll for the check  is made on behalf of the PC by the player (or sometimes by the GM).   These abilities have a CHECK and a DC(=number+Rank) and CRITS.  These are separate abilities because we want to maintain the roll high is good for the PC idiom.
+
+Monster vs Monster.. GM rules by fiat.  Roll a die if you feel it will give you inspiration as to the outcome.  Nobody wants to
+see the GM play the game with themselves.
+
+
+effect, righteous-effect?  happens on that result or higher?
+fail-effect, grim-fail-effect happens on that result or lower?
+
+
+ An npc attacks a pc with a magic missile.
+ The pc uses shield block.
+ Whose crit and boon bane and crits should apply? the attackers Magic Missile ability or the pcs Shield Block
+ - USE PCs boon bane, attackers crits. (because if the pcs use magical defences they have to pay for it).
+ - USE NPCs crit values?
+
+
+
+
+Sprint.. need a definition for natural sprinters... (double move in an encounter)
+
+Theurgic Oath.. Aspect ..
+and oaths in general?
+
+FIXME: remove no-checks?
+
+ NPC checks..
+ DC SHOULD BE THE PLAYERS DEFENCE
+
+
+Last stand .. die reaction.  no heals.
+
+
+GMs guide.  Make sure that all the monster keyword enum things are described somewhere?
+ 
+
+CHANGE fate die to Gods... add a heedless result.  Add the cost there?  PROVIDENCE?  indifferent.
+Monsters generally don't roll and when they do they don't roll fate dice and don't get crits
+
+
+Do we need initiative??
+
+
+mettle of a group starts at the max of the mettles of the members of the group.
+the peacemakers
+
+Most specific rule applies... (critical success is a righteous success etc, ).
+
+
+
+make "healing" after an encounter.. then it will scale for dungeons and hexcrawling. ??
+beastmen .. gors etc.. krampus, centaurs, minotaurs
+
+
+
+rename polearm to spear.. in ability ids
+
+
+three strikes and you're out.  ???? what does this mean?  For lore/repeated checks.
+
+siddhis - for plague doctors
+Akelarre - witches sabbath
+Basajaun
+Zugarramurdi - town in spain
+
+
+ --- LEVELS AND SPECIALIZATION ---
+X  REMOVE GROUP FROM ID.
+X  Then there's only ability and specialization
+MAKE ONE SYNTAX FOR SPECIALIZATION (NOT .blah and [blah])
+REMOVE CODE FOR PARSING OLD ABILITY GRAMMER.
+UPDATE RPG.XSD IF IT SUPPORTS ABILITY GRAMMER??
+ 
+
+HOW DO WE DEAL WITH SPECIALIZATIONS IN OUR ACCOUNTING?
+They're NOT TOO IMPORTANT FOR BALANCE - CALL THEM LEVEL 4 AS A ROUGH APPROXIMATION?  OR GIVE THEM THEIR OWN RANK?
+
+
+
+ --- XXX ---
+
+WHAT ABOUT SHIELD?
+HOW DO WE DO HALF DAMAGE?  Fail .. Ablates damage e.g. d8, d6 etc?  critical fail ablates no damage .. shield break test.
+
+MASTERY
+1 = Critical Fail, >1 & <DC-8 Grim Fail, >=DC-8 & <DC Fail, >=DC & <DC-8 Success, >=DC+8 Righteous Success, 20 critical success
+
+FATE
+Natural 1 = DAMNED,  < 8 BANE, > 20 BOON Result , Natural 20? BLESSED
+
+
+The rule must be that things that require success must use success and righteous success
+
+
+unfortunate -> pool costs are double
+fortunate -> pool costs are halved
+
+fate die?
+
+
+REVISIT THE BANE BOON terminology?
+
+
+NEEDS A HOOK??
+
+DO WE NEED A CHECK FIELD?   e.g. d20+Rank+Ag??? (BETTER TO TARGET DIFFERENT ATTRIBUTES  Ag, Spd, Willpower etc?)
+
+
+game session (some effects .. Brilliant Planner.. have scope of the current session. define it somewhere)
+define Appropriate size... (this is an effect that refers to monster size for abilities like grab which won't work on monsters too large... see creatureSizeKeywordEnum in the rpg.xsd file.   applicable size for an ability for a character is any creature size up to one larger than the size of the character ... e.g. for medium creatures applicable sizes are large creatures or smaller, for small creatures applicable sizes are medium creatures or smaller).
+DEFINE BASIC ATTACK one with the basic attack keyword
+DEFINE TEMPORARY HITPOINTS
+
+RENAME LUCKY to FAVOURED BY THE GODS
+
+FRENZY CONDITION??
+ADD THROW AXE ABILITY
+
+Overflow damage.
+Deus Vult.. theurgic.  extra attack
+
+
+****
+HOOK UP ability check types
+LOAD THEM
+
+
+
+
+
+
+
+
+
+
+ --- XXX ---
+
+
+
+
+WHAT DO WE NEED FROM OUR STATS?
+
+
+
+
+
+Specializations and levelling up/
+A specialization counts as a new ability.
+Subability?
+
+
+
+
+Catergories of players..
+
+Tanks?      Defence 4  Attack 2
+Strikers ?  Defence 2  Attack 4
+Support?    Defence 2  Attack 3
+Half Caster T Defence 3  Attack 2
+Half Caster S Defence 2  Attack 3
+Full Caster   Defence 2  Attack 2
+Urchin?       1 1 
+
+Where do casters fit in?
+Are Strikers melee only fighters?  what about rangers?
+What abour ranged strikers?
+
+
+SHOULD I ALLOW RANKS OF -2 etc?
+
+
+
+You can't ignore me .. skill.
+Extended opportunity attack.. for fighters .. when their opponent backs off.
+
+
+ LEVELING>>  TRICK IS TO MAKE THE MAX LEVEL 5 for the big prereqs?
+   SPACE OUT THE LEVELS SO THAT YOU AWARD EITHER PROMOTIONS OR NEW ABILITIES.
+
+
+Go up to level 
+*** How do I visualize it? ***
+
+
+FOR MAGIC AND FOR FIGHTING
+LEVEL UP TO LEVEL 6
+  Then dependencies start at level 3.
+
+
+FOR FIGHTING MAGIC USERS START AT level 1 martial, fighters at level 3
+For Magic levels at 1.
+For other things it doesn't matter too much as it doesn't directly effect fighting.
+
+
+
+guivre
+lindworm
+wyvern
+
+shofar
+
+
+ SORT OUT PROGRESSION
+
+
+ WHAT'S THE RELATIONSHIP BETWEEN MAGIC MISCAST AND FUMBLE
+ WHAT ABOUT METTLE AND LUCK CHECKS
+ WOUNDS?
+ 
+
+miss-boon extra minor action.
+
+rename health to flesh?
+
+ KEYWORDS?
+
+ Exhaustion as an aspect.
+
+
+Mighty Deed (epic action)
+
+
+change boon and bane wording to *may* rather than will provide a benefit 
+
+blessed-success
+blessed-fail
+sinister-success
+sinister-fail
+
+mistrikes on bane-fails
+
+Fumble Table
+
+
+Fall Table
+Social Table
+
+REPLACE
+NO_CHECKS?
+WITH CHECK WITH TRIGGER AND EFFECT
+
+SWIFT DEATH? HPs?
+coup de grais
+
+remove overcharge..
+
+
+What do we do about grounding etc...
+Grounding modifiers for spells.
+
+
+
+Artillery modifiers?
+Guns modifiers?
+"Sniper" ability modifiers
+
+
+
+NOT ALL ABILITIES HAVE A CHECK NOW!
+
+
+SHOULD WE ALLOW PRIMARY ABILITY BONUSES TO Abilities????
+
+
+ ABILITY REDESIGN
+bane/boon/crit s/crit fail/solid/righteous/exalted
+templates -> specializations
+ids -> put groups in the groups field
+
+ - ADD A SUCCESS OR FAILURE clause
+ - Add a pool cost?
+ - abilitycheck do we need it?  Should it change to a DC?
+
+Add a keyword -> ability list to the phb.
+
+climb/swim -> athletics?
+move advesary from social into martial?
+
+
+Beware of a man who's grown old in a trade where men die young!
+
+
+
+MAKE UP MY MIND ABOUT ETIQUETTE..
+  it's on the character sheet
+
+
+non-lethal?
+innate?
+brutal?
+
+damage keyword: fire, crushing, slashing, etc
+
+
+pernoctation..
+penitance
+blasphemy
+
+keeper of the dead..
+
+
+climb
+swim specializations of athletics?
+
+
+hunting tracking scouting merge with survivalism
+  
+
+archery trick shot
+  - hit a target behind another target.
+
+
+problem with introducing tags 
+
+
+remove ability group from ability name.. ability names should be unique.
+
+also .. common -> innate.  Describe keywords
+
+
+social etiquette.. specializations for communicate?
+
+DROP etiquette
+Have specializations for different 
+
+
+make luck and mettle checks standard checks that everyone gets (rename luck to reroll?)
+Change negotiate to social?
+
+
+what happens when the pool is reduced to zero?
+
+
+
+keyword
+
+
+DOC UNTRAINED ABILITIES AND ABILITIES
+(ANY ABILITY YOU CAN USE UNTRAINED HAS TO APPEAR ON THE LIST IN THE PC SHEET.. call them innate)
+
+
+<!--
+
+Toll???
+
+
+Get rid of the Lucky ability?
+
+Guthwina -- war friend.
+
+
+ white/black  lightness/darkness
+sinister..
+benignant?
+
+
+wundorsmith
+hwaelweg (whale way.. ocean)
+weorold
+
+ FALLING
+ DROWNING
+ BURNING
+ POISON
+ POISON GAS
+ ACID
+ STRANGLING?
+ BROKEN BONES...  
+
+
+
+ Fate...
+     magic overflow?? .. just make it a 1?  Then you roll on some table and add all the casting modifiers.
+     what about a 1 on the other dice
+     firing into combat.
+
+
+ finesse? vs DC
+    -> natural 1s always fail
+    -> natural 20s always succeed
+    -> add rank to this
+    -> >= 20 triggers special* (might not hit!?)
+    
+    * fighting .. hit or miss .. special: trigger abilities and double damage
+    * magic successfully cast or not
+    * ability check -> what are specials?
+    * aspects -> what are specials?
+
+    
+
+
+
+ fate
+    -> melee .. double damage? (might not hit).
+    -> magic.. low is wasteful of magic, high is efficient
+    -> 1s are fumbles (use the fate to determine).
+    -> 19s 
+    -> 20s  
+
+
+
+
+
+WHAT ABOUT >..
+
+   ADD LEVEL TO BOTH ROLLS
+      SPECIALS > 20
+      Natural 1s are FUMBLES
+
+
+
+
+ THE PROBLEM WITH THIS APPROACH IS THAT IT WANTS FATE AND FINESSE TO BE INDEPENDENT BUT THEY ARENT
+  SO WE HAVE TO MAKE THEM.
+  
+ What triggers half damage in melee?
+
+
+ ability check
+ aspect check
+ skill check
+ generic checks
+ magic checks
+ luck checks
+ mettle checks
+ armour check
+ weapon check
+ encumberance check
+ initiative/surprise/ambush
+
+
+
+
+Magic
+   Chaos?
+   
+Pool Toll?
+
+
+Should Lore be an ability?  .. change to Book Learning?  Change to something else?
+Add an Oral Tradition skill?
+
 
  CHANGE TO
   D20 & D12
   Outcome ? Context..
+
+
+How do plebs use their magic pool to resist magic?
+
+      <p>
+	All actions in the game are performed using abilities with a 2d20 player-facing
+	check mechanic.
+      </p>
+      <!-- player facing.. abilities -->
+      <p>
+
+
+using a single mechanic	
+	Checks are made using a single, player facing, roll-over system, using a
+	2d20 system, where one die represent
+
+Abilities have a Rank which is a positive integer, or some abilities can be used untrained.
+
+      </p>
+
+
+
 
 
 
@@ -18,7 +553,6 @@ Alert
 Rename Morale Check for monsters to Mettle Check! (consistency). 
 
 What happens to Move, Run, Charge, Sprint, Natural Sprinters and Flee abilities?  replace with Speed/Agility?
-
 
 Should have overcharge for Luck and Mettle
 Get a dice back?  Should have it for Magic too?
@@ -133,7 +667,7 @@ Tighten up boons and banes and tie weapon abilities to boons and banes and
 Only get boons when you're proficient in the weapon level > 1.
 
 critical fail.
-double 12s  insta kill.
+double 12s  insta kill.  --> slay? anhilate?
 hit bane.. half damage
 hit boon double damage
 double 3s weapon save, dodge falls
@@ -955,3 +1489,4 @@ Slashing Damage +3 vs dodge
  - Remove Etiquette.. make it a specialization of Negotiate.  
  - Remove Fame make it an Aspect.
  - Add common abilities.
+ - Consider merging Sword and Mace Parry to Parry.

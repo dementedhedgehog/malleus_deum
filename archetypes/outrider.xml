@@ -57,11 +57,11 @@
   <!-- <appearance></appearance> -->
 
   <aspectexamples>Discretion is the better part of valour.  Nothing Personal, It's Just Business.  A Worthy Foe Should Be Respected</aspectexamples>
-  <archetypetags>
+  <archetypekeywords>
     <human/>
     <humanoid/>
     <medium/>    
-  </archetypetags>
+  </archetypekeywords>
 
 
   <archetypelevels>
@@ -88,7 +88,7 @@
 	  <one-of>Choose one of ✱survivalism[Mountains]_1 or ✱survivalism[Forests]_1.</one-of>
 	  <one-of>Choose two of ✱hybernian_2, ✱poitevin_2, or ✱dwarven_1.</one-of>
 	  <one-of>Choose one of ✱survivalism[Hills/Woodlands]_1 or ✱survivalism[Marshes]_2</one-of>
-	  <one-of>Choose one of ✱disguise_1 or ✱social.deceive_1</one-of>
+	  <one-of>Choose one of ✱disguise_1 or ✱negotiate.deceive_1</one-of>
 	</path>
       </branch>
 
@@ -101,30 +101,30 @@
 	    
 	  <path chance="1-9">
 	    <pathtitle>Laibstadt</pathtitle>
-	    <choice>✱language.merovingian_4, ✱common.history[Westreich]_2,
-	    ✱social.etiquette_3[Westreich], ✱social.etiquette[Westreich-Nobility]_2</choice>
+	    <choice>✱merovingian_4, ✱history[Westreich]_2,
+	    ✱3[Westreich], ✱etiquette[Westreich-Nobility]_2</choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Alemagne</pathtitle>
-	    <choice>✱language.merovingian_4, ✱language.alemagne_4, 
-	    ✱common.history[Westreich]_2, ✱common.history[Alemagne]_2,
-	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
-	    ✱social.etiquette[Allemagne-Nobility]_2</choice>
+	    <choice>✱merovingian_4, ✱alemagne_4, 
+	    ✱history[Westreich]_2, ✱history[Alemagne]_2,
+	    ✱2[Westreich], ✱etiquette[Westenreich-Nobility]_2,
+	    ✱etiquette[Allemagne-Nobility]_2</choice>
 	  </path>
 	  <path chance="11">
 	    <pathtitle>Averoigne</pathtitle>
-	    <choice>✱language.merovingian_3, ✱common.history[Westreich]_1,
-	    ✱common.history[Averoigne]_3, ✱social.etiquette_2[Averoigne],
-	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
-	    ✱social.etiquette[Averoigne-Nobility]_2</choice>
-	    <choice>✱language.occitan_4, or ✱language.leonese_4, or ✱language.poitevin_4</choice>
+	    <choice>✱merovingian_3, ✱history[Westreich]_1,
+	    ✱history[Averoigne]_3, ✱2[Averoigne],
+	    ✱2[Westreich], ✱etiquette[Westenreich-Nobility]_2,
+	    ✱etiquette[Averoigne-Nobility]_2</choice>
+	    <choice>✱occitan_4, or ✱leonese_4, or ✱poitevin_4</choice>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Aquillonian</pathtitle>
-	    <choice>✱language.merovingian_3, ✱language.aquilonian_4,  ✱language.occitan_2,
-	    ✱common.history[Westreich]_2, ✱social.etiquette_2[Aquillonian],
-	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_1,
-	    ✱social.etiquette[Aquillonian-Nobility]_2</choice>
+	    <choice>✱merovingian_3, ✱aquilonian_4,  ✱occitan_2,
+	    ✱history[Westreich]_2, ✱2[Aquillonian],
+	    ✱2[Westreich], ✱etiquette[Westenreich-Nobility]_1,
+	    ✱etiquette[Aquillonian-Nobility]_2</choice>
 	  </path>
       </branch>
       
@@ -143,44 +143,44 @@
 	</path>
 	<path chance="3-5">
 	  <pathtitle>Lumberjack</pathtitle>
-	  <choice>✱craft.craft_2, ✱survivalism.woodlands, ✱axe.cleave_3, ✱axe.strike_2,
-	  ✱lore.natural_history_1, ✱transport.carter_2, ✱wilderness.hunting[Forests]_2</choice>
-	  <choice>One of ✱physical.juggernaut_2 or ✱brawl_2.</choice>
+	  <choice>✱craft.craft_2, ✱survivalism.woodlands, ✱axe_cleave_3, ✱axe_strike_2,
+	  ✱natural_history_1, ✱carter_2, ✱hunting[Forests]_2</choice>
+	  <choice>One of ✱juggernaut_2 or ✱brawl_2.</choice>
 	  <choice>One of ✱adversary[Greenskins]_3, or ✱adversary[Beasts]_3</choice>
 	</path>
 	<path chance="6-7">
 	  <pathtitle>Wagoneer</pathtitle>
-	  <choice>✱transport.carter_3, ✱craft.craft_2, ✱skulduggery.ropecraft_2, ✱hunting.woodlands, , ✱animal_handling_1, ✱transport.horse_riding_1</choice>
-	  <choice>One of ✱agility.surefeet or ✱common.brawl_3</choice>
-	  <choice>Two of ✱animal_handling_3, ✱transport.horse_riding_3, ✱survivalism[Plains/Woods]_3</choice>
+	  <choice>✱carter_3, ✱craft.craft_2, ✱ropecraft_2, ✱hunting.woodlands, , ✱animal_handling_1, ✱riding_1</choice>
+	  <choice>One of ✱surefeet or ✱brawl_3</choice>
+	  <choice>Two of ✱animal_handling_3, ✱riding_3, ✱survivalism[Plains/Woods]_3</choice>
 	  <choice>Two of ✱adversary[Bandits]_3, ✱adversary[Greenskins]_3, or ✱adversary[Beasts]_3.
 	  </choice>
 	</path>
 	
 	<path chance="8">
 	  <pathtitle>Trader</pathtitle>
-	  <choice>✱social.contacts[Traders]_2, ✱social.etiquette[Low-Society]_2, ✱skulduggery.search_3, ✱skulduggery.concealment_3</choice>
-	  <choice>One of ✱transport.carter_3, or ✱transport.sailor_3</choice>
-	  <choice>One of ✱lore.book_keeping_3, ✱lore.book_learning_3, ✱lore.antiquarian_3</choice>
-	  <choice>Two of , , ✱social.deceive_3, ✱common.negotiate_3, or ✱skulduggery.search_3</choice>
+	  <choice>✱contacts[Traders]_2, ✱etiquette[Low-Society]_2, ✱search_3, ✱concealment_3</choice>
+	  <choice>One of ✱carter_3, or ✱sailor_3</choice>
+	  <choice>One of ✱book_keeping_3, ✱book_learning_3, ✱antiquarian_3</choice>
+	  <choice>Two of , , ✱negotiate.deceive_3, ✱negotiate_3, or ✱search_3</choice>
 	</path>
 	
 	<path chance="9">
 	  <pathtitle>Grifter</pathtitle>
-	  <choice>✱skulduggery.back_stab_2</choice>
-	  <choice>Three of ✱skulduggery.sleight_of_hand_2, , ✱disguise_3, ✱trap_work_2, and ✱skulduggery.pick_locks_2</choice>
-	  <choice>One of ✱art_history_2, ✱lore.antiquarian_2, ✱lore.book_learning_2, ✱law[Westreich]_2, or ✱politics[Westreich]_1</choice>
-	  <choice>One of ✱common.dodge_1, or ✱speed.run</choice>
-	  <choice>Two of ✱common.negotiate_3, ✱social.deceive_3, or ✱negotiate.interogate</choice>
+	  <choice>✱back_stab_2</choice>
+	  <choice>Three of ✱sleight_of_hand_2, , ✱disguise_3, ✱trap_work_2, and ✱pick_locks_2</choice>
+	  <choice>One of ✱art_history_2, ✱antiquarian_2, ✱book_learning_2, ✱law[Westreich]_2, or ✱politics[Westreich]_1</choice>
+	  <choice>One of ✱dodge_1, or </choice>
+	  <choice>Two of ✱negotiate_3, ✱negotiate.deceive_3, or ✱negotiate.interogate</choice>
 	</path>
 	<path chance="10">
 	  <pathtitle>Army Scout</pathtitle>
-	  <choice>✱survivalism[Forests]_2, ✱dagger_strike_2, ✱spear_strike_1, ✱shield.block_1</choice>
+	  <choice>✱survivalism[Forests]_2, ✱dagger_strike_2, ✱polearm_strike_1, ✱block_1</choice>
 	  <choice>Choose one of ✱contacts[The-Old-Guard]_2, ✱contacts[Household-Guards]_2, ✱contacts[The-Black-Guard]_2</choice>
 	</path>
 	<path chance="11">
 	  <pathtitle>Ranger</pathtitle>
-	  <choice>✱survivalism[Forests]_2, ✱survivalism[Plains/Woods]_2, ✱law[Westreich]_2, ✱spear_strike_1, ✱politics[Westreich]_1</choice>
+	  <choice>✱survivalism[Forests]_2, ✱survivalism[Plains/Woods]_2, ✱law[Westreich]_2, ✱polearm_strike_1, ✱politics[Westreich]_1</choice>
 	  <choice>Choose one of ✱contacts[Old-Guard]_2, ✱contacts[House-Guard]_2, ✱contacts[Black-Guard]_2</choice>
 	</path>
 	<path chance="12">

@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Theurgic Abilities</abilitygrouptitle>
-    <abilitygroupid>theurgic</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><theurgy/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	Theurgic magic is magic channelled from a powerful deity.
         They involve the use of the characters magic pool and
 	are only available to certain archetypes.
       </p>
+
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
 
+  
   <ability>
     <abilitytitle>Air of Beatitude</abilitytitle>
-    <abilityid>theurgic.air_of_beatitude</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>air_of_beatitude</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" type="Magic+Rank" range="self" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+      <effect></effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -44,14 +55,25 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Augury</abilitytitle>
-    <abilityid>theurgic.augury</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><theurgic/><ritual/><magicpool/></tags>
+    <abilityid>augury</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" overcharge="3">Magic+Rank</abilitycheck>    
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><ritual/><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+      <!-- <effect></effect> -->
+    </abilitycheck>    
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="100"/><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -114,12 +136,22 @@
 
   <ability>
     <abilitytitle>Back! Thou Creature From the Abyss</abilitytitle>
-    <abilityid>theurgic.back</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>back</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Demon makes Mettle Check vs 5×Rank" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>Target's Willpower</dc>
+      <effect>Demon makes Mettle Check vs Cast Result</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_2</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -131,19 +163,25 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Blessed Arms</abilitytitle>
-    <abilityid>theurgic.blessed_arms</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>blessed_arms</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck
-	dc="5"
-	range="touch"
-	effect="weapons receive +Rank dmg vs demons and undead"
-	type="Magic+Rank"
-	overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><touch/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>7</dc>
+      <effect>Weapons receive +Rank dmg vs demons and undead</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -155,19 +193,29 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Canticle of Mithras</abilitytitle>
-    <abilityid>theurgic.canticle_of_mithras</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/><maintain/></tags>
+    <abilityid>canticle_of_mithras</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Alies make defensive checks against evil opponents." overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><standard/></actiontype>
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <keywords><magicpool/><maintain/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+      <effect>Alies make defensive checks with a +Rank bonus against evil opponents</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_2</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The caster calls on Mithras to protect the faithful.  Allies gain +Rank to defensive checks against
-	evil creatures.
+	The caster calls on Mithras to protect the faithful.  Allies gain
+	+Rank to defensive checks against evil creatures.
       </p>
     </abilitydescription>
   </ability>
@@ -175,29 +223,47 @@
   
   <ability>
     <abilitytitle>Holy Water</abilitytitle>
-    <abilityid>theurgic.holy_water</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>holy_water</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Rank+1 holy water vials"  overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess>+2 bonus to checks made with this item</critsuccess>
+      <righteoussuccess>+1 bonus to checks made with this item</righteoussuccess>
+      <success>Holy water is available.</success>
+      <fail>Last one.  No more Holy Water checks can be made until the character has had time to create more.</fail>
+      <grimfail>As fail, but it's old.  -2 bonus to checks made with this item</grimfail>
+      <critfail>All out.</critfail>
+      <blessed></blessed>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <damned></damned>
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>9</dc>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character has about his person some number of vials of holy water they
-	had created earlier for just such an occasion.  When required the caster
-  	makes a magic check.  If successful they are carrying 2+Rank vials of holy water, otherwise
-	they are only carrying one vial. Note that the character must have a long rest before they
-	can make this check again.  Holy water takes time to prepare so the caster cannot produce
-	a never ending stream of holy water vials.
-	To cast this spell the deity that cleric follows cannot be evil.    
-	Also note that the character must have access to vials and water to create holy water.
-  	They cannot produce water in the desert.
+  	The character usually keeps about their person some number of vials of holy
+	water they had created earlier for just such an occasion.  Whenever the ability
+	is used a check is made to see how well prepared they are.  If successful they
+	have drawn one of these vials of holy water, if they fail they may be down to their
+	last vial or have none. Note that the character	must have a long rest before they
+	can make this check again once they fail.  Holy water
+	takes time to prepare so the caster cannot produce a never ending stream
+	of holy water vials. To cast this spell the deity that cleric follows
+	cannot be evil. Also note that the character must have access to vials
+	and water to create holy water.	They cannot produce water in the desert.
       </p>
       
       <p>
-	Holy Water can be prepared before it is needed.  In this case Rank+1d4 vials are created.
-  	Holy water should be kept in a special font.  If kept in a vial	it lasts a few days.
+	Holy Water can be prepared in one hour.  If the player explicitly states that they are preparing
+	holy water and they have the required time and materials to do so, then they may create Rank+1d4
+	vials for use without making a check.  Holy water should be kept in a special font.
+	If kept in a vial it only lasts a few days before its efficacy fades.
       </p>
     </abilitydescription>
   </ability>
@@ -205,12 +271,23 @@
 
   <ability>
     <abilitytitle>Divine Retribution</abilitytitle>
-    <abilityid>theurgic.divine_retribution</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>divine_retribution</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Check to counter attack" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <name>Cast</name>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>9</dc>
+      <effect>Check to make a free counter attack</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="-60" y="45"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -223,12 +300,22 @@
 
   <ability>
     <abilitytitle>Exorcise</abilitytitle>
-    <abilityid>theurgic.exorcise</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>exorcise</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="Context Dependent" effect="Exorcise evil spirit" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank> 
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>2</indifferent>
+      <bane></bane>
+      <range><touch/></range>
+      <keywords><magicpool/></keywords>
+      <dc>13</dc>
+      <effect>Exorcise evil spirit</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank> 
     <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -251,12 +338,22 @@
 
   <ability>
     <abilitytitle>Gentle Repose</abilitytitle>
-    <abilityid>theurgic.gentle_repose</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>gentle_repose</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="+Rank to Near Death saves" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+      <effect>+Rank to Near Death saves</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -266,19 +363,31 @@
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Grace of Mithras</abilitytitle>
-    <abilityid>theurgic.grace_of_mithras</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>grace_of_mithras</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="+Rank to hit and dmg"  overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><touch/></range>
+      <keywords><magicpool/></keywords>
+      <dc>11</dc>
+      <effect>+Rank to hit and dmg</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	If called upon Mithras will grant a +Rank bonus to the caster to hit rolls and damage.
+  	If called upon Mithras will grant a +Rank bonus to the caster to hit
+	rolls and damage.
       </p>
     </abilitydescription>
   </ability>
@@ -286,12 +395,22 @@
 
   <ability>
     <abilitytitle>Guiding Hand</abilitytitle>
-    <abilityid>theurgic.guiding_hand</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>guiding_hand</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" effect="arrow or bolt misses or is rerolled" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+      <effect>Arrow or bolt misses in defence or is rerolled in offence.</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -310,7 +429,8 @@
       </p>
 
       <p>
-	This spell does not work on bullets, which fly so fast the character has no time to react.
+	This spell does not work on bullets, which fly so fast the character has
+	no time to react.
       </p>
     </abilitydescription>
   </ability>
@@ -319,19 +439,30 @@
 
   <ability>
     <abilitytitle>Heal</abilitytitle>
-    <abilityid>theurgic.heal</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>heal</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9" effect="heal 2d4+Rank" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <indifferent>1</indifferent> -->
+      <boon></boon>
+      <bane>The healer accidentaly uses their own animus
+      in order to heal the bloodied character and loses d4 hitpoints.</bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>11</dc>
+      <effect>Heal 1d4+Rank hit points</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_2</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The healing character places their hands on a bloodied target
   	and makes a check.  If successful the bloodied character heals
-  	2d4+Rank Hit Points.  On overcharge the healer accidentaly uses their own animus
-  	in order to heal the bloodied character and loses d6 hitpoints.
+  	1d4+Rank Hit Points.
       </p>
     </abilitydescription>
   </ability>
@@ -339,12 +470,22 @@
 
   <ability>
     <abilitytitle>Hypnotic Gaze</abilitytitle>
-    <abilityid>theurgic.hypnotic_gaze</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>hypnotic_gaze</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="Targets Mettle" effect="target mesmerized">Mettle+3×Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>Target's Willpower</dc>
+      <effect>Target mesmerized</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_2</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -360,12 +501,22 @@
 
   <ability>
     <abilitytitle>Light of Mithras</abilitytitle>
-    <abilityid>theurgic.light_of_mithras</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>light_of_mithras</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" effect="Create light"  overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+      <effect>Create light</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -378,12 +529,22 @@
   
   <ability>
     <abilitytitle>Litany of Redemption</abilitytitle>
-    <abilityid>theurgic.litany_of_redemption</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>litany_of_redemption</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Prayer refreshes a mettle die" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+      <effect>Prayer refreshes a mettle die</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -395,14 +556,25 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>No - Take Me!</abilitytitle>
-    <abilityid>theurgic.no_take_me</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>no_take_me</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="5" effect="Transfers damage"  overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><reaction/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+      <effect>Transfers damage</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -418,12 +590,22 @@
   
   <ability>
     <abilitytitle>Purify</abilitytitle>
-    <abilityid>theurgic.purify</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>purify</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7" effect="Purifies food or drink"  overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+      <effect>Purifies food or drink</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -439,20 +621,30 @@
   
 
   <ability>
-    <abilitytitle>Theurgy</abilitytitle>
-    <abilityid>theurgic.theurgy</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><theurgic/></tags>
+    <abilitytitle>Theurgic Lore</abilitytitle>
+    <abilityid>theurgy</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13" effect="Background knowledge">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><lore/></keywords>
+      <dc>13</dc>
+      <effect>Reveals background lore</effect>
+    </abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
   	Theurgy is the study of how to cast theological, or clerical, spells.  There is a
-  	separate ability called Theology that represents study of the the deities, the history of
-  	religion, and of the teleolical origins of the world.  In most cases both abilities are
-  	required to cast theurgic spells.
+  	separate ability called Theology that represents study of the the deities, the
+	history of religion, and of the teleolical origins of the world.  In most cases
+	both abilities are required to cast theurgic spells.
       </p>
     </abilitydescription>
   </ability>
@@ -460,40 +652,59 @@
 
   <ability>
     <abilitytitle>Hammer of the Hierophant</abilitytitle>
-    <abilityid>theurgic.hammer_of_the_hierophant</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/><maintain/></tags>
+    <abilityid>hammer_of_the_hierophant</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9" effect="Mace, Hammer or Staff" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.blessed_arms_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/><maintain/></keywords>
+      <dc>11</dc>
+      <effect>Mace, Hammer or Staff +2xRank to hit and damage</effect>
+    </abilitycheck>
+    <prereqabilityrank>blessed_arms_1</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
-	If successfully cast, the caster gains +2xRank to attack checks and +2xRank to damage
-	with attacks made using a hammer or mace for the rest of the combat.  These bonuses <emph>do not
-	stack</emph> with other magical bonuses the caster has for those attacks.
+	If successfully cast, the caster gains +2xRank to attack checks and +2xRank
+	to damage with attacks made using a hammer or mace for the rest of the
+	combat.  These bonuses <emph>do not stack</emph> with other magical bonuses
+	the caster has for those attacks.
       </p>
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Hold Undead</abilitytitle>
-    <abilityid>theurgic.hold_undead</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>hold_undead</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" effect="To cast" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>9</dc>
+      <effect>If successfully cast any undead within range whose willpower is less than or equal to the result are Held.</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character calls on their deity to repel beings animated by
-  	necrotic forces.  Successfully casting this spell will
-	cause the undead to make a DC Mettle check greater with a DC of 7+Rank.	If they fail this roll
-	they must not come any closer to the caster than they currently are.  If the caster moves towards them
-	they must retreat.  On overcharge the caster is transfixed by the spell, and unable to move for its
-	duration. The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
-	This spell will work on any number of the same type of undead at one time.
+  	The character calls on their deity to hold creatures animated by
+  	necrotic forces.   Held creatures cannot make melee attacks against, or move any closer to the
+	caster.  If the caster moves towards them they must retreat.
       </p>
     </abilitydescription>
   </ability>
@@ -501,45 +712,56 @@
 
   <ability>
     <abilitytitle>Turn Undead</abilitytitle>
-    <abilityid>theurgic.turn_undead</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>turn_undead</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7" effect="To cast" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.hold_undead_3</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <dc>11</dc>
+      <effect>If successfully cast any undead within range whose willpower is less than or equal to the result are Turned.</effect>
+    </abilitycheck>
+    <prereqabilityrank>hold_undead_3</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character calls on their deity to repel beings animated by
-  	necrotic forces.  Successfully casting this spell will
-	cause the undead to make a DC Mettle check greater with a DC of 7+Rank.	If they fail this roll
-	they must retreat from the caster.  They will not return for some time.
-	On overcharge the caster is transfixed by the spell, and unable to move for its duration.
-	The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
-	This spell will work on any number of the same type of undead at one time.
+  	The character calls on their deity to turn creatures animated by
+  	necrotic forces.   Turned creatures must move away from the caster each turn and may not make melee attacks.
       </p>
-
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Destroy Undead</abilitytitle>
-    <abilityid>theurgic.destroy_undead</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>destroy_undead</abilityid>
     <abilityranks from="2" to="5"/>
-    <abilitycheck dc="9" effect="To cast" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.turn_undead_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <defaults>pool_cost_3</defaults>
+      <name>Cast</name>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <righteoussuccess></righteoussuccess>
+      <success></success>
+      <fail></fail>
+      <grimfail></grimfail>
+      <critfail></critfail>
+      <range><ranged-short/></range>
+      <dc>13</dc>
+      <effect>If successfully cast any undead within range whose willpower is less than or equal to the result are Destroyed.</effect>
+    </abilitycheck>
+    <prereqabilityrank>turn_undead_2</prereqabilityrank>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character calls on their deity to repel beings animated by
-  	necrotic forces.  Successfully casting this spell will
-	cause the undead to make a DC Mettle check greater with a DC of 7+Rank.	If they fail this roll
-	they are destroyed. 
-	On overcharge the caster is transfixed by the spell, and unable to move for its duration.
-	The caster may end the spell <emph>at any time after</emph> the turn they cast the spell.
-	This spell will work on any number of the same type of undead at one time.
+  	The character calls on their deity to destroy creatures animated by
+  	necrotic forces.   Turned creatures must move away from the caster each turn and may not make melee attacks.
       </p>
     </abilitydescription>
   </ability>
@@ -547,12 +769,23 @@
   
   <ability>
     <abilitytitle>Witness Me!</abilitytitle>
-    <abilityid>theurgic.witness_me</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><theurgic/><magicpool/></tags>
+    <abilityid>witness_me</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" effect="Make three melee attacks if Health≤6" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>theurgic.theurgy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>theurgic_defaults</defaults>
+      <trigger>Caster is bloodied</trigger>
+      <actiontype><standard/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent>1</indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>11</dc>
+      <effect>Make three melee attacks</effect>
+    </abilitycheck>
+    <prereqabilityrank>theurgy_1</prereqabilityrank>
     <spline><p x="75" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">

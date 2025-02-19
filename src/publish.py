@@ -39,11 +39,11 @@ from db import DB
 from latex_formatter import LatexFormatter
 #from epub_formatter import EPubFormatter
 from html_formatter import HtmlFormatter
-from spreadsheet_writer import write_game_balance_spreadsheet
+from spreadsheet_writer import write_game_balance_spreadsheet, write_ability_summary_spreadsheet
 
 # Graph creation stuff.. for analysis in the rationale doc.
 import graphs
-import dice_pool_graph
+#import dice_pool_graph
 import morale_graph
 import d6_graph
 import aspect_lifetime_graph
@@ -53,6 +53,7 @@ from character_sheet_writer import (
     create_character_sheet_for_archetype,
     create_blank_character_sheet)
 
+from generate_level_progression_tables import generate_level_progression_tables
 from generate_skill_tree import build_skill_trees
 import config
 import utils
@@ -69,9 +70,10 @@ from utils import (
 )
 
 sys.path.append(third_party_dir)
-from jinja2 import Template, Environment, FileSystemLoader
-from jinja2.lexer import Token
-from  jinja2 import lexer
+#from jinja2 import Template, Environment
+from jinja2 import Environment, FileSystemLoader
+#from jinja2.lexer import Token
+#from  jinja2 import lexer
 
 
 # Jinja2 doesn't like absolute paths.  We must supply a relative path
@@ -95,7 +97,7 @@ def jinja_exit(text):
 
 
 # latex preamble for the index.
-index_str = """
+index_str = r"""
 \\documentclass{article}
 \\usepackage{makeidx}
 \\usepackage{hyperref}
@@ -270,10 +272,10 @@ def filter_xelatex_output(xelatex_output):
         line = lines[line_index]
         
         if (line.startswith("(/usr/share/texlive/texmf-dist/tex/latex/") or 
-            line.startswith("Underfull \hbox ") or 
-            line.startswith("Overfull \hbox ") or 
-            line.startswith("Overfull \vbox ") or 
-            line.startswith("Overfull \vbox ") or 
+            line.startswith(r"Underfull \hbox ") or 
+            line.startswith(r"Overfull \hbox ") or 
+            line.startswith(r"Overfull \vbox ") or 
+            line.startswith(r"Overfull \vbox ") or 
             line.startswith("This is XeTeX")):
             del lines[line_index]
 
@@ -405,7 +407,7 @@ def apply_template_to_xml(jinja_env,
 
     # process Λ abilities
     try:
-        xml = db.filter_abilities(xml)
+        xml = db.filter_abilities(xml, verbose=verbosity>0)
     except Exception as err:
         print(f"Problem filtering abilities in {xml_fname_in}")
         raise err
@@ -688,7 +690,7 @@ if __name__ == "__main__":
     if "rationale.xml" in [t[0] for t in config.doc_files_to_build]:
         print("Building dice pool graphs.")
         graphs.draw_graphs()
-        dice_pool_graph.build_dice_pool_graphs()
+        #dice_pool_graph.build_dice_pool_graphs()
         morale_graph.build_morale_graph()
         d6_graph.draw_d6_graph()
         aspect_lifetime_graph.draw_aspect_lifetime_graph()
@@ -726,6 +728,10 @@ if __name__ == "__main__":
     jinja_env.filters['log']=jinja_log_to_console
     jinja_env.filters['exit']=jinja_exit
 
+
+    print("********************** 0")
+
+    
     # Add the local styles dir
     # The trailing // means that TeX programs will search recursively in that 
     # folder; the trailing colon means "append the standard value of TEXINPUTS" 
@@ -736,8 +742,19 @@ if __name__ == "__main__":
     env = deepcopy(os.environ)
     env["TEXINPUTS"] = tex_inputs
 
+    print("********************** 0.1")
+
+    generate_level_progression_tables(jinja_env, db)
+    #sys.exit() # FIXME:!!    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    print("********************** 0.2")
+
+    
     # Build the ability trees (these are the eps diagrams that should skill prereqs)
     build_skill_trees(db.ability_groups)
+
+
+    print("********************** 1")
     
     #
     # Build Pdf Files.
@@ -857,6 +874,11 @@ if __name__ == "__main__":
     write_game_balance_spreadsheet(spreadsheet_fname,
                                    ability_groups=db.ability_groups,
                                    archetypes=db.archetypes)
+
+
+    ability_summary_fname = join(build_dir, "ability_summary.xlsx")
+    write_ability_summary_spreadsheet(ability_summary_fname,
+                                      ability_groups=db.ability_groups)    
     
     #
     # Create the character sheets

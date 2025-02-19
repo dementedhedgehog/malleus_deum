@@ -101,12 +101,12 @@
     Power resides where men believe it resides.
   </aspectexamples>
   
-  <archetypetags>
+  <archetypekeywords>
     <human/>
     <humanoid/>
     <magicuser/>    
     <medium/>
-  </archetypetags>
+  </archetypekeywords>
  
 
   <archetypelevels>
@@ -134,10 +134,12 @@
 	  <path chance="">
 	    <pathtitle>Black Coat Standard Skills</pathtitle>
 	    <choice>
-	      ✱luck.lucky_1, ✱luck.reroll_1, ✱luck.brilliant_planner_2, ✱luck.nabail_1, ✱skulduggery.search_1,
-	      ✱social.etiquette[Church-of-Mithras]_2, ✱common.negotiate_1,
-	      ✱social.deceive_1, ✱lore.politics_2, ✱lore.book_learning_3,  ✱common.occult_2, ✱theurgic.theurgy_1,
-	      and ✱lore.mathematics_1, ✱arcana.arcana_1, ✱arcana.true_sight_1
+	      ✱luck.lucky_1, ✱luck.reroll_1, ✱luck.brilliant_planner_2, ✱luck.nabail_1, ✱search_1,
+	      ✱contacts[Church-of-Mithras]_2,
+	      ✱negotiate_1,
+	      ✱negotiate.etiquette[Church-of-Mithras],
+	      ✱negotiate.deceive_1, ✱politics_2, ✱book_learning_3, ✱occult_2, ✱theurgy_1,
+	      and ✱mathematics_1, ✱arcana.arcana_1, ✱arcana.true_sight_1
 	    </choice>
 	  </path>
       </branch>
@@ -154,29 +156,30 @@
 	    
 	  <path chance="1-9">
 	    <pathtitle>Laibstadt/Westreich</pathtitle>
-	    <choice>✱language.merovingian_4, ✱language.aquilonian_3,
-	    ✱common.history[Westreich]_3, ✱social.etiquette_4[Westreich], ✱social.etiquette[Westenreich-Nobility]_3</choice>
+	    <choice>✱merovingian_4, ✱aquilonian_3,
+	    ✱history[Westreich]_3, ✱negotiate.etiquette_1[Westreich],
+	    ✱negotiate.etiquette[Westenreich-Nobility]_3</choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Alemagne</pathtitle>
-	    <choice>✱language.merovingian_4, ✱language.aquilonian_3, ✱language.alemagne_4, 
-	    ✱common.history[Westreich]_2, ✱common.history[Alemagne]_2, ✱social.etiquette_3[Westreich],
-	    ✱social.etiquette[Westenreich-Nobility]_2, ✱social.etiquette[Allemagne-Nobility]_3</choice>
+	    <choice>✱merovingian_4, ✱aquilonian_3, ✱alemagne_4, 
+	    ✱history[Westreich]_2, ✱history[Alemagne]_2, ✱negotiate.etiquette_3[Westreich],
+	    ✱negotiate.etiquette[Westenreich-Nobility]_2, ✱negotiate.etiquette[Allemagne-Nobility]_3</choice>
 	  </path>
 	  <path chance="11">
 	    <pathtitle>Averoigne</pathtitle>
-	    <choice>✱language.merovingian_3, ✱language.aquilonian_3,
-	    ✱common.history[Westreich]_2, ✱common.history[Averoigne]_3, ✱social.etiquette_3[Averoigne],
-	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
-	    ✱social.etiquette[Averoigne-Nobility]_3</choice>
-	    <choice>✱language.occitan_4, or ✱language.leonese_4, or ✱language.poitevin_4</choice>
+	    <choice>✱merovingian_3, ✱aquilonian_3,
+	    ✱history[Westreich]_2, ✱history[Averoigne]_3, ✱negotiate.etiquette_3[Averoigne],
+	    ✱negotiate.etiquette_2[Westreich], ✱negotiate.etiquette[Westenreich-Nobility]_2,
+	    ✱negotiate.etiquette[Averoigne-Nobility]_3</choice>
+	    <choice>✱occitan_4, or ✱leonese_4, or ✱poitevin_4</choice>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Aquillonian</pathtitle>
-	    <choice>✱language.merovingian_3, ✱language.aquilonian_4,  ✱language.occitan_2,
-	    ✱common.history[Westreich]_2, ✱social.etiquette_4[Aquillonian],
-	    ✱social.etiquette_2[Westreich], ✱social.etiquette[Westenreich-Nobility]_2,
-	    ✱social.etiquette[Aquillonian-Nobility]_3</choice>
+	    <choice>✱merovingian_3, ✱aquilonian_4,  ✱occitan_2,
+	    ✱history[Westreich]_2, ✱negotiate.etiquette_4[Aquillonian],
+	    ✱negotiate.etiquette_2[Westreich], ✱negotiate.etiquette[Westenreich-Nobility]_2,
+	    ✱negotiate.etiquette[Aquillonian-Nobility]_3</choice>
 	  </path>
       </branch>
 
@@ -191,15 +194,15 @@
 	  </branchdescription>	    
 	  <path chance="1-6">
 	    <pathtitle>Mace Training</pathtitle>
-	    <all-of>✱common.dodge_2, ✱mace_strike_2, ✱staff_strike_1</all-of>
+	    <all-of>✱dodge_2, ✱mace_strike_2, ✱polearm_strike_1</all-of>
 	  </path>
 	  <path chance="7-11">
 	    <pathtitle>Staff Training</pathtitle>
-	    <all-of>✱common.dodge_2, ✱mace_strike_1, ✱staff_strike_2</all-of>
+	    <all-of>✱dodge_2, ✱mace_strike_1, ✱polearm_strike_2</all-of>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Former Soldier</pathtitle>
-	    <all-of>✱common.dodge_3, ✱mace_strike_1, ✱staff_strike_2, ✱dagger_strike_2, and ✱sword_strike_2</all-of>
+	    <all-of>✱dodge_3, ✱mace_strike_1, ✱polearm_strike_2, ✱dagger_strike_2, and ✱sword_strike_2</all-of>
 	  </path>
       </branch>
       
@@ -213,23 +216,23 @@
 	  </branchdescription>	    
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <gain>✱skulduggery.cloak_fighting_2</gain>
+	    <gain>✱cloak_fighting_2</gain>
 	  </path>
 	  <path chance="6">
 	    <pathtitle></pathtitle>
-	    <gain>✱skulduggery.pick_locks_2</gain>
+	    <gain>✱pick_locks_2</gain>
 	  </path>
 	  <path chance="7">
 	    <pathtitle></pathtitle>
-	    <gain>✱skulduggery.sleight_of_hand_3</gain>
+	    <gain>✱sleight_of_hand_3</gain>
 	  </path>
 	  <path chance="8">
 	    <pathtitle></pathtitle>
-	    <gain>✱common.stealth_2</gain>
+	    <gain>✱stealth_2</gain>
 	  </path>
 	  <path chance="9">
 	    <pathtitle></pathtitle>
-	    <gain>✱skulduggery.cryptography_3</gain>
+	    <gain>✱cryptography_3</gain>
 	  </path>
 	  <path chance="10-12">
 	    <pathtitle>Choose one of the above</pathtitle>
@@ -242,23 +245,23 @@
 	  </branchdescription>
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <gain>✱lore.physician_2</gain>
+	    <gain>✱physician_2</gain>
 	  </path>
 	  <path chance="6-8">
 	    <pathtitle></pathtitle>
-	    <gain>✱lore.natural_history_2</gain>
+	    <gain>✱natural_history_2</gain>
 	  </path>
 	  <path chance="9">
 	    <pathtitle></pathtitle>
-	    <gain>✱lore.book_keeping_2</gain>
+	    <gain>✱book_keeping_2</gain>
 	  </path>
 	  <path chance="10">
 	    <pathtitle></pathtitle>
-	    <gain>✱lore.physics_2</gain>
+	    <gain>✱physics_2</gain>
 	  </path>
 	  <path chance="11">
 	    <pathtitle></pathtitle>
-	    <one-of>✱language.hybernian_2 or ✱language.poitevin_2</one-of>
+	    <one-of>✱hybernian_2 or ✱poitevin_2</one-of>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Choose one of the above</pathtitle>
@@ -271,11 +274,11 @@
 	  </branchdescription>	    
 	  <path chance="1-5">
 	    <pathtitle></pathtitle>
-	    <gain>✱common.climb_2</gain>
+	    <gain>✱climb_2</gain>
 	  </path>
 	  <path chance="6-10">
 	    <pathtitle></pathtitle>
-	    <gain>✱common.brawl_2</gain>
+	    <gain>✱brawl_2</gain>
 	  </path>
 	  <path chance="11-12">
 	    <pathtitle>Choose one</pathtitle>
@@ -320,39 +323,39 @@
 	  </branchdescription>	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <all-of>✱theurgic.litany_of_redemption_1, ✱arcana.cloak_of_shadows_1,</all-of>
-	    <one-of>✱theurgic.light_of_mithras_1 or ✱theurgic.blessed_arms_1,</one-of>
+	    <all-of>✱litany_of_redemption_1, ✱arcana.cloak_of_shadows_1,</all-of>
+	    <one-of>✱light_of_mithras_1 or ✱blessed_arms_1,</one-of>
 	    <one-of>✱arcana.aegis_1 or ✱arcana.alarum_1</one-of>
 	  </path>
 	  <path chance="3">
 	    <pathtitle></pathtitle>
-	    <all-of>✱theurgic.blessed_arms_1, ✱theurgic.augury_1, </all-of>
-	    <one-of>✱theurgic.back_1 or ✱theurgic.turn_undead_1,</one-of>
+	    <all-of>✱blessed_arms_1, ✱augury_1, </all-of>
+	    <one-of>✱back_1 or ✱turn_undead_1,</one-of>
 	    <one-of>✱arcana.ignis_1 or ✱arcana.alarum_1 or ✱arcana.aegis_1</one-of>
 	  </path>
 	  <path chance="4-5">
 	    <pathtitle></pathtitle>
-	    <all-of>✱theurgic.blessed_arms_1, ✱theurgic.grace_of_mithras_1,
-	    ✱theurgic.augury_1, ✱theurgic.light_of_mithras_1, ✱theurgic.litany_of_redemption_1</all-of>
+	    <all-of>✱blessed_arms_1, ✱grace_of_mithras_1,
+	    ✱augury_1, ✱light_of_mithras_1, ✱litany_of_redemption_1</all-of>
 	    <one-of>✱arcana.alarum_1, or ✱arcana.aegis_1</one-of>
 	  </path>
 	  <path chance="6-7">
 	    <pathtitle></pathtitle>
-	    <all-of>✱theurgic.back_1, ✱theurgic.litany_of_redemption_1, </all-of>
+	    <all-of>✱back_1, ✱litany_of_redemption_1, </all-of>
 	    <one-of>✱arcana.cloak_of_shadows_1, or ✱arcana.ignis_1,</one-of>
 	    <one-of>✱arcana.alarum_1, or ✱arcana.aegis_1</one-of>
 	  </path>
 	  <path chance="8-9">
 	    <pathtitle></pathtitle>
-	    <all-of>✱theurgic.litany_of_redemption_1, ✱theurgic.air_of_beatitude_1,
-	    ✱theurgic.purify_1</all-of>
-	    <one-of>✱theurgic.back_1, or ✱theurgic.exorcise_1,</one-of>
+	    <all-of>✱litany_of_redemption_1, ✱air_of_beatitude_1,
+	    ✱purify_1</all-of>
+	    <one-of>✱back_1, or ✱exorcise_1,</one-of>
 	  </path>
 	  <path chance="10-11">
 	    <pathtitle></pathtitle>
-	    <all-of>✱theurgic.purify_1,  ✱theurgic.blessed_arms_1,</all-of>
-	    <one-of>✱theurgic.exorcise_1, or ✱theurgic.turn_undead_1,</one-of>
-	    <one-of>✱theurgic.litany_of_redemption_1, or ✱theurgic.air_of_beatitude_1</one-of>
+	    <all-of>✱purify_1,  ✱blessed_arms_1,</all-of>
+	    <one-of>✱exorcise_1, or ✱turn_undead_1,</one-of>
+	    <one-of>✱litany_of_redemption_1, or ✱air_of_beatitude_1</one-of>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Choose one of the above</pathtitle>
@@ -384,10 +387,10 @@
 	      +1 Health,
 	    </gain>
 	    <gain>
-	      ✱theurgic.hammer_of_the_hierophant_1
+	      ✱hammer_of_the_hierophant_1
 	    </gain>
 	    <gain>
-	      ✱theurgic.hypnotic_gaze_1,
+	      ✱hypnotic_gaze_1,
 	    </gain>
 	    <gain>
 	      2x new Lore abilities at rank 1
@@ -420,7 +423,7 @@
 	      1x Physical promotion up to rank 3
 	    </gain>
 	    <gain>
-	      2x new ✱✱social.contacts ability at rank 1	      		      	      	      
+	      2x new ✱✱contacts ability at rank 1	      		      	      	      
 	    </gain>
 	  </path>
       </branch>      

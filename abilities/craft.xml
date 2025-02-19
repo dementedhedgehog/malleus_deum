@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-  <!--
-      Note this is not a document format.
-      Docs get generated from this.      
-  -->
   <abilitygroupinfo>
     <abilitygrouptitle>Craft Abilities</abilitygrouptitle>
-    <abilitygroupid>craft</abilitygroupid>
+    <abilitygroupid><craft/></abilitygroupid>
     <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -20,14 +16,24 @@
     <enabled/>
   </abilitygroupinfo>
 
+  
   <ability>
     <abilitytitle>Armour Smith</abilitytitle>
-    <abilityid>craft.armour_smith</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>armour_smith</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.smith_2</prereqabilityrank>    
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <!-\- <indifferent></indifferent> -\-> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>smith_2</prereqabilityrank>    
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -39,12 +45,21 @@
 
   <ability>
     <abilitytitle>Builder</abilitytitle>
-    <abilityid>craft.builder</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>builder</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>carpentry_1</prereqabilityrank>	
     <spline><p x="20" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -54,14 +69,24 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Carpentry</abilitytitle>
-    <abilityid>craft.carpentry</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>carpentry</abilityid>  
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.craft_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>craft_1</prereqabilityrank>
     <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -81,12 +106,21 @@
 
   <ability>
     <abilitytitle>Cartwright</abilitytitle>
-    <abilityid>craft.cartwright</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>cartwright</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>carpentry_1</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -98,12 +132,21 @@
 
   <ability>
     <abilitytitle>Cooper</abilitytitle>
-    <abilityid>craft.cooper</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>cooper</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>carpentry_1</prereqabilityrank>
     <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -112,14 +155,24 @@
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Craft</abilitytitle>
-    <abilityid>craft.craft</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>craft</abilityid>  
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
     <prereqabilityrank></prereqabilityrank>    
     <spline></spline>
     <abilitydescription>
@@ -134,12 +187,21 @@
 
   <ability>
     <abilitytitle>Smith</abilitytitle>
-    <abilityid>craft.smith</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>smith</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.craft_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>craft_2</prereqabilityrank>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -154,12 +216,21 @@
 
   <ability>
     <abilitytitle>Shipwright</abilitytitle>
-    <abilityid>craft.shipwright</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>shipwright</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.carpentry_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>carpentry_1</prereqabilityrank>
     <spline><p x="50" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -169,15 +240,23 @@
   </ability>  
 
 
-
   <ability>
     <abilitytitle>Farmer</abilitytitle>
-    <abilityid>craft.farmer</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>farmer</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.craft_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>craft_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -187,14 +266,24 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Mason</abilitytitle>
-    <abilityid>craft.mason</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>mason</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.craft_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>craft_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -216,12 +305,21 @@
 
   <ability>
     <abilitytitle>Miner</abilitytitle>
-    <abilityid>craft.mining</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/><scholar/></tags>
+    <abilityid>mining</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.craft_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>craft_1</prereqabilityrank>
     <spline><p x="-100" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -249,14 +347,24 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Weapon Smith</abilitytitle>
-    <abilityid>craft.weapon_smith</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><craft/></tags>
+    <abilityid>weapon_smith</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>craft.smith_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>craft_defaults</defaults>      
+      <!-- <actiontype><noncombat/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <prereqabilityrank>smith_2</prereqabilityrank>
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>

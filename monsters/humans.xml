@@ -12,45 +12,18 @@
     </monstergroupdescription>
   </monstergroupinfo>
 
-  <monster>    
-    <monstertitle>Peasant</monstertitle>
-    <monsterid>human.peasant</monsterid>
-    <monstertags><human/></monstertags>
-    <monstermove>6</monstermove>
-    <monsterhealth>3</monsterhealth>
-    <monsterstamina>3</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
-    <monstermettle>2d4</monstermettle>
-    <monsterluck>2d4</monsterluck>
-    <monstermagic>2d4</monstermagic>
-    <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <abilityrankid>dagger.dagger_strike_0</abilityrankid>    
-    <monsterdescription>
-      <p>
-	These are common farmers and townsfolk with no military
-	training and no special abilities.
-      </p>
-    </monsterdescription>    
-  </monster>
 
- 
   <monster>    
-    <monstertitle>Thugs</monstertitle>
-    <monsterid>human.thug</monsterid>
-    <monstertags><human/></monstertags>
+    <monstertitle>landsknecht</monstertitle>
+    <monsterid>human.landsknecht</monsterid>
+    <monsterkeywords><human/></monsterkeywords>
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
     <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermagic>3d4</monstermagic>
     <monstermettle>3d4</monstermettle>
     <monsterluck>3d4</monsterluck>
-    <monstermagic>3d4</monstermagic>
     <monsterrole><grunt/></monsterrole>
     <armour>8</armour>
     <parry>12</parry>
@@ -59,8 +32,69 @@
     <agility>9</agility>
     <speed>9</speed>
     <perception>9</perception>
-    <abilityrankid>dagger.dagger_strike_2</abilityrankid> 
-    <abilityrankid>sword.sword_strike_2</abilityrankid> 
+    <willpower>13</willpower>    
+    <abilityrankid>dagger_strike_2</abilityrankid> 
+    
+    <!-- resolve/break info? -->
+    <monsterdescription>
+      <p>
+	
+      </p>
+    </monsterdescription>
+  </monster>
+
+  
+  <monster>    
+    <monstertitle>Peasant</monstertitle>
+    <monsterid>human.peasant</monsterid>
+    <monsterkeywords><human/></monsterkeywords>
+    <monstermove>6</monstermove>
+    <monsterhealth>3</monsterhealth>
+    <monsterstamina>3</monsterstamina>
+    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermagic>2d4</monstermagic>
+    <monstermettle>2d4</monstermettle>
+    <monsterluck>2d4</monsterluck>
+    <monsterrole><grunt/></monsterrole>
+    <armour>8</armour>
+    <strength>11</strength>
+    <endurance>8</endurance>
+    <agility>9</agility>
+    <speed>9</speed>
+    <perception>9</perception>
+    <willpower>13</willpower>    
+    <abilityrankid>dagger_strike_0</abilityrankid>    
+    <monsterdescription>
+      <p>
+	These are common farmers and townsfolk with no military
+	training and no special abilities.
+      </p>
+    </monsterdescription>    
+  </monster>
+
+  
+  <monster>    
+    <monstertitle>Thugs</monstertitle>
+    <monsterid>human.thug</monsterid>
+    <monsterkeywords><human/></monsterkeywords>
+    <monstermove>6</monstermove>
+    <monsterhealth>15</monsterhealth>
+    <monsterstamina>7</monsterstamina>
+    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermagic>3d4</monstermagic>
+    <monstermettle>3d4</monstermettle>
+    <monsterluck>3d4</monsterluck>
+    <monsterrole><grunt/></monsterrole>
+    <armour>8</armour>
+    <parry>12</parry>
+    <strength>11</strength>
+    <endurance>8</endurance>
+    <agility>9</agility>
+    <speed>9</speed>
+    <perception>9</perception>
+    <willpower>13</willpower>    
+    <abilityrankid>dagger_strike_2</abilityrankid> 
+    <abilityrankid>sword_strike_2</abilityrankid> 
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -78,14 +112,14 @@
   <monster>    
     <monstertitle>Town Guards</monstertitle>
     <monsterid>human.town_guards</monsterid>
-    <monstertags><human/></monstertags>
+    <monsterkeywords><human/></monsterkeywords>
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
     <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermagic>2d4</monstermagic>
     <monstermettle>4d4</monstermettle>
     <monsterluck>4d4</monsterluck>
-    <monstermagic>2d4</monstermagic>
     <monsterrole><soldier/></monsterrole>
     <armour>8</armour>
     <dodge>8</dodge>
@@ -94,7 +128,8 @@
     <agility>9</agility>
     <speed>9</speed>
     <perception>9</perception>
-    <abilityrankid>dagger.dagger_strike_2</abilityrankid> 
+    <willpower>13</willpower>    
+    <abilityrankid>dagger_strike_2</abilityrankid> 
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -109,14 +144,14 @@
   <monster>    
     <monstertitle>Beldam</monstertitle>
     <monsterid>human.beldam</monsterid>
-    <monstertags><human/></monstertags>
+    <monsterkeywords><human/></monsterkeywords>
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
     <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermagic>5d4</monstermagic>
     <monstermettle>2d4</monstermettle>
     <monsterluck>4d4</monsterluck>
-    <monstermagic>5d4</monstermagic>
     <monsterrole><grunt/></monsterrole>
     <armour>8</armour>
     <dodge>16</dodge>
@@ -125,7 +160,8 @@
     <agility>9</agility>
     <speed>9</speed>
     <perception>9</perception>
-    <abilityrankid>dagger.dagger_strike_2</abilityrankid> 
+    <willpower>13</willpower>    
+    <abilityrankid>dagger_strike_2</abilityrankid> 
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -143,14 +179,14 @@
   <monster>    
     <monstertitle>Doomsayer</monstertitle>
     <monsterid>human.doomsayer</monsterid>
-    <monstertags><human/></monstertags>
+    <monsterkeywords><human/></monsterkeywords>
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
     <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monstermagic>3d4</monstermagic>
     <monstermettle>3d4</monstermettle>
     <monsterluck>3d4</monsterluck>
-    <monstermagic>3d4</monstermagic>
     <monsterrole><grunt/></monsterrole>
     <armour>8</armour>
     <parry>12</parry>
@@ -159,7 +195,8 @@
     <agility>9</agility>
     <speed>9</speed>
     <perception>9</perception>
-    <abilityrankid>dagger.dagger_strike_2</abilityrankid> 
+    <willpower>13</willpower>    
+    <abilityrankid>dagger_strike_2</abilityrankid> 
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -169,4 +206,4 @@
     </monsterdescription>    
   </monster>  
 </monstergroup>    
-    
+

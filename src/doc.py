@@ -71,6 +71,22 @@ NON_DOC_TAGS = (
 )
 
 
+KEYWORD_TAGS = (
+    "minor",
+    "noncombat",
+    "immediate",
+    "standard",
+    "minor",
+    "multi-turn",
+    "full-turn",
+    "move",
+    "reaction",
+    "reaction-or-minor",
+    "noncombat",
+    "free",
+    "tag",
+    )
+
 class Doc:
     """
     Represents an xml doc.  We build pdfs etc from these.
@@ -193,8 +209,13 @@ class Doc:
 
         # Don't bother passing these metadata tags to the formater.
         if tag in NON_DOC_TAGS:
-            return        
-        
+            return
+
+        # 
+        if tag in KEYWORD_TAGS:                
+            i_formatter.handle_keyword(element_name)
+            return
+                    
         if tag is COMMENT:
             i_formatter.start_comment(element)
         else:            

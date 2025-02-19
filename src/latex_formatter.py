@@ -34,6 +34,7 @@ latex_frontmatter = r"""
 \usepackage[table]{xcolor}         %% for tables with colour
 \usepackage{booktabs}              %% for tables
 \usepackage{calc}                  %% for table width calculations
+\usepackage{multirow}              %% for table data with multiple rows
 \usepackage{xcolor}                %% for color aliases    
 \usepackage{wallpaper}             %% for the paper background
 \usepackage{enumitem}              %% for smaller enumerations
@@ -47,6 +48,14 @@ latex_frontmatter = r"""
 \usepackage{multicol}              %% used for four column mode.
 \usepackage[raggedright]{titlesec} %% for fancy titles (and avoid hyphenating titles)
 \usepackage{epstopdf}
+
+\usepackage{unicode-math}
+
+%% Arrows with bars, e.g. ↧ and ↥
+%% (for use in tables to denote entry for multiple rows)
+\setmathfont{TeX Gyre Pagella Math}
+\newcommand{\downarrowfrombar}{\ensuremath{\mapsdown}} 
+\newcommand{\uparrowfrombar}{\ensuremath{\mapsup}} 
 
 %% more floats (side-step a build error)
 \usepackage[maxfloats=256]{morefloats}
@@ -204,7 +213,7 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 
 \newenvironment{mbtags}%%
 {\color{monstertagscolor}\begin{normalsize}}%%
-{\end{normalsize}\vspace{0.0cm}\break}
+{\end{normalsize}\\[-0.42cm]}
 
 \newenvironment{mbdefence}
 {\color{monstertitlecolor}\normalsize}{\hfill}
@@ -216,6 +225,9 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 {\color{monstertitlecolor}\normalsize}{\hfill}
 
 \newenvironment{mbmettle}
+{\color{monstertitlecolor}\normalsize}{\hfill}
+
+\newenvironment{mbluck}
 {\color{monstertitlecolor}\normalsize}{\hfill}
 
 \newenvironment{mbinitiativebonus}
@@ -262,7 +274,6 @@ class TableState:
     def get_columns_percent_width(self, n_columns):
         from_column = self.current_column
         to_column = min(self.number_of_columns, self.current_column+n_columns)
-        #print(f" {from_column}  {to_column} {self.number_of_columns} {self.column_percent_widths}  {sum(self.column_percent_widths[from_column:to_column])}")
         return sum(self.column_percent_widths[from_column:to_column])
         
 
@@ -283,8 +294,6 @@ class LatexFormatter:
         # internal state
         self._drop_capped_first_letter_of_chapter = False
 
-
-
         # for equations (indent second and subsequent lines)
         self._equation_first_line = True
 
@@ -303,6 +312,7 @@ class LatexFormatter:
         # current table state
         self.table = None        
         return
+
 
     def verify(self):
         verifyObject(IFormatter, self)
@@ -348,29 +358,27 @@ class LatexFormatter:
         return
     end_appendix = no_op
 
-    
-    # def start_fightreach(self, symbol):
-    #     self.latex_file.write("\\fightreachsymbol{}")
-    #     return
-    # end_fightreach = no_op    
 
+    def handle_keyword(self, keyword):
+        self.latex_file.write("\textbf{%s} " % keyword)
+        return
     
-    # def start_start(self, symbol):
-    #     self.latex_file.write("\\startsymbol{}")
-    #     return
-    # end_start = no_op    
+    def start_daggersymbol(self, symbol):
+        self.latex_file.write("\\textsuperscript{\\dag}")
+        return
+    end_daggersymbol = no_op    
 
-    
-    # def start_melee(self, symbol):
-    #     self.latex_file.write("\\meleesymbol{}")
-    #     return
-    # end_melee = no_op
+    def start_downarrowfrombar(self, symbol):
+        self.latex_file.write("\\downarrowfrombar")
+        return
+    end_downarrowfrombar = no_op    
 
-    
-    # def start_immediate(self, symbol):
-    #     self.latex_file.write("\\immediatesymbol{}")
-    #     return
-    # end_immediate = no_op
+
+    def start_uparrowfrombar(self, symbol):
+        self.latex_file.write("\\uparrowfrombar")
+        return
+    end_uparrowfrombar = no_op    
+
 
     #
     # Corollaries
@@ -504,17 +512,17 @@ class LatexFormatter:
     end_magical = no_op
 
     def start_geqqsymbol(self, geqq_element):
-        self.latex_file.write("$\stackrel{\scriptscriptstyle ?}{\geq}{}$")
+        self.latex_file.write(r"$\stackrel{\scriptscriptstyle ?}{\geq}{}$")
         return
     end_geqqsymbol = no_op
 
     def start_leqqsymbol(self, geqq_element):
-        self.latex_file.write("$\stackrel{\scriptscriptstyle ?}{\leq}{}$")
+        self.latex_file.write(r"$\stackrel{\scriptscriptstyle ?}{\leq}{}$")
         return
     end_leqqsymbol = no_op
 
     def start_leqsymbol(self, leq_element):
-        self.latex_file.write("$\leq$")
+        self.latex_file.write(r"$\leq$")
         return
     end_leqsymbol = no_op
 
@@ -524,7 +532,7 @@ class LatexFormatter:
     end_ltsymbol = no_op
 
     def start_geqsymbol(self, geq_element):
-        self.latex_file.write("$\geq$")
+        self.latex_file.write(r"$\geq$")
         return
     end_geqsymbol = no_op
 
@@ -803,8 +811,8 @@ class LatexFormatter:
 
         if config.print_provenence_notes:
             self.latex_file.write("\\begin{center}")
-            self.latex_file.write("\\begin{minipage}[c]{0.9\linewidth}")
-            self.latex_file.write("\\rpgprovenancesymbol\\hspace{0.2em}") 
+            self.latex_file.write(r"\\begin{minipage}[c]{0.9\linewidth}")
+            self.latex_file.write(r"\\rpgprovenancesymbol\\hspace{0.2em}") 
             self.latex_file.write(provenance.text)        
         return
 
@@ -1405,19 +1413,25 @@ class LatexFormatter:
         # get the number of columns wide this cell should be.
         width = int(table_data.get("width", 1))
         
+        # get the number of rows high this cell should be.
+        height = int(table_data.get("height", 1))
+        height_hint = float(table_data.get("heighthint", 0.0))
+        
         # get the text alignment within the cell.
         align = table_data.get("align", "l")
-
-        # override for table headers
-        #parent = table_data.getparent()
-        #if parent.tag == "tableheaderrow":
-        #    text = "\\begin{rpgtableheader}"
-
+        
         # make cells wider than one column?
         if width > 1:
             percent_width = self.table.get_columns_percent_width(width)
-            cell_width="p{%s\\hsize+%s\\tabcolsep}" % (percent_width, 2*(width-1))            
-            self.latex_file.write("\\multicolumn{%s}{%s}{" % (width, cell_width))
+            cell_align = ("p{%s\\hsize+%s\\tabcolsep}"
+                          % (percent_width, 2*(width-1)))
+            self.latex_file.write("\\multicolumn{%s}{%s}{"
+                                  % (width, cell_align))
+
+        # make cells taller than one row?
+        if height > 1:
+            self.latex_file.write("\\multirow{%s}{=}[-%.2f\\baselineskip]{"
+                                  % (height, height_hint))
 
         # cell alignment (default left)
         if align == "l":
@@ -1442,6 +1456,7 @@ class LatexFormatter:
         self.table.current_column = (
             (self.table.current_column + width) % self.table.number_of_columns)
 
+
         if header:
             self.latex_file.write("\\begin{embolden}")
         return
@@ -1451,22 +1466,28 @@ class LatexFormatter:
         if header:
             self.latex_file.write("\\end{embolden}")
         
-        # get the number of columns wide this cell should be.
+        # get the number of columns wide or rows high this cell should be.
         width = int(table_data.get("width", 1))
+        height = int(table_data.get("height", 1))
         
         # get the text alignment within the cell.
         align = table_data.get("align", "l")
-        
-        # parent = table_data.getparent()
-        # if parent.tag == "tableheaderrow":
-        #     text = "\\end{rpgtableheader}"
-        
-        if width > 1: # or align != "l":
+
+        # borders
+        borders = int(table_data.get("borders", 0))
+                
+        if width > 1:
+            # multicolumn table data
+            self.latex_file.write("}")
+
+        if height > 1:
             # multicolumn table data
             self.latex_file.write("}")
 
         if self.table.current_column != 0:
-            self.latex_file.write(" & ")                
+            self.latex_file.write(" & ")
+
+            
         return    
 
     # table headers are a type of table data
@@ -1503,26 +1524,6 @@ class LatexFormatter:
     def end_list_of_tables(self, list_of_tables):
         return
 
-    # def start_combat_symbol(self, combat_symbol):
-    #     self.latex_file.write("\\rpgcombatsymbol{}")
-    #     return
-    # end_combat_symbol = no_op
-
-    # def start_recommendedabilitylevelsymbol(self, recommended_ability_level_symbol):
-    #     self.latex_file.write("\\rpgrecommendedabilitylevelsymbol{}")
-    #     return
-    # end_recommendedabilitylevelsymbol = no_op
-
-    # def start_training_symbol(self, training_symbol):
-    #     self.latex_file.write("\\rpgtrainingsymbol{}")
-    #     return
-    # end_training_symbol = no_op
-
-    # def start_learning_symbol(self, learning_symbol):
-    #     self.latex_file.write("\\rpglearningsymbol{}")
-    #     return
-    # end_learning_symbol = no_op
-
     def start_label(self, label):
         self.latex_file.write("\n\\label{")
         return
@@ -1554,27 +1555,27 @@ class LatexFormatter:
     end_fail = no_op
 
     def start_eg(self, fail):
-        self.latex_file.write("e.g.\@{}")
+        self.latex_file.write(r"e.g.\@{}")
         return
     end_eg = no_op
 
     def start_ie(self, fail):
-        self.latex_file.write("i.e.\@{}")
+        self.latex_file.write(r"i.e.\@{}")
         return
     end_ie = no_op
 
     def start_aka(self, fail):
-        self.latex_file.write("a.k.a.\@{}")
+        self.latex_file.write(r"a.k.a.\@{}")
         return
     end_aka = no_op
 
     def start_etc(self, fail):
-        self.latex_file.write("etc.\@{}")
+        self.latex_file.write(r"etc.\@{}")
         return
     end_etc = no_op
 
     def start_nb(self, fail):
-        self.latex_file.write("n.b.\@{}")
+        self.latex_file.write(r"n.b.\@{}")
         return
     end_nb = no_op
 
@@ -1594,6 +1595,7 @@ class LatexFormatter:
             drop = 1
         else:
             drop = convert_str_to_int(vspace.text)
+        #self.latex_file.write("\\vspace{%s\drop}\n" % drop)
         self.latex_file.write("\\vspace{%s\drop}\n" % drop)
         return
 
@@ -1661,7 +1663,7 @@ class LatexFormatter:
         return
 
     def start_mbmove(self, mbmove):
-        self.latex_file.write(r"\textbf{Move: }\begin{mbmove}")
+        self.latex_file.write(r"\textbf{Mv: }\begin{mbmove}")
         return
 
     def end_mbmove(self, mbmove):
@@ -1669,35 +1671,43 @@ class LatexFormatter:
         return
 
     def start_mbinitiativebonus(self, mbresolve):
-        self.latex_file.write(r"\textbf{Initiative: }\begin{mbinitiativebonus}")
+        self.latex_file.write(r"\textbf{Init: }\begin{mbinitiativebonus}")
         return
     def end_mbinitiativebonus(self, mbresolve):
-        self.latex_file.write("\\end{mbinitiativebonus}\\vspace{0.1cm}\\break{}")
+        self.latex_file.write("\\end{mbinitiativebonus}") # \\vspace{0.1cm}\\break{}")
         return
     
     def start_mbmagic(self, mbmagic):
         self.latex_file.write(r"\textbf{Magic: }\begin{mbmagic}")
         return
     def end_mbmagic(self, mbmagic):
-        self.latex_file.write("\\end{mbmagic}\\vspace{0.1cm}\\break{}")
+        self.latex_file.write("\\end{mbmagic}")
         return
     
     def start_mbmettle(self, mbmettle):
-        self.latex_file.write(r"\textbf{Resolve: }\begin{mbmettle}")
+        self.latex_file.write(r"\textbf{Mettle: }\begin{mbmettle}")
         return
-    def end_mbmettle(self, mbresolve):
+    def end_mbmettle(self, mbmettle):
         self.latex_file.write("\\end{mbmettle}")
+        return
+    
+    def start_mbluck(self, mbluck):
+        self.latex_file.write(r"\textbf{Luck: }\begin{mbluck}")
+        return
+    def end_mbluck(self, mbluck):
+        self.latex_file.write("\\end{mbluck}\\vspace{0.1cm}\\break{}")
         return
     
     def start_mbstr(self, mbstr):
         self.latex_file.write(
             "% attribute block\n" 
             "\\begin{tabular}{@{}ccccccc@{}}%\n"
+            #"\\begin{tabular}{@{}cccccc@{}}%\n"
             "\\mbattrtitleformat{STR} & %\n"
             "\\mbattrtitleformat{END} & %\n"
             "\\mbattrtitleformat{AG} & %\n"
             "\\mbattrtitleformat{SPD} & %\n"
-            "\\mbattrtitleformat{LUCK} & %\n"
+            # "\\mbattrtitleformat{LUCK} & %\n"
             "\\mbattrtitleformat{WIL} & %\n"
             "\\mbattrtitleformat{PER}\\\\%\n"
             "\\begin{small}")
@@ -1727,10 +1737,17 @@ class LatexFormatter:
         self.latex_file.write("\\end{small} & %\n")
         return
     
-    def start_mbluck(self, mbluck):
+    # def start_mbluck(self, mbluck):
+    #     self.latex_file.write("\\begin{small}")
+    #     return
+    # def end_mbluck(self, mbluck):
+    #     self.latex_file.write("\\end{small} & %\n")
+    #     return
+    
+    def start_mbper(self, mbper):
         self.latex_file.write("\\begin{small}")
         return
-    def end_mbluck(self, mbluck):
+    def end_mbper(self, mbper):
         self.latex_file.write("\\end{small} & %\n")
         return
     
@@ -1738,14 +1755,7 @@ class LatexFormatter:
         self.latex_file.write("\\begin{small}")
         return
     def end_mbwil(self, mbwil):
-        self.latex_file.write("\\end{small} & %\n")
-        return
-    
-    def start_mbper(self, mbper):
-        self.latex_file.write("\\begin{small}")
-        return
-    def end_mbper(self, mbper):
-        self.latex_file.write("\\end{small}"
+        self.latex_file.write("\\end{small} %\n"
                               "\\end{tabular}"
                               "\n")
         return
@@ -1830,14 +1840,18 @@ class LatexFormatter:
     end_attribution = no_op
 
     def start_ellipsis(self, ellipsis):
-        self.latex_file.write("\ldots")
+        self.latex_file.write(r"\ldots")
     end_ellipsis = no_op
 
     def start_hline(self, _):
-        self.latex_file.write(r"\noindent\rule{\columnwidth}{0.8pt}\nopagebreak\vspace{-0.8em}")
-        return    
+        if self.table is None:
+            self.latex_file.write(r"\noindent\rule{\columnwidth}{0.8pt}\nopagebreak\vspace{-0.8em}")
+        else:
+            self.latex_file.write(r"\hline")
+        return
+    
     def end_hline(self, _):
-        self.latex_file.write(r"\nopagebreak\vspace{-1.2em}\noindent\rule{\columnwidth}{0.8pt}")
+        #self.latex_file.write(r"\nopagebreak\vspace{-1.2em}\noindent\rule{\columnwidth}{0.8pt}")
         return    
 
     def start_abilityref(self, ability_ref):

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Primary Abilities</abilitygrouptitle>
+    <abilitygroupid><primary/></abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	The primary abilities are five core abilities that represent the
+	characters raw, innate, unlearned capabilities. <label>sec:primary_abilities</label>
+      </p>      
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+  
+  <ability>
+    <abilitytitle>Strength</abilitytitle>
+    <abilityid>strength</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>GM Fiat</dc>
+    </abilitycheck>
+    <abilitycheck>
+      <name>Save</name>
+      <actiontype><immediate/></actiontype>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><save/></keywords>
+      <dc>GM Fiat</dc>
+    </abilitycheck>
+    <spline><p x="90" y="0"/></spline> 
+    <specializations>
+      <specialization>Throw</specialization>
+    </specializations>     
+    <abilitydescription>
+      <indexentry>Strength</indexentry>
+      <indexentry>Abilities<subentry>Strength</subentry></indexentry>
+      <p>Represents the characters brute physical power.  Strength checks are used to
+      bend bars, open doors and to lift heavy objects.  Strength modifies melee damage and
+      the characters Health.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Endurance</abilitytitle>
+    <abilityid>endurance</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>GM Fiat</dc>
+    </abilitycheck>
+    <abilitycheck>
+      <name>Save</name>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>GM Fiat</dc>
+    </abilitycheck>
+    <specializations>
+      <specialization>Run</specialization>
+      <specialization>Swim</specialization>
+    </specializations>     
+    <abilitydescription>
+      <p>
+        <indexentry>Endurance</indexentry>
+        <indexentry>Abilities<subentry>Endurance</subentry></indexentry>	
+        The characters ability to handle physical stress.  If a character has a high
+        Endurance it indicates that they are healthy and tough.
+        Endurance is used to oppose poisons, resist exhaustion, diseases, the cold, and
+        modifies the characters Stamina.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Agility</abilitytitle>
+    <abilityid>agility</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <specializations>
+      <specialization>SureFeet</specialization>
+    </specializations>    
+    <abilitydescription>
+      <p>
+        <indexentry>Agility</indexentry>
+        <indexentry>Abilities<subentry>Agility</subentry></indexentry>
+        <indexentry>Acrobatics (use Agility)</indexentry>
+        The characters ability to move easily; their nimbleness, athleticism and dexterity.
+        Agility modifies the characters Dodge Checks.	
+      </p>
+
+      <p>
+	The Sure-Feet specialization is used when the attacker the character would be knocked
+	prone.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Speed</abilitytitle>
+    <abilityid>speed</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <specializations>
+      <specialization>Jump</specialization>
+      <specialization>Run</specialization>
+      <specialization>Throw</specialization>
+    </specializations>    
+    <abilitydescription>
+      <p>
+        <indexentry>Speed</indexentry>
+        <indexentry>Abilities<subentry>Speed</subentry></indexentry>
+        <indexentry>Movement<subentry>see Speed</subentry></indexentry>
+        Speed represents how physically fast the character is.
+      </p>
+
+      <p>
+        <indexentry>Jumping (use Speed)</indexentry>
+	Speed checks should be made for characters attempting to sprint, jump, or flee.
+      </p>	
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Perception</abilitytitle>
+    <abilityid>perception</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <specializations>
+      <specialization>Listen</specialization>
+      <specialization>Smell</specialization>
+      <specialization>Scout</specialization>
+    </specializations>
+    <abilitydescription>
+      <p>
+        <indexentry>Perception</indexentry>
+        <indexentry>Abilities<subentry>Perception</subentry></indexentry>
+        <indexentry>Spot Hidden<subentry>use Perception</subentry></indexentry>
+        <indexentry>Initiative<subentry>see Perception</subentry></indexentry>
+        <indexentry>Notice (use Perception)</indexentry>
+        <indexentry>Listen (use Perception)</indexentry>	
+        The character's awareness, acumen and insight.  Perception represents your
+        attentiveness to detail and your unflagging vigilance.  In game this value is used
+        socially, for reading people and detecting underhanded motives.  Perception modifies
+        checks used both for surveying the surrounds for potential avenues of attack, and
+  	reduces the likelihood of being surprised, for searching.
+      </p>
+
+      <p>
+	Perception can be used in social situations to see if a person is being deceptive.
+      </p>      
+    </abilitydescription>
+  </ability>  
+  
+  <ability>
+    <abilitytitle>Willpower</abilitytitle>
+    <abilityid>willpower</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Save</name>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+        <indexentry>Willpower</indexentry>
+        <indexentry>Abilities<subentry>Willpower</subentry></indexentry>
+	Willpower represents the characters strength of character.  Their grit and determination.
+	Willpower is often used when making Mettle Checks.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Luck Check</abilitytitle>
+    <abilityid>luck</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Save</name>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess>Luck Pool + 1</critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <blessed>0 cost</blessed> -->
+      <!-- <boon>1 cost</boon> -->
+      <indifferent>1 cost</indifferent>
+      <bane>2 cost</bane>
+      <damned>3 cost</damned>
+      <range><na/></range>
+      <keywords><luckpool/><save/></keywords>
+      <dc>GM Fiat</dc>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+        <indexentry>Luck Check</indexentry>
+	Characters make a luck check to see if fortune smiles on them.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Aspect Check</abilitytitle>
+    <abilityid>aspect</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Save</name>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess>Luck Pool + 1</critsuccess> -->
+      <!-- <critfail>cost+2</critfail> -->
+      <!-- <blessed>0 cost</blessed> -->
+      <!-- <boon>1 cost</boon> -->
+      <indifferent>1 cost</indifferent>
+      <bane>2 cost</bane>
+      <damned>3 cost</damned>
+      <range><na/></range>
+      <keywords><aspectpool/><save/></keywords>
+      <dc>GM Fiat</dc>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+        <indexentry>Luck Check</indexentry>
+	Characters make a luck check to se
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Mettle Check</abilitytitle>
+    <abilityid>mettle</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Save</name>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess>Mettle Pool + 1</critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon>0 cost</boon> -->
+      <indifferent>1 cost</indifferent>
+      <bane>2 cost</bane>
+      <damned>3 cost</damned>
+      <range><na/></range>
+      <keywords><mettlepool/><save/></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+        <indexentry>Mettle Check</indexentry>
+	Characters make a mettle check to see whether they have the determination to carry on.
+      </p>
+    </abilitydescription>
+  </ability>  
+</abilitygroup>

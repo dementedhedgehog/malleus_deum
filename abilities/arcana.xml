@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Arcana</abilitygrouptitle>
-    <abilitygroupid>arcana</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><arcana/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	Arcana magic represents magical abilities and learning that is common to
@@ -16,18 +15,29 @@
     <enabled/>
   </abilitygroupinfo>
 
+  
   <ability>
     <abilitytitle>Aegis</abilitytitle>
-    <abilityid>arcana.aegis</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><arcana/><ranged/><magicpool/></tags>
+    <abilityid>aegis</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="3" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>    
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><ranged-medium/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>7</dc>
+    </abilitycheck>
+    <prereqabilityrank>arcana_1</prereqabilityrank>    
     <spline><p x="-45" y="45"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The aegis spell is perhaps optimistically named.   It briefly forms
+	The aegis spell is perhaps optimistically named.  It briefly forms
 	an invisible force umbrella about <measurement><metric>2m</metric><imperial>6'</imperial></measurement>
 	wide that protects the character from rain, winds, and potentially gaseous attacks.
 	Can be cast to cushion the impact from falling, reducing damage by 1d6.
@@ -40,12 +50,22 @@
   
   <ability>
     <abilitytitle>Alarum</abilitytitle>
-    <abilityid>arcana.alarum</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><arcana/><ranged/><magicpool/></tags>
+    <abilityid>alarum</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>    
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-medium/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck>
+    <prereqabilityrank>arcana_1</prereqabilityrank>    
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -62,14 +82,25 @@
       </p>
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Arcana</abilitytitle>
-    <abilityid>arcana.arcana</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><arcana/></tags>
+    <abilityid>arcana</abilityid>  
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><lore/></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>13</dc>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -80,14 +111,25 @@
     </abilitydescription>        
   </ability>
 
+  
   <ability>
     <abilitytitle>Cloak of Shadows</abilitytitle>
-    <abilityid>arcana.cloak_of_shadows</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><arcana/><magicpool/></tags>
+    <abilityid>cloak_of_shadows</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>    
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>arcana_1</prereqabilityrank>    
     <spline><p x="-75" y="50"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -102,12 +144,22 @@
 
   <ability>
     <abilitytitle>Ignis</abilitytitle>
-    <abilityid>arcana.ignis</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><arcana/><magicpool/></tags>
+    <abilityid>ignis</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="3" overcharge="2">Magic+Rank</abilitycheck>    
-    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>    
+    <prereqabilityrank>arcana_1</prereqabilityrank>
     <spline><p x="0" y="45"/></spline>
     <abilitydescription>
       <p>
@@ -124,12 +176,22 @@
 
   <ability>
     <abilitytitle>Incendo</abilitytitle>
-    <abilityid>arcana.incendo</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><arcana/><magicpool/></tags>
+    <abilityid>incendo</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.ignis_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>ignis_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -145,15 +207,26 @@
       </p>
     </abilitydescription>    
   </ability>  
+
   
   <ability>
     <abilitytitle>True Sight</abilitytitle>
-    <abilityid>arcana.true_sight</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><arcana/><magicpool/></tags>
+    <abilityid>true_sight</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="3" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck>
+    <prereqabilityrank>arcana_1</prereqabilityrank>
     <spline><p x="60" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -172,12 +245,22 @@
 
   <ability>
     <abilitytitle>Scroll Writing</abilitytitle>
-    <abilityid>arcana.scrolls</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><arcana/></tags>
+    <abilityid>scrolls</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arcana.arcana_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>arcana_1</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">

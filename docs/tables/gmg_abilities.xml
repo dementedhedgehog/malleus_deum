@@ -17,7 +17,7 @@
 </tableheaderrow>
 {% for ability in abilities_page %}
 <tablerow><td>{{ ability.get_title() }}</td>
-<td>{{ ability.get_tags_str() }}</td>
+<td>{{ ability.get_keywords_str() }}</td>
 <td>{{ ability.ddc }}{% if ability.overcharge %} <leqsymbol/>{{ ability.overcharge }}{% endif %}</td>
 </tablerow>
 {% endfor %}

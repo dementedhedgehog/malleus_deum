@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Wyrd Science Abilities</abilitygrouptitle>
-    <abilitygroupid>wyrdscience</abilitygroupid>
+    <abilitygroupid><wyrdscience/></abilitygroupid>
     <abilitygroupfamily><wyrdscience/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -16,15 +15,22 @@
   </abilitygroupinfo>
   
 
-
   <ability>
     <abilitytitle>Feign Death</abilitytitle>
-    <abilityid>wyrdscience.feign_death</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>feign_death</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <actiontype><noncombat/></actiontype>
+      <righteoussuccess>The feigned death is extremely convincing.</righteoussuccess>
+      <fail></fail>
+      <grimfail>You twitch or sneeze at an unfortunate time.</grimfail>
+      <critfail>You succeed in entering the trance but remain in a death like state for longer than you intended.</critfail>
+      <boon>Your example assists any companions in doing the same .. they gain a +2 to Feign Death or using Deception to pretend
+      to be dead.</boon>
+      <dc>7</dc>
+    </abilitycheck>
+    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -34,14 +40,25 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Flesh Golem</abilitytitle>
-    <abilityid>wyrdscience.flesh_golem</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>flesh_golem</abilityid>
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.homunculus_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_3</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <grimfail></grimfail>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <!-- <indifferent></indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>homunculus_2</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -67,12 +84,22 @@
 
   <ability>
     <abilitytitle>Homunculus</abilitytitle>
-    <abilityid>wyrdscience.homunculus</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>homunculus</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.wyrdscience_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_3</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>wyrdscience_2</prereqabilityrank>
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -132,15 +159,24 @@
   </ability>
 
 
-
   <ability>
     <abilitytitle>Wyrd Rats</abilitytitle>
-    <abilityid>wyrdscience.wyrd_rat</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>wyrd_rat</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>15</dc>
+    </abilitycheck>
+    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -158,16 +194,24 @@
   </ability>
 
 
-
-
   <ability>
     <abilitytitle>Splice Flesh</abilitytitle>
-    <abilityid>wyrdscience.splice_flesh</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>splice_flesh</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="15">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -181,12 +225,22 @@
 
   <ability>
     <abilitytitle>Meld Flesh</abilitytitle>
-    <abilityid>wyrdscience.meld_flesh</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>meld_flesh</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.splice_flesh_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>splice_flesh_2</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -212,14 +266,25 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Inner Eye</abilitytitle>
-    <abilityid>wyrdscience.inner_eye</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>inner_eye</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.splice_flesh_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>splice_flesh_2</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -227,8 +292,8 @@
 	subject.  Maximum one per subject.  No character in their right mind
 	will voluntarily allow themselves to be subject to this surgery, though
 	for the purposes of this ability the plague doctor is not considered to
-	be in their right mind.  Each time the character increases the level of
-	this ability they can add extra abilities to their wyrd-limb.
+	be in their right mind.  <!-- Each time the character increases the level of -->
+	<!-- this ability they can add extra abilities to their wyrd-limb. -->
       </p>
 
       <p>
@@ -238,16 +303,24 @@
   </ability>
 
 
-
-
   <ability>
     <abilitytitle>Reanimation</abilitytitle>
-    <abilityid>wyrdscience.reanimation</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>reanimation</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.wyrdscience_3</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_3</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>wyrdscience_3</prereqabilityrank>
     <spline><p x="90" y="120"/></spline>
     <abilitydescription>
       <p>
@@ -259,16 +332,56 @@
       </p>
     </abilitydescription>
   </ability>
-    
+
+
+  <ability>
+    <abilitytitle>Revivify</abilitytitle>
+    <abilityid>revivify</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults> 
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>splice_flesh_2</prereqabilityrank>
+    <spline><p x="-30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	Make the check and if successful the character can aid a character who is rolling on the near-death table.
+	Revivify negates the negative modifiers from the Bleeding Out and Bleeding Out Fast resuts, and converts the
+	Maimed effect to Unconscious.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  
 
   <ability>
     <abilitytitle>Wyrd Hand</abilitytitle>
-    <abilityid>wyrdscience.wyrd_hand</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>wyrd_hand</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17">Std+Rank</abilitycheck>
-    <prereqabilityrank>wyrdscience.wyrdscience_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>wyrd_science_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <bane></bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <!-- <indifferent></indifferent> -->
+      <dc>15</dc>
+    </abilitycheck>
+    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -277,18 +390,20 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Wyrd Science</abilitytitle>
-    <abilityid>wyrdscience.wyrdscience</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><wyrdscience/></tags>
+    <abilityid>wyrdscience</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+      <keywords><lore/><wyrdscience/></keywords>
+    </abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <spline><p x="0" y="0"/></spline>
     <abilitydescription>
       <p>
-	This represents general theoretical knowledge of the foundational principles of Wyrd Science.
+	This ability represents general theoretical knowledge of the foundational principles of Wyrd Science.
       </p>
     </abilitydescription>
   </ability>

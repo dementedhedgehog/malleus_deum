@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- medic/alchemist/mad scientist character --> 
 <archetype>
-  <archetypetitle>Fraternitas Aeterna / Plague Doctors</archetypetitle>
+  <archetypetitle>Plague Doctor</archetypetitle>
   <archetypeid>plague_doctor</archetypeid>
   <archetypedescription>
     <p>
@@ -72,11 +72,11 @@
   <age>24 + 2d6 years</age>
 
   <aspectexamples>I must know the answer!, Curiousity killed the cat, </aspectexamples>
-  <archetypetags>
+  <archetypekeywords>
     <human/>
     <humanoid/>
     <medium/>
-  </archetypetags>
+  </archetypekeywords>
   
   <archetypelevels>
     <archetypelevel>
@@ -101,10 +101,10 @@
 	    
 	  <path chance="">
 	    <pathtitle></pathtitle>
-	    <choice>✱sword_strike_1, ✱sword_parry_1, ✱dodge_1, ✱book_learning_1,
+	    <choice>✱sword_strike_1, ✱parry_1, ✱dodge_1, ✱book_learning_1,
 	    ✱barber_1, ✱physician_1, ✱natural_history_1, ✱alchemy_lesser_3, ✱wyrdscience_1, 
 	    ✱aquilonian_1, ✱etiquette[Fraternitas-Aeterna]_1, ✱contacts[Fraternitas-Aeterna]_1,
-	    ✱merovingian_2, ✱negotiate.intimidate, ✱itiok_1, ✱smoke_bomb_1, ✱strength.throw, ✱dagger_strike_1.
+	    ✱merovingian_2, ✱negotiate.intimidate_1, ✱itiok_1, ✱smoke_bomb_1, ✱strength.throw, ✱dagger_strike_1.
 	    </choice>
 	  </path>
       </branch>
@@ -130,7 +130,7 @@
 	  <path chance="10">
 	    <pathtitle>Averoigne</pathtitle>
 	    <choice>✱occitan_3, or ✱poitevin_3, or ✱leonese_3</choice>
-	    <choice>✱social.etiquette[Averoigne]_3, ✱contacts[Averoigne]_3,
+	    <choice>✱etiquette[Averoigne]_3, ✱contacts[Averoigne]_3,
 	    and ✱etiquette[Averoigne]_3</choice>
 	    <choice>✱contacts[Averoigne]_2, or ✱contacts[Aquilonia]_1</choice>
 	  </path>
@@ -254,14 +254,14 @@
 	  <choice>One of ✱cloak_fighting_2 or ✱stealth_1</choice>
 	  <choice>One of ✱brawl_2 or ✱brawl_2</choice>
 	  <choice>One of ✱perception.listen or </choice>
-	  <choice>One of ✱endurance.swim or ✱agility.surefeet</choice>
+	  <choice>One of ✱endurance.swim or ✱surefeet</choice>
 	</path>
 	<path chance="2-6">
 	  <pathtitle>The Spectre</pathtitle>
 	  <choice>One of ✱pick_locks_2 or ✱stealth_2</choice>
 	  <choice>One of ✱cryptography_2 or ✱climb_2</choice>
 	  <choice>One of ✱brawl_2 or ✱strength.throw</choice>
-	  <choice>One of ✱endurance.swim or ✱agility.surefeet</choice>
+	  <choice>One of ✱endurance.swim or ✱surefeet</choice>
 	</path>
 	<path chance="7-10">
 	  <pathtitle>The Crow</pathtitle>
@@ -273,9 +273,9 @@
 	<path chance="11">
 	  <pathtitle>Militia</pathtitle>
 	  <choice>✱sword_strike_2</choice>
-	  <choice>Two of ✱spear_strike_2, ✱shield.block_1 and ✱dagger_strike_2</choice>
+	  <choice>Two of ✱polearm_strike_2, ✱block_1 and ✱dagger_strike_2</choice>
 	  <choice>One of ✱brawl_2 or ✱brawl_2</choice>
-	  <choice>One of ✱endurance.swim or ✱agility.surefeet</choice>
+	  <choice>One of ✱endurance.swim or ✱surefeet</choice>
 	  <choice></choice>
 	</path>
 	<path chance="12">

@@ -34,6 +34,8 @@ modules_dir = join(root_dir, "modules")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
 release_dir = join(root_dir, "releases")
 third_party_dir = join(src_dir, "third_party")
+ability_groups_dir = join(root_dir, "abilities")
+
 
 # load the xml schema
 def load_schema(schema_fname):
@@ -53,6 +55,43 @@ def load_schema(schema_fname):
 schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
 xml_schema = load_schema(schema_fname)
 
+
+_ability_tokenizer = re.compile(
+    "("
+    # split on an ability or ability_id reference.
+    "(?:"
+    "✱✱?"                            # magic prefix characters
+    "(?:[a-zA-Z]+\.)?"                # optional ability group
+    "(?:[a-zA-Z_]*[a-zA-Z])"         # ability name
+    "(?:\.[a-zA-Z]+)?"               # ability subability (for specializations)
+    "(?:\[[a-zA-Z_0-9\-\?/ ]+\])?"   # optional specialization
+    "(?:_[0-9]+)?"                   # optional rank
+    ")"
+    # or a newline
+    "|"
+    "(?:\n)"
+    ")"
+)
+
+def split_ability_tokens(xml_str):
+    """
+    Extracts special ability tokens, e.g. ✱dagger.strike_1 from other text.
+
+    """
+    return _ability_tokenizer.split(xml_str)
+
+
+def parse_xml_list(xml_node):
+    """
+    Parses xml like this: <xml_node> <A/> <B/><!-- a comment --><C/></xml_node>
+    and returns a list like this: ["A", "B", "C"]
+
+    """
+    elements = []
+    for child in list(xml_node):
+        if child.tag is not COMMENT:
+            elements.append(strip_xml(child.tag))
+    return elements
 
 
 def normalize_ws(text): 
@@ -110,7 +149,8 @@ def node_to_string(node):
 
 def children_to_string(node):
     """
-    Returns the nodes children as a string (just the xml elements).
+    Returns the nodes children as a string (just the xml elements), e.g.
+    <node><a/><b/><c/></node> returns "<a/><b/><c/>".
 
     """
     return "".join([
@@ -128,14 +168,22 @@ def contents_to_string(node):
         [etree.tostring(child, encoding="unicode") for child in node.iterchildren()])
 
 
-def contents_to_comma_separated_list(node):
+def contents_to_list(node):
+    """
+    Given <node><a/><b/><c/></node> returns a list ["a", "b", "c"]
+
+    """
+    return [etree.tostring(child, encoding="unicode").strip()[1:-2] # remove < and />
+            for child in node.iterchildren()]
+
+
+#def contents_to_comma_separated_list(node):
+def contents_to_comma_separated_str(node):
     """
     Given <node><a/><b/><c/></node> returns a string a, b, c..
 
     """
-    return (node.text or "") + ", ".join(
-        [etree.tostring(child, encoding="unicode").strip()[1:-2] # remove < and />
-         for child in node.iterchildren()])
+    return (node.text or "") + ", ".join(contents_to_list(node))
 
 
 def attrib_is_true(xml_node, attribute):
@@ -154,12 +202,15 @@ def attrib_is_true(xml_node, attribute):
 
 
 def get_error_context(fname, error_line_number):
-    context = ""
+    """
+    Returns the neighbouring lines around an xml error for debug context.
 
+    """
+    context = ""
     with open(fname, "r") as f:
         lines = f.readlines()            
-        from_line = max(error_line_number - 5, 0)
-        to_line = min(error_line_number + 5, len(lines))
+        from_line = max(error_line_number - 7, 0)
+        to_line = min(error_line_number + 7, len(lines))
         for line_number in range(from_line, to_line):
             if line_number + 1 == error_line_number:
                 ptr = "=>"
@@ -183,11 +234,11 @@ def convert_str_to_bool(str_bool):
     return str_bool.lower() != "false"
 
 
-def strip_xml(element):
-    """Removes the < and /> around elements."""
-    if element.startswith("<") and element.endswith("/>"):
-        return element[1:-2]
-    return element
+def strip_xml(element_str):
+    """Removes the < and /> around an element string."""
+    if element_str.startswith("<") and element_str.endswith("/>"):
+        return element_str[1:-2]
+    return element_str
 
 
 def convert_str_to_int(str_int):

@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-  <!--
-      
-      Note this is not a document format.
-      Docs get generated from this.
-      
-  -->
-  
   <abilitygroupinfo>
     <abilitygrouptitle>Art Abilities</abilitygrouptitle>
-    <abilitygroupid>arts</abilitygroupid>
+    <abilitygroupid><arts/></abilitygroupid>
     <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -23,11 +16,19 @@
 
   <ability>
     <abilitytitle>Art History</abilitytitle>
-    <abilityid>arts.art_history</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>art_history</abilityid>    
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <actiontype><immediate/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
     <spline><p x="-60" y="0"/></spline>    
     <abilitydescription>
       <p>
@@ -38,16 +39,25 @@
 	to appraise its value.
       </p>
     </abilitydescription>
- </ability>
+  </ability>
 
+  
   <ability>
     <abilitytitle>Dance</abilitytitle>
-    <abilityid>arts.dance</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>dance</abilityid>
     <abilityranks untrained="0" from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.music_1</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>music_1</prereqabilityrank>
     <spline><p x="0" y="50"/><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -56,15 +66,24 @@
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Fine Art</abilitytitle>
-    <abilityid>arts.fine_art</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>fine_art</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.art_history_1</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>art_history_1</prereqabilityrank>
     <spline><p x="120" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -86,11 +105,19 @@
 
   <ability>
     <abilitytitle>Jester</abilitytitle>
-    <abilityid>arts.jester</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>jester</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <spline><p x="-40" y="30"/></spline>
     <abilitydescription>
@@ -104,14 +131,22 @@
     </abilitydescription>
   </ability>
   
- 
+  
   <ability>
     <abilitytitle>Music</abilitytitle>
-    <abilityid>arts.music</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>music</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
     <spline><p x="50" y="100"/></spline>
     <abilitydescription>
       <p>
@@ -124,12 +159,20 @@
 
   <ability>
     <abilitytitle>Musician - Keyed</abilitytitle>
-    <abilityid>arts.keyed</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>keyed</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.music_1</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>music_1</prereqabilityrank>
     <spline><p x="-110" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -140,15 +183,22 @@
   </ability>
 
 
-
   <ability>
     <abilitytitle>Musician - Percussion</abilitytitle>
-    <abilityid>arts.percussion</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>percussion</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.music_1</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>music_1</prereqabilityrank>
     <spline><p x="-20" y="50"/><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -166,14 +216,23 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Musician - Singing</abilitytitle>
-    <abilityid>arts.singing</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>singing</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.music_1</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>music_1</prereqabilityrank>
     <spline><p x="-140" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -185,12 +244,20 @@
 
   <ability>
     <abilitytitle>Musician - Strings</abilitytitle>
-    <abilityid>arts.strings</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>strings</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.music_2</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>music_2</prereqabilityrank>
     <spline><p x="40" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -203,12 +270,20 @@
 
   <ability>
     <abilitytitle>Musician - Wind Instrument</abilitytitle>
-    <abilityid>arts.wind</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>wind</abilityid>
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.music_1</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>music_1</prereqabilityrank>
     <spline><p x="-100" y="120"/><p x="0" y="20"/></spline>
     <abilitydescription>
       <p>
@@ -222,12 +297,20 @@
   
   <ability>
     <abilitytitle>Oratory</abilitytitle>
-    <abilityid>arts.oratory</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>oratory</abilityid>    
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>arts.art_history_1</prereqabilityrank>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
+    <prereqabilityrank>art_history_1</prereqabilityrank>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -238,13 +321,22 @@
     </abilitydescription>
   </ability>
 
-    <ability>
+  
+  <ability>
     <abilitytitle>Soothe the Savage Beast</abilitytitle>
-    <abilityid>arts.soothe_the_savage_beast</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><general/><arts/></tags>
+    <abilityid>soothe_the_savage_beast</abilityid>    
     <abilityranks from="1" to="6"/>
-    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+    </abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <spline><p x="50" y="300"/></spline>
     <abilitydescription>

@@ -52,12 +52,12 @@
   <age>24 + 2d6 years</age>
 
   <aspectexamples>Knowledge is Power, No One Must Know of My Work, The Smartest Man in the Room, I have been Chosen</aspectexamples>
-  <archetypetags>
+  <archetypekeywords>
     <human/>
     <humanoid/>
     <medium/> 
     <magicuser/> 
-  </archetypetags> 
+  </archetypekeywords> 
   
   <archetypelevels>
     <!-- <sectiontitle>Leveling Up</sectiontitle> -->
@@ -158,7 +158,7 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle>XXXX</pathtitle>
-	  <choice>✱language.merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱negotiate.intimidate</choice>
+	  <choice>✱merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱negotiate[intimidate]_1</choice>
 	</path>
       </branch>
 
@@ -172,36 +172,36 @@
       	</branchdescription>
       	<path chance="1">
       	  <pathtitle>Almaignee</pathtitle>
-      	  <choice>✱social.etiquette[Almaignee]_2, ✱common.history[Almaignee]_2</choice>
+      	  <choice>✱etiquette[Almaignee]_2, ✱history[Almaignee]_2</choice>
       	  <choice></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Poitevin</pathtitle>
-      	  <choice>✱language.poitevin_1, ✱social.etiquette[Averoigne]_2,  ✱common.history[Averoigne]_2</choice>
+      	  <choice>✱poitevin_1, ✱etiquette[Averoigne]_2,  ✱history[Averoigne]_2</choice>
       	</path>
       	<path chance="2">
       	  <pathtitle>Rural Westreich</pathtitle>
-      	  <choice>✱craft.farmer_1</choice>
+      	  <choice>✱farmer_1</choice>
       	</path>
       	<path chance="4">
       	  <pathtitle>Laibstadt</pathtitle>
-	  <choice>✱language.merovingian_3</choice>
+	  <choice>✱merovingian_3</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Hybernian</pathtitle>
-      	  <choice>✱language.hybernian_2, ✱social.etiquette[Albion]_2, ✱social.etiquette[Hybernia]_2</choice>
+      	  <choice>✱hybernian_2, ✱etiquette[Albion]_2, ✱etiquette[Hybernia]_2</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Albion</pathtitle>
-      	  <choice>✱language.hybernian_1, ✱social.etiquette[Albion]_2, ✱social.etiquette[Hybernia]_1</choice>
+      	  <choice>✱hybernian_1, ✱etiquette[Albion]_2, ✱etiquette[Hybernia]_1</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Noord</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Averoigne</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice>
       	</path>
       </branch>
       
@@ -222,8 +222,8 @@
 	</path>
 	<path chance="4">
       	  <pathtitle>Burglar</pathtitle>
-	  <choice>✱common.climb_3</choice>
-	  <choice>✱skulduggery.ropecraft_2</choice>
+	  <choice>✱climb_3</choice>
+	  <choice>✱ropecraft_2</choice>
 	</path>
       </branch>
       
@@ -243,7 +243,7 @@
       	</path>
       	<path chance="3">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
       	  <choice></choice>
       	  <choice></choice>
       	  <choice></choice>
@@ -267,7 +267,7 @@
       	</path>
       	<path chance="6">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
       	</path>
       </branch>
 
@@ -288,7 +288,7 @@
       	</path>
       	<path chance="2">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
       	</path>
       </branch>
 
@@ -309,7 +309,7 @@
       <!-- 	</path> -->
       <!-- 	<path> -->
       <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
-      <!-- 	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice> -->
+      <!-- 	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
@@ -333,7 +333,7 @@
       <!-- 	</path> -->
       <!-- 	<path> -->
       <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
-      <!-- 	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice> -->
+      <!-- 	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->

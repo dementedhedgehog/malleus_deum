@@ -46,11 +46,11 @@
 
   <aspectexamples>Life is Short, In for a Penny in for a Noble, Time For A Quick Hand of Cards, As My Daddy Used to
   Say..,  There Is Always Time to Be A Gentleman, Fortune Favours the Bold!</aspectexamples>
-  <archetypetags>
+  <archetypekeywords>
     <human/>
     <humanoid/>    
     <medium/>
-  </archetypetags>
+  </archetypekeywords>
 
   <archetypelevels>
     <archetypelevel>
@@ -73,9 +73,9 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <all-of>✱sword_strike_2, ✱sword_parry_1, ✱dodge_1, 
-      ✱etiquette[Westreich-Nobility]_3, ✱language.merovingian_4, ✱luck.lucky_3, ✱itiok_1, ✱nick_of_time_1,
-      ✱book_learning_1, and ✱horse_riding_1.</all-of>
+	  <all-of>✱sword_strike_2, ✱parry_1, ✱dodge_1, 
+      ✱etiquette[Westreich-Nobility]_3, ✱merovingian_4, ✱luck.lucky_3, ✱itiok_1, ✱nick_of_time_1,
+      ✱book_learning_1, and ✱riding_1.</all-of>
 	</path>
       </branch>
       
@@ -90,34 +90,34 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle>Laibstadt</pathtitle>
-	    <choice>✱language.merovingian_4, ✱language.aquilonian_2,
-	    ✱common.history[Westreich]_1, ✱social.etiquette_2[Westreich],
-	    ✱social.etiquette[Westreich-Nobility]_2</choice>
+	    <choice>✱merovingian_4, ✱aquilonian_2,
+	    ✱history[Westreich]_1, ✱2[Westreich],
+	    ✱etiquette[Westreich-Nobility]_2</choice>
 	  </path>
 	  <path chance="3-9">
 	    <pathtitle>Westreich</pathtitle>
-	    <choice>✱language.merovingian_4, ✱language.aquilonian_2,
-	    ✱common.history[Westreich]_1, ✱social.etiquette_1[Westreich],
-	    ✱social.etiquette[Westreich-Nobility]_1, ✱craft.farmer_1</choice>
+	    <choice>✱merovingian_4, ✱aquilonian_2,
+	    ✱history[Westreich]_1, ✱fame[Westreich]_1,
+	    ✱etiquette[Westreich-Nobility]_1, ✱farmer_1</choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Alemaigne</pathtitle>
-	    <choice>✱language.merovingian_3, ✱language.aquilonian_1, ✱language.alemagne_4, 
-	    ✱common.history[Westreich]_1, ✱common.history[Alemaigne]_1,
-	    ✱social.etiquette_2[Westreich],
-	    ✱social.etiquette[Westreich-Nobility]_1,
-	    ✱social.etiquette[Allemagne-Nobility]_2</choice>
+	    <choice>✱merovingian_3, ✱aquilonian_1, ✱alemagne_4, 
+	    ✱history[Westreich]_1, ✱history[Alemaigne]_1,
+	    ✱2[Westreich],
+	    ✱etiquette[Westreich-Nobility]_1,
+	    ✱etiquette[Allemagne-Nobility]_2</choice>
 	  </path>
 	  <path chance="11">
 	    <pathtitle>Albion</pathtitle>
-	    <choice>✱language.merovingian_3, ✱language.aquilonian_1, ✱language.hybernian_2, 
-	    ✱common.history[Westreich]_1,
-	    ✱common.history[Albion]_1,
-	    ✱social.etiquette_2[Albion],
-	    ✱social.etiquette_1[Westreich],
-	    ✱social.etiquette[Westreich-Nobility]_2,
-	    ✱social.etiquette[Albion-Nobility]_3</choice>
-	    <choice>✱language.occitan_1, or ✱language.leonese_1, or ✱language.poitevin_1</choice>
+	    <choice>✱merovingian_3, ✱aquilonian_1, ✱hybernian_2, 
+	    ✱history[Westreich]_1,
+	    ✱history[Albion]_1,
+	    ✱fame[Albion]_2,
+	    ✱fame[Westreich]_1,
+	    ✱etiquette[Westreich-Nobility]_2,
+	    ✱etiquette[Albion-Nobility]_3</choice>
+	    <choice>✱occitan_1, or ✱leonese_1, or ✱poitevin_1</choice>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Choose one of the above</pathtitle>
@@ -135,17 +135,17 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>✱transport.horse_riding_2, ✱common.brawl_2</choice>
+	    <choice>✱riding_2, ✱brawl_2</choice>
 	  </path>
 
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>✱perception.listen, ✱horse_riding_2 or ✱survivalism[Plains/Woods]_1, ✱agility.surefeet or ✱speed.jump, ✱negotiate.intimidate or ✱negotiate_2</choice>
+	    <choice>✱perception.listen, ✱riding_2 or ✱survivalism[Plains/Woods]_1, ✱surefeet] or ✱speed.jump, ✱✱negotiate[intimidate] or ✱negotiate_2</choice>
 	  </path>
 
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱wilderness.survivalism_1, ✱leadership_2, or  or </choice>
+	    <choice>✱survivalism_1, ✱leadership_2, or  or </choice>
 	  </path>
 
 	  <path chance="7-8">
@@ -155,7 +155,7 @@
 
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>✱horse_riding_2, ✱animal_handling_1, ✱juggernaut_2,  or , ✱brawl_2</choice>
+	    <choice>✱riding_2, ✱animal_handling_1, ✱juggernaut_2,  or , ✱brawl_2</choice>
 	  </path>
 
 	  <path chance="12">
@@ -174,42 +174,42 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>✱arts.art_history_3,
-  	  One of ✱history[Westreich]_3 or ✱lore.politics[Westreich]_2,
+	    <choice>✱art_history_3,
+  	  One of ✱history[Westreich]_3 or ✱politics[Westreich]_2,
   	  One of  or .
   	  One of ✱dodge_2 or ✱cloak_fighting_3.</choice>
 	  </path>
 
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>✱arts.oratory_3,
-  	  One of ✱common.history[Aquilonia]_3 or ✱common.history[Averoigne]_3,
+	    <choice>✱oratory_3,
+  	  One of ✱history[Aquilonia]_3 or ✱history[Averoigne]_3,
   	  One of  or .
-  	  One of ✱common.dodge_2 or ✱skulduggery.cloak_fighting_3.</choice>
+  	  One of ✱dodge_2 or ✱cloak_fighting_3.</choice>
 	  </path>
 
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱language.poitevin_3,
-  	  One of ✱lore.natural_history_2 or ✱lore.mathematics_2,
-  	  ✱archery.archery_shoot_2 or (✱gun_shoot_2 and ✱gun.maintenance_2),
+	    <choice>✱poitevin_3,
+  	  One of ✱natural_history_2 or ✱mathematics_2,
+  	  ✱archery_shoot_2 or (✱gun_shoot_2 and ✱gun_maintenance_2),
   	  One of  or .</choice>
 	  </path>
 
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
-	    <choice>✱language.aquilonian_2,
-  	  One of ✱common.history[Albion]_2 or ✱common.history[Hybernia]_2,
-  	  One of ✱dagger.dagger_strike_3 or ✱archery.archery_shoot_2.
-  	  One of ✱common.dodge_2 or ✱skulduggery.cloak_fighting_3.
+	    <choice>✱aquilonian_2,
+  	  One of ✱history[Albion]_2 or ✱history[Hybernia]_2,
+  	  One of ✱dagger_strike_3 or ✱archery_shoot_2.
+  	  One of ✱dodge_2 or ✱cloak_fighting_3.
   	  One of  or .</choice>
 	  </path>
 
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>✱lore.law[Westreich]_2,
-  	  One of ✱common.history[Aquilonia]_3 or ✱lore.politics[Westreich]_2.
-  	  ✱sword.sword_strike_3 and one of ✱sword.feint_1 or ✱sword.sword_parry_2.
+	    <choice>✱law[Westreich]_2,
+  	  One of ✱history[Aquilonia]_3 or ✱politics[Westreich]_2.
+  	  ✱sword_strike_3 and one of ✱feint_1 or ✱parry_2.
   	  One of  or .</choice>
 	  </path>
 	  
@@ -231,28 +231,28 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱perception.listen or .  ✱skulduggery.concealment_2 or ✱skulduggery.pick_locks_1</choice>
+	    <choice>Choose one of ✱perception.listen or .  ✱concealment_2 or ✱pick_locks_1</choice>
 	  </path>
 	    
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱skulduggery.disguise_1 or ✱common.climb_1. One of ✱social.leadership_1 or ✱social.fame[Westreich]_3</choice>
+	    <choice>Choose one of ✱disguise_1 or ✱climb_1. One of ✱leadership_1 or ✱fame[Westreich]_3</choice>
 	  </path>
 	    
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱speed.jump, Choose one of ✱speed.run or ✱speed.run, One of ✱social.leadership_1 or ✱common.dodge_2 or
-	    ✱archery.archery_shoot_1</choice>
+	    <choice>✱speed.jump, Choose one of  or , One of ✱leadership_1 or ✱dodge_2 or
+	    ✱archery_shoot_1</choice>
 	  </path>
 	    
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
-	    <choice>One of ✱endurance.swim or , One of ✱skulduggery.ropecraft_2 or ✱stealth.urban</choice>
+	    <choice>One of ✱endurance.swim or , One of ✱ropecraft_2 or ✱stealth.urban</choice>
 	  </path>
 	    
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱brawl_1 or ✱common.brawl_1.  One of ✱skulduggery.sleight_of_hand_1 or ✱negotiate_1.</choice>
+	    <choice>Choose one of ✱brawl_1 or ✱brawl_1.  One of ✱sleight_of_hand_1 or ✱negotiate_1.</choice>
 	  </path>
 	    
 	  <path chance="12">
@@ -391,7 +391,7 @@
 	    </choice>
 	    <choice>+1 Agility or +1 Speed,</choice>
 	    <choice>
-	      ✱sword.daring_thrust_1 and ✱sword.feint_1, or ✱sword.disarm_1 and ✱sword.mighty_blow_1
+	      ✱daring_thrust_1 and ✱feint_1, or ✱disarm_1 and ✱mighty_blow_1
 	    </choice>	      	    
 	    <choice>1x new Martial abilities at level 1</choice>
 	    <choice>2x Martial Promotions up to level 3</choice>

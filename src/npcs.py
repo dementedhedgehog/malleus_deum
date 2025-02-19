@@ -46,7 +46,7 @@ class NPC:
         if npc_group is not None:
             self.health = npc_group.get_health()
             self.stamina = npc_group.get_stamina()
-            self.tags_str = npc_group.get_tags_str()
+            self.tags_str = npc_group.get_keywords_str()
 
         self.ability_level_ids = []
         self.npc_group = npc_group        
@@ -64,8 +64,8 @@ class NPC:
     def get_initiative_bonus(self):
         return self.initiative_bonus
 
-    def get_tags_str(self):
-        return self.monster.get_tags_str()
+    def get_keywords_str(self):
+        return self.monster.get_keywords_str()
     
     def get_title(self):
         return self.title
@@ -237,8 +237,8 @@ class NPCGroup:
     def get_title(self):
         return self.monster.get_title()
 
-    def get_tags_str(self):
-        return self.monster.get_tags_str()
+    def get_keywords_str(self):
+        return self.monster.get_keywords_str()
 
     def get_initiative_bonus(self):
         return self.monster.get_initiative_bonus()    

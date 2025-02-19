@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Axe Proficiency</abilitygrouptitle>
+    <abilitygroupid><axe/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        These abilities represent training in the use of axes in combat.  This
+	includes the use of single handed war axes, two handed battle axes, 
+	and throwing axes.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  
+  <ability>
+    <abilitytitle>Axe Cleave</abilitytitle>
+    <abilityid>axe_cleave</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck>
+      <defaults>axe_defaults</defaults>
+      <trigger>The character kills an opponent using an Axe Strike attack.</trigger>
+      <actiontype><free/></actiontype>
+      <dmg>Overflow damage + Rank is dealt to adjacent enemies.</dmg>  
+    </abilitycheck>
+    <prereqabilityrank>axe_strike_3</prereqabilityrank>
+    <prereqattr><strength>13</strength></prereqattr>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character strikes at their opponent with great vengeance and
+	furious anger.  Damage from this attack beyond the amount that
+	kills the target is then applied to all other targets adjacent to the
+	attacker.
+      </p>
+
+      <p>
+	For example, suppose Dourli is attacking three goblin.  He makes
+	an Axe Strike attack on the first goblin with a righteous success
+	and dealing 18 hit points damage to the goblin.   The goblin only has
+	11 hit points.  The overflow damage is 7.  
+      </p>      
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Axe Frenzy</abilitytitle>
+    <abilityid>axe_frenzy</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <name>Frenzy</name>
+      <actiontype><standard/></actiontype>
+      <critsuccess>3 Attacks instead of 2</critsuccess>
+      <critfail>Berserk</critfail>
+      <boon>-1 Cost</boon>
+      <indifferent>1</indifferent>
+      <bane>+1 Cost</bane>
+      <range><na/></range>
+      <keywords><mettlepool/></keywords>
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>axe_strike_1</prereqabilityrank>
+    <prereqattr><strength>13</strength></prereqattr>
+    <spline><p x="-75" y="30"/></spline>    
+    <abilitydescription>
+      <p>
+	When a character makes a frenzied attack with an axe, they make
+	a Mettle Check.  If they pass they may make two standard axe
+	attacks that round. On a bane the character goes beserk.	
+      </p>
+
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Axe Hook</abilitytitle>
+    <abilityid>axe_hook</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck>
+      <defaults>axe_defaults</defaults>
+      <name>Hook</name>
+      <trigger>Axe Strike Boon against an opponent of appropriate size, carrying an item, a weapon or shield</trigger>
+      <actiontype><free/></actiontype>
+      <critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
+      <success>Target drops random item, weapon or shield</success>
+      <dc>Target's Strength</dc>
+      <dmg>None</dmg>
+    </abilitycheck>
+    <prereqabilityrank>axe_strike_1</prereqabilityrank>
+    <spline><p x="0" y="30"/></spline>    
+    <abilitydescription>
+      <p>
+        Characters equipped with an axe can use the axe to attempt to disarm
+	an opponent or remove their shield by using the axes beard as a hook.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Axe Strike</abilitytitle>
+    <abilityid>axe_strike</abilityid>    
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck>
+      <defaults>axe_defaults</defaults>
+      <name>strike</name>
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with an axe can strike with it during combat
+	doing weapon damage.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

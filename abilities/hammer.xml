@@ -2,9 +2,9 @@
 <abilitygroup>
   <abilitygroupinfo>
     <abilitygrouptitle>Hammer Proficiency</abilitygrouptitle>
-    <abilitygroupid>hammer</abilitygroupid>
+    <abilitygroupid><hammer/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
-    <abilitytags><weapon/><melee/><heavy/><crushing/><hammer/></abilitytags>
+    <keywords><heavy/><crushing/></keywords>
     <abilitygroupdescription>
       <p>
         Represents training the ability to use war hammers in combat.  This includes
@@ -18,12 +18,39 @@
 
   <ability>
     <abilitytitle>Hammer Smash</abilitytitle>
-    <abilityid>hammer.hammer_smash</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><heavy/><hammer/></tags>
+    <abilityid>hammer_smash</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance, and Target saves verses Agility DC 12+Rank or is knocked back">Std+Rank</abilitycheck>
-    <prereqabilityrank>hammer.hammer_strike_2</prereqabilityrank>
+    <!-- <abilitycheck> -->
+    <!--   <defaults>hammer_defaults</defaults> -->
+    <!--   <critsuccess>Deal 3×Damage and make a Knock Back Check</critsuccess> -->
+    <!--   <righteoussuccess>Deal 2×Damage and make a Knock Back Check</righteoussuccess>       -->
+    <!--   <success>Deal Damage</success>       -->
+    <!--   <!-\- <name>Hit</name> -\-> -->
+    <!--   <!-\- <actiontype><standard/></actiontype> -\-> -->
+    <!--   <!-\- <range><na/></range> -\-> -->
+    <!--   <!-\- <keywords></keywords> -\-> -->
+    <!--   <!-\- <indifferent></indifferent> -\-> -->
+    <!--   <!-\- <dc>Target's Defence</dc> -\-> -->
+    <!--   <!-\- <dmg>Weapon+Strength|Endurance</dmg> -\-> -->
+    <!-- </abilitycheck> -->
+    <abilitycheck>
+      <defaults>hammer_defaults</defaults>      
+      <trigger>Boon with the Hammer Strike Ability.</trigger>
+      <!-- <name>Knock Back</name> -->
+      <actiontype><free/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dmg>Weapon+Strength|Endurance</dmg> -->
+      <dc>Target's Endurance</dc>      
+      <effect>Target knocked back</effect>
+    </abilitycheck>
+    
+    <prereqabilityrank>hammer_strike_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -40,33 +67,53 @@
 
 
   <ability>
-    <abilitytitle>Stunning Blow</abilitytitle>
-    <abilityid>hammer.stunning_blow</abilityid>
-    <abilityactiontype><free/></abilityactiontype>
-    <tags><martial/><weapon/><heavy/><hammer/></tags>
-    <abilityranks from="1" to="4"/>
-    <abilitycheck
-	effect="On a hit with doubles the character makes an opposed Endurance check, if successfull the target is stunned"
-	dmg="+1d8"
-	dc="Targets Endurance">Std+Endurance+Rank</abilitycheck>
-    <prereqabilityrank>hammer.hammer_strike_2</prereqabilityrank>
+    <abilitytitle>Righteous Blow</abilitytitle>
+    <abilityid>stunning_blow</abilityid>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>hammer_defaults</defaults>      
+      <trigger>Righteous Success with the Hammer Strike Ability against an opponent of Appropriate Size.</trigger>
+      <actiontype><free/></actiontype>
+      <critsuccess>Target is Stunned and Target takes an additional 12 hit points damage</critsuccess>
+      <righteoussuccess>Target is Stunned and Target takes an additional 6 hit points damage</righteoussuccess>
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>Target's Agility</dc>
+    </abilitycheck>
+    <prereqabilityrank>hammer_strike_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-	On a noteworthy hit, that is any doubles roll that hits, the character does an extra
-	+1d8 damage, and makes an opposed endurance check.  If successful the opponent is stunned
-	(loses their Move, Minor and Reaction for the turn).
+	When the character makes a Hammer Strike with a righteous success the character may make
+	a Righteous Blow attack as a free action.  They make a check versus their opponents Agility.
+	If they make a righteous success the opponent is stunned (loses their Move, Minor and Reaction for their next turn).
       </p>
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Hammer Strike</abilitytitle>
-    <abilityid>hammer.hammer_strike</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><heavy/><hammer/></tags>
+    <abilityid>hammer_strike</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Strength|Endurance">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>hammer_defaults</defaults>      
+      <!-- <defaults>melee</defaults> -->
+      <!-- <actiontype><standard/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>Target's Defence</dc> -->
+      <!-- <dmg>Weapon+Strength|Endurance</dmg> -->
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

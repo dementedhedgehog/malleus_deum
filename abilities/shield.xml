@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Shield Proficiency</abilitygrouptitle>
+    <abilitygroupid><shield/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Shield abilities refer to any combat training with a shield
+	or buckler.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>  
+
+  
+  <ability>
+    <abilitytitle>Shield Block</abilitytitle>
+    <abilityid>block</abilityid>    
+    <abilityranks untrained="0" from="1" to="4"/>
+    <abilitycheck>
+      <defaults>shield_defaults</defaults>
+      <name>Save</name>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <keywords><save/><defence/><shield/></keywords>
+      <!-- <indifferent></indifferent> -->
+      <!-- <check>+Rank</check> -->
+      <dc>Target's Attack</dc>
+      <!-- <effect>Zero damage from attack</effect> -->
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p>
+	<label>ability:block</label>
+        When a character is attacked they may attempt to block the blow using their shield
+	instead of making an armour roll.  This ability spends the characters reaction for
+	the round.  If the block result fails and a boon is rolled the attack deals half
+	damage.  If the block result fails and a bane is rolled the attack deals double
+	damage. If the block check succeeds the attack does no damage.  If the block succeeds
+	and a boon is rolled the blocker smashes the attacker in the face with the shield for
+	2 damage.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Shield Push</abilitytitle>
+    <abilityid>push</abilityid>
+    <abilityranks from="1" to="4"/>
+    <abilitycheck>
+      <defaults>shield_defaults</defaults>
+      <!-- <actiontype><standard/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><melee/></range>
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>Target's Strength</dc>
+    </abilitycheck> <!-- FIXME -->
+    <prereqabilityrank>block_1</prereqabilityrank>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	<indexentry>Shield Push</indexentry>
+  	The character can use the shield to push an adjacent opponent
+  	back in a direction chosen by the character.  The opponent must
+  	be corporeal, humanoind, capable of being moved, and not too much larger
+  	than the character.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Shield Support</abilitytitle>
+    <abilityid>support</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck>
+      <actiontype><reaction/></actiontype>      
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><melee/></range>
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <keywords><save/><defence/><shield/></keywords>
+      <dc>Target's Attack</dc>
+    </abilitycheck>
+    <prereqabilityrank>block_1</prereqabilityrank>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	<indexentry>support</indexentry>
+  	Large shields provide <defn>Support</defn>.
+  	The character wielding a large shield can use their reaction to block attacks on adjacent allies.
+  	In order to use this ability the ally must be standing shoulder to shoulder
+  	with the character.  In other respects this ability works like Shield Block.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

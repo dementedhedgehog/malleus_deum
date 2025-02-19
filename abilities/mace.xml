@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Mace Proficiency</abilitygrouptitle>
+    <abilitygroupid><mace/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use maces, clubs, flails,
+	morning stars, virges, and improvised club-like weapons in combat.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Mace Smash</abilitytitle>
+    <abilityid>mace_smash</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>mace_defaults</defaults>
+      <!-- <actiontype><standard/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>Target's Defence</dc> -->
+      <!-- <dmg>Weapon+Strength</dmg>       -->
+    </abilitycheck>
+    <prereqabilityrank>mace_strike_2</prereqabilityrank>
+    <spline><p x="-75" y="30"/></spline>
+    <abilitydescription>
+      <p>
+        Characters equipped with a mace or similar weapon can attempt
+	to disarm an opponent or remove their shield.
+      </p>
+      <p>
+	If the attack is successful an opposed Strength check is made.
+	If the opponent	fails they drop their weapon or shield.
+      </p>	
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Mace Strike</abilitytitle>
+    <abilityid>mace_strike</abilityid>
+    <abilityranks untrained="0" from="1" to="3"/>
+    <abilitycheck>
+      <defaults>mace_defaults</defaults>
+      <!-- <defaults>melee</defaults> -->
+      <!-- <actiontype><standard/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><crushing/></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>Target's Defence</dc> -->
+      <!-- <dmg>Weapon+Strength</dmg> -->
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Mace or similar weapon can strike
+	with it during combat doing weapon damage.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Mace Wild Swing</abilitytitle>
+    <abilityid>wild_swing</abilityid>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>mace_defaults</defaults>
+      <name>Wild Swing</name>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><crushing/></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <dc>Target's Willpower</dc>
+      <dmg>Weapon</dmg>
+    </abilitycheck>
+    <abilitycheck>
+      <defaults>mace_defaults</defaults>
+      <name>Counter Attack</name>
+      <!-- <actiontype><standard/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><crushing/></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>Target's Defence</dc> -->
+      <dmg>Weapon</dmg>
+    </abilitycheck>
+    <prereqabilityrank>mace_strike_1</prereqabilityrank>
+    <spline><p x="75" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character swings the mace wildly keeping their opponents at bay.
+	When attacked the character makes a free willpower check against the first
+	opponent that attacks them in a round.	If successful the opponent loses
+	their attack, being unable to approach.  If the willpower check is not successful
+	the character makes a free attack against the opponents defence before the
+	opponents attack.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

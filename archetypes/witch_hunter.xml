@@ -126,11 +126,11 @@
   <age>20 + 2d6 years</age>
 
   <aspectexamples>Blasphemy!, In the Name of Mithras!, Suffer not a Witch to live!, I am not worthy!</aspectexamples>
-  <archetypetags>
+  <archetypekeywords>
     <human/>
     <humanoid/>    
     <medium/>    
-  </archetypetags>
+  </archetypekeywords>
   
   <!-- <archetypebio> -->
   <!-- </archetypebio> -->
@@ -207,16 +207,16 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <choice>✱sword_strike_2, ✱language.merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱negotiate.intimidate
-      ✱sword_parry_2, ✱language.aquilonian_2, ✱social.etiquette[Witch-Hunters]_3, ✱social.etiquette[Church-of-Mithras]_1,
-      ✱language.merovingian_3, ✱theurgy_1,  ✱theurgic.divine_retribution_1, ✱theurgic.grace_of_mithras_1, and
-	  ✱theurgic.no_take_me_1.</choice>
-	  <one-of>Choose one of ✱lore.law[westreich]_2 or ✱lore.antiquarian_1.  Choose one of ✱speed.jump or .</one-of>
-	  <one-of>Choose one of ✱skulduggery.trap_work_1 or ✱skulduggery.sleight_of_hand_1.</one-of>
-	  <one-of>Choose one of ✱social.adversary[Dark-Cults]_3 or ✱social.adversary[Spell-Casters]_1.</one-of>
+	  <choice>✱sword_strike_2, ✱merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱negotiate[intimidate]_1,
+      ✱parry_2, ✱aquilonian_2, ✱etiquette[Witch-Hunters]_3, ✱etiquette[Church-of-Mithras]_1,
+      ✱merovingian_3, ✱theurgy_1,  ✱divine_retribution_1, ✱grace_of_mithras_1, and
+	  ✱no_take_me_1.</choice>
+	  <one-of>Choose one of ✱law[westreich]_2 or ✱antiquarian_1.  Choose one of ✱speed.jump or .</one-of>
+	  <one-of>Choose one of ✱trap_work_1 or ✱sleight_of_hand_1.</one-of>
+	  <one-of>Choose one of ✱adversary[Dark-Cults]_3 or ✱adversary[Spell-Casters]_1.</one-of>
 	  <one-of>Choose one of ✱luck.nick_of_time_1 or ✱luck.reroll_2.</one-of>
-	  <one-of>Choose one of ✱theurgic.light_of_mithras_1 or ✱theurgic.turn_undead_1.</one-of>
-	  <one-of>Choose one of ✱sword.feint_1 or ✱gun_shoot_1.</one-of>
+	  <one-of>Choose one of ✱light_of_mithras_1 or ✱turn_undead_1.</one-of>
+	  <one-of>Choose one of ✱feint_1 or ✱gun_shoot_1.</one-of>
 	</path>
       </branch>
     
@@ -233,36 +233,36 @@
       	</branchdescription>
       	<path chance="1">
       	  <pathtitle>Almaignee</pathtitle>
-      	  <choice>✱social.etiquette[Almaignee]_2, ✱common.history[Almaignee]_2</choice>
+      	  <choice>✱etiquette[Almaignee]_2, ✱history[Almaignee]_2</choice>
       	  <choice></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Poitevin</pathtitle>
-      	  <choice>✱language.poitevin_1, ✱social.etiquette[Averoigne]_2,  ✱common.history[Averoigne]_2</choice>
+      	  <choice>✱poitevin_1, ✱etiquette[Averoigne]_2,  ✱history[Averoigne]_2</choice>
       	</path>
       	<path chance="2">
       	  <pathtitle>Rural Westreich</pathtitle>
-      	  <choice>✱craft.farmer_1</choice>
+      	  <choice>✱farmer_1</choice>
       	</path>
       	<path chance="4">
       	  <pathtitle>Laibstadt</pathtitle>
-	  <choice>✱language.merovingian_3</choice>
+	  <choice>✱merovingian_3</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Hybernian</pathtitle>
-      	  <choice>✱language.hybernian_2, ✱social.etiquette[Albion]_2, ✱social.etiquette[Hybernia]_2</choice>
+      	  <choice>✱hybernian_2, ✱etiquette[Albion]_2, ✱etiquette[Hybernia]_2</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Albion</pathtitle>
-      	  <choice>✱language.hybernian_1, ✱social.etiquette[Albion]_2, ✱social.etiquette[Hybernia]_1</choice>
+      	  <choice>✱hybernian_1, ✱etiquette[Albion]_2, ✱etiquette[Hybernia]_1</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Noord</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Averoigne</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice>
       	</path>
       </branch>
       
@@ -283,8 +283,8 @@
 	</path>
 	<path chance="4">
       	  <pathtitle>Burglar</pathtitle>
-	  <choice>✱common.climb_3</choice>
-	  <choice>✱skulduggery.ropecraft_2</choice>
+	  <choice>✱climb_3</choice>
+	  <choice>✱ropecraft_2</choice>
 	</path>
       </branch>
       
@@ -304,7 +304,7 @@
       	</path>
       	<path chance="3">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
       	  <choice></choice>
       	  <choice></choice>
       	  <choice></choice>
@@ -328,7 +328,7 @@
       	</path>
       	<path chance="6">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
       	</path>
       </branch>
 
@@ -349,7 +349,7 @@
       	</path>
       	<path chance="2">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱language.merovingian_4, ✱language.inochian_2, ✱language.merovingian_4</choice>
+      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
       	</path>
       </branch>
 
@@ -370,7 +370,7 @@
       <!-- 	</path> -->
       <!-- 	<path> -->
       <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
-      <!-- 	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice> -->
+      <!-- 	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
@@ -394,7 +394,7 @@
       <!-- 	</path> -->
       <!-- 	<path> -->
       <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
-      <!-- 	  <choice>✱language.merovingian_4, ✱language.inochian_2, or ✱language.merovingian_4</choice> -->
+      <!-- 	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Special Abilities</abilitygrouptitle>
+    <abilitygroupid><special/></abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	Special abilities are extraordinary abilities or racial abilities not available 
+	to most characters in the usual course of events.
+      </p>
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>  
+
+  
+  <ability>
+    <abilitytitle>Blindsight</abilitytitle>
+    <abilityid>blindsight</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>special_defaults</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>13</dc> -->
+    </abilitycheck>
+    <spline><p x="90" y="0"/></spline> 
+    <abilitydescription>
+      <p>
+	The character has heightened senses when fighting unseen
+	opponents.  They are atuned to slight noises and minor
+	air movements that give away the location of unseen attackers.
+      </p>
+
+      <p>
+	When a character with Blindsight is fighting an unseen opponent
+	each time they try and attack the opponent, before they roll to attack,
+	they roll a Blindsight check.   If the Blindsight check is successful
+	the character only suffers a -3 modifier for the rest of the encounter
+	instead of the usual -6.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Sixth Sense</abilitytitle>
+    <abilityid>sixth_sense</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck>
+      <defaults>special_defaults</defaults>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <indifferent>0 cost</indifferent>
+      <bane>1 cost</bane>
+      <damned>2 cost</damned>
+      <!-- <range><na/></range> -->
+      <keywords><luckpool/></keywords>
+      <!-- <dc>13</dc> -->
+    </abilitycheck>
+    <spline><p x="0" y="0"/></spline>     
+    <abilitydescription>
+      <p>
+	If the character makes a successful Luck check they may reroll their surprise
+	roll.
+	FIXME: how does this differ from REROLL? 
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Natural Sprinter</abilitytitle>
+    <abilityid>natural_sprinter</abilityid>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>special_defaults</defaults>
+      <trigger>Anytime a character with this ability would Sprint (perform a double move action)</trigger>
+      <actiontype><free/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <success>The character FIXME</success>
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <indifferent>0 cost</indifferent>
+      <bane>1 cost</bane>
+      <damned>2 cost</damned>
+      <!-- <range><na/></range> -->
+      <keywords><mettlepool/></keywords>
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+	FIXME: definition of Sprint (or has that gone?)
+	
+	Dwarves are natural sprinters.  While slow to get moving,
+	and not the most agile when it comes to dodging and
+	quick changes of direction, Dwarves can build up a fair
+	amount of speed in a straight line over time.
+	Natural Sprinters get +3 to any Speed checks made to run.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Fey Resilience</abilitytitle>
+    <abilityid>fey_resilience</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <defaults>special_defaults</defaults>
+      <!-- <name>Fey Heal</name> -->
+      <trigger>Character takes non-magical damage from a non-iron weapon</trigger>
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <success>Damage is reduced by 4+Rank</success>
+      <!-- <critfail></critfail> -->
+      <boon>0 cost</boon>
+      <indifferent>1 cost</indifferent>
+      <bane>2 cost</bane>
+      <damned>3 cost</damned>
+      <range><self/></range>
+      <keywords><mettlepool/></keywords>
+      <dc>9</dc>
+    </abilitycheck>
+    <spline><p x="0" y="60"/></spline> 
+    <abilitydescription>
+      <p>
+	The fey are resistant to damage from non-magically conductive sources.
+	They reduce damage from non-ferrous metal weapons by their ability rank for each hit as a free action,
+	<eg/> a character with Fey Resilience 2 is hit by a wooden club for 5 hit points damage.  This
+	damage is reduced by 2 for their Fey Resilience so they instead take 3 damage. 
+      </p>
+
+      <p>
+	Out of combat Fey creatures may make a magic check to magically heal +d6 health.
+      </p>
+    </abilitydescription>
+  </ability> 
+</abilitygroup>

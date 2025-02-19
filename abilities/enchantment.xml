@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Enchantment</abilitygrouptitle>
-    <abilitygroupid>enchantment</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><enchantment/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	Enchantment is the use of magic to control the minds of others.
@@ -17,13 +16,37 @@
 
   <ability>
     <abilitytitle>Auri Fames</abilitytitle>
-    <abilityid>enchantment.auri_fames</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>auri_fames</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="3" overcharge="2">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_1</prereqabilityrank>
+    <!-- <abilitycheck> -->
+    <!--   <name>Cast</name> -->
+    <!--   <actiontype><minor/></actiontype> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <boon></boon> -->
+    <!--   <bane></bane> -->
+    <!--    -->
+    <!--    -->
+    <!--    -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords><magicpool/></keywords> -->
+    <!--   <indifferent>1</indifferent> -->
+    <!--   <dc>7</dc> -->
+    <!-- </abilitycheck> -->
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <!-- <name>Cast</name> -->
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>Target's Willpower</dc>
+    </abilitycheck>
+    <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>    
     <abilitydescription>
       <p>
@@ -64,13 +87,23 @@
     </abilitydescription>    
   </ability>
   
+  
   <ability>
-    <abilitytitle>Enchantments</abilitytitle>
-    <abilityid>enchantment.enchantment</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><lore/></tags>
+    <abilitytitle>Enchantment</abilitytitle>
+    <abilityid>enchantment</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+      <!-- <actiontype><immediate/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><lore/></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>11</dc> -->
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -78,15 +111,25 @@
       </p>
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Ghost Step</abilitytitle>
-    <abilityid>enchantment.ghost_step</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>ghost_step</abilityid>   
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><touch/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>enchantment_1</prereqabilityrank>	
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -96,15 +139,41 @@
       </p>
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Glamour</abilitytitle>
-    <abilityid>enchantment.glamour</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>glamour</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="17" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <name>Cast</name>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>      
+    </abilitycheck>
+    <abilitycheck>
+      <name>Deceive</name>
+      <actiontype><free/></actiontype>
+      <success>The target is convinced by the Glamour.</success>
+      <fail>The target is suspicious.</fail>
+      <grimfail>The target sees something off and will investigate further</grimfail>
+      <critfail>Immediately sees through the deception.</critfail>
+      <boon>NPCs are largely distracted or uninterested.</boon>
+      <bane>Someone wants to talk to them</bane>
+      <range><ranged-long/></range>
+      <keywords><magic/></keywords>
+      <dc>Target's Perception</dc>
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <dc>7</dc>       -->
+    </abilitycheck>
+    <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="0" y="45"/></spline>
     <abilitydescription>
       <p>
@@ -116,44 +185,81 @@
       </p>
 
       <p>
+	At Rank 2 and above the caster may cast the glamour on a total of Rank
+	people and they do not have to cast the spell on themselves.
+      </p>
+      
+      <p>
 	At rank 3 and above the caster may take the form of a person, creature of
 	thing of significantly (50%) larger or smaller size to the character.	    
 	The difficulty of seeing through the glamour with True Sight is 25.
       </p>
+
+      <p>
+	The number of decieve checks made is left up to the GM.  Typically it should
+	be one Check per group of NPCs.  But the GM might require two or more if there's
+	a substantial difference in NPC perceptions.
+      </p>
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Hex</abilitytitle>
-    <abilityid>enchantment.hex</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>hex</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="3" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_1</prereqabilityrank>			
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_0</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>Target's Willpower</dc>
+    </abilitycheck>
+    <prereqabilityrank>enchantment_1</prereqabilityrank>			
     <spline><p x="-90" y="0"/></spline>
     <abilitydescription>
       <p>
-	Target breaks out in small pustules, loses something important to them,
-	or some other annoying but not life threatening consequence.  The caster
-	must have at least one item that links the target to the caster by contagion:
-	hair, blood etc.
+	When successfully cast in combat the target makes their next check at disadvantage.
+      </p>	
+
+      <p>
+	When successfully cast outside of combat the Target breaks out in small pustules,
+	loses something important to them, sours their milk, or some other mildly annoying
+	but not	life threatening consequence.  
       </p>
 
       <p>
-	FIXME: useless and vague?
-      </p>	
+	This spell can be cast from afar however in order to do so the caster must have at least one item that
+	links the target to the caster by contagion: hair, blood etc.
+      </p>
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Mind Worm</abilitytitle>
-    <abilityid>enchantment.mind_worm</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>mind_worm</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="9" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -170,14 +276,25 @@
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Speak with Amphibians</abilitytitle>
-    <abilityid>enchantment.speak_with_amphibians</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>speak_with_amphibians</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="7" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -187,14 +304,26 @@
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Speak with Birds</abilitytitle>
-    <abilityid>enchantment.speak_with_birds</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>speak_with_birds</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="7" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="-45" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -207,12 +336,23 @@
 
   <ability>
     <abilitytitle>Speak with Cats</abilitytitle>
-    <abilityid>enchantment.speak_with_cats</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>speak_with_cats</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="7" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="15" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -221,14 +361,26 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Speak with Horses</abilitytitle>
-    <abilityid>enchantment.speak_with_horses</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>speak_with_horses</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="5" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="-90" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -238,15 +390,27 @@
       </p>
     </abilitydescription>
   </ability>
+  
 
   <ability>
     <abilitytitle>Speak with Rodents</abilitytitle>
-    <abilityid>enchantment.speak_with_rodents</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>speak_with_rodents</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="7" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="90" y="90"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -254,15 +418,27 @@
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Speak with Wolves</abilitytitle>
-    <abilityid>enchantment.speak_with_wolves</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>speak_with_wolves</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.zoolingualism_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -272,22 +448,47 @@
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Vox Imperium</abilitytitle>
-    <abilityid>enchantment.vox_imperium</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>vox_imperium</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <!-- <name>Cast</name> -->
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <range><melee/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>Target's Willpower</dc>
+    </abilitycheck>
+    <!-- <abilitycheck dc="Targets Willpower"> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <boon></boon> -->
+    <!--   <bane></bane> -->
+    <!--    -->
+    <!--    -->
+    <!--    -->
+    <!--   <range><na/></range> -->
+    <!--   <indifferent></indifferent> -->
+    <!--   <actiontype><noncombat/></actiontype> -->
+    <!--   <keywords><magicpool/></keywords> -->
+    <!-- </abilitycheck> -->
+    <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The Vox Imperium spell, or Voice of Command, allows the
 	character to implant a short but strong mental suggestion
 	into the mind of the target.   If Vox is successfully cast then
-	a Std+Rank check is made against the targets willpower to command
+	a 2d12+Rank check is made against the targets willpower to command
 	the target.  The opposed check is modified as follows: -6 if the
 	command is self	destructive, -3 if the command is counter to the
 	creatures nature and desires, +3 if the command is something aligned
@@ -297,15 +498,27 @@
       </p>
     </abilitydescription>
   </ability>  
+
   
   <ability>
     <abilitytitle>Zoolingualism</abilitytitle>
-    <abilityid>enchantment.zoolingualism</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
-    <abilityranks from="1" to="5"/>
-    <abilitycheck dc="11">Std+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_1</prereqabilityrank>
+    <abilityid>zoolingualism</abilityid>    
+    <abilityranks from="1" to="1"/>
+    <!-- <abilitycheck> -->
+    <!--   <defaults>lore_defaults</defaults> -->
+    <!--   <defaults>pool_cost_1</defaults> -->
+    <!--   <actiontype><noncombat/></actiontype> -->
+    <!--   <!-\- <critsuccess></critsuccess> -\-> -->
+    <!--   <!-\- <critfail></critfail> -\-> -->
+    <!--   <!-\- <boon></boon> -\-> -->
+    <!--   <!-\- <bane></bane> -\-> -->
+    <!--   <!-\- <range><na/></range> -\-> -->
+    <!--   <!-\- <keywords><magicpool/></keywords> -\-> -->
+    <!--   <!-\- <indifferent>1</indifferent> -\-> -->
+    <!--   <dc>11</dc> -->
+    <!-- </abilitycheck> -->
+    <keywords><no-check/></keywords>
+    <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -315,15 +528,36 @@
     </abilitydescription>
   </ability>  
 
+  
   <ability>
     <abilitytitle>Wrack</abilitytitle>
-    <abilityid>enchantment.wrack</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><enchantment/><magicpool/></tags>
+    <abilityid>wrack</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Endurance">Std+Endurance+Rank</abilitycheck>
-    <prereqabilityrank>enchantment.enchantment_2</prereqabilityrank>
+    <!-- <abilitycheck> -->
+    <!--   <defaults>enchantment_defaults</defaults> -->
+    <!--   <actiontype><minor/></actiontype> -->
+    <!--   <!-\- <critsuccess></critsuccess> -\-> -->
+    <!--   <!-\- <critfail></critfail> -\-> -->
+    <!--   <!-\- <boon></boon> -\-> -->
+    <!--   <!-\- <bane></bane> -\-> -->
+    <!--   <!-\- <range><na/></range> -\-> -->
+    <!--   <!-\- <keywords><magicpool/></keywords> -\-> -->
+    <!--   <!-\- <indifferent>1</indifferent> -\-> -->
+    <!--   <dc>7</dc> -->
+    <!-- </abilitycheck> -->
+    <abilitycheck>
+      <defaults>enchantment_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-short/></range>
+      <!-- <indifferent></indifferent> -->
+      <dc>Target's Endurance</dc>
+    </abilitycheck>
+    <prereqabilityrank>enchantment_2</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p noindent="true">

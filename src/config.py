@@ -54,7 +54,7 @@ doc_files_to_build = (
     ("phb.xml", True, "PHB"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    #("monster_manual.xml", True, "MM"),
+    ("monster_manual.xml", True, "MM"),
     # ("archetypes.xml", True, "AR"),
     # ("magic_items.xml", True, "MI"),
     # ("abilities.xml", True, "Ab"),
@@ -182,7 +182,3 @@ release_files = (
     # "witch_hunter.pdf",
     # "witch_hunter_char_sheet.pdf",
 )
-
-    
-
-    

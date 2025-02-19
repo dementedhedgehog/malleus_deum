@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Gun Proficiency</abilitygrouptitle>
-    <abilitygroupid>gun</abilitygroupid>
+    <abilitygroupid><gun/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
+    <keywords><gun/><martial/></keywords>    
     <abilitygroupdescription>
       <p>
         Represents training the ability to use of pistols and blunderbuss.
@@ -16,18 +16,44 @@
 
   <ability>
     <abilitytitle>Gun Maintenance</abilitytitle>
-    <abilityid>gun.maintenance</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><martial/><weapon/><gun/></tags>
-    <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13" dmg="Weapon">Std+Rank</abilitycheck>
-    <prereqabilityrank>gun.gun_shoot_1</prereqabilityrank>
+    <abilityid>gun_maintenance</abilityid>
+    <abilityranks untrained="-3" from="0" to="3"/>
+    <abilitycheck>
+      <name>Reload</name>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><self/></range>
+      <keywords><black-powder/></keywords>
+      <dc>9</dc>
+      <dmg></dmg>
+      <effect>Reload the gun during combat.  If successful the gun is reloaded during
+      this minor action.  A gun can be reloaded without a check using a Standard Action.
+      </effect>
+    </abilitycheck>
+    <abilitycheck>
+      <name>Repair</name>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc>13</dc>
+      <dmg></dmg>
+      <effect>Make minor repairs and perform maintenance on the gun</effect>
+    </abilitycheck>
+    <prereqabilityrank>gun_shoot_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-	Represents the characters ability to reload and repair the gun.
-	The character needs to make this check to reload the gun during
-	combat.
+	The character needs to make this check to reload the gun
+	during combat.  
       </p>
 
       <p>
@@ -37,32 +63,40 @@
       </p>      
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Sharp Shooter</abilitytitle>
-    <abilityid>gun.sharp_shooter</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><gun/></tags>
+    <abilityid>sharp_shooter</abilityid>
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank+Agility">Std+Rank</abilitycheck>
-    <prereqabilityrank>gun.gun_shoot_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>gun_defaults</defaults>
+      <name>Called Shot</name>
+      <actiontype><full-turn/></actiontype>      <!-- Slower action type -->
+      <critsuccess>Deal 4×Damage</critsuccess>   <!-- Better damage -->
+      <righteoussuccess>Deal 3×Damage</righteoussuccess>
+      <success>2×Deal Damage</success>
+    </abilitycheck>
+    <prereqabilityrank>gun_shoot_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character has spent many hours working on improving the accuracy of
-	their shots.  Players can choose to call a shot which gives them a large
-	bonus to hit, but takes an extra turn to aim.
+	their shots.  Players can choose to call a shot which gives them a 
+	bonus to hit, but takes extra time to aim.
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Gun Shoot</abilitytitle>
-    <abilityid>gun.gun_shoot</abilityid>
-    <abilityactiontype><standard/></abilityactiontype>
-    <tags><martial/><weapon/><gun/><inaccurate/></tags>
+    <abilityid>gun_shoot</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
-    <abilitycheck dc="Targets Defence" dmg="Weapon+Rank">Std</abilitycheck>
+    <abilitycheck>
+      <defaults>gun_defaults</defaults>
+      <name>Shoot</name>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

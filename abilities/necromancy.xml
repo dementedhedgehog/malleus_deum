@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- -*-xml-*- -->
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Necromancy</abilitygrouptitle>
-    <abilitygroupid>necromancy</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><necromancy/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
         The art of communing with the unquiet dead is at best the province of shysters 
@@ -19,12 +18,23 @@
   
   <ability>
     <abilitytitle>Commune with the Dead</abilitytitle>
-    <abilityid>necromancy.commune_with_the_dead</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/></tags>
+    <abilityid>commune_with_the_dead</abilityid>    
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="11" effect="Talk with a corpse" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>11</dc>
+      <effect>Talk with a corpse</effect>
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -62,15 +72,31 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Eye for an Eye</abilitytitle>
-    <abilityid>necromancy.eye_for_an_eye</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/></tags>
+    <abilityid>eye_for_an_eye</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" effect="Melee dmg dealt to caster is also dealt to attacker"
-		  overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <!-- <defaults></defaults> -->
+      <actiontype><minor/></actiontype>
+      
+      <critsuccess>Melee attacks against the caster deal 3x damage to the attacker</critsuccess>
+      <righteoussuccess>Melee attacks against the caster deal 2x damage to the attacker</righteoussuccess>  
+      <success>Melee attacks against the caster deal damage to the attacker</success>
+      <fail></fail>
+      <grimfail></grimfail>
+      <critfail>Roll on the Miscast Table</critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <dc>11</dc> -->
+      <!-- <effect>Melee dmg dealt to caster is also dealt to attacker</effect> -->
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="95"/></spline>
     <abilitydescription>
       <p>
@@ -81,14 +107,27 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Graft Flesh</abilitytitle>
-    <abilityid>necromancy.graft_flesh</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/></tags>
+    <abilityid>graft_flesh</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="11" effect="Replace amputated limbs and heal" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <!-- <defaults></defaults> -->
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+      <effect>Replace amputated limbs and heal</effect>
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -107,13 +146,37 @@
 
   <ability>
     <abilitytitle>Forbidden Psalm</abilitytitle>
-    <abilityid>necromancy.forbidden_psalm</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/><accurate/></tags>
+    <abilityid>forbidden_psalm</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Perception" range="sight" effect="Save or cannot hit">Std+3×Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <name>Cast</name>
+      <actiontype><standard/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><self/></range> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+    </abilitycheck>
+    <abilitycheck>
+      <!-- <defaults></defaults> -->
+      <name>Obscure</name>
+      <actiontype><free/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <boon></boon>
+      <indifferent></indifferent>
+      <bane></bane>
+      <range><ranged-long/></range>
+      <keywords></keywords>
+      <dc>Target's Perception</dc>
+      <effect>Save or cannot hit</effect>
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -130,11 +193,12 @@
 
   <ability>
     <abilitytitle>Necromancy</abilitytitle>
-    <abilityid>necromancy.necromancy</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><necromancy/></tags>
+    <abilityid>necromancy</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="13" effect="Answer questions about necromancy.">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+      <effect>Reveal necromantic lore.</effect>
+    </abilitycheck>
     <spline></spline>    
     <abilitydescription>
       <p noindent="true">
@@ -145,15 +209,27 @@
       </p>      
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Stay Death</abilitytitle>
-    <abilityid>necromancy.stay_death</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/></tags>
+    <abilityid>stay_death</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Reroll one Near-Death roll." overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
+    <abilitycheck> 
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><reaction/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+      <effect>Reroll one Near-Death roll.</effect>
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="-90" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -168,12 +244,19 @@
 
   <ability>
     <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
-    <abilityid>necromancy.blood_soucriant</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/></tags>
+    <abilityid>blood_soucriant</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="11" effect="In the presence of blood, summon a demon to fight." overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><reaction/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <range><na/></range>
+      <dc>13</dc>
+      <effect>In the presence of blood, summon a demon to fight.</effect>
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -186,14 +269,26 @@
     </abilitydescription>    
   </ability>  
 
+  
   <ability>
     <abilitytitle>Pall of Darkness</abilitytitle>
-    <abilityid>necromancy.pall_of_darkness</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/></tags>
+    <abilityid>pall_of_darkness</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" effect="Defensive checks against missile attacks made at +3×Rank"  overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+      <effect>Darkness</effect>
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
     <abilitydescription>
       <p>
@@ -206,14 +301,26 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Veil of Corruption</abilitytitle>
-    <abilityid>necromancy.veil_of_corruption</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><necromancy/><magicpool/></tags>
+    <abilityid>veil_of_corruption</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="5" effect="Resembles a corpse." overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>necromancy.necromancy_1</prereqabilityrank>
+    <abilitycheck> 
+      <defaults>necromancy_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>7</dc>
+      <effect>Resembles a corpse</effect>
+    </abilitycheck>
+    <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>

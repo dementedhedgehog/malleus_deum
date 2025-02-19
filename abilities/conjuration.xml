@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Conjuration</abilitygrouptitle>
-    <abilitygroupid>conjuration</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><conjuration/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	Conjuration is the most versatile, powerful and therefore hardest to control and
@@ -14,14 +13,15 @@
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
-  
+
+
   <ability>
     <abilitytitle>Conjuration</abilitytitle>
-    <abilityid>conjuration.conjuration</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><conjuration/></tags>
+    <abilityid>conjuration</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -34,46 +34,65 @@
   
   <ability>
     <abilitytitle>Eldritch Push</abilitytitle>
-    <abilityid>conjuration.eldritch_push</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><conjuration/><magicpool/></tags>
+    <abilityid>eldritch_push</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="3" dmg="7+Rank" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>conjuration_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess>Damage is 20+Rank</critsuccess>
+      <righteoussuccess>Damage is 15+Rank</righteoussuccess>
+      <grimfail>Caster is knocked back <measurement><imperial>10'</imperial><metric>5m</metric></measurement> and
+      is Prone and takes d6 damage</grimfail>
+      <critfail>Caster suffers the Grim Fail effect and rolls on the Miscast table.</critfail>
+      <range><ranged-medium/></range>
+      <dc>Target's Defence</dc>
+      <dmg>9+Rank</dmg> 
+    </abilitycheck>
+    <prereqabilityrank>conjuration_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster shoots a raw stream of thaumic energy from
-	their hands at a target.  If successful the caster makes
-	a second Std Chec +6+Rank bonus attack against the targets Dodge, Agility, or
-	Strength Defence.
-      </p>
-
-      <p>
-	If they hit the target, the target suffers 7+Rank damage.
-	and is pushed  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
-	away from the caster.
+	their hands at a target.  If the stream hits the target, the target suffers
+	damage 	and is thrown
+	<measurement><imperial>30'</imperial><metric>10m</metric></measurement>
+	away from the caster.  For Large creatures the distance	thrown is reduced at the GMs discretion.
       </p>
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Chain Lightning</abilitytitle>
-    <abilityid>conjuration.chain_lightning</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><conjuration/><magicpool/></tags>
+    <abilityid>chain_lightning</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="9" dmg="d12+Rank" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>conjuration_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><minor/></actiontype>
+      <range><ranged-medium/></range>
+      <keywords><magicpool/></keywords>
+      <!-- <indifferent>2</indifferent> -->
+      <dc>Target's Defence</dc>
+      <dmg>12+Rank</dmg>
+    </abilitycheck>
+    <prereqabilityrank>conjuration_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-	The caster acts as a conduit for eldritch energies, directing them in an arc at a target.
-	First the caster checks magic to gather the energy.  Then they roll to a Std+Rank against the
-	targets defence.  If the arc successfuls hits, the caster can arc the lightning to a subsequent
-	target making another to hit roll, and so on until the caster misses or runs out of potential
-	targets.  The initial target can be any opponent within range <measurement><imperial>60'</imperial><metric>20m</metric></measurement>.  When choosing subsequent targets the caster must choose the closest untargeted
-	enemy to the last target.   No target can be struck more than once.
+	The caster acts as a conduit for eldritch energies,
+	directing them in an arc at a target.  First the caster
+	checks magic to gather the energy.  Then they roll to a
+	2d12+Rank against the targets defence.  If the arc successfuls
+	hits, the caster can arc the lightning to a subsequent
+	target making another to hit roll, and so on until the caster
+	misses or runs out of potential targets.  The initial target
+	can be any opponent within range
+	<measurement><imperial>60'</imperial><metric>20m</metric></measurement>.
+	When choosing subsequent targets the caster must choose the
+	closest untargeted enemy to the last target.  No target can
+	be struck more than once.
       </p>
 
       <p>
@@ -85,12 +104,24 @@
 
   <ability>
     <abilitytitle>Eldritch Grasp</abilitytitle>
-    <abilityid>conjuration.eldritch_grasp</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><conjuration/><magicpool/></tags>
+    <abilityid>eldritch_grasp</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="3" dmg="8+Rank" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.eldritch_push_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>conjuration_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <name>Cast</name>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><ranged-medium/></range>
+      <keywords><magicpool/></keywords>
+      <!-- <indifferent>2</indifferent> -->
+      <dc>Target's Defence</dc>
+      <dmg>8+Rank</dmg>
+    </abilitycheck>
+    <prereqabilityrank>eldritch_push_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -107,20 +138,31 @@
       </p>
     </abilitydescription>    
   </ability>
+
   
   <ability>
     <abilitytitle>Scry</abilitytitle>
-    <abilityid>conjuration.scry</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><conjuration/><magicpool/></tags>
+    <abilityid>scry</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="7" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>conjuration_defaults</defaults>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>2</indifferent> -->
+      <dc>17</dc>
+    </abilitycheck>
+    <prereqabilityrank>conjuration_2</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
-    	The character can view events from the past.  Viewing events in
-    	the future is incredibly difficult and unreliable (See Scry, Greater).
+    	The character can view events from the past.  (Viewing events in
+    	the future is incredibly difficult and unreliable.  See Scry, Greater).
       </p>
 
       <p>
@@ -151,12 +193,21 @@
 
   <ability>
     <abilitytitle>Scry, Greater</abilitytitle>
-    <abilityid>conjuration.scry_greater</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><magical/><conjuration/><magicpool/></tags>
+    <abilityid>scry_greater</abilityid>
     <abilityranks from="1" to="2"/>
-    <abilitycheck dc="7" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.scry_2</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>conjuration_defaults</defaults>
+      <actiontype><noncombat/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <!-- <indifferent>3</indifferent> -->
+      <dc>17</dc>
+    </abilitycheck>
+    <prereqabilityrank>scry_2</prereqabilityrank>	
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -170,28 +221,29 @@
 
   <ability>
     <abilitytitle>Wither</abilitytitle>
-    <abilityid>conjuration.wither</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><conjuration/><magicpool/></tags>
+    <abilityid>wither</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="Targets Defence">Std+Rank</abilitycheck>
-    <abilitycheck dc="5" dmg="2d8" overcharge="2">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Willpower">Std+Rank</abilitycheck>
-    <prereqabilityrank>conjuration.conjuration_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>conjuration_defaults</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><melee/></range>
+      <keywords></keywords>
+      <!-- <indifferent>1</indifferent> -->
+      <dc>Target's Defence</dc>
+      <dmg>5+Rank</dmg>
+      <effect>The caster heals 2+Rank hit points</effect>
+    </abilitycheck>
+    <prereqabilityrank>conjuration_2</prereqabilityrank>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
-	The caster rolls a standard check plus Wither Rank to grab an opponent.
-	On success the caster acts as a conduit to one of the dread
-	planes,	life is drained from the target.  Anything that
+	The caster rolls to grab an opponent. On success the caster acts as a conduit to
+	one of the dread planes, life is drained from the target.  Anything that
 	increases contagion will increase damage for this spell.
-	If the check is successful the target suffers 2d8 damage.
-	On overcharge both the caster and the target suffer an extra 1d8 damage.
-      </p>
-
-      <p>
-	The caster then makes a Std+Rank check against the opponents willpower.
-	If successfuk the target is momentarily transfixed and lose their turn.
       </p>
     </abilitydescription>    
   </ability>    

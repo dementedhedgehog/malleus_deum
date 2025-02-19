@@ -73,12 +73,12 @@
   <age>24 + 2d6 years</age>
 
   <aspectexamples>Knowledge is Power, No One Must Know of My Work, The Smartest Man in the Room, I have been Chosen</aspectexamples>
-  <archetypetags>
+  <archetypekeywords>
     <human/>
     <humanoid/>
     <medium/> 
     <magicuser/> 
-  </archetypetags>
+  </archetypekeywords>
 
 
   <archetypelevels>
@@ -102,7 +102,7 @@
 	<path chance="">
 	  <pathtitle></pathtitle>
 	  <all-of>✱merovingian_4, ✱inochian_2,
-	  ✱dodge_2, ✱staff_strike_1, ✱sword_strike_1,
+	  ✱dodge_2, ✱polearm_strike_1, ✱sword_strike_1,
 	  ✱climb_1, ✱arcana_1,
 	  ✱conjuration_1, ✱true_sight_1, and ✱reroll_1</all-of>
 	</path>
@@ -118,30 +118,30 @@
 	</branchdescription>
 	<path chance="1-6">
 	  <pathtitle>Westreich</pathtitle>
-	  <choice>✱social.etiquette[Westreich]_3, ✱social.contacts[Westreich]_3,
-	  and ✱social.etiquette[Averoigne]_3, ✱social.contacts[Averoigne]_3, or
-	  ✱social.etiquette[Hybernian]_3, ✱social.contacts[Hybernian]_3, </choice>
+	  <choice>✱etiquette[Westreich]_3, ✱contacts[Westreich]_3,
+	  and ✱etiquette[Averoigne]_3, ✱contacts[Averoigne]_3, or
+	  ✱etiquette[Hybernian]_3, ✱contacts[Hybernian]_3, </choice>
 	</path>
 	<path chance="7">
 	  <pathtitle>Hybernia</pathtitle>
-	  <choice>✱language.hybernian_3,  ✱social.etiquette[Hybernia]_3</choice>
+	  <choice>✱hybernian_3,  ✱etiquette[Hybernia]_3</choice>
 	</path>
 	<path chance="8">
 	  <pathtitle>Almaignee</pathtitle>
-	  <choice>✱social.etiquette[Almaignee]_3</choice>
+	  <choice>✱etiquette[Almaignee]_3</choice>
 	</path>
 	<path chance="9">
 	  <pathtitle>Poitevin</pathtitle>
-	  <choice>✱language.poitevin_4, ✱social.etiquette[Averoigne]_3</choice>
+	  <choice>✱poitevin_4, ✱etiquette[Averoigne]_3</choice>
 	</path>
 	<path chance="10">
 	  <pathtitle>Averoigne</pathtitle>
-	  <choice>One of ✱language.poitevin_4 or ✱language.occitan_4, ✱social.etiquette[Averoigne]_3</choice>
+	  <choice>One of ✱poitevin_4 or ✱occitan_4, ✱etiquette[Averoigne]_3</choice>
 	</path>
 	<path chance="11">
 	  <pathtitle>Albion</pathtitle>
-	  <choice>✱language.hybernian_1, ✱social.etiquette[Albion]_3, ✱social.etiquette[Hybernia]_2,
-	  ✱social.contacts[Albion]_2</choice>
+	  <choice>✱hybernian_1, ✱etiquette[Albion]_3, ✱etiquette[Hybernia]_2,
+	  ✱contacts[Albion]_2</choice>
 	</path>
 	<path chance="12">
 	  <pathtitle>Choose one of the above</pathtitle>
@@ -232,19 +232,19 @@
 
 	<path chance="1-2">
 	  <pathtitle></pathtitle>
-	  <choice>✱lore.physician_2</choice>
+	  <choice>✱physician_2</choice>
 	</path>
 	<path chance="3-4">
 	  <pathtitle></pathtitle>
-	  <choice>✱lore.natural_history_2</choice>
+	  <choice>✱natural_history_2</choice>
 	</path>
 	<path chance="5-6">
 	  <pathtitle></pathtitle>
-	  <choice>✱lore.book_keeping_2</choice>
+	  <choice>✱book_keeping_2</choice>
 	</path>
 	<path chance="7-8">
 	  <pathtitle></pathtitle>
-	  <choice>✱lore.physics_2</choice>
+	  <choice>✱physics_2</choice>
 	</path>
 	<path chance="9-10">
 	  <pathtitle></pathtitle>
@@ -358,7 +358,7 @@
 	<ability>shield.block_2</ability>
       </stream>	
       <stream id="Martial3">
-	<tag>dagger</tag>
+	<tag>dagger_strike</tag>
 	<tag>sword</tag>
       </stream>	
       <and>

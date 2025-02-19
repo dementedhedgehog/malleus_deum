@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
-
   <abilitygroupinfo>
     <abilitygrouptitle>Lore Abilities</abilitygrouptitle>
-    <abilitygroupid>lore</abilitygroupid>
+    <abilitygroupid><lore/></abilitygroupid>
     <abilitygroupfamily><lore/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -19,12 +18,12 @@
 
   <ability>
     <abilitytitle>Alchemy</abilitytitle>
-    <abilityid>lore.alchemy</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>alchemy</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_lesser_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>alchemy_lesser_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -35,15 +34,16 @@
       </p>
     </abilitydescription>
   </ability>
+  
 
   <ability>
     <abilitytitle>Alchemy, Lesser</abilitytitle>
-    <abilityid>lore.alchemy_lesser</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>alchemy_lesser</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.natural_history_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>natural_history_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -70,7 +70,7 @@
 	of solutions, metals etc and might be able to conjecture on their origins and
 	purposes.
       </p>
-      	
+      
       <p>
 	Two, as yet, unattained goals of alchemy are the transmutation of lead into gold,
 	and the creation of an elixir of immortality.  
@@ -78,14 +78,15 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Alchemy, Greater</abilitytitle>
-    <abilityid>lore.alchemy_greater</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>alchemy_greater</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>alchemy_2</prereqabilityrank>
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -100,31 +101,13 @@
 
 
   <ability>
-    <abilitytitle>Artillery</abilitytitle>
-    <abilityid>lore.artillery</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
-    <abilityranks untrained="-3" from="1" to="5"/>
-    <abilitycheck dc="Targets Defence" effect="Attack using artillery pieces.">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_lesser_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
-    <abilitydescription>
-      <p>
-	The character is trained in the use of artillery in sieges or naval warfare.
-	The can arm, aim, fire and on some occasions repair artillery pieces.
-      </p>
-    </abilitydescription>
-  </ability>
-  
-  
-  <ability>
     <abilitytitle>Antiquarian</abilitytitle>
-    <abilityid>lore.antiquarian</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>antiquarian</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>common.history_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>history_1</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -136,31 +119,33 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Barber</abilitytitle>
-    <abilityid>lore.barber</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/></tags>
+    <abilityid>barber</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
     <spline><p x="-90" y="450"/></spline>
     <abilitydescription>
       <p>
 	The character has an understanding of minor surgery:
-	setting bones, trepanning, dentistry, cataract couchery,
+	setting bones, sewing sutures, trepanning, dentistry, cataract couchery,
 	pig-gelding, and cutting hair.
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Book Keeping</abilitytitle>
-    <abilityid>lore.book_keeping</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>book_keeping</abilityid>
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.mathematics_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>mathematics_1</prereqabilityrank>
     <spline><p x="-40" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -173,14 +158,15 @@
       </p>
     </abilitydescription>
   </ability>
+
   
   <ability>
     <abilitytitle>Book Learning</abilitytitle>
-    <abilityid>lore.book_learning</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
-    <abilityranks from="1" to="5"/>
-    <abilitycheck dc="15">Std+Rank</abilitycheck>
+    <abilityid>book_learning</abilityid>
+    <abilityranks untrained="-6" from="1" to="5"/>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
     <spline></spline>    
     <abilitydescription>
       <p>
@@ -190,14 +176,15 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Explosives</abilitytitle>
-    <abilityid>lore.explosives</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>    
+    <abilityid>explosives</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.smoke_bomb_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>smoke_bomb_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -216,12 +203,24 @@
 
   <ability>
     <abilitytitle>Grand Discovery</abilitytitle>
-    <abilityid>lore.grand_discovery</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>grand_discovery</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="None">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_2</prereqabilityrank>
+    <!-- <abilitycheck> -->
+    <!--   <actiontype><noncombat/></actiontype> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <boon></boon> -->
+    <!--   <bane></bane> -->
+    <!--    -->
+    <!--    -->
+    <!--    -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <indifferent></indifferent> -->
+    <!--   <dc> -->
+    <!-- </abilitycheck> -->
+    <keywords><no-check/></keywords>
+    <prereqabilityrank>alchemy_2</prereqabilityrank>
     <spline><p x="70" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -273,7 +272,7 @@
 	  <td>18</td>
 	  <td>Poison Resistance, +5 to saves vs being poisoned.</td>
 	</tablerow>	
-		
+	
 	<tablerow>
 	  <td>19</td>
 	  <td>Arcane Knowledge.  Gain 1x promotions in magic and 2x promotions in
@@ -306,7 +305,7 @@
 	  fine arts, lore or special abilities (promotions cannot be used to gain more
 	  Grand Discoveries).  Gain a Patreon.</td>
 	</tablerow>
-		
+	
 	<tablerow>
 	  <td>24+</td>
 	  <td>Surprise Discovery.  Choose a Grand Discovery - no duplicates allowed.</td>
@@ -318,12 +317,12 @@
 
   <ability>
     <abilitytitle>History</abilitytitle>
-    <abilityid>common.history</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><common/><lore/><general/><scholar/></tags>
+    <abilityid>history</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="-60" y="45"/></spline>
     <abilitydescription>
       <p>
@@ -336,12 +335,12 @@
   
   <ability>
     <abilitytitle>Law</abilitytitle>
-    <abilityid>lore.law</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>law</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_2</prereqabilityrank>    
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>book_learning_2</prereqabilityrank>    
     <spline><p x="75" y="15"/></spline>
     <specializations>
       <specialization>Laibstadt</specialization>
@@ -374,12 +373,12 @@
 
   <ability>
     <abilitytitle>Mathematics</abilitytitle>
-    <abilityid>lore.mathematics</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>mathematics</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="100"/></spline>
     <abilitydescription>
       <p>
@@ -393,12 +392,12 @@
 
   <ability>
     <abilitytitle>Natural History</abilitytitle>
-    <abilityid>lore.natural_history</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>natural_history</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="70"/><p x="50" y="30"/><p x="0" y="90"/></spline>
     <abilitydescription>
       <p>
@@ -421,12 +420,12 @@
 
   <ability>
     <abilitytitle>Occult</abilitytitle>
-    <abilityid>common.occult</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><common/><lore/><general/><scholar/></tags>
+    <abilityid>occult</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
     <abilitydescription>
       <p>
@@ -454,12 +453,12 @@
 
   <ability>
     <abilitytitle>Physician</abilitytitle>
-    <abilityid>lore.physician</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>physician</abilityid>
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.natural_history_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>    
+    <prereqabilityrank>natural_history_2</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -473,14 +472,15 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Physics</abilitytitle>
-    <abilityid>lore.physics</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>physics</abilityid>
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.mathematics_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>mathematics_1</prereqabilityrank>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -492,14 +492,15 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
-    <abilitytitle>Politics [Society?]</abilitytitle>
-    <abilityid>lore.politics</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilitytitle>Politics</abilitytitle>
+    <abilityid>politics</abilityid>  
     <abilityranks untrained="-3" from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="50"/><p x="120" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -528,12 +529,12 @@
   
   <ability>
     <abilitytitle>Potion Making</abilitytitle>
-    <abilityid>magic.potions</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>potions</abilityid>
     <abilityranks from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_1</prereqabilityrank>	
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>alchemy_1</prereqabilityrank>	
     <spline><p x="-40" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -546,17 +547,18 @@
 
   <ability>
     <abilitytitle>Smoke Bomb</abilitytitle>
-    <abilityid>lore.smoke_bomb</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><lore/><scholar/></tags>
+    <abilityid>smoke_bomb</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck dc="11" effect="Defensive checks against missile attacks made at +3×Rank">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.alchemy_lesser_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+      <effect>Defensive checks against missile attacks made at +2×Rank</effect>
+    </abilitycheck>
+    <prereqabilityrank>alchemy_lesser_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-  	The character has on his person a smoke bomb that he had created earlier.  When required the
-	character makes a check.  If unsuccesful the bomb is a dud and fails to ignite. In the event of failure
+  	The character has learned to create smoke bombs and keeps upon his person a smoke bomb that he has previously created.
+	When required the character makes a check.  If unsuccesful the bomb is a dud and fails to ignite. In the event of failure
 	further attempts at lighting the bomb may be made.
 	If successful the smoke bomb they are carrying lights successfully creates a billowing cloud
 	of grey smoke surrounding the bomb with a radius of
@@ -580,19 +582,20 @@
     </abilitydescription>
   </ability>
 
+  
   <ability>
     <abilitytitle>Thaumaturgy</abilitytitle>
-    <abilityid>common.thaumaturgy</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><common/><lore/><general/><scholar/></tags>
+    <abilityid>thaumaturgy</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
-    <prereqabilityrank>lore.book_learning_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+    </abilitycheck>
+    <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
     <abilitydescription>
       <p>
 	Thaumaturgy is the academic and theoretical study of magic, mythos
-	and the occult.  This ability does not extend to casting spells though
+	and the occult.  This ability does not extend to casting spells, though
 	it is a prerequisite to do so.
       </p>	
     </abilitydescription>

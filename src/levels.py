@@ -3,13 +3,17 @@
   abilities an archetype can have.
 
 """
+import sys
 import re
+
+import traceback
 
 from utils import (
     COMMENT,
     normalize_ws,
     contents_to_string,
     convert_str_to_int,
+    split_ability_tokens,
     )
 
 split_regex = re.compile(",\s*")
@@ -26,6 +30,38 @@ CHOICES = {
 }
 
 
+class LevelAbilityStats:
+    """
+    Used to summarize the range of level abilities we expect for an archetype level.
+    We want this information to help us build and balance level progression for archetypes.
+
+    """
+    def __init__(self):
+        self.min_rank = sys.maxsize
+        self.max_rank = 0
+        self.max_count = 0
+        self.min_count = sys.maxsize
+
+
+    def __str__(self):
+        return f"Ranks:{self.min_rank}-{self.max_rank}, Counts:{self.min_count}-{self.max_count}"
+
+
+    def merge(self, stats):
+        if stats.max_rank > self.max_rank:
+            self.max_rank = stats.max_rank
+
+        if stats.min_rank < self.min_rank:
+            self.min_rank = stats.min_rank
+
+        if stats.max_count > self.max_count:
+            self.max_count = stats.max_count
+
+        if stats.min_count < self.min_count:
+            self.min_count = stats.min_count
+        return 
+                
+
 
 class Choice:
     """
@@ -38,7 +74,6 @@ class Choice:
         self.number_to_choose = number_to_choose
         self.contents = None
 
-
     def load(self, choice_node, fname, fail_fast):
         self.contents = contents_to_string(choice_node)          
         self.ability_level_ids = split_regex.split(self.contents)
@@ -48,11 +83,28 @@ class Choice:
         return f"Choice: {self.contents}"
 
 
+    def get_stats(self, db, ability_filter):
+        stats = LevelAbilityStats()
+        for ability in db.parse_ability_ranks(self.contents):
+            if ability_filter(ability):
+                rank = ability.get_rank_number()
+                if rank < stats.min_rank:
+                    stats.min_rank = rank
+
+                if rank > stats.max_rank:
+                    stats.max_rank = rank
+
+                stats.max_count += 1
+        stats.min_count = stats.max_count
+        return stats
+    
+
+
 class OrChoice:
     """
     Poorly thought out code to allow OR of two or more sets of choices.
     We're always allowed to choose one and only one of these.
-    For archetype descriptions
+    For archetype descriptions.
 
     """
     def __init__(self):
@@ -81,6 +133,14 @@ class OrChoice:
                                (child.tag, fname, child.sourceline))        
         return
 
+
+    def get_stats(self, db, ability_filter):
+        stats = LevelAbilityStats()
+        for choice in self.choices:
+            choice_stats = choice.get_stats(db, ability_filter)
+            stats.merge(choice_stats)
+        return stats
+    
     
 class Path:
     """
@@ -128,6 +188,7 @@ class Path:
                                (child.tag, fname, child.sourceline))
         return
 
+    
     def __str__(self):
         return "Choice: " + ", ".join([str(c) for c in self.choices])
 
@@ -195,7 +256,6 @@ class Branch:
         return
 
     def get_capacity(self, ability):
-
         # take the maximum value for all paths.
         capacity = 0
         total_chance = 0.0
@@ -208,11 +268,15 @@ class Branch:
         return f"Branch: {self.title}\t" + ", ".join([str(p) for p in self.paths])
 
 
+def filter_martial_abilities(ability):
+    return True
+    
+        
+
 class Level:
 
     def __init__(self):
         self.level_number = None
-
         self.mettle = None
         self.mettle_refresh = None
         self.stamina = None
@@ -222,10 +286,23 @@ class Level:
         self.magic_refresh = None
         self.luck = None
         self.luck_refresh = None
-
         self.branches = []
-        
 
+
+    def _get_level_stats(self, db, ability_filter):
+        print("Get Level Stats! --------------------------------------------- ")
+        stats = LevelAbilityStats()
+        for branch in self.branches:
+            for path in branch.paths:
+                for choice in path.choices:
+
+                    choice_stats = choice.get_stats(db, ability_filter)
+                    stats.merge(choice_stats)
+        return stats
+    
+    def get_level_stats_for_martial_abilities(self, db):
+        return self._get_level_stats(db, filter_martial_abilities)
+    
 
     def load(self, level_node, fname, fail_fast):
 
@@ -363,14 +440,9 @@ class Levels:
     """
     def __init__(self):
         self.levels = []
-
-        #self.xml = None
         return
 
     def load(self, levels_node, fname, fail_fast):
-
-        #self.xml = contents_to_string(levels_node)
-
         # handle all the children
         for child in list(levels_node):
         
@@ -405,5 +477,17 @@ class Levels:
     def __getitem__(self, index):
         return self.levels[index]
 
+    def get_level_by_level_number(self, level_number):
+        
+        i = level_number-1
+        level = self.levels[i] if i < len(self.levels) else None
+
+        #if level is not None:
+        #    print(" LEVELs %s  I %s" % (self.levels, i))
+
+        #traceback.print_stack()
+        #print(" LEVELs LEN %s " % len(self.levels))
+        #print(" LEVEL %s " % level)
+        return level
 
 

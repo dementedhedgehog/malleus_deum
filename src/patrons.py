@@ -170,8 +170,8 @@ class Patron:
     # def has_tags(self):
     #     return len(self.tags) > 0
 
-    # def get_tags_str(self):
-    #     return ", ".join(self.tags)
+    # def get_keywords_str(self):
+    #     return ", ".join(self.keywords)
 
     # def get_starting_gear(self):
     #     return self.starting_gear

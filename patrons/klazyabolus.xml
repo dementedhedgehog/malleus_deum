@@ -109,8 +109,8 @@ More flavourful to have a per patron thing?
 
     <abilitygroupinfo>
       <abilitygrouptitle>Patron Abilities</abilitygrouptitle>
-      <abilitygroupid>klazyabolous</abilitygroupid>
-      <abilitygroupfamily><magical/></abilitygroupfamily>
+      <abilitygroupid><klazyabolous/></abilitygroupid>
+      <abilitygroupfamily><magic/></abilitygroupfamily>
       <abilitygroupdescription>
 	<p>
 	  Klazyabolous is a virtuous and generous master, only punishing his
@@ -125,10 +125,20 @@ More flavourful to have a per patron thing?
   <ability>
     <abilitytitle>Invoke Klazyabolous</abilitytitle>
     <abilityid>klazyabolous.invoke</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><klazyabolus/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="11">Magic+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <cost></cost> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords></keywords> -->
+      <dc>11</dc>
+    </abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline></spline>
     <abilitydescription>
@@ -153,13 +163,24 @@ More flavourful to have a per patron thing?
     </abilitydescription>    
   </ability>  
   
+
   <ability>
     <abilitytitle>Batrachian Leap</abilitytitle>
     <abilityid>klazyabolous.leap</abilityid>
-    <abilityactiontype><reaction/></abilityactiontype>
-    <tags><klazyabolus/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <abilitycheck> 
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><reaction/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <cost>1</cost> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -173,10 +194,20 @@ More flavourful to have a per patron thing?
   <ability>
     <abilitytitle>Incorporal Mist</abilitytitle>
     <abilityid>klazyabolous.incorporal_mist</abilityid>
-    <abilityactiontype><non-combat/></abilityactiontype>
-    <tags><klazyabolus/></tags>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="3">Magic+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>arcana_defaults</defaults>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><noncombat/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <cost>1</cost> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>7</dc>
+    </abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>	
     <spline></spline>
     <abilitydescription>

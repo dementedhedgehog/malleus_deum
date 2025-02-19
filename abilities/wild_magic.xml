@@ -2,8 +2,8 @@
 <abilitygroup>
   <abilitygroupinfo>
     <abilitygrouptitle>Wild Magic</abilitygrouptitle>
-    <abilitygroupid>wild-magic</abilitygroupid>
-    <abilitygroupfamily><magical/></abilitygroupfamily>
+    <abilitygroupid><wild-magic/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	Wild Magic magic involves harnessing the residual life magic in a region,
@@ -13,14 +13,24 @@
     <enabled/>
   </abilitygroupinfo>
 
+  
   <ability>
     <abilitytitle>Call of the Wild</abilitytitle>
-    <abilityid>wild-magic.call_of_the_wild</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>call_of_the_wild</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9"  overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.vermin_swarm_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>vermin_swarm_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -68,12 +78,21 @@
 
   <ability>
     <abilitytitle>Howl of the Hunt</abilitytitle>
-    <abilityid>wild-magic.howl_of_the_hunt</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>howl_of_the_hunt</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.wild-magic_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>wild-magic_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -87,12 +106,21 @@
 
   <ability>
     <abilitytitle>Hyperosmia</abilitytitle>
-    <abilityid>wild-magic.hyperosmia</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>hyperosmia</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.wild-magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>7</dc>
+    </abilitycheck>
+    <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -108,42 +136,60 @@
 
   <ability>
     <abilitytitle>Mandragora</abilitytitle>
-    <abilityid>wild-magic.mandragora</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><lore/></tags>
+    <abilityid>mandragora</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="7" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.wild-magic_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <keywords><magicpool/></keywords>
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>wild-magic_2</prereqabilityrank>
     <spline></spline>
     <abilitydescription>
       <p>
 	If the character has access to a tree root, turnip <etc/> the
 	character can infuse it with an evil spirit for a short an 10+Rank minutes.
 	The animated Mandragora behaves like a small servant and will perform
-	actions as directed by the caster.  The Mandragora is a malevolent and
+	actions as directed by the caster.  The Mandragora is malevolent and
 	will attempt to misconstrue instructions in such a way as to allow it
 	to hurt others.
       </p>
 
       <p>
-	In a fight the Mandragora has HP: 5, AC: 15, and attacks automatically
+	In a fight the Mandragora has HP: 5, Defence: 15, and attacks automatically
 	for 1 hp of biting damage each round.  If the Mandragora is made from
 	an actual mandragora root then the creature has HP: 9 and does 2 HP damage
 	per round.
       </p>
     </abilitydescription>    
   </ability> 
- 
+  
 
 
   <ability>
     <abilitytitle>Therianthropy</abilitytitle>
-    <abilityid>magic.therianthropy</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>magic.therianthropy</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.hyperosmia_2</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_2</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent>2</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>hyperosmia_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <indexentry>Shapeshifting<subentry>see Therianthropy</subentry></indexentry>
@@ -207,8 +253,6 @@
 	<tablerow> <td>86</td><td>Bear Black, Brown or Polar</td></tablerow>
 	<tablerow> <td>88</td><td>Mammoth</td></tablerow>
       </table>
-
-
       
       <p>
 	Northern druid style casters should roll on the Therianthropy Temperate Table.
@@ -274,7 +318,7 @@
 	on their character and the environs from which they came, <eg/> a northern
 	barbarian might become a polar bear given the bear result.	
       </p>
-     
+      
 
       <table>
 	<tablecategory>Standard</tablecategory>
@@ -303,12 +347,21 @@
   
   <ability>
     <abilitytitle>Vermin Swarm</abilitytitle>
-    <abilityid>wild-magic.vermin_swarm</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>vermin_swarm</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.wild-magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>7</dc>
+    </abilitycheck>
+    <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-45" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -361,12 +414,21 @@
   
   <ability>
     <abilitytitle>Spider Climb</abilitytitle>
-    <abilityid>wild-magic.spider_climb</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>spider_climb</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="9" overcharge="3">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.wild-magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-60" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -380,13 +442,34 @@
   
   <ability>
     <abilitytitle>Tanglefoot</abilitytitle>
-    <abilityid>wild-magic.tanglefoot</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>tanglefoot</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="5" overcharge="2">Magic+Rank</abilitycheck>
-    <abilitycheck dc="Targets Agility">Std+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.wild-magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <name>Cast</name>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <dc>9</dc>
+    </abilitycheck>
+    <abilitycheck>
+      <name>Tangle</name>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <bane></bane> -->
+      <range><ranged-medium/></range>
+      <!-- <keywords></keywords> -->
+      <dc>Target's Agility</dc>
+    </abilitycheck>
+    <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-60" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -404,9 +487,18 @@
 
   <!-- <ability> -->
   <!--   <abilitytitle>Tanglebriar</abilitytitle> -->
-  <!--   <abilityid>wild-magic.tanglebriar</abilityid> -->
-  <!--   <abilityactiontype><minor/></abilityactiontype> -->
-  <!--   <tags><magical/><wildmagic/><magicpool/></tags> -->
+  <!--   <abilityid>tanglebriar</abilityid>
+       
+       <critsuccess></critsuccess>
+       <critfail></critfail>
+       <boon></boon>
+       <bane></bane>
+    <range><na/></range>
+    <indifferent></indifferent>
+
+  -->
+  <!--   <actiontype><minor/></actiontype> -->
+  <!--   <keywords><magic/><wildmagic/><magicpool/></keywords> -->
   <!--   <abilitydescription> -->
   <!--     <p> -->
   <!-- 	This spell can be cast only in woods, bushlands and -->
@@ -414,10 +506,10 @@
   <!-- 	to hold a group of individuals travelling through -->
   <!-- 	the landscape.  They gain the Slowed condition. -->
   <!--     </p> -->
-      
+  
   <!--   </abilitydescription>     -->
   <!--   <spline><p x="-60" y="0"/></spline> -->
-  <!--   <prereqabilityrank>wild-magic.lore_1</prereqabilityrank> -->
+  <!--   <prereqabilityrank>lore_1</prereqabilityrank> -->
   <!--   <abilitycheck dc="9">Magic+Rank</abilitycheck> -->
   <!--   <abilityranks from="1" to="4"/> -->
   <!-- </ability> -->
@@ -425,11 +517,20 @@
 
   <ability>
     <abilitytitle>Wild Magic</abilitytitle>
-    <abilityid>wild-magic.wild-magic</abilityid>
-    <abilityactiontype><immediate/></abilityactiontype>
-    <tags><magical/><wild-magic/><lore/></tags>
+    <abilityid>wild-magic</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="13">Std+Rank</abilitycheck>
+    <abilitycheck>
+      <defaults>lore_defaults</defaults>
+      <!-- <actiontype><immediate/></actiontype> -->
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <!-- <range><na/></range> -->
+      <!-- <keywords><lore/></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc>13</dc> -->
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -439,14 +540,24 @@
     </abilitydescription>    
   </ability>
 
+  
   <ability>
     <abilitytitle>Warp Wood</abilitytitle>
-    <abilityid>wild-magic.warp_wood</abilityid>
-    <abilityactiontype><minor/></abilityactiontype>
-    <tags><magical/><wild-magic/><magicpool/></tags>
+    <abilityid>warp_wood</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck dc="3" overcharge="2">Magic+Rank</abilitycheck>
-    <prereqabilityrank>wild-magic.wild-magic_1</prereqabilityrank>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <actiontype><minor/></actiontype>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <!-- <indifferent>1</indifferent> -->
+      <dc>11</dc>
+    </abilitycheck>
+    <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-60" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -458,10 +569,11 @@
       </p>
 
       <p>
-	The spell has a range of <measurement><metric>30m</metric><imperial>100'</imperial></measurement>.
-	The spell can effect one item For each rank of the spell.  The spells abilities linger on the
-	character.. they cast the spell, and then they can choose which items to warp anytime as a free action
-	over the next five minutes/30 turns. 
+	The spell has a range of <measurement><metric>30m</metric>
+	<imperial>100'</imperial></measurement>. The spell can effect one
+	item For each rank of the spell.  The spells abilities linger on the
+	character.. they cast the spell, and then they can choose which items
+	to warp anytime as a free action over the next five minutes/30 turns. 
       </p>	
     </abilitydescription>    
   </ability>

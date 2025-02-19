@@ -32,7 +32,8 @@ from os.path import join, dirname, abspath, exists
 import platform
 from subprocess import call, check_output, CalledProcessError
 from archetypes import Archetypes
-from abilities import FAMILY_TYPES, AbilityRank
+#from abilities import FAMILY_TYPES, AbilityRank
+from abilities import AbilityRank
 
 from utils import (
     char_sheet_dir,
@@ -97,7 +98,8 @@ def find_pdftk():
     pdftk_executable = None
     if platform.system() == "Linux":
         for fname in ["/usr/local/bin/pdftk",
-                      "/usr/bin/pdftk"]:
+                      "/usr/bin/pdftk",
+                      "/bin/pdftk"]:
             if exists(fname):
                 pdftk_executable = fname
                 break
@@ -105,8 +107,11 @@ def find_pdftk():
         #pdftk_executable = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/xelatex.exe"
         raise Exception("I wonder where pdftk will be on windows.")
 
-    if not exists(pdftk_executable):
+    if pdftk_executable is None:
         raise Exception("Can't find pdftk executable.")
+        
+    if pdftk_executable is not None and not exists(pdftk_executable):
+        raise Exception(f"Pdftk executable does not exist?!  {pdftk_executable}")
         
     return pdftk_executable
 
@@ -122,6 +127,19 @@ def pdftk_fill(pdf_in, fdf_in, pdf_out):
     Run pdftk to fill in pdf_out from the pdf form template and data given.
 
     """
+
+    if pdftk_executable is None:
+        raise Exception(f"Can't find pdftk_executable!")
+
+    if pdf_in is None:
+        raise Exception(f"pdf_in is None")
+
+    if fdf_in is None:
+        raise Exception(f"fdf_in is None")
+
+    if pdf_out is None:
+        raise Exception(f"pdf_out is None")
+
     cmd_line = [pdftk_executable,
                 pdf_in,
                 "fill_form",
@@ -186,15 +204,16 @@ def check_to_str(check):
     check_strings = []
     
     if check.name is None:
-        if check.check_type is None:
-            check_str = f"DDC: {check.dc}"
-        else:
-            check_str = f"DDC: {check.dc}/{check.check_type}"
+        #if check.check_type is None:
+        #    check_str = f"DDC: {check.dc}"
+        #else:
+        check_str = f"DDC: {check.dc}/{check.action_type}"
     else:
-        if check.check_type is None:
-            check_str = f"DDC {check.name}: {check.dc}"
-        else:
-            check_str = f"DDC {check.name}/{check.check_type}: {check.dc}"
+        #if check.check_type is None:
+        #    check_str = f"DDC {check.name}: {check.dc}"
+        #else:
+        #check_str = f"DDC {check.name}/{check.check_type}: {check.dc}"
+        check_str = f"DDC {check.name}: {check.dc}"
     check_strings.append(check_str)
     
     # Damage?
@@ -315,12 +334,12 @@ def create_character_sheet_for_archetype(db, archetype):
     # (so we can make sure things go before or after blocks of abilities).
     before = "!"
     after = "~"
-    for family in FAMILY_TYPES:        
-        if family in families_seen:
-            family_name = f"-- {family[1:-2].title()} --"
-            info.append((family, before, family_name))
-            for i in range(5):
-                info.append((family, after, ""))
+    # for family in FAMILY_TYPES:        
+    #     if family in families_seen:
+    #         family_name = f"-- {family[1:-2].title()} --"
+    #         info.append((family, before, family_name))
+    #         for i in range(5):
+    #             info.append((family, after, ""))
      
     info.sort()
     ability_ranks = [x[2] for x in info]
