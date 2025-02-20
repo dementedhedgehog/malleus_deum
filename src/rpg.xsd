@@ -149,7 +149,6 @@ We use this to verify our xml.
       <xs:element name="wild-magic" type="emptyType"/>
       <xs:element name="wyrdscience" type="emptyType"/>
 
-      <!-- <xs:group ref="weaponClassKeywordEnum"/> -->
       <!-- <xs:element name="versatile" type="emptyType"/> <!-\- spells which are open to interpretation -\-> -->
       <!-- <xs:element name="maintain" type="emptyType"/> <!-\- requires the minor action to keep going each round -\-> -->
 
@@ -169,13 +168,11 @@ We use this to verify our xml.
   <!-- Ability Special Group Enum -->
   <xs:group name="abilitySpecialKeywordEnum">
     <xs:choice>
-      <!-- <xs:group ref="weaponClassKeywordEnum"/> -->
       <!-- <xs:element name="versatile" type="emptyType"/> <!-\- spells which are open to interpretation -\-> -->
       <!-- <xs:element name="maintain" type="emptyType"/> <!-\- requires the minor action to keep going each round -\-> -->
 
 
       <xs:element name="fire" type="emptyType"/>
-      <!-- <xs:element name="crushing" type="emptyType"/> -->
       <!-- <xs:element name="weapon" type="emptyType"/> -->
       <!-- <xs:element name="common" type="emptyType"/> -->
       <!-- <xs:element name="primary" type="emptyType"/> -->
@@ -368,9 +365,8 @@ We use this to verify our xml.
   <xs:complexType name="abilityKeywordsType">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
 
-      <!-- weapon damage types -->
-      <xs:group ref="weaponDamageKeywordEnum"/> 
-      <xs:group ref="weaponClassKeywordEnum"/>
+      <!-- <!-\- weapon damage types -\-> -->
+      <xs:group ref="weaponDamageKeywordEnum"/>
       <xs:group ref="weaponModifiersKeywordEnum"/>
       <xs:group ref="abilityGroupKeywordEnum"/>
       <xs:group ref="abilitySpecialKeywordEnum"/>
@@ -432,7 +428,7 @@ We use this to verify our xml.
        <xs:element name="aspectpool" type="emptyType"/>
 
        <!-- Modifiers to opponents ability -->
-       <xs:element name="easy" type="emptyType"/>  <!-- dc = target's ability-3 --> 
+       <xs:element name="easy" type="emptyType"/>  <!-- dc = target's ability-3 -->
       
     </xs:choice>
   </xs:complexType>
