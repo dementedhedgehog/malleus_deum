@@ -43,8 +43,6 @@ from spreadsheet_writer import write_game_balance_spreadsheet, write_ability_sum
 
 # Graph creation stuff.. for analysis in the rationale doc.
 import graphs
-#import dice_pool_graph
-import morale_graph
 import d6_graph
 import aspect_lifetime_graph
 
@@ -691,7 +689,7 @@ if __name__ == "__main__":
         print("Building dice pool graphs.")
         graphs.draw_graphs()
         #dice_pool_graph.build_dice_pool_graphs()
-        morale_graph.build_morale_graph()
+        #morale_graph.build_morale_graph()
         d6_graph.draw_d6_graph()
         aspect_lifetime_graph.draw_aspect_lifetime_graph()
 

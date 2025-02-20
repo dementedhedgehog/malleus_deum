@@ -18,6 +18,7 @@
     <abilityid>adversary</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
+      <name>Check</name>
       <trigger>Boon on a Successful attack with a basic attack against an opponent of the given type.</trigger>
       <actiontype><free/></actiontype>
       <critsuccess></critsuccess>
@@ -68,6 +69,7 @@
     <abilityid>armour</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck>
+      <name>Defend</name>
       <actiontype><free/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -75,7 +77,7 @@
       <!-- <indifferent></indifferent> -->
       <!-- <bane></bane> -->
       <range><na/></range>
-      <keywords><defence/><save/></keywords>
+      <keywords><defend/><save/></keywords>
       <dc>Target's Attack</dc>
     </abilitycheck>
     <spline><p x="90" y="0"/></spline> 
@@ -131,11 +133,29 @@
     <abilityid>artillery</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>ranged</defaults>
+      <name>Check</name>
       <actiontype><standard/></actiontype>
+
+      <!-- Mastery -->
+      <critsuccess>Deal 3×Damage</critsuccess>
+      <righteoussuccess>Deal 2×Damage</righteoussuccess>
+      <success>Deal Damage</success>
+      <fail>No Effect</fail>
+      <grimfail></grimfail>
+      <critfail>Roll on the ranged consequence table</critfail>
+
+      <!-- Fate -->
+      <blessed>+6 Damage</blessed>
+      <boon>+3 Damage</boon>
+      <indifferent></indifferent>
+      <bane>Fumble: Lose remaining actions this round</bane>
+      <damned>Roll on Misfortune Table</damned>
+
       <range><ranged-extremely-long/></range>
+      <keywords><black-powder/></keywords>
       <dc>Target's Defence</dc>
-      <effect>Attack using artillery pieces.</effect>
+      <dmg>Weapon</dmg>
+      <effect>Attack using artillery pieces.</effect>      
     </abilitycheck>
     <prereqabilityrank>alchemy_lesser_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -154,6 +174,7 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <defaults>pool_cost_1</defaults>
+      <name>Check</name>
       <actiontype><minor/></actiontype>
       <critsuccess></critsuccess>
       <critfail></critfail>
@@ -185,6 +206,7 @@
     <abilityid>brawl</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
+      <name>Check</name>
       <actiontype><standard/></actiontype>
       <critsuccess></critsuccess>
       <critfail></critfail>
@@ -250,6 +272,7 @@
     <abilityid>dirty-fighter</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>    
+      <name>Check</name>
       <trigger>Bane with a Success in a melee attack against an opponent of Appropriate Size</trigger>
       <actiontype><free/></actiontype>
       <range><melee/></range>
@@ -313,14 +336,10 @@
     <abilityid>dodge</abilityid>
     <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck>
+      <name>Defend</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
-      <keywords><defence/></keywords>
+      <keywords><defend/><save/></keywords>
       <dc>Target's Attack</dc>
     </abilitycheck>
     <spline><p x="90" y="120"/></spline> 
@@ -350,6 +369,7 @@
     <abilityid>juggernaut</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
+      <name>Check</name>
       <actiontype><standard/></actiontype>
       <critsuccess></critsuccess>
       <critfail></critfail>
@@ -382,14 +402,10 @@
     <abilityid>parry</abilityid>
     <abilityranks untrained="-3" from="1" to="6"/>
     <abilitycheck>
+      <name>Defend</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
-      <keywords><defence/></keywords>
+      <keywords><defend/><save/></keywords>
       <dc>Target's Attack</dc>
       <effect>Zero damage from attack</effect>
     </abilitycheck>
@@ -414,6 +430,7 @@
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
       <defaults>pool_cost_1</defaults>
+      <name>Check</name>
       <actiontype><reaction/></actiontype>
       <critsuccess></critsuccess>
       <critfail></critfail>

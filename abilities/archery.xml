@@ -11,6 +11,11 @@
 	training is with a short bow.  Use of the long bow requires a fair amount of
 	training.
       </p>
+
+      <p>
+	FIXME: archery misfortune...
+	Out of arrows, weapon save, Fumble
+      </p>
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
@@ -21,7 +26,8 @@
     <abilityid>archery_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>  
-      <defaults>ranged</defaults>
+      <defaults>archery_defaults</defaults>
+      <name>Shoot</name>
       <actiontype><standard/></actiontype>
       <!-- <range><na/></range> -->
       <keywords><basic-attack/></keywords>
@@ -43,7 +49,8 @@
     <abilityid>dead_eye</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>ranged</defaults>
+      <defaults>archery_defaults</defaults>
+      <name>Aimed Shot</name>
       <actiontype><standard/></actiontype>
       <critsuccess>3×Dmg</critsuccess>
       <righteoussuccess>2×Dmg</righteoussuccess>      
@@ -71,7 +78,8 @@
     <abilityid>fast_shot</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>ranged</defaults>
+      <defaults>archery_defaults</defaults>
+      <name>Fast Shot</name>
       <actiontype><minor/></actiontype>
       <critsuccess></critsuccess>
       <critfail></critfail>
@@ -104,7 +112,8 @@
     <abilityid>rain_of_arrows</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>ranged</defaults>
+      <defaults>archery_defaults</defaults>
+      <name>Rain of Arrows</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->

@@ -34,7 +34,8 @@
     <!--   <!-\- <dmg>Weapon+Strength|Endurance</dmg> -\-> -->
     <!-- </abilitycheck> -->
     <abilitycheck>
-      <defaults>hammer_defaults</defaults>      
+      <defaults>hammer_defaults</defaults>
+      <name>Check</name>
       <trigger>Boon with the Hammer Strike Ability.</trigger>
       <!-- <name>Knock Back</name> -->
       <actiontype><free/></actiontype>
@@ -71,7 +72,8 @@
     <abilityid>stunning_blow</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>hammer_defaults</defaults>      
+      <defaults>hammer_defaults</defaults>
+      <name>Check</name>      
       <trigger>Righteous Success with the Hammer Strike Ability against an opponent of Appropriate Size.</trigger>
       <actiontype><free/></actiontype>
       <critsuccess>Target is Stunned and Target takes an additional 12 hit points damage</critsuccess>
@@ -102,6 +104,7 @@
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
       <defaults>hammer_defaults</defaults>      
+      <name>Check</name>
       <!-- <defaults>melee</defaults> -->
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->

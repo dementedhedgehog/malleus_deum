@@ -15,29 +15,31 @@
   
 
   <ability>
-    <abilitytitle>Light Crossbow Shoot</abilitytitle>
+    <abilitytitle>Light Crossbow</abilitytitle>
     <abilityid>crossbow_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>
+      <defaults>crossbow_defaults</defaults>
+      <name>Shoot</name>
       <actiontype><standard/></actiontype>
 
       <!-- Mastery -->
-      <critsuccess>Deal 3×Damage</critsuccess>
-      <righteoussuccess>Deal 2×Damage</righteoussuccess>
-      <success>Deal Damage</success>
-      <fail>No Effect</fail>
-      <grimfail></grimfail>
-      <critfail>Roll on the crossbow consequence table</critfail>
+      <!-- <critsuccess>Deal 3×Damage</critsuccess> -->
+      <!-- <righteoussuccess>Deal 2×Damage</righteoussuccess> -->
+      <!-- <success>Deal Damage</success> -->
+      <!-- <fail>No Effect</fail> -->
+      <!-- <grimfail></grimfail> -->
+      <!-- <critfail>Roll on the crossbow consequence table</critfail> -->
       
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <range><ranged-long/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>Target's Defence</dc>
-      <dmg>Weapon+Agility</dmg>
+      <!-- <!-\- <critsuccess></critsuccess> -\-> -->
+      <!-- <!-\- <critfail></critfail> -\-> -->
+      <!-- <!-\- <boon></boon> -\-> -->
+      <!-- <!-\- <bane></bane> -\-> -->
+      <!-- <range><ranged-long/></range> -->
+      <!-- <!-\- <keywords></keywords> -\-> -->
+      <!-- <!-\- <indifferent></indifferent> -\-> -->
+      <!-- <dc>Target's Defence</dc> -->
+      <!-- <dmg>Weapon+Agility</dmg> -->
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -54,6 +56,7 @@
     <abilityid>fast_loader</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
+      <name>Load</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -81,17 +84,6 @@
     <abilitytitle>Heavy Cross Bow</abilitytitle>
     <abilityid>heavy</abilityid>
     <abilityranks untrained="-3" from="1" to="1"/>
-    <!-- <abilitycheck> -->
-    <!--   <actiontype><standard/></actiontype> -->
-    <!--   <critsuccess></critsuccess> -->
-    <!--   <critfail></critfail> -->
-    <!--   <boon></boon> -->
-    <!--   <bane></bane> -->
-    <!--   <range><ranged-long/></range> -->
-    <!--   <indifferent></indifferent> -->
-    <!--   <dc>Target's Defence</dc> -->
-    <!--   <dmg>Weapon+Agility</dmg> -->
-    <!-- </abilitycheck> -->
     <keywords><no-check/></keywords>
     <prereqabilityrank>crossbow_shoot_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>

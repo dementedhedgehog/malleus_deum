@@ -104,7 +104,7 @@ def find_pdftk():
                 pdftk_executable = fname
                 break
     else:
-        #pdftk_executable = "C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/xelatex.exe"
+        #pdftk_executable = "C:/Program Files (x86)/...??.../pdftk.exe"
         raise Exception("I wonder where pdftk will be on windows.")
 
     if pdftk_executable is None:

@@ -20,14 +20,12 @@
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
       <defaults>shield_defaults</defaults>
-      <name>Save</name>
+      <name>Defend</name>
       <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <range><self/></range>
-      <keywords><save/><defence/><shield/></keywords>
+      <keywords><defend/><save/><shield/></keywords>
       <!-- <indifferent></indifferent> -->
       <!-- <check>+Rank</check> -->
       <dc>Target's Attack</dc>
@@ -55,6 +53,10 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <defaults>shield_defaults</defaults>
+      <name>Check</name> 
+      <trigger>An adjacent character is hit by an attack during melee.</trigger>
+      <actiontype><reaction/></actiontype>
+      
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -84,15 +86,14 @@
     <abilityid>support</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
+      <name>Defend</name>
       <actiontype><reaction/></actiontype>      
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <range><melee/></range>
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
-      <keywords><save/><defence/><shield/></keywords>
+      <keywords><defend/><save/><shield/></keywords>
       <dc>Target's Attack</dc>
     </abilitycheck>
     <prereqabilityrank>block_1</prereqabilityrank>

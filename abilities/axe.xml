@@ -21,6 +21,7 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <defaults>axe_defaults</defaults>
+      <name>Check</name>
       <trigger>The character kills an opponent using an Axe Strike attack.</trigger>
       <actiontype><free/></actiontype>
       <dmg>Overflow damage + Rank is dealt to adjacent enemies.</dmg>  
@@ -51,7 +52,8 @@
     <abilityid>axe_frenzy</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Frenzy</name>
+      <defaults>axe_defaults</defaults>
+      <name>Check</name>
       <actiontype><standard/></actiontype>
       <critsuccess>3 Attacks instead of 2</critsuccess>
       <critfail>Berserk</critfail>
@@ -107,7 +109,7 @@
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
       <defaults>axe_defaults</defaults>
-      <name>strike</name>
+      <name>Check</name>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>

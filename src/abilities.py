@@ -427,7 +427,6 @@ class AbilityCheck:
                 
                 self.defaults = self.defaults_lookup.get(defaults_name)
                 if self.defaults is None:
-                    print(self.defaults_lookup)
                     raise Exception("Can't find an ability check defaults "
                                     f"file named {defaults_name}")
                 self.defaults.apply_defaults(self)
@@ -523,12 +522,6 @@ class AbilityCheck:
     def get_problems(self):
         problems = []
 
-        print("----")
-        print(self.keywords)
-        print(self.dc)
-        print(self.defaults)
-        print(self.defaults if self.defaults is None else self.defaults.dc)
-        print(NO_CHECK in self.keywords)
         if NO_CHECK in self.keywords:
             if self.dc is not None:
                 problems.append(f"Ability {self.ability.ability_id} in "
@@ -563,11 +556,12 @@ class AbilityCheck:
         # Normalize 'save' behaviour
         if "save" in keywords:
             # Check that Save checks are named Save.
-            if self.name != "Save":
+            if self.name != "Save" and self.name != "Defend":
                 problems.append(f"Ability {self.ability.title} in "
                                 f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but is not named 'Save'"
-                                "(The name element for this check should be 'Save')!\n")
+                                f"a 'save' keyword (one of {keywords}) but is not named 'Save' "
+                                "or 'Defend' (The name element for this check should be one of "
+                                "'Save' or 'Defend')!\n")
 
             if self.critsuccess is not None:
                 problems.append(f"Ability {self.ability.title} in "
@@ -606,26 +600,26 @@ class AbilityCheck:
                                 "(Save checks don't specify Skill results.)!\n")
                 
         # Check that checks named Save have the save keyword
-        if self.name != "Save": 
+        if self.name == "Save": 
             if "save" not in keywords:
                 problems.append(f"Ability {self.ability.title} in "
                                 f"{self.ability.fname}:{self.line_number} is named Save "
                                 f"but does not have the 'save' keyword (one of {keywords}) "
                                 "(Keywords for this check should contain the 'save' keyword)!\n")
 
-        # Check that checks named Defence have the defence keyword
-        if self.name != "Defend": 
-            if "defence" not in keywords:
+        # Check that checks named Defend have the defend keyword
+        if self.name == "Defend": 
+            if "defend" not in keywords:
                 problems.append(f"Ability {self.ability.title} in "
                                 f"{self.ability.fname}:{self.line_number} is named Defend "
                                 f"but does not have the 'defend' keyword (one of {keywords}) "
                                 "(Keywords for this check should contain the 'defend' keyword)!\n")
                 
-        # All defence checks are also save checks
-        if "defence" in keywords and "save" not in keywords:
+        # All defend checks are also save checks
+        if "defend" in keywords and "save" not in keywords:
             problems.append(f"Ability {self.ability.title} in "
                             f"{self.ability.fname}:{self.line_number} has a "
-                            f"a 'defence' keyword (one of {keywords}) but does not have a 'save'"
+                            f"a 'defend' keyword (one of {keywords}) but does not have a 'save'"
                             "keyword.  (All defence checks are also save checks)!\n")
         
         
@@ -1490,7 +1484,6 @@ class AbilityGroups:
     
     def get_ability(self, ability_id):
         for group in self.ability_groups:
-            #print(f"\t{group.fname}  {group.info.ability_group_id}")
             ability =  group.get_ability(ability_id)
             if ability is not None:
                 return ability
