@@ -19,7 +19,7 @@
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
-
+  
   
   <ability>
     <abilitytitle>Archery Shoot</abilitytitle>
@@ -29,7 +29,6 @@
       <defaults>archery_defaults</defaults>
       <name>Shoot</name>
       <actiontype><standard/></actiontype>
-      <!-- <range><na/></range> -->
       <keywords><basic-attack/></keywords>
       <dmg>Weapon</dmg>
     </abilitycheck>
@@ -53,7 +52,7 @@
       <name>Aimed Shot</name>
       <actiontype><standard/></actiontype>
       <critsuccess>3×Dmg</critsuccess>
-      <righteoussuccess>2×Dmg</righteoussuccess>      
+      <righteoussuccess>2×Dmg</righteoussuccess>
       <critfail>Roll on Misfire Table</critfail>
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
@@ -75,7 +74,7 @@
   
   <ability>
     <abilitytitle>Fast Shot</abilitytitle>
-    <abilityid>fast_shot</abilityid>    
+    <abilityid>fast_shot</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <defaults>archery_defaults</defaults>
@@ -89,14 +88,14 @@
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
       <!-- <dc>Target's Defence</dc> -->
-      <dmg>Weapon</dmg>      
+      <dmg>Weapon</dmg>
     </abilitycheck>
     <prereqabilityrank>archery_shoot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	Holding a pair of arrows in his hand the character
-	is able to shoot them both in quick succession.  
+	is able to shoot them both in quick succession.
 	Also note that the speed of these shots occurs because the character is
 	holding the arrows in his firing hand before the combat, so this ability
 	can only be used in the first round of combat and cannot be used when the
@@ -122,7 +121,7 @@
       <!-- <range><na/></range> -->
       <!-- <keywords></keywords>     -->
       <keywords><basic-attack/></keywords>
-      <dmg>Weapon</dmg>      
+      <dmg>Weapon</dmg>
     </abilitycheck>
     <prereqabilityrank>fast_shot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -136,5 +135,5 @@
 	their rank in this ability.  The character rolls to hit for each arrow.
       </p>
     </abilitydescription>
-  </ability>  
+  </ability>
 </abilitygroup>

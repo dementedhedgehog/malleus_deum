@@ -108,7 +108,7 @@ We use this to verify our xml.
       <xs:element name="lore" type="symbolType"/>
       <xs:element name="martial" type="symbolType"/>
       <xs:element name="magic" type="symbolType"/>
-      <xs:element name="npc" type="symbolType"/>
+      <xs:element name="gm" type="symbolType"/>
       <xs:element name="primary" type="symbolType"/>
       <xs:element name="wyrdscience" type="symbolType"/>
     </xs:choice>
@@ -130,6 +130,7 @@ We use this to verify our xml.
       <xs:element name="elemental" type="emptyType"/>
       <xs:element name="enchantment" type="emptyType"/>
       <xs:element name="evocation" type="emptyType"/>
+      <xs:element name="hazard" type="emptyType"/>
       <xs:element name="language" type="emptyType"/>
       <xs:element name="luck" type="emptyType"/>
       <xs:element name="lore" type="emptyType"/>
@@ -289,7 +290,7 @@ We use this to verify our xml.
 
 
   <!-- an enum -->
-  <xs:group name="monsterCombatClassKeywordGroup">
+  <xs:group name="monsterCombatClassKeywordEnum">
     <xs:choice>
       <xs:element name="minion" type="symbolType"/>
       <xs:element name="grunt" type="symbolType"/>
@@ -311,7 +312,7 @@ We use this to verify our xml.
   <xs:complexType name="monsterKeywordType">
     <xs:choice>
       <xs:group ref="raceKeywordEnum"/>
-      <xs:group ref="monsterCombatClassKeywordGroup"/>
+      <xs:group ref="monsterCombatClassKeywordEnum"/>
     </xs:choice>
   </xs:complexType>
 
@@ -411,9 +412,11 @@ We use this to verify our xml.
       <xs:element name="aoe-cone" type="emptyType"/>
       <xs:element name="aoe-linear" type="emptyType"/>
       
-      
-      <!-- All NPC checks are like this, specify a DC, crits, boon/bane and a saving throw -->
-      <xs:element name="player-facing" type="emptyType"/>
+      <!--
+	  Opposed checks are player-facing, usually NPC checks.
+	  Specify a DC, crits, and optionally boon/bane and a check (saving throw) to save against.
+      -->
+      <xs:element name="opposed" type="emptyType"/>
       
        <!-- Spells which are open to interpretation (FIXME: RENAME gm-fiat?? or similar) -->
        <xs:element name="versatile" type="emptyType"/>
@@ -433,6 +436,42 @@ We use this to verify our xml.
     </xs:choice>
   </xs:complexType>
 
+
+  
+
+  <!-- Check type for saves against player facing checks -->
+  <xs:complexType name="abilitySaveEnum">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <!-- For defence against player facing physical attacks -->
+       <xs:element name="defence-save" type="emptyType"/>      
+       <xs:element name="strength-save" type="emptyType"/>      
+       <xs:element name="endurance-save" type="emptyType"/>      
+       <xs:element name="agility-save" type="emptyType"/>      
+       <xs:element name="speed-save" type="emptyType"/>      
+       <xs:element name="perception-save" type="emptyType"/>      
+       <xs:element name="willpower-save" type="emptyType"/>      
+       <xs:element name="mettle-save" type="emptyType"/>      
+       <xs:element name="magic-save" type="emptyType"/>      
+       <xs:element name="luck-save" type="emptyType"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <!-- <!-\- Check type for saves against player facing checks -\-> -->
+  <!-- <xs:complexType name="abilityCheckEnum"> -->
+  <!--   <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
+  <!--     <!-\- For defence against player facing physical attacks -\-> -->
+  <!--      <xs:element name="defence-save" type="emptyType"/>       -->
+  <!--      <xs:element name="strength-save" type="emptyType"/>       -->
+  <!--      <xs:element name="endurance-save" type="emptyType"/>       -->
+  <!--      <xs:element name="agility-save" type="emptyType"/>       -->
+  <!--      <xs:element name="speed-save" type="emptyType"/>       -->
+  <!--      <xs:element name="perception-save" type="emptyType"/>       -->
+  <!--      <xs:element name="willpower-save" type="emptyType"/>       -->
+  <!--      <xs:element name="mettle-save" type="emptyType"/>       -->
+  <!--      <xs:element name="magic-save" type="emptyType"/>       -->
+  <!--      <xs:element name="luck-save" type="emptyType"/> -->
+  <!--   </xs:choice> -->
+  <!-- </xs:complexType> -->
 
       
   <!-- an enum -->
@@ -512,7 +551,7 @@ We use this to verify our xml.
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:group name="abilityactionGroup">
+  <xs:group name="abilityActionEnum">
     <xs:choice>
       <xs:element name="immediate" type="emptyType"/>
       <xs:element name="standard" type="emptyType"/>
@@ -530,7 +569,7 @@ We use this to verify our xml.
 
   <xs:complexType name="abilityactionType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="abilityactionGroup"/>
+      <xs:group ref="abilityActionEnum"/>
     </xs:choice>
   </xs:complexType>  
 
@@ -544,15 +583,15 @@ We use this to verify our xml.
   </xs:complexType>
 
   <!-- an enum -->
-  <xs:simpleType name="attrType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Strength" />
-      <xs:enumeration value="Endurance" />
-      <xs:enumeration value="Agility" />
-      <xs:enumeration value="Speed" />
-      <xs:enumeration value="Perception" />
-    </xs:restriction>
-  </xs:simpleType>
+  <!-- <xs:simpleType name="attrType"> -->
+  <!--   <xs:restriction base="xs:string"> -->
+  <!--     <xs:enumeration value="Strength" /> -->
+  <!--     <xs:enumeration value="Endurance" /> -->
+  <!--     <xs:enumeration value="Agility" /> -->
+  <!--     <xs:enumeration value="Speed" /> -->
+  <!--     <xs:enumeration value="Perception" /> -->
+  <!--   </xs:restriction> -->
+  <!-- </xs:simpleType> -->
 
   <!--
       Primary attribute value prerequisites, e.g. Str > 10 ..
@@ -571,7 +610,7 @@ We use this to verify our xml.
   </xs:complexType>
 
   <!-- Ability Group Enum -->
-  <xs:group name="acronymsGroup">
+  <xs:group name="acronymsEnum">
     <xs:choice>
       <xs:element name="aka" type="acronymType"/>
       <xs:element name="eg" type="acronymType"/>
@@ -590,8 +629,8 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
   -->
   <xs:complexType name="textType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="abilityactionGroup"/>
-      <xs:group ref="acronymsGroup"/>
+      <xs:group ref="abilityActionEnum"/>
+      <xs:group ref="acronymsEnum"/>
       
       <xs:element name="emph" type="textType"/>
       <xs:element name="bold" type="boldType"/>
@@ -633,7 +672,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
   </xs:complexType>
 
   <!-- generic block of text and stuff -->
-  <xs:group name="blockGroup" >
+  <xs:group name="blockEnum" >
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <!-- <xs:element name="ambush" type="symbolType"/> -->
@@ -669,22 +708,22 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
   </xs:group>
 
 
-  <xs:group name="operatorGroup" >
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-	<xs:element name="geqqsymbol" type="symbolType"/>
-	<xs:element name="leqqsymbol" type="symbolType"/>
-	<xs:element name="geqsymbol" type="symbolType"/>
-	<xs:element name="leqsymbol" type="symbolType"/>
-	<xs:element name="ltsymbol" type="symbolType"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:group>
+  <!-- <xs:group name="operatorGroup" > -->
+  <!--   <xs:sequence> -->
+  <!--     <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
+  <!-- 	<xs:element name="geqqsymbol" type="symbolType"/> -->
+  <!-- 	<xs:element name="leqqsymbol" type="symbolType"/> -->
+  <!-- 	<xs:element name="geqsymbol" type="symbolType"/> -->
+  <!-- 	<xs:element name="leqsymbol" type="symbolType"/> -->
+  <!-- 	<xs:element name="ltsymbol" type="symbolType"/> -->
+  <!--     </xs:choice> -->
+  <!--   </xs:sequence> -->
+  <!-- </xs:group> -->
 
 
   <xs:complexType name="blockType">
     <xs:sequence>
-      <xs:group ref="blockGroup"/>
+      <xs:group ref="blockEnum"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -706,6 +745,8 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
 
   <xs:complexType name="tabledataType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="acronymsEnum"/>
+      
       <xs:element name="emph" type="textType"/>
       <xs:element name="bold" type="boldType"/>
       <!-- <xs:element name="smaller" type="textType"/> -->
@@ -713,11 +754,11 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
       <!-- <xs:element name="defn" type="defnType"/> -->
       <!-- <xs:group ref="operatorGroup"/> -->
       <xs:element name="measurement" type="measurementType"/>
+      <xs:element name="p" type="textType" />
+      
       <!-- <xs:element name="olist" type="orderedListType"/> -->
       <!-- <xs:element name="list" type="itemizedListType"/> -->
       <!-- <xs:element name="descriptions" type="descriptionsType"/> -->
-      <xs:element name="eg" type="acronymType"/>
-      <xs:element name="etc" type="acronymType"/>
       <xs:element name="downarrowfrombar" type="symbolType"/>
       <xs:element name="uparrowfrombar" type="symbolType"/>
       <!-- <xs:element name="nb" type="acronymType"/> -->
@@ -768,7 +809,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
       <!-- <xs:element name="abilitygroup" type="abilityGroupEnum"/> -->
       <xs:element name="abilityranks" type="abilityranksType"/>
       <!-- Which book does this ability go in? phb or gmg? -->
-      <xs:element name="gmgability" type="emptyType" minOccurs="0" maxOccurs="1"/>
+
       <!-- To perform an ability may require somewhere between 0 and 3 checks -->
       <xs:element name="keywords" type="abilityKeywordsType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="abilitycheck" type="abilityCheckType" minOccurs="0" maxOccurs="3"/>
@@ -825,18 +866,17 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
 
     <!-- Some abilities can only be used after certain preconditions are met -->
     <xs:element name="trigger" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <!-- <xs:element name="trigger" type="abilityTriggerEnum" minOccurs="0" maxOccurs="1"/> -->
-    <!-- <xs:element name="actiontype" type="abilityActionTypeEnum" minOccurs="0" maxOccurs="1"/> -->
     <xs:element name="actiontype" type="abilityactionType" minOccurs="0" maxOccurs="1"/>
 
-    <!-- Mastery -->
+    <!-- Skill -->
     <xs:element name="critsuccess" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="righteoussuccess" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="success" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="fail" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <!-- <xs:element name="grimfail" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
     <xs:element name="grimfail" type="textType" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="critfail" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    <xs:element name="critfail" type="textType" minOccurs="0" maxOccurs="1"/>
+    <!-- <xs:element name="grimfail" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
+    <!-- <xs:element name="critfail" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
 
     <!-- Fate -->
     <xs:element name="blessed" type="xs:string" minOccurs="0" maxOccurs="1"/>
@@ -848,7 +888,8 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
     <!-- what range the ability works at. -->
     <xs:element name="range" type="rangeEnum" minOccurs="0" maxOccurs="1"/>
     <xs:element name="keywords" type="abilityKeywordsType" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="check" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    <!-- <xs:element name="check" type="abilityCheckEnum" minOccurs="0" maxOccurs="1"/> -->
+    <xs:element name="save" type="abilitySaveEnum" minOccurs="0" maxOccurs="1"/>
     <xs:element name="dc" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="dmg" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="effect" type="xs:string" minOccurs="0" maxOccurs="1"/>
@@ -882,7 +923,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
 
     <xs:element name="range" type="rangeEnum" minOccurs="0" maxOccurs="1"/>
     <xs:element name="keywords" type="abilityKeywordsType" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="check" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    <xs:element name="save" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="dc" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="dmg" type="xs:string" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
@@ -946,7 +987,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
   <xs:complexType name="descriptionType" mixed="true">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-	<xs:group ref="acronymsGroup"/>
+	<xs:group ref="acronymsEnum"/>
 
 	<xs:element name="p" type="textType" />
         <xs:element name="include" type="includeType" />
@@ -1057,7 +1098,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
         <xs:element name="subsection" type="subsectionType" />
         <xs:element name="subsubsection" type="subsubsectionType" />
         <xs:element name="monsterblock" type="monsterblockType" />
-        <xs:group ref="blockGroup"/>
+        <xs:group ref="blockEnum"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -1069,7 +1110,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
       <xs:element name="subsectiontitle" type="titleType" />
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="subsubsection" type="subsubsectionType" />
-        <xs:group ref="blockGroup"/>
+        <xs:group ref="blockEnum"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -1081,7 +1122,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
       <xs:element name="subsubsectiontitle" type="titleType" />
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="subsubsubsection" type="subsubsubsectionType" />
-        <xs:group ref="blockGroup"/>
+        <xs:group ref="blockEnum"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -1091,7 +1132,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
     <xs:sequence>
       <xs:element name="subsubsubsectiontitle" type="titleType" />
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="blockGroup"/>
+        <xs:group ref="blockEnum"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -1214,7 +1255,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove!?
       <xs:element name="branchtitle" type="titleType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="branchdescription" type="blockType" minOccurs="1" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:group ref="blockGroup"/>
+          <xs:group ref="blockEnum"/>
           <xs:element name="path" type="pathType"/>
       </xs:choice>
     </xs:sequence>
@@ -1529,17 +1570,10 @@ labels and references.
   <xs:complexType name="tagsType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
 
-
       <!-- ability groups -->
       <xs:element name="accurate" type="emptyType"/> <!-- Std+3xRank -->
       <xs:element name="inaccurate" type="emptyType"/> <!-- Std -->
       <xs:element name="no-check" type="emptyType"/> <!-- No Check .. monster abilities only -->
-      <!-- ability meta -->
-      <!-- <xs:element name="lore" type="emptyType"/> -->
-      <!-- <xs:element name="martial" type="emptyType"/> -->
-      <!-- <xs:element name="brutal" type="emptyType"/> -->
-      <!-- <xs:element name="core" type="emptyType"/> -->
-      <!-- <xs:element name="basic" type="emptyType"/>  <!-\- standard vanilla attack ability for a weapon -\-> -->
       <xs:element name="luckpool" type="emptyType"/>  <!-- dice pool ability -->
       <xs:element name="mettlepool" type="emptyType"/>  <!-- dice pool ability -->
       <xs:element name="magicpool" type="emptyType"/>  <!-- dice pool ability -->
@@ -1547,26 +1581,6 @@ labels and references.
       <!-- action type -->
       <xs:element name="collective" type="emptyType"/>
       <xs:element name="interuptible" type="emptyType"/>
-
-      <!-- weapons meta -->
-      <!-- <xs:element name="parry" type="emptyType"/> -->
-      <!-- <xs:element name="inaccurate" type="emptyType"/> -->
-      <!-- <xs:element name="asanguineous" type="emptyType"/> -->
-      <!-- <xs:element name="as-mace" type="emptyType"/> -->
-      <!-- <xs:element name="as-spear" type="emptyType"/> -->
-      <!-- <xs:element name="reach" type="emptyType"/> -->
-      <!-- <xs:element name="polearm" type="emptyType"/> -->
-      <!-- <xs:element name="brace" type="emptyType"/> -->
-      <!-- <xs:element name="grounding" type="emptyType"/> -->
-      <!-- <xs:element name="fast" type="emptyType"/> -->
-      <!-- <xs:element name="one-or-two-handed" type="emptyType"/> -->
-      <!-- <xs:element name="unparryable" type="emptyType"/> -->
-      <!-- <xs:element name="disarm" type="emptyType"/> -->
-      <!-- <xs:element name="black-powder" type="emptyType"/> -->
-      <!-- <xs:element name="standing" type="emptyType"/> -->
-      <!-- <xs:element name="slow-reload" type="emptyType"/> -->
-      <!-- <xs:element name="lethal" type="emptyType"/> -->
-      <!-- <xs:element name="nonlethal" type="emptyType"/> -->
 
       <!-- equipment meta -->
       <xs:element name="heavy" type="emptyType"/>
@@ -1584,7 +1598,6 @@ labels and references.
       <!-- general is for misc noncombat ability groups -->
       <xs:element name="general" type="symbolType"/>
       <xs:element name="lore" type="symbolType"/>
-      <!-- <xs:element name="combat" type="symbolType"/> -->
       <xs:element name="magic" type="symbolType"/>
       <xs:element name="npc" type="symbolType"/>
       <xs:element name="primary" type="symbolType"/>
@@ -1758,7 +1771,7 @@ labels and references.
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="section" type="sectionType"/>
         <!-- <xs:element name="p" type="textType" /> -->
-        <xs:group ref="blockGroup"/>	
+        <xs:group ref="blockEnum"/>	
         <!-- <xs:element name="handout" type="handoutType"/> -->
         <!-- <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/> -->
       </xs:choice>

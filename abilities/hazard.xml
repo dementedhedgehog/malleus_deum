@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Hazards</abilitygrouptitle>
+    <abilitygroupid><hazard/></abilitygroupid>
+    <abilitygroupfamily><gm/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	These abilities describe miscellaneous  Challenges
+	or Hazards that	the PCs might have to face.
+      </p>      
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Fall</abilitytitle>
+    <abilityid>fall</abilityid>
+    <abilityranks from="1" to="5"/>
+    
+    <abilitycheck> 
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <name>Opposed</name>
+      <actiontype><immediate/></actiontype>
+      <critsuccess>Unharmed and find something useful.</critsuccess>
+      <righteoussuccess>Unharmed</righteoussuccess>
+      <success>Take Rank damage</success>
+      <fail>Take d6×Rank damage</fail>
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <keywords><aoe-emination/><opposed/></keywords>
+      <save><luck-save/></save>
+      <dc>15+Rank</dc>
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Fire</abilitytitle>
+    <abilityid>fire</abilityid>
+    <abilityranks from="1" to="5"/>
+    
+    <abilitycheck> 
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <name>Opposed</name>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess></critsuccess> -->
+      <success>Unharmed</success>
+      <fail>Take d6×Rank damage</fail>
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <keywords><aoe-emination/><opposed/></keywords>
+      <save><luck-save/></save>
+      <dc>15+Rank</dc>
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Drown</abilitytitle>
+    <abilityid>drown</abilityid>
+    <abilityranks from="1" to="5"/>
+    
+    <abilitycheck> 
+      <name>Opposed</name>
+      <actiontype><multi-turn/></actiontype>
+      <success>Swims</success>
+      <fail>Check again next round with disadvantage.</fail>
+      <critfail>Character is drowned.</critfail>
+      <range><self/></range>
+      <keywords><opposed/></keywords>
+      <save><endurance-save/></save>
+      <dc>13+Rank</dc>
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Poison</abilitytitle>
+    <abilityid>poison</abilityid>
+    <abilityranks from="1" to="5"/>
+    
+    <abilitycheck> 
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <name>Opposed</name>
+      <actiontype><multi-turn/></actiontype>
+      <success>Take Rank damage</success>
+      <fail>Take d6×Rank damage</fail>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <bane></bane> -->
+      <range><self/></range>
+      <keywords><opposed/></keywords>
+      <!-- <dc>Target's Defence</dc> -->
+      <!-- <dmg>5</dmg> -->
+      <save><endurance-save/></save>
+      <dc>13+Rank</dc>
+    </abilitycheck>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+</abilitygroup>

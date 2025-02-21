@@ -18,16 +18,13 @@
   list abilities and rate them
   look up max value by level and group or ability
 
-
 """
-
 import xlsxwriter
 
 
 def write_game_balance_spreadsheet(spreadsheet_fname,
                                    ability_groups,
                                    archetypes):
-
     workbook = xlsxwriter.Workbook(spreadsheet_fname)
     worksheet = workbook.add_worksheet()    
     
@@ -72,19 +69,18 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     title_format = workbook.add_format({'bold': True, 'font_size': 14})
     
     r = 1
-    FAMILY_COL = 1
+    ABILITY_COL = 1
+    FAMILY_COL = ABILITY_COL+1
     GROUP_COL = FAMILY_COL+1
-    ABILITY_COL = GROUP_COL+1
-    CHECK_COL = ABILITY_COL+1
+    CHECK_COL = GROUP_COL+1
     KEYWORDS_COL = CHECK_COL+1
     # COST_COL = KEYWORDS_COL+1
     # RANGE_COL = COST_COL+1
     RANGE_COL = KEYWORDS_COL+1
     ACTION_TYPE_COL = RANGE_COL+1
-    TRIGGER_COL = ACTION_TYPE_COL+1
 
     # 
-    CRIT_SUCCESS_COL = TRIGGER_COL+1
+    CRIT_SUCCESS_COL = ACTION_TYPE_COL+1
     RIGHTEOUS_SUCCESS_COL = CRIT_SUCCESS_COL+1
     SUCCESS_COL = RIGHTEOUS_SUCCESS_COL+1
     FAIL_COL = SUCCESS_COL+1
@@ -94,19 +90,20 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     # Fate
     BLESSED_COL = CRIT_FAIL_COL+1
     BOON_COL = BLESSED_COL+1
-    BANE_COL = BOON_COL+1
+    INDIFFERENT_COL = BOON_COL+1
+    BANE_COL = INDIFFERENT_COL+1
     DAMNED_COL = BANE_COL+1
 
+    # trigger
+    TRIGGER_COL = DAMNED_COL+1
+    
+    ws.write(r, ABILITY_COL, "Ability", title_format)
     ws.write(r, FAMILY_COL, "Family", title_format)
     ws.write(r, GROUP_COL, "Group", title_format)
-    ws.write(r, ABILITY_COL, "Ability", title_format)
     ws.write(r, CHECK_COL, "Check", title_format)
     ws.write(r, KEYWORDS_COL, "Keywords", title_format)
-    # ws.write(r, COST_COL, "Cost", title_format)
     ws.write(r, RANGE_COL, "Range", title_format)
     ws.write(r, ACTION_TYPE_COL, "Action Type", title_format)
-    ws.write(r, TRIGGER_COL, "Trigger", title_format)
-
 
     ws.write(r, CRIT_SUCCESS_COL, "Crit Success", title_format)
     ws.write(r, RIGHTEOUS_SUCCESS_COL, "Righteous Success", title_format)
@@ -119,20 +116,21 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     ws.write(r, BOON_COL, "Boon", title_format)
     ws.write(r, BANE_COL, "Bane", title_format)
     ws.write(r, DAMNED_COL, "Damned", title_format)
+
+    ws.write(r, TRIGGER_COL, "Trigger", title_format)
     
-    r += 2
+    r += 1
     for ability_group in ability_groups:
         for ability in ability_group:
             for check in ability.get_checks():
+                ws.write(r, ABILITY_COL, ability.get_title(), title_format)
                 ws.write(r, FAMILY_COL, ability_group.get_family())
                 ws.write(r, GROUP_COL, ability_group.get_title())        
-                ws.write(r, ABILITY_COL, ability.get_title())
                 ws.write(r, CHECK_COL, check.get_name())
                 ws.write(r, KEYWORDS_COL, ", ".join(check.get_keywords()))
                 #ws.write(r, COST_COL, check.get_cost())
                 ws.write(r, RANGE_COL, check.get_range())
                 ws.write(r, ACTION_TYPE_COL, check.get_action_type())
-                ws.write(r, TRIGGER_COL, check.get_trigger())
 
                 ws.write(r, CRIT_SUCCESS_COL, check.critsuccess)
                 ws.write(r, RIGHTEOUS_SUCCESS_COL, check.righteoussuccess)
@@ -143,8 +141,11 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
                 
                 ws.write(r, BLESSED_COL, check.blessed)
                 ws.write(r, BOON_COL, check.boon)
+                ws.write(r, INDIFFERENT_COL, check.indifferent)
                 ws.write(r, BANE_COL, check.bane)
                 ws.write(r, DAMNED_COL, check.damned)
+
+                ws.write(r, TRIGGER_COL, check.get_trigger())
                 r += 1
 
     ws.autofit()

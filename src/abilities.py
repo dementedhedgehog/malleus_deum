@@ -49,7 +49,7 @@ MAX_INITIAL_ABILITY_RANK = 3
 ACCURATE = "Std+3×Rank"
 INACCURATE_CHECK_TYPE = "Std"
 MONSTER_CHECK_TYPE = "No-Check"
-STD_CHECK = "Std\+Rank"
+STD_CHECK = r"Std\+Rank"
 UNTRAINED = "Untrained"
 MAGIC_CHECK_TYPE = "Magic+Rank"
 NO_CHECK = "no-check"
@@ -58,12 +58,22 @@ NO_CHECK = "no-check"
 # We limit the range of values to reduce complexity in the system.  This should make 
 # it easier to remember dcs?  We choose odd ddcs because 5 is the lowest dc you can
 # fail at Rank 3.
+DEFEND_DC = "Opponent's Attack DC"
+GM_FIAT = "GM Fiat"
+
 # FIXME: move into XML enum?
 VALID_DCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
              "31", "33", "35", "37", "39",
              "GM Fiat",
-             # for NPC abilities
-             "9+Rank", "11+Rank", "13+Rank", 
+             
+             # for NPC/GM/Hazard abilities
+             "9+Rank", "11+Rank", "13+Rank", "15+Rank",
+             # Defend checks
+             DEFEND_DC,
+             # Save checks
+             GM_FIAT,
+
+             # 
              "Target's Defence", "Target's Attack", "Critical Success",
              "Target's Strength", "Target's Agility", "Target's Perception", "Target's Speed", "Target's Endurance",
              "Target's Agility or Speed",
@@ -137,7 +147,7 @@ class ActionType:
         elif action_type_str == "<reaction-or-minor/>":
             action_type = ActionType.REACTION_OR_MINOR
         else:
-            raise Exception(f"Unknown action type: {action_type_str}")            
+            raise Exception(f"Unknown action type: {action_type_str}")
         return action_type
 
     
@@ -378,6 +388,9 @@ class AbilityCheck:
         # range of the attack/spell etc
         self.check_range = None
 
+        # The check to use for saves
+        self.save = None
+
         # what check is being rolled (for defence).
 
         # list of tags for the ability
@@ -485,8 +498,8 @@ class AbilityCheck:
             elif tag == "damned":
                 self.damned = contents_to_string(child)
 
-            elif tag == "check":
-                self.check = contents_to_string(child)
+            elif tag == "save":
+                self.save = contents_to_string(child)
 
             elif tag == "dc":
                 self.dc = contents_to_string(child)
@@ -527,12 +540,12 @@ class AbilityCheck:
                 problems.append(f"Ability {self.ability.ability_id} in "
                                 f"{self.ability.fname}:{self.line_number} has a "
                                 f"'no-check' keyword and a non-None dc: '{self.dc}'.\n")
-        else:
-            if not is_valid_dc(self.dc):
-                problems.append(f"Ability {self.ability.ability_id} in "
-                                f"{self.ability.fname}:{self.line_number} has an "
-                                f"invalid dc '{self.dc}'.  "
-                                f"It should be one of {VALID_DCS}.\n")
+
+        if self.dc and not is_valid_dc(self.dc):
+            problems.append(f"Ability {self.ability.ability_id} in "
+                            f"{self.ability.fname}:{self.line_number} has an "
+                            f"invalid dc '{self.dc}'.  "
+                            f"It should be one of {VALID_DCS}.\n")
 
         # Every check should have a check type (part of the action economy.. e.g. standard).
         if self.action_type is None:
@@ -547,73 +560,41 @@ class AbilityCheck:
                             f"check without a name. "
                             "(The name element is required for all checks)!\n")
             
+        if not self.check_range:
+            problems.append(f"Ability {self.ability.title} in "
+                            f"{self.ability.fname}:{self.line_number} has a "
+                            f"check without a range. "
+                            "(The range element is required for all checks)!\n")
+            
 
         #
         # Check the tags are set properly.
         #
         keywords = self.get_keywords()
 
+        # Check that Defend checks are named Defend.
+        if "defend" in keywords:
+            if problem := self._check_name_if_keyword("defend", "Defend"):
+                problems.append(problem)
+        else:
+            # Check that checks named Save have the save keyword
+            if problem := self._check_name_if_keyword("save", "Save"):
+                problems.append(problem)                
+
         # Normalize 'save' behaviour
-        if "save" in keywords:
-            # Check that Save checks are named Save.
-            if self.name != "Save" and self.name != "Defend":
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but is not named 'Save' "
-                                "or 'Defend' (The name element for this check should be one of "
-                                "'Save' or 'Defend')!\n")
-
-            if self.critsuccess is not None:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but <critsuccess> is set "
-                                "(Save checks don't specify Skill results.)!\n")
-
-            if self.righteoussuccess is not None:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but <righteoussuccess> is set "
-                                "(Save checks don't specify Skill results.)!\n")
-
-            if self.success is not None:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but <success> is set "
-                                "(Save checks don't specify Skill results.)!\n")
-                
-            if self.fail is not None:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but <fail> is set "
-                                "(Save checks don't specify Skill results.)!\n")
-                
-            if self.grimfail is not None:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but <grimfail> is set "
-                                "(Save checks don't specify Skill results.)!\n")
-                
-            if self.critfail is not None:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"a 'save' keyword (one of {keywords}) but <critfail> is set "
-                                "(Save checks don't specify Skill results.)!\n")
-                
-        # Check that checks named Save have the save keyword
-        if self.name == "Save": 
-            if "save" not in keywords:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} is named Save "
-                                f"but does not have the 'save' keyword (one of {keywords}) "
-                                "(Keywords for this check should contain the 'save' keyword)!\n")
-
-        # Check that checks named Defend have the defend keyword
-        if self.name == "Defend": 
-            if "defend" not in keywords:
-                problems.append(f"Ability {self.ability.title} in "
-                                f"{self.ability.fname}:{self.line_number} is named Defend "
-                                f"but does not have the 'defend' keyword (one of {keywords}) "
-                                "(Keywords for this check should contain the 'defend' keyword)!\n")
+        # Saves don't have these values.. they're determined by the opposed check.
+        if problem := self._check_not_field_if_keyword("save", "critsuccess"):
+            problems.append(problem)
+        if problem := self._check_not_field_if_keyword("save", "righteoussuccess"):
+            problems.append(problem)       
+        if problem := self._check_not_field_if_keyword("save", "success"):
+            problems.append(problem)       
+        if problem := self._check_not_field_if_keyword("save", "fail"):
+            problems.append(problem)       
+        if problem := self._check_not_field_if_keyword("save", "grimfail"):
+            problems.append(problem)
+        if problem := self._check_not_field_if_keyword("save", "critfail"):
+            problems.append(problem)
                 
         # All defend checks are also save checks
         if "defend" in keywords and "save" not in keywords:
@@ -622,30 +603,56 @@ class AbilityCheck:
                             f"a 'defend' keyword (one of {keywords}) but does not have a 'save'"
                             "keyword.  (All defence checks are also save checks)!\n")
         
-        
         # Can't have a pool based ability without a cost
-        pool_based_check = self.is_pool_check()
-        if pool_based_check and not (self.indifferent or self.grimfail or self.critfail
-                                     or self.righteoussuccess or self.critsuccess):
+        if self.is_pool_check() and not (self.indifferent or self.grimfail or self.critfail or
+                                     self.success or self.righteoussuccess or self.critsuccess):
             problems.append(f"Ability {self.ability.title} in "
                             f"{self.ability.fname}:{self.line_number} uses "
                             f"a pool keyword (one of {keywords}) but has no pool cost "
                             "(If you have a pool then you muse lose pool points based on "
                             "the providence die result)!\n")
 
-        # Can't have a cost and not have a pool based activity
-        # if self.cost and not pool_based_check:
-        #     problems.append(f"Ability {self.ability.title} in {self.ability.fname} has a cost "
-        #                     f"but does not have a pool keyword, one of (magicpool, luckpool, mettlepool), "
-        #                     f"but has the following keywords: {keywords}!")
+        # Saves shouldn't have a DC .. the opposed check should specify (or
+        # the GM decides by fiat).
 
-        # Every action should have a range
-        if self.check_range is None:
-            problems.append(f"Ability {self.ability.title} in "
-                            f"{self.ability.fname}:{self.line_number} has an "
-                            f"invalid range '{self.check_range}'.\n")
+        # Defends have a standard DC
+        if "defend" in keywords:
+            if self.dc != DEFEND_DC:
+                problem = self._create_problem(
+                    "All checks with the 'defend' keyword *must* have the "
+                    f" <dc> value set to `{DEFEND_DC}'.")
+                problems.append(problem)
+        elif "save" in keywords:
+            if self.dc != GM_FIAT:
+                problem = self._create_problem(
+                    "All checks with the 'save' keyword and *not* the 'defend' keyword "
+                    f"*must* have the <dc> value set to `{GM_FIAT}'.")
+                problems.append(problem)
+            
+        # Must have a <range> element.
+        if problem := self._check_field("check_range", "range"):
+            problems.append(problem)
+
+        if problem := self._check_name_if_keyword("opposed", "Opposed"):
+            problems.append(problem)
+            
+        if problem := self._check_keyword_iff_field("opposed", "save"):
+            problems.append(problem)
+
+        if problem := self._check_field_if_keyword("opposed", "success"):
+            problems.append(problem)
+
+        if problem := self._check_field_if_keyword("opposed", "fail"):
+            problems.append(problem)
+
+        # FIXME: should we require crit values?
+        if problem := self._check_not_field_if_keyword("opposed", "boon"):
+            problems.append(problem)
+        if problem := self._check_not_field_if_keyword("opposed", "bane"):
+            problems.append(problem)
+
         
-
+        
         # Check accurate tag
         # if xor(self.check_type == ACCURATE, "accurate" in tags):
         #     problems.append(f"Ability {self.ability.ability_id} is tagged accurate and does not "
@@ -691,7 +698,79 @@ class AbilityCheck:
             if pool in keywords:
                 return True
         return False
+
+
+    def _create_problem(self, msg):
+        """Helper to format xml configuration errors with some useful data."""
+        return (f"Ability {self.ability.title} in "
+                f"{self.ability.fname}:{self.line_number} "
+                f"{msg}\n")
+
+
+    def _check_field(self, field_name, xml_element_name=None):
+        field_value = getattr(self, field_name)
+        if not field_value:
+            name = xml_element_name if xml_element_name else field_name
+            return self._create_problem(
+                f"does not have a value for the {name} field set.\n")
+        return None
     
+
+    def _check_keyword_if_field(self, keyword, field_name):
+        keywords = self.get_keywords()
+        field_value = getattr(self, field_name)
+        if field_value and not keyword in keywords:
+            return self._create_problem(
+                f"has a value for the {field_name} set. but does not "                
+                f" have the '{keyword}' keyword (one of {keywords})\n")
+        return None
+        
+
+    def _check_field_if_keyword(self, keyword, field_name):
+        keywords = self.get_keywords()
+        field_value = getattr(self, field_name)
+        if keyword in keywords and not field_value:                    
+            return (
+                f"Ability {self.ability.title} in "
+                f"{self.ability.fname}:{self.line_number} has "
+                f"a '{keyword}' keyword (one of {keywords}) but does not "
+                f"have a value for the {field_name} set.\n")
+        return None
+        
+    def _check_not_field_if_keyword(self, keyword, field_name):
+        keywords = self.get_keywords()
+        field_value = getattr(self, field_name)
+        if keyword in keywords and field_value:                    
+            return (
+                f"Ability {self.ability.title} in "
+                f"{self.ability.fname}:{self.line_number} has "
+                f"a '{keyword}' keyword (one of {keywords}) but "
+                f"*has* a value for the {field_name} set.\n")
+        return None
+        
+
+    def _check_keyword_iff_field(self, keyword, field_name):
+        """Iff is shorthand for if-and-only-if"""
+        if problem := self._check_keyword_if_field(keyword, field_name):
+            return problem
+        elif problem := self._check_field_if_keyword(keyword, field_name):
+            return problem        
+        return None
+        
+    def _check_name_if_keyword(self, keyword, check_name):
+        keywords = self.get_keywords()
+        if keyword in keywords and self.name != check_name:
+            return (
+                f"Ability {self.ability.title} in "
+                f"{self.ability.fname}:{self.line_number} has "
+                f"a '{keyword}' keyword (one of {keywords}) but does not "
+                f"have a check name '{check_name}' (checks with a {keyword} "
+                f"keyword must have the check name {check_name}).\n")
+        return None
+        
+
+
+
     
 class Ability:
     """
@@ -725,10 +804,6 @@ class Ability:
 
         # list of tags for the ability
         self.keywords = []
-
-        # If this is true put the ability in the GMG otherwise put it in
-        # the players handbook
-        self.gmg_ability = False        
 
         # list of available ability ranks.
         self.ranks = []
@@ -953,9 +1028,6 @@ class Ability:
                 ability_check._load(child)
                 self.checks.append(ability_check)
                 
-            elif tag == "gmgability":
-                self.gmg_ability = True
-
             elif tag == "abilitygroup":
                 self.group = contents_to_string(child)
 
@@ -1045,13 +1117,13 @@ class Ability:
         return
 
     
-    def is_gmg_ability(self):
-        """
-        Returns True if this is a special ability that should go in the GMG and not 
-        in the PHB.
+    # def is_gmg_ability(self):
+    #     """
+    #     Returns True if this is a special ability that should go in the GMG and not 
+    #     in the PHB.
 
-        """
-        return self.gmg_ability
+    #     """
+    #     return self.gmg_ability
 
     def _add_ability_rank(self, rank_number):
         """Add an ability rank."""
@@ -1292,8 +1364,8 @@ class AbilityGroup:
     def is_common_family(self):
         return self.info.family_id == "common"
 
-    def is_npc_family(self):
-        return self.info.family_id == "npc"
+    def is_gm_family(self):
+        return self.info.family_id == "gm"
 
     def is_wyrd_science_family(self):
         return self.info.family_id == "wyrd_science"

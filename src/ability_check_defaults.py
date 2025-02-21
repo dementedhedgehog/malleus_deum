@@ -51,7 +51,7 @@ class AbilityCheckDefaults:
         self.damned = None
 
         # Misc
-        self.check = None
+        self.save = None
         self.dc = None
         self.action_type = None        
         self.check_range = None
@@ -81,7 +81,7 @@ class AbilityCheckDefaults:
         if self.bane: ability_check.bane = self.bane
         if self.damned: ability_check.damned = self.damned
 
-        if self.check: ability_check.check = self.check
+        if self.save: ability_check.save = self.save
         if self.dc: ability_check.dc = self.dc
         if self.dmg: ability_check.dmg = self.dmg
         if self.action_type: ability_check.action_type = self.action_type
@@ -153,8 +153,8 @@ class AbilityCheckDefaults:
             elif tag == "actiontype":
                 self.action_type = contents_to_list(child).pop(0)                
 
-            elif tag == "check":
-                self.check = contents_to_string(child)
+            elif tag == "save":
+                self.save = contents_to_string(child)
 
             elif tag == "dc":
                 self.dc = contents_to_string(child)

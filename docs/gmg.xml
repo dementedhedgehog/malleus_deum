@@ -68,6 +68,39 @@
     {% include "docs/fragment_monsters.xml" %}
   </chapter>
 
+{% from "docs/macro_ability.xml" import build_ability with context %}
+
+  <chapter>
+    <chaptertitle>GMG and NPC Abilities</chaptertitle>
+
+    <section>
+      <sectiontitle></sectiontitle>
+      <p>
+	Hazards and Effects... FIXME
+      </p>
+
+      {% for ability_group in ability_groups if ability_group.is_gm_family() %}
+      <subsection>
+	<subsectiontitle>{{ ability_group.get_title() }}</subsectiontitle>
+
+	{{ ability_group.get_description() }}
+
+	{% if ability_group.has_abilities() %}
+	<figure position="h" fullwidth="false" sideways="false">
+	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <caption>{{ ability_group.get_title() }}</caption>
+	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+	</figure>
+	{% endif %}
+
+	{% for ability in ability_group.get_abilities()%}
+	{{ build_ability(ability) }}
+	{% endfor %}
+      </subsection>
+      {% endfor %}
+    </section>    
+  </chapter>
+
   <chapter>
     <chaptertitle>Magic Items</chaptertitle>
     {% include "docs/fragment_magic_items.xml" %}
@@ -81,25 +114,6 @@
   <chapter>
     <chaptertitle>The Planes</chaptertitle>
     {% include "docs/fragment_planes.xml" %}
-  </chapter>
-
-
-
-  <chapter>
-    <chaptertitle>Special Cases</chaptertitle>
-
-    <section>
-      <sectiontitle>Monster and NPC Abilities</sectiontitle>
-
-      {% from "docs/macro_ability.xml" import build_ability with context %}
-
-      <subsection>
-      <subsectiontitle>XXX</subsectiontitle>
-      {% for ability in ability_groups.get_abilities() if ability.is_gmg_ability() %}
-      {{ build_ability(ability) }}    
-      {% endfor %}      
-      </subsection>
-    </section>    
   </chapter>
 
   

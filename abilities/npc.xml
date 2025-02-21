@@ -3,7 +3,7 @@
   <abilitygroupinfo>
     <abilitygrouptitle>NPC/Monster Abilities</abilitygrouptitle>
     <abilitygroupid><npc/></abilitygroupid>
-    <abilitygroupfamily><npc/></abilitygroupfamily>
+    <abilitygroupfamily><gm/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
 	These abilities describe monsters special abilities.  Monster
@@ -12,6 +12,7 @@
 	abilities to be simple and easy to run.
       </p>      
     </abilitygroupdescription>
+    <dontdrawskilltree/>
     <enabled/>
   </abilitygroupinfo>
 
@@ -20,10 +21,10 @@
     <abilitytitle>Bite</abilitytitle>
     <abilityid>bite</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck> 
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -31,7 +32,7 @@
       <!-- <indifferent></indifferent> -->
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
-      <!-- <keywords><npc/></keywords> -->
+      <!-- <keywords><npc/><opposed/></keywords> -->
       <!-- <dc>Target's Defence</dc> -->
       <dmg>5</dmg>
     </abilitycheck>
@@ -47,22 +48,23 @@
     <abilitytitle>Blood Rage</abilitytitle>
     <abilityid>blood_rage</abilityid>
     <abilityranks from="1" to="6"/>
-    <gmgability/>
-    <abilitycheck>
-      <name>Check</name>
-      <trigger>When the character is bloodied</trigger>
-      <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords><npc/><no-check/></keywords>
-      <effect>Free melee attack</effect>
-    </abilitycheck>
+    
+    <!-- <abilitycheck> -->
+    <!--   <name>Opposed</name> -->
+    <!--   <trigger>When the character is bloodied</trigger> -->
+    <!--   <actiontype><reaction/></actiontype> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <boon></boon> -->
+    <!--   <indifferent></indifferent> -->
+    <!--   <bane></bane> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords><npc/><opposed/><no-check/></keywords> -->
+    <!--   <effect>Free melee attack</effect> -->
+    <!-- </abilitycheck> -->
 
     <!-- NO CHECK FOR THIS! -->
+  <keywords><npc/><no-check/></keywords>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -79,10 +81,10 @@
     <abilitytitle>Claw</abilitytitle>
     <abilityid>claw</abilityid>
     <abilityranks from="1" to="6"/>
-    <gmgability/>
+    
     <abilitycheck>
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -108,10 +110,10 @@
     <abilitytitle>Large Claw</abilitytitle>
     <abilityid>large_claw</abilityid>
     <abilityranks from="1" to="6"/>
-    <gmgability/>
+    
     <abilitycheck>
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>      
+      <name>Opposed</name>      
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -137,10 +139,10 @@
     <abilitytitle>Small Claw</abilitytitle>
     <abilityid>small_claw</abilityid>
     <abilityranks from="1" to="6"/>
-    <gmgability/>
+    
     <abilitycheck>
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -149,7 +151,7 @@
       <!-- <bane></bane> -->
       <!-- <range><melee/></range> -->
       <!-- <keywords><slashing/><piercing/></keywords> -->
-      <!-- <check>Character's Defence</check> -->
+      <!-- <save>Character's Defence</save> -->
       <!-- <dc>11</dc> -->
       <dmg>2</dmg>
     </abilitycheck>
@@ -165,10 +167,10 @@
     <abilitytitle>Countless Bites</abilitytitle>
     <abilityid>countless_bites</abilityid>
     <abilityranks from="1" to="4"/>
-    <gmgability/>
+    
     <abilitycheck>      
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -181,8 +183,8 @@
       <grimfail>Deal 2×Damage</grimfail>
       <critfail>Deal 3×Damage</critfail>      
       <range><melee/></range>
-      <keywords><npc/><melee/><unblockable/><undodgeable/><unparryable/></keywords>
-      <check>Mettle Check</check>
+      <keywords><npc/><opposed/><melee/><unblockable/><undodgeable/><unparryable/></keywords>
+      <save><mettle-save/></save>
       <dc>13+Rank</dc>
       <dmg>1+Rank</dmg>
       <!-- <effect>Opponent makes a Mettle check vs 13+Rank</effect> -->
@@ -210,9 +212,9 @@
     <abilitytitle>Death Blow</abilitytitle>
     <abilityid>death_blow</abilityid>
     <abilityranks from="1" to="6"/>    
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <trigger>When the character would go Down</trigger>
       <actiontype><reaction/></actiontype>
       <!-- <critsuccess></critsuccess> -->
@@ -237,10 +239,10 @@
     <abilitytitle>Demon Instability</abilitytitle>
     <abilityid>demon_instability</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
       <defaults>npc_pool_cost_1</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       <trigger>When this creature is hit for 10 or more damage</trigger>
       <actiontype><free/></actiontype>
       <!-- <critsuccess></critsuccess> -->
@@ -278,9 +280,9 @@
     <abilitytitle>Fleet</abilitytitle>
     <abilityid>fleet</abilityid>
     <abilityranks from="1" to="4"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <trigger>Start of the round</trigger>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
@@ -306,9 +308,9 @@
     <abilitytitle>Fly</abilitytitle>
     <abilityid>fly</abilityid>
     <abilityranks from="1" to="4"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -336,10 +338,10 @@
     <abilitytitle>Horns</abilitytitle>
     <abilityid>horns</abilityid>
     <abilityranks from="1" to="4"/>
-    <gmgability/>
+    
     <abilitycheck>
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -366,7 +368,7 @@
     <abilitytitle>Horns, Greater</abilitytitle>
     <abilityid>horns_greater</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
@@ -379,7 +381,7 @@
       <!-- <dc>Target's Defence</dc> -->
       <!-- <dmg>3+3xRank</dmg> -->
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
@@ -407,7 +409,7 @@
     <abilitytitle>Horns, Lesser</abilitytitle>
     <abilityid>horns_lesser</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
@@ -420,7 +422,7 @@
       <!-- <dc>Target's Defence</dc> -->
       <!-- <dmg>3+Rank</dmg> -->
       <defaults>npc_melee_defaults</defaults>
-      <name>Check</name>
+      <name>Opposed</name>
       
       <!-- <actiontype><standard/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
@@ -448,9 +450,9 @@
     <abilitytitle>Poisonous Bite</abilitytitle>
     <abilityid>poison_bite</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Poison</name>
+      <name>Opposed</name>
       <trigger>When the character is hit for 10 or more damage</trigger>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
@@ -477,9 +479,9 @@
     <abilitytitle>Prehensile Tail</abilitytitle>
     <abilityid>prehensile_tail</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -505,9 +507,9 @@
     <abilitytitle>Prehensile Tongue</abilitytitle>
     <abilityid>prehensile_tongue</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -533,9 +535,9 @@
     <abilitytitle>Regeneration</abilitytitle>
     <abilityid>regeneration</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <trigger>Start of the round</trigger>
       <actiontype><free/></actiontype>
       <!-- <critsuccess></critsuccess> -->
@@ -560,9 +562,9 @@
     <abilitytitle>Summon Demon</abilitytitle>
     <abilityid>summon_demon</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -587,7 +589,7 @@
     <abilitytitle>Swarm</abilitytitle>
     <abilityid>swarm</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <!-- <abilitycheck> -->
     <!--   <actiontype><minor/></actiontype> -->
     <!--   <!-\- <critsuccess></critsuccess> -\-> -->
@@ -616,27 +618,27 @@
   <ability>
     <abilitytitle>Terrifying</abilitytitle>
     <abilityid>terrifying</abilityid>
-    <abilityranks from="1" to="9"/>
-    <gmgability/>
+    <abilityranks from="1" to="3"/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
+      <success>No effect</success>
+      <fail>Target loses Rank mettle</fail>
+      <grimfail>Target loses Rank+1 mettle</grimfail>
+      <critfail>Target loses Rank+2 mettle</critfail>
       <range><ranged-medium/></range>
-      <keywords><npc/></keywords>
-      <check>Target's Willpower</check>
-      <dc>9+Rank</dc>
+      <keywords><mettlepool/><npc/><opposed/></keywords>
+      <save><willpower-save/></save>
+      <dc>11+Rank</dc>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The creature once revealed in their true form is terrifying.  The
-	characters have to make a willpower check vs rank.  If they fail they must lose their turn
-	or flee.
+	characters have to make a willpower check vs rank.  If they fail
+	they must lose their turn or flee.
       </p>
     </abilitydescription>
   </ability>  
@@ -646,17 +648,23 @@
     <abilitytitle>Terrifying Clarion</abilitytitle>
     <abilityid>terrifying_clarion</abilityid>
     <abilityranks from="1" to="9"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><standard/></actiontype>
       <!-- <critsuccess></critsuccess> -->
+      <success>No effect</success>
+      <fail>Target loses Rank mettle</fail>
+      <grimfail>Target loses Rank+1 mettle</grimfail>
+      <critfail>Target loses Rank+2 mettle</critfail>
+      <!-- <fail></fail> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <range><ranged-short/></range>
-      <keywords><npc/><aoe-emination/></keywords>
+      <keywords><aoe-emination/><mettlepool/><npc/><opposed/></keywords>
       <!-- <indifferent></indifferent> -->
+      <save><willpower-save/></save>
       <dc>13</dc>
     </abilitycheck>
     <spline></spline>
@@ -673,9 +681,9 @@
     <abilitytitle>Watch Out Sir!</abilitytitle>
     <abilityid>watch_out_sir</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><reaction/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -701,9 +709,9 @@
     <abilitytitle>Web</abilitytitle>
     <abilityid>web</abilityid>
     <abilityranks from="1" to="5"/>
-    <gmgability/>
+    
     <abilitycheck>
-      <name>Check</name>
+      <name>Opposed</name>
       <actiontype><minor/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->

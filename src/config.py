@@ -60,7 +60,7 @@ doc_files_to_build = (
     # ("abilities.xml", True, "Ab"),
     # ("ability_dcs.xml", False, "X"),
     # ("gms_screen.xml", False, "GMS"),
-    # ("gmg.xml", True, "[GMG]"),
+    ("gmg.xml", True, "[GMG]"),
     ("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
 )

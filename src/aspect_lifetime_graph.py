@@ -30,21 +30,6 @@ level_up = {LEVEL_1: level_down[LEVEL_1] - 0.44,
             LEVEL_3: level_down[LEVEL_3] - 0.55}
 
 
-# def aspect(level=1, count=0):
-#     count += 1
-#     r = random()
-#     if r > level_down[level]:
-#         level = max(1, level-1)
-
-#     elif r > level_up[level]:        
-#         level += 1
-
-#     if level > 3:
-#         return count
-
-#     return aspect(level=level, count=count)
-
-
 
 def simulate_aspect_lifetime(level=1, count=1):
     r1 = random.randrange(1, 12)
@@ -137,4 +122,3 @@ def draw_aspect_lifetime_graph():
 
 draw_aspect_lifetime_graph()
     
-#simulate_aspect_lifetime()

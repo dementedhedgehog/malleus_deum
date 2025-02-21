@@ -31,6 +31,7 @@
       <keywords></keywords>
       <dc>GM Fiat</dc>
     </abilitycheck>
+
     <abilitycheck>
       <name>Save</name>
       <actiontype><immediate/></actiontype>
@@ -41,6 +42,7 @@
       <keywords><save/></keywords>
       <dc>GM Fiat</dc>
     </abilitycheck>
+
     <spline><p x="90" y="0"/></spline> 
     <specializations>
       <specialization>Throw</specialization>
@@ -60,6 +62,7 @@
     <abilitytitle>Endurance</abilitytitle>
     <abilityid>endurance</abilityid>
     <abilityranks from="-3" to="6"/>
+
     <abilitycheck>
       <name>Check</name>
       <actiontype><immediate/></actiontype>
@@ -72,6 +75,7 @@
       <keywords></keywords>
       <dc>GM Fiat</dc>
     </abilitycheck>
+
     <abilitycheck>
       <name>Save</name>
       <actiontype><immediate/></actiontype>
@@ -82,6 +86,7 @@
       <keywords><save/></keywords>
       <dc>GM Fiat</dc>
     </abilitycheck>
+
     <specializations>
       <specialization>Run</specialization>
       <specialization>Swim</specialization>
@@ -103,6 +108,7 @@
     <abilitytitle>Agility</abilitytitle>
     <abilityid>agility</abilityid>    
     <abilityranks from="-3" to="6"/>
+
     <abilitycheck>
       <name>Check</name>
       <actiontype><immediate/></actiontype>
@@ -115,6 +121,7 @@
       <keywords></keywords>
       <dc>13</dc>
     </abilitycheck>
+
     <specializations>
       <specialization>SureFeet</specialization>
     </specializations>    
@@ -221,14 +228,12 @@
     <abilitycheck>
       <name>Save</name>
       <actiontype><immediate/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
       <range><na/></range>
       <keywords><save/></keywords>
-      <dc>13</dc>
+      <dc>GM Fiat</dc>      
     </abilitycheck>
     <abilitydescription>
       <p>
@@ -247,15 +252,13 @@
     <abilityid>luck</abilityid>
     <abilityranks from="-3" to="6"/>
     <abilitycheck>
+      <defaults>pool_cost_1</defaults>
       <name>Save</name>
       <actiontype><immediate/></actiontype>
       <!-- <critsuccess>Luck Pool + 1</critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <blessed>0 cost</blessed> -->
       <!-- <boon>1 cost</boon> -->
-      <indifferent>1 cost</indifferent>
-      <bane>2 cost</bane>
-      <damned>3 cost</damned>
       <range><na/></range>
       <keywords><luckpool/><save/></keywords>
       <dc>GM Fiat</dc>
@@ -274,17 +277,18 @@
     <abilityid>aspect</abilityid>
     <abilityranks from="-3" to="6"/>
     <abilitycheck>
-      <name>Save</name>
+      <defaults>pool_cost_1</defaults>
+      <name>Check</name>
       <actiontype><immediate/></actiontype>
       <!-- <critsuccess>Luck Pool + 1</critsuccess> -->
       <!-- <critfail>cost+2</critfail> -->
       <!-- <blessed>0 cost</blessed> -->
       <!-- <boon>1 cost</boon> -->
-      <indifferent>1 cost</indifferent>
-      <bane>2 cost</bane>
-      <damned>3 cost</damned>
+      <!-- <indifferent>1 cost</indifferent> -->
+      <!-- <bane>2 cost</bane> -->
+      <!-- <damned>3 cost</damned> -->
       <range><na/></range>
-      <keywords><aspectpool/><save/></keywords>
+      <keywords><aspectpool/></keywords>
       <dc>GM Fiat</dc>
     </abilitycheck>
     <abilitydescription>
@@ -300,22 +304,52 @@
     <abilityid>mettle</abilityid>
     <abilityranks from="-3" to="6"/>
     <abilitycheck>
+      <defaults>pool_cost_1</defaults>
       <name>Save</name>
       <actiontype><immediate/></actiontype>
       <!-- <critsuccess>Mettle Pool + 1</critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon>0 cost</boon> -->
-      <indifferent>1 cost</indifferent>
-      <bane>2 cost</bane>
-      <damned>3 cost</damned>
+      <!-- <indifferent>1 cost</indifferent> -->
+      <!-- <bane>2 cost</bane> -->
+      <!-- <damned>3 cost</damned> -->
       <range><na/></range>
       <keywords><mettlepool/><save/></keywords>
-      <dc>13</dc>
+      <dc>GM Fiat</dc>
     </abilitycheck>
     <abilitydescription>
       <p>
         <indexentry>Mettle Check</indexentry>
-	Characters make a mettle check to see whether they have the determination to carry on.
+	Characters make a mettle check to see whether they have the
+	determination to carry on.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+
+  <ability>
+    <abilitytitle>Magic Check</abilitytitle>
+    <abilityid>magic</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <defaults>pool_cost_1</defaults>
+      <name>Save</name>
+      <actiontype><immediate/></actiontype>
+      <!-- <critsuccess>Mettle Pool + 1</critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon>0 cost</boon> -->
+      <!-- <indifferent>1 cost</indifferent> -->
+      <!-- <bane>2 cost</bane> -->
+      <!-- <damned>3 cost</damned> -->
+      <range><na/></range>
+      <keywords><magicpool/><save/></keywords>
+      <dc>GM Fiat</dc>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+        <indexentry>Mettle Check</indexentry>
+	Characters make a mettle check to see whether they have the
+	determination to carry on.
       </p>
     </abilitydescription>
   </ability>  
