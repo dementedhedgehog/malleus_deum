@@ -96,6 +96,7 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
 
     # trigger
     TRIGGER_COL = DAMNED_COL+1
+    EFFECT_COL = TRIGGER_COL+1
     
     ws.write(r, ABILITY_COL, "Ability", title_format)
     ws.write(r, FAMILY_COL, "Family", title_format)
@@ -118,6 +119,7 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     ws.write(r, DAMNED_COL, "Damned", title_format)
 
     ws.write(r, TRIGGER_COL, "Trigger", title_format)
+    ws.write(r, EFFECT_COL, "Effect", title_format)
     
     r += 1
     for ability_group in ability_groups:
@@ -145,7 +147,8 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
                 ws.write(r, BANE_COL, check.bane)
                 ws.write(r, DAMNED_COL, check.damned)
 
-                ws.write(r, TRIGGER_COL, check.get_trigger())
+                ws.write(r, TRIGGER_COL, check.get_precondition())
+                ws.write(r, EFFECT_COL, check.get_effect())
                 r += 1
 
     ws.autofit()

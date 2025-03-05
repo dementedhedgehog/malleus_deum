@@ -19,8 +19,11 @@
     <abilityid>animal_handling</abilityid>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>
-      <defaults>transport_defaults</defaults>
       <name>Check</name>      
+      <!-- <defaults>transport_defaults</defaults> -->
+      <xdef fname="transport_defaults" elem_name="actiontype"/>      
+      <xdef fname="transport_defaults" elem_name="range"/>      
+      <xdef fname="transport_defaults" elem_name="dc"/>      
       <!-- <actiontype><noncombat/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -29,14 +32,20 @@
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
       <!-- <keywords></keywords> -->
-      <dc>13</dc>
+      <mastery>
+	<any-success>Success</any-success>
+	<gm-fiat/>
+      </mastery>
+      <fate>
+	<gm-fiat/>
+      </fate>
     </abilitycheck>
     <spline><p x="-30" y="0"/></spline>
     <abilitydescription>
       <p>
 	The character has experience caring for animals.  Particularly
 	farm animals and horses.  They can read the mood of natural animals
-	and they can diagnose and treat common ails.	 
+	and they can diagnose and treat common ails.  
       </p>
     </abilitydescription>
   </ability>
@@ -47,8 +56,11 @@
     <abilityid>carter</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>transport_defaults</defaults>
       <name>Check</name>      
+      <!-- <defaults>transport_defaults</defaults> -->
+      <xdef fname="transport_defaults" elem_name="actiontype"/>      
+      <xdef fname="transport_defaults" elem_name="range"/>      
+      <xdef fname="transport_defaults" elem_name="dc"/>      
       <!-- <actiontype><noncombat/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -57,7 +69,14 @@
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
       <!-- <keywords></keywords> -->
-      <!-- <dc>13</dc> -->
+      <!-- <dc><dc13/></dc> -->
+      <mastery>
+	<any-success>Success!</any-success>
+	<gm-fiat/>
+      </mastery>
+      <fate>
+	<gm-fiat/>
+      </fate>
     </abilitycheck>
     <prereqabilityrank>animal_handling_1</prereqabilityrank>
     <spline><p x="30" y="30"/></spline>
@@ -77,8 +96,11 @@
     <abilityid>riding</abilityid>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>
-      <defaults>transport_defaults</defaults>
       <name>Check</name>      
+      <!-- <defaults>transport_defaults</defaults> -->
+      <xdef fname="transport_defaults" elem_name="actiontype"/>      
+      <xdef fname="transport_defaults" elem_name="range"/>      
+      <xdef fname="transport_defaults" elem_name="dc"/>      
       <!-- <actiontype><noncombat/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -87,7 +109,14 @@
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
       <!-- <keywords></keywords> -->
-      <!-- <dc>13</dc> -->
+      <!-- <dc><dc13/></dc> -->
+      <mastery>
+	<any-success>Success!</any-success>
+	<gm-fiat/>
+      </mastery>
+      <fate>
+	<gm-fiat/>
+      </fate>
     </abilitycheck>
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -103,25 +132,27 @@
     <abilityid>master</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>transport_defaults</defaults>
       <name>Check</name>      
+      <!-- <defaults>transport_defaults</defaults> -->
+      <xdef fname="transport_defaults" elem_name="actiontype"/>      
+      <xdef fname="transport_defaults" elem_name="range"/>      
+      <xdef fname="transport_defaults" elem_name="dc"/>      
       <!-- <actiontype><noncombat/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      
-      
+      <!-- <boon></boon> -->           
       <!-- <bane></bane> -->
-      
-      
-      
-      
-      
       <!-- <range><na/></range> -->
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
-
-      <!-- <dc>13</dc> -->
+      <!-- <dc><dc13/></dc> -->
+      <mastery>
+	<any-success>Success!</any-success>
+	<gm-fiat/>
+      </mastery>
+      <fate>
+	<gm-fiat/>
+      </fate>
     </abilitycheck>
     <prereqabilityrank>sailor_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -154,25 +185,27 @@
     <abilityid>sailor</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>transport_defaults</defaults>
       <name>Check</name>      
+      <!-- <defaults>transport_defaults</defaults> -->
+      <xdef fname="transport_defaults" elem_name="actiontype"/>      
+      <xdef fname="transport_defaults" elem_name="range"/>      
+      <xdef fname="transport_defaults" elem_name="dc"/>      
       <!-- <actiontype><noncombat/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
-      
-      
       <!-- <bane></bane> -->
-      
-      
-      
-      
-      
       <!-- <range><na/></range> -->
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
-
-      <!-- <dc>13</dc> -->
+      <!-- <dc><dc13/></dc> -->
+      <mastery>
+	<any-success>Success!</any-success>
+	<gm-fiat/>
+      </mastery>
+      <fate>
+	<gm-fiat/>
+      </fate>
     </abilitycheck>
     <spline><p x="60" y="0"/></spline>
     <abilitydescription>

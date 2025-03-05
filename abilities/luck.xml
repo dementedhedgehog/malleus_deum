@@ -18,15 +18,20 @@
     <abilityid>brilliant_planner</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>luck_pool_defaults</defaults>
       <name>Check</name>
       <actiontype><immediate/></actiontype>
-      <critsuccess>Not only has the character thought to bring the piece of equipment they need, they've also
-      brought any other items that can reasonably be aquired that could reasonably be foreseen to be useful.</critsuccess>
-      <righteoussuccess>Not only has the character thought to bring the piece of equipment they need, they've also
-      brought another item that can reasonably be aquired that could reasonably be foreseen to be useful.  They
-      can declare what this item is anytime later during the current game session.</righteoussuccess>
-      <critfail></critfail>
+      <range><self/></range>
+      <keywords><luckpool/></keywords>
+      <dc><dc11/></dc>        
+      <mastery>
+	<critsuccess>Not only has the character thought to bring the piece of equipment they need, they've also
+	brought any other items that can reasonably be aquired that could reasonably be foreseen to be useful.</critsuccess>
+	<righteoussuccess>Not only has the character thought to bring the piece of equipment they need, they've also
+	brought another item that can reasonably be aquired that could reasonably be foreseen to be useful.  They
+	can declare what this item is anytime later during the current game session.</righteoussuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>                  
     </abilitycheck>
     <prereqabilityrank>lucky_1</prereqabilityrank>	
     <spline><p x="60" y="60"/></spline> 
@@ -60,15 +65,21 @@
     <abilityid>lucky</abilityid>    
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck>
-      <defaults>luck_pool_defaults</defaults>
       <name>Check</name>
-      <trigger>Any time a blessed result is rolled.</trigger>
+      <!-- <defaults>luck_pool_fate_defaults</defaults> -->
       <actiontype><immediate/></actiontype>
-      <critsuccess>+4 Luck</critsuccess>
-      <righteoussuccess>+3 Luck</righteoussuccess>
-      <success>+2 Luck</success>
-      <indifferent>1</indifferent>
-      <effect></effect>
+      <range><self/></range>
+      <keywords><luckpool/></keywords>
+      <precondition>Any time a blessed result is rolled.</precondition>
+      <dc><dc11/></dc>        
+
+      <mastery>
+	<any-success></any-success>
+	<critsuccess>+3 Luck</critsuccess>
+	<righteoussuccess>+2 Luck</righteoussuccess>
+      <success>+1 Luck</success>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>                  
     </abilitycheck>
     <spline><p x="0" y="0"/></spline> 
     <abilitydescription>
@@ -88,9 +99,12 @@
     <abilityid>itiok</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>luck_pool_defaults</defaults>
       <name>Check</name>
-      <actiontype><minor/></actiontype>
+      <actiontype><ap1/></actiontype>
+      <range><self/></range>
+      <keywords><luckpool/></keywords>
+      <dc><dc11/></dc>  
+      <xdef fname="pool_cost_1" elem_name="fate"/>                  
     </abilitycheck>
     <prereqabilityrank>lucky_1</prereqabilityrank>	
     <spline><p x="0" y="40"/></spline> 
@@ -109,12 +123,17 @@
     <abilityid>misfortune</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>luck_pool_defaults</defaults>
       <name>Check</name>
+      <!-- <defaults>luck_pool_fate_defaults</defaults> -->
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <indifferent>1</indifferent>
+      <range><self/></range>
+      <keywords><luckpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>lucky_1</prereqabilityrank>
     <spline><p x="90" y="30"/></spline> 
@@ -156,11 +175,16 @@
     <abilityid>nick_of_time</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>luck_pool_defaults</defaults>
       <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
+      <range><self/></range>
+      <keywords><luckpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>lucky_1</prereqabilityrank>	
     <spline><p x="-70" y="60"/></spline> 
@@ -184,11 +208,16 @@
     <abilityid>nabail</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>luck_pool_defaults</defaults>
       <name>Check</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
+      <actiontype><ap1/></actiontype>
+      <range><self/></range>
+      <keywords><luckpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>itiok_1</prereqabilityrank>	
     <spline><p x="0" y="35"/></spline> 
@@ -208,11 +237,16 @@
     <abilityid>reroll</abilityid>
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck>
-      <defaults>luck_pool_defaults</defaults>
       <name>Check</name>
       <actiontype><immediate/></actiontype>
-      <critsuccess>Reroll with advantage</critsuccess>
-      <critfail></critfail>
+      <range><self/></range>
+      <keywords><luckpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess>Reroll with advantage</critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank></prereqabilityrank>	
     <spline><p x="-90" y="30"/></spline> 

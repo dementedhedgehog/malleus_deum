@@ -19,17 +19,16 @@
     <abilityid>call_of_the_wild</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <dc>11</dc>
+      <keywords><magicpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>vermin_swarm_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -82,17 +81,17 @@
     <abilityid>howl_of_the_hunt</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <!-- <defaults>pool_cost_1</defaults> -->
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
       <keywords><magicpool/></keywords>
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>wild-magic_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
@@ -111,17 +110,16 @@
     <abilityid>hyperosmia</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
       <keywords><magicpool/></keywords>
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <mastery>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="0" y="60"/></spline>
@@ -142,17 +140,17 @@
     <abilityid>mandragora</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <!-- <defaults>pool_cost_1</defaults> -->
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
       <keywords><magicpool/></keywords>
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <mastery>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>wild-magic_2</prereqabilityrank>
     <spline></spline>
@@ -182,17 +180,20 @@
     <abilityid>magic.therianthropy</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
+      <name>Check</name>
+      <!-- <defaults>pool_cost_2</defaults> -->
+      <actiontype><ap1/></actiontype>
+      <range><na/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc><dc11/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
       <!-- <boon></boon> -->
       <!-- <indifferent>2</indifferent> -->
       <!-- <bane></bane> -->
-      <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>hyperosmia_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -355,17 +356,17 @@
     <abilityid>vermin_swarm</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <!-- <defaults>pool_cost_1</defaults> -->
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
       <!-- <keywords><magicpool/></keywords> -->
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <mastery>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-45" y="30"/></spline>
@@ -423,17 +424,16 @@
     <abilityid>spider_climb</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <dc>11</dc>
+      <keywords><magicpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-60" y="0"/></spline>
@@ -452,29 +452,28 @@
     <abilityid>tanglefoot</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
       <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
-      <dc>9</dc>
+      <keywords><magicpool/></keywords>
+      <dc><dc9/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <abilitycheck>
       <name>Tangle</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap1/></actiontype>
       <range><ranged-medium/></range>
-      <!-- <keywords></keywords> -->
-      <dc>Target's Agility</dc>
+      <keywords></keywords>
+      <dc><opponents-agility/></dc>
+      <mastery>
+      <critsuccess></critsuccess>
+      <critfail></critfail>      
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-60" y="0"/></spline>
@@ -504,7 +503,7 @@
     <indifferent></indifferent>
 
   -->
-  <!--   <actiontype><minor/></actiontype> -->
+  <!--   <actiontype><ap1/></actiontype> -->
   <!--   <keywords><magic/><wildmagic/><magicpool/></keywords> -->
   <!--   <abilitydescription> -->
   <!--     <p> -->
@@ -523,12 +522,12 @@
   
 
   <ability>
-    <abilitytitle>Wild Magic</abilitytitle>
+    <abilitytitle>Wild Magic Lore</abilitytitle>
     <abilityid>wild-magic</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>lore_defaults</defaults> -->
       <!-- <actiontype><immediate/></actiontype> -->
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -537,7 +536,12 @@
       <!-- <range><na/></range> -->
       <!-- <keywords><lore/></keywords> -->
       <!-- <indifferent></indifferent> -->
-      <!-- <dc>13</dc> -->
+      <!-- <dc><dc13/></dc> -->
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>
+      <xdef fname="lore_defaults" elem_name="fate"/>                  
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -554,17 +558,16 @@
     <abilityid>warp_wood</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <keywords><magicpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>wild-magic_1</prereqabilityrank>
     <spline><p x="-60" y="0"/></spline>

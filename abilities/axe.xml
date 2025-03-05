@@ -19,13 +19,13 @@
     <abilitytitle>Axe Cleave</abilitytitle>
     <abilityid>axe_cleave</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck>
-      <defaults>axe_defaults</defaults>
+    <abilitytrigger>
       <name>Check</name>
-      <trigger>The character kills an opponent using an Axe Strike attack.</trigger>
       <actiontype><free/></actiontype>
-      <dmg>Overflow damage + Rank is dealt to adjacent enemies.</dmg>  
-    </abilitycheck>
+      <range><melee/></range>
+      <precondition>The character kills an opponent using an Axe Strike attack.</precondition>
+      <effect>Overflow damage + Rank is dealt to adjacent enemies.</effect>  
+    </abilitytrigger>
     <prereqabilityrank>axe_strike_3</prereqabilityrank>
     <prereqattr><strength>13</strength></prereqattr>
     <spline><p x="60" y="30"/></spline>
@@ -52,17 +52,17 @@
     <abilityid>axe_frenzy</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>axe_defaults</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess>3 Attacks instead of 2</critsuccess>
-      <critfail>Berserk</critfail>
-      <boon>-1 Cost</boon>
-      <indifferent>1</indifferent>
-      <bane>+1 Cost</bane>
-      <range><na/></range>
+      <actiontype><ap4/></actiontype>
+      <range><melee/></range>
       <keywords><mettlepool/></keywords>
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>Make 2 Axe-Strike attacks.</any-success>
+	<critsuccess>3 Attacks instead of 2</critsuccess>
+	<critfail>Berserk</critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>axe_strike_1</prereqabilityrank>
     <prereqattr><strength>13</strength></prereqattr>
@@ -70,10 +70,9 @@
     <abilitydescription>
       <p>
 	When a character makes a frenzied attack with an axe, they make
-	a Mettle Check.  If they pass they may make two standard axe
-	attacks that round. On a bane the character goes beserk.	
+	a Mettle Check.  If they pass they may make another standard axe
+	attack that round. On a bane the character goes beserk.	
       </p>
-
     </abilitydescription>
   </ability>
 
@@ -83,14 +82,16 @@
     <abilityid>axe_hook</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>axe_defaults</defaults>
-      <name>Hook</name>
-      <trigger>Axe Strike Boon against an opponent of appropriate size, carrying an item, a weapon or shield</trigger>
+      <name>Check</name>
       <actiontype><free/></actiontype>
-      <critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
-      <success>Target drops random item, weapon or shield</success>
-      <dc>Target's Strength</dc>
-      <dmg>None</dmg>
+      <range><melee/></range>
+      <precondition>Axe Strike Boon against an opponent carrying an item, a weapon or shield</precondition>
+      <dc><opponents-strength/></dc>
+      <mastery>
+	<critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
+	<success>Target drops random item, weapon or shield</success>
+      </mastery>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>axe_strike_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>    
@@ -108,8 +109,12 @@
     <abilityid>axe_strike</abilityid>    
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
-      <defaults>axe_defaults</defaults>
       <name>Check</name>
+      <actiontype><ap4/></actiontype>
+      <range><melee/></range>
+      <dc><opponents-defend/></dc>
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>            
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
     </abilitycheck>
     <spline></spline>
     <abilitydescription>

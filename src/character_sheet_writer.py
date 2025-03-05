@@ -217,8 +217,8 @@ def check_to_str(check):
     check_strings.append(check_str)
     
     # Damage?
-    if check.dmg is not None:
-        check_strings.append(f"Dmg: {check.dmg}")
+    #if check.dmg is not None:
+    #    check_strings.append(f"Dmg: {check.dmg}")
 
     if check.effect is not None:
         check_strings.append(f"Effect: {check.effect}")

@@ -18,61 +18,50 @@
     <abilitytitle>Light Crossbow</abilitytitle>
     <abilityid>crossbow_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <abilitycheck>
-      <defaults>crossbow_defaults</defaults>
-      <name>Shoot</name>
-      <actiontype><standard/></actiontype>
-
-      <!-- Mastery -->
-      <!-- <critsuccess>Deal 3×Damage</critsuccess> -->
-      <!-- <righteoussuccess>Deal 2×Damage</righteoussuccess> -->
-      <!-- <success>Deal Damage</success> -->
-      <!-- <fail>No Effect</fail> -->
-      <!-- <grimfail></grimfail> -->
-      <!-- <critfail>Roll on the crossbow consequence table</critfail> -->
-      
-      <!-- <!-\- <critsuccess></critsuccess> -\-> -->
-      <!-- <!-\- <critfail></critfail> -\-> -->
-      <!-- <!-\- <boon></boon> -\-> -->
-      <!-- <!-\- <bane></bane> -\-> -->
-      <!-- <range><ranged-long/></range> -->
-      <!-- <!-\- <keywords></keywords> -\-> -->
-      <!-- <!-\- <indifferent></indifferent> -\-> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>Weapon+Agility</dmg> -->
-    </abilitycheck>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
+      <xdef fname="crossbow_defaults" elem_name="range"/>      
+      <dc><opponents-defend/></dc>
+      <dmg>Weapon</dmg>
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>            
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+    </abilityattack>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
         Characters equipped with a <emph>Light Crossbow</emph> can shoot it during combat
-	doing weapon damage.
+	doing weapon damage.  It takes ap3 to reload a light crossbow, ap4 to reload a
+	heavy crossbow.
       </p>
     </abilitydescription>
   </ability>
 
 
   <ability>
-    <abilitytitle>Fast Loader</abilitytitle>
+    <abilitytitle>Reload</abilitytitle>
     <abilityid>fast_loader</abilityid>    
-    <abilityranks from="1" to="4"/>
+    <abilityranks from="0" to="4"/>
     <abilitycheck>
-      <name>Load</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Fast Reload</name>
+      <actiontype><ap2/></actiontype>
       <range><self/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>9</dc>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess>Reload takes 1ap</critsuccess>
+	<righteoussuccess>Reload takes 2ap</righteoussuccess>
+	<success>Reload takes 3ap</success>
+	<fail>Reload takes 4ap</fail>
+	<grimfail>Reload takes 7ap</grimfail>
+      </mastery>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>crossbow_shoot_2</prereqabilityrank>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character has spent a long time practicing reloading a heavy
-	crossbow.  They can check to reload their crossbow and fire in the same
+	The character has spent a long time practicing reloading a crossbows.
+	They can check to reload their crossbow and fire in the same
 	round (usually it takes a whole round to reload).  If they fail they
 	spend the round reloading instead.
       </p>
@@ -80,11 +69,13 @@
   </ability>
 
 
+  <!-- FIXME add an accurate shot -->
+  
   <ability>
     <abilitytitle>Heavy Cross Bow</abilitytitle>
     <abilityid>heavy</abilityid>
     <abilityranks untrained="-3" from="1" to="1"/>
-    <keywords><no-check/></keywords>
+    <keywords></keywords>
     <prereqabilityrank>crossbow_shoot_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>

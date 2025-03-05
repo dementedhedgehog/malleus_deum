@@ -19,18 +19,15 @@
     <abilityid>black_colossus</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>3</indifferent> -->
-      <dc>13</dc>
+      <dc><dc13/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_3" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>summon_elemental_2</prereqabilityrank>
     <spline><p x="30" y="45"/></spline>
@@ -48,18 +45,16 @@
     <abilityid>burning_hands</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap1/></actiontype>
       <range><melee/></range> 
       <keywords><magicpool/><fire/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <mastery>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck> 
     <prereqabilityrank>fyre_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
@@ -69,16 +64,21 @@
 	to hand combat their hands gain the Fire tag and do d6 extra damage.
       </p>
     </abilitydescription>    
-  </ability>
+  </ability>  
 
+  
   
   <ability>
     <abilitytitle>Elemental Magic</abilitytitle>
     <abilityid>elemental_magic</abilityid>  
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>      
+      <xdef fname="lore_defaults" elem_name="fate"/>      
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -94,33 +94,21 @@
     <abilitytitle>Fyre Bolt</abilitytitle>
     <abilityid>fyre</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <range><self/></range>
-      <keywords><magicpool/><fire/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
-    </abilitycheck>
-    <abilitycheck>
-      <name>Hit</name>
-      <actiontype><free/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
       <range><ranged-short/></range>
-      <keywords><fire/></keywords>
-      <dc>Target's Defence</dc>
-      <dmg>3d6</dmg>
-    </abilitycheck>
+      <keywords><magicpool/><fire/><unparryable/></keywords>
+      <dc><opponents-defend/></dc>
+      <dmg>(1+Rank)×d6</dmg>
+      <mastery>
+	<any-success>Damage</any-success>
+	<critsuccess>3×Damage</critsuccess>
+	<righteoussuccess>2×Damage</righteoussuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
+    </abilityattack>
     <prereqabilityrank>elemental_magic_1</prereqabilityrank>
     <spline><p x="0" y="75"/></spline>
     <abilitydescription>
@@ -136,18 +124,15 @@
     <abilityid>gaseous_form</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
-      <actiontype><minor/></actiontype>
+      <actiontype><ap1/></actiontype>
+      <range><na/></range>
+      <dc><dc11/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>elemental_magic_1</prereqabilityrank>
     <spline><p x="-75" y="70"/></spline>
@@ -165,18 +150,15 @@
     <abilityid>kiss_of_the_deep</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name> 
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
+      <range><na/></range>
+      <dc><opponents-willpower/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>Target's Willpower</dc>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>elemental_magic_1</prereqabilityrank>	
     <spline><p x="-75" y="15"/></spline>
@@ -203,18 +185,15 @@
     <abilityid>mist</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <dc>11</dc> -->
+      <xdef fname="elemental_defaults" elem_name="dc"/>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>elemental_magic_1</prereqabilityrank>
     <spline><p x="-30" y="45"/></spline>
@@ -233,18 +212,15 @@
     <abilityid>shatter</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <dc>11</dc> -->
+      <xdef fname="elemental_defaults" elem_name="dc"/>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>elemental_magic_2</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
@@ -279,18 +255,15 @@
     <abilityid>smoke_weasel</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <dc>11</dc> -->
+      <xdef fname="elemental_defaults" elem_name="dc"/>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>fyre_1</prereqabilityrank>    
     <spline><p x="0" y="60"/></spline>
@@ -307,33 +280,28 @@
     </abilitydescription>    
   </ability>
 
+
+
   
   <ability>
-    <abilitytitle>Stone Skin</abilitytitle>
-    <abilityid>stone_skin</abilityid>    
+    <abilitytitle>Sow the Wind</abilitytitle>
+    <abilityid>sow_the_wind</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
       <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
+      <xdef fname="elemental_defaults" elem_name="dc"/>
+      <mastery>
+	<any-success>All movement for counts as difficult terrain.</any-success>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
-    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
+    <prereqabilityrank>elemental_magic_2</prereqabilityrank>
     <spline><p x="45" y="120"/></spline>
     <abilitydescription>
       <p>
-	The targets skin takes on a greyish hue and hardens, providing
-	some protection from physical damage.  If successful this spell
-	provides a bonus of +2+Rank  to armour for five minutes or the
-	rest of the encounter, whichever is longer.
+	The target calls up a gail. 
       </p>
     </abilitydescription>    
   </ability>
@@ -344,18 +312,15 @@
     <abilityid>summon_elemental</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>elemental_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>2</indifferent> -->
-      <dc>13</dc>
+      <xdef fname="elemental_defaults" elem_name="dc"/>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_3" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>elemental_magic_3</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>

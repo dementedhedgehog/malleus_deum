@@ -18,20 +18,16 @@
     <abilityid>bladesharp</abilityid>    
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <defaults>rune_magic</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><touch/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
-      <effect>+Rank dmg for one edged weapon for the next 5 minutes.</effect>
+      <dc><dc7/></dc>
+      <mastery>
+	<any-success>+Rank dmg for one edged weapon for the next 5 minutes.</any-success>
+      </mastery>
+      <xdef fname="pool_cost_0" elem_name="fate"/>
     </abilitycheck>
-    <prereqabilityrank>runecraft_1</prereqabilityrank>	
+    <prereqabilityrank>runelore_1</prereqabilityrank>	
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -46,19 +42,17 @@
     <abilityid>hold_portal</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>rune_magic</defaults>
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><touch/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
-    <prereqabilityrank>runecraft_1</prereqabilityrank>	
+    <prereqabilityrank>runelore_1</prereqabilityrank>	
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -76,19 +70,16 @@
     <abilityid>hex_hammer</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>rune_magic</defaults>
-      <name>Cast</name>
-      <actiontype><standard/></actiontype>
+      <name>Check</name>
+      <actiontype><ap4/></actiontype>
+      <range><touch/></range>
+      <keywords><magicpool/></keywords>
+      <dc><dc11/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <range><touch/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_0" elem_name="fate"/>            
     </abilitycheck>
-    <prereqabilityrank>runecraft_1</prereqabilityrank>	
+    <prereqabilityrank>runelore_1</prereqabilityrank>	
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -102,12 +93,16 @@
 
   
   <ability>
-    <abilitytitle>Runecraft</abilitytitle>
-    <abilityid>runecraft</abilityid>    
+    <abilitytitle>Runelore</abilitytitle>
+    <abilityid>runelore</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -124,20 +119,16 @@
     <abilityid>sign_of_idreshein</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>rune_magic</defaults>
-      <name>Cast</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap4/></actiontype>
       <range><touch/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
-      <dmg>d6x(Rank+4)</dmg>
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>d6x(Rank+4)</any-success>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
-    <prereqabilityrank>runecraft_1</prereqabilityrank>	
+    <prereqabilityrank>runelore_1</prereqabilityrank>	
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>

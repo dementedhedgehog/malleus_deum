@@ -18,33 +18,12 @@
     <abilitytitle>Auri Fames</abilitytitle>
     <abilityid>auri_fames</abilityid>    
     <abilityranks from="1" to="5"/>
-    <!-- <abilitycheck> -->
-    <!--   <name>Cast</name> -->
-    <!--   <actiontype><minor/></actiontype> -->
-    <!--   <critsuccess></critsuccess> -->
-    <!--   <critfail></critfail> -->
-    <!--   <boon></boon> -->
-    <!--   <bane></bane> -->
-    <!--    -->
-    <!--    -->
-    <!--    -->
-    <!--   <range><na/></range> -->
-    <!--   <keywords><magicpool/></keywords> -->
-    <!--   <indifferent>1</indifferent> -->
-    <!--   <dc>7</dc> -->
-    <!-- </abilitycheck> -->
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><ranged-short/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>Target's Willpower</dc>
+      <dc><opponents-willpower/></dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="90" y="0"/></spline>    
@@ -89,21 +68,16 @@
   
   
   <ability>
-    <abilitytitle>Enchantment</abilitytitle>
+    <abilitytitle>Enchantment Lore</abilitytitle>
     <abilityid>enchantment</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
-      <name>Cast</name>
-      <!-- <actiontype><immediate/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><lore/></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>11</dc> -->
+      <name>Check</name>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>
+      <xdef fname="lore_defaults" elem_name="fate"/>      
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -119,8 +93,8 @@
     <abilityid>ghost_step</abilityid>   
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
       <actiontype><immediate/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -129,7 +103,8 @@
       <range><touch/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>enchantment_1</prereqabilityrank>	
     <spline><p x="90" y="15"/></spline>
@@ -148,32 +123,18 @@
     <abilityid>glamour</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <name>Cast</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <range><self/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>      
-    </abilitycheck>
-    <abilitycheck>
-      <name>Deceive</name>
-      <actiontype><free/></actiontype>
+      <name>Check</name>
+      <actiontype><ap4/></actiontype>
+      <range><ranged-long/></range>
+      <keywords><magic/></keywords>
+      <dc><opponents-perception/></dc>
+      <mastery>
       <success>The target is convinced by the Glamour.</success>
       <fail>The target is suspicious.</fail>
       <grimfail>The target sees something off and will investigate further</grimfail>
       <critfail>Immediately sees through the deception.</critfail>
-      <boon>NPCs are largely distracted or uninterested.</boon>
-      <bane>Someone wants to talk to them</bane>
-      <range><ranged-long/></range>
-      <keywords><magic/></keywords>
-      <dc>Target's Perception</dc>
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <dc>7</dc>       -->
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="0" y="45"/></spline>
@@ -211,18 +172,16 @@
     <abilityid>hex</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_0</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><ranged-short/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>Target's Willpower</dc>
+      <keywords><magicpool/></keywords>
+      <dc><opponents-willpower/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_0" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>enchantment_1</prereqabilityrank>			
     <spline><p x="-90" y="0"/></spline>
@@ -250,18 +209,19 @@
     <abilityid>mind_worm</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
+      <actiontype><noncombat/></actiontype> 
+      <range><ranged-short/></range>
+      <dc><dc11/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
-      <range><ranged-short/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
@@ -286,18 +246,19 @@
     <abilityid>speak_with_amphibians</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><immediate/></actiontype>
+      <range><self/></range>
+      <dc><dc11/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
-      <range><self/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="90" y="15"/></spline>
@@ -315,19 +276,20 @@
     <abilityid>speak_with_birds</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><immediate/></actiontype>
+      <range><self/></range>
+      <dc><dc11/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
-      <range><self/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="-45" y="90"/></spline>
@@ -345,19 +307,20 @@
     <abilityid>speak_with_cats</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><immediate/></actiontype>
+      <range><self/></range>
+      <dc><dc11/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
-      <range><self/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="15" y="60"/></spline>
@@ -374,19 +337,20 @@
     <abilityid>speak_with_horses</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><immediate/></actiontype>
+      <range><self/></range>
+      <dc><dc11/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
-      <range><self/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="-90" y="60"/></spline>
@@ -405,19 +369,20 @@
     <abilityid>speak_with_rodents</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><immediate/></actiontype>
+      <range><self/></range>
+      <dc><dc11/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
-      <range><self/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="90" y="90"/></spline>
@@ -434,19 +399,19 @@
     <abilityid>speak_with_wolves</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><immediate/></actiontype>
+      <range><self/></range>
+      <dc><dc11/></dc>
+      
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
-      <range><self/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
     <spline><p x="-90" y="15"/></spline>
@@ -464,19 +429,20 @@
     <abilityid>vox_imperium</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><noncombat/></actiontype>
+      <range><melee/></range>
+      <dc><opponents-willpower/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <!-- <range><na/></range> -->
-      <range><melee/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>Target's Willpower</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <!-- <abilitycheck dc="Targets Willpower"> -->
     <!--   <critsuccess></critsuccess> -->
@@ -514,7 +480,7 @@
     <abilitytitle>Zoolingualism</abilitytitle>
     <abilityid>zoolingualism</abilityid>    
     <abilityranks from="1" to="1"/>
-    <keywords><no-check/></keywords>
+    <keywords></keywords>
     <prereqabilityrank>enchantment_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
@@ -530,8 +496,8 @@
     <abilityid>wrack</abilityid>    
     <abilityranks from="1" to="5"/>
     <!-- <abilitycheck> -->
-    <!--   <defaults>enchantment_defaults</defaults> -->
-    <!--   <actiontype><minor/></actiontype> -->
+    <!-- <defaults>enchantment_defaults</defaults> -->
+    <!--   <actiontype><ap1/></actiontype> -->
     <!--   <!-\- <critsuccess></critsuccess> -\-> -->
     <!--   <!-\- <critfail></critfail> -\-> -->
     <!--   <!-\- <boon></boon> -\-> -->
@@ -539,20 +505,21 @@
     <!--   <!-\- <range><na/></range> -\-> -->
     <!--   <!-\- <keywords><magicpool/></keywords> -\-> -->
     <!--   <!-\- <indifferent>1</indifferent> -\-> -->
-    <!--   <dc>7</dc> -->
+    <!--   <dc><dc7/></dc> -->
     <!-- </abilitycheck> -->
     <abilitycheck>
-      <defaults>enchantment_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
+      <name>Check</name>
+      <!-- <defaults>enchantment_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
+      <actiontype><ap1/></actiontype>
+      <range><ranged-short/></range>
+      <dc><opponents-endurance/></dc>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
-      <range><ranged-short/></range>
       <!-- <indifferent></indifferent> -->
-      <dc>Target's Endurance</dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>enchantment_2</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>

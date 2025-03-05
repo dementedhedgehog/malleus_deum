@@ -32,48 +32,42 @@
     <abilityid>bind</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
-      <actiontype><minor/></actiontype> 
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <!-- <defaults>evocation_defaults</defaults> -->
+      <!-- <defaults>pool_cost_3</defaults> -->
+      <actiontype><ap1/></actiontype> 
       <range><na/></range>
       <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_3" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="15" y="30"/></spline>
     <abilitydescription>
       <p>
 	Bind holds an opponent using magical energies.  
-	If successful The target makes a will check DC 6 in the first round and are held 
-	until they succeed.   The difficulty decreases by two every round the target
-	is held.  The caster may release the target at any time.  
+	If successful The target makes a will check DC 6 in the first round and are
+	held until they succeed.   The difficulty decreases by two every round the
+	target is held.  The caster may release the target at any time.
       </p>
     </abilitydescription>
   </ability>
 
   
   <ability>
-    <abilitytitle>Evocation</abilitytitle>
+    <abilitytitle>Evocation Lore</abilitytitle>
     <abilityid>evocation</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
-      <!-- <actiontype><immediate/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><lore/></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>13</dc> -->
+      <xdef fname="lore_defaults" elem_name="actiontype"/>
+      <xdef fname="lore_defaults" elem_name="range"/>
+      <xdef fname="lore_defaults" elem_name="dc"/>
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -95,18 +89,18 @@
     <abilityid>greater_portal</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><na/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>4</indifferent> -->
-      <dc>23</dc>
+      <dc><dc23/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_3" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>portal_2</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
@@ -125,32 +119,20 @@
     <abilityid>lesser_portal</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Extemporaneous Cast</name>
-      <actiontype><full-turn/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <!-- <defaults>evocation_defaults</defaults> -->
+      <!-- <defaults>pool_cost_2</defaults> -->
+      <actiontype><ap7/></actiontype>
       <range><na/></range>
       <keywords><ritual/><magicpool/></keywords>
       <!-- <indifferent>2</indifferent> -->
-      <dc>19</dc>
-    </abilitycheck>
-    <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Ritual</name>
-      <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
+      <dc><dc19/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
-      <range><na/></range>
-      <keywords><ritual/><magicpool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>17</dc>
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>
     
     <prereqabilityrank>evocation_1</prereqabilityrank>
@@ -179,18 +161,16 @@
     <abilityid>phantasmal_leech</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
+      <!-- <defaults>evocation_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
@@ -264,18 +244,20 @@
     <abilityid>phantasmal_vulture</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
+      <!-- <defaults>evocation_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range> 
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>9</dc>
+      <dc><dc9/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>phantasmal_leech_2</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
@@ -332,18 +314,20 @@
     <abilityid>portal</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <!-- <defaults>evocation_defaults</defaults> -->
+      <!-- <defaults>pool_cost_3</defaults> -->
+      <actiontype><ap4/></actiontype>
       <range><na/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>3</indifferent> -->
-      <dc>23</dc>
+      <dc><dc23/></dc>      
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_3" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>lesser_portal_2</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
@@ -362,18 +346,20 @@
     <abilityid>shade</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <!-- <defaults>evocation_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
+      <actiontype><ap4/></actiontype>
       <range><na/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>17</dc>
+      <dc><dc17/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>lesser_portal_1</prereqabilityrank>
     <spline><p x="-30" y="15"/></spline>
@@ -393,18 +379,20 @@
     <abilityid>summon</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
+      <!-- <defaults>evocation_defaults</defaults> -->
+      <!-- <defaults>pool_cost_3</defaults> -->
       <actiontype><noncombat/></actiontype> 
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>2</indifferent> -->
-      <dc>9</dc>
+      <dc><dc9/></dc>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <!-- <boon></boon> -->
+      <!-- <bane></bane> -->
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_3" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
@@ -451,18 +439,12 @@
     <abilityid>wyld_portal</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>evocation_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><ranged-short/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>9</dc>
+      <dc><dc9/></dc>
+      <xdef fname="evocation_defaults" elem_name="mastery"/>            
+      <xdef fname="pool_cost_3" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>greater_portal_1</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>

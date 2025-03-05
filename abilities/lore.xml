@@ -21,8 +21,12 @@
     <abilityid>alchemy</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>alchemy_lesser_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
@@ -42,8 +46,12 @@
     <abilityid>alchemy_lesser</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>natural_history_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -86,8 +94,12 @@
     <abilityid>alchemy_greater</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>alchemy_2</prereqabilityrank>
     <spline><p x="0" y="60"/></spline>
@@ -108,8 +120,12 @@
     <abilityid>antiquarian</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>history_1</prereqabilityrank>
     <spline><p x="0" y="15"/></spline>
@@ -129,8 +145,12 @@
     <abilityid>barber</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <spline><p x="-90" y="450"/></spline>
     <abilitydescription>
@@ -148,8 +168,12 @@
     <abilityid>book_keeping</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>mathematics_1</prereqabilityrank>
     <spline><p x="-40" y="30"/></spline>
@@ -171,8 +195,12 @@
     <abilityid>book_learning</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <spline></spline>    
     <abilitydescription>
@@ -189,8 +217,12 @@
     <abilityid>explosives</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>smoke_bomb_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -213,21 +245,15 @@
     <abilitytitle>Grand Discovery</abilitytitle>
     <abilityid>grand_discovery</abilityid>    
     <abilityranks from="1" to="5"/>
-    <!-- <abilitycheck> -->
-    <!--   <actiontype><noncombat/></actiontype> -->
-    <!--   <critsuccess></critsuccess> -->
-    <!--   <critfail></critfail> -->
-    <!--   <boon></boon> -->
-    <!--   <bane></bane> -->
-    <!--    -->
-    <!--    -->
-    <!--    -->
-    <!--   <range><na/></range> -->
-    <!--   <keywords></keywords> -->
-    <!--   <indifferent></indifferent> -->
-    <!--   <dc> -->
-    <!-- </abilitycheck> -->
-    <keywords><no-check/></keywords>
+    <abilitytrigger>
+      <name>Trigger</name>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <keywords></keywords>
+      <precondition>Can make this check once for each rank gained in this ability.  The character must have
+      access to a laboratory in order to do make this check.</precondition>
+      <effect>Roll on the table below</effect>
+    </abilitytrigger>
     <prereqabilityrank>alchemy_2</prereqabilityrank>
     <spline><p x="70" y="30"/></spline>
     <abilitydescription>
@@ -256,45 +282,45 @@
 	</tableheaderrow>
 
 	<tablerow>
-	  <td>2-4</td>
+	  <td>1</td>
 	  <td>Possession.  The character becomes possessed!</td>
 	</tablerow>
 	
 	<tablerow>
-	  <td>5</td>
+	  <td>2</td>
 	  <td>Untamed Brute.  The characters brutish nature comes to the fore at times
 	  of stress.  Gain the “Untamed Brute” Aspect.</td>
 	</tablerow>
 	
 	<tablerow>
-	  <td>6-16</td>
+	  <td>3-13</td>
 	  <td>Disapointment!  No discovery made</td>
 	</tablerow>
 	
 	<tablerow>
-	  <td>17</td>
+	  <td>14-15</td>
 	  <td>Unexpected Discovery.  Gain a rank in alchemy.</td>
 	</tablerow>
 
 	<tablerow>
-	  <td>18</td>
+	  <td>16-17</td>
 	  <td>Poison Resistance, +5 to saves vs being poisoned.</td>
 	</tablerow>	
+
+	<tablerow>
+	  <td>18-19</td>
+	  <td>Transmutation.  After years of practice you finally are able to transmute
+	  lead into gold.  Unfortunately you can't work out how to repeat the process.
+	  Fortunatly you transmute a lot of lead the first time.</td>
+	</tablerow>
 	
 	<tablerow>
-	  <td>19</td>
+	  <td>20</td>
 	  <td>Arcane Knowledge.  Gain 1x promotions in magic and 2x promotions in
 	  fine arts, lore or special abilities (promotions cannot be used to gain more
 	  Grand Discoveries)</td>
 	</tablerow>
 	
-	<tablerow>
-	  <td>20</td>
-	  <td>Transmutation.  After years of practice you finally are able to transmute
-	  lead into gold.  Unfortunately you can't work out how to repeat the process.
-	  Fortunatly you transmute a lot of lead the first time.</td>
-	</tablerow>
-
 	<tablerow>
 	  <td>21</td>
 	  <td>Enhanced Ability: Roll d6 on a 1: Gain Speed +2, 2: Gain
@@ -328,8 +354,12 @@
     <abilityid>history</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="-60" y="45"/></spline>
@@ -347,8 +377,12 @@
     <abilityid>law</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>book_learning_2</prereqabilityrank>    
     <spline><p x="75" y="15"/></spline>
@@ -386,8 +420,12 @@
     <abilityid>mathematics</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>      
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="100"/></spline>
@@ -406,8 +444,12 @@
     <abilityid>natural_history</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="70"/><p x="50" y="30"/><p x="0" y="90"/></spline>
@@ -435,8 +477,12 @@
     <abilityid>occult</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
@@ -469,8 +515,12 @@
     <abilityid>physician</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>    
     <prereqabilityrank>natural_history_2</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
@@ -492,8 +542,12 @@
     <abilityid>physics</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>mathematics_1</prereqabilityrank>
     <spline><p x="30" y="30"/></spline>
@@ -513,8 +567,12 @@
     <abilityid>politics</abilityid>  
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="50"/><p x="120" y="60"/></spline>
@@ -548,8 +606,12 @@
     <abilityid>potions</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>alchemy_1</prereqabilityrank>	
     <spline><p x="-40" y="30"/></spline>
@@ -567,9 +629,20 @@
     <abilityid>smoke_bomb</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
-      <effect>Defensive checks against missile attacks made at +2×Rank</effect>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <mastery>
+	<any-success>Defensive checks against missile attacks made at +2×Rank</any-success>
+      </mastery>
+      <fate>
+	<blessed>Fast: This is a free action.</blessed>
+	<boon></boon>
+	<indifferent></indifferent>
+	<bane>Fumble: Lose remaining actions this round</bane>
+	<damned>Explosion: Suffer d4 damage</damned>
+      </fate>
     </abilitycheck>
     <prereqabilityrank>alchemy_lesser_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
@@ -606,8 +679,12 @@
     <abilityid>thaumaturgy</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>            
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <xdef fname="lore_defaults" elem_name="dc"/>
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>book_learning_1</prereqabilityrank>
     <spline><p x="0" y="30"/><p x="75" y="20"/></spline>

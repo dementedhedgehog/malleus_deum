@@ -22,18 +22,16 @@
     <abilityid>polearm_hook</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>melee_defaults</defaults>
-      <name>Hook</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><melee/></range> -->
-      <!-- <keywords></keywords> -->
-      <dc>Target's Defence</dc>
-      <dmg>Weapon+Rank</dmg>
+      <name>Attack</name>
+      <actiontype><free/></actiontype>
+      <range><melee/></range>
+      <precondition>Hit an opponent with a boon</precondition>
+      <dc><opponents-strength/></dc>
+      <mastery>
+	<critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
+	<success>Target drops random item, weapon or shield</success>
+      </mastery>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>polearm_strike_1</prereqabilityrank>    
     <spline><p x="90" y="30"/></spline>
@@ -44,8 +42,8 @@
 	or remove their shield.
       </p>
       <p>
-	If the character successfuly hits the attacker makes an opposed Strength
-	test against the opponent.  If successful the defender drops their weapon/shield.
+	If the character successfuly hits the attacker with a boon, they can make a check 
+	against their opponents Strength.  If successful the defender drops their weapon/shield.
       </p>
     </abilitydescription>
   </ability>
@@ -55,21 +53,16 @@
     <abilitytitle>Polearm/Staff/Spear Strike</abilitytitle>
     <abilityid>polearm_strike</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck>
-      <defaults>melee_defaults</defaults>
-      <name>Strike</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <keywords><piercing/></keywords>
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>Weapon+Speed|Strength</dmg>
-    </abilitycheck>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
+      <range><melee/></range>
+      <keywords><attack/></keywords>
+      <dc><opponents-defend/></dc>
+      <dmg>Weapon+Rank+Speed|Strength</dmg>
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>      
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>      
+    </abilityattack>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -84,20 +77,23 @@
     <abilitytitle>Brace for Charge</abilitytitle>
     <abilityid>polearm_brace</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck>
-      <defaults>melee_defaults</defaults>
+    <abilityattack>
       <name>Brace</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <keywords><piercing/></keywords>
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>2x(Weapon+Rank)</dmg>
-    </abilitycheck>
+      <range><melee/></range>
+      <precondition>An opponent charges the character or an adjacent character</precondition>
+      <dc><opponents-defend/></dc>
+      <dmg>Weapon+Rank+Speed|Strength</dmg>
+      <mastery>
+	<critsuccess>4×Dmg</critsuccess>
+	<righteoussuccess>3×Damage</righteoussuccess>
+	<success>2×Dmg</success>
+	<fail>No Effect</fail>
+	<grimfail>Θ</grimfail>
+	<critfail>Roll on the melee consequence table</critfail>
+      </mastery>
+      <xdef fname="fate_melee_reaction_defaults" elem_name="fate"/>      
+    </abilityattack>
     <prereqabilityrank>polearm_strike_2</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
@@ -115,45 +111,19 @@
     <abilitytitle>Circle of Death</abilitytitle>
     <abilityid>circle_of_death</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck>
-      <defaults>melee_defaults</defaults>
-      <name>Circle</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <range><self/></range>
+    <abilitytrigger>
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
+      <range><melee/></range>
       <keywords></keywords>
-      <dc>13</dc>
-      <effect>Attacker must make a Mettle Check before they can attack</effect>
-    </abilitycheck>
-    <abilitycheck>
-      <defaults>melee_defaults</defaults>
-      <name>Strike</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>Weapon+Speed|Strength</dmg>
-    </abilitycheck>
+      <precondition>Opponents moves into reach anytime before his next reaction.</precondition>
+      <effect>Character gets a free Fend reaction.</effect>
+    </abilitytrigger>
     <prereqabilityrank>polearm_strike_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline> 
     <abilitydescription>
       <p>
 	The character swings their weapon in large arcs keeping foes at bay.
-	Opponents must make a Willpower check to attack and the character may
-	roll to hit the first opponent who tries to do so in the round as a
-	reaction.  If successful the opponent cannot close to attack.
-      </p>
-
-      <p>
 	Note that this ability requires a reasonable amount of space to swing the
 	weapon.  
       </p>
@@ -165,29 +135,24 @@
     <abilitytitle>Fend</abilitytitle>
     <abilityid>fend</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck>
-      <defaults>melee_defaults</defaults>
-      <name>Fend</name>
-      <actiontype><standard/></actiontype>
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>Weapon+Strength</dmg>
-    </abilitycheck>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><reaction/></actiontype>
+      <range><melee/></range>
+      <precondition>Opponents moves into reach.</precondition>      
+      <dc><opponents-willpower/></dc>
+      <dmg>Weapon+Rank+Speed|Strength</dmg>
+      <mastery>
+	<any-success>Opponent may not move into melee</any-success>
+	<critsuccess>2×Dmg</critsuccess>
+	<righteoussuccess>Dmg</righteoussuccess>
+      </mastery>
+      <xdef fname="fate_melee_reaction_defaults" elem_name="fate"/>      
+    </abilityattack>
     <prereqabilityrank>polearm_strike_2</prereqabilityrank>
     <spline><p x="-30" y="75"/></spline>
     <abilitydescription>
       <p>
-	The character swings their weapon in large arcs keeping foes at bay.
-	Opponents must make a Willpower check to attack and the character may
-	roll to hit the first opponent who tries to do so in the round as a
-	reaction.  If successful the opponent cannot close to attack.
-      </p>
-
-      <p>
-	Note that this ability requires a reasonable amount of space to swing the
-	weapon, and it only works when the opponents are within a 180° arc.  
       </p>
     </abilitydescription>
   </ability>
@@ -213,7 +178,7 @@
   <!--     <range><na/></range> -->
   <!--     <keywords></keywords> -->
   <!--     <indifferent></indifferent> -->
-  <!--     <dc>Target's Attack</dc> -->
+  <!--     <dc>Opponent's <attack/></dc> -->
   <!--   </abilitycheck> -->
   <!--   <prereqabilityrank>polearm_strike_1</prereqabilityrank>	 -->
   <!--   <spline><p x="90" y="30"/></spline>  -->

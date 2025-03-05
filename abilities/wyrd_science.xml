@@ -20,16 +20,19 @@
     <abilityid>feign_death</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <righteoussuccess>The feigned death is extremely convincing.</righteoussuccess>
-      <fail></fail>
-      <grimfail>You twitch or sneeze at an unfortunate time.</grimfail>
-      <critfail>You succeed in entering the trance but remain in a death like state for longer than you intended.</critfail>
-      <boon>Your example assists any companions in doing the same .. they gain a +2 to Feign Death or using Deception to pretend
-      to be dead.</boon>
-      <dc>7</dc>
+      <range><self/></range>
+      <dc><dc7/></dc>
+      <mastery>
+	<righteoussuccess>The feigned death is extremely convincing.  Your example assists any companions in doing the same they gain a +2 to
+	Feign Death or using Deception to pretend to be dead.
+	</righteoussuccess>
+	<fail>Make a deception check to convince observers of your death instead.</fail>
+	<grimfail>You twitch or sneeze at an unfortunate time.  You have been detected.</grimfail>
+	<critfail>You succeed in entering the trance but remain in a death like state for longer than you intended.</critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
@@ -47,18 +50,16 @@
     <abilityid>flesh_golem</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <grimfail></grimfail>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
-      <!-- <indifferent></indifferent> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<grimfail></grimfail>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_3" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>homunculus_2</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
@@ -89,18 +90,16 @@
     <abilityid>homunculus</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess>FIXME</critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_3" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>wyrdscience_2</prereqabilityrank>
     <spline><p x="0" y="60"/></spline>
@@ -167,18 +166,16 @@
     <abilityid>wyrd_rat</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>15</dc>
+      <dc><dc15/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
@@ -203,18 +200,16 @@
     <abilityid>splice_flesh</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
@@ -233,18 +228,17 @@
     <abilityid>meld_flesh</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>13</dc>
+      <dc><dc13/></dc>
+      <mastery>
+	<any-success></any-success>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>splice_flesh_2</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
@@ -278,18 +272,17 @@
     <abilityid>inner_eye</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>13</dc>
+      <dc><dc13/></dc>
+      <mastery>
+	<any-success>An inner-eye is grafted to the recipient.</any-success>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>splice_flesh_2</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
@@ -299,7 +292,9 @@
 	subject.  Maximum one per subject.  No character in their right mind
 	will voluntarily allow themselves to be subject to this surgery, though
 	for the purposes of this ability the plague doctor is not considered to
-	be in their right mind.  <!-- Each time the character increases the level of -->
+	be in their right mind.  The surgery is performed in such a way that the
+	eye when closed is hidden.
+	<!-- Each time the character increases the level of -->
 	<!-- this ability they can add extra abilities to their wyrd-limb. -->
       </p>
 
@@ -315,18 +310,19 @@
     <abilityid>reanimation</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_3</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <precondition>The caster requires a corpse to reanimate.</precondition>
+      <effect>The corpse can be given simple instructions by its reanimator, such as attack, or carry this</effect>
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>Taget is reanimated.</any-success>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_3" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>wyrdscience_3</prereqabilityrank>
     <spline><p x="90" y="120"/></spline>
@@ -347,18 +343,17 @@
     <abilityid>revivify</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults> 
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>Target is revivified</any-success>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>splice_flesh_2</prereqabilityrank>
     <spline><p x="-30" y="60"/></spline>
@@ -378,18 +373,19 @@
     <abilityid>wyrd_hand</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>wyrd_science_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <indifferent></indifferent> -->
-      <dc>15</dc>
+      <precondition>Must have a severed hand.  It doesn't have to be fresh.</precondition>
+      <dc><dc13/></dc>
+      <mastery>
+	<any-success>Animated hand is created.</any-success>
+	<critsuccess></critsuccess>
+	<success></success>
+	<critfail>The animated hand is created.  But it has a mind of its own.</critfail>
+      </mastery>	
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>wyrdscience_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
@@ -406,9 +402,14 @@
     <abilityid>wyrdscience</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
-      <keywords><lore/><wyrdscience/></keywords>
+      <!-- <defaults>lore_defaults</defaults> -->
+      <xdef fname="lore_defaults" elem_name="actiontype"/>      
+      <xdef fname="lore_defaults" elem_name="range"/>      
+      <keywords><lore/></keywords> 
+      <xdef fname="lore_defaults" elem_name="dc"/>      
+      <xdef fname="lore_defaults" elem_name="mastery"/>      
+      <xdef fname="lore_defaults" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <spline><p x="0" y="0"/></spline>

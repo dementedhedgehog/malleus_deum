@@ -9,7 +9,10 @@ import sys
 from os.path import abspath, join, dirname
 import codecs
 import lxml
+from lxml.isoschematron import Schematron
 import re
+from functools import lru_cache
+from copy import deepcopy
 
 # third party
 from lxml import etree
@@ -29,6 +32,7 @@ resources_dir = join(root_dir, "resources")
 char_sheet_dir = join(resources_dir, "character_sheets")
 archetypes_dir = join(root_dir, "archetypes")
 abilities_dir = join(root_dir, "abilities")
+default_abilities_dir = join(abilities_dir, "defaults")
 encounters_dir = join(root_dir, "encounters")
 modules_dir = join(root_dir, "modules")
 styles_dir = join(root_dir, "styles").replace("\\", "/")
@@ -37,8 +41,8 @@ third_party_dir = join(src_dir, "third_party")
 ability_groups_dir = join(root_dir, "abilities")
 
 
-# load the xml schema
-def load_schema(schema_fname):
+def load_xsd_schema():
+    schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
     schema = etree.parse(schema_fname)
     try:
         xml_schema = etree.XMLSchema(schema)
@@ -52,8 +56,15 @@ def load_schema(schema_fname):
     return xml_schema
 
 
-schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
-xml_schema = load_schema(schema_fname)
+def load_schematron_validator():
+    schematron_fname = abspath(join(dirname(__file__), "rpg.schematron"))
+    schematron_doc = etree.parse(schematron_fname)
+    schematron_validator = Schematron(schematron_doc, store_report=True)
+    return schematron_validator
+
+
+xml_schema = load_xsd_schema()
+schematron_validator = load_schematron_validator()
 
 
 _ability_tokenizer = re.compile(
@@ -61,10 +72,10 @@ _ability_tokenizer = re.compile(
     # split on an ability or ability_id reference.
     "(?:"
     "✱✱?"                            # magic prefix characters
-    "(?:[a-zA-Z]+\.)?"                # optional ability group
+    r"(?:[a-zA-Z]+\.)?"              # optional ability group
     "(?:[a-zA-Z_]*[a-zA-Z])"         # ability name
-    "(?:\.[a-zA-Z]+)?"               # ability subability (for specializations)
-    "(?:\[[a-zA-Z_0-9\-\?/ ]+\])?"   # optional specialization
+    r"(?:\.[a-zA-Z]+)?"              # ability subability (for specializations)
+    r"(?:\[[a-zA-Z_0-9\-\?/ ]+\])?"  # optional specialization
     "(?:_[0-9]+)?"                   # optional rank
     ")"
     # or a newline
@@ -113,20 +124,135 @@ def normalize_ws(text):
     return leading_ws + " ".join(text.split()) + trailing_ws
 
 
+@lru_cache(maxsize=256)
+def _get_defaults_tree(fname):
+    """
+    Method to get the defaults xml files and cache them because
+    we don't want to do it over and over again when we don't need to.
+
+    """
+    if not fname.endswith(".xml"):
+        fname += ".xml"    
+    full_fname = join(default_abilities_dir, fname)
+    defaults_tree = etree.parse(full_fname)
+    return defaults_tree
+
+
+def _replace_xdefs(tree, source_fname):
+    """
+    Custom method that does kind of what xinclude is supposed to do.
+    (XInclude looks like it's died at the spec level - in its current
+    form it's semi-useless).    
+
+    """
+    for xdef_elem in tree.iter("xdef"):
+        fname = xdef_elem.get("fname", None)
+        if fname is None:
+            raise Exception("Error can't replace <xdef/> element.  "
+                            "No 'fname' attribute specified in "
+                            f"file {source_fname} on line {xdef_elem.sourceline}")
+
+        elem_name = xdef_elem.get("elem_name", None)
+        if elem_name is None:
+            raise Exception("Error can't replace <xdef/> element. "
+                            "No elem_name attribute specified in "
+                            f"file {source_fname} on line {xdef_elem.sourceline}")
+
+        # get the default element tree from the defaults file 
+        defaults_tree = _get_defaults_tree(fname)        
+        default_element = defaults_tree.find(f".//{elem_name}")
+
+        # You can't substitute a default element in if that default element
+        # does not exist.
+        if default_element is None:
+            raise Exception(f"Default element '{elem_name}' is not specified in "
+                            f"defaults file {fname}.  However it is referenced in "
+                            f"file {source_fname} on line {xdef_elem.sourceline}")
+
+        # Create a copy of the defaul element.
+        # (Deepcopy doesn't copy the sourceline value, strangely.  The
+        # sourceline value will be the line number in the pre-replacement xml).
+        new_element = deepcopy(default_element)        
+        new_element.sourceline = xdef_elem.sourceline
+
+        # Replace the xdef element with the element copied from the defaults file.
+        xdef_elem.getparent().replace(xdef_elem, new_element)
+    return
+
+def perform_schematron_validation(fname, tree):
+    validation_result = schematron_validator.validate(tree)
+    if not validation_result:
+        #print("Schematron is not valid! ")
+        report = schematron_validator.validation_report
+        #xml_str = etree.tostring(report, pretty_print=True)        
+        #print(f"Report:\n{xml_str.decode()}\n\n")        
+        
+        for child in report.getiterator():
+            tag = str(child.tag).replace("{http://purl.oclc.org/dsdl/svrl}", "")
+
+            match (child.__class__, tag):
+                case (lxml.etree._Comment, _):
+                    pass                
+                case (_, "schematron-output"):
+                    pass
+                case (_, "active-pattern"):
+                    pass
+                case (_, "fired-rule"):
+                    pass
+                case (_, "text"):
+                    pass 
+                case (_, "failed-assert"):
+                    test = child.get("test")
+                    source_xpath = child.get("location")
+                    elements = tree.xpath(source_xpath)
+                    if len(elements) != 1:
+                        raise Exception("Unknown or missing elements")
+                    element = elements[0]
+                    print(f"Schematron error '{test}' at "
+                          f"{element.tag} in {fname}:{element.sourceline}")
+                    print(get_error_context(fname, element.sourceline))
+
+                # found something that may or may not be interesting.
+                # needs further investigation so we can decide to log or ignore it.
+                case _:
+                    raise Exception(f"UNKNOWN CHILD {child.__class__} {tag}")
+                    
+        raise Exception(f"Schematron error!!!")
+    return
+
+
 def parse_xml(fname):    
     try:
-        result = etree.parse(fname)
+        # Parse the xml
+        tree = etree.parse(fname)
+
+        # Do some #include like substitution.
+        # XInclude is an abortion.  We'll roll our own called <xdef>.
+        _replace_xdefs(tree, fname)
+        
+        # Do some extra validation
+        perform_schematron_validation(fname, tree)
+    
     except lxml.etree.XMLSyntaxError as lxml_err:
         lxml_err.msg += " happens in file: %s" % fname
         line, column = lxml_err.position
         print(lxml_err)
         print(get_error_context(fname, line))        
-        result = None
+        tree = None
 
     except Exception as err:
         print(f"Problem parsing file: {fname}")
         raise
-    return result
+    return tree
+
+
+def xml_tree_to_str(tree):
+    """
+    Pretty print xml tree for debugging.
+
+    """
+    xml_str =  etree.tostring(tree, pretty_print=True)
+    return xml_str.decode()
 
 
 def validate_xml(doc):
@@ -173,17 +299,25 @@ def contents_to_list(node):
     Given <node><a/><b/><c/></node> returns a list ["a", "b", "c"]
 
     """
-    return [etree.tostring(child, encoding="unicode").strip()[1:-2] # remove < and />
-            for child in node.iterchildren()]
+    #return [etree.tostring(child, encoding="unicode").strip()[1:-2]
+    #        for child in node.iterchildren()]
+    return [child.tag for child in node.iterchildren()]
 
 
-#def contents_to_comma_separated_list(node):
 def contents_to_comma_separated_str(node):
-    """
+    r"""
     Given <node><a/><b/><c/></node> returns a string a, b, c..
 
     """
     return (node.text or "") + ", ".join(contents_to_list(node))
+
+def get_child_name(node):
+    r"""
+    Given <node><x/></node> returns "x".
+
+    """
+    children = list(node)
+    return None if len(children) != 1 else strip_xml(children[0].tag)
 
 
 def attrib_is_true(xml_node, attribute):
@@ -294,9 +428,9 @@ def get_text_for_child(element, child_name):
 _ability_regex = re.compile(
     "✱"
     "([a-zA-Z]+)" # ability family
-    "\."
-    "([a-zA-Z_0-9\-\?]+)" # ability name
-    "(?:\[([a-zA-Z_0-9\-\?]*)\])?" # optional template?
+    r"\."
+    r"([a-zA-Z_0-9\-\?]+)" # ability name
+    r"(?:\[([a-zA-Z_0-9\-\?]*)\])?" # optional template?
     "(?:_([0-9]+))" # optional level
 )
 

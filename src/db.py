@@ -27,13 +27,11 @@ ability_ref_parser = re.compile(
     # ability prefix (one or two "special stars")
     r"✱"
     r"(?P<is_unranked_ability_id>✱?)"
-    # optional ability group
-    #"((?P<ability_group>[a-zA-Z]+)\.)?"
     # mandatory ability name (can't end in _)
     r"(?P<ability_name>[a-zA-Z_]*[a-zA-Z])"
-    # optional alternate way to write specialization
+    # optional alternate way to write specialization, ✱foo.specialization_here
     r"(\.(?P<ability_specialization2>[a-zA-Z]+))?"
-    # optional specialization
+    # optional specialization ✱foo[specialization here]
     r"(\[(?P<ability_specialization>[a-zA-Z_0-9\-\?/ ]+)\])?"
     # optional rank
     r"(_(?P<rank>[0-9]+))?" 

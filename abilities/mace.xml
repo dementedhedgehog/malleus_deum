@@ -18,30 +18,28 @@
     <abilitytitle>Mace Smash</abilitytitle>
     <abilityid>mace_smash</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>mace_defaults</defaults>
-      <name>Check</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>Weapon+Strength</dmg>       -->
-    </abilitycheck>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
+      <range><melee/></range>
+      <precondition>Fighting in melee against an opponent holding a weapon or shield</precondition>
+      <dc><opponents-defend/></dc>      
+      <dmg>Weapon+Strength|Willpower</dmg>      
+      <mastery>
+	<critsuccess></critsuccess>
+	<righteoussuccess>Make a weapon or shield break test against your opponents weapon.</righteoussuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>
+    </abilityattack>
     <prereqabilityrank>mace_strike_2</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a mace or similar weapon can attempt
-	to disarm an opponent or remove their shield.
-      </p>
-      <p>
-	If the attack is successful an opposed Strength check is made.
-	If the opponent	fails they drop their weapon or shield.
+	to destroy an opponents weapon or shield. If the attack is
+	successful an opposed Strength check is made. If the opponent
+	fails they drop their weapon or shield.
       </p>	
     </abilitydescription>
   </ability>
@@ -51,21 +49,21 @@
     <abilitytitle>Mace Strike</abilitytitle>
     <abilityid>mace_strike</abilityid>
     <abilityranks untrained="0" from="1" to="3"/>
-    <abilitycheck>
-      <defaults>mace_defaults</defaults>
-      <name>Check</name>
-      <!-- <defaults>melee</defaults> -->
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><crushing/></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>Weapon+Strength</dmg> -->
-    </abilitycheck>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
+      <range><melee/></range>
+      <keywords><attack/></keywords>
+      <dc><opponents-defend/></dc>
+      <dmg>Weapon+Strength|Willpower</dmg>
+      <!-- <mastery> -->
+      <!-- 	<righteoussuccess></righteoussuccess> -->
+      <!-- 	<critsuccess>FIXME</critsuccess> -->
+      <!-- 	<critfail></critfail> -->
+      <!-- </mastery>       -->
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>
+    </abilityattack>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -80,44 +78,26 @@
     <abilitytitle>Mace Wild Swing</abilitytitle>
     <abilityid>wild_swing</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>mace_defaults</defaults>
-      <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap5/></actiontype>
+      <range><melee/></range>
       <!-- <keywords><crushing/></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>Target's Willpower</dc>
-      <dmg>Weapon</dmg>
-    </abilitycheck>
-    <abilitycheck>
-      <defaults>mace_defaults</defaults>
-      <name>Counter Attack</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><crushing/></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>Weapon</dmg>
-    </abilitycheck>
+      <dc><opponents-willpower/></dc>
+      <dmg>Weapon+Rank+Strength+Willpower</dmg>
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>
+    </abilityattack>
     <prereqabilityrank>mace_strike_1</prereqabilityrank>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character swings the mace wildly keeping their opponents at bay.
-	When attacked the character makes a free willpower check against the first
-	opponent that attacks them in a round.	If successful the opponent loses
-	their attack, being unable to approach.  If the willpower check is not successful
-	the character makes a free attack against the opponents defence before the
-	opponents attack.
+	When attacked the character makes a free willpower check against the
+	first opponent that attacks them in a round. If successful the opponent
+	loses their attack, being unable to approach.  If the willpower check
+	is not successful the character makes a free attack against the
+	opponents defence before the opponents attack.
       </p>
     </abilitydescription>
   </ability>

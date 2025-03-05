@@ -1,8 +1,199 @@
 
 
+
+FIXME:
+    add a abilitycheckreference .. e.g. see standard lore check.  See standard craft check?  See standard Repair check?
+
+
+FIXME:
+    Move the miscast roll to fate.. that way we avoid the problems of having duplicate critfail fields everywhere.
+
+
+PROBLEM
+   Should reactions be their own action types or should they be attacks?
+   problem; some reactions are not attacks
+   RESOLUTION: keep them as attacks
+
+X PROBLEM
+    We can't have shared mastery for melee weapons if weapons do different damage.
+    Unless we have a dmg field?
+    - if we have per weapon mastery it increases complexity
+    - if we have a damage field then we can't customize the damage?  (maybe we shouldn't)
+    - if we have a damage field should it be for the ability group (problem then it doesn't appear on the ability?)
+    RESOLUTION: GO WITH A PER ABILITY DAMAGE.
+    
+
+
+PROBLEM:
+    DOING PVP.
+    i) Who rolls opposed-checker or saver (attacker or defender)?
+    if attacker rolls then high is good for the attacker AND for the defender (e.g. a crit on mastery sword vs shield means both 3xDamage and Block->no damage)!
+    Inverse: 21 - roll? so a 1->20 and a 20->1
+
+    PC rolls -> Check
+    PC vs NPC -> Check
+    NPC vs NPC -> GM Fiat.
+    PC vs PC -> Defender rolls and inverts the result for the attacker.  OR the attacker rolls their own fate.!!!!
+
+
+PROBLEM:
+     THE MELEE FATE DEFAULTS DONT MAKE SENSE FOR DEFEND AND SAVES .. the current ones provide REACTIONS AND FREE ACTIONS out of turn.
+     RESOLUTION: ADDED A MELEE REACTION FATE DEFAULTS
+
+QUESTION:
+   Feats of Strength.. save or a check?
+
+   if we go with ABILITY CHECK then it's simpler.
+      - no agility or speed saves to avoid traps etc.  Use Dodge instead?
+      - no willpower check.. used Mettle.
+      - no endurance save for poison???????
+      - is a Str check a Feat of Strength check?
+      
+   If we go with ABILITY SAVE then the mastery result is more context dependent?
+
+
+   If we go with OTHER CHECKS - USE Mettle-Save, Dodge-Save etc
+      - THEN WHAT ARE THE ABILITIES FOR?
+      - HOW DO YOU DOdGE if you have no reactions left?  Should you be able to?
+
+   * WHAT'S THE DIFFERENCE BETWEEN A CHECK AND A SAVE? - Saves have no check context.
+       - Do we need a Mettle Check (it's just some other check with a pool cost... or is it a Willpower check with a pool cost? what's the fate for a normal willpower save?)
+       - Do we need a Magic Check? (or is it a Save?)
+         Should these be saves?
+
+
+     CHECK HAS COMPLETE CONTEXT?
+     OPPOSED CHECK HAS NEAR COMPLETE CONTEXT?  ARE THERE ANY TIMES WHEN WE COULD USE MULTIPLE SAVES?
+     DO SAVES NEED REACTIONS?
+     MAGIC CHECK --> counter spell?  Magic Save? Do we need one?
+     	   FOR THESE... COUNTER SPELL (You need the requisite lore to make the counter, make it a reaction, put it in abjuration),
+	   MAGIC SAVE GOES AWAY... replace with willpower or mettle or dodge etc?
+   
+
+QUESTION
+   Aspects... we have 4 levers to pull.  (mettle) Point Pool, DC,  Rank
+   We have complications...
+       persistent (missing limb),
+       min and max
+       
+
+FIXME: can I do xdef using xslt??
+
+
+FIXME: allow multiple actiontypes... <non-combat><rushed-ap2> for lore checks and the like
+
+
+FIXME: Need a "check" for things like Fly or Fleet .. e.g. Something where they autosucceed with no precondition?
+       (We could add a catch check for Fly, or a Flying evade)
+
+FIXME:
+  - change all the dcs from odds to evens?  THat way dc+rank means +1 -> 11 +5->15 etc
+
+
+FIXME:
+   - make conditions like poisoned, petrified, slowed etc hazards with saves attached?
+
+FIXME:
+   - what happens for area attacks?  who rolls what?
+
+FIXME:
+   Monster abilities...
+   - gm checks (gm rolls) for npc doing their own thing
+   - opposed checks for npc vs pc
+   - opposed checks for npc vs multiple pcs (save checks 
+   - counters .. (like counter spells.. can attempt a reaction to disrupt a spell (e,g, summon demon).. a bit like a save).   
+
+FIXME:
+   WHEN I FIX THIS (BY PARAMATERIZING THE DC)  DROP THE RANK.  JUST HAVE EASY=9?, HARD=13?
+    etc save on the maths).
+
+    There's a problem with these (maybe??) where we're trying to control BOTH the DC and the damage
+    with the Rank.  Leads to multiple ability definitions Horns Lesser, Horns, Horns Greater.
+    Can we just specify the DC as part of the specification... also would be specify the damage??
+    so we didn't have to do the addition.   SO PARAMATERIZE HORNS WITH A DAMAGE AND LEAVE THE RANK.
+    THEN DROP THE LESSER AND GREATER.
+
+   
+
+FIXME:
+    REMOVE ANYTHING BUT SKILL AND FATE FROM THE DEFAULTS.
+    SEPARATE INTO FATE DEFAULTS AND SKILL DEFAULTS
+    MAKE the fate and skill elements.
+
+
+TASK:
+    Mors.. goddess of death.  pallida Mors - Pale Death.  Feminine.  Theurgic -> Mithratic, Necromantic->Mortis?
+    The pale lady is covetous of what righteously belongs to her, and their trespass will be expiated.
+    Handmaiden of Mors?
+
+TASK:
+     Give certain abilities an attribute that they add to their skill rolls (e.g. X+Rank+Skill).
+     This will make some get crits more frequently.  (We could make all missile attacks like this to
+     make up for them not getting pluses to damage).  Also could trade off APs for accuracy.
+
+
+TASK
+    ABILITY.. on any damned melee attack result against the character they get a free-reaction attack back
+    (good flavour for serpent men biting maybe).
+
+XML
+NAMESPACES.
+WHITESPACE?
+
+   INCLUDE??  we want to include before we verify.  We want to include children of an xml element.
+              PROBLEM.. the defaults aren't in order so #including them will cause order problems.
+              SOLUTION i) Make defaults just for Skills and Fate and not contain anything else,
+	      ii) include them with Jinja.  Throw away all our defaults code.
+
+
+TASK
+	Name?  should it be an enum or a string?
+	Should be a string.  
+	IN XSD I SHOULD BREAK UP THE CHECKS BASED ON check type ... check, attack, opposed and
+	catch inconsistencies at that level.  (Then add a check as a choice of all the above).
+	Make check type a field with a default value.
+
+TASK:
+ Add notes to index entries so peeps don't have to look up common stuff beyond the index
+
+
+TASK:
+	remove no-check keyword.
+
+TASK:
+        change the dc into an enum
+
+FIXME:
+	  There's a problem with these (maybe??) where we're trying to control the DC and the damage
+	  with the Rank.  Leads to multiple ability definitions Horns Lesser, Horns, Horns Greater.
+	  Can we just specify the DC as part of the specification... also would be specify the damage??
+	  so we didn't have to do the addition.
+
+FIXME:
+     Halflings have two reactions?
+     Dwarves have low light vision, dungeoneering, natural sprinters, lots of mettle
+
+level progression...
+  rank up all abilities.  If you would exceed the max you get a new one of the same family?
+
+
+POLEARM FEND?
+  CHECK TRIGGERING ANOTHER EFFECT?
+
+
+range self vs n/a?
+
+
+MOVE VALID DCS into xsd
+
+REPLACE effect with any-success? add an any-fail?
+
+
+Encumberance..
+ Only for cumbersome things.  You can carry 5 + Str modifier?
+ e.g. armour is 3-5, most weapons and shield are 2, 
+
 Make languages a lore ability.  Make languages a specialization
-patron .. lilith
-patron .. fey queens?
 
 
 Checks vs Saves.  d20 vs d20/d20.
@@ -30,6 +221,7 @@ DEFENCE SAVE
 
 
 
+
 **** WHEN CHECKING WHO SPECIFIES THE DC, BOONS AND CRIT BEHAVIOUR? ***
 
 
@@ -38,6 +230,9 @@ Simple Check.  The Check specifices everything.
 Check with Opposed Save.
  - e.g. Sword Strike vs Shield Block
  
+
+
+
 
 
 
@@ -51,7 +246,12 @@ What about monster actions that have nothing to do with a particular party membe
 output [lowest 1 of 3d20] named "double disadvantage"
 output [lowest 1 of 2d20] named "disadvantage"
 output [lowest 1 of 1d20] named "normal d20"
-
+- should we have more than three action points?  OPTIONS...
+   4 AP - Attacks at 2-4AP and move at 2AP? 1AP = minor?
+   5 AP - Minor 1AP, Move 2AP (Step 1AP), Attacks 2-5AP
+   6 AP - Minor 1AP, Move 2AP, Attacks 2-6AP (potentially 3x fast attacks, AP accounting getting complicated?)
+   7 AP (has the advantage that it maps onto Dnd easily -> 4 major/2 Move/1 Minor)
+  
 
 
 CURRENT QUESTION..
@@ -91,16 +291,18 @@ effect, righteous-effect?  happens on that result or higher?
 fail-effect, grim-fail-effect happens on that result or lower?
 
 
+ Replace check with saving throw.
+
  An npc attacks a pc with a magic missile.
  The pc uses shield block.
  Whose crit and boon bane and crits should apply? the attackers Magic Missile ability or the pcs Shield Block
+ - BOON AND BANE IS OPTIONAL FOR BOTH C
  - USE PCs boon bane, attackers crits. (because if the pcs use magical defences they have to pay for it).
  - USE NPCs crit values?
 
+terrain types.. difficult?  swimming?
 
-
-
-Sprint.. need a definition for natural sprinters... (double move in an encounter)
+Sprint.. need a definition for natural sprinters... (double move in an encounter) also need a step.
 
 Theurgic Oath.. Aspect ..
 and oaths in general?

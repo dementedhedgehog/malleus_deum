@@ -4,12 +4,12 @@
     <abilitygrouptitle>Archery Proficiency</abilitygrouptitle>
     <abilitygroupid><archery/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
-    <keywords></keywords>
+    <keywords><missile/></keywords>
     <abilitygroupdescription>
       <p>
-	These abilities represent training with the use of the bow and arrow.  Initial
-	training is with a short bow.  Use of the long bow requires a fair amount of
-	training.
+	These abilities represent training with the use of the bow and
+	arrow.  Initial training is with a short bow.  Use of the long
+	bow requires a fair amount of training.
       </p>
 
       <p>
@@ -25,19 +25,22 @@
     <abilitytitle>Archery Shoot</abilitytitle>
     <abilityid>archery_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <abilitycheck>  
-      <defaults>archery_defaults</defaults>
-      <name>Shoot</name>
-      <actiontype><standard/></actiontype>
-      <keywords><basic-attack/></keywords>
+    <abilityattack>  
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
+      <range><ranged-long/></range>
+      <keywords><archery/><attack/><basic-attack/></keywords>
+      <dc><opponents-defend/></dc>
       <dmg>Weapon</dmg>
-    </abilitycheck>
+      <xdef fname="archery_defaults" elem_name="mastery"/>            
+      <xdef fname="archery_defaults" elem_name="fate"/>            
+    </abilityattack>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The character has trained in the use of the long bow.
-        Characters may use Archery to shoot arrows from short bows during combat
-	doing weapon dmg when they hit.
+        Characters may use Archery to shoot arrows from short
+	bows during combat doing weapon dmg when they hit.
       </p>
     </abilitydescription>
   </ability>
@@ -47,26 +50,24 @@
     <abilitytitle>Dead Eye</abilitytitle>
     <abilityid>dead_eye</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck>
-      <defaults>archery_defaults</defaults>
-      <name>Aimed Shot</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess>3×Dmg</critsuccess>
-      <righteoussuccess>2×Dmg</righteoussuccess>
-      <critfail>Roll on Misfire Table</critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords>     -->
-      <dmg>Weapon+Rank</dmg>
-    </abilitycheck>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap6/></actiontype>
+      <range><ranged-long/></range>
+      <keywords><archery/><attack/><missile/></keywords>
+      <effect>Attack made with Advantage.</effect>
+      <dc><opponents-defend/></dc>
+      <dmg>Weapon</dmg>
+      <xdef fname="archery_defaults" elem_name="mastery"/>            
+      <xdef fname="archery_defaults" elem_name="fate"/>            
+    </abilityattack>
     <prereqabilityrank>archery_shoot_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character has spent many hours working on improving the accuracy of
-	their shots.  Players can choose to call a shot which gives them a large
-	bonus to hit.
+	The character has spent many hours working on improving the
+	accuracy of their shots.  Players can choose to call a shot
+	which gives them a large bonus to hit.
       </p>
     </abilitydescription>
   </ability>
@@ -76,63 +77,57 @@
     <abilitytitle>Fast Shot</abilitytitle>
     <abilityid>fast_shot</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitycheck>
-      <defaults>archery_defaults</defaults>
-      <name>Fast Shot</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <bane></bane>
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap2/></actiontype>
+      <range><ranged-long/></range>
+      <keywords><archery/><attack/><missile/></keywords>      
+      <effect>Attack made at Disadvantage.</effect>
+      <dc><opponents-defend/></dc>
       <dmg>Weapon</dmg>
-    </abilitycheck>
+      <xdef fname="archery_defaults" elem_name="mastery"/>            
+      <xdef fname="archery_defaults" elem_name="fate"/>                  
+    </abilityattack>
     <prereqabilityrank>archery_shoot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-	Holding a pair of arrows in his hand the character
-	is able to shoot them both in quick succession.
-	Also note that the speed of these shots occurs because the character is
-	holding the arrows in his firing hand before the combat, so this ability
-	can only be used in the first round of combat and cannot be used when the
-	character is surprised.
+	The character takes a quick, not well-aimed shot. 
       </p>
     </abilitydescription>
   </ability>
- 
+  
 
   
   <ability>
     <abilitytitle>Rain of Arrows</abilitytitle>
     <abilityid>rain_of_arrows</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>archery_defaults</defaults>
-      <name>Rain of Arrows</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords>     -->
-      <keywords><basic-attack/></keywords>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap5/></actiontype>
+      <range><ranged-long/></range>
+      <keywords><archery/><attack/><missile/></keywords>      
+      <precondition>Can only be performed on the first action of the first round
+      of combat for this character, and the character is prepared.</precondition>
+      <effect>3+Rank Attacks made at Disadvantage.</effect>
+      <dc><opponents-defend/></dc>
       <dmg>Weapon</dmg>
-    </abilitycheck>
+      <xdef fname="archery_defaults" elem_name="mastery"/>            
+      <xdef fname="archery_defaults" elem_name="fate"/>            
+    </abilityattack>    
     <prereqabilityrank>fast_shot_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-	This ability allows the character to fire three arrows as one action.
-	The speed of these shots occurs because the character is holding the arrows
-	in his firing hand before the combat begins, so this ability can only be used in
-	the first round of combat and cannot be used when the character is surprised
-	or otherwise unprepared.  The character can fire a number of arrows equal to
-	their rank in this ability.  The character rolls to hit for each arrow.
+	This ability allows the character to fire four arrows in quick
+	succession.  The speed of these shots occurs because the character has
+	prepared himself.  He is holding the arrows in his firing hand before
+	the combat begins or has them readily at hand,
+	so this ability can only be used in the first round of combat and
+	cannot be used when the character is surprised or otherwise
+	unprepared.  The character rolls to hit for each
+	arrow.
       </p>
     </abilitydescription>
   </ability>

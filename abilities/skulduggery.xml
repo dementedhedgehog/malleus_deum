@@ -19,20 +19,14 @@
     <abilitytitle>Cloak Fighting</abilitytitle>
     <abilityid>cloak_fighting</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
-    <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
-      <name>Check</name>
+    <abilitydefend>
+      <name>Defend</name>
       <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
       <keywords></keywords>
-      <dc>Target's Attack</dc>
-      <effect>No damage</effect>
-    </abilitycheck>
+      <dc><opponents-attack/></dc>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>                  
+xs    </abilitydefend>
     <spline><p x="90" y="90"/></spline> 
     <abilitydescription>
       <p>
@@ -55,17 +49,20 @@
     <abilityid>concealment</abilityid>    
     <abilityranks untrained="0" from="1" to="9"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><opponents-perception/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>Target's Perception</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="0" y="90"/></spline> 
     <abilitydescription>
@@ -100,17 +97,20 @@
     <abilityid>escapist</abilityid>    
     <abilityranks untrained="-3" from="1" to="2"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><dc11/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>11</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
@@ -129,17 +129,20 @@
     <abilityid>cryptography</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><dc13/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>13</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
@@ -156,17 +159,20 @@
     <abilityid>disguise</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><opponents-perception/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>Target's Perception</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
@@ -184,17 +190,20 @@
     <abilityid>pick_locks</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><dc13/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>13</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="90" y="60"/></spline> 
     <abilitydescription>
@@ -211,17 +220,20 @@
     <abilityid>back_stab</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><opponents-perception/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>Target's Perception</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
@@ -253,17 +265,20 @@
     <abilityid>ropecraft</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><dc13/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>13</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
@@ -281,17 +296,20 @@
     <abilityid>search</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><dc13/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>13</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
@@ -309,17 +327,21 @@
     <abilityid>sleight_of_hand</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
+      <!-- <defaults>skulduggery_defaults</defaults> -->
       <actiontype><noncombat/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><opponents-perception/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>Target's Perception</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="-90" y="90"/></spline> 
     <abilitydescription>
@@ -336,17 +358,20 @@
     <abilityid>stealth</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
       <range><na/></range>
       <keywords><easy/></keywords>
-      <dc>Target's Perception</dc>      
+      <dc><opponents-perception/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <fate>
+	<boon></boon>
+	<indifferent></indifferent>
+	<bane></bane>
+      </fate>
     </abilitycheck>
     <spline></spline>
     <specializations><specialization>Urban</specialization><specialization>Wilds</specialization></specializations>
@@ -369,17 +394,20 @@
     <abilityid>trap_work</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
       <range><na/></range>
       <keywords></keywords>
-      <dc>Target's Perception</dc>
+      <dc><opponents-perception/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <fate>
+	<boon></boon>
+	<indifferent></indifferent>
+	<bane></bane>
+      </fate>
     </abilitycheck>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
@@ -397,17 +425,20 @@
     <abilityid>surefeet</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
-      <defaults>skulduggery_defaults</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
       <range><na/></range>
       <keywords></keywords>
-      <dc>Target's Perception</dc>
+      <dc><opponents-perception/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <fate>
+	<boon></boon>
+	<indifferent></indifferent>
+	<bane></bane>
+      </fate>
     </abilitycheck>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>

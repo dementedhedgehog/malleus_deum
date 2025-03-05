@@ -18,35 +18,49 @@
     <abilitytitle>Gun Maintenance</abilitytitle>
     <abilityid>gun_maintenance</abilityid>
     <abilityranks untrained="-3" from="0" to="3"/>
-    <abilitycheck>
+    <abilitytrigger>
       <name>Reload</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><self/></range>
+      <actiontype><ap4/></actiontype>
+      <range><touch/></range>
+      <precondition>Holding an empty crossbow.</precondition>
+      <effect>The crossbow is loaded.</effect>
+    </abilitytrigger>
+    <abilitycheck>
+      <name>Fast Reload</name>
+      <actiontype><ap2/></actiontype>
+      <range><touch/></range>
       <keywords><black-powder/></keywords>
-      <dc>9</dc>
-      <dmg></dmg>
-      <effect>Reload the gun during combat.  If successful the gun is reloaded during
-      this minor action.  A gun can be reloaded without a check using a Standard Action.
-      </effect>
+      <dc><dc9/></dc>
+      <mastery>
+	<any-success>Reload the gun during combat.  If successful the gun is reloaded during
+	this minor action.  A gun can be reloaded without a check using a Standard Action.
+	</any-success>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
+      </mastery>
+      <fate> 
+	<!-- <boon></boon> -->
+	<indifferent>FIXME</indifferent>
+	<!-- <bane></bane> -->
+      </fate>
     </abilitycheck>
     <abilitycheck>
       <name>Repair</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
+      <range><touch/></range>
       <keywords></keywords>
-      <dc>13</dc>
-      <dmg></dmg>
-      <effect>Make minor repairs and perform maintenance on the gun</effect>
+      <dc><dc13/></dc>
+      <!-- <dmg></dmg> -->
+      <mastery>
+	<any-success>Make minor repairs and perform maintenance on the gun</any-success>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
+      </mastery>
+      <fate>
+	<!-- <boon></boon> -->
+	<indifferent>FIXME</indifferent>
+	<!-- <bane></bane> -->
+      </fate>
     </abilitycheck>
     <prereqabilityrank>gun_shoot_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -70,12 +84,19 @@
     <abilityid>sharp_shooter</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>gun_defaults</defaults>
-      <name>Called Shot</name>
-      <actiontype><full-turn/></actiontype>      <!-- Slower action type -->
-      <critsuccess>Deal 4×Damage</critsuccess>   <!-- Better damage -->
-      <righteoussuccess>Deal 3×Damage</righteoussuccess>
-      <success>2×Deal Damage</success>
+      <name>Attack</name>
+      <actiontype><ap7/></actiontype>      <!-- Slower action type -->
+      <xdef fname="gun_defaults" elem_name="range"/>      
+      <xdef fname="gun_defaults" elem_name="dc"/>
+      <mastery>
+	<any-success>Weapon+Rank</any-success>
+	<critsuccess>Deal 4×Damage</critsuccess>
+	<righteoussuccess>Deal 3×Damage</righteoussuccess>
+	<success>Deal Damage</success>
+	<any-fail>Miss</any-fail>
+	<critfail>Roll on the ranged consequence table</critfail>
+      </mastery>      
+      <xdef fname="gun_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>gun_shoot_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
@@ -94,8 +115,19 @@
     <abilityid>gun_shoot</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
-      <defaults>gun_defaults</defaults>
-      <name>Shoot</name>
+      <name>Attack</name>
+      <actiontype><ap3/></actiontype>
+      <xdef fname="gun_defaults" elem_name="range"/>      
+      <xdef fname="gun_defaults" elem_name="dc"/>      
+      <mastery>
+	<any-success>Weapon+Rank</any-success>
+	<critsuccess>Deal 3×Damage</critsuccess>
+	<righteoussuccess>Deal 2×Damage</righteoussuccess>
+	<success>Deal Damage</success>
+	<any-fail>Miss</any-fail>
+	<critfail>Roll on the ranged consequence table</critfail>
+      </mastery>
+      <xdef fname="gun_defaults" elem_name="fate"/>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>

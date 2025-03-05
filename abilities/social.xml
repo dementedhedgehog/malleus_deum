@@ -21,17 +21,26 @@
     <abilityid>contacts</abilityid>    
     <abilityranks untrained="-6" from="1" to="6"/>
     <abilitycheck>
-      <defaults>social_defaults</defaults>
       <name>Check</name>
+      <!-- <defaults>social_defaults</defaults> -->
       <actiontype><noncombat/></actiontype>
+      <range><self/></range>
+      <xdef fname="social_defaults" elem_name="dc"/>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
-      <range><self/></range>
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
-      <!-- <dc>11</dc> -->
+      <!-- <dc><dc11/></dc> -->
+      <mastery>
+	<any-success>.</any-success>
+	<critfail>FIXME</critfail>
+      </mastery>
+      <fate>
+	<indifferent>FIXME</indifferent>
+      </fate>      
+      
     </abilitycheck>
     <spline><p x="0" y="30"/></spline> 
     <specializations>
@@ -125,8 +134,8 @@
     <abilityid>negotiate</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>social_defaults</defaults>
       <name>Check</name>
+      <!-- <defaults>social_defaults</defaults> -->
       <actiontype><noncombat/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -135,7 +144,15 @@
       <range><ranged-short/></range>
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
-      <dc>Target's Negotiate or 11</dc>
+      <dc><opponents-negotiate-or-11/></dc>
+      <mastery>
+	<any-success>.</any-success>
+	<critfail>FIXME</critfail>
+      </mastery>
+      <fate>
+	<indifferent>FIXME</indifferent>
+      </fate>      
+      
     </abilitycheck>
     <spline><p x="-90" y="105"/></spline> 
     <specializations>
@@ -223,8 +240,8 @@
     <abilityid>etiquette</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>social_defaults</defaults>
       <name>Check</name>
+      <!-- <defaults>social_defaults</defaults> -->
       <actiontype><noncombat/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -233,7 +250,14 @@
       <range><ranged-short/></range>
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
-      <dc>Target's Etiquette or 11</dc>
+      <dc><opponents-etiquette-or-11/></dc>
+      <mastery>
+	<any-success>.</any-success>
+	<critfail>FIXME</critfail>
+      </mastery>
+      <fate>
+	<indifferent>FIXME</indifferent>
+      </fate>            
     </abilitycheck>
     <spline><p x="-90" y="105"/></spline> 
     <!-- <specializations> -->
@@ -323,8 +347,8 @@
     <abilityid>fame</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>social_defaults</defaults>
       <name>Check</name>
+      <!-- <defaults>social_defaults</defaults> -->
       <actiontype><noncombat/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -333,8 +357,15 @@
       <range><ranged-short/></range>
       <!-- <keywords></keywords>       -->
       <!-- <indifferent></indifferent> -->
-      <dc>13</dc>
-      <!-- <effect>No damage</effect> -->
+      <dc><dc13/></dc>
+      <!-- <any-success>No damage</any-success> -->
+      <mastery>
+	<any-success>.</any-success>
+	<critfail>FIXME</critfail>
+      </mastery>
+      <fate>
+	<indifferent>FIXME</indifferent>
+      </fate>      
     </abilitycheck>    
     <spline><p x="-90" y="0"/></spline>
     <abilitydescription>
@@ -386,7 +417,6 @@
     <abilityid>leadership</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>social_defaults</defaults>
       <name>Check</name>
       <actiontype><reaction/></actiontype>
       <!-- <critsuccess></critsuccess> -->
@@ -394,9 +424,17 @@
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <range><ranged-short/></range>
+      <xdef fname="social_defaults" elem_name="dc"/>
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
-      <!-- <dc>13</dc> -->
+      <!-- <dc><dc13/></dc> -->
+      <mastery>
+	<any-success>Target may reroll their Mettle Check.</any-success>
+	<critfail>FIXME</critfail>
+      </mastery>
+      <fate>
+	<indifferent>FIXME</indifferent>
+      </fate>
     </abilitycheck>
     <spline><p x="0" y="165"/></spline> 
     <abilitydescription>    

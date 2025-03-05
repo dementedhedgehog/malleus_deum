@@ -49,7 +49,8 @@
 
       <tablerow>
 	<td>11</td>
-	<td>Klazyabolous is displeased at the casters impertinance, disturbing him while eating.  The spell fails.</td>
+	<td>Klazyabolous is displeased at the casters impertinance, disturbing him while eating.
+	The spell fails.</td>
       </tablerow>
 
       <tablerow>
@@ -127,8 +128,6 @@ More flavourful to have a per patron thing?
     <abilityid>klazyabolous.invoke</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>arcana_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
       <!-- <critsuccess></critsuccess> -->
@@ -138,7 +137,8 @@ More flavourful to have a per patron thing?
       <!-- <bane></bane> -->
       <range><self/></range>
       <!-- <keywords></keywords> -->
-      <dc>11</dc>
+      <dc><dc11/></dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>
     <spline></spline>
@@ -170,18 +170,12 @@ More flavourful to have a per patron thing?
     <abilityid>klazyabolous.leap</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck> 
-      <defaults>arcana_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <cost>1</cost> -->
-      <!-- <bane></bane> -->
       <range><self/></range>
       <keywords><magicpool/></keywords>
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -198,18 +192,12 @@ More flavourful to have a per patron thing?
     <abilityid>klazyabolous.incorporal_mist</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>arcana_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <cost>1</cost> -->
-      <!-- <bane></bane> -->
       <range><self/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <dc>7</dc>
+      <keywords><magicpool/></keywords>
+      <dc><dc7/></dc>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>evocation_1</prereqabilityrank>	
     <spline></spline>

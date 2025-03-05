@@ -19,19 +19,23 @@
     <abilitytitle>Blindsight</abilitytitle>
     <abilityid>blindsight</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>special_defaults</defaults>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>13</dc> -->
-    </abilitycheck>
+    <abilitytrigger>
+      <name>Trigger</name>
+      <actiontype><free/></actiontype>
+      <range><ranged-short/></range>
+      <precondition>When making attacks against invisible creatures or when fighting in the
+      dark.</precondition>
+      <effect>Add the Blindsight Rank to the check Skill dice when making attacks.</effect>
+      <!-- <defaults>special_defaults</defaults> -->
+      <!--   <!-\- <critsuccess></critsuccess> -\-> -->
+      <!--   <!-\- <critfail></critfail> -\-> -->
+      <!--   <!-\- <boon></boon> -\-> -->
+      <!--   <!-\- <bane></bane> -\-> -->
+      <!--   <!-\- <range><na/></range> -\-> -->
+      <!--   <!-\- <keywords></keywords> -\-> -->
+      <!--   <!-\- <indifferent></indifferent> -\-> -->
+      <!--   <!-\- <dc><dc13/></dc> -\-> -->
+    </abilitytrigger>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -41,12 +45,16 @@
       </p>
 
       <p>
-	When a character with Blindsight is fighting an unseen opponent
-	each time they try and attack the opponent, before they roll to attack,
-	they roll a Blindsight check.   If the Blindsight check is successful
-	the character only suffers a -3 modifier for the rest of the encounter
-	instead of the usual -6.
       </p>
+	
+
+      <!-- <p> -->
+      <!-- 	When a character with Blindsight is fighting an unseen opponent -->
+      <!-- 	each time they try and attack the opponent, before they roll to attack, -->
+      <!-- 	they roll a Blindsight check.   If the Blindsight check is successful -->
+      <!-- 	the character only suffers a -3 modifier for the rest of the encounter -->
+      <!-- 	instead of the usual -6. -->
+      <!-- </p> -->
     </abilitydescription>
   </ability>
 
@@ -56,25 +64,24 @@
     <abilityid>sixth_sense</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>special_defaults</defaults>
       <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <indifferent>0 cost</indifferent>
-      <bane>1 cost</bane>
-      <damned>2 cost</damned>
-      <!-- <range><na/></range> -->
+      <range><self/></range>
       <keywords><luckpool/></keywords>
-      <!-- <dc>13</dc> -->
+      <dc><dc13/></dc>
+      <mastery>
+	<any-success>Reroll the surprise roll</any-success>
+	<critsuccess>Reroll the surprise roll with advantage</critsuccess>
+	<critfail>Character is Stunned</critfail>      
+      </mastery>	
+      <xdef fname="pool_cost_0" elem_name="fate"/>
     </abilitycheck>
     <spline><p x="0" y="0"/></spline>     
     <abilitydescription>
       <p>
 	If the character makes a successful Luck check they may reroll their surprise
 	roll.
-	FIXME: how does this differ from REROLL? 
+	FIXME: how does this differ from REROLL?  LESS COST
       </p>
     </abilitydescription>
   </ability>
@@ -85,20 +92,25 @@
     <abilityid>natural_sprinter</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>special_defaults</defaults>
       <name>Check</name>
-      <trigger>Anytime a character with this ability would Sprint (perform a double move action)</trigger>
+      <!-- <defaults>special_defaults</defaults> -->
+      <!-- <defaults>pool_cost_0</defaults> -->
       <actiontype><free/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <success>The character FIXME</success>
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <indifferent>0 cost</indifferent>
-      <bane>1 cost</bane>
-      <damned>2 cost</damned>
-      <!-- <range><na/></range> -->
+      <range><self/></range>
       <keywords><mettlepool/></keywords>
-      <!-- <dc>11</dc> -->
+      <precondition>Anytime a character with this ability would Sprint (perform a double move action)</precondition>
+      <dc><speed/></dc>
+      <mastery>
+	<critsuccess>The character FIXME</critsuccess>
+	<success>The character FIXME</success>
+	<critfail>Pulled a hammy.</critfail>
+      </mastery>
+      <fate>
+      <!-- <boon></boon> -->
+      <indifferent>FIXME</indifferent>
+      <!-- <bane>1 cost</bane> -->
+      <!-- <damned>2 cost</damned> -->
+      </fate>
     </abilitycheck>
     <abilitydescription>
       <p>
@@ -113,40 +125,72 @@
     </abilitydescription>    
   </ability>
 
-
   <ability>
     <abilitytitle>Fey Resilience</abilitytitle>
     <abilityid>fey_resilience</abilityid>    
     <abilityranks from="1" to="3"/>
+    <abilitytrigger>
+      <name>Trigger</name>   
+      <actiontype><free-reaction/></actiontype>
+      <range><self/></range>
+      <keywords></keywords>
+      <precondition>Character takes non-magical damage from a non-iron weapon</precondition>
+      <effect>Damage is reduced by 1+Rank</effect>
+    </abilitytrigger>
+
     <abilitycheck>
-      <defaults>special_defaults</defaults>
-      <name>Check</name>
-      <!-- <name>Fey Heal</name> -->
-      <trigger>Character takes non-magical damage from a non-iron weapon</trigger>
+      <name>Heal</name>   
       <actiontype><noncombat/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <success>Damage is reduced by 4+Rank</success>
-      <!-- <critfail></critfail> -->
-      <boon>0 cost</boon>
-      <indifferent>1 cost</indifferent>
-      <bane>2 cost</bane>
-      <damned>3 cost</damned>
       <range><self/></range>
       <keywords><mettlepool/></keywords>
-      <dc>9</dc>
+      <dc><dc9/></dc>
+      <mastery>
+	<critsuccess>Heals d6 damage</critsuccess>
+	<righteoussuccess>Heals d4 damage</righteoussuccess>
+	<success>Heals d3 damage</success>
+	<critfail>Suffers d4 damage</critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
       <p>
 	The fey are resistant to damage from non-magically conductive sources.
-	They reduce damage from non-ferrous metal weapons by their ability rank for each hit as a free action,
-	<eg/> a character with Fey Resilience 2 is hit by a wooden club for 5 hit points damage.  This
-	damage is reduced by 2 for their Fey Resilience so they instead take 3 damage. 
+	They reduce damage from non-ferrous metal weapons by their ability rank for
+	each hit as a free action, <eg/> a character with Fey Resilience 2 is hit by
+	a wooden club for 5 hit points damage.  This damage is reduced by 2 for their
+	Fey Resilience so they instead take 3 damage. 
       </p>
 
       <p>
-	Out of combat Fey creatures may make a magic check to magically heal +d6 health.
+	Out of combat Fey creatures may make a magic check to magically heal health.
       </p>
     </abilitydescription>
-  </ability> 
+  </ability>
+
+  <ability>
+    <abilitytitle>Resilience</abilitytitle>
+    <abilityid>resilience</abilityid>    
+    <abilityranks from="1" to="5"/>
+    <abilitytrigger>
+      <name>Trigger</name>
+      <actiontype><free-reaction/></actiontype>
+      <range><self/></range>
+      <keywords></keywords>
+      <precondition>Character takes damage.</precondition>
+      <effect>Damage is reduced by Rank</effect>
+    </abilitytrigger>
+    <spline><p x="0" y="60"/></spline> 
+    <abilitydescription>
+      <p>
+ 	Any damage received is reduced by the ability rank for as a free action,
+	<eg/> a character with Resilience 2 is hit by a sword for 5 hit points damage.  This
+	damage is reduced by 2 for their Resilience so they instead take 3 damage. 
+      </p>
+
+      <p>
+	Fey creatures, including elves, cannot have resilience.
+      </p>
+    </abilitydescription>
+  </ability>   
 </abilitygroup>

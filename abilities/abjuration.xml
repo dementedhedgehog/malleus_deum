@@ -19,16 +19,20 @@
     <abilityid>abjuration</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>
+      <xdef fname="lore_defaults" elem_name="range"/>
+      <xdef fname="lore_defaults" elem_name="dc"/>
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	This ability represents the knowledge of the theoretical foundations
-	of abjuration.  Expertise in this ability is a prerequisite for casting spells
-	in this group.  Players can check against this ability to answer questions
-	about this field of study and its history. 
+	of abjuration.  Expertise in this ability is a prerequisite for casting
+	spells in this group.  Players can check against this ability to answer
+	questions about this field of study and its history. 
       </p>
     </abilitydescription>
   </ability>
@@ -39,18 +43,20 @@
     <abilityid>banish</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <defaults>abjuration_defaults</defaults>      
-      <name>Cast</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess>+3 Mettle Damage</critsuccess>
-      <righteoussuccess>+2 Mettle Damage</righteoussuccess>
-      <success>2 Mettle Damage to Target</success>
+      <name>Check</name>
+      <actiontype><ap4/></actiontype>
       <range><ranged-medium/></range>
       <keywords><magicpool/></keywords>
-      <dc>Target's Willpower</dc>
+      <dc><opponents-willpower/></dc>
+      <mastery>
+	<critsuccess>+3 Mettle Damage</critsuccess>
+	<righteoussuccess>+2 Mettle Damage</righteoussuccess>
+	<success>2 Mettle Damage to Target</success>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>            
     </abilitycheck>
     <!-- <abilitycheck> -->
-    <!--   <name>Effect</name> -->
+ 
     <!--   <actiontype><free/></actiontype> -->
     <!--   <critfail></critfail> -->
     <!--   <boon>+1 Mettle Damage</boon> -->
@@ -81,9 +87,9 @@
     <abilityid>circle_of_protection</abilityid>
     <abilityranks from="1" to="2"/>
     <!-- <abilitycheck> -->
-    <!--   <defaults>abjuration_defaults</defaults>       -->
-    <!--   <name>Cast</name> -->
-    <!--   <actiontype><full-turn/></actiontype> -->
+    <!-- <defaults>abjuration_defaults</defaults> -->
+ 
+    <!--   <actiontype><ap7/></actiontype> -->
     <!--   <critsuccess>13 hp</critsuccess> -->
     <!--   <righteoussuccess>11 hp</righteoussuccess> -->
     <!--   <success>9 hp</success> -->
@@ -91,26 +97,23 @@
     <!--   <grimfail>5 hp</grimfail> -->
     <!--   <critfail>3 hp</critfail> -->
     <!--   <range><self/></range> -->
-    <!--   <effect>Creates a magical barrier with a given number of hit points</effect> -->
+    <!--   <any-success>Creates a magical barrier with a given number of hit points</any-success> -->
     <!-- </abilitycheck> -->
     <abilitycheck>
-      <defaults>abjuration_defaults</defaults>      
-      <name>Repel</name>
-      <trigger>A demon or undead tries to enter or leave the circle.</trigger>
+      <name>Check</name>
       <actiontype><free/></actiontype>
-      <critsuccess>Target takes 6 Mettle damage and is repelled.</critsuccess>
-      <righteoussuccess>Target takes 4 Mettle damage and is repelled.</righteoussuccess>
-      <success>Target takes 3 Mettle damage and is repelled.</success>
-      <fail>Target takes 2 Mettle damage. Target passes through the barrier.</fail>
+      <range><na/></range>
+      <precondition>A demon or undead tries to enter or leave the circle.</precondition>
+      <dc><opponents-willpower/></dc>
+      <mastery>
+	<critsuccess>Target takes 6 Mettle damage and is repelled.</critsuccess>
+	<righteoussuccess>Target takes 4 Mettle damage and is repelled.</righteoussuccess>
+	<success>Target takes 3 Mettle damage and is repelled.</success>
+	<fail>Target takes 2 Mettle damage. Target passes through the barrier.</fail>
       <grimfail>Target takes 1 Mettle damage. Target passes through the barrier.</grimfail>
       <critfail>Target passes through the barrier.</critfail>
-      <!-- <blessed>Refresh 1 magic pool.</blessed> -->
-      <!-- <boon>No cost</boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane>2 cost</bane> -->
-      <!-- <damned>3 cost</damned> -->
-      <range><na/></range>
-      <dc>Target's Willpower</dc>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>abjuration_1</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline>
@@ -157,32 +160,28 @@
     <abilityid>contego</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>abjuration_defaults</defaults>      
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><reaction-or-minor/></actiontype>
-      <critsuccess>+10 Temporary Hit Points</critsuccess>
-      <righteoussuccess>+5 Temporary Hit Points</righteoussuccess>  
       <range><ranged-short/></range>
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <dc>7</dc> -->
+      <xdef fname="abjuration_defaults" elem_name="dc"/>
+      <mastery>
+	<any-success>8+3xRank Temporary Stamina</any-success>
+	<critsuccess>+10 Temporary Stamina</critsuccess>
+	<righteoussuccess>+5 Temporary Stamina</righteoussuccess>
+	<grimfail>Explodes for 1d4 damage to caster</grimfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>    
     <prereqabilityrank>circle_of_protection_2</prereqabilityrank>
     <spline><p x="30" y="30"/></spline> 
     <abilitydescription>
       <p noindent="true">
-	The caster creates a magical shield around a person, or anything tagged medium
-	or small.  The barrier from outside appears as a blurred humanoid shape.  Kinetic
-	weapons do half damage to the character thus shielded.  It also provides
-	brief protection from fires, poisonous gases <etc/>.  The shield is ablative
-	and is represented in game by 8+3xRank temporary Stamina.  
-	It lasts five minutes/30 rounds.
-      </p>
-
-      <p>
-	If overcharged the shield may explode upon being hit, make a Std Check vs DDC 9
-	every time the shield is hit or explode.   Explosions do 2d4 damage to all adjacent
-	creatures including the character being shielded.  Adjacent creatures may save,
-	Speed or Dodge vs DDC 12, to take half damage.
+	The caster creates a magical shield around a person, or anything
+	tagged medium or small.  The barrier from outside appears as a
+	blurred humanoid shape.  Kinetic weapons do half damage to the
+	character thus shielded.  It also provides brief protection from
+	fires, poisonous gases <etc/>.  The shield lasts five
+	minutes/30 rounds or untill dispelled by the caster.
       </p>
     </abilitydescription>    
   </ability>
@@ -193,32 +192,42 @@
     <abilityid>commune</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <defaults>abjuration_defaults</defaults>      
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>abjuration_defaults</defaults> -->      
       <actiontype><noncombat/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><self/></range>
+      <xdef fname="abjuration_defaults" elem_name="dc"/>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <!-- <dc>7</dc> -->
+      <!-- <dc><dc7/></dc> -->
+      <!-- <critsuccess></critsuccess> -->
+      <mastery>
+	<any-success>Cast successfully</any-success>
+	<critsuccess>Good Mood.  The target is in a good mood.</critsuccess>
+	<righteoussuccess></righteoussuccess>
+	<success></success>
+	<fail></fail>
+	<grimfail></grimfail>
+	<critfail>Accidentally summons a demon as per the Summon Demon 1 spell</critfail>
+      </mastery>  
+      
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
   	Commune is a spell that communicates with a named entity from beyond.
-  	The character must know the name of the entity to contact.  On overcharge
-  	the character must make an opposed will check against the demon or become
-  	enthralled by the demon.  Enthralled characters will seek to summon the
-  	demons simulacrum to this plane to further their nefarious plans.
+  	The character must know the name of the entity to contact.  On
+	overcharge the character must make an opposed will check against the
+	demon or become enthralled by the demon.  Enthralled characters will
+	seek to summon the demons simulacrum to this plane to further their
+	nefarious plans.
       </p>
 
       <p>
-  	Summoned demons are not compelled to cooperate with the character, nor tell
-  	the truth.
+  	Summoned demons are not compelled to cooperate with the character,
+	nor tell the truth.
       </p>
     </abilitydescription>
   </ability>
@@ -229,30 +238,29 @@
     <abilityid>eldritch_shield</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <defaults>abjuration_defaults</defaults>      
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>abjuration_defaults</defaults> -->      
       <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><ranged-short/></range>
       <keywords><magicpool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <mastery>
+	<any-success>The missile is diverted</any-success>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>abjuration_1</prereqabilityrank>
     <spline><p x="60" y="60"/></spline>
     <abilitydescription>
       <p>
-  	The caster uses raw magical energy to knock arrows and crossbow bolts out
-  	of the air.  The caster must be aware of the attack, <ie/> not
-  	ambushed or surprised.  The size of the missile that can be
-  	diverted depends on the rank of the casters ability.  The missile
-  	does not have to be aimed at the caster in order for the caster
-  	to cast this spell.  This spell is cast as a reaction after
-  	the target is hit, the caster can tell that the missile would hit
-  	and acts accordingly before it does.
+  	The caster uses raw magical energy to knock arrows and crossbow bolts
+	out of the air.  The caster must be aware of the attack, <ie/> not
+  	ambushed or surprisedm and must be able to see the missiles.  The
+	size of the missile that can be diverted depends on the rank of the
+	casters ability.  The missile does not have to be aimed at the caster
+	in order for the caster to cast this spell.  This spell is cast as a
+	reaction after the target is hit, the caster can tell that the missile
+	would hit and acts accordingly before it does.
       </p>
     </abilitydescription>
   </ability>
@@ -263,16 +271,16 @@
     <abilityid>flesh_ward</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>abjuration_defaults</defaults>      
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><reaction-or-minor/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><touch/></range>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <mastery>	
+	<critsuccess>Gain Resilience 4</critsuccess>
+	<righteoussuccess>Gain Resilience 3</righteoussuccess>
+	<success>Gain Resilience 2</success>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -288,10 +296,10 @@
       <p>
   	In game the effect of flesh ward is represented
   	in the form of a limited regeneration.  If the cast
-  	succeeds, for the duration of the combat every time the character is hit
-	they immediatly heal 1d4 hit-points.  If the cast overcharges the spell then the
-	caster suffers damage equal to the difference between the DC and
-	their roll.
+  	succeeds, for the duration of the combat every time the character
+	is hit they immediatly heal 1d4 hit-points.  If the cast
+	overcharges the spell then the caster suffers damage equal to
+	the difference between the DC and their roll.
       </p>
     </abilitydescription>
   </ability>

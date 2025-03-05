@@ -25,13 +25,14 @@ from utils import (
     contents_to_string,
     contents_to_comma_separated_str,
     contents_to_list,
+    get_child_name,
     strip_xml,
     root_dir,
     src_dir,
     parse_xml_list,
 )
 
-from ability_check_defaults import AbilityCheckDefaultsLookup
+# from ability_check_defaults import AbilityCheckDefaultsLookup
 
 
 def xor(a, b):
@@ -48,54 +49,59 @@ MAX_INITIAL_ABILITY_RANK = 3
 # ability tags
 ACCURATE = "Std+3×Rank"
 INACCURATE_CHECK_TYPE = "Std"
-MONSTER_CHECK_TYPE = "No-Check"
 STD_CHECK = r"Std\+Rank"
 UNTRAINED = "Untrained"
 MAGIC_CHECK_TYPE = "Magic+Rank"
-NO_CHECK = "no-check"
 
 # A list of valid dcs
 # We limit the range of values to reduce complexity in the system.  This should make 
 # it easier to remember dcs?  We choose odd ddcs because 5 is the lowest dc you can
 # fail at Rank 3.
-DEFEND_DC = "Opponent's Attack DC"
-GM_FIAT = "GM Fiat"
+DEFEND_DC = "opponents-attack"
+ATTACK_DC = "opponents-defend"
+GM_FIAT = "gm-fiat"
 
 # FIXME: move into XML enum?
-VALID_DCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
-             "31", "33", "35", "37", "39",
-             "GM Fiat",
+#VALID_DCS = ("3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29",
+#             "31", "33", "35", "37", "39",
+#             "GM Fiat",
              
              # for NPC/GM/Hazard abilities
-             "9+Rank", "11+Rank", "13+Rank", "15+Rank",
+#             "9+Rank", "11+Rank", "13+Rank", "15+Rank",
+             
              # Defend checks
-             DEFEND_DC,
+#             DEFEND_DC,
              # Save checks
-             GM_FIAT,
+#             GM_FIAT,
+
+             # Attacks
+#             ATTACK_DC, 
 
              # 
-             "Target's Defence", "Target's Attack", "Critical Success",
-             "Target's Strength", "Target's Agility", "Target's Perception", "Target's Speed", "Target's Endurance",
-             "Target's Agility or Speed",
-             "Target's Mettle", "Target's Willpower",
-             "Target's Negotiate or 11",
-             "Target's Etiquette or 11",
-             "Triggers Ability")
+#             "Opponent's Attack",
+#             "Critical Success",
+             # "Opponent's Strength", "Opponent's Agility", "Opponent's Perception",
+             # "Opponent's Speed", "Opponent's Endurance",
+             # "Opponent's Agility or Speed",
+             # "Opponent's Mettle", "Opponent's Willpower",
+             # "Opponent's Negotiate or 11",
+             # "Opponent's Etiquette or 11",
+             # "Triggers Ability")
 
 
-def is_valid_dc(rank):
-    """
-    Returns True if the rank is an acceptable rank.
-    """
-    return rank in VALID_DCS
+# def is_valid_dc(rank):
+#     """
+#     Returns True if the rank is an acceptable rank.
+#     """
+#     return rank in VALID_DCS
 
 
 # ability rank id -> ability rank lookup table
 ability_rank_lookup = {}
 
 # atributes
-valid_attrs = ("Strength", "Endurance", "Agility", "Speed", "Perception")               
-ATTRS = ("strength", "endurance", "agility", "speed", "perception")
+valid_attrs = ("Strength", "Endurance", "Agility", "Speed", "Perception", "Willpower")
+ATTRS = ("strength", "endurance", "agility", "speed", "perception", "willpower")
 
 # We use splines in the skill tree graphs
 def parse_spline(point_nodes):
@@ -107,48 +113,48 @@ def parse_spline(point_nodes):
     return points
 
 
-class ActionType:
-    TAG = "Tag"
+# class ActionType:
+#     TAG = "Tag"
 
-    # melee abilities
-    IMMEDIATE = "Immediate"
-    STANDARD = "Standard"
-    MINOR = "Minor"
-    MOVE = "Move"
-    FREE = "free"
-    REACTION = "Reaction"
-    REACTION_OR_MINOR = "Reaction|Minor"
-    NON_COMBAT = "Noncombat"
-    FULL_TURN = "Full-Turn"
-    MULTI_TURN = "Multi-Turn"
+#     # melee abilities
+#     IMMEDIATE = "Immediate"
+#     STANDARD = "Standard"
+#     MINOR = "Minor"
+#     MOVE = "Move"
+#     FREE = "free"
+#     REACTION = "Reaction"
+#     REACTION_OR_MINOR = "Reaction|Minor"
+#     NON_COMBAT = "Noncombat"
+#     FULL_TURN = "Full-Turn"
+#     MULTI_TURN = "Multi-Turn"
     
-    @staticmethod
-    def load(action_type_str):        
-        if action_type_str == "<tag/>":
-            action_type = ActionType.TAG
-        elif action_type_str == "<immediate/>":
-            action_type = ActionType.IMMEDIATE
-        elif action_type_str == "<standard/>":
-            action_type = ActionType.STANDARD
-        elif action_type_str == "<minor/>":
-            action_type = ActionType.MINOR
-        elif action_type_str == "<move/>":
-            action_type = ActionType.MOVE
-        elif action_type_str == "<reaction/>":
-            action_type = ActionType.REACTION
-        elif action_type_str == "<noncombat/>":
-            action_type = ActionType.NON_COMBAT
-        elif action_type_str == "<full-turn/>":
-            action_type = ActionType.FREE
-        elif action_type_str == "<free/>":
-            action_type = ActionType.FULL_TURN
-        elif action_type_str == "<multi-turn/>":
-            action_type = ActionType.MULTI_TURN
-        elif action_type_str == "<reaction-or-minor/>":
-            action_type = ActionType.REACTION_OR_MINOR
-        else:
-            raise Exception(f"Unknown action type: {action_type_str}")
-        return action_type
+#     @staticmethod
+#     def load(action_type_str):        
+#         if action_type_str == "<tag/>":
+#             action_type = ActionType.TAG
+#         elif action_type_str == "<immediate/>":
+#             action_type = ActionType.IMMEDIATE
+#         elif action_type_str == "<standard/>":
+#             action_type = ActionType.STANDARD
+#         elif action_type_str == "<minor/>":
+#             action_type = ActionType.MINOR
+#         elif action_type_str == "<move/>":
+#             action_type = ActionType.MOVE
+#         elif action_type_str == "<reaction/>":
+#             action_type = ActionType.REACTION
+#         elif action_type_str == "<noncombat/>":
+#             action_type = ActionType.NON_COMBAT
+#         elif action_type_str == "<full-turn/>":
+#             action_type = ActionType.FREE
+#         elif action_type_str == "<free/>":
+#             action_type = ActionType.FULL_TURN
+#         elif action_type_str == "<multi-turn/>":
+#             action_type = ActionType.MULTI_TURN
+#         elif action_type_str == "<reaction-or-minor/>":
+#             action_type = ActionType.REACTION_OR_MINOR
+#         else:
+#             raise Exception(f"Unknown action type: {action_type_str}")
+#         return action_type
 
     
 class Prerequisite(object):
@@ -348,14 +354,14 @@ class AbilityCheck:
     """
 
     # The shared ability check defaults lookup table (lazy-load this)
-    defaults_lookup = None
+    #defaults_lookup = None
 
-    @classmethod
-    def load_ability_check_defaults(cls, ability_check_defaults_dir):
-        if cls.defaults_lookup is None:
-            cls.defaults_lookup = AbilityCheckDefaultsLookup()
-            cls.defaults_lookup.load(ability_check_defaults_dir)
-        return
+    # @classmethod
+    # def load_ability_check_defaults(cls, ability_check_defaults_dir):
+    #     if cls.defaults_lookup is None:
+    #         cls.defaults_lookup = AbilityCheckDefaultsLookup()
+    #         cls.defaults_lookup.load(ability_check_defaults_dir)
+    #     return
 
     
     def __init__(self, ability):
@@ -363,27 +369,13 @@ class AbilityCheck:
 
         # can be None for the default
         self.name = None
+        self.slug = None
         self.ability_check_class = None
         self.dc = None
         self.action_type = None
-        self.trigger = None        
-        self.dmg = None
+        self.precondition = None        
         self.effect = None
-
-        # Mastery
-        self.critsuccess = None
-        self.righteoussuccess = None
-        self.success = None
-        self.fail = None
-        self.grimfail = None
-        self.critfail = None
-
-        # Fate
-        self.blessed = None
-        self.boon = None
-        self.indifferent = None
-        self.bane = None
-        self.damned = None
+        self.dmg = None
 
         # range of the attack/spell etc
         self.check_range = None
@@ -391,16 +383,30 @@ class AbilityCheck:
         # The check to use for saves
         self.save = None
 
-        # what check is being rolled (for defence).
-
         # list of tags for the ability
         self.keywords = []
 
         # line number of the start of the ability check.
         self.line_number = None
+        
+        # Mastery
+        self.any_success = None
+        self.critsuccess = None
+        self.righteoussuccess = None
+        self.success = None
+        self.any_fail = None
+        self.fail = None
+        self.grimfail = None
+        self.critfail = None
+        self.mastery_gm_fiat = None
 
-        # some defaults values for this class of ability.
-        self.defaults = None
+        # Fate
+        self.blessed = None
+        self.boon = None
+        self.indifferent = None
+        self.bane = None
+        self.damned = None
+        self.fate_gm_fiat = False
 
     def get_name(self):
         return self.name
@@ -414,57 +420,57 @@ class AbilityCheck:
     def get_range(self):
         return self.check_range        
 
-    def get_damage(self):
-        return self.dmg
+    def get_precondition(self):
+        return self.precondition
 
-    def get_trigger(self):
-        return self.trigger
+    def get_effect(self):
+        return self.effect
 
-    def _load(self, ability_check_element):
-        
+    def _load_fate(self, fate_element):
         # handle all the children
-        for child in list(ability_check_element):
-
+        for child in list(fate_element):
             if self.line_number is None:
                 self.line_number = child.sourceline
-            
+
             tag = child.tag
-            if tag == "name":
-                self.name = contents_to_string(child)
-
-            elif tag == "defaults":
-                # set a bunch of default values to save on duplicated fields in checks
-                defaults_name = contents_to_string(child)
-                if defaults_name.strip() == "":
-                    raise Exception(f"Ability has an empty <defaults> element on Line: {child.sourceline}")
+            # Fate
+            if tag == "blessed":
+                self.blessed = contents_to_string(child)
                 
-                self.defaults = self.defaults_lookup.get(defaults_name)
-                if self.defaults is None:
-                    raise Exception("Can't find an ability check defaults "
-                                    f"file named {defaults_name}")
-                self.defaults.apply_defaults(self)
+            elif tag == "boon":
+                self.boon = contents_to_string(child)
 
-            # elif tag == "actiontype":
-            #     self.action_type = contents_to_list(child).pop(0)
+            elif tag == "indifferent":
+                self.indifferent = contents_to_string(child)
 
-            # elif tag == "actiontype":
-            #     action_type_str = contents_to_string(child)
-            #     self.action_type = ActionType.load(action_type_str)            
-            #     if self.action_type == None:
-            #         raise Exception("Unknown action type: (%s) %s in %s\n" %
-            #                         (child.tag, child.text, self.ability.fname))
+            elif tag == "bane":
+                self.bane = contents_to_string(child)
 
-            elif tag == "actiontype":
-                self.action_type = contents_to_string(child) # FIXME: WHAT DO WE DO WITH THIS???
-            
-            elif tag == "trigger":
-                self.trigger = contents_to_string(child)                
+            elif tag == "damned":
+                self.damned = contents_to_string(child)
 
-            elif tag == "range":
-                self.check_range = contents_to_comma_separated_str(child)                
+            elif tag == "gm-fiat":
+                self.fate_gm_fiat = True # GM interprets the fate
+                
+            elif tag is COMMENT:                
+                pass # ignore comments!
+            else:
+                raise Exception("UNKNOWN (%s) in file %s:%s\n" % 
+                                (child.tag,
+                                 self.ability.fname,
+                                 child.sourceline))        
+        return
+                
+        
+    def _load_mastery(self, fate_element):
+        # handle all the children
+        for child in list(fate_element):
+            if self.line_number is None:
+                self.line_number = child.sourceline
 
+            tag = child.tag
             # Mastery
-            elif tag == "critsuccess":
+            if tag == "critsuccess":
                 self.critsuccess = contents_to_string(child)
 
             elif tag == "righteoussuccess":
@@ -482,37 +488,70 @@ class AbilityCheck:
             elif tag == "critfail":
                 self.critfail = contents_to_string(child)
 
-            # Fate
-            elif tag == "blessed":
-                self.blessed = contents_to_string(child)
+            elif tag == "any-success":
+                self.any_success = contents_to_string(child)
+
+            elif tag == "any-fail":
+                self.any_fail = contents_to_string(child)                
                 
-            elif tag == "boon":
-                self.boon = contents_to_string(child)
+            elif tag == "gm-fiat":
+                self.mastery_gm_fiat = True # GM interprets the mastery
+                
+            elif tag is COMMENT:                
+                pass # ignore comments!
+            else:
+                raise Exception("UNKNOWN (%s) in file %s:%s\n" % 
+                                (child.tag,
+                                 self.ability.fname,
+                                 child.sourceline))        
+        return
+                
+        
 
-            elif tag == "indifferent":
-                self.indifferent = contents_to_string(child)
+    def _load(self, ability_check_element):
+        
+        # handle all the children
+        for child in list(ability_check_element):
 
-            elif tag == "bane":
-                self.bane = contents_to_string(child)
+            if self.line_number is None:
+                self.line_number = child.sourceline
+            
+            tag = child.tag
+            if tag == "name":
+                self.name = contents_to_string(child)
 
-            elif tag == "damned":
-                self.damned = contents_to_string(child)
+            elif tag == "slug":
+                self.slug = contents_to_string(child)
 
-            elif tag == "save":
-                self.save = contents_to_string(child)
+            elif tag == "actiontype":
+                self.action_type = get_child_name(child)
+                if self.action_type == None:
+                    raise Exception("Unknown action type: (%s) %s in %s\n" %
+                                    (child.tag, child.text, self.fname))
+                
+            elif tag == "precondition":
+                self.precondition = contents_to_string(child)                
+
+            elif tag == "effect":
+                self.effect = contents_to_string(child)                
+
+            elif tag == "range":
+                self.check_range = contents_to_comma_separated_str(child)
+
+            elif tag == "fate":
+                self._load_fate(child)
+
+            elif tag == "mastery":
+                self._load_mastery(child)
 
             elif tag == "dc":
-                self.dc = contents_to_string(child)
+                self.dc = get_child_name(child)
                 if not self.dc:
                     raise Exception(f"Ability is missing {self.ability_id} a dc "
                                     f"on line {child.line}"
                                     f"It should be one of {VALID_DCS}.")
-                        
-            elif tag == "dmg":
-                self.dmg = contents_to_string(child)
-
-            elif tag == "effect":
-                self.effect = contents_to_string(child)
+            elif tag == "save":
+                self.save = contents_to_string(child)
 
             elif tag == "range":
                 self.ability_range = contents_to_string(child)
@@ -520,13 +559,17 @@ class AbilityCheck:
             elif tag == "keywords":
                 self.keywords += parse_xml_list(child)
 
-            elif tag is COMMENT:
-                # ignore comments!
-                pass
+            elif tag == "dmg":
+                self.dmg = contents_to_string(child)
+
+            elif tag is COMMENT:                
+                pass # ignore comments!
 
             else:
-                raise Exception("UNKNOWN (%s) in file %s\n" % 
-                                (child.tag, self.ability.fname))        
+                raise Exception("UNKNOWN (%s) in file %s:%s\n" % 
+                                (child.tag,
+                                 self.ability.fname,
+                                 child.sourceline))        
         return
 
     def __str__(self):
@@ -534,18 +577,6 @@ class AbilityCheck:
 
     def get_problems(self):
         problems = []
-
-        if NO_CHECK in self.keywords:
-            if self.dc is not None:
-                problems.append(f"Ability {self.ability.ability_id} in "
-                                f"{self.ability.fname}:{self.line_number} has a "
-                                f"'no-check' keyword and a non-None dc: '{self.dc}'.\n")
-
-        if self.dc and not is_valid_dc(self.dc):
-            problems.append(f"Ability {self.ability.ability_id} in "
-                            f"{self.ability.fname}:{self.line_number} has an "
-                            f"invalid dc '{self.dc}'.  "
-                            f"It should be one of {VALID_DCS}.\n")
 
         # Every check should have a check type (part of the action economy.. e.g. standard).
         if self.action_type is None:
@@ -586,16 +617,8 @@ class AbilityCheck:
         if problem := self._check_not_field_if_keyword("save", "critsuccess"):
             problems.append(problem)
         if problem := self._check_not_field_if_keyword("save", "righteoussuccess"):
-            problems.append(problem)       
-        if problem := self._check_not_field_if_keyword("save", "success"):
-            problems.append(problem)       
-        if problem := self._check_not_field_if_keyword("save", "fail"):
-            problems.append(problem)       
-        if problem := self._check_not_field_if_keyword("save", "grimfail"):
             problems.append(problem)
-        if problem := self._check_not_field_if_keyword("save", "critfail"):
-            problems.append(problem)
-                
+
         # All defend checks are also save checks
         if "defend" in keywords and "save" not in keywords:
             problems.append(f"Ability {self.ability.title} in "
@@ -609,7 +632,7 @@ class AbilityCheck:
             problems.append(f"Ability {self.ability.title} in "
                             f"{self.ability.fname}:{self.line_number} uses "
                             f"a pool keyword (one of {keywords}) but has no pool cost "
-                            "(If you have a pool then you muse lose pool points based on "
+                            "(If you have a pool then you must lose pool points based on "
                             "the providence die result)!\n")
 
         # Saves shouldn't have a DC .. the opposed check should specify (or
@@ -620,7 +643,8 @@ class AbilityCheck:
             if self.dc != DEFEND_DC:
                 problem = self._create_problem(
                     "All checks with the 'defend' keyword *must* have the "
-                    f" <dc> value set to `{DEFEND_DC}'.")
+                    f" <dc> value set to `{DEFEND_DC}' (it is currently set "
+                    f"to {self.dc}).")
                 problems.append(problem)
         elif "save" in keywords:
             if self.dc != GM_FIAT:
@@ -628,6 +652,7 @@ class AbilityCheck:
                     "All checks with the 'save' keyword and *not* the 'defend' keyword "
                     f"*must* have the <dc> value set to `{GM_FIAT}'.")
                 problems.append(problem)
+                
             
         # Must have a <range> element.
         if problem := self._check_field("check_range", "range"):
@@ -639,57 +664,31 @@ class AbilityCheck:
         if problem := self._check_keyword_iff_field("opposed", "save"):
             problems.append(problem)
 
-        if problem := self._check_field_if_keyword("opposed", "success"):
-            problems.append(problem)
-
-        if problem := self._check_field_if_keyword("opposed", "fail"):
-            problems.append(problem)
-
         # FIXME: should we require crit values?
         if problem := self._check_not_field_if_keyword("opposed", "boon"):
             problems.append(problem)
         if problem := self._check_not_field_if_keyword("opposed", "bane"):
             problems.append(problem)
 
-        
-        
-        # Check accurate tag
-        # if xor(self.check_type == ACCURATE, "accurate" in tags):
-        #     problems.append(f"Ability {self.ability.ability_id} is tagged accurate and does not "
-        #                     f"have a {ACCURATE} check type, or vice versa")
 
-        # Check inaccurate tag
-        # if xor(self.action_type == INACCURATE_CHECK_TYPE, "inaccurate" in keywords):
-        #     problems.append(f"Ability {self.ability.ability_id} is tagged inaccurate and does not "
-        #                     f"have a {INACCURATE_CHECK_TYPE} check type {check_type} {keywords}, or vice versa")
+        #
+        # Attack consistency rules.
+        #
+        if "attack" in keywords:
+            if self.dc != ATTACK_DC:
+                problem = self._create_problem(
+                    "All checks with the 'attack' keyword "
+                    f"*must* have the <dc> value set to `{ATTACK_DC}' (it is currently "
+                    f"set to {self.dc}).")
+                problems.append(problem)
 
-        # # Check no-check std ability. (for monsters only)  
-        # if self.check_type == MONSTER_CHECK_TYPE and "npc" not in keywords:
-        #     problems.append(f"Ability {self.ability.ability_id} has a {MONSTER_CHECK_TYPE} check type but "
-        #                     f"is not tagged with the npc tag.")
-
-        # # Check ability ranks are sane
-        # if len(self.ability.ranks) == 0:
-        #     problems.append(f"Ability  {self.ability.ability_id} has no ability ranks set?")
-
-        # # Check for untrained abilities.
-        # elif UNTRAINED in keywords and self.ability.ranks[0].get_rank_number() >= 0:
-        #     problems.append(f"Ability {self.ability.ability_id} is tagged 'Untrained' but does not "
-        #                     f"have a negative ability rank")
+        if problem := self._check_name_if_keyword("attack", "Attack"):
+            problems.append(problem)
             
         # check dcs are standard
         if self.dc in (STD_CHECK, ACCURATE) and self.dc not in ("3", "6", "9", "12", "15", "18", "21"):
             problems.append(f"Ability  {self.ability.ability_id} has a non-standard DC {self.dc} in "
                             f"{self.ability.fname}:{self.line_number}\n")
-
-        # # magic checks have to have an overcharge
-        # if self.check_type == MAGIC_CHECK_TYPE and self.overcharge is None:
-        #     problems.append(f"Ability {self.ability.ability_id} is a magic check but has no overcharge")
-
-        # # non-magic checks cannot have an overcharge
-        # if self.check_type != MAGIC_CHECK_TYPE and self.overcharge is not None:
-        #     problems.append(f"Ability {self.ability.ability_id} is not a magic check and has overcharge value")
-
         return problems
 
     def is_pool_check(self):
@@ -764,7 +763,8 @@ class AbilityCheck:
                 f"Ability {self.ability.title} in "
                 f"{self.ability.fname}:{self.line_number} has "
                 f"a '{keyword}' keyword (one of {keywords}) but does not "
-                f"have a check name '{check_name}' (checks with a {keyword} "
+                f"have a check name '{check_name}' it has a check name: "
+                f"'{self.name} (checks with a {keyword} "
                 f"keyword must have the check name {check_name}).\n")
         return None
         
@@ -785,7 +785,7 @@ class Ability:
         self.title = None
         self.ability_id = None
         self.description = None
-        self.action_type = None
+        #self.action_type = None
         self.specializations = []
         self.group_id = ability_group_id
 
@@ -825,8 +825,8 @@ class Ability:
     def get_cost(self):
         return self.cost
 
-    def get_action_type(self):
-        return self.action_type
+    # def get_action_type(self):
+    #     return self.action_type
 
     # def get_range(self):
     #     return self.ability_range
@@ -857,12 +857,8 @@ class Ability:
         """Checks for malformed abilities.. returns a list of problems."""
         problems = []                
         
-        if len(self.checks) == 0 and NO_CHECK not in self.get_keywords():
-            problems.append(f"Ability {self.title} has no checks and does not have "
-                            f"the <{NO_CHECK}/> keyword! {self.keywords}")
-        else:
-            for check in self.checks:
-                problems += check.get_problems()
+        for check in self.checks:
+            problems += check.get_problems()
 
         # rank numbers can have an optional initial untrained/negative rank, after that the
         # should be a continuous range of increasing positive ints (or zero), e.g. -3, 0, 1, 2, 3
@@ -1023,20 +1019,22 @@ class Ability:
                     # save the id!
                     self.ability_id = ability_id
 
-            elif tag == "abilitycheck":
+            elif tag in ("abilitycheck", "abilitygmcheck", "abilityopposed", "abilitysave",
+                         "abilitytrigger", "abilitydefend", "abilityattack"):
                 ability_check = AbilityCheck(ability=self)
                 ability_check._load(child)
                 self.checks.append(ability_check)
                 
-            elif tag == "abilitygroup":
-                self.group = contents_to_string(child)
+            # elif tag == "abilitygroup":
+            #     self.group = contents_to_string(child)
 
-            elif tag == "abilityactiontype":
-                action_type_str = contents_to_string(child)
-                self.action_type = ActionType.load(action_type_str)            
-                if self.action_type == None:
-                    raise Exception("Unknown action type: (%s) %s in %s\n" %
-                                    (child.tag, child.text, self.fname))
+            # elif tag == "abilityactiontype":
+            #     #action_type_str = contents_to_string(child)
+            #     #self.action_type = ActionType.load(action_type_str)            
+            #     self.action_type = get_child_name(child)
+            #     if self.action_type == None:
+            #         raise Exception("Unknown action type: (%s) %s in %s\n" %
+            #                         (child.tag, child.text, self.fname))
 
             elif tag == "abilityranks":
                 if len(self.ranks) > 0: #  is not None:
@@ -1248,6 +1246,10 @@ class AbilityGroupInfo:
 
                    # save the id!
                    self.ability_group_id = ability_group_id
+                   if "XInclude" in ability_group_id:
+                       print(group_ids)
+                       print(ability_group_id)
+                       raise Exception()
                    
            elif tag == "abilitygroupfamily":
                if self.family_id is not None:
@@ -1323,7 +1325,10 @@ class AbilityGroup:
         return None
 
     def get_keywords(self):
-        return sorted(list(set(self.info.keywords + [self.info.family_id, self.info.ability_group_id])))
+        all_keywords = self.info.keywords + [
+            self.info.family_id,
+            self.info.ability_group_id]
+        return sorted(list(set(all_keywords)))
 
     def get_keywords_str(self):
         return ", ".join(self.get_keywords())
@@ -1570,7 +1575,7 @@ class AbilityGroups:
     def load(self, abilities_dir, fail_fast):
 
         # Before we do anything load the default ability check classes.
-        AbilityCheck.load_ability_check_defaults(abilities_dir)
+        #AbilityCheck.load_ability_check_defaults(abilities_dir)
         
         # load all the ability groups
         for xml_fname in listdir(abilities_dir):

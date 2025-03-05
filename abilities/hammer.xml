@@ -21,47 +21,41 @@
     <abilityid>hammer_smash</abilityid>    
     <abilityranks from="1" to="4"/>
     <!-- <abilitycheck> -->
-    <!--   <defaults>hammer_defaults</defaults> -->
+    <!-- <defaults>hammer_defaults</defaults> -->
     <!--   <critsuccess>Deal 3×Damage and make a Knock Back Check</critsuccess> -->
     <!--   <righteoussuccess>Deal 2×Damage and make a Knock Back Check</righteoussuccess>       -->
     <!--   <success>Deal Damage</success>       -->
     <!--   <!-\- <name>Hit</name> -\-> -->
-    <!--   <!-\- <actiontype><standard/></actiontype> -\-> -->
+    <!--   <!-\- <actiontype><ap4/></actiontype> -\-> -->
     <!--   <!-\- <range><na/></range> -\-> -->
     <!--   <!-\- <keywords></keywords> -\-> -->
     <!--   <!-\- <indifferent></indifferent> -\-> -->
-    <!--   <!-\- <dc>Target's Defence</dc> -\-> -->
+    <!--   <!-\- <dc><opponents-defend/></dc> -\-> -->
     <!--   <!-\- <dmg>Weapon+Strength|Endurance</dmg> -\-> -->
     <!-- </abilitycheck> -->
     <abilitycheck>
-      <defaults>hammer_defaults</defaults>
-      <name>Check</name>
-      <trigger>Boon with the Hammer Strike Ability.</trigger>
-      <!-- <name>Knock Back</name> -->
+      <name>Attack</name>
+      <!-- <defaults>hammer_defaults</defaults> -->
+      <!-- <defaults>melee_fate_defaults</defaults> -->
       <actiontype><free/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
+      <range><melee/></range>
       <!-- <keywords></keywords> -->
       <!-- <indifferent></indifferent> -->
       <!-- <dmg>Weapon+Strength|Endurance</dmg> -->
-      <dc>Target's Endurance</dc>      
-      <effect>Target knocked back</effect>
+      <dc><opponents-defend/></dc>
+      <!-- <any-success>Target knocked back</any-success> -->
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>                  
+      <fate>
+	<blessed>Target knocked prone and Free Standard-Action/Attack as a Minor or Move Action</blessed>
+	<boon>Target of appropriate size knocked back.</boon>
+      </fate>
     </abilitycheck>
-    
     <prereqabilityrank>hammer_strike_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a hammer can use the hammer
-	to "smash" a humanoid opponent hitting them and pushing them back.
-	If the attack roll hits and is a boon the target takes double damage and is also
-	knocked prone and stunned if they fail their save..
-	If the attack roll hits and is a bane then the target takes half damage.
-	If the attack misses and a boon is rolled then the attacker still manages to force the defender back.
-	If the attack misses and a bane is rolld then the attacked must save or be knocked prone.
+	to "smash" an opponent of the appropriate siuze hitting them and pushing them back.
       </p>
     </abilitydescription>
   </ability>
@@ -71,21 +65,20 @@
     <abilitytitle>Righteous Blow</abilitytitle>
     <abilityid>stunning_blow</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>hammer_defaults</defaults>
-      <name>Check</name>      
-      <trigger>Righteous Success with the Hammer Strike Ability against an opponent of Appropriate Size.</trigger>
+    <abilitytrigger>
+      <name>Trigger</name>      
+      <!-- <defaults>hammer_defaults</defaults> -->
       <actiontype><free/></actiontype>
-      <critsuccess>Target is Stunned and Target takes an additional 12 hit points damage</critsuccess>
-      <righteoussuccess>Target is Stunned and Target takes an additional 6 hit points damage</righteoussuccess>
+      <range><melee/></range>
+      <!-- <keywords></keywords> -->
+      <!-- <indifferent></indifferent> -->
+      <!-- <dc><opponents-agility/></dc> -->
+      <precondition>Righteous Success with the Hammer Strike Ability against an opponent of Appropriate Size.</precondition>
+      <effect>Target is Stunned and Target takes an additional 6 hit points damage</effect>
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>Target's Agility</dc>
-    </abilitycheck>
+    </abilitytrigger>
     <prereqabilityrank>hammer_strike_2</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -102,21 +95,15 @@
     <abilitytitle>Hammer Strike</abilitytitle>
     <abilityid>hammer_strike</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck>
-      <defaults>hammer_defaults</defaults>      
-      <name>Check</name>
-      <!-- <defaults>melee</defaults> -->
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>Weapon+Strength|Endurance</dmg> -->
-    </abilitycheck>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap4/></actiontype>
+      <range><melee/></range>
+      <dc><opponents-defend/></dc>
+      <dmg>Weapon+Strength|Endurance</dmg>
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>                  
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>                  
+    </abilityattack>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

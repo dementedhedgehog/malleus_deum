@@ -21,19 +21,23 @@
     <abilityid>commune_with_the_dead</abilityid>    
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>necromancy_defaults</defaults> -->
+      <!-- <defaults>pool_cost_2</defaults> -->
       <actiontype><noncombat/></actiontype>
+      <range><touch/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>Talk with a corpse</any-success>
+	<critfail>Accidentally create a zombie.</critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <indifferent>1</indifferent> -->
       <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <dc>11</dc>
-      <effect>Talk with a corpse</effect>
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
@@ -79,22 +83,16 @@
     <abilityid>eye_for_an_eye</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>      
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>      
+      <range><melee/></range>
+      <xdef fname="necromancy_defaults" elem_name="dc"/>
+      <mastery>
       <critsuccess>Melee attacks against the caster deal 3x damage to the attacker</critsuccess>
       <righteoussuccess>Melee attacks against the caster deal 2x damage to the attacker</righteoussuccess>  
       <success>Melee attacks against the caster deal damage to the attacker</success>
-      <fail></fail>
-      <grimfail></grimfail>
-      <critfail>Roll on the Miscast Table</critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <dc>11</dc> -->
-      <!-- <effect>Melee dmg dealt to caster is also dealt to attacker</effect> -->
+      </mastery>	  
+      <xdef fname="pool_cost_2" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="95"/></spline>
@@ -113,19 +111,20 @@
     <abilityid>graft_flesh</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>necromancy_defaults</defaults> -->
+      <!-- <defaults>pool_cost_2</defaults> -->
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
-      <effect>Replace amputated limbs and heal</effect>
+      <range><touch/></range>
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>Replace amputated limbs and heal</any-success>
+	<critsuccess></critsuccess>
+	<critfail>Succeeds.  However, gain the aspect: It has a Mind
+	of It's Own!  The limb will attempt to murder people at inoportune
+	times, when it gets the chance.</critfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
@@ -149,32 +148,34 @@
     <abilityid>forbidden_psalm</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
-      <actiontype><standard/></actiontype>
+      <name>Check</name>
+      <!-- <defaults>necromancy_defaults</defaults> -->
+      <!-- <defaults>pool_cost_1</defaults> -->
+      <actiontype><ap4/></actiontype>
+      <range><self/></range>
+      <!-- <keywords><magicpool/></keywords> -->
+      <dc><dc7/></dc>      
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      <xdef fname="pool_cost_1" elem_name="fate"/>
+    </abilitycheck>
+
+    <abilitycheck>
+      <name>Check</name>
+      <actiontype><free/></actiontype>
+      <range><ranged-long/></range>
+      <keywords></keywords>
+      <dc><opponents-perception/></dc>
+      <mastery>
+	<any-success>Save or cannot hit</any-success>
+      </mastery>
+      <fate>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
+      <indifferent>FIXME</indifferent>
       <!-- <bane></bane> -->
-      <!-- <range><self/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
-    </abilitycheck>
-    <abilitycheck>
-      <!-- <defaults></defaults> -->
-      <name>Obscure</name>
-      <actiontype><free/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><ranged-long/></range>
-      <keywords></keywords>
-      <dc>Target's Perception</dc>
-      <effect>Save or cannot hit</effect>
+      </fate>
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
@@ -192,19 +193,22 @@
 
 
   <ability>
-    <abilitytitle>Necromancy</abilitytitle>
+    <abilitytitle>Necromantic Lore</abilitytitle>
     <abilityid>necromancy</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
-      <effect>Reveal necromantic lore.</effect>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>
+      <xdef fname="lore_defaults" elem_name="range"/>
+      <xdef fname="lore_defaults" elem_name="dc"/>
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>      
     </abilitycheck>
     <spline></spline>    
     <abilitydescription>
       <p noindent="true">
-	The school of necromancy is concerned with the use of death or blood magic, 
-	the legends of the dread necromancers and the unquiet dead.  Characters may provide
+	The school of necromancy is concerned with the use of death
+	or blood magic, the legends of the dread necromancers and the unquiet dead.  Characters may provide
 	useful information about these topics on occasion: identifying undead, and or
 	their weaknesses, and providing the relevant mythology around these creatures.
       </p>      
@@ -217,19 +221,17 @@
     <abilityid>stay_death</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck> 
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_1</defaults>
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>11</dc>
-      <effect>Reroll one Near-Death roll.</effect>
+      <range><touch/></range>
+      <keywords><magicpool/></keywords>
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>Reroll one Near-Death roll.</any-success>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="-90" y="15"/></spline>
@@ -237,8 +239,7 @@
       <p>
 	The character holds death at bay for a moment.  The target
 	can reroll a single near-death roll.  This spell may be cast
-	once per character per day.  If successful the target may
-	reroll a death roll.
+	once per character per day.
       </p>
     </abilitydescription>    
   </ability>
@@ -249,15 +250,16 @@
     <abilityid>blood_soucriant</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
       <range><na/></range>
-      <dc>13</dc>
-      <effect>In the presence of blood, summon a demon to fight.</effect>
+      <dc><dc13/></dc>
+      <mastery>
+	<any-success>In the presence of blood, summon a demon to fight.</any-success>
+      <!-- <critsuccess></critsuccess> -->
+      <!-- <critfail></critfail> -->
+      </mastery>      
+      <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
@@ -278,19 +280,18 @@
     <abilityid>pall_of_darkness</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>necromancy_defaults</defaults> -->
+      <!-- <defaults>pool_cost_2</defaults> -->
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
-      <effect>Darkness</effect>
+      <range><ranged-short/></range>
+      <keywords><magicpool/><aoe-emination/></keywords>
+      <dc><dc7/></dc>
+      <mastery>
+	<any-success>Darkness</any-success>
+	<critfail>Something from beyond bites the caster.  Suffer d4 damage</critfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>	
     <spline><p x="30" y="75"/></spline>
@@ -311,29 +312,30 @@
     <abilityid>veil_of_corruption</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck> 
-      <defaults>necromancy_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
+      <name>Check</name>
+      <!-- <defaults>necromancy_defaults</defaults> -->
+      <!-- <defaults>pool_cost_2</defaults> -->
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
+      <range><self/></range>
       <!-- <keywords><magicpool/></keywords> -->
       <!-- <indifferent>1</indifferent> -->
-      <dc>7</dc>
-      <effect>Resembles a corpse</effect>
+      <dc><dc7/></dc>
+      <mastery>
+	<any-success>Resembles a corpse</any-success>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p>
 	The character appears as if dead.  This is not an illusion.  They
-	look, smell, and feel like a corpse.  They may also adopt a preternatural
-	stillness.  At rank 1 the character can appear as a fresh corpse, dead for
-	a few hours, at rank 3 they can appear as a corpse that has been rotting
-	in the weather for a few weeks.
+	look, smell, and feel like a corpse.  They may also adopt a
+	preternatural stillness.  At rank 1 the character can appear as a
+	fresh corpse, dead for a few hours, at rank 3 they can appear as a
+	corpse that has been rotting in the weather for a few weeks.
       </p>
     </abilitydescription>    
   </ability>  

@@ -68,10 +68,7 @@ from utils import (
 )
 
 sys.path.append(third_party_dir)
-#from jinja2 import Template, Environment
 from jinja2 import Environment, FileSystemLoader
-#from jinja2.lexer import Token
-#from  jinja2 import lexer
 
 
 # Jinja2 doesn't like absolute paths.  We must supply a relative path
@@ -124,7 +121,6 @@ def jinja_recursive_render(template, jinja_env, **values):
     depth = 0
     prev = template.render(**values)
     while True:
-
         new_template = jinja_env.from_string(prev)
         curr = new_template.render(**values)
         if curr != prev:
@@ -403,7 +399,7 @@ def apply_template_to_xml(jinja_env,
         add_index_to_core=config.add_index_to_core,
         doc_name=xml_fname_in)
 
-    # process Λ abilities
+    # process abilities
     try:
         xml = db.filter_abilities(xml, verbose=verbosity>0)
     except Exception as err:

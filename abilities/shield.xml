@@ -18,19 +18,17 @@
     <abilitytitle>Shield Block</abilitytitle>
     <abilityid>block</abilityid>    
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck>
-      <defaults>shield_defaults</defaults>
+    <abilitydefend>
       <name>Defend</name>
       <actiontype><reaction/></actiontype>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><self/></range>
       <keywords><defend/><save/><shield/></keywords>
-      <!-- <indifferent></indifferent> -->
-      <!-- <save>+Rank</save> -->
-      <dc>Opponent's Attack DC</dc>
-      <!-- <effect>Zero damage from attack</effect> -->
-    </abilitycheck>
+      <dc><opponents-attack/></dc>
+      <fate>
+	<blessed>Shield Smash: 3 Damage to opponent</blessed>
+	<damned>Shield Break Check</damned>
+      </fate>
+    </abilitydefend>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -39,9 +37,9 @@
 	instead of making an armour roll.  This ability spends the characters reaction for
 	the round.  If the block result fails and a boon is rolled the attack deals half
 	damage.  If the block result fails and a bane is rolled the attack deals double
-	damage. If the block check succeeds the attack does no damage.  If the block succeeds
-	and a boon is rolled the blocker smashes the attacker in the face with the shield for
-	2 damage.
+	damage. If the block check succeeds the attack does no damage.  If the block
+	succeeds and a boon is rolled the blocker smashes the attacker in the face with
+	the shield for 2 damage.
       </p>
     </abilitydescription>
   </ability>
@@ -52,21 +50,13 @@
     <abilityid>push</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <defaults>shield_defaults</defaults>
       <name>Check</name> 
-      <trigger>An adjacent character is hit by an attack during melee.</trigger>
       <actiontype><reaction/></actiontype>
-      
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><melee/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>Target's Strength</dc>
-    </abilitycheck> <!-- FIXME -->
+      <precondition>This character, or an adjacent character, is hit by an attack during melee.</precondition>
+      <dc><opponents-strength/></dc>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>      
+    </abilitycheck>
     <prereqabilityrank>block_1</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -85,17 +75,17 @@
     <abilitytitle>Shield Support</abilitytitle>
     <abilityid>support</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitycheck>
+    <abilitydefend>
       <name>Defend</name>
       <actiontype><reaction/></actiontype>      
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><melee/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
       <keywords><defend/><save/><shield/></keywords>
-      <dc>Opponent's Attack DC</dc>
-    </abilitycheck>
+      <dc><opponents-attack/></dc>
+      <fate>
+	<blessed>Shield Smash: 3 Damage to opponent</blessed>
+	<damned>Shield Break Check</damned>
+      </fate>
+    </abilitydefend>
     <prereqabilityrank>block_1</prereqabilityrank>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>

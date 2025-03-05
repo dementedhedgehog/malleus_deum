@@ -19,16 +19,20 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <trigger>Boon on a Successful attack with a basic attack against an opponent of the given type.</trigger>
       <actiontype><free/></actiontype>
+      <range><self/></range>
+      <keywords></keywords>
+      <precondition>Boon on a Successful attack with a basic attack against an opponent of the given type.</precondition>
+      <dc><dc11/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
+      <fate>
       <boon></boon>
       <indifferent></indifferent>
       <bane></bane>
-      <range><self/></range>
-      <keywords></keywords>
-      <dc>11</dc>
+      </fate>
     </abilitycheck>
     <spline><p x="70" y="90"/></spline>
     <specializations>
@@ -68,18 +72,15 @@
     <abilitytitle>Armour</abilitytitle>
     <abilityid>armour</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
-    <abilitycheck>
+    <abilitydefend>
       <name>Defend</name>
       <actiontype><free/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
       <keywords><defend/><save/></keywords>
-      <dc>Opponent's Attack DC</dc>      
-    </abilitycheck>
+      <dc><opponents-attack/></dc>
+      <!-- FIXME THESE FATE DEFAULTS DONT MAKE SENSE FOR REACTIONS AND FREE ACTIONS -->
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+    </abilitydefend>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -134,28 +135,30 @@
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
+      <range><ranged-extremely-long/></range>
+      <keywords><black-powder/></keywords>
+      <dc><opponents-defend/></dc>
 
       <!-- Mastery -->
+      <mastery>
+      <any-success>Attack using artillery pieces.</any-success>      
       <critsuccess>Deal 3×Damage</critsuccess>
       <righteoussuccess>Deal 2×Damage</righteoussuccess>
       <success>Deal Damage</success>
       <fail>No Effect</fail>
       <grimfail></grimfail>
       <critfail>Roll on the ranged consequence table</critfail>
+      </mastery>
 
       <!-- Fate -->
-      <blessed>+6 Damage</blessed>
-      <boon>+3 Damage</boon>
-      <indifferent></indifferent>
-      <bane>Fumble: Lose remaining actions this round</bane>
-      <damned>Roll on Misfortune Table</damned>
-
-      <range><ranged-extremely-long/></range>
-      <keywords><black-powder/></keywords>
-      <dc>Target's Defence</dc>
-      <dmg>Weapon</dmg>
-      <effect>Attack using artillery pieces.</effect>      
+      <fate>
+	<blessed>+6 Damage</blessed>
+	<boon>+3 Damage</boon>
+	<indifferent></indifferent>
+	<bane>Fumble: Lose remaining actions this round</bane>
+	<damned>Roll on Misfortune Table</damned>
+      </fate>
     </abilitycheck>
     <prereqabilityrank>alchemy_lesser_1</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -173,17 +176,16 @@
     <abilityid>martial.blood_frenzy</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap1/></actiontype>
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <dc>13</dc>
+      <dc><dc13/></dc>
+      <mastery>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank></prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
@@ -207,15 +209,15 @@
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><na/></range>
       <keywords></keywords>
-      <dc>Target's Defence</dc>
+      <dc><opponents-defend/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
     </abilitycheck>
     <spline><p x="90" y="90"/></spline>
     <abilitydescription>
@@ -271,16 +273,16 @@
     <abilitytitle>Dirty-Fighter</abilitytitle>
     <abilityid>dirty-fighter</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitycheck>    
-      <name>Check</name>
-      <trigger>Bane with a Success in a melee attack against an opponent of Appropriate Size</trigger>
+    <abilitytrigger>    
+      <name>Trigger</name>
       <actiontype><free/></actiontype>
       <range><melee/></range>
-      <keywords><no-check/></keywords>
-      <!-- <indifferent></indifferent> -->
+      <keywords></keywords>
+      <precondition>Bane with a Success in a melee attack against an opponent of Appropriate Size</precondition>
       <!-- <dc>Triggers Ability</dc> -->
       <effect>Make a Brawl attack with a Dirty Fighter Rank bonus.</effect>
-    </abilitycheck>
+      <!-- <indifferent></indifferent> -->
+    </abilitytrigger>
     <prereqabilityrank>brawl_1</prereqabilityrank>	
     <spline><p x="-30" y="60"/></spline>    
     <abilitydescription>
@@ -298,13 +300,14 @@
     <abilitytitle>Dodge</abilitytitle>
     <abilityid>dodge</abilityid>
     <abilityranks untrained="0" from="1" to="6"/>
-    <abilitycheck>
+    <abilitydefend>
       <name>Defend</name>
       <actiontype><reaction/></actiontype>
       <range><na/></range>
       <keywords><defend/><save/></keywords>
-      <dc>Opponent's Attack DC</dc>      
-    </abilitycheck>
+      <dc><opponents-attack/></dc>      
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+    </abilitydefend>
     <spline><p x="90" y="120"/></spline> 
     <abilitydescription>      
       <p>
@@ -333,16 +336,18 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
+      <range><na/></range>
+      <keywords></keywords>
+      <dc><opponents-strength/></dc>
+      <mastery>
       <critsuccess></critsuccess>
       <critfail></critfail>
+      </mastery>
       <!-- <boon></boon> -->
       <!-- <indifferent></indifferent> -->
       <!-- <bane></bane> -->
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>Target's Strength</dc>
-      <dmg></dmg>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>                  
     </abilitycheck>
     <spline><p x="-90" y="90"/></spline>
     <abilitydescription>
@@ -364,14 +369,14 @@
     <abilitytitle>Parry</abilitytitle>
     <abilityid>parry</abilityid>
     <abilityranks untrained="-3" from="1" to="6"/>
-    <abilitycheck>
+    <abilitydefend>
       <name>Defend</name>
       <actiontype><reaction/></actiontype>
       <range><na/></range>
       <keywords><defend/><save/></keywords>
-      <dc>Opponent's Attack DC</dc>      
-      <effect>Zero damage from attack</effect>
-    </abilitycheck>
+      <dc><opponents-attack/></dc>      
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+    </abilitydefend>
     <prereqabilityrank></prereqabilityrank>	
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
@@ -392,23 +397,23 @@
     <abilityid>retribution</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
       <actiontype><reaction/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <dc>7</dc>
+      <dc><dc7/></dc>
+      <mastery>
+      <critsuccess></critsuccess>
+      <critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p>
 	When the characters hit points drop to 0 they can instantly make a Retribution
-	check and if successful the character may immediately perform a Charge or an Attack.
+	check and if successful the character may immediately perform a Charge or an
+	Attack.
       </p>
 
       <p>

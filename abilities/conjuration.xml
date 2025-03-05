@@ -16,12 +16,16 @@
 
 
   <ability>
-    <abilitytitle>Conjuration</abilitytitle>
+    <abilitytitle>Conjuration Lore</abilitytitle>
     <abilityid>conjuration</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>lore_defaults</defaults>
       <name>Check</name>
+      <xdef fname="lore_defaults" elem_name="actiontype"/>
+      <xdef fname="lore_defaults" elem_name="range"/>
+      <xdef fname="lore_defaults" elem_name="dc"/>
+      <xdef fname="lore_defaults" elem_name="mastery"/>            
+      <xdef fname="lore_defaults" elem_name="fate"/>      
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -31,56 +35,28 @@
       </p>
     </abilitydescription>    
   </ability>
-  
-  
-  <ability>
-    <abilitytitle>Eldritch Push</abilitytitle>
-    <abilityid>eldritch_push</abilityid>
-    <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>conjuration_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess>Damage is 20+Rank</critsuccess>
-      <righteoussuccess>Damage is 15+Rank</righteoussuccess>
-      <grimfail>Caster is knocked back <measurement><imperial>10'</imperial><metric>5m</metric></measurement> and
-      is Prone and takes d6 damage</grimfail>
-      <critfail>Caster suffers the Grim Fail effect and rolls on the Miscast table.</critfail>
-      <range><ranged-medium/></range>
-      <dc>Target's Defence</dc>
-      <dmg>9+Rank</dmg> 
-    </abilitycheck>
-    <prereqabilityrank>conjuration_2</prereqabilityrank>
-    <spline><p x="90" y="30"/></spline>
-    <abilitydescription>
-      <p>
-	The caster shoots a raw stream of thaumic energy from
-	their hands at a target.  If the stream hits the target, the target suffers
-	damage 	and is thrown
-	<measurement><imperial>30'</imperial><metric>10m</metric></measurement>
-	away from the caster.  For Large creatures the distance	thrown is reduced at the GMs discretion.
-      </p>
-    </abilitydescription>    
-  </ability>
+
 
   
   <ability>
     <abilitytitle>Chain Lightning</abilitytitle>
     <abilityid>chain_lightning</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>conjuration_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap3/></actiontype>
       <range><ranged-medium/></range>
-      <keywords><magicpool/></keywords>
-      <!-- <indifferent>2</indifferent> -->
-      <dc>Target's Defence</dc>
-      <dmg>12+Rank</dmg>
-    </abilitycheck>
-    <prereqabilityrank>conjuration_2</prereqabilityrank>
+      <keywords><attack/><magicpool/></keywords>
+      <dc><opponents-defend/></dc>
+      <dmg>12+Rank Damage</dmg>
+      <mastery>
+	<any-success>Deal damage to one target</any-success>
+	<righteoussuccess>May make an additional chain lightning attack as a
+	free action.</righteoussuccess>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
+    </abilityattack>
+    <prereqabilityrank>conjuration_1</prereqabilityrank>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -103,27 +79,62 @@
       </p>
     </abilitydescription>
   </ability>
+  
+  
+  <ability>
+    <abilitytitle>Eldritch Push</abilitytitle>
+    <abilityid>eldritch_push</abilityid>
+    <abilityranks from="1" to="3"/>
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap2/></actiontype>
+      <range><ranged-medium/></range>
+      <effect>Target takes damage and is Pushed DC: 15+Rank</effect>
+      <dc><opponents-defend/></dc>
+      <dmg>3+Rank</dmg>
+      <mastery>
+	<critsuccess>Target three opponents</critsuccess>
+	<righteoussuccess>Target two opponents</righteoussuccess>
+	<success>Target one opponent</success> 
+	<grimfail>Caster is knocked back <measurement><imperial>10'</imperial><metric>5m</metric></measurement> and is Prone and takes d3 damage</grimfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>            
+    </abilityattack>
+    <prereqabilityrank>conjuration_2</prereqabilityrank>
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster shoots a raw stream of thaumic energy from
+	their hands at one or more targets.  If the stream hits the target, the target
+	suffers damage and is thrown
+	<measurement><imperial>30'</imperial><metric>10m</metric></measurement>
+	away from the caster.  For Large creatures the distance	thrown is reduced at
+	the GMs discretion.
+      </p>
+    </abilitydescription>    
+  </ability>
 
 
   <ability>
     <abilitytitle>Eldritch Grasp</abilitytitle>
     <abilityid>eldritch_grasp</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <defaults>conjuration_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+    <abilityattack>
+      <name>Attack</name>
+      <actiontype><ap1/></actiontype>
       <range><ranged-medium/></range>
-      <keywords><magicpool/></keywords>
-      <!-- <indifferent>2</indifferent> -->
-      <dc>Target's Defence</dc>
-      <dmg>8+Rank</dmg>
-    </abilitycheck>
+      <keywords><attack/><magicpool/></keywords>
+      <effect>Target takes damage and is Pushed or Pulled DC: 15+Rank</effect>
+      <dc><opponents-defend/></dc>
+      <dmg>5+Rank</dmg>
+      <mastery>
+	<critsuccess>Target three opponents</critsuccess>
+	<righteoussuccess>Target two opponents</righteoussuccess>
+	<success>Target one opponent</success> 
+	<grimfail>Caster is knocked back <measurement><imperial>10'</imperial><metric>5m</metric></measurement> and is Prone and takes d3 damage</grimfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>            
+    </abilityattack>
     <prereqabilityrank>eldritch_push_2</prereqabilityrank>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -148,18 +159,16 @@
     <abilityid>scry</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>conjuration_defaults</defaults>
-      <defaults>pool_cost_2</defaults>
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>2</indifferent> -->
-      <dc>17</dc>
+      <keywords><magicpool/><ritual/></keywords>
+      <dc><dc17/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_2" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>conjuration_2</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
@@ -170,12 +179,12 @@
       </p>
 
       <p>
-    	The caster first names a target, holding items with contagious links to the target,
-    	then checks to see whether the spell succeeds. If it does, they see an important
-    	scene from targets life (the GM narrates the scene to the player). The caster may
-    	then choose to look far forward, forward, back or far back in time.  Each time
-    	the player attempts to view another scene from the targets life they
-    	make another check with their remaining magic pool against a DC 9.
+    	The caster first names a target, holding items with contagious links to the
+	target, then checks to see whether the spell succeeds. If it does, they see
+	an important scene from targets life (the GM narrates the scene to the player).
+	The caster may then choose to look far forward, forward, back or far back in
+	time.  Each time the player attempts to view another scene from the targets
+	life they make another check with their remaining magic pool against a DC 9.
     	The caster may continue to view scenes from the targets life until they
     	fail or choose to stop scrying.
       </p>
@@ -200,17 +209,16 @@
     <abilityid>scry_greater</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <defaults>conjuration_defaults</defaults>
-      <name>Cast</name>
+      <name>Check</name>
       <actiontype><noncombat/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
       <keywords><magicpool/></keywords>
-      <!-- <indifferent>3</indifferent> -->
-      <dc>17</dc>
+      <dc><dc17/></dc>
+      <mastery>
+	<critsuccess></critsuccess>
+	<critfail></critfail>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>scry_2</prereqabilityrank>	
     <spline><p x="0" y="30"/></spline>
@@ -229,19 +237,16 @@
     <abilityid>wither</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <defaults>conjuration_defaults</defaults>
-      <name>Cast</name>
-      <actiontype><minor/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Check</name>
+      <actiontype><ap1/></actiontype>
       <range><melee/></range>
       <keywords></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc>Target's Defence</dc>
-      <dmg>5+Rank</dmg>
-      <effect>The caster heals 2+Rank hit points</effect>
+      <dc><opponents-defend/></dc>
+      <mastery>
+	<any-success>Deal 5+Rank Damage.  The caster heals half the damage dealt.</any-success>
+	<critsuccess></critsuccess>
+      </mastery>
+      <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>conjuration_2</prereqabilityrank>
     <spline><p x="-90" y="30"/></spline>

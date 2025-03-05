@@ -20,22 +20,19 @@
   <ability>
     <abilitytitle>Bite</abilitytitle>
     <abilityid>bite</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck> 
-      <defaults>npc_melee_defaults</defaults>
-      <name>Opposed</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><npc/><opposed/></keywords> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>5</dmg>
-    </abilitycheck>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed> 
+      <name>Opposed</name> 
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><ap3/></actiontype>
+      <range><melee/></range>
+      <keywords><melee/><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <save><defend-save/></save>
+      <mastery>
+	<any-fail>5+Rank Damage</any-fail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -48,23 +45,18 @@
     <abilitytitle>Blood Rage</abilitytitle>
     <abilityid>blood_rage</abilityid>
     <abilityranks from="1" to="6"/>
-    
-    <!-- <abilitycheck> -->
-    <!--   <name>Opposed</name> -->
-    <!--   <trigger>When the character is bloodied</trigger> -->
-    <!--   <actiontype><reaction/></actiontype> -->
-    <!--   <critsuccess></critsuccess> -->
-    <!--   <critfail></critfail> -->
-    <!--   <boon></boon> -->
-    <!--   <indifferent></indifferent> -->
-    <!--   <bane></bane> -->
-    <!--   <range><na/></range> -->
-    <!--   <keywords><npc/><opposed/><no-check/></keywords> -->
-    <!--   <effect>Free melee attack</effect> -->
-    <!-- </abilitycheck> -->
-
-    <!-- NO CHECK FOR THIS! -->
-  <keywords><npc/><no-check/></keywords>
+    <abilitytrigger> 
+      <name>Rage</name> 
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><free-reaction/></actiontype>
+      <range><self/></range>
+      <keywords><melee/></keywords>
+      <precondition>Monster becomes bloodied.</precondition>
+      <effect>Immediately makes a melee counter attack - if possible</effect>
+      <!-- <save><opponents-defend/></save> -->
+      <!-- <any-fail>5+Rank Damage</any-fail> -->
+      <!-- <keywords><npc/></keywords> -->
+    </abilitytrigger>    
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -80,22 +72,19 @@
   <ability>
     <abilitytitle>Claw</abilitytitle>
     <abilityid>claw</abilityid>
-    <abilityranks from="1" to="6"/>
-    
-    <abilitycheck>
-      <defaults>npc_melee_defaults</defaults>
+    <abilityranks from="1" to="6"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><crushing/><piercing/></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>4</dmg>
-    </abilitycheck>
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><ap2/></actiontype>
+      <range><melee/></range>
+      <keywords><melee/><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <save><defend-save/></save>
+      <mastery>
+	<any-fail>4+Rank</any-fail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -109,22 +98,19 @@
   <ability>
     <abilitytitle>Large Claw</abilitytitle>
     <abilityid>large_claw</abilityid>
-    <abilityranks from="1" to="6"/>
-    
-    <abilitycheck>
-      <defaults>npc_melee_defaults</defaults>
+    <abilityranks from="1" to="6"/>    
+    <abilityopposed>
       <name>Opposed</name>      
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><crushing/><piercing/></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>6</dmg>
-    </abilitycheck>
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><ap3/></actiontype>
+      <range><melee/></range>
+      <keywords><melee/><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <save><defend-save/></save>
+      <mastery>
+	<any-fail>6 Damage</any-fail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -138,23 +124,19 @@
   <ability>
     <abilitytitle>Small Claw</abilitytitle>
     <abilityid>small_claw</abilityid>
-    <abilityranks from="1" to="6"/>
-    
-    <abilitycheck>
-      <defaults>npc_melee_defaults</defaults>
+    <abilityranks from="1" to="6"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><melee/></range> -->
-      <!-- <keywords><slashing/><piercing/></keywords> -->
-      <!-- <save>Character's Defence</save> -->
-      <!-- <dc>11</dc> -->
-      <dmg>2</dmg>
-    </abilitycheck>
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><ap3/></actiontype>
+      <range><melee/></range>      
+      <keywords><melee/><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <save><defend-save/></save>      
+      <mastery>
+      <any-fail>2+Rank Damage</any-fail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -166,29 +148,24 @@
   <ability>
     <abilitytitle>Countless Bites</abilitytitle>
     <abilityid>countless_bites</abilityid>
-    <abilityranks from="1" to="4"/>
-    
-    <abilitycheck>      
-      <defaults>npc_melee_defaults</defaults>
+    <abilityranks from="1" to="4"/>    
+    <abilityopposed>      
       <name>Opposed</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <critsuccess></critsuccess>
-      <righteoussuccess></righteoussuccess>
-      <fail>Deal Damage</fail>
-      <grimfail>Deal 2×Damage</grimfail>
-      <critfail>Deal 3×Damage</critfail>      
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><ap4/></actiontype>
       <range><melee/></range>
       <keywords><npc/><opposed/><melee/><unblockable/><undodgeable/><unparryable/></keywords>
-      <save><mettle-save/></save>
-      <dc>13+Rank</dc>
-      <dmg>1+Rank</dmg>
-      <!-- <effect>Opponent makes a Mettle check vs 13+Rank</effect> -->
-    </abilitycheck>
+      <dc><dc13-plus-rank/></dc>
+      <save><defend-save/></save>      
+      <mastery>
+	<any-success>1+Rank Damage</any-success>
+	<critsuccess></critsuccess>
+	<righteoussuccess></righteoussuccess>
+	<fail>Deal Damage</fail>
+	<grimfail>Deal 2×Damage</grimfail>
+	<critfail>Deal 3×Damage</critfail>      
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -211,21 +188,15 @@
   <ability>
     <abilitytitle>Death Blow</abilitytitle>
     <abilityid>death_blow</abilityid>
-    <abilityranks from="1" to="6"/>    
-    
-    <abilitycheck>
-      <name>Opposed</name>
-      <trigger>When the character would go Down</trigger>
-      <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
+    <abilityranks from="1" to="6"/>        
+    <abilitytrigger>
+      <name>Trigger</name>
+      <actiontype><free/></actiontype>
       <range><na/></range>
-      <keywords><no-check/></keywords>
+      <keywords></keywords>
+      <precondition>When the character would go Down</precondition>
       <effect>The character gets one more melee attack</effect>
-    </abilitycheck>
+    </abilitytrigger>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -234,26 +205,25 @@
     </abilitydescription>
   </ability>
   
-  
+
+  <!-- FIXME THIS SHOULD BE A SAVE? -->
   <ability>
     <abilitytitle>Demon Instability</abilitytitle>
     <abilityid>demon_instability</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
-      <defaults>npc_pool_cost_1</defaults>
-      <name>Opposed</name>
-      <trigger>When this creature is hit for 10 or more damage</trigger>
+    <abilityranks from="1" to="5"/>    
+    <abilitygmcheck>
+      <name>GM Check</name>
       <actiontype><free/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
       <range><na/></range>
       <keywords><mettlepool/></keywords>
-      <dc>9</dc>
-    </abilitycheck>
+      <precondition>When this creature is hit for 10 or more damage</precondition>
+      <dc><dc9/></dc>
+      <mastery>
+	<any-fail>The demon loses its link to its simulacrum in this plane.  The simularcrum
+	is destroyed.</any-fail>
+      </mastery>	
+      <xdef fname="pool_cost_2" elem_name="fate"/>                  
+    </abilitygmcheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -279,21 +249,15 @@
   <ability>
     <abilitytitle>Fleet</abilitytitle>
     <abilityid>fleet</abilityid>
-    <abilityranks from="1" to="4"/>
-    
-    <abilitycheck>
-      <name>Opposed</name>
-      <trigger>Start of the round</trigger>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <range><self/></range>
-      <keywords><no-check/></keywords>
-      <effect>Bonus move action</effect>
-    </abilitycheck>
+    <abilityranks from="1" to="4"/>    
+    <!-- <abilityopposed> -->
+    <!--   <name>Opposed</name> -->
+    <!--   <actiontype><ap4/></actiontype> -->
+    <!--   <range><self/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <precondition>Start of the round</precondition> -->
+    <!--   <any-success>Bonus move action</any-success> -->
+    <!-- </abilityopposed> -->
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -307,20 +271,16 @@
   <ability>
     <abilitytitle>Fly</abilitytitle>
     <abilityid>fly</abilityid>
-    <abilityranks from="1" to="4"/>
-    
-    <abilitycheck>
-      <name>Opposed</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <range><self/></range>
-      <keywords><no-check/></keywords>
-      <effect>Character can fly</effect>
-    </abilitycheck>
+    <abilityranks from="1" to="4"/>    
+    <!-- <abilityopposed> -->
+    <!--   <name>Opposed</name> -->
+    <!--   <actiontype><ap4/></actiontype> -->
+    <!--   <range><self/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <dc><dc9-plus-rank/></dc> -->
+    <!--   <save><defend-save/></save> -->
+    <!--   <any-success>Character can fly.</any-success> -->
+    <!-- </abilityopposed> -->
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -337,23 +297,20 @@
   <ability>
     <abilitytitle>Horns</abilitytitle>
     <abilityid>horns</abilityid>
-    <abilityranks from="1" to="4"/>
-    
-    <abilitycheck>
-      <defaults>npc_melee_defaults</defaults>
+    <abilityranks from="1" to="4"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>5</dmg>
-      <effect>Only available when charging</effect>
-    </abilitycheck>
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><ap3/></actiontype>
+      <range><melee/></range>      
+      <keywords><melee/><opposed/></keywords>
+      <precondition>Only available when charging</precondition>
+      <dc><dc9-plus-rank/></dc>
+      <save><defend-save/></save>
+      <mastery>
+	<any-success>7+Rank Damage</any-success>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -367,34 +324,20 @@
   <ability>
     <abilitytitle>Horns, Greater</abilitytitle>
     <abilityid>horns_greater</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>3+3xRank</dmg> -->
-      <defaults>npc_melee_defaults</defaults>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>5</dmg>
-      <effect>Only available when charging</effect>      
-    </abilitycheck>
+      <!-- <defaults>npc_melee_defaults</defaults> -->
+      <actiontype><ap3/></actiontype>
+      <range><melee/></range>
+      <keywords><melee/><opposed/></keywords>
+      <precondition>Only available when charging</precondition>      
+      <dc><dc9-plus-rank/></dc>
+      <save><defend-save/></save>
+      <mastery>
+	<any-success>9+Rank Damage</any-success>      
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -408,34 +351,19 @@
   <ability>
     <abilitytitle>Horns, Lesser</abilitytitle>
     <abilityid>horns_lesser</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>3+Rank</dmg> -->
-      <defaults>npc_melee_defaults</defaults>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <dmg>3</dmg>
-      <effect>Only available when charging</effect>
-    </abilitycheck>
+      <actiontype><ap3/></actiontype>
+      <range><melee/></range>      
+      <keywords><melee/><opposed/></keywords>
+      <precondition>Only available when charging</precondition>
+      <dc><dc9-plus-rank/></dc>
+      <save><defend-save/></save>
+      <mastery>
+	<any-success>5+Rank Damage</any-success>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -449,22 +377,21 @@
   <ability>
     <abilitytitle>Poisonous Bite</abilitytitle>
     <abilityid>poison_bite</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <trigger>When the character is hit for 10 or more damage</trigger>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><melee/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>Target's Endurance</dc>
-      <effect>7 damage</effect>
-    </abilitycheck>
+      <keywords><melee/><opposed/></keywords>
+      <precondition>When the character is hit for 10 or more damage</precondition>
+      <dc><dc9-plus-rank/></dc>
+      <save><defend-save/></save>
+      <mastery>
+      <success>No Damage</success>
+      <any-fail>7 damage</any-fail>
+      <grimfail>Poisoned</grimfail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -478,20 +405,22 @@
   <ability>
     <abilitytitle>Prehensile Tail</abilitytitle>
     <abilityid>prehensile_tail</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><melee/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>Target's Agility or Speed</dc>
-    </abilitycheck>
+      <keywords><melee/><opposed/></keywords>
+      <dc><dc9-plus-rank/></dc>
+      <save><dodge-save/><agility-save/><speed-save/><parry-save/></save>
+      <mastery>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
+	<success>No Damage</success>
+	<any-fail>Grabbed</any-fail>
+	<grimfail>Crushed 2 Damage</grimfail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -506,19 +435,20 @@
   <ability>
     <abilitytitle>Prehensile Tongue</abilitytitle>
     <abilityid>prehensile_tongue</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <bane></bane> -->
       <range><melee/></range>
       <!-- <keywords></keywords> -->
-      <dc>Target's Agility or Speed</dc>
-    </abilitycheck>
+      <keywords><melee/><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <save><dodge-save/><agility-save/><speed-save/><parry-save/></save>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -534,21 +464,15 @@
   <ability>
     <abilitytitle>Regeneration</abilitytitle>
     <abilityid>regeneration</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
-      <name>Opposed</name>
-      <trigger>Start of the round</trigger>
+    <abilityranks from="1" to="5"/>    
+    <abilitytrigger>
+      <name>Trigger</name>
       <actiontype><free/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
       <range><self/></range>
-      <keywords><no-check/></keywords>
-      <!-- <indifferent></indifferent> -->
-      <effect>At the start of the round the character regains rank hit points</effect>
-    </abilitycheck>
+      <keywords></keywords>
+      <precondition>Start of the round</precondition>
+      <effect>Character regains rank hit points</effect>
+    </abilitytrigger>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -561,21 +485,18 @@
   <ability>
     <abilitytitle>Summon Demon</abilitytitle>
     <abilityid>summon_demon</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <actiontype><standard/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap4/></actiontype>
       <range><ranged-short/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc>9</dc>
-      <effect>A demon is summoned</effect>
-    </abilitycheck>
+      <keywords><melee/><opposed/></keywords>  <!-- FIXME -->
+      <dc><dc15-plus-rank/></dc>
+      <save><magic-save/></save>
+      <mastery>
+	<any-fail>A demon is summoned</any-fail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -589,9 +510,8 @@
     <abilitytitle>Swarm</abilitytitle>
     <abilityid>swarm</abilityid>
     <abilityranks from="1" to="5"/>
-    
     <!-- <abilitycheck> -->
-    <!--   <actiontype><minor/></actiontype> -->
+    <!--   <actiontype><ap1/></actiontype> -->
     <!--   <!-\- <critsuccess></critsuccess> -\-> -->
     <!--   <!-\- <critfail></critfail> -\-> -->
     <!--   <!-\- <boon></boon> -\-> -->
@@ -599,17 +519,19 @@
     <!--   <range><na/></range> -->
     <!--   <!-\- <keywords></keywords> -\-> -->
     <!--   <!-\- <indifferent></indifferent> -\-> -->
-    <!--   <dc>Target's Willpower</dc> -->
+    <!--   <dc><opponents-willpower/></dc> -->
     <!-- </abilitycheck> -->
-    <keywords><no-check/></keywords>
+    <keywords></keywords>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
 	The monster is composed of a large number of smaller individuals.
-	Swarms suffer maximum damage from area of effect attacks like fire (any damage immunity applies).
+	Swarms suffer maximum damage from area of effect attacks like fire
+	(any damage immunity applies).
 	Some swarms are not stopped by doors or windows or sometimes even walls.  GMs may make a check
 	each round to see if the swarm can pass through a barrier,<eg/> wall, window or door.  The difficulty
-	of the check should depend on the integrity of the barrier and the size of the individuals in the swarm.
+	of the check should depend on the integrity of the barrier and the size of the individuals in the
+	swarm.
       </p>
     </abilitydescription>     
   </ability>  
@@ -618,22 +540,30 @@
   <ability>
     <abilitytitle>Terrifying</abilitytitle>
     <abilityid>terrifying</abilityid>
-    <abilityranks from="1" to="3"/>
-    
-    <abilitycheck>
+    <abilityranks from="1" to="3"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
       <!-- <critsuccess></critsuccess> -->
+      <range><ranged-medium/></range>
+      <keywords><mettlepool/><npc/><opposed/></keywords>
+      <dc><dc11-plus-rank/></dc>
+      <save><willpower-save/></save>
+      <mastery>
       <success>No effect</success>
       <fail>Target loses Rank mettle</fail>
       <grimfail>Target loses Rank+1 mettle</grimfail>
       <critfail>Target loses Rank+2 mettle</critfail>
-      <range><ranged-medium/></range>
-      <keywords><mettlepool/><npc/><opposed/></keywords>
-      <save><willpower-save/></save>
-      <dc>11+Rank</dc>
-    </abilitycheck>
+      </mastery>
+    </abilityopposed>    
     <spline></spline>
+    <specializations>
+      <specialization>DC11</specialization>
+      <specialization>DC13</specialization>
+      <specialization>DC15</specialization>
+      <specialization>DC17</specialization>
+      <specialization>DC19</specialization>
+    </specializations>
     <abilitydescription>
       <p noindent="true">
 	The creature once revealed in their true form is terrifying.  The
@@ -649,24 +579,26 @@
     <abilityid>terrifying_clarion</abilityid>
     <abilityranks from="1" to="9"/>
     
-    <abilitycheck>
+    <abilityopposed>
       <name>Opposed</name>
-      <actiontype><standard/></actiontype>
+      <actiontype><ap4/></actiontype>
+      <range><ranged-short/></range>
+      <keywords><aoe-emination/><mettlepool/><npc/><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <save><willpower-save/></save>
       <!-- <critsuccess></critsuccess> -->
+      <mastery>
       <success>No effect</success>
       <fail>Target loses Rank mettle</fail>
       <grimfail>Target loses Rank+1 mettle</grimfail>
       <critfail>Target loses Rank+2 mettle</critfail>
+      </mastery>
       <!-- <fail></fail> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <range><ranged-short/></range>
-      <keywords><aoe-emination/><mettlepool/><npc/><opposed/></keywords>
       <!-- <indifferent></indifferent> -->
-      <save><willpower-save/></save>
-      <dc>13</dc>
-    </abilitycheck>
+      <!-- <bane></bane> -->
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -682,8 +614,8 @@
     <abilityid>watch_out_sir</abilityid>
     <abilityranks from="1" to="5"/>
     
-    <abilitycheck>
-      <name>Opposed</name>
+    <abilitygmcheck>
+      <name>GM Check</name>
       <actiontype><reaction/></actiontype>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
@@ -692,8 +624,11 @@
       <!-- <bane></bane> -->
       <range><melee/></range>
       <!-- <keywords></keywords> -->
-      <dc>11</dc>
-    </abilitycheck>
+      <dc><dc11/></dc>
+      <fate>
+	<bane>Both wounded - deal damage to the boss and meat shield.</bane>
+      </fate>
+    </abilitygmcheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -708,20 +643,19 @@
   <ability>
     <abilitytitle>Web</abilitytitle>
     <abilityid>web</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed>
       <name>Opposed</name>
-      <actiontype><minor/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
+      <actiontype><ap1/></actiontype>
       <range><ranged-short/></range>
-      <keywords><aoe-cone/></keywords>
-      <dc>Target's Defence</dc>
-    </abilitycheck>
+      <keywords><aoe-cone/><unparryable/><opposed/><everyone-saves/></keywords>
+      <dc><dc11-plus-rank/></dc>
+      <save><dodge-save/><agility-save/><speed-save/></save>
+      <mastery>
+	<fail>Slowed</fail>
+	<grimfail>Petrified</grimfail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

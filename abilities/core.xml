@@ -7,7 +7,8 @@
     <abilitygroupdescription>
       <p>
 	The primary abilities are five core abilities that represent the
-	characters raw, innate, unlearned capabilities. <label>sec:primary_abilities</label>
+	characters raw, innate, unlearned capabilities.
+	<label>sec:primary_abilities</label>
       </p>      
     </abilitygroupdescription>
     <dontdrawskilltree/>
@@ -19,30 +20,33 @@
     <abilitytitle>Strength</abilitytitle>
     <abilityid>strength</abilityid>    
     <abilityranks from="-3" to="6"/>
-    <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>GM Fiat</dc>
-    </abilitycheck>
+    <!-- <abilitycheck> -->
+    <!--   <name>Check</name> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <dc><gm-fiat/></dc> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <fate> -->
+    <!-- 	<critsuccess></critsuccess> -->
+    <!-- 	<critfail></critfail> -->
+    <!--   </fate> -->
+    <!-- </abilitycheck> -->
+    <!--   <xdef fname="lore_defaults" elem_name="fate"/> -->
 
-    <abilitycheck>
-      <name>Save</name>
-      <actiontype><immediate/></actiontype>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords><save/></keywords>
-      <dc>GM Fiat</dc>
-    </abilitycheck>
-
+    <!-- <abilitysave> -->
+    <!--   <name>Save</name> -->
+    <!--   <actiontype><gm-fiat/></actiontype> -->
+    <!--   <!-\- <range><touch/></range> -\-> -->
+    <!--   <keywords><save/></keywords> -->
+    <!--   <!-\- <dc><gm-fiat/></dc> -\-> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- 	<indifferent></indifferent> -\-> -->
+    <!--   <!-\- 	<bane></bane> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!-- </abilitysave> -->
     <spline><p x="90" y="0"/></spline> 
     <specializations>
       <specialization>Throw</specialization>
@@ -50,8 +54,9 @@
     <abilitydescription>
       <indexentry>Strength</indexentry>
       <indexentry>Abilities<subentry>Strength</subentry></indexentry>
-      <p>Represents the characters brute physical power.  Strength checks are used to
-      bend bars, open doors and to lift heavy objects.  Strength modifies melee damage and
+      <p>Represents the characters brute physical power.  Strength savs are made when the
+      character wishes to perform a Feat of Strength, such as bending bars, opening doors and
+      to lift heavy objects.  Strength modifies melee damage and
       the characters Health.
       </p>      
     </abilitydescription>
@@ -62,31 +67,32 @@
     <abilitytitle>Endurance</abilitytitle>
     <abilityid>endurance</abilityid>
     <abilityranks from="-3" to="6"/>
-
-    <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>GM Fiat</dc>
-    </abilitycheck>
-
-    <abilitycheck>
-      <name>Save</name>
-      <actiontype><immediate/></actiontype>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords><save/></keywords>
-      <dc>GM Fiat</dc>
-    </abilitycheck>
-
+    <!-- <abilitycheck> -->
+    <!--   <name>Check</name> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <dc><gm-fiat/></dc> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- 	<indifferent></indifferent> -\-> -->
+    <!--   <!-\- 	<bane></bane> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!-- </abilitycheck> -->
+    <!-- <abilitycheck> -->
+    <!--   <name>Save</name> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords><save/></keywords> -->
+    <!--   <dc><gm-fiat/></dc> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- 	<indifferent></indifferent> -\-> -->
+    <!--   <!-\- 	<bane></bane> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!-- </abilitycheck> -->
     <specializations>
       <specialization>Run</specialization>
       <specialization>Swim</specialization>
@@ -108,19 +114,20 @@
     <abilitytitle>Agility</abilitytitle>
     <abilityid>agility</abilityid>    
     <abilityranks from="-3" to="6"/>
-
-    <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>13</dc>
-    </abilitycheck>
+    <!-- <abilitycheck> -->
+    <!--   <name>Check</name> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <dc><dc13/></dc> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- 	<indifferent></indifferent> -\-> -->
+    <!--   <!-\- 	<bane></bane> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!-- </abilitycheck> -->
 
     <specializations>
       <specialization>SureFeet</specialization>
@@ -146,18 +153,20 @@
     <abilitytitle>Speed</abilitytitle>
     <abilityid>speed</abilityid>    
     <abilityranks from="-3" to="6"/>
-    <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>13</dc>
-    </abilitycheck>
+    <!-- <abilitycheck> -->
+    <!--   <name>Check</name> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <dc><dc13/></dc> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- 	<indifferent></indifferent> -\-> -->
+    <!--   <!-\- 	<bane></bane> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!-- </abilitycheck> -->
     <specializations>
       <specialization>Jump</specialization>
       <specialization>Run</specialization>
@@ -183,18 +192,20 @@
     <abilitytitle>Perception</abilitytitle>
     <abilityid>perception</abilityid>    
     <abilityranks from="-3" to="6"/>
-    <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
-      <critsuccess></critsuccess>
-      <critfail></critfail>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords></keywords>
-      <dc>13</dc>
-    </abilitycheck>
+    <!-- <abilitycheck> -->
+    <!--   <name>Check</name> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords></keywords> -->
+    <!--   <dc><dc13/></dc> -->
+    <!--   <critsuccess></critsuccess> -->
+    <!--   <critfail></critfail> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- 	<indifferent></indifferent> -\-> -->
+    <!--   <!-\- 	<bane></bane> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!-- </abilitycheck> -->
     <specializations>
       <specialization>Listen</specialization>
       <specialization>Smell</specialization>
@@ -225,16 +236,18 @@
     <abilitytitle>Willpower</abilitytitle>
     <abilityid>willpower</abilityid>    
     <abilityranks from="-3" to="6"/>
-    <abilitycheck>
-      <name>Save</name>
-      <actiontype><immediate/></actiontype>
-      <boon></boon>
-      <indifferent></indifferent>
-      <bane></bane>
-      <range><na/></range>
-      <keywords><save/></keywords>
-      <dc>GM Fiat</dc>      
-    </abilitycheck>
+    <!-- <abilitycheck> -->
+    <!--   <name>Save</name> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords><save/></keywords> -->
+    <!--   <dc><gm-fiat/></dc>       -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- 	<indifferent></indifferent> -\-> -->
+    <!--   <!-\- 	<bane></bane> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!-- </abilitycheck> -->
     <abilitydescription>
       <p>
         <indexentry>Willpower</indexentry>
@@ -246,50 +259,33 @@
   </ability>
 
 
-
-  <ability>
-    <abilitytitle>Luck Check</abilitytitle>
-    <abilityid>luck</abilityid>
-    <abilityranks from="-3" to="6"/>
-    <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Save</name>
-      <actiontype><immediate/></actiontype>
-      <!-- <critsuccess>Luck Pool + 1</critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <blessed>0 cost</blessed> -->
-      <!-- <boon>1 cost</boon> -->
-      <range><na/></range>
-      <keywords><luckpool/><save/></keywords>
-      <dc>GM Fiat</dc>
-    </abilitycheck>
-    <abilitydescription>
-      <p>
-        <indexentry>Luck Check</indexentry>
-	Characters make a luck check to see if fortune smiles on them.
-      </p>
-    </abilitydescription>
-  </ability>
-
-
   <ability>
     <abilitytitle>Aspect Check</abilitytitle>
     <abilityid>aspect</abilityid>
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <defaults>pool_cost_1</defaults>
       <name>Check</name>
+      <!-- <defaults>pool_cost_1</defaults> -->
       <actiontype><immediate/></actiontype>
-      <!-- <critsuccess>Luck Pool + 1</critsuccess> -->
-      <!-- <critfail>cost+2</critfail> -->
-      <!-- <blessed>0 cost</blessed> -->
-      <!-- <boon>1 cost</boon> -->
-      <!-- <indifferent>1 cost</indifferent> -->
-      <!-- <bane>2 cost</bane> -->
-      <!-- <damned>3 cost</damned> -->
       <range><na/></range>
-      <keywords><aspectpool/></keywords>
-      <dc>GM Fiat</dc>
+      <keywords><mettlepool/></keywords>
+      <effect>If this aspect dos not have the <emph>permanent</emph> keyword, and 
+      ranks up to 5 or more after this check then the aspect should be re-evaluated.</effect>
+      <dc><gm-fiat/></dc>
+      <mastery>
+	<any-success>Aspect is resisted.</any-success>
+	<critsuccess>Increase Rank of this Aspect by 2</critsuccess>
+	<righteoussuccess>Tenacious: Increase Rank of this Aspect by 1</righteoussuccess>
+	<any-fail>Aspect is compelled.</any-fail>
+	<grimfail>Recidivism: Decrease Rank by 1 (to a minimum of 0).</grimfail>
+      </mastery>
+      <fate>
+	<blessed>Increase Rank of this Aspect by 1</blessed>
+	<boon></boon>
+	<indifferent>1 cost</indifferent>
+	<bane>2 cost</bane>
+	<damned>3 cost</damned>
+      </fate>      
     </abilitycheck>
     <abilitydescription>
       <p>
@@ -299,24 +295,59 @@
     </abilitydescription>
   </ability>
   
+
+  <ability>
+    <abilitytitle>Luck Check</abilitytitle>
+    <abilityid>luck</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <!-- <abilitycheck> -->
+    <!--   <name>Save</name> -->
+    <!--   <defaults>pool_cost_1</defaults> -->
+    <!--   <actiontype><immediate/></actiontype> -->
+    <!--   <range><na/></range> -->
+    <!--   <keywords><luckpool/><save/></keywords> -->
+    <!--   <dc><gm-fiat/></dc> -->
+    <!--   <!-\- <critsuccess>Luck Pool + 1</critsuccess> -\-> -->
+    <!--   <!-\- <critfail></critfail> -\-> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!--   <!-\- <blessed>0 cost</blessed> -\-> -->
+    <!--   <!-\- <boon>1 cost</boon> -\-> -->
+    <!--   <xdef fname="fate_pool_cost_1" elem_name="fate"/>       -->
+    <!-- </abilitycheck> -->
+    <abilitydescription>
+      <p>
+        <indexentry>Luck Check</indexentry>
+	Characters make a luck check to see if fortune smiles on them.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  
   <ability>
     <abilitytitle>Mettle Check</abilitytitle>
     <abilityid>mettle</abilityid>
     <abilityranks from="-3" to="6"/>
-    <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Save</name>
-      <actiontype><immediate/></actiontype>
-      <!-- <critsuccess>Mettle Pool + 1</critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon>0 cost</boon> -->
-      <!-- <indifferent>1 cost</indifferent> -->
-      <!-- <bane>2 cost</bane> -->
-      <!-- <damned>3 cost</damned> -->
-      <range><na/></range>
-      <keywords><mettlepool/><save/></keywords>
-      <dc>GM Fiat</dc>
-    </abilitycheck>
+    <!-- <abilitysave> -->
+    <!--   <name>Save</name> -->
+    <!--   <defaults>pool_cost_1</defaults> -->
+    <!--   <!-\- <actiontype><immediate/></actiontype> -\-> -->
+    <!--   <!-\- <critsuccess>Mettle Pool + 1</critsuccess> -\-> -->
+    <!--   <!-\- <critfail></critfail> -\-> -->
+    <!--   <!-\- <boon>0 cost</boon> -\-> -->
+    <!--   <!-\- <indifferent>1 cost</indifferent> -\-> -->
+    <!--   <!-\- <bane>2 cost</bane> -\-> -->
+    <!--   <!-\- <damned>3 cost</damned> -\-> -->
+    <!--   <!-\- <range><na/></range> -\-> -->
+    <!--   <keywords><mettlepool/><save/></keywords> -->
+    <!--   <!-\- <dc><gm-fiat/></dc> -\-> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- </fate>       -\-> -->
+    <!--   <xdef fname="fate_pool_cost_1" elem_name="fate"/>       -->
+    <!-- </abilitysave> -->
     <abilitydescription>
       <p>
         <indexentry>Mettle Check</indexentry>
@@ -331,20 +362,24 @@
     <abilitytitle>Magic Check</abilitytitle>
     <abilityid>magic</abilityid>
     <abilityranks from="-3" to="6"/>
-    <abilitycheck>
-      <defaults>pool_cost_1</defaults>
-      <name>Save</name>
-      <actiontype><immediate/></actiontype>
-      <!-- <critsuccess>Mettle Pool + 1</critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon>0 cost</boon> -->
-      <!-- <indifferent>1 cost</indifferent> -->
-      <!-- <bane>2 cost</bane> -->
-      <!-- <damned>3 cost</damned> -->
-      <range><na/></range>
-      <keywords><magicpool/><save/></keywords>
-      <dc>GM Fiat</dc>
-    </abilitycheck>
+    <!-- <abilitysave> -->
+    <!--   <name>Save</name> -->
+    <!--   <defaults>pool_cost_1</defaults> -->
+    <!--   <!-\- <actiontype><immediate/></actiontype> -\-> -->
+    <!--   <!-\- <critsuccess>Mettle Pool + 1</critsuccess> -\-> -->
+    <!--   <!-\- <critfail></critfail> -\-> -->
+    <!--   <!-\- <boon>0 cost</boon> -\-> -->
+    <!--   <!-\- <indifferent>1 cost</indifferent> -\-> -->
+    <!--   <!-\- <bane>2 cost</bane> -\-> -->
+    <!--   <!-\- <damned>3 cost</damned> -\-> -->
+    <!--   <!-\- <range><na/></range> -\-> -->
+    <!--   <keywords><magicpool/><save/></keywords> -->
+    <!--   <!-\- <dc><gm-fiat/></dc> -\-> -->
+    <!--   <!-\- <fate> -\-> -->
+    <!--   <!-\- 	<boon></boon> -\-> -->
+    <!--   <!-\- </fate> -\-> -->
+    <!--   <xdef fname="fate_pool_cost_1" elem_name="fate"/>       -->
+    <!-- </abilitysave> -->
     <abilitydescription>
       <p>
         <indexentry>Mettle Check</indexentry>

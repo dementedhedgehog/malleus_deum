@@ -14,29 +14,24 @@
     <enabled/>
   </abilitygroupinfo>
 
-
   <ability>
     <abilitytitle>Fall</abilitytitle>
     <abilityid>fall</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck> 
-      <!-- <defaults>npc_melee_defaults</defaults> -->
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed> 
       <name>Opposed</name>
       <actiontype><immediate/></actiontype>
-      <critsuccess>Unharmed and find something useful.</critsuccess>
-      <righteoussuccess>Unharmed</righteoussuccess>
-      <success>Take Rank damage</success>
-      <fail>Take d6×Rank damage</fail>
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
       <range><self/></range>
       <keywords><aoe-emination/><opposed/></keywords>
+      <dc><dc15-plus-rank/></dc>
       <save><luck-save/></save>
-      <dc>15+Rank</dc>
-    </abilitycheck>
+      <mastery>
+	<critsuccess>Unharmed and find something useful.</critsuccess>
+	<righteoussuccess>Unharmed</righteoussuccess>
+	<success>Take Rank damage</success>
+	<fail>Take d6×Rank damage</fail>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -47,27 +42,56 @@
   <ability>
     <abilitytitle>Fire</abilitytitle>
     <abilityid>fire</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck> 
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed> 
       <!-- <defaults>npc_melee_defaults</defaults> -->
       <name>Opposed</name>
       <actiontype><immediate/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <success>Unharmed</success>
-      <fail>Take d6×Rank damage</fail>
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
       <range><self/></range>
       <keywords><aoe-emination/><opposed/></keywords>
+      <dc><dc15-plus-rank/></dc>
       <save><luck-save/></save>
-      <dc>15+Rank</dc>
-    </abilitycheck>
+      <mastery>
+	<!-- <critsuccess></critsuccess> -->
+	<success>Unharmed</success>
+	<fail>Take d6×Rank damage</fail>
+	<!-- <critfail></critfail> -->
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Feat of Strength</abilitytitle>
+    <abilityid>feet_of_strength</abilityid>
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed> 
+      <name>Opposed</name>
+      <actiontype><gm-fiat/></actiontype>
+      <range><touch/></range>
+      <keywords><opposed/></keywords>
+      <dc><dc11-plus-rank/></dc>
+      <save><strength-save/></save>
+      <mastery>
+	<success>Unharmed</success>
+	<fail>Failed.</fail>
+	<critfail>Niggling injury.  -1 Mettle.</critfail>
+      </mastery>
+      <!-- <fate> -->
+      <!-- 	<boon>Another way?  If this check fails the character can try again with advantage.</boon> -->
+      <!-- 	<critfail>Niggling injury.  -1 Mettle.</critfail> -->
+      <!-- </fate>       -->
+    </abilityopposed>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The character wishes to perform a Feat of Strength, such as bending bars or lift gates, and
+	moving or carrying heavy objects.
       </p>
     </abilitydescription>
   </ability>
@@ -76,19 +100,20 @@
   <ability>
     <abilitytitle>Drown</abilitytitle>
     <abilityid>drown</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck> 
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed> 
       <name>Opposed</name>
       <actiontype><multi-turn/></actiontype>
+      <range><self/></range>
+      <keywords><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <save><endurance-save/></save>
+      <mastery>
       <success>Swims</success>
       <fail>Check again next round with disadvantage.</fail>
       <critfail>Character is drowned.</critfail>
-      <range><self/></range>
-      <keywords><opposed/></keywords>
-      <save><endurance-save/></save>
-      <dc>13+Rank</dc>
-    </abilitycheck>
+      </mastery>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -96,37 +121,34 @@
     </abilitydescription>
   </ability>
 
-
-
   <ability>
     <abilitytitle>Poison</abilitytitle>
     <abilityid>poison</abilityid>
-    <abilityranks from="1" to="5"/>
-    
-    <abilitycheck> 
+    <abilityranks from="1" to="5"/>    
+    <abilityopposed> 
       <!-- <defaults>npc_melee_defaults</defaults> -->
       <name>Opposed</name>
       <actiontype><multi-turn/></actiontype>
+      <range><self/></range>
+      <keywords><opposed/></keywords>
+      <dc><dc13-plus-rank/></dc>
+      <!-- <dc><opponents-defend/></dc> -->
+      <!-- <dmg>5</dmg> -->
+      <save><endurance-save/></save>
+      <mastery>
       <success>Take Rank damage</success>
       <fail>Take d6×Rank damage</fail>
+      </mastery>
       <!-- <critsuccess></critsuccess> -->
       <!-- <critfail></critfail> -->
       <!-- <boon></boon> -->
       <!-- <indifferent></indifferent> -->
       <!-- <bane></bane> -->
-      <range><self/></range>
-      <keywords><opposed/></keywords>
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>5</dmg> -->
-      <save><endurance-save/></save>
-      <dc>13+Rank</dc>
-    </abilitycheck>
+    </abilityopposed>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
       </p>
     </abilitydescription>
   </ability>
-  
-
 </abilitygroup>

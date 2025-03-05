@@ -1,0 +1,15 @@
+<schema xmlns="http://purl.oclc.org/dsdl/schematron" >
+  <pattern>
+    <rule context="mastery">
+      <assert test="count(*) > 0">
+	Ability Check Mastery must have &gt; 0 values set.
+      </assert>
+    </rule>
+
+    <rule context="fate">
+      <assert test="count(*) > 0">
+	Ability Check Fate must have &gt; 0 values set.
+      </assert>
+    </rule>
+  </pattern>
+</schema>

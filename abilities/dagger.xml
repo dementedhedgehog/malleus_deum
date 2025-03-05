@@ -18,20 +18,14 @@
     <abilitytitle>Dagger Riposte</abilitytitle>
     <abilityid>riposte</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
-    <abilitycheck>
-      <defaults>dagger_defaults</defaults>
-      <name>Check</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>Weapon+Speed|Agility</dmg> -->
-    </abilitycheck>
+    <abilitytrigger>
+      <name>Trigger</name>
+      <actiontype><free/></actiontype>
+      <range><melee/></range>
+      <keywords><melee/></keywords>
+      <precondition>Character makes a successful attack with their main weapon.</precondition>
+      <effect>Character may make a Dagger Strike attack with a dagger in their off-hand.</effect>
+    </abilitytrigger>
     <prereqabilityrank>dagger_strike_2</prereqabilityrank>
     <prereqattr><speed>13</speed><agility>13</agility></prereqattr>
     <spline><p x="75" y="30"/></spline>
@@ -50,15 +44,13 @@
     <abilityid>dagger_strike</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck>
-      <defaults>dagger_defaults</defaults>
       <name>Check</name>
-      <!-- <defaults>melee</defaults> -->
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc>Target's Defence</dc> -->
-      <!-- <dmg>Weapon+Speed|Agility</dmg> -->
+      <actiontype><ap3/></actiontype>
+      <range><melee/></range>
+      <keywords><melee/></keywords>
+      <dc><opponents-defend/></dc>
+      <xdef fname="mastery_dagger_defaults" elem_name="mastery"/>            
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -75,18 +67,27 @@
     <abilityid>dagger_throw</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <defaults>dagger_defaults</defaults>
       <name>Check</name>
-      <!-- <actiontype><standard/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc>Target's Defence</dc>
-      <dmg>Weapon</dmg>
+      <actiontype><ap2/></actiontype>
+      <range><ranged-short/></range>
+      <keywords><missile/></keywords>
+      <dc><opponents-defend/></dc>
+      <mastery>
+	<any-success>Weapon</any-success>  
+	<critsuccess>Triple Damage</critsuccess>
+	<righteoussuccess>Double Damage</righteoussuccess>
+	<success>Θ</success>
+	<fail>Θ</fail>
+	<grimfail>Θ</grimfail>
+	<critfail>Make a Dagger Break Check. On a fail the dagger is lost or broken.</critfail>	
+      </mastery>
+      <fate>
+	<blessed>Fast: This is a free action.</blessed>
+	<boon></boon>
+	<indifferent></indifferent>
+	<bane>Fumble: Lose remaining actions this round</bane>
+	<damned>Roll on Misfortune Table</damned>
+      </fate>
     </abilitycheck>
     <prereqabilityrank>dagger_strike_1</prereqabilityrank>
     <spline><p x="-75" y="30"/></spline> 
