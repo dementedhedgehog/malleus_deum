@@ -877,7 +877,7 @@ class LatexFormatter:
         elif "id" in img.attrib:
             resource_id = img.get("id")
             try:
-                resource = self.db.licenses.find(resource_id)
+                resource = self.db.resources.use(resource_id)
             except KeyError:
                 raise Exception(f"Image {resource_id} does not exist!")
             filename = resource.get_fname()
@@ -932,7 +932,7 @@ class LatexFormatter:
         elif "id" in handout.attrib:
             resource_id = handout.get("id")
             try:
-                resource = self.db.licenses.find(resource_id)
+                resource = self.db.resources.use(resource_id)
             except KeyError:
                 raise Exception(f"Handout image {resource_id} does not exist!")
             filename = resource.get_fname()
@@ -1031,7 +1031,7 @@ class LatexFormatter:
         elif "id" in wrapimg.attrib:
             resource_id = wrapimg.get("id")
             try:
-                resource = self.db.licenses.find(resource_id)
+                resource = self.db.resources.use(resource_id)
             except KeyError:
                 raise Exception(f"Image {resource_id} does not exist!")
             filename = resource.get_fname()
@@ -1817,7 +1817,7 @@ class LatexFormatter:
         img = inspiration.getparent()
         if "id" in img.attrib:
             resource_id = img.get("id")
-            resource = self.db.licenses.find(resource_id)
+            resource = self.db.resources.use(resource_id)
             sig = resource.get_sig()
             
             self.latex_file.write(r"{\attributionfont %s}" % sig)
@@ -1830,7 +1830,7 @@ class LatexFormatter:
         img = attribution.getparent()
         if "id" in img.attrib:
             resource_id = img.get("id")
-            resource = self.db.licenses.find(resource_id)
+            resource = self.db.resources.use(resource_id)
             sig = resource.get_sig()
             
             self.latex_file.write(r"{\attributionfont %s}" % sig)

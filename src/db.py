@@ -17,7 +17,7 @@ from patrons import Patrons
 from npcs import NPCGangs
 from attribute_bonuses import attribute_bonuses
 from changelog import Changelog
-from licenses import Licenses
+from resources import Resources
 from weapons import Weapons
 from utils import split_ability_tokens
 
@@ -48,7 +48,7 @@ class DB:
         self.monster_groups = None
         self.archetypes = None
         self.attribute_bonuses = attribute_bonuses
-        self.licenses = None
+        self.resources = None
         self.melee_weapons = None
         self.missile_weapons = None
         self.encounters = None
@@ -94,8 +94,8 @@ class DB:
                             monster_groups=self.monster_groups,
                             fail_fast=fail_fast)
 
-        # licenses
-        self.licenses = Licenses()
+        # resources
+        self.resources = Resources()
         resource_dirs = []
         for root, dirs, files in walk(root_dir):
             for d in dirs:
@@ -103,7 +103,7 @@ class DB:
                     resource_dirs.append(join(root, d))
         unused_resource_dir = join(root_dir, "unused_resources")
         resource_dirs.append(unused_resource_dir)
-        self.licenses.load(resource_dirs)
+        self.resources.load(resource_dirs)
 
         # melee weapons
         melee_weapons_xml = join(root_dir, "items", "melee_weapons.xml")
@@ -205,10 +205,12 @@ class DB:
             #except KeyError as e:
             #    print(e)
 
-            ability_ranks.append(ability_rank)
-            
+            ability_ranks.append(ability_rank)            
         return ability_ranks
 
+    def get_list_of_unused_art(self):
+        return 
+    
     
     def filter_abilities(self, xml, verbose=False):
         """
@@ -405,3 +407,4 @@ if __name__ == "__main__":
     #     print(f"{ability_name}  ===> {ability_ids.join(', ')}")
         
         
+    print(db.get_list_of_unused_art())

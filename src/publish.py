@@ -886,9 +886,13 @@ if __name__ == "__main__":
     #create_empty_abilities_sheet()        
     
     #
-    # Generate the license report
+    # Generate a resource report
     #
-    db.licenses.generate_license_report(root_dir)
+    # We want to make sure everything has a license,
+    # and also list unused art resources to help us
+    # cull stuff from the repo.
+    #
+    db.resources.print_report(verbose=True)
     
 
     #
@@ -897,3 +901,4 @@ if __name__ == "__main__":
     #
     if release:
         create_release(config, db, verbosity)
+
