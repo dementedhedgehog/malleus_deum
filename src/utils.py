@@ -1,5 +1,5 @@
 """
- 
+
   Utility methods.
   Hide lxml calls here.
 
@@ -16,10 +16,11 @@ from copy import deepcopy
 
 # third party
 from lxml import etree
-COMMENT = etree.Comment
 
 # local
 from config import use_imperial
+
+COMMENT = etree.Comment
 
 # directory constants
 root_dir = abspath(join(dirname(__file__), ".."))
@@ -50,8 +51,8 @@ def load_xsd_schema():
         if hasattr(err, "message"):
             message = err.message
         else:
-            message = str(err)        
-        raise lxml.etree.XMLSchemaParseError(        
+            message = str(err)
+        raise lxml.etree.XMLSchemaParseError(
             "Problem parsing the schema doc: %s\n%s" % (schema_fname, message))
     return xml_schema
 
@@ -84,6 +85,7 @@ _ability_tokenizer = re.compile(
     ")"
 )
 
+
 def split_ability_tokens(xml_str):
     """
     Extracts special ability tokens, e.g. ✱dagger.strike_1 from other text.
@@ -105,11 +107,11 @@ def parse_xml_list(xml_node):
     return elements
 
 
-def normalize_ws(text): 
+def normalize_ws(text):
     """
     Latex is white space sensitive .. so strip any whitespace from the raw xml
     (as xml is whitespace agnostic) and replace with a single space.
-    
+
     Leaves whitespace at front and back of string.
 
     """
@@ -132,7 +134,7 @@ def _get_defaults_tree(fname):
 
     """
     if not fname.endswith(".xml"):
-        fname += ".xml"    
+        fname += ".xml"
     full_fname = join(default_abilities_dir, fname)
     defaults_tree = etree.parse(full_fname)
     return defaults_tree
@@ -142,57 +144,59 @@ def _replace_xdefs(tree, source_fname):
     """
     Custom method that does kind of what xinclude is supposed to do.
     (XInclude looks like it's died at the spec level - in its current
-    form it's semi-useless).    
+    form it's semi-useless).
 
     """
     for xdef_elem in tree.iter("xdef"):
         fname = xdef_elem.get("fname", None)
         if fname is None:
-            raise Exception("Error can't replace <xdef/> element.  "
-                            "No 'fname' attribute specified in "
-                            f"file {source_fname} on line {xdef_elem.sourceline}")
+            raise Exception(
+                "Error can't replace <xdef/> element.  "
+                "No 'fname' attribute specified in "
+                f"file {source_fname} on line {xdef_elem.sourceline}")
 
         elem_name = xdef_elem.get("elem_name", None)
         if elem_name is None:
-            raise Exception("Error can't replace <xdef/> element. "
-                            "No elem_name attribute specified in "
-                            f"file {source_fname} on line {xdef_elem.sourceline}")
+            raise Exception(
+                "Error can't replace <xdef/> element. "
+                "No elem_name attribute specified in "
+                f"file {source_fname} on line {xdef_elem.sourceline}")
 
-        # get the default element tree from the defaults file 
-        defaults_tree = _get_defaults_tree(fname)        
+        # get the default element tree from the defaults file
+        defaults_tree = _get_defaults_tree(fname)
         default_element = defaults_tree.find(f".//{elem_name}")
 
         # You can't substitute a default element in if that default element
         # does not exist.
         if default_element is None:
-            raise Exception(f"Default element '{elem_name}' is not specified in "
-                            f"defaults file {fname}.  However it is referenced in "
-                            f"file {source_fname} on line {xdef_elem.sourceline}")
+            raise Exception(
+                f"Default element '{elem_name}' is not specified in "
+                f"defaults file {fname}.  However it is referenced in "
+                f"file {source_fname} on line {xdef_elem.sourceline}")
 
         # Create a copy of the defaul element.
         # (Deepcopy doesn't copy the sourceline value, strangely.  The
         # sourceline value will be the line number in the pre-replacement xml).
-        new_element = deepcopy(default_element)        
+        new_element = deepcopy(default_element)
         new_element.sourceline = xdef_elem.sourceline
 
-        # Replace the xdef element with the element copied from the defaults file.
+        # Replace the xdef element with the element copied from the
+        # defaults file.
         xdef_elem.getparent().replace(xdef_elem, new_element)
     return
+
 
 def perform_schematron_validation(fname, tree):
     validation_result = schematron_validator.validate(tree)
     if not validation_result:
-        #print("Schematron is not valid! ")
         report = schematron_validator.validation_report
-        #xml_str = etree.tostring(report, pretty_print=True)        
-        #print(f"Report:\n{xml_str.decode()}\n\n")        
-        
         for child in report.getiterator():
-            tag = str(child.tag).replace("{http://purl.oclc.org/dsdl/svrl}", "")
+            tag = str(child.tag).replace(
+                "{http://purl.oclc.org/dsdl/svrl}", "")
 
             match (child.__class__, tag):
                 case (lxml.etree._Comment, _):
-                    pass                
+                    pass
                 case (_, "schematron-output"):
                     pass
                 case (_, "active-pattern"):
@@ -200,7 +204,7 @@ def perform_schematron_validation(fname, tree):
                 case (_, "fired-rule"):
                     pass
                 case (_, "text"):
-                    pass 
+                    pass
                 case (_, "failed-assert"):
                     test = child.get("test")
                     source_xpath = child.get("location")
@@ -213,15 +217,16 @@ def perform_schematron_validation(fname, tree):
                     print(get_error_context(fname, element.sourceline))
 
                 # found something that may or may not be interesting.
-                # needs further investigation so we can decide to log or ignore it.
+                # needs further investigation so we can decide to log
+                # or ignore it.
                 case _:
                     raise Exception(f"UNKNOWN CHILD {child.__class__} {tag}")
-                    
+
         raise Exception(f"Schematron error!!!")
     return
 
 
-def parse_xml(fname):    
+def parse_xml(fname):
     try:
         # Parse the xml
         tree = etree.parse(fname)
@@ -229,15 +234,15 @@ def parse_xml(fname):
         # Do some #include like substitution.
         # XInclude is an abortion.  We'll roll our own called <xdef>.
         _replace_xdefs(tree, fname)
-        
+
         # Do some extra validation
         perform_schematron_validation(fname, tree)
-    
+
     except lxml.etree.XMLSyntaxError as lxml_err:
         lxml_err.msg += " happens in file: %s" % fname
         line, column = lxml_err.position
         print(lxml_err)
-        print(get_error_context(fname, line))        
+        print(get_error_context(fname, line))
         tree = None
 
     except Exception as err:
@@ -251,7 +256,7 @@ def xml_tree_to_str(tree):
     Pretty print xml tree for debugging.
 
     """
-    xml_str =  etree.tostring(tree, pretty_print=True)
+    xml_str = etree.tostring(tree, pretty_print=True)
     return xml_str.decode()
 
 
@@ -283,15 +288,17 @@ def children_to_string(node):
         etree.tostring(c, pretty_print=True, encoding="unicode")
         for c in node.getchildren()
     ])
-        
+
 
 def contents_to_string(node):
     """
-    Returns everything between the nodes tags <x>..</x> but NOT the tags themselves.
+    Returns everything between the nodes tags <x>..</x> but NOT the tags
+    themselves.
 
     """
     return (node.text or "") + "".join(
-        [etree.tostring(child, encoding="unicode") for child in node.iterchildren()])
+        [etree.tostring(child, encoding="unicode")
+         for child in node.iterchildren()])
 
 
 def contents_to_list(node):
@@ -299,8 +306,6 @@ def contents_to_list(node):
     Given <node><a/><b/><c/></node> returns a list ["a", "b", "c"]
 
     """
-    #return [etree.tostring(child, encoding="unicode").strip()[1:-2]
-    #        for child in node.iterchildren()]
     return [child.tag for child in node.iterchildren()]
 
 
@@ -310,6 +315,7 @@ def contents_to_comma_separated_str(node):
 
     """
     return (node.text or "") + ", ".join(contents_to_list(node))
+
 
 def get_child_name(node):
     r"""
@@ -322,7 +328,8 @@ def get_child_name(node):
 
 def attrib_is_true(xml_node, attribute):
     """
-    Returns True if the xml_node has the attribute specified and it's set to true.
+    Returns True if the xml_node has the attribute specified and
+    it's set to true.
 
     """
     value = False
@@ -342,13 +349,13 @@ def get_error_context(fname, error_line_number):
     """
     context = ""
     with open(fname, "r") as f:
-        lines = f.readlines()            
+        lines = f.readlines()
         from_line = max(error_line_number - 7, 0)
         to_line = min(error_line_number + 7, len(lines))
         for line_number in range(from_line, to_line):
             if line_number + 1 == error_line_number:
                 ptr = "=>"
-            else:      
+            else:
                 ptr = "  "
 
             context += "%5s %2s %s" % (line_number, ptr, lines[line_number])
@@ -361,7 +368,8 @@ def convert_to_roman_numerals(number):
         number = 0
     elif number > 10:
         number = 10
-    return ("0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X")[number]
+    return ("0", "I", "II", "III", "IV", "V", "VI",
+            "VII", "VIII", "IX", "X")[number]
 
 
 def convert_str_to_bool(str_bool):
@@ -380,7 +388,7 @@ def convert_str_to_int(str_int):
     return int(str_int)
 
 
-def parse_measurement_to_str(fname, measurement_node):    
+def parse_measurement_to_str(fname, measurement_node):
     # check at most once
     metric_found = False
     imperial_found = False
@@ -407,7 +415,7 @@ def parse_measurement_to_str(fname, measurement_node):
                     text_repr += normalize_ws(child.text)
 
         else:
-            raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
+            raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n"
                             (child.tag, fname, child.sourceline))
     return text_repr
 
@@ -427,18 +435,19 @@ def get_text_for_child(element, child_name):
 
 _ability_regex = re.compile(
     "✱"
-    "([a-zA-Z]+)" # ability family
+    "([a-zA-Z]+)"  # ability family
     r"\."
-    r"([a-zA-Z_0-9\-\?]+)" # ability name
-    r"(?:\[([a-zA-Z_0-9\-\?]*)\])?" # optional template?
-    "(?:_([0-9]+))" # optional level
+    r"([a-zA-Z_0-9\-\?]+)"  # ability name
+    r"(?:\[([a-zA-Z_0-9\-\?]*)\])?"  # optional template?
+    "(?:_([0-9]+))"  # optional level
 )
+
 
 def parse_ability_str(ability_str):
     """
     Takes something like this .. ✱lore.history[westreich]_2 and returns a tuple
     ("lore", "history", "westreich", 2).
 
-    """    
+    """
     match = _ability_regex.match(ability_str)
     return None if match is None else match.groups()
