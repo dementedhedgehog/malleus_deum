@@ -209,10 +209,11 @@ def perform_schematron_validation(fname, tree):
                     test = child.get("test")
                     source_xpath = child.get("location")
                     elements = tree.xpath(source_xpath)
+                    message = contents_to_string(child)
                     if len(elements) != 1:
                         raise Exception("Unknown or missing elements")
                     element = elements[0]
-                    print(f"Schematron error '{test}' at "
+                    print(f"Schematron error '{message} [{test}]' at "
                           f"{element.tag} in {fname}:{element.sourceline}")
                     print(get_error_context(fname, element.sourceline))
 

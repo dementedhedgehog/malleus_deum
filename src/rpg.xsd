@@ -24,6 +24,12 @@ Naming convention.. (we don't comply yet)
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="nonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="[\S\s]*[^\s][\S\s]*" />
+    </xs:restriction>
+  </xs:simpleType>  
 
   <!-- skill graphs -->
   <xs:complexType name="pointType">
@@ -923,9 +929,9 @@ vertically offset the contents of this cell.
     <xs:sequence>
       <xs:element name="any-success" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="critsuccess" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="righteoussuccess" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="success" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="any-fail" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="righteoussuccess" type="nonEmptyString" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="success" type="nonEmptyString" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="any-fail" type="nonEmptyString" minOccurs="0" maxOccurs="1"/>
       <xs:element name="fail" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="grimfail" type="textType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="critfail" type="textType" minOccurs="0" maxOccurs="1"/>
@@ -1653,6 +1659,7 @@ labels and references.
       <xs:element name="daggersymbol" type="symbolType"/>
       <xs:element name="see" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="subentry" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="indexdefn" type="xs:string" minOccurs="0" maxOccurs="1"/>
     </xs:choice>
   </xs:complexType>
 

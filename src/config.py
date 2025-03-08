@@ -48,20 +48,23 @@ use_imperial = False
 # Should we append the index to the core doc?
 add_index_to_core = True
 
+# Should we build one big beautiful, cross doc, meta-index?
+build_meta_index = False
+
 # List of files to build (fname, build_index?, index_name)
 doc_files_to_build = (
     #("test.xml", True, "TST"),
     ("phb.xml", True, "PHB"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    ("monster_manual.xml", True, "MM"),
+    #("monster_manual.xml", True, "MM"),
     # ("archetypes.xml", True, "AR"),
     # ("magic_items.xml", True, "MI"),
     # ("abilities.xml", True, "Ab"),
     # ("ability_dcs.xml", False, "X"),
     # ("gms_screen.xml", False, "GMS"),
-    ("gmg.xml", True, "[GMG]"),
-    ("rationale.xml", True, "[R]"),
+    #("gmg.xml", True, "[GMG]"),
+    #("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
 )
 
@@ -97,6 +100,7 @@ archetypes_to_build = (
     # ("witch_hunter", True, "[WH]"),
     # ("night_gauner", True, "[NG]"),
 )
+
 
 encounters_to_build = (
     #("dwarven_mines", False, "[dm]"),
@@ -182,3 +186,7 @@ release_files = (
     # "witch_hunter.pdf",
     # "witch_hunter_char_sheet.pdf",
 )
+
+
+# Set this true to check for unlicensed or unused art resources.
+print_resource_report = False

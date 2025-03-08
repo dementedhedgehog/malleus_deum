@@ -87,18 +87,22 @@ latex_frontmatter = r"""
 \newtheorem{corollary}{Corollary}
 
 %% fonts
-\newfontfamily{\cloisterblack}[Path=fonts/]{Cloister Black}
+\newfontfamily{\cloisterblack}[Path=fonts/]{CloisterBlack}
 \newfontfamily{\sherwood}[Path=fonts/]{Sherwood}
 \newfontfamily{\libertine}{Linux Libertine O}
 \newfontfamily{\germaniaversalien}[Path=fonts/]{GermaniaVersalien}
+\newfontfamily{\dogma}[Path=fonts/]{Dogma}
 
 \newfontfamily{\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}
-\newfontfamily{\rpgchapterfont}[Path=fonts/, Scale=1.0]{Cloister Black}
-\newfontfamily{\rpgtitlesubtitlefont}[Path=fonts/]{Cloister Black}
-\newfontfamily{\rpgtitleauthorfont}[Path=fonts/]{Dogma}
-\newfontfamily{\rpgdropcapfont}[Path=fonts/, Scale=1.2]{Cloister Black}            
+%%\newcommand{\rpgtitlefont}{\dogma}
+\newfontfamily{\rpgchapterfont}[Path=fonts/, Scale=1.0]{CloisterBlack}
+\newfontfamily{\rpgtitlesubtitlefont}[Path=fonts/]{CloisterBlack}
+%%\newfontfamily{\rpgtitleauthorfont}[Path=fonts/]{Dogma}
+\newcommand{\rpgtitleauthorfont}{\dogma}
+\newfontfamily{\rpgdropcapfont}[Path=fonts/, Scale=1.2]{CloisterBlack}            
 \newcommand{\rpgsectionfont}{\cloisterblack}
 \newcommand{\attributionfont}{\germaniaversalien}
+\newcommand{\indexlettergroupfont}{\cloisterblack}
 
 
 %% colours
@@ -148,13 +152,10 @@ latex_frontmatter = r"""
   Mapping=tex-text, 
   Ligatures={Common,Rare,Discretionary}]{Linux Libertine O}
             
-%%\newcommand{\flourish}{a-flourish-goes-here?}
-
 \newenvironment{smaller}{\begin{footnotesize}}{\end{footnotesize}}
 \newenvironment{embolden}{\bfseries}{}
 
-%% the index 
-\makeindex
+
 
 %% start other evironments in newenvironments like this 
 %% put it after a section, not just before
@@ -190,14 +191,20 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 %% Archetype table formatting
 \newcommand\achetypenameformat[1]{\begingroup\scriptsize#1\endgroup}
 
-%% Table formatting.
-\setlength{\tabcolsep}{11pt} %% More space between table columns
-\setlength{\extrarowheight}{2pt} %% Space between rows
-\definecolor{tableheadercolor}{cmyk}{0,0.14,0.33,0.18}  %% Header background color (tan)
-\definecolor{tableoddrowcolor}{cmyk}{0,0.06,0.17,0.03}  %% Every second row color (champagne)
-%%\newcommand{\rpgtableheader}{\bfseries\selectfont}{} %% Make header rows bold.
- 	
 
+%%
+%% Table formatting.
+%%
+%% More space between table columns
+\setlength{\tabcolsep}{11pt}
+%% Space between rows
+\setlength{\extrarowheight}{2pt}
+%% Header background color (tan)
+\definecolor{tableheadercolor}{cmyk}{0,0.14,0.33,0.18}
+%% Every second row color (champagne)
+\definecolor{tableoddrowcolor}{cmyk}{0,0.06,0.17,0.03}  
+%% Make header rows bold.
+%%\newcommand{\rpgtableheader}{\bfseries\selectfont}{} 	
 
 
 %%
@@ -244,14 +251,51 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 
 \newcommand\mbattrtitleformat[1]{\normalsize\textbf{#1}}
 
+
+%% for glossary like definitions in the index.
+\renewcommand*{\alsoname}{}
+\def\igobble#1 {}
+
+%% Make the hangindent for multiline index
+%% entries (glossary type entries) smaller.
+\makeatletter
+\def\@idxitem{\par\hangindent 1em}
+\makeatother
+
+%% Tell xelatex to create the index
+\makeindex
+
+
 %% the document! 
 \begin{document}
 
 """
 
+def sanitize_index_text(txt):
+    """
+    Indicies have a few special characters that need to be escaped.
+
+    """
+    if txt is None:
+        return None
+
+    # Remove leading and trailing whitespace and any other duplicate
+    # inter-string spaces.
+    txt = txt.strip()
+    txt = " ".join(txt.split())
+    
+    # ! is used to separate entries from subentries in indexentries.
+    # double quote is the escape char for indicies :|
+    txt = txt.replace("!", "\"!")
+    return txt
 
 
 class TableState:
+    """
+    There's only ever zero or one table at a time when formatting.
+    We do have to remember its state while we're formatting it however.
+
+    """
     def __init__(self):
         self.label = None
 
@@ -300,8 +344,14 @@ class LatexFormatter:
         # for descriptions
         self.description_terms_on_their_own_line = False
 
-        # for the index_entry see field (None or a string).
+        # for the index_entry subentry field (None or a string).
         self.index_entry_subentry = None
+
+        # for the index_entry see field (None or a string).
+        self.index_entry_see = None
+
+        # for the indexdefinition see field (None or a string).
+        self.index_entry_definition = None
 
         # keep track of state for npc blocks
         self._in_npc_group = False
@@ -312,7 +362,6 @@ class LatexFormatter:
         # current table state
         self.table = None        
         return
-
 
     def verify(self):
         verifyObject(IFormatter, self)
@@ -347,7 +396,6 @@ class LatexFormatter:
                 "\n\n")
         return
 
-
     def end_book(self, book):
         self.latex_file.write("\\end{document}\n")        
         return
@@ -357,7 +405,6 @@ class LatexFormatter:
                               "\\addcontentsline{toc}{chapter}{APPENDICES}\n")
         return
     end_appendix = no_op
-
 
     def handle_keyword(self, keyword):
         self.latex_file.write("\textbf{%s} " % keyword)
@@ -373,12 +420,10 @@ class LatexFormatter:
         return
     end_downarrowfrombar = no_op    
 
-
     def start_uparrowfrombar(self, symbol):
         self.latex_file.write("\\uparrowfrombar")
         return
     end_uparrowfrombar = no_op    
-
 
     #
     # Corollaries
@@ -409,7 +454,6 @@ class LatexFormatter:
     def end_corollary(self, symbol):
         self.latex_file.write("\\end{corollary}")
         return
-
 
     #
     # Principles
@@ -553,7 +597,7 @@ class LatexFormatter:
 
     def start_index(self, index):
         self.latex_file.write("\\clearpage\n")               
-        self.latex_file.write("\\addcontentsline{toc}{chapter}{Index}\n")               
+        self.latex_file.write("\\addcontentsline{toc}{chapter}{Index}\n")
         self.latex_file.write("\\printindex\n")
         return
     end_index = no_op
@@ -631,8 +675,9 @@ class LatexFormatter:
 
     def start_equation(self, equation):
         self._equation_first_line = True
-        self.latex_file.write("\\begin{tabbing}\n "
-                              "\\hspace*{0.5cm}\= \kill \\nopagebreak \n")
+        self.latex_file.write(
+            "\\begin{tabbing}\n "
+            "\\hspace*{0.5cm}\\= \\kill \\nopagebreak \n")
         return
 
     def end_equation(self, equation):
@@ -664,13 +709,13 @@ class LatexFormatter:
 
     def start_smaller(self, smaller):
         # smaller text
-        self.latex_file.write("\\begin{smaller} ")
+        self.latex_file.write(r"\begin{smaller} ")
         # smaller vertical space in lists etc.
-        self.latex_file.write("\\setlist{nosep} ")        
+        self.latex_file.write(r"\setlist{nosep} ")        
         return
     
     def end_smaller(self, smaller):
-        self.latex_file.write("\\end{smaller}")
+        self.latex_file.write(r"\end{smaller}")
         return
 
     def handle_text(self, text):
@@ -681,40 +726,77 @@ class LatexFormatter:
                 self.latex_file.write(text)
         return
 
+    def write_index(self, entry, subentry, see, definition):
+        """
+        Writes an index entry.  All the arguments are the string
+        contents of the various index elements.
 
-    def write_index(self, index_entry, index_subentry):
-        if index_subentry is not None:
-            self.latex_file.write("\\index{%s!%s}" % (
-                normalize_ws(index_entry.text), index_subentry))
-        else:
-            self.latex_file.write("\\index{%s}" % normalize_ws(index_entry.text))
+        """
+        txt = sanitize_index_text(entry)
+        subentry = sanitize_index_text(subentry)
+        see = sanitize_index_text(see)
+        defn = sanitize_index_text(definition)
+
+        # build the latex index entry string
+        index_str = "\\index{%s" % txt
+        if subentry:
+            index_str += "!%s" % subentry
+        if see:
+            index_str += "|see{%s}" % subentry
+        if defn:
+        #     # This is a custom glossary like definition
+        #     # The intent is to throw short descriptions of concepts
+        #     # in the index and save people having to actually look up pages.
+        #     # (do not mess with this line ... it's deep latex magic!)
+        #     #index_str += r"!aaaaaaaa@ |seealso {%s}" % defn
+        #     #index_str += r"!aaaaaaaa@X\igobble |seealso {%s}" % defn
+            #index_str += r"!aaaaaaaa@X\igobble |seealso {%s}" % defn
+            #index_str += r"!aaaaaaaa@\empty\igobble |seealso {%s}" % defn
+            index_str += r"!aaaaaaaa@\empty \igobble |seealso {\hspace{-2ex}%s}" % defn
+        #     index_str += r"!X |seealso {%s}" % defn
+        index_str += "}"
+        
+        self.latex_file.write(index_str)
         return
 
     start_indexentry = no_op
     def end_indexentry(self, index_entry):
-        if self.table is not None:
-            self.table.index_entries.append(
-                (index_entry, self.index_entry_subentry))
+        entry = (index_entry.text,
+                 self.index_entry_subentry,
+                 self.index_entry_see,
+                 self.index_entry_definition)
+
+        if self.table:
+            # If it's an index in a table then save the index info and
+            # defer writing the index entry till the end of the table.
+            self.table.index_entries.append(entry)
         else:
-            self.write_index(index_entry, self.index_entry_subentry)
+            self.write_index(*entry)
+
         self.index_entry_subentry = None
+        self.index_entry_see = None
+        self.index_entry_definition = None
         return
 
     # index subentry
     start_subentry = no_op
     def end_subentry(self, index_subentry):
-        self.index_entry_subentry = normalize_ws(index_subentry.text)
+        self.index_entry_subentry = index_subentry.text
         return
 
     # index see
-    def start_see(self, index_see):
-        self.latex_file.write("| {")
-        return
+    start_see = no_op
     def end_see(self, index_see):
-        self.latex_file.write("}")
+        self.index_entry_see = index_see.text
         return
     
+    # index definition
+    start_indexdefn = no_op
+    def end_indexdefn(self, index_defn):
+        self.index_entry_definition = normalize_ws(index_defn.text)
+        return
 
+    # word definitions
     def start_defn(self, defn):
         self.latex_file.write(" \\textbf{%s}" % (normalize_ws(defn.text)))
         return
@@ -1323,8 +1405,8 @@ class LatexFormatter:
 
         self.latex_file.write(" \\end{center}")
 
-        for index, index_subentry in self.table.index_entries:
-            self.write_index(index, index_subentry)
+        for index, index_subentry, index_see, index_defn  in self.table.index_entries:
+            self.write_index(index, index_subentry, index_see, index_defn)
 
 
         # The table caption
@@ -1504,16 +1586,13 @@ class LatexFormatter:
     end_tableofcontents = no_op
 
     def start_listoffigures(self, list_of_figures):
-        # self.latex_file.write("\\listoffigures\n")
-        self.latex_file.write( # "\\listoffigures\n")
+        self.latex_file.write(
             "\\begin{minipage}[t]{1\\textwidth}\\listoffigures\\end{minipage}")
 
         return
     end_listoffigures = no_op
 
     def start_listofart(self, list_of_art):
-        #self.latex_file.write(# "\\listofart\n")
-        #"\\begin{minipage}[b]{1\\textwidth}\\listofart\\end{minipage}")
         return
     end_listofart = no_op
 
@@ -1595,8 +1674,7 @@ class LatexFormatter:
             drop = 1
         else:
             drop = convert_str_to_int(vspace.text)
-        #self.latex_file.write("\\vspace{%s\drop}\n" % drop)
-        self.latex_file.write("\\vspace{%s\drop}\n" % drop)
+        self.latex_file.write(r"\\vspace{%s\drop}\n" % drop)
         return
 
     def end_vspace(self, vspace):
@@ -1604,8 +1682,7 @@ class LatexFormatter:
 
     #
     #
-    #
-               
+    #               
     def bold_begin(self):
         self.latex_file.write("\\textbf{")
         return
@@ -1674,7 +1751,7 @@ class LatexFormatter:
         self.latex_file.write(r"\textbf{Init: }\begin{mbinitiativebonus}")
         return
     def end_mbinitiativebonus(self, mbresolve):
-        self.latex_file.write("\\end{mbinitiativebonus}") # \\vspace{0.1cm}\\break{}")
+        self.latex_file.write("\\end{mbinitiativebonus}")
         return
     
     def start_mbmagic(self, mbmagic):
@@ -1702,12 +1779,10 @@ class LatexFormatter:
         self.latex_file.write(
             "% attribute block\n" 
             "\\begin{tabular}{@{}ccccccc@{}}%\n"
-            #"\\begin{tabular}{@{}cccccc@{}}%\n"
             "\\mbattrtitleformat{STR} & %\n"
             "\\mbattrtitleformat{END} & %\n"
             "\\mbattrtitleformat{AG} & %\n"
             "\\mbattrtitleformat{SPD} & %\n"
-            # "\\mbattrtitleformat{LUCK} & %\n"
             "\\mbattrtitleformat{WIL} & %\n"
             "\\mbattrtitleformat{PER}\\\\%\n"
             "\\begin{small}")

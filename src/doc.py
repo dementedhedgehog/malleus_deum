@@ -3,9 +3,6 @@
 
 
 """
-# print without newline at the end.
-from __future__ import print_function # FIXME: should be able to get rid of this?
-
 from os.path import join, exists, dirname
 from os import makedirs
 from copy import deepcopy
@@ -40,9 +37,8 @@ TEXT_TAGS = (
     "mbabilities", "mbaspects", "mbdescription", "mbinitiativebonus",
     "npcname", "npchps", "mbresolve", "mbmagic",
     "sectiontitle", "subsectiontitle", "subsubsectiontitle", "subsubsubsectiontitle", "abilitytitle",
-    #"scenetitle", "purpose", "conflict", "dilemma", "timers", "stakes", "outs", "stats", "location", "action"
     "leveltitle", "branchtitle", "pathtitle", 
-    "descriptions", "term", "description", 
+    "descriptions", "term", "description",
     "p", 
     "principle", "principletitle", "principlebody",
     "td", "th", "version",
@@ -86,6 +82,7 @@ KEYWORD_TAGS = (
     "free",
     "tag",
     )
+
 
 class Doc:
     """
@@ -143,11 +140,11 @@ class Doc:
         Returns True if the doc is valid xml according to our schema.
 
         """
-        errors = validate_xml(self.doc)
 
-        # if there's been a validation error print some information about it
-        print("Invalid xml %s!" % self.fname)
+        errors = validate_xml(self.doc)
         if errors is not None:
+            # If there's been a validation error print some information about it
+            print("Invalid xml %s!" % self.fname)
             if dump_errors:
                 for i, e in enumerate(errors):
                     print(f"error: {i}\n{str(e)}\n{ get_error_context(self.fname, e.line) }\n\n")
@@ -182,6 +179,11 @@ class Doc:
 
 
     def format(self, i_formatter):
+        """
+        Descend into the doc tree calling formatter callbacks to format
+        the doc as we go.
+
+        """
         book_node = self.get_book_node()
         if book_node is None:
             raise Exception("Can't format a doc without a book node!")
@@ -202,7 +204,7 @@ class Doc:
     def _format(self, element, i_formatter, methods, errors):
         """
         Recursively descend into the doc structure.. handing nodes off to 
-        the formatter to  deal with.
+        the formatter to deal with.
         """
         tag = element.tag
         element_name =  ("%s" % tag).lower()
@@ -218,11 +220,11 @@ class Doc:
                     
         if tag is COMMENT:
             i_formatter.start_comment(element)
-        else:            
+        else:
+            # handle tag by calling start_tag() and end_tag() bookend calls.
             start_handler_name = "start_%s" % element_name
             if start_handler_name in methods:
-                handler = methods[start_handler_name]
-                
+                handler = methods[start_handler_name]                
                 try:
                     handler(element)
                 except Exception as err:
@@ -250,7 +252,13 @@ class Doc:
             end_handler_name = "end_%s" % element_name
             if end_handler_name in methods:
                 handler = methods[end_handler_name]
-                handler(element)                    
+                try:
+                    handler(element)                    
+                except Exception as err:
+                    context = get_error_context(self.fname, element.sourceline)
+                    raise Exception("%s element %s formatter <%s> at %s:%s\n%s" % 
+                              (str(err), i_formatter.__class__,
+                               tag, self.fname, element.sourceline, context))
             else:
                 errors.append("Unknown %s close element: </%s> at %s:%s\n%s" % 
                               (i_formatter.__class__, tag, self.fname, element.sourceline, 

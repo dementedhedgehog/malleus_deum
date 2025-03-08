@@ -23,7 +23,6 @@
     <abilityranks from="1" to="5"/>    
     <abilityopposed> 
       <name>Opposed</name> 
-      <!-- <defaults>npc_melee_defaults</defaults> -->
       <actiontype><ap3/></actiontype>
       <range><melee/></range>
       <keywords><melee/><opposed/></keywords>
@@ -47,15 +46,11 @@
     <abilityranks from="1" to="6"/>
     <abilitytrigger> 
       <name>Rage</name> 
-      <!-- <defaults>npc_melee_defaults</defaults> -->
       <actiontype><free-reaction/></actiontype>
       <range><self/></range>
       <keywords><melee/></keywords>
       <precondition>Monster becomes bloodied.</precondition>
       <effect>Immediately makes a melee counter attack - if possible</effect>
-      <!-- <save><opponents-defend/></save> -->
-      <!-- <any-fail>5+Rank Damage</any-fail> -->
-      <!-- <keywords><npc/></keywords> -->
     </abilitytrigger>    
     <spline></spline>
     <abilitydescription>
@@ -75,7 +70,6 @@
     <abilityranks from="1" to="6"/>    
     <abilityopposed>
       <name>Opposed</name>
-      <!-- <defaults>npc_melee_defaults</defaults> -->
       <actiontype><ap2/></actiontype>
       <range><melee/></range>
       <keywords><melee/><opposed/></keywords>
@@ -159,8 +153,8 @@
       <save><defend-save/></save>      
       <mastery>
 	<any-success>1+Rank Damage</any-success>
-	<critsuccess></critsuccess>
-	<righteoussuccess></righteoussuccess>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <righteoussuccess></righteoussuccess> -->
 	<fail>Deal Damage</fail>
 	<grimfail>Deal 2×Damage</grimfail>
 	<critfail>Deal 3×Damage</critfail>      

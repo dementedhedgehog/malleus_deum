@@ -30,9 +30,6 @@
     {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
     <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
     {% endif -%}       
-    {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
-    <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
-    {% endif -%}       
     {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
     <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
     {% endif -%}
@@ -78,9 +75,6 @@
     <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
     {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
     <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
-    {% endif -%}       
-    {% if ability_groups.get_ability_level(ability_level_id).get_damage() != "" -%}
-    <newline/>Dmg: {{ ability_groups.get_ability_level(ability_level_id).get_damage() }}
     {% endif -%}       
     {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
     <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}

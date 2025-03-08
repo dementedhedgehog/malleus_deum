@@ -20,8 +20,7 @@
       {%- endif %}      
       <bold>Checks:</bold> {% for check in ability.get_checks() %}
 
-      <daggersymbol/>
-      {% if check.name is not none  -%}{{check.name}}, {%- endif -%}
+      <daggersymbol/>{{check.name}}, 
       <bold>Action:</bold> {{ check.action_type }}
       {% if check.keywords -%}
       <bold>Keywords:</bold> {{ check.get_keywords()|join(', ') }}
@@ -30,10 +29,17 @@
       <bold>Range:</bold> {{ check.range }}
       {% endif %}
       <bold>Roll:</bold> {{check.check}} ≥ {{check.dc}}
+      {% if check.trigger -%}
+      <bold>Trigger:</bold> {{ check.trigger }}
+      {% endif %}
       {% if check.effect -%}
       <bold>Effect:</bold> {{ check.effect }}
+      {% endif %}
+
+      <!-- Skill -->
+      {% if check.any_success -%}
+      <bold>Any-Success:</bold> {{ check.any_success }}
       {%- endif %}
-      
       {% if check.critsuccess -%}
       <bold>Critical Success:</bold> {{ check.critsuccess }}
       {%- endif %}
@@ -42,6 +48,9 @@
       {%- endif %}
       {% if check.success -%}
       <bold>Success:</bold> {{ check.success }}
+      {%- endif %}
+      {% if check.any_fail -%}
+      <bold>Any-Fail:</bold> {{ check.any_fail }}
       {%- endif %}
       {% if check.fail -%}
       <bold>Critical Fail:</bold> {{ check.fail }}
@@ -53,6 +62,7 @@
       <bold>Critical Fail:</bold> {{ check.critfail }}
       {%- endif %}
 
+      <!-- Fate -->
       {% if check.blessed -%}
       <bold>Blessed:</bold> {{ check.boon }}
       {%- endif %}
@@ -68,11 +78,7 @@
       {% if check.damned -%}
       <bold>Damned:</bold> {{ check.damned }}
       {%- endif %}
-      
-      {% if check.damage %}
-      <bold>Damage:</bold> {{ check.get_damage() }}
-      {%- endif %}              
-      
+            
       {%- if not loop.last %}, {% endif -%}
       {% endfor -%}
       

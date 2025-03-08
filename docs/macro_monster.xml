@@ -25,9 +25,6 @@
       {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
       {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}
       {%- if check.overcharge is not none  -%}/{{check.overcharge}}{%- endif -%}
-      {%- if check.get_damage() is not none  -%}
-      <newline/>Dmg: {{ check.get_damage() }}
-      {%- endif -%}      
       {% if not loop.last %}, {% endif -%}
       {% endfor -%}
       {% endfor %}

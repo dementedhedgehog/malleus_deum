@@ -749,7 +749,7 @@ class EPubFormatter:
         #        
         #    elif "id" in img.attrib:
         #        resource_id = img.get("id")
-        #        resource = self.db.licenses.find(resource_id)
+        #        resource = self.db.resources.find(resource_id)
         #        filename = resource.get_fname()
         #        self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
         #                              % resource.get_contents_desc())
@@ -1475,7 +1475,7 @@ class EPubFormatter:
         # img = inspiration.getparent()
         # if "id" in img.attrib:
         #     resource_id = img.get("id")
-        #     resource = self.db.licenses.find(resource_id)
+        #     resource = self.db.resources.find(resource_id)
         #     sig = resource.get_sig()
             
         #     self.latex_file.write(r"{\attributionfont %s}" % sig)
@@ -1488,7 +1488,7 @@ class EPubFormatter:
         # img = attribution.getparent()
         # if "id" in img.attrib:
         #     resource_id = img.get("id")
-        #     resource = self.db.licenses.find(resource_id)
+        #     resource = self.db.resources.find(resource_id)
         #     sig = resource.get_sig()
             
         #     self.latex_file.write(r"{\attributionfont %s}" % sig)

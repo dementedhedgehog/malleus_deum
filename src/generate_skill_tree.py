@@ -184,10 +184,7 @@ def draw_skill_tree(ability_groups, ability_group, ability, context, offset=None
     return max_y
 
 
-def _build_skill_tree(ability_groups, ability_group, fname, height=HEIGHT, draw_frame=False):
-
-    print(f"xxxxx {str((fname, WIDTH, height))}")
-    
+def _build_skill_tree(ability_groups, ability_group, fname, height=HEIGHT, draw_frame=False):    
     # set up cairo surface
     _, ext = splitext(fname)
     if ext == ".eps":
@@ -252,8 +249,6 @@ def build_skill_trees(ability_groups):
         ability_group_id = ability_group.info.ability_group_id
         fname = join(build_dir, ability_group_id + "_skill_tree.eps")
 
-        print(f"xccc {ability_group_id}")
-        
         # The root ability has the same name as the ability group.
         max_y = _build_skill_tree(ability_groups, ability_group, fname=fname)
         _build_skill_tree(ability_groups, ability_group, fname=fname, height=max_y)

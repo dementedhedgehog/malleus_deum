@@ -55,16 +55,6 @@
       </mastery>
       <xdef fname="pool_cost_2" elem_name="fate"/>            
     </abilitycheck>
-    <!-- <abilitycheck> -->
- 
-    <!--   <actiontype><free/></actiontype> -->
-    <!--   <critfail></critfail> -->
-    <!--   <boon>+1 Mettle Damage</boon> -->
-    <!--   <bane>Draw the ire of the demon.</bane> -->
-    <!--   <!-\- <range><ranged-medium/></range> -\-> -->
-    <!--   <!-\- <keywords></keywords> -\-> -->
-    <!--   <!-\- <indifferent></indifferent> -\-> -->
-    <!-- </abilitycheck> -->
     <prereqabilityrank>abjuration_2</prereqabilityrank>
     <spline><p x="120" y="30"/></spline>
     <abilitydescription>
@@ -86,19 +76,6 @@
     <abilitytitle>Circle of Protection</abilitytitle>
     <abilityid>circle_of_protection</abilityid>
     <abilityranks from="1" to="2"/>
-    <!-- <abilitycheck> -->
-    <!-- <defaults>abjuration_defaults</defaults> -->
- 
-    <!--   <actiontype><ap7/></actiontype> -->
-    <!--   <critsuccess>13 hp</critsuccess> -->
-    <!--   <righteoussuccess>11 hp</righteoussuccess> -->
-    <!--   <success>9 hp</success> -->
-    <!--   <fail>7 hp</fail> -->
-    <!--   <grimfail>5 hp</grimfail> -->
-    <!--   <critfail>3 hp</critfail> -->
-    <!--   <range><self/></range> -->
-    <!--   <any-success>Creates a magical barrier with a given number of hit points</any-success> -->
-    <!-- </abilitycheck> -->
     <abilitycheck>
       <name>Check</name>
       <actiontype><free/></actiontype>
@@ -193,24 +170,18 @@
     <abilityranks from="1" to="2"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>abjuration_defaults</defaults> -->      
       <actiontype><noncombat/></actiontype>
       <range><self/></range>
       <xdef fname="abjuration_defaults" elem_name="dc"/>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <dc><dc7/></dc> -->
-      <!-- <critsuccess></critsuccess> -->
       <mastery>
 	<any-success>Cast successfully</any-success>
 	<critsuccess>Good Mood.  The target is in a good mood.</critsuccess>
-	<righteoussuccess></righteoussuccess>
-	<success></success>
-	<fail></fail>
-	<grimfail></grimfail>
+	<!-- <righteoussuccess></righteoussuccess> -->
+	<!-- <success></success> -->
+	<!-- <fail></fail> -->
+	<!-- <grimfail></grimfail> -->
 	<critfail>Accidentally summons a demon as per the Summon Demon 1 spell</critfail>
-      </mastery>  
-      
+      </mastery>        
       <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
     <prereqabilityrank>abjuration_2</prereqabilityrank>
@@ -239,7 +210,6 @@
     <abilityranks from="1" to="2"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>abjuration_defaults</defaults> -->      
       <actiontype><reaction/></actiontype>
       <range><ranged-short/></range>
       <keywords><magicpool/></keywords>
