@@ -13,6 +13,7 @@ from lxml.isoschematron import Schematron
 import re
 from functools import lru_cache
 from copy import deepcopy
+import io
 
 # third party
 from lxml import etree
@@ -143,6 +144,7 @@ def _get_defaults_tree(fname):
 def _replace_xdefs(tree, source_fname):
     """
     Custom method that does kind of what xinclude is supposed to do.
+    This modifies tree in-place!
     (XInclude looks like it's died at the spec level - in its current
     form it's semi-useless).
 
@@ -184,11 +186,22 @@ def _replace_xdefs(tree, source_fname):
         # defaults file.
         xdef_elem.getparent().replace(xdef_elem, new_element)
     return
+        
+        
+def perform_schematron_validation(etree):
 
+    # Jump through some hoops to make sure that when we get an error
+    # the error context is accurate!.
+    xml_str = xml_tree_to_str(etree)
+    f = io.StringIO(xml_str)
+    etree = etree.parse(f)
 
-def perform_schematron_validation(fname, tree):
-    validation_result = schematron_validator.validate(tree)
+    
+    validation_result = schematron_validator.validate(etree)
     if not validation_result:
+
+        # We've got a problem, now work out what it is.
+        e = Exception(f"Schematron validation error!!!")        
         report = schematron_validator.validation_report
         for child in report.getiterator():
             tag = str(child.tag).replace(
@@ -208,46 +221,58 @@ def perform_schematron_validation(fname, tree):
                 case (_, "failed-assert"):
                     test = child.get("test")
                     source_xpath = child.get("location")
-                    elements = tree.xpath(source_xpath)
-                    message = contents_to_string(child)
-                    if len(elements) != 1:
-                        raise Exception("Unknown or missing elements")
-                    element = elements[0]
-                    print(f"Schematron error '{message} [{test}]' at "
-                          f"{element.tag} in {fname}:{element.sourceline}")
-                    print(get_error_context(fname, element.sourceline))
-
-                # found something that may or may not be interesting.
-                # needs further investigation so we can decide to log
-                # or ignore it.
+                    element = etree.xpath(source_xpath)[0]
+                    sourceline = element.sourceline
+                    tag = element.tag
+                    message_element = child.getchildren()[0]
+                    message = contents_to_string(message_element).strip()
+                        
+                    # Throw a schematron assert error with some context.
+                    f = io.StringIO(xml_str)
+                    context = get_error_context(f, sourceline, context_size=21)
+                    e.add_note(
+                        f"{context}\n"
+                        f"*** {message} ***\n"
+                        f"Assert [{test}]' failed at <{tag}> "
+                        f"on line {sourceline}\n"
+                        "N.B. the line number and error context are from "
+                        "the modified xml\n"
+                        "(after any includes have been processed).")
+                    raise e                    
+                    
                 case _:
-                    raise Exception(f"UNKNOWN CHILD {child.__class__} {tag}")
-
-        raise Exception(f"Schematron error!!!")
+                    # Found something unexpected that may or may not be
+                    # interesting.  That needs further investigation so
+                    # we can decide to log or ignore it.
+                    e.add_note(f"BUG? UNKNOWN CHILD {child.__class__} {tag}")
+                    raise e
+        raise e
     return
+
 
 
 def parse_xml(fname):
     try:
-        # Parse the xml
-        tree = etree.parse(fname)
+        try:        
+            # Parse the xml
+            tree = etree.parse(fname)
 
-        # Do some #include like substitution.
-        # XInclude is an abortion.  We'll roll our own called <xdef>.
-        _replace_xdefs(tree, fname)
+            # Do some in-place #include like substitution.
+            # XInclude is an abortion.  We'll roll our own called <xdef>.
+            _replace_xdefs(tree, fname)
 
-        # Do some extra validation
-        perform_schematron_validation(fname, tree)
-
-    except lxml.etree.XMLSyntaxError as lxml_err:
-        lxml_err.msg += " happens in file: %s" % fname
-        line, column = lxml_err.position
-        print(lxml_err)
-        print(get_error_context(fname, line))
-        tree = None
+            # Perform schematron validation on the modified tree.
+            perform_schematron_validation(tree) 
+            
+        except lxml.etree.XMLSyntaxError as lxml_err:
+            lxml_err.msg += " happens in file: %s" % fname
+            line, column = lxml_err.position
+            print(lxml_err)
+            print(get_error_context(fname, line))
+            tree = None
 
     except Exception as err:
-        print(f"Problem parsing file: {fname}")
+        err.add_note(f"Problem in file: {fname}")
         raise
     return tree
 
@@ -343,16 +368,23 @@ def attrib_is_true(xml_node, attribute):
     return value
 
 
-def get_error_context(fname, error_line_number):
+def get_error_context(file_or_filename, error_line_number, context_size=7):
     """
     Returns the neighbouring lines around an xml error for debug context.
 
     """
     context = ""
-    with open(fname, "r") as f:
+    try:
+        # It's a filename?
+        f = open(file_or_filename, "r")
+    except TypeError:
+        # It's a file!
+        f = file_or_filename
+
+    finally:
         lines = f.readlines()
-        from_line = max(error_line_number - 7, 0)
-        to_line = min(error_line_number + 7, len(lines))
+        from_line = max(error_line_number - context_size, 0)
+        to_line = min(error_line_number + context_size, len(lines))
         for line_number in range(from_line, to_line):
             if line_number + 1 == error_line_number:
                 ptr = "=>"

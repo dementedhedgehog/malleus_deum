@@ -22,22 +22,17 @@
     <abilityranks from="1" to="2"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>necromancy_defaults</defaults> -->
-      <!-- <defaults>pool_cost_2</defaults> -->
       <actiontype><noncombat/></actiontype>
       <range><touch/></range>
-      <!-- <keywords><magicpool/></keywords> -->
+      <keywords><magicpool/></keywords>
       <dc><dc11/></dc>
       <mastery>
 	<any-success>Talk with a corpse</any-success>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
 	<critfail>Accidentally create a zombie.</critfail>
       </mastery>
       <xdef fname="pool_cost_1" elem_name="fate"/>      
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent>1</indifferent> -->
-      <!-- <bane></bane> -->
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>
     <spline><p x="-60" y="60"/></spline>
@@ -86,11 +81,11 @@
       <name>Check</name>
       <actiontype><ap1/></actiontype>      
       <range><melee/></range>
-      <xdef fname="necromancy_defaults" elem_name="dc"/>
+      <dc><dc11/></dc>
       <mastery>
-      <critsuccess>Melee attacks against the caster deal 3x damage to the attacker</critsuccess>
-      <righteoussuccess>Melee attacks against the caster deal 2x damage to the attacker</righteoussuccess>  
-      <success>Melee attacks against the caster deal damage to the attacker</success>
+	<critsuccess>Melee attacks against the caster deal 3x damage to the attacker</critsuccess>
+	<righteoussuccess>Melee attacks against the caster deal 2x damage to the attacker</righteoussuccess>  
+	<success>Melee attacks against the caster deal damage to the attacker</success>
       </mastery>	  
       <xdef fname="pool_cost_2" elem_name="fate"/>
     </abilitycheck>
@@ -112,14 +107,12 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>necromancy_defaults</defaults> -->
-      <!-- <defaults>pool_cost_2</defaults> -->
       <actiontype><noncombat/></actiontype>
       <range><touch/></range>
       <dc><dc11/></dc>
       <mastery>
 	<any-success>Replace amputated limbs and heal</any-success>
-	<critsuccess></critsuccess>
+	<!-- <critsuccess></critsuccess> -->
 	<critfail>Succeeds.  However, gain the aspect: It has a Mind
 	of It's Own!  The limb will attempt to murder people at inoportune
 	times, when it gets the chance.</critfail>
@@ -148,33 +141,33 @@
     <abilityid>forbidden_psalm</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>necromancy_defaults</defaults> -->
-      <!-- <defaults>pool_cost_1</defaults> -->
+      <name>Cast</name>
       <actiontype><ap4/></actiontype>
       <range><self/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <dc><dc7/></dc>      
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
+      <keywords><magicpool/></keywords>
+      <dc><dc7/></dc>
+      <mastery>
+	<critsuccess>FIXME</critsuccess>
+	<!-- <critfail></critfail> -->
+      </mastery>
       <xdef fname="pool_cost_1" elem_name="fate"/>
     </abilitycheck>
 
     <abilitycheck>
-      <name>Check</name>
+      <name>Check Unseen</name>
       <actiontype><free/></actiontype>
       <range><ranged-long/></range>
       <keywords></keywords>
       <dc><opponents-perception/></dc>
       <mastery>
-	<any-success>Save or cannot hit</any-success>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
+	<any-success>Convert a successful attack to a miss</any-success>
       </mastery>
       <fate>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <indifferent>FIXME</indifferent>
-      <!-- <bane></bane> -->
+	<!-- <boon></boon> -->
+	<indifferent>FIXME</indifferent>
+	<!-- <bane></bane> -->
       </fate>
     </abilitycheck>
     <prereqabilityrank>necromancy_1</prereqabilityrank>	
@@ -256,8 +249,8 @@
       <dc><dc13/></dc>
       <mastery>
 	<any-success>In the presence of blood, summon a demon to fight.</any-success>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
       </mastery>      
       <xdef fname="pool_cost_2" elem_name="fate"/>      
     </abilitycheck>
@@ -313,17 +306,14 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck> 
       <name>Check</name>
-      <!-- <defaults>necromancy_defaults</defaults> -->
-      <!-- <defaults>pool_cost_2</defaults> -->
       <actiontype><noncombat/></actiontype>
       <range><self/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
+      <keywords><magicpool/></keywords>
       <dc><dc7/></dc>
       <mastery>
 	<any-success>Resembles a corpse</any-success>
-	<critsuccess></critsuccess>
-	<critfail></critfail>
+	<!-- <critsuccess></critsuccess> -->
+	<!-- <critfail></critfail> -->
       </mastery>
       <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>

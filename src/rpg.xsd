@@ -18,18 +18,15 @@ Naming convention.. (we don't comply yet)
     <xs:restriction base="xs:NCName"/>
   </xs:simpleType>
 
+  <xs:simpleType name="abilityidType">
+    <xs:restriction base="xs:NCName"/>
+  </xs:simpleType>
+
   <xs:simpleType name="positiveFloat">
     <xs:restriction base="xs:float">
       <xs:minExclusive value="0"/>
     </xs:restriction>
   </xs:simpleType>
-
-  <xs:simpleType name="nonEmptyString">
-    <xs:restriction base="xs:string">
-      <xs:minLength value="1" />
-      <xs:pattern value="[\S\s]*[^\s][\S\s]*" />
-    </xs:restriction>
-  </xs:simpleType>  
 
   <!-- skill graphs -->
   <xs:complexType name="pointType">
@@ -51,15 +48,10 @@ Naming convention.. (we don't comply yet)
     </xs:all>
   </xs:complexType>
 
-
   <xs:simpleType name="nullOrIntType">
     <xs:restriction base="xs:string">
       <xs:pattern value="\d*|\s{0}" />
     </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="abilityidType">
-    <xs:restriction base="xs:NCName"/>
   </xs:simpleType>
 
   <xs:complexType name="encounterMonsterType">
@@ -657,11 +649,11 @@ ii) So we don't have to list all the types of save that can't be used against an
 	<xs:element name="agility" type="xs:integer"/>
 	<xs:element name="speed" type="xs:integer"/>
 	<xs:element name="perception" type="xs:integer"/>
+	<xs:element name="willpower" type="xs:integer"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Ability Group Enum -->
   <xs:group name="acronymsEnum">
     <xs:choice>
       <xs:element name="aka" type="acronymType"/>
@@ -673,17 +665,9 @@ ii) So we don't have to list all the types of save that can't be used against an
   </xs:group>
 
 
-  <!--
-      Text type .. used for blocks of text like paragraphs and such.
-      Doesn't allow paragraphs or sections
-
-FIXME: merge with blockgroup (and tabledatatype) then remove! those things (make it a group?)?
-  -->
-  <xs:complexType name="textType" mixed="true">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="abilityActionEconomyEnum"/>
-      <xs:group ref="acronymsEnum"/>
-      
+  <!-- Ability Group Enum -->
+  <xs:group name="miscEnum">
+    <xs:choice>
       <xs:element name="emph" type="textType"/>
       <xs:element name="bold" type="boldType"/>
       <xs:element name="newline" type="newlineType"/>
@@ -714,8 +698,23 @@ FIXME: merge with blockgroup (and tabledatatype) then remove! those things (make
       <xs:element name="ref" type="refType"/>
       <xs:element name="abilityref" type="abilityrefType"/>
     </xs:choice>
+  </xs:group>
+  
+
+  <!--
+      Text type .. used for blocks of text like paragraphs and such.
+      Doesn't allow paragraphs or sections
+
+      FIXME: merge with blockgroup (and tabledatatype) then remove! those things (make it a group?)?
+  -->
+  <xs:complexType name="textType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="abilityActionEconomyEnum"/>
+      <xs:group ref="acronymsEnum"/>
+      <xs:group ref="miscEnum"/>      
+    </xs:choice>
     <xs:attribute name="noindent" type="xs:boolean" default="false"/>
-  </xs:complexType>
+  </xs:complexType>  
 
   <xs:complexType name="abilityrefType">
     <xs:attribute name="id" type="xs:string" use="required"/>
@@ -723,7 +722,7 @@ FIXME: merge with blockgroup (and tabledatatype) then remove! those things (make
     <xs:attribute name="rank" type="xs:int" />
   </xs:complexType>
 
-  <!-- generic block of text and stuff -->
+  <!-- generic block of text and subelements -->
   <xs:group name="blockEnum" >
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -866,13 +865,22 @@ vertically offset the contents of this cell.
       <!-- Ability Check types -->
       <xs:sequence  minOccurs="0" maxOccurs="3">
 	<xs:choice>
+	  <!-- Players/PCs -->
 	  <xs:element name="abilitycheck" type="abilityCheckType"/>
-	  <xs:element name="abilitygmcheck" type="abilityGMCheckType"/>
-	  <xs:element name="abilitytrigger" type="abilityCheckTriggerType"/>
-	  <xs:element name="abilityopposed" type="abilityCheckOpposedType"/>
 	  <xs:element name="abilitysave" type="abilityCheckSaveType"/>
 	  <xs:element name="abilitydefend" type="abilityCheckDefendType"/>
 	  <xs:element name="abilityattack" type="abilityCheckAttackType"/>
+
+	  <!-- GMs/NPCs -->
+	  <!-- NPC Verbs -->
+	  <xs:element name="abilitygmcheck" type="abilityGMCheckType"/>
+	  <!-- NPC Verbs PC -->
+	  <xs:element name="abilityopposed" type="abilityCheckOpposedType"/>
+	  <!-- Special NPC Verbs PC -->
+	  <!-- <xs:element name="abilityopposedattack" type="abilityCheckOpposedAttackType"/> -->
+
+	  <!-- Either PCs or NPCs -->
+	  <xs:element name="abilitytrigger" type="abilityCheckTriggerType"/>
 	</xs:choice>
       </xs:sequence>
       
@@ -927,12 +935,12 @@ vertically offset the contents of this cell.
 
   <xs:complexType name="abilityCheckMasteryType">
     <xs:sequence>
-      <xs:element name="any-success" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="critsuccess" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="righteoussuccess" type="nonEmptyString" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="success" type="nonEmptyString" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="any-fail" type="nonEmptyString" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="fail" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="any-success" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="critsuccess" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="righteoussuccess" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="success" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="any-fail" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="fail" type="textType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="grimfail" type="textType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="critfail" type="textType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="gm-fiat" type="emptyType" minOccurs="0" maxOccurs="1"/>
@@ -943,10 +951,10 @@ vertically offset the contents of this cell.
   <xs:complexType name="abilityCheckFateType">
     <xs:sequence>
       <xs:element name="blessed" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="boon" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="indifferent" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="bane" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="damned" type="xs:string" minOccurs="0" maxOccurs="1"/>      
+      <xs:element name="boon" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="indifferent" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="bane" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="damned" type="textType" minOccurs="0" maxOccurs="1"/>      
       <xs:element name="gm-fiat" type="emptyType" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
@@ -1035,7 +1043,7 @@ vertically offset the contents of this cell.
     <xs:sequence>
       <xs:group ref="abilityCheckHeaderGroup"/>
       <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="0" maxOccurs="1"/>      
+      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="1" maxOccurs="1"/>      
       <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
@@ -1044,10 +1052,19 @@ vertically offset the contents of this cell.
     <xs:sequence>
       <xs:group ref="abilityCheckHeaderGroup"/>
       <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="0" maxOccurs="1"/>      
+      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="0" maxOccurs="1"/>
       <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/>      
     </xs:sequence>
   </xs:complexType>
+
+  <!-- <xs:complexType name="abilityGMSaveType" mixed="false"> -->
+  <!--   <xs:sequence> -->
+  <!--     <xs:group ref="abilityCheckHeaderGroup"/> -->
+  <!--     <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="0" maxOccurs="1"/> -->
+  <!--     <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/> -->
+  <!--   </xs:sequence> -->
+  <!-- </xs:complexType> -->
 
   <xs:complexType name="abilityCheckDefendType" mixed="false">
     <xs:sequence>

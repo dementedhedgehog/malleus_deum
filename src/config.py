@@ -20,7 +20,6 @@ draw_skill_trees = True
 # outline images
 # (useful for debugging alignment and sizing of images)
 debug_outline_images = False
-#debug_outline_images = True
 
 # display design notes..
 # These are musings on why things have been done a certain way.
@@ -36,9 +35,13 @@ print_provenance_notes = True
 # should we render images?
 draw_imgs = True
 
+# Set this true to check for unlicensed or unused art resources.
+print_resource_report = False
+
+
 # resources dir
-from os.path import dirname, abspath, join
-resources_dir = abspath(join(dirname(__file__), "..", "resources"))
+# from os.path import dirname, abspath, join
+# resources_dir = abspath(join(dirname(__file__), "..", "resources"))
 
 
 # measurement system (metric or imperial)
@@ -188,5 +191,3 @@ release_files = (
 )
 
 
-# Set this true to check for unlicensed or unused art resources.
-print_resource_report = False

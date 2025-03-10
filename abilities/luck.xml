@@ -104,7 +104,10 @@
       <actiontype><ap1/></actiontype>
       <range><self/></range>
       <keywords><luckpool/></keywords>
-      <dc><dc11/></dc>  
+      <dc><dc11/></dc>
+      <mastery>
+	<any-success>FIXME</any-success>
+      </mastery>
       <xdef fname="pool_cost_1" elem_name="fate"/>                  
     </abilitycheck>
     <prereqabilityrank>lucky_1</prereqabilityrank>	
@@ -215,8 +218,10 @@
       <keywords><luckpool/></keywords>
       <dc><dc11/></dc>
       <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
+	<critsuccess>Heal 3d6+Rank hit points</critsuccess>	
+	<righteoussuccess>Heal 2d6+Rank hit points</righteoussuccess>	
+	<success>Heal d6+Rank hit points</success>	
+	<critfail>Lose 3 hit points</critfail>
       </mastery>
       <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
@@ -225,8 +230,7 @@
     <abilitydescription>
       <p>
         The character examines a wound, checks against Luck and if successful 
-	declares the wound is <emph>not as bad as it looks</emph>.  The 
-	wounded character heals D4+4 hit points, starting with health.  Only one
+	declares the wound is <emph>not as bad as it looks</emph>.  Only one
 	such wound can be examined per encounter.
       </p>
     </abilitydescription>

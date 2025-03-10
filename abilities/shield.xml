@@ -53,9 +53,14 @@
       <name>Check</name> 
       <actiontype><reaction/></actiontype>
       <range><melee/></range>
-      <precondition>This character, or an adjacent character, is hit by an attack during melee.</precondition>
+      <precondition>This character is in melee with an opponent of appropriate size.</precondition>
       <dc><opponents-strength/></dc>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>      
+      <mastery>
+	<critsuccess>Opponent is Pushed twice and knocked Prone.</critsuccess>
+	<righteoussuccess>Opponent is Pushed twice.</righteoussuccess>
+	<success>Opponent is Pushed.</success>
+      </mastery>
+      <xdef fname="fate_melee_defaults" elem_name="fate"/>
     </abilitycheck>
     <prereqabilityrank>block_1</prereqabilityrank>
     <spline><p x="60" y="30"/></spline>
@@ -80,6 +85,7 @@
       <actiontype><reaction/></actiontype>      
       <range><melee/></range>
       <keywords><defend/><save/><shield/></keywords>
+      <precondition>This character, or an adjacent character, is hit by an attack during melee.</precondition>
       <dc><opponents-attack/></dc>
       <fate>
 	<blessed>Shield Smash: 3 Damage to opponent</blessed>

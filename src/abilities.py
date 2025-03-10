@@ -443,8 +443,8 @@ class AbilityCheck:
                         f"Ability is missing {self.ability_id} a dc "
                         f"on line {child.line}")
 
-                elif tag == "save":
-                    self.save = contents_to_string(child)
+            elif tag == "save":
+                self.save = contents_to_string(child)
 
             elif tag == "range":
                 self.ability_range = contents_to_string(child)
@@ -490,7 +490,6 @@ class AbilityCheck:
                             f"{self.ability.fname}:{self.line_number} has a "
                             f"check without a range. "
                             "(The range element is required for all checks)!\n")
-
         #
         # Check the tags are set properly.
         #

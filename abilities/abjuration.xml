@@ -131,7 +131,7 @@
     </abilitydescription>
   </ability>
 
-  
+
   <ability>
     <abilitytitle>Contego</abilitytitle>
     <abilityid>contego</abilityid>
@@ -140,15 +140,15 @@
       <name>Check</name>
       <actiontype><reaction-or-minor/></actiontype>
       <range><ranged-short/></range>
-      <xdef fname="abjuration_defaults" elem_name="dc"/>
+      <dc><dc11/></dc>
       <mastery>
 	<any-success>8+3xRank Temporary Stamina</any-success>
 	<critsuccess>+10 Temporary Stamina</critsuccess>
 	<righteoussuccess>+5 Temporary Stamina</righteoussuccess>
 	<grimfail>Explodes for 1d4 damage to caster</grimfail>
       </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
-    </abilitycheck>    
+      <xdef fname="pool_cost_2" elem_name="fate"/>
+    </abilitycheck>
     <prereqabilityrank>circle_of_protection_2</prereqabilityrank>
     <spline><p x="30" y="30"/></spline> 
     <abilitydescription>
@@ -172,7 +172,7 @@
       <name>Check</name>
       <actiontype><noncombat/></actiontype>
       <range><self/></range>
-      <xdef fname="abjuration_defaults" elem_name="dc"/>
+      <dc><dc11/></dc>
       <mastery>
 	<any-success>Cast successfully</any-success>
 	<critsuccess>Good Mood.  The target is in a good mood.</critsuccess>

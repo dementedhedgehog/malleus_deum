@@ -1,15 +1,100 @@
+<?xml version="1.0"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" >
   <pattern>
+
+    <!-- Mastery -->
     <rule context="mastery">
       <assert test="count(*) > 0">
 	Ability Check Mastery must have one or more values set!
       </assert>
     </rule>
+    
+    <rule context="any-success"> 
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'any-success' must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="critsuccess">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'critsuccess' must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="righteoussuccess">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'righteoussuccess' must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="success">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'success' must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="any-fail"> 
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'any-fail' must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="critfail">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'critfail' must have one or more values set!
+      </assert>
+    </rule>
 
+    <rule context="grimfail">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'grimfail' must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="fail">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check 'fail' must have one or more values set!
+      </assert>
+    </rule>
+
+
+    <!-- Fate -->
     <rule context="fate">
       <assert test="count(*) > 0">
 	Ability Check Fate must have one or more values set!
       </assert>
     </rule>
+
+    <rule context="blessed">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check blessed must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="boon">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check boon must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="indifferent">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check indifferent must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="bane">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check bane must have one or more values set!
+      </assert>
+    </rule>
+    
+    <rule context="damned">      
+      <assert test="not(normalize-space(.)='' and not(*))">
+	Ability Check damned must have one or more values set!
+      </assert>
+    </rule>
+    
+    
   </pattern>
 </schema>

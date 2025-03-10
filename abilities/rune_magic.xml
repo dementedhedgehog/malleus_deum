@@ -45,11 +45,14 @@
       <name>Check</name>
       <actiontype><reaction/></actiontype>
       <range><touch/></range>
-      <!-- <keywords><magicpool/></keywords> -->
+      <keywords><magicpool/></keywords>
       <!-- <indifferent>1</indifferent> -->
       <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
+      <mastery>
+	<!-- <critsuccess></critsuccess> -->
+	<any-success>Door is held.</any-success>
+	<!-- <critfail></critfail> -->
+      </mastery>
       <xdef fname="pool_cost_1" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>runelore_1</prereqabilityrank>	
@@ -75,8 +78,12 @@
       <range><touch/></range>
       <keywords><magicpool/></keywords>
       <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
+      <mastery>
+	<critsuccess>Weapon does an additional 7 damage.</critsuccess>
+	<righteoussuccess>Weapon does an additional 5 damage.</righteoussuccess>
+	<success>Weapon does an additional 3 damage.</success>
+	<critfail>Weapon does 3 damage to the wielder when it hits</critfail>
+      </mastery>      
       <xdef fname="pool_cost_0" elem_name="fate"/>            
     </abilitycheck>
     <prereqabilityrank>runelore_1</prereqabilityrank>	

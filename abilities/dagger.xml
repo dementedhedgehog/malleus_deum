@@ -43,15 +43,16 @@
     <abilitytitle>Dagger Strike</abilitytitle>
     <abilityid>dagger_strike</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
-    <abilitycheck>
+    <abilityattack>
       <name>Check</name>
       <actiontype><ap3/></actiontype>
       <range><melee/></range>
       <keywords><melee/></keywords>
       <dc><opponents-defend/></dc>
-      <xdef fname="mastery_dagger_defaults" elem_name="mastery"/>            
+      <dmg>Weapon+Speed|Agility</dmg>
+      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>            
       <xdef fname="fate_melee_defaults" elem_name="fate"/>            
-    </abilitycheck>
+    </abilityattack>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -83,8 +84,6 @@
       </mastery>
       <fate>
 	<blessed>Fast: This is a free action.</blessed>
-	<boon></boon>
-	<indifferent></indifferent>
 	<bane>Fumble: Lose remaining actions this round</bane>
 	<damned>Roll on Misfortune Table</damned>
       </fate>
