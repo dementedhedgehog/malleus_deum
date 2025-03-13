@@ -11,9 +11,10 @@
 """
 import os
 from os.path import abspath, join, splitext, dirname, exists, basename, relpath
-from utils import parse_xml
+from utils import parse_xml, validate_xml, get_error_context
 import codecs
 import sys
+import traceback
 from utils import COMMENT
 
 # Set this True to make missing license stuff a fatal error
@@ -76,26 +77,30 @@ class ResourceInfo:
         self.used = False
         return
 
+
+    def get_label(self):
+        """
+        Return some semi-useful identification string
+
+        """
+        if self.info_fname:
+            return self.info_fname
+        elif self.fname:
+            return self.fname
+        else:
+            return self.name
+
     def get_contents_desc(self):
         # NOTE: need to sanitize fields with underscores in them!
         return "[%s] %s %s" % (self.sig, sanitize(self.name), self.artist)
 
     def get_sig(self):
-        if self.sig is None:
-            raise Exception("Missing license information 'sig' in %s" %
-                            self.info_fname)
         return self.sig
 
     def get_fname(self):
-        if self.fname is None:
-            raise Exception("Missing license information 'fname' in %s" %
-                            self.info_fname)        
         return self.fname
 
     def get_type(self):
-        if self.resource_type is None:
-            raise Exception("Missing license information 'type' in %s" %
-                            self.info_fname)        
         return self.resource_type
 
     def get_info_fname(self):
@@ -131,66 +136,93 @@ class ResourceInfo:
             fail("License file missing %s" % info_fname)
             return
         
-        doc = parse_xml(info_fname)
-        if doc is None:
+        resource_doc = parse_xml(info_fname)
+        if resource_doc is None:
             raise Exception("Can't parse license: %s" % info_fname)
-        root = doc.getroot()
+
+        errors = validate_xml(resource_doc)
+        # If there's been a validation error print some information about it
+        if errors is not None:
+
+            err = Exception(f"Invalid xml {info_fname}!")
+            for i, e in enumerate(errors):
+                msg = str(e)
+                context = get_error_context(info_fname, e.line)
+                err.add_note(f"error: ({i}) {msg}\n{context}\n\n")
+            raise err
+        
+        root = resource_doc.getroot()
         if root.tag != "licenseinfo":
             raise Exception("Bad xml looking for xml with a root tag "
                             f"of licenseinfo in {info_fname}")
         
         for child in list(root):
-           tag = child.tag
-           if child.text is None:
-               if tag not in ("source", "url", "notes"):
-                   raise Exception("%s has empty value for %s" %
-                                   (info_fname, tag))
-               else:
-                   text = u""
-           else:
-               #text = unicode(child.text.strip())
-               text = str(child.text.strip())
+            tag = child.tag
+            # if child.text is None:
+            #     if tag not in ("source", "url", "notes"):
+            #         raise Exception("%s has empty value for %s" %
+            #                         (info_fname, tag))
+            #     else:
+            #         text = u""
+            # else:
+
+            if child.text:
+                text = str(child.text.strip())
+            else:
+                text = "Missing!"
+                
         
-           if tag is COMMENT:
-               pass
-           elif tag == "sig":
-               self.sig = text
-           elif tag == "type":
-               self.resource_type = text
-           elif tag == "license":
-               self.license = text
-           elif tag == "fname":
-               # make all our filenames relative to this path (for portability)
-               root_dir = abspath(join(dirname(__file__), ".."))
-               relative_dir = relpath(dirname(info_fname), start=root_dir)
-               self.fname = join(relative_dir, text)
-           elif tag == "artist":
-               self.artist = text
-           elif tag == "artistfullname":
-               self.artistfullname = text
-           elif tag == "source":
-                   self.source = text
-           elif tag == "url":
-                   self.url = text
-           elif tag == "notes":
-               self.notes = text
-           else:
-               fail("Unknown license information %s in %s" %
-                    (tag, info_fname))
+            if tag is COMMENT:
+                pass
+            elif tag == "sig":
+                self.sig = text
+            elif tag == "type":
+                self.resource_type = text
+            elif tag == "license":
+                self.license = text
+            elif tag == "fname":
+                # make all our filenames relative to this path (for portability)
+                root_dir = abspath(join(dirname(__file__), ".."))
+                relative_dir = relpath(dirname(info_fname), start=root_dir)
+                self.fname = join(relative_dir, text)
+            elif tag == "artist":
+                self.artist = text
+            elif tag == "artistfullname":
+                self.artistfullname = text
+            elif tag == "source":
+                self.source = text
+            elif tag == "url":
+                self.url = text
+            elif tag == "notes":
+                if self.notes is None:
+                    self.notes = text
+                else:
+                    self.notes += "\n" + text
+            else:
+                fail("Unknown license information %s in %s" %
+                     (tag, info_fname))
+                
+        # if self.sig is None:
+        #     raise Exception(
+        #         f"Missing license information 'sig' in {info_fname}")
 
-        if self.license is None:
-            fail("Missing license information 'license' in %s" %
-                 info_fname)
+        # if self.fname is None:
+        #     raise Exception(
+        #         f"Missing license information 'fname' in {info_fname}")        
 
-        if self.artist is None:
-            fail("Missing license information 'artist' in %s" %
-                 info_fname)
+        # if self.license is None:
+        #     fail(f"Missing license information 'license' in {info_fname}")
 
-        if self.source is None:
-            fail("Missing license information 'source' in %s" %
-                 info_fname)
-        return
+        # if self.artist is None:
+        #     fail(f"Missing license information 'artist' in {info_fname}")
 
+        # if self.source is None:
+        #     fail(f"Missing license information 'source' in {info_fname}")
+
+        # if self.resource_type is None:
+        #     raise Exception(
+        #         f"Missing license information 'type' in {info_fname}")        
+        # return    
     
     def __str__(self):        
         return (
@@ -208,7 +240,11 @@ class ResourceInfo:
 
 
 class Resources:
+    """
+    A database containing all the resources in the
+    resources/ directory.
 
+    """
     def __init__(self):
         self.resource_dirs = None
         self.lookup = {}
@@ -221,8 +257,12 @@ class Resources:
     
     def load(self, resource_dirs):
         for resource_dir in resource_dirs:
-            for dir_name, sub_dirs, files in os.walk(resource_dir):
 
+            # When loading resources fail slow.
+            # (Print all the problems so we don't have to
+            # reload over and over again).
+            failed = False
+            for dir_name, sub_dirs, files in os.walk(resource_dir):
                 # look for a resource file.
                 info_fnames = [fname for fname in files
                                         if fname.endswith(".xml")]
@@ -231,7 +271,13 @@ class Resources:
                     # 
                     info = ResourceInfo()
                     info_fname = join(dir_name, info_fname)
-                    info.parse(info_fname=info_fname)
+
+                    try:
+                        info.parse(info_fname=info_fname)
+                    except Exception as err:
+                        #print(repr(err))
+                        traceback.print_exc()
+                        failed = True
                     key, _ = splitext(basename(info_fname))
 
                     # Check for duplicate resource names.
@@ -244,6 +290,8 @@ class Resources:
                                existing_info.get_info_fname()))
                                         
                     self.lookup[key] = info
+            if failed:
+                sys.exit()
         return        
     
 
@@ -275,17 +323,17 @@ class Resources:
         if verbose:
             print("\n**OK Resources**")
             for info in ok_resources:
-                print(info.name)
+                print(info.info_fname)
                 
         if len(no_license_resources) > 0 or not verbose:
             print("\n** Missing License Resources **")
             for info in no_license_resources:
-                print(info.name)
+                print(info.info_fname)
 
         if len(unused_resources) > 0 or not verbose:
             print("\n** Unused Resources **")
             for info in unused_resources:
-                print(info.name)
+                print(info.info_fname)
 
         print("\n**Note**: the 'used' field is only accurate if "
               "you have built *all* the docs.\n\n")
@@ -300,4 +348,8 @@ if __name__ == "__main__":
 
     resources = Resources()
     resources.load(resource_dirs)
-    resources.print_report()
+    #resources.print_report()
+    for key in resources.lookup:
+        print(key)
+
+    

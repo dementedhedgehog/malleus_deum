@@ -36,13 +36,7 @@ print_provenance_notes = True
 draw_imgs = True
 
 # Set this true to check for unlicensed or unused art resources.
-print_resource_report = False
-
-
-# resources dir
-# from os.path import dirname, abspath, join
-# resources_dir = abspath(join(dirname(__file__), "..", "resources"))
-
+print_resource_report = True
 
 # measurement system (metric or imperial)
 #use_imperial = True
@@ -60,14 +54,14 @@ doc_files_to_build = (
     ("phb.xml", True, "PHB"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    #("monster_manual.xml", True, "MM"),
+    ("monster_manual.xml", True, "MM"),
     # ("archetypes.xml", True, "AR"),
     # ("magic_items.xml", True, "MI"),
     # ("abilities.xml", True, "Ab"),
     # ("ability_dcs.xml", False, "X"),
     # ("gms_screen.xml", False, "GMS"),
-    #("gmg.xml", True, "[GMG]"),
-    #("rationale.xml", True, "[R]"),
+    ("gmg.xml", True, "[GMG]"),
+    ("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
 )
 
@@ -85,23 +79,23 @@ patrons_to_build = (
 )
 
 archetypes_to_build = (
-    # ("black_coat", True, "[BC]"),
-    # ("hedge_wizard", True, "[HW]"),
-    # ("second_son", True, "[SS]"),
-    # ("plague_doctor", True, "[PD]"),
-    # ("outrider", True, "[OR]"),
-    # ("champion_of_mithras", True, "[CoM]"),
-    # ("chevalier", True, "[Ch]"),
-    # ("confessor_militant", True, "[FC]"), 
-    # ("elven_scion", True, "[ESc]"),
-    # ("fyrdzwerg", True, "[FZW]"),
-    # ("halfling_rover", True, "[HR]"),
-    # ("penitent_brother", True, "[PB]"),
-    # ("red_mage", True, "[RM]"),
-    # ("skald", True, "[SKL]"),
-    # ("summoner", True, "[SM]"),
-    # ("witch_hunter", True, "[WH]"),
-    # ("night_gauner", True, "[NG]"),
+    ("black_coat", True, "[BC]"),
+    ("hedge_wizard", True, "[HW]"),
+    ("second_son", True, "[SS]"),
+    ("plague_doctor", True, "[PD]"),
+    ("outrider", True, "[OR]"),
+    ("champion_of_mithras", True, "[CoM]"),
+    ("chevalier", True, "[Ch]"),
+    ("confessor_militant", True, "[FC]"), 
+    ("elven_scion", True, "[ESc]"),
+    ("fyrdzwerg", True, "[FZW]"),
+    ("halfling_rover", True, "[HR]"),
+    ("penitent_brother", True, "[PB]"),
+    ("red_mage", True, "[RM]"),
+    ("skald", True, "[SKL]"),
+    ("summoner", True, "[SM]"),
+    ("witch_hunter", True, "[WH]"),
+    ("night_gauner", True, "[NG]"),
 )
 
 

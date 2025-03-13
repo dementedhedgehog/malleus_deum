@@ -267,9 +267,10 @@ def parse_xml(fname):
         except lxml.etree.XMLSyntaxError as lxml_err:
             lxml_err.msg += " happens in file: %s" % fname
             line, column = lxml_err.position
-            print(lxml_err)
-            print(get_error_context(fname, line))
+            context = get_error_context(fname, line)
+            lxml_err.add_note(context)
             tree = None
+            raise
 
     except Exception as err:
         err.add_note(f"Problem in file: {fname}")
@@ -386,7 +387,7 @@ def get_error_context(file_or_filename, error_line_number, context_size=7):
         from_line = max(error_line_number - context_size, 0)
         to_line = min(error_line_number + context_size, len(lines))
         for line_number in range(from_line, to_line):
-            if line_number + 1 == error_line_number:
+            if line_number == error_line_number:
                 ptr = "=>"
             else:
                 ptr = "  "
@@ -448,8 +449,9 @@ def parse_measurement_to_str(fname, measurement_node):
                     text_repr += normalize_ws(child.text)
 
         else:
-            raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n"
-                            (child.tag, fname, child.sourceline))
+            raise Exception(
+                "UNKNOWN XML TAG (%s) File: %s Line: %s\n" %
+                (tag, fname, child.sourceline))
     return text_repr
 
 

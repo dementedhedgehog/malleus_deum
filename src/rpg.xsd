@@ -1508,6 +1508,7 @@ vertically offset the contents of this cell.
   </xs:complexType>
 
   <!--
+  Wraps text around the image.
 
 Position
 r – the right side of the text
@@ -1866,7 +1867,6 @@ labels and references.
   </xs:complexType>
 
 
-  <xs:element name="archetype" type="archetypeType"/>
 
   <xs:complexType name="inheritanceType">
     <xs:sequence>
@@ -1877,9 +1877,6 @@ labels and references.
     </xs:sequence>
   </xs:complexType>
   
-
-  <!-- One of the top level elements in the schema -->
-  <xs:element name="book" type="bookType"/>
 
   <xs:complexType name="bookType">
     <xs:sequence>
@@ -1963,7 +1960,6 @@ labels and references.
   </xs:complexType>
 
 
-  <xs:element name="monstergroup" type="monsterGroupType"/>  
 
   <xs:complexType name="monsterGroupType">
     <xs:sequence>
@@ -2100,7 +2096,6 @@ Patrons
     </xs:sequence>
   </xs:complexType>
 
-  <xs:element name="patron" type="patronType"/>
 
 
   <!--
@@ -2194,22 +2189,27 @@ NPC Monster Block
   -->
 
   <!-- licenses -->
-  <xs:simpleType name="licenseType">
-    <xs:restriction base="xs:string">      
-      <!-- Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0) -->
-      <xs:enumeration value="CC_BY-NC-ND_30" />
+  <xs:complexType name="licenseType">
+    <xs:choice>
 
-      <!-- Creative Commons Zero / Public Domain -->
-      <xs:enumeration value="CC0" />
+      <!-- ok -->
+      <xs:element name="public-domain" type="symbolType"/>
+      <xs:element name="cc0" type="symbolType"/>
+      <xs:element name="cc0-10" type="symbolType"/>
+      <xs:element name="cc-by" type="symbolType"/>
+      <xs:element name="cc-by-sa" type="symbolType"/>
 
-      <!-- Creative Commons Public Domain -->
-      <xs:enumeration value="CCPD" />
-    </xs:restriction>
-  </xs:simpleType>
-  
+      <!-- not ok -->
+      <xs:element name="cc-by-nc-30" type="symbolType"/>
+      <xs:element name="cc-by-nc-sa-30" type="symbolType"/>
+      <xs:element name="cc-by-nc-sa-40" type="symbolType"/>
+      <xs:element name="cc-by-nc-nd-30" type="symbolType"/>
+      <xs:element name="pixabay" type="symbolType"/>
+    </xs:choice>
+  </xs:complexType>
 
   <!-- a group of homogeneous npcs -->
-  <xs:complexType name="licenseinfoType" mixed="false">
+  <xs:complexType name="licenseInfoType" mixed="false">
     <xs:sequence>     
       <xs:element
           name="sig" 
@@ -2248,7 +2248,7 @@ NPC Monster Block
       <xs:element 
           name="notes" 
           type="xs:string" 
-          minOccurs="0" maxOccurs="1"/>
+          minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -2287,7 +2287,6 @@ NPC Monster Block
   </xs:complexType>
 
   <!-- Weapons -->
-  <xs:element name="weapons" type="weaponsType"/>
   <xs:complexType name="weaponsType" mixed="false">
     <xs:sequence>     
       <xs:element 
@@ -2368,5 +2367,20 @@ NPC Monster Block
     <xs:sequence>
       <xs:element name="node" minOccurs="0" maxOccurs="1" type="historyNodeType"/>
     </xs:sequence>
-  </xs:complexType>   
+  </xs:complexType>
+
+  <!--
+      Top level elements.
+
+      These can live in a file as the root element.
+
+  -->
+  <xs:element name="archetype" type="archetypeType"/>
+  <xs:element name="licenseinfo" type="licenseInfoType"/>
+  <xs:element name="monstergroup" type="monsterGroupType"/>  
+  <xs:element name="book" type="bookType"/>
+  <xs:element name="weapons" type="weaponsType"/>
+  <xs:element name="patron" type="patronType"/>  
 </xs:schema> 
+
+

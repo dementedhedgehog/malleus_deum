@@ -1104,7 +1104,6 @@ class LatexFormatter:
                 self.latex_file.write("\\fbox{")
 
         self.latex_file.write("\\centering\n")
-        # self.latex_file.write("\t\\begin{center}\n")
 
         # 
         if "src" in wrapimg.attrib:
@@ -1674,7 +1673,7 @@ class LatexFormatter:
             drop = 1
         else:
             drop = convert_str_to_int(vspace.text)
-        self.latex_file.write(r"\\vspace{%s\drop}\n" % drop)
+        self.latex_file.write("\\vspace{%s\\drop}\n" % drop)
         return
 
     def end_vspace(self, vspace):

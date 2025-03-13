@@ -14,11 +14,6 @@ from utils import root_dir, build_dir
 import config
 
 
-# Jinja2 doesn't like absolute paths.
-# We must supply a relative path!
-ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
-PATRON_TEMPLATE_FNAME = join("docs", "patron_template.xml")
-
 
 def jinja_no_nones(x):
     """Custom jinja filter for formatting nones"""

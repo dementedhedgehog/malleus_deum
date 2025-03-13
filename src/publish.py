@@ -18,14 +18,10 @@ import os
 from getopt import getopt, GetoptError
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import mkdir, makedirs
-#import codecs
 import subprocess
-#from subprocess import call, check_output, CalledProcessError
 from copy import deepcopy
-#from shutil import copy
 import io 
 import re
-#import platform
 import zipfile
 
 
@@ -48,6 +44,7 @@ import aspect_lifetime_graph
 # FIXME: didn't want to deal with pdftk at the moment.
 from character_sheet_writer import (
     create_character_sheet_for_archetype,
+    create_empty_abilities_sheet,
     create_blank_character_sheet)
 
 from generate_level_progression_tables import generate_level_progression_tables
@@ -74,34 +71,16 @@ from latex_utils import (
 from jinja_utils import apply_template_to_xml, get_jinja_env
 
 
+# Jinja2 doesn't like absolute paths.
+# We must supply a relative path!
+ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
+PATRON_TEMPLATE_FNAME = join("docs", "patron_template.xml")
+
 
 
 def die():
-    raise Exception("Fatal Error")
+    raise Exception("Fatal Error")        
 
-
-# def jinja_recursive_render(template, jinja_env, **values):
-#     """
-#     Recurse into expanded template variables .. so our templates can
-#     include templates which can include templates... etc and all the
-#     templates will be evaluated.
-
-#     """
-#     MAX_DEPTH=5
-#     depth = 0
-#     prev = template.render(**values)
-#     while True:
-#         new_template = jinja_env.from_string(prev)
-#         curr = new_template.render(**values)
-#         if curr != prev:
-#             prev = curr
-#         else:
-#             return curr
-
-#         depth += 1
-#         if depth >= MAX_DEPTH:
-#             break
-        
 
 def usage(msg = "", return_code = 0):
     prog_name = basename(sys.argv[0])
@@ -119,151 +98,6 @@ def usage(msg = "", return_code = 0):
            "\n"
            "%s" % (prog_name, msg)))
     exit(return_code)    
-
-
-# def apply_template_to_xml(jinja_env,
-#                           db,
-#                           xml_fname_in,
-#                           verbosity,
-#                           template_fname=None,
-#                           archetype=None,
-#                           patron=None):
-#     """
-#     Run the xml through a templating system.
-
-#     """
-#     xml_base_fname, _ = splitext(basename(xml_fname_in))
-#     xml_fname_out = join(build_dir, "%s.xml" % xml_base_fname)
-
-#     # the very first thing we do is run the xml through a template engine 
-#     # (Doing it like this allows us to include files relative to the doc 
-#     # dir using Jinjas include directive). 
-#     if template_fname is None:
-#         template_fname = xml_fname_in
-#     template = jinja_env.get_template(template_fname)
-#     if template is None:
-#         print(f"Problem reading template file {template_fname}.")
-#         exit(0)
-        
-#     xml = jinja_recursive_render(
-#         template=template,
-#         jinja_env=jinja_env,
-#         db=db,
-#         monster_groups=db.monster_groups,                          
-#         ability_groups=db.ability_groups,
-#         npc_gangs=db.npc_gangs,
-#         archetype=archetype,
-#         patron=patron,
-#         config=config,
-#         encounters=db.encounters,
-#         add_index_to_core=config.add_index_to_core,
-#         doc_name=xml_fname_in)
-
-#     # process abilities
-#     try:
-#         xml = db.filter_abilities(xml, verbose=verbosity>0)
-#     except Exception as err:
-#         print(f"Problem filtering abilities in {xml_fname_in}")
-#         raise err
-
-#     # write the post-processed xml to the build dir 
-#     # (has all the included files in it).
-#     with codecs.open(xml_fname_out, "w", "utf-8") as f:
-#         f.write(xml)
-
-#     # parse an xml document
-#     doc = Doc(xml_fname_out)
-#     if not doc.parse():
-#         print(f"Problem parsing the xml.")
-#         exit(0)
-
-#     if not doc.validate():
-#         print("Fatal: xml errors are fatal!")
-#         print("Run with the -s cmd line option to ignore xml errors.")
-#         exit(0)        
-        
-#     return doc
-
-
-# def build_epub(xml_fname,
-#                verbosity,
-#                doc,
-#                db,                  
-#                archetype=None,
-#                patron=None):
-#     # base name .. no extension
-#     doc_base_fname, _ = splitext(basename(xml_fname))
-#     epub_fname = join(build_dir, "%s.epub" % doc_base_fname)
-
-#     print((f"\tBuilding {epub_fname}"))
-
-#     # check we have a book_node to format
-#     if not doc.has_book_node():
-#         if verbosity >= 1:
-#             print("No book node to format in document: %s IGNORING!" % doc_fname)
-#         return
-
-#     # build the epub document 
-#     #with codecs.open(tex_fname, "w", "utf-8") as f:
-#     epub_formatter = EPubFormatter(epub_fname=epub_fname, db=db)
-
-#     errors = doc.format(epub_formatter)
-#     if len(errors) > 0:
-#         print("Errors:")
-#         for error in errors:
-#             print("\t%s\n\n\n" % error)                
-#             exit()
-
-#     # Copy the pdf from the build dir to the pdfs dir
-#     copy(epub_fname, pdfs_dir)
-    
-#     print((f"\tFinished building {epub_fname}"))
-#     return True
-
-
-
-
-
-def build_html_doc(template_fname, verbosity, archetype = None):
-    """
-    Archetype required only when building archetype docs.
-
-    """
-    # archetypes all use the same template.. but we don't want to 
-    # put them in the same doc file.
-    if archetype is not None:
-        doc_fname = archetype.get_id()
-    else:
-        doc_fname = template_fname
-
-    # base name .. no extension
-    doc_base_fname, _ = splitext(basename(doc_fname))
-    xml_fname = join(build_dir, "%s.xml" % doc_base_fname)
-    html_fname = join(build_dir, "%s.html" % doc_base_fname)
-
-    # parse an xml document
-    print(f"--------------> PARSING {xml_fname}")
-    doc = Doc(xml_fname)        
-    if not doc.parse():
-        print("Problem parsing the xml.")
-        exit(0)
-
-    print(f"--------------> VALIDATING {xml_fname}")
-    if not doc.validate():
-        print("Fatal: xml errors are fatal!")
-        print("Run with the -s cmd line option to ignore xml errors.")
-        exit(0)
-        
-    # build the html document by converting the xml into tex
-    with codecs.open(html_fname, "w", "utf-8") as f:
-        html_formatter = HtmlFormatter(f)
-        errors = doc.format(html_formatter)
-        if len(errors) > 0:
-            print("Errors:")
-            for error in errors:
-                print("\t%s\n\n\n" % error)
-                exit()
-    return
 
 
 def clean():
@@ -397,9 +231,6 @@ if __name__ == "__main__":
     
 
 
-    print("********************** 0")
-
-    
     # # Add the local styles dir
     # # The trailing // means that TeX programs will search recursively in that 
     # # folder; the trailing colon means "append the standard value of TEXINPUTS" 
@@ -410,21 +241,15 @@ if __name__ == "__main__":
     #env = deepcopy(os.environ)
     # env["TEXINPUTS"] = tex_inputs
 
-    print("********************** 0.1")
-
     jinja_env = get_jinja_env(db)
     generate_level_progression_tables(jinja_env, db)
     #sys.exit() # FIXME:!!    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    print("********************** 0.2")
 
     
     # Build the ability trees (these are the eps diagrams that should skill prereqs)
     build_skill_trees(db.ability_groups)
 
 
-    print("********************** 1")
-    
     #
     # Build Pdf Files.
     #
@@ -435,7 +260,6 @@ if __name__ == "__main__":
 
     # Build background books (in the background dir)
     for doc_xml_fname, _, _ in config.background_files_to_build:
-        print("--------------------- " + doc_xml_fname)
         build_book("background", doc_xml_fname, verbosity)
         
     # Build archetypes
@@ -447,7 +271,7 @@ if __name__ == "__main__":
         doc = apply_template_to_xml(
             jinja_env,
             xml_fname_in=full_doc_xml_fname,
-            template_fname=ARCHETYPE_TEMPLATE_FNAME,           
+            template_fname=ARCHETYPE_TEMPLATE_FNAME,
             archetype=archetype,
             db=db,
             verbosity=verbosity) or die()
@@ -545,12 +369,12 @@ if __name__ == "__main__":
     # Create the character sheets
     # 
     create_blank_character_sheet()
-    #create_empty_abilities_sheet()
+    create_empty_abilities_sheet()
     _ids_to_build = set(
         [a[0] for a in config.archetypes_to_build])    
     for archetype in db.archetypes:
         if archetype.archetype_id in _ids_to_build:
-            print(f"Creating char sheet for {archetype.name}")
+            print(f"Creating char sheet for {archetype.get_title()}")
             create_character_sheet_for_archetype(db, archetype)
         
     #
