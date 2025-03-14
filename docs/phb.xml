@@ -3437,7 +3437,7 @@
 
       {% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
       <figure position="h" fullwidth="false" sideways="false">
-	<img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	<img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
 	<caption>{{ ability_group.get_title() }}</caption>
 	<label>figure:{{ ability_group.get_id() }}_skill_tree</label>
       </figure>
@@ -3457,7 +3457,7 @@
 
     <!-- 	{% if ability_group.has_abilities() and ability_group.draw_skill_tree() %} -->
     <!-- 	<figure position="h" fullwidth="false" sideways="false"> -->
-    <!-- 	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/> -->
+    <!-- 	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/> -->
     <!-- 	  <caption>{{ ability_group.get_title() }}</caption> -->
     <!-- 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label> -->
     <!-- 	</figure> -->
@@ -3487,7 +3487,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3507,7 +3507,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3550,7 +3550,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3578,7 +3578,7 @@
 
 	{% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3607,7 +3607,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>

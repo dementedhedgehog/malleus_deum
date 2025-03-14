@@ -213,184 +213,185 @@ if __name__ == "__main__":
         aspect_lifetime_graph.draw_aspect_lifetime_graph()
 
     # load the game database (archetypes, abilties etc).
-    db = DB()
-    db.load(root_dir=root_dir, fail_fast=True)
-    
-    # generate the skill tree images
-    # skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
-    # skill_tree_builder.build(db.ability_groups,
-    #                          fname=join(build_dir, "ability_tree1.eps"))
-    # skill_tree_builder.build(db.ability_groups,
-    #                          fname=join(build_dir, "ability_tree1.pdf"))
-    
-    # skill_tree_builder = SkillTreeBuilder(page=Page.TWO)
-    # skill_tree_builder.build(db.ability_groups,
-    #                          fname=join(build_dir, "ability_tree2.eps"))
-    # skill_tree_builder.build(db.ability_groups,
-    #                          fname=join(build_dir, "ability_tree2.pdf"))
-    
+    with DB() as db:
+        db.load(root_dir=root_dir, fail_fast=True)
 
+        # generate the skill tree images
+        # skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
+        # skill_tree_builder.build(db.ability_groups,
+        #                          fname=join(build_dir, "ability_tree1.eps"))
+        # skill_tree_builder.build(db.ability_groups,
+        #                          fname=join(build_dir, "ability_tree1.pdf"))
 
-    # # Add the local styles dir
-    # # The trailing // means that TeX programs will search recursively in that 
-    # # folder; the trailing colon means "append the standard value of TEXINPUTS" 
-    # # (which you don't need to provide).
-    # tex_inputs = styles_dir + "//:"
-
-    # # Get a copy of the environment with TEXINPUTS set.
-    #env = deepcopy(os.environ)
-    # env["TEXINPUTS"] = tex_inputs
-
-    jinja_env = get_jinja_env(db)
-    generate_level_progression_tables(jinja_env, db)
-    #sys.exit() # FIXME:!!    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    
-    # Build the ability trees (these are the eps diagrams that should skill prereqs)
-    build_skill_trees(db.ability_groups)
-
-
-    #
-    # Build Pdf Files.
-    #
-    
-    # Build doc books (in the docs dir)
-    for doc_xml_fname, _, _ in config.doc_files_to_build:
-        build_book("docs", doc_xml_fname, verbosity)
-
-    # Build background books (in the background dir)
-    for doc_xml_fname, _, _ in config.background_files_to_build:
-        build_book("background", doc_xml_fname, verbosity)
-        
-    # Build archetypes
-    for archetype_id, _, _ in config.archetypes_to_build:
-        archetype = db.archetypes[archetype_id]
-        assert archetype is not None
-        
-        full_doc_xml_fname = join("archetypes", archetype.get_id() + ".xml")
-        doc = apply_template_to_xml(
-            jinja_env,
-            xml_fname_in=full_doc_xml_fname,
-            template_fname=ARCHETYPE_TEMPLATE_FNAME,
-            archetype=archetype,
-            db=db,
-            verbosity=verbosity) or die()
-        
-        build_pdf(
-            xml_fname=archetype.get_id(),
-            verbosity=verbosity,
-            doc=doc,
-            db=db,
-            archetype=archetype) or die()
-
-        # build_epub(
-        #     xml_fname=archetype.get_id(),
-        #     verbosity=verbosity,
-        #     doc=doc,
-        #     db=db,
-        #     archetype=archetype) or die()
-
-
-    # Build latex/pdf module files.
-    for module_id, _, _ in config.modules_to_build:
-        build_book(join("modules", module_id), f"{module_id}.xml", verbosity)
-
-        
-    # Build latex/pdf patron files.
-    for patron_id, _, _ in config.patrons_to_build:
-        patron = db.patrons[patron_id]
-        full_doc_xml_fname = join("docs", patron.get_id() + ".xml")
-        doc = apply_template_to_xml(
-            jinja_env,
-            xml_fname_in=full_doc_xml_fname,
-            template_fname=PATRON_TEMPLATE_FNAME,           
-            patron=patron,
-            db=db,
-            verbosity=verbosity) or die()
-        
-        build_pdf(
-            xml_fname=patron.get_id(),
-            verbosity=verbosity,
-            doc=doc,
-            db=db,
-            patron=patron) or die()
-        
-        
-    # # Build latex/pdf encounter files.
-    # for encounter_id, _, _ in config.encounters_to_build:
-    #     encounter_fname = join(#encounters_dir,
-    #         "encounters",
-    #         encounter_id,
-    #         "%s.xml" % encounter_id)
-    #     build_pdf_doc(encounter_fname,
-    #                   db=db,
-    #                   doc_fname=encounter_fname, 
-    #                   verbosity=verbosity) or die()
+        # skill_tree_builder = SkillTreeBuilder(page=Page.TWO)
+        # skill_tree_builder.build(db.ability_groups,
+        #                          fname=join(build_dir, "ability_tree2.eps"))
+        # skill_tree_builder.build(db.ability_groups,
+        #                          fname=join(build_dir, "ability_tree2.pdf"))
 
 
 
-    #
-    # Build HTML Files (mostly a placeholder at this stage)
-    #
+        # # Add the local styles dir
+        # # The trailing // means that TeX programs will search recursively in that 
+        # # folder; the trailing colon means "append the standard value of TEXINPUTS" 
+        # # (which you don't need to provide).
+        # tex_inputs = styles_dir + "//:"
 
-    # Build html docs.
-    #for doc_xml_fname, _, _ in config.files_to_build:
-    #    build_html_doc(doc_xml_fname, verbosity=verbosity)
-        
-    
-    #
-    # Create the index.pdf file
-    #
-    if config.build_meta_index:
-        print(" Creating index.pdf")
-        #create_shared_index(verbosity=verbosity)
-    
-    #
-    # Create Summary.xslx
-    # (a table of ability costs by archetype for working on balance)
-    #
-    # save summary details to a spreadsheet (for analysis)
-    #spreadsheet_fname = join(build_dir, "summary.xlsx")
-    #write_summary_to_spreadsheet(spreadsheet_fname,
-    #                             ability_groups=db.ability_groups,
-    #                             archetypes=db.archetypes)
+        # # Get a copy of the environment with TEXINPUTS set.
+        #env = deepcopy(os.environ)
+        # env["TEXINPUTS"] = tex_inputs
 
-    spreadsheet_fname = join(build_dir, "game_balance.xlsx")
-    write_game_balance_spreadsheet(spreadsheet_fname,
-                                   ability_groups=db.ability_groups,
-                                   archetypes=db.archetypes)
+        jinja_env = get_jinja_env(db)
+        generate_level_progression_tables(jinja_env, db)
+        #sys.exit() # FIXME:!!    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-    ability_summary_fname = join(build_dir, "ability_summary.xlsx")
-    write_ability_summary_spreadsheet(ability_summary_fname,
-                                      ability_groups=db.ability_groups)    
-    
-    #
-    # Create the character sheets
-    # 
-    create_blank_character_sheet()
-    create_empty_abilities_sheet()
-    _ids_to_build = set(
-        [a[0] for a in config.archetypes_to_build])    
-    for archetype in db.archetypes:
-        if archetype.archetype_id in _ids_to_build:
-            print(f"Creating char sheet for {archetype.get_title()}")
-            create_character_sheet_for_archetype(db, archetype)
-        
-    #
-    # Generate a resource report
-    #
-    # We want to make sure everything has a license,
-    # and also list unused art resources to help us
-    # cull stuff from the repo.
-    #
-    if config.print_resource_report:
-        db.resources.print_report(verbose=True)
+        # Build the ability trees (these are the eps diagrams that should skill prereqs)
+        build_skill_trees(db.ability_groups)
 
-    #
-    # If we're releasing then zip a bunch of pdfs from
-    # the zip dir and put them in the release dir.
-    #
-    if release:
-        create_release(config, db, verbosity)
+
+        #
+        # Build Pdf Files.
+        #
+
+        # Build doc books (in the docs dir)
+        for doc_xml_fname, _, _ in config.doc_files_to_build:
+            build_book("docs", doc_xml_fname, verbosity)
+
+        # Build background books (in the background dir)
+        for doc_xml_fname, _, _ in config.background_files_to_build:
+            build_book("background", doc_xml_fname, verbosity)
+
+        # Build archetypes
+        for archetype_id, _, _ in config.archetypes_to_build:
+            archetype = db.archetypes[archetype_id]
+            assert archetype is not None
+
+            full_doc_xml_fname = join("archetypes", archetype.get_id() + ".xml")
+            doc = apply_template_to_xml(
+                jinja_env,
+                xml_fname_in=full_doc_xml_fname,
+                template_fname=ARCHETYPE_TEMPLATE_FNAME,
+                archetype=archetype,
+                db=db,
+                verbosity=verbosity) or die()
+
+            build_pdf(
+                xml_fname=archetype.get_id(),
+                verbosity=verbosity,
+                doc=doc,
+                db=db,
+                archetype=archetype) or die()
+
+            # build_epub(
+            #     xml_fname=archetype.get_id(),
+            #     verbosity=verbosity,
+            #     doc=doc,
+            #     db=db,
+            #     archetype=archetype) or die()
+
+
+        # Build latex/pdf module files.
+        for module_id, _, _ in config.modules_to_build:
+            module_name = join("modules", module_id)
+            build_book(module_name, f"{module_id}.xml", verbosity)
+
+
+        # Build latex/pdf patron files.
+        for patron_id, _, _ in config.patrons_to_build:
+            patron = db.patrons[patron_id]
+            full_doc_xml_fname = join("docs", patron.get_id() + ".xml")
+            doc = apply_template_to_xml(
+                jinja_env,
+                xml_fname_in=full_doc_xml_fname,
+                template_fname=PATRON_TEMPLATE_FNAME,           
+                patron=patron,
+                db=db,
+                verbosity=verbosity) or die()
+
+            build_pdf(
+                xml_fname=patron.get_id(),
+                verbosity=verbosity,
+                doc=doc,
+                db=db,
+                patron=patron) or die()
+
+
+        # # Build latex/pdf encounter files.
+        # for encounter_id, _, _ in config.encounters_to_build:
+        #     encounter_fname = join(#encounters_dir,
+        #         "encounters",
+        #         encounter_id,
+        #         "%s.xml" % encounter_id)
+        #     build_pdf_doc(encounter_fname,
+        #                   db=db,
+        #                   doc_fname=encounter_fname, 
+        #                   verbosity=verbosity) or die()
+
+
+
+        #
+        # Build HTML Files (mostly a placeholder at this stage)
+        #
+
+        # Build html docs.
+        #for doc_xml_fname, _, _ in config.files_to_build:
+        #    build_html_doc(doc_xml_fname, verbosity=verbosity)
+
+
+        #
+        # Create the index.pdf file
+        #
+        if config.build_meta_index:
+            print(" Creating index.pdf")
+            #create_shared_index(verbosity=verbosity)
+
+        #
+        # Create Summary.xslx
+        # (a table of ability costs by archetype for working on balance)
+        #
+        # save summary details to a spreadsheet (for analysis)
+        #spreadsheet_fname = join(build_dir, "summary.xlsx")
+        #write_summary_to_spreadsheet(spreadsheet_fname,
+        #                             ability_groups=db.ability_groups,
+        #                             archetypes=db.archetypes)
+
+        spreadsheet_fname = join(build_dir, "game_balance.xlsx")
+        write_game_balance_spreadsheet(spreadsheet_fname,
+                                       ability_groups=db.ability_groups,
+                                       archetypes=db.archetypes)
+
+
+        ability_summary_fname = join(build_dir, "ability_summary.xlsx")
+        write_ability_summary_spreadsheet(ability_summary_fname,
+                                          ability_groups=db.ability_groups)    
+
+        #
+        # Create the character sheets
+        # 
+        create_blank_character_sheet()
+        create_empty_abilities_sheet()
+        _ids_to_build = set(
+            [a[0] for a in config.archetypes_to_build])    
+        for archetype in db.archetypes:
+            if archetype.archetype_id in _ids_to_build:
+                print(f"Creating char sheet for {archetype.get_title()}")
+                create_character_sheet_for_archetype(db, archetype)
+
+        #
+        # Generate a resource report
+        #
+        # We want to make sure everything has a license,
+        # and also list unused art resources to help us
+        # cull stuff from the repo.
+        #
+        if config.print_resource_report:
+            db.resources.print_report(verbose=True)
+
+        #
+        # If we're releasing then zip a bunch of pdfs from
+        # the zip dir and put them in the release dir.
+        #
+        if release:
+            create_release(config, db, verbosity)
 

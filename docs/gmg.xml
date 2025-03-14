@@ -4,7 +4,7 @@
     <vspace>2</vspace>
     <title>Malleus Deum</title>  
     <vspace>6</vspace>
-    <img src="resources/dragon_title/dragon.jpg" scale="0.6"/>
+    <img id="dragon_title" scale="0.6"/>
     <vspace>6</vspace>
     <subtitle>Igitur qui desiderat pacem, praeparet bellum.</subtitle>
     <vspace>1</vspace>
@@ -87,7 +87,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img src="./build/{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>

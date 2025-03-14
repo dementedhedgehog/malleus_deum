@@ -8,7 +8,8 @@ from utils import (
     convert_str_to_int,
     COMMENT,
     attrib_is_true,
-    get_text_for_child
+    get_text_for_child,
+    build_dir,
 )
 
 from npcs import NPC, NPCGroup
@@ -94,10 +95,8 @@ latex_frontmatter = r"""
 \newfontfamily{\dogma}[Path=fonts/]{Dogma}
 
 \newfontfamily{\rpgtitlefont}[Path=fonts/, Scale=10.0]{Dogma}
-%%\newcommand{\rpgtitlefont}{\dogma}
-\newfontfamily{\rpgchapterfont}[Path=fonts/, Scale=1.0]{CloisterBlack}
-\newfontfamily{\rpgtitlesubtitlefont}[Path=fonts/]{CloisterBlack}
-%%\newfontfamily{\rpgtitleauthorfont}[Path=fonts/]{Dogma}
+\newcommand{\rpgchapterfont}{\cloisterblack}
+\newcommand{\rpgtitlesubtitlefont}{\cloisterblack}
 \newcommand{\rpgtitleauthorfont}{\dogma}
 \newfontfamily{\rpgdropcapfont}[Path=fonts/, Scale=1.2]{CloisterBlack}            
 \newcommand{\rpgsectionfont}{\cloisterblack}
@@ -211,8 +210,10 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 %% Monsters Block Formatting.
 %%
 \newcommand\mbsep{%%
-\includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule/hrule.png}%%
-\vspace{-0.5cm}\hfill\break}
+\hrule
+%% \includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule/hrule.png}%%
+%% \vspace{-0.5cm}\hfill\break%%
+}
 
 \newenvironment{mbtitle}%%
 {\sherwood\color{monstertitlecolor}\begin{large}}%%
@@ -330,10 +331,13 @@ class TableCategory:
 
 class LatexFormatter:
     
-    def __init__(self, latex_file, db):
+    def __init__(self, latex_file, db, xml_fname):
 
         # open latex file pointer
         self.latex_file = latex_file
+
+        # the xml source document we're building
+        self.xml_fname = xml_fname
         
         # internal state
         self._drop_capped_first_letter_of_chapter = False
@@ -367,6 +371,35 @@ class LatexFormatter:
         verifyObject(IFormatter, self)
         return
 
+    def get_img_filename(self, img):
+        """
+        We use this in two places so whack it here to avoid
+        duplicating code.
+
+        """
+        # Either it's an image we build or it's one from the resource db
+        if "buildfname" in img.attrib:
+            build_fname = img.get("buildfname")
+            filename = join(build_dir, build_fname)
+
+        elif "id" in img.attrib:
+            resource_id = img.get("id")
+            try:
+                resource = self.db.resources.use(
+                    resource_id, self.xml_fname)
+            except KeyError:
+                raise Exception(f"Image {resource_id} does not exist!")
+            filename = resource.get_fname()
+            self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
+                                  % resource.get_contents_desc())
+        else:
+            raise Exception("Image missing source or id!")
+
+        if not exists(filename):
+            raise Exception("Image does not exist: %s" % filename)
+        
+        return filename
+    
     def no_op(self, obj):
         """
         We've got a lot of handlers that don't need to do anything..
@@ -951,26 +984,9 @@ class LatexFormatter:
         if config.draw_imgs:
             if config.debug_outline_images:                
                 self.latex_file.write("\\fbox{")
-
-        # 
-        if "src" in img.attrib:
-            filename = img.get("src")
-
-        elif "id" in img.attrib:
-            resource_id = img.get("id")
-            try:
-                resource = self.db.resources.use(resource_id)
-            except KeyError:
-                raise Exception(f"Image {resource_id} does not exist!")
-            filename = resource.get_fname()
-            self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
-                                  % resource.get_contents_desc())
-        else:
-            raise Exception("Image missing source or id!")
-
-        if not exists(filename):
-            raise Exception("Image does not exist: %s" % filename)
-
+                
+        filename = self.get_img_filename(img)
+        
         # image without a box
         self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
                               % (img.get("scale", default="1.0"), filename))
@@ -1097,7 +1113,9 @@ class LatexFormatter:
         position = wrapimg.get("position", "l")
         width = wrapimg.get("scale", default="1.0") + "\\textwidth"
         
-        self.latex_file.write("\\begin{wrapfigure}{%s}{%s}\n" % (position, width))
+        self.latex_file.write(
+            "\\begin{wrapfigure}{%s}{%s}\n"
+            % (position, width))
 
         if config.draw_imgs:
             if config.debug_outline_images:
@@ -1105,28 +1123,12 @@ class LatexFormatter:
 
         self.latex_file.write("\\centering\n")
 
-        # 
-        if "src" in wrapimg.attrib:
-            filename = wrapimg.get("src")
-
-        elif "id" in wrapimg.attrib:
-            resource_id = wrapimg.get("id")
-            try:
-                resource = self.db.resources.use(resource_id)
-            except KeyError:
-                raise Exception(f"Image {resource_id} does not exist!")
-            filename = resource.get_fname()
-            self.latex_file.write("\\addcontentsline{loa}{section}{%s}"
-                                  % resource.get_contents_desc())
-        else:
-            raise Exception("Image missing source or id!")
-
-        if not exists(filename):
-            raise Exception("Image does not exist: %s" % filename)
+        filename = self.get_img_filename(wrapimg)
 
         # image without a box
-        self.latex_file.write("\t\\includegraphics[width=%s]{%s}\n"
-                              % (width, filename))        
+        self.latex_file.write(
+            "\t\\includegraphics[width=%s]{%s}\n"
+            % (width, filename))        
         return
 
     

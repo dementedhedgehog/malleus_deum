@@ -94,7 +94,16 @@
 	Ability Check damned must have one or more values set!
       </assert>
     </rule>
-    
-    
+
+
+    <!-- Img -->
+    <rule context="img">      
+      <assert test="count(@buildfname|@id)=1">
+	Missing attribute.  The img element requires one and only one of the following
+	two attributes: id, buildfname.   ID is used to identify the image in the
+	resource database (see the resources/ dir), buildfname is used to identify
+	images we build.
+      </assert>     
+    </rule>
   </pattern>
 </schema>

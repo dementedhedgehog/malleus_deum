@@ -209,7 +209,7 @@ def build_pdf(
     # build the latex document by translating the doc xml
     if not fast_mode:
         with codecs.open(tex_fname, "w", "utf-8") as f:           
-            latex_formatter = LatexFormatter(f, db)
+            latex_formatter = LatexFormatter(f, db, xml_fname)
             errors = doc.format(latex_formatter)
             if len(errors) > 0:
                 print("Errors:")

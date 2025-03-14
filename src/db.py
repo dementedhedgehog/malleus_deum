@@ -101,8 +101,8 @@ class DB:
             for d in dirs:
                 if d == "resources":                    
                     resource_dirs.append(join(root, d))
-        unused_resource_dir = join(root_dir, "unused_resources")
-        resource_dirs.append(unused_resource_dir)
+        #unused_resource_dir = join(root_dir, "unused_resources")
+        #resource_dirs.append(unused_resource_dir)
         self.resources.load(resource_dirs)
 
         # melee weapons
@@ -368,7 +368,17 @@ class DB:
 
         return "".join(new_tokens)
 
-
+    #
+    # Implement the Context Manager Protocol so we
+    # can write the used resources interface.
+    #
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.resources:
+            self.resources.write_used_resources_db()
+        return
 
     
 __ability_rank_regex = re.compile("_[0-9]+$")

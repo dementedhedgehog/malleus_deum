@@ -1583,17 +1583,25 @@ o – the outside edge–far from the binding
   <!--
       images must appear in figure type elements (like playexample).
   -->
-  <xs:complexType name="imgType" mixed="true">
+  <xs:complexType name="imgType" mixed="false">
     <xs:sequence>
       <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
-    <xs:attribute name="scale" type="xs:float"/>
-    <xs:attribute name="id" type="xs:string"/>
-    <xs:attribute name="src" type="xs:string"/>
-    <xs:attribute name="title" type="xs:string"/>
-  </xs:complexType>
 
+    <!-- id for images in our resource db -->
+    <xs:attribute name="id" type="xs:string"/>
+    
+    <!-- filename for images we build in the build dir -->
+    <xs:attribute name="buildfname" type="xs:string"/>
+    
+    <!-- <xs:attribute name="src" type="xs:string"/> -->
+    <xs:attribute name="title" type="xs:string"/>
+
+    <!-- Scale the image up or down.  1.0 leaves the image its current size -->
+    <xs:attribute name="scale" type="xs:float"/>
+  </xs:complexType>
+  
 
   <xs:complexType name="includeType">
     <xs:attribute name="src" type="xs:string"/>
@@ -2369,12 +2377,34 @@ NPC Monster Block
     </xs:sequence>
   </xs:complexType>
 
+
+  
+  <!-- Used Resource DB -->
+  <xs:complexType name="usedResourceDBType">
+    <xs:choice>
+      <xs:element name="resource" minOccurs="0" maxOccurs="1" type="usedResourceType"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="usedResourceType">
+    <xs:choice>
+      <xs:element name="doc" minOccurs="0" maxOccurs="1" type="usedResourceDocType"/>
+    </xs:choice>
+    <xs:attribute name="id" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="usedResourceDocType">
+    <xs:attribute name="fname" type="xs:string"/>
+  </xs:complexType>
+  
+  
   <!--
       Top level elements.
 
       These can live in a file as the root element.
 
   -->
+  <xs:element name="used_resources" type="usedResourceDBType"/>
   <xs:element name="archetype" type="archetypeType"/>
   <xs:element name="licenseinfo" type="licenseInfoType"/>
   <xs:element name="monstergroup" type="monsterGroupType"/>  

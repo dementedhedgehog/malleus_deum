@@ -55,7 +55,7 @@ doc_files_to_build = (
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
     ("monster_manual.xml", True, "MM"),
-    # ("archetypes.xml", True, "AR"),
+    ("archetypes.xml", True, "AR"),
     # ("magic_items.xml", True, "MI"),
     # ("abilities.xml", True, "Ab"),
     # ("ability_dcs.xml", False, "X"),
@@ -75,7 +75,7 @@ background_files_to_build = (
 )
 
 patrons_to_build = (
-    #("klazyabolus", True, "[KL]"),
+    ("klazyabolus", True, "[KL]"),
 )
 
 archetypes_to_build = (

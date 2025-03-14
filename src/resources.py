@@ -9,13 +9,25 @@
            https://pixabay.com/en/users/OpenClipart-Vectors-30363/?tab=popular
 
 """
+import codecs
+import collections
+import json
 import os
 from os.path import abspath, join, splitext, dirname, exists, basename, relpath
-from utils import parse_xml, validate_xml, get_error_context
-import codecs
 import sys
 import traceback
-from utils import COMMENT
+import xml.etree.cElementTree as et
+
+from utils import (
+    parse_xml,
+    xml_tree_to_str,
+    validate_xml,
+    get_error_context,
+    COMMENT,
+    resources_dir,
+    build_dir,
+    )
+
 
 # Set this True to make missing license stuff a fatal error
 fail_fast = True
@@ -27,6 +39,7 @@ def fail(msg):
     else:
         print(msg)
     return
+
 
 def sanitize(text):
     return text.replace("_", r"\_")
@@ -70,13 +83,7 @@ class ResourceInfo:
 
         # Whatever additional information people feel like adding.
         self.notes = None
-
-        # Is this resource used anywhere?
-        # In order to gather this info we need to build docs.  So
-        # something has to tell us when they use the resource.
-        self.used = False
         return
-
 
     def get_label(self):
         """
@@ -158,19 +165,10 @@ class ResourceInfo:
         
         for child in list(root):
             tag = child.tag
-            # if child.text is None:
-            #     if tag not in ("source", "url", "notes"):
-            #         raise Exception("%s has empty value for %s" %
-            #                         (info_fname, tag))
-            #     else:
-            #         text = u""
-            # else:
-
             if child.text:
                 text = str(child.text.strip())
             else:
                 text = "Missing!"
-                
         
             if tag is COMMENT:
                 pass
@@ -201,28 +199,7 @@ class ResourceInfo:
             else:
                 fail("Unknown license information %s in %s" %
                      (tag, info_fname))
-                
-        # if self.sig is None:
-        #     raise Exception(
-        #         f"Missing license information 'sig' in {info_fname}")
-
-        # if self.fname is None:
-        #     raise Exception(
-        #         f"Missing license information 'fname' in {info_fname}")        
-
-        # if self.license is None:
-        #     fail(f"Missing license information 'license' in {info_fname}")
-
-        # if self.artist is None:
-        #     fail(f"Missing license information 'artist' in {info_fname}")
-
-        # if self.source is None:
-        #     fail(f"Missing license information 'source' in {info_fname}")
-
-        # if self.resource_type is None:
-        #     raise Exception(
-        #         f"Missing license information 'type' in {info_fname}")        
-        # return    
+        return    
     
     def __str__(self):        
         return (
@@ -235,9 +212,81 @@ class ResourceInfo:
             f"Info Filename: {self.info_fname}\n"
             f"Source: {self.source}\n"
             f"URL: {self.url}\n"
-            f"Used: {self.used}\n"
+            f"Used: {' '.join(self.used)}\n"
             f"Status: {self.get_license_status()}\n")
 
+
+class UsedResourcesDB:
+    """
+    A json database that lets us accumulate resource usage information
+    across multiple build runs.  (Helps us clean up unused resources).
+
+    """
+    USED_RESOURCES_FNAME = join(build_dir, "used_resources.xml")
+
+    def __init__(self):
+        # dictionary that points from:  resource_id :--> set_of_filenames
+        self.resources = collections.defaultdict(set)
+        return
+
+    def write(self):
+        resources_elem = et.Element("used_resources")
+        for resource_id, filenames in self.resources.items():        
+            resource_elem = et.SubElement(resources_elem, "resource")
+            resource_elem.set('id', resource_id)
+            for filename in filenames:
+                d = et.SubElement(resource_elem, "d")
+                d.set("fname", filename)
+
+        # FIXME: should validate this
+        # (Note there's a difference between etrees and etElements!)
+
+        # Write a human readable representation of the xml
+        # (i.e. with spaces and newlines!)
+        tree = et.ElementTree(resources_elem)
+        #xml_str = xml_tree_to_str(tree)
+        #print(xml_str)
+        #with open(self.USED_RESOURCES_FNAME, "w") as f:
+        #    f.write(xml_str)
+        tree.write(self.USED_RESOURCES_FNAME)
+        return                
+
+    def read(self):
+        if exists(self.USED_RESOURCES_FNAME):
+            # tree = et.parse(self.USED_RESOURCES_FNAME)
+            # used_resources_elem = tree.getroot()
+            # parse and validate the xml
+            doc = parse_xml(self.USED_RESOURCES_FNAME)
+            used_resources_elem = doc.getroot()
+
+            for resource in list(used_resources_elem):
+                if resource.tag == "resource":
+                    resource_id = resource.attrib['id']
+                    self.resources[resource_id] = set()
+                    for d in resource:
+                        fname = d.attrib.get("fname")
+                        self.resources[resource_id].add(fname)
+        return
+
+
+    def is_used(self, resource_id):
+        return resource_id in self.resources and len(self.resources) > 0
+    
+    def use(self, resource_id, filename):
+        self.resources[resource_id].add(filename)
+
+    def __str__(self):
+        resource_ids = self.resources.keys()
+        sorted(resource_ids)
+
+        str_rep = "Used Resources:\n"
+        for resource_id in resource_ids:
+            filenames = self.resources[resource_id]
+            filenames_str = " ".join(filenames)
+            str_rep += f"{resource_id}: {filenames}\n"
+        return str_rep
+            
+        
 
 class Resources:
     """
@@ -248,12 +297,17 @@ class Resources:
     def __init__(self):
         self.resource_dirs = None
         self.lookup = {}
+        self.used_resources_db = UsedResourcesDB()
+        self.used_resources_db.read()
         return
 
-    def use(self, name):
-        resource = self.lookup[name]
-        resource.used = True
+    def use(self, resource_id, fname):
+        resource = self.lookup[resource_id]
+        self.used_resources_db.use(resource_id, fname)
         return resource
+
+    def write_used_resources_db(self):
+        self.used_resources_db.write()        
     
     def load(self, resource_dirs):
         for resource_dir in resource_dirs:
@@ -271,7 +325,6 @@ class Resources:
                     # 
                     info = ResourceInfo()
                     info_fname = join(dir_name, info_fname)
-
                     try:
                         info.parse(info_fname=info_fname)
                     except Exception as err:
@@ -305,18 +358,21 @@ class Resources:
         no_license_resources = []
         unused_resources = []
 
-        sorted_resource_infos = sorted(
-            self.lookup.values(),
-            key=lambda info: info.name)
-        
-        for info in sorted_resource_infos:
-            if info.used and info.license:
+
+        ids = list(self.lookup.keys())
+        ids.sort()
+
+        for resource_id in ids:
+
+            used = self.used_resources_db.is_used(resource_id)
+            info = self.lookup[resource_id]
+            if used and info.license:
                 ok_resources.append(info)
 
             if not info.license:
                 no_license_resources.append(info)
 
-            if not info.used:
+            if not used:
                 unused_resources.append(info)
 
         print("\n\n * Resource Report *")
