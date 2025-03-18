@@ -391,7 +391,7 @@ class Resources:
             for info in unused_resources:
                 print(info.info_fname)
 
-        print("\n**Note**: the 'used' field is only accurate if "
+            print("\n**Note**: the 'used' field is only accurate if "
               "you have built *all* the docs.\n\n")
 
 

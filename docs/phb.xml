@@ -2,7 +2,7 @@
 <book>
   <titlepage>
     <title>Malleus Deum</title>
-    <img id="mj_phb_title" scale="0.12"/>
+    <img id="mj_phb_title" scale="0.3"/>
     <author>Blaize A. Rhodes</author>
     <version>{{ db.version }}</version>
   </titlepage>
@@ -29,7 +29,7 @@
 	tabletop role-playing game (TTRPG) set in a grimdark, late medieval setting.
 	It is distributed under the CC-By Creative Commons license.
       </p>
-      <img id="mj_myrmidon" scale="0.25"/>
+      <img id="mj_myrmidon"/>
 
       <p>
         <indexentry>Player Character<indexdefn>A player avatar.  A very long line that should wrap over to the next line.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et turpis ultrices, commodo diam vitae, vestibulum nibh. Duis congue odio sit amet metus bibendum, quis iaculis nulla suscipit. Nullam maximus justo id dui rhoncus tincidunt. </indexdefn></indexentry>
@@ -63,7 +63,7 @@
 	in Chapter <ref>ch:abilities</ref> on page<pageref>ch:abilities</pageref>.
       </p>
 
-      <img id="mj_dourli" scale="0.165" title="Dourli, Dwarven Fyrdzwerg"/>
+      <img id="mj_dourli" title="Dourli, Dwarven Fyrdzwerg"/>
 
 
       <p>
@@ -111,7 +111,7 @@
 	  <bold>Mettle</bold>, and <bold>Luck</bold>.</li>
           <li>Six Primary Abilities: <bold>Strength</bold>, <bold>Endurance</bold>,
 	  <bold>Agility</bold>, <bold>Speed</bold>, <bold>Perception</bold> and <bold>Willpower</bold>.</li>
-          <li>Four or more Defensive Abilities: <bold>Armour</bold>, <bold>Dodge</bold>, <bold>Block</bold>
+          <li>Four or more Defensive Abilities, including: <bold>Armour</bold>, <bold>Dodge</bold>, <bold>Block</bold>
 	  and <bold>Parry</bold>.</li>
           <li>A set of <bold>Common Abilities</bold>,</li>
           <li>A set of <bold>Specialized Abilities</bold>,</li>
@@ -127,8 +127,7 @@
           <indexentry>Archetype</indexentry>
 	  Each character has an archetype which describes their race, profession, and the set
 	  of abilities available to them, for example a character might choose to be a Red Mage
-          or a Halfling Rover.  Archetypes define which abilities a character may have
-  	  or learn, and how hard it is for them to acquire that ability.
+          or a Halfling Rover.
 	</p>
 	
 	<design>
@@ -141,7 +140,7 @@
 	<subsectiontitle>Level</subsectiontitle>
 	<p>
           <indexentry>Level</indexentry>
-          A characters level represents the characters competence and experience.  The character's
+          A character's level represents the characters competence and experience.  The character's
 	  level usually starts at one, and increases when the GM decides that
   	  it is appropriate.  As a rule of thumb, characters should gain levels at the end
 	  of a story arc or when the players have accomplished something noteworthy in the game.
@@ -492,11 +491,11 @@
   
   <chapter>
     <chaptertitle>Checks<label>ch:checks</label></chaptertitle>
-
+    
     <p>
       <indexentry>Check</indexentry>
       In this chapter we describe <emph>Checks</emph>, the core mechanic
-      of the game. Checks are used to determine whether a character can
+      of the game. 	Checks are used to determine whether a character can
       perform any non-trivial and narratively interesting actions, like
       climbing a wall, closing a protective circle, blocking an attack,
       casting a spell, or jumping a horse over a fence.
@@ -504,7 +503,7 @@
     
 
     <figure position="h">
-      <img id="geir-king_in_yellow" scale="1.40"/>
+      <img id="geir-king_in_yellow"/>
     </figure>
 
     
@@ -514,24 +513,26 @@
 
       <p>
 	<indexentry>Check</indexentry>
+	Checks are made using two different coloured D20 dice.  The lighter
+	of the two dice represents the players Skill.  The darker of the two
+	dice represents Fate.   The Rank of the ability being using is then
+	added to each d20 result.
 	
-	Whenever a character tries to perform a challenging action a <defn>Check</defn>
-	must be made to determine the outcome.  To perform a Check the GM determines the
-	Difficulty (DC) of the check, then the player rolls dice to get a Result,
+	To perform a <defn>Check</defn>: First, the GM determines the
+	Difficulty (DC) of the check, then the player rolls 
+	to and adds their ability rank to both results get a Result, 
+
+	
 	and compares the Result to the DC.  If the Result is greater than or equal
 	to the DC then the Check succeeds.
       </p>
 
+      <!-- <figure> -->
+      <!--   <img id="d20s"/> -->
+      <!-- </figure> -->
 
-      <!-- <p> -->
-      <!-- 	Check Succeeds if: -->
-      <!-- 	<img id="check_formula" scale="0.05"/> -->
-      <!-- </p> -->
-
-
-      <!-- <figure fullwidth="true"> -->
       <figure>
-        <img id="d20s" scale="0.35"/>
+        <img id="check_interpretation"/>
       </figure>
       
       
@@ -2521,7 +2522,7 @@
 
 
 	<subsubsection>
-	  <subsubsectiontitle>Staves, Spears and Groundig</subsubsectiontitle>
+	  <subsubsectiontitle>Staves, Spears and Grounding</subsubsectiontitle>
 	  <p>
 	    <indexentry>Grounding - Staffs/Spears</indexentry>
 	    Because Staves and Spears are constructed from wood, a magically conductive material, they can be
@@ -3120,7 +3121,7 @@
 
 
 	  <figure position="h">
-	    <img id="zones" scale="1.40"/>
+	    <img id="zones"/>
 	    <caption>Zones of Control</caption>
 	    <label>figure:zones</label>	
 	  </figure>	  
@@ -3145,14 +3146,14 @@
 	  </p>	
 
 	  <figure position="h">
-	    <img id="opportunity_attacks_simple" scale="1.4"/>
+	    <img id="opportunity_attacks_simple"/>
 	    <caption>Simple Attacks of Opportunity</caption>
 	    <label>figure:opportunity_attacks_simple</label>	
 	  </figure>	
 
 
 	  <figure position="h">
-	    <img id="opportunity_attacks_complex" scale="1.4"/>
+	    <img id="opportunity_attacks_complex"/>
 	    <caption>Complex Attacks of Opportunity</caption>
 	    <label>figure:opportunity_attacks_complex</label>	
 	  </figure>	
@@ -3171,7 +3172,7 @@
 	    P is wielding a weapon with the Reach keyword</emph>.	    
 	  </p>
 	  <figure position="h">
-	    <img id="reach" scale="1.4"/>
+	    <img id="reach"/>
 	    <caption>Reach Weapons</caption>
 	    <label>figure:reach_weapons</label>	
 	  </figure>	
@@ -3196,7 +3197,7 @@
 	  </p>
 
 	  <figure position="!b">
-	    <img id="flanking" scale="1.4"/>
+	    <img id="flanking"/>
 	    <caption>Flanking Examples</caption>
 	    <label>figure:flanking</label>	
 	  </figure>	
@@ -3216,7 +3217,7 @@
 	  </p>
 
 	  <figure position="!b">
-	    <img id="formation" scale="1.4"/>
+	    <img id="formation"/>
 	    <caption>Formation Examples</caption>
 	    <label>figure:formation</label>	
 	  </figure>	
@@ -3437,7 +3438,7 @@
 
       {% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
       <figure position="h" fullwidth="false" sideways="false">
-	<img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	<img buildfname="{{ ability_group.get_id() }}_skill_tree.eps"/>
 	<caption>{{ ability_group.get_title() }}</caption>
 	<label>figure:{{ ability_group.get_id() }}_skill_tree</label>
       </figure>
@@ -3487,7 +3488,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3507,7 +3508,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3550,7 +3551,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3578,7 +3579,7 @@
 
 	{% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>
@@ -3607,7 +3608,7 @@
 
 	{% if ability_group.has_abilities() %}
 	<figure position="h" fullwidth="false" sideways="false">
-	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
+	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps"/>
 	  <caption>{{ ability_group.get_title() }}</caption>
 	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
 	</figure>

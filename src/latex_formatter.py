@@ -210,9 +210,9 @@ pdfborderstyle={/S/U/W 1}%%    border style will be underline of width 1pt
 %% Monsters Block Formatting.
 %%
 \newcommand\mbsep{%%
-\hrule
+\hrule%%
+\vspace{0.2cm}\hfill\break%%
 %% \includegraphics[width=\columnwidth,height=0.1cm]{./resources/hrule/hrule.png}%%
-%% \vspace{-0.5cm}\hfill\break%%
 }
 
 \newenvironment{mbtitle}%%
@@ -396,9 +396,29 @@ class LatexFormatter:
             raise Exception("Image missing source or id!")
 
         if not exists(filename):
-            raise Exception("Image does not exist: %s" % filename)
-        
+            raise Exception("Image does not exist: %s" % filename)        
         return filename
+
+
+    def get_img_scale_or_width(self, img):
+        """
+        Get size information for the image (default to linewidth).
+
+        """
+        scale = img.get("scale")
+        if scale:
+            return f"scale={scale}"
+
+        textwidth = img.get("textwidth")
+        if textwidth:
+            return f"width={textwidth}\\textwidth"
+
+        linewidth = img.get("linewidth")
+        if textwidth:
+            return f"width={linewidth}\\linewidth"
+
+        return "width=\\linewidth"
+    
     
     def no_op(self, obj):
         """
@@ -980,17 +1000,18 @@ class LatexFormatter:
 
     def start_img(self, img):        
         self.latex_file.write("\t\\begin{center}\n")
-        
+
+        # optionally draw a box around the image
+        # (for debugging)
         if config.draw_imgs:
             if config.debug_outline_images:                
                 self.latex_file.write("\\fbox{")
                 
         filename = self.get_img_filename(img)
-        
-        # image without a box
-        self.latex_file.write("\t\\includegraphics[scale=%s]{%s}\n"
-                              % (img.get("scale", default="1.0"), filename))
-
+        img_size = self.get_img_scale_or_width(img)        
+        self.latex_file.write(
+            "\t\\includegraphics[%s]{%s}\n"
+            % (img_size, filename))
         return
 
     def end_img(self, img):

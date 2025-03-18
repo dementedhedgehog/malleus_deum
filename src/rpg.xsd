@@ -483,8 +483,10 @@ ii) So we don't have to list all the types of save that can't be used against an
       <xs:element name="demon-spawn" type="symbolType"/>
       <xs:element name="dwarf" type="emptyType"/>
       <xs:element name="eedie" type="symbolType"/>
+      <xs:element name="eldritchhorror" type="symbolType"/>
       <xs:element name="elf" type="emptyType"/>
       <xs:element name="fey" type="emptyType"/>
+      <xs:element name="ghoul" type="symbolType"/>
       <xs:element name="giant" type="symbolType"/>
       <xs:element name="greenskin" type="symbolType"/>
       <xs:element name="halfling" type="emptyType"/>
@@ -495,6 +497,7 @@ ii) So we don't have to list all the types of save that can't be used against an
       <xs:element name="other" type="symbolType"/>
       <xs:element name="ratman" type="symbolType"/>
       <xs:element name="serpentmen" type="symbolType"/>
+      <xs:element name="shade" type="symbolType"/>
       <xs:element name="undead" type="symbolType"/>
     </xs:choice>
   </xs:group>
@@ -1507,21 +1510,6 @@ vertically offset the contents of this cell.
     <xs:attribute name="sideways" type="xs:boolean" default="false"/>
   </xs:complexType>
 
-  <!--
-  Wraps text around the image.
-
-Position
-r – the right side of the text
-l – the left side of the text
-i – the inside edge–near the binding (if[twoside]document)
-o – the outside edge–far from the binding
-  -->
-  <xs:complexType name="wrapimgType">
-    <xs:attribute name="src" type="xs:string"/>
-    <xs:attribute name="position" type="xs:string"/>
-    <xs:attribute name="scale" type="xs:float"/>
-    <xs:attribute name="id" type="xs:string"/>
-  </xs:complexType>
 
 
   <xs:complexType name="playexampleType">
@@ -1587,7 +1575,7 @@ o – the outside edge–far from the binding
     <xs:sequence>
       <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
+    </xs:sequence>    
 
     <!-- id for images in our resource db -->
     <xs:attribute name="id" type="xs:string"/>
@@ -1600,12 +1588,33 @@ o – the outside edge–far from the binding
 
     <!-- Scale the image up or down.  1.0 leaves the image its current size -->
     <xs:attribute name="scale" type="xs:float"/>
+    <xs:attribute name="linewidth" type="xs:float"/>
+    <xs:attribute name="textwidth" type="xs:float"/>
   </xs:complexType>
   
 
   <xs:complexType name="includeType">
     <xs:attribute name="src" type="xs:string"/>
   </xs:complexType>
+
+
+  <!--
+  Wraps text around the image.
+
+  Position
+      r – the right side of the text
+      l – the left side of the text
+      i – the inside edge–near the binding (if[twoside]document)
+      o – the outside edge–far from the binding
+      
+  -->
+  <xs:complexType name="wrapimgType">
+    <xs:attribute name="src" type="xs:string"/>
+    <xs:attribute name="position" type="xs:string"/>
+    <xs:attribute name="scale" type="xs:float"/>
+    <xs:attribute name="id" type="xs:string"/>
+  </xs:complexType>
+  
 
   <!--
 

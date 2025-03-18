@@ -104,6 +104,11 @@
 	resource database (see the resources/ dir), buildfname is used to identify
 	images we build.
       </assert>     
+
+      <assert test="2>count(@scale|@linewidth|@textwidth)">
+	For images you can specify only one of a scale attribute, a linewidth attribute,
+	or a textwidth attribute.
+      </assert>
     </rule>
   </pattern>
 </schema>

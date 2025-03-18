@@ -54,14 +54,14 @@ doc_files_to_build = (
     ("phb.xml", True, "PHB"),
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    ("monster_manual.xml", True, "MM"),
-    ("archetypes.xml", True, "AR"),
+    #("monster_manual.xml", True, "MM"),
+    # ("archetypes.xml", True, "AR"),
     # ("magic_items.xml", True, "MI"),
     # ("abilities.xml", True, "Ab"),
     # ("ability_dcs.xml", False, "X"),
     # ("gms_screen.xml", False, "GMS"),
-    ("gmg.xml", True, "[GMG]"),
-    ("rationale.xml", True, "[R]"),
+    #("gmg.xml", True, "[GMG]"),
+    # ("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
 )
 
@@ -75,27 +75,27 @@ background_files_to_build = (
 )
 
 patrons_to_build = (
-    ("klazyabolus", True, "[KL]"),
+    #("klazyabolus", True, "[KL]"),
 )
 
 archetypes_to_build = (
-    ("black_coat", True, "[BC]"),
-    ("hedge_wizard", True, "[HW]"),
-    ("second_son", True, "[SS]"),
-    ("plague_doctor", True, "[PD]"),
-    ("outrider", True, "[OR]"),
-    ("champion_of_mithras", True, "[CoM]"),
-    ("chevalier", True, "[Ch]"),
-    ("confessor_militant", True, "[FC]"), 
-    ("elven_scion", True, "[ESc]"),
-    ("fyrdzwerg", True, "[FZW]"),
-    ("halfling_rover", True, "[HR]"),
-    ("penitent_brother", True, "[PB]"),
-    ("red_mage", True, "[RM]"),
-    ("skald", True, "[SKL]"),
-    ("summoner", True, "[SM]"),
-    ("witch_hunter", True, "[WH]"),
-    ("night_gauner", True, "[NG]"),
+    # ("black_coat", True, "[BC]"),
+    # ("hedge_wizard", True, "[HW]"),
+    # ("second_son", True, "[SS]"),
+    # ("plague_doctor", True, "[PD]"),
+    # ("outrider", True, "[OR]"),
+    # ("champion_of_mithras", True, "[CoM]"),
+    # ("chevalier", True, "[Ch]"),
+    # ("confessor_militant", True, "[FC]"), 
+    # ("elven_scion", True, "[ESc]"),
+    # ("fyrdzwerg", True, "[FZW]"),
+    # ("halfling_rover", True, "[HR]"),
+    # ("penitent_brother", True, "[PB]"),
+    # ("red_mage", True, "[RM]"),
+    # ("skald", True, "[SKL]"),
+    # ("summoner", True, "[SM]"),
+    # ("witch_hunter", True, "[WH]"),
+    # ("night_gauner", True, "[NG]"),
 )
 
 
