@@ -28,8 +28,9 @@ class XMLException(Exception):
 
 
 # directory constants
-root_dir = abspath(join(dirname(__file__), ".."))
 src_dir = abspath(join(dirname(__file__)))
+root_dir = abspath(join(src_dir, ".."))
+ai_dir = join(root_dir, "ai")
 build_dir = join(root_dir, "build")
 pdfs_dir = join(root_dir, "pdfs")
 docs_dir = join(root_dir, "docs")

@@ -31,10 +31,15 @@ to do so.  If you have feedback or would like to help I'd love to hear from you.
 
 ## Linux
 
+ * Install python3
  * Install git.
  * git clone https://github.com/dementedhedgehog/malleus_deum.git
  * Install xelatex.
+ * cd malleus_deum
+ * source env/bin/activate
  * ./publish
+ 
+ There's probably some extra steps required I haven't checked in a bit.
 
 
 ## Windows
