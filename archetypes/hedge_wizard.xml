@@ -36,7 +36,8 @@
     <figure>
       <!-- <img src="./resources/hedge_wizard/the_crooked_staff_by_dw_miller_by_conceptsbymiller-day36nr.png" -->
       <!-- 	   scale="0.28"/> -->
-      <img id="hedge_wizard" scale="0.28"/>
+      <!-- <img id="hedge_wizard" scale="0.28"/> -->
+      <img id="hedge_wizard"/>
     </figure>        
 
     <p>
@@ -102,10 +103,10 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <all-of>✱merovingian_4, ✱inochian_2,
-	  ✱dodge_2, ✱polearm_strike_1, ✱sword_strike_1,
-	  ✱climb_1, ✱arcana_1,
-	  ✱conjuration_1, ✱true_sight_1, and ✱reroll_1</all-of>
+	  <all-of><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>,
+	  <abilityref id="dodge" rank="2"/>, <abilityref id="polearm_strike" rank="1"/>, <abilityref id="sword_strike" rank="1"/>,
+	  <abilityref id="climb" rank="1"/>, <abilityref id="arcana" rank="1"/>,
+	  <abilityref id="conjuration" rank="1"/>, <abilityref id="true_sight" rank="1"/>, and <abilityref id="reroll" rank="1"/></all-of>
 	</path>
       </branch>
 
@@ -119,30 +120,30 @@
 	</branchdescription>
 	<path chance="1-6">
 	  <pathtitle>Westreich</pathtitle>
-	  <choice>✱etiquette[Westreich]_3, ✱contacts[Westreich]_3,
-	  and ✱etiquette[Averoigne]_3, ✱contacts[Averoigne]_3, or
-	  ✱etiquette[Hybernian]_3, ✱contacts[Hybernian]_3, </choice>
+	  <choice><abilityref id="etiquette" specializations="Westreich"/>, <abilityref id="contacts" specializations="Westreich"/>,
+	  and <abilityref id="etiquette" specializations="Averoigne"/>, <abilityref id="contacts" specializations="Averoigne"/>, or
+	  <abilityref id="etiquette" specializations="Hybernian"/>, <abilityref id="contacts" specializations="Hybernian"/>, </choice>
 	</path>
 	<path chance="7">
 	  <pathtitle>Hybernia</pathtitle>
-	  <choice>✱hybernian_3,  ✱etiquette[Hybernia]_3</choice>
+	  <choice><abilityref id="hybernian" rank="3"/>,  <abilityref id="etiquette" specializations="Hybernia"/></choice>
 	</path>
 	<path chance="8">
 	  <pathtitle>Almaignee</pathtitle>
-	  <choice>✱etiquette[Almaignee]_3</choice>
+	  <choice><abilityref id="etiquette" specializations="Almaignee"/></choice>
 	</path>
 	<path chance="9">
 	  <pathtitle>Poitevin</pathtitle>
-	  <choice>✱poitevin_4, ✱etiquette[Averoigne]_3</choice>
+	  <choice><abilityref id="poitevin" rank="4"/>, <abilityref id="etiquette" specializations="Averoigne"/></choice>
 	</path>
 	<path chance="10">
 	  <pathtitle>Averoigne</pathtitle>
-	  <choice>One of ✱poitevin_4 or ✱occitan_4, ✱etiquette[Averoigne]_3</choice>
+	  <choice>One of <abilityref id="poitevin" rank="4"/> or <abilityref id="occitan" rank="4"/>, <abilityref id="etiquette" specializations="Averoigne"/></choice>
 	</path>
 	<path chance="11">
 	  <pathtitle>Albion</pathtitle>
-	  <choice>✱hybernian_1, ✱etiquette[Albion]_3, ✱etiquette[Hybernia]_2,
-	  ✱contacts[Albion]_2</choice>
+	  <choice><abilityref id="hybernian" rank="1"/>, <abilityref id="etiquette" specializations="Albion"/>, <abilityref id="etiquette" specializations="Hybernia"/>,
+	  <abilityref id="contacts" specializations="Albion"/></choice>
 	</path>
 	<path chance="12">
 	  <pathtitle>Choose one of the above</pathtitle>
@@ -162,23 +163,23 @@
 
 	<path chance="1-2">
 	  <pathtitle></pathtitle>
-	  <choice>✱conjuration.wither_1 or ✱conjuration.eldritch_push_1</choice>
+	  <choice><abilityref id="wither" rank="1"/> or <abilityref id="eldritch_push" rank="1"/></choice>
 	</path>
 	<path chance="3-4">
 	  <pathtitle></pathtitle>
-	  <choice>Two of ✱ignis_1 or ✱aegis_1 or ✱alarum_1</choice>
+	  <choice>Two of <abilityref id="ignis" rank="1"/> or <abilityref id="aegis" rank="1"/> or <abilityref id="alarum" rank="1"/></choice>
 	</path>
 	<path chance="5-6">
 	  <pathtitle></pathtitle>
-	  <choice>✱conjuration.wither_1, and ✱ignis_1 or ✱aegis_1</choice>
+	  <choice><abilityref id="wither" rank="1"/>, and <abilityref id="ignis" rank="1"/> or <abilityref id="aegis" rank="1"/></choice>
 	</path>
 	<path chance="7-8">
 	  <pathtitle></pathtitle>
-	  <choice>✱ignis_1 and ✱scry_1</choice>
+	  <choice><abilityref id="ignis" rank="1"/> and <abilityref id="scry" rank="1"/></choice>
 	</path>
 	<path chance="9-10">
 	  <pathtitle></pathtitle>
-	  <choice>✱eldritch_push_1 and ✱aegis_1</choice>
+	  <choice><abilityref id="eldritch_push" rank="1"/> and <abilityref id="aegis" rank="1"/></choice>
 	</path>
 	<path chance="11-12">
 	  <pathtitle></pathtitle>
@@ -197,7 +198,7 @@
 	</branchdescription>
 	<path chance="1-2">
 	  <pathtitle></pathtitle>
-	  <choice>✱abjuration.circle_of_protection_1, ✱abjuration.banish_1 or ✱conjuration.wither_1</choice>
+	  <choice><abilityref id="circle_of_protection" rank="1"/>, <abilityref id="banish" rank="1"/> or <abilityref id="wither" rank="1"/></choice>
 	</path>
 	<path chance="3-4">
 	  <pathtitle></pathtitle>
@@ -205,15 +206,15 @@
 	</path>
 	<path chance="5-6">
 	  <pathtitle></pathtitle>
-	  <choice>✱circle_of_protection_1, ✱lesser_portal_1 or ✱summon_1</choice>
+	  <choice><abilityref id="circle_of_protection" rank="1"/>, <abilityref id="lesser_portal" rank="1"/> or <abilityref id="summon" rank="1"/></choice>
 	</path>
 	<path chance="7-8">
 	  <pathtitle></pathtitle>
-	  <choice>✱lesser_portal_1, ✱eldritch_shield_1, or ✱bind_1</choice>
+	  <choice><abilityref id="lesser_portal" rank="1"/>, <abilityref id="eldritch_shield" rank="1"/>, or <abilityref id="bind" rank="1"/></choice>
 	</path>
 	<path chance="9-10">
 	  <pathtitle></pathtitle>
-	  <choice>✱flesh_ward_1, ✱phantasmal_leech_1 or ✱cloak_of_shadows_1</choice>
+	  <choice><abilityref id="flesh_ward" rank="1"/>, <abilityref id="phantasmal_leech" rank="1"/> or <abilityref id="cloak_of_shadows" rank="1"/></choice>
 	</path>
 	<path chance="11-12">
 	  <pathtitle></pathtitle>
@@ -233,23 +234,23 @@
 
 	<path chance="1-2">
 	  <pathtitle></pathtitle>
-	  <choice>✱physician_2</choice>
+	  <choice><abilityref id="physician" rank="2"/></choice>
 	</path>
 	<path chance="3-4">
 	  <pathtitle></pathtitle>
-	  <choice>✱natural_history_2</choice>
+	  <choice><abilityref id="natural_history" rank="2"/></choice>
 	</path>
 	<path chance="5-6">
 	  <pathtitle></pathtitle>
-	  <choice>✱book_keeping_2</choice>
+	  <choice><abilityref id="book_keeping" rank="2"/></choice>
 	</path>
 	<path chance="7-8">
 	  <pathtitle></pathtitle>
-	  <choice>✱physics_2</choice>
+	  <choice><abilityref id="physics" rank="2"/></choice>
 	</path>
 	<path chance="9-10">
 	  <pathtitle></pathtitle>
-	  <choice>One of ✱hybernian_2 or ✱poitevin_2 or ✱fey_2</choice>
+	  <choice>One of <abilityref id="hybernian" rank="2"/> or <abilityref id="poitevin" rank="2"/> or <abilityref id="fey" rank="2"/></choice>
 	</path>
 	<path chance="11">
 	  <pathtitle></pathtitle>
@@ -283,7 +284,7 @@
 	</path>
 	<path chance="6-7">
 	  <pathtitle></pathtitle>
-	  <choice>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, Paper and ink</choice>
+	  <choice>Cavalier Hat, Rope <m30/>, Paper and ink</choice>
 	</path>
 	<path chance="8-9">
 	  <pathtitle></pathtitle>
@@ -317,7 +318,7 @@
 	    +1 Health
 	  </choice>
 	  <choice>
-	    ✱abjuration.circle_of_protection_1 or ✱evocation.lesser_portal_1 or ✱arcana.cloak_of_shadows_1
+	    <abilityref id="circle_of_protection" rank="1"/> or <abilityref id="lesser_portal" rank="1"/> or <abilityref id="cloak_of_shadows" rank="1"/>
 	  </choice>
 	  <choice>
 	    1x new Lore abilities at rank 1

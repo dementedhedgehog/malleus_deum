@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Aspects</abilitygrouptitle>
+    <abilitygroupid><aspect/></abilitygroupid>
+    <abilitygroupfamily><aspect/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+      </p>
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Aspect Check</abilitytitle>
+    <abilityid>aspect</abilityid>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck>
+      <name>Trial</name>
+      <checktype><aspect/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
+      <range><na/></range>
+      <keywords><mettlepool/><check/></keywords>
+      <effect>
+	If this aspect dos not have the <emph>permanent</emph> keyword, and
+	ranks up to 5 or more after this check then the aspect should be
+	re-evaluated.
+      </effect>
+      <counter><gm-fiat/></counter> 
+      <any-success>Aspect is resisted.</any-success>
+      <righteoussuccess>
+	Tenacious: Increase Rank of this Aspect by 1
+      </righteoussuccess>
+      <any-fail>Aspect is compelled.</any-fail>
+      <grimfail>Recidivism: Demote 1 (to a minimum of 0).</grimfail>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+        <indexentry><entry>Aspect Check</entry></indexentry>
+	Characters make an aspect check to se
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Personality Trait</abilitytitle>
+    <abilityid>personality_trait</abilityid>
+    <abilityranks from="1" to="5"/>
+    <keywords><aspect/></keywords>
+    <abilitycheck>
+      <name>Aspect Check</name>
+      <checktype><aspect/></checktype>
+      <apcost><free/></apcost>
+      <range><self/></range>
+      <keywords><check/></keywords>
+      <!-- <effect> -->
+      <!-- 	If this aspect does not have the <emph>permanent</emph> keyword, and -->
+      <!-- 	ranks up to 5 or more after this check then the aspect should be -->
+      <!-- 	re-evaluated. -->
+      <!-- </effect> -->
+      <counter><opponents-mettle-save/></counter>
+      <any-success>Aspect is compelled.</any-success>
+      <critsuccess>Increment Rank twice</critsuccess>
+      <righteoussuccess>Increment Rank</righteoussuccess>
+      <any-fail>Aspect is resisted. Decrement Rank 1.  If the rank would be
+      reduced to zero consider reevaluating this aspect with the GM.</any-fail>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+	Personality traits represent personal philosophical beliefs, dogmatic
+	beliefs the character holds, tenets the character tries to live their
+	life by, or quirks.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+</abilitygroup>

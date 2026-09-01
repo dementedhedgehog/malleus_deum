@@ -1,0 +1,29 @@
+
+
+<chapter>
+<chaptertitle>Abilities By Name</chaptertitle>
+
+{%
+set pages = ability_groups.tabulate(n_lines_per_page=38,
+                                    n_columns=2,
+                                    n_lines_first_page=28)
+%}
+{% for page in pages %}
+<smaller>
+<table>
+    <fullwidthtable/>
+    <tablespec><fixed>0.46</fixed><fixed>0.46</fixed></tablespec>
+    <tabletitle>Abilities by Name</tabletitle>
+    <tablelabel>abilitiesx</tablelabel>
+    {%- for line in page -%}
+    <tablerow>
+    {%- for ability in line -%}
+      <td>{{ ability.get_name()[:40] }}</td>
+    {%- endfor -%}
+    </tablerow>
+    {%- endfor %}
+</table>
+</smaller>
+{% endfor %}
+
+</chapter>

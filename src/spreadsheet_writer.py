@@ -41,18 +41,18 @@ def write_game_balance_spreadsheet(spreadsheet_fname,
     ABILITY_LABEL_COL = 2
     r += 2
     for ability_group in ability_groups:
-        worksheet.write(r, LABEL_COL, ability_group.get_title())        
+        worksheet.write(r, LABEL_COL, ability_group.get_name())        
         r += 1
 
         for ability in ability_group:
-            worksheet.write(r, ABILITY_LABEL_COL, ability.get_title())
+            worksheet.write(r, ABILITY_LABEL_COL, ability.get_name())
             r += 1
 
     r += 2
     c = LABEL_COL
     
     for archetype in archetypes:
-        worksheet.write(r, c, archetype.get_title())
+        worksheet.write(r, c, archetype.get_name())
         # c += 1
         r += 1
         
@@ -89,13 +89,13 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
 
     # Fate
     BLESSED_COL = CRIT_FAIL_COL+1
-    BOON_COL = BLESSED_COL+1
-    INDIFFERENT_COL = BOON_COL+1
-    BANE_COL = INDIFFERENT_COL+1
-    DAMNED_COL = BANE_COL+1
+    LUCKY_COL = BLESSED_COL+1
+    INDIFFERENT_COL = LUCKY_COL+1
+    DAMNED_COL = INDIFFERENT_COL+1
+    CURSED_COL = DAMNED_COL+1
 
     # trigger
-    TRIGGER_COL = DAMNED_COL+1
+    TRIGGER_COL = CURSED_COL+1
     EFFECT_COL = TRIGGER_COL+1
     
     ws.write(r, ABILITY_COL, "Ability", title_format)
@@ -104,7 +104,7 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     ws.write(r, CHECK_COL, "Check", title_format)
     ws.write(r, KEYWORDS_COL, "Keywords", title_format)
     ws.write(r, RANGE_COL, "Range", title_format)
-    ws.write(r, ACTION_TYPE_COL, "Action Type", title_format)
+    ws.write(r, ACTION_TYPE_COL, "AP Cost", title_format)
 
     ws.write(r, CRIT_SUCCESS_COL, "Crit Success", title_format)
     ws.write(r, RIGHTEOUS_SUCCESS_COL, "Righteous Success", title_format)
@@ -114,9 +114,9 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     ws.write(r, CRIT_FAIL_COL, "Crit Fail", title_format)
     
     ws.write(r, BLESSED_COL, "Blessed", title_format)
-    ws.write(r, BOON_COL, "Boon", title_format)
-    ws.write(r, BANE_COL, "Bane", title_format)
+    ws.write(r, LUCKY_COL, "Lucky", title_format)
     ws.write(r, DAMNED_COL, "Damned", title_format)
+    ws.write(r, CURSED_COL, "Cursed", title_format)
 
     ws.write(r, TRIGGER_COL, "Trigger", title_format)
     ws.write(r, EFFECT_COL, "Effect", title_format)
@@ -125,14 +125,14 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     for ability_group in ability_groups:
         for ability in ability_group:
             for check in ability.get_checks():
-                ws.write(r, ABILITY_COL, ability.get_title(), title_format)
+                ws.write(r, ABILITY_COL, ability.get_name(), title_format)
                 ws.write(r, FAMILY_COL, ability_group.get_family())
-                ws.write(r, GROUP_COL, ability_group.get_title())        
+                ws.write(r, GROUP_COL, ability_group.get_name())        
                 ws.write(r, CHECK_COL, check.get_name())
                 ws.write(r, KEYWORDS_COL, ", ".join(check.get_keywords()))
                 #ws.write(r, COST_COL, check.get_cost())
                 ws.write(r, RANGE_COL, check.get_range())
-                ws.write(r, ACTION_TYPE_COL, check.get_action_type())
+                ws.write(r, ACTION_TYPE_COL, check.get_ap_cost())
 
                 ws.write(r, CRIT_SUCCESS_COL, check.critsuccess)
                 ws.write(r, RIGHTEOUS_SUCCESS_COL, check.righteoussuccess)
@@ -142,10 +142,10 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
                 ws.write(r, CRIT_FAIL_COL, check.critfail)
                 
                 ws.write(r, BLESSED_COL, check.blessed)
-                ws.write(r, BOON_COL, check.boon)
-                ws.write(r, INDIFFERENT_COL, check.indifferent)
-                ws.write(r, BANE_COL, check.bane)
+                ws.write(r, LUCKY_COL, check.lucky)
+                #ws.write(r, INDIFFERENT_COL, check.indifferent)
                 ws.write(r, DAMNED_COL, check.damned)
+                ws.write(r, CURSED_COL, check.cursed)
 
                 ws.write(r, TRIGGER_COL, check.get_precondition())
                 ws.write(r, EFFECT_COL, check.get_effect())

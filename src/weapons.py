@@ -6,9 +6,10 @@ from collections import defaultdict
 
 from utils import (
     parse_xml,
-    validate_xml,
+    #validate_xml,
     node_to_string,
-    COMMENT,
+    #COMMENT,
+    is_comment,
     contents_to_string,
     contents_to_list,
     contents_to_comma_separated_str)
@@ -42,6 +43,9 @@ class Weapon:
 
         # handle all the children of the ability group
         for child in list(node):
+
+            if is_comment(child):
+                continue
 
             tag = child.tag
             if tag == "name":
@@ -80,7 +84,7 @@ class Weapon:
                 else:
                     self.keywords = contents_to_comma_separated_str(child)
 
-            elif tag is COMMENT:
+            elif is_comment(child): # tag is COMMENT:
                 pass  # ignore comments!
 
             else:
@@ -97,9 +101,9 @@ class Weapons:
         self.fname = fname
         self.weapons = []
         self.doc = parse_xml(fname)
-        result = validate_xml(self.doc)
-        if result is not None:
-            raise Exception(result)
+        # result = validate_xml(self.doc)
+        # if result is not None:
+        #     raise Exception(result)
         return
 
     def __iter__(self):
@@ -133,7 +137,7 @@ class Weapons:
             #     ability.load(child)
             #     self.abilities.append(ability)
 
-            elif tag is COMMENT:
+            elif is_comment(child): #  is COMMENT:
                 pass  # ignore comments!
 
             else:

@@ -1,0 +1,176 @@
+
+
+<chapter>
+  <chaptertitle>Abilities<label>ch:abilities</label></chaptertitle>
+
+  <indexentry><entry>Abilities</entry></indexentry>
+  <p>
+    <dropcap>This</dropcap> chapter details the abilities available to
+    characters in the game. Every character possesses a unique set of
+    abilities. Abilities allow characters to provide passive benefits or to
+    perform actions by making ability checks.
+  </p>
+
+  {% from "docs/macro_ability.xml" import build_ability with context %}
+  
+  {% for ability_group in ability_groups if ability_group.is_primary_family() %}
+  <section>
+    <sectiontitle>{{ ability_group.get_name() }}<indexentry><entry>Abilities</entry><subentry>Primary</subentry></indexentry>
+    </sectiontitle>
+    {{ ability_group.get_description() }}
+
+    {% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
+    <figure position="h" fullwidth="false" sideways="false">
+      <img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/>
+      <caption>{{ ability_group.get_name() }}</caption>
+      <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+    </figure>
+    {% endif %}
+
+    {% for ability in ability_group.get_abilities()%}
+    {{ build_ability(ability) }}
+    {% endfor %}
+  </section>
+  {% endfor %}
+
+
+  <section>
+    <sectiontitle>Scholarly Abilities</sectiontitle>
+    <p>
+      <indexentry><entry>Abilities</entry><subentry>Scholarly</subentry></indexentry>
+      These abilities are typically associated with formal study, including
+      fields such as Antiquities, Natural History, Alchemy, <etc/>.
+    </p>
+
+
+    {% for ability_group in ability_groups if ability_group.is_lore_family() %}
+    <subsection>
+      <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
+      {{ ability_group.get_description() }}
+
+      {% if ability_group.has_abilities() %}
+      <figure position="h" fullwidth="false" sideways="false">
+	<img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/>
+	<caption>{{ ability_group.get_name() }}</caption>
+	<label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+      </figure>
+      {% endif %}
+
+      {% for ability in ability_group.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
+    </subsection>
+    {% endfor %}
+
+
+    {% for ability_group in ability_groups if ability_group.is_wyrd_science_family() %}
+    <subsection>
+      <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
+      {{ ability_group.get_description() }}
+
+      {% if ability_group.has_abilities() %}
+      <figure position="h" fullwidth="false" sideways="false">
+	<img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/>
+	<caption>{{ ability_group.get_name() }}</caption>
+	<label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+      </figure>
+      {% endif %}
+
+      {% for ability in ability_group.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
+    </subsection>
+    {% endfor %}
+  </section>
+
+  
+
+  <section>
+    <sectiontitle>Martial Abilities</sectiontitle>
+    <epigraph>Nobody loves a warrior until the enemy is at the gate</epigraph>
+    <p>
+      <indexentry>
+	<entry>Abilities</entry>
+	<subentry>Martial</subentry>
+      </indexentry>
+      represents combat related physical skills, <eg/> Axe Strike, Shield
+      Block.
+    </p>
+
+    <indexentry>
+      <entry>Opponents</entry>
+      <subentry>Defence</subentry>
+    </indexentry>
+    <indexentry>
+      <entry>Opponents</entry>
+      <subentry>Attack</subentry>
+    </indexentry>
+    <p>
+      Many martial abilities have a DC based on the Opponents Defence, this
+      means the targets Block, Parry, Armour or other defensive ability check
+      amount or difficulty. Other martial abilities are checked against a DC
+      based on the opponents attack. This represents that attack skill check
+      result or DC for the opponent. For example a monster may attack a
+      character with a Sword with an attack with DC 15. The PC then uses the
+      monsters attack DC as the Opponents Attack DC in any defensive skill the
+      character uses against the attack.
+    </p>
+
+
+    {% for ability_group in ability_groups if ability_group.is_martial_family() %}
+
+    <subsection>
+      <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
+      {{ ability_group.get_description() }}
+
+      {% if ability_group.has_abilities() %}
+      <figure position="h" fullwidth="false" sideways="false">
+	<img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/>
+	<caption>{{ ability_group.get_name() }}</caption>
+	<label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+      </figure>
+      {% endif %}
+
+      {% for ability in ability_group.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
+    </subsection>
+    {% endfor %}
+  </section>
+
+  <section>
+    <sectiontitle>General Abilities</sectiontitle>
+    <p>
+      <indexentry>
+	<entry>Abilities</entry>
+	<subentry>General</subentry>
+      </indexentry>
+      These abilities represent trade-craft and creative abilities: Smithing,
+      Animal Handling, Playing Music, Hunting and so on.
+    </p>
+
+    {% for ability_group in ability_groups if ability_group.is_general_family() %}
+    <subsection>
+      <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
+      {{ ability_group.get_description() }}
+
+      {% if ability_group.has_abilities() and ability_group.draw_skill_tree() %}
+      <figure position="h" fullwidth="false" sideways="false">
+	<img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/>
+	<caption>{{ ability_group.get_name() }}</caption>
+	<label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+      </figure>
+      {% endif %}
+
+      {% for ability in ability_group.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
+    </subsection>
+    {% endfor %}
+  </section>
+
+  {# SECTION MAGICAL ABILITIES #}
+  {% include "docs/fragment_magical_abilities.xml" %}
+  
+</chapter>
+

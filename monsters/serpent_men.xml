@@ -20,21 +20,23 @@
     <monstermove>6</monstermove>
     <monsterhealth>4</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>+0</monsterinitiative>
     <monstermagic>-</monstermagic>
     <monstermettle>4d4</monstermettle>
     <monsterluck>1d6</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>7</armour>
-    <strength>7</strength>
-    <endurance>8</endurance>
-    <agility>10</agility>
-    <speed>10</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dodge_1</abilityrankid>
-    <abilityrankid>speed.jump</abilityrankid>
-    <abilityrankid>✱climb_3</abilityrankid>
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="3"/>    
+    <abilityref id="dodge" rank="0"/>    
+    <abilityref id="climb" rank="3"/>
+    <abilityref id="bite" rank="3" dmg="2"/>
+    
     <monsterdescription>
       <p>	
       </p>
@@ -49,18 +51,24 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>10</monsterstamina>
-    <monsterinitiativebonus>+1</monsterinitiativebonus>
+    <monsterinitiative>+1</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>1d6</monsterluck>
     <monsterrole><controller/></monsterrole>
-    <armour>10</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>14</agility>
-    <speed>14</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="3"/>    
+    <abilityref id="dodge" rank="0"/>    
+    <abilityref id="climb" rank="3"/>
+    <abilityref id="poison_bite" rank="3" dmg="4"/>
+    
+    
     <monsterdescription>
       <p>
 	Monster description
@@ -78,18 +86,23 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>10</monsterstamina>
-    <monsterinitiativebonus>+1</monsterinitiativebonus>
+    <monsterinitiative>+1</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>1d6</monsterluck>
     <monsterrole><controller/></monsterrole>
-    <armour>10</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>14</agility>
-    <speed>14</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="6"/>    
+    <abilityref id="dodge" rank="0"/> 
+    <abilityref id="climb" rank="3"/>
+    <abilityref id="poison_bite" rank="3" dmg="6"/>
+    
     <monsterdescription>
       <p>
 	The sons of God.  These are serpent men with special powers.

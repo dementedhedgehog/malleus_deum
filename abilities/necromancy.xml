@@ -5,11 +5,17 @@
     <abilitygrouptitle>Necromancy</abilitygrouptitle>
     <abilitygroupid><necromancy/></abilitygroupid>
     <abilitygroupfamily><magic/></abilitygroupfamily>
+    <slug>
+	All human things are subject to decay,
+	and when fate summons, Monarchs must obey
+	<!-- John Dryden -->
+    </slug>
     <abilitygroupdescription>
       <p>
-        The art of communing with the unquiet dead is at best the province of shysters 
-	and charlatans and at worst an art that plays with things that no man ought.  
-	It's practice is viewed with disdain by all right thinking peoples.
+        The art of communing with the unquiet dead is at best the province of
+	shysters and charlatans and at worst an art that plays with things that
+	no man ought.  It's practice is viewed with disdain by all right
+	thinking peoples.
       </p>
     </abilitygroupdescription>
     <enabled/>
@@ -21,27 +27,25 @@
     <abilityid>commune_with_the_dead</abilityid>    
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><touch/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Talk with a corpse</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-	<critfail>Accidentally create a zombie.</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>Talk with a corpse</any-success>
+      <critfail>Accidentally create a zombie.</critfail>      
     </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="120"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	While holding part of the deceased's body the necromancer may ask questions of the 
-	dead person.  If the spell succeeds the dead person will respond to questions 
-	telepathically.  After each question roll a D4, on a 1 the link with the spirit has 
-	been broken and no more questions can be asked.
+	While holding part of the deceased's body the necromancer may ask
+	questions of the dead person.  If the spell succeeds the dead person
+	will respond to questions telepathically.  After each question roll a
+	D4, on a 1 the link with the spirit has been broken and no more
+	questions can be asked.
       </p>
 
       <p>
@@ -77,20 +81,26 @@
     <abilitytitle>Eye for an Eye</abilitytitle>
     <abilityid>eye_for_an_eye</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>      
-      <range><melee/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>Melee attacks against the caster deal 3x damage to the attacker</critsuccess>
-	<righteoussuccess>Melee attacks against the caster deal 2x damage to the attacker</righteoussuccess>  
-	<success>Melee attacks against the caster deal damage to the attacker</success>
-      </mastery>	  
-      <xdef fname="pool_cost_2" elem_name="fate"/>
+    <abilitycheck> 
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>      
+      <range><reach/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>
+	Melee attacks against the caster deal 3x damage to the attacker
+      </critsuccess>
+      <righteoussuccess>
+	Melee attacks against the caster deal 2x damage to the attacker
+      </righteoussuccess>  
+      <success>
+	Melee attacks against the caster deal damage to the attacker
+      </success>
     </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>	
-    <spline><p x="30" y="95"/></spline>
+    <prereqabilityref id="necromancy" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster is warded.  Any attacker doing damage in melee to the caster
@@ -100,27 +110,51 @@
     </abilitydescription>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Forbidden Psalm</abilitytitle>
+    <abilityid>forbidden_psalm</abilityid>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
+      <range><self/></range>
+      <keywords><magicpool/><check/><maintain/></keywords>
+      <counter><sv13/></counter>
+      <any-success>Undead who can make attacks at disadvantage.</any-success>
+    </abilitycheck>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="120"/><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	If successfully cast, chanting this psalm makes it hard for any undead
+	to see and hear the caster.  Undead make attacks with disadvantage.
+      </p>
+    </abilitydescription>
+  </ability>
   
   <ability>
     <abilitytitle>Graft Flesh</abilitytitle>
     <abilityid>graft_flesh</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><noncombat/></apcost>
       <range><touch/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Replace amputated limbs and heal</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<critfail>Succeeds.  However, gain the aspect: It has a Mind
-	of It's Own!  The limb will attempt to murder people at inoportune
-	times, when it gets the chance.</critfail>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Replace amputated limbs and heal</any-success>
+      <critfail>Succeeds.  However, gain the aspect: It has a Mind
+      of It's Own!  The limb will attempt to murder people at inoportune
+      times, when it gets the chance.</critfail>
     </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>	
-    <spline><p x="30" y="75"/></spline>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="15"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster grafts the fresh flesh of one creature onto another.
@@ -136,74 +170,30 @@
   </ability>
 
 
-  <ability>
-    <abilitytitle>Forbidden Psalm</abilitytitle>
-    <abilityid>forbidden_psalm</abilityid>
-    <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <name>Cast</name>
-      <actiontype><ap4/></actiontype>
-      <range><self/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>
-    </abilitycheck>
-
-    <abilitycheck>
-      <name>Check Unseen</name>
-      <actiontype><free/></actiontype>
-      <range><ranged-long/></range>
-      <keywords></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-	<any-success>Convert a successful attack to a miss</any-success>
-      </mastery>
-      <fate>
-	<!-- <boon></boon> -->
-	<indifferent>FIXME</indifferent>
-	<!-- <bane></bane> -->
-      </fate>
-    </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>	
-    <spline><p x="30" y="75"/></spline>
-    <abilitydescription>
-      <p>
-	If successfully cast, chanting this psalm makes it hard for the undead to see and hear the
-	caster.   After an attack is made against the character by an undead creature, the caster can
-	make a save against that attack by making a Std+3×Rank	check against the undeads perception.
-	If successful the undead creature cannot make the attack and loses their attack for that round.
-	This save is a free action that happens before any defensive ability, <eg/> dodge, made by the
-	caster.
-      </p>
-    </abilitydescription>
-  </ability>
-
 
   <ability>
     <abilitytitle>Necromantic Lore</abilitytitle>
     <abilityid>necromancy</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>      
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline></spline>    
     <abilitydescription>
       <p noindent="true">
-	The school of necromancy is concerned with the use of death
-	or blood magic, the legends of the dread necromancers and the unquiet dead.  Characters may provide
-	useful information about these topics on occasion: identifying undead, and or
-	their weaknesses, and providing the relevant mythology around these creatures.
+	The school of necromancy is concerned with the use of death or blood
+	magic, the legends of the dread necromancers and the unquiet dead.
+	Characters may provide useful information about these topics on occasion:
+	identifying undead, and or their weaknesses, and providing the relevant
+	mythology around these creatures.
       </p>      
     </abilitydescription>    
   </ability>
@@ -214,20 +204,17 @@
     <abilityid>stay_death</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck> 
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><retort/></apcost>
       <range><touch/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Reroll one Near-Death roll.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Reroll one Near-Death roll.</any-success>
     </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>
-    <spline><p x="-90" y="15"/></spline>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character holds death at bay for a moment.  The target
@@ -243,19 +230,17 @@
     <abilityid>blood_soucriant</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
       <range><na/></range>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>In the presence of blood, summon a demon to fight.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>      
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>In the presence of blood, summon a demon to fight.</any-success>
     </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>
-    <spline><p x="90" y="15"/></spline>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="60"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	In the presence of a lot of blood the character can summon
@@ -273,28 +258,29 @@
     <abilityid>pall_of_darkness</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>necromancy_defaults</defaults> -->
-      <!-- <defaults>pool_cost_2</defaults> -->
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><noncombat/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><aoe-emination/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Darkness</any-success>
-	<critfail>Something from beyond bites the caster.  Suffer d4 damage</critfail>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>
+      <keywords><magicpool/><aoe-emination/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>
+	Darkness
+      </any-success>
+      <critfail>
+	Something from beyond bites the caster.  Suffer d4 damage
+      </critfail>
     </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>	
-    <spline><p x="30" y="75"/></spline>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="180"/></spline>
     <abilitydescription>
       <p>
 	If successfully cast, chanting this psalm creates a dark cloud
-	surrounding the caster with a radius of <measurement><imperial>20'</imperial><metric>6m</metric></measurement>.
-	This cloud gives +3×Rank to defensive rolls against missile attacks.  It is clearly visible during
-	the day, but may not be noticeable at night depending on the lighting.    The cloud also provides
-	+Rank against area-of-effect attacks.
+	surrounding the caster with a radius of <m6/>. This cloud gives +3×Rank
+	to defensive rolls against missile attacks. It is clearly visible during
+	the day, but may not be noticeable at night depending on the lighting.
+	The cloud also provides +Rank to defence against area-of-effect attacks.
       </p>
     </abilitydescription>
   </ability>
@@ -305,27 +291,24 @@
     <abilityid>veil_of_corruption</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck> 
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><self/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Resembles a corpse</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>Resembles a corpse</any-success>
     </abilitycheck>
-    <prereqabilityrank>necromancy_1</prereqabilityrank>
-    <spline><p x="90" y="15"/></spline>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character appears as if dead.  This is not an illusion.  They
-	look, smell, and feel like a corpse.  They may also adopt a
-	preternatural stillness.  At rank 1 the character can appear as a
-	fresh corpse, dead for a few hours, at rank 3 they can appear as a
-	corpse that has been rotting in the weather for a few weeks.
+	The character appears as if dead.  This is not an illusion. They look,
+	smell, and feel like a corpse.  They may also adopt a preternatural
+	stillness.  At rank 1 the character can appear as a fresh corpse, dead
+	for a few hours, at rank 3 they can appear as a corpse that has been
+	rotting in the weather for a few weeks.
       </p>
     </abilitydescription>    
   </ability>  

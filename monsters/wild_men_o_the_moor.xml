@@ -5,10 +5,10 @@
     <monstergroupid>wild_men_o_the_moor</monstergroupid>
     <monstergroupdescription>
       <p>
-	Wild Men o' the Moor are a smaller sub-race of Boggart.  They
-	are small, about <measurement><metric>60cm</metric><imperial>2 foot</imperial></measurement>
-	high frog-men.  They infest moors, swamps, sewer systems and any wet place.  Though hateful of
-	human-kind, they are not openly aggressive unless they outnumber their opponents.  
+	Wild Men o' the Moor are a smaller sub-race of Boggart. They are small,
+	about <m05/> high frog-men.  They infest moors, swamps, sewer systems
+	and any wet place. Though hateful of human-kind, they are not openly
+	aggressive unless they outnumber their opponents.
       </p>
     </monstergroupdescription>
   </monstergroupinfo>
@@ -22,22 +22,24 @@
     <monstermove>8</monstermove>
     <monsterhealth>4</monsterhealth>
     <monsterstamina>1</monsterstamina>
-    <monsterinitiativebonus>+4</monsterinitiativebonus>
+    <monsterinitiative>+4</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>13</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>12</armour>
-    <strength>9</strength>
-    <endurance>12</endurance>
-    <agility>17</agility>
-    <speed>17</speed>
-    <perception>16</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>✱dodge_3</abilityrankid>
-    <abilityrankid>speed.jump</abilityrankid>
-    <abilityrankid>✱climb_6</abilityrankid>
-    <abilityrankid>polearm_strike_2</abilityrankid>
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3" specializations="jump:+3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="3"/>
+    <abilityref id="climb" rank="6"/>
+    
+    <abilityref id="polearm_strike" rank="3"/>
     <monsterdescription>
       <p>
       </p>

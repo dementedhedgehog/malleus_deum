@@ -19,19 +19,18 @@
     <abilityid>black_colossus</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name> 
+      <checktype><cast/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv13/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
     </abilitycheck>
-    <prereqabilityrank>summon_elemental_2</prereqabilityrank>
-    <spline><p x="30" y="45"/></spline>
+    <prereqabilityref id="summon_elemental" rank="2"/>	
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	The chaster creates a giant humanoid construct out of
@@ -46,19 +45,18 @@
     <abilityid>burning_hands</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
-      <range><melee/></range> 
-      <keywords><magicpool/><fire/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
+      <range><reach/></range> 
+      <keywords><magicpool/><fire/><check/></keywords>
+      <counter><sv7/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
     </abilitycheck> 
-    <prereqabilityrank>fyre_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline>
+    <prereqabilityref id="fyre" rank="2"/>	
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The casters hands become engulfed in primal fire.  In hand
@@ -68,19 +66,20 @@
   </ability>  
 
   
-  
   <ability>
-    <abilitytitle>Elemental Magic</abilitytitle>
+    <abilitytitle>Elemental Lore</abilitytitle>
     <abilityid>elemental_magic</abilityid>  
-    <abilityranks from="1" to="3"/>
+    <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <keywords><lore/><elemental/></keywords>
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>      
-      <xdef fname="lore_defaults" elem_name="fate"/>      
+      <name>Cast</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><elemental/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -96,23 +95,22 @@
     <abilitytitle>Fyre Bolt</abilitytitle>
     <abilityid>fyre</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap4/></actiontype>
+    <abilitycheck>
+      <name>Cast</name>
+      <checktype><magic-attack/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><ap4/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><fire/><unparryable/></keywords>
-      <dc><opponents-defend/></dc>
-      <dmg>(1+Rank)×d6</dmg>
-      <mastery>
-	<any-success>Damage</any-success>
-	<critsuccess>3×Damage</critsuccess>
-	<righteoussuccess>2×Damage</righteoussuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
-    </abilityattack>
-    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
-    <spline><p x="0" y="75"/></spline>
+      <keywords><magicpool/><fire/><unparryable/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>(1+Rank)×d6</dmg>      
+      <any-success>Damage</any-success>
+      <critsuccess>3×Damage</critsuccess>
+      <righteoussuccess>2×Damage</righteoussuccess>
+      <critfail>FIXME</critfail>
+    </abilitycheck>
+    <prereqabilityref id="elemental_magic" rank="1"/>	
+    <spline><p x="-30" y="30"/><p x="0" y="120"/></spline>
     <abilitydescription>
       <p>
 	The caster shoots a ball for fire from their hands at an opponent.
@@ -126,19 +124,18 @@
     <abilityid>gaseous_form</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
-    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
-    <spline><p x="-75" y="70"/></spline>
+    <prereqabilityref id="elemental_magic" rank="1"/>	
+    <spline><p x="-30" y="30"/><p x="0" y="60"/><p x="-45" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster and all their carried goods turn into a smoke which
@@ -153,19 +150,18 @@
     <abilityid>kiss_of_the_deep</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name> 
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><free-action-or-reaction/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><opponents-willpower/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
-    <prereqabilityrank>elemental_magic_1</prereqabilityrank>	
-    <spline><p x="-75" y="15"/></spline>
+    <prereqabilityref id="elemental_magic" rank="1"/>	
+    <spline><p x="-30" y="30"/><p x="-45" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster touches a target and then casts this spell.  Casting
@@ -189,19 +185,18 @@
     <abilityid>mist</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
-    <prereqabilityrank>elemental_magic_1</prereqabilityrank>
-    <spline><p x="-30" y="45"/></spline>
+    <prereqabilityref id="elemental_magic" rank="1"/>	
+    <spline><p x="-30" y="30"/><p x="0" y="45"/><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster causes a fog to form by draining the temperature from the surrounds.
@@ -217,19 +212,18 @@
     <abilityid>shatter</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><ap3/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
-    <prereqabilityrank>elemental_magic_2</prereqabilityrank>
-    <spline><p x="60" y="60"/></spline>
+    <prereqabilityref id="elemental_magic" rank="2"/>	
+    <spline><p x="30" y="30"/><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
 	When casting shatter the caster intones magical words
@@ -261,18 +255,17 @@
     <abilityid>smoke_weasel</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
-    <prereqabilityrank>fyre_1</prereqabilityrank>    
+    <prereqabilityref id="fyre" rank="1"/>	
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -287,25 +280,22 @@
     </abilitydescription>    
   </ability>
 
-
-
-  
   <ability>
     <abilitytitle>Sow the Wind</abilitytitle>
     <abilityid>sow_the_wind</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction-or-ap2/></apcost>
       <range><na/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>All movement for counts as difficult terrain.</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>All movement for counts as difficult terrain.</any-success>
     </abilitycheck>
-    <prereqabilityrank>elemental_magic_2</prereqabilityrank>
-    <spline><p x="45" y="120"/></spline>
+    <prereqabilityref id="elemental_magic" rank="2"/>	
+    <spline><p x="30" y="30"/><p x="0" y="120"/></spline>
     <abilitydescription>
       <p>
 	The target calls up a gail. 
@@ -319,18 +309,18 @@
     <abilityid>summon_elemental</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><ap3/></apcost>
       <range><na/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
-    <prereqabilityrank>elemental_magic_3</prereqabilityrank>
-    <spline><p x="90" y="15"/></spline>
+    <prereqabilityref id="elemental_magic" rank="3"/>	
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character summons an elemental.

@@ -3,47 +3,152 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Wyrd Science Abilities</abilitygrouptitle>
     <abilitygroupid><wyrdscience/></abilitygroupid>
-    <abilitygroupfamily><wyrdscience/></abilitygroupfamily>
+    <abilitygroupfamily><lore/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Wyrd Science is based on five sacred pillars: Biology,
-	Electrochemistry, Blaylock Valves, Humoural Theory, and Leeches.
-	Upon this foundation great minds strive to create a brave new world.
+        Wyrd Science is based on five sacred pillars: Biology, Electrochemistry,
+	Blaylock Valves, Humoural Theory, and Leeches.  Upon this storied
+	foundation great minds strive to create a brave new world.
       </p>
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
-  
 
   <ability>
-    <abilitytitle>Feign Death</abilitytitle>
-    <abilityid>feign_death</abilityid>    
+    <abilitytitle>Wyrd Science</abilitytitle>
+    <abilityid>wyrdscience</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
-      <range><self/></range>
-      <dc><dc7/></dc>
-      <mastery>
-	<righteoussuccess>The feigned death is extremely convincing.  Your example assists any companions in doing the same they gain a +2 to
-	Feign Death or using Deception to pretend to be dead.
-	</righteoussuccess>
-	<fail>Make a deception check to convince observers of your death instead.</fail>
-	<grimfail>You twitch or sneeze at an unfortunate time.  You have been detected.</grimfail>
-	<critfail>You succeed in entering the trance but remain in a death like state for longer than you intended.</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <checktype><recall-knowledge/></checktype>          
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords> 
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
+    <spline><p x="0" y="0"/></spline>
     <abilitydescription>
       <p>
-	The character can enter a death-like state through a special meditative trance.
-	This state should convince people that the character is dead under cursory examination.
+	This ability represents general theoretical knowledge of the foundational
+	principles of Wyrd Science.
       </p>
     </abilitydescription>
   </ability>
 
+  <ability>
+    <abilitytitle>Feign Death</abilitytitle>
+    <abilityid>feign_death</abilityid>
+    <abilityranks untrained="-3" from="1" to="5"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
+      <range><self/></range>
+      <keywords><wyrdscience/><mettlepool/><check/></keywords>
+      <counter><sv7/></counter>
+      <righteoussuccess>The feigned death is extremely convincing. Your example
+      assists any companions in doing the same they gain a +2 to Feign Death or
+      using Deception to pretend to be dead.
+      </righteoussuccess>
+      <fail>
+	Make a deception check to convince observers of your death instead.
+      </fail>
+      <grimfail>
+	You twitch or sneeze at an unfortunate time. You have been detected.
+      </grimfail>
+      <critfail>
+	You succeed in entering the trance but remain in a death like state for
+	longer than you intended.
+      </critfail>
+    </abilitycheck>
+    <prereqabilityref id="wyrdscience" rank="1"/>
+    <spline><p x="0" y="60"/><p x="-30" y="30"/><p x="0" y="30"/><p x="-30" y="30"/><p x="-30" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character can enter a death-like state through a special meditative
+	trance. This state should convince people that the character is dead
+	under cursory examination.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Fleshcraft</abilitytitle>
+    <abilityid>fleshcraft</abilityid>    
+    <abilityranks from="1" to="5"/>
+    <abilityauxiliary>
+      <name>Fles</name>
+      <checktype><fixme/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><auxiliary/></keywords>      
+      <precondition>
+	Each time the character gains a level in this ability they may choose
+	one, previously unchosen augmentation from the augmentation table. The
+	character must have access to a laboratory in order to do make this
+	check.
+      </precondition>
+      <effect>Roll on the table below</effect>
+    </abilityauxiliary>
+    <prereqabilityref id="wyrdscience" rank="1"/>
+    <spline><p x="0" y="60"/><p x="-30" y="30"/><p x="0" y="30"/><p x="-30" y="30"/><p x="30" y="30"/></spline>    
+    <abilitydescription>
+      <p>
+	The doktor modifies their body. Attaining this ability requires the
+	recipient to undergo a long and gruelling regime of inoculations and
+	minor surgical modifications in order to bolster the docktor's body
+	against the effects of intrusive miasmas and other baleful effects on
+	their humours.
+      </p>
+
+      <table colsep="0.8">
+	<standardtable/>
+	<tablespec><fixed>0.82</fixed></tablespec>
+	<tabletitle>Augmentation Table</tabletitle>
+	<tablelabel>fig:augmentation</tablelabel>
+
+	<tableheaderrow>
+	  <td>Result</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>Poison Sacks! FIXME effect, and failure or success results</td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>
+	    Hidden Pouch.FIXME effect, and failure or success results
+	  </td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Low Light Vision. FIXME effect, and failure or success results</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Malleable Visage</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Bonespur.  Like a subcutaneous bone dagger.. has a </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Subcutaneous Plates</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Inner Eye</td>
+	</tablerow>
+
+      </table>      
+    </abilitydescription>
+  </ability>
   
   <ability>
     <abilitytitle>Flesh Golem</abilitytitle>
@@ -51,35 +156,35 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<!-- <critsuccess></critsuccess> -->
-	<grimfail>FIXME</grimfail>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>      
+      <keywords><wyrdscience/><check/><mettlepool/></keywords>
+      <counter><sv11/></counter>
+      <grimfail>FIXME</grimfail>
     </abilitycheck>
-    <prereqabilityrank>homunculus_2</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
+    <prereqabilityref id="homunculus" rank="2"/>
+    <spline><p x="0" y="80"/></spline>
     <abilitydescription>
       <p>
-  	The character has worked out how to control reanimated humans using wyrd science and brain implants.
-  	In order to create a Flesh Golem the character needs access to a laboratory.  Flesh Golems behave
-  	like Homonculi but are much much larger.
+	The character has worked out how to control reanimated humans using Wyrd
+	Science and brain implants.  In order to create a Flesh Golem the
+	character needs access to a laboratory.  Flesh Golems behave like
+	Homunculi but are much much larger.
       </p>
 
       <p>
-  	When assisting in combat a flesh golem has 20 hit points, 10 stamina, an armour of +2.  They attack
-  	using their bare hands with +3 to hit and do damage of 2d10 (they are not very coordinated but quite strong).
-  	Flesh Golems love fighting and their master must make a Mettle DC2 check to control them when any physical
-  	combat begins or the flesh golem will automatically attack.  A similar check may be made to control the
-  	Flseh Golem when they get excited for other reasons.
+	When assisting in combat a flesh golem has 20 hit points, 10 stamina, an
+	armour of +2.  They attack using their bare hands with +3 to hit and do
+	damage of 2d10 (they are not very coordinated but quite strong). Flesh
+	Golems love fighting and their master must make a Mettle DC2 check to
+	control them when any physical combat begins or the flesh golem will
+	automatically attack.  A similar check may be made to control the Flesh
+	Golem when they get excited for other reasons.
       </p>
 
       <p>
-  	In all other ways Flesh Golems behave as if they were homunculi.
+	In all other ways Flesh Golems behave as if they were homunculi.
       </p>
     </abilitydescription>
   </ability>
@@ -87,133 +192,172 @@
 
   <ability>
     <abilitytitle>Homunculus</abilitytitle>
-    <abilityid>homunculus</abilityid>    
+    <abilityid>homunculus</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>      
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
-    <prereqabilityrank>wyrdscience_2</prereqabilityrank>
-    <spline><p x="0" y="60"/></spline>
+    <prereqabilityref id="wyrdscience" rank="3"/>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-  	The character is able to create a
-  	<measurement><metric>50cm</metric><imperial>20"</imperial></measurement> tall humanoid
-  	servitor from flesh.  The homunculus has a mental link with its creator but has
-  	limited intelligence.  The homonculus always knows where its master is and will be able
-  	to find its master when it pleases.  It is capable of running errands and assisting in combat.
-  	Homunculi must do what their creator tells them, unless they get really excited.  Homunculi are
-  	very hard to contain.  They often escape from enclosures through unknown devious means.
+	The character is able to create a <m05/> tall humanoid servitor from
+	flesh.  The homunculus has a mental link with its creator but has limited
+	intelligence.  The homunculus always knows where its master is and will
+	be able to find its master when it pleases.  It is capable of running
+	errands and assisting in combat.   Homunculi must do what their creator
+	tells them, unless they get really excited.  Homunculi are very hard to
+	contain.  They often escape from enclosures through unknown devious
+	means.
       </p>
 
       <p>
-  	When creating an homunculus a character gathers the requisite material, off-cuts from a fresh corpse,
-  	a variety of alchemical reagents and a manual for the binding,  They make the check to create the
-  	homoculus.  If they fail the ingredients are wasted and must be destroyed.  If successful the
-  	creation will rise within a few hours.  An homunculus can have only one master.  It will only
-  	do as directed by others if it feels its master	would want that.  If someone creates two homuculi
-  	they will both try and destroy the other.  This never ends well.
+	When creating an homunculus a character gathers the requisite material,
+	off-cuts from a fresh corpse, a variety of alchemical reagents and a
+	manual for the binding,  They make the check to create the homunculus.
+	If they fail the ingredients are wasted and must be destroyed.  If
+	successful the creation will rise within a few hours. An homunculus can
+	have only one master.  It will only do as directed by others if it feels
+	its master	would want that.  If someone creates two homuculi they
+	will both try and destroy the other.  This never ends well.
       </p>
 
       <p>
-  	When assisting in combat the homunculus has 3 hit points, no stamina, an armour of +2 (they're small
-  	and nasty) and provides a +1 to hit and damage bonus to one character fighting in melee hand to hand.
-  	That character need not be its master.  Homunculi love fighting and their master must make a
-  	Mettle DC2 check to control them when any physical combat begins or the homuculus will automatically
-  	attack.  A similar check may be made to control the homunculus when they get excited for other reasons.
+	When assisting in combat the homunculus has 3 hit points, no stamina, an
+	armour of +2 (they're small and nasty) and provides a +1 to hit and
+	damage bonus to one character fighting in melee hand to hand. That
+	character need not be its master.  Homunculi love fighting and their
+	master must make a Mettle DC2 check to control them when any physical
+	combat begins or the homuculus will automatically attack.  A similar
+	check may be made to control the homunculus when they get excited for
+	other reasons.
       </p>
 
       <p>
-  	Homonculi are basically an ambulatory fetish, possessed by some minor demon from beyond.  Their
-  	actions are strongly curtailed by the rigourous, standardized and very lengthy binding that is part
-  	of their creation ritual.  However, homoculi frequently resort to type, eating the flesh of humans
-  	or excrement when they can, laughing loudly at the misfortune of others, and if left on their own the
-  	might resort to theft, or the mutilation of animals. They have been known to murder small children or
-  	light fires, but it is believed that all such loopholes	have now been covered in their binding ritual.
+	Homunculi are basically an ambulatory fetish, possessed by some minor
+	demon from beyond.  Their actions are strongly curtailed by the
+	rigourous, standardized and very lengthy binding that is part of their
+	creation ritual.  However, homunculi frequently resort to type, eating
+	the flesh of humans or excrement when they can, laughing loudly at the
+	misfortune of others, and if left on their own the might resort to
+	theft, or the mutilation of animals. They have been known to murder
+	small children or light fires, but it is believed that all such
+	loopholes have now been covered in their binding ritual.
       </p>
 
       <p>
-  	Homoculi attract a certain amount of attention.  Clothes should be made for them so as not to attract
-  	more attention than is absolutely necessary as their bodies are hideous.  Alternatively they may be
-  	carried around in a box.
+	Homunculi attract a certain amount of attention.  Clothes should be made
+	for them so as not to attract more attention than is absolutely
+	necessary as their bodies are hideous.  Alternatively they may be
+	carried around in a box.
       </p>
 
       <p>
-  	Thankfully, homonculi do not talk a great deal. When they do they usually being sycophantic, or sarcastic.
-  	They delight in the misfortune of others which really excites them.  They may get jealous if their master
-  	pays too much attention to others.
+	Thankfully, homunculi do not talk a great deal. When they do they usually
+	being sycophantic, or sarcastic. They delight in the misfortune of others
+	which really excites them. They may get jealous if their master	pays too
+	much attention to others.
       </p>
 
       <p>
-  	Homunculi do not really die unless their body is destroyed beyond recognition, is burned or eaten <etc/>.
-  	They can be healed by simply sewing them back together.  If someone chooses to do this they will regain
-  	all health after a long rest.
+	Homunculi do not really die unless their body is destroyed beyond
+	recognition, is burned or eaten <etc/>. They can be healed by simply
+	sewing them back together.  If someone chooses to do this they will
+	regain all health after a long rest.
       </p>
     </abilitydescription>
   </ability>
 
 
   <ability>
+    <abilitytitle>Juice of Sapho</abilitytitle>
+    <abilityid>juice_of_sapho</abilityid>
+    <slug>It is by will alone I set my mind in motion.</slug>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><test/></checktype>
+      <apcost><ap1/></apcost>
+      <range><na/></range>
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>
+	The next lore check made today is made at advantage.
+      </any-success>
+      <critfail>Gain an Addiction to Sapho Aspect</critfail>
+    </abilitycheck>
+    <prereqabilityref id="wyrdscience" rank="2"/>
+    <spline><p x="0" y="145"/></spline>
+    <abilitydescription>
+      <p>
+	The character knows how to prepare the mind expanding Juice of Sapho.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  <ability>
     <abilitytitle>Wyrd Rats</abilitytitle>
-    <abilityid>wyrd_rat</abilityid>    
+    <abilityid>wyrd_rat</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc15/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv15/></counter>
+      <any-success>The rat is created.</any-success>
+      <critfail>The rat is created but it hates its creator. Gain the Malicious-Rodent aspect.</critfail>
+      <damned>Gain the Unhealthy Devotion aspect. The doktor develops an unhealthy bond with his new friend.</damned>
     </abilitycheck>
-    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline>
+    <prereqabilityref id="wyrd_hand" rank="1"/>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-  	The character has worked out how to control rats using wyrd
-  	science and brain implants.  In order to create a Wyrd Rat the character needs access
-  	to a laboratory. Wyrd Rats have a telepathic bond with their master, they can perform minor
-  	tasks and can attack on command.   Wyrd Rats have HP:1, AC:13+Rank, Bite DC:13+Rank, Dmg:1.
-  	They can try to create a Wyrd Rat once per day.  If they fail, the rat survives but it is impossible
-  	to make a telepathic link with the creature.  Each day spent in preparation gives the character +1 to
-  	their check, up to a maximum of +3.  They get an additional +1 for naming the rat, which strengthens
-  	the chance that the telepathic bond will hold.  The character can have and control up to Rank Wyrd Rats
-  	after this it is impossible for the character to maintain the telepathic link with the rats.
+	The character has worked out how to control rats using wyrd science and
+	brain implants.  In order to create a Wyrd Rat the character needs
+	access to a laboratory. Wyrd Rats have a telepathic bond with their
+	master, they can perform minor tasks and can attack on command.   Wyrd
+	Rats have HP:1,	AC:13+Rank, Bite DC:13+Rank, Dmg:1. They can try to
+	create a Wyrd Rat once per day.  If they fail, the rat survives but it
+	is impossible to make a telepathic link with the creature.  Each day
+	spent in preparation gives the character +1 to their check, up to a
+	maximum of +3.  They get an additional +1 for naming the rat, which
+	strengthens the chance that the telepathic bond will hold.  The
+	character can have and control up to Rank Wyrd Rats after this it is
+	impossible for the character to maintain the telepathic link with the
+	rats.
       </p>
+
+      <p>FIXME: Vacanti mouse? </p>
     </abilitydescription>
   </ability>
 
 
   <ability>
     <abilitytitle>Splice Flesh</abilitytitle>
-    <abilityid>splice_flesh</abilityid>    
+    <abilityid>splice_flesh</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
-    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
-    <spline><p x="-30" y="60"/></spline>
+    <prereqabilityref id="fleshcraft" rank="1"/>
+    <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>
 	FIXME
@@ -226,70 +370,63 @@
 
   <ability>
     <abilitytitle>Meld Flesh</abilitytitle>
-    <abilityid>meld_flesh</abilityid>    
+    <abilityid>meld_flesh</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>splice_flesh_2</prereqabilityrank>
-    <spline><p x="-30" y="60"/></spline>
+    <prereqabilityref id="splice_flesh" rank="2"/>
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
-	Make the check and you can graft an arm from something onto a 
-	subject.  Maximum one per subject.  No character in their right mind
-	will voluntarily allow themselves to be subject to this surgery, though
-	for the purposes of this ability the plague doctor is not considered to
-	be in their right mind.  
+	Make the check and you can graft an arm from something onto a subject.
+	Maximum one per subject.  No character in their right mind will
+	voluntarily allow themselves to be subject to this surgery, though for
+	the purposes of this ability the plague doctor is not considered to be
+	in their right mind.
       </p>
 
       <p>
-	If the extra limb is an arm it grants an extra hand to the character
-	not an extra action.  So for example, they might be able to use a
-	two handed weapon and a shield, or hold a bomb and a sword and a torch.
+	If the extra limb is an arm it grants an extra hand to the character not
+	an extra action.  So for example, they might be able to use a two handed
+	weapon and a shield, or hold a bomb and a sword and a torch.
       </p>
       
       <p>
-	Each time the character increases the level of
-	this ability they can add extra abilities to their wyrd-limb.
-	FIXME: extra abilities here, e.g. retractable, extendable, stronger,
+	Each time the character increases the level of this ability they can add
+	extra abilities to their wyrd-limb. FIXME: extra abilities here, e.g.
+	retractable, extendable, stronger,
 	claws, ...
       </p>
     </abilitydescription>
   </ability>
 
-  
   <ability>
     <abilitytitle>Inner Eye</abilitytitle>
-    <abilityid>inner_eye</abilityid>    
+    <abilityid>inner_eye</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>An inner-eye is grafted to the recipient.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>An inner-eye is grafted to the recipient.</any-success>
     </abilitycheck>
-    <prereqabilityrank>splice_flesh_2</prereqabilityrank>
-    <spline><p x="-30" y="60"/></spline>
+    <prereqabilityref id="fleshcraft" rank="2"/>
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
-	Make the check and you can graft an eye from something onto a 
+	Make the check and you can graft an eye from something onto a
 	subject.  Maximum one per subject.  No character in their right mind
 	will voluntarily allow themselves to be subject to this surgery, though
 	for the purposes of this ability the plague doctor is not considered to
@@ -307,26 +444,26 @@
 
 
   <ability>
-    <abilitytitle>Reanimation</abilitytitle>
-    <abilityid>reanimation</abilityid>    
+    <abilitytitle>Reanimate</abilitytitle>
+    <abilityid>reanimate</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
+      <keywords><mettlepool/><check/></keywords>
       <precondition>The caster requires a corpse to reanimate.</precondition>
-      <effect>The corpse can be given simple instructions by its reanimator, such as attack, or carry this</effect>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Taget is reanimated.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>      
+      <effect>
+	The corpse can be given simple instructions by its reanimator, such as
+	attack, or carry this
+      </effect>
+      <counter><sv11/></counter>
+      <any-success>Taget is reanimated.</any-success>
     </abilitycheck>
-    <prereqabilityrank>wyrdscience_3</prereqabilityrank>
-    <spline><p x="90" y="120"/></spline>
+    <prereqabilityref id="homunculus" rank="3"/>
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
 	FIXME: like a zombie.. but doesn't last and isn't necromantic.
@@ -334,6 +471,7 @@
 	making this check.
 
 	FIXME SEE FLESH GOLEM ABOVE?!
+	Sometimes dead is better.
       </p>
     </abilitydescription>
   </ability>
@@ -341,28 +479,94 @@
 
   <ability>
     <abilitytitle>Revivify</abilitytitle>
-    <abilityid>revivify</abilityid>    
+    <abilityid>revivify</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Target is revivified</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Target is revivified</any-success>
     </abilitycheck>
-    <prereqabilityrank>splice_flesh_2</prereqabilityrank>
-    <spline><p x="-30" y="60"/></spline>
+    <prereqabilityref id="splice_flesh" rank="2"/>
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
-	Make the check and if successful the character can aid a character who is rolling on the near-death table.
-	Revivify negates the negative modifiers from the Bleeding Out and Bleeding Out Fast resuts, and converts the
-	Maimed effect to Unconscious.
+	Make the check and if successful the character can aid a character who
+	is rolling on the near-death table. Revivify negates the negative
+	modifiers from the Bleeding Out and Bleeding Out Fast resuts, and
+	converts the Maimed effect to Unconscious.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Unleash the Beast!</abilitytitle>
+    <abilityid>unleash-the-beast</abilityid>
+    <slug>Man is not truly one, but truly two!</slug>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck>
+      <name>Unleash the Beast</name>
+      <checktype><fixme/></checktype>
+      <apcost><default-skill-apcost/></apcost>
+      <range><self/></range>
+      <keywords><check/><manipulate/></keywords>
+      <counter><sv13/></counter>
+      <success>Become the Beast</success>
+    </abilitycheck>
+
+    <abilitycheck>
+      <name>Choose a Target</name>
+      <checktype><fixme/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><free/></apcost>
+      <range><self/></range>
+      <keywords><check/><mettlepool/></keywords>
+      <counter><sv9/></counter>
+      <success>Choose a target</success>
+      <critfail>Revert to normal form.</critfail>
+      <damned>Revert to normal form.</damned>
+    </abilitycheck>
+
+    <abilityauxiliary>
+      <name>Spent</name>
+      <checktype><auxiliary/></checktype>
+      <apcost><reaction/></apcost>
+      <range><reach/></range>
+      <keywords><sword/><auxiliary/></keywords>
+      <precondition>
+	Mettle pool drops to zero and the character is in Beast form
+      </precondition>
+      <effect>
+	The character reverts to normal form.
+      </effect>
+    </abilityauxiliary>
+    
+    <prereqabilityref id="wyrdscience" rank="2"/>
+    <spline><p x="0" y="90"/><p x="45" y="45"/><p x="0" y="45"/></spline>
+    <abilitydescription>
+      <p>
+	Mankind contains within himself a raging beast that longs from freedom
+	and destruction.  Taking the correctly prepared concoction, specifically
+	tailored to an individual, frees the beast within.
+      </p>
+
+      <p>
+	As The Beast the character must immediately make a Choose a Target
+	check.  If successful they may pick an opponent as a target.  If
+	unsuccessful they choose the nearest character, friend or foe.
+      </p>
+
+      <p>
+	Once a target is chosen the Beast must move towards the target as fast
+	as it reasonably can, and once within range it can only make melee
+	attacks on that target.  Melee damage done as the beast gets a +3
+	modifier.  Additionaly, the character reverts to normal form when there
+	Mettle pool drops to zero.
       </p>
     </abilitydescription>
   </ability>
@@ -371,53 +575,29 @@
 
   <ability>
     <abilitytitle>Wyrd Hand</abilitytitle>
-    <abilityid>wyrd_hand</abilityid>    
+    <abilityid>wyrd_hand</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><mettlepool/></keywords>
+      <keywords><mettlepool/><check/></keywords>
       <precondition>Must have a severed hand.  It doesn't have to be fresh.</precondition>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>Animated hand is created.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <success></success> -->
-	<critfail>The animated hand is created.  But it has a mind of its own.</critfail>
-      </mastery>	
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <counter><sv13/></counter>
+      <any-success>Animated hand is created.</any-success>
+      <critfail>The hand is created. Gain the Strangler aspect.. occasionaly the hand likes to murder things</critfail>
+      <damned>Gain the Mind-of-its-Own aspect.. occasionaly the hand likes to wander off and do its own thing.  Always returning.</damned>
     </abilitycheck>
-    <prereqabilityrank>wyrdscience_1</prereqabilityrank>
+    <prereqabilityref id="wyrdscience" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	FIXME: disembodied hand.. like the Thing,
+	FIXME: disembodied hand.. like Thing,
       </p>
     </abilitydescription>
   </ability>
 
   
-  <ability>
-    <abilitytitle>Wyrd Science</abilitytitle>
-    <abilityid>wyrdscience</abilityid>    
-    <abilityranks from="1" to="5"/>
-    <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <keywords><lore/></keywords> 
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>      
-      <xdef fname="lore_defaults" elem_name="fate"/>      
-    </abilitycheck>
-    <prereqabilityrank></prereqabilityrank>
-    <spline><p x="0" y="0"/></spline>
-    <abilitydescription>
-      <p>
-	This ability represents general theoretical knowledge of the foundational principles of Wyrd Science.
-      </p>
-    </abilitydescription>
-  </ability>
 </abilitygroup>

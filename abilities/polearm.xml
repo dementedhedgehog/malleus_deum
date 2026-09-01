@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Polearm/Spears/Staff Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Polearm/Spears/Staff Abilities</abilitygrouptitle>
     <abilitygroupid><polearm/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
@@ -12,6 +12,8 @@
 	requires a hook on the end of the pole to catch so cannot be used with a
 	spear or a staff. 
       </p>
+
+      <img id="dore_halberds"/>
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
@@ -22,28 +24,30 @@
     <abilityid>polearm_hook</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Attack</name>
-      <actiontype><free/></actiontype>
-      <range><melee/></range>
+      <name>Melee Attack</name>
+      <checktype><melee-attack/></checktype>          
+      <apcost><free/></apcost>
+      <range><reach/></range>
+      <keywords><polearm/><melee/><check/></keywords>
       <precondition>Hit an opponent with a boon</precondition>
-      <dc><opponents-strength/></dc>
-      <mastery>
-	<critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
-	<success>Target drops random item, weapon or shield</success>
-      </mastery>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+      <counter><opponents-strength-save/></counter>
+      <critsuccess>
+	Target drops item, weapon or shield.  Attacker chooses.
+      </critsuccess>
+      <success>Target drops random item, weapon or shield</success>
     </abilitycheck>
-    <prereqabilityrank>polearm_strike_1</prereqabilityrank>    
-    <spline><p x="90" y="30"/></spline>
+    <prereqabilityref id="polearm_strike" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-        Characters equipped with a polearm, but <bold>not a spear or staff</bold>, can
-	use the hooked edge of this weapon to attempt to disarm an opponent
-	or remove their shield.
+        Characters equipped with a polearm, but <bold>not a spear or
+	staff</bold>, can use the hooked edge of this weapon to attempt to
+	disarm an opponent or remove their shield.
       </p>
       <p>
-	If the character successfuly hits the attacker with a boon, they can make a check 
-	against their opponents Strength.  If successful the defender drops their weapon/shield.
+	If the character successfuly hits the attacker with a boon, they can
+	make a check against their opponents Strength.  If successful the
+	defender drops their weapon/shield.
       </p>
     </abilitydescription>
   </ability>
@@ -53,16 +57,18 @@
     <abilitytitle>Polearm/Staff/Spear Strike</abilitytitle>
     <abilityid>polearm_strike</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <keywords><attack/></keywords>
-      <dc><opponents-defend/></dc>
+    <abilitycheck>
+      <name>Melee Attack</name>
+      <checktype><melee-attack/></checktype>          
+      <apcost><ap4/></apcost>
+      <range><reach/></range>
+      <keywords><polearm/><physical-attack/><basic-attack/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon+Rank+Speed|Strength</dmg>
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>      
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>      
-    </abilityattack>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
+      <success><default-attack-success/></success>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -77,25 +83,25 @@
     <abilitytitle>Brace for Charge</abilitytitle>
     <abilityid>polearm_brace</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilityattack>
+    <abilitycheck>
       <name>Brace</name>
-      <actiontype><reaction/></actiontype>
-      <range><melee/></range>
-      <precondition>An opponent charges the character or an adjacent character</precondition>
-      <dc><opponents-defend/></dc>
-      <dmg>Weapon+Rank+Speed|Strength</dmg>
-      <mastery>
-	<critsuccess>4×Dmg</critsuccess>
-	<righteoussuccess>3×Damage</righteoussuccess>
-	<success>2×Dmg</success>
-	<fail>No Effect</fail>
-	<!-- <grimfail>Θ</grimfail> -->
-	<critfail>Roll on the melee consequence table</critfail>
-      </mastery>
-      <xdef fname="fate_melee_reaction_defaults" elem_name="fate"/>      
-    </abilityattack>
-    <prereqabilityrank>polearm_strike_2</prereqabilityrank>
-    <spline><p x="-75" y="30"/></spline>
+      <checktype><melee-attack/></checktype>          
+      <apcost><free-reaction/></apcost>
+      <range><reach/></range>
+      <keywords><polearm/><physical-attack/><basic-attack/><check/></keywords>
+      <precondition>
+	An opponent charges the character or an adjacent character
+      </precondition>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>Weapon+Rank+Speed|Strength</dmg>      
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+      <fail>No Effect</fail>
+      <critfail>Roll on the melee consequence table</critfail>
+    </abilitycheck>
+    <prereqabilityref id="polearm_strike" rank="2"/>
+    <spline><p x="60" y="30"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a spear or polearm can brace against
@@ -111,16 +117,19 @@
     <abilitytitle>Circle of Death</abilitytitle>
     <abilityid>circle_of_death</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilitytrigger>
-      <name>Attack</name>
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <keywords></keywords>
-      <precondition>Opponents moves into reach anytime before his next reaction.</precondition>
+    <abilityauxiliary>
+      <name>Melee Attack</name>
+      <checktype><melee-attack/></checktype>          
+      <apcost><ap4/></apcost>
+      <range><reach/></range>
+      <keywords><polearm/><physical-attack/><auxiliary/></keywords>
+      <precondition>
+	Opponents moves into reach anytime before his next reaction.
+      </precondition>
       <effect>Character gets a free Fend reaction.</effect>
-    </abilitytrigger>
-    <prereqabilityrank>polearm_strike_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline> 
+    </abilityauxiliary>
+    <prereqabilityref id="polearm_strike" rank="2"/>
+    <spline><p x="120" y="30"/></spline> 
     <abilitydescription>
       <p>
 	The character swings their weapon in large arcs keeping foes at bay.
@@ -135,62 +144,26 @@
     <abilitytitle>Fend</abilitytitle>
     <abilityid>fend</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><reaction/></actiontype>
-      <range><melee/></range>
-      <precondition>Opponents moves into reach.</precondition>      
-      <dc><opponents-willpower/></dc>
-      <dmg>Weapon+Rank+Speed|Strength</dmg>
-      <mastery>
-	<any-success>Opponent may not move into melee</any-success>
-	<critsuccess>2×Dmg</critsuccess>
-	<righteoussuccess>Dmg</righteoussuccess>
-      </mastery>
-      <xdef fname="fate_melee_reaction_defaults" elem_name="fate"/>      
-    </abilityattack>
-    <prereqabilityrank>polearm_strike_2</prereqabilityrank>
-    <spline><p x="-30" y="75"/></spline>
+    <abilitycheck>
+      <name>Fend</name>
+      <checktype><melee-attack/></checktype>          
+      <apcost><free-reaction/></apcost>
+      <range><reach/></range>
+      <keywords><polearm/><physical-attack/><check/></keywords>
+      <precondition>
+	Character not in melee and an opponent attempts to move into reach.
+      </precondition>
+      <counter><opponents-will-save/></counter>
+      <any-success>
+	Opponent's movement stops before moving into reach.
+      </any-success>      
+    </abilitycheck>
+    <prereqabilityref id="polearm_strike" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
       </p>
     </abilitydescription>
   </ability>
 
-
-  <!-- <ability> -->
-  <!--   <abilitytitle>Polearm/Staff/Spear Parry</abilitytitle> -->
-  <!--   <abilityid>polearm_parry</abilityid> -->
-  <!--   <abilityranks from="1" to="4"/> -->
-  <!--   <abilitycheck> -->
-  <!--     <actiontype><reaction/></actiontype> -->
-  <!--     <critsuccess></critsuccess> -->
-  <!--     <critfail></critfail> -->
-  <!--     <boon></boon> -->
-  <!--      -->
-  <!--      -->
-  <!--     <bane></bane> -->
-  <!--      -->
-  <!--      -->
-  <!--      -->
-  <!--      -->
-  <!--      -->
-  <!--     <range><na/></range> -->
-  <!--     <keywords></keywords> -->
-  <!--     <indifferent></indifferent> -->
-  <!--     <dc>Opponent's <attack/></dc> -->
-  <!--   </abilitycheck> -->
-  <!--   <prereqabilityrank>polearm_strike_1</prereqabilityrank>	 -->
-  <!--   <spline><p x="90" y="30"/></spline>  -->
-  <!--   <abilitydescription> -->
-  <!--     <p> -->
-  <!-- 	<label>ability:staff.parry</label> -->
-  <!--       When a character is attacked they may attempt to parry the blow using their weapon -->
-  <!-- 	instead of making an armour roll.  This ability spends the characters reaction for -->
-  <!-- 	the round.  If the parry result fails and a boon is rolled the attack deals half -->
-  <!-- 	damage.  If the parry result fails and a bane is rolled the attack deals double -->
-  <!-- 	damage. If the parry check succeeds the attack does no damage. -->
-  <!--     </p> -->
-  <!--   </abilitydescription> -->
-  <!-- </ability> -->
 </abilitygroup>

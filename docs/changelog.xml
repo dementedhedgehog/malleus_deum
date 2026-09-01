@@ -5,17 +5,45 @@
    Given a version number Major.Minor.Revision, increment the:
 
     Major version when you make incompatible API changes,
-    Minor version when you add functionality in a backwards-compatible manner, and
+    Minor version when you add functionality in a backwards-compatible manner,
+    and
     Revision version when you make backwards-compatible bug fixes.
     -->
 <changelog>
   <version>
     <major>0</major>
+    <minor>4</minor>
+    <revision>0</revision>
+    <change>
+      Rejig the handling of check results reduce complexity
+    </change>
+    <change>
+      Remove the xml preprocessing.  Replace with fixed elements.
+    </change>
+    <change>
+      Rejig xml validation and schematron rules.
+    </change>
+    <change>
+      Replaced abilitysave and abilitydefend with countercheck.
+      Replaced abilityattack with abilitycheck.
+      Replaced newline with br.
+    </change>
+  </version>
+
+  <version>
+    <major>0</major>
     <minor>3</minor>
     <revision>1</revision>
-    <change>Dropping doubles mechanic.  Switching to a Skill/Fate system for the d20s</change>
-    <change>Added defaults for the abilities .. try and reduce complexity</change>
-    <change>Moving to a pathfindery organization for "abilities that everyone has" to reduce complexity</change>
+    <change>
+      Dropping doubles mechanic.  Switching to a Skill/Fate system for the d20s
+    </change>
+    <change>
+      Added defaults for the abilities .. try and reduce complexity
+    </change>
+    <change>
+      Moving to a pathfindery organization for "abilities that everyone has" to
+      reduce complexity
+    </change>
   </version>
 
   <version>

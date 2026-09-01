@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Gun Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Gun Abilities</abilitygrouptitle>
     <abilitygroupid><gun/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <keywords><gun/><martial/></keywords>    
@@ -18,62 +18,53 @@
     <abilitytitle>Gun Maintenance</abilitytitle>
     <abilityid>gun_maintenance</abilityid>
     <abilityranks untrained="-3" from="0" to="3"/>
-    <abilitytrigger>
-      <name>Reload</name>
-      <actiontype><ap4/></actiontype>
-      <range><touch/></range>
-      <precondition>Holding an empty crossbow.</precondition>
-      <effect>The crossbow is loaded.</effect>
-    </abilitytrigger>
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </abilitycheck>
+    
     <abilitycheck>
       <name>Fast Reload</name>
-      <actiontype><ap2/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><ap2/></apcost>
       <range><touch/></range>
-      <keywords><black-powder/></keywords>
-      <dc><dc9/></dc>
-      <mastery>
-	<any-success>Reload the gun during combat.  If successful the gun is reloaded during
-	this minor action.  A gun can be reloaded without a check using a Standard Action.
-	</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate> 
-	<!-- <boon></boon> -->
-	<indifferent>FIXME</indifferent>
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><black-powder/><missile/><check/></keywords>
+      <counter><sv9/></counter>      
+      <any-success>Reload the gun during combat.  If successful the gun is
+      reloaded during this minor action. A gun can be reloaded without a check
+      using a Standard Action.
+      </any-success>
     </abilitycheck>
+    
     <abilitycheck>
       <name>Repair</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><craft/></checktype>
+      <apcost><noncombat/></apcost>
       <range><touch/></range>
-      <keywords></keywords>
-      <dc><dc13/></dc>
-      <!-- <dmg></dmg> -->
-      <mastery>
-	<any-success>Make minor repairs and perform maintenance on the gun</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate>
-	<!-- <boon></boon> -->
-	<indifferent>FIXME</indifferent>
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><craft/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>
+	Make minor repairs and perform maintenance on the gun
+      </any-success>
     </abilitycheck>
-    <prereqabilityrank>gun_shoot_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
+    <prereqabilityref id="gun_shoot" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character needs to make this check to reload the gun
-	during combat.  
+	The character needs to make this check to reload the gun during combat.
       </p>
 
       <p>
-	At rank 3 and above the character can make repairs to a gun
-	out of combat on a successful check (presumably addressing damage
-	caused by misfires).
+	At rank 3 and above the character can make repairs to a gun out of
+	combat on a successful check (presumably addressing damage caused by
+	misfires).
       </p>      
     </abilitydescription>
   </ability>
@@ -84,27 +75,25 @@
     <abilityid>sharp_shooter</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Attack</name>
-      <actiontype><ap7/></actiontype>      <!-- Slower action type -->
-      <xdef fname="gun_defaults" elem_name="range"/>      
-      <xdef fname="gun_defaults" elem_name="dc"/>
-      <mastery>
-	<any-success>Weapon+Rank</any-success>
-	<critsuccess>Deal 4×Damage</critsuccess>
-	<righteoussuccess>Deal 3×Damage</righteoussuccess>
-	<success>Deal Damage</success>
-	<any-fail>Miss</any-fail>
-	<critfail>Roll on the ranged consequence table</critfail>
-      </mastery>      
-      <xdef fname="gun_defaults" elem_name="fate"/>
+      <name>Missile Attack</name>
+      <checktype><missile-attack/></checktype>
+      <apcost><ap5/></apcost>
+      <range><ranged-short/></range>
+      <keywords>
+	<physical-attack/><black-powder/><missile/><advantage/><check/>
+      </keywords>
+      <counter><opponents-physical-defence/></counter>      
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
     </abilitycheck>
-    <prereqabilityrank>gun_shoot_2</prereqabilityrank>
+    <prereqabilityref id="gun_shoot" rank="2"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character has spent many hours working on improving the accuracy of
-	their shots.  Players can choose to call a shot which gives them a 
-	bonus to hit, but takes extra time to aim.
+	Even though guns are inherently inaccurate, the character has spent many
+	hours working on improving their aim.  Players can choose to call a shot
+	which gives them advantage to hit, but takes extra time to aim.
       </p>
     </abilitydescription>
   </ability>
@@ -115,20 +104,28 @@
     <abilityid>gun_shoot</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
-      <name>Attack</name>
-      <actiontype><ap3/></actiontype>
-      <xdef fname="gun_defaults" elem_name="range"/>      
-      <xdef fname="gun_defaults" elem_name="dc"/>      
-      <mastery>
-	<any-success>Weapon+Rank</any-success>
-	<critsuccess>Deal 3×Damage</critsuccess>
-	<righteoussuccess>Deal 2×Damage</righteoussuccess>
-	<success>Deal Damage</success>
-	<any-fail>Miss</any-fail>
-	<critfail>Roll on the ranged consequence table</critfail>
-      </mastery>
-      <xdef fname="gun_defaults" elem_name="fate"/>
+      <name>Missile Attack</name>
+      <checktype><missile-attack/></checktype>
+      <apcost><ap2/></apcost>
+      <range><ranged-short/></range>
+      <keywords><physical-attack/><black-powder/><missile/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+      <critfail>Roll on the ranged consequence table</critfail>
     </abilitycheck>
+
+    <abilitycheck>
+      <name>Reload</name>
+      <checktype><test/></checktype>
+      <apcost><ap4/></apcost>
+      <range><touch/></range>
+      <keywords><black-powder/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Reload the gun during combat.</any-success>
+    </abilitycheck>
+    
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

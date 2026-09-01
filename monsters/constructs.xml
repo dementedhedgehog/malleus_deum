@@ -18,20 +18,23 @@
     <monstermove>7</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+2</monsterinitiativebonus>
+    <monsterinitiative>+2</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8 (+1 per sergeant)</monstermettle>
     <monsterluck>11</monsterluck>
     <monsterrole><soldier/></monsterrole>
-    <armour>8</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>15</agility>
-    <speed>15</speed>
-    <perception>9</perception>
-    <willpower>19</willpower>    
-    <abilityrankid>dodge_1</abilityrankid>
-    <abilityrankid>✱climb_3</abilityrankid>
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0" specializations="jump:-3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="6"/>    
+    <abilityref id="dodge" rank="0"/>
+    <abilityref id="swim" rank="0"/>
+    <abilityref id="climb" rank="0"/>
+    
     <monsterdescription>
       <p>
 	Monster description
@@ -47,23 +50,25 @@
     <monstermove>7</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+2</monsterinitiativebonus>
+    <monsterinitiative>+2</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8 (+1 per sergeant)</monstermettle>
     <monsterluck>11</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>15</agility>
-    <speed>15</speed>
-    <perception>9</perception>
-    <willpower>19</willpower>    
-    <abilityrankid>dodge_1</abilityrankid>
-    <abilityrankid>speed.jump</abilityrankid>
-    <abilityrankid>✱climb_3</abilityrankid>
-    <abilityrankid>mace_strike_1</abilityrankid>
-    <abilityrankid>wild_swing_1</abilityrankid>
+    
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="6"/>
+    <abilityref id="speed" rank="3" specializations="jump:-3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="6"/>
+    <abilityref id="swim" rank="0"/>
+    <abilityref id="climb" rank="6"/>
+
+    <abilityref id="dagger_strike" rank="1"/>
+    
     <monsterdescription>
       <p>
 	Monster description
@@ -79,20 +84,22 @@
     <monstermove>7</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+2</monsterinitiativebonus>
+    <monsterinitiative>+2</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8 (+1 per sergeant)</monstermettle>
     <monsterluck>11</monsterluck>
     <monsterrole><soldier/></monsterrole>
-    <armour>8</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>15</agility>
-    <speed>15</speed>
-    <perception>9</perception>
-    <willpower>19</willpower>    
-    <abilityrankid>dodge_1</abilityrankid>
-    <abilityrankid>✱climb_3</abilityrankid>
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="6"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="6"/>
+    <abilityref id="swim" rank="0"/>
+    <abilityref id="climb" rank="6"/>    
     <monsterdescription>
       <p>
 	Monster description
@@ -108,19 +115,23 @@
     <monstermove>10</monstermove>
     <monsterhealth>5</monsterhealth>
     <monsterstamina>5</monsterstamina>
-    <monsterinitiativebonus>+2</monsterinitiativebonus>
+    <monsterinitiative>+2</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>N/A</monstermettle>
     <monsterluck>1d6</monsterluck>
     <monsterrole><soldier/></monsterrole>
-    <armour>15</armour>
-    <strength>15</strength>
-    <endurance>15</endurance>
-    <agility>12</agility>
-    <speed>12</speed>
-    <perception>9</perception>
-    <willpower>19</willpower>    
-    <abilityrankid>✱climb_3</abilityrankid>
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="6"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="6"/>
+    <abilityref id="swim" rank="0"/>
+    <abilityref id="climb" rank="6"/>    
+    
     <monsterdescription>
       <p>
 	Claws: 15  Damage d6 each
@@ -137,20 +148,22 @@
     <monstermove>7</monstermove>
     <monsterhealth>10</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+2</monsterinitiativebonus>
+    <monsterinitiative>+2</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8 (+1 per sergeant)</monstermettle>
     <monsterluck>11</monsterluck>
     <monsterrole><soldier/></monsterrole>
-    <armour>8</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>15</agility>
-    <speed>15</speed>
-    <perception>9</perception>
-    <willpower>19</willpower>    
-    <abilityrankid>dodge_1</abilityrankid>
-    <abilityrankid>✱climb_3</abilityrankid>
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="6"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="6"/>
+    <abilityref id="swim" rank="0"/>
+    <abilityref id="climb" rank="6"/>    
     <monsterdescription>
       <p>
 	Monster description

@@ -18,15 +18,23 @@
     <abilitytitle>Climb</abilitytitle>
     <abilityid>climb</abilityid>    
     <abilityranks untrained="-3" from="1" to="6"/>
-    <abilitysave>
-      <name>Save</name>
-      <actiontype><ap4/></actiontype>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><physical/></checktype>
+      <apcost><ap4/></apcost>
       <range><self/></range>
-    </abilitysave>
+      <keywords><physical/><check/></keywords>
+      <counter><sv7/></counter>      
+      <critsuccess>Can assist another character with their climb</critsuccess>
+      <success>Success</success>
+      <fail>The character has problems needs to check again.</fail>
+      <critfail>Fall</critfail>
+    </abilitycheck>
     <spline><p x="90" y="150"/></spline> 
     <abilitydescription>
       <p>
 	This ability represents the characters ability to Climb.
+	FIXME what does assist mean in this context?
       </p>
     </abilitydescription>
   </ability>
@@ -36,11 +44,18 @@
     <abilitytitle>Swim</abilitytitle>
     <abilityid>swim</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <abilitysave>
-      <name>Save</name>
-      <actiontype><ap4/></actiontype>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><physical/></checktype>
+      <apcost><ap4/></apcost>
       <range><self/></range>
-    </abilitysave>
+      <keywords><physical/><check/></keywords>
+      <counter><sv7/></counter>
+      <critsuccess>Can assist another character with their swim</critsuccess>
+      <success>Success.</success>
+      <fail>The character has problems needs to check again.</fail>
+      <critfail>Gain the Drowing condition</critfail>
+    </abilitycheck>
     <spline><p x="90" y="180"/></spline> 
     <abilitydescription>
       <p>
@@ -49,6 +64,10 @@
 	means that the character is unable to make any progress.  Repeated failures
 	might result in the characters having to make exhaustion or resolve checks
 	as they start to panic.
+      </p>
+
+      <p>
+	FIXME What does Drowning condition do?
       </p>
     </abilitydescription>
   </ability>

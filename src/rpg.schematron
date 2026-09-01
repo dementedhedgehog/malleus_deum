@@ -1,13 +1,254 @@
 <?xml version="1.0"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" >
-  <pattern>
+<!--
 
-    <!-- Mastery -->
-    <rule context="mastery">
-      <assert test="count(*) > 0">
-	Ability Check Mastery must have one or more values set!
-      </assert>
-    </rule>
+Some notes.
+
+i) Schematron doesn't have implication!?  So instead of testing for
+A⟹B we have to test ¬A ∨ B instead (frickin idiots).
+  
+-->
+<pattern>
+
+  <!-- Antag Ability Checks -->
+  <rule context="antagability">
+    <!-- <assert test="./parameter"> -->
+    <!--   antagabilitycheck ==> parameter -->
+    <!-- </assert> -->
+
+    <assert test="not(./abilityranks)">
+      antagabilitycheck ==> not rank
+    </assert>
+  </rule>
+  
+
+  <!-- Ability Counterchecks -->
+  <rule context="abilitycountercheck">
+    <assert test="keywords/countercheck">
+      abilitycountercheck ==> countercheck ∈ keywords
+    </assert>
+    <assert test="not(parameter)">
+      abilitycheck ==> no params
+    </assert>
+  </rule>
+
+  <!-- Ability Checks -->
+  <rule context="abilitycheck">
+    <assert test="keywords/check">
+      abilitycheck ==> check ∈ keywords
+    </assert>
+    <!-- <assert test="not(parameter)"> -->
+    <!--   abilitycheck ==> no params -->
+    <!-- </assert> -->
+  </rule>
+  
+  <!-- Antag Ability Checks -->
+  <rule context="antagabilitycheck">
+    <assert test="../parameter">
+      antagabilitycheck ==> parameter
+    </assert>
+  </rule>
+
+  <!-- Antag Ability Checks -->
+  <rule context="antagabilitycountercheck">
+    <assert test="../parameter">
+      antagabilitycountercheck ==> parameter
+    </assert>
+  </rule>
+  
+  <!-- Ability Auxiliary -->
+  <rule context="abilityauxiliary">
+    <assert test="keywords/auxiliary">
+      abilityauxiliary ==> auxiliary ∈ keywords
+    </assert>
+    <assert test="not(params)">
+      abilitycheck ==> no params
+    </assert>
+  </rule>
+  
+  <!-- Keyword Definitions -->
+  <rule context="keywords">
+    <assert test="not(keywords/countercheck) or .. = abilitycheck">
+      countercheck ∈ keywords ==> parent is abilitycountercheck
+    </assert>
+
+    <assert test="not(keywords/check) or .. = abilitycheck">
+      check ∈ keywords ==> parent is abilitycheck
+    </assert>
+
+    <assert test="not(keywords/physical-defence) or keywords/countercheck">
+      physical-defence ∈ keywords ==> countercheck ∈ keywords
+    </assert>
+
+    <assert test="not(keywords/physical-attack) or keywords/check">
+      physical-attack ∈ keywords ==> check ∈ keywords
+    </assert>
+  </rule>
+  
+
+
+  <!-- <rule context="abilityattack"> -->
+  <!--   <assert test="keywords/attack"> -->
+  <!--     check ∈ keywords -->
+  <!--   </assert> -->
+  <!-- </rule> -->
+  
+
+  <!-- Checks -->
+  <!-- <rule context="abilitycheck|abilityopposed|abilitygmcheck"> -->
+
+    <!-- <assert test="not(keywords/opposed) or -->
+    <!-- 		  dc/*[1]/@checktype='opposed'"> -->
+    <!--   opposed ∈ keywords -->
+    <!--   ==> -->
+    <!--   DC must be an opposed DC (not a flat dc), -->
+    <!--   e.g. it must be a Save. -->
+    <!-- </assert> -->
+    
+    <!-- <assert test="not(keywords/unopposed) or -->
+    <!-- 		  dc/*[1]/@checktype='unopposed'"> -->
+    <!--   unopposed ∈ keywords -->
+    <!--   ==> -->
+    <!--   DC must be an unopposed DC, -->
+    <!--   e.g. it must be a flat DC not a Save -->
+    <!-- </assert> -->
+
+
+  <!-- Check Auxilliary -->
+  <rule context="abilityauxiliary">
+
+    <assert test="keywords/auxiliary">
+      abilityauxiliary ==> auxiliary ∈ keywords
+    </assert>
+
+    <assert test="not(keywords/auxiliary) or not(dc)">
+      auxiliary ∈ keywords ==> no DC
+    </assert>
+    
+    <assert test="not(keywords/auxiliary) or not(critclass)">
+      auxiliary ∈ keywords ==> no critclass
+    </assert>
+    
+    <!-- <assert test="not(keywords/unopposed) or -->
+    <!-- 		  dc/*[1]/@checktype='unopposed'"> -->
+    <!--   unopposed ∈ keywords -->
+    <!--   ==> -->
+    <!--   DC must be an unopposed DC, -->
+    <!--   e.g. it must be a flat DC not a Save -->
+    <!-- </assert> -->
+    
+  </rule>
+
+
+  <!-- Antag Abilities -->
+  <rule context="anatagability">
+    <assert test="not(./ranks)">
+      antag ability ==> does not have ranks
+    </assert>    
+  </rule>
+
+  <!-- <!-\- Protag Abilities -\-> -->
+  <!-- <rule context="ability"> -->
+  <!--   <assert test="not(./parameter)"> -->
+  <!--     protag ability ==> does not have parameters -->
+  <!--   </assert>     -->
+  <!-- </rule> -->
+  
+  <!-- Protag Abilities -->
+  <rule context="abilitycheck|abilitycountercheck|abilityauxliiary">
+    <assert test="ranks">
+      protag check ==> ranks
+    </assert>    
+  </rule>
+
+  <!-- Antag Abilities -->
+  <rule context="abilityantagcheck|abilityantagcountercheck">
+    <assert test="not(ranks)">
+      protag check ==> ranks
+    </assert>    
+  </rule>
+
+  
+
+  <!-- ALL ABILITY CHECKS (Excluding Auxiliaries) -->
+  <rule context="abilitycheck|abilitycountercheck|
+		 abilityantagcheck|abilityantagcountercheck">
+
+    <assert test="keywords/check">
+      check ∈ keywords
+    </assert>    
+  </rule>
+  
+
+  <!-- ALL ABILITY CHECKS (Including Auxiliaries) -->
+  <rule context="abilitycheck|abilitycountercheck|
+		 abilityantagcheck|abilityantagcountercheck|
+		 abilityauxiliary">
+
+    <assert test="keywords">
+      Check elements must have a keyword (also enforced by the xsd).
+    </assert>
+
+    <!-- Basic Attacks all share the same success behaviour -->
+    <assert test="not(keywords/basic-attack) or
+		  critsuccess/default-attack-critical-success">
+      basic-attack ∈ keywords
+      ==>
+      critsuccess = default-attack-critical-success
+    </assert>
+
+    <assert test="not(keywords/basic-attack) or
+		  righteoussuccess/default-attack-righteous-success">
+      basic-attack ∈ keywords
+      ==>
+      righteoussuccess = default-attack-righteous-success
+    </assert>
+
+    <assert test="not(keywords/basic-attack) or
+		  success/default-attack-success">
+      basic-attack ∈ keywords
+      ==>
+      success = default-attack-success
+    </assert>
+
+    <assert test="not(keywords/melee) or
+		  (range/reach or range/touch)">
+      melee ∈ keywords
+      ==>
+      range = reach OR range = touch
+    </assert>
+    
+    
+    
+    <assert test="not(
+		  keywords/magicpool
+		  or keywords/mettlepool
+		  or keywords/luckpool
+		  ) 
+		  or poolcost">	
+      magicpool|mettlepool|luckpool ∈ keywords
+      ==>
+      poolcost
+    </assert>    
+  </rule>
+
+
+  <!-- GOOD TO HERE SO FAR -->
+  
+    <!-- <rule context="skill"> -->
+    <!--   <assert test="count(*) > 0"> -->
+    <!-- 	Ability Check Skill must have one or more values set! -->
+    <!--   </assert> -->
+    <!-- </rule> -->
+  
+
+  
+    <!-- <!-\- Skill -\-> -->
+    <!-- <rule context="skill"> -->
+    <!--   <assert test="count(*) > 0"> -->
+    <!-- 	Ability Check Skill must have one or more values set! -->
+    <!--   </assert> -->
+    <!-- </rule> -->
     
     <rule context="any-success"> 
       <assert test="not(normalize-space(.)='' and not(*))">
@@ -95,19 +336,46 @@
       </assert>
     </rule>
 
+    <!-- ENFORCE KEYWORD BEHAVIOUR --> 
+    <rule context="abilityattack">
+      <assert test="keywords/physical-attack != 'false' or
+		    dc/opponents-defend">	
+	physical-attack ∈ keywords ==> dc = opponents-defend
+      </assert>
+    </rule>
 
+
+    <rule context="abilityattack">
+
+      <assert test="(keywords/melee != 'false') or
+		    range/reach">	
+	melee ∈ keywords ==> range = reach	
+      </assert>
+    </rule>
+
+
+    <!-- FIXME no ability defend-->
+    <rule context="abilitydefend">
+      <assert test="(keywords/physical-defence != 'false') or
+		    dc/opponents-attack">
+	keywords/physical-defence ==> dc = opponents-attack
+      </assert>
+    </rule>
+
+    
     <!-- Img -->
     <rule context="img">      
       <assert test="count(@buildfname|@id)=1">
-	Missing attribute.  The img element requires one and only one of the following
-	two attributes: id, buildfname.   ID is used to identify the image in the
-	resource database (see the resources/ dir), buildfname is used to identify
-	images we build.
+	Missing attribute.  The img element requires one and only one
+	of the following two attributes: id, buildfname.   ID is
+	used to identify the image in the resource database
+	(see the resources/ dir), buildfname is used to identify
+	images we dynamically create in the ./build dir.
       </assert>     
 
       <assert test="2>count(@scale|@linewidth|@textwidth)">
-	For images you can specify only one of a scale attribute, a linewidth attribute,
-	or a textwidth attribute.
+	For images you can specify only one of a scale attribute,
+	a linewidth attribute, or a textwidth attribute.
       </assert>
     </rule>
   </pattern>

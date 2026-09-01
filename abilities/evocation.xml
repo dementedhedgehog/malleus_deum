@@ -6,22 +6,26 @@
     <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p noindent="true">
-	Demons inhabit the cold lower planes.  There is much recorded
-	of their nature and their history in old and long forgotten tomes.
-	Evocation encompases the study of that history and theory.  
-	Such books are not easily come by, nor should they be read lightly.
-	<indexentry>Demonic Lore<subentry>See Evocation</subentry></indexentry>
+	Demons inhabit the cold lower planes.  There is much recorded of their
+	nature and their history in old and long forgotten tomes. Evocation
+	encompases the study of that history and theory. Such books are not
+	easily come by, nor should they be read lightly.
+	<indexentry>
+	  <entry>Demonic Lore</entry>
+	  <subentry>See Evocation</subentry>
+	</indexentry>
       </p>
 
       <p>
-	Evocation magic specializes in summoning or communicating with extra planar
-	entities, binding extra planar entities, opening gates and the like.
+	Evocation magic specializes in summoning or communicating with extra
+	planar entities, binding extra planar entities, opening gates and the
+	like.
       </p>
 
       <p>
-        Magic abilities involve the use of the characters magic pool and
-	are only available to certain archetypes.
-      </p>      
+        Magic abilities involve the use of the characters magic pool and are
+	only available to certain archetypes.
+      </p>
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
@@ -32,30 +36,24 @@
     <abilityid>bind</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype> 
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><ap1/></apcost> 
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<critfail>Roll on the Miscast Table</critfail>
-      </mastery>      
-      <xdef fname="pool_cost_3" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>     
+      <any-success>Cast successfully</any-success>
+      <critfail>Roll on the Miscast Table</critfail>
     </abilitycheck>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <spline><p x="15" y="30"/></spline>
+    <prereqabilityref id="evocation" rank="1"/>
+    <spline><p x="0" y="10"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	Bind holds an opponent using magical energies.  
-	If successful The target makes a will check DC 6 in the first round and are
-	held until they succeed.   The difficulty decreases by two every round the
-	target is held.  The caster may release the target at any time.
+	Bind holds an opponent using magical energies.  If successful The target
+	makes a will check DC 6 in the first round and are held until they
+	succeed.   The difficulty decreases by two every round the target is
+	held.  The caster may release the target at any time.
       </p>
     </abilitydescription>
   </ability>
@@ -66,12 +64,15 @@
     <abilityid>evocation</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-lore-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -93,29 +94,22 @@
     <abilityid>greater_portal</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><ap4/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc23/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail>Roll on the Miscast Table</critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv23/></counter>
+      <any-success>Cast successfully</any-success>
     </abilitycheck>
-    <prereqabilityrank>portal_2</prereqabilityrank>
+    <prereqabilityref id="portal" rank="2"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
-	This is a very rapid invocation of the normal portal spell.
-	The spell is cast in one action.  The character can open a portal
-	between two well known places in this plane.
+	This is a very rapid invocation of the normal portal spell. The spell is
+	cast in one action.  The character can open a portal between two well
+	known places in this plane.
       </p>
     </abilitydescription>    
   </ability>
@@ -126,39 +120,32 @@
     <abilityid>lesser_portal</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap7/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><ap3/></apcost>
       <range><na/></range>
-      <keywords><ritual/><magicpool/></keywords>
-      <dc><dc19/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail>Roll on the Miscast Table</critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
-    </abilitycheck>
-    
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <spline><p x="-30" y="60"/></spline>
+      <keywords><ritual/><magicpool/><check/></keywords>
+      <counter><sv19/></counter>      
+      <any-success>Cast successfully</any-success>
+    </abilitycheck>    
+    <prereqabilityref id="evocation" rank="1"/>    
+    <spline><p x="0" y="120"/></spline>
     <abilitydescription>
       <p>
-	When casting this spell extemporaneously the user creates a portal in a wall or floor
-	to a destination within the current plane, a distance of no more than
-	<measurement><metric>three meters</metric><imperial>ten feet</imperial></measurement>
-	per rank of the spell away.  The portal remains open for 2d4 minutes or until the caster
-	wills the gate shut.  Casting portal requires marking a magical circle in the ground or
-	against a wall which takes a full round to prepare.  Note that this is a noncombat spell
-	though it only takes a minute or two to cast.
+	When casting this spell extemporaneously the user creates a portal in a
+	wall or floor to a destination within the current plane, a distance of
+	no more than <m3/> per rank of the spell away.  The portal
+	remains open for 2d4 minutes or until the caster wills the gate shut.
+	Casting portal requires marking a magical circle in the ground or against
+	a wall which takes a full round to prepare.  Note that this is a
+	noncombat spell though it only takes a minute or two to cast.
       </p>
 
       <p>
-	Lesser Portal may also be cast to open a portal to a nearby coterminous plane as a ritual.
-	Choosing the destination plane is difficult without the use of a fetish and some preparation.
+	Lesser Portal may also be cast to open a portal to a nearby coterminous
+	plane as a ritual. Choosing the destination plane is difficult without
+	the use of a fetish and some preparation.
       </p>
     </abilitydescription>
   </ability>  
@@ -166,55 +153,50 @@
   
   <ability>
     <abilitytitle>Phantasmal Leech</abilitytitle>
-    <abilityid>phantasmal_leech</abilityid>    
+    <abilityid>phantasmal_leech</abilityid>
+    <slug>
+      Like one who, on a lonely road, Doth walk in fear and dread,
+      And, having once turned round, walks on, And turns no more his head;
+      Because he knows a frightful fiend Doth close behind him tread.
+    </slug>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail>Roll on the Miscast Table</critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>Cast successfully</any-success>
     </abilitycheck>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <spline><p x="90" y="30"/></spline>
-    <abilitydescription>
-      <p noindent="true">
-	<emph>Like one who, on a lonely road, Doth walk in fear	and dread,
-	And, having once turned round, walks on, And turns no more his head;
-	Because he knows a frightful fiend Doth close behind him tread.</emph>
-      </p>
-      
+    <prereqabilityref id="evocation" rank="1"/>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>      
       <p>
 	Given an object with a contagious connection to a target, the caster
-	summons a Phantasmal Leech to track the target.  A Phantasmal Leech is
-	a cat sized, snake-like demon with membraneous wings and a cyclostomatic head
-	with five lidless black eyes.  It is translucent, and insubstantial.  The starving
-	Leech craves the blood of the target and the caster sees through its eyes as it
-	tracks the target.   The leeches projection onto this plane is volatile and it
-	is easily destroyed by magic.  If not dismissed	it will involuntarily return
-	to its home plane after ten minutes. Furthermore the leech cannot interact with
-	objects in this plane and may pass through walls, doors <etc/> The leech cannot
-	attack.
+	summons a Phantasmal Leech to track the target. A Phantasmal Leech
+	is a cat sized, snake-like demon with membraneous wings and a
+	cyclostomatic head with five lidless black eyes. It is translucent,
+	and insubstantial.  The starving Leech craves the blood of the target
+	and the caster sees through its eyes as it tracks the target. The
+	leeches projection onto this plane is volatile and it is easily
+	destroyed by magic.  If not dismissed it will involuntarily return to
+	its home plane after ten minutes. Furthermore the leech cannot interact
+	with objects in this plane and may pass through walls, doors <etc/>
+	The leech cannot attack.
       </p>
       
       <p>
-	If successfully cast the target gets a perception check with DC 14+rank to notice
-	the presence of the leech following.  if the target has magical attacks these
-	will almost certainly work against the leech, sending it back from whence it
-	came.  If the target has no magical attacks it cannot harm the creature.  
+	If successfully cast the target gets a perception check with DC 14+rank
+	to notice the presence of the leech following. If the target has magical
+	attacks these will almost certainly work against the leech, sending it
+	back from whence it came. If the target has no magical attacks it cannot
+	harm the creature.  
       </p>
 
       <table>
-	<tablecategory>Standard</tablecategory>
+	<standardtable/>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
 	<tablelabel>fig:leech-overcharge</tablelabel>
@@ -226,20 +208,21 @@
 
 	<tablerow>
 	  <td>11-26</td>
-	  <td>The caster summons a Phantasmal Vulture instead (as per the spell of the
+	  <td>The caster summons a Phantasmal Vulture instead (as per
+	  the spell of the
 	  same name).</td>
 	</tablerow>
 
 	<tablerow>
 	  <td>31-46</td>
-	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
-	  d6 health damage.</td>
+	  <td>Something from beyond takes a small bite out of the caster.
+	  Caster suffers d6 health damage.</td>
 	</tablerow>
 
 	<tablerow>
 	  <td>51-65</td>
-	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
-	  2d6 health damage.</td>
+	  <td>Something from beyond takes a big bite out of the caster. Caster
+	  suffers 2d6 health damage.</td>
 	</tablerow>
 
 	<tablerow>
@@ -256,23 +239,17 @@
     <abilityid>phantasmal_vulture</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range> 
-      <dc><dc9/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail>Roll on the Miscast Table</critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Cast successfully</any-success>
     </abilitycheck>
-    <prereqabilityrank>phantasmal_leech_2</prereqabilityrank>
-    <spline><p x="0" y="15"/></spline>
+    <prereqabilityref id="phantasmal_leech" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	Given an object with a contagious connection to a target, the caster
@@ -291,7 +268,7 @@
 	to be Blind to the attack, -4 to AC).
       </p>
       <table>
-	<tablecategory>Standard</tablecategory>
+	<standardtable/>
 	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
 	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
 	<tablelabel>fig:vulture-overcharge</tablelabel>
@@ -326,23 +303,17 @@
     <abilityid>portal</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><ap4/></apcost>
       <range><na/></range>
-      <dc><dc23/></dc>      
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail>Roll on the Miscast Table</critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv23/></counter>      
+      <any-success>Cast successfully</any-success>
     </abilitycheck>
-    <prereqabilityrank>lesser_portal_2</prereqabilityrank>
-    <spline><p x="0" y="15"/></spline>
+    <prereqabilityref id="lesser_portal" rank="2"/>
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
 	This is a very rapid invocation of the lesser portal spell.
@@ -358,29 +329,23 @@
     <abilityid>shade</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
       <range><na/></range>
-      <dc><dc17/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail>Roll on the Miscast Table</critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv17/></counter>
+      <any-success>Cast successfully</any-success>
     </abilitycheck>
-    <prereqabilityrank>lesser_portal_1</prereqabilityrank>
-    <spline><p x="-30" y="15"/></spline>
+    <prereqabilityref id="lesser_portal" rank="1"/>
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
-	A shade is one of the lesser demons.  It can be summoned to attack
-	a living creature.  If there are no living opponents left it will turn on
-	its attacker.   Shades are insubstantial and visible only as a lack of light.
-	Shades take double damage from fire and magical based attacks.
+	A shade is one of the lesser demons.  It can be summoned to attack a
+	living creature.  If there are no living opponents left it will turn on
+	its attacker.   Shades are insubstantial and visible only as a lack of
+	light. Shades take double damage from fire and magical based attacks.
       </p>
     </abilitydescription>    
   </ability>
@@ -388,65 +353,57 @@
 
   <ability>
     <abilitytitle>Summon</abilitytitle>
-    <abilityid>summon</abilityid>    
+    <abilityid>summon</abilityid>
+    <slug>
+	Do not call upon that which you cannot put down.
+    </slug>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype> 
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><noncombat/></apcost> 
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>2</indifferent> -->
-      <dc><dc9/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail>Roll on the Miscast Table</critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Cast successfully</any-success>
     </abilitycheck>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
-    <spline><p x="-75" y="30"/></spline>
+    <prereqabilityref id="evocation" rank="1"/>
+    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character makes a check to open a minute portal into one of the near planes.
-	This allows some creature on the other side to project a simulacrum
-	of themselves into this plane.  If successful a single demon manifests in
-	this plane. It is highly likely that the entity will be ravenous and seek to
-	devour the animus of the caster or others nearby.  For this reason the caster
-	usually also casts a Circle of Containment immediately before summoning the demon.
-	For the caster to create and control the portal they must use a specially prepared
-	fetish that is placed inside the circle before the summoning.  The fetish provides
-	a channel to the Summon spell via an external plane, thereby circumventing the
-	Circle of Containment.
+	The character makes a check to open a minute portal into one of the near
+	planes.  This allows some creature on the other side to project a
+	simulacrum of themselves into this plane.  If successful a single demon
+	manifests in this plane. It is highly likely that the entity will be
+	ravenous and seek to devour the animus of the caster or others nearby.
+	For this reason the caster usually also casts a Circle of Containment
+	immediately before summoning the demon.  For the caster to create and
+	control the portal they must use a specially prepared fetish that is
+	placed inside the circle before the summoning.  The fetish provides a
+	channel to the Summon spell via an external plane, thereby circumventing
+	the Circle of Containment.
       </p>
       
       <p>
-	If the caster does not commune with an entity before the summoning they may
-	summon any extra planar creature.  This can be incredibly dangerous.  In addition
-	demons may lie about their names and their capabailites.  So the only, even
-	moderately safe way of summoning demons is to: commune with a demon of a known
-	name, then to summon them into a circle of protection.  Note that demons are
-	deceitful creatures and will jump at the chance to try to trick a summoner into
-	calling them into the world and once here they will try to establish a foothold
-	and not leave.   They will try to break the circle of protection or bargain
-	for information about the caster which will allow them to break the circle via
-	contagion.
+	If the caster does not commune with an entity before the summoning they
+	may summon any extra planar creature.  This can be incredibly dangerous.
+	In addition demons may lie about their names and their capabailites. So
+	the only, even moderately safe way of summoning demons is to: commune
+	with a demon of a known name, then to summon them into a circle of
+	protection.  Note that demons are deceitful creatures and will jump at
+	the chance to try to trick a summoner into calling them into the world
+	and once here they will try to establish a foothold and not leave. They
+	will try to break the circle of protection or bargain for information
+	about the caster which will allow them to break the circle via contagion.
       </p>
 
       <p>
-	Closing the portal cuts the simulacrums link to the demon.  Powerful demons
-	may be able to keep the portal open themselves, once they have created a
-	simulacrum.  Note that the demons simulacrum need not look like the demon
-	who created it and often times it does not as the demon will wish to disguise
-	their identity.
+	Closing the portal cuts the simulacrums link to the demon. Powerful
+	demons may be able to keep the portal open themselves, once they have
+	created a simulacrum.  Note that the demons simulacrum need not look
+	like the demon who created it and often times it does not as the demon
+	will wish to disguise their identity.
       </p>
     </abilitydescription>
   </ability>
@@ -457,23 +414,17 @@
     <abilityid>wyld_portal</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>3</poolcost>
+      <apcost><ap4/></apcost>
       <range><ranged-short/></range>
-      <dc><dc9/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_3" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Cast successfully</any-success>
     </abilitycheck>
-    <prereqabilityrank>greater_portal_1</prereqabilityrank>
-    <spline><p x="0" y="15"/></spline>
+    <prereqabilityref id="greater_portal" rank="1"/>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	This ability enables the user to recognize gateways,

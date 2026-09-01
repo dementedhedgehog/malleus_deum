@@ -18,17 +18,19 @@
     <abilityid>bladesharp</abilityid>    
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><touch/></range>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>+Rank dmg for one edged weapon for the next 5 minutes.</any-success>
-      </mastery>
-      <xdef fname="pool_cost_0" elem_name="fate"/>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>
+	+Rank dmg for one edged weapon for the next 5 minutes.
+      </any-success>
     </abilitycheck>
-    <prereqabilityrank>runelore_1</prereqabilityrank>	
-    <spline><p x="-30" y="30"/></spline>
+    <prereqabilityref id="runelore" rank="1"/>	
+    <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
 	An invocation that sharpens a blade.
@@ -42,21 +44,17 @@
     <abilityid>hold_portal</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
       <range><touch/></range>
-      <keywords><magicpool/></keywords>
-      <!-- <indifferent>1</indifferent> -->
-      <dc><dc11/></dc>
-      <mastery>
-	<!-- <critsuccess></critsuccess> -->
-	<any-success>Door is held.</any-success>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Door is held.</any-success>
     </abilitycheck>
-    <prereqabilityrank>runelore_1</prereqabilityrank>	
-    <spline><p x="60" y="30"/></spline>
+    <prereqabilityref id="runelore" rank="1"/>	
+    <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
 	The character can carve or mark with chalk or paint
@@ -73,21 +71,20 @@
     <abilityid>hex_hammer</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
       <range><touch/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>Weapon does an additional 7 damage.</critsuccess>
-	<righteoussuccess>Weapon does an additional 5 damage.</righteoussuccess>
-	<success>Weapon does an additional 3 damage.</success>
-	<critfail>Weapon does 3 damage to the wielder when it hits</critfail>
-      </mastery>      
-      <xdef fname="pool_cost_0" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>Weapon does an additional 7 damage.</critsuccess>
+      <righteoussuccess>Weapon does an additional 5 damage.</righteoussuccess>
+      <success>Weapon does an additional 3 damage.</success>
+      <critfail>Weapon does 3 damage to the wielder when it hits</critfail>
     </abilitycheck>
-    <prereqabilityrank>runelore_1</prereqabilityrank>	
-    <spline><p x="60" y="30"/></spline>
+    <prereqabilityref id="runelore" rank="2"/>	
+    <spline><p x="30" y="60"/></spline>
     <abilitydescription>
       <p>
 	The character traces a rune of power upon the
@@ -104,12 +101,15 @@
     <abilityid>runelore</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Cast</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -124,19 +124,22 @@
   <ability>
     <abilitytitle>Sign of Idreshein</abilitytitle>
     <abilityid>sign_of_idreshein</abilityid>    
+    <slug>
+      The fox condemns the trap, not himself.
+    </slug>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
       <range><touch/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>d6x(Rank+4)</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>d6x(Rank+4)</any-success>
     </abilitycheck>
-    <prereqabilityrank>runelore_1</prereqabilityrank>	
-    <spline><p x="-30" y="30"/></spline>
+    <prereqabilityref id="runelore" rank="2"/>	
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The Sign of Idreshein is a sigil that stores energy

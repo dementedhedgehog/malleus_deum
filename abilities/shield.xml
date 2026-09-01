@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Shield Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Shield Abilities</abilitygrouptitle>
     <abilitygroupid><shield/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
@@ -18,28 +18,26 @@
     <abilitytitle>Shield Block</abilitytitle>
     <abilityid>block</abilityid>    
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitydefend>
-      <name>Defend</name>
-      <actiontype><reaction/></actiontype>
+    <abilitycountercheck>
+      <name></name>
+      <checktype><physical-defence/></checktype>
+      <apcost><reaction/></apcost>
       <range><self/></range>
-      <keywords><defend/><save/><shield/></keywords>
-      <dc><opponents-attack/></dc>
-      <fate>
-	<blessed>Shield Smash: 3 Damage to opponent</blessed>
-	<damned>Shield Break Check</damned>
-      </fate>
-    </abilitydefend>
+      <keywords><physical-defence/><countercheck/><shield/></keywords>
+      <counter><opponents-physical-attack/></counter>
+    </abilitycountercheck>
     <spline></spline>
     <abilitydescription>
       <p>
 	<label>ability:block</label>
-        When a character is attacked they may attempt to block the blow using their shield
-	instead of making an armour roll.  This ability spends the characters reaction for
-	the round.  If the block result fails and a boon is rolled the attack deals half
-	damage.  If the block result fails and a bane is rolled the attack deals double
-	damage. If the block check succeeds the attack does no damage.  If the block
-	succeeds and a boon is rolled the blocker smashes the attacker in the face with
-	the shield for 2 damage.
+        When a character is attacked they may attempt to block the blow using
+	their shield instead of making an armour roll.  This ability spends the
+	characters reaction for the round.  If the block result fails and a boon
+	is rolled the attack deals half damage.  If the block result fails and a
+	bane is rolled the attack deals double damage. If the block check
+	succeeds the attack does no damage.  If the block succeeds and a boon
+	is rolled the blocker smashes the attacker in the face with the shield
+	for 2 damage.
       </p>
     </abilitydescription>
   </ability>
@@ -50,23 +48,32 @@
     <abilityid>push</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name> 
-      <actiontype><reaction/></actiontype>
-      <range><melee/></range>
-      <precondition>This character is in melee with an opponent of appropriate size.</precondition>
-      <dc><opponents-strength/></dc>
-      <mastery>
-	<critsuccess>Opponent is Pushed twice and knocked Prone.</critsuccess>
-	<righteoussuccess>Opponent is Pushed twice.</righteoussuccess>
-	<success>Opponent is Pushed.</success>
-      </mastery>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>
+      <name></name> 
+      <checktype><melee-attack/></checktype>
+      <apcost><ap2/></apcost>
+      <range><reach/></range>
+      <keywords><shield/><melee/><check/></keywords>
+      <precondition>
+	This character is in melee with an opponent of similar size or smaller.
+      </precondition>      
+      <counter><opponents-strength-save/></counter>      
+      <critsuccess>
+	Opponent is Pushed twice and knocked Prone.
+      </critsuccess>
+      <righteoussuccess>
+	Opponent is Pushed twice.
+      </righteoussuccess>
+      <success>
+	Opponent is Pushed.
+      </success>
     </abilitycheck>
-    <prereqabilityrank>block_1</prereqabilityrank>
+    <prereqabilityref id="block" rank="1"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
-  	<indexentry>Shield Push</indexentry>
+  	<indexentry>
+	  <entry>Shield Push</entry>
+	</indexentry>
   	The character can use the shield to push an adjacent opponent
   	back in a direction chosen by the character.  The opponent must
   	be corporeal, humanoind, capable of being moved, and not too much larger
@@ -80,27 +87,38 @@
     <abilitytitle>Shield Support</abilitytitle>
     <abilityid>support</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitydefend>
-      <name>Defend</name>
-      <actiontype><reaction/></actiontype>      
-      <range><melee/></range>
-      <keywords><defend/><save/><shield/></keywords>
-      <precondition>This character, or an adjacent character, is hit by an attack during melee.</precondition>
-      <dc><opponents-attack/></dc>
-      <fate>
-	<blessed>Shield Smash: 3 Damage to opponent</blessed>
-	<damned>Shield Break Check</damned>
-      </fate>
-    </abilitydefend>
-    <prereqabilityrank>block_1</prereqabilityrank>
+    <abilityauxiliary>
+      <name>Talent</name>
+      <checktype><auxiliary/></checktype>
+      <apcost><interrupt/></apcost>
+      <range><reach/></range>
+      <keywords>
+	<physical-defence/><countercheck/><shield/><auxiliary/>
+      </keywords>
+      <precondition>
+	This character, or an adjacent character, is hit by a
+	physical attack.
+      </precondition>
+      <effect>The character may make a Shield Block as an
+      free interrupt in place of the failed defence.</effect>
+    </abilityauxiliary>    
+    <prereqabilityref id="block" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-  	<indexentry>support</indexentry>
-  	Large shields provide <defn>Support</defn>.
-  	The character wielding a large shield can use their reaction to block attacks on adjacent allies.
-  	In order to use this ability the ally must be standing shoulder to shoulder
-  	with the character.  In other respects this ability works like Shield Block.
+  	<indexentry>
+	  <entry>support</entry>
+	</indexentry>
+  	Large shields provide <defn>Support</defn>. The
+	character wielding a large shield can use their
+	reaction to block attacks on adjacent allies. In order
+	to use this ability the ally must be standing shoulder to
+	shoulder with the character. 
+      </p>
+
+      <p>
+	Adjacent characters get a shift up for block, parry and
+	armour counterchecks.
       </p>
     </abilitydescription>
   </ability>

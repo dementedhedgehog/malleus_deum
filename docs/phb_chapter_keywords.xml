@@ -1,0 +1,601 @@
+<chapter>
+<chaptertitle>Keywords <ampersand/> Conditions<label>ch:keywordsandconditions</label></chaptertitle>
+
+
+<section>
+<sectiontitle>Keywords</sectiontitle>
+<p>
+<indexentry><entry>Keyword</entry></indexentry>
+A <defn>Keyword</defn> is a tag, label or signifier attached to something in the game.
+A cellar might be <emph>dark</emph> and <emph>musty</emph>, or a monster's attack
+might be <emph>cold</emph>.
+</p>
+
+<p>
+<indexentry><entry>Keywords</entry></indexentry>
+The use of many keywords in game tends to be informal.
+If the GM describes a cellar as being dark then we say it has the keyword <emph>dark</emph>.
+Some keywords are more concretely defined.  A dwarven character has the keyword <emph>dwarf</emph>.
+Keywords form a bridge between informal narrative gameplay and the formal game rules.
+</p>
+
+<p>
+  Various rules apply only when certain keywords are in play.  Other events apply new keywords
+  to characters, objects and scenarios in the game.  Characters may use keywords to gain
+  an advantage in a check.  Keywords may also be prerequisites for using abilities, or used to describe
+  weapon damage types, properties that effect magic use, monster classes <etc/>
+</p>
+
+
+<p>
+  Some illustrative examples of keyword use follow:
+</p>
+<descriptions>
+<term>Damage Types</term>
+<description>
+<indexentry><entry>Damage Types</entry></indexentry>
+<eg/> fire, cold, crushing, iron <ellipsis/>
+</description>
+
+
+<term>Racial Categories</term>
+<description>
+<indexentry><entry>Racial Categories</entry></indexentry>
+<eg/> dwarf, elf, human, halfling, greenskin <ellipsis/>
+</description>
+
+
+<term>Environmental Descriptions</term>
+<description>
+<indexentry><entry>Environmental Descriptions</entry></indexentry>
+<eg/> damp, dark, cold, slimy, smokey, foggy <ellipsis/>
+</description>
+</descriptions>
+
+
+<playexample>
+  <p>
+    Dourli hides from a local gang of thugs in a cellar.  The GM describes the
+    cellar as dark and dank and storing old barrels.  The thugs enter the cellar
+    and look around.   Dourli invokes the <emph>dark</emph> keyword from the GMs
+    description of the cellar saying <emph>``They'll have trouble seeing me in the
+    dark''</emph>.  The GM agrees and gives Dourli a bonus to his Stealth check.
+</p>
+</playexample>
+</section>
+
+
+
+<section>
+<sectiontitle>Common Conditions and Effects<label>sec:conditions</label></sectiontitle>
+
+<p>
+  A <defn>Condition</defn> is a type of keyword that has a well-defined game effect, and a lifetime.
+  All conditions are keywords, but not all keywords are conditions.  Conditions represent
+  temporary modifications to things in game, often to characters, <eg/> Blind, or Dazed.
+</p>
+
+<p>
+  <indexentry><entry>Conditions</entry><subentry>Save Ends</subentry></indexentry>
+  <indexentry><entry>Save Ends</entry></indexentry>
+  Conditions have different lifetimes.  Some conditions typically last for the length of a combat,
+  or until a <bold>Save Ends</bold> the effects of the condition.  Other conditions might be ongoing
+  and terminate at different times. How and when a PC can save to end a condition should be
+  specified on a per condition, or per instance basis.  For example text might say:
+  If the character has a fishing net dropped on them they are Prone Agility Save ends with a
+  DC of 12.  Saves are made at the end of the characters turn and, if they have multiple
+  saves to make, in any order the character wishes.
+</p>
+
+
+
+<p>
+  The following is a list of some common conditions.
+</p>
+
+<descriptions>
+<term>Agony</term>
+<description>
+<indexentry><entry>Agony Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Agony</subentry></indexentry>
+<label>condition:agony</label>
+The character is suffering from debilitating pain.  They take two down shifts to
+all actions.
+</description>
+
+<term>Alert</term>
+<description>
+<indexentry><entry>Alert Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Alert</subentry></indexentry>
+<label>condition:alert</label>
+The character is alert for danger.  They are less likely to be surprised. They
+gain +2 to Awareness checks.  It is difficult to stay alert for long periods of
+time. PCs cannot claim to be alert for hours on end.  Something has to happen to
+alert them.  For example, guards are typically not alert, infiltrators typically
+are alert. If a group makes a lot of noise, <eg/> due to combat, then other
+groups nearby will become alert.
+</description>
+
+<term>Aware</term>
+<description>
+<label>defn:aware</label>
+<indexentry><entry>Aware Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Aware</subentry></indexentry>
+A character or group is Aware if they believe that they could come into confrontation imminently.
+One character or group is Aware of another if they make a successful Perception or Listen check
+against their opponents Stealth. or if the GM determines they are Aware.  If this check fails
+then the character or group are Unaware.
+<emph>Typically groups will be aware of one another unless one side has approached the other
+stealthily, or unless one side is laying in ambush.  For groups the GM should use a Delegated
+Group Check</emph>.  The awareness check can be modified if individuals have the Alert Condition
+see page<pageref>condition:alert</pageref>
+</description>
+
+<term>Black-Powder</term>
+<description>
+<indexentry><entry>Black-Powder</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Black-Powder</subentry></indexentry>
+<label>keyword:black-powder</label>
+Black-Powder weapons misfire on a bane.
+</description>
+
+<term>Blind</term>
+<description>
+<indexentry><entry>Blind Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Blind</subentry></indexentry>
+The character cannot see.  Ambush, Surprise, Initiative, Attack Roles,
+Dodge, Parry and Block receive a -6 modifier against all opponents.
+</description>
+
+<!-- <term>Cascade</term> -->
+<!-- <description> -->
+<!-- <indexentry><entry>Cascade Keyword</indexentry>  -->
+<!-- <indexentry><entry>Condition<subentry>Cascade</subentry></indexentry> -->
+<!-- <label>keyword:cascade</label> -->
+<!-- When a check with the <emph>cascade</emph> keyword is successful, -->
+<!-- the check can be repeated any number of times within the round, -->
+<!-- provided the action economy allows it. -->
+<!-- </description> -->
+
+<term>Bloodied</term>
+<description>
+<indexentry><entry>Bloodied Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Bloodied</subentry></indexentry> The
+character has suffered damage to their Health.  When a character first
+suffers health damage in a fight they must make a Mettle Check.
+</description>
+
+<term>Broken</term>
+<description>
+<label>condition:broken</label>
+<indexentry><entry>Broken Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Broken</subentry></indexentry>
+The character has lost the will to fight and must withdraw from battle.
+On their turn they may attack but may not move into melee combat unless
+they have no other choice.  This condition occurs after a character
+has failed two Mettle Checks in combat.
+</description>
+
+<term>Burning</term>
+<description>
+<indexentry><entry>Burning Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Burning</subentry></indexentry>
+The character is on fire.  They must attempt to put out the fire or
+make a Mettle Check each round to resist doing so.
+</description>
+
+<term>Checked</term>
+<description>
+<label>condition:checked</label>
+<indexentry><entry>Checked Condition</entry></indexentry>
+<indexentry>
+<entry>Conditions</entry>
+<subentry>Checked</subentry>
+</indexentry>
+The character has lost momentum in a fight. The character must make a
+Mettle Check to charge or pursue.  This condition occurs after the
+character has failed a single Mettle Check in combat.
+</description>
+
+<term>Dazed</term>
+<description>
+<indexentry><entry>Dazed Condition</entry></indexentry>
+<indexentry>
+<entry>Conditions</entry>
+<subentry>Dazed</subentry>
+</indexentry>
+The character receives a -2 modifer to all Checks.
+This often occurs when the character has suffered a nasty injury and are
+suffering a great deal of pain.  Condition lasts for 3 rounds or until a
+DC 13 Endurance Check is made.
+</description>
+
+<term>Distracted</term>
+<description>
+  <indexentry>
+<entry>Distracted Condition</entry>
+</indexentry>
+<indexentry>
+<entry>Conditions</entry>
+<subentry>Distracted</subentry>
+</indexentry>
+Something has caught the characters attention and they are not paying
+attention to their surrounds.  They make Ambush, Surprise, Missile Attacks, and
+Perception Checks at -2.
+</description>
+
+<term>Deaf</term>
+<description>
+<indexentry><entry>Deaf Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Deaf</subentry></indexentry>
+The character cannot hear.  They make checks Ambush, Surprise,
+Perception Checks at -2 and have some trouble communicating with others,
+use Language Checks to determine success.
+</description>
+
+<term>Down</term>
+<description>
+<indexentry><entry>Down Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Down</subentry></indexentry>
+Characters who are down are effectively too hurt and too weak to defend themselves or do too
+much and are in danger of dying.  Characters who are Down may make a Mettle Check to make a minor
+action each turn.  Combatants will tend to leave Downed opponents alone until
+the end of combat when they can be dispatched, eaten, saved for later, ransomed or sold into
+slavery.  Most Down characters also have the Prone condition.
+</description>
+
+<term>Drunk</term>
+<description>
+<indexentry><entry>Drunk Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Drunk</subentry></indexentry>
+The character has had too much alcohol to drink.  They make Agility and Perception
+checks at -2 and they make Luck Checks at +2.  A character that is very drunk makes
+Agility and Perception checks at -4 and Luck Checks at +2.
+</description>
+
+<term>Enraged</term>
+<description>
+<indexentry><entry>Enraged Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Enraged</subentry></indexentry>
+The character is wild with rage.  They must make a melee attack each round, if
+they can.  If they fail to make a melee attack they are no longer enraged.
+Otherwise, they must make a Mettle Check to lose this condition.
+</description>
+
+<term>Exhausted</term>
+<description>
+<indexentry><entry>Exhausted Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Exhausted</subentry></indexentry>
+The character is very tired.  Make Strength, Endurance, Speed and Movement
+checks at -2.
+</description>
+
+<term>Fast</term>
+<description>
+<indexentry><entry>Fast Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Fast</subentry></indexentry>
+The NPC forces an Initiative Check when first attacked.  The GM should
+not assume the PCs go first when fighting these characters with the Fast
+condition.
+</description>
+
+<term>Fearless</term>
+<description>
+<indexentry><entry>Fearless Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Fearless</subentry></indexentry>
+The character has no fear and automatically succeeds any Mettle Checks.
+</description>
+
+<term>Flanked</term>
+<description>
+<indexentry><entry>Flanked Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Flanked</subentry></indexentry>
+The character is being attacked from multiple sides simultaneously.
+This drastically reduces their ability to defend themselves and they
+suffer -2 to their Armour Checks while flanked.  See
+Section<ref>sec:flanking</ref> on page<pageref>sec:flanking</pageref>
+</description>
+
+<term>Focused</term>
+<description>
+<indexentry><entry>Focused Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Focused</subentry></indexentry>
+The character is well prepared for a ranged attack. +3 to ranged attacks.
+</description>
+
+<term>Free</term>
+<description>
+<indexentry><entry>Free Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Free</subentry></indexentry>
+Free checks have no action point cost.
+</description>
+
+<term>Held</term>
+<description>
+<indexentry><entry>Held/Hold Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Held/Hold</subentry></indexentry>
+This condition refers to the magical effect, and not to physical restraint.
+A Held creature may not make melee attacks against the Holder and they
+may not move closer to the holder at any time while held.
+</description>
+
+
+<term>Immune[Damage-Type-Keywords<ellipsis/>]</term>
+<description>
+<indexentry><entry>Immune[] Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Immune[]</subentry></indexentry>
+The character takes no damage if they are immune to that type of damage.
+For example, if a character is Immune[Fire] and they take 7 points of
+damage keyword with Fire then they take no damage.
+</description>
+
+<term>Immobilized</term>
+<description>
+<indexentry><entry>Immobilized Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Immobilized</subentry></indexentry>
+The character has a great deal of trouble moving.  They must make an
+Agility Check, Speed or Strength check vs DC 13 each round or they
+cannot move.  Whether they succeed or fail, their move distance is
+reduced by 3.
+</description>
+
+<term>Invisible</term>
+<description>
+<indexentry><entry>Invisible Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Invisible</subentry></indexentry>
+same as if others were blinded in actions that include the character.
+Initiative, Attack Roles, Dodge, Parry and Block against this
+character all receive a -6 modifier.
+</description>
+
+<term>Maintain</term>
+<description>
+<indexentry><entry>Maintain Keyword</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Maintain</subentry></indexentry>
+<label>keyword:maintain</label>
+This spell ability requires the character to expend a minor action
+round to maintain the effect for every subsequent round.
+</description>
+
+
+<term>Natural Sprinters</term>
+<description>
+<indexentry><entry>Natural-Sprinter Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Natural-Sprinters</subentry></indexentry>
+While slow to get moving, the character can build up a fair
+amount of speed in a straight line over time.   The character gains
++1 move <emph>distance</emph> while running.
+</description>
+
+<term>Near-Death</term>
+<description>
+<indexentry><entry>Near-Death Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Near-Death</subentry></indexentry>
+The player must make rolls on the Near-Death table for the character
+each round until the condition is removed of their character dies.
+Characters who are Near-Death also have the Down condition and usually
+will have the Prone condition as well.
+</description>
+
+<term>Off-Guard</term>
+<description>
+<indexentry><entry>Off-Guard Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Off Guard</subentry></indexentry>
+The character is put off by events around them.  All melee combat rolls
+for the next round are made by the character are made at disadvantage.
+</description>
+
+
+<term>Ongoing</term>
+<description>
+<indexentry><entry>Ongoing Keyword</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Ongoing</subentry></indexentry>
+<label>keyword:ongoing</label>
+When a check with the <emph>ongoing</emph> keyword is successful,
+the check may be repeated every subsequent round until it fails.
+</description>
+
+<term>Petrified</term>
+<description>
+<indexentry><entry>Slowed Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Slowed</subentry></indexentry>
+The character has trouble moving.  They must make
+an Agility or Strength Check vs DC 11 each round or their
+move distance is reduced by 3.
+</description>
+
+<term>Prone</term>
+<description>
+  <indexentry>
+<entry>Prone Condition</entry>
+</indexentry>
+<indexentry>
+<entry>Conditions</entry>
+<subentry>Prone</subentry>
+</indexentry>
+The character is on the ground.  Performs physical checks at -3.
+Melee attacks are made against the character with Advantage.
+Missile attacks are made against the character at Disadvantage.
+Standing up costs 3 movement.
+</description>
+
+<term>PushedX[N-Squares]</term>
+<description>
+  <indexentry>
+<entry>Pushed Condition</entry>
+</indexentry>
+<indexentry>
+<entry>Conditions</entry>
+<subentry>Pushed</subentry>
+</indexentry>
+The character is pushed back N-Squares (N=1 square if not specified).
+NPCs with Plot-Armour can make a DC 12 Strength Save to avoid the push.
+</description>
+
+<term>Poisoned</term>
+<description>
+  <indexentry>
+<entry>Poisoned Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Poisoned</subentry></indexentry>
+The character is suffering from terrible pain in the stomach or some form of
+paralysis.  They must make a mettle check in order to perform any action.
+</description>
+
+<term>Resistant[Damage-Type-Keywords<ellipsis/>]</term>
+<description>
+<indexentry><entry>Resistant[] Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Resistant[]</subentry></indexentry>
+The character has all damage decreased by 50<percent/> of its normal damage.
+For example, if a character is Resistant[Fire] and they take 6 points of
+damage keyword with Fire then they would take an 3 fewer damage.  The
+damage is removed after any boon, bane or other modifier.
+</description>
+
+<term>Routed</term>
+<description>
+<indexentry><entry>Routed Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Routed</subentry></indexentry>
+The character has been defeated in combat.  If they can Flee they do so.
+Otherwise they will attempt to yield or do something desperate.  This occurs
+when the player has failed three Mettle Checks in combat.
+</description>
+
+<term>Sick</term>
+<description>
+<indexentry><entry>Sick Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Sick</subentry></indexentry>
+The character is feverish and light headed?  They perform a mettle
+check at the start of each turn in combat and if they fail they perform
+checks that turn at -3.
+</description>
+
+<term>Slowed</term>
+<description>
+<indexentry><entry>Slowed Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Slowed</subentry></indexentry>
+The character has trouble moving.  They must make
+an Agility or Strength Check vs DC 11 each round or their
+move distance is reduced by 3.
+</description>
+
+
+<!-- <term>Tiny</term> -->
+<!-- <description> -->
+<!--   <indexentry><entry>Tiny Condition</indexentry>  -->
+<!--   <indexentry><entry>Conditions<subentry>Tiny</subentry></indexentry>        -->
+<!--   <indexentry><entry>Size<subentry>Tiny</subentry></indexentry> -->
+<!--   The size of an apple or Smaller. -->
+<!-- </description> -->
+
+<!-- <term>Very Small</term> -->
+<!-- <description> -->
+<!--   <indexentry><entry>Very Small</indexentry>  -->
+<!--   <indexentry><entry>Conditions<subentry>Very Small</subentry></indexentry>        -->
+<!--   <indexentry><entry>Size<subentry>Very Small</subentry></indexentry> -->
+<!--   The size of a cat or Smaller. -->
+<!-- </description> -->
+
+<!-- <term>Small</term> -->
+<!-- <description> -->
+<!--   <indexentry><entry>Small Condition</indexentry>  -->
+<!--   <indexentry><entry>Conditions<subentry>Small</subentry></indexentry>        -->
+<!--   <indexentry><entry>Size<subentry>Small</subentry></indexentry>        -->
+<!--   The size of a child or Smaller. -->
+<!-- </description> -->
+
+<!-- <term>Medium</term> -->
+<!-- <description> -->
+<!--   <indexentry><entry>Medium Condition</indexentry>  -->
+<!--   <indexentry><entry>Conditions<subentry>Medium</subentry></indexentry>        -->
+<!--   <indexentry><entry>Size<subentry>Medium</subentry></indexentry> -->
+<!--   The size of a man or smaller. -->
+<!-- </description> -->
+
+<!-- <term>Large</term> -->
+<!-- <description> -->
+<!--   <indexentry><entry>Large Condition</indexentry>  -->
+<!--   <indexentry><entry>Conditions<subentry>Large</subentry></indexentry>        -->
+<!--   <indexentry><entry>Size<subentry>Large</subentry></indexentry> -->
+<!--   The size of a large animal such as a bear or horse. -->
+<!-- </description> -->
+
+<!-- <term>Very Large</term> -->
+<!-- <description> -->
+<!--   <indexentry><entry>Very Large Condition</indexentry>  -->
+<!--   <indexentry><entry>Conditions<subentry>Very Large</subentry></indexentry> -->
+<!--   <indexentry><entry>Size<subentry>Very Large</subentry></indexentry> -->
+<!--   The size of a very large animal such as a whale or dinosaur. -->
+<!-- </description> -->
+
+<!-- <term>Huge</term> -->
+<!-- <description> -->
+<!--   <indexentry><entry>Huge Condition</indexentry>  -->
+<!--   <indexentry><entry>Conditions<subentry>Huge</subentry></indexentry>        -->
+<!--   <indexentry><entry>Size<subentry>Huge</subentry></indexentry> -->
+<!--   Larger than the largest of animals, such as a whale or dinosaur. -->
+<!-- </description> -->
+
+
+<term>Stunned</term>
+<description>
+<indexentry><entry>Stunned Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Stunned</subentry></indexentry>
+The character is stunned and gets one action per round.  Lasts one
+round.
+</description>
+
+<term>Tired</term>
+<description>
+<indexentry><entry>Tired Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Tired</subentry></indexentry>
+The character is tired.  Make Strength, Speed and Movement checks at
+-3.
+</description>
+
+<term>Unaware</term>
+<description>
+<indexentry><entry>Unaware Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Unaware</subentry></indexentry>
+See the description of Aware in the Surprise section on
+page<pageref>sec:aware</pageref>. If a character is not Unaware they
+are Aware.
+</description>
+
+<term>Unconscious</term>
+<description>
+<indexentry><entry>Unconscious Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Unconscious</subentry></indexentry>
+The character has blacked out or been otherwise incapacitated due to a
+stunning blow to the head or too much pain.  They are not necessarily in immediate
+danger to their lives. They can perform no actions.
+</description>
+
+<term>Ungainly</term>
+<description>
+<indexentry><entry>Ungainly Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Ungainly</subentry></indexentry>
+creature that has trouble turning and changing direction.
+must make a move turn in the same direction as the charge straight
+after making the charge.
+</description>
+
+<term>Unsteady</term>
+<description>
+<indexentry><entry>Unsteady Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Unsteady</subentry></indexentry>
+The character has been knocked off balance.  This condition lasts for
+one turn.  The character defends with disadvantage, and movement is halved.
+</description>
+
+<term>Vulnerable[Damage-Type-Keywords<ellipsis/>]</term>
+<description>
+<indexentry><entry>Vunerable[] Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Vunerable[]</subentry></indexentry>
+The character has all damage increased by 50<percent/> of its normal damage.
+For example, if a character is Vulernable[Fire] and they take 6 points of
+damage with the Fire keyword then they would take an extra 3 damage.  The extra
+damage is added after any boon, bane or other modifier.
+</description>
+</descriptions>
+</section>
+</chapter>

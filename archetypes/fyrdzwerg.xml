@@ -36,7 +36,8 @@
     </p>
 
     <figure>
-    <img id="mj_dwarf" scale="0.2"/>
+    <!-- <img id="mj_dwarf" scale="0.2"/> -->
+    <img id="mj_dwarf"/>
     </figure>
 
   </archetypedescription>
@@ -90,14 +91,15 @@
 	<branchdescription>
 	  <p>All Shield Warriors start with the following skills:</p>
 	        <figure position="h">
-		  <img id="dore_dwarves" scale="5.5"/>
+		  <img id="dore_dwarves"/>
+		  <!-- <img id="dore_dwarves" scale="5.5"/> -->
 		</figure>
 	</branchdescription>
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <all-of>All of ✱axe_strike_1, ✱hammer_strike_1,
-      ✱natural_sprinter_1, ✱block_3, ✱dwarven_3, ✱etiquette[Dwarven]_2,
-      ✱merovingian_1 and ✱armour_1.</all-of>
+	  <all-of>All of <abilityref id="axe_strike" rank="1"/>, <abilityref id="hammer_strike" rank="1"/>,
+      <abilityref id="natural_sprinter" rank="1"/>, <abilityref id="block" rank="3"/>, <abilityref id="dwarven" rank="3"/>, <abilityref id="etiquette" specializations="Dwarven"/>,
+      <abilityref id="merovingian" rank="1"/> and <abilityref id="armour" rank="1"/>.</all-of>
 	</path>
       </branch>
 
@@ -109,8 +111,8 @@
 	<path chance="1">
 	  <pathtitle>Tinkers</pathtitle>
 	  <choice>Add the tag ``Origin:Tinker'' to your character sheet</choice>
-	  <choice>✱craft.smith_2, ✱merovingian_3, two of ✱thule_2, ✱hybernian_2 or ✱poitevin_2.
- 	  Gain ✱adversary[Greenskins]_1, ✱adversary[Giants]_1 . Roll on the City Story Table or Wilderness Story Table</choice>
+	  <choice><abilityref id="smith" rank="2"/>, <abilityref id="merovingian" rank="3"/>, two of <abilityref id="thule" rank="2"/>, <abilityref id="hybernian" rank="2"/> or <abilityref id="poitevin" rank="2"/>.
+ 	  Gain <abilityref id="adversary" specializations="Greenskins"/>, <abilityref id="adversary" specializations="Giants"/> . Roll on the City Story Table or Wilderness Story Table</choice>
 	</path>
 
 	<path chance="2-5">
@@ -118,23 +120,23 @@
 	  <choice>Add the tag ``Origin:Mountain-Stronghold'' to your character sheet</choice>
 	  <choice>Choose one of the following dwarven strongholds: Karrag Kaslan, Bad Dunhmaraiodh, or Taobh Iarainn
 	  Record this information in your  characters background</choice>	  
-	  <choice>✱craft.mining_3, ✱adversary[Greenskins]_2, ✱adversary[Giants]_1, ✱survivalism.mountains.
+	  <choice><abilityref id="mining" rank="3"/>, <abilityref id="adversary" specializations="Greenskins"/>, <abilityref id="adversary" specializations="Giants"/>, ✱mountains.
 	  Roll on the Delvers Story Table</choice>
 	</path>
 
 	<path chance="6-9">
 	  <pathtitle>Mining Outpost</pathtitle>
 	  <choice>Add the tag ``Origin:Mining Outpost'' to your character sheet</choice>
-	  <choice>✱merovingian_2, ✱craft.mining_2, ✱adversary[Greenskins]_1,
-      	  ✱adversary[Giants]_2, ✱survivalism.mountains, ✱survivalism.woodlands.
+	  <choice><abilityref id="merovingian" rank="2"/>, <abilityref id="mining" rank="2"/>, <abilityref id="adversary" specializations="Greenskins"/>,
+      	  <abilityref id="adversary" specializations="Giants"/>, ✱mountains, ✱woodlands.
 	  Roll on any one of the Story Tables</choice>
 	</path>
 
 	<path chance="10-11">
 	  <pathtitle>Dwarven District of a Human Town</pathtitle>
 	  <choice>Add the tag ``Origin:Dwarven District'' to your character sheet</choice>
-	  <choice>✱merovingian_3, ✱etiquette[Merchants]_4,
-	  ✱contacts[Town]_3, ✱craft.mining_1, one of ✱craft.mason_2, ✱craft.cooper_3, ✱craft.cartwright_3, and ✱sword_strike_2.
+	  <choice><abilityref id="merovingian" rank="3"/>, <abilityref id="etiquette" specializations="Merchants"/>,
+	  <abilityref id="contacts" specializations="Town"/>, <abilityref id="mining" rank="1"/>, one of <abilityref id="mason" rank="2"/>, <abilityref id="cooper" rank="3"/>, <abilityref id="cartwright" rank="3"/>, and <abilityref id="sword_strike" rank="2"/>.
 	  Roll on the City Story Table</choice>
 	</path>
 
@@ -152,36 +154,36 @@
 	</branchdescription>
 	<path chance="1-2">
 	  <pathtitle>Gang Member</pathtitle>
-	  <choice>The character gains ✱contacts[Low]_2, and two of
-	  ✱stealth_2, ✱pick_locks_3, ✱sleight_of_hand_3, or ✱cloak_fighting_3.</choice>
+	  <choice>The character gains <abilityref id="contacts" specializations="Low"/>, and two of
+	  <abilityref id="stealth" rank="2"/>, <abilityref id="pick_locks" rank="3"/>, <abilityref id="sleight_of_hand" rank="3"/>, or <abilityref id="cloak_fighting" rank="3"/>.</choice>
 	</path>
 
 	<path chance="3-4">
 	  <pathtitle>Business Takeovers</pathtitle>
-	  <choice>the character gains ✱contacts[Middle-Classes]_2,
-	  ✱etiquette[Middle-Classes]_2,  One of ✱riding_3, ✱carter_3, or ✱sailor_3,
-	  One of ✱book_keeping_3, ✱book_learning_3, ✱antiquarian_3 or ✱mathematics_3.
-	  Two of ✱leadership_3, , ✱negotiate.deceive_3, or ✱negotiate_3</choice>
+	  <choice>the character gains <abilityref id="contacts" specializations="Middle-Classes"/>,
+	  <abilityref id="etiquette" specializations="Middle-Classes"/>,  One of <abilityref id="riding" rank="3"/>, <abilityref id="carter" rank="3"/>, or <abilityref id="sailor" rank="3"/>,
+	  One of <abilityref id="book_keeping" rank="3"/>, <abilityref id="book_learning" rank="3"/>, <abilityref id="antiquarian" rank="3"/> or <abilityref id="mathematics" rank="3"/>.
+	  Two of <abilityref id="leadership" rank="3"/>, , <abilityref id="deceive" rank="3"/>, or <abilityref id="negotiate" rank="3"/></choice>
 	</path>
 
 	<path chance="5-7">
 	  <pathtitle>Trader</pathtitle>
-	  <choice>the character gains ✱contacts[Lower-Classes]_2,
-	  ✱etiquette[Lower-Classes]_2,  ✱concealment_3.  One of ✱carter_3, or ✱sailor_3,
-	  One of ✱book_keeping_3, ✱book_learning_3, ✱antiquarian_3.  Two of , , ✱negotiate.deceive_3,
-	  ✱negotiate_3, or ✱search_3</choice>
+	  <choice>the character gains <abilityref id="contacts" specializations="Lower-Classes"/>,
+	  <abilityref id="etiquette" specializations="Lower-Classes"/>,  <abilityref id="concealment" rank="3"/>.  One of <abilityref id="carter" rank="3"/>, or <abilityref id="sailor" rank="3"/>,
+	  One of <abilityref id="book_keeping" rank="3"/>, <abilityref id="book_learning" rank="3"/>, <abilityref id="antiquarian" rank="3"/>.  Two of , , <abilityref id="deceive" rank="3"/>,
+	  <abilityref id="negotiate" rank="3"/>, or <abilityref id="search" rank="3"/></choice>
 	</path>
 
 	<path chance="8-9">
 	  <pathtitle>Metalworking</pathtitle>
-	  <choice>✱craft.smith_3 and one of ✱craft.weapon_smith_1, or ✱craft.armour_smith_1 or ✱craft.mining_1,
-	  Choose two of ✱craft.armour_smith_2, ✱alchemy_3, ✱craft.craft_3</choice>
+	  <choice><abilityref id="smith" rank="3"/> and one of <abilityref id="weapon_smith" rank="1"/>, or <abilityref id="armour_smith" rank="1"/> or <abilityref id="mining" rank="1"/>,
+	  Choose two of <abilityref id="armour_smith" rank="2"/>, <abilityref id="alchemy" rank="3"/>, <abilityref id="craft" rank="3"/></choice>
 	</path>
 
 	<path chance="10-11">
 	  <pathtitle>Stonemason</pathtitle>
-	  <all-of>✱mason_3, ✱ropecraft_3</all-of>
-	  <two-of>✱book_learning_2, ✱mathematics_2, ✱craft.craft_1</two-of>
+	  <all-of><abilityref id="mason" rank="3"/>, <abilityref id="ropecraft" rank="3"/></all-of>
+	  <two-of><abilityref id="book_learning" rank="2"/>, <abilityref id="mathematics" rank="2"/>, <abilityref id="craft" rank="1"/></two-of>
 	</path>
 
 	<path chance="12">
@@ -192,7 +194,7 @@
 
 
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -206,37 +208,37 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1-3</td> -->
-<!-- 	  <td><bold>Prospector</bold>: ✱craft.mining_3, ✱natural_history_2, ✱survivalism.mountains, -->
-<!-- 	   ✱crossbow_shoot_2 and Two of ✱survivalism[woods]_2</td> -->
+<!-- 	  <td><bold>Prospector</bold>: <abilityref id="mining" rank="3"/>, <abilityref id="natural_history" rank="2"/>, ✱mountains, -->
+<!-- 	   <abilityref id="crossbow_shoot" rank="2"/> and Two of <abilityref id="survivalism" specializations="woods"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>4-6</td> -->
-<!-- 	  <td><bold>Lumberjack</bold>: ✱craft.craft_2, ✱survivalism.woodlands, ✱axe_cleave_3, ✱axe_strike_2, -->
-<!-- 	  ✱natural_history_1, ✱carter_2, ✱survivalism[Woods]_2. One of ✱juggernaut_2 or ✱brawl_2.</td> -->
+<!-- 	  <td><bold>Lumberjack</bold>: <abilityref id="craft" rank="2"/>, ✱woodlands, <abilityref id="axe_cleave" rank="3"/>, <abilityref id="axe_strike" rank="2"/>, -->
+<!-- 	  <abilityref id="natural_history" rank="1"/>, <abilityref id="carter" rank="2"/>, <abilityref id="survivalism" specializations="Woods"/>. One of <abilityref id="juggernaut" rank="2"/> or <abilityref id="brawl" rank="2"/>.</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>7-9</td> -->
-<!-- 	  <td><bold>Wagoneer</bold>: ✱carter_3, ✱craft.craft_2, ✱ropecraft_2, ✱survivalism[Woods]_2, , One of -->
-<!-- 	  ✱surefeet or ✱brawl_3, two of ✱transport.animal_handling_3, ✱riding_3, two -->
-<!-- 	  of ✱adversary[Bandits]_3, ✱adversary[Greenskins]_3, or ✱adversary[Beasts]_3.</td> -->
+<!-- 	  <td><bold>Wagoneer</bold>: <abilityref id="carter" rank="3"/>, <abilityref id="craft" rank="2"/>, <abilityref id="ropecraft" rank="2"/>, <abilityref id="survivalism" specializations="Woods"/>, , One of -->
+<!-- 	  ✱surefeet or <abilityref id="brawl" rank="3"/>, two of <abilityref id="animal_handling" rank="3"/>, <abilityref id="riding" rank="3"/>, two -->
+<!-- 	  of <abilityref id="adversary" specializations="Bandits"/>, <abilityref id="adversary" specializations="Greenskins"/>, or <abilityref id="adversary" specializations="Beasts"/>.</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>10-11</td> -->
 <!-- 	  <td><bold>Trader</bold>: the character gains ✱contacts[Low?]_2, -->
-<!-- 	  ✱etiquette[Lower-Classes]_2, ✱concealment_3.  One of ✱carter_3, or ✱sailor_3, -->
-<!-- 	  One of ✱book_keeping_3, ✱book_learning_3, ✱antiquarian_3.   -->
-<!-- 	  Two of , , ✱negotiate.deceive_3, ✱negotiate_3, or ✱search_3</td>	   -->
+<!-- 	  <abilityref id="etiquette" specializations="Lower-Classes"/>, <abilityref id="concealment" rank="3"/>.  One of <abilityref id="carter" rank="3"/>, or <abilityref id="sailor" rank="3"/>, -->
+<!-- 	  One of <abilityref id="book_keeping" rank="3"/>, <abilityref id="book_learning" rank="3"/>, <abilityref id="antiquarian" rank="3"/>.   -->
+<!-- 	  Two of , , <abilityref id="deceive" rank="3"/>, <abilityref id="negotiate" rank="3"/>, or <abilityref id="search" rank="3"/></td>	   -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
-<!-- 	  <td><bold>Grifter</bold>: ✱back_stab_2, three of ✱sleight_of_hand_3, ✱stealth_2, ✱disguise_3, -->
-<!-- 	  ✱trap_work_3, and ✱pick_locks_3, One of ✱3, ✱antiquarian_3, ✱book_learning_3, -->
-<!-- 	  ✱law[Society]_3, or ✱politics_3.  One of ✱dodge_1, or  .  Two of ✱negotiate_3, -->
-<!-- 	  ✱negotiate.deceive_3, or ✱negotiate.interogate. -->
+<!-- 	  <td><bold>Grifter</bold>: <abilityref id="back_stab" rank="2"/>, three of <abilityref id="sleight_of_hand" rank="3"/>, <abilityref id="stealth" rank="2"/>, <abilityref id="disguise" rank="3"/>, -->
+<!-- 	  <abilityref id="trap_work" rank="3"/>, and <abilityref id="pick_locks" rank="3"/>, One of ✱3, <abilityref id="antiquarian" rank="3"/>, <abilityref id="book_learning" rank="3"/>, -->
+<!-- 	  <abilityref id="law" specializations="Society"/>, or <abilityref id="politics" rank="3"/>.  One of <abilityref id="dodge" rank="1"/>, or  .  Two of <abilityref id="negotiate" rank="3"/>, -->
+<!-- 	  <abilityref id="deceive" rank="3"/>, or ✱interogate. -->
 <!-- 	  </td> -->
 <!-- 	</tablerow> -->
 	
@@ -246,7 +248,7 @@
 
  
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -260,28 +262,28 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1-8</td> -->
-<!-- 	  <td><bold>Dilligent Worker</bold> - One of ✱book_learning_2, ✱craft.craft_2 or ✱craft.smith_2.</td> -->
+<!-- 	  <td><bold>Dilligent Worker</bold> - One of <abilityref id="book_learning" rank="2"/>, <abilityref id="craft" rank="2"/> or <abilityref id="smith" rank="2"/>.</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>9</td> -->
 <!-- 	  <td><bold>Great Work</bold>: The character has created something requiring notable skills.  Gains -->
-<!-- 	  ✱fame[Society]_2, ✱1, ✱craft.craft_2, and one of ✱craft.builder_2, ✱craft.mason_2, ✱craft.smith_3, ✱craft.weapon_smith_2, -->
-<!-- 	  Armour ✱craft.smith_2, ✱2, or ✱oratory_2.</td> -->
+<!-- 	  <abilityref id="fame" specializations="Society"/>, ✱1, <abilityref id="craft" rank="2"/>, and one of <abilityref id="builder" rank="2"/>, <abilityref id="mason" rank="2"/>, <abilityref id="smith" rank="3"/>, <abilityref id="weapon_smith" rank="2"/>, -->
+<!-- 	  Armour <abilityref id="smith" rank="2"/>, ✱2, or <abilityref id="oratory" rank="2"/>.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>10</td> -->
-<!-- 	  <td><bold>Rockfall</bold>: PC trapped alone in the dark depth for months.  ✱craft.mining_3, ✱special.blindsight_3, -->
-<!-- 	  ✱perception.listen_3, ✱surefeet, ✱concealment_3, ✱dungeoneering_3.  Two of ✱adversary[Greenskins]_3, -->
-<!-- 	  ✱ropecraft_3,  ✱sixth_sense_3, .</td> -->
+<!-- 	  <td><bold>Rockfall</bold>: PC trapped alone in the dark depth for months.  <abilityref id="mining" rank="3"/>, <abilityref id="blindsight" rank="3"/>, -->
+<!-- 	  <abilityref id="listen" rank="3"/>, ✱surefeet, <abilityref id="concealment" rank="3"/>, <abilityref id="dungeoneering" rank="3"/>.  Two of <abilityref id="adversary" specializations="Greenskins"/>, -->
+<!-- 	  <abilityref id="ropecraft" rank="3"/>,  <abilityref id="sixth_sense" rank="3"/>, .</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>11</td> -->
 <!-- 	  <td><bold>Famous Discovery</bold>: The character is notable within their society for having discovered -->
-<!-- 	  a new subterannean feature, or a rich vein of ore, or some long lost Dwarven treasure. Gains ✱fame[Society]_2, -->
-<!-- 	  One of ✱antiquarian_2, ✱alchemy_2, ✱craft.mining_2.</td> -->
+<!-- 	  a new subterannean feature, or a rich vein of ore, or some long lost Dwarven treasure. Gains <abilityref id="fame" specializations="Society"/>, -->
+<!-- 	  One of <abilityref id="antiquarian" rank="2"/>, <abilityref id="alchemy" rank="2"/>, <abilityref id="mining" rank="2"/>.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
@@ -304,7 +306,7 @@
 <!--       <!-\- </p> -\-> -->
       
 <!--     <!-\-   <table> -\-> -->
-<!--     <!-\-   	<tablecategory>Standard</tablecategory> -\-> -->
+<!--     <!-\-   	<tablecategory><standard/></tablecategory> -\-> -->
 <!--     <!-\-   	<tablespec> -\-> -->
 <!--     <!-\-   	  <fixed>0.18</fixed> -\-> -->
 <!--     <!-\-   	  <fixed>0.71</fixed> -\-> -->
@@ -372,7 +374,7 @@
 <!--       </p> -->
       
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -434,7 +436,7 @@
 <!--       </p> -->
 
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -454,8 +456,8 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>2</td> -->
 <!-- 	  <td><bold>Laid Low</bold>: The character was struct down with the White Plague in their youth. -->
-<!-- 	  The character learns either ✱natural_history_1 -->
-<!-- 	  or ✱alchemy_1 during the time they spent under care.</td> -->
+<!-- 	  The character learns either <abilityref id="natural_history" rank="1"/> -->
+<!-- 	  or <abilityref id="alchemy" rank="1"/> during the time they spent under care.</td> -->
 <!-- 	</tablerow> -->
 		
 <!-- 	<tablerow> -->
@@ -474,14 +476,14 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>4-5</td> -->
 <!-- 	  <td><bold>Bankruptcy</bold>: The character has invested unwisely or been unlucky with money. -->
-<!-- 	  Lose -2d6gp. Gain ✱book_keeping_1</td> -->
+<!-- 	  Lose -2d6gp. Gain <abilityref id="book_keeping" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>6</td> -->
 <!-- 	  <td><bold>Brawl/Accidental Death</bold>:  The character was involved in a either an accident or -->
 <!-- 	  a brawl that led to the death of one of his fellow dwarves.  The character has to -->
-<!-- 	  pay a Zwerggild -10gp, and gains the ✱infamy_1 skill in that society</td> -->
+<!-- 	  pay a Zwerggild -10gp, and gains the <abilityref id="infamy" rank="1"/> skill in that society</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
@@ -501,7 +503,7 @@
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
-<!-- 	  <td><bold>A Lucky Life</bold>: Gain ✱luck.lucky_2 ability.</td> -->
+<!-- 	  <td><bold>A Lucky Life</bold>: Gain <abilityref id="lucky" rank="2"/> ability.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -519,7 +521,7 @@
 <!--       </p> -->
 
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -585,7 +587,7 @@
 
 
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -599,12 +601,12 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1</td> -->
-<!-- 	  <td><bold>The Seas</bold>: Gain ✱sailor_2</td> -->
+<!-- 	  <td><bold>The Seas</bold>: Gain <abilityref id="sailor" rank="2"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>2</td> -->
-<!-- 	  <td><bold>Courier</bold>: Gain ✱riding_2 or ✱wilderness_lore[Terrain?]_1</td> -->
+<!-- 	  <td><bold>Courier</bold>: Gain <abilityref id="riding" rank="2"/> or ✱wilderness_lore[Terrain?]_1</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -615,18 +617,18 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>4</td> -->
 <!-- 	  <td><bold>Comedy</bold>: The character has made ends meet from time to time by clowning. -->
-<!-- 	  Gain ✱jester_3.</td> -->
+<!-- 	  Gain <abilityref id="jester" rank="3"/>.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>5-6</td> -->
-<!-- 	  <td><bold>The Getting of Wisdom</bold>: The character has studied under a master - Gain ✱physics_2, -->
-<!-- 	  ✱natural_history_2, or ✱occult_2</td> -->
+<!-- 	  <td><bold>The Getting of Wisdom</bold>: The character has studied under a master - Gain <abilityref id="physics" rank="2"/>, -->
+<!-- 	  <abilityref id="natural_history" rank="2"/>, or <abilityref id="occult" rank="2"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>7</td> -->
-<!-- 	  <td><bold>The Quest</bold>: Gain ✱aquilonian_2 or ✱hybernian_2</td> -->
+<!-- 	  <td><bold>The Quest</bold>: Gain <abilityref id="aquilonian" rank="2"/> or <abilityref id="hybernian" rank="2"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -637,15 +639,15 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>10-11</td> -->
-<!-- 	  <td><bold>Voyage and Return</bold>: The character has travelled abroad.  Gain one of ✱hybernian_1 -->
-<!-- 	  or ✱aquilonian_1.</td> -->
+<!-- 	  <td><bold>Voyage and Return</bold>: The character has travelled abroad.  Gain one of <abilityref id="hybernian" rank="1"/> -->
+<!-- 	  or <abilityref id="aquilonian" rank="1"/>.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
 <!-- 	  <td><bold>Sharp Practice</bold>: The character has studied combat under an old soldier.  Gain -->
-<!-- 	  ✱brawl_2.  Gain (✱dagger_strike_2 and -->
-<!-- 	  ✱throw_2) or ✱gun_shoot_2.</td> -->
+<!-- 	  <abilityref id="brawl" rank="2"/>.  Gain (<abilityref id="dagger_strike" rank="2"/> and -->
+<!-- 	  <abilityref id="throw" rank="2"/>) or <abilityref id="gun_shoot" rank="2"/>.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -658,7 +660,7 @@
 <!--       </p> -->
       
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -672,27 +674,27 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1-3</td> -->
-<!-- 	  <td>✱shield.push_1</td> -->
+<!-- 	  <td><abilityref id="push" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>4-5</td> -->
-<!-- 	  <td>✱shield.support_1</td> -->
+<!-- 	  <td><abilityref id="support" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>6-8</td> -->
-<!-- 	  <td>✱axe_cleave_1</td> -->
+<!-- 	  <td><abilityref id="axe_cleave" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>9-8</td> -->
-<!-- 	  <td>✱axe.hook_1</td> -->
+<!-- 	  <td><abilityref id="hook" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>10-12</td> -->
-<!-- 	  <td>✱hammer.smash_1</td> -->
+<!-- 	  <td><abilityref id="smash" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -715,7 +717,7 @@
       
 <!--       <!-\-  -\-> -->
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -735,7 +737,7 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>3</td> -->
 <!-- 	  <td><bold>Riots</bold>: The character was caught in a riot and had to fight to get out. -->
-<!-- 	  Gain ✱infamy[Rioters]_2</td> -->
+<!-- 	  Gain <abilityref id="infamy" specializations="Rioters"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
@@ -750,24 +752,24 @@
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>8-9</td> -->
-<!-- 	  <td><bold>Plague</bold>: The character has helped during an outbreak. Gain ✱physician_1</td> -->
+<!-- 	  <td><bold>Plague</bold>: The character has helped during an outbreak. Gain <abilityref id="physician" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>10</td> -->
-<!-- 	  <td><bold>Minor Accounting Discrepency</bold>: Character gains 5gp and ✱book_keeping_1</td> -->
+<!-- 	  <td><bold>Minor Accounting Discrepency</bold>: Character gains 5gp and <abilityref id="book_keeping" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>11</td> -->
-<!-- 	  <td><bold>Merchant Seaman</bold>: Character gains one of ✱sailor_1, ✱negotiate_1, -->
+<!-- 	  <td><bold>Merchant Seaman</bold>: Character gains one of <abilityref id="sailor" rank="1"/>, <abilityref id="negotiate" rank="1"/>, -->
 <!-- 	  or ✱law[Society?]_1</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
 <!-- 	  <td><bold>Pogrom</bold>: The character has been the victim of racial or religious persecution. -->
-<!-- 	  Gain one of ✱physical.head_butt_3, ✱juggernaut_3, or ✱surefeet</td> -->
+<!-- 	  Gain one of <abilityref id="head_butt" rank="3"/>, <abilityref id="juggernaut" rank="3"/>, or ✱surefeet</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -776,7 +778,7 @@
 
 <!--       <!-\-  -\-> -->
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -790,34 +792,34 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>1</td> -->
-<!-- 	  <td><bold>Fur Trading</bold>: Gain one of ✱survivalism[Woods]_3, ✱survivalism[Mountains]_3 or -->
-<!-- 	  ✱negotiate_3</td> -->
+<!-- 	  <td><bold>Fur Trading</bold>: Gain one of <abilityref id="survivalism" specializations="Woods"/>, <abilityref id="survivalism" specializations="Mountains"/> or -->
+<!-- 	  <abilityref id="negotiate" rank="3"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>2-3</td> -->
-<!-- 	  <td><bold>Floods</bold>: The character spent some weeks saving people from flood waters - ✱endurance.swim.</td> -->
+<!-- 	  <td><bold>Floods</bold>: The character spent some weeks saving people from flood waters - ✱swim.</td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>5</td> -->
-<!-- 	  <td><bold>Animal Attack</bold>: The charcter gains ✱adversary[Beasts]_3, or ✱survivalism_3</td> -->
+<!-- 	  <td><bold>Animal Attack</bold>: The charcter gains <abilityref id="adversary" specializations="Beasts"/>, or <abilityref id="survivalism" rank="3"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>6-7</td> -->
 <!-- 	  <td><bold>Bandits</bold>: The character has been attacked by bandits on one or more occasions.  Gain -->
-<!-- 	  ✱adversary[Bandits]_3</td> -->
+<!-- 	  <abilityref id="adversary" specializations="Bandits"/></td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>8-11</td> -->
-<!-- 	  <td><bold>Teamster</bold>: Gain ✱carter_3 or ✱transport.animal_handling_3.</td> -->
+<!-- 	  <td><bold>Teamster</bold>: Gain <abilityref id="carter" rank="3"/> or <abilityref id="animal_handling" rank="3"/>.</td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
 <!-- 	  <td>12</td> -->
-<!-- 	  <td><bold>Traveller in a Foreign Land</bold>: Gain ✱hybernian_2 or ✱poitevin_2</td> -->
+<!-- 	  <td><bold>Traveller in a Foreign Land</bold>: Gain <abilityref id="hybernian" rank="2"/> or <abilityref id="poitevin" rank="2"/></td> -->
 <!-- 	</tablerow> -->
 
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -829,7 +831,7 @@
 
 <!--       <!-\-  -\-> -->
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -851,7 +853,7 @@
 <!-- 	<tablerow> -->
 <!-- 	  <td>2</td> -->
 <!-- 	  <td>Delved Too Deep.  The character was involved in an incident where greed pushed them too far -->
-<!-- 	  Gain ✱special.blindsight_1 or ✱perception.listen_3.  Gain an aspect: "Oh the horror!", -->
+<!-- 	  Gain <abilityref id="blindsight" rank="1"/> or <abilityref id="listen" rank="3"/>.  Gain an aspect: "Oh the horror!", -->
 <!-- 	  or "Claustrophobia".</td> -->
 <!-- 	</tablerow> -->
 	
@@ -867,12 +869,12 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>5-6</td> -->
-<!-- 	  <td><bold>Fast Thinker</bold>: Gain ✱luck.nick_of_time_1</td> -->
+<!-- 	  <td><bold>Fast Thinker</bold>: Gain <abilityref id="nick_of_time" rank="1"/></td> -->
 <!-- 	</tablerow>	 -->
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>7-8</td> -->
-<!-- 	  <td><bold>Adept</bold>: Gain ✱theurgy_1</td> -->
+<!-- 	  <td><bold>Adept</bold>: Gain <abilityref id="theurgy" rank="1"/></td> -->
 <!-- 	</tablerow> -->
 	
 <!-- 	<tablerow> -->
@@ -883,8 +885,8 @@
 
 <!-- 	<tablerow> -->
 <!-- 	  <td>11-12</td> -->
-<!-- 	  <td>Apprenticeship.  The character spent some time helping out in a crafting field.  ✱craft.cooper_3, -->
-<!-- 	  ✱craft.smith_1, ✱craft.mining_2.</td> -->
+<!-- 	  <td>Apprenticeship.  The character spent some time helping out in a crafting field.  <abilityref id="cooper" rank="3"/>, -->
+<!-- 	  <abilityref id="smith" rank="1"/>, <abilityref id="mining" rank="2"/>.</td> -->
 <!-- 	</tablerow>	 -->
 	
 <!-- 	<tablelabel>table:{{ doc_name }}-attribute-modifiers</tablelabel> -->
@@ -902,7 +904,7 @@
 <!--       </p> -->
             
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->
@@ -969,7 +971,7 @@
 
 <!--       <!-\-  -\-> -->
 <!--       <table> -->
-<!-- 	<tablecategory>Standard</tablecategory> -->
+<!-- 	<tablecategory><standard/></tablecategory> -->
 <!-- 	<tablespec> -->
 <!-- 	  <fixed>0.18</fixed> -->
 <!-- 	  <fixed>0.71</fixed> -->

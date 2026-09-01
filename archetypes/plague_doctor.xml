@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- medic/alchemist/mad scientist character --> 
-<archetype>
+<archetype 
+    xmlns:xi="http://www.w3.org/2001/XInclude">
   <archetypetitle>Plague Doctor</archetypetitle>
   <archetypeid>plague_doctor</archetypeid>
   <archetypedescription>
@@ -10,7 +11,7 @@
 	I will pioneer a new way, explore unknown powers, and unfold to the world the deepest mysteries
 	of creation.
       </emph>
-      The Late Heinrich Khunrath of Amburg (Immolated for Blasphemy in 1399).
+      Heinrich Khunrath of Amburg (Immolated for Blasphemy in 1399).
     </p>
     
     <p>
@@ -40,15 +41,69 @@
       Electrochemistry, Blaylock Valves, Humoural Theory, and Leeches.  While the theories of
       Biology and Electrochemistry are known to a certain well-educated subset of society, the
       other three areas of research are almost entirely the province of the research of the
-      brotherhood of Plague Doctors.  Many Plague Doctors keep appraised of the latest
-      breakthroughs by subscribing to their research gazette, the Lance.
+      Brotherhood.  Many Plague Doctors keep appraised of the latest
+      breakthroughs by subscribing to their monthly research gazette, <emph>"The Leech"</emph>.
     </p>
     
     <figure>
-    <img id="mj_plague_doctor" scale="0.20"/>
+      <!-- <img id="mj_plague_doctor" scale="0.20"/> -->
+      <img id="mj_plague_doctor"/>
     </figure>
 
-    {% include "docs/tables/plague_doctor_pseudonyms.xml" %}
+    <table>
+      <figuretable/>
+      <tablespec>
+        <fixed>0.05</fixed>
+        <fixed>0.48</fixed>
+        <fixed>0.32</fixed>
+      </tablespec>
+      <tabletitle>Plague Doctor Psuedonyms</tabletitle>
+      <tablelabel>table:plague-doctor-psuedonyms</tablelabel>
+
+      <tableheaderrow>
+        <td>Roll</td>
+        <td>Forename</td>
+        <td>Surname</td>
+      </tableheaderrow>
+
+      <tablerow>
+        <td>1</td><td><p>Weise (wise)</p></td><td><p>Maus (mouse)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>2</td><td><p>Gelernt (learned)</p></td><td><p>Wiesel (weasel)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>3</td><td><p>Arzt (doctor)</p></td><td><p>Fuchs (fox)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>4</td><td><p>Schwarz (black)</p></td><td><p>Ratte (rat)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>5</td><td><p>Dunkel (dark)</p></td><td><p>Krähe (crow)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>6</td><td><p>Weiss (white)</p></td><td><p>Rabe (raven)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>7</td><td><p>Grau (grey)</p></td><td><p>Katze (cat)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>8</td><td><p>Fleißig (diligent)</p></td><td><p>Fledermaus (bat)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>9</td><td><p>Hingebungsvoll (devoted)</p></td><td><p>Eule (owl)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>10</td><td><p>Gebildet (educated)</p></td><td><p>Geir (vulture)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>11</td><td><p>Still (silent)</p></td><td><p>Wühlmaus (vole)</p></td>
+      </tablerow>
+      <tablerow>
+        <td>12</td><td><p>Heimlich (stealthy)</p></td><td><p>Eber (boar)</p></td>
+      </tablerow>
+    </table>
+    
     
   </archetypedescription>
   <archetypeprimaryabilities>
@@ -101,10 +156,10 @@
 	    
 	  <path chance="">
 	    <pathtitle></pathtitle>
-	    <choice>✱sword_strike_1, ✱parry_1, ✱dodge_1, ✱book_learning_1,
-	    ✱barber_1, ✱physician_1, ✱natural_history_1, ✱alchemy_lesser_3, ✱wyrdscience_1, 
-	    ✱aquilonian_1, ✱etiquette[Fraternitas-Aeterna]_1, ✱contacts[Fraternitas-Aeterna]_1,
-	    ✱merovingian_2, ✱negotiate.intimidate_1, ✱itiok_1, ✱smoke_bomb_1, ✱strength.throw, ✱dagger_strike_1.
+	    <choice><abilityref id="sword_strike" rank="1"/>, <abilityref id="parry" rank="1"/>, <abilityref id="dodge" rank="1"/>, <abilityref id="book_learning" rank="1"/>,
+	    <abilityref id="barber" rank="1"/>, <abilityref id="physician" rank="1"/>, <abilityref id="natural_history" rank="1"/>, <abilityref id="alchemy_lesser" rank="3"/>, <abilityref id="wyrdscience" rank="1"/>, 
+	    <abilityref id="aquilonian" rank="1"/>, <abilityref id="etiquette" specializations="Fraternitas-Aeterna"/>, <abilityref id="contacts" specializations="Fraternitas-Aeterna"/>,
+	    <abilityref id="merovingian" rank="2"/>, <abilityref id="intimidate" rank="1"/>, <abilityref id="itiok" rank="1"/>, <abilityref id="smoke_bomb" rank="1"/>, ✱throw, <abilityref id="dagger_strike" rank="1"/>.
 	    </choice>
 	  </path>
       </branch>
@@ -117,30 +172,31 @@
 	    </p>
 
 	    <figure>
-	      <img id="mj_squid_experiment" scale="0.20"/>
+	      <!-- <img id="mj_squid_experiment" scale="0.20"/> -->
+	      <img id="mj_squid_experiment"/>
 	    </figure>
 	  </branchdescription>
 	    
 	  <path chance="1-9">
 	    <pathtitle>Laibstadt</pathtitle>
-	    <choice>✱etiquette[Westreich]_3, ✱contacts[Westreich]_3,
-	    and ✱etiquette[Westreich]_2, ✱merovingian_3, ✱etiquette[Laibstadt]_1</choice>
-	    <choice>✱contacts[Averoigne]_1, or ✱contacts[Aquilonia]_1</choice>
+	    <choice><abilityref id="etiquette" specializations="Westreich"/>, <abilityref id="contacts" specializations="Westreich"/>,
+	    and <abilityref id="etiquette" specializations="Westreich"/>, <abilityref id="merovingian" rank="3"/>, <abilityref id="etiquette" specializations="Laibstadt"/></choice>
+	    <choice><abilityref id="contacts" specializations="Averoigne"/>, or <abilityref id="contacts" specializations="Aquilonia"/></choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Averoigne</pathtitle>
-	    <choice>✱occitan_3, or ✱poitevin_3, or ✱leonese_3</choice>
-	    <choice>✱etiquette[Averoigne]_3, ✱contacts[Averoigne]_3,
-	    and ✱etiquette[Averoigne]_3</choice>
-	    <choice>✱contacts[Averoigne]_2, or ✱contacts[Aquilonia]_1</choice>
+	    <choice><abilityref id="occitan" rank="3"/>, or <abilityref id="poitevin" rank="3"/>, or <abilityref id="leonese" rank="3"/></choice>
+	    <choice><abilityref id="etiquette" specializations="Averoigne"/>, <abilityref id="contacts" specializations="Averoigne"/>,
+	    and <abilityref id="etiquette" specializations="Averoigne"/></choice>
+	    <choice><abilityref id="contacts" specializations="Averoigne"/>, or <abilityref id="contacts" specializations="Aquilonia"/></choice>
 	  </path>
 	  <path chance="11">
 	    <pathtitle>Aquilonian</pathtitle>
-	    <choice>✱aquilonian_3</choice>
-	    <choice>✱lagashi_2, or ✱occitan_2,</choice>
-	    <choice>✱etiquette[Aquilonia]_3, ✱contacts[Aquilonia]_3,
-	    and ✱etiquette[Averoigne]_1, ✱occitan_3</choice>
-	    <choice>✱contacts[Averoigne]_1, or ✱contacts[Laibstadt]_1</choice>
+	    <choice><abilityref id="aquilonian" rank="3"/></choice>
+	    <choice><abilityref id="lagashi" rank="2"/>, or <abilityref id="occitan" rank="2"/>,</choice>
+	    <choice><abilityref id="etiquette" specializations="Aquilonia"/>, <abilityref id="contacts" specializations="Aquilonia"/>,
+	    and <abilityref id="etiquette" specializations="Averoigne"/>, <abilityref id="occitan" rank="3"/></choice>
+	    <choice><abilityref id="contacts" specializations="Averoigne"/>, or <abilityref id="contacts" specializations="Laibstadt"/></choice>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Choose one of the above.</pathtitle>
@@ -162,34 +218,34 @@
 	<path chance="1">
 	  <pathtitle>Servant/Lab Assistant</pathtitle>
 	  <choice>✱etiquette[Homeland?-Servants]_2, ✱contacts[Homeland?-Servants]_2</choice>
-	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_2 or ✱nick_of_time_1</choice>
+	  <choice>Two of <abilityref id="brilliant_planner" rank="1"/> or <abilityref id="itiok" rank="2"/> or <abilityref id="nick_of_time" rank="1"/></choice>
 	  <choice></choice>
 	</path>
 	<path chance="2">
 	  <pathtitle>Purveyor of Perfumes and Salves</pathtitle>
 	  <choice>✱etiquette[Homeland?-Merchants]_1, ✱contacts[Homeland?-Merchants]_1</choice>
-	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>Two of <abilityref id="brilliant_planner" rank="1"/> or <abilityref id="itiok" rank="1"/> or <abilityref id="nick_of_time" rank="1"/></choice>
 	  <choice>+5gp</choice>
 	  <choice></choice>
 	</path>
 	<path chance="3-7">
 	  <pathtitle>Rich Merchant Family</pathtitle>
 	  <choice>✱etiquette[Homeland?-Merchants]_2, ✱contacts[Homeland?-Merchants]_2</choice>
-	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>Two of <abilityref id="brilliant_planner" rank="1"/> or <abilityref id="itiok" rank="1"/> or <abilityref id="nick_of_time" rank="1"/></choice>
 	  <choice>+15gp</choice>
 	  <choice></choice>
 	</path>
 	<path chance="8-10">
 	  <pathtitle>Lesser Noble</pathtitle>
 	  <choice>✱etiquette[Homeland?-Nobility]_1, ✱contacts[Homeland?-Nobility]_1</choice>
-	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>Two of <abilityref id="brilliant_planner" rank="1"/> or <abilityref id="itiok" rank="1"/> or <abilityref id="nick_of_time" rank="1"/></choice>
 	  <choice>+20gp</choice>
 	  <choice></choice>
 	</path>
 	<path chance="11">
 	  <pathtitle>Noble</pathtitle>
 	  <choice>✱etiquette[Homeland?-Nobility]_2, ✱contacts[Homeland?-Nobility]_2</choice>
-	  <choice>Two of ✱brilliant_planner_1 or ✱itiok_1 or ✱nick_of_time_1</choice>
+	  <choice>Two of <abilityref id="brilliant_planner" rank="1"/> or <abilityref id="itiok" rank="1"/> or <abilityref id="nick_of_time" rank="1"/></choice>
 	  <choice>+50gp</choice>
 	  <choice></choice>
 	</path>
@@ -208,31 +264,31 @@
 	</branchdescription>
 	<path chance="1-3">
 	  <pathtitle>The Mandragora</pathtitle>
-	  <choice>✱reroll_2</choice>
-	  <choice>✱alchemy_2</choice>
-	  <choice>One of ✱survivalism.tundra, ✱survivalism.jungles, or ✱survivalism.marine</choice>
+	  <choice><abilityref id="reroll" rank="2"/></choice>
+	  <choice><abilityref id="alchemy" rank="2"/></choice>
+	  <choice>One of ✱tundra, ✱jungles, or ✱marine</choice>
 	  <choice></choice>
 	</path>
 	<path chance="2-6">
 	  <pathtitle>The Chirurgeon</pathtitle>
-	  <choice>✱luck.nabail_1</choice>
-	  <choice>✱natural_history_2</choice>
-	  <choice>✱barber_2 or ✱physician_2</choice>
+	  <choice><abilityref id="nabail" rank="1"/></choice>
+	  <choice><abilityref id="natural_history" rank="2"/></choice>
+	  <choice><abilityref id="barber" rank="2"/> or <abilityref id="physician" rank="2"/></choice>
 	  <choice></choice>
 	</path>
 	<path chance="7-10">
 	  <pathtitle>The Blaylock Valve</pathtitle>
-	  <choice>✱wyrd_rat_1</choice>
-	  <choice>One of ✱physics_2 or ✱mathematics_2 or ✱artillery_2</choice>
+	  <choice><abilityref id="wyrd_rat" rank="1"/></choice>
+	  <choice>One of <abilityref id="physics" rank="2"/> or <abilityref id="mathematics" rank="2"/> or <abilityref id="artillery" rank="2"/></choice>
 	  <choice></choice>
 	</path>
 	<path chance="11">
 	  <pathtitle>The Polymath</pathtitle>
-	  <choice>✱wyrd_hand_1</choice>
-	  <choice>✱alchemy_1</choice>
-	  <choice>One of ✱physics_2 or ✱mathematics_2</choice>
-	  <choice>One of ✱survivalism.tundra, ✱survivalism.jungles, or ✱survivalism.marine</choice>
-	  <choice>One of ✱lagashi_2 or ✱aquilonian_2</choice>
+	  <choice><abilityref id="wyrd_hand" rank="1"/></choice>
+	  <choice><abilityref id="alchemy" rank="1"/></choice>
+	  <choice>One of <abilityref id="physics" rank="2"/> or <abilityref id="mathematics" rank="2"/></choice>
+	  <choice>One of ✱tundra, ✱jungles, or ✱marine</choice>
+	  <choice>One of <abilityref id="lagashi" rank="2"/> or <abilityref id="aquilonian" rank="2"/></choice>
 	</path>
 	<path chance="12">
 	  <pathtitle>Choose one of the above.</pathtitle>
@@ -251,31 +307,31 @@
 	</branchdescription>
 	<path chance="1-3">
 	  <pathtitle>The Way of the Shadow</pathtitle>
-	  <choice>One of ✱cloak_fighting_2 or ✱stealth_1</choice>
-	  <choice>One of ✱brawl_2 or ✱brawl_2</choice>
-	  <choice>One of ✱perception.listen or </choice>
-	  <choice>One of ✱endurance.swim or ✱surefeet</choice>
+	  <choice>One of <abilityref id="cloak_fighting" rank="2"/> or <abilityref id="stealth" rank="1"/></choice>
+	  <choice>One of <abilityref id="brawl" rank="2"/> or <abilityref id="brawl" rank="2"/></choice>
+	  <choice>One of ✱listen or </choice>
+	  <choice>One of ✱swim or ✱surefeet</choice>
 	</path>
 	<path chance="2-6">
 	  <pathtitle>The Spectre</pathtitle>
-	  <choice>One of ✱pick_locks_2 or ✱stealth_2</choice>
-	  <choice>One of ✱cryptography_2 or ✱climb_2</choice>
-	  <choice>One of ✱brawl_2 or ✱strength.throw</choice>
-	  <choice>One of ✱endurance.swim or ✱surefeet</choice>
+	  <choice>One of <abilityref id="pick_locks" rank="2"/> or <abilityref id="stealth" rank="2"/></choice>
+	  <choice>One of <abilityref id="cryptography" rank="2"/> or <abilityref id="climb" rank="2"/></choice>
+	  <choice>One of <abilityref id="brawl" rank="2"/> or ✱throw</choice>
+	  <choice>One of ✱swim or ✱surefeet</choice>
 	</path>
 	<path chance="7-10">
 	  <pathtitle>The Crow</pathtitle>
-	  <choice>One of ✱pick_locks_2 or ✱stealth_2</choice>
-	  <choice>One of ✱sleight_of_hand_1 or ✱search_2</choice>
-	  <choice>One of ✱dagger_strike_2 or ✱dagger_throw_1</choice>
-	  <choice>One of ✱cryptography_2 or ✱climb_1</choice>
+	  <choice>One of <abilityref id="pick_locks" rank="2"/> or <abilityref id="stealth" rank="2"/></choice>
+	  <choice>One of <abilityref id="sleight_of_hand" rank="1"/> or <abilityref id="search" rank="2"/></choice>
+	  <choice>One of <abilityref id="dagger_strike" rank="2"/> or <abilityref id="dagger_throw" rank="1"/></choice>
+	  <choice>One of <abilityref id="cryptography" rank="2"/> or <abilityref id="climb" rank="1"/></choice>
 	</path>
 	<path chance="11">
 	  <pathtitle>Militia</pathtitle>
-	  <choice>✱sword_strike_2</choice>
-	  <choice>Two of ✱polearm_strike_2, ✱block_1 and ✱dagger_strike_2</choice>
-	  <choice>One of ✱brawl_2 or ✱brawl_2</choice>
-	  <choice>One of ✱endurance.swim or ✱surefeet</choice>
+	  <choice><abilityref id="sword_strike" rank="2"/></choice>
+	  <choice>Two of <abilityref id="polearm_strike" rank="2"/>, <abilityref id="block" rank="1"/> and <abilityref id="dagger_strike" rank="2"/></choice>
+	  <choice>One of <abilityref id="brawl" rank="2"/> or <abilityref id="brawl" rank="2"/></choice>
+	  <choice>One of ✱swim or ✱surefeet</choice>
 	  <choice></choice>
 	</path>
 	<path chance="12">
@@ -303,7 +359,7 @@
 	</path>
 	<path chance="6-7">
 	  <pathtitle></pathtitle>
-	  <choice>Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>, Paper and ink</choice>
+	  <choice>Rope <m20/>, Paper and ink</choice>
 	</path>
 	<path chance="8-9">
 	  <pathtitle></pathtitle>

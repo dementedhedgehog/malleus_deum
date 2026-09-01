@@ -6,27 +6,226 @@ We use this to verify our xml.
 
 
 Naming convention.. (we don't comply yet)
-   Groups are always called somethingGroup
-   Types are called somethingType or somethingEnum
+   - Groups should always be named somethingGroup
+   - Types are called somethingType or somethingEnum
+   - xsd 'fixed' attributes are used quite a bit to encode constant human
+     readable values for various types etc to ameliorate limitations with 
+     what xsd can specify.
 
+
+Token Types:
+   * alias - replace this element with a different element before formatting
+   * keyword - a text constant bold formated 
+   * text-constant - a text constant formated as normal text
+   * ignore-text - tells the doc.format *not* to parse node.text from this
+   element.  Instead let the underlying formatter worry about formatting this
+   element.  The parser will still parse children
+
+
+ WARNING:
+   Because we encode information about how elements should be parsed in this
+   xsd it's possible to change the format of the docs generated if you fiddle
+   with this xml, the "type" field in particular.
+     
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">    
-  <xs:complexType name="emptyType">
-  </xs:complexType>
 
-  <xs:simpleType name="idType">
-    <xs:restriction base="xs:NCName"/>
-  </xs:simpleType>
+  <!--
+      Used for elements that should never have content but don't have any
+      more specialized semantics, e.g. <hline/>.
+  -->
+  <xs:complexType name="emptyType"/>
 
-  <xs:simpleType name="abilityidType">
-    <xs:restriction base="xs:NCName"/>
-  </xs:simpleType>
+  <!--
+      Elements that should never have content, that drop in character symbols,
+      like arrows, ampersand, percent etc. Things that the various processing
+      steps won't deal with cleanly (e.g. special chars for latex and xml).
+  -->
+  <xs:complexType name="symbolType"/>
 
+  <!--
+      Float strictly > 0.0 .. for metrics
+  -->
   <xs:simpleType name="positiveFloat">
     <xs:restriction base="xs:float">
       <xs:minExclusive value="0"/>
     </xs:restriction>
   </xs:simpleType>
+
+
+  <!--
+      Doc.format() should stop processing at this node.  Don't bother handling
+      it any further, leave it up to the underlying formatters to deal with.
+  -->      
+  <xs:complexType name="atomType">
+    <xs:attribute name="token_type" type="xs:string" fixed="atom"/>
+  </xs:complexType>
+  
+
+  <!--
+      A simple text node that we don't want the formatter to worry about.
+
+      Doc.format() should stop processing at this node.  Don't bother handling
+      it any further, leave it up to the underlying formatters to deal with.
+  -->      
+  <xs:complexType name="leafType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <!--
+      XSD doesn't have constants  and we kind of want them so we can constrain
+      acceptable values in our "db" to members of groups.  The difference
+      between keywords and string constants is that the formatter is told to
+      format the keywords as keywords, and to format string constants as normal
+      text.
+
+      E.g. define an element as follows in this XSD file.
+      <xs:element name="default-lore-sv-easy" type="aliasType" fixed="sv11"/>
+      <xs:element
+	  name="physical-defence"
+	  type="ctringConstantType"
+	  fixed="Physical Defence"/>
+      
+      then in the document this:
+      <physical-defence/> 
+
+      will be replaced by this:
+      "Physical Defence"
+      before any further processing. So the substitution happens before any
+      formatting.
+
+  -->
+  <xs:complexType name="stringConstantType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute
+	    name="token_type"
+	    type="xs:string"
+	    fixed="string-constant"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+  <!--
+      Elements that are keywords
+
+      Anything defined like this is EXPECTED to have a 'fixed'
+      attribute set in this xsd.  (The fixed attribute in an
+      xsd is a mandatory default text body that the xml will insert as
+      the 'text' value).  So put a HUMAN READABLE STRING in the
+      fixed value for keywords.
+ 
+      For example if we define
+      <xs:element
+          name="reaction-interrupt"
+          type="keywordType"
+	  fixed="Reaction Interrupt"/> 
+
+      then these values look like, e.g. <reaction-interrupt/> in the
+      xml and their element.tag is "reaction-interrupt" but their
+      element.text is "Reaction Interrupt".
+  -->
+  <xs:complexType name="keywordType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="token_type" type="xs:string" fixed="keyword"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+
+  <!--
+      XSD doesn't have aliases and we kind of want them to avoid duplicating
+      data all over the place, we'd rather have aliases for certain default
+      values. So any alias element gets replaced by a node named after it's text
+      when parsing.  Specify the text in a fixed field.
+
+      E.g. define an element as follows in this XSD file.
+      <xs:element name="default-lore-sv-easy" type="aliasType" fixed="sv11"/>
+
+      then in the document this:
+      <default-lore-sv-easy/> 
+
+      will be replaced by this:
+      <sv11/> 
+      before any further processing. So the substitution happens before any
+      formatting.
+
+  -->
+  <xs:complexType name="aliasType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="token_type" type="xs:string" fixed="alias"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+  <!--
+      This is the type for the type of ornament called a page divider or sometimes
+      dotted line.  They're little lines used to separate blocks of text.  They
+      look a little bit like this in documents (for example):
+
+                  -»»————-(★)-————««-
+
+  -->
+  <xs:complexType name="dividerType">
+    <xs:attribute name="type" default="standard">
+      <xs:simpleType>
+	<xs:restriction base="xs:string">
+          <xs:enumeration value="standard"/>
+          <xs:enumeration value="fancy"/>
+	</xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>    
+  </xs:complexType>
+
+  <!--
+      Newline with customizable skip
+  -->
+  <xs:complexType name="brType">
+    <xs:attribute name="length" type ="xs:float"/>
+  </xs:complexType>
+  
+
+  <!-- IDs -->
+  <xs:simpleType name="idType">
+    <xs:restriction base="xs:NCName"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="abilityidType">
+    <xs:restriction base="xs:NCName"/> 
+  </xs:simpleType>
+
+  <xs:complexType name="hlinkType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="url" type="xs:string" use="required"/>
+	<xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>	
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+  <xs:complexType name="abilityrefType">
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="rank" type="xs:int" use="optional"/>
+
+    <!--
+	Specializations are a list of comma separated values each value is a
+	specialization name followed by an optional :rank (where each rank of
+	specialization counts as a +3 to the underlying value).
+    -->
+    <xs:attribute name="specializations" type="xs:string"/>
+    
+    <!-- for paramaterized ability refs attacks (for antagonists) -->
+    <xs:attribute name="dmg" type="xs:int" use="optional"/>
+  </xs:complexType>
 
   <!-- skill graphs -->
   <xs:complexType name="pointType">
@@ -41,11 +240,30 @@ Naming convention.. (we don't comply yet)
   </xs:complexType>
   <!-- end skill graphs -->
 
-  <xs:complexType name="measurementType">
-    <xs:all>
-      <xs:element name="imperial" type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="metric" type="xs:string" minOccurs="1" maxOccurs="1"/>
-    </xs:all>
+  <!--
+      Long form measurement type
+      Based on the settings in config substitutes either imperial or metric text
+
+      FIXME: use lengthMeasurementType when it makes sense!! (For readability/compactness)
+      FIXME: use weights with weightMeasurementType when it makes sense!! (currently undefined)
+  -->
+  <!-- <xs:complexType name="measurementType" > -->
+  <!--   <xs:all> -->
+  <!--     <xs:element name="imperial" type="xs:string" minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element name="metric" type="xs:string" minOccurs="1" maxOccurs="1"/> -->
+  <!--   </xs:all>  -->
+  <!--   <xs:attribute name="token_type" type="xs:string" fixed="atom"/> -->
+  <!-- </xs:complexType> -->
+
+  <xs:complexType name="measurementType" >
+    <xs:complexContent>
+      <xs:extension base="atomType">
+	<xs:all>
+	  <xs:element name="imperial" type="xs:string" minOccurs="1" maxOccurs="1"/>
+	  <xs:element name="metric" type="xs:string" minOccurs="1" maxOccurs="1"/>
+	</xs:all> 
+      </xs:extension>
+    </xs:complexContent>    
   </xs:complexType>
 
   <xs:simpleType name="nullOrIntType">
@@ -81,6 +299,20 @@ Naming convention.. (we don't comply yet)
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="titleType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="weaponKeywordEnum"/>
+      <xs:group ref="symbolsEnum"/>      
+      <xs:element name="label" type="leafType"/>
+      <xs:element name="label" type="leafType"/>
+      <xs:element name="bold" type="leafType"/>
+      <xs:element name="indexentry" type="indexentryType"/>
+      <xs:element name="smaller" type="textType"/>
+      <xs:element name="hfill" type="textType"/>
+    </xs:choice>
+    <!-- <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/> -->
+  </xs:complexType>  
+
 
   <xs:complexType name="attributionType">
   </xs:complexType>
@@ -88,14 +320,104 @@ Naming convention.. (we don't comply yet)
   <xs:complexType name="inspirationType">
   </xs:complexType>
 
-  <xs:complexType name="abilityrankidType">
-    <xs:sequence>
-      <xs:element name="abilityid" type="xs:string"/>
-      <xs:element name="rank" type="xs:nonNegativeInteger"/>
-    </xs:sequence>
+  <!-- Measurements Enum (metric it's up to -->
+  <xs:group name="lengthMeasurementGroup">
+    <xs:choice>
+      <xs:element name="m05">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="half a meter"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="2 foot"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m2">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="2 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="5 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m3">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="3 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="10 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m6">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="6 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="20 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m9">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="9 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="30 feet"/>
+	</xs:complexType>
+      </xs:element>
+      
+      <xs:element name="m10">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="10 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="30 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m12">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="12 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="30 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m20">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="20 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="60 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m30">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="30 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="100 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m90">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="90 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="270 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="m180">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="180 meters"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="540 feet"/>
+	</xs:complexType>
+      </xs:element>
+
+      <xs:element name="km3">
+	<xs:complexType>
+	  <xs:attribute name="metric" type="xs:string" fixed="3 kilometers"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="2 miles"/>
+	</xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+
+
+  <xs:complexType name="lengthMeasurementType">
+    <xs:choice>
+      <xs:group ref="lengthMeasurementGroup"/>
+    </xs:choice>
   </xs:complexType>
+  
 
-
+  
   <!-- Aspect Keywords Enum -->
   <xs:group name="aspectKeywordGroup">
     <xs:choice>
@@ -105,110 +427,123 @@ Naming convention.. (we don't comply yet)
   </xs:group>
   
 
-  <!-- Ability Family Enum -->
+  <!--
+      Ability Family Enum
+
+      The family is basically for aggregating groups of abilities into chapters
+      or sections in the phb.  E.g. all the magic abilites go in one place.
+
+  -->
   <xs:complexType name="abilityFamilyKeywordEnum">
     <xs:choice>
       <!-- general is for misc noncombat ability groups -->
-      <xs:element name="general" type="symbolType"/>
-      <xs:element name="lore" type="symbolType"/>
-      <xs:element name="martial" type="symbolType"/>
-      <xs:element name="magic" type="symbolType"/>
-      <xs:element name="gm" type="symbolType"/>
-      <xs:element name="primary" type="symbolType"/>
-      <xs:element name="wyrdscience" type="symbolType"/>
+      <xs:element name="antag" type="keywordType" fixed="Antagonist"/>
+      <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
+      <xs:element name="conditions" type="keywordType" fixed="Conditions"/>
+      <xs:element name="general" type="keywordType" fixed="General"/>
+      <xs:element name="lore" type="keywordType" fixed="Lore"/>
+      <xs:element name="martial" type="keywordType" fixed="Martial"/>
+      <xs:element name="magic" type="keywordType" fixed="Magic"/>
+      <xs:element name="hazards" type="keywordType" fixed="Hazards"/>
+      <xs:element name="primary" type="keywordType" fixed="Primary"/>
+      <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
     </xs:choice>
   </xs:complexType>
   
-
-  <!-- Ability Group Enum -->
-  <xs:group name="abilityGroupKeywordEnum">
-    <xs:choice>
-      <xs:group ref="weaponClassKeywordEnum"/>
-      
-      <xs:element name="abjuration" type="emptyType"/>
-      <xs:element name="arcana" type="emptyType"/>
-      <xs:element name="arts" type="emptyType"/>
-      <xs:element name="conjuration" type="emptyType"/>
-      <xs:element name="craft" type="emptyType"/>
-      <xs:element name="martial" type="emptyType"/>
-      <xs:element name="gun" type="emptyType"/>
-      <xs:element name="elemental" type="emptyType"/>
-      <xs:element name="enchantment" type="emptyType"/>
-      <xs:element name="evocation" type="emptyType"/>
-      <xs:element name="hazard" type="emptyType"/>
-      <xs:element name="language" type="emptyType"/>
-      <xs:element name="luck" type="emptyType"/>
-      <xs:element name="lore" type="emptyType"/>
-      <xs:element name="monster" type="emptyType"/>
-      <xs:element name="magic" type="emptyType"/>
-      <xs:element name="necromancy" type="emptyType"/>
-      <xs:element name="npc" type="emptyType"/>
-      <xs:element name="theurgy" type="emptyType"/>
-      <xs:element name="physical" type="emptyType"/>
-      <xs:element name="primary" type="emptyType"/>
-      <xs:element name="rune" type="emptyType"/>
-      <xs:element name="skulduggery" type="emptyType"/>
-      <xs:element name="social" type="emptyType"/>
-      <xs:element name="special" type="emptyType"/>
-      <xs:element name="transport" type="emptyType"/>
-      <xs:element name="wilderness" type="emptyType"/>
-      <xs:element name="wild-magic" type="emptyType"/>
-      <xs:element name="wyrdscience" type="emptyType"/>
-
-      <!-- <xs:element name="versatile" type="emptyType"/> <!-\- spells which are open to interpretation -\-> -->
-      <!-- <xs:element name="maintain" type="emptyType"/> <!-\- requires the minor action to keep going each round -\-> -->
-
-      <!-- patrons -->
-      <xs:element name="klazyabolous" type="emptyType"/>
-
-      <!-- <xs:element name="weapon" type="emptyType"/> -->
-      <!-- <xs:element name="common" type="emptyType"/> -->
-      <!-- <xs:element name="primary" type="emptyType"/> -->
-      <!-- <xs:element name="handtohand" type="emptyType"/> -->
-      <!-- <xs:element name="ritual" type="emptyType"/> -->
-    </xs:choice>
-  </xs:group>
-
-
-
-  <!-- Ability Special Group Enum -->
-  <xs:group name="abilitySpecialKeywordEnum">
-    <xs:choice>
-      <!-- <xs:element name="versatile" type="emptyType"/> <!-\- spells which are open to interpretation -\-> -->
-      <!-- <xs:element name="maintain" type="emptyType"/> <!-\- requires the minor action to keep going each round -\-> -->
-
-
-      <xs:element name="fire" type="emptyType"/>
-      <!-- <xs:element name="weapon" type="emptyType"/> -->
-      <!-- <xs:element name="common" type="emptyType"/> -->
-      <!-- <xs:element name="primary" type="emptyType"/> -->
-      <!-- <xs:element name="handtohand" type="emptyType"/> -->
-      <!-- <xs:element name="ritual" type="emptyType"/> -->
-    </xs:choice>
-  </xs:group>
-
-
-  
-  <!-- Ability Specific Keywords Enum -->
+  <!-- Ability Group Keywords Enum -->
   <xs:complexType name="abilityGroupKeywordType">
     <xs:choice>
-      <xs:group ref="abilityGroupKeywordEnum"/>
-    </xs:choice>
+      <xs:element name="archery" type="keywordType" fixed="Archery"/>
+      <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
+      <xs:element name="abjuration" type="keywordType" fixed="Abjuration"/>
+      <xs:element name="arcana" type="keywordType" fixed="Arcana"/>
+      <xs:element name="arts" type="keywordType" fixed="Arts"/>
+      <xs:element name="axe" type="keywordType" fixed="Axe"/>
+      <xs:element name="conditions" type="keywordType" fixed="Conditions"/>
+      <xs:element name="conjuration" type="keywordType" fixed="Conjuration"/>
+      <xs:element name="craft" type="keywordType" fixed="Craft"/>
+      <xs:element name="crossbow" type="keywordType" fixed="Crossbow"/>
+      <xs:element name="dagger" type="keywordType" fixed="Dagger"/>
+      <xs:element name="combat" type="keywordType" fixed="Combat"/>
+      <xs:element name="gun" type="keywordType" fixed="Gun"/>
+      <xs:element name="elemental" type="keywordType" fixed="Elemental"/>
+      <xs:element name="enchantment" type="keywordType" fixed="Enchantment"/>
+      <xs:element name="evocation" type="keywordType" fixed="Evocation"/>
+      <xs:element name="hammer" type="keywordType" fixed="Hammer"/>
+      <xs:element name="hazards" type="keywordType" fixed="Hazards"/>
+      <xs:element name="language" type="keywordType" fixed="Language"/>
+      <xs:element name="luck" type="keywordType" fixed="Luck"/>
+      <xs:element name="lore" type="keywordType" fixed="Lore"/>
+      <xs:element name="mace" type="keywordType" fixed="Mace"/>
+      <xs:element name="magic" type="keywordType" fixed="Magic"/>
+      <xs:element name="monster" type="keywordType" fixed="Monster"/>
+      <xs:element name="necromancy" type="keywordType" fixed="Necromancy"/>
+      <xs:element name="theurgy" type="keywordType" fixed="Theurgy"/>
+      <xs:element name="physical" type="keywordType" fixed="Physical"/>
+      <xs:element name="polearm" type="keywordType" fixed="Polearm"/>
+      <xs:element name="primary" type="keywordType" fixed="Primary"/>
+      <xs:element name="rune" type="keywordType" fixed="Rune"/>
+      <xs:element name="shield" type="keywordType" fixed="Shield"/>
+      <xs:element name="skulduggery" type="keywordType" fixed="Skullduggery"/>
+      <xs:element name="social" type="keywordType" fixed="Social"/>
+      <xs:element name="special" type="keywordType" fixed="Special"/>
+      <xs:element name="sword" type="keywordType" fixed="Sword"/>
+      <xs:element name="transport" type="keywordType" fixed="Transport"/>
+      <xs:element name="wilderness" type="keywordType" fixed="Wilderness"/>
+      <xs:element name="wild-magic" type="keywordType" fixed="Wild-Magic"/>
+      <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
+      <!-- patrons -->
+      <xs:element name="klazyabolous" type="keywordType" fixed="Klazyabolous"/>
+      <!-- replace with antagonist -->
+      <xs:element name="npc" type="keywordType" fixed="NPC"/>      
+      <!-- <xs:element name="antag" type="keywordType" fixed="Antag"/> -->
+    </xs:choice>    
   </xs:complexType>
+  
+  
+
+
+  <!-- ability Special Group Enum -->
+  <xs:group name="abilitySpecialKeywordEnum">
+    <xs:choice>
+      <!-- <xs:element name="versatile" type="keywordType"/> <!-\- spells which are open to interpretation -\-> -->
+      <!-- <xs:element name="maintain" type="keywordType"/> <!-\- requires the minor action to keep going each round -\-> -->
+
+      <xs:element name="manipulate" type="keywordType" fixed="Manipulate"/>
+      <xs:element name="fire" type="keywordType" fixed="Fire"/>
+      <!-- <xs:element name="weapon" type="keywordType"/> -->
+      <!-- <xs:element name="common" type="keywordType"/> -->
+      <!-- <xs:element name="primary" type="keywordType"/> -->
+      <!-- <xs:element name="handtohand" type="keywordType"/> -->
+      <!-- <xs:element name="ritual" type="keywordType"/> -->
+    </xs:choice>
+  </xs:group>
 
 
   <!-- Weapon/Spell Range Enum -->
   <xs:complexType name="rangeEnum" mixed="false">
     <xs:choice minOccurs="0" maxOccurs="unbounded" >
-      <xs:element name="melee" type="emptyType"/>
-      <xs:element name="na" type="emptyType"/> <!-- not applicable -->
-      <xs:element name="ranged-short" type="emptyType"/>
-      <xs:element name="ranged-medium" type="emptyType"/>
-      <xs:element name="ranged-long" type="emptyType"/>
-      <xs:element name="ranged-very-long" type="emptyType"/>
-      <xs:element name="ranged-extremely-long" type="emptyType"/>
-      <xs:element name="self" type="emptyType"/>
-      <xs:element name="touch" type="emptyType"/>
+      <xs:element name="na" type="keywordType" fixed="N/A"/>
+      <xs:element name="reach" type="keywordType" fixed="Reach"/>
+      <xs:element name="ranged-very-short" type="keywordType" fixed="Very Short"/>
+      <xs:element name="ranged-short" type="keywordType" fixed="Short"/>
+      <xs:element name="ranged-medium" type="keywordType" fixed="Medium"/>
+      <!-- 100-200 yards/meters - a man can yell 100-180m -->
+      <xs:element name="ranged-long" type="keywordType" fixed="Long"/>
+      <!-- 200-300 yards/meters effective max range of a long bow-->
+      <xs:element name="ranged-very-long" type="keywordType" fixed="Very Long"/>
+      <!-- -->
+      <xs:element name="ranged-extremely-long" type="keywordType" fixed="Extremely Long"/>
+      <xs:element name="self" type="keywordType" fixed="Self"/>
+      <xs:element name="touch" type="keywordType" fixed="Touch"/>
+
+      <!--
+	  Actions performed with this ap cost are too varied for us to provide a reasonable
+	  estimate.  We leave it up to the GM to make a call since he will have more context.
+      -->
+      <xs:element name="gm-fiat" type="keywordType" fixed="GM Fiat"/>
+      <xs:element name="default-language-range" type="keywordType" fixed="Long Range"/>
+      <xs:element name="default-crossbow-range" type="keywordType" fixed="Very Long Range"/>
     </xs:choice>
   </xs:complexType>
 
@@ -216,79 +551,86 @@ Naming convention.. (we don't comply yet)
   <!-- Weapon Damage Types -->
   <xs:group name="weaponDamageKeywordEnum">
     <xs:choice>
-      <xs:element name="slashing" type="emptyType"/>
-      <xs:element name="piercing" type="emptyType"/>
-      <xs:element name="crushing" type="emptyType"/>
+      <xs:element name="slashing" type="keywordType" fixed="Slashing"/>
+      <xs:element name="piercing" type="keywordType" fixed="Piercing"/>
+      <xs:element name="crushing" type="keywordType" fixed="Crushing"/>
     </xs:choice>
   </xs:group>
 
   <!-- Weapon Classes (there's one section of abilities for each of these classes of weapons )-->
-  <xs:group name="weaponClassKeywordEnum">
+  <xs:group name="weaponKeywordEnum">
     <xs:choice>
-      <xs:element name="archery" type="emptyType"/>
-      <xs:element name="axe" type="emptyType"/>
-      <xs:element name="bow" type="emptyType"/>
-      <xs:element name="crossbow" type="emptyType"/>
-      <xs:element name="dagger" type="emptyType"/>
-      <xs:element name="hammer" type="emptyType"/>
-      <xs:element name="mace" type="emptyType"/>
-      <xs:element name="polearm" type="emptyType"/>
-      <xs:element name="shield" type="emptyType"/>
-      <xs:element name="sword" type="emptyType"/>
+      <xs:element name="archery" type="keywordType" fixed="Archery"/>
+      <xs:element name="axe" type="keywordType" fixed="Axe"/>
+      <xs:element name="bow" type="keywordType" fixed="Bow"/>
+      <xs:element name="crossbow" type="keywordType" fixed="Crossbow"/>
+      <xs:element name="dagger" type="keywordType" fixed="Dagger"/>
+      <xs:element name="gun" type="keywordType" fixed="Gun"/>
+      <xs:element name="hammer" type="keywordType" fixed="Hammer"/>
+      <xs:element name="mace" type="keywordType" fixed="Mace/Club"/>
+      <xs:element name="polearm" type="keywordType" fixed="Polearm/Spear/Staff"/>
+      <xs:element name="shield" type="keywordType" fixed="Shield"/>
+      <xs:element name="sword" type="keywordType" fixed="Sword"/>
     </xs:choice>
   </xs:group>
 
   <!-- Additional Weapon Keywords for providing a few extra qualifiers for weapons -->
   <xs:group name="additionalWeaponKeywordEnum">
     <xs:choice>
-      <xs:element name="heavy-crossbow" type="emptyType"/>
-      <xs:element name="spear" type="emptyType"/>
-      <xs:element name="staff" type="emptyType"/>
-      <xs:element name="long-bow" type="emptyType"/>
+      <xs:element name="heavy-crossbow" type="keywordType" fixed=""/>
+      <xs:element name="spear" type="keywordType" fixed=""/>
+      <xs:element name="staff" type="keywordType" fixed=""/>
+      <xs:element name="long-bow" type="keywordType" fixed=""/>
     </xs:choice>
   </xs:group>
-
-
 
   <!-- Weapon Damage Types -->
   <xs:group name="weaponModifiersKeywordEnum">
     <xs:choice>
-      <xs:element name="asanguineous" type="emptyType"/>
-      <xs:element name="as-mace" type="emptyType"/>
-      <xs:element name="as-spear" type="emptyType"/>
+      <xs:element name="asanguineous" type="keywordType" fixed="Asanguinous"/>
+      <xs:element name="as-mace" type="keywordType" fixed="As-Mace"/>
+      <xs:element name="as-spear" type="keywordType" fixed="As-Spear"/>
 
       <!--
 	  Blackpowder weapons are effected by water.
 	  You can repair a gun in the rain (if you must).
 	  But you may well have trouble firing it.
       -->
-      <xs:element name="black-powder" type="emptyType"/>
-      <xs:element name="brace" type="emptyType"/>
-      <xs:element name="disarm" type="emptyType"/>
-      <xs:element name="fast" type="emptyType"/>
-      <xs:element name="heavy" type="emptyType"/>
-      <xs:element name="improvised" type="emptyType"/>
-      <xs:element name="iron" type="emptyType"/>
-      <xs:element name="lethal" type="emptyType"/>
-      <xs:element name="melee" type="emptyType"/>
-      <xs:element name="missile" type="emptyType"/>
-      <xs:element name="nonlethal" type="emptyType"/>
-      <xs:element name="parry" type="emptyType"/>
-      <xs:element name="one-or-two-handed" type="emptyType"/>
-      <xs:element name="reach" type="emptyType"/>
-      <xs:element name="grounding" type="emptyType"/>
-      <xs:element name="unblockable" type="emptyType"/>
-      <xs:element name="undodgeable" type="emptyType"/>
-      <xs:element name="unparryable" type="emptyType"/>  <!-- fixme rename no-parry?? -->
-      <xs:element name="slow" type="emptyType"/>
-      <xs:element name="slow-reload" type="emptyType"/>
-      <xs:element name="standing" type="emptyType"/>
-      <xs:element name="two-handed" type="emptyType"/>
+      <xs:element name="black-powder" type="keywordType" fixed="Black-Powder"/>
+      <xs:element name="brace" type="keywordType" fixed="Brace"/> <!-- FIXME remove? -->
+      <xs:element name="disarm" type="keywordType" fixed="Disarm"/> <!-- FIXME remove? -->
+      <xs:element name="fast" type="keywordType" fixed="Fast"/> <!-- FIXME remove? -->
+      <xs:element name="heavy" type="keywordType" fixed="Heavy"/>
+      <xs:element name="improvised" type="keywordType" fixed="Improvised"/>
+      <xs:element name="iron" type="keywordType" fixed="Iron"/>
+      <xs:element name="lethal" type="keywordType" fixed="Lethal"/> <!-- FIXME remove? -->
+      <xs:element name="melee" type="keywordType" fixed="Melee"/>
+      <xs:element name="missile" type="keywordType" fixed="Missile"/>
+      <xs:element name="nonlethal" type="keywordType" fixed="Non-Lethal"/>
+      <xs:element name="parry" type="keywordType" fixed="Parry"/>
+      <xs:element name="one-or-two-handed" type="keywordType" fixed="One-or-Two-Handed"/>
+      <xs:element name="reach" type="keywordType" fixed="Reach"/> <!-- FIXME remove? -->
+      <xs:element name="grounding" type="keywordType" fixed="Grounding"/>
+      <xs:element name="unblockable" type="keywordType" fixed="Unblockable"/>
+      <xs:element name="undodgeable" type="keywordType" fixed="Undodgeable"/>
+      <xs:element name="unparryable" type="keywordType" fixed="Unparryable"/>
+      <xs:element name="noarmour" type="keywordType" fixed="No-Armour-Save"/>
+      <xs:element name="slow" type="keywordType" fixed="Slow"/>
+      <xs:element name="slow-reload" type="keywordType" fixed="Slow-Reload"/>
+      <xs:element name="standing" type="keywordType" fixed="Standing"/>
+      <xs:element name="two-handed" type="keywordType" fixed="Two-Handed"/>
 
       <!-- ability groups -->
-      <!-- <xs:element name="accurate" type="emptyType"/> <!-\- Std+3xRank -\-> -->
-      <!-- <xs:element name="inaccurate" type="emptyType"/> <!-\- Std -\-> -->
-      <!-- <xs:element name="weapon" type="emptyType"/> -->
+      <!-- <xs:element name="accurate" type="keywordType"/> <!-\- Std+3xRank -\-> -->
+      <!-- <xs:element name="inaccurate" type="keywordType"/> <!-\- Std -\-> -->
+      <!-- <xs:element name="weapon" type="keywordType"/> -->
+      <!-- <xs:element name="versatile" type="keywordType"/> <!-\- spells which are open to interpretation -\-> -->
+      <!-- <xs:element name="maintain" type="keywordType"/> <!-\- requires the minor action to keep going each round -\-> -->
+      <!-- <xs:element name="weapon" type="keywordType"/> -->
+      <!-- <xs:element name="common" type="keywordType"/> -->
+      <!-- <xs:element name="primary" type="keywordType"/> -->
+      <!-- <xs:element name="handtohand" type="keywordType"/> -->
+      <!-- <xs:element name="ritual" type="keywordType"/> -->      
     </xs:choice>
   </xs:group>
 
@@ -297,17 +639,17 @@ Naming convention.. (we don't comply yet)
   <!-- an enum -->
   <xs:group name="monsterCombatClassKeywordEnum">
     <xs:choice>
-      <xs:element name="minion" type="symbolType"/>
-      <xs:element name="grunt" type="symbolType"/>
-      <xs:element name="brute" type="symbolType"/>
-      <xs:element name="elite" type="symbolType"/>
-      <xs:element name="soldier" type="symbolType"/>
-      <xs:element name="artillery" type="symbolType"/>
-      <xs:element name="lurker" type="symbolType"/>
-      <xs:element name="skirmisher" type="symbolType"/>
-      <xs:element name="support" type="symbolType"/>
-      <xs:element name="leader" type="symbolType"/>
-      <xs:element name="solo" type="symbolType"/>
+      <xs:element name="minion" type="keywordType" fixed=""/>
+      <xs:element name="grunt" type="keywordType" fixed=""/>
+      <xs:element name="brute" type="keywordType" fixed=""/>
+      <xs:element name="elite" type="keywordType" fixed=""/>
+      <xs:element name="soldier" type="keywordType" fixed=""/>
+      <xs:element name="artillery" type="keywordType" fixed=""/>
+      <xs:element name="lurker" type="keywordType" fixed=""/>
+      <xs:element name="skirmisher" type="keywordType" fixed=""/>
+      <xs:element name="support" type="keywordType" fixed=""/>
+      <xs:element name="leader" type="keywordType" fixed=""/>
+      <xs:element name="solo" type="keywordType" fixed=""/>
     </xs:choice>
   </xs:group>
 
@@ -327,13 +669,13 @@ Naming convention.. (we don't comply yet)
   <xs:group name="itemSizeKeywordEnum">
     <xs:choice>
       <!-- sizes -->
-      <xs:element name="tiny" type="emptyType"/>
-      <xs:element name="verysmall" type="emptyType"/>
-      <xs:element name="small" type="emptyType"/>
-      <xs:element name="medium" type="emptyType"/>
-      <xs:element name="large" type="emptyType"/>
-      <xs:element name="verylarge" type="emptyType"/>
-      <xs:element name="huge" type="emptyType"/>
+      <xs:element name="tiny" type="keywordType" fixed=""/>
+      <xs:element name="verysmall" type="keywordType" fixed=""/>
+      <xs:element name="small" type="keywordType" fixed=""/>
+      <xs:element name="medium" type="keywordType" fixed=""/>
+      <xs:element name="large" type="keywordType" fixed=""/>
+      <xs:element name="verylarge" type="keywordType" fixed=""/>
+      <xs:element name="huge" type="keywordType" fixed=""/>
     </xs:choice>
   </xs:group>
 
@@ -341,11 +683,11 @@ Naming convention.. (we don't comply yet)
   <!--  Creature Size Keywords -->
   <xs:group name="creatureSizeKeywordEnum">
     <xs:choice>
-      <xs:element name="verysmall" type="emptyType"/>
-      <xs:element name="small" type="emptyType"/>
-      <xs:element name="medium" type="emptyType"/>
-      <xs:element name="large" type="emptyType"/>
-      <xs:element name="verylarge" type="emptyType"/>
+      <xs:element name="verysmall" type="keywordType" fixed=""/>
+      <xs:element name="small" type="keywordType" fixed=""/>
+      <xs:element name="medium" type="keywordType" fixed=""/>
+      <xs:element name="large" type="keywordType" fixed=""/>
+      <xs:element name="verylarge" type="keywordType" fixed=""/>
     </xs:choice>
   </xs:group>
 
@@ -353,9 +695,9 @@ Naming convention.. (we don't comply yet)
   <xs:group name="miscCreatureKeywordEnum">
     <xs:choice>
       <!-- archetype -->
-      <xs:element name="humanoid" type="emptyType"/>
-      <xs:element name="magicuser" type="emptyType"/>
-      <xs:element name="short" type="emptyType"/>
+      <xs:element name="humanoid" type="keywordType" fixed=""/>
+      <xs:element name="magicuser" type="keywordType" fixed=""/>
+      <xs:element name="short" type="keywordType" fixed=""/>
     </xs:choice>
   </xs:group>
 
@@ -373,132 +715,191 @@ Naming convention.. (we don't comply yet)
   <xs:complexType name="abilityKeywordsType">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
 
-      <!-- <!-\- weapon damage types -\-> -->
+      <xs:group ref="weaponKeywordEnum"/>
+      <xs:group ref="additionalWeaponKeywordEnum"/>
       <xs:group ref="weaponDamageKeywordEnum"/>
       <xs:group ref="weaponModifiersKeywordEnum"/>
-      <xs:group ref="abilityGroupKeywordEnum"/>
       <xs:group ref="abilitySpecialKeywordEnum"/>
-      <xs:group ref="additionalWeaponKeywordEnum"/>
+
+      <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
+      <xs:element name="abjuration" type="keywordType" fixed="Abjuration"/>
+      <xs:element name="arcana" type="keywordType" fixed="Arcana"/>
+      <xs:element name="arts" type="keywordType" fixed="Arts"/>
+      <xs:element name="conjuration" type="keywordType" fixed="Conjuration"/>
+      <xs:element name="craft" type="keywordType" fixed="Craft"/>
+      <xs:element name="martial" type="keywordType" fixed="Martial"/>
+      <xs:element name="elemental" type="keywordType" fixed="Elemental"/>
+      <xs:element name="enchantment" type="keywordType" fixed="Enchantment"/>
+      <xs:element name="evocation" type="keywordType" fixed="Evocation"/>
+      <xs:element name="hazard" type="keywordType" fixed="Hazard"/>
+      <xs:element name="language" type="keywordType" fixed="Language"/>
+      <xs:element name="luck" type="keywordType" fixed="Luck"/>
+      <xs:element name="lore" type="keywordType" fixed="Lore"/>
+      <xs:element name="monster" type="keywordType" fixed="Monster"/>
+      <xs:element name="magic" type="keywordType" fixed="Magic"/>
+      <xs:element name="necromancy" type="keywordType" fixed="Necromancy"/>
+      <xs:element name="npc" type="keywordType" fixed="NPC"/>
+      <xs:element name="theurgy" type="keywordType" fixed="Theurgy"/>
+      <xs:element name="physical" type="keywordType" fixed="Physical"/>
+      <xs:element name="primary" type="keywordType" fixed="Primary"/>
+      <xs:element name="rune" type="keywordType" fixed="Rune"/>
+      <xs:element name="skulduggery" type="keywordType" fixed="Skullduggery"/>
+      <xs:element name="social" type="keywordType" fixed="Social"/>
+      <xs:element name="special" type="keywordType" fixed="Special"/>
+      <xs:element name="transport" type="keywordType" fixed="Transport"/>
+      <xs:element name="wilderness" type="keywordType" fixed="Wilderness"/>
+      <xs:element name="wild-magic" type="keywordType" fixed="Wild-Magic"/>
+      <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
+      <!-- patrons -->
+      <xs:element name="klazyabolous" type="keywordType" fixed="Klazyabolous"/>
       
-      <!-- Ritual spell -->
-      <xs:element name="ritual" type="emptyType"/>
+      
+      <!--
+	  Ritual spell
+	  Can't be done in combat.. constrains apcost 
+      -->
+      <xs:element name="ritual" type="keywordType" fixed="Ritual"/>
 
-      <!-- This ability is one of the primary attacks for the weapon type (triggers bonus attacks) -->
-      <xs:element name="basic-attack" type="emptyType"/>
 
-      <!-- Saving throws are counter actions are used for player facing NPC checks e.g. saving throws for spells
-	   is a counter action (i.e. "a willpower save"), bending bars is not a counteraction it's a
-	   strength check.  Counterchecks just have a bonus, DC, crit etc are provided by the npc check  -->
-      <!-- FIXME: make saving throw it's own kind of xml object (a subset of check.. but don't use xml inheritance) -->
-      <xs:element name="save" type="emptyType"/>
+
+      <!-- Antagonist ability only -->
+      <!-- <xs:element name="aspect" type="keywordType" fixed="Antagonist"/> -->
+      
+      <xs:element name="deferred-check" type="keywordType" fixed="Deferred Check"/>
 
       <!--
-	  A special subset of all saving throws used to save vs attacks against player characters
-	  (all defence checks are saving throws).  All Defence checks are Saves.  Not all Saves are
-	  Defence checks.
-
-Why do need to have this keyword?
-i) So we don't have to list all the types of save that can be used against an NPC attack.
-ii) So we don't have to list all the types of save that can't be used against an NPC attack.
-
+	  This ability is one of the primary attacks for the weapon type
+	  (triggers bonus attacks).  That means it does the standard outcomes:
+	  righteous-success=2xdmg etc. 
       -->
-      <xs:element name="defend" type="emptyType"/>
+      <xs:element
+	  name="basic-attack"
+	  type="keywordType"
+	  fixed="Basic-Attack"/>
 
       <!--
-	  Any check with the attack keyword is a PC
-	  ability that targets the opponents Defence.
+	  Check made with advantage or disadvantage (on skill)
       -->
-      <xs:element name="attack" type="emptyType"/>
+      <xs:element name="advantage" type="keywordType" fixed="Advantage"/>
+      <xs:element name="disadvantage" type="keywordType"  fixed="Disadvantage"/>
+      
+      <!--
+	  These pair of keywords denote 'normal' (non-magical) attack and
+	  defence checks.  A 'physical-attack' check may usually be countered
+	  with a 'physical-defence' counter check.
 
-      <!-- Different types of AOE -->
-      <xs:element name="aoe-emination" type="emptyType"/>
-      <xs:element name="aoe-cone" type="emptyType"/>
-      <xs:element name="aoe-linear" type="emptyType"/>
+          The keywords unblockable, undodgeable, unparryable, and noarmour may
+	  be used to exclude certain defence counterchecks for a check,
+	  e.g. you can't dodge a bullet.
+      -->
+      <xs:element
+	  name="physical-attack"
+	  type="keywordType"
+	  fixed="Physical-Attack"/>
+      <xs:element
+	  name="physical-defence"
+	  type="keywordType"
+	  fixed="Physical-Defence"/>
+      
 
+      <!-- Different types of Area Of Effect -->
+      <xs:element name="aoe-emination" type="keywordType" fixed="Emination"/>
+      <xs:element name="aoe-cone" type="keywordType" fixed="Cone"/>
+      <xs:element name="aoe-ray" type="keywordType" fixed="Ray"/>
 
       <!-- Different save types -->
-      <xs:element name="everyone-saves" type="emptyType"/>
-      <xs:element name="delegate-saves" type="emptyType"/>
+      <xs:element
+	  name="everyone-saves"
+	  type="keywordType"
+	  fixed="Everyone-Saves"/>
+      <xs:element
+	  name="delegate-saves"
+	  type="keywordType"
+	  fixed="Delegate-Saves"/>
       
       <!--
-	  Opposed checks are player-facing, usually NPC checks.
-	  Specify a DC, crits, and optionally boon/bane and a check (saving throw) to save against.
+	  All checks must either be Checks, Counterchecks or Auxiliarys.
+	  Each Check is opposed by a CounterCheck
+	  Auxilaries are triggers for other actions.
       -->
-      <xs:element name="opposed" type="emptyType"/>
+      <xs:element
+	  name="check"
+	  type="keywordType"
+	  fixed="Check"/>
+      <xs:element
+	  name="countercheck"
+	  type="keywordType"
+	  fixed="Counter-Check"/>
+      <xs:element
+	  name="auxiliary"
+	  type="keywordType"
+	  fixed="Auxiliary"/>
 
-
-      <!-- No check checks which just trigger other abilities with a precondition and effect -->
-      <xs:element name="trigger" type="emptyType"/>
-      
       
       <!-- Spells which are open to interpretation (FIXME: RENAME gm-fiat?? or similar) -->
-      <xs:element name="versatile" type="emptyType"/>
+      <xs:element
+	  name="versatile"
+	  type="keywordType"
+	  fixed="Versatile"/>
 
       <!-- Requires the minor action to keep going each round -->
-      <xs:element name="maintain" type="emptyType"/>
+      <xs:element
+	  name="maintain"
+	  type="keywordType"
+	  fixed="Maintain"/>
 
       <!-- dice pool abilities -->
-      <xs:element name="luckpool" type="emptyType"/>
-      <xs:element name="mettlepool" type="emptyType"/>
-      <xs:element name="magicpool" type="emptyType"/>
-      <xs:element name="aspectpool" type="emptyType"/>
-
-      <!-- Modifiers to opponents ability -->
-      <xs:element name="easy" type="emptyType"/>  <!-- dc = target's ability-3 -->
-      
-    </xs:choice>
+      <xs:element
+	  name="luckpool"
+	  type="keywordType"
+	  fixed="Luck-Pool"/>
+      <xs:element
+	  name="mettlepool"
+	  type="keywordType"
+	  fixed="Mettle-Pool"/>
+      <xs:element
+	  name="magicpool"
+	  type="keywordType"
+	  fixed="Magic-Pool"/>
+    </xs:choice>    
   </xs:complexType>
 
 
   
+    
 
   <!-- Check type for saves against player facing checks -->
-  <xs:complexType name="abilitySaveEnum">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <!-- For defence against player facing physical attacks -->
-      <xs:element name="dodge-save" type="emptyType"/>      
-      <xs:element name="parry-save" type="emptyType"/>      
-      <xs:element name="defend-save" type="emptyType"/>      
-      <xs:element name="strength-save" type="emptyType"/>      
-      <xs:element name="endurance-save" type="emptyType"/>      
-      <xs:element name="agility-save" type="emptyType"/>
-      <xs:element name="speed-save" type="emptyType"/>      
-      <xs:element name="perception-save" type="emptyType"/>      
-      <xs:element name="willpower-save" type="emptyType"/>      
-      <xs:element name="mettle-save" type="emptyType"/>      
-      <xs:element name="magic-save" type="emptyType"/>      
-      <xs:element name="luck-save" type="emptyType"/>
-    </xs:choice>
-  </xs:complexType>  
+  <!-- <xs:complexType name="abilityCounterEnum"> -->
+  <!-- </xs:complexType> -->
   
   <!-- an enum -->
   <xs:group name="raceKeywordEnum">
     <xs:choice>
-      <xs:element name="amphibian" type="symbolType"/>
-      <xs:element name="animal" type="symbolType"/>
-      <xs:element name="beastman" type="symbolType"/>
-      <xs:element name="construct" type="symbolType"/>
-      <xs:element name="deep-one" type="symbolType"/>
-      <xs:element name="demon" type="symbolType"/>
-      <xs:element name="demon-spawn" type="symbolType"/>
-      <xs:element name="dwarf" type="emptyType"/>
-      <xs:element name="eedie" type="symbolType"/>
-      <xs:element name="eldritchhorror" type="symbolType"/>
-      <xs:element name="elf" type="emptyType"/>
-      <xs:element name="fey" type="emptyType"/>
-      <xs:element name="ghoul" type="symbolType"/>
-      <xs:element name="giant" type="symbolType"/>
-      <xs:element name="greenskin" type="symbolType"/>
-      <xs:element name="halfling" type="emptyType"/>
-      <xs:element name="human" type="symbolType"/>
-      <xs:element name="herpetons" type="symbolType"/>
-      <xs:element name="lycan" type="symbolType"/>
-      <xs:element name="masquerade" type="symbolType"/>
-      <xs:element name="other" type="symbolType"/>
-      <xs:element name="ratman" type="symbolType"/>
-      <xs:element name="serpentmen" type="symbolType"/>
-      <xs:element name="shade" type="symbolType"/>
-      <xs:element name="undead" type="symbolType"/>
+      <xs:element name="amphibian" type="keywordType" fixed="Amphibian"/>
+      <xs:element name="animal" type="keywordType" fixed="Animal"/>
+      <xs:element name="beastman" type="keywordType" fixed="Beastman"/>
+      <xs:element name="construct" type="keywordType" fixed="Construct"/>
+      <xs:element name="deep-one" type="keywordType" fixed="Deep-One"/>
+      <xs:element name="demon" type="keywordType" fixed="Demon"/>
+      <xs:element name="demon-spawn" type="keywordType" fixed="Demon-Spawn"/>
+      <xs:element name="dwarf" type="keywordType" fixed="Dwarf"/>
+      <xs:element name="eedie" type="keywordType" fixed="Eedie"/>
+      <xs:element name="eldritchhorror" type="keywordType" fixed="Eldritch Horror"/>
+      <xs:element name="elf" type="keywordType" fixed="Elf"/>
+      <xs:element name="fey" type="keywordType" fixed="Fey"/>
+      <xs:element name="ghoul" type="keywordType" fixed="Ghoul"/>
+      <xs:element name="giant" type="keywordType" fixed="Giant"/>
+      <xs:element name="greenskin" type="keywordType" fixed="Greenskin"/>
+      <xs:element name="halfling" type="keywordType" fixed="Halfling"/>
+      <xs:element name="human" type="keywordType" fixed="Human"/>
+      <xs:element name="herpetons" type="keywordType" fixed="Herpetons"/>
+      <xs:element name="lycan" type="keywordType" fixed="Lycan"/>
+      <xs:element name="masquerade" type="keywordType" fixed="Masquerade"/>
+      <xs:element name="other" type="keywordType" fixed="Other"/>
+      <xs:element name="ratman" type="keywordType" fixed="Ratman"/>
+      <xs:element name="serpentmen" type="keywordType" fixed="Serpentman"/>
+      <xs:element name="shade" type="keywordType" fixed="Shade"/>
+      <xs:element name="undead" type="keywordType" fixed="Undead"/>
     </xs:choice>
   </xs:group>
 
@@ -517,11 +918,11 @@ ii) So we don't have to list all the types of save that can't be used against an
 
   <xs:complexType name="attributeType">
     <xs:choice maxOccurs="unbounded" minOccurs="0">
-      <xs:element name="strength" type="emptyType"/>
-      <xs:element name="endurance" type="emptyType"/>
-      <xs:element name="agility" type="emptyType"/>
-      <xs:element name="speed" type="emptyType"/>
-      <xs:element name="perception" type="emptyType"/>
+      <xs:element name="strength" type="keywordType" fixed=""/>
+      <xs:element name="endurance" type="keywordType" fixed=""/>
+      <xs:element name="agility" type="keywordType" fixed=""/>
+      <xs:element name="speed" type="keywordType" fixed=""/>
+      <xs:element name="perception" type="keywordType" fixed=""/>
     </xs:choice>
   </xs:complexType>
 
@@ -541,84 +942,41 @@ ii) So we don't have to list all the types of save that can't be used against an
     </xs:sequence>
   </xs:complexType>
 
-  <!-- an enum -->
-  <xs:simpleType name="tableCategoryType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Standard" />
-      <xs:enumeration value="Figure" />
-      <xs:enumeration value="FullWidth" />
-      <xs:enumeration value="Sideways" />
-    </xs:restriction>
-  </xs:simpleType>
-
-  <!-- <xs:group name="abilityActionEnum"> -->
-  <!--   <xs:choice> -->
-  <!--     <xs:element name="immediate" type="emptyType"/> -->
-  <!--     <xs:element name="standard" type="emptyType"/> -->
-  <!--     <xs:element name="minor" type="emptyType"/> -->
-  <!--     <xs:element name="multi-turn" type="emptyType"/> -->
-  <!--     <xs:element name="full-turn" type="emptyType"/> -->
-  <!--     <xs:element name="move" type="emptyType"/> -->
-  <!--     <xs:element name="reaction" type="emptyType"/> -->
-  <!--     <xs:element name="reaction-or-minor" type="emptyType"/> -->
-  <!--     <xs:element name="noncombat" type="emptyType"/> -->
-  <!--     <xs:element name="free" type="emptyType"/> -->
-  <!--     <xs:element name="tag" type="emptyType"/>       -->
-  <!--   </xs:choice> -->
-  <!-- </xs:group>   -->
-
-  <xs:group name="abilityActionEconomyEnum">
+  <xs:complexType name="abilityAPCostType" mixed="false">
     <xs:choice>
-      <!-- What does immediate mean? -->
-      <xs:element name="immediate" type="emptyType"/>
+      <!-- 1-5 Action Points -->
+      <xs:element name="ap5" type="keywordType" fixed="5AP"/>
+      <xs:element name="ap4" type="keywordType" fixed="4AP"/>
+      <xs:element name="ap3" type="keywordType" fixed="3AP"/>
+      <xs:element name="ap2" type="keywordType" fixed="2AP"/>
+      <xs:element name="ap1" type="keywordType" fixed="1AP"/>
 
-      <!-- 7 AP??? then we can have 4+2+1 -->
-      <xs:element name="ap7" type="emptyType"/>
-      <xs:element name="ap6" type="emptyType"/>
-      <xs:element name="ap5" type="emptyType"/>
-      <xs:element name="ap4" type="emptyType"/>
-      <xs:element name="ap3" type="emptyType"/>
-      <xs:element name="ap2" type="emptyType"/>
-      <xs:element name="ap1" type="emptyType"/>
+      <!-- Immediate means performed now, out of turn, at no AP cost -->
+      <xs:element name="immediate" type="keywordType" fixed="Immediate"/>
       
-      <!-- <xs:element name="standard" type="emptyType"/> <!-\- 4 -\-> -->
-      <!-- <xs:element name="minor" type="emptyType"/> <!-\- 2 -\-> -->
-      <xs:element name="multi-turn" type="emptyType"/> <!-- X -->
-      <xs:element name="gm-fiat" type="emptyType"/> <!-- X -->
-      <!-- <xs:element name="full-turn" type="emptyType"/> <!-\- 7 -\-> -->
+      <!-- no ap cost -->
+      <xs:element name="free" type="keywordType" fixed="Free"/>
+      <!-- May take multiple players or multiple rounds to perform -->      
+      <xs:element name="multi-round" type="keywordType" fixed="Multi-Round"/>
       
-      <!-- <xs:element name="move" type="emptyType"/> <!-\- 2 -\-> -->
-      <xs:element name="reaction" type="emptyType"/> <!-- 0 -->
-      <xs:element name="free-reaction" type="emptyType"/> <!-- 0 -->
-      <xs:element name="reaction-or-minor" type="emptyType"/> <!-- FIXME? -->
-      <xs:element name="noncombat" type="emptyType"/>
-      <xs:element name="free" type="emptyType"/> <!-- no cost -->
-      <!-- <xs:element name="tag" type="emptyType"/>       -->
-    </xs:choice>
-  </xs:group>  
+      <xs:element name="gm-fiat" type="keywordType" fixed="GM-Fiat"/>
+      <xs:element name="retort" type="keywordType" fixed="Retort"/>
+      <xs:element name="reaction" type="keywordType" fixed="Reaction"/>
+      <xs:element name="interrupt" type="keywordType" fixed="Interrupt"/>
+      <xs:element name="free-reaction" type="keywordType" fixed="Free Reaction"/>
+      <xs:element name="free-action-or-reaction" type="keywordType" fixed="Free Action/Reaction"/>
+      <xs:element name="reaction-or-ap2" type="keywordType" fixed="Reaction or AP2"/>
+      <xs:element name="interrupt-or-ap2" type="keywordType" fixed="Interrupt or AP2"/>
+      <xs:element name="noncombat" type="keywordType" fixed="Noncombat"/>
 
-  <xs:complexType name="abilityActionEconomyType" mixed="false">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="abilityActionEconomyEnum"/>
+      <!-- Defaults -->
+      <xs:element name="default-lore-apcost" type="keywordType" fixed="2AP"/>      
+      <xs:element name="default-skill-apcost" type="keywordType" fixed="2AP"/>
+      <xs:element name="default-language-apcost" type="keywordType" fixed="Free"/>
+      <xs:element name="default-craft-apcost" type="keywordType" fixed="GM Fiat"/>
     </xs:choice>
   </xs:complexType>
-
-
-  <!-- <!-\- type of check to use in an ability -\-> -->
-  <!-- <xs:simpleType name="abilityCheckNameType"> -->
-  <!--   <xs:restriction base="xs:string"> -->
-  <!--     <xs:pattern value="Very-Easy"/> -->
-  <!--     <xs:pattern value="Easy"/> -->
-  <!--     <xs:pattern value="Moderate"/> -->
-  <!--     <xs:pattern value="Difficult"/> -->
-  <!--     <xs:pattern value="Very-Difficult"/> -->
-  <!--     <xs:pattern value="Extremely-Difficult"/> -->
-  <!--     <xs:pattern value="Ritual"/> -->
-  <!--     <xs:pattern value="Extemporaneous"/> -->
-  <!--   </xs:restriction> -->
-  <!-- </xs:simpleType> -->
   
-
 
   <xs:complexType name="prereqArchetypesType">
     <xs:sequence>
@@ -628,17 +986,6 @@ ii) So we don't have to list all the types of save that can't be used against an
           minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
-
-  <!-- an enum -->
-  <!-- <xs:simpleType name="attrType"> -->
-  <!--   <xs:restriction base="xs:string"> -->
-  <!--     <xs:enumeration value="Strength" /> -->
-  <!--     <xs:enumeration value="Endurance" /> -->
-  <!--     <xs:enumeration value="Agility" /> -->
-  <!--     <xs:enumeration value="Speed" /> -->
-  <!--     <xs:enumeration value="Perception" /> -->
-  <!--   </xs:restriction> -->
-  <!-- </xs:simpleType> -->
 
   <!--
       Primary attribute value prerequisites, e.g. Str > 10 ..
@@ -652,7 +999,7 @@ ii) So we don't have to list all the types of save that can't be used against an
 	<xs:element name="agility" type="xs:integer"/>
 	<xs:element name="speed" type="xs:integer"/>
 	<xs:element name="perception" type="xs:integer"/>
-	<xs:element name="willpower" type="xs:integer"/>
+	<xs:element name="will" type="xs:integer"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -663,170 +1010,167 @@ ii) So we don't have to list all the types of save that can't be used against an
       <xs:element name="eg" type="acronymType"/>
       <xs:element name="ie" type="acronymType"/>
       <xs:element name="etc" type="acronymType"/>
-      <xs:element name="nb" type="acronymType"/>      
+      <xs:element name="nb" type="acronymType"/>
+    </xs:choice>
+  </xs:group>
+
+  <!--
+      Symbols.. % & etc that we can expect in normal text
+  -->
+  <xs:group name="symbolsEnum">
+    <xs:choice>
+      <xs:element name="ampersand" type="symbolType" />
+      <xs:element name="ccby" type="symbolType" />
+      <xs:element name="copyright" type="symbolType" />
+      <xs:element name="daggersymbol" type="symbolType"/>
+      <xs:element name="doubledaggersymbol" type="symbolType"/>
+      <xs:element name="downarrowfrombar" type="symbolType"/>
+      <xs:element name="ellipsis" type="symbolType"/>
+      <xs:element name="geqqsymbol" type="symbolType"/>
+      <xs:element name="geqsymbol" type="symbolType"/>
+      <xs:element name="leqqsymbol" type="symbolType"/>
+      <xs:element name="leqsymbol" type="symbolType"/>
+      <xs:element name="ltsymbol" type="symbolType"/>
+      <xs:element name="gtsymbol" type="symbolType"/>
+      <xs:element name="notapplicable" type="symbolType"/>
+      <xs:element name="percent" type="symbolType"/>
+      <xs:element name="uparrowfrombar" type="symbolType"/>
+
+      <!-- <xs:element name="param-dmg" type="symbolType"/> -->
+      <xs:element
+	  name="param-dmg" 
+	  type="stringConstantType"
+	  fixed="DMG"/>
+      
+      <!-- custom -->
+      <xs:element name="abilitybullet" type="symbolType"/>      
+      <xs:element name="checksymbol" type="symbolType"/>      
+      <xs:element name="counterchecksymbol" type="symbolType"/>      
+      <xs:element name="auxiliarysymbol" type="symbolType"/>      
+      <xs:element name="antagonistsymbol" type="symbolType"/>
+      <xs:element name="fatediesymbol" type="symbolType"/>      
+      <xs:element name="nofatediesymbol" type="symbolType"/>      
+      <xs:element name="skilldiesymbol" type="symbolType"/>
+      
+      <xs:group ref="svResultGroup"/>
+      <!-- <xs:group ref="resultGroup"/> -->
+      <!-- <xs:group ref="defaultResultGroup"/> -->
+      <xs:group ref="opponentsCounterResultGroup"/>
+      <!-- <xs:group ref="antagCounterResultGroup"/> -->
+      <!-- <xs:group ref="protagCounterResultGroup"/> -->
     </xs:choice>
   </xs:group>
 
 
-  <!-- Ability Group Enum -->
-  <xs:group name="miscEnum">
+  <!-- Styling for text.. emph, bold etc -->
+  <xs:group name="styleEnum">
     <xs:choice>
+      <xs:group ref="lengthMeasurementGroup"/>
+      
       <xs:element name="emph" type="textType"/>
-      <xs:element name="bold" type="boldType"/>
-      <xs:element name="newline" type="newlineType"/>
-      <xs:element name="defn" type="defnType"/>
-      <xs:element name="descriptions" type="descriptionsType"/>
-      <xs:element name="equation" type="equationType"/>
+      <!-- Add a big drop cap as the first letter of the word -->
+      <xs:element name="dropcap" type="leafType"/>      
+      <xs:element name="bold" type="textType"/>
+      <xs:element name="br" type="brType"/>
+      <xs:element name="defn" type="textType"/>
+      <xs:element name="indent" type="blockType"/>
+      <xs:element name="quote" type="blockType"/>
       <xs:element name="measurement" type="measurementType"/>
-      <xs:element name="smaller" type="textType"/>
-      <xs:element name="list" type="itemizedListType"/>
-      <xs:element name="olist" type="orderedListType"/>
-      <xs:element name="img" type="imgType"/>
+      <xs:element name="smaller" type="blockType"/>
       <xs:element name="indexentry" type="indexentryType"/>
-      <xs:element name="daggersymbol" type="symbolType"/>
-      <xs:element name="downarrowfrombar" type="symbolType"/>
-      <xs:element name="uparrowfrombar" type="symbolType"/>
-      <xs:element name="geqqsymbol" type="symbolType"/>
-      <xs:element name="leqqsymbol" type="symbolType"/>
-      <xs:element name="geqsymbol" type="symbolType"/>
-      <xs:element name="leqsymbol" type="symbolType"/>
-      <xs:element name="ltsymbol" type="symbolType"/>
-      <xs:element name="ellipsis" type="symbolType"/>
-      <xs:element name="notapplicable" type="acronymType"/>
-      <xs:element name="percent" type="symbolType"/>
-      <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="explode" type="emptyType"/>
-      <xs:element name="maxdice" type="emptyType"/>
-      <xs:element name="pageref" type="pagerefType"/>
-      <xs:element name="ref" type="refType"/>
+      <xs:element name="label" type="leafType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="pageref" type="leafType"/>
+      <xs:element name="ref" type="leafType"/>
       <xs:element name="abilityref" type="abilityrefType"/>
+      <xs:element name="list" type="itemizedListType"/>
+      <xs:element name="olist" type="orderedListType"/>      
+      <xs:element name="vspace" type="leafType"
+		  minOccurs="0" maxOccurs="unbounded" default="1.0"/>
     </xs:choice>
   </xs:group>
   
 
-  <!--
-      Text type .. used for blocks of text like paragraphs and such.
-      Doesn't allow paragraphs or sections
-
-      FIXME: merge with blockgroup (and tabledatatype) then remove! those things (make it a group?)?
-  -->
-  <xs:complexType name="textType" mixed="true">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="abilityActionEconomyEnum"/>
-      <xs:group ref="acronymsEnum"/>
-      <xs:group ref="miscEnum"/>      
+  <!-- Structured Text (allows paragraphs, lists etc) -->
+  <xs:group name="structureEnum">
+    <xs:choice>
+      <xs:element name="descriptions" type="descriptionsType"/>
+      <xs:element name="design" type="textType" />
+      <xs:element name="equation" type="equationType"/>
+      <xs:element name="img" type="imgType"/>
+      <xs:element name="wrapimg" type="wrapimgType"/>
+      <xs:element name="figure" type="figureType"/>
+      <xs:element name="table" type="tableType" />
+      <xs:element name="playexample" type="playexampleType" />
     </xs:choice>
-    <xs:attribute name="noindent" type="xs:boolean" default="false"/>
-  </xs:complexType>  
-
-  <xs:complexType name="abilityrefType">
-    <xs:attribute name="id" type="xs:string" use="required"/>
-    <xs:attribute name="specialization" type="xs:string" use="optional"/>
-    <xs:attribute name="rank" type="xs:int" />
-  </xs:complexType>
-
-  <!-- generic block of text and subelements -->
-  <xs:group name="blockEnum" >
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <!-- <xs:element name="ambush" type="symbolType"/> -->
-        <xs:element name="design" type="textType" />
-        <xs:element name="descriptions" type="descriptionsType"/>
-        <xs:element name="figure" type="figureType"/>
-        <xs:element name="wrapimg" type="wrapimgType"/>
-        <xs:element name="fourcolumns" type="blockType" />
-        <xs:element name="hline" type="emptyType"/> 
-        <xs:element name="img" type="imgType"/> 
-        <!-- <xs:element name="immediate" type="symbolType"/> -->
-        <xs:element name="include" type="includeType" />
-        <xs:element name="indexentry" type="indexentryType"/>
-        <xs:element name="table" type="tableType"/>
-        <xs:element name="list" type="itemizedListType"/>
-        <!-- <xs:element name="melee" type="symbolType"/> -->
-        <xs:element name="monster" type="monsterType"/>
-        <!-- <xs:element name="noncombat" type="symbolType"/>           -->
-        <xs:element name="p" type="textType" />
-	<!-- <xs:element name="physical" type="symbolType"/> -->
-	<!-- <xs:element name="defensive" type="symbolType"/> -->
-        <xs:element name="provenance" type="provenanceType" />
-        <xs:element name="playexample" type="playexampleType" />
-        <xs:element name="principle" type="principleType" />
-        <xs:element name="corollary" type="corollaryType" />
-        <xs:element name="olist" type="orderedListType"/>
-        <!-- <xs:element name="surprise" type="symbolType"/> -->
-        <!-- <xs:element name="initiative" type="symbolType"/> -->
-        <!-- <xs:element name="reaction" type="symbolType"/>       -->
-	<!-- <xs:element name="tag" type="symbolType"/>       -->
-      </xs:choice>
-    </xs:sequence>
   </xs:group>
 
 
-  <!-- <xs:group name="operatorGroup" > -->
-  <!--   <xs:sequence> -->
-  <!--     <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
-  <!-- 	<xs:element name="geqqsymbol" type="symbolType"/> -->
-  <!-- 	<xs:element name="leqqsymbol" type="symbolType"/> -->
-  <!-- 	<xs:element name="geqsymbol" type="symbolType"/> -->
-  <!-- 	<xs:element name="leqsymbol" type="symbolType"/> -->
-  <!-- 	<xs:element name="ltsymbol" type="symbolType"/> -->
-  <!--     </xs:choice> -->
-  <!--   </xs:sequence> -->
-  <!-- </xs:group> -->
+  <!--
+      Text Type
 
+      Used for "simple" blocks of text like paragraphs and such.
+      Should not allow other block structures as children, e.g. no
+      paragraphs, sections, subsection etc as children.
 
-  <xs:complexType name="blockType">
-    <xs:sequence>
+      FIXME: merge with blockgroup (and tabledatatype) then
+      remove! those things??
+  -->
+  <xs:group name="textEnum">
+    <xs:choice>
+      <xs:group ref="acronymsEnum"/>
+      <xs:group ref="symbolsEnum"/>
+      <xs:group ref="styleEnum"/>
+      <xs:group ref="abilityCheckEnum"/>
+      <xs:element name="hlink" type="hlinkType"/>
+    </xs:choice>
+  </xs:group>
+
+  
+  <xs:complexType name="textType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="textEnum"/>
+    </xs:choice>
+    <xs:attribute name="noindent" type="xs:boolean" default="false"/>
+  </xs:complexType>  
+  
+  <!--
+      Block Type
+
+      Used for more complicated text blocks, allows tables,
+      paragraphs and other structured text as children.
+   -->
+  <xs:group name="blockEnum" >
+    <xs:choice>
+      <xs:group ref="textEnum"/>
+      <xs:group ref="structureEnum"/>
+      <xs:element name="hline" type="emptyType"/>
+      <xs:element name="newpage" type="emptyType"/>
+      <xs:element name="p" type="textType"/>
+      <xs:element name="principle" type="principleType"/>
+      <xs:element name="corollary" type="corollaryType"/>
+      <xs:element name="divider" type="dividerType"/>
+      <xs:element name="epigraph" type="textType"/>
+    </xs:choice>
+  </xs:group>
+
+  <!-- A block of text including elements like emph, bold etc -->
+  <xs:complexType name="blockType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:group ref="blockEnum"/>
-    </xs:sequence>
+    </xs:choice>
+    <!-- <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/> -->
   </xs:complexType>
 
-  <!-- FIXME not used by sections? -->
-  <!-- DELETE -->
-  <xs:complexType name="sectionContentType">
-    <xs:complexContent>
-      <xs:extension base="blockType">
-  	<xs:sequence minOccurs="0" maxOccurs="unbounded">
-  	  <xs:choice>
-            <!-- <xs:element name="subsection" type="subsectionType" /> -->
-  	    <!-- for archetypes.. -->
+  <xs:complexType name="archetypelevelsType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="archetypelevel" type="archetypelevelType" />
-  	  </xs:choice>
-  	</xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
+    </xs:choice>
   </xs:complexType>
-
+  
   <xs:complexType name="tabledataType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="acronymsEnum"/>
-      
-      <xs:element name="emph" type="textType"/>
-      <xs:element name="bold" type="boldType"/>
-      <!-- <xs:element name="smaller" type="textType"/> -->
-      <!-- <xs:element name="newline" type="newlineType"/> -->
-      <!-- <xs:element name="defn" type="defnType"/> -->
-      <!-- <xs:group ref="operatorGroup"/> -->
-      <xs:element name="measurement" type="measurementType"/>
-      <xs:element name="p" type="textType" />
-      
-      <!-- <xs:element name="olist" type="orderedListType"/> -->
-      <!-- <xs:element name="list" type="itemizedListType"/> -->
-      <!-- <xs:element name="descriptions" type="descriptionsType"/> -->
-      <xs:element name="downarrowfrombar" type="symbolType"/>
-      <xs:element name="uparrowfrombar" type="symbolType"/>
-      <!-- <xs:element name="nb" type="acronymType"/> -->
-      <!-- <xs:element name="p" type="textType" /> -->
-      <xs:element name="notapplicable" type="acronymType"/>
-      <xs:element name="ampersand" type="symbolType" />
-      <!-- <xs:element name="leqsymbol" type="symbolType"/> -->
-      <xs:element name="geqsymbol" type="symbolType"/>
-      <xs:element name="ltsymbol" type="symbolType"/>
-      <xs:element name="indexentry" type="indexentryType"/>
-      <!-- <xs:element name="tablesection" type="xs:string"/> -->
-      <xs:element name="percent" type="symbolType"/>
-      <!-- <xs:element name="arrowleft" type="symbolType"/> -->
-      <!-- <xs:element name="img" type="imgType"/> -->
+      <xs:group ref="blockEnum"/>
     </xs:choice>
 
     <!-- the number of columns the table data takes -->
@@ -834,19 +1178,20 @@ ii) So we don't have to list all the types of save that can't be used against an
     <!-- the number of rows the table data takes -->
     <xs:attribute name="height" type="xs:positiveInteger" default="1"/>
     <!--
-	This is a number to adjust the vertical positioning of a multirow
-	table cell, i.e. or cells with a height > 1.
+	This is a number to adjust the vertical positioning
+	of a multirow table cell, i.e. or cells with a
+	height > 1.
 
-Latex doesn't know the height of the cells in rows ahead of
-time, so we can't vertically position the contents of a cell
-automatically.  For a multi row cell occuring in rows with other
-cells which are extra tall, i.e. cells with text with multiple lines,
-we cannot calculate the correct vertical offset for the multirow cell.
-So we provide this "hint" attribute to allow people to manually tune
-the vertical position. (It's a terrible hack, but the best I can do).
+        Latex doesn't know the height of the cells in rows ahead of
+	time, so we can't vertically position the contents of a cell
+	automatically.  For a multi row cell occuring in rows with other
+	cells which are extra tall, i.e. cells with text with multiple lines,
+	we cannot calculate the correct vertical offset for the multirow cell.
+	So we provide this "hint" attribute to allow people to manually tune
+	the vertical position. (It's a terrible hack, but the best I can do).
 
-This number is the number of vertical "normal height table lines" to
-vertically offset the contents of this cell.
+        This number is the number of vertical "normal height table lines" to
+	vertically offset the contents of this cell.
     -->
     <xs:attribute name="heighthint" type="positiveFloat" default="1.0"/>
     <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
@@ -854,46 +1199,94 @@ vertically offset the contents of this cell.
 
 
   <!--
+      Each ability can have 0 or more stages (e.g. like diseases in PF2e).
+  -->
+  <xs:complexType name="abilityStageType" mixed="true">
+    <xs:sequence>
+    <xs:element name="name" type="textType"/>
+    <xs:element name="description" type="blockType"/>    
+    </xs:sequence>
+  </xs:complexType>
+
+  
+  <!--
       Each ability is specified by one of these.
   -->
   <xs:complexType name="abilityType">
     <xs:sequence>
       <xs:element name="abilitytitle" type="titleType"/>
       <xs:element name="abilityid" type="abilityidType"/>
-      <xs:element name="abilityranks" type="abilityranksType"/>
 
-      <!-- To perform an ability may require somewhere between 0 and 3 checks -->
-      <xs:element name="keywords" type="abilityKeywordsType" minOccurs="0" maxOccurs="1"/>
+      <!--
+	  Antag Abilities may have params for damage and sv,
+      -->
+      <!-- <xs:element -->
+      <!-- 	  name="param-check-default" -->
+      <!-- 	  type="svResultType" -->
+      <!-- 	  minOccurs="0" maxOccurs="1"/> -->
+      <xs:element
+	  name="param-dmg"
+	  type="xs:positiveInteger"
+	  minOccurs="0" maxOccurs="1"/>
+      <xs:element
+	  name="param-stage"
+	  type="xs:positiveInteger"
+	  minOccurs="0" maxOccurs="1"/>
+      <xs:element
+	  name="param-rank"
+	  type="xs:positiveInteger"
+	  minOccurs="0" maxOccurs="1"/>
+
+      <!-- Brief intro to the ability (one or two lines) -->
+      <xs:element name="slug" type="textType" minOccurs="0" maxOccurs="1"/>
+
+      <!-- Protag Abilities must have ranks, Antag Abilities must not. -->
+      <xs:element
+	  name="abilityranks"
+	  type="abilityranksType"
+	  minOccurs="0" maxOccurs="1"/>
+
+      <!--
+	  To perform an ability may require somewhere between 0 and 3 checks
+      -->
+      <xs:element
+	  name="keywords"
+	  type="abilityKeywordsType"
+	  minOccurs="0"
+	  maxOccurs="1"/>
 
       <!-- Ability Check types -->
-      <xs:sequence  minOccurs="0" maxOccurs="3">
+      <xs:sequence  minOccurs="0" maxOccurs="unbounded">
 	<xs:choice>
-	  <!-- Players/PCs -->
-	  <xs:element name="abilitycheck" type="abilityCheckType"/>
-	  <xs:element name="abilitysave" type="abilityCheckSaveType"/>
-	  <xs:element name="abilitydefend" type="abilityCheckDefendType"/>
-	  <xs:element name="abilityattack" type="abilityCheckAttackType"/>
-
-	  <!-- GMs/NPCs -->
-	  <!-- NPC Verbs -->
-	  <xs:element name="abilitygmcheck" type="abilityGMCheckType"/>
-	  <!-- NPC Verbs PC -->
-	  <xs:element name="abilityopposed" type="abilityCheckOpposedType"/>
-	  <!-- Special NPC Verbs PC -->
-	  <!-- <xs:element name="abilityopposedattack" type="abilityCheckOpposedAttackType"/> -->
-
-	  <!-- Either PCs or NPCs -->
-	  <xs:element name="abilitytrigger" type="abilityCheckTriggerType"/>
+	  <xs:element name="abilitycheck" type="checkType"/>
+	  <xs:element name="abilitycountercheck" type="counterCheckType"/>
+	  <xs:element name="abilityauxiliary" type="abilityCheckAuxiliaryType"/>
 	</xs:choice>
       </xs:sequence>
-      
-      <xs:element name="prereqabilityrank" type="prerequisiteType" minOccurs="0" maxOccurs="1"/>
+
+      <!-- <xs:element name="prereqabilityrank" type="prerequisiteType" minOccurs="0" maxOccurs="1"/> -->
+      <xs:element name="prereqabilityref" type="abilityrefType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="prereqtag" type="xs:string" minOccurs="0"/>
       <xs:element name="prereqnottag" type="xs:string" minOccurs="0"/>
       <xs:element name="prereqattr" type="prereqAttrType" minOccurs="0"/> <!-- e.g. Str > 13 -->
-      <xs:element name="spline" type="splineType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="specializations" type="specializationsType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="abilitydescription" type="abilitydescriptionType" minOccurs="0"/>
+      <!--
+	  Information about how to layout this ability in the abilities tree
+      -->
+      <xs:element name="spline"
+		  type="splineType"
+		  minOccurs="0" maxOccurs="1"/>
+      
+      <xs:element name="specializations"
+		  type="specializationsType"
+		  minOccurs="0" maxOccurs="1"/>
+      
+      <xs:element name="stage"
+		  type="abilityStageType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+      
+      <xs:element name="abilitydescription"
+		  type="blockType"
+		  minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -910,304 +1303,521 @@ vertically offset the contents of this cell.
     <xs:attribute name="to" type="xs:int" />
   </xs:complexType>
 
+  <xs:complexType name="opposedType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="checktype" type="xs:string" fixed="opposed"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="unopposedType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="checktype" type="xs:string" fixed="unopposed"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+      
+  
 
+  <!-- Used for Antag Check Results and for Antag/Protag Counter Results -->
+  <xs:group name="svResultGroup">
+    <xs:choice>
+      <!-- <xs:element name="gm-fiat" type="emptyType"/> -->
+      <!-- <xs:group ref="abilityParamGroup"/> -->
+      
+      <xs:element name="param-check" type="stringConstantType" fixed="CHECK"/>
+
+      <xs:element name="sv3" type="symbolType"/>
+      <xs:element name="sv5" type="symbolType"/>
+      <xs:element name="sv7" type="symbolType"/>
+      <xs:element name="sv9" type="symbolType"/>
+      <xs:element name="sv11" type="symbolType"/>
+      <xs:element name="sv13" type="symbolType"/>
+      <xs:element name="sv15" type="symbolType"/>
+      <xs:element name="sv17" type="symbolType"/>
+      <xs:element name="sv19" type="symbolType"/>
+      <xs:element name="sv21" type="symbolType"/>
+      <xs:element name="sv23" type="symbolType"/>
+      <xs:element name="sv25" type="symbolType"/>
+      <xs:element name="sv27" type="symbolType"/>
+      <xs:element name="sv29" type="symbolType"/>
+
+      
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="svResultType">
+    <xs:sequence>
+      <xs:group ref="svResultGroup" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- <xs:group name="resultGroup"> -->
+  <!--   <xs:choice> -->
+  <!--     <xs:element name="d20plusrank" type="emptyType"/>       -->
+  <!--   </xs:choice> -->
+  <!-- </xs:group> -->
+
+  <!--
+      These are possible counterchecks against a check.
+      E.g. when skill is X vs Y then these define the allowed Y's.
+  -->
+  <xs:group name="opponentsCounterResultGroup">
+    <xs:choice>
+
+      <!-- <xs:group ref="defaultResultGroup"/> -->
+      
+      <!-- For PC defend actions -->
+      <xs:element
+	  name="opponents-physical-attack"
+	  type="stringConstantType"
+	  fixed="Physical Attack"/>
+      
+      <!-- For PC attack actions -->
+      <xs:element
+	  name="opponents-physical-defence"
+	  type="stringConstantType"
+	  fixed="Physical Defence"/>
+      
+      <xs:element
+	  name="opponents-physical-defence-or-gm-fiat"
+	  type="stringConstantType"
+	  fixed="Physical Defence or GM's Fiat"/>
+      
+      <!-- For various opposed checks -->
+      <xs:element
+	  name="opponents-strength-save"
+	  type="stringConstantType"
+	  fixed="Strength Save"/>
+      
+      <xs:element
+	  name="opponents-agility-save"
+	  type="stringConstantType"
+	  fixed="Agility Save"/>
+      <xs:element
+	  name="opponents-speed-save"
+	  type="stringConstantType"
+	  fixed="Speed Save"/>
+      <xs:element
+	  name="opponents-perception-save"
+	  type="stringConstantType"
+	  fixed="Perception Save"/>
+      <xs:element
+	  name="opponents-speed-or-perception-save"
+	  type="stringConstantType"
+	  fixed="Speed or Perception Save"/>
+      <xs:element
+	  name="opponents-will-save"
+	  type="stringConstantType"
+	  fixed="Will Save"/>      
+      <xs:element
+	  name="opponents-mettle-save"
+	  type="stringConstantType"
+	  fixed="Mettle Save"/>
+      <xs:element
+	  name="opponents-endurance-save"
+	  type="stringConstantType"
+	  fixed="Endurance Save"/>
+      <xs:element
+	  name="opponents-endurance-or-willpower-save"
+	  type="stringConstantType"
+	  fixed="Endurance or Willpower Save"/>
+      <xs:element
+	  name="opponents-luck-save"
+	  type="stringConstantType"
+	  fixed="Luck Save"/>
+      
+      <xs:element
+	  name="opponents-negotiate-save"
+	  type="stringConstantType"
+	  fixed="Negotiate Save or GM Fiat"/>
+      
+      <xs:element
+	  name="opponents-etiquette-save"
+	  type="stringConstantType"
+	  fixed="Etiquette Save or GM Fiat"/>
+          
+      <!-- NPC/Hazard/GM opposed abilities -->
+      <xs:element name="gm-fiat" type="stringConstantType" fixed="GM Fiat"/>
+
+      <xs:element name="aspect-sv" type="aliasType" fixed="sv9"/>
+      <xs:element name="default-lore-sv-easy" type="aliasType" fixed="sv9"/>
+      <xs:element name="default-lore-sv" type="aliasType" fixed="sv11"/>
+      <xs:element name="default-lore-sv-hard" type="aliasType" fixed="sv13"/>
+      <xs:element name="default-transport-sv" type="aliasType" fixed="sv11"/>
+      <xs:element name="default-physical-sv" type="aliasType" fixed="sv11"/>
+      <xs:element name="default-craft-sv" type="aliasType" fixed="sv11"/>
+      <xs:element name="default-language-sv" type="aliasType" fixed="sv11"/>
+      <xs:element name="default-language-sv-hard" type="aliasType" fixed="sv13"/>
+    </xs:choice>
+  </xs:group>
+
+
+  <xs:complexType name="poolCostType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="textEnum"/>
+    </xs:choice>
+    <xs:attribute name="noindent" type="xs:boolean" default="false"/>
+  </xs:complexType>  
+
+
+  <xs:group name="abilityCheckEnum">
+    <xs:choice>
+      <!-- Uses svv, and recall knowledge crit table -->
+      <xs:element name="recall-knowledge" type="keywordType" fixed="Recall Knowledge"/>
+      <xs:element name="language" type="keywordType" fixed="Language"/>      
+      <!--
+	  Uses targets defence or will, and does hp damage.
+          righteous and critical do +dmg and +2dmg
+          This should include things that do extra effects like Eldritch Push
+      -->
+      <xs:element name="magic-attack" type="keywordType" fixed="Magic Attack"/>
+      <!-- Checks for consumable supply -->
+      <xs:element name="supply" type="keywordType" fixed="Supply"/>
+      <!-- Uses a SSV, Magic Crit Table -->
+      <xs:element name="cast" type="keywordType" fixed="Cast"/>
+      <!-- Art/Music etc -->
+      <xs:element name="perform" type="keywordType" fixed="Perform"/>
+      <!-- Willpower or Luck Test. has an associated pool and a cost? -->
+      <xs:element name="trial" type="keywordType" fixed="Trial"/>
+      <!-- Simple check...  has no point pool cost -->
+      <xs:element name="test" type="keywordType" fixed="Test"/>
+      <xs:element name="physical" type="keywordType" fixed="Physical"/>
+      <!-- Simple check...  -->
+      <xs:element name="social" type="keywordType" fixed="Social"/>
+      <!-- righteous and critical do +dmg and +2dmg -->
+      <xs:element name="melee-attack" type="keywordType" fixed="Melee Attack"/>
+      <!-- eg shield block -->
+      <xs:element name="physical-defence" type="keywordType" fixed="Physical Defence"/>
+
+      <xs:element name="armour" type="keywordType" fixed="Armour"/>
+      <xs:element name="dodge" type="keywordType" fixed="Dodge"/>
+      <xs:element name="parry" type="keywordType" fixed="Dodge"/>
+      <xs:element name="aspect" type="keywordType" fixed="FIXME"/>      
+      <!--
+	  righteous and critical do +dmg and +2dmg
+          Ranged Crit table
+      -->
+      <xs:element name="missile-attack" type="keywordType" fixed="Missile Attack"/>      
+      <xs:element name="craft" type="keywordType" fixed="Craft"/>
+      <xs:element name="fixme" type="keywordType" fixed="FIXME"/>      
+      <xs:element name="auxiliary" type="keywordType" fixed="Auxiliary"/>
+
+
+      <xs:element name="custom" type="keywordType" fixed="Custom Outcomes"/>
+      
+      <!-- Aspects -->
+      <!-- <xs:element name="quirk" type="keywordType" fixed="Missile Attack"/>       -->
+    </xs:choice>
+  </xs:group>
+
+
+  <!-- -->
+  <xs:complexType name="abilityCheckType" mixed="false">
+      <xs:group ref="abilityCheckEnum"/>
+  </xs:complexType>
+  
+  <xs:group name="abilityRequiresEnum">
+    <xs:choice>
+      <xs:element name="alchemical-lab" type="keywordType"
+		  fixed="Alchemical Lab"/>
+      <!-- <xs:element name="" type="keywordType" fixed="Language"/> -->
+    </xs:choice>
+  </xs:group>
+
+  <!-- -->
+  <xs:complexType name="abilityRequiresType" mixed="false">
+      <xs:group ref="abilityRequiresEnum"/>
+  </xs:complexType>
+  
+
+  
+  <!--
+
+   Items (Magic, Poison etc).
+
+  -->
+  <xs:complexType name="itemKeywordsType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="potion" type="keywordType" fixed="Potion"/>
+      <xs:element name="rod" type="keywordType" fixed="Rod"/>
+    </xs:choice>
+  </xs:complexType>
+  
+
+  <xs:complexType name="itemType" mixed="false">
+    <xs:sequence>
+      <xs:element
+	  name="initial-pool"
+	  type="xs:positiveInteger"
+	  minOccurs="0" maxOccurs="1"/>
+      <xs:element
+	  name="keywords"
+	  type="itemKeywordsType"
+	  minOccurs="0"
+	  maxOccurs="1"/>
+
+      <!-- Check types -->
+      <xs:sequence  minOccurs="0" maxOccurs="unbounded">
+	<xs:choice>
+	  <xs:element name="check" type="checkType"/>
+	  <xs:element name="countercheck" type="counterCheckType"/>
+	  <xs:element name="auxiliary" type="abilityCheckAuxiliaryType"/>
+	</xs:choice>
+      </xs:sequence>      
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- 
+    <descriptions>
+      <term>Type</term><description>Book</description>
+      <term>Pool</term><description></description>
+      <term>Refresh</term><description></description>
+      <term>Difficulty</term><description></description>
+    </descriptions>    
+
+    -->
+  
+  <!-- <xs:complexType name="textType" mixed="true"> -->
+  <!--   <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
+  <!--     <xs:group ref="textEnum"/> -->
+  <!--   </xs:choice> -->
+  <!--   <xs:attribute name="noindent" type="xs:boolean" default="false"/> -->
+  <!-- </xs:complexType>   -->
+  
+  <!--
+      
+    Various different types of check have different sets of fields that are allowed.
+    However *ALL* checks share these header fields.
+
+  -->
   <xs:group name="abilityCheckHeaderGroup">
     <xs:sequence>
       <!-- The name of the check.  One of a few standard types or <special/> -->
-      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="name" type="leafType" minOccurs="1" maxOccurs="1"/>
 
-      <!-- The name of the check.  One of a few standard types or <special/> -->
-      <xs:element name="slug" type="textType" minOccurs="0" maxOccurs="1"/>
+      <!-- This value used to determine behaviour in the event of a crit success or crit fail -->
+      <xs:element name="checktype" type="abilityCheckType" minOccurs="1" maxOccurs="1"/>
+
+      <!-- Point Pool cost to make the check -->
+      <xs:element name="poolcost" type="poolCostType" minOccurs="0" maxOccurs="1"/>
+      
+      <!-- Action economy information -->
+      <xs:element name="apcost" type="abilityAPCostType" minOccurs="1" maxOccurs="1"/>
 
       <!-- Action economy information -->
-      <xs:element name="actiontype" type="abilityActionEconomyType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="requires" type="abilityRequiresType" minOccurs="0" maxOccurs="1"/>
 
       <!-- what range the ability works at. -->
       <xs:element name="range" type="rangeEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="keywords" type="abilityKeywordsType" minOccurs="0" maxOccurs="1"/>      
+      <xs:element name="keywords" type="abilityKeywordsType" minOccurs="1" maxOccurs="1"/>      
 
       <!-- some abilities can only be used after certain preconditions are met -->
       <xs:element name="precondition" type="xs:string" minOccurs="0" maxOccurs="1"/>
 
       <!-- Some abilities cause other checks or abilities to be used. They're specified here. -->
-      <!-- <xs:element name="effect" type="xs:string" minOccurs="0" maxOccurs="1"/>       -->
-      <xs:element name="effect" type="textType" minOccurs="0" maxOccurs="1"/>      
+      <xs:element name="effect" type="textType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:group>
+
+
+  <!--
+
+   Skill and Fate Outcomes..
+
+  -->
+  <xs:group name="outcomeAliasEnum">
+    <xs:choice>
+      <xs:element
+	  name="default-lore-critical-success"
+	  fixed="Know four true things."/>
+      <xs:element
+	  type="stringConstantType"
+	  name="default-lore-righteous-success"
+	  fixed="Know three true things."/>      
+      <xs:element
+	  name="default-lore-success"
+	  fixed="Know two true things."/>
+
+      <xs:element
+	  name="default-attack-critical-success"
+	  fixed="3×Dmg"/>
+      <xs:element
+	  name="default-attack-righteous-success"
+	  fixed="2×Dmg"/>      
+      <xs:element
+	  name="default-attack-success"
+	  fixed="Dmg"/>      
+      
+      <xs:element
+	  name="default-language-critical-success"
+	  fixed="XXX"/>
+      <xs:element
+	  name="default-language-righteous-success"
+	  fixed="XXXY"/>      
+      <xs:element
+	  name="default-language-success"
+	  fixed="XXXZ"/>
+      <xs:element
+	  name="default-craft-critical-success"
+	  fixed="XXX"/>
+      <xs:element
+	  name="default-craft-righteous-success"
+	  fixed="XXXY"/>
+      <xs:element
+	  name="default-craft-success"
+	  fixed="XXXZ"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="outcomeTextType" mixed="true">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:group ref="outcomeAliasEnum"/>
+      <xs:group ref="textEnum"/>
+    </xs:choice>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>    
+  </xs:complexType>  
+    
+  
+  <!-- How to interpret the result of the fate/skill dice for a check -->
+  <xs:group name="abilityCheckOutcomeGroup">
+    <xs:sequence>
+      <xs:element name="any-success" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="critsuccess" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="righteoussuccess" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="success" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="any-fail" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="fail" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="grimfail" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="critfail" type="outcomeTextType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="damned" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="cursed" type="textType" minOccurs="0" maxOccurs="1"/>
+      
+      <!-- <xs:element name="gm-fiat" type="emptyType" minOccurs="0" maxOccurs="1"/> -->
     </xs:sequence>
   </xs:group>
   
 
-  <xs:complexType name="abilityCheckMasteryType">
-    <xs:sequence>
-      <xs:element name="any-success" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="critsuccess" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="righteoussuccess" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="success" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="any-fail" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="fail" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="grimfail" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="critfail" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="gm-fiat" type="emptyType" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  
-  <xs:complexType name="abilityCheckFateType">
-    <xs:sequence>
-      <xs:element name="blessed" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="boon" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="indifferent" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="bane" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="damned" type="textType" minOccurs="0" maxOccurs="1"/>      
-      <xs:element name="gm-fiat" type="emptyType" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  
-  <!-- What stat to use as the DC for a check -->
-  <xs:complexType name="abilityCheckDCEnum">
-    <xs:sequence>
-      <xs:element name="opponents-attack" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-defend" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      
-      <xs:element name="opponents-strength" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-agility" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-speed" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-perception" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-willpower" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-endurance" type="xs:string" minOccurs="0" maxOccurs="1"/>
-
-      <xs:element name="gm-fiat" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-negotiate-or-11" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="opponents-etiquette-or-11" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="aspect-dc" type="xs:string" minOccurs="0" maxOccurs="1"/>
-
-      <xs:element name="strength" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="agility" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="speed" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="endurance" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="willpower" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="perception" type="xs:string" minOccurs="0" maxOccurs="1"/>
-
-      
-      <!-- NPC/Hazard/GM opposed abilities -->
-      <!--
-	  FIX THIS (BY PARAMATERIZING THE DC)  JUST HAVE EASY=9?, HARD=13?
-	  etc save on the maths??
-
-	  FIXME:
-	  There's a problem with these (maybe??) where we're trying to control the DC and the damage
-	  with the Rank.  Leads to multiple ability definitions Horns Lesser, Horns, Horns Greater.
-	  Can we just specify the DC as part of the specification... also would be specify the damage??
-	  so we didn't have to do the addition.
-	  -->
-      <xs:element name="dc9-plus-rank" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc11-plus-rank" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc13-plus-rank" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc15-plus-rank" type="xs:string" minOccurs="0" maxOccurs="1"/>
-
-
-      <!-- static default dcs -->
-      <xs:element name="dc3" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc5" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc7" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc9" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc11" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc13" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc15" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc17" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc19" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc21" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc23" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc25" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="dc27" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
-
-
-  <!--
-      
-    Various different types of check have different sets of fields that are allowed.
-    All checks share the header fields.
-
-  -->
-  <xs:complexType name="abilityCheckTriggerType" mixed="false">
+  <!-- Check -->  
+  <xs:complexType name="checkType" mixed="true">
     <xs:sequence>
       <xs:group ref="abilityCheckHeaderGroup"/>
-    </xs:sequence>
-  </xs:complexType>
+      <xs:element name="counter" minOccurs="1" maxOccurs="1">
+	<xs:complexType>
+	  <xs:choice>
+	    <xs:group ref="svResultGroup"/>
+	    <xs:group ref="opponentsCounterResultGroup"/>
+	  </xs:choice>
+	</xs:complexType>
+      </xs:element>
 
-  <xs:complexType name="abilityCheckSaveType" mixed="false">
+      <xs:element name="dmg" minOccurs="0" maxOccurs="1">
+	<xs:complexType mixed="true">
+	  <xs:sequence>
+	    <xs:element
+		name="param-dmg"
+		type="stringConstantType"
+		fixed="DMG"
+		minOccurs="0" maxOccurs="1"/>
+	  </xs:sequence>
+	</xs:complexType>
+      </xs:element>
+	
+      <xs:group ref="abilityCheckOutcomeGroup"/>
+    </xs:sequence>
+    <xs:attribute name="readable-type" type="xs:string" fixed="Check"/>    
+  </xs:complexType>
+  
+
+  <!-- Protagonist CounterCheck (Save) -->
+  <xs:complexType name="counterCheckType" mixed="false">
     <xs:sequence>
       <xs:group ref="abilityCheckHeaderGroup"/>
+      <xs:element name="counter" minOccurs="1" maxOccurs="1">
+	<xs:complexType>
+	  <xs:choice>
+	    <xs:group ref="svResultGroup"/>
+	    <xs:group ref="opponentsCounterResultGroup"/>
+	  </xs:choice>
+	</xs:complexType>
+      </xs:element>
+      
+      <xs:group ref="abilityCheckOutcomeGroup"/>
     </xs:sequence>    
+    <xs:attribute name="readable-type" type="xs:string" fixed="Countercheck"/>
   </xs:complexType>
-  
-  <xs:complexType name="abilityCheckType" mixed="false">
+
+  <!-- Triggered by another check but doesn't require a roll. -->
+  <xs:complexType name="abilityCheckAuxiliaryType" mixed="false">
     <xs:sequence>
       <xs:group ref="abilityCheckHeaderGroup"/>
-      <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="1" maxOccurs="1"/>      
-      <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="abilityGMCheckType" mixed="false">
-    <xs:sequence>
-      <xs:group ref="abilityCheckHeaderGroup"/>
-      <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="0" maxOccurs="1"/>
-      <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/>      
-    </xs:sequence>
-  </xs:complexType>
-
-  <!-- <xs:complexType name="abilityGMSaveType" mixed="false"> -->
-  <!--   <xs:sequence> -->
-  <!--     <xs:group ref="abilityCheckHeaderGroup"/> -->
-  <!--     <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/> -->
-  <!--     <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="0" maxOccurs="1"/> -->
-  <!--     <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/> -->
-  <!--   </xs:sequence> -->
-  <!-- </xs:complexType> -->
-
-  <xs:complexType name="abilityCheckDefendType" mixed="false">
-    <xs:sequence>
-      <xs:group ref="abilityCheckHeaderGroup"/>
-      <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="abilityCheckOpposedType" mixed="false">
-    <xs:sequence>
-      <xs:group ref="abilityCheckHeaderGroup"/> 
-      <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="save" type="abilitySaveEnum" minOccurs="1" maxOccurs="unbounded"/>
-      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="0" maxOccurs="1"/>      
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="abilityCheckAttackType" mixed="false">
-    <xs:sequence>
-      <xs:group ref="abilityCheckHeaderGroup"/>
-      <xs:element name="dc" type="abilityCheckDCEnum" minOccurs="1" maxOccurs="1"/>      
-      <xs:element name="dmg" type="xs:string"  minOccurs="1" maxOccurs="1"/>      
-      <xs:element name="mastery" type="abilityCheckMasteryType"  minOccurs="1" maxOccurs="1"/>      
-      <xs:element name="fate" type="abilityCheckFateType"  minOccurs="1" maxOccurs="1"/>      
-    </xs:sequence>
-  </xs:complexType>
-
-  
-  <xs:complexType name="abilitydescriptionType" mixed="true">
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-	<xs:element name="defn" type="defnType"/>
-	<xs:element name="ellipsis" type="symbolType"/>
-	<xs:element name="p" type="textType"/>
-	<xs:element name="include" type="includeType"/>
-	<xs:element name="table" type="tableType"/>
-	<xs:element name="img" type="imgType"/>
-	<xs:element name="figure" type="figureType"/>
-	<xs:element name="wrapimg" type="wrapimgType"/>
-	<xs:element name="indexentry" type="indexentryType"/>
-	<xs:element name="list" type="itemizedListType"/>
-	<xs:element name="ref" type="refType"/>
-	<xs:element name="playexample" type="playexampleType" />
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-
-
-  <xs:complexType name="archetypedescriptionType" mixed="true">
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="p" type="textType" />
-        <xs:element name="include" type="includeType" />
-        <xs:element name="table" type="tableType" />
-        <xs:element name="img" type="imgType"/>
-        <xs:element name="figure" type="figureType"/>
-        <xs:element name="indexentry" type="indexentryType"/>
-        <xs:element name="list" type="itemizedListType"/>
-        <xs:element name="defn" type="defnType"/>
-        <xs:element name="descriptions" type="descriptionsType"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:complexType>
-
-
-  <!-- definition list desciptions -->
-  <xs:complexType name="descriptionType" mixed="true">
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-	<xs:group ref="acronymsEnum"/>
-
-	<xs:element name="p" type="textType" />
-        <xs:element name="include" type="includeType" />
-        <xs:element name="ellipsis" type="symbolType"/>
-        <xs:element name="equation" type="equationType"/>
-        <xs:element name="table" type="tableType" />
-        <xs:element name="img" type="imgType"/>
-        <xs:element name="figure" type="figureType"/>
-        <xs:element name="wrapimg" type="wrapimgType"/>
-        <xs:element name="indexentry" type="indexentryType"/>
-        <xs:element name="list" type="itemizedListType"/>
-        <xs:element name="defn" type="defnType"/>
-        <xs:element name="ref" type="refType"/>
-        <xs:element name="pageref" type="pagerefType"/>
-        <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:element name="measurement" type="measurementType"/>
-	<xs:element name="percent" type="symbolType"/>
-	<!-- <xs:element name="emph" type="emphType"/> -->
-	<xs:element name="emph" type="textType"/>
-	<!-- <xs:element name="d4" type="acronymType"/> -->
-	<!-- <xs:element name="d6" type="acronymType"/> -->
-	<!-- <xs:element name="d8" type="acronymType"/> -->
-	<!-- <xs:element name="d10" type="acronymType"/> -->
-	<!-- <xs:element name="d12" type="acronymType"/> -->
-	<!-- <xs:element name="d20" type="acronymType"/> -->
-        <xs:element name="descriptions" type="descriptionsType"/>
-
-	<!--
-	    <xs:element name="fastsymbol" type="symbolType"/>
-	    <xs:element name="mediumsymbol" type="symbolType"/>
-	    <xs:element name="slowsymbol" type="symbolType"/>
-	    <xs:element name="mediumorslowsymbol" type="symbolType"/>
-	    <xs:element name="startandreactionsymbol" type="symbolType"/>
-	    <xs:element name="mediumorslow" type="symbolType"/>
-	    <xs:element name="startandreaction" type="symbolType"/>
-	    <xs:element name="talk" type="symbolType"/>
-	-->
-	<!-- <xs:element name="ambush" type="symbolType"/> -->
-	<!-- <xs:element name="surprise" type="symbolType"/> -->
-	<!-- <xs:element name="initiative" type="symbolType"/> -->
-	<!-- <xs:element name="immediate" type="symbolType"/> -->
-	<!-- <xs:element name="start" type="symbolType"/> -->
-	<!-- <xs:element name="fast" type="symbolType"/> -->
-	<!-- <xs:element name="medium" type="symbolType"/> -->
-	<!-- <xs:element name="slow" type="symbolType"/> -->
-	<!-- <xs:element name="physical" type="symbolType"/>	 -->
-      </xs:choice>
-    </xs:sequence>
+    <xs:attribute name="readable-type" type="xs:string" fixed="Auxiliary"/>    
   </xs:complexType>
 
   <xs:complexType name="tableType">
     <xs:sequence>
-      <xs:element name="tablecategory" type="tableCategoryType" minOccurs="1" maxOccurs="1"/>
+      <!-- Optional element that determines table layout. -->
+      <xs:choice minOccurs="0" maxOccurs="1">
+	<!-- standard table.. one column, fixed placement, the default if nothing is specified-->
+	<xs:element name="standardtable" type="symbolType"/>
+	<!-- Table is two columns wide -->
+	<xs:element name="fullwidthtable" type="symbolType"/>
+	<!-- Table is a figure (it's placed in the document that looks nice and is nearby) -->
+	<xs:element name="figuretable" type="symbolType"/>
+	<!-- Table is sideways .. this implies it's also a figure and fullwdith -->
+	<xs:element name="sidewaystable" type="symbolType"/>
+      </xs:choice>
+
+      <!-- Specifies the number of columns and how wide they are -->
       <xs:element name="tablespec" type="tablespecType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="tabletitle" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="tablelabel" type="labelType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="tabletitle" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="tablelabel" type="leafType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="indexentry" type="indexentryType" minOccurs="0" maxOccurs="unbounded"/>
+      
       <xs:choice minOccurs="0" maxOccurs="unbounded">
       	<xs:element name="tableheaderrow" type="tableRowType" minOccurs="0" maxOccurs="unbounded"/>
       	<xs:element name="tablerow" type="tableRowType" minOccurs="1" maxOccurs="unbounded"/>
         <xs:element name="hline" type="emptyType"/>
       </xs:choice>
     </xs:sequence>
+    
+    <!--
+	Change the space between columns .. e.g. use something like 0.95
+	Use this if you're having some problems fitting your table content
+	horizontally.
+    -->
+    <xs:attribute name="colsep" type="xs:decimal"/>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
 
+  <xs:complexType name="fixedColumnType">
+    <xs:simpleContent>
+      <!--
+	  The width of the column as a proportion of the width of the table.
+	  Note that space is added around the table so the sum of the fixed
+	  columns should be a bit less than 1.0 to account for this.  For
+	  example, for a table with 5 equal width columns try a proportion
+	  of 0.19 for each colummn as a starting point.
+      -->	  
+      <xs:extension base="xs:decimal">
+	<xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <!-- Specifies how the columns of a table should be laid out -->
   <xs:complexType name="tablespecType">
-    <xs:choice minOccurs="1" maxOccurs="unbounded">
-      <xs:element name="fixed" type="xs:decimal"/>
-    </xs:choice>
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+	<xs:element name="fixed" type="fixedColumnType"/>
+	<xs:element name="elastic" type="emptyType"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
   <xs:complexType name="tableSpecSettingType"/>
 
@@ -1215,9 +1825,12 @@ vertically offset the contents of this cell.
     <xs:choice minOccurs="1" maxOccurs="unbounded">
       <xs:element name="td" type="tabledataType" />
       <xs:element name="th" type="tabledataType" />
-      <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element
+	  name="label" type="leafType"
+	  minOccurs="0" maxOccurs="unbounded"/>
     </xs:choice>
     <xs:attribute name="newcolour" type="xs:boolean" default="true"/>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
 
   <xs:simpleType name="tabledataAlignmentType" final="restriction" >
@@ -1229,17 +1842,28 @@ vertically offset the contents of this cell.
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:complexType name="orderedListType">
+  <xs:complexType name="orderedListType" mixed="false">
     <xs:sequence>
-      <xs:element name="li" type="listItemType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="olist" type="orderedListType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element
+	  name="li"
+	  type="blockType"
+	  minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element
+	  name="olist"
+	  type="orderedListType"
+	  minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
+    <xs:attribute
+	name="token_type"
+	type="xs:string"
+	fixed="ignore-text"/>
   </xs:complexType>
 
   <xs:complexType name="itemizedListType">
     <xs:sequence>
-      <xs:element name="li" type="listItemType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="li" type="blockType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
 
   <xs:complexType name="sectionType">
@@ -1250,6 +1874,7 @@ vertically offset the contents of this cell.
         <xs:element name="subsubsection" type="subsubsectionType" />
         <xs:element name="monsterblock" type="monsterblockType" />
         <xs:group ref="blockEnum"/>
+	<xs:element name="sidebar" type="sidebarType"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -1262,8 +1887,10 @@ vertically offset the contents of this cell.
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="subsubsection" type="subsubsectionType" />
         <xs:group ref="blockEnum"/>
+	<xs:element name="sidebar" type="sidebarType"/>
       </xs:choice>
     </xs:sequence>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
   <xs:element name="subsection" type="subsectionType"/>
 
@@ -1274,22 +1901,31 @@ vertically offset the contents of this cell.
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="subsubsubsection" type="subsubsubsectionType" />
         <xs:group ref="blockEnum"/>
+	<xs:element name="sidebar" type="sidebarType"/>
       </xs:choice>
     </xs:sequence>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
-  <xs:element name="subsubsection" type="subsubsectionType"/>
 
   <xs:complexType name="subsubsubsectionType">
     <xs:sequence>
       <xs:element name="subsubsubsectiontitle" type="titleType" />
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group ref="blockEnum"/>
+	<xs:element name="sidebar" type="sidebarType"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="subsubsubsection" type="subsubsubsectionType"/>
 
-
+  <xs:complexType name="sidebarType">
+    <xs:sequence>
+      <!-- <xs:element name="sidebartitle" type="titleType" /> -->
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="blockEnum"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="title" type="xs:string" />
+  </xs:complexType>
 
   <xs:complexType name="archetypelevelType" >
     <xs:sequence>
@@ -1446,7 +2082,8 @@ vertically offset the contents of this cell.
   <xs:complexType name="corollaryType">
     <xs:sequence>
       <xs:element name="corollarytitle" type="titleType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="1"/>      
+      <!-- <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="1"/>       -->
+      <xs:element name="label" type="leafType" minOccurs="0" maxOccurs="1"/>      
       <xs:element name="corollarybody" type="textType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
@@ -1454,7 +2091,8 @@ vertically offset the contents of this cell.
   <xs:complexType name="principleType">
     <xs:sequence>
       <xs:element name="principletitle" type="titleType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="1"/>      
+      <!-- <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="1"/>       -->
+      <xs:element name="label" type="leafType" minOccurs="0" maxOccurs="1"/>      
       <xs:element name="principlebody" type="textType" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
@@ -1480,14 +2118,7 @@ vertically offset the contents of this cell.
   <!-- equivalent to a paragraph but contains provenance notes -->
   <xs:complexType name="provenanceType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="p" type="textType" />
-      <!-- <xs:element name="emph" type="emphType"/> -->
-      <xs:element name="emph" type="textType"/>
-      <xs:element name="bold" type="boldType"/>
-      <xs:element name="newline" type="newlineType"/>
-      <xs:element name="defn" type="defnType"/>
-      <xs:element name="olist" type="orderedListType"/>
-      <xs:element name="list" type="itemizedListType"/>
+      <xs:group ref="styleEnum"/>
     </xs:choice>
   </xs:complexType>
 
@@ -1499,19 +2130,19 @@ vertically offset the contents of this cell.
         <xs:element name="table" type="tableType" />
       </xs:choice>
       <xs:choice minOccurs="0" maxOccurs="1">
-	<xs:element name="caption" type="labelType" minOccurs="1" maxOccurs="1"/>
-	<xs:element name="label" type="labelType" minOccurs="0" maxOccurs="1"/>
+	<xs:element name="caption" type="leafType" minOccurs="1" maxOccurs="1"/>
+	<xs:element name="label" type="leafType" minOccurs="0" maxOccurs="1"/>
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="src" type="xs:string"/>
     <xs:attribute name="position" type="xs:string"/>
     <xs:attribute name="fullwidth" type="xs:boolean"/>
-    <xs:attribute name="noindent" type="xs:boolean" default="false"/>
     <xs:attribute name="sideways" type="xs:boolean" default="false"/>
   </xs:complexType>
 
 
 
+  <!-- FIXME use textType or blockType????-->
   <xs:complexType name="playexampleType">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -1531,47 +2162,25 @@ vertically offset the contents of this cell.
     <xs:sequence>
       <xs:sequence minOccurs="0" maxOccurs="unbounded">
         <xs:element name="term" type="textType"/>
-        <xs:element name="description" type="descriptionType"/>
+        <xs:element name="description" type="blockType"/>
       </xs:sequence>
     </xs:sequence>
     <xs:attribute name="termonnewline" type="xs:boolean"/>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
 
 
-  <xs:simpleType name="prerequisiteType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-
-
-  <xs:complexType name="listItemType" mixed="true">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="abilityref" type="abilityrefType"/>
-      <xs:element name="bold" type="boldType"/>
-      <xs:element name="p" type="textType" />
-      <!-- <xs:element name="emph" type="emphType" /> -->
-      <xs:element name="emph" type="textType" />
-      <xs:element name="olist" type="orderedListType"/>
-      <xs:element name="list" type="itemizedListType"/>
-      <xs:element name="descriptions" type="descriptionsType"/>
-      <xs:element name="defn" type="defnType"/>
-      <xs:element name="indexentry" type="indexentryType"/>
-      <!-- <xs:element name="success" type="symbolType"/> -->
-      <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="measurement" type="measurementType"/>
-      <xs:element name="equation" type="equationType"/>
-      <xs:element name="pageref" type="pagerefType"/>
-      <xs:element name="eg" type="acronymType"/>
-      <xs:element name="ellipsis" type="acronymType"/>
-      <xs:element name="table" type="tableType"/>
-      <xs:element name="ref" type="refType"/>
-    </xs:choice>
-  </xs:complexType>
+  <!-- <xs:simpleType name="prerequisiteType"> -->
+  <!--   <xs:restriction base="xs:string"/> -->
+  <!-- </xs:simpleType> -->
 
 
   <!--
       images must appear in figure type elements (like playexample).
   -->
   <xs:complexType name="imgType" mixed="false">
+
+    <!-- FIXME: I'm not sure all of these fields are still used -->
     <xs:sequence>
       <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/>
@@ -1587,15 +2196,15 @@ vertically offset the contents of this cell.
     <xs:attribute name="title" type="xs:string"/>
 
     <!-- Scale the image up or down.  1.0 leaves the image its current size -->
-    <xs:attribute name="scale" type="xs:float"/>
+    <!-- <xs:attribute name="scale" type="xs:float"/> -->
     <xs:attribute name="linewidth" type="xs:float"/>
     <xs:attribute name="textwidth" type="xs:float"/>
   </xs:complexType>
   
 
-  <xs:complexType name="includeType">
-    <xs:attribute name="src" type="xs:string"/>
-  </xs:complexType>
+  <!-- <xs:complexType name="includeType"> -->
+  <!--   <xs:attribute name="src" type="xs:string"/> -->
+  <!-- </xs:complexType> -->
 
 
   <!--
@@ -1618,105 +2227,75 @@ vertically offset the contents of this cell.
 
   <!--
 
-labels and references.
+  Index Entries
 
   -->
-
-  <xs:simpleType name="labelType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-
-  <xs:simpleType name="pagerefType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-
-  <xs:simpleType name="refType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-
-  <xs:simpleType name="boldType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-
-  <xs:simpleType name="smallerType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-
-  <xs:simpleType name="defnType">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-
-  <xs:complexType name="titleType" mixed="true">
+  <xs:complexType name="indexentryType" mixed="false">
+    <xs:sequence>
+      <xs:element
+	  name="entry"
+	  type="entryType"
+	  minOccurs="1" maxOccurs="1"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+	<xs:element
+	    name="see"
+	    type="indexseeType"
+	    minOccurs="0" maxOccurs="unbounded"/>
+	<xs:element
+	    name="subentry"
+	    type="indexsubentryType"
+	    minOccurs="0" maxOccurs="1"/>
+	<xs:element
+	    name="indexdefn"
+	    type="indexDefnType"
+	    minOccurs="0" maxOccurs="1"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
+  </xs:complexType>
+  
+  <xs:complexType name="entryType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="label" type="labelType"/>
-      <xs:element name="bold" type="boldType"/>
-      <xs:element name="indexentry" type="indexentryType"/>
-      <xs:element name="ampersand" type="symbolType" />
-      <xs:element name="daggersymbol" type="symbolType"/>
-      <!-- <xs:element name="ambush" type="symbolType"/> -->
-      <!-- <xs:element name="surprise" type="symbolType"/> -->
-      <!-- <xs:element name="initiative" type="symbolType"/> -->
-      <!-- <xs:element name="immediate" type="symbolType"/> -->
-      <!-- <xs:element name="fightreach" type="symbolType"/> -->
-      <!-- <xs:element name="reaction" type="symbolType"/> -->
-      <!-- <xs:element name="melee" type="symbolType"/> -->
-      <!--
-	  <xs:element name="talk" type="symbolType"/>
-	  <xs:element name="startandreaction" type="symbolType"/>
-	  <xs:element name="resolution" type="symbolType"/>
-	  <xs:element name="fast" type="symbolType"/>
-	  <xs:element name="medium" type="symbolType"/>
-	  <xs:element name="slow" type="symbolType"/>
-	  <xs:element name="mediumorslow" type="symbolType"/>
-	  <xs:element name="start" type="symbolType"/>
-      -->
-      <!-- <xs:element name="noncombat" type="symbolType"/> -->
-      <!-- <xs:element name="defensive" type="symbolType"/> -->
-      <!-- <xs:element name="tag" type="symbolType"/>       -->
-      <!-- <xs:element name="lore" type="symbolType"/> -->
-      <!-- <xs:element name="martial" type="symbolType"/> -->
-      <!-- <xs:element name="general" type="symbolType"/> -->
-      <!-- <xs:element name="magical" type="symbolType"/>       -->
-      <!-- <xs:element name="d4" type="acronymType"/> -->
-      <!-- <xs:element name="d6" type="acronymType"/> -->
-      <!-- <xs:element name="d8" type="acronymType"/> -->
-      <!-- <xs:element name="d10" type="acronymType"/> -->
-      <!-- <xs:element name="d12" type="acronymType"/> -->
-      <!-- <xs:element name="d20" type="acronymType"/>       -->
-      <!-- <xs:element name="dany" type="acronymType"/>       -->
-      <!-- <xs:element name="dpool" type="acronymType"/> -->
-      <xs:element name="smaller" type="smallerType"/>
+      <xs:group ref="symbolsEnum"/>
     </xs:choice>
   </xs:complexType>
 
-  <xs:complexType name="indexentryType" mixed="true">
-    <xs:choice minOccurs="0" maxOccurs="1">
-      <xs:element name="daggersymbol" type="symbolType"/>
-      <xs:element name="see" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="subentry" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="indexdefn" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:complexType name="indexsubentryType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="symbolsEnum"/>
     </xs:choice>
   </xs:complexType>
 
+  <xs:complexType name="indexseeType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="symbolsEnum"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="indexDefnType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:choice>
+	<xs:group ref="acronymsEnum"/>
+	<xs:group ref="symbolsEnum"/>
+      </xs:choice>
+    </xs:choice>
+    <xs:attribute name="noindent" type="xs:boolean" default="false"/>
+  </xs:complexType>  
+
+
+
+  <!--  -->  
   <xs:simpleType name="pointsType">
     <xs:restriction base="xs:integer"/>
   </xs:simpleType>
-
-  <!--
-      Elements that drop in character symbols, like arrows, ampersand, percent etc.
-      Things that the various processing steps don't like.
-  -->
-  <xs:complexType name="symbolType"/>
-  <!-- </xs:complexType> -->
-
+  
+  
   <!--
       Special game key-words.
   -->
   <xs:complexType name="tagType"/>
-  <!-- </xs:complexType> -->
 
   <xs:complexType name="acronymType"/>
-  <!-- </xs:complexType> -->
 
   <xs:complexType name="monsterRoleType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -1738,9 +2317,11 @@ labels and references.
     <xs:choice minOccurs="0" maxOccurs="unbounded">
 
       <!-- ability groups -->
-      <xs:element name="accurate" type="emptyType"/> <!-- Std+3xRank -->
-      <xs:element name="inaccurate" type="emptyType"/> <!-- Std -->
-      <xs:element name="no-check" type="emptyType"/> <!-- No Check .. monster abilities only -->
+      <xs:element name="accurate" type="emptyType"/> <!-- advantage -->
+      <xs:element name="inaccurate" type="emptyType"/> <!-- disadvantage -->
+
+      <!-- No Check .. monster abilities only -->      
+      <xs:element name="no-check" type="emptyType"/> <!-- FIXME REMOVE AUX -->
       <xs:element name="luckpool" type="emptyType"/>  <!-- dice pool ability -->
       <xs:element name="mettlepool" type="emptyType"/>  <!-- dice pool ability -->
       <xs:element name="magicpool" type="emptyType"/>  <!-- dice pool ability -->
@@ -1760,28 +2341,25 @@ labels and references.
 
 
   <!-- Ability Family Enum -->
-  <xs:complexType name="weaponKeywordEnum">
-    <xs:choice>
-      <!-- general is for misc noncombat ability groups -->
-      <xs:element name="general" type="symbolType"/>
-      <xs:element name="lore" type="symbolType"/>
-      <xs:element name="magic" type="symbolType"/>
-      <xs:element name="npc" type="symbolType"/>
-      <xs:element name="primary" type="symbolType"/>
-      <xs:element name="wyrdscience" type="symbolType"/>
-    </xs:choice>
-  </xs:complexType>
+  <!-- <xs:complexType name="weaponKeywordEnum"> -->
+  <!--   <xs:choice> -->
+  <!--     <!-\- general is for misc noncombat ability groups -\-> -->
+  <!--     <xs:element name="general" type="keywordType"/> -->
+  <!--     <xs:element name="lore" type="keywordType"/> -->
+  <!--     <xs:element name="magic" type="keywordType"/> -->
+  <!--     <xs:element name="npc" type="keywordType"/> -->
+  <!--     <xs:element name="primary" type="keywordType"/> -->
+  <!--     <xs:element name="wyrdscience" type="keywordType"/> -->
+  <!--   </xs:choice> -->
+  <!-- </xs:complexType> -->
 
-
-
-  <xs:complexType name="newlineType">
-  </xs:complexType>
 
 
   <!--
       This element contains an Ability Class definitions.
-      An AbilityCheckClass contains default definitions for fields in abilities that require 
-      It's intended to be used in a standalone file
+      An AbilityCritClass contains default definitions for fields
+      in abilities that require. It's intended to be used in a
+      standalone file
   -->
 
   <!-- This element contains a bunch of Ability definitions.  It's intended to be used in a standalone file -->
@@ -1792,6 +2370,7 @@ labels and references.
       <xs:element
           name="abilitygroupinfo" type="abilitygroupinfoType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="ability" type="abilityType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="antagability" type="abilityType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -1801,15 +2380,13 @@ labels and references.
       <xs:element name="abilitygroupid" type="abilityGroupKeywordType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="abilitygroupfamily" type="abilityFamilyKeywordEnum" minOccurs="1" maxOccurs="1"/>
       <xs:element name="keywords" type="abilityKeywordsType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="abilitygroupdescription"
-		  type="descriptionType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="slug" type="textType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="abilitygroupdescription" type="blockType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="dontdrawskilltree" type="emptyType" minOccurs="0" maxOccurs="1"/>
       <xs:choice>
 	<xs:element name="enabled" type="emptyType"/>
 	<xs:element name="disabled" type="emptyType"/>
       </xs:choice>
-      <!--</xs:complexType> -->
-      <!--</xs:element>        -->
     </xs:sequence>
   </xs:complexType>
 
@@ -1833,7 +2410,7 @@ labels and references.
           minOccurs="0" maxOccurs="1"/>
       <xs:element 
           name="archetypedescription" 
-          type="archetypedescriptionType" 
+          type="blockType" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="archetypeprimaryabilities" 
@@ -1877,8 +2454,12 @@ labels and references.
           minOccurs="0" maxOccurs="1"/>
       <xs:element
           name="archetypelevels"
-          type="sectionContentType"
+          type="archetypelevelsType"
           minOccurs="1" maxOccurs="1"/>
+      <!-- <xs:element -->
+      <!--     name="archetypelevels" -->
+      <!--     type="sectionContentType" -->
+      <!--     minOccurs="1" maxOccurs="1"/> -->
       <xs:element name="streamconfig" type="streamConfigType" />
     </xs:sequence>
   </xs:complexType>
@@ -1917,26 +2498,28 @@ labels and references.
 
   <xs:complexType name="titlePageType">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="lore" type="symbolType"/>
+      <xs:element name="lore" type="keywordType"/>
 
       <xs:element name="title" type="titleType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="subtitle" type="titleType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="vspace" type="xs:integer" minOccurs="0" maxOccurs="unbounded" default="1"/>
+      <xs:element name="subtitle" type="titleType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="vspace" type="xs:integer"
+		  minOccurs="0" maxOccurs="unbounded" default="1"/>
       <xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="img" type="imgType"
+		  minOccurs="0" maxOccurs="unbounded"/>
     </xs:choice>
   </xs:complexType>
 
   <xs:complexType name="chapterType">
     <xs:sequence>
-      <xs:element name="chaptertitle" type="titleType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="chaptertitle" type="titleType"
+		  minOccurs="1" maxOccurs="1"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="section" type="sectionType"/>
-        <!-- <xs:element name="p" type="textType" /> -->
-        <xs:group ref="blockEnum"/>	
-        <!-- <xs:element name="handout" type="handoutType"/> -->
-        <!-- <xs:element name="label" type="labelType" minOccurs="0" maxOccurs="unbounded"/> -->
+        <xs:group ref="blockEnum"/>
+	<xs:element name="sidebar" type="sidebarType"/>
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
@@ -1961,12 +2544,6 @@ labels and references.
       <xs:element name="geqsymbol" type="symbolType"/>
       <xs:element name="leqsymbol" type="symbolType"/>
       <xs:element name="ltsymbol" type="symbolType"/>      
-      <!-- <xs:element name="d4" type="acronymType"/> -->
-      <!-- <xs:element name="d6" type="acronymType"/> -->
-      <!-- <xs:element name="d8" type="acronymType"/> -->
-      <!-- <xs:element name="d10" type="acronymType"/> -->
-      <!-- <xs:element name="d12" type="acronymType"/> -->
-      <!-- <xs:element name="d20" type="acronymType"/>       -->
     </xs:choice>
   </xs:complexType>  
 
@@ -1975,7 +2552,6 @@ labels and references.
       <xs:element name="line" type="lineType" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
 
 
   <xs:complexType name="monsterGroupType">
@@ -2002,23 +2578,35 @@ labels and references.
       <xs:element name="monstermove" type="xs:positiveInteger"/>
       <xs:element name="monsterhealth" type="xs:positiveInteger"/>
       <xs:element name="monsterstamina" type="xs:positiveInteger"/>
-      <xs:element name="monsterinitiativebonus" type="xs:string"/>
+      <xs:element name="monsterinitiative" type="xs:string"/>
       <xs:element name="monstermagic" type="xs:string"/>
       <xs:element name="monstermettle" type="xs:string"/>
       <xs:element name="monsterluck" type="xs:string"/>
       <xs:element name="monsterrole" type="monsterRoleType"/>
-      <xs:element name="armour" type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="dodge" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="parry" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="block" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="strength" type="xs:positiveInteger"/>
-      <xs:element name="endurance" type="xs:positiveInteger"/>
-      <xs:element name="agility" type="xs:positiveInteger"/>
-      <xs:element name="speed" type="xs:positiveInteger"/>
-      <xs:element name="perception" type="xs:positiveInteger"/>
-      <xs:element name="willpower" type="xs:positiveInteger"/>
-      <xs:element name="abilityrankid" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="monsterdescription" type="descriptionType" minOccurs="0"/> <!-- after the stat block -->
+      <!-- <xs:element name="armour" type="xs:string" minOccurs="1" maxOccurs="1"/> -->
+      <!-- <xs:element name="dodge" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
+      <!-- <xs:element name="parry" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
+      <!-- <xs:element name="block" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
+      <!-- <xs:element name="strength" type="xs:positiveInteger"/> -->
+      <!-- <xs:element name="endurance" type="xs:positiveInteger"/> -->
+      <!-- <xs:element name="agility" type="xs:positiveInteger"/> -->
+      <!-- <xs:element name="speed" type="xs:positiveInteger"/> -->
+      <!-- <xs:element name="perception" type="xs:positiveInteger"/> -->
+      <!-- <xs:element name="will" type="xs:positiveInteger"/> -->
+      <!-- <xs:element name="abilityrankid" type="xs:string" minOccurs="0" maxOccurs="unbounded"/> -->
+      <xs:element name="abilityref" type="abilityrefType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="variant" type="monsterVariantType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="monsterdescription" type="blockType" minOccurs="0"/> <!-- after the stat block -->
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Monster Variants are things like Orc with an Axe, Orc with a Sword etc -->
+  <xs:complexType name="monsterVariantType">
+    <xs:sequence>
+      <xs:element name="varianttitle" type="titleType"/>
+      <xs:element name="variantid" type="idType"/>
+      <xs:element name="abilityref" type="abilityrefType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="monsterdescription" type="blockType" minOccurs="0"/> <!-- after the stat block -->
     </xs:sequence>
   </xs:complexType>
   
@@ -2047,7 +2635,7 @@ Monster presentation xml.
       <xs:element name="mbarmour"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbhp"  type="textType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbmove" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="mbinitiativebonus" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="mbinitiative" type="xs:integer" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbmagic" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbmettle" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="mbluck"  type="textType" minOccurs="1" maxOccurs="1"/>
@@ -2261,7 +2849,7 @@ NPC Monster Block
       <xs:element 
           name="url" 
           type="xs:string" 
-          minOccurs="1" maxOccurs="1"/>
+          minOccurs="1" maxOccurs="unbounded"/>
       <xs:element 
           name="notes" 
           type="xs:string" 
@@ -2275,31 +2863,20 @@ NPC Monster Block
     <xs:sequence>     
       <xs:element 
           name="major" 
-          type="xs:positiveInteger" 
+          type="xs:nonNegativeInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="minor" 
-          type="xs:positiveInteger" 
+          type="xs:nonNegativeInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="revision" 
-          type="xs:positiveInteger" 
+          type="xs:nonNegativeInteger" 
           minOccurs="1" maxOccurs="1"/>
       <xs:element 
           name="change" 
           type="xs:string" 
           minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <!-- Semantic versioning for the project -->
-  <xs:element name="changelog" type="changelogType"/>
-  <xs:complexType name="changelogType" mixed="false">
-    <xs:sequence>     
-      <xs:element 
-          name="version" 
-          type="versionType" 
-          minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -2313,19 +2890,13 @@ NPC Monster Block
     </xs:sequence>
   </xs:complexType>  
 
+  
   <xs:complexType name="rangeType" mixed="false">
     <xs:choice minOccurs="0" maxOccurs="2">
-      <xs:element name="measurement" type="measurementType"/>
+      <xs:group ref="lengthMeasurementGroup"/>
     </xs:choice>
   </xs:complexType>
-  
-  <!-- <xs:complexType name="rangeEnumList"> -->
-  <!--   <xs:sequence> -->
-  <!--     <xs:element name="dispositionDetails" type="DispositionDetails" maxOccurs="unbounded"/> -->
-  <!--   </xs:sequence> -->
-  <!--   <!-\- <xs:attribute name="label" type="xs:string" use="required"/> -\-> -->
-  <!-- </xs:complexType> -->
-  
+
   
   <xs:complexType name="weaponType" mixed="false">
     <xs:sequence>     
@@ -2362,7 +2933,7 @@ NPC Monster Block
       <xs:group ref="itemSizeKeywordEnum"/>
       <xs:group ref="weaponDamageKeywordEnum"/>
       <xs:group ref="weaponModifiersKeywordEnum"/>
-      <xs:group ref="weaponClassKeywordEnum"/>
+      <xs:group ref="weaponKeywordEnum"/>
       <xs:group ref="additionalWeaponKeywordEnum"/>
     </xs:choice>
   </xs:complexType>
@@ -2391,13 +2962,19 @@ NPC Monster Block
   <!-- Used Resource DB -->
   <xs:complexType name="usedResourceDBType">
     <xs:choice>
-      <xs:element name="resource" minOccurs="0" maxOccurs="1" type="usedResourceType"/>
+      <xs:element
+	  name="resource"
+	  minOccurs="0" maxOccurs="unbounded"
+	  type="usedResourceType"/>
     </xs:choice>
   </xs:complexType>
 
   <xs:complexType name="usedResourceType">
     <xs:choice>
-      <xs:element name="doc" minOccurs="0" maxOccurs="1" type="usedResourceDocType"/>
+      <xs:element
+	  name="doc"
+	  minOccurs="0" maxOccurs="unbounded"
+	  type="usedResourceDocType"/>
     </xs:choice>
     <xs:attribute name="id" type="xs:string"/>
   </xs:complexType>
@@ -2406,6 +2983,17 @@ NPC Monster Block
     <xs:attribute name="fname" type="xs:string"/>
   </xs:complexType>
   
+
+  <!-- Semantic versioning for the project -->
+  <xs:complexType name="changelogType" mixed="false">
+    <xs:sequence>     
+      <xs:element 
+          name="version" 
+          type="versionType" 
+	  minOccurs="0" maxOccurs="unbounded"	  />
+    </xs:sequence>
+  </xs:complexType>
+
   
   <!--
       Top level elements.
@@ -2413,13 +3001,14 @@ NPC Monster Block
       These can live in a file as the root element.
 
   -->
-  <xs:element name="used_resources" type="usedResourceDBType"/>
+  <xs:element name="usedresources" type="usedResourceDBType"/>
   <xs:element name="archetype" type="archetypeType"/>
   <xs:element name="licenseinfo" type="licenseInfoType"/>
   <xs:element name="monstergroup" type="monsterGroupType"/>  
   <xs:element name="book" type="bookType"/>
   <xs:element name="weapons" type="weaponsType"/>
   <xs:element name="patron" type="patronType"/>  
+  <xs:element name="changelog" type="changelogType"/>
 </xs:schema> 
 
 

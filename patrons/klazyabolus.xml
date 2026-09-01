@@ -28,12 +28,13 @@
 
     
     <figure>
-      <img id="klazyabolous" scale="2.0"/>
+      <!-- <img id="klazyabolous" scale="2.0"/> -->
+      <img id="klazyabolous"/>
     </figure>        
 
     
     <table>
-      <tablecategory>Figure</tablecategory>
+      <figuretable/>
       <tablespec>
 	<fixed>0.2</fixed>
 	<fixed>0.7</fixed>
@@ -124,25 +125,18 @@ More flavourful to have a per patron thing?
 
   <ability>
     <abilitytitle>Invoke Klazyabolous</abilitytitle>
-    <abilityid>klazyabolous.invoke</abilityid>
+    <abilityid>invoke_klazyabolous</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <cost></cost> -->
-      <!-- <bane></bane> -->
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>      
+      <apcost><noncombat/></apcost>
       <range><self/></range>
-      <!-- <keywords></keywords> -->
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
     </abilitycheck>
-    <prereqabilityrank>evocation_1</prereqabilityrank>
+    <prereqabilityref id="evocation" rank="1"/>	
     <spline></spline>
     <abilitydescription>
       <p>
@@ -169,24 +163,22 @@ More flavourful to have a per patron thing?
 
   <ability>
     <abilitytitle>Batrachian Leap</abilitytitle>
-    <abilityid>klazyabolous.leap</abilityid>
+    <abilityid>batrachian_leap</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck> 
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
       <range><self/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p>
 	This magical leap allows the character to jump
-	up to <measurement><metric>20m</metric><imperial>60'</imperial></measurement>.
+	up to <m20/>.
       </p>      
     </abilitydescription>    
   </ability>  
@@ -194,26 +186,27 @@ More flavourful to have a per patron thing?
  
   <ability>
     <abilitytitle>Incorporal Mist</abilitytitle>
-    <abilityid>klazyabolous.incorporal_mist</abilityid>
+    <abilityid>incorporal_mist</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <!-- <name>Check</name> -->
+      <checktype><cast/></checktype>
+      <!-- <critclass><magic/></critclass> -->
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><self/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <!-- <result><d20plusrank/></result> -->
+      <counter><sv7/></counter>
     </abilitycheck>
-    <prereqabilityrank>evocation_1</prereqabilityrank>	
+    <prereqabilityref id="evocation" rank="1"/>	
     <spline></spline>
     <abilitydescription>
       <p>
 	The character transforms into a cloud of green mist.  Their clothes
-	and possessions are left behind when this happens.   They can stay in this
-	form for up to half an hour.
+	and possessions are left behind when this happens.   They can stay in
+	this form for up to half an hour.
       </p>
     </abilitydescription>    
   </ability>  

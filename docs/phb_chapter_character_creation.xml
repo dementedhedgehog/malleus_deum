@@ -1,0 +1,593 @@
+  <chapter>
+    <chaptertitle>Character Creation</chaptertitle>
+    <label>ch:character-creation</label>
+
+    <p>
+      <dropcap>Creating</dropcap><emph>a character in Malleus Deum should,
+      hopefully, be relatively straightforward:</emph>
+    </p>
+    <olist>
+      <li>First choose an archetype for your character, then</li>
+      <li>
+	Follow the step by step instructions for character creation in that
+	archetype's handbook.
+      </li>
+    </olist>
+
+    <p>
+      In the rest of the chapter we explain what all the terms and fields on
+      the character sheet mean.
+    </p>
+
+    <section>
+      <sectiontitle>Character Sheet Overview</sectiontitle>
+      <p>
+        <indexentry>
+	  <entry>Character</entry>
+	</indexentry>
+        Each Player Character has a list of statistics that describe what that
+	character can do and how well they can do it, as follows:
+      </p>
+
+      <list>
+        <li>An <bold>Archetype</bold> and a <bold>Level</bold>.</li>
+        <li>
+	  Five point pools: <bold>Stamina</bold>, <bold>Health</bold>,
+	  <bold>Magic</bold>, <bold>Mettle</bold>, and <bold>Luck</bold>.
+	</li>
+        <li>
+	  Six Primary Abilities: <bold>Strength</bold>, <bold>Endurance</bold>,
+	  <bold>Agility</bold>, <bold>Speed</bold>, <bold>Perception</bold> and
+	  <bold>Will</bold>.
+	</li>
+        <li>
+	  Four or more Defensive Abilities, including: <bold>Armour</bold>,
+	  <bold>Dodge</bold>, <bold>Block</bold> and <bold>Parry</bold>.
+	</li>
+        <li>A set of <bold>Common Abilities</bold>,</li>
+        <li>A set of <bold>Specialized Abilities</bold>,</li>
+        <li>A set of <bold>Aspects</bold>,</li>
+	<li>Some optional <bold>Supplementary Statistics</bold>, and</li>
+        <li>An optional <bold>Backstory</bold></li>
+      </list>
+      
+      <subsection>
+	<subsectiontitle>Archetype</subsectiontitle>
+
+	<p>
+          <indexentry>
+	    <entry>Archetype</entry>
+	  </indexentry>
+	  Each character has an archetype which describes their race, profession,
+	  and the set of abilities available to them, for example a character
+	  might choose to be a Red Mage or a Halfling Rover.
+	</p>
+	
+	<design>
+          Archetypes are indivisible because it makes them more modular and
+	  allows us to balance one archetype without effecting existing
+	  archetypes.
+	</design>
+      </subsection>
+
+      <subsection>
+	<subsectiontitle>Level</subsectiontitle>
+	<p>
+          <indexentry>
+	    <entry>Level</entry>
+	  </indexentry>
+          A character's level represents the characters competence and
+	  experience.  The character's level usually starts at one, and increases
+	  when the GM decides that it is appropriate.  As a rule of thumb,
+	  characters should gain levels at the end of a story arc or when the
+	  players have accomplished something noteworthy in the game.
+	</p>
+      </subsection>
+
+      <img id="mj_myrmidon"/>      
+      
+      <subsection>
+	<subsectiontitle>Point Pools</subsectiontitle>
+
+	<p>
+	  <label>sec:point-pool</label>
+	  <indexentry>
+	  <entry>Point Pool Check</entry></indexentry>
+	  <indexentry>
+	    <entry>Check</entry>
+	    <subentry>Point Pool</subentry>
+	  </indexentry>
+	  Point pools represent some finite resource that will run out if
+	  overused, <eg/> for PCs these are Stamina, Health, Magic, Mettle and
+	  Luck, but monsters, magic items, and other things can have point pools
+	  as well.
+	</p>
+
+	<p>
+	  Point pools represent some finite resource that the player has to
+	  manage during the game, which will run out if overused. When any of
+	  the pools is reduced to zero the pool is said to be
+	  <defn>Exhausted</defn> and certain effects are applied as described in
+	  the Exhaustion Table.  Point pools have a minimum value of zero.
+	</p>
+
+	<p>
+	  The number of points in a character's point pools are defined by their
+	  archetype, level and abilities.   For character point pools like Luck,
+	  Magic and Mettle the point pools will have a rest rate which allows
+	  the player to regain points for each point pool over time when they
+	  rest or through the use of other special abilities.
+	</p>
+	
+	<p>
+	  Some point pools can never have their points restored, <eg/> some
+	  magical items.  While other point pools can regain their points in a
+	  variety of different ways, specified on a case by case basis.
+	</p>
+
+	<indexentry>
+	  <entry>Exhausted Point Pools</entry>
+	  <indexdefn>
+	    When a point pool is reduced to zero that pool is said to be
+	    exhausted.  This triggers special events in the Exhaustion Table.
+	    Any check that requires points to be paid from this pool automatically
+	    fail (with the exception of Stamina).
+	  </indexdefn>
+	</indexentry>
+	
+	<subsubsection>
+	  <subsubsectiontitle>Hit Points: Stamina <ampersand/> Health</subsubsectiontitle>
+	  
+	  <p>
+            A characters physical well-being is represented by a combination of
+	    their Stamina and Health point pools, collectively called their
+	    <defn>Hit Points</defn>
+	    <indexentry>
+	      <entry>Hit Points</entry>
+	      </indexentry>.
+	  </p>
+	  
+	  <descriptions>
+            <term>Stamina</term>
+            <description>
+              <indexentry>
+		<entry>Stamina</entry>
+		<subentry>see Hit Points</subentry>
+	      </indexentry>
+              <p>
+		<indexentry><entry>Stamina</entry></indexentry>
+		is the characters freshness, their energy, their vigour, and
+		their ability to shrug off minor wounds, bruising, scratches,
+		glancing blows, near misses and the like.  Damage to stamina
+		leaves the character breathless, a little stunned, bruised and
+		battered but not physically too badly hurt. As the character's
+		Stamina decreases their ability to avoid serious damage from
+		attackers decreases and the danger of getting really physically
+		hurt increases. Stamina is recovered quickly.
+              </p>
+            </description>
+
+            <term>Health</term>
+            <description>
+              <indexentry>
+		<entry>Healing</entry>
+		<subentry>Health</subentry>
+	      </indexentry>
+              <p>
+		represents the characters brawn, their physical capacity to take
+		damage. Damage to health takes the form of lacerations, deep
+		bruising, sprained joints. Wounds that take time to heal, so it
+		takes time to restore health. The character gains Health back
+		slowly, at their Rest Rate when they Sleep.
+              </p>
+            </description>
+	  </descriptions>
+
+          <indexentry>
+	    <entry>Health</entry>
+	  </indexentry>
+          <indexentry>
+	    <entry>Zero Health</entry>
+	  </indexentry>
+	  <p>
+            Characters can take damage to either of these stats as the result of
+	    an in-game event. For example, when a character takes damage during
+	    combat they will usually take it from their Stamina first and then
+	    their Health. Other damage, such as falling damage, applies directly
+	    to Health irrespective of the current Stamina.
+	  </p>
+
+	  <playexample>
+            <p>
+              Dourli, our amiable dwarven friend has somehow managed to find
+	      himself in a brawl with some of the towns thugs.  Dourli is
+	      stabbed by one of the thugs for 4 damage.  He only has 3 Stamina
+	      remaining so his Stamina is reduced to 0, and his Health is then
+	      also reduced by 1.  Since Dourli's Stamina is reduced to zero he
+	      applies any effects from the Exhaustion Table, he gains the
+	      Bloodied keyword, and has to make a Will Check. He fails his Will
+	      Check and gains the Checked Condition.
+            </p>
+	  </playexample>
+
+	  <figure>
+            <!-- <img id="mj_gothic_city" scale="0.123"/> -->
+            <img id="mj_gothic_city"/>
+	  </figure>
+	  
+	  <p>
+	    A character with zero Stamina gains the <defn>Bloodied</defn>
+	    condition. A character with zero Health gains the
+	    <defn>Near-Death</defn> condition, see
+	    page<pageref>sec:conditions</pageref> for more information on
+	    conditions.  Characters who are Near-Death are effectively too hurt
+	    and too weak to defend themselves or do too much and are in danger
+	    of dying, see Section<ref>sec:death</ref> on
+	    page<pageref>sec:death</pageref> of the GMG. Hit points may be
+	    regained in a number of ways, see Section<ref>sec:healing</ref> on
+	    page<pageref>sec:healing</pageref> for information on Healing.
+	  </p>
+	</subsubsection>
+
+	
+	<subsubsection>
+	  <subsubsectiontitle>Luck, Magic and Mettle</subsubsectiontitle>
+	  <p>
+            The other point pools are as follows:
+	  </p>
+	  
+	  <descriptions>
+            <term>Magic</term>
+            <description>
+              <indexentry>
+		<entry>Pools</entry>
+		<subentry>see Magic</subentry>
+	      </indexentry>
+              <p>
+		Casting magic uses a points from the Magic Point Pool.
+		Casting spells has many special rules, and is described in
+		Section<ref>ch:magic</ref> on page<pageref>ch:magic</pageref>.
+              </p>
+
+  	      <p>
+  		Not all characters are able to cast spells, but all characters
+		have a magic pool. This pool represents their animus, their
+		spark of life, and can be use to resist
+  		spells.
+  	      </p>
+            </description>
+            <term>Mettle</term>
+            <description>
+              <indexentry>
+		<entry>Pools</entry>
+		<subentry>see Mettle</subentry>
+	      </indexentry>
+	      <p>
+		This pool measures the characters morale and their current
+		confidence in their situation.
+	      </p>
+            </description>
+	    
+            <term>Luck</term>
+            <description>
+              <indexentry>
+		<entry>Pools</entry>
+		<subentry>see Luck</subentry>
+	      </indexentry>
+              <p>
+		<indexentry>
+		  <entry>Luck Pool</entry>
+		</indexentry>
+		Characters have a Luck Pool that represents the players manifest
+		destiny, their fate.
+              </p>
+            </description>
+	  </descriptions>
+	</subsubsection>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Abilities</subsectiontitle>
+
+	<p>
+	  <indexentry>
+	    <entry>Ability Rank</entry>
+	  </indexentry>
+	  <indexentry>
+	    <entry>Rank - Ability</entry>
+	  </indexentry>
+	  <defn>Abilities</defn> represent the characters talent, skill, or
+	  proficiency in a particular area.  Each Ability has a
+	  <defn>Rank</defn>.  The higher the ability rank the easier it is for
+	  the character to succeed making checks against that ability.  Ability
+	  ranks are written after the ability.  So, for example, we might say
+	  that Dourli has <emph>Axe Cleave 3</emph>, which means that he has
+	  Axe Cleave at rank 3.
+	</p>
+
+	<indexentry>
+	  <entry>Ability Specialization</entry>
+	</indexentry>
+	<p>
+	  Characters can have abilities with a <defn>Specialization</defn>. In
+	  this case the specialization will follow the ability name and be
+	  written in square brackets, <eg/> <emph>History[Westreich] 2</emph>.
+	  The template indicates that the knowledge is narrower than the ability
+	  name alone suggests.  The GM can choose whatever template values they
+	  like for templated abilities though some abilities suggest a number of
+	  options.
+	</p>
+
+
+
+
+	<indexentry><entry>Ability Rank</entry></indexentry>
+	<indexentry><entry>Rank - Ability</entry></indexentry>
+	<p>
+	  Abilities have numerical ranks. The higher the ability rank the better the
+	  character is at that ability and the easier it is for the character to
+	  succeed at those ability checks.  Ability ranks are written after the
+	  ability.  So, for example, we might say that Dourli has
+	  <emph>Axe Cleave 3</emph>, which means that he has Axe Cleave at rank 3.
+	</p>
+
+	<indexentry><entry>Ability Rank - Untrained</entry></indexentry>
+	<indexentry><entry>Untrained Ability Rank</entry></indexentry>
+	<indexentry><entry>Rank - Untrained</entry></indexentry>
+	<p>
+	  Some abilities have an <defn>untrained rank</defn>, often 0, -3 or -6.
+	  If an ability has an untrained rank then it can be used without training
+	  by any character.  All characters automatically have all untrained
+	  abilities at the untrained rank.
+	</p>
+
+	
+	<figure position="!b">
+	  <!-- <img id="anatomy_of_an_ability" scale="0.37"/> -->
+	  <img id="anatomy_of_an_ability"/>
+	</figure>
+	
+
+	
+	<indexentry><entry>Ability State</entry></indexentry>
+	<indexentry><entry>State (Ability)</entry></indexentry>
+	<p>
+	  Some abilities have a list of <defn>Stages</defn> representing some
+	  part of the characters current state <eg/> poisoning or diseases. As
+	  the game progresses and characters make or fail checks the stage of
+	  the ability may change.
+	</p>
+
+	
+	<subsubsection>
+	  <subsubsectiontitle>Primary Abilities</subsubsectiontitle>
+	  <p>
+            All characters share a set of <defn>Primary Abilities</defn> that
+	    describe the characters physical capabilities. These provide a bonus
+	    to certain checks and may be prerequisites for other abilities. In
+	    Malleus Deum primary abilities are treated like all other abilities,
+	    see Section<ref>sec:primary_abilities</ref>
+	    on page<pageref>sec:primary_abilities</pageref>.
+	  </p>
+
+	  <descriptions>
+            <term>Strength</term>
+	    <description>
+	      physical power and size
+	    </description>
+            <term>Endurance</term>
+	    <description>
+	      <p>toughness, fitness and physical robustness</p>
+	    </description>
+            <term>Agility</term>
+	    <description>
+	      <p>nimbleness and fine motor control</p>
+	    </description>
+            <term>Speed</term>
+	    <description>
+	      <p>swiftness and fleetness of movement</p>
+	    </description>
+            <term>Perception</term>
+	    <description>
+	      insight and ability to notice things
+	    </description>
+            <term>Will</term>
+	    <description>
+	      stubbornness, determination and tennacity
+	    </description>
+	  </descriptions>
+
+	  <figure fullwidth="true">
+            <!-- <img id="mj_ogre" scale="0.082"/> -->
+            <img id="mj_ogre"/>
+	  </figure>
+	</subsubsection>
+
+
+	<playexample>
+          <p>
+            Dourli, our amiable dwarven friend has somehow managed to find
+	    himself in a brawl with some of the towns thugs.  Dourli is stabbed
+	    by one of the thugs for 4 damage.  He only has 3 Stamina remaining
+	    so his Stamina is reduced to 0, his Health is reduced by 1, he gains
+	    the Bloodied keyword, and has to make a Will Check. He fails his
+	    Will Check and gains the Checked Condition.
+          </p>
+	</playexample>
+
+	<subsubsection>
+	  <subsubsectiontitle>Defensive Abilities</subsubsectiontitle>
+
+	  <indexentry>
+	    <entry>Defence Check</entry>
+	  </indexentry>
+	  <p>
+            Defensive abilities represent how difficult a character is to hit.
+	    When an NPC tries to hit a PC in combat the player makes a defensive
+	    ability check against the difficulty of the NPC's attack. There are
+	    a number of defensive abilities but the three most common are Armour
+	    on page<pageref>ability:armour</pageref>, Dodge on
+	    page<pageref>ability:dodge</pageref>, and Block on
+	    page<pageref>ability:block</pageref>. Some weapon classes also allow
+	    the user to parry blows with those weapons, <eg/> see Staff Parry on
+	    page<pageref>ability:staff.parry</pageref>, and Sword Parry on
+	    page<pageref>ability:sword.parry</pageref>. We use the term
+	    <defn>Defence Check</defn> to refer to these ability checks
+	    irrespective of the underlying defensive ability the player chooses
+	    to make the check.
+	  </p>
+	</subsubsection>
+
+
+	<subsubsection>
+	  <subsubsectiontitle>Common Abilities</subsubsectiontitle>
+	  <indexentry>
+	    <entry>Common Abilities</entry>
+	  </indexentry>
+	  <p>
+	    Common abilities are a set of abilties that are shared by all
+	    characters and used frequently. These include abilities like Lore,
+	    Brawl and Swim.  Every character can attempt these abilities but
+	    some archetypes have a higher possibility of success.
+	  </p>
+	</subsubsection>
+
+	<subsubsection>
+	  <subsubsectiontitle>Specialized Abilities</subsubsectiontitle>
+	  <indexentry><entry>Specialized Abilities</entry></indexentry>
+	  <p>
+            All characters have the same set of Primary, Defence and Common
+	    abilities.  In addition, each character has a range of
+	    <defn>Specialized Abilities</defn> which represent more uncommon or
+	    esoteric skills that most other characters do not have,
+	    <eg/> Mighty Blow, Alchemy, Pick Locks, and Phantasmal Leech.
+	  </p>
+
+	  <p>
+            A character's initial abilities are determined by their archetype.
+	    The characters archetype assigns a number of abilities for the
+	    player to choose from. Abilities have a rank, and might also have
+	    one or more specializations.  These complications are described
+	    further in Chapter<ref>ch:abilities</ref> on
+	    page<pageref>ch:abilities</pageref>.
+	  </p>
+	  
+	  <!-- <p> -->
+	  <!-- 	<indexentry><entry>Ability[Templates]</entry></indexentry> -->
+	  <!-- 	<indexentry><entry>Template - Ability</entry></indexentry> -->
+	  <!-- 	Some abilities may be templated.  In this case the template will follow the ability name -->
+	  <!-- 	and be written in square brackets, <eg/> History[Westreich] 2.  The template indicates that -->
+	  <!-- 	the knowledge is narrower than the ability name alone suggests.  The GM can choose whatever -->
+	  <!-- 	template values they like for templated abilities. -->
+	  <!-- </p> -->
+
+	</subsubsection>
+
+	<subsubsection>
+	  <subsubsectiontitle>Aspects</subsubsectiontitle>
+	  <p>
+            Aspects are a special type of ability that describes some facet of
+	    the characters personality, relationships, philosophy or oaths
+	    <eg/>: Silent Outcast, Naive Appeaser, Dipsomaniac.  Aspects tie
+	    those descriptions to game mechanics and allow checks to be made
+	    against them, and so have real consequences within the game.
+	    Mechanically, Aspects are just another type of Ability, and are
+	    defined in detail in Chapter<ref>ch:aspects</ref> on
+	    page<pageref>ch:aspects</pageref>.
+	  </p>
+	</subsubsection>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Backstory</subsectiontitle>
+	<p>
+	  Optionally, players may create a background or backstory for their
+	  character.  At least some of the players background should be fleshed
+	  out at character creation time.  The background helps to tie
+	  characters to one another and to give them a purpose and a feeling for
+	  how they fit in the world.  This should be done collaboratively with
+	  the GM and possibly with the other players as well to ensure
+	  compatibility with the milieu and other character backgrounds.
+	</p>
+      </subsection>
+
+
+      <subsection>
+	<subsectiontitle>Supplementary Statistics</subsectiontitle>
+	<p>
+	  The player might want to include any supplementary statistics: Height,
+	  Weight, Age, Hair Colour and so on.
+	</p>
+      </subsection>
+    </section>
+
+    <section>
+      <sectiontitle>Leveling Up<label>sec:leveling_up</label></sectiontitle>
+      <p>
+	At some point in the game the GM will notify the characters that they
+	have leveled up. The archetype document describes the changes available
+	to the character for their new level.
+      </p>
+
+      <p>
+	Changes are of the following types.
+      </p>
+      <descriptions>
+	<term>New Level</term><description>The player should modify the level
+	for their character on the character sheet.</description>
+	<term>Increased Stamina or Health</term><description>The player increases the
+	amount of the relevant hit points on their character sheet.</description>
+	<term>Gain Ability</term>
+	<description>
+	  <indexentry>
+	    <entry>Ability</entry>
+	    <subentry>Gaining</subentry>
+	  </indexentry>
+	  <indexentry><entry>Gaining an Ability</entry></indexentry>
+	  <p>
+	    The character may gain a completely new ability. The character must
+	    be able to learn the ability, and the character must have already
+	    gained any prerequisite abilities. Abilities are divided using
+	    keywords into a number of categories. For example, the Axe Strike
+	    ability has keywords: Weapon, Heavy, Martial, Axe.  This means that
+	    if the character gains a martial ability when they go up a level
+	    they may take the Axe Strike 1 ability or any of the other ability
+	    with the keyword <emph>martial</emph> of the given rank, <eg/> Sword
+	    Strike 1.  If the character gains an Axe ability they may only
+	    choose from the abilities with the <emph>axe</emph> keyword. In
+	    order to take an ability the abilities prerequisites must be met.
+	  </p>
+	</description>
+	<term>Ability Promotion</term>
+	<description>
+	  <p>
+	    <indexentry>
+	      <entry>Ability</entry>
+	      <subentry>Promotions</subentry>
+	    </indexentry>
+	    <indexentry>
+	      <entry>Promoting an Ability</entry>
+	    </indexentry>
+	    An <bold>Ability Promotion</bold> allows the character to increase
+	    the rank of an already mastered ability by one.
+	  </p>
+	</description>
+	<term>Ability Specialization</term>
+	<description>
+	  <p>
+	    <indexentry>
+	      <entry>Ability</entry>
+	      <subentry>Specialization</subentry>
+	    </indexentry>
+	    <indexentry>
+	      <entry>Gain an Ability</entry>
+	    </indexentry>
+	    An ability promotion allows the character to increase the rank of an
+	    already mastered ability by one.
+	  </p>
+	</description>
+      </descriptions>
+    </section>
+  </chapter>

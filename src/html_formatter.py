@@ -5,7 +5,7 @@ from utils import (
     normalize_ws,
     convert_str_to_bool,
     convert_str_to_int,
-    COMMENT# ,
+    #COMMENT# ,
     #resources_dir
 )
 from config import use_imperial
@@ -1029,7 +1029,8 @@ class HtmlFormatter:
                 percent_width = float(child.text)
                 table_spec_str += "p{%s\\linewidth}" % percent_width
                 
-            elif child.tag is COMMENT:
+            #elif child.tag is COMMENT:
+            elif is_comment(child): # .tag is COMMENT:
                # ignore comments!
                pass
 

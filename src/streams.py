@@ -2,9 +2,9 @@ import re
 from copy import copy
 
 from utils import (
-    #node_to_string,
     contents_to_string,
-    COMMENT,
+    #COMMENT,
+    is_comment,
 )
 
 class TagConstraint:
@@ -28,7 +28,8 @@ ability_regex = re.compile(
     "(?P<ability_id>[a-zA-Z]+\.[a-zA-Z]+)"
     "(?P<template>\[[a-zA-Z\-\?]\]]?)?"
     "(?P<rank>(?:_)0-9)?")
-    
+
+
 class AbilityConstraint:
     """
     This represents a specific ability or ability-rank
@@ -104,7 +105,8 @@ class Operator:
                 ability_constraint.parse(fname, child)
                 self.operands.append(ability_constraint)
                
-            elif tag is COMMENT:
+            #elif tag is COMMENT:
+            elif is_comment(child): # tag is COMMENT:
                 # ignore comments!
                 pass
             else:

@@ -16,7 +16,8 @@
     </p>
 
     <figure>
-      <img id="mj_night_gauner" scale="0.24"/>
+      <!-- <img id="mj_night_gauner" scale="0.24"/> -->
+      <img id="mj_night_gauner"/>
     </figure>        
 
     <p>
@@ -84,7 +85,7 @@
       </p>
       
       <table>
-    	<tablecategory>Standard</tablecategory>
+    	<tablecategory><standard/></tablecategory>
     	<tablespec>
     	  <fixed>0.18</fixed>
     	  <fixed>0.71</fixed>
@@ -158,7 +159,7 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle>XXXX</pathtitle>
-	  <choice>✱merovingian_4, ✱sword_strike_1, ✱dagger_strike_1, ✱negotiate[intimidate]_1</choice>
+	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="sword_strike" rank="1"/>, <abilityref id="dagger_strike" rank="1"/>, <abilityref id="negotiate" specializations="intimidate"/></choice>
 	</path>
       </branch>
 
@@ -172,36 +173,36 @@
       	</branchdescription>
       	<path chance="1">
       	  <pathtitle>Almaignee</pathtitle>
-      	  <choice>✱etiquette[Almaignee]_2, ✱history[Almaignee]_2</choice>
+      	  <choice><abilityref id="etiquette" specializations="Almaignee"/>, <abilityref id="history" specializations="Almaignee"/></choice>
       	  <choice></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Poitevin</pathtitle>
-      	  <choice>✱poitevin_1, ✱etiquette[Averoigne]_2,  ✱history[Averoigne]_2</choice>
+      	  <choice><abilityref id="poitevin" rank="1"/>, <abilityref id="etiquette" specializations="Averoigne"/>,  <abilityref id="history" specializations="Averoigne"/></choice>
       	</path>
       	<path chance="2">
       	  <pathtitle>Rural Westreich</pathtitle>
-      	  <choice>✱farmer_1</choice>
+      	  <choice><abilityref id="farmer" rank="1"/></choice>
       	</path>
       	<path chance="4">
       	  <pathtitle>Laibstadt</pathtitle>
-	  <choice>✱merovingian_3</choice>
+	  <choice><abilityref id="merovingian" rank="3"/></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Hybernian</pathtitle>
-      	  <choice>✱hybernian_2, ✱etiquette[Albion]_2, ✱etiquette[Hybernia]_2</choice>
+      	  <choice><abilityref id="hybernian" rank="2"/>, <abilityref id="etiquette" specializations="Albion"/>, <abilityref id="etiquette" specializations="Hybernia"/></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Albion</pathtitle>
-      	  <choice>✱hybernian_1, ✱etiquette[Albion]_2, ✱etiquette[Hybernia]_1</choice>
+      	  <choice><abilityref id="hybernian" rank="1"/>, <abilityref id="etiquette" specializations="Albion"/>, <abilityref id="etiquette" specializations="Hybernia"/></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Noord</pathtitle>
-      	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice>
+      	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>, or <abilityref id="merovingian" rank="4"/></choice>
       	</path>
       	<path chance="1">
       	  <pathtitle>Averoigne</pathtitle>
-      	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice>
+      	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>, or <abilityref id="merovingian" rank="4"/></choice>
       	</path>
       </branch>
       
@@ -216,14 +217,14 @@
 	</branchdescription>
 	<path chance="3">
       	  <pathtitle>Robbery under Arms</pathtitle>
-	  <choice>✱archery_shoot_1</choice>
-	  <choice>✱gun_shoot_1</choice>
-	  <choice>✱crossbow_shoot_1</choice>
+	  <choice><abilityref id="archery_shoot" rank="1"/></choice>
+	  <choice><abilityref id="gun_shoot" rank="1"/></choice>
+	  <choice><abilityref id="crossbow_shoot" rank="1"/></choice>
 	</path>
 	<path chance="4">
       	  <pathtitle>Burglar</pathtitle>
-	  <choice>✱climb_3</choice>
-	  <choice>✱ropecraft_2</choice>
+	  <choice><abilityref id="climb" rank="3"/></choice>
+	  <choice><abilityref id="ropecraft" rank="2"/></choice>
 	</path>
       </branch>
       
@@ -243,7 +244,7 @@
       	</path>
       	<path chance="3">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
+      	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>, <abilityref id="merovingian" rank="4"/></choice>
       	  <choice></choice>
       	  <choice></choice>
       	  <choice></choice>
@@ -267,7 +268,7 @@
       	</path>
       	<path chance="6">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
+      	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>, <abilityref id="merovingian" rank="4"/></choice>
       	</path>
       </branch>
 
@@ -288,7 +289,7 @@
       	</path>
       	<path chance="2">
       	  <pathtitle>Hardship</pathtitle>
-      	  <choice>✱merovingian_4, ✱inochian_2, ✱merovingian_4</choice>
+      	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>, <abilityref id="merovingian" rank="4"/></choice>
       	</path>
       </branch>
 
@@ -309,7 +310,7 @@
       <!-- 	</path> -->
       <!-- 	<path> -->
       <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
-      <!-- 	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice> -->
+      <!-- 	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>, or <abilityref id="merovingian" rank="4"/></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
@@ -333,7 +334,7 @@
       <!-- 	</path> -->
       <!-- 	<path> -->
       <!-- 	  <pathtitle>10-12 Hardship</pathtitle> -->
-      <!-- 	  <choice>✱merovingian_4, ✱inochian_2, or ✱merovingian_4</choice> -->
+      <!-- 	  <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="inochian" rank="2"/>, or <abilityref id="merovingian" rank="4"/></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->
       <!-- 	  <choice></choice> -->

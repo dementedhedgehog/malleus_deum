@@ -4,6 +4,10 @@
     <abilitygrouptitle>Social Abilities</abilitygrouptitle>
     <abilitygroupid><social/></abilitygroupid>
     <abilitygroupfamily><general/></abilitygroupfamily>
+    <slug>
+      In the old free days all I wanted was a sharp sword and a straight
+      path to my enemies. Now no paths are straight and my sword is useless.
+    </slug>          
     <abilitygroupdescription>
       <p>
 	Social abilities are used to represent the characters
@@ -22,25 +26,13 @@
     <abilityranks untrained="-6" from="1" to="6"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>social_defaults</defaults> -->
-      <actiontype><noncombat/></actiontype>
+      <checktype><social/></checktype>
+      <apcost><noncombat/></apcost>
       <range><self/></range>
-      <xdef fname="social_defaults" elem_name="dc"/>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><dc11/></dc> -->
-      <mastery>
-	<any-success>.</any-success>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<indifferent>FIXME</indifferent>
-      </fate>      
-      
+      <keywords><social/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>.</any-success>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="0" y="30"/></spline> 
     <specializations>
@@ -49,24 +41,23 @@
       <specialization>Laibstadt Underworld</specialization>
     </specializations>    
     <abilitydescription>
-
       <p>
-	The Contacts ability can best be described by the phrase: ``I know a guy...''.
-	It represents the characters knowledge of people who have useful abilities or
-	information within part of society.  For example a character who has
-	Contacts (Thieves Guild) might know a guy who is a fence and can sell
-	stolen goods.  The Contacts abilility does not effect any existing
-	relationships the character has with NPCs.
+	The Contacts ability can best be described by the phrase:
+	``I know a guy...''. It represents the characters knowledge of people
+	who have useful abilities or information within part of society.  For
+	example a character who has Contacts (Thieves Guild) might know a guy
+	who is a fence and can sell stolen goods.  The Contacts abilility does
+	not effect any existing relationships the character has with NPCs.
       </p>
 
       <p>	
-	Contacts is a ability template.  That is when you learn
+	Contacts is an ability template.  That is when you learn
 	the ability you learn it for a particular society.  When
 	you do this replace [society] with an actual campaign
-	specific society, talk to your GM about it, <eg/>
-	Contacts[The Cult of the Black Hand].  You can have multiple
-	different instances of this ability at different ranks for any number of
-	societies.
+	specific society, talk to your GM about what societies exist in that
+	campaign, <eg/> Contacts[The Cult of the Black Hand].  You can have
+	multiple different instances of this ability at different ranks for any
+	number of societies.
       </p>      
 
       <p>
@@ -97,23 +88,16 @@
        
        <critsuccess></critsuccess>
        <critfail></critfail>
-       <boon></boon>
-      
-      
+       <boon></boon>             
        <bane></bane>
-      
-      
-       
-       
-       
-    <range><na/></range>
-    <indifferent></indifferent>
+       <range><na/></range>
+       <indifferent></indifferent>
 
   -->
-  <!--   <actiontype><noncombat/></actiontype> -->
+  <!--   <apcost><noncombat/></apcost> -->
   <!--   <keywords><general/><social/></keywords> -->
   <!--   <abilityranks untrained="0" from="1" to="3"/> -->
-  <!--   <abilitycheck dc="Targets Perception">2d12+Rank</abilitycheck> -->
+  <!--   <check dc="Targets Perception">2d12+Rank</abilitycheck> -->
   <!--   <spline><p x="30" y="75"/></spline>  -->
   <!--   <abilitydescription> -->
   <!--     <p> -->
@@ -123,36 +107,25 @@
   <!--     </p> -->
   <!--   </abilitydescription> -->
   <!-- </ability> -->
-
-
-
   
 
 
   <ability>
     <abilitytitle>Negotiate</abilitytitle>
-    <abilityid>negotiate</abilityid>    
+    <abilityid>negotiate</abilityid>
+    <slug>
+      Brother, may I have some oats?
+    </slug>      
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>social_defaults</defaults> -->
-      <actiontype><noncombat/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <checktype><social/></checktype>
+      <apcost><noncombat/></apcost>
       <range><ranged-short/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc><opponents-negotiate-or-11/></dc>
-      <mastery>
-	<any-success>.</any-success>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<indifferent>FIXME</indifferent>
-      </fate>      
-      
+      <keywords><social/><check/></keywords>
+      <counter><opponents-negotiate-save/></counter>
+      <any-success>.</any-success>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="-90" y="105"/></spline> 
     <specializations>
@@ -165,9 +138,9 @@
     </specializations>
     <abilitydescription>
       <p>
-  	<indexentry>communicate</indexentry>
-  	<indexentry>negotiation</indexentry>
-  	<indexentry>diplomacy</indexentry>
+  	<indexentry><entry>communicate</entry></indexentry>
+  	<indexentry><entry>negotiation</entry></indexentry>
+  	<indexentry><entry>diplomacy</entry></indexentry>
   	Negotiation is the art of the deal, persuasion and diplomacy.
   	When some arrangement is in both parties favour and one party
   	wants to extend the terms one more time, that is when the
@@ -222,17 +195,19 @@
       </p>
 
       <p>      
-        <indexentry>Intimidation<subentry>See Negotiate/Inimidation</subentry></indexentry>	
-	Intimidation is a kind of negotiation where the threat of violence is on the table.
-	When a character tries to intimidate another the GM should determine the DC of the
-	negotiation check based on the likelihood that the target could be intimidated.  If
-	there is no chance the target can be intimidated the GM should not allow the roll.
+        <indexentry>
+	  <entry>Intimidation</entry>
+	  <subentry>See Negotiate/Inimidation</subentry>
+	</indexentry>	
+	Intimidation is a kind of negotiation where the threat of violence is on
+	the table. When a character tries to intimidate another the GM should
+	determine the DC of the negotiation check based on the likelihood that
+	the target could be intimidated.  If there is no chance the target can
+	be intimidated the GM should not allow the roll.
       </p>      
     </abilitydescription>
   </ability>
   
-
-
 
 
   <ability>
@@ -241,58 +216,38 @@
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>social_defaults</defaults> -->
-      <actiontype><noncombat/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <checktype><social/></checktype>    
+      <apcost><noncombat/></apcost>
       <range><ranged-short/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <dc><opponents-etiquette-or-11/></dc>
-      <mastery>
-	<any-success>.</any-success>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<indifferent>FIXME</indifferent>
-      </fate>            
+      <keywords><social/><check/></keywords>
+      <counter><opponents-etiquette-save/></counter>
+      <any-success>.</any-success>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="-90" y="105"/></spline> 
-    <!-- <specializations> -->
-      <!-- <specialization>Business</specialization> -->
-      <!-- <specialization>Diplomacy</specialization> -->
-      <!-- <specialization>Deceive</specialization> -->
-      <!-- <specialization>Interogate</specialization> -->
-      <!-- <specialization>Intimidate</specialization>       -->
-      <!-- <specialization>SenseMotive</specialization> -->
-    <!-- </specializations> -->
     <abilitydescription>  
-      <indexentry>High Etiquette</indexentry>
-      <indexentry>Low Etiquette</indexentry>
-      <indexentry>Middle Etiquette</indexentry>
-      <indexentry>Persuasion</indexentry>
-      <indexentry>Diplomacy</indexentry>
+      <indexentry><entry>High Etiquette</entry></indexentry>
+      <indexentry><entry>Low Etiquette</entry></indexentry>
+      <indexentry><entry>Middle Etiquette</entry></indexentry>
+      <indexentry><entry>Persuasion</entry></indexentry>
+      <indexentry><entry>Diplomacy</entry></indexentry>
       <p>
-	Etiquette represents knowledge of the code of behaviour and
-	the social norms of a particular group or part of society.
-	Etiquette is required to pass as a member of that society
-	during extended conversations and or periods of time.  Using the
-	wrong dining implements or not knowing the meaning of
-	common slang words betray the characters true origins.
+	Etiquette represents knowledge of the code of behaviour and the social
+	norms of a particular group or part of society.	Etiquette is required to
+	pass as a member of that society during extended conversations and or
+	periods of time.  Using the wrong dining implements or not knowing the
+	meaning of common slang words betray the characters true origins.
       </p>
   
       <p>
-	Etiquette is a templated ability.
-	A character may simultaneously have multiple Etiquette abilities at
-	different ranks, one for each society which they have studied.
-	Each instantiation of the Etiquette ability is annotated with that abilities
-	particular society and rank.  For example, a spy type archetype might
-	have Etiquette[Nobility of Verungia] II, Etiquette[The Black Hand] I,
-	and Etiquette[Midheim Docks] I.
-	Characters can train new abilities in Etiquette for new societies, provided
-	that they access to some source of learning that allows the character to
+	Etiquette is a templated ability. A character may simultaneously have
+	multiple Etiquette abilities at different ranks, one for each society
+	which they have studied. Each instantiation of the Etiquette ability is
+	annotated with that abilities particular society and rank.  For example,
+	a spy type archetype might have Etiquette[Nobility of Verungia] II,
+	Etiquette[The Black Hand] I, and Etiquette[Midheim Docks] I. Characters
+	can train new abilities in Etiquette for new societies, provided that
+	they access to some source of learning that allows the character to
 	learn the social norms of the new social group.
       </p>
 
@@ -311,10 +266,10 @@
       </p>
   
       <p>
-	Etiquette[Middle] is the knowledge of the social behaviours of the middle
-	classes.  Examples might include The Merchants Guild of the City
-	of Verburg, The Artisans of Iron Mountain, Merchant Ship Officers of the North
-	Seas and so on.
+	Etiquette[Middle] is the knowledge of the social behaviours of the
+	middle classes.  Examples might include The Merchants Guild of the City
+	of Verburg, The Artisans of Iron Mountain, Merchant Ship Officers of the
+	North Seas and so on.
       </p>
 
       <p>
@@ -346,47 +301,38 @@
     <abilitytitle>Fame</abilitytitle>
     <abilityid>fame</abilityid>
     <abilityranks from="1" to="5"/>
-    <abilitycheck>
+    <abilitycheck> 
       <name>Check</name>
-      <!-- <defaults>social_defaults</defaults> -->
-      <actiontype><noncombat/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <checktype><social/></checktype>    
+      <apcost><noncombat/></apcost>
       <range><ranged-short/></range>
-      <!-- <keywords></keywords>       -->
-      <!-- <indifferent></indifferent> -->
-      <dc><dc13/></dc>
-      <!-- <any-success>No damage</any-success> -->
-      <mastery>
-	<any-success>.</any-success>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<indifferent>FIXME</indifferent>
-      </fate>      
+      <keywords><social/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>.</any-success>
+      <critfail>FIXME</critfail>
     </abilitycheck>    
     <spline><p x="-90" y="0"/></spline>
     <abilitydescription>
-      <indexentry>Renown</indexentry>
-      <indexentry>Fame</indexentry>
-      <indexentry>Infamy</indexentry>
+      <indexentry><entry>Renown</entry></indexentry>
+      <indexentry><entry>Fame</entry></indexentry>
+      <indexentry><entry>Infamy</entry></indexentry>
       <p>
-	Fame is a measure of a characters (or parties) Renown or Infamy
-	within some society.  It represents how well known the characters are within
-	that society.  Within that society the character may be respected or despised
-	or somewhere in between depending on the actions that led to their fame.
-	Renown may be used during social interactions at the GMs discretion.  It is
-	possible to be both famous and infamous within a society.
+	Fame is a measure of a characters (or parties) Renown or Infamy within
+	some society. It represents how well known the characters are within
+	that society.  Within that society the character may be respected or
+	despised or somewhere in between depending on the actions that led to
+	their fame. Renown may be used during social interactions at the GMs
+	discretion. It is possible to be both famous and infamous within a
+	society.
       </p>
 
       <p>
-	Unlike other abilities the rank of Fame increases when the GM dictates.  Usually this
-	should happen immediately after the current rank is mastered.  It is a narrative
-	driven ability.  Note that to become famous people within the society need to know of
-	the characters exploits. It is up to the GM to decide when characters receive their
-	first rank of Fame for a given society.
+	Unlike other abilities the rank of Fame increases when the GM dictates.
+	Usually this should happen immediately after the current rank is
+	mastered.  It is a narrative driven ability. Note that to become famous
+	people within the society need to know of the characters exploits. It is
+	up to the GM to decide when characters receive their first rank of Fame
+	for a given society.
       </p>
 
       <playexample>
@@ -418,42 +364,35 @@
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><reaction/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <checktype><social/></checktype>    
+      <apcost><reaction/></apcost>
       <range><ranged-short/></range>
-      <xdef fname="social_defaults" elem_name="dc"/>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><dc13/></dc> -->
-      <mastery>
-	<any-success>Target may reroll their Mettle Check.</any-success>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<indifferent>FIXME</indifferent>
-      </fate>
+      <keywords><social/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>Target may reroll their Mettle Check.</any-success>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="0" y="165"/></spline> 
     <abilitydescription>    
       <p>
-        <indexentry>Rally<subentry>See Leadership</subentry></indexentry>	
+        <indexentry>
+	  <entry>Rally</entry>
+	  <subentry>See Leadership</subentry>
+	</indexentry>	
 	The character is a leader.  They may
-	yell some encouraging words to an associate who has
-	just failed a morale check, <eg/> ``Fight you Scum''.  If successful the target
-	may reroll their Mettle Check.  Only one such reroll is	permitted per character
+	yell some encouraging words to an associate who has just failed a morale
+	check, <eg/> ``Fight you Scum''.  If successful the target may reroll
+	their Mettle Check.  Only one such reroll is	permitted per character
 	per encounter.
       </p>
 
       <p>
-	Leadership can be used to try and momentarilly stop a combat so that some form
-	of negotiation can occur: "Yield you scum, you are clearly beat".
-	The GM will specify a difficulty based on the morale of the
-	opponents and their nature.  If successful combat stops
-	and negotiation begins (note this does not mean that the
-	opponents are bound to a peaceful resolution).
+	Leadership can be used to try and momentarilly stop a combat so that
+	some form of negotiation can occur: "Yield you scum, you are clearly
+	beat". The GM will specify a difficulty based on the morale of the
+	opponents and their nature.  If successful combat stops and negotiation
+	begins (note this does not mean that the opponents are bound to a
+	peaceful resolution).
       </p>      
     </abilitydescription>
   </ability>    

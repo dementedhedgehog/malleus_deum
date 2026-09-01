@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Primary Abilities</abilitygrouptitle>
+    <abilitygroupid><primary/></abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	The primary abilities are five core abilities that represent the
+	characters raw, innate, unlearned capabilities.
+	<label>sec:primary_abilities</label>
+      </p>
+
+      <p>
+	<indexentry>
+	  <entry>Checks</entry>
+	  <subentry>Ability</subentry>
+	</indexentry>
+	<indexentry>
+	  <entry>Ability Check</entry>
+	</indexentry>
+	<indexentry>
+	  <entry>Primary Ability Check</entry>
+	</indexentry>
+	Primary Ability Checks are ability checks, made using one of the
+	characters primary abilities, Strength, Endurance, Agility, etc.
+	Primary Ability checks are usually used when no more specific check can
+	be applied, <eg/> a character might check using their Agility when
+	trying to catch a falling object as there is no catch ability. A check
+	whether a character can  make it to shore from a sinking ship should be
+	made using the Swim ability and not the endurance primary ability,
+	since the Swim ability is more specific in this case.
+      </p>
+
+      <playexample>
+	<p>
+	  Dourli tries to shift a large wine barrel that is sitting on a trap
+	  door in a cellar.  The GM declares that in order to do so Dourli must
+	  make a Strength Check with a difficulty of 12.  The player rolls a 9
+	  for their Outcome. Dourli has Strength 2, and so gets a total of 11.
+	  Dourli fails to move the wine barrel.  If he had a Strength 3 he would
+	  have succeeded.
+	</p>
+      </playexample>
+
+      <figure position="!b">
+	<!-- <img id="rackham_giant_frogs" scale="0.38"/> -->
+	<img id="rackham_giant_frogs"/>
+      </figure>
+      
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Strength</abilitytitle>
+    <abilityid>strength</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck> 
+      <name>Check</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><touch/></range>
+      <keywords><check/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycheck>    
+    <abilitycountercheck>
+      <name>Counter-Check</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><touch/></range>
+      <keywords><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>
+    <spline><p x="90" y="0"/></spline> 
+    <specializations>
+      <specialization>Throw</specialization>
+    </specializations>     
+    <abilitydescription>
+      <indexentry>
+	<entry>Strength</entry>
+      </indexentry>
+      <indexentry>
+	<entry>Abilities</entry>
+	<subentry>Strength</subentry>
+      </indexentry>
+      <p>
+	Represents the characters brute physical power.  Strength savs are made
+	when the character wishes to perform a Feat of Strength, such as bending
+	bars, opening doors and to lift heavy objects.  Strength modifies melee
+	damage and the characters Health.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Endurance</abilitytitle>
+    <abilityid>endurance</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><physical/></checktype>
+      <apcost><immediate/></apcost>
+      <range><na/></range>
+      <keywords><check/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycheck>
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><self/></range>
+      <keywords><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>
+    <abilitydescription>
+      <p>
+        <indexentry>
+	  <entry>Endurance</entry>
+	</indexentry>
+        <indexentry>
+	  <entry>Abilities</entry>
+	  <subentry>Endurance</subentry>
+	</indexentry>	
+        The characters ability to handle physical stress.  If a character has a
+	high Endurance it indicates that they are healthy and tough. Endurance
+	is used to oppose poisons, resist exhaustion, diseases, the cold, and
+        modifies the characters Stamina.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Agility</abilitytitle>
+    <abilityid>agility</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><physical/></checktype>
+      <apcost><immediate/></apcost>
+      <range><self/></range>
+      <keywords><check/></keywords>
+      <counter><sv13/></counter>
+    </abilitycheck>
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><self/></range>
+      <keywords><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>
+    <specializations>
+      <specialization>SureFeet</specialization>
+    </specializations>    
+    <abilitydescription>
+      <p>
+        <indexentry>
+	  <entry>Agility</entry>
+	</indexentry>
+        <indexentry>
+	  <entry>Abilities</entry>
+	  <subentry>Agility</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Acrobatics (use Agility)</entry>
+	</indexentry>
+        The characters ability to move easily; their nimbleness, athleticism and
+	dexterity. Agility modifies the characters Dodge Checks.	
+      </p>
+
+      <p>
+	The Sure-Feet specialization is used when the attacker the character
+	would be knocked prone.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Speed</abilitytitle>
+    <abilityid>speed</abilityid>    
+    <slug>
+      Wisely and slow; they stumble that run fast.
+    </slug>
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><physical/></checktype>
+      <apcost><immediate/></apcost>
+      <range><self/></range>
+      <keywords><check/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycheck>
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><self/></range>
+      <keywords><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>
+    <specializations>
+      <specialization>Jump</specialization>
+      <specialization>Throw</specialization>
+    </specializations>    
+    <abilitydescription>
+      <p>
+        <indexentry>
+	  <entry>Speed</entry>
+	</indexentry>
+        <indexentry>
+	  <entry>Abilities</entry>
+	  <subentry>Speed</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Movement</entry>
+	  <subentry>see Speed</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Jumping (use Speed)</entry>
+	</indexentry>
+        Speed represents how physically fast the character is. Speed checks
+	should be made for characters attempting to sprint, jump, or fleeing.
+      </p>	
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Perception</abilitytitle>
+    <abilityid>perception</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><physical/></checktype>
+      <apcost><immediate/></apcost>
+      <range><na/></range>
+      <keywords><check/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycheck>
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><ranged-very-long/></range>
+      <keywords><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>
+    <specializations>
+      <specialization>Listen</specialization>
+      <specialization>Smell</specialization>
+      <specialization>Scout</specialization>
+    </specializations>
+    <abilitydescription>
+      <p>
+        <indexentry>
+	  <entry>Perception</entry>
+	</indexentry>
+        <indexentry>
+	  <entry>Abilities</entry>
+	  <subentry>Perception</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Spot Hidden</entry>
+	  <subentry>use Perception</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Initiative</entry>
+	  <subentry>see Perception</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Notice (use Perception)</entry>
+	</indexentry>
+        <indexentry>
+	  <entry>Listen (use Perception)</entry>
+	</indexentry>	
+        The character's awareness, acumen and insight.  Perception represents
+	your attentiveness to detail and your unflagging vigilance.  In game
+	this value is used socially, for reading people and detecting
+	underhanded motives.  Perception modifies checks used both for surveying
+	the surrounds for potential avenues of attack, and reduces the
+	likelihood of being surprised, for searching.
+      </p>
+
+      <p>
+	Perception can be used in social situations to see if a person is being
+	deceptive.
+      </p>      
+    </abilitydescription>
+  </ability>  
+  
+  <ability>
+    <abilitytitle>Will</abilitytitle>
+    <abilityid>will</abilityid>    
+    <abilityranks from="-3" to="6"/>
+    <abilitycheck>
+      <name>Will Check</name>
+      <checktype><physical/></checktype>
+      <apcost><free/></apcost>
+      <range><self/></range>
+      <keywords><check/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycheck>
+
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><self/></range>
+      <keywords><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>    
+
+    <abilitycountercheck>
+      <name>Mettle Check</name>
+      <checktype><physical/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
+      <range><self/></range>
+      <keywords><countercheck/><mettlepool/></keywords>
+      <counter><gm-fiat/></counter>      
+    </abilitycountercheck>
+
+    <abilitycountercheck>
+      <name>Break Check</name>
+      <checktype><physical/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
+      <range><self/></range>
+      <keywords><countercheck/><mettlepool/></keywords>
+      <counter><gm-fiat/></counter>      
+      <fail>Another local ally makes a mettle check.</fail>
+    </abilitycountercheck>
+    
+    <abilitydescription>
+      <p>
+        <indexentry><entry>Will</entry></indexentry>
+        <indexentry>
+	  <entry>Abilities</entry>
+	  <subentry>Will</subentry>
+	</indexentry>
+	Will represents the characters strength of character.  Their grit and
+	determination.  Will is often used when making Mettle Checks.
+      </p>
+      
+      <indexentry><entry>Mettle Checks</entry></indexentry>
+      <indexentry>
+	<entry>Checks</entry>
+	<subentry>Mettle (PCs)</subentry>
+      </indexentry>
+      <p>
+	Characters may, from time to time, be forced to make a Mettle Check.
+	Mettle Checks occur when characters have to face their fears.
+      </p>
+
+      <p>
+	A <defn>Mettle Check</defn> is a check made against the Mettle Pool. It
+	has a Toll of 1 and a DDC of 6.  When a character fails a Mettle Check
+	another neraby character, chosen at random or by the GM, must also make
+	a Mettle Check.  Mettle checks can continue to cascade until someone
+	succeeds or everyone has failed a Mettle Check.  Mettle Checks are
+	free actions.
+      </p>
+
+      <p>
+	The GM should feel free to modify the Mettle Check DC as he pleases,
+	<ie/> to reflect being attacked at night, being vastly outnumbered, the
+	horrible visage of the characters opponents, the party being in good
+	spirits etc. As characters fail Mettle Checks the party starts to lose
+	dice from their Mettle Pools and their fighting options become somewhat
+	diminished.
+      </p>
+
+      <p>
+	Some suggested times to make Mettle Checks are:
+	<list>
+	  <li>Whenever a party member becomes Bloodied,</li>
+	  <li>When the party enters combat against a Fear causing opponent,</li>
+	  <li>Whenever the party is Surprised or Ambushed.</li>
+	</list>
+	Ultimately, however, it is up to the GMs discretion to decide when the
+	players should make a Mettle check and the GM should feel free to force
+	Mettle Checks sooner or later in the combat to satisfy the narrative
+	imperative.
+      </p>
+
+      <p>
+	The first time the group collectively fails a Mettle Check then everyone
+	gains the Checked Condition see page<pageref>condition:checked</pageref>,
+	after the second time everyone fails a Mettle Check everyone gains the
+	Broken Condition, see page<pageref>condition:broken</pageref>. The third
+	time the group fails their Mettle Check they gain the Routed Condition,
+	see page<pageref>condition:routed</pageref>.
+      </p>
+
+      <playexample>
+	<p>
+	  Dourli and Rozlyn have been fighting a running battle with the Black
+	  Mark and it's starting to take its toll on the two.  Rozlyn is hit
+	  with an arrow, dropping her Stamina to zero, giving her the bloodied
+	  condition, and FIXME
+	</p>
+
+	<p>
+	  Had Dourli rolled a 19/1 he would have initially succeeded, then since
+	  his Luck Pool would have been reduced below zero, it's set to zero and
+	  he fails the check for want of Luck.
+	</p>
+      </playexample>
+      
+      <p>
+	Some abilities target the opponents Mettle, <eg/> Banish, and Howl of
+	the Hunt. In these circumstances the character makes a check against
+	their targets Mettle, and if successfully deducts a cost, specified by
+	the ability being used, from their opponents Mettle pool.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>Magic Save</abilitytitle>
+    <abilityid>magic-save</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
+      <range><self/></range>
+      <keywords><magicpool/><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>
+    <abilitydescription>
+      <p>
+        <indexentry>
+	  <entry>Magic Resilience</entry>
+	</indexentry>
+	Characters make a magic check to overcome the effects of magic
+	cast against them.
+      </p>
+    </abilitydescription>
+  </ability>  
+  
+
+  <ability>
+    <abilitytitle>Luck Check</abilitytitle>
+    <abilityid>luck</abilityid>
+    <abilityranks from="-3" to="6"/>
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
+      <range><na/></range>
+      <keywords><luckpool/><countercheck/></keywords>
+      <counter><gm-fiat/></counter>
+    </abilitycountercheck>
+    <abilitydescription>
+      <p>
+        <indexentry>
+	  <entry>Luck Check</entry>
+	</indexentry>
+	Characters make a luck check to see if fortune smiles on them.
+      </p>
+
+      <p>
+	<indexentry>
+	  <entry>Luck Checks</entry>
+	</indexentry>
+	<indexentry>
+	  <entry>Checks</entry>
+	  <subentry>Luck</subentry>
+	</indexentry>
+	Whenever the GM  finds themselves in a situation where they turn to a
+	player and ask <emph>Do you feel lucky?</emph> then perhaps the player
+	should be making a Luck Check. A <defn>Luck Check</defn> is a check made
+	against the Luck Pool.
+      </p>
+
+      <playexample>
+	<p>
+	  Dourli is sitting in a corner tied up by the Black Mark, waiting on an
+	  uncertain fate. A lone guard, in his cups, watches over him.  Dourli
+	  wonders whether the guard might need to leave momentarily to relieve
+	  himself.  The GM determines that since Dourli has been tied up for a
+	  long time and the the guard is drinking, chances are high that the
+	  guard will leave the room for a short time at some point.  So he sets
+	  an easy DC for the check of 7.   The GM asks Dourli whether he's
+	  feelling lucky?  Dourli's current Luck Pool is 1.  He rolls and gets
+	  a 17.  Dourli's Luck pool is reduced by one to zero.  Dourli takes his
+	  opportunity when the guard leaves and bolts for it, his arms still
+	  tied.
+	</p>
+
+	<p>
+	  REF THE LUCK CHECK in CORE
+	  
+	  XXXX
+	  Had Dourli rolled a 19/1 he would have initially succeeded, then since
+	  his Luck Pool would have been reduced below zero, it's set to zero and
+	  he fails the check for want of Luck.
+	</p>
+      </playexample>
+    </abilitydescription>
+  </ability>  
+</abilitygroup>

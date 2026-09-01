@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Archery Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Archery Abilities</abilitygrouptitle>
     <abilitygroupid><archery/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <keywords><missile/></keywords>
@@ -10,11 +10,6 @@
 	These abilities represent training with the use of the bow and
 	arrow.  Initial training is with a short bow.  Use of the long
 	bow requires a fair amount of training.
-      </p>
-
-      <p>
-	FIXME: archery misfortune...
-	Out of arrows, weapon save, Fumble
       </p>
     </abilitygroupdescription>
     <enabled/>
@@ -25,16 +20,18 @@
     <abilitytitle>Archery Shoot</abilitytitle>
     <abilityid>archery_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <abilityattack>  
-      <name>Attack</name>
-      <actiontype><ap4/></actiontype>
+    <abilitycheck>
+      <name>Missile Attack</name>
+      <checktype><missile-attack/></checktype>          
+      <apcost><ap4/></apcost>
       <range><ranged-long/></range>
-      <keywords><archery/><attack/><basic-attack/></keywords>
-      <dc><opponents-defend/></dc>
+      <keywords><archery/><physical-attack/><basic-attack/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon</dmg>
-      <xdef fname="archery_defaults" elem_name="mastery"/>            
-      <xdef fname="archery_defaults" elem_name="fate"/>            
-    </abilityattack>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -50,24 +47,26 @@
     <abilitytitle>Dead Eye</abilitytitle>
     <abilityid>dead_eye</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap6/></actiontype>
+    <abilitycheck>
+      <name>Missile Attack</name>
+      <checktype><missile-attack/></checktype>          
+      <apcost><ap5/></apcost>
       <range><ranged-long/></range>
-      <keywords><archery/><attack/><missile/></keywords>
+      <keywords><archery/><physical-attack/><missile/><check/></keywords>
       <effect>Attack made with Advantage.</effect>
-      <dc><opponents-defend/></dc>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon</dmg>
-      <xdef fname="archery_defaults" elem_name="mastery"/>            
-      <xdef fname="archery_defaults" elem_name="fate"/>            
-    </abilityattack>
-    <prereqabilityrank>archery_shoot_2</prereqabilityrank>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </abilitycheck>
+    <prereqabilityref id="archery_shoot" rank="2"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character has spent many hours working on improving the
-	accuracy of their shots.  Players can choose to call a shot
-	which gives them a large bonus to hit.
+	The character has spent many hours working on improving the accuracy of
+	their shots.  Players can choose to call a shot which gives them a large
+	bonus to hit.
       </p>
     </abilitydescription>
   </ability>
@@ -77,19 +76,23 @@
     <abilitytitle>Fast Shot</abilitytitle>
     <abilityid>fast_shot</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap2/></actiontype>
+    <abilitycheck>
+      <name>Missile Attack</name>
+      <checktype><missile-attack/></checktype>          
+      <apcost><ap2/></apcost>
       <range><ranged-long/></range>
-      <keywords><archery/><attack/><missile/></keywords>      
+      <keywords>
+	<archery/><physical-attack/><missile/><check/><disadvantage/>
+      </keywords>      
       <effect>Attack made at Disadvantage.</effect>
-      <dc><opponents-defend/></dc>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon</dmg>
-      <xdef fname="archery_defaults" elem_name="mastery"/>            
-      <xdef fname="archery_defaults" elem_name="fate"/>                  
-    </abilityattack>
-    <prereqabilityrank>archery_shoot_2</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </abilitycheck>
+    <prereqabilityref id="archery_shoot" rank="2"/>
+    <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character takes a quick, not well-aimed shot. 
@@ -103,20 +106,24 @@
     <abilitytitle>Rain of Arrows</abilitytitle>
     <abilityid>rain_of_arrows</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap5/></actiontype>
+    <abilitycheck>
+      <name>Missile Attack</name>
+      <checktype><missile-attack/></checktype>          
+      <apcost><ap5/></apcost>
       <range><ranged-long/></range>
-      <keywords><archery/><attack/><missile/></keywords>      
-      <precondition>Can only be performed on the first action of the first round
-      of combat for this character, and the character is prepared.</precondition>
+      <keywords><archery/><physical-attack/><missile/><check/></keywords>      
+      <precondition>
+	Can only be performed on the first action of the first round of combat
+	for this character, and the character is prepared.
+      </precondition>
       <effect>3+Rank Attacks made at Disadvantage.</effect>
-      <dc><opponents-defend/></dc>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon</dmg>
-      <xdef fname="archery_defaults" elem_name="mastery"/>            
-      <xdef fname="archery_defaults" elem_name="fate"/>            
-    </abilityattack>    
-    <prereqabilityrank>fast_shot_2</prereqabilityrank>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </abilitycheck>    
+    <prereqabilityref id="archery_shoot" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>

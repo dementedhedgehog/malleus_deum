@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <book>
   <chapter>
-    <chaptertitle>{{ archetype.get_title() }}</chaptertitle>
+    <chaptertitle>{{ archetype.get_name() }}</chaptertitle>
     <section>        
       <sectiontitle>Overview</sectiontitle>
-      <indexentry>{{ archetype.get_title() }}</indexentry>
+      <indexentry><entry>{{ archetype.get_name() }}</entry></indexentry>
       {{ archetype.get_description() }}
       <!-- <vspace/>      -->
     </section>
@@ -12,7 +12,7 @@
     <section>
       <sectiontitle>Character Creation</sectiontitle>      
       <p>
-    Follow these steps to create a {{ archetype.get_title() }} character
+    Follow these steps to create a {{ archetype.get_name() }} character
     <label>sec:character-creation</label>
       </p>
 
@@ -37,7 +37,7 @@
 
     <li>
       <p>
-            Fill in the Archetype name: {{ archetype.get_title() }} 
+            Fill in the Archetype name: {{ archetype.get_name() }} 
       </p>            
     </li>
 

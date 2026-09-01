@@ -33,7 +33,8 @@ import platform
 from subprocess import call, check_output, CalledProcessError
 from archetypes import Archetypes
 #from abilities import FAMILY_TYPES, AbilityRank
-from abilities import AbilityRank
+#from abilities import AbilityRank
+from abilities import AbilityRef
 
 from utils import (
     char_sheet_dir,
@@ -185,7 +186,7 @@ def create_first_page_fdf(fdf_name, archetype=None):
         if archetype is not None:        
             # write info from the ability
             fdf_info = FDF_PG1_BODY.format(
-                archetype_title = archetype.get_title(),
+                archetype_title = archetype.get_name(),
             )
         else:
             # write empty info
@@ -227,7 +228,7 @@ def check_to_str(check):
     
     
 
-def create_abilities_fdf(fdf_name, ability_ranks=None):
+def create_abilities_fdf(fdf_name, ability_rank_iterator=None):
     with open(fdf_name, "wb") as f:
         f.write(fdf_header)
 
@@ -235,62 +236,62 @@ def create_abilities_fdf(fdf_name, ability_ranks=None):
 
             # Grab the next ability rank for the form
             # Complicated a little because we throw in some strings as "chapter headers"
-            if ability_ranks is None:
+            if ability_rank_iterator is None:
                 ability_rank = None                
             else:
                 while True:
                     try:
-                        ability_rank = next(ability_ranks)
+                        ability_rank = next(ability_rank_iterator)
                     except StopIteration:
                         ability_rank = None
                         break
 
-                    if isinstance(ability_rank, AbilityRank) and ability_rank.rank_number >= 0:
+                    if isinstance(ability_rank, int): #and ability_ref.get_rank() >= 0:
                         break
                         
-                    if isinstance(ability_rank, str):
-                        break
+                    #if isinstance(ability_rank, str):
+                    #    break
 
             # if we have another ability rank put fill in the form for
             # that ability, otherwise make it blank.
-            if isinstance(ability_rank, AbilityRank):
-                ability = ability_rank.get_ability()
+            # if isinstance(ability_ref, AbilityRef):
+            #     ability = ability_ref.get_ability()
 
-                # add any check configurations
-                checks = ability.get_checks()
-                check_strings = []                
-                for check in checks:
-                    check_strings.append(check_to_str(check))
-                description = "\n".join(check_strings)
+            #     # add any check configurations
+            #     checks = ability.get_checks()
+            #     check_strings = []                
+            #     for check in checks:
+            #         check_strings.append(check_to_str(check))
+            #     description = "\n".join(check_strings)
                     
-                ability_class = ability.__class__
+            #     ability_class = ability.__class__
 
-                # write info from the ability
-                fdf_info = FDF_ABILITY_BODY.format(
-                    ability_number=i,
-                    ability_name=ability_rank.get_title(long_form=True),
-                    ability_description=description,
-                )
-            elif isinstance(ability_rank, str):
-                # This is an Ability Seperator, like --- General ---
-                # write info from the ability
-                fdf_info = FDF_ABILITY_BODY.format(
-                    ability_number=i,
-                    ability_name=ability_rank,
-                    ability_description="",
-                )                
-            elif ability_rank is None:
-                # write empty info
-                fdf_info = FDF_ABILITY_BODY % {
-                    "ability_number": i,
-                    "ability_name": "",
-                    "ability_description": "",
-                }
-            else:
-                # Never gets here
-                raise Exception(f"Unknown ability rank {ability_rank}")
+            #     # write info from the ability
+            #     fdf_info = FDF_ABILITY_BODY.format(
+            #         ability_number=i,
+            #         ability_name=ability_rank.get_title(long_form=True),
+            #         ability_description=description,
+            #     )
+            # elif isinstance(ability_rank, str):
+            #     # This is an Ability Seperator, like --- General ---
+            #     # write info from the ability
+            #     fdf_info = FDF_ABILITY_BODY.format(
+            #         ability_number=i,
+            #         ability_name=ability_rank,
+            #         ability_description="",
+            #     )                
+            # elif ability_rank is None:
+            #     # write empty info
+            #     fdf_info = FDF_ABILITY_BODY % {
+            #         "ability_number": i,
+            #         "ability_name": "",
+            #         "ability_description": "",
+            #     }
+            # else:
+            #     # Never gets here
+            #     raise Exception(f"Unknown ability rank {ability_rank}")
                 
-            f.write(fdf_info.encode())
+            #f.write(fdf_info.encode())
         f.write(fdf_footer)
     return
 
@@ -326,7 +327,7 @@ def create_character_sheet_for_archetype(db, archetype):
                 ability_rank = ability.get_untrained_rank()
                 if ability_rank is not None: #  and not ability_rank.get_ability().is_templated():
                     family = ability_group.get_family()
-                    info.append((family, ability_rank.get_title(), ability_rank))
+                    info.append((family, ability.get_name(), ability_rank))
                     families_seen.add(family)
                     
     # Add titles to groups of abilities also add some extra space at the end of groups of abilities
@@ -406,7 +407,9 @@ def create_blank_character_sheet():
 
 
 if __name__ == "__main__":
+    from utils import root_dir
     from db import DB
+    
     db = DB()
     db.load(root_dir=root_dir, fail_fast=True)
     for archetype in db.archetypes:

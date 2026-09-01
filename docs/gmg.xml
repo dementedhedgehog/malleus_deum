@@ -4,7 +4,7 @@
     <vspace>2</vspace>
     <title>Malleus Deum</title>  
     <vspace>6</vspace>
-    <img id="dragon_title" scale="0.6"/>
+    <img id="dragon_title"/>
     <vspace>6</vspace>
     <subtitle>Igitur qui desiderat pacem, praeparet bellum.</subtitle>
     <vspace>1</vspace>
@@ -70,42 +70,16 @@
 
 {% from "docs/macro_ability.xml" import build_ability with context %}
 
-  <chapter>
-    <chaptertitle>GMG and NPC Abilities</chaptertitle>
+  {% include "docs/phb_chapter_hazards.xml" %}
 
-    <section>
-      <sectiontitle></sectiontitle>
-      <p>
-	Hazards and Effects... FIXME
-      </p>
-
-      {% for ability_group in ability_groups if ability_group.is_gm_family() %}
-      <subsection>
-	<subsectiontitle>{{ ability_group.get_title() }}</subsectiontitle>
-
-	{{ ability_group.get_description() }}
-
-	{% if ability_group.has_abilities() %}
-	<figure position="h" fullwidth="false" sideways="false">
-	  <img buildfname="{{ ability_group.get_id() }}_skill_tree.eps" scale="0.75"/>
-	  <caption>{{ ability_group.get_title() }}</caption>
-	  <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
-	</figure>
-	{% endif %}
-
-	{% for ability in ability_group.get_abilities()%}
-	{{ build_ability(ability) }}
-	{% endfor %}
-      </subsection>
-      {% endfor %}
-    </section>    
-  </chapter>
 
   <chapter>
     <chaptertitle>Magic Items</chaptertitle>
     {% include "docs/fragment_magic_items.xml" %}
   </chapter>
 
+  {% include "docs/phb_chapter_hazards.xml" %}  
+  
   <chapter>
     <chaptertitle>Traps</chaptertitle>
     {% include "docs/fragment_traps.xml" %}

@@ -21,20 +21,16 @@
     <abilityid>air_of_beatitude</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><self/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<!-- <any-success></any-success>	 -->
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="110"/><p x="75" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="180"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	If successful those observing the character
@@ -49,7 +45,7 @@
       </p>
 
       <p>
-  	Undead monsters must make a Willpower DC 15 check or become
+  	Undead monsters must make a Will DC 15 check or become
 	Enraged and Charge the caster.
       </p>      
     </abilitydescription>
@@ -59,22 +55,20 @@
   <ability>
     <abilitytitle>Augury</abilitytitle>
     <abilityid>augury</abilityid>
+    <slug>It’s tough to make predictions, especially about the future.</slug>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><ritual/><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/> 
+      <keywords><ritual/><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>    
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="100"/><p x="-30" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="210"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	Augury involves petitioning a deity or powerful being for
@@ -135,29 +129,25 @@
   
 
   <ability>
-    <abilitytitle>Back! Thou Creature From the Abyss</abilitytitle>
+    <abilitytitle>Back Fiend!</abilitytitle>
     <abilityid>back</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/></keywords>
-      <dc><opponents-willpower/></dc>
-      <mastery>
-	<any-success>Demon makes Mettle Check vs Cast Result</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/> 
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>      
+      <any-success>Demon makes Mettle Check vs Cast Result</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_2</prereqabilityrank>
-    <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="0" y="120"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	The character calls on their deity to repel demons.  Demons must make a
-	DC 9 Mettle Check the first time they come within a radius of 
-	<measurement><metric>3+Rank meters</metric><imperial>10'+Rank×3'</imperial></measurement>.
+  	The character calls on their deity to repel demons. Demons must make a
+	DC 9 Mettle Check the first time they come within a radius of <m10/>.
 	Many demons will avoid making this check.
       </p>
     </abilitydescription>
@@ -169,25 +159,26 @@
     <abilityid>blessed_arms</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <!-- <name>Check</name>  -->
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><touch/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Weapons receive +Rank dmg vs demons and undead</any-success>
-	<critsuccess>Weapons receive +2×Rank dmg vs demons and undead</critsuccess>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/> 
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Weapons receive +Rank dmg vs demons and undead</any-success>
+      <critsuccess>Weapons receive +2×Rank dmg vs demons and undead</critsuccess>      
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="40"/><p x="60" y="20"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="360"/><p x="120" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	Renders all weapons so blessed as magical for the next ten minutes (granting them the magic tag).
-  	Grants +Rank damage for these weapons against demons and the undead during that time.  In the event of
-  	overcharge the weapons will glow with radiant light.  The spell effects Rank+1 weapons that 
-        can be seen by the caster.
+  	Renders all weapons so blessed as magical for the next ten minutes
+	(granting them the magic tag). Grants +Rank damage for these weapons
+	against demons and the undead during that time.  In the event of
+	overcharge the weapons will glow with radiant light.  The spell effects
+	Rank+1 weapons that can be seen by the caster.
       </p>
     </abilitydescription>
   </ability>
@@ -198,18 +189,19 @@
     <abilityid>canticle_of_mithras</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><maintain/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Alies make defensive checks with a +Rank bonus against evil opponents</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/> 
+      <keywords><magicpool/><maintain/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>
+	Alies make defensive checks with a +Rank bonus against evil opponents
+      </any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_2</prereqabilityrank>
-    <spline><p x="0" y="180"/><p x="0" y="60"/></spline>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="0" y="30"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The caster calls on Mithras to protect the faithful.  Allies gain
@@ -224,29 +216,21 @@
     <abilityid>holy_water</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><craft/></checktype>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><dc9/></dc>
-      <mastery>
-	<any-success>Holy water is available.</any-success>
-	<critsuccess>+2 bonus to checks made with this item</critsuccess>
-	<righteoussuccess>+1 bonus to checks made with this item</righteoussuccess>
-	<fail>Last one.  No more Holy Water checks can be made until the character has had time to create more.</fail>
-	<grimfail>As fail, but it's old.  -2 bonus to checks made with this item</grimfail>
-	<critfail>All out.</critfail>
-      </mastery>
-      <fate>
-	<blessed>Well prepared.  Make the next holy water check with advantage.</blessed>
-	<!-- <boon></boon> -->
-	<!-- <indifferent></indifferent> -->
-	<!-- <bane></bane> -->
-	<damned>Poorly prepared. Make the next holy water check with disadvantage.</damned>
-      </fate>
+      <keywords><check/></keywords>
+      <counter><sv9/></counter>      
+      <any-success>Holy water is available.</any-success>
+      <critsuccess>+2 bonus to checks made with this item</critsuccess>
+      <righteoussuccess>+1 bonus to checks made with this item</righteoussuccess>
+      <fail>Last one.  No more Holy Water checks can be made until the character has had time to create more.</fail>
+      <grimfail>As fail, but it's old.  -2 bonus to checks made with this item</grimfail>
+      <critfail>All out.</critfail>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="180"/><p x="75" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="510"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character usually keeps about their person some number of vials of holy
@@ -265,7 +249,7 @@
 	Holy Water can be prepared in one hour.  If the player explicitly states that they are preparing
 	holy water and they have the required time and materials to do so, then they may create Rank+1d4
 	vials for use without making a check.  Holy water should be kept in a special font.
-	If kept in a vial it only lasts a few days before its efficacy fades.
+	If kept in a vial it only lasts a day before its efficacy fades.
       </p>
     </abilitydescription>
   </ability>
@@ -276,20 +260,17 @@
     <abilityid>divine_retribution</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc9/></dc>
-      <mastery>
-	<any-success>Check to make a free counter attack</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/> 
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Check to make a free counter attack</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="-60" y="45"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="300"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	When struck the character may check and if successful make an
@@ -304,20 +285,18 @@
     <abilityid>exorcise</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><ap1/></apcost>
       <range><touch/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>Exorcise evil spirit</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/> 
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>Exorcise evil spirit</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank> 
-    <spline><p x="0" y="80"/><p x="120" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="300"/><p x="90" y="30"/></spline>
+    
     <abilitydescription>
       <p noindent="true">
   	The character can cast this spell to purge evil spirits from
@@ -340,27 +319,26 @@
   <ability>
     <abilitytitle>Gentle Repose</abilitytitle>
     <abilityid>gentle_repose</abilityid>
-    <abilityranks from="1" to="2"/>
+    <slug>There is a big difference between mostly dead and all dead</slug>
+    <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>+Rank to Near Death saves</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/> 
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>+Rank to Near Death saves</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="255"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-  	Provides a +Rank bonus to Near-Death saves.  If the character recovers hit points
-	as a result of their Near Death rolls they gain an additional +Rank hit points.
-	While stop a corpse from turning to undeath if cast early enough.
+  	Provides a +Rank bonus to Near-Death saves.  If the character recovers
+	hit points as a result of their Near Death rolls they gain an additional
+	+Rank hit points. While stop a corpse from turning to undeath if cast
+	early enough.
       </p>
     </abilitydescription>
   </ability>
@@ -371,20 +349,17 @@
     <abilityid>grace_of_mithras</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><touch/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>+Rank to hit and dmg</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>+Rank to hit and dmg</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="180"/><p x="-60" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="390"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	If called upon Mithras will grant a +Rank bonus to the caster to hit
@@ -399,35 +374,37 @@
     <abilityid>guiding_hand</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
       <range><ranged-medium/></range>
-      <keywords><magicpool/></keywords>
-      <precondition>Someone nearby is hit with an arrow or crossbow bolt.</precondition>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Arrow or bolt misses in defence or is rerolled in offence.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <precondition>
+	Someone nearby is hit with an arrow or crossbow bolt.
+      </precondition>
+      <counter><sv7/></counter>
+      <any-success>
+	Arrow or bolt misses in defence or is rerolled in offence.
+      </any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="100"/><p x="-75" y="30"/><p x="0" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="165"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	This spell can be used offensively or defensively.
       </p>
 
       <p>
-  	In defence, after a missle is fired, hits and the damage is rolled,
-	the caster, predicting the outcome of the shot,  uses his powers to deflect
+  	In defence, after a missle is fired, hits and the damage is rolled, the
+	caster, predicting the outcome of the shot,  uses his powers to deflect
 	the missile instead so that it now misses. 
       </p>
       
       <p>
-  	In offence, after a missle is fired and it would have missed.  The caster
-  	uses his powers to try to guide a missile to its target.  The shot is rerolled.
+  	In offence, after a missle is fired and it would have missed. The caster
+	uses his powers to try to guide a missile to its target. The shot is
+	rerolled.
       </p>
 
       <p>
@@ -444,21 +421,21 @@
     <abilityid>heal</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Heal 1d4+Rank hit points</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<critfail>The healer accidentaly uses their own animus
-      in order to heal the bloodied character and loses d4 hitpoints.</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Heal 1d4+Rank hit points</any-success>
+      <critfail>
+	The healer accidentaly uses their own animus in order to heal the
+	bloodied character and loses d4 hitpoints.
+      </critfail>      
     </abilitycheck>
-    <prereqabilityrank>theurgy_2</prereqabilityrank>
-    <spline><p x="90" y="0"/></spline>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="90" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The healing character places their hands on a bloodied target
@@ -474,27 +451,25 @@
     <abilityid>hypnotic_gaze</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><opponents-willpower/></dc>
-      <mastery>
-	<any-success>Target mesmerized</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>      
+      <any-success>Target mesmerized</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_2</prereqabilityrank>
-    <spline><p x="90" y="0"/></spline>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="0" y="75"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The character gazes into the eyes of their target and makes an opposed Mettle check against them.
-	If successful the target is mesmerized and will perform as the character dictates.  Mesmerized
-	characters will not perform actions that result in self-harm.  Good characters will not harm others
-	if mesmerized.   This effect lasts for as many rounds as the difference between the casters roll and
-	the targets roll.
+	The character gazes into the eyes of their target and makes an opposed
+	Mettle check against them. If successful the target is mesmerized and
+	will perform as the character dictates.  Mesmerized characters will not
+	perform actions that result in self-harm.  Good characters will not harm
+	others if mesmerized. This effect lasts for as many rounds as the
+	difference between the casters roll and the targets roll.
       </p>
     </abilitydescription>
   </ability>
@@ -505,20 +480,18 @@
     <abilityid>light_of_mithras</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Create light</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Create light</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="150"/><p x="75" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="480"/><p x="90" y="30"/></spline>
+    
     <abilitydescription>
       <p noindent="true">
   	The character creates a bright divine light attached to some object.
@@ -533,26 +506,23 @@
     <abilityid>litany_of_redemption</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
       <any-success>Prayer refreshes a mettle die</any-success>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="350"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	Once per day the caster may attempt the Litany of Redemption.  This is a
-	five minute ritual where the caster quotes passages from the Book of Light
-	and reflects on the lessons within. If successful participants refresh a
-	single mettle die if able.
+	five minute ritual where the caster quotes passages from the Book of
+	Light and reflects on the lessons within. If successful participants
+	refresh a single mettle die if able.
       </p>
     </abilitydescription>
   </ability>
@@ -563,27 +533,25 @@
     <abilityid>no_take_me</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Transfers damage</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>Transfers damage</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="75" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="450"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character implores their patron to take them in the stead of some
   	other individual Near Death.   If the character succeeds, up to 2d6
   	Health (or the targets maximum health whichever is smaller) is
   	added to the targets health and removed from the casters Health. In the
-  	event of an overcharge the caster loses any remaining health and is Near Death themselves.
+  	event of an overcharge the caster loses any remaining health and is Near
+	Death themselves.
       </p>
     </abilitydescription>
   </ability>
@@ -594,20 +562,17 @@
     <abilityid>purify</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Purifies food or drink</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Purifies food or drink</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="0" y="80"/><p x="90" y="30"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="120"/><p x="-60" y="30"/></spline>    
     <abilitydescription>
       <p noindent="true">
   	The character can casts this spell to purify food or water that
@@ -626,26 +591,22 @@
     <abilityid>theurgy</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <name>Cast</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><immediate/></apcost>
       <range><na/></range>
-      <keywords><lore/></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>Reveals background lore</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      	    
+      <keywords><lore/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>Reveals background lore</any-success>
     </abilitycheck>
-    <prereqabilityrank></prereqabilityrank>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
-  	Theurgy is the study of how to cast theological, or clerical, spells.  There is a
-  	separate ability called Theology that represents study of the the deities, the
-	history of religion, and of the teleolical origins of the world.  In most cases
-	both abilities are required to cast theurgic spells.
+  	Theurgy is the study of how to cast theological, or clerical, spells.
+	There is a separate ability called Theology that represents study of
+	the the deities, the history of religion, and of the teleolical origins
+	of the world.  In most cases both abilities are required to cast
+	theurgic spells.
       </p>
     </abilitydescription>
   </ability>
@@ -656,20 +617,17 @@
     <abilityid>hammer_of_the_hierophant</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/><maintain/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Mace, Hammer or Staff +Rank to hit and damage</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>
+      <keywords><magicpool/><maintain/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Mace, Hammer or Staff +Rank to hit and damage</any-success>
     </abilitycheck>
-    <prereqabilityrank>blessed_arms_1</prereqabilityrank>
-    <spline><p x="-60" y="5"/></spline>
+    <prereqabilityref id="blessed_arms" rank="2"/>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
 	If successfully cast, the caster gains +Rank to attack checks and +Rank
@@ -686,22 +644,19 @@
     <abilityid>hold_undead</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc9/></dc>
-      <mastery>
-	<any-success>If successfully cast any undead within range whose willpower is less than or equal to the result are Held.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-	<!-- <boon></boon> -->
-	<!-- <indifferent>1</indifferent> -->
-	<!-- <bane></bane> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      	    
+      <keywords><magicpool/><check/></keywords>
+      <precondition>Opponents are undead.</precondition>
+      <counter><opponents-will-save/></counter>
+      <any-success>
+	If successfully cast any undead within range whose will is less than or equal to the result are Held.
+      </any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
+    <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
       <p noindent="true">
@@ -718,24 +673,26 @@
     <abilityid>turn_undead</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>If successfully cast any undead within range whose willpower is less than or equal to the result are Turned.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      	    
+      <keywords><magicpool/><check/></keywords>
+      <precondition>Opponents are undead.</precondition>
+      <counter><sv11/></counter>
+      <any-success>
+	If successfully cast any undead within range whose will is less than or
+	equal to the result are Turned.
+      </any-success>
     </abilitycheck>
-    <prereqabilityrank>hold_undead_3</prereqabilityrank>
-    <spline><p x="-60" y="5"/></spline>
+    <prereqabilityref id="hold_undead" rank="3"/>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character calls on their deity to turn creatures animated by
-  	necrotic forces.   Turned creatures must move away from the caster each turn and may not make melee attacks.
+	necrotic forces. Turned creatures must move away from the caster each
+	turn and may not make melee attacks.
       </p>
     </abilitydescription>
   </ability>
@@ -746,28 +703,26 @@
     <abilityid>destroy_undead</abilityid>
     <abilityranks from="2" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>If successfully cast any undead within range whose willpower is less than or equal to the result are Destroyed.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      	    
+      <keywords><magicpool/><check/></keywords>
+      <precondition>Opponents are undead.</precondition>
+      <counter><sv13/></counter>      
+      <any-success>
+	If successfully cast any undead within range whose will is less than
+	or equal to the result are Destroyed.
+      </any-success>
     </abilitycheck>
-    <prereqabilityrank>turn_undead_2</prereqabilityrank>
-    <spline><p x="-60" y="5"/></spline>
+    <prereqabilityref id="turn_undead" rank="2"/>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p noindent="true">
   	The character calls on their deity to destroy creatures animated by
-  	necrotic forces.   Turned creatures must move away from the caster each turn and may not make melee attacks.
+  	necrotic forces. Turned creatures must move away from the caster each
+	turn and may not make melee attacks.
       </p>
     </abilitydescription>
   </ability>
@@ -776,28 +731,26 @@
   <ability>
     <abilitytitle>Witness Me!</abilitytitle>
     <abilityid>witness_me</abilityid>
-    <abilityranks from="1" to="2"/>
+    <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
       <range><self/></range>
-      <keywords><magicpool/></keywords>
+      <keywords><magicpool/><check/></keywords>
       <precondition>Caster is bloodied</precondition>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Make three melee attacks</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_0" elem_name="fate"/>      	    
+      <counter><sv11/></counter>
+      <any-success>Make three melee attacks</any-success>
     </abilitycheck>
-    <prereqabilityrank>theurgy_1</prereqabilityrank>
-    <spline><p x="75" y="90"/></spline>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="240"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The character calls on their patron for support in the hour of their death!
-	If the characters health is 6 or less they can use the Witness Me! ability
-	to make three melee attacks in that round instead of their usual standard action.
+	The character calls on their patron for support in the hour of their
+	death! If the characters health is 6 or less they can use the Witness
+	Me! ability to make three melee attacks in that round instead of their
+	usual standard action.
       </p>
     </abilitydescription>
   </ability>    

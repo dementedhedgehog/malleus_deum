@@ -18,23 +18,24 @@
     <monstermove>8</monstermove>
     <monsterhealth>4</monsterhealth>
     <monsterstamina>1</monsterstamina>
-    <monsterinitiativebonus>+4</monsterinitiativebonus>
+    <monsterinitiative>+4</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>13</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>10</armour>
-    <strength>10</strength>
-    <endurance>10</endurance>
-    <agility>17</agility>
-    <speed>17</speed>
-    <perception>16</perception>
-    <willpower>11</willpower>    
-    <abilityrankid>✱dodge_3</abilityrankid>
-    <abilityrankid>✱speed.jump</abilityrankid>
-    <abilityrankid>✱climb_1</abilityrankid>
-    <abilityrankid>polearm_strike_2</abilityrankid>
-    <abilityrankid>polearm_brace_2</abilityrankid>
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" specializations="jump:3" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="6"/>        
+    <abilityref id="climb" rank="3"/>
+    <abilityref id="polearm_strike" rank="3"/>
+    <abilityref id="polearm_brace" rank="3"/>
     <monsterdescription>
       <p>
       </p>

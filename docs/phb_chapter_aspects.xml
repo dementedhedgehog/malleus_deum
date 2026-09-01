@@ -1,0 +1,580 @@
+
+{% from "docs/macro_ability.xml" import build_ability with context %}
+
+<chapter>
+  <chaptertitle>Aspects <ampersand/> Afflictions<label>ch:aspects</label></chaptertitle>
+
+  <p>
+    Aspects are game mechanics Malleus Deum uses to model inner conflict for
+    PCs.  They are antagonistic abilities attached to a PC that describe a
+    range of different features a player character might have, including:
+    personality traits, their system of beliefs, or their philosophies, social
+    obligations and oaths.
+  </p>
+
+  <p>
+    Afflictions are similar to aspects but are used to model physical debilities,
+    infirmaties, afflictions, insanities, and diseases, while Aspects are used
+    to model more mental and mind set related traits.
+  </p>
+  
+
+  
+  <section>
+    <sectiontitle>Aspects</sectiontitle>
+    <quote>Vincit qui se vincit</quote>
+
+    
+    <descriptions>
+      <term>Personality Aspects</term>
+      <description>
+	<p>
+	  describe some part of a characters personality or demeanour, their flaws and
+	  foibles, their short-comings, their weaknesses and sometimes their strengths,
+	  <eg/> Mama's Boy, As Exciting as Cold Oatmeal, Plagued by Self-Doubt.
+	</p>
+      </description>
+
+      <term>Philosophy Aspects</term>
+      <description>
+	<p>
+	  encode a character's beliefs and their moral compass: Defender of the
+	  Downtrodden, Man of the Book, Death before Dishonour.
+	</p>
+      </description>
+
+      <term>Relationship Aspects</term>
+      <description>
+	<p>
+	  Relationship aspects can be used to describe a close bond between the
+	  character and an individual, a magic item, their god, a small group or
+	  even a large population, <eg/> reknown.  In the last case it comes in
+	  the form of fame, or infamy, with aspects like Hero of Bad Southmarch,
+	  Emissary of the High Elf Council, Beholden to the Black Hand, or
+	  The Scourge of the Serpent People.
+	</p>
+      </description>
+
+      <term>Oaths</term>
+      <description>
+	<p>
+	  Some characters have sworn Oaths. An oath is an aspect. Oaths may be
+	  broken, and when they are there are consequences for the character.
+	</p>
+      </description>
+      
+      <term>Afflictions</term>
+      <description>
+	<p>
+	  include other in game conditions can be represented by aspects such as
+	  insanity, curses, diseases, and other effects. 
+	</p>
+      </description>
+    </descriptions>
+    
+    <p>
+      Each aspect is an anatagonistic ability attached to a player character that
+      the player has to make checks against at varying intervals dependent on the
+      aspect and the context the PC finds themselves in.  Like other abilites each
+      aspect has a rank that represents how strong a hold the aspect has on the
+      character.  Because aspects are antagonistic abilities the higher the rank
+      the harder it is for the character to resist the aspect. Players have to
+      keep track of the rank, and possibly the stage of any aspects they have on
+      their character sheet.
+    </p>
+    
+
+    <subsection>
+      <subsectiontitle>Reevaluating Aspects</subsectiontitle>
+      <indexentry><entry>Reevaluating Aspects</entry></indexentry>
+      <indexentry><entry>Aspect</entry><subentry>Reevaluation</subentry></indexentry>
+
+      <p>
+	Aspects can be <defn>Reevaluated</defn> for two reasons.  The first is that
+	the Aspect is not working in the game in a way that makes the GM or the player happy,
+	<eg/> this might be because the Aspect is never used, or the behaviour the aspect compels
+	do not align with the players view of their character.  The second reason is that
+	the Aspect has reached a Rank of 4.  <bold>Aspects must be reevaluated when the Aspects
+	Rank reaches 4.</bold> At this point the character has concluded this stage
+	of their character arc.  If the Aspect was interesting then a new Aspect can be chosen
+	based on the original aspect, that has the character evolve and grow over time.
+      </p>
+
+      <p>
+	When reevaluating aspects any number of aspects can be retired, reworded, replaced with
+	a new, completely different aspect, or perhaps the character simple gains a new
+	additional aspect entirely.
+      </p>
+
+      <p>
+	When reevaluating aspects remember that the point of aspects in the game is to drive
+	the story and character development.  If an aspect is not being used frequently, or if
+	it is being overused, or abused, if it has just become a little tired, if there is an
+	opportunity to represent character growth or move the character through some character
+	arc, then now is the time to consider making changes to the characters aspects.
+      </p>
+
+      <playexample>
+	<p>
+	  Much later, Dourli's aspect <emph>Gold is my Lodestone 4</emph> finally reaches a rank of 4.
+	  At this point the aspect should be reevaluated.  If his aspects are working
+	  well in the game, leading to enjoyable game play, then Dourli might make a subtle change to
+	  the aspect, maybe softening the wording of this aspect to, something like,
+	  <emph>If you give a Man a Sword he can Rob a Bank, if you give him a Bank he can Rob the
+	  World 1</emph>, which is a little less proscriptive.
+	</p>
+
+	<p>
+	  Maybe Dourli has had an epiphany?  He has realized the error of his ways, wasting his life
+	  in the pursuit of filthy lucre, and so he replaces the <emph>Gold is my Lodestone 4</emph>
+	  aspect with a new aspect, <emph>I am a River to My People 1</emph>.
+	</p>
+
+	<p>
+	  Finally, Dourli might decide to choose a new aspect altogether.  Maybe choosing a new
+	  aspect all together <emph>You Must be the Change you Wish to See in the World 1</emph>.
+	</p>
+
+	<p>
+	  In any case the decision should be opened up to the table for input and debate.
+	</p>
+      </playexample>
+    </subsection>
+
+    <subsection>
+      <subsectiontitle>Conflicting Aspects</subsectiontitle>
+      <p>
+	Sometimes a characters aspects conflict with one another.  In such cases
+	someone can compel one aspect to try and gain a bonus on a second
+	aspect check.
+      </p>
+
+      <playexample>
+	<p>
+	  Suppose the GM tries to compel Dourli's <emph>Gold is My Lodestone 1</emph>
+	  aspect to make Dourli sell out one of his companions.  Dourli may counter that
+	  he has sworn friendship with the companion while imbibing and that the
+	  GM's compel conflicts with another one of his aspects <emph>My Word as a Dwarf 2</emph>.
+	  In such cases the GM should grant the player some advantage to the
+	  <emph>Gold is My Lodestone 1</emph> check.  As a general rule, it is not a good idea
+	  to allow a character to have aspects that are too contradictary.
+	</p>
+      </playexample>
+    </subsection>
+
+    <subsection>
+      <subsectiontitle>Vetoing an Aspect</subsectiontitle>
+      <p>
+	At the end of the day the player's character is his own.  The GM and other
+	players should not force the player to make his character take an aspect,
+	or behave in a way they do not want.  The player may always veto newly
+	proposed aspects for their character or suggested actions for a compelled
+	aspect.  Players should use this veto power only when they really dislike
+	the outcome of a compelled aspect.
+      </p>
+    </subsection>
+
+    <subsection>
+      <subsectiontitle>Permanent Aspects</subsectiontitle>
+      <p>
+	Some disabilities or afflications can be modelled, in game, using aspects.
+	These aspects may or may not be permanent.  For this kind of aspect the GM
+	can rule that the aspect is never reevaluated.  Permanent aspects have some
+	maximum rank beyond which the character cannot improve.  The upper limit for
+	the rank of permanent aspects should be determined by the GM on a per aspect
+	basis.  The higher the maximum rank the less of an impediment the aspect will
+	become with time.
+      </p>
+
+      <playexample>
+	<p>
+	  Dourli comes into some unexpected wealth.  He decides to go and celebrate
+	  at the local tavern.  The GM asks him to roll a Flat Check to give an
+	  indication of what happens.  Unfortunately Dourli rolls a double 1.  The
+	  GM decides that Dourli looses his left hand in an unfortunate axe throwing
+	  incident.  Dourli gains the <emph>Missing Left Hand 1</emph> aspect.  The GM
+	  determines that this is a permanent aspect and that it has a maximum rank of
+	  7.
+	</p>
+
+	<p>
+	  Later Dourli, finds himself climbing over a roof.  He fails the Climb roll and
+	  starts to slip.   The GM determines that now might be a good time to make a
+	  <emph>Missing Left Hand 1</emph>  check.  Dourli fails and so slips off the roof.
+	  He makes a last minute Agility Check and is left hanging from the gutter by his
+	  right hand.
+	</p>
+      </playexample>
+    </subsection>
+
+  
+  <!-- <descriptions> -->
+  <!--   <term>Rank</term> -->
+  <!--     <description>Used to determing the Checks SSV.</description> -->
+  
+  <!--     <!-\- <term>Trigger</term> -\-> -->
+  <!--     <!-\- <description>When should the player make these checks.</description> -\-> -->
+  
+  <!--     <!-\- <term>Stages</term> -\-> -->
+  <!--     <!-\- <description>Every aspect has a range of stages. Each stage applies -\-> -->
+  <!--     <!-\- effects and conditions to the character.When a player fails an aspect -\-> -->
+  <!--     <!-\- check they advance to the next stage.</description> -\-> -->
+  <!-- </descriptions> -->
+  
+  
+  
+  
+  <!-- Trigger: Period. between saves. Inciting Event. -->
+  <!-- Stages. 1-4 -->
+  <!-- Rank (for saves) vs ABILITY (Endurance, Willpower). -->
+  <!-- Conditions at different stages: -->
+  <!-- - one of which is taking damage e.g. 1, 2, 4, 8 -->
+  <!-- - one is Dying. -->
+  
+  <!-- Keywords -->
+
+  
+  
+    
+
+
+    <subsection>
+      <subsectiontitle>Choosing Good Aspects</subsectiontitle>
+      <p>
+	Aspects are used to drive conflict in the game.  If the character is
+	a <emph>Problem Gambler</emph> have the party visiting gambling dens so
+	the character has to suffer an internal struggle not to gamble and
+	have some thugs lean on the character to pay back his debts.
+      </p>
+
+      <p>
+	Good aspects are evocative of the characters personality, their belief system
+	or their social status. They should not describe parts of the game already covered
+	by existing game mechanics.  For example, <emph>Greatest Swordsman Ever</emph> is
+	not a good aspect - it interferes with the game rules on combat.  <emph>Thinks He's
+	the Greatest Swordsman Ever</emph> is much better because it establishes the
+	character as a braggadocio or self-delusional.
+      </p>
+
+      <p>
+	Remember that the Aspects should be chosen to create conflict and problems for the
+	characters to overcome.  If an Aspect does not cause the character to overcome
+	difficulties or make interesting decisions it is not a good aspect. As a general
+	rule good aspects are phrases that when applied require action from the character.
+	Additionally they should be neither too specific or too general.  For good example
+	aspects see Figure<ref>figure:random-aspect-table</ref> on
+	page<pageref>table:{{ doc_name }}-random-aspects</pageref>.
+      </p>
+      {% include "docs/tables/random_aspect_table.xml" %}
+    </subsection>
+
+    <subsection>
+      <subsectiontitle>Aspect Creation</subsectiontitle>
+      <p>
+	<indexentry><entry>Creating Aspects</entry></indexentry>
+	<indexentry><entry>Aspect Creation</entry></indexentry>
+	Before choosing aspects we suggest discussing the role playing milieu with the GM.
+	Get a feel for the colour of the world and the NPCs and organizations within it.  Then
+	<emph>with the other players, together as a group</emph>, choose one aspect with the GM
+	that ties your character to one of these NPCs or organizations, or one of the player
+	characters.  Then choose a Personality or Philosophy based aspect for your character.
+	You just write these on your character sheet in the Aspects section with a starting rank
+	of 1.
+      </p>
+    </subsection>
+
+    <subsection>
+      <subsectiontitle>Compelling and Resisting Aspects</subsectiontitle>
+      <p>
+	<indexentry><entry>Compelling an Aspect</entry></indexentry>
+	<indexentry><entry>Aspect</entry><subentry>Compel</subentry></indexentry>
+	Any player, including the GM, may attempt to <defn>Compel</defn> any characters
+	aspect at any time, this includes a player compelling their own PC.  Compelling aspects
+	involves suggesting to a player that their character should follow a course of action in
+	keeping with one of their aspects.  The GM should agree that the aspect can be compelled
+	in the given context, and then the player may choose to <bold>accept</bold> or
+	<bold>resist</bold> the compel.
+      </p>
+
+      <p>
+	If the player <emph>accepts a compel</emph> for an aspect then they should have
+	their character behave in accordance with that aspect.  Alternatively, players may
+	have their characters try to <emph>resist the compel</emph>.  When doing so they roll
+	a Check against a default DC of 15.
+	If the check is successful they <emph>resist the compel</emph>, their character's
+	behaviour is not bound by the aspect, and they gain a Rank in that Aspect.  If they do
+	<emph>not</emph> resist the compel then their character's behaviour is bound by the
+	compel.
+
+
+	REF THE ASPECT CHECK in CORE
+      </p>
+
+      
+      <equation>
+	<line>Aspect Check:</line>
+	<line>2d12 + Aspect Rank<geqqsymbol/> 13</line>
+      </equation>
+      
+
+
+      <p>
+	Theurgic Magic requires the use of a special Theurgic Oath,
+	that is represented in game by an Aspect,
+	for example "I shall be the shield of the downtrodden, and the
+	sword of the suffering".   Some theurgic abilities will reduce the
+	strength of that oath.
+      </p>
+      
+
+      <p>
+	When the check is successful the Character who makes the successful
+	check promotes this aspect, and  whoever compelled the aspect may recharge a
+	die into their Luck or Mettle Pool.
+      </p>
+
+      <p>
+	When a Boon is rolled in an aspect check the following things happen something fortuitous
+	happens.  When a Bane is rolled something bad happens.
+      </p>
+
+      <playexample>
+	<p>
+	  Dourli hears that Emrich, of the Red Knives, has offered 20gp for information
+	  about one of Dourli's colleagues.  A second player might decide to try to compel Dourli,
+	  as Dourli has an aspect <emph>Gold is my Lodestone 1</emph>.  The player then decides
+	  whether he will accept the compel and provide the information about his associate
+	  or try to resist the compel.
+	</p>
+
+	<p>
+	  He decides to resist.  So he has to make an Aspect Check.  He rolls
+	  2d12 and rolls two 4s, plus 1 for the aspects rank, for a total of 9.  Dourli fails
+	  the check, as the total is lower than the DC for Aspect Checks of 15.  So now Dourli has
+	  to provide the information about his associate in order to garner his well earned
+	  gold.
+	</p>
+
+	<p>
+	  Dourli now decides that he cannot,
+	  just hand over the information about his associate, like a despicable cad, and
+	  instead resolves to try and sell them bogus information.  This action satisfies
+	  the compel as, if he succeeds, he still gets his gold.  Whether this approach
+	  succeeds or not is resolved separately, perhaps using a Deceive check.  Because
+	  Dourli rolled a Boon during his check, something good happens, the GM might rule
+	  that the Emrich is receptive to Dourli's false information, maybe due to
+	  confirmation bias? This might be reflected by giving the Decieve check a lower
+	  DC, or maybe granting Dourli advantage on the Decieve check.
+	</p>
+      </playexample>
+
+
+      <subsubsection>
+	<subsubsectiontitle>Oath Breaking</subsubsectiontitle>
+	<p>
+	  FIXME
+	</p>
+      </subsubsection>
+    </subsection>
+    
+
+
+
+    {% for ability_group in ability_groups if ability_group.is_aspect_family() %}
+    <subsection>
+      <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
+      {{ ability_group.get_description() }}
+
+      <!-- {% if ability_group.has_abilities() %} -->
+      <!-- <figure position="h" fullwidth="false" sideways="false"> -->
+      <!--   <img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/> -->
+      <!--   <caption>{{ ability_group.get_name() }}</caption> -->
+      <!--   <label>figure:{{ ability_group.get_id() }}_skill_tree</label> -->
+      <!-- </figure> -->
+      <!-- {% endif %} -->
+
+      {% for ability in ability_group.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
+    </subsection>
+    {% endfor %}
+  </section>
+
+
+
+  <section>
+    <sectiontitle>Aflictions</sectiontitle>
+    <indexentry><entry>Afflictions</entry></indexentry>
+
+    <p>
+      Diseases, poisons, and acids 
+      phobias, madness?
+      IS AN ASPECT AN AFLICTION?
+      
+      Transmission.
+      - Injury, Contact, Ingested, and Inhaled.
+
+      Airborne
+      : Tiny droplet nuclei or dust stay in the air for a long time and travel far on air currents. Examples include measles and tuberculosis.Fomites (surfaces): Germs live on non-living objects like doorknobs, phones, or toys until touched by a new host. Examples include norovirus and the common cold.Vehicles: Contaminated food, water, or blood products carry pathogens to multiple people. Examples include cholera and hepatitis A.
+      Vectors: Living creatures—mostly insects like mosquitoes, ticks, and fleas—carry pathogens between hosts. Examples include malaria and Lyme disease.
+
+    </p>
+    
+
+    <subsection>
+      <subsectiontitle>Acids</subsectiontitle>
+      <indexentry><entry>Acids</entry></indexentry>
+
+      <p>
+	There are four strong acids in common use: Oil of Vitriol, Aqua
+	Fortis, Spirit of Salt, and Aqua Regis. The first three must be stored
+	in special glass bottles.  While Aqua Regia must be used immediately
+	once it is made as it constantly gives off gas and the pressure of
+	these gases will destroy any container that is capable of holding it.
+      </p>
+      
+      <p>
+	Acids may be either thrown, or poured into a solution or over an item
+	(such as a chain, or a door lock).  
+      </p>
+
+      <p>
+	<indexentry><entry>Acids</entry><subentry>Pouring</subentry></indexentry>
+	When pouring acid a single crafting check is made when opening the
+	vial.  If the acid has been created by a PC using the Alchemy ability
+	then the check is made using that characters Alchemy Craft check.  If
+	the acid has been made by an NPC then the player makes a check for the
+	NPC creator at Rank 0.  A fail represents poor quality acid that is
+	weak the GM can determine the effect of the reduced strength acid.
+	Critical fails have different effects described for each type of acid.
+      </p>
+
+      <p>	  
+	<indexentry><entry>Acids</entry><subentry>Throwing</subentry></indexentry>
+	When throwing acid a two checks are made. The first is a Throw Object
+	check to see where the object lands, the second is a crafting check
+	with results dependent on the type of acid.
+      </p>
+
+      <p>
+	<indexentry><entry>Acids</entry><subentry>Broken Vial</subentry></indexentry>  
+	If some mishap causes a vial of acid to break on the characters person
+	then 1d4 random colocated items are also destroyed and possibly the
+	PC suffers acid damage as well.
+      </p>
+
+      <table>
+	<fullwidthtable/>
+	<tablespec>
+	  <fixed>0.04</fixed>
+	  <fixed>0.254</fixed>
+	  <fixed>0.254</fixed>
+	  <fixed>0.254</fixed>
+	</tablespec>
+	<tabletitle>Acid Critical Fails</tabletitle>
+	<tablelabel>table:</tablelabel>
+
+	<tableheaderrow>
+	  <th></th>
+	  <th align="c">Oil of Vitriol</th>
+	  <th align="c">Aqua Fortis</th>
+	  <th align="c">Spirit of Salt</th>
+	</tableheaderrow>
+
+	<tableheaderrow>
+	  <th>SV</th>
+	  <th align="c" width="3">Opened</th>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>1-2</td>
+	  <td align="l">Sulfuric acid fog released, opener and adjacent
+	  characters take half damage.</td>
+	  <td align="l">Extreme Oxidation instantly ignites any organic
+	  matter like paper, wood, and alcohols near the acid.</td>
+	  <td align="l">Hydrogen gas build up, will spray acid over the
+	  user if opened takes half damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>3-5</td>
+	  <td align="l">Vial breaks when touched. Lose 1d3 collocated
+	  items.</td>
+	  <td align="l">Red-brown nitrogen dioxide gas spews from the vial,
+	  irritating the nose and throat causing loud coughing, and chest
+	  pain.</td>
+	  <td align="l">Colourless hydrogen chloride gas is released that
+	  irritates or burns the upper respiratory tract, leading to coughing
+	  and choking.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>6-20</td>
+	  <td align="c" width="3">No Effect</td>
+	</tablerow>
+
+	<hline/>
+	
+	<tableheaderrow>
+	  <th>SV</th>
+	  <th align="c" width="3">Thrown</th>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>1-2</td>
+	  <td align="l" width="3">Vial breaks when throwing.  Thrower takes
+	  damage. Throw automatically fails.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>3-4</td>
+	  <td align="l" width="3">Catalyst contamination.  Damage halved.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>5</td>
+	  <td align="l" width="3">Leak/residue on bottle. Thrower takes d4
+	  health or loses one collocated item.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>6-20</td>
+	  <td align="c" width="3">No Effect</td>
+	</tablerow>
+      </table>    
+    </subsection>
+
+    
+    <subsection>
+      <subsectiontitle>Poisons</subsectiontitle>
+
+      <p>
+	FIXME
+
+	Poison condition
+
+	Injury, Contact, Ingested, and Inhaled.
+
+	Injury: Triggered by a successful weapon strike or monster bite.Ingested: Hid in food or drink; relies on roleplay, perception, and paranoia.Inhaled: Traps, gas clouds, or spores; affects an entire area or zone.Contact: Smeared on door handles or items; punishes careless looting.      
+      </p>
+
+      
+      
+    </subsection>
+
+    
+
+    <subsection>
+      <subsectiontitle>Diseases</subsectiontitle>
+      <indexentry><entry>Diseases</entry></indexentry>
+      
+    </subsection>
+
+  </section>
+  
+
+  
+
+</chapter>
+
+

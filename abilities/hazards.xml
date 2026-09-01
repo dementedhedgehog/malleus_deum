@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Hazards</abilitygrouptitle>
+    <abilitygroupid><hazards/></abilitygroupid>
+    <abilitygroupfamily><hazards/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	These abilities describe miscellaneous Challenges or Hazards that the
+	PCs might have to face.
+      </p>      
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Acidic Vapours</abilitytitle>
+    <abilityid>acidic_vapours</abilityid>
+    <param-stage>2</param-stage>
+    <param-rank>3</param-rank>
+    <abilityranks from="1" to="5"/>
+    <keywords><hazard/></keywords>
+    <abilitycheck>
+      <name>Acidic Vapor Check</name>
+      <checktype><custom/></checktype>
+      <apcost><free/></apcost>
+      <range><self/></range>
+      <keywords><check/></keywords>
+      <precondition>
+	Triggered at the end of a round if any character is in a square that
+	contains acidic vapours.
+      </precondition>      
+      <counter><opponents-endurance-or-willpower-save/></counter>
+      <any-success>Increment Stage</any-success>
+      <any-fail>If the character is not in a square containing Acidic Vapours
+      then decrement the Stage.</any-fail>
+      <critfail>Decrement the Stage twice or once if in a square containing
+      Acidic Vapours.</critfail>
+    </abilitycheck>
+    <stage>
+      <name>Very Mild</name>
+      <description>
+	Make a Willpower or Endurance check or cough loudly unless holding their
+	breath.
+      </description>
+    </stage>
+    <stage>
+      <name>Mild</name>
+      <description>
+	Coughing and shortness of breath, make any Endurance or Perception
+	Checks at disadvantage.
+      </description>
+    </stage>
+    <stage>
+      <name>Medium</name>
+      <description>
+	Coughing and Eye irritation make any Endurance or Perception Checks at
+	disadvantage.  Burning skin suffer 3 health each round.
+      </description>
+    </stage>
+    <stage>
+      <name>Severe</name>
+      <description>
+	Coughing and Eye irritation make any Endurance or Perception Checks at
+	disadvantage.  Burning skin suffer 6 health each round.
+      </description>
+    </stage>
+      
+    <abilitydescription>
+      <p>
+	Exposure to acidic gases like Chlorine Gas or .
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Falling</abilitytitle>
+    <abilityid>falling</abilityid>
+    <param-dmg>4</param-dmg>
+    <param-rank>3</param-rank>
+    <abilitycheck> 
+      <name>Opposed</name>
+      <checktype><fixme/></checktype>
+      <apcost><immediate/></apcost>
+      <range><self/></range>
+      <keywords><aoe-emination/><check/></keywords>
+      <counter><opponents-luck-save/></counter>      
+      <dmg><param-dmg/></dmg>
+      <critsuccess>Unharmed and find something useful.</critsuccess>
+      <righteoussuccess>Unharmed</righteoussuccess>
+      <success>Take damage</success>
+      <fail>Take double damage</fail>      
+    </abilitycheck>
+    <!-- <spline></spline> -->
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Burning</abilitytitle>
+    <abilityid>burning</abilityid>
+    <param-dmg>4</param-dmg>
+    <param-rank>3</param-rank>
+    <abilitycheck> 
+      <name>Opposed</name>
+      <checktype><fixme/></checktype>
+      <apcost><immediate/></apcost>
+      <range><self/></range>
+      <keywords><aoe-emination/><check/></keywords>
+      <counter><opponents-luck-save/></counter>
+      <success>Unharmed</success>
+      <fail>Take d6×Rank damage</fail>
+    </abilitycheck>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Feat of Strength</abilitytitle>
+    <abilityid>feet_of_strength</abilityid>
+    <param-dmg>4</param-dmg>
+    <param-rank>3</param-rank>
+    <abilitycheck> 
+      <name>Opposed</name>
+      <checktype><fixme/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><gm-fiat/></apcost>
+      <range><touch/></range>
+      <keywords><check/><mettlepool/></keywords>
+      <counter><opponents-strength-save/></counter>
+      <success>Unharmed</success>
+      <fail>Failed.</fail>
+      <critfail>Niggling injury.</critfail>
+    </abilitycheck>
+    <abilitydescription>
+      <p noindent="true">
+	The character wishes to perform a Feat of Strength, such as bending
+	bars, lifting gates, or moving or carrying very heavy objects.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Asphyxiating</abilitytitle>
+    <abilityid>drown</abilityid>
+    <param-dmg>4</param-dmg>
+    <param-rank>3</param-rank>
+    <abilitycheck> 
+      <name>Opposed</name>
+      <checktype><fixme/></checktype>
+      <apcost><multi-round/></apcost>
+      <range><self/></range>
+      <keywords><check/></keywords>
+      <counter><opponents-endurance-save/></counter>      
+      <success>No effect</success>
+      <fail>Check again next round with disadvantage.</fail>
+      <critfail>Character is Nearly-Dead.</critfail>
+    </abilitycheck>
+    <stage>
+      <name>Dyspnea</name>
+      <description>
+	Blood pressure rises, and a lack of oxygen to the brain can cause
+	dizziness, confusion, bluish skin discoloration, and involuntary muscle
+	twitching or convulsions. Make all checks at disadvantage. If the
+	character can breath during their round they lose the Asphyixiating
+	aspect.  Make a Mettle check at the end of each turn, and progress to
+	the next stage of this condition on failure.
+      </description>
+    </stage>
+    <stage>
+      <name>Unconsciousness <ampersand/> Death</name>
+      <description>
+	The character gains the Unconscious and Dying conditions and cannot
+	lose them until they can breath again. They cannot reduce their stage
+	in these conditions while asphixiating. They can only increase their
+	stages or remain at their current stage.
+      </description>
+    </stage>
+    <abilitydescription>
+      <p noindent="true">
+	This ability is the condition that characters get when they are
+	drowning, suffocating, or being choked. Characters are immune to
+	asphyxiation while Holding Their Breath, but they cannot start to
+	Hold Their Breath while being Asphyxiated.	
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Poison</abilitytitle>
+    <abilityid>poison</abilityid>
+    <param-dmg>4</param-dmg> 
+    <param-rank>3</param-rank>
+    <abilitycheck> 
+      <name>Opposed</name>
+      <checktype><fixme/></checktype>
+      <apcost><multi-round/></apcost>
+      <range><self/></range>
+      <keywords><check/></keywords>
+      <counter><opponents-endurance-save/></counter>
+      <success>Take Rank damage</success>
+      <fail>Take d6×Rank damage</fail>
+    </abilitycheck>
+    <abilitydescription>
+      <p noindent="true">
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

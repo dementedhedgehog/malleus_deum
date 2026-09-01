@@ -21,34 +21,45 @@
       <descriptions>
         <term>I</term>
         <description>
-	  The character can speak the language a little.
-	  They know some words and can maybe make their meaning clear.
-	  Test for success for every complicated interaction or interaction under .
+	  <p>
+	    The character can speak the language a little.
+	    They know some words and can maybe make their meaning clear.
+	    Test for success for every complicated interaction or interaction
+	    under XXXXX.
+	  </p>
         </description>
 
         <term>II</term>
         <description>
-          The character has the ability to speak the language fairly fluently.
-	  Only check under difficult circumstances (background noise).
+	  <p>
+            The character has the ability to speak the language fairly fluently.
+	    Only check under difficult circumstances (background noise).
+	  </p>
         </description>
 
         <term>III</term>
         <description>
-          The character has the ability to read and write some text written in the language.
-	  Check every time the character tries to read or write this language.
+	  <p>
+            The character has the ability to read and write some text written in the language.
+	    Check every time the character tries to read or write this language.
+	  </p>
         </description>
 
         <term>IV</term>
         <description>
-          The character has the ability to read and write some text written in the language.
-	  Only check under difficult circumstances.
+	  <p>
+            The character has the ability to read and write some text written in the language.
+	    Only check under difficult circumstances.
+	  </p>
         </description>
 
         <term>V</term>
 	<description>
-          The character is fluent in the language.  They can read and write the language 
-	  and perform research in books written in the given language.  Only check in
-	  the most difficult of circumstances.
+	  <p>
+            The character is fluent in the language.  They can read and write the language 
+	    and perform research in books written in the given language.  Only check in
+	    the most difficult of circumstances.
+	  </p>
 	</description>
       </descriptions>      
     </abilitygroupdescription>
@@ -63,11 +74,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
@@ -86,11 +100,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="0" y="30"/></spline>  
     <abilitydescription>
@@ -112,11 +129,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck> 
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
@@ -133,11 +153,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -155,11 +178,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -177,11 +203,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -201,19 +230,23 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <p>
 	This ability represents the characters ability to speak, read or write
-	Merovingian, the language of Westreich the language of the Empire in the West,
-	the language of most of Averoigne, and of Albion, and a langauge which is in
-	common use in the civilized world and used as a language of trade.
+	Merovingian, the language of Westreich the language of the Empire in the
+	West, the language of most of Averoigne, and of Albion, and a langauge
+	which is in common use in the civilized world and used as a language of
+	trade.
       </p>
     </abilitydescription>
   </ability>
@@ -225,11 +258,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="90" y="60"/></spline> 
     <abilitydescription>
@@ -247,11 +283,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
@@ -271,11 +310,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
@@ -293,11 +335,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
@@ -318,11 +363,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
@@ -342,11 +390,14 @@
     <abilityranks from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <xdef fname="language_defaults" elem_name="actiontype"/>      
-      <xdef fname="language_defaults" elem_name="range"/>      
-      <xdef fname="language_defaults" elem_name="dc"/>      
-      <xdef fname="language_defaults" elem_name="mastery"/>      
-      <xdef fname="language_defaults" elem_name="fate"/>      
+      <checktype><language/></checktype>
+      <apcost><default-language-apcost/></apcost>
+      <range><default-language-range/></range>
+      <keywords><language/><check/></keywords>
+      <counter><default-language-sv/></counter>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
     </abilitycheck>
     <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>

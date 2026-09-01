@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+  {% set ENCOUNTER_NAME = "Goblin Kidnappers" %}
+  {% set ENCOUNTER_FNAME = "goblin_kidnappers" %}
+
+  <chapter>
+    <chaptertitle>{{ MODULE_NAME }}</chaptertitle>
+
+    <section>        
+      <sectiontitle>Flavour Text</sectiontitle>
+      <p>
+      <emph>
+	A large granite building, grim and soot-stained, blazes under a moonless sky. A large oak sign on the wall reads ``Froschholm Workhouse, funded by the Sisters of Mithras'', in old
+	faded paint.  The warped timbers of the buildings roof crackle and sag at the rear, as flames devour it, spitting embers into the frigid air. Tattered curtains flare in
+	shattered windows and the air chokes with smoke and the acrid scent of burning rags, as distant cries echo from the crumbling stone walls.  Groups of street urchins gather at the
+	upper floor windows screaming pitifully into the night.
+      </emph>
+      </p>
+    </section>
+
+    <section>        
+      <sectiontitle>Synopsis</sectiontitle>
+      <p>
+	A small party of goblins are in town to kidnap children to take them as slaves back
+	to their cavernous homes beneath the lands Nilfholme, domain of the Fey Queen of Winter.
+      </p>
+    </section>
+
+    <section>        
+      <sectiontitle>Raison D'être</sectiontitle>
+      <p>
+	This encouter is intended as an entry point for a campaign.
+      </p>
+    </section>
+
+    <section>        
+      <sectiontitle>Enemy Goals</sectiontitle>
+      <p>
+	The enemy is trying to kidnap children.
+      </p>
+    </section>
+    
+    <section>        
+      <sectiontitle>Threats</sectiontitle>
+      <p>
+	The two main threats are goblins and the fire that a few of the goblins have lit
+	(partly as a defensive measure, partly as a distraction of the children started
+	screaming, and partially for their own amusement).
+      </p>
+    </section>
+
+    <section>        
+      <sectiontitle>Timer</sectiontitle>
+      <p>
+	A goblin Gate Walker is attempting to open a gate to Nilfholme.  Once he does
+	the goblins will start to leave taking children.
+      </p>
+    </section>
+    
+    <section>        
+      <sectiontitle>Stakes</sectiontitle>
+      <p>
+	If the players fail some number of children will be kidnapped.
+	If the players attempt to stop the goblins then the townsfolk will be grateful.
+      </p>
+    </section>
+
+    <section>        
+      <sectiontitle>Map</sectiontitle>
+      <p>
+	For strategic play
+      </p>
+    </section>    
+    
+    <section>        
+      <sectiontitle>Monster AI</sectiontitle>
+      <p>
+	Layout an if-then type structure or a timeline to determine
+	roughly what the monsters will do.
+      </p>
+    </section>
+
+    <section>        
+      <sectiontitle>Resolution</sectiontitle>
+      <p>
+	What happens after the players succeed, or fail?
+      </p>
+    </section>    
+    
+    <section>        
+      <sectiontitle>Monster Stat Blocks</sectiontitle>
+      <p>
+	Tuning the encounter for different strength parties.
+      </p>
+
+      {% from "docs/macro_monster.xml" import monster_block with context %}
+      {% with goblin = monster_groups.get_monster_by_id("goblin") %}
+      {{ monster_block(goblin) }}
+      {% endwith %}
+
+      {% from "docs/macro_monster.xml" import monster_block with context %}
+      {% with thug = monster_groups.get_monster_by_id("human.thug") %}
+      {{ monster_block(thug) }}
+      {% endwith %}
+    </section>    
+  </chapter>
+</book>
+      

@@ -1,7 +1,13 @@
 import os
 from os.path import split
 
-from utils import parse_xml, validate_xml, node_to_string, COMMENT
+from utils import (
+    parse_xml,
+    node_to_string,
+    # COMMENT
+    is_comment,
+    )
+# validate_xml
 
     
 class MonsterPack:
@@ -56,7 +62,8 @@ class MonsterPack:
                    # save the id location for debugging (can't have duplicates)!
                    self.name = child.text
 
-           elif tag is COMMENT:               
+           #elif tag is COMMENT:               
+           elif is_comment(child): # tag is COMMENT:               
                pass # ignore comments!
 
            else:

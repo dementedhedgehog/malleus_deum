@@ -34,21 +34,23 @@ from doc import Doc
 from db import DB
 #from epub_formatter import EPubFormatter
 from html_formatter import HtmlFormatter
-from spreadsheet_writer import write_game_balance_spreadsheet, write_ability_summary_spreadsheet
+from spreadsheet_writer import (
+    write_game_balance_spreadsheet,
+    write_ability_summary_spreadsheet
+    )
 
 # Graph creation stuff.. for analysis in the rationale doc.
 import graphs
-import d6_graph
 import aspect_lifetime_graph
 
-# FIXME: didn't want to deal with pdftk at the moment.
+# Creates character sheets.
 from character_sheet_writer import (
     create_character_sheet_for_archetype,
     create_empty_abilities_sheet,
     create_blank_character_sheet)
 
 from generate_level_progression_tables import generate_level_progression_tables
-from generate_skill_tree import build_skill_trees
+from generate_ability_trees import build_ability_trees
 import config
 import utils
 from utils import (
@@ -63,41 +65,14 @@ from utils import (
     third_party_dir
 )
 
-from latex_utils import (
-    #xelatex
-    build_pdf
-)
-
-from jinja_utils import apply_template_to_xml, get_jinja_env
+import latex_utils
+import jinja_utils
 
 
 # Jinja2 doesn't like absolute paths.
 # We must supply a relative path!
 ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
 PATRON_TEMPLATE_FNAME = join("docs", "patron_template.xml")
-
-
-
-def die():
-    raise Exception("Fatal Error")        
-
-
-def usage(msg = "", return_code = 0):
-    prog_name = basename(sys.argv[0])
-    print(("Usage: %s -h | -s | -t | -x \n"
-           "\n"
-           "\t-h\tHelp! print this message.\n"
-           "\t-c\tClean all the files before building, e.g. pdfs etc\n"
-           "\t-C\tClean all the files and exit.\n"
-           "\t-s\tFail slow!  Ignore xml errors and try and build the doc anyway.\n"
-           "\t-t\tOnly do the template substitution don't parse the xml.\n"
-           "\t-x\tDo the template substitution and parse the xml; don't build the doc.\n"
-           "\t-l\tOnly build the latex doc; don't build the pdf.\n"
-           "\t-v\tVerbose.\n"
-           "\t-r\tBuild a release zip with contents defined in config and version from docs/version.xml.\n"
-           "\n"
-           "%s" % (prog_name, msg)))
-    exit(return_code)    
 
 
 def clean():
@@ -119,7 +94,17 @@ def clean():
     return
 
 
-def build_book(dir_name, xml_fname, verbosity=0):
+def _parse_xml(processed_xml_fname):
+    doc = Doc(processed_xml_fname)
+    if not doc.parse():
+        raise Exception(f"Problem parsing {processed_xml_fname}")
+    return doc
+
+
+def build_book(dir_name, xml_fname,
+               verbosity=0,
+               only_build_tex_files=False,
+               validate_only=False):
     """
     Build a single book/document.
 
@@ -127,32 +112,41 @@ def build_book(dir_name, xml_fname, verbosity=0):
     full_doc_xml_fname = join(dir_name, xml_fname)
     print(" ==================================== ")
     print(f" Processing {xml_fname}")
-    print(f"\tReading {full_doc_xml_fname}")
-    doc = apply_template_to_xml(
+    print(f"\tTemplating {full_doc_xml_fname}")
+    processed_xml_fname = jinja_utils.render_xml(
         jinja_env,
-        xml_fname_in = full_doc_xml_fname,
         db=db,
-        verbosity=verbosity) or die()
+        xml_fname_in=full_doc_xml_fname,
+        verbosity=verbosity)
+
+    # parse an xml document
+    print(f"\tParsing {processed_xml_fname}")
+        
+    doc = _parse_xml(processed_xml_fname)
+    if validate_only:
+        return
 
     print(f"\tBuilding {full_doc_xml_fname}")
     print(f"\t\tBuilding pdf")
-    build_pdf(
-        xml_fname=full_doc_xml_fname,
-        doc=doc,
-        db=db,
-        verbosity=verbosity) or die()
+    if not latex_utils.build_pdf(
+            xml_fname=full_doc_xml_fname,
+            doc=doc,
+            db=db,
+            only_build_tex_files=only_build_tex_files,
+            verbosity=verbosity):
+        raise Execption(f"Problem building pdf from {full_doc_xml_fname}!")
 
     # build_epub(
     #     xml_fname=archetype.get_id(),
     #     verbosity=verbosity,
     #     doc=doc,
     #     db=db,
-    #     archetype=archetype) or die()
+    #     archetype=archetype) 
     return
 
 
 
-def create_release(config, db, verbosity=0):
+def create_release(db, verbosity=0):
     release_fname = join(release_dir, f"malleus_deum_{db.version}.zip")
     if verbosity > 0:
         print("----------------------------------")
@@ -168,12 +162,34 @@ def create_release(config, db, verbosity=0):
     return
 
 
+
+def usage(msg = "", return_code = 0):
+    prog_name = basename(sys.argv[0])
+    print(
+        ("Usage: %s -h | -s | -c | -x \n"
+         "\n"
+         "\t-h\tHelp! print this message.\n"
+         "\t-c\tClean all the files before building, e.g. pdfs etc\n"
+         "\t-C\tClean all the files and exit.\n"
+         "\t-V\tValidate the xml and exit.\n"
+         "\t-s\tFail slow! Ignore xml errors and try and build the doc anyway.\n"
+         "\t-t\tOnly build the .tex diles don't build the pdf.\n"
+         "\t-u\tProduce an unused resources report.\n"
+         "\t-v\tVerbose.\n"
+         "\t-r\tBuild a release zip with contents defined in config and version"
+         "from docs/version.xml.\n"
+         "\n"
+         "%s" % (prog_name, msg)))
+    exit(return_code)    
+
+
 if __name__ == "__main__":
     try:
         opts, args = getopt(
             sys.argv[1:],
-            "vhcCr",
-            ["verbose", "help", "clean", "clobber", "release"])
+            "vVhcCrtu",
+            ["verbose", "validate", "help", "clean",
+             "clobber", "release", "tex", "unusedresources"])
 
     except GetoptError as err:
         usage(msg = str(err), return_code = 2)        
@@ -181,9 +197,18 @@ if __name__ == "__main__":
     verbosity = 0
     debug = True
     release = False
+    validate_only = False
+    only_build_tex_files = False
+    produce_unused_resources_report = False
     for o, a in opts:
         if o in ("-v", "--verbose"):
             verbosity += 1            
+        elif o in ("-t", "--tex"):
+            only_build_tex_files = True
+        elif o in ("-u", "--unusedresources"):
+            produce_unused_resources_report = True
+        elif o in ("-V", "--validate"):
+            validate_only = True
         elif o in ("-h", "--help"):
             usage()
         elif o in ("-c", "--clean"):
@@ -203,52 +228,16 @@ if __name__ == "__main__":
     if not exists(pdfs_dir):
         mkdir(pdfs_dir)
 
-    # Conditionally build some graphs (we won't need unless we're building the rationale doc)
-    if "rationale.xml" in [t[0] for t in config.doc_files_to_build]:
-        print("Building dice pool graphs.")
-        graphs.draw_graphs()
-        #dice_pool_graph.build_dice_pool_graphs()
-        #morale_graph.build_morale_graph()
-        d6_graph.draw_d6_graph()
-        aspect_lifetime_graph.draw_aspect_lifetime_graph()
-
     # load the game database (archetypes, abilties etc).
     with DB() as db:
         db.load(root_dir=root_dir, fail_fast=True)
 
-        # generate the skill tree images
-        # skill_tree_builder = SkillTreeBuilder(page=Page.ONE)
-        # skill_tree_builder.build(db.ability_groups,
-        #                          fname=join(build_dir, "ability_tree1.eps"))
-        # skill_tree_builder.build(db.ability_groups,
-        #                          fname=join(build_dir, "ability_tree1.pdf"))
-
-        # skill_tree_builder = SkillTreeBuilder(page=Page.TWO)
-        # skill_tree_builder.build(db.ability_groups,
-        #                          fname=join(build_dir, "ability_tree2.eps"))
-        # skill_tree_builder.build(db.ability_groups,
-        #                          fname=join(build_dir, "ability_tree2.pdf"))
-
-
-
-        # # Add the local styles dir
-        # # The trailing // means that TeX programs will search recursively in that 
-        # # folder; the trailing colon means "append the standard value of TEXINPUTS" 
-        # # (which you don't need to provide).
-        # tex_inputs = styles_dir + "//:"
-
-        # # Get a copy of the environment with TEXINPUTS set.
-        #env = deepcopy(os.environ)
-        # env["TEXINPUTS"] = tex_inputs
-
-        jinja_env = get_jinja_env(db)
+        jinja_env = jinja_utils.get_jinja_env(db)
         generate_level_progression_tables(jinja_env, db)
-        #sys.exit() # FIXME:!!    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-        # Build the ability trees (these are the eps diagrams that should skill prereqs)
-        build_skill_trees(db.ability_groups)
-
+        # Build the ability trees (these are the eps diagrams that show ability
+        # prereqs)
+        build_ability_trees(db.ability_groups)
 
         #
         # Build Pdf Files.
@@ -256,11 +245,16 @@ if __name__ == "__main__":
 
         # Build doc books (in the docs dir)
         for doc_xml_fname, _, _ in config.doc_files_to_build:
-            build_book("docs", doc_xml_fname, verbosity)
+            build_book(
+                "docs",
+                doc_xml_fname,
+                verbosity=verbosity,
+                validate_only=validate_only,
+                only_build_tex_files=only_build_tex_files)
 
         # Build background books (in the background dir)
         for doc_xml_fname, _, _ in config.background_files_to_build:
-            build_book("background", doc_xml_fname, verbosity)
+            build_book("background", doc_xml_fname, verbosity, validate_only)
 
         # Build archetypes
         for archetype_id, _, _ in config.archetypes_to_build:
@@ -268,20 +262,27 @@ if __name__ == "__main__":
             assert archetype is not None
 
             full_doc_xml_fname = join("archetypes", archetype.get_id() + ".xml")
-            doc = apply_template_to_xml(
+            processed_xml_fname = jinja_utils.render_xml(
                 jinja_env,
                 xml_fname_in=full_doc_xml_fname,
                 template_fname=ARCHETYPE_TEMPLATE_FNAME,
                 archetype=archetype,
                 db=db,
                 verbosity=verbosity) or die()
+            
+            # parse an xml document
+            doc = _parse_xml(processed_xml_fname)
 
-            build_pdf(
-                xml_fname=archetype.get_id(),
+            # Parsing runs all the xsd and schematron validation.
+            if validate_only:
+                continue                
+            if not latex_utils.build_pdf(
+                xml_fname=processed_xml_fname,
                 verbosity=verbosity,
                 doc=doc,
                 db=db,
-                archetype=archetype) or die()
+                archetype=archetype):
+                raise Exception("Failed to build pdf!")
 
             # build_epub(
             #     xml_fname=archetype.get_id(),
@@ -296,12 +297,11 @@ if __name__ == "__main__":
             module_name = join("modules", module_id)
             build_book(module_name, f"{module_id}.xml", verbosity)
 
-
         # Build latex/pdf patron files.
         for patron_id, _, _ in config.patrons_to_build:
             patron = db.patrons[patron_id]
             full_doc_xml_fname = join("docs", patron.get_id() + ".xml")
-            doc = apply_template_to_xml(
+            processed_xml_fname = jinja_utils.render_xml(
                 jinja_env,
                 xml_fname_in=full_doc_xml_fname,
                 template_fname=PATRON_TEMPLATE_FNAME,           
@@ -309,26 +309,23 @@ if __name__ == "__main__":
                 db=db,
                 verbosity=verbosity) or die()
 
-            build_pdf(
-                xml_fname=patron.get_id(),
-                verbosity=verbosity,
-                doc=doc,
-                db=db,
-                patron=patron) or die()
+            
+            doc = _parse_xml(processed_xml_fname)
+            if validate_only:
+                continue
 
+            if not latex_utils.build_pdf(
+                    xml_fname=patron.get_id(),
+                    verbosity=verbosity,
+                    doc=doc,
+                    db=db,
+                    patron=patron):
+                raise Exception("Failed to build pdf")
 
-        # # Build latex/pdf encounter files.
-        # for encounter_id, _, _ in config.encounters_to_build:
-        #     encounter_fname = join(#encounters_dir,
-        #         "encounters",
-        #         encounter_id,
-        #         "%s.xml" % encounter_id)
-        #     build_pdf_doc(encounter_fname,
-        #                   db=db,
-        #                   doc_fname=encounter_fname, 
-        #                   verbosity=verbosity) or die()
-
-
+        # Build latex/pdf encounter files.
+        for encounter_id, _, _ in config.encounters_to_build:
+            xml_fname = join(encounter_id, f"{encounter_id}.xml")
+            build_book("encounters", xml_fname, verbosity)            
 
         #
         # Build HTML Files (mostly a placeholder at this stage)
@@ -385,7 +382,7 @@ if __name__ == "__main__":
         # and also list unused art resources to help us
         # cull stuff from the repo.
         #
-        if config.print_resource_report:
+        if config.print_resource_report or produce_unused_resources_report:
             db.resources.print_report(verbose=True)
 
         #
@@ -393,5 +390,5 @@ if __name__ == "__main__":
         # the zip dir and put them in the release dir.
         #
         if release:
-            create_release(config, db, verbosity)
+            create_release(db, verbosity)
 

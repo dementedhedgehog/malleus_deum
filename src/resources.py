@@ -21,9 +21,10 @@ import xml.etree.cElementTree as et
 from utils import (
     parse_xml,
     xml_tree_to_str,
-    validate_xml,
+    #validate_xml,
     get_error_context,
-    COMMENT,
+    #COMMENT,
+    is_comment,
     resources_dir,
     build_dir,
     )
@@ -78,8 +79,8 @@ class ResourceInfo:
         # source, the website we found the resource e.g. deviantart.com
         self.source = None 
 
-        # Url where the resource came from.
-        self.url = None
+        # Urls where the resource came from.
+        self.urls = []
 
         # Whatever additional information people feel like adding.
         self.notes = None
@@ -147,16 +148,16 @@ class ResourceInfo:
         if resource_doc is None:
             raise Exception("Can't parse license: %s" % info_fname)
 
-        errors = validate_xml(resource_doc)
-        # If there's been a validation error print some information about it
-        if errors is not None:
+        # errors = validate_xml(resource_doc)
+        # # If there's been a validation error print some information about it
+        # if errors is not None:
 
-            err = Exception(f"Invalid xml {info_fname}!")
-            for i, e in enumerate(errors):
-                msg = str(e)
-                context = get_error_context(info_fname, e.line)
-                err.add_note(f"error: ({i}) {msg}\n{context}\n\n")
-            raise err
+        #     err = Exception(f"Invalid xml {info_fname}!")
+        #     for i, e in enumerate(errors):
+        #         msg = str(e)
+        #         context = get_error_context(info_fname, e.line)
+        #         err.add_note(f"error: ({i}) {msg}\n{context}\n\n")
+        #     raise err
         
         root = resource_doc.getroot()
         if root.tag != "licenseinfo":
@@ -164,15 +165,16 @@ class ResourceInfo:
                             f"of licenseinfo in {info_fname}")
         
         for child in list(root):
+            if is_comment(child):
+                pass
+
             tag = child.tag
             if child.text:
                 text = str(child.text.strip())
             else:
                 text = "Missing!"
         
-            if tag is COMMENT:
-                pass
-            elif tag == "sig":
+            if tag == "sig":
                 self.sig = text
             elif tag == "type":
                 self.resource_type = text
@@ -190,7 +192,7 @@ class ResourceInfo:
             elif tag == "source":
                 self.source = text
             elif tag == "url":
-                self.url = text
+                self.urls.append(text)
             elif tag == "notes":
                 if self.notes is None:
                     self.notes = text
@@ -201,18 +203,18 @@ class ResourceInfo:
                      (tag, info_fname))
         return    
     
-    def __str__(self):        
+    def __str__(self):
         return (
-            f"Name: {self.name}\n"
-            f"Type: {self.resource_type}\n"
-            f"Artist: {self.artist}\n"
-            f"Artist Sig: {self.sig}\n"
-            f"Filename: {self.fname}\n"
-            f"License: {self.license}\n"
-            f"Info Filename: {self.info_fname}\n"
-            f"Source: {self.source}\n"
-            f"URL: {self.url}\n"
-            f"Used: {' '.join(self.used)}\n"
+            f"Name: {self.name}\n" + 
+            f"Type: {self.resource_type}\n" +
+            f"Artist: {self.artist}\n" +
+            f"Artist Sig: {self.sig}\n" +
+            f"Filename: {self.fname}\n" +
+            f"License: {self.license}\n" +
+            f"Info Filename: {self.info_fname}\n" +
+            f"Source: {self.source}\n" +
+            "".join(f"URL: {url}\n" for url in self.urls) +
+            f"Used: {' '.join(self.used)}\n" +
             f"Status: {self.get_license_status()}\n")
 
 
@@ -230,32 +232,23 @@ class UsedResourcesDB:
         return
 
     def write(self):
-        resources_elem = et.Element("used_resources")
+        resources_elem = et.Element("usedresources")
         for resource_id, filenames in self.resources.items():        
             resource_elem = et.SubElement(resources_elem, "resource")
             resource_elem.set('id', resource_id)
             for filename in filenames:
-                d = et.SubElement(resource_elem, "d")
+                d = et.SubElement(resource_elem, "doc")
                 d.set("fname", filename)
-
-        # FIXME: should validate this
-        # (Note there's a difference between etrees and etElements!)
 
         # Write a human readable representation of the xml
         # (i.e. with spaces and newlines!)
         tree = et.ElementTree(resources_elem)
-        #xml_str = xml_tree_to_str(tree)
-        #print(xml_str)
-        #with open(self.USED_RESOURCES_FNAME, "w") as f:
-        #    f.write(xml_str)
+        et.indent(tree, space="    ")
         tree.write(self.USED_RESOURCES_FNAME)
         return                
 
     def read(self):
         if exists(self.USED_RESOURCES_FNAME):
-            # tree = et.parse(self.USED_RESOURCES_FNAME)
-            # used_resources_elem = tree.getroot()
-            # parse and validate the xml
             doc = parse_xml(self.USED_RESOURCES_FNAME)
             used_resources_elem = doc.getroot()
 

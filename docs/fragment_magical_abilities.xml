@@ -1,0 +1,27 @@
+<section>
+  <sectiontitle>Magical Abilities</sectiontitle>
+  <p>
+    Magic abilities involve the use of the characters magic pool and
+    are only available to certain archetypes.
+  </p>
+
+  {% for ability_group in ability_groups if ability_group.is_magic_family() %} 
+  <subsection>
+    <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
+
+    {{ ability_group.get_description() }}
+
+    {% if ability_group.has_abilities() %}
+    <figure position="h" fullwidth="false" sideways="false">
+      <img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/>
+      <caption>{{ ability_group.get_name() }}</caption>
+      <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+    </figure>
+    {% endif %}
+
+    {% for ability in ability_group.get_abilities()%}
+    {{ build_ability(ability) }}
+    {% endfor %}
+  </subsection>
+  {% endfor %}
+</section>  

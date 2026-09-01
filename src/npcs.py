@@ -4,8 +4,13 @@ from os import listdir, walk
 import os
 
 from utils import (
-    parse_xml, validate_xml, children_to_string, contents_to_string,
-    COMMENT, convert_str_to_int, convert_to_roman_numerals,
+    parse_xml,
+    #validate_xml,
+    children_to_string, contents_to_string,
+    #COMMENT,
+    #convert_str_to_int,
+    #convert_to_roman_numerals,
+    is_comment,
     root_dir
 )
 
@@ -36,7 +41,7 @@ class NPC:
         self.agility = None
         self.speed = None
         self.luck = None
-        self.willpower = None
+        self.will = None
         self.perception = None
         self.name = None
         self.health = None
@@ -174,12 +179,12 @@ class NPC:
         return result
 
 
-    def get_willpower(self):
+    def get_will(self):
         result = None
-        if self.willpower is not None:
-            result = self.willpower
+        if self.will is not None:
+            result = self.will
         elif self.monster is not None:
-            result = self.monster.willpower
+            result = self.monster.will
         return result
 
 
@@ -258,8 +263,8 @@ class NPCGroup:
     def get_luck(self):
         return self.monster.luck
 
-    def get_willpower(self):
-        return self.monster.willpower
+    def get_will(self):
+        return self.monster.will
 
     def get_perception(self):        
         return self.monster.perception
@@ -306,7 +311,9 @@ class NPCGroup:
                npc.parse(child, monster_groups=self.monster_groups)
                self.npcs.append(npc)
 
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+               # ignore comments!
+           elif is_comment(child): # tag is COMMENT:
                # ignore comments!
                pass
            else:
@@ -387,18 +394,18 @@ class NPCGang:
                 if root.tag == "npcs":
                     npcs = NPCs(monster_groups=monster_groups)
                     npcs.parse(root)
-                    if not npcs.validate():
-                        result = False
-                        if fail_fast:
-                            raise Exception("Errors in %s" % xml_fname)                
-                    else:
-                        cls.npc_like_lookup[npcs.npcs_id] = npcs
+                    # if not npcs.validate():
+                    #     result = False
+                    #     if fail_fast:
+                    #         raise Exception("Errors in %s" % xml_fname)                
+                    #else:
+                    cls.npc_like_lookup[npcs.npcs_id] = npcs
         return result
     
 
-    def validate(self):
-        # FIXME: placeholder
-        return True
+    # def validate(self):
+    #     # FIXME: placeholder
+    #     return True
 
     def is_npc_group(self):
         return True
@@ -442,18 +449,18 @@ class NPCGangs:
                 if doc_root.tag == "npcs":
                     npcs = NPCGang(monster_groups=monster_groups)
                     npcs.parse(doc_root)
-                    if not npcs.validate():
-                        result = False
-                        if fail_fast:
-                            raise Exception("Errors in %s" % xml_fname)                
-                    else:
-                        self.npc_gang_lookup[npcs.npcs_id] = npcs
+                    # if not npcs.validate():
+                    #     result = False
+                    #     if fail_fast:
+                    #         raise Exception("Errors in %s" % xml_fname)                
+                    # else:
+                    self.npc_gang_lookup[npcs.npcs_id] = npcs
         return result
     
 
-    def validate(self):
-        # FIXME: placeholder
-        return True
+    # def validate(self):
+    #     # FIXME: placeholder
+    #     return True
 
 
 if __name__ == "__main__":

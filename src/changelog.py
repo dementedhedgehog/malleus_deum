@@ -1,5 +1,5 @@
 
-from utils import parse_xml, COMMENT
+from utils import parse_xml, is_comment # COMMENT
 
 
 
@@ -25,15 +25,17 @@ class Version:
 
            if tag == "major":
                if version.major is not None:
-                   raise Exception("Only one major per version. (%s) %s\n" %
-                                   (child.tag, str(child)))
+                   raise Exception(
+                       "Only one major per version. "
+                       f"({child.tag}) {str(child)}\n")
                else:
                    version.major = child.text.strip()
                    try:
                        version.major = int(version.major)
                    except ValueError:
-                       raise Exception("Received invalid major version. (%s) expecting "
-                                       "an integer\n" % child.tag)
+                       raise Exception(
+                           f"Received invalid major version. ({child.tag}) "
+                           "expecting an integer\n")
            elif tag == "minor":
                if version.minor is not None:
                    raise Exception("Only one minor per version. (%s) %s\n" %
@@ -43,8 +45,9 @@ class Version:
                    try:
                        version.minor = int(version.minor)
                    except ValueError:
-                       raise Exception("Received invalid minor version. (%s) expecting "
-                                       "an integer\n" % child.tag)
+                       raise Exception(
+                           "Received invalid minor version. ({child.tag}) "
+                           "expecting an integer\n")
            elif tag == "revision":
                if version.revision is not None:
                    raise Exception("Only one revision per version. (%s) %s\n" %
@@ -60,7 +63,8 @@ class Version:
                change = child.text.strip()
                version.changes.append(change)
                
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+           elif is_comment(child): # tag is COMMENT:
                # ignore comments!
                pass
            
@@ -89,7 +93,8 @@ class Changelog:
                if version:
                    changelog.versions.append(version)
                    
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+           elif is_comment(child): #  is COMMENT:
                # ignore comments!
                pass
            

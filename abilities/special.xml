@@ -6,6 +6,13 @@
     <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
+	Ability Checks are any checks made using an ability.  For example attack rolls are a
+	type of ability check using an appropriate weapon ability, <eg/> Sword Strike, as are
+	spell casting checks using the appropriate magical spell ability.  In this section we
+	cover a few checks that are not made using an ability.
+      </p>     
+
+      <p>
 	Special abilities are extraordinary abilities or racial abilities not available 
 	to most characters in the usual course of events.
       </p>
@@ -19,42 +26,205 @@
     <abilitytitle>Blindsight</abilitytitle>
     <abilityid>blindsight</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitytrigger>
-      <name>Trigger</name>
-      <actiontype><free/></actiontype>
+    <abilityauxiliary>
+      <name>Talent</name>
+      <checktype><auxiliary/></checktype>
+      <apcost><free/></apcost>
       <range><ranged-short/></range>
-      <precondition>When making attacks against invisible creatures or when fighting in the
-      dark.</precondition>
-      <effect>Add the Blindsight Rank to the check Skill dice when making attacks.</effect>
-      <!-- <defaults>special_defaults</defaults> -->
-      <!--   <!-\- <critsuccess></critsuccess> -\-> -->
-      <!--   <!-\- <critfail></critfail> -\-> -->
-      <!--   <!-\- <boon></boon> -\-> -->
-      <!--   <!-\- <bane></bane> -\-> -->
-      <!--   <!-\- <range><na/></range> -\-> -->
-      <!--   <!-\- <keywords></keywords> -\-> -->
-      <!--   <!-\- <indifferent></indifferent> -\-> -->
-      <!--   <!-\- <dc><dc13/></dc> -\-> -->
-    </abilitytrigger>
+      <keywords><auxiliary/></keywords>
+      <precondition>Making attacks against invisible creatures or fighting in
+      the dark.</precondition>
+      <effect>Add the Blindsight Rank to the check Skill dice when making
+      attacks. Any penalties for attacking in the dark still apply.</effect>
+    </abilityauxiliary>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
 	The character has heightened senses when fighting unseen
 	opponents.  They are atuned to slight noises and minor
 	air movements that give away the location of unseen attackers.
+	This ability is of no use at range.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Encumbrance<daggersymbol/></abilitytitle>
+    <abilityid>encumberance</abilityid>    
+    <abilityranks from="0" to="4"/>
+    <abilitycheck>
+      <name>Save</name>
+      <checktype><trial/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><reaction/></apcost>
+      <range><self/></range>
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv13/></counter>      
+      <any-success>Reroll the surprise roll</any-success>
+      <critsuccess>Reroll the surprise roll with advantage</critsuccess>
+      <critfail>Character is Stunned</critfail>      
+    </abilitycheck>
+    <spline><p x="0" y="0"/></spline>     
+    <abilitydescription>
+      <p>
+	<indexentry>
+	  <entry>Checks</entry>
+	  <subentry>Encumbrance</subentry>
+	</indexentry>
+	<indexentry>
+	  <entry>Encumbrance Check</entry>
+	</indexentry>
+	Encumbrance is an optional rule.  The characters Encumbrance is a DC
+	that players can be forced to check against when the characters are
+	doing something where the weight of their pack could be a problem,
+	<eg/> characters climbing a mountain may have to make an Endurance
+	check against their encumbrance or become exhausted.  Encumbrance does
+	not simply represent weight, it also represents the unwieldiness of the
+	items being carried; how awkward it is to move while
+	carrying the item.	  
+      </p>
+
+      <playexample>
+	<p>
+	  Dourli tries to walk across a rope between two buildings.  He rolls a
+	  success with a bane.  The GM rules that Dourli falls, but catches the
+	  rope under his arms.  The GM decides that Dourli must now make an
+	  Agility Check against his Encumberance DC or drop an item.  Dourli
+	  rolls a 2 and 1, +0 for his Agility Rank, and fails miserably.  There
+	  is no point calculating Dourli's Encumberance, he has clearly failed.
+	  The GM rules that this means that unfortunately, Dourli drops the
+	  gemstone he has just acquired into the canal below.
+	</p>
+      </playexample>
+
+      <p>
+	In order to use encumbrance you should be using the standard character
+	sheets. In the equipment section of the character sheet, marked against
+	the side, are encumbrance values for each class of item (small, medium
+	and large) and values for armour and coin.  The total of these values
+	is the characters encumbrance. Note that you do not count items twice
+	(<eg/> a shield may be a large object in practice but its encumbrance
+	is counted separately because of the encumbrance values for armour).
       </p>
 
       <p>
-      </p>
-	
+	If you are going to use Encumberance then it is important that this
+	rule does not become a long-winded exercise in accounting.  First roll
+	the check, then calculate the encumbrance (if required). Secondly,
+	don't worry about getting the value exactly right - it will take to
+	long. Just eye-ball it.  Finally only bother calculating encumberance
+	on demand, when the value is required.
+      </p>      
+    </abilitydescription>
+  </ability>
 
-      <!-- <p> -->
-      <!-- 	When a character with Blindsight is fighting an unseen opponent -->
-      <!-- 	each time they try and attack the opponent, before they roll to attack, -->
-      <!-- 	they roll a Blindsight check.   If the Blindsight check is successful -->
-      <!-- 	the character only suffers a -3 modifier for the rest of the encounter -->
-      <!-- 	instead of the usual -6. -->
-      <!-- </p> -->
+  <ability>
+    <abilitytitle>Throw Object</abilitytitle>
+    <abilityid>throw_object</abilityid>    
+    <abilityranks from="0" to="0"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><fixme/></checktype>
+      <apcost><ap2/></apcost>
+      <range><ranged-short/></range>
+      <keywords><check/></keywords>
+      <counter><opponents-physical-defence-or-gm-fiat/></counter>      
+      <any-success>Success</any-success>
+    </abilitycheck>
+    <spline><p x="0" y="0"/></spline>     
+    <abilitydescription>
+      <p>
+	This ability is used to throw objects.  FIXME crits/checktype?
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Flat Checks</abilitytitle>
+    <abilityid>flat_check</abilityid>    
+    <abilityranks from="0" to="0"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><fixme/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><gm-fiat/></apcost>
+      <range><gm-fiat/></range>
+      <keywords><check/></keywords>
+      <counter><sv13/></counter>      
+      <any-success>Success</any-success>
+    </abilitycheck>
+    <abilitycountercheck>
+      <name>Save</name>
+      <checktype><fixme/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><reaction/></apcost>
+      <range><self/></range>
+      <keywords><countercheck/></keywords>
+      <counter><sv13/></counter>
+    </abilitycountercheck>
+    <spline><p x="0" y="0"/></spline>     
+    <abilitydescription>
+	<p>
+	  Flat checks are catch-all check, when no ability really applies to the
+	  situation and no skill enters the equation. The player simply rolls a
+	  Check against a DC chosen by the GM, applying no Rank bonus. These
+	  checks are so context dependent it is up to the GM to determine all
+	  the parameters of the check including the DC, critical effects <etc/>.
+	</p>      
+    </abilitydescription>
+  </ability>
+
+      
+
+
+    <!-- <section> -->
+    <!--   <sectiontitle>Initiative, Surprise and Ambush</sectiontitle> -->
+
+    <!--   <p> -->
+    <!-- 	These checks are described in the chapter on combat in sections <ref>subsec:initiative</ref>, -->
+    <!-- 	<ref>subsec:surprise</ref> and <ref>subsec:ambush</ref>, respectively. -->
+    <!--   </p> -->
+    <!-- </section> -->
+
+
+
+  
+  <ability>
+    <abilitytitle>Equipment Break Check</abilitytitle>
+    <abilityid>break_check</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <abilitycheck>
+      <name>Check</name>
+      <checktype><fixme/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><reaction/></apcost>
+      <range><self/></range>
+      <keywords><luckpool/><check/></keywords>
+      <counter><sv13/></counter>      
+      <any-success>Reroll the surprise roll</any-success>
+      <critsuccess>Reroll the surprise roll with advantage</critsuccess>
+      <critfail>Character is Stunned</critfail>      
+    </abilitycheck>
+    <spline><p x="0" y="0"/></spline>
+    <abilitydescription>
+      <p>
+	Under certain circumstances the players may have to check that their
+	weaponry or armour does not break.  In these cases the is compared with
+	the Weapons Break DC using the following table.
+      </p>
+      
+      {% include "docs/tables/weapon_and_armour_checks.xml" %}	
+
+      <p>
+	Each item has a spirit forged into it when it is created.  A weapon's
+	spirit may not be immediately obvious to an observer, and is different
+	from it's construction quality.  Cheap weapons made by unskilled
+	artisans tend to have a Poor weapon spirit.  Weapons made by skilled
+	artisans with great care might have a Superior weapon spirit. 
+      </p>      
     </abilitydescription>
   </ability>
 
@@ -65,23 +235,21 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <checktype><fixme/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><reaction/></apcost>
       <range><self/></range>
-      <keywords><luckpool/></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<any-success>Reroll the surprise roll</any-success>
-	<critsuccess>Reroll the surprise roll with advantage</critsuccess>
-	<critfail>Character is Stunned</critfail>      
-      </mastery>	
-      <xdef fname="pool_cost_0" elem_name="fate"/>
+      <keywords><luckpool/><check/></keywords>
+      <counter><sv13/></counter>      
+      <any-success>Reroll the surprise roll</any-success>
+      <critsuccess>Reroll the surprise roll with advantage</critsuccess>
+      <critfail>Character is Stunned</critfail>            	
     </abilitycheck>
     <spline><p x="0" y="0"/></spline>     
     <abilitydescription>
       <p>
-	If the character makes a successful Luck check they may reroll their surprise
-	roll.
-	FIXME: how does this differ from REROLL?  LESS COST
+	If the character makes a successful Luck check they may reroll their
+	surprise roll.	FIXME: how does this differ from REROLL?  LESS COST
       </p>
     </abilitydescription>
   </ability>
@@ -90,28 +258,24 @@
   <ability>
     <abilitytitle>Natural Sprinter</abilitytitle>
     <abilityid>natural_sprinter</abilityid>
+    <slug>
+      I'm wasted on Cross Country, We dwarves are natural sprinters.
+      very dangerous over short distances
+    </slug>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>special_defaults</defaults> -->
-      <!-- <defaults>pool_cost_0</defaults> -->
-      <actiontype><free/></actiontype>
+    <abilityauxiliary>
+      <name>Talent</name>
+      <checktype><auxiliary/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><ap1/></apcost>
       <range><self/></range>
-      <keywords><mettlepool/></keywords>
-      <precondition>Anytime a character with this ability would Sprint (perform a double move action)</precondition>
-      <dc><speed/></dc>
-      <mastery>
-	<critsuccess>The character FIXME</critsuccess>
-	<success>The character FIXME</success>
-	<critfail>Pulled a hammy.</critfail>
-      </mastery>
-      <fate>
-      <!-- <boon></boon> -->
-      <indifferent>FIXME</indifferent>
-      <!-- <bane>1 cost</bane> -->
-      <!-- <damned>2 cost</damned> -->
-      </fate>
-    </abilitycheck>
+      <keywords><mettlepool/><auxiliary/></keywords>
+      <precondition>
+	Anytime a character with this ability would Sprint
+	(perform a double move action)
+      </precondition>
+      <effect>The character moves at human sprint speed.</effect>
+    </abilityauxiliary>
     <abilitydescription>
       <p>
 	FIXME: definition of Sprint (or has that gone?)
@@ -120,7 +284,8 @@
 	and not the most agile when it comes to dodging and
 	quick changes of direction, Dwarves can build up a fair
 	amount of speed in a straight line over time.
-	Natural Sprinters get +3 to any Speed checks made to run.
+	Natural Sprinters get +Rank to any Speed checks made to run
+	or for running jumps and the like.
       </p>
     </abilitydescription>    
   </ability>
@@ -129,28 +294,29 @@
     <abilitytitle>Fey Resilience</abilitytitle>
     <abilityid>fey_resilience</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitytrigger>
-      <name>Trigger</name>   
-      <actiontype><free-reaction/></actiontype>
+    <abilityauxiliary>
+      <name>Talent</name>
+      <checktype><auxiliary/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><free-reaction/></apcost>
       <range><self/></range>
-      <keywords></keywords>
-      <precondition>Character takes non-magical damage from a non-iron weapon</precondition>
+      <keywords><auxiliary/></keywords>
+      <precondition>Character takes physical damage from a non-iron weapon</precondition>
       <effect>Damage is reduced by 1+Rank</effect>
-    </abilitytrigger>
+    </abilityauxiliary>
 
     <abilitycheck>
-      <name>Heal</name>   
-      <actiontype><noncombat/></actiontype>
+      <name>Check</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><self/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc9/></dc>
-      <mastery>
-	<critsuccess>Heals d6 damage</critsuccess>
-	<righteoussuccess>Heals d4 damage</righteoussuccess>
-	<success>Heals d3 damage</success>
-	<critfail>Suffers d4 damage</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><mettlepool/><check/></keywords>
+      <counter><sv9/></counter>      
+      <critsuccess>Heals d3+3 damage</critsuccess>
+      <righteoussuccess>Heals d3+1 damage</righteoussuccess>
+      <success>Heals d3 damage</success>
+      <critfail>Suffers d4 damage</critfail>      
     </abilitycheck>
     <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
@@ -163,7 +329,8 @@
       </p>
 
       <p>
-	Out of combat Fey creatures may make a magic check to magically heal health.
+	Out of combat Fey creatures may make a magic check to magically heal
+	health.
       </p>
     </abilitydescription>
   </ability>
@@ -172,20 +339,22 @@
     <abilitytitle>Resilience</abilitytitle>
     <abilityid>resilience</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitytrigger>
-      <name>Trigger</name>
-      <actiontype><free-reaction/></actiontype>
+    <abilityauxiliary>
+      <name>Talent</name>
+      <checktype><auxiliary/></checktype>
+      <apcost><free-reaction/></apcost>
       <range><self/></range>
-      <keywords></keywords>
+      <keywords><auxiliary/></keywords>
       <precondition>Character takes damage.</precondition>
       <effect>Damage is reduced by Rank</effect>
-    </abilitytrigger>
+    </abilityauxiliary>
     <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
       <p>
  	Any damage received is reduced by the ability rank for as a free action,
-	<eg/> a character with Resilience 2 is hit by a sword for 5 hit points damage.  This
-	damage is reduced by 2 for their Resilience so they instead take 3 damage. 
+	<eg/> a character with Resilience 2 is hit by a sword for 5 hit points
+	damage.  This damage is reduced by 2 for their Resilience so they
+	instead take 3 damage. 
       </p>
 
       <p>

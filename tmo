@@ -1,0 +1,30 @@
+	  {%- if check.critsuccess -%}
+	  <br/><bold>Critical Success:</bold> {{ check.critsuccess }}
+	  {%- endif -%}	
+	  {%- if check.righteoussuccess -%}
+	  <br/><bold>Righteous Success:</bold> {{ check.righteoussuccess }}
+	  {%- endif -%}
+	  {%- if check.succes -%}
+	  <br/><bold>Success:</bold> {{ check.success }}
+	  {%- endif -%}		
+	  {%- if check.any_fail -%}
+	  <br/><bold>Any Fail:</bold> {{ check.any_fail }}
+	  {%- endif -%}		
+	  {%- if check.fail -%}
+	  <br/><bold>Fail:</bold> {{ check.fail }}
+	  {%- endif -%}		
+	  {%- if check.critfail -%}
+	  <br/><bold>Critfail:</bold> {{ check.critfail }}
+	  {%- endif -%}	
+	  {%- if check.blessed -%}
+	  <br/><bold>Blessed:</bold> {{ check.blessed }}
+	  {%- endif -%}		
+	  {%- if check.lucky -%}
+	  <br/><bold>Lucky:</bold> {{ check.lucky }}
+	  {%- endif -%}		
+	  {%- if check.damned -%}
+	  <br/><bold>Damned:</bold> {{ check.damned }}
+	  {%- endif -%}		
+	  {%- if check.cursed -%}
+	  <br/><bold>Cursed:</bold> {{ check.cursed }}
+	  {%- endif -%}	

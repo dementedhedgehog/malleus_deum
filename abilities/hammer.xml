@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Hammer Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Hammer Abilities</abilitygrouptitle>
     <abilitygroupid><hammer/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <keywords><heavy/><crushing/></keywords>
@@ -20,42 +20,25 @@
     <abilitytitle>Hammer Smash</abilitytitle>
     <abilityid>hammer_smash</abilityid>    
     <abilityranks from="1" to="4"/>
-    <!-- <abilitycheck> -->
-    <!-- <defaults>hammer_defaults</defaults> -->
-    <!--   <critsuccess>Deal 3×Damage and make a Knock Back Check</critsuccess> -->
-    <!--   <righteoussuccess>Deal 2×Damage and make a Knock Back Check</righteoussuccess>       -->
-    <!--   <success>Deal Damage</success>       -->
-    <!--   <!-\- <name>Hit</name> -\-> -->
-    <!--   <!-\- <actiontype><ap4/></actiontype> -\-> -->
-    <!--   <!-\- <range><na/></range> -\-> -->
-    <!--   <!-\- <keywords></keywords> -\-> -->
-    <!--   <!-\- <indifferent></indifferent> -\-> -->
-    <!--   <!-\- <dc><opponents-defend/></dc> -\-> -->
-    <!--   <!-\- <dmg>Weapon+Strength|Endurance</dmg> -\-> -->
-    <!-- </abilitycheck> -->
     <abilitycheck>
-      <name>Attack</name>
-      <!-- <defaults>hammer_defaults</defaults> -->
-      <!-- <defaults>melee_fate_defaults</defaults> -->
-      <actiontype><free/></actiontype>
-      <range><melee/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dmg>Weapon+Strength|Endurance</dmg> -->
-      <dc><opponents-defend/></dc>
-      <!-- <any-success>Target knocked back</any-success> -->
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>                  
-      <fate>
-	<blessed>Target knocked prone and Free Standard-Action/Attack as a Minor or Move Action</blessed>
-	<boon>Target of appropriate size knocked back.</boon>
-      </fate>
+      <name>Hammer Smash</name>
+      <checktype><melee-attack/></checktype>
+      <apcost><free/></apcost>
+      <range><reach/></range>
+      <keywords>
+	<hammer/><melee/><basic-attack/><physical-attack/><check/>
+      </keywords>
+      <counter><opponents-physical-defence/></counter>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
     </abilitycheck>
-    <prereqabilityrank>hammer_strike_2</prereqabilityrank>
+    <prereqabilityref id="hammer_strike" rank="2"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-        Characters equipped with a hammer can use the hammer
-	to "smash" an opponent of the appropriate siuze hitting them and pushing them back.
+        Characters equipped with a hammer can use the hammer to "smash" an
+	opponent of the appropriate siuze hitting them and pushing them back.
       </p>
     </abilitydescription>
   </ability>
@@ -65,27 +48,30 @@
     <abilitytitle>Righteous Blow</abilitytitle>
     <abilityid>stunning_blow</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitytrigger>
-      <name>Trigger</name>      
-      <!-- <defaults>hammer_defaults</defaults> -->
-      <actiontype><free/></actiontype>
-      <range><melee/></range>
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><opponents-agility/></dc> -->
-      <precondition>Righteous Success with the Hammer Strike Ability against an opponent of Appropriate Size.</precondition>
-      <effect>Target is Stunned and Target takes an additional 6 hit points damage</effect>
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-    </abilitytrigger>
-    <prereqabilityrank>hammer_strike_2</prereqabilityrank>
-    <spline><p x="90" y="30"/></spline>
+    <abilityauxiliary>
+      <name>Righteous Blow</name>      
+      <!-- <critclass><melee/></critclass> -->
+      <checktype><auxiliary/></checktype>
+      <apcost><free/></apcost>
+      <range><reach/></range>
+      <keywords><hammer/><melee/><auxiliary/></keywords>
+      <precondition>
+	Righteous Success with the Hammer Strike Ability against an opponent of
+	similar size or smaller.
+      </precondition>
+      <effect>
+	Target is Stunned and Target takes an additional +Rank hit points damage.
+      </effect>
+    </abilityauxiliary>
+    <prereqabilityref id="hammer_strike" rank="2"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	When the character makes a Hammer Strike with a righteous success the character may make
-	a Righteous Blow attack as a free action.  They make a check versus their opponents Agility.
-	If they make a righteous success the opponent is stunned (loses their Move, Minor and Reaction for their next turn).
+	When the character makes a Hammer Strike with a righteous success the
+	character may make a Righteous Blow attack as a free action. They make a
+	check versus their opponents Agility. If they make a righteous success
+	the opponent is stunned (loses their Move, Minor and Reaction for their
+	next turn).
       </p>
     </abilitydescription>
   </ability>
@@ -95,20 +81,26 @@
     <abilitytitle>Hammer Strike</abilitytitle>
     <abilityid>hammer_strike</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <dc><opponents-defend/></dc>
+    <abilitycheck>
+      <name>Melee Attack</name>
+      <checktype><melee-attack/></checktype>
+      <apcost><ap4/></apcost>
+      <range><reach/></range>
+      <keywords>
+	<hammer/><melee/><basic-attack/><physical-attack/><check/>
+      </keywords>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon+Strength|Endurance</dmg>
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>                  
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>                  
-    </abilityattack>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <!-- <critsuccess>Frog</critsuccess> -->
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
-        Characters equipped with an Hammer can strike with it during combat doing weapon 
-	damage.
+        Characters equipped with an Hammer can strike with it during combat
+	doing weapon damage.
       </p>
     </abilitydescription>
   </ability>

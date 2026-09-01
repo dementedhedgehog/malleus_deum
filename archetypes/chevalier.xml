@@ -35,7 +35,8 @@
     </p>
 
     <figure>
-      <img id="pyle_chevalier" scale="0.7"/>
+      <!-- <img id="pyle_chevalier" scale="0.7"/> -->
+      <img id="pyle_chevalier"/>
     </figure>    
   </archetypedescription>
 
@@ -247,10 +248,10 @@ some anti froschmeister abilities.. that opponent-of ability.
 	<path chance="12">
 	  <pathtitle>XXXX</pathtitle>
 	  
-	  <choice>✱sword_strike_2, ✱parry_2, ✱block_2, ✱aquilonian_2, ✱etiquette[Church-of-Mithras]_1, ✱merovingian_2.</choice>
-	  <choice>Choose one of ✱law_1 or ✱antiquarian_1.</choice>
-	  <choice>Choose one of ✱speed.jump or .</choice>
-	  <choice>Choose one of ✱nick_of_time_1 or ✱reroll_2</choice>
+	  <choice><abilityref id="sword_strike" rank="2"/>, <abilityref id="parry" rank="2"/>, <abilityref id="block" rank="2"/>, <abilityref id="aquilonian" rank="2"/>, <abilityref id="etiquette" specializations="Church-of-Mithras"/>, <abilityref id="merovingian" rank="2"/>.</choice>
+	  <choice>Choose one of <abilityref id="law" rank="1"/> or <abilityref id="antiquarian" rank="1"/>.</choice>
+	  <choice>Choose one of ✱jump or .</choice>
+	  <choice>Choose one of <abilityref id="nick_of_time" rank="1"/> or <abilityref id="reroll" rank="2"/></choice>
 	</path>
       </branch>
     </archetypelevel>

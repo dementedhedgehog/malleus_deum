@@ -1,28 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 
-   Just the abilities table.
-
+   Just the abilities 
    
   -->
 {% from "docs/macro_ability.xml" import build_ability with context %}    
 <book>
-  <chapter>
-    <chaptertitle>Abilities</chaptertitle>
-    
-    <section>
-      <sectiontitle>Lore Abilities</sectiontitle> 
-
-      {% for ability_group in ability_groups %}
-      <subsection>
-	<subsectiontitle>{{ ability_group.title }} XXX</subsectiontitle>
-	
-	<p>AAA</p>
-
-      </subsection>
-      {% endfor %}
-      
-    </section>
-
-  </chapter>  
+  {% include "docs/phb_chapter_abilities.xml" %}
 </book>

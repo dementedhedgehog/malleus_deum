@@ -11,16 +11,17 @@
   <archetypeid>second_son</archetypeid>
   <archetypedescription>           
     <p>
-      Second sons are extranumenary young nobles, the product of too much money and not
-      enough to do.  Indolent nare-do-wells roaming the lands, living off their wits
-      and their quick reactions, looking for adventure and a handfull of silver
-      whereever they might find it.  On occassion they make a name for themselves,
-      and possibly a fortune, if they are lucky.  More often their lot is an early grave.
+      Second sons are extranumenary young nobles, the product of too much money
+      and not enough to do.  Indolent nare-do-wells roaming the lands, living off
+      their wits and their quick reactions, looking for adventure and a handfull
+      of silver whereever they might find it.  On occassion they make a name for
+      themselves, and possibly a fortune, if they are lucky.  More often their
+      lot is an early grave.
     </p>
 
     <figure>
-      <!-- <img src="./resources/rake/caleb_the_witch_hunter__second_take_by_solidtom-d5v025x.jpg" scale="1.0"/> -->
-      <img id="rake" scale="1.0"/>
+      <!-- <img id="rake" scale="1.0"/> -->
+      <img id="rake"/>
     </figure>    
   </archetypedescription>
 
@@ -33,7 +34,10 @@
   </archetypeprimaryabilities>
   <archetypemovedistance>6</archetypemovedistance>
   <startingcash>50 + 2d4 gp</startingcash>
-  <startinggear>Leather armour, long sword, Fine cloak, fine clothes, leather belt, dagger, rations for a week.</startinggear>
+  <startinggear>
+    Leather armour, long sword, Fine cloak, fine clothes, leather belt, dagger,
+    rations for a week.
+  </startinggear>
 
   <height>
     <metric>170 + 3d10 cm</metric> 
@@ -74,9 +78,9 @@
 	</branchdescription>
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <all-of>✱sword_strike_2, ✱parry_1, ✱dodge_1, 
-      ✱etiquette[Westreich-Nobility]_3, ✱merovingian_4, ✱luck.lucky_3, ✱itiok_1, ✱nick_of_time_1,
-      ✱book_learning_1, and ✱riding_1.</all-of>
+	  <all-of><abilityref id="sword_strike" rank="2"/>, <abilityref id="parry" rank="1"/>, <abilityref id="dodge" rank="1"/>, 
+      <abilityref id="etiquette" specializations="Westreich-Nobility"/>, <abilityref id="merovingian" rank="4"/>, <abilityref id="lucky" rank="3"/>, <abilityref id="itiok" rank="1"/>, <abilityref id="nick_of_time" rank="1"/>,
+      <abilityref id="book_learning" rank="1"/>, and <abilityref id="riding" rank="1"/>.</all-of>
 	</path>
       </branch>
       
@@ -91,34 +95,34 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle>Laibstadt</pathtitle>
-	    <choice>✱merovingian_4, ✱aquilonian_2,
-	    ✱history[Westreich]_1, ✱2[Westreich],
-	    ✱etiquette[Westreich-Nobility]_2</choice>
+	    <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="aquilonian" rank="2"/>,
+	    <abilityref id="history" specializations="Westreich"/>, ✱2[Westreich],
+	    <abilityref id="etiquette" specializations="Westreich-Nobility"/></choice>
 	  </path>
 	  <path chance="3-9">
 	    <pathtitle>Westreich</pathtitle>
-	    <choice>✱merovingian_4, ✱aquilonian_2,
-	    ✱history[Westreich]_1, ✱fame[Westreich]_1,
-	    ✱etiquette[Westreich-Nobility]_1, ✱farmer_1</choice>
+	    <choice><abilityref id="merovingian" rank="4"/>, <abilityref id="aquilonian" rank="2"/>,
+	    <abilityref id="history" specializations="Westreich"/>, <abilityref id="fame" specializations="Westreich"/>,
+	    <abilityref id="etiquette" specializations="Westreich-Nobility"/>, <abilityref id="farmer" rank="1"/></choice>
 	  </path>
 	  <path chance="10">
 	    <pathtitle>Alemaigne</pathtitle>
-	    <choice>✱merovingian_3, ✱aquilonian_1, ✱alemagne_4, 
-	    ✱history[Westreich]_1, ✱history[Alemaigne]_1,
+	    <choice><abilityref id="merovingian" rank="3"/>, <abilityref id="aquilonian" rank="1"/>, <abilityref id="alemagne" rank="4"/>, 
+	    <abilityref id="history" specializations="Westreich"/>, <abilityref id="history" specializations="Alemaigne"/>,
 	    ✱2[Westreich],
-	    ✱etiquette[Westreich-Nobility]_1,
-	    ✱etiquette[Allemagne-Nobility]_2</choice>
+	    <abilityref id="etiquette" specializations="Westreich-Nobility"/>,
+	    <abilityref id="etiquette" specializations="Allemagne-Nobility"/></choice>
 	  </path>
 	  <path chance="11">
 	    <pathtitle>Albion</pathtitle>
-	    <choice>✱merovingian_3, ✱aquilonian_1, ✱hybernian_2, 
-	    ✱history[Westreich]_1,
-	    ✱history[Albion]_1,
-	    ✱fame[Albion]_2,
-	    ✱fame[Westreich]_1,
-	    ✱etiquette[Westreich-Nobility]_2,
-	    ✱etiquette[Albion-Nobility]_3</choice>
-	    <choice>✱occitan_1, or ✱leonese_1, or ✱poitevin_1</choice>
+	    <choice><abilityref id="merovingian" rank="3"/>, <abilityref id="aquilonian" rank="1"/>, <abilityref id="hybernian" rank="2"/>, 
+	    <abilityref id="history" specializations="Westreich"/>,
+	    <abilityref id="history" specializations="Albion"/>,
+	    <abilityref id="fame" specializations="Albion"/>,
+	    <abilityref id="fame" specializations="Westreich"/>,
+	    <abilityref id="etiquette" specializations="Westreich-Nobility"/>,
+	    <abilityref id="etiquette" specializations="Albion-Nobility"/></choice>
+	    <choice><abilityref id="occitan" rank="1"/>, or <abilityref id="leonese" rank="1"/>, or <abilityref id="poitevin" rank="1"/></choice>
 	  </path>
 	  <path chance="12">
 	    <pathtitle>Choose one of the above</pathtitle>
@@ -136,27 +140,27 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>✱riding_2, ✱brawl_2</choice>
+	    <choice><abilityref id="riding" rank="2"/>, <abilityref id="brawl" rank="2"/></choice>
 	  </path>
 
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>✱perception.listen, ✱riding_2 or ✱survivalism[Plains/Woods]_1, ✱surefeet] or ✱speed.jump, ✱✱negotiate[intimidate] or ✱negotiate_2</choice>
+	    <choice>✱listen, <abilityref id="riding" rank="2"/> or ✱survivalism[Plains/Woods]_1, ✱surefeet] or ✱jump, ✱<abilityref id="negotiate" specializations="intimidate"/> or <abilityref id="negotiate" rank="2"/></choice>
 	  </path>
 
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱survivalism_1, ✱leadership_2, or  or </choice>
+	    <choice><abilityref id="survivalism" rank="1"/>, <abilityref id="leadership" rank="2"/>, or  or </choice>
 	  </path>
 
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
-	    <choice>✱survivalism_1, ,  or ✱dodge_2, ✱climb_1 or ✱endurance.swim, ✱singing_2</choice>
+	    <choice><abilityref id="survivalism" rank="1"/>, ,  or <abilityref id="dodge" rank="2"/>, <abilityref id="climb" rank="1"/> or ✱swim, <abilityref id="singing" rank="2"/></choice>
 	  </path>
 
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>✱riding_2, ✱animal_handling_1, ✱juggernaut_2,  or , ✱brawl_2</choice>
+	    <choice><abilityref id="riding" rank="2"/>, <abilityref id="animal_handling" rank="1"/>, <abilityref id="juggernaut" rank="2"/>,  or , <abilityref id="brawl" rank="2"/></choice>
 	  </path>
 
 	  <path chance="12">
@@ -175,42 +179,42 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>✱art_history_3,
-  	  One of ✱history[Westreich]_3 or ✱politics[Westreich]_2,
+	    <choice><abilityref id="art_history" rank="3"/>,
+  	  One of <abilityref id="history" specializations="Westreich"/> or <abilityref id="politics" specializations="Westreich"/>,
   	  One of  or .
-  	  One of ✱dodge_2 or ✱cloak_fighting_3.</choice>
+  	  One of <abilityref id="dodge" rank="2"/> or <abilityref id="cloak_fighting" rank="3"/>.</choice>
 	  </path>
 
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>✱oratory_3,
-  	  One of ✱history[Aquilonia]_3 or ✱history[Averoigne]_3,
+	    <choice><abilityref id="oratory" rank="3"/>,
+  	  One of <abilityref id="history" specializations="Aquilonia"/> or <abilityref id="history" specializations="Averoigne"/>,
   	  One of  or .
-  	  One of ✱dodge_2 or ✱cloak_fighting_3.</choice>
+  	  One of <abilityref id="dodge" rank="2"/> or <abilityref id="cloak_fighting" rank="3"/>.</choice>
 	  </path>
 
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱poitevin_3,
-  	  One of ✱natural_history_2 or ✱mathematics_2,
-  	  ✱archery_shoot_2 or (✱gun_shoot_2 and ✱gun_maintenance_2),
+	    <choice><abilityref id="poitevin" rank="3"/>,
+  	  One of <abilityref id="natural_history" rank="2"/> or <abilityref id="mathematics" rank="2"/>,
+  	  <abilityref id="archery_shoot" rank="2"/> or (<abilityref id="gun_shoot" rank="2"/> and <abilityref id="gun_maintenance" rank="2"/>),
   	  One of  or .</choice>
 	  </path>
 
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
-	    <choice>✱aquilonian_2,
-  	  One of ✱history[Albion]_2 or ✱history[Hybernia]_2,
-  	  One of ✱dagger_strike_3 or ✱archery_shoot_2.
-  	  One of ✱dodge_2 or ✱cloak_fighting_3.
+	    <choice><abilityref id="aquilonian" rank="2"/>,
+  	  One of <abilityref id="history" specializations="Albion"/> or <abilityref id="history" specializations="Hybernia"/>,
+  	  One of <abilityref id="dagger_strike" rank="3"/> or <abilityref id="archery_shoot" rank="2"/>.
+  	  One of <abilityref id="dodge" rank="2"/> or <abilityref id="cloak_fighting" rank="3"/>.
   	  One of  or .</choice>
 	  </path>
 
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>✱law[Westreich]_2,
-  	  One of ✱history[Aquilonia]_3 or ✱politics[Westreich]_2.
-  	  ✱sword_strike_3 and one of ✱feint_1 or ✱parry_2.
+	    <choice><abilityref id="law" specializations="Westreich"/>,
+  	  One of <abilityref id="history" specializations="Aquilonia"/> or <abilityref id="politics" specializations="Westreich"/>.
+  	  <abilityref id="sword_strike" rank="3"/> and one of <abilityref id="feint" rank="1"/> or <abilityref id="parry" rank="2"/>.
   	  One of  or .</choice>
 	  </path>
 	  
@@ -232,28 +236,28 @@
 	    
 	  <path chance="1-2">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱perception.listen or .  ✱concealment_2 or ✱pick_locks_1</choice>
+	    <choice>Choose one of ✱listen or .  <abilityref id="concealment" rank="2"/> or <abilityref id="pick_locks" rank="1"/></choice>
 	  </path>
 	    
 	  <path chance="3-4">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱disguise_1 or ✱climb_1. One of ✱leadership_1 or ✱fame[Westreich]_3</choice>
+	    <choice>Choose one of <abilityref id="disguise" rank="1"/> or <abilityref id="climb" rank="1"/>. One of <abilityref id="leadership" rank="1"/> or <abilityref id="fame" specializations="Westreich"/></choice>
 	  </path>
 	    
 	  <path chance="5-6">
 	    <pathtitle></pathtitle>
-	    <choice>✱speed.jump, Choose one of  or , One of ✱leadership_1 or ✱dodge_2 or
-	    ✱archery_shoot_1</choice>
+	    <choice>✱jump, Choose one of  or , One of <abilityref id="leadership" rank="1"/> or <abilityref id="dodge" rank="2"/> or
+	    <abilityref id="archery_shoot" rank="1"/></choice>
 	  </path>
 	    
 	  <path chance="7-8">
 	    <pathtitle></pathtitle>
-	    <choice>One of ✱endurance.swim or , One of ✱ropecraft_2 or ✱stealth.urban</choice>
+	    <choice>One of ✱swim or , One of <abilityref id="ropecraft" rank="2"/> or ✱urban</choice>
 	  </path>
 	    
 	  <path chance="9-11">
 	    <pathtitle></pathtitle>
-	    <choice>Choose one of ✱brawl_1 or ✱brawl_1.  One of ✱sleight_of_hand_1 or ✱negotiate_1.</choice>
+	    <choice>Choose one of <abilityref id="brawl" rank="1"/> or <abilityref id="brawl" rank="1"/>.  One of <abilityref id="sleight_of_hand" rank="1"/> or <abilityref id="negotiate" rank="1"/>.</choice>
 	  </path>
 	    
 	  <path chance="12">
@@ -335,8 +339,7 @@
 	    
 	  <path chance="4-5">
 	    <pathtitle></pathtitle>
-	    <choice>Cavalier Hat, Rope <measurement><imperial>60'</imperial><metric>20m</metric></measurement>,
-    	  Paper and ink</choice>
+	    <choice>Cavalier Hat, Rope <m20/>, Paper and ink</choice>
 	  </path>
 	    
 	  <path chance="6-7">
@@ -381,7 +384,8 @@
 	    </p>
 
 	    <figure>
-	      <img id="swain_black_coat" scale="0.60"/>
+	      <!-- <img id="swain_black_coat" scale="0.60"/> -->
+	      <img id="swain_black_coat"/>
 	    </figure>	    
 	  </branchdescription>	    
 	  <path chance="">
@@ -392,7 +396,7 @@
 	    </choice>
 	    <choice>+1 Agility or +1 Speed,</choice>
 	    <choice>
-	      ✱daring_thrust_1 and ✱feint_1, or ✱disarm_1 and ✱mighty_blow_1
+	      <abilityref id="daring_thrust" rank="1"/> and <abilityref id="feint" rank="1"/>, or <abilityref id="disarm" rank="1"/> and <abilityref id="mighty_blow" rank="1"/>
 	    </choice>	      	    
 	    <choice>1x new Martial abilities at level 1</choice>
 	    <choice>2x Martial Promotions up to level 3</choice>

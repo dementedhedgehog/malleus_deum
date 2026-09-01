@@ -12,15 +12,17 @@ from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
 from utils import (
     parse_xml,
-    validate_xml,
+    #validate_xml,
     node_to_string,
-    COMMENT,
+    #COMMENT,
+    is_comment,
     convert_str_to_int,
     normalize_ws,
     parse_measurement_to_str,
     children_to_string,
     contents_to_string)    
-from abilities import AbilityRank
+#from abilities import AbilityRank
+from abilities import AbilityRef
 from streams import StreamConfig
 from levels import Levels
 
@@ -44,7 +46,7 @@ class Archetype:
     """
     def __init__(self, ability_groups, fname):
         self.fname = fname # save for debugging?
-        self.title = None
+        self.name = None
         self.archetype_id = None
         self.ancestor_ids = [None, ]
         self.description = None
@@ -103,7 +105,8 @@ class Archetype:
 
     def load_keywords(self, keywords_node, fail_fast):
         for child in list(keywords_node):
-            if child.tag is not COMMENT:
+            #if child.tag is not COMMENT:
+            if not is_comment(child):
                 keyword = child.tag
                 self.keywords.append(keyword)
         self.keywords.sort()
@@ -141,8 +144,8 @@ class Archetype:
             group for group in self.modified_ability_groups   ## FIXME: filter disabled?
             if len(group.get_filtered_abilities()) > 0 ]
 
-    def get_title(self):
-        return self.title
+    def get_name(self):
+        return self.name
 
     def get_description(self):
         return self.description
@@ -188,41 +191,50 @@ class Archetype:
 
     def _load(self, archetype_node, fail_fast):
         # handle all the children
-        for child in list(archetype_node):
-        
-           keyword = child.tag
-           if keyword == "archetypetitle":
-               if self.title is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.title = child.text.strip() 
+        for child in list(archetype_node):        
+            keyword = child.tag
+            if keyword == "archetypetitle":
+                if self.name is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                   self.name = child.text.strip() 
 
-           elif keyword == "archetypeid":
-               if self.archetype_id is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.archetype_id = child.text.strip() 
+            elif keyword == "archetypeid":
+                if self.archetype_id is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.archetype_id = child.text.strip() 
 
-           elif keyword == "archetypemovedistance":
-               if self.move_distance is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.move_distance = child.text.strip() 
+            elif keyword == "archetypemovedistance":
+                if self.move_distance is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.move_distance = child.text.strip() 
 
-           elif keyword == "inheritance":
-               self._load_inheritance(inheritance = child)
+            elif keyword == "inheritance":
+                self._load_inheritance(inheritance = child)
 
-           elif keyword == "archetypedescription":
-               if self.description is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.description = children_to_string(child)
+            elif keyword == "archetypedescription":
+                if self.description is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.description = children_to_string(child)
 
-           elif keyword == "archetypeprimaryabilities":
-               if self.primary_abilities is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.primary_abilities = contents_to_string(child)
+            elif keyword == "archetypeprimaryabilities":
+                if self.primary_abilities is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.primary_abilities = contents_to_string(child)
 
            # elif keyword == "archetypebio":
            #     if self.bio is not None:
@@ -230,83 +242,100 @@ class Archetype:
            #     else:
            #         self.bio = children_to_string(child)
     
-           elif keyword == "archetypeinitiative":
-               if self.initiative is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
+            elif keyword == "archetypeinitiative":
+                if self.initiative is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
                    self.initiative = convert_str_to_int(child.text)
 
-           elif keyword == "startingcash":
-               if self.starting_cash is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.starting_cash = child.text
+            elif keyword == "startingcash":
+                if self.starting_cash is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.starting_cash = child.text
 
-           elif keyword == "startinggear":
-               if self.starting_gear is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.starting_gear = normalize_ws(child.text)
+            elif keyword == "startinggear":
+                if self.starting_gear is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.starting_gear = normalize_ws(child.text)
 
-           elif keyword == "height":
-               if self.height is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.height = parse_measurement_to_str(self.fname, child)
+            elif keyword == "height":
+                if self.height is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.height = parse_measurement_to_str(self.fname, child)
 
-           elif keyword == "weight":
-               if self.weight is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.weight = parse_measurement_to_str(self.fname, child)
+            elif keyword == "weight":
+                if self.weight is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.weight = parse_measurement_to_str(self.fname, child)
 
-           elif keyword == "age":
-               if self.age is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.age = normalize_ws(child.text)
+            elif keyword == "age":
+                if self.age is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.age = normalize_ws(child.text)
 
-           elif keyword == "gender":
-               if self.gender != DEFAULT_GENDER:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               else:
-                   self.gender = normalize_ws(child.text)
+            elif keyword == "gender":
+                if self.gender != DEFAULT_GENDER:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                else:
+                    self.gender = normalize_ws(child.text)
+                    
+            elif keyword == "aspectexamples":
+                if self.aspect_examples is not None:
+                    raise NonUniqueKeywordError(keyword,
+                                                self.fname,
+                                                child.sourceline)
+                self.aspect_examples = child.text
 
-           elif keyword == "aspectexamples":
-               if self.aspect_examples is not None:
-                   raise NonUniqueKeywordError(keyword, self.fname, child.sourceline)
-               self.aspect_examples = child.text
+            elif keyword == "archetypekeywords":
+                self.load_keywords(child, fail_fast)
 
-           elif keyword == "archetypekeywords":
-               self.load_keywords(child, fail_fast)
+                # elif keyword == "levelprogressiontable":
+                #     self.level_progression_table.load(child, fail_fast)
 
-           # elif keyword == "levelprogressiontable":
-           #     self.level_progression_table.load(child, fail_fast)
+            elif keyword == "archetypelevels":
+                self.levels.load(child, self.fname, fail_fast)
 
-           elif keyword == "archetypelevels":
-               self.levels.load(child, self.fname, fail_fast)
+            elif keyword == "attrbonus":
+                bonus = AttrBonus()
+                bonus.parse(self.fname, child)
+                self.attr_bonuses.append(bonus)
 
-           elif keyword == "attrbonus":
-               bonus = AttrBonus()
-               bonus.parse(self.fname, child)
-               self.attr_bonuses.append(bonus)
+            elif keyword == "attrbonus":
+                bonus = AttrBonus()
+                bonus.parse(self.fname, child)
+                self.attr_bonuses.append(bonus)
 
-           elif keyword == "attrbonus":
-               bonus = AttrBonus()
-               bonus.parse(self.fname, child)
-               self.attr_bonuses.append(bonus)
+            elif keyword == "streamconfig":
+                self.stream_config = StreamConfig()
+                self.stream_config.parse(self.fname, child)
 
-           elif keyword == "streamconfig":
-               self.stream_config = StreamConfig()
-               self.stream_config.parse(self.fname, child)
-
-           elif keyword is COMMENT:
-               # ignore comments!
-               pass
+                #elif keyword is COMMENT:
+            elif is_comment(child):               
+                # ignore comments!
+                pass
            
-           else:
-               raise Exception("UNKNOWN XML KEYWORD (%s) File: %s Line: %s\n" % 
-                               (child.tag, self.fname, child.sourceline))
+            else:
+                raise Exception("UNKNOWN XML KEYWORD (%s) File: %s Line: %s\n" %
+                                (child.tag, self.fname, child.sourceline))
         return
             
 
@@ -361,12 +390,12 @@ class Archetypes:
         if doc is None:
             raise Exception("Errors in %s" % xml_fname)
 
-        # validate
-        error_log = validate_xml(doc)
-        if error_log is not None:
-            print("Errors (XSD)!")
-            print(error_log)
-            raise Exception("Errors in %s" % xml_fname)
+        # # validate
+        # error_log = validate_xml(doc)
+        # if error_log is not None:
+        #     print("Errors (XSD)!")
+        #     print(error_log)
+        #     raise Exception("Errors in %s" % xml_fname)
 
         root = doc.getroot()
         archetype_nodes = root.xpath("//archetype")
@@ -429,29 +458,29 @@ if __name__ == "__main__":
 
     for archetype in archetypes:
 
-        #if "Outrider" not in archetype.get_title():
+        #if "Outrider" not in archetype.get_name():
         #    continue
         
-        print("Archetype: %s" % archetype.get_title())
+        print("Archetype: %s" % archetype.get_name())
         for level in archetype.levels:
             print(level)
         print()
         # print("initial abilities: %s\n" % archetype.get_initial_abilities())
         # for ability_group in archetype.modified_ability_groups:
-        #     #if "onster" not in ability_group.get_title():
+        #     #if "onster" not in ability_group.get_name():
         #     #   continue            
 
-        #     #print("\t%s" % ability_group.get_title())
+        #     #print("\t%s" % ability_group.get_name())
         #     # for ability in ability_group:
 
-        #     #     #if "Negotiate" not in ability.get_title():
+        #     #     #if "Negotiate" not in ability.get_name():
         #     #     #    continue
                 
-        #     #     print("\t\t%s" % ability.get_title())
+        #     #     print("\t\t%s" % ability.get_name())
         #     #     print("\t\tHighest innate rank %s" % ability.get_highest_innate_rank())
                 
         #     #     for mal in ability.get_rankns():
-        #     #         print("\t\t\t%s %s" % (mal.get_title(), mal.get_total_point_cost()))
+        #     #         print("\t\t\t%s %s" % (mal.get_name(), mal.get_total_point_cost()))
         #     #         print("\t\t\tIS INNATE %s" % mal.is_innate(d = True))
         #     #         print("\t\t\t\tRecommended: %s" % mal.is_recommended())        
         #     #         print("\t\t\t\tArch Innate: %s" %

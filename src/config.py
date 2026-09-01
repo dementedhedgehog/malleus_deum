@@ -9,7 +9,9 @@
 display_page_background = False
 
 # paper size is one of "a4" or "letter"
-paper_size = "a4"
+A4 = "a4"
+LETTER = "letter"
+paper_size = A4
 
 # print debug info for skills
 print_skill_debug_info = True
@@ -36,6 +38,7 @@ print_provenance_notes = True
 draw_imgs = True
 
 # Set this true to check for unlicensed or unused art resources.
+# There's also a command line argument to do this.
 print_resource_report = True
 
 # measurement system (metric or imperial)
@@ -52,17 +55,20 @@ build_meta_index = False
 doc_files_to_build = (
     #("test.xml", True, "TST"),
     ("phb.xml", True, "PHB"),
+    
     # ("equipment.xml", True, "Eq"),
     # ("magic.xml", True, "Mg"),
-    #("monster_manual.xml", True, "MM"),
+    # ("monster_manual.xml", True, "MM"),
     # ("archetypes.xml", True, "AR"),
     # ("magic_items.xml", True, "MI"),
     # ("abilities.xml", True, "Ab"),
-    # ("ability_dcs.xml", False, "X"),
-    # ("gms_screen.xml", False, "GMS"),
     #("gmg.xml", True, "[GMG]"),
-    # ("rationale.xml", True, "[R]"),
+    #("rationale.xml", True, "[R]"),
     #("archetypes.xml", True, "[A]"),
+
+    # BROKEN
+    #("gms_screen.xml", False, "GMS"),
+    #("ability_dcs.xml", False, "X"),
 )
 
 
@@ -100,6 +106,7 @@ archetypes_to_build = (
 
 
 encounters_to_build = (
+    #("goblin_kidnappers", False, "[gk]"),
     #("dwarven_mines", False, "[dm]"),
     #("the_trial", False, "[tt]"),
     #("von_bauer_chateau", False, "[vbc]"),

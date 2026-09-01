@@ -6,31 +6,33 @@
     <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Abjuration involves the	use of raw magical energies and focuses on casting
-	protective, shielding and counter magics.
+        Abjuration involves the	use of raw magical energies and focuses on
+	casting	protective, shielding and counter magics.
       </p>
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
 
-  
   <ability>
     <abilitytitle>Abjuration Lore</abilitytitle>
     <abilityid>abjuration</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
-	This ability represents the knowledge of the theoretical foundations
-	of abjuration.  Expertise in this ability is a prerequisite for casting
+	This ability represents the knowledge of the theoretical foundations of
+	abjuration.  Expertise in this ability is a prerequisite for casting
 	spells in this group.  Players can check against this ability to answer
 	questions about this field of study and its history. 
       </p>
@@ -43,30 +45,29 @@
     <abilityid>banish</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>2</poolcost>
+      <apcost><ap4/></apcost>
       <range><ranged-medium/></range>
-      <keywords><magicpool/></keywords>
-      <dc><opponents-willpower/></dc>
-      <mastery>
-	<critsuccess>+3 Mettle Damage</critsuccess>
-	<righteoussuccess>+2 Mettle Damage</righteoussuccess>
-	<success>2 Mettle Damage to Target</success>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>      
+      <critsuccess>+3 Mettle Drain</critsuccess>
+      <righteoussuccess>+2 Mettle Drain</righteoussuccess>
+      <success>2 Mettle Drain to Target</success>      
     </abilitycheck>
-    <prereqabilityrank>abjuration_2</prereqabilityrank>
-    <spline><p x="120" y="30"/></spline>
+    <prereqabilityref id="abjuration" rank="2"/>
+    <spline><p x="60" y="30"/><p x="0" y="60"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-  	Banishing is an attempt to disrupt a demons magical connection with its simulacrum.
-	If the banishment succeeds the demon must make
-	a DC 7 Mettle check or its simulacrum is destroyed.  In the event of an overcharge
-	make Demon must make a second DC 3 Morale Check and make a DC 15 Willpower Check
-	on, a fail the caster takes 2d4 damage, on a bane make an additional roll on the
-	Magic Overcharge Effects table, on a boon the character may refresh a magic dice
-	into their pool, snatched from the energy the demon is using to control their
-	simulacrum.
+  	Banishing is an attempt to disrupt a demon or undeads magical connection
+	with its simulacrum. If the banishment succeeds the demon must make
+	a DC 7 Mettle check or its simulacrum is destroyed.  In the event of an
+	overcharge make Demon must make a second DC 3 Morale Check and make a
+	DC 15 Will Check on, a fail the caster takes 2d4 damage, on a bane make
+	an additional roll on the Magic Overcharge Effects table, on a boon the
+	character may refresh a magic dice into their pool, snatched from the
+	energy the demon is using to control their simulacrum.
       </p>
     </abilitydescription>
   </ability>
@@ -77,56 +78,56 @@
     <abilityid>circle_of_protection</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><free/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><free/></apcost>
       <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
       <precondition>A demon or undead tries to enter or leave the circle.</precondition>
-      <dc><opponents-willpower/></dc>
-      <mastery>
-	<critsuccess>Target takes 6 Mettle damage and is repelled.</critsuccess>
-	<righteoussuccess>Target takes 4 Mettle damage and is repelled.</righteoussuccess>
-	<success>Target takes 3 Mettle damage and is repelled.</success>
-	<fail>Target takes 2 Mettle damage. Target passes through the barrier.</fail>
+      <counter><opponents-will-save/></counter>      
+      <critsuccess>Target takes 6 Mettle damage and is repelled.</critsuccess>
+      <righteoussuccess>Target takes 4 Mettle damage and is repelled.</righteoussuccess>
+      <success>Target takes 3 Mettle damage and is repelled.</success>
+      <fail>Target takes 2 Mettle damage. Target passes through the barrier.</fail>
       <grimfail>Target takes 1 Mettle damage. Target passes through the barrier.</grimfail>
-      <critfail>Target passes through the barrier.</critfail>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>            
+      <critfail>Target passes through the barrier.</critfail>      
     </abilitycheck>
-    <prereqabilityrank>abjuration_1</prereqabilityrank>
-    <spline><p x="-75" y="30"/></spline>
+    <prereqabilityref id="abjuration" rank="1"/>
+    <spline><p x="0" y="30"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-  	A circle of protection is a circle drawn upon the ground and infused
-  	with magical energy that breaks the link required for thaumaturgic contagion. The
-	circle can be marked using chalk, salt, enscribed in the floor or created in a
-	multitude of other ways.  The circle is hard for summoned creatures to cross,
-	either in either direction. A caster takes the Cast action to create the circle.
-	A cicle of radius 
-	<measurement><metric>3m</metric><imperial>10'</imperial></measurement> can be
-	constructed in one full turn.   A circle of
-	radius <measurement><metric>6m</metric><imperial>20'</imperial></measurement> 
-	takes two full turns to create.
-	A circle of protection cannot be created while the caster is being attacked in melee.
+  	A circle of protection is a circle drawn upon the ground and infused with
+	magical energy that breaks the link required for thaumaturgic contagion.
+	The circle can be marked using chalk, salt, enscribed in the floor or
+	created in a multitude of other ways.  The circle is hard for summoned
+	creatures to cross, either in either direction. A caster takes the Cast
+	action to create the circle. A cicle of radius <m3/> can be constructed
+	in one full turn. A circle of radius <m6/> takes two full turns to
+	create. A circle of protection cannot be created while the caster is
+	being attacked in melee.
       </p>
 
       <p>
-	When a demon or undead attempts to pass through the barrier the creature may be repelled and
-	suffers	mettle damage.
+	When a demon or undead attempts to pass through the barrier the creature
+	may be repelled and suffers mettle damage.
       </p>
 
       <p>
-	A Circle of Protection can be used keep creatures out of the circle, or to imprison the
-	entities within the circle.  A circle designed to confine creatures is usually called
-	a Circle of Containment.
+	A Circle of Protection can be used keep creatures out of the circle, or
+	to imprison the entities within the circle.  A circle designed to
+	confine creatures is usually called a Circle of Containment.
       </p>
 
       <p>
-	If the target or targets did not see the barrier being cast then it is possible that they
-	do not perceive that it exists.  The caster can roll a
+	If the target or targets did not see the barrier being cast then it is
+	possible that they do not perceive that it exists. The caster can roll a
+	FIXME
       </p>
 
       <p>
-	If the cicle is broken.  To stop the spell it is enough to break the circle.
+	If the cicle is broken. To stop the spell it is enough to break the
+	circle.
       </p>
     </abilitydescription>
   </ability>
@@ -137,28 +138,27 @@
     <abilityid>contego</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction-or-minor/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><interrupt-or-ap2/></apcost>
       <range><ranged-short/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>8+3xRank Temporary Stamina</any-success>
-	<critsuccess>+10 Temporary Stamina</critsuccess>
-	<righteoussuccess>+5 Temporary Stamina</righteoussuccess>
-	<grimfail>Explodes for 1d4 damage to caster</grimfail>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>8+3xRank Temporary Stamina</any-success>
+      <critsuccess>+10 Temporary Stamina</critsuccess>
+      <righteoussuccess>+5 Temporary Stamina</righteoussuccess>
+      <grimfail>Explodes for 1d4 damage to caster</grimfail>      
     </abilitycheck>
-    <prereqabilityrank>circle_of_protection_2</prereqabilityrank>
-    <spline><p x="30" y="30"/></spline> 
+    <prereqabilityref id="circle_of_protection" rank="2"/>
+    <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p noindent="true">
-	The caster creates a magical shield around a person, or anything
-	tagged medium or small.  The barrier from outside appears as a
-	blurred humanoid shape.  Kinetic weapons do half damage to the
-	character thus shielded.  It also provides brief protection from
-	fires, poisonous gases <etc/>.  The shield lasts five
-	minutes/30 rounds or untill dispelled by the caster.
+	The caster creates a magical shield around a person, or anything tagged
+	medium or small. The barrier from outside appears as a blurred humanoid
+	shape.  Kinetic weapons do half damage to the character thus shielded.
+	It also provides brief protection from fires, poisonous gases <etc/>.
+	The shield lasts one minutes/6 rounds or until dispelled by the caster.
       </p>
     </abilitydescription>    
   </ability>
@@ -169,23 +169,20 @@
     <abilityid>commune</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Cast successfully</any-success>
-	<critsuccess>Good Mood.  The target is in a good mood.</critsuccess>
-	<!-- <righteoussuccess></righteoussuccess> -->
-	<!-- <success></success> -->
-	<!-- <fail></fail> -->
-	<!-- <grimfail></grimfail> -->
-	<critfail>Accidentally summons a demon as per the Summon Demon 1 spell</critfail>
-      </mastery>        
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Cast successfully</any-success>
+      <critsuccess>Good Mood.  The target is in a good mood.</critsuccess>
+      <critfail>Accidentally summons a demon as per the Summon Demon 1 spell.
+      </critfail>
     </abilitycheck>
-    <prereqabilityrank>abjuration_2</prereqabilityrank>
-    <spline><p x="60" y="30"/></spline>
+    <prereqabilityref id="abjuration" rank="2"/>
+    <spline><p x="60" y="30"/><p x="0" y="30"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
   	Commune is a spell that communicates with a named entity from beyond.
@@ -209,18 +206,17 @@
     <abilityid>eldritch_shield</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>The missile is diverted</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>The missile is diverted</any-success>      
     </abilitycheck>
-    <prereqabilityrank>abjuration_1</prereqabilityrank>
-    <spline><p x="60" y="60"/></spline>
+    <prereqabilityref id="abjuration" rank="1"/>
+    <spline><p x="0" y="30"/><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
   	The caster uses raw magical energy to knock arrows and crossbow bolts
@@ -241,19 +237,19 @@
     <abilityid>flesh_ward</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction-or-minor/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction-or-ap2/></apcost>
       <range><touch/></range>
-      <dc><dc7/></dc>
-      <mastery>	
-	<critsuccess>Gain Resilience 4</critsuccess>
-	<righteoussuccess>Gain Resilience 3</righteoussuccess>
-	<success>Gain Resilience 2</success>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      	
+      <critsuccess>Gain Resilience 4</critsuccess>
+      <righteoussuccess>Gain Resilience 3</righteoussuccess>
+      <success>Gain Resilience 2</success>      
     </abilitycheck>
-    <prereqabilityrank>abjuration_2</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
+    <prereqabilityref id="abjuration" rank="2"/>
+    <spline><p x="60" y="30"/><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
   	The Flesh Ward spell provides magical protection
@@ -274,8 +270,4 @@
     </abilitydescription>
   </ability>
 </abilitygroup>
-
-
-
-
 

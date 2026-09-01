@@ -3,7 +3,13 @@
 <archetype>
   <archetypetitle>Champion of Mithras</archetypetitle>
   <archetypeid>champion_of_mithras</archetypeid>
-  <archetypedescription>    
+  <archetypedescription>
+
+    <quote>
+      I will not cease from mental fight
+      Nor shall my sword sleep in my hand.
+    </quote>
+    
     <p>
       <emph>The Church is the Light of the People, but we are their Shield and their Sword.</emph>
       The Champions of Mithras form the small standing army of soldiers, guards and agents of the Church of Mithras.
@@ -15,12 +21,14 @@
     </p>
     
     <figure>
-    <img id="altdorfer_champion_of_mithras" scale="0.4"/>
+    <!-- <img id="altdorfer_champion_of_mithras" scale="0.4"/> -->
+    <img id="altdorfer_champion_of_mithras"/>
     </figure>
     
 
     <figure>
-    <img id="durer_champion_of_mithras" scale="0.25"/>
+    <!-- <img id="durer_champion_of_mithras" scale="0.25"/> -->
+    <img id="durer_champion_of_mithras"/>
     </figure>
     
   </archetypedescription>
@@ -71,16 +79,17 @@
 	  <p>
 	    All Champions of Mithras start with the following skills: 
 	  </p>
-	  <img id="keil_champion_of_mithras" scale="0.25"/>
+	  <!-- <img id="keil_champion_of_mithras" scale="0.25"/> -->
+	  <img id="keil_champion_of_mithras"/>
 	</branchdescription>
 	
 	<path chance="">
 	  <pathtitle></pathtitle>
-	  <choice>✱sword_strike_3,
-	  ✱block_2, ✱armour_1, ✱aquilonian_1, ✱etiquette[Church-of-Mithras]_1,
-	  ✱brawl_2, ✱contacts[Church-of-Mithras]_2, ✱leadership_1, ✱merovingian_3,
-	  ✱theurgy_1,  ✱divine_retribution_1, ✱grace_of_mithras_1,
-	  ✱adversary[Dark-Cults]_2, and ✱adversary[Demons]_2.</choice>
+	  <choice><abilityref id="sword_strike" rank="3"/>,
+	  <abilityref id="block" rank="2"/>, <abilityref id="armour" rank="1"/>, <abilityref id="aquilonian" rank="1"/>, <abilityref id="etiquette" specializations="Church-of-Mithras"/>,
+	  <abilityref id="brawl" rank="2"/>, <abilityref id="contacts" specializations="Church-of-Mithras"/>, <abilityref id="leadership" rank="1"/>, <abilityref id="merovingian" rank="3"/>,
+	  <abilityref id="theurgy" rank="1"/>,  <abilityref id="divine_retribution" rank="1"/>, <abilityref id="grace_of_mithras" rank="1"/>,
+	  <abilityref id="adversary" specializations="Dark-Cults"/>, and <abilityref id="adversary" specializations="Demons"/>.</choice>
 	</path>
       </branch>
 
@@ -91,7 +100,7 @@
     <!--   </p> -->
       
     <!--   <table> -->
-    <!--   	<tablecategory>Standard</tablecategory> -->
+    <!--   	<tablecategory><standard/></tablecategory> -->
     <!--   	<tablespec> -->
     <!--   	  <fixed>0.94</fixed> -->
     <!--   	</tablespec> -->
@@ -102,31 +111,31 @@
     <!--   	</tableheaderrow> -->
 
     <!--   	<tablerow> -->
-    <!--   	  <td><bold>1 Hybernia</bold>: ✱hybernian_3, ✱adversary[Dark-Elves]_1, -->
-    <!-- 	  ✱adversary[Giants]_1, ✱etiquette[Hybernia]_3</td> -->
+    <!--   	  <td><bold>1 Hybernia</bold>: <abilityref id="hybernian" rank="3"/>, <abilityref id="adversary" specializations="Dark-Elves"/>, -->
+    <!-- 	  <abilityref id="adversary" specializations="Giants"/>, <abilityref id="etiquette" specializations="Hybernia"/></td> -->
     <!--   	</tablerow> -->
 
     <!--   	<tablerow> -->
-    <!--   	  <td><bold>2 Almaignee</bold>: ✱adversary[Greenskins]_1, ✱adversary[Giants]_1, -->
-    <!-- 	  ✱etiquette[Almaignee]_3</td> -->
+    <!--   	  <td><bold>2 Almaignee</bold>: <abilityref id="adversary" specializations="Greenskins"/>, <abilityref id="adversary" specializations="Giants"/>, -->
+    <!-- 	  <abilityref id="etiquette" specializations="Almaignee"/></td> -->
     <!--   	</tablerow> -->
 	
     <!--   	<tablerow> -->
-    <!--   	  <td><bold>3 Poitevin</bold>: ✱poitevin_3, ✱adversary[Der-Frosh]_1, ✱adversary[Dark-Elves]_1, -->
-    <!-- 	  ✱etiquette[Poitevin]_2</td> -->
+    <!--   	  <td><bold>3 Poitevin</bold>: <abilityref id="poitevin" rank="3"/>, <abilityref id="adversary" specializations="Der-Frosh"/>, <abilityref id="adversary" specializations="Dark-Elves"/>, -->
+    <!-- 	  <abilityref id="etiquette" specializations="Poitevin"/></td> -->
     <!--   	</tablerow> -->
 
     <!--   	<tablerow> -->
-    <!--   	  <td><bold>4 Averoigne</bold>: ✱occitan_3, ✱etiquette[Averoigne]_2, ✱adversary[Der-Frosch]_1</td> -->
+    <!--   	  <td><bold>4 Averoigne</bold>: <abilityref id="occitan" rank="3"/>, <abilityref id="etiquette" specializations="Averoigne"/>, <abilityref id="adversary" specializations="Der-Frosch"/></td> -->
     <!--   	</tablerow> -->
 
     <!--   	<tablerow> -->
-    <!--   	  <td><bold>5 Albion</bold>: ✱hybernian_1, ✱etiquette[Albion]_3, -->
-    <!-- 	  ✱etiquette[Hybernia]_1, ✱contacts[Albion]_1, ✱adversary[Greenskins]_1</td> -->
+    <!--   	  <td><bold>5 Albion</bold>: <abilityref id="hybernian" rank="1"/>, <abilityref id="etiquette" specializations="Albion"/>, -->
+    <!-- 	  <abilityref id="etiquette" specializations="Hybernia"/>, <abilityref id="contacts" specializations="Albion"/>, <abilityref id="adversary" specializations="Greenskins"/></td> -->
     <!--   	</tablerow> -->
 	
     <!--   	<tablerow> -->
-    <!--   	  <td><bold>6-11 Westreich</bold>: ✱etiquette[Westreich]_3, ✱contacts[Westreich]_2</td> -->
+    <!--   	  <td><bold>6-11 Westreich</bold>: <abilityref id="etiquette" specializations="Westreich"/>, <abilityref id="contacts" specializations="Westreich"/></td> -->
     <!--   	</tablerow> -->
 
     <!--   	<tablerow> -->
@@ -144,7 +153,7 @@
     <!--   </p>       -->
       
     <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablecategory><standard/></tablecategory> -->
     <!-- 	<tablespec> -->
     <!-- 	  <fixed>0.18</fixed> -->
     <!-- 	  <fixed>0.71</fixed> -->
@@ -158,31 +167,31 @@
 	
     <!-- 	<tablerow> -->
     <!-- 	  <td>1-2</td> -->
-    <!-- 	  <td>✱riding_1, ✱physical.rest_2, ✱physical.grapple_2 or ✱brawl_2, -->
-    <!-- 	  ✱brawl_2 or ✱physical.throw_2</td> -->
+    <!-- 	  <td><abilityref id="riding" rank="1"/>, <abilityref id="rest" rank="2"/>, <abilityref id="grapple" rank="2"/> or <abilityref id="brawl" rank="2"/>, -->
+    <!-- 	  <abilityref id="brawl" rank="2"/> or <abilityref id="throw" rank="2"/></td> -->
     <!-- 	</tablerow> -->
 
     <!-- 	<tablerow> -->
     <!-- 	  <td>3-4</td> -->
-    <!-- 	  <td>✱perception.listen, ✱riding_1 or ✱wayfinding_1, -->
-    <!-- 	  ✱physical.sure_feet_2 or ✱speed.jump, ✱negotiate[intimidate]_1 or ✱negotiate_2</td> -->
+    <!-- 	  <td>✱listen, <abilityref id="riding" rank="1"/> or <abilityref id="wayfinding" rank="1"/>, -->
+    <!-- 	  <abilityref id="sure_feet" rank="2"/> or ✱jump, <abilityref id="negotiate" specializations="intimidate"/> or <abilityref id="negotiate" rank="2"/></td> -->
     <!-- 	</tablerow> -->
 
     <!-- 	<tablerow> -->
     <!-- 	  <td>5-6</td> -->
-    <!-- 	  <td>✱survivalism_1, ✱leadership_2,  or ✱physical.rest_1, -->
+    <!-- 	  <td><abilityref id="survivalism" rank="1"/>, <abilityref id="leadership" rank="2"/>,  or <abilityref id="rest" rank="1"/>, -->
     <!-- 	   or </td> -->
     <!-- 	</tablerow> -->
 
     <!-- 	<tablerow> -->
     <!-- 	  <td>7-8</td> -->
-    <!-- 	  <td>✱scout_1, ✱physical.notice_2,  or ✱dodge_1, ✱climb_1 or ✱physical.swim_2, ✱singing_2</td> -->
+    <!-- 	  <td><abilityref id="scout" rank="1"/>, <abilityref id="notice" rank="2"/>,  or <abilityref id="dodge" rank="1"/>, <abilityref id="climb" rank="1"/> or <abilityref id="swim" rank="2"/>, <abilityref id="singing" rank="2"/></td> -->
     <!-- 	</tablerow> -->
 
     <!-- 	<tablerow> -->
     <!-- 	  <td>9-10</td> -->
-    <!-- 	  <td>✱riding_1, ✱transport.animal_handling_1, ✱juggernaut_2, -->
-    <!-- 	  ✱physical.move_2 or , ✱brawl_2</td> -->
+    <!-- 	  <td><abilityref id="riding" rank="1"/>, <abilityref id="animal_handling" rank="1"/>, <abilityref id="juggernaut" rank="2"/>, -->
+    <!-- 	  <abilityref id="move" rank="2"/> or , <abilityref id="brawl" rank="2"/></td> -->
     <!-- 	</tablerow> -->
 
     <!-- 	<tablerow> -->
@@ -199,7 +208,7 @@
     <!--   </p> -->
       
     <!--   <table> -->
-    <!-- 	<tablecategory>Standard</tablecategory> -->
+    <!-- 	<tablecategory><standard/></tablecategory> -->
     <!-- 	<tablespec> -->
     <!-- 	  <fixed>0.18</fixed> -->
     <!-- 	  <fixed>0.71</fixed> -->

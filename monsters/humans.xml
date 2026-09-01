@@ -21,20 +21,30 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>12</monsterinitiative>
     <monstermagic>3d4</monstermagic>
     <monstermettle>3d4</monstermettle>
     <monsterluck>3d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <parry>12</parry>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
+    <!-- <armour>8</armour> -->
+    <!-- <parry>12</parry> -->
+    <!-- <strength>11</strength> -->
+    <!-- <endurance>8</endurance> -->
+    <!-- <agility>9</agility> -->
+    <!-- <speed>9</speed> -->
+    <!-- <perception>9</perception> -->
+    <!-- <will>13</will>     -->
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="6"/>
+    <abilityref id="dodge" rank="0"/>
+    <abilityref id="sword_strike" rank="3"/>
+    <abilityref id="dagger_strike" rank="3"/> 
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -53,19 +63,22 @@
     <monstermove>6</monstermove>
     <monsterhealth>3</monsterhealth>
     <monsterstamina>3</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>10</monsterinitiative>
     <monstermagic>2d4</monstermagic>
     <monstermettle>2d4</monstermettle>
     <monsterluck>2d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_0</abilityrankid>    
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="dagger_strike" rank="3"/> 
+    
     <monsterdescription>
       <p>
 	These are common farmers and townsfolk with no military
@@ -83,19 +96,24 @@
     <monstermove>6</monstermove>
     <monsterhealth>3</monsterhealth>
     <monsterstamina>3</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>10</monsterinitiative>
     <monstermagic>2d4</monstermagic>
     <monstermettle>2d4</monstermettle>
     <monsterluck>2d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_0</abilityrankid>    
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="0"/>
+
+    <abilityref id="mace_strike" rank="0"/> 
+    <abilityref id="dagger_strike" rank="0"/> 
+    
     <monsterdescription>
       <p>
 	These are common farmers and townsfolk with no military
@@ -106,27 +124,30 @@
 
   
   <monster>    
-    <monstertitle>Thugs</monstertitle>
+    <monstertitle>Thug</monstertitle>
     <monsterid>human.thug</monsterid>
     <monsterkeywords><human/></monsterkeywords>
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
-    <monstermagic>3d4</monstermagic>
-    <monstermettle>3d4</monstermettle>
-    <monsterluck>3d4</monsterluck>
+    <monsterinitiative>11</monsterinitiative>
+    <monstermagic>11</monstermagic>
+    <monstermettle>13</monstermettle>
+    <monsterluck>11</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <parry>12</parry>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
-    <abilityrankid>sword_strike_2</abilityrankid> 
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="3"/>
+
+    <abilityref id="mace_strike" rank="0"/> 
+    <abilityref id="dagger_strike" rank="2"/> 
+    <abilityref id="sword_strike" rank="2"/> 
     <monsterdescription>
       <p>
 	In every inn, port, gambling den and brothel you will find
@@ -147,20 +168,26 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>11</monsterinitiative>
     <monstermagic>2d4</monstermagic>
     <monstermettle>4d4</monstermettle>
     <monsterluck>4d4</monsterluck>
     <monsterrole><soldier/></monsterrole>
-    <armour>8</armour>
-    <dodge>8</dodge>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="3"/>
+    <abilityref id="dodge" rank="0"/>
+
+    <abilityref id="mace_strike" rank="3"/> 
+    <abilityref id="dagger_strike" rank="3"/> 
+    <abilityref id="polearm_strike" rank="3"/> 
+    <abilityref id="sword_strike" rank="3"/> 
+    
     <monsterdescription>
       <p>
 	Large towns hire guards to keep the streets safe, and maintain law
@@ -177,20 +204,23 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>12</monsterinitiative>
     <monstermagic>5d4</monstermagic>
     <monstermettle>2d4</monstermettle>
     <monsterluck>4d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <dodge>16</dodge>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="3"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="6"/>
+
+    <abilityref id="dagger_strike" rank="3"/> 
+    
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -212,20 +242,24 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>11</monsterinitiative>
     <monstermagic>3d4</monstermagic>
     <monstermettle>3d4</monstermettle>
     <monsterluck>3d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <parry>12</parry>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
+
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="3"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="6"/>
+
+    <abilityref id="dagger_strike" rank="3"/> 
+    
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -245,20 +279,23 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>11</monsterinitiative>
     <monstermagic>3d4</monstermagic>
     <monstermettle>3d4</monstermettle>
     <monsterluck>3d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <parry>12</parry>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
+
+    <abilityref id="strength" rank="6"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="6"/>
+    <abilityref id="perception" rank="3"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="6"/>
+
+    <abilityref id="dagger_strike" rank="3"/> 
+    
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -277,20 +314,23 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>11</monsterinitiative>
     <monstermagic>3d4</monstermagic>
     <monstermettle>3d4</monstermettle>
     <monsterluck>3d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <parry>12</parry>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="3"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="3"/>
+
+    <abilityref id="dagger_strike" rank="3"/> 
+
     
     <!-- resolve/break info? -->
     <monsterdescription>
@@ -309,20 +349,25 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>7</monsterstamina>
-    <monsterinitiativebonus>+0</monsterinitiativebonus>
+    <monsterinitiative>11</monsterinitiative>
     <monstermagic>3d4</monstermagic>
     <monstermettle>3d4</monstermettle>
     <monsterluck>3d4</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>8</armour>
-    <parry>12</parry>
-    <strength>11</strength>
-    <endurance>8</endurance>
-    <agility>9</agility>
-    <speed>9</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
-    <abilityrankid>dagger_strike_2</abilityrankid> 
+
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="6"/>
+    <abilityref id="speed" rank="6"/>
+    <abilityref id="perception" rank="6"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="6"/>
+
+    <abilityref id="dagger_strike" rank="3"/> 
+
+    
     
     <!-- resolve/break info? -->
     <monsterdescription>

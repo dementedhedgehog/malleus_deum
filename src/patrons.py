@@ -4,9 +4,10 @@ from os.path import abspath, join, splitext, dirname, exists, basename
 from os import listdir
 from utils import (
     parse_xml,
-    validate_xml,
+    #validate_xml,
     node_to_string,
-    COMMENT,
+    #COMMENT,
+    is_comment,
     convert_str_to_int,
     normalize_ws,
     parse_measurement_to_str,
@@ -398,7 +399,8 @@ class Patron:
            #     attr_min.parse(self.fname, AttrLimitType.MIN, child)
            #     self.attr_limits.append(attr_min)
 
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+           elif is_comment(child): # tag is COMMENT:
                # ignore comments!
                pass
            
@@ -437,11 +439,11 @@ class Patrons:
             raise Exception("Errors in %s" % xml_fname)
 
         # validate
-        error_log = validate_xml(doc)
-        if error_log is not None:
-            print("Errors (XSD)!")
-            print(error_log)
-            raise Exception("Errors in %s" % xml_fname)
+        # error_log = validate_xml(doc)
+        # if error_log is not None:
+        #     print("Errors (XSD)!")
+        #     print(error_log)
+        #     raise Exception("Errors in %s" % xml_fname)
 
         root = doc.getroot()
         patron = Patron(xml_fname)

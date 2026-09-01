@@ -4,10 +4,16 @@ from os import listdir
 from os.path import abspath, dirname
 
 from utils import (
-    parse_xml, validate_xml, children_to_string, contents_to_string, node_to_string,
-    COMMENT, convert_str_to_int
+    parse_xml,
+    #validate_xml,
+    children_to_string, contents_to_string, node_to_string,
+    #COMMENT,
+    is_comment,
+    convert_str_to_int,
 )
+from abilities import AbilityRef
 
+        
 
 class MonsterGroups:
     """
@@ -37,10 +43,10 @@ class MonsterGroups:
 
             xml_fname = join(monsters_dir, xml_fname)
             monster_group = MonsterGroup(xml_fname)
-            if not monster_group.validate():
-                result = False
-                if fail_fast:
-                    raise Exception("Errors in %s" % xml_fname)
+            # if not monster_group.validate():
+            #     result = False
+            #     if fail_fast:
+            #         raise Exception("Errors in %s" % xml_fname)
                 
             monster_group.load()
 
@@ -138,7 +144,8 @@ class MonsterGroupInfo:
                else:                   
                    self.description = contents_to_string(child)
 
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+           elif is_comment(child): # tag is COMMENT:
                pass # ignore comments!
 
            else:
@@ -163,14 +170,14 @@ class MonsterGroup:
     def get_title(self):
         return self.info.title
         
-    def validate(self):
-        valid = True
-        error_log = validate_xml(self.doc)
-        if error_log is not None:
-            valid = False
-            print("Errors (XSD)!")
-            print("\t%s" % error_log)
-        return valid
+    # def validate(self):
+    #     valid = True
+    #     error_log = validate_xml(self.doc)
+    #     if error_log is not None:
+    #         valid = False
+    #         print("Errors (XSD)!")
+    #         print("\t%s" % error_log)
+    #     return valid
 
     # def get_family(self):
     #     return self.info.family
@@ -212,32 +219,85 @@ class MonsterGroup:
         # handle all the children of the monster group
         for child in list(root):
         
-           tag = child.tag
-           if tag == "monstergroupinfo":
-               if self.info is not None:
-                   raise Exception("Only one monstergroupinfo per file.")
-               else:
-                   self.info = MonsterGroupInfo(self.fname)
-                   self.info.load(child)
+            tag = child.tag
+            if tag == "monstergroupinfo":
+                if self.info is not None:
+                    raise Exception("Only one monstergroupinfo per file.")
+                else:
+                    self.info = MonsterGroupInfo(self.fname)
+                    self.info.load(child)
 
-           elif tag == "monster":
-               monster = Monster(fname=self.fname)
-               monster.load(child)
-               self.monsters.append(monster)
+            elif tag == "monster":
+                monster = Monster(fname=self.fname)
+                monster.load(child)
+                self.monsters.append(monster)
 
-           elif tag is COMMENT:               
-               pass # ignore comments!
+            #elif tag is COMMENT:
+            elif is_comment(child):
+                pass # ignore comments!
 
-           else:
-               raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
+            else:
+                raise Exception("UNKNOWN (%s) %s\n" % (child.tag, str(child)))
 
         assert self.info.title
         return
 
     def get_rank(self):
         return self.info.rank
-    
 
+
+class MonsterVariant:
+
+    def __init__(self, monster):
+        self.monster = monster
+        self.title = None
+        self.variant_id = None
+        self.ability_refs = []
+
+    def parse(self, variant_element):
+        for child in list(variant_element):              
+           tag = child.tag
+           if tag == "varianttitle":
+               if self.title is not None:
+                   raise Exception(
+                       "Only one varianttitle per variant. (%s) %s\n" %
+                       (child.tag, str(child)))
+               else:                   
+                   self.title = child.text
+           elif tag == "variantid":
+               pass
+               # if self.variant_id is not None:
+               #     raise Exception("Only one variantid per variant. (%s) %s\n" %
+               #                     (child.tag, str(child)))
+               # else:
+               #     # check for duplicates!
+               #     variant_id = child.text
+               #     if monster_id in self._ids:
+               #         variant_location = "%s:%s" % (self.fname, lxml_element.sourceline)
+               #         raise Exception("Monster id: %s appears in two places %s and %s"
+               #                         % (variant_id,
+               #                            variant_location,
+               #                            self.monster._ids[variant_id]))
+               #     else:
+               #          self.monster._ids[variant_id] = self
+
+               #     # save the id!
+               #     self.monster_id = monster_id
+
+           elif tag == "abilityref":
+               ref = AbilityRef()
+               ref.parse(child)
+               self.ability_refs.append(ref)
+
+           elif is_comment(child):               
+               pass # ignore comments!
+           
+           else:
+               raise Exception("UNKNOWN (%s) in file %s\n" % 
+                               (child.tag, self.monster.fname))
+        return
+
+               
 class Monster:
     """
     An monster.
@@ -254,54 +314,160 @@ class Monster:
         self.description = None
         self.keywords = [] 
         self.aspects = []
-        self.abilities = []
+        # ability_id -> ability_ref
+        self.ability_refs = {}
         self.move = None
         self.role = None
 
-        # defence
-        self.armour = None
-        self.dodge = None
-        self.parry = None
-        self.block = None
+        self.variants = []
         
-        self.initiative_bonus = None
+        # defence
+        # self.armour = None
+        # self.dodge = None
+        # self.parry = None
+        # self.block = None
+        #self.ability_rank_ids = []
+        #self.ability_refs = []
+        
+        self.initiative = None
         self.health = 0
         self.stamina = 0
         self.mettle_pool = None
         self.magic_pool = None
         self.luck_pool = None
-        self.ability_rank_ids = []
-        self.strength = None
-        self.endurance = None
-        self.agility = None
-        self.speed = None
-        self.perception = None
-        self.willpower = None
+        #self.strength = None
+        #self.endurance = None
+        #self.agility = None
+        #self.speed = None
+        #self.perception = None
+        #self.will = None
 
         self.img = None
         return
+    
+    def get_passive_check_desc(self, ability_rank, check):
+        target_dc = 10 + ability_rank.rank_number
 
-    def validate(self):
-        assert self.magic_pool is not None
-        return
+        # For passive dcs the monster is the opponent!
+        desc = "Missing description!!"
+        match check.dc:
+            case "opponents-attack":
+                desc = f"Attack vs {target_dc}"
+            case "opponents-defend":      
+                desc = f"Defend vs {target_dc}"
+            case "opponents-strength":
+                desc = f"Strength vs {target_dc}"
+            case "opponents-agility":
+                desc = f"Agility vs {target_dc}"
+            case "opponents-speed":
+                desc = f"Speed vs {target_dc}"
+            case "opponents-perception":
+                desc = f"Perception vs {target_dc}"
+            case "opponents-will":
+                desc = f"Will vs {target_dc}"
+            case "opponents-endurance":
+                desc = f"Endurance vs {target_dc}"
+            case "gm-fiat":
+                desc = "GM Fiat DC"
+            case "opponents-negotiate-or-11":
+                desc = "Negotiate or 11"
+            case "opponents-etiquette-or-11":
+                desc = "Etiquette or 11"
+            case "aspect-dc":
+                desc = "Aspect DC"
+            # case "strength":
+            #     desc = ""
+            # case "agility":
+            #     desc = ""
+            # case "speed":
+            #     desc = ""
+            # case "endurance":
+            #     desc = ""
+            # case "will":
+            #     desc = ""
+            # case "perception":
+            #     desc = ""
+            case "dc9-plus-rank":
+                desc = "DC 9+Rank"
+            case "dc11-plus-rank":
+                desc = "DC 11+Rank"
+            case "dc13-plus-rank":
+                desc = "DC 13+Rank"
+            case "dc15-plus-rank":
+                desc = "DC 15+Rank"
+            case "dc3":
+                target_dc = max(3 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc5":
+                target_dc = max(5 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc7":
+                target_dc = max(7 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc9":
+                target_dc = max(9 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc11":
+                target_dc = max(11 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc13":
+                target_dc = max(13 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc15":
+                target_dc = max(15 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc17":
+                target_dc = max(17 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc19":
+                target_dc = max(19 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc21":
+                target_dc = max(21 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc23":
+                target_dc = max(23 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc25":
+                target_dc = max(25 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+            case "dc27":
+                target_dc = max(27 - ability_rank.rank_number, 2)
+                desc = f"Flat {target_dc}"
+                
+        return desc
+        
+    
+
+    
+    # def validate(self):
+    #     assert self.magic_pool is not None
+    #     return
 
     def get_strength(self):
-        return self.strength
+        #return self.strength
+        return self._get_ability_ref("strength")
+
 
     def get_endurance(self):
-        return self.endurance
+        #return self.endurance
+        return self._get_ability_ref("endurance")
 
     def get_agility(self):
-        return self.agility
+        #return self.agility
+        return self._get_ability_ref("endurance")
  
     def get_perception(self):
-        return self.perception
+        #return self.perception
+        return self._get_ability_ref("endurance")
 
-    def get_willpower(self):
-        return self.willpower
+    def get_will(self):
+        #return self.will
+        return self._get_ability_ref("endurance")
 
     def get_speed(self):
-        return self.speed
+        #return self.speed
+        return self._get_ability_ref("endurance")
 
     def get_luck(self):
         return self.luck_pool
@@ -312,51 +478,47 @@ class Monster:
     def get_move(self):
         return self.move
 
-    def get_initiative_bonus(self):
-        return self.initiative_bonus    
-
+    def get_initiative(self):
+        return self.initiative    
 
     def get_magic_pool(self):
         return self.magic_pool
 
-    #def get_monster_class_symbol(self):
-    #    return MonsterClass.get_symbol(self.monster_class)
-
     def get_description(self):
         return self.description
 
-    def get_ability_rank_ids(self):
-        return self.ability_rank_ids
+    def get_ability_refs(self):
+        return self.ability_refs.values()
+
+    def _get_ability_ref(self, _id):
+        return self.ability_refs.get(_id)
 
     def get_title(self):
         return self.title
-
-    def get_initiative_bonus(self):
-        return self.initiative_bonus
     
     def get_armour(self):
-        return self.armour
+        return self._get_ability_ref("armour")
 
     def get_dodge(self):
-        return self.dodge
+        return self._get_ability_ref("dodge")
 
     def get_block(self):
-        return self.block
+        return self._get_ability_ref("block")
 
     def get_parry(self):
-        return self.parry
+        return self._get_ability_ref("parry")
 
     def get_defences(self):
         """Return a comma separated list of defences."""
         defences = []
         if self.armour:
-            defences.append(f"Armour:{self.armour}")
+            defences.append(f"Armour:{self.get_armour()}")
         if self.parry:
-            defences.append(f"Parry:{self.parry}")
+            defences.append(f"Parry:{self.get_parry()}")
         if self.block:
-            defences.append(f"Block:{self.block}")
+            defences.append(f"Block:{self.get_block()}")
         if self.dodge:
-            defences.append(f"Dodge:{self.dodge}")
+            defences.append(f"Dodge:{self.get_dodge()}")
         return ", ".join(defences)
             
 
@@ -389,7 +551,8 @@ class Monster:
         return "" if len(self.keywords) == 0 else ", ".join(self.keywords)
 
     def get_abilities_str(self):
-        return "X" if len(self.abilities) == 0 else ", ".join(self.abilities)
+        #return "X" if len(self.abilities) == 0 else ", ".join(self.abilities)
+        return ", ".join(self.abilities)
 
     def get_aspects_str(self):
         return ", ".join(self.aspects)
@@ -404,7 +567,8 @@ class Monster:
 
     def parse_monster_role(self, monster_roles_node):
         for child in list(monster_roles_node):
-            if child.tag is not COMMENT:
+            #if child.tag is not COMMENT:
+            if not is_comment(child): #  is not COMMENT:
                 tag = child.tag[1:-2]
                 self.monster_role = child.tag
         return    
@@ -477,53 +641,53 @@ class Monster:
            elif tag == "monsteraspect":
                self.aspects.append(child.text)
 
-           elif tag == "monsterinitiativebonus":
-               self.initiative_bonus = convert_str_to_int(child.text)
+           elif tag == "monsterinitiative":
+               self.initiative = convert_str_to_int(child.text)
 
            elif tag == "monsterrole":
                self.parse_monster_role(child)
 
-           elif tag == "armour":
-               self.armour = child.text
+           # elif tag == "armour":
+           #     self.armour = child.text
 
-           elif tag == "dodge":
-               self.dodge = child.text
+           # elif tag == "dodge":
+           #     self.dodge = child.text
 
-           elif tag == "parry":
-               self.parry = child.text
+           # elif tag == "parry":
+           #     self.parry = child.text
 
-           elif tag == "block":
-               self.block = child.text
+           # elif tag == "block":
+           #     self.block = child.text
 
-           elif tag == "strength":
-               if self.strength is not None:
-                   raise Exception("Only one strength per monster. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.strength = convert_str_to_int(child.text)
+           # elif tag == "strength":
+           #     if self.strength is not None:
+           #         raise Exception("Only one strength per monster. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.strength = convert_str_to_int(child.text)
 
-           elif tag == "endurance":
-               if self.endurance is not None:
-                   raise Exception("Only one endurance per monster. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.endurance = convert_str_to_int(child.text)
-
-
-           elif tag == "agility":
-               if self.agility is not None:
-                   raise Exception("Only one agility per monster. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.agility = convert_str_to_int(child.text)
+           # elif tag == "endurance":
+           #     if self.endurance is not None:
+           #         raise Exception("Only one endurance per monster. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.endurance = convert_str_to_int(child.text)
 
 
-           elif tag == "speed":
-               if self.speed is not None:
-                   raise Exception("Only one speed per monster. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.speed = convert_str_to_int(child.text)
+           # elif tag == "agility":
+           #     if self.agility is not None:
+           #         raise Exception("Only one agility per monster. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.agility = convert_str_to_int(child.text)
+
+
+           # elif tag == "speed":
+           #     if self.speed is not None:
+           #         raise Exception("Only one speed per monster. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.speed = convert_str_to_int(child.text)
 
 
            elif tag == "monsterluck":
@@ -533,25 +697,29 @@ class Monster:
                else:
                    self.luck_pool = child.text
 
-           elif tag == "perception":
-               if self.perception is not None:
-                   raise Exception("Only one perception per monster. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.perception = convert_str_to_int(child.text)
+           # elif tag == "perception":
+           #     if self.perception is not None:
+           #         raise Exception("Only one perception per monster. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.perception = convert_str_to_int(child.text)
 
-           elif tag == "willpower":
-               if self.willpower is not None:
-                   raise Exception("Only one willpower per monster. (%s) %s\n" %
-                                   (child.tag, str(child)))
-               else:
-                   self.willpower = convert_str_to_int(child.text)
+           # elif tag == "will":
+           #     if self.will is not None:
+           #         raise Exception("Only one will per monster. (%s) %s\n" %
+           #                         (child.tag, str(child)))
+           #     else:
+           #         self.will = convert_str_to_int(child.text)
 
-           elif tag == "abilityrankid":
-               ability_rank_id = child.text
-               #assert ability_rank_id is not None
-               if ability_rank_id is not None:                   
-                   self.ability_rank_ids.append(ability_rank_id)
+           elif tag == "abilityref":
+               ref = AbilityRef()
+               ref.parse(child)
+               self.ability_refs[ref.get_id()] = ref
+
+           elif tag == "variant":
+               variant = MonsterVariant(self)
+               variant.parse(child)
+               self.variants.append(variant)
 
            elif tag == "monsterclass":
                self.monster_class = MonsterClass.load(child.text)
@@ -566,14 +734,13 @@ class Monster:
                else:
                    self.description = children_to_string(child)
 
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
+           elif is_comment(child):
+               pass # ignore comments!
 
            else:
                raise Exception("UNKNOWN (%s) in file %s\n" % 
                                (child.tag, self.fname))
-        self.validate()
+        #self.validate()
         return
 
 

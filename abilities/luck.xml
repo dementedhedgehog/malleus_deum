@@ -19,23 +19,25 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <keywords><luckpool/></keywords>
-      <dc><dc11/></dc>        
-      <mastery>
-	<critsuccess>Not only has the character thought to bring the piece of equipment they need, they've also
-	brought any other items that can reasonably be aquired that could reasonably be foreseen to be useful.
-	</critsuccess>
-	<righteoussuccess>Not only has the character thought to bring the piece of equipment they need, they've also
-	brought another item that can reasonably be aquired that could reasonably be foreseen to be useful.  They
-	can declare what this item is anytime later during the current game session.
-	</righteoussuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>                  
+      <keywords><luckpool/><check/></keywords>
+      <counter><sv11/></counter>              
+      <critsuccess>
+	Not only has the character thought to bring the piece of equipment they
+	need, they've also brought any other items that can reasonably be
+	aquired that could reasonably be foreseen to be useful.
+      </critsuccess>
+      <righteoussuccess>
+	Not only has the character thought to bring the piece of equipment they
+	need, they've also brought another item that can reasonably be aquired
+	that could reasonably be foreseen to be useful. They can declare what
+	this item is anytime later during the current game session.
+      </righteoussuccess>
     </abilitycheck>
-    <prereqabilityrank>lucky_1</prereqabilityrank>	
+    <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="60" y="60"/></spline> 
     <abilitydescription>
       <p>
@@ -68,19 +70,17 @@
     <abilityranks untrained="0" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>luck_pool_fate_defaults</defaults> -->
-      <actiontype><immediate/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <keywords><luckpool/></keywords>
+      <keywords><luckpool/><check/></keywords>
       <precondition>Any time a blessed result is rolled.</precondition>
-      <dc><dc11/></dc>        
-      <mastery>
-	<!-- <any-success></any-success> -->
-	<critsuccess>+3 Luck</critsuccess>
-	<righteoussuccess>+2 Luck</righteoussuccess>
+      <counter><sv11/></counter>        
+      <critsuccess>+3 Luck</critsuccess>
+      <righteoussuccess>+2 Luck</righteoussuccess>
       <success>+1 Luck</success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>                  
+      
     </abilitycheck>
     <spline><p x="0" y="0"/></spline> 
     <abilitydescription>
@@ -90,6 +90,7 @@
 	Luck into their Luck Pool if they are successful.
 
 	FIXME: RENAME FAVOURED BY THE GODS!
+	FIXME: REMOVE.. regain pool as crits for non-melee check classes?
       </p>      
     </abilitydescription>
   </ability>
@@ -101,16 +102,15 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><self/></range>
-      <keywords><luckpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>                  
+      <keywords><luckpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>lucky_1</prereqabilityrank>	
+    <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="0" y="40"/></spline> 
     <abilitydescription>
       <p>
@@ -128,29 +128,26 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>luck_pool_fate_defaults</defaults> -->
-      <actiontype><reaction/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap3/></apcost>
       <range><self/></range>
-      <keywords><luckpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><luckpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
-    <prereqabilityrank>lucky_1</prereqabilityrank>
+    <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>            
       <p>
-        It is said that "Anything that can go wrong, will go wrong" and in this case 
-        it does.  Misfortune allows a player to suggest an unfortunate event to 
-	the GM.  Whenever something happens in game a character with this ability
-	can make a pronouncement: "It would be a terrible misfortune if ...".  For
-	example: "It would be a terrible misfortune if the high sorceror accidently
-	spilled a drop of sacrificial blood from the chalice".  The GM then
-	decides whether such a misfortune might occur.   If so the player may make
-	attampt a Misfortune Check.
+        It is said that "Anything that can go wrong, will go wrong" and in this
+	case it does.  Misfortune allows a player to suggest an unfortunate
+	event to the GM.  Whenever something happens in game a character with
+	this ability can make a pronouncement: "It would be a terrible
+	misfortune if ...".  For example: "It would be a terrible misfortune if
+	the high sorceror accidently spilled a drop of sacrificial blood from
+	the chalice".  The GM then decides whether such a misfortune might
+	occur. If so the player may make attampt a Misfortune Check.
       </p>
 
       <p>
@@ -180,24 +177,23 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><retort/></apcost>
       <range><self/></range>
-      <keywords><luckpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><luckpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
-    <prereqabilityrank>lucky_1</prereqabilityrank>	
+    <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="-70" y="60"/></spline> 
     <abilitydescription>
       <p>
-        Sometimes all you need is a little luck to get something done in the nick of 
-	time. After an NPC, monster of character performs an action the player can try to 
-	perform any action as a reaction <emph>in the nick of time</emph>.  If the GM
-	chooses	to allow it the PC performs their action before the monsters action.
+        Sometimes all you need is a little luck to get something done in the
+	nick of time. After an NPC, monster of character performs an action the
+	player can try to perform any action as a retort <emph>in the nick of
+	time</emph>.  If the GM chooses	to allow it, the PC performs their
+	action before the monsters action.
       </p>
 
       <p>
@@ -212,20 +208,19 @@
     <abilityid>nabail</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Check</name> 
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><self/></range>
-      <keywords><luckpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>Heal 3d6+Rank hit points</critsuccess>	
-	<righteoussuccess>Heal 2d6+Rank hit points</righteoussuccess>	
-	<success>Heal d6+Rank hit points</success>	
-	<critfail>Lose 3 hit points</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><luckpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>Heal 3d6+Rank hit points</critsuccess>	
+      <righteoussuccess>Heal 2d6+Rank hit points</righteoussuccess>	
+      <success>Heal d6+Rank hit points</success>	
+      <critfail>Lose 3 hit points</critfail>
     </abilitycheck>
-    <prereqabilityrank>itiok_1</prereqabilityrank>	
+    <prereqabilityref id="itiok" rank="1"/>
     <spline><p x="0" y="35"/></spline> 
     <abilitydescription>
       <p>
@@ -241,34 +236,35 @@
     <abilitytitle>Reroll</abilitytitle>
     <abilityid>reroll</abilityid>
     <abilityranks untrained="0" from="1" to="3"/>
-    <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
-      <range><self/></range>
-      <keywords><luckpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>Reroll with advantage</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
-    </abilitycheck>
-    <prereqabilityrank></prereqabilityrank>	
-    <spline><p x="-90" y="30"/></spline> 
+    <abilityauxiliary>
+      <name>Talent</name>
+      <checktype><auxiliary/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><free/></apcost>
+      <range><reach/></range>
+      <keywords><luckpool/><auxiliary/></keywords>
+      <precondition>This character rolled dice.</precondition>
+      <effect>Character rerolls those dice.</effect>
+    </abilityauxiliary>    
     <abilitydescription>
       <p>
-	The character gets a lucky break and gets to reroll.
+	The character gets a lucky break and gets to reroll.  A roll may only
+	be rerolled once.
       </p>
 
       <p>
-	<indexentry>Rerolls</indexentry>
-	Players may use their <defn>Rerolls</defn> during the game to reroll <emph>all the 
-	dice in the current check at most once</emph>.  E.g. Dourli makes a Check to hit 
-	and rolls a 6 to hit on the skill die and an 18 for the fate.  He may choose to reroll
-	both dice or take the result as is (he cannot choose to only reroll the 1).  Dourli chooses
-	to reroll and misses again on his second roll. Dourli cannot reroll the second roll because
-	a check may only be rerolled at most one time.  He must accept the results of the second roll
-	even if they are worse than those of the first.
+	<indexentry>
+	  <entry>Rerolls</entry>
+	</indexentry>
+	Players may use their <defn>Rerolls</defn> during the game to reroll
+	<emph>all the dice in the current check at most once</emph>. E.g. Dourli
+	makes a Check to hit and rolls a 6 to hit on the skill die and an 18 for
+	the fate.  He may choose to reroll both dice or take the result as is
+	(he cannot choose to only reroll the 1).  Dourli chooses to reroll and
+	misses again on his second roll. Dourli cannot reroll the second roll
+	because a check may only be rerolled at most one time.  He must accept
+	the results of the second roll even if they are worse than those of the
+	first.
       </p>
     </abilitydescription>
   </ability>

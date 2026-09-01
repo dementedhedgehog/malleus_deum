@@ -7,11 +7,11 @@
     <!-- *************************************** -->
     {% for ability_group in ability_groups %}
     <section>
-      <sectiontitle>{{ ability_group.get_title() }}</sectiontitle>
+      <sectiontitle>{{ ability_group.get_name() }}</sectiontitle>
       
       {% for ability in ability_group  %}
       <table>
-	  <tablecategory>Standard</tablecategory>
+	  <standardtable/>
 
 	  <tablespec>
             <fixed>0.05</fixed>
@@ -22,22 +22,26 @@
 
 	  <tablerow>
             <td width="2">
-	      {{ ability.get_title() }}
+	      {{ ability.get_name() }}
 	    </td>
 	    </tablerow>
 
 	    {% for ability_rank in ability.get_ranks()  %}	    
 	  <tablerow>
             <td>
-            {{- ability_rank.get_rank_number() }}
+            {{- ability_rank }}
             </td>
             <td>
+	      FIXME
+	      {#
               {%- if ability_rank.check is not none -%}
-              <bold>Check:</bold> {{ ability_rank.check -}}
+	      <bold>Check:</bold> {{ ability_rank.check -}}
               {%- endif %}
               {%- if ability_rank.overcharge is not none -%}
               <leqsymbol/>  {{ ability_rank.overcharge -}}
               {%- endif %}
+
+	      #}
             </td>
 	  </tablerow>
 	  {% endfor %}                

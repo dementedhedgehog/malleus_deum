@@ -6,8 +6,8 @@
     <abilitygroupfamily><magic/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	Enchantment is the use of magic to control the minds of others.
-	This form of magic is a specialty of the fae.
+	Enchantment is the use of magic to control the minds of others. This
+	form of magic is a specialty of the fae.
       </p>
     </abilitygroupdescription>
     <enabled/>
@@ -19,55 +19,53 @@
     <abilityid>auri_fames</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>      
       <range><ranged-short/></range>
-      <dc><opponents-willpower/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>      
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>enchantment_1</prereqabilityrank>
-    <spline><p x="90" y="0"/></spline>    
+    <prereqabilityref id="enchantment" rank="1"/>    
+    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>    
     <abilitydescription>
       <p>
-	The mage attempts to curse the target, if successful cast the mage
-	makes an opposed standard check against the targets willpower adding the spells result
-	as a bonus to the check.  If successful the subject gains the <emph>Hunger for Gold</emph>
-	aspect with a difficulty equal to the std check plus magic pool result.  This aspect
-	lasts twenty four hours.  The use of some item of contagion from the target
-	should result in a significant bonus to the Willpower check, preferably blood or hair,
-	though other items may be used with the GMs discretion.
+	The mage attempts to curse the target, if successful cast the mage makes
+	an opposed standard check against the targets will adding the spells
+	result as a bonus to the check.  If successful the subject gains the
+	<emph>Hunger for Gold</emph> aspect with a difficulty equal to the std
+	check plus magic pool result.  This aspect lasts twenty four hours.  The
+	use of some item of contagion from the target should result in a
+	significant bonus to the Will check, preferably blood or hair, though
+	other items may be used with the GMs discretion.
       </p>
       
       <p>
 	If an overcharge occurs one or more of the following occur:
-	<list>
-	  <li>
-	    The caster suffers from backlash and also gains the
-	    <emph>Hunger for Gold</emph> aspect,
-	  </li>
-	  <li>
-	    A minor demon of greed takes notice and projects
-	    a simularcrum of themselves to the casters location.
-	    The goal of the demon may be to fight the caster, 
-	    make a deal with the caster either for mutual benefit
-	    or by threat.
-	  </li>
-	  <li>
-	    The spell nearly gets away from the caster and they must attempt
-	    to assert control of the magical energies.  Reroll any remaining dice
-	    used in the check after any dice have been exhausted.  On a roll of one or
-	    two that die is also exhausted.
-	  </li>
-	  <li>
-	    Roll on the magical overcharge table.
-	  </li>
-	</list>
       </p>
+      <list>
+	<li>
+	  The caster suffers from backlash and also gains the <emph>Hunger for
+	  Gold</emph> aspect,
+	</li>
+	<li>	    
+	  A minor demon of greed takes notice and projects a simularcrum of
+	  themselves to the casters location.  The goal of the demon may be to
+	  fight the caster, make a deal with the caster either for mutual
+	  benefit or by threat.
+	</li>
+	<li>
+	  The spell nearly gets away from the caster and they must attempt to
+	  assert control of the magical energies.  Reroll any remaining dice
+	  used in the check after any dice have been exhausted.  On a roll of
+	  one or two that die is also exhausted.
+	</li>
+	<li>
+	  Roll on the magical overcharge table.
+	</li>
+      </list>
     </abilitydescription>    
   </ability>
   
@@ -77,12 +75,15 @@
     <abilityid>enchantment</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>
-      <xdef fname="lore_defaults" elem_name="fate"/>      
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -98,26 +99,17 @@
     <abilityid>ghost_step</abilityid>   
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>enchantment_defaults</defaults> -->
-      <actiontype><immediate/></actiontype>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><touch/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>      
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>enchantment_1</prereqabilityrank>	
-    <spline><p x="90" y="15"/></spline>
+    <prereqabilityref id="enchantment" rank="2"/>    
+    <spline><p x="75" y="30"/><p x="0" y="60"/><p x="30" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character barely disturbs the ground when they move.
@@ -133,21 +125,20 @@
     <abilityid>glamour</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
       <range><ranged-long/></range>
-      <keywords><magic/></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<success>The target is convinced by the Glamour.</success>
-	<fail>The target is suspicious.</fail>
-	<grimfail>The target sees something off and will investigate further</grimfail>
-	<critfail>Immediately sees through the deception.</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magic/><check/><magicpool/></keywords>
+      <counter><opponents-perception-save/></counter>
+      <success>The target is convinced by the Glamour.</success>
+      <fail>The target is suspicious.</fail>
+      <grimfail>The target sees something off and will investigate further</grimfail>
+      <critfail>Immediately sees through the deception.</critfail>
     </abilitycheck>
-    <prereqabilityrank>enchantment_1</prereqabilityrank>
-    <spline><p x="0" y="45"/></spline>
+    <prereqabilityref id="enchantment" rank="1"/>    
+    <spline><p x="0" y="150"/></spline>
     <abilitydescription>
       <p>
 	The caster magically takes the appearance of a person, creature or thing.
@@ -182,19 +173,18 @@
     <abilityid>hex</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>0</poolcost>
+      <apcost><ap1/></apcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/></keywords>
-      <dc><opponents-willpower/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_0" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
     </abilitycheck>
-    <prereqabilityrank>enchantment_1</prereqabilityrank>			
-    <spline><p x="-90" y="0"/></spline>
+    <prereqabilityref id="enchantment" rank="1"/>    
+    <spline><p x="0" y="10"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	When successfully cast in combat the target makes their next check at disadvantage.
@@ -207,8 +197,9 @@
       </p>
 
       <p>
-	This spell can be cast from afar however in order to do so the caster must have at least one item that
-	links the target to the caster by contagion: hair, blood etc.
+	This spell can be cast from afar however in order to do so the caster
+	must have at least one item that links the target to the caster by
+	contagion: hair, blood etc.
       </p>
     </abilitydescription>    
   </ability>
@@ -219,34 +210,24 @@
     <abilityid>mind_worm</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>enchantment_defaults</defaults> -->
-      <!-- <defaults>pool_cost_1</defaults> -->
-      <actiontype><noncombat/></actiontype> 
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost> 
       <range><ranged-short/></range>
-      <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>enchantment_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline>
+    <prereqabilityref id="enchantment" rank="1"/>    
+    <spline><p x="0" y="120"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster attempts to insinutate an idea into the targets mind.
 	In order to succeed the caster must first make a check to cast
 	the spell and then at the point that the idea changes the targets
 	normal behaviour the caster must make a Magic check against
-	the targets Willpower pool result or behave in accordance with the
+	the targets Will pool result or behave in accordance with the
 	mind worm.  On overcharge the target realizes they are being
 	compelled at the time the mind worm effects their behaviour.  Other
 	overcharge effects might also apply (for example the caster might
@@ -261,25 +242,17 @@
     <abilityid>speak_with_amphibians</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
-    <spline><p x="90" y="15"/></spline>
+    <prereqabilityref id="zoolingualism" rank="1"/>    
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with amphibians and reptiles.
@@ -294,26 +267,17 @@
     <abilityid>speak_with_birds</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
-    <spline><p x="-45" y="90"/></spline>
+    <prereqabilityref id="zoolingualism" rank="1"/>    
+    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with birds.  Note that birds are
@@ -328,26 +292,17 @@
     <abilityid>speak_with_cats</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
-    <spline><p x="15" y="60"/></spline>
+    <prereqabilityref id="zoolingualism" rank="1"/>    
+    <spline><p x="0" y="120"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with cats and other felines.
@@ -361,26 +316,17 @@
     <abilityid>speak_with_horses</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
-    <spline><p x="-90" y="60"/></spline>
+    <prereqabilityref id="zoolingualism" rank="1"/>    
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with ungulates: horses, goats,
@@ -396,26 +342,17 @@
     <abilityid>speak_with_rodents</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
-    <spline><p x="90" y="90"/></spline>
+    <prereqabilityref id="zoolingualism" rank="1"/>    
+    <spline><p x="0" y="120"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with rodents: rats and mice etc.
@@ -429,26 +366,17 @@
     <abilityid>speak_with_wolves</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><immediate/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>      
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>zoolingualism_1</prereqabilityrank>	
-    <spline><p x="-90" y="15"/></spline>
+    <prereqabilityref id="zoolingualism" rank="1"/>    
+    <spline><p x="0" y="60"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character can converse with canine animals: bears,
@@ -463,45 +391,23 @@
     <abilityid>vox_imperium</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
-      <range><melee/></range>
-      <dc><opponents-willpower/></dc>
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords><magicpool/></keywords> -->
-      <!-- <indifferent>1</indifferent> -->
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
+      <range><reach/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <!-- <abilitycheck dc="Targets Willpower"> -->
-    <!--   <critsuccess></critsuccess> -->
-    <!--   <critfail></critfail> -->
-    <!--   <boon></boon> -->
-    <!--   <bane></bane> -->
-    <!--    -->
-    <!--    -->
-    <!--    -->
-    <!--   <range><na/></range> -->
-    <!--   <indifferent></indifferent> -->
-    <!--   <actiontype><noncombat/></actiontype> -->
-    <!--   <keywords><magicpool/></keywords> -->
-    <!-- </abilitycheck> -->
-    <prereqabilityrank>enchantment_1</prereqabilityrank>
-    <spline><p x="60" y="60"/></spline>
+    <prereqabilityref id="enchantment" rank="1"/>    
+    <spline><p x="0" y="30"/><p x="45" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The Vox Imperium spell, or Voice of Command, allows the
 	character to implant a short but strong mental suggestion
 	into the mind of the target.   If Vox is successfully cast then
-	a 2d12+Rank check is made against the targets willpower to command
+	a 2d12+Rank check is made against the targets will to command
 	the target.  The opposed check is modified as follows: -6 if the
 	command is self	destructive, -3 if the command is counter to the
 	creatures nature and desires, +3 if the command is something aligned
@@ -512,52 +418,22 @@
     </abilitydescription>
   </ability>  
 
-  
-  <ability>
-    <abilitytitle>Zoolingualism</abilitytitle>
-    <abilityid>zoolingualism</abilityid>    
-    <abilityranks from="1" to="1"/>
-    <keywords></keywords>
-    <prereqabilityrank>enchantment_1</prereqabilityrank>
-    <spline><p x="60" y="60"/></spline>
-    <abilitydescription>
-      <p noindent="true">
-	A sub-class of magic used to communicate with animals.
-      </p>
-    </abilitydescription>
-  </ability>  
-
-  
   <ability>
     <abilitytitle>Wrack</abilitytitle>
     <abilityid>wrack</abilityid>    
     <abilityranks from="1" to="5"/>
-    <!-- <abilitycheck> -->
-    <!-- <defaults>enchantment_defaults</defaults> -->
-    <!--   <actiontype><ap1/></actiontype> -->
-    <!--   <!-\- <critsuccess></critsuccess> -\-> -->
-    <!--   <!-\- <critfail></critfail> -\-> -->
-    <!--   <!-\- <boon></boon> -\-> -->
-    <!--   <!-\- <bane></bane> -\-> -->
-    <!--   <!-\- <range><na/></range> -\-> -->
-    <!--   <!-\- <keywords><magicpool/></keywords> -\-> -->
-    <!--   <!-\- <indifferent>1</indifferent> -\-> -->
-    <!--   <dc><dc7/></dc> -->
-    <!-- </abilitycheck> -->
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><magic-attack/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><ranged-short/></range>
-      <dc><opponents-endurance/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->	
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><lore/><check/><magicpool/></keywords>
+      <counter><opponents-endurance-save/></counter>
+      <any-success>FIXME</any-success>
     </abilitycheck>
-    <prereqabilityrank>enchantment_2</prereqabilityrank>
-    <spline><p x="60" y="60"/></spline>
+    <prereqabilityref id="enchantment" rank="2"/>    
+    <spline><p x="75" y="30"/><p x="0" y="10"/><p x="30" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	If the character casts the spell the target must make a endurance save
@@ -565,4 +441,17 @@
       </p>
     </abilitydescription>
   </ability>  
+
+  <ability>
+    <abilitytitle>Zoolingualism</abilitytitle>
+    <abilityid>zoolingualism</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <prereqabilityref id="enchantment" rank="2"/>
+    <spline><p x="75" y="30"/><p x="0" y="150"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	A sub-class of magic used to communicate with animals.
+      </p>
+    </abilitydescription>
+  </ability>
 </abilitygroup>

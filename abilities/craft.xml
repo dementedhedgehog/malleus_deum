@@ -22,14 +22,17 @@
     <abilityid>armour_smith</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>smith_2</prereqabilityrank>    
+    <prereqabilityref id="smith" rank="2"/> 
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -38,20 +41,60 @@
     </abilitydescription>
   </ability>
 
+  <ability>
+    <abilitytitle>Barber</abilitytitle>
+    <abilityid>barber</abilityid>    
+    <abilityranks from="1" to="5"/>
+    <abilitycheck>
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><craft/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </abilitycheck>
+
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype> 
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </abilitycheck>
+    <spline><p x="90" y="0"/></spline>
+    <abilitydescription>
+      <p>
+	The character has an understanding of minor surgery: setting bones,
+	sewing sutures, trepanning, dentistry, cataract couchery, pig-gelding,
+	and they also cut hair.
+      </p>
+    </abilitydescription>
+  </ability>
+  
 
   <ability>
     <abilitytitle>Builder</abilitytitle>
     <abilityid>builder</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>carpentry_1</prereqabilityrank>	
+    <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="20" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -67,14 +110,17 @@
     <abilityid>carpentry</abilityid>  
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>craft_1</prereqabilityrank>
+    <prereqabilityref id="craft" rank="1"/>
     <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -97,14 +143,17 @@
     <abilityid>cartwright</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>carpentry_1</prereqabilityrank>
+    <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
       <p>
@@ -119,15 +168,17 @@
     <abilityid>cooper</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>      
-      <!-- <defaults>craft_defaults</defaults> -->      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>carpentry_1</prereqabilityrank>
+    <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -143,14 +194,16 @@
     <abilityid>craft</abilityid>  
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank></prereqabilityrank>    
     <spline></spline>
     <abilitydescription>
       <p>
@@ -167,14 +220,17 @@
     <abilityid>smith</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>craft_2</prereqabilityrank>
+    <prereqabilityref id="craft" rank="2"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -192,14 +248,17 @@
     <abilityid>shipwright</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>carpentry_1</prereqabilityrank>
+    <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="50" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -214,14 +273,17 @@
     <abilityid>farmer</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>craft_2</prereqabilityrank>
+    <prereqabilityref id="craft" rank="2"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -237,14 +299,17 @@
     <abilityid>mason</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>craft_1</prereqabilityrank>
+    <prereqabilityref id="craft" rank="1"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -269,14 +334,17 @@
     <abilityid>mining</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>craft_1</prereqabilityrank>
+    <prereqabilityref id="craft" rank="1"/>
     <spline><p x="-100" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -310,14 +378,17 @@
     <abilityid>weapon_smith</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Craft</name>      
-      <xdef fname="craft_defaults" elem_name="actiontype"/>      
-      <xdef fname="craft_defaults" elem_name="range"/>      
-      <xdef fname="craft_defaults" elem_name="dc"/>      
-      <xdef fname="craft_defaults" elem_name="mastery"/>      
-      <xdef fname="craft_defaults" elem_name="fate"/>      
+      <name>Craft</name>
+      <checktype><craft/></checktype> 
+      <apcost><default-craft-apcost/></apcost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>smith_2</prereqabilityrank>
+    <prereqabilityref id="smith" rank="2"/>
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
       <p>

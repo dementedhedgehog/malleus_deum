@@ -21,18 +21,21 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>10</monsterstamina>
-    <monsterinitiativebonus>+1</monsterinitiativebonus>
+    <monsterinitiative>+1</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><controller/></monsterrole>
-    <armour>10</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>14</agility>
-    <speed>14</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
+
+    <abilityref id="strength" rank="6"/>
+    <abilityref id="endurance" rank="6"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3" specializations="jump:-9"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="6"/>    
+    <abilityref id="dodge" rank="0"/>
+    <abilityref id="swim" rank="6"/>
     <monsterdescription>
       <p>
       </p>
@@ -46,18 +49,22 @@
     <monstermove>6</monstermove>
     <monsterhealth>15</monsterhealth>
     <monsterstamina>10</monsterstamina>
-    <monsterinitiativebonus>+1</monsterinitiativebonus>
+    <monsterinitiative>+1</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><controller/></monsterrole>
-    <armour>10</armour>
-    <strength>11</strength>
-    <endurance>11</endurance>
-    <agility>14</agility>
-    <speed>14</speed>
-    <perception>9</perception>
-    <willpower>13</willpower>    
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3" specializations="jump:+3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="6"/>
+    
     <monsterdescription>
       <p>
 	FIXME: lake men.. frog men.

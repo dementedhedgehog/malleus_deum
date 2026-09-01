@@ -1,0 +1,78 @@
+\documentclass{book}
+
+
+\usepackage{etoolbox}
+
+\makeatletter
+\newcommand\modulo[2]{\@tempcnta=#1
+        \divide\@tempcnta by #2
+        \multiply\@tempcnta by #2
+        \multiply\@tempcnta by -1
+        \advance\@tempcnta by #1\relax
+        \the\@tempcnta}
+\makeatother
+
+\newcommand{\onnewpage}{
+  \message{message --------- A } 
+  \showthe\value{page}
+  \message{message --------- B } 
+}
+
+
+%\newcommand{\xpagemodn}[1]{\modulo{\value{#1}}{3}}
+\newcommand{\pagemodn}[1]{\modulo{2}{3}}
+
+
+\newcounter{pagenumber}
+\setcounter{pagenumber}{0}
+
+\AddToHook{shipout/background}{%
+  %% \typeout{ typeout \value{page} -------------------------- }
+  %% \immediate\write16{ immediate write ----------------- }
+  %\message{message - \value{parindent}}\^^J}
+  %% %\showthe\value{page}
+  \typeout{---------- Before \arabic{page} }
+  
+  %\newcommand{\pagemodn}{\modulo{\value{page}}{3}}
+
+  %\ifnum\value{page}=1\relax
+  %% \ifnum\modulo{\value{page}}{3}>-1\relax
+  %%    \typeout{---------- X}
+  %% \fi
+
+  \stepcounter{pagenumber}
+  \typeout{---------- A \arabic{pagenumber}}
+  \ifnum\value{pagenumber}=1\relax
+     \typeout{---------- X \arabic{pagenumber}}
+  \fi
+  
+  
+  %%\showthe\pagemodn 
+  %%\typeout{---------- After  \arabic{page} \pagemodn{page} }
+  %% \typeout{---------- After  \arabic{page} \pagemodnx{} }
+  %% \typeout{---------- After  \arabic{page} \the\pagemodnx }
+  %% \typeout{---------- After  \arabic{page} \showthe\pagemodnx }
+
+
+  %% \stepcounter{page}
+  %% \showthe\parindent
+  %% %\showthe\value{page}
+  %%\message{message ------------------------------ X } 
+  %%\onnewpage{}
+
+  %\showthe\value{page}
+  
+  %% with or without this I don't get anything useful.. value here is 
+  %%\GenericError{}{error \value{page} }{}{}
+}
+    
+% Start the document! 
+\begin{document}
+some
+\newpage
+content
+\newpage
+in
+\newpage
+here
+\end{document}

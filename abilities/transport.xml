@@ -17,28 +17,27 @@
   <ability>
     <abilitytitle>Animal Handling</abilitytitle>
     <abilityid>animal_handling</abilityid>
-    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilityranks untrained="-3" from="1" to="4"/> 
     <abilitycheck>
-      <name>Check</name>      
-      <!-- <defaults>transport_defaults</defaults> -->
-      <xdef fname="transport_defaults" elem_name="actiontype"/>      
-      <xdef fname="transport_defaults" elem_name="range"/>      
-      <xdef fname="transport_defaults" elem_name="dc"/>      
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <mastery>
-	<any-success>Success</any-success>
-	<gm-fiat/>
-      </mastery>
-      <fate>
-	<gm-fiat/>
-      </fate>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><gm-fiat/></apcost>      
+      <range><gm-fiat/></range>      
+      <keywords><transport/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </abilitycheck>
+
+    <abilitycheck>
+      <name>Physical Check</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>      
+      <range><gm-fiat/></range>      
+      <keywords><transport/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <any-success>Success</any-success>
     </abilitycheck>
     <spline><p x="-30" y="0"/></spline>
     <abilitydescription>
@@ -55,31 +54,30 @@
     <abilitytitle>Carter</abilitytitle>
     <abilityid>carter</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
+
     <abilitycheck>
-      <name>Check</name>      
-      <!-- <defaults>transport_defaults</defaults> -->
-      <xdef fname="transport_defaults" elem_name="actiontype"/>      
-      <xdef fname="transport_defaults" elem_name="range"/>      
-      <xdef fname="transport_defaults" elem_name="dc"/>      
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <mastery>
-	<any-success>Success!</any-success>
-	<gm-fiat/>
-      </mastery>
-      <fate>
-	<gm-fiat/>
-      </fate>
+      <name>Physical Check</name>      
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><gm-fiat/></range>
+      <keywords><transport/><check/></keywords>
+      <counter><default-physical-sv/></counter>      
+      <any-success>Success!</any-success>
     </abilitycheck>
-    <prereqabilityrank>animal_handling_1</prereqabilityrank>
-    <spline><p x="30" y="30"/></spline>
+    
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><gm-fiat/></apcost>      
+      <range><gm-fiat/></range>      
+      <keywords><transport/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </abilitycheck>
+    <prereqabilityref id="animal_handling" rank="1"/>   
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
   	This represents the ability to drive a cart.  Under normal
@@ -96,29 +94,16 @@
     <abilityid>riding</abilityid>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>      
-      <!-- <defaults>transport_defaults</defaults> -->
-      <xdef fname="transport_defaults" elem_name="actiontype"/>      
-      <xdef fname="transport_defaults" elem_name="range"/>      
-      <xdef fname="transport_defaults" elem_name="dc"/>      
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <mastery>
-	<any-success>Success!</any-success>
-	<gm-fiat/>
-      </mastery>
-      <fate>
-	<gm-fiat/>
-      </fate>
+      <name>Physical Check</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>      
+      <range><gm-fiat/></range>      
+      <keywords><transport/><check/></keywords>
+      <counter><default-physical-sv/></counter>      
+      <any-success>Success!</any-success>
     </abilitycheck>
-    <spline><p x="-30" y="30"/></spline>
+    <prereqabilityref id="animal_handling" rank="1"/>   
+    <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
   	The ability to ride a horse, and possibly other animals.
@@ -132,49 +117,40 @@
     <abilityid>master</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>      
-      <!-- <defaults>transport_defaults</defaults> -->
-      <xdef fname="transport_defaults" elem_name="actiontype"/>      
-      <xdef fname="transport_defaults" elem_name="range"/>      
-      <xdef fname="transport_defaults" elem_name="dc"/>      
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->           
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><dc13/></dc> -->
-      <mastery>
-	<any-success>Success!</any-success>
-	<gm-fiat/>
-      </mastery>
-      <fate>
-	<gm-fiat/>
-      </fate>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><gm-fiat/></apcost>      
+      <range><gm-fiat/></range>      
+      <keywords><transport/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>sailor_1</prereqabilityrank>
+    <prereqabilityref id="sailor" rank="1"/>   
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-  	Masters are navigators.  They learn to plot a ships course, first through local waters
-  	and then across the chartered oceans.
+  	Masters handle navigation and manage the crew and cargo.  They learn
+	to plot a ships course, first through local waters and then across
+	the chartered oceans.
       </p>
 
       <p>
-  	At low ranks the character is a pilot.  They know one particular area; a river, bay or harbour;
-  	particularly well.  They know the local myths pertaining to that place and are able to navigate
-  	ships within that area safely in normal weather conditions.  The character has spent a lot of
-	time in the presence of sailors from ports around the world.  They have sea/river lore for
-	all the bodies of water commonly sailed by the men with whom they have spoken.
+  	At low ranks the character is a pilot.  They know one particular area;
+	a river, bay or harbour; particularly well.  They know the local myths
+	pertaining to that place and are able to navigate ships within that area
+	safely in normal weather conditions.  The character has spent a lot of
+	time in the presence of sailors from ports around the world.  They have
+	sea/river lore for all the bodies of water commonly sailed by the men
+	with whom they have spoken.
       </p>
 
       <p>
-  	At rank three the character is a Master navigator.  They have passed some theoretical and
-  	pratical tests to obtain a certificate from a guild at no small pecuniary cost.
-  	They have the ability to navigate a ship using charts, the stars and/or
-  	dead reckoning.
+  	At rank three the character is a Master navigator.  They have passed
+	some theoretical and pratical tests to obtain a certificate from a guild
+	at no small pecuniary cost. They have the ability to navigate a ship
+	using charts, the stars and/or dead reckoning.
       </p>
     </abilitydescription>
   </ability>
@@ -185,42 +161,42 @@
     <abilityid>sailor</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>      
-      <!-- <defaults>transport_defaults</defaults> -->
-      <xdef fname="transport_defaults" elem_name="actiontype"/>      
-      <xdef fname="transport_defaults" elem_name="range"/>      
-      <xdef fname="transport_defaults" elem_name="dc"/>      
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><dc13/></dc> -->
-      <mastery>
-	<any-success>Success!</any-success>
-	<gm-fiat/>
-      </mastery>
-      <fate>
-	<gm-fiat/>
-      </fate>
+      <name>Physical Check</name>
+      <checktype><physical/></checktype>
+      <apcost><gm-fiat/></apcost>      
+      <range><gm-fiat/></range>      
+      <keywords><transport/><check/></keywords>
+      <counter><default-transport-sv/></counter>      
+      <any-success>Success!</any-success>
+    </abilitycheck>
+
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><transport/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline><p x="60" y="0"/></spline>
     <abilitydescription>
       <p>
-  	Sailing involves the use of a ship.  This ability includes the use of small craft
-  	and galleys.  At higher ranks the character has experience with large craft crewed
-	by dozens of sailors.
+  	Sailing involves work on a ship.  This ability includes the use of small
+	craft and galleys.  At higher ranks the character has experience with
+	large craft crewed by dozens of sailors.
       </p>
 
       <p>
-  	At rank four the character is capable enought to perform a role requiring significant
-	ability within the ship <eg/> a mate or a boatswain, quartermaster, etc.  At fifth rank
-  	the character is able to perform the role of Captain of a medium to large
-  	ship has a lot of experience on the water is is naturally adept as a sailor.
-  	The characters exploits and knowledge garner him respect from fellow sailors.
+  	At rank four the character is capable enought to perform a role
+	requiring significant ability within the ship <eg/> a mate or a
+	boatswain, quartermaster, etc.  At fifth rank the character is able to
+	perform the role of Captain of a medium to large ship has a lot of
+	experience on the water is is naturally adept as a sailor. The
+	characters exploits and knowledge garner him respect from fellow
+	sailors.
       </p>      
     </abilitydescription>
   </ability>

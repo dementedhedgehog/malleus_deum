@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Sword Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Sword Abilities</abilitygrouptitle>
     <abilitygroupid><sword/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Represents training the ability to use swords in combat.  This includes
-	the use of two handed swords.
+        Represents training the ability to use swords in combat.  This
+	includes the use of two handed swords.
       </p>      
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
 
-  
   <ability>
     <abilitytitle>Daring Thrust</abilitytitle>
     <abilityid>daring_thrust</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilitytrigger>
+    <abilityauxiliary>
       <name>Trigger</name>
-      <actiontype><reaction/></actiontype>
-      <range><melee/></range>
-      <keywords><trigger/></keywords>
-      <precondition>Successfully defend against a melee attack.</precondition>
+      <checktype><auxiliary/></checktype>
+      <apcost><reaction/></apcost>
+      <range><reach/></range>
+      <keywords><sword/><auxiliary/></keywords> 
+      <precondition>Righteous success when making a Sword Parry against
+      a melee attack within reach.</precondition>
       <effect>May make a Sword Retort attack as a reaction.</effect>
-    </abilitytrigger>
-    <prereqabilityrank>sword_strike_2</prereqabilityrank>
-    <spline><p x="15" y="30"/></spline>
+    </abilityauxiliary>
+    <prereqabilityref id="sword_strike" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
       </p>
@@ -39,16 +40,17 @@
     <abilitytitle>Follow Through</abilitytitle>
     <abilityid>follow_through</abilityid>    
     <abilityranks from="1" to="2"/>
-    <abilitytrigger>
+    <abilityauxiliary>
       <name>Attack</name>
-      <actiontype><ap2/></actiontype>
-      <range><melee/></range>
-      <keywords><trigger/></keywords>
+      <checktype><auxiliary/></checktype>
+      <apcost><ap2/></apcost>
+      <range><reach/></range>
+      <keywords><auxiliary/></keywords>
       <precondition>Hit with a melee attack.</precondition>
       <effect>Make a Sword Retort attack on the first, or second adjacent, opponent.</effect>
-    </abilitytrigger>
-    <prereqabilityrank>sword_strike_2</prereqabilityrank>
-    <spline><p x="15" y="30"/></spline>
+    </abilityauxiliary>
+    <prereqabilityref id="sword_strike" rank="2"/>
+    <spline><p x="0" y="60"/><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character hits an opponent with a melee attack.  If successful
@@ -62,27 +64,22 @@
     <abilitytitle>Mighty Blow</abilitytitle>
     <abilityid>mighty_blow</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap7/></actiontype>
-      <range><melee/></range>
-      <keywords><mettlepool/></keywords>      
-      <dc><dc11/></dc>
-      <dmg>Weapon+Rank+Strength|Speed</dmg>
-      <mastery>
-	<critsuccess>4×Dmg</critsuccess>
-	<righteoussuccess>3×Dmg</righteoussuccess>
-	<success>Dmg</success>
-	<fail>No Effect</fail>
-      </mastery>
-      <xdef fname="fate_melee_reaction_defaults" elem_name="fate"/>                  
-    </abilityattack>
-    <prereqabilityrank>sword_strike_3</prereqabilityrank>
+    <abilityauxiliary>
+      <name>Mighty Blow</name>
+      <checktype><auxiliary/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap5/></apcost>
+      <range><reach/></range>
+      <keywords><mettlepool/><physical-attack/><check/><auxiliary/></keywords> 
+      <precondition>Righteous hit with a sword.</precondition>
+      <effect>+Rank to damage before multipliers</effect>      
+    </abilityauxiliary>
+    <prereqabilityref id="sword_strike" rank="3"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-        Characters equipped with a Sword can strike with it using enormous force
-	during combat.  
+        Characters equipped with a Sword can strike with it using
+	enormous force during combat.  
       </p>
     </abilitydescription>
   </ability>
@@ -94,16 +91,16 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap3/></actiontype>
-      <range><melee/></range>
-      <dc><opponents-speed/></dc>
-      <mastery>
-	<any-success>Opponent disarmed</any-success>
-      </mastery>
-      <xdef fname="fate_melee_reaction_defaults" elem_name="fate"/>
+      <checktype><melee-attack/></checktype>
+      <apcost><ap1/></apcost>
+      <range><reach/></range>
+      <keywords><sword/><check/></keywords>
+      <precondition>Righteous hit with a sword.</precondition>
+      <counter><opponents-speed-save/></counter>      
+      <any-success>Opponent disarmed</any-success>
     </abilitycheck>
-    <prereqabilityrank>sword_strike_2</prereqabilityrank>	
-    <spline><p x="-80" y="30"/></spline>
+    <prereqabilityref id="sword_strike" rank="2"/>
+    <spline><p x="0" y="60"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character attempts to disarm their opponent.  If
@@ -119,16 +116,15 @@
     <abilityranks from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><reaction/></actiontype>      
-      <range><melee/></range>
-      <dc><opponents-agility/></dc>
-      <mastery>
-	<any-success>Character acts before target.</any-success>
-      </mastery>
-      <xdef fname="fate_melee_reaction_defaults" elem_name="fate"/>      
+      <checktype><fixme/></checktype>
+      <apcost><reaction/></apcost>      
+      <range><reach/></range>
+      <keywords><sword/><physical-attack/><melee/><check/></keywords>
+      <counter><opponents-agility-save/></counter>      
+      <any-success>Character acts before target.</any-success>
     </abilitycheck>
-    <prereqabilityrank>sword_strike_2</prereqabilityrank>
-    <spline><p x="15" y="30"/></spline>
+    <prereqabilityref id="sword_strike" rank="2"/>
+    <spline><p x="0" y="60"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
 	FIXME: after they're hit they've likely used their reaction!!
@@ -140,44 +136,48 @@
   </ability>
   
 
-  <ability>
-    <abilitytitle>Sword Retort</abilitytitle>
-    <abilityid>sword_retort</abilityid>    
-    <abilityranks untrained="0" from="1" to="6"/>
-    <abilityattack>
-      <name>Attack</name>   
-      <actiontype><ap3/></actiontype>
-      <range><melee/></range>
-      <keywords><basic-attack/></keywords>
-      <dc><opponents-defend/></dc>
-      <dmg>Weapon+Rank+Strength|Speed</dmg>
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>            
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
-    </abilityattack>
-    <spline></spline>
-    <abilitydescription>
-      <p noindent="true">	
-        Characters equipped with a Sword can counter strike with it during combat.
-	This ability is usually triggered by other abilities.
-      </p>
-    </abilitydescription>
-  </ability>
+  <!-- <ability> -->
+  <!--   <abilitytitle>Sword Retort</abilitytitle> -->
+  <!--   <abilityid>sword_retort</abilityid>     -->
+  <!--   <abilityranks untrained="0" from="1" to="6"/> -->
+  <!--   <abilitycheck> -->
+  <!--     <name>Attack</name>    -->
+  <!--     <checktype><melee-attack/></checktype>  -->
+  <!--     <apcost><ap2/></apcost> -->
+  <!--     <range><reach/></range> -->
+  <!--     <keywords><basic-attack/><check/></keywords> -->
+  <!--     <counter><opponents-physical-defence/></counter> -->
+  <!--     <dmg>Weapon+Rank+Strength|Speed</dmg> -->
+  <!--     <critsuccess><default-attack-critical-success/></critsuccess> -->
+  <!--     <righteoussuccess><default-attack-righteous-success/></righteoussuccess> -->
+  <!--     <success><default-attack-success/></success> -->
+  <!--   </abilitycheck> -->
+  <!--   <spline><p x="35" y="90"/></spline> -->
+  <!--   <abilitydescription> -->
+  <!--     <p noindent="true">	 -->
+  <!--       Characters equipped with a Sword can counter strike with it during -->
+  <!-- 	combat.  This ability is usually triggered by other abilities. -->
+  <!--     </p> -->
+  <!--   </abilitydescription> -->
+  <!-- </ability> -->
 
   
   <ability>
     <abilitytitle>Sword Strike</abilitytitle>
     <abilityid>sword_strike</abilityid>    
-    <abilityranks untrained="0" from="1" to="6"/>
-    <abilityattack>
-      <name>Attack</name>   
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <keywords><basic-attack/></keywords>
-      <dc><opponents-defend/></dc>
+    <abilityranks untrained="-3" from="1" to="6"/>
+    <abilitycheck>
+      <name>Melee-Attack</name>   
+      <checktype><melee-attack/></checktype>
+      <apcost><ap4/></apcost>
+      <range><reach/></range>
+      <keywords><basic-attack/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon+Rank+Strength|Speed</dmg>
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>            
-      <xdef fname="pool_cost_1" elem_name="fate"/>
-    </abilityattack>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
+      <success><default-attack-success/></success>
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

@@ -19,24 +19,88 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>20</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_1</abilityrankid>
-    <abilityrankid>countless_bites_2</abilityrankid>
-    <abilityrankid>fly_1</abilityrankid>
+    <!-- <armour>9</armour> -->
+    <!-- <strength>3</strength> -->
+    <!-- <endurance>3</endurance> -->
+    <!-- <agility>3</agility> -->
+    <!-- <speed>3</speed> -->
+    <!-- <perception>3</perception>     -->
+    <!-- <will>11</will>     -->
+    <!-- <abilityref id="swarm" rank="1"/> -->
+    <!-- <abilityref id="countless_bites" rank="2"/> -->
+    <!-- <abilityref id="fly" rank="1"/> -->
+
+    
+    <abilityref id="strength" rank="9"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="-3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="3"/>
+    <abilityref id="dodge" rank="0"/>
+
+    <abilityref id="mace_strike" rank="3" dmg="6"/>
+    <abilityref id="sword_strike" rank="3" dmg="6"/>
+    <abilityref id="polearm_strike" rank="3" dmg="6"/>
+
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="countless_bites" rank="2"/>
+    <abilityref id="fly" rank="1"/>
+    
+    
     <monsterdescription>
       <p>
 	A bat swarm consists of dozens of bats.
+      </p>
+    </monsterdescription>    
+  </monster>  
+
+
+
+
+  <monster>    
+    <monstertitle>Formian Swarms</monstertitle>
+    <monsterid>formian_swarm</monsterid>
+    <monsterkeywords><animal/></monsterkeywords>
+    <monstermove>5</monstermove>
+    <monsterhealth>11</monsterhealth>
+    <monsterstamina>20</monsterstamina>
+    <monsterinitiative>+3</monsterinitiative>
+    <monstermagic>13</monstermagic>
+    <monstermettle>2d8</monstermettle>
+    <monsterluck>13</monsterluck>
+    <monsterrole><solo/></monsterrole>
+    <!-- <armour>9</armour> -->
+    <!-- <strength>3</strength> -->
+    <!-- <endurance>3</endurance> -->
+    <!-- <agility>3</agility> -->
+    <!-- <speed>3</speed> -->
+    <!-- <perception>3</perception>     -->
+    <!-- <will>11</will>     -->
+    
+    <abilityref id="strength" rank="-9"/>
+    <abilityref id="endurance" rank="-6"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="dodge" rank="0"/>
+
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="countless_bites" rank="2" dmg="6"/>
+    <abilityref id="fly" rank="1"/>
+    
+    
+    <monsterdescription>
+      <p>
+	A swarm of flying ants
       </p>
     </monsterdescription>    
   </monster>  

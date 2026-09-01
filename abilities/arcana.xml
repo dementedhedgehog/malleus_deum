@@ -18,33 +18,35 @@
   
   <ability>
     <abilitytitle>Aegis</abilitytitle>
-    <abilityid>aegis</abilityid>    
+    <abilityid>aegis</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><reaction-or-ap2/></apcost>
       <range><ranged-medium/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>	
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <critsuccess>4 shifts up for missile defence checks
+      </critsuccess>
+      <righteoussuccess>3 shifts up for missile defence checks
+      </righteoussuccess>
+      <success>2 shifts up for missile defence checks</success>
     </abilitycheck>
-    <prereqabilityrank>arcana_1</prereqabilityrank>    
-    <spline><p x="-45" y="45"/></spline>
+    <prereqabilityref id="arcana" rank="1"/>   
+    <spline><p x="0" y="90"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The aegis spell is perhaps optimistically named.  It briefly forms
-	an invisible force umbrella about <measurement><metric>2m</metric><imperial>6'</imperial></measurement>
-	wide that protects the character from rain, winds, and potentially gaseous attacks.
-	Can be cast to cushion the impact from falling, reducing damage by 1d6.
-	Arrows and crossbow bolts cast against this spell suffer a -3 to hit penalty.
-	It can also aditionally protect one adjacent medium or small creature.
+	The aegis spell is perhaps optimistically named.  It briefly forms an
+	invisible force umbrella about <m6/> in diameter that protects the
+	character from rain, winds, and potentially gaseous attacks. Can be cast
+	to cushion the impact from falling, reducing damage by 1d6. Anyone
+	within the spells radius gains two shifts up when defending against
+	missile attacks. It can also aditionally protect one adjacent medium or
+	small creature.
       </p>
-    </abilitydescription>    
+    </abilitydescription>
   </ability>
   
   
@@ -53,31 +55,28 @@
     <abilityid>alarum</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap2/></apcost>
       <range><ranged-medium/></range>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>
-	  Successfully cast.
-	</any-success>	  
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Successfully cast.</any-success>
     </abilitycheck>
-    <prereqabilityrank>arcana_1</prereqabilityrank>    
+    <prereqabilityref id="arcana" rank="1"/>   
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The caster designates a volume of space no larger
-	than a typical room.  Movement within
-	that region results in the caster receiving a short
-	sharp shock of thaumaturgical energy, informing them
-	of that movement and waking them if they are asleep.
+	The caster designates a volume of space no larger than a typical room.
+	Movement within that region results in the caster receiving a short
+	sharp shock of thaumaturgical energy, notifying them of that movement
+	and waking them if they are asleep.
       </p>
 
       <p>
-	Once cast the character may move away from the area
-	provided they maintain a contagious link with the area
+	Once cast the character may move away from the area provided they
+	maintain a contagious link with the area
       </p>
     </abilitydescription>    
   </ability>
@@ -88,12 +87,15 @@
     <abilityid>arcana</abilityid>  
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -111,24 +113,23 @@
     <abilityid>cloak_of_shadows</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Spell successfully cast</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>Spell successfully cast</any-success>      
     </abilitycheck>
-    <prereqabilityrank>arcana_1</prereqabilityrank>    
-    <spline><p x="-75" y="50"/><p x="0" y="30"/></spline>
+    <prereqabilityref id="arcana" rank="1"/>   
+    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The character creates a cloak of darkness around themselves.
-	This makes it very difficult to see the character at night time.
-	If successful this spell grants a bonus of +3xRank to Sneak
-	Checks in dark or dimly light places.
+	The character creates a cloak of darkness around themselves. This makes
+	it very difficult to see the character in low light environments. If
+	successfully cast this spell grants a bonus of +3xRank to Sneak Checks
+	in dark or dimly lit places.
       </p>
     </abilitydescription>    
   </ability>
@@ -139,17 +140,17 @@
     <abilityid>ignis</abilityid>
     <abilityranks from="1" to="2"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><self/></range>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>Fire is created.</any-success>
-      </mastery>
-      <xdef fname="pool_cost_0" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Fire is created.</any-success>
     </abilitycheck>    
-    <prereqabilityrank>arcana_1</prereqabilityrank>
-    <spline><p x="0" y="45"/></spline>
+    <prereqabilityref id="arcana" rank="1"/>   
+    <spline><p x="0" y="90"/><p x="0" y="45"/></spline>
     <abilitydescription>
       <p>
 	Ignis allows the caster to create fire of torch
@@ -168,20 +169,19 @@
     <abilityid>incendo</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/><fire/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>Weapon does +6 fire damage</critsuccess>
-	<righteoussuccess>Weapon does +4 fire damage</righteoussuccess>
-	<success>Weapon does +2 fire damage</success>
-	<critfail>Weapon makes a Break Check</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><fire/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>Weapon does +6 fire damage</critsuccess>
+      <righteoussuccess>Weapon does +4 fire damage</righteoussuccess>
+      <success>Weapon does +2 fire damage</success>
+      <critfail>Weapon makes a Break Check</critfail>
     </abilitycheck>
-    <prereqabilityrank>ignis_1</prereqabilityrank>
+    <prereqabilityref id="ignis" rank="1"/>   
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -204,19 +204,20 @@
     <abilityid>true_sight</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><reaction/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap2/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<any-success>The character has True Sight</any-success>
-	<critfail>Gains the "You don't know the Horrors I've Seen" aspect.</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>The character has True Sight</any-success>
+      <critfail>
+	Gains the "You don't know the Horrors I've Seen" aspect.
+      </critfail>      
     </abilitycheck>
-    <prereqabilityrank>arcana_1</prereqabilityrank>
-    <spline><p x="60" y="75"/></spline>
+    <prereqabilityref id="arcana" rank="1"/>   
+    <spline><p x="0" y="30"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character is able to discern the true nature of a being, seeing
@@ -225,8 +226,8 @@
       </p>
 
       <p>
-	Care should be taken because some creatures true form may be so hideous
-	that it effects the observers sanity.
+	Care should be taken because some creatures true form may be so
+	hideous	that it effects the observers sanity.
       </p>	
     </abilitydescription>    
   </ability>
@@ -237,22 +238,21 @@
     <abilityid>scrolls</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Craft</name>
+      <checktype><craft/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><self/></range>
-      <dc><dc15/></dc>
-      <mastery>
-	<any-success>Scroll is written</any-success>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>
+      <keywords><magicpool/><check/><craft/></keywords>
+      <counter><sv15/></counter>
+      <any-success>Scroll is written</any-success> 
     </abilitycheck>
-    <prereqabilityrank>arcana_1</prereqabilityrank>
+    <prereqabilityref id="arcana" rank="3"/>   
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
-	The character knows how to make magical scrolls given
-	sufficent time, and writing materials.  They must also know
-	how to cast the spell for the scroll that they wish to write.
+	The character knows how to write magical scrolls for spells that they
+	know, given sufficent time, and writing materials.
       </p>
     </abilitydescription>
   </ability>  

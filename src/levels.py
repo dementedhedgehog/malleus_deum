@@ -9,7 +9,8 @@ import re
 import traceback
 
 from utils import (
-    COMMENT,
+    #COMMENT,
+    is_comment,
     normalize_ws,
     contents_to_string,
     convert_str_to_int,
@@ -124,7 +125,8 @@ class OrChoice:
                raise Exception("WE DONT ALLOW RECURSIVE `OR' ELEMENTS HERE! XML TAG (%s) File: %s Line: %s\n" % 
                                (child.tag, fname, child.sourceline))        
 
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+           elif is_comment(child): # tag is COMMENT:
                # ignore comments!
                pass
            
@@ -164,28 +166,28 @@ class Path:
 
         # handle all the children
         for child in list(path_node):        
-           tag = child.tag
-           if tag == "pathtitle":
-               self.title = contents_to_string(child)
+            tag = child.tag
+            if tag == "pathtitle":
+                self.title = contents_to_string(child)
 
-           elif tag in CHOICES:
-               number_to_choose = CHOICES[tag]
-               choice = Choice(number_to_choose=number_to_choose)
-               choice.load(child, fname, fail_fast)
-               self.choices.append(choice)
+            elif tag in CHOICES:
+                number_to_choose = CHOICES[tag]
+                choice = Choice(number_to_choose=number_to_choose)
+                choice.load(child, fname, fail_fast)
+                self.choices.append(choice)
 
-           elif tag == "or":
-               or_choice_node = OrChoice()
-               or_choice_node.load(child, fname, fail_fast)
-               self.choices.append(or_choice_node)
-                          
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
+            elif tag == "or":
+                or_choice_node = OrChoice()
+                or_choice_node.load(child, fname, fail_fast)
+                self.choices.append(or_choice_node)
+               
+            elif is_comment(child):
+                # ignore comments!
+                pass
            
-           else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
-                               (child.tag, fname, child.sourceline))
+            else:
+                raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
+                                (child.tag, fname, child.sourceline))
         return
 
     
@@ -246,7 +248,8 @@ class Branch:
                path.load(child, fname, fail_fast)
                self.paths.append(path)
                        
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+           elif is_comment(child): # tag is COMMENT:
                # ignore comments!
                pass
            
@@ -423,7 +426,8 @@ class Level:
                branch.load(child, fname, fail_fast)
                self.branches.append(branch)
                        
-           elif tag is COMMENT:
+           #elif tag is COMMENT:
+           elif is_comment(child):
                # ignore comments!
                pass
            
@@ -446,24 +450,24 @@ class Levels:
         # handle all the children
         for child in list(levels_node):
         
-           tag = child.tag
-           if tag == "archetypelevel":
-               level = Level()
-               level.load(child, fname, fail_fast)
-               self.levels.append(level)
+            tag = child.tag
+            if tag == "archetypelevel":
+                level = Level()
+                level.load(child, fname, fail_fast)
+                self.levels.append(level)
 
-           elif tag in ("subsection", ):
-               # These are tags that don't contain archetype metadata.
-               # They can be ignored here.
-               pass
+            elif tag in ("subsection", ):
+                # These are tags that don't contain archetype metadata.
+                # They can be ignored here.
+                pass
                
-           elif tag is COMMENT:
-               # ignore comments!
-               pass
+            elif is_comment(child): # tag is COMMENT:            
+                # ignore comments!
+                pass
            
-           else:
-               raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
-                               (child.tag, fname, child.sourceline))
+            else:
+                raise Exception("UNKNOWN XML TAG (%s) File: %s Line: %s\n" % 
+                                (child.tag, fname, child.sourceline))
 
         self.levels.sort(key = lambda lpd: lpd.level_number)
         return

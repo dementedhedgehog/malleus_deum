@@ -19,21 +19,27 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>20</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_1</abilityrankid>
-    <abilityrankid>countless_bites_2</abilityrankid>
-    <abilityrankid>fly_1</abilityrankid>
+    <!-- <armour>9</armour> -->
+    <!-- <strength>3</strength> -->
+    <!-- <endurance>3</endurance> -->
+    <!-- <agility>3</agility> -->
+    <!-- <speed>3</speed> -->
+    <!-- <perception>3</perception>     -->
+    <!-- <will>11</will>     -->
+    <abilityref id="strength" rank="-3"/>
+    <abilityref id="endurance" rank="-3"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="5"/>
+    <abilityref id="perception" rank="0"/>
+    <abilityref id="armour" rank="0"/>
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="countless_bites" rank="2"/>
+    <abilityref id="fly" rank="1"/>
     <monsterdescription>
       <p>
 	A bat swarm consists of dozens of bats.
@@ -50,21 +56,18 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>20</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_1</abilityrankid>
-    <abilityrankid>countless_bites_2</abilityrankid>
-    <abilityrankid>fly_1</abilityrankid>
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    <abilityref id="armour" rank="0"/>
+    
     <monsterdescription>
       <p>
       </p>
@@ -78,22 +81,29 @@
     <monsterid>animal.bear</monsterid>
     <img id="mj_bear"/>
     <monsterkeywords><animal/></monsterkeywords>
-    <monsterabilities>✱claw_4, ✱claw_4</monsterabilities>
+    <monsterabilities>✱claw, ✱claw</monsterabilities>
     <monstermove>8</monstermove>
     <monsterhealth>50</monsterhealth>
     <monsterstamina>30</monsterstamina>
-    <monsterinitiativebonus>+2</monsterinitiativebonus>
+    <monsterinitiative>+2</monsterinitiative>
     <monstermagic>11</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>15</strength>
-    <endurance>14</endurance>
-    <agility>9</agility>
-    <speed>14</speed>
-    <perception>11</perception>
-    <willpower>11</willpower>    
+
+    <abilityref id="strength" rank="3"/>
+    <abilityref id="endurance" rank="3"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="3"/>    
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="3"/>
+    <abilityref id="climb" rank="3"/>
+    
+    <abilityref id="claw" rank="6" dmg="8"/>
+    
     <monsterdescription>
       <p>
 	Bears are large omniverous mammals who live in forests throughout the continent, though they are particularly
@@ -111,21 +121,25 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>11</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>3d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_1</abilityrankid>
-    <abilityrankid>fly_1</abilityrankid>
-    <abilityrankid>countless_bites_3</abilityrankid>
+
+    <abilityref id="strength" rank="-6"/>
+    <abilityref id="endurance" rank="-6"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="-3"/>
+    
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="fly" rank="1"/>
+    <abilityref id="countless_bites" rank="3"/>
+    
     <monsterdescription>
       <p>
 	A bee swarm consists of hundreds of bees.
@@ -140,20 +154,24 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>11</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>3d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_1</abilityrankid>
-    <abilityrankid>countless_bites_4</abilityrankid>
+
+    <abilityref id="strength" rank="-6"/>
+    <abilityref id="endurance" rank="-6"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="-3"/>
+    
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="countless_bites" rank="4"/>
+    
     <monsterdescription>
       <p>
 	A beetle swarm consists of hundreds of beetles.
@@ -168,19 +186,23 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>11</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>3d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><grunt/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>✱endurance.swim</abilityrankid>
+
+    <abilityref id="strength" rank="-6"/>
+    <abilityref id="endurance" rank="-6"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="-3"/>    
+    <abilityref id="swim" rank="9"/>
+    <abilityref id="bite" rank="3" dmg="4"/>
+    
     <monsterdescription>
       <p>
       </p>
@@ -196,21 +218,25 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>11</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>3d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_1</abilityrankid>
-    <abilityrankid>fly_1</abilityrankid>
-    <abilityrankid>countless_bites_1</abilityrankid>
+
+    <abilityref id="strength" rank="-6"/>
+    <abilityref id="endurance" rank="-6"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="-3"/>
+    
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="fly" rank="1"/>
+    <abilityref id="countless_bites" rank="1"/>
+    
     <monsterdescription>
       <p>
 	A fly swarm consists of hundreds of flys.
@@ -226,20 +252,28 @@
     <monstermove>5</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>11</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>3d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_1</abilityrankid>
-    <abilityrankid>countless_bites_4</abilityrankid>
+
+
+    <abilityref id="strength" rank="-3"/>
+    <abilityref id="endurance" rank="-3"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0" specializations="jump:3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="3"/>
+    <abilityref id="climb" rank="3"/>
+
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="countless_bites" rank="4"/>
+    
+    
     <monsterdescription>
       <p>
 	A rat swarm consists of dozens of rats.
@@ -255,20 +289,30 @@
     <monstermove>8</monstermove>
     <monsterhealth>30</monsterhealth>
     <monsterstamina>20</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>8</armour>
-    <strength>16</strength>
-    <endurance>14</endurance>
-    <agility>11</agility>
-    <speed>15</speed>
-    <perception>12</perception>    
-    <willpower>11</willpower>    
+
+    
+    <abilityref id="strength" rank="6"/>
+    <abilityref id="endurance" rank="6"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="3"/>    
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="-3"/>
+    <abilityref id="climb" rank="0"/>
+    
+    <abilityref id="claw" rank="9"/>
+    <abilityref id="terrifying" rank="3"/>
+
     <monsterdescription>
-    </monsterdescription>    
+      Move to gargants?
+    </monsterdescription>
   </monster>  
 
   
@@ -280,20 +324,26 @@
     <monstermove>8</monstermove>
     <monsterhealth>30</monsterhealth>
     <monsterstamina>20</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>16</strength>
-    <endurance>14</endurance>
-    <agility>11</agility>
-    <speed>15</speed>
-    <perception>12</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>poison_bite_2</abilityrankid>
-    <abilityrankid>web_2</abilityrankid>
+
+    <abilityref id="strength" rank="6"/>
+    <abilityref id="endurance" rank="6"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="3"/>    
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="-3"/>
+    <abilityref id="climb" rank="9"/>
+
+    <abilityref id="poison_bite" rank="3"/>
+    <abilityref id="web" rank="2"/>
+    
     <monsterdescription>
       <p>
 	Giant Spiders get two attacks per round, a web attack and a
@@ -319,21 +369,25 @@
     <monstermove>8</monstermove>
     <monsterhealth>5</monsterhealth>
     <monsterstamina>5</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>2d8</monstermettle>
     <monsterluck>13</monsterluck>
-    <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>16</strength>
-    <endurance>14</endurance>
-    <agility>11</agility>
-    <speed>15</speed>
-    <perception>12</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>poison_bite_1</abilityrankid>
-    <abilityrankid>speed.jump</abilityrankid>
-    <abilityrankid></abilityrankid>
+    <monsterrole><solo/></monsterrole> 
+
+    <abilityref id="strength" rank="0"/>
+    <abilityref id="endurance" rank="0"/>
+    <abilityref id="agility" rank="3"/>
+    <abilityref id="speed" rank="3" specializations="jump:1"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="3"/>
+    <abilityref id="swim" rank="-3"/>
+    <abilityref id="climb" rank="9"/>
+
+    <abilityref id="poison_bite" rank="2"/>
+    <abilityref id="web" rank="2"/>
     <monsterdescription>
       <p>
 	Spider poison lasts till a short rest.  Fresh poison
@@ -351,20 +405,23 @@
     <monstermove>3</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>11</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>3d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><solo/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_2</abilityrankid>
-    <abilityrankid>countless_bites_3</abilityrankid>
+
+    <abilityref id="strength" rank="-6"/>
+    <abilityref id="endurance" rank="-6"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/> 
+    <abilityref id="dodge" rank="-3"/>
+    
+    <abilityref id="swarm" rank="1"/>
+    <abilityref id="countless_bites" rank="4"/>    
     <monsterdescription>
       <p>
 	Spider swarms consist of hundreds of small spiders attacking
@@ -383,20 +440,24 @@
     <monstermove>3</monstermove>
     <monsterhealth>11</monsterhealth>
     <monsterstamina>11</monsterstamina>
-    <monsterinitiativebonus>+3</monsterinitiativebonus>
+    <monsterinitiative>+3</monsterinitiative>
     <monstermagic>13</monstermagic>
     <monstermettle>3d8</monstermettle>
     <monsterluck>13</monsterluck>
     <monsterrole><soldier/></monsterrole>
-    <armour>9</armour>
-    <strength>3</strength>
-    <endurance>3</endurance>
-    <agility>3</agility>
-    <speed>3</speed>
-    <perception>3</perception>    
-    <willpower>11</willpower>    
-    <abilityrankid>swarm_2</abilityrankid>
-    <abilityrankid>countless_bites_3</abilityrankid>
+
+    <abilityref id="strength" rank="-6"/>
+    <abilityref id="endurance" rank="-6"/>
+    <abilityref id="agility" rank="0"/>
+    <abilityref id="speed" rank="0"/>
+    <abilityref id="perception" rank="0"/>
+    
+    <abilityref id="armour" rank="0"/>    
+    <abilityref id="dodge" rank="-3"/>
+    <abilityref id="swim" rank="3"/>
+    <abilityref id="climb" rank="-3"/>
+
+    <abilityref id="bite" rank="3" dmg="5"/>
     <monsterdescription>
       <p>
 	XXXX

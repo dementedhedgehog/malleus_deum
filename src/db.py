@@ -9,7 +9,7 @@ import re
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import walk
 
-from abilities import AbilityGroups # , ability_families
+from abilities import AbilityGroups
 from monsters import MonsterGroups
 from archetypes import Archetypes
 from encounters import Encounters
@@ -20,7 +20,6 @@ from changelog import Changelog
 from resources import Resources
 from weapons import Weapons
 from utils import split_ability_tokens
-
 
 
 ability_ref_parser = re.compile(
@@ -101,8 +100,6 @@ class DB:
             for d in dirs:
                 if d == "resources":                    
                     resource_dirs.append(join(root, d))
-        #unused_resource_dir = join(root_dir, "unused_resources")
-        #resource_dirs.append(unused_resource_dir)
         self.resources.load(resource_dirs)
 
         # melee weapons
@@ -124,14 +121,17 @@ class DB:
         return
 
 
-    def lookup_ability_or_ability_rank(self, ability_id, rank_id):
-        """Check the ability id exists in our db."""
-        try:
-            ability_rank = self.ability_groups.get_ability_rank(ability_id, rank_id)
-            return ability_rank
-        except KeyError:
-            return self.ability_groups.get_ability(ability_id)
+    # def lookup_ability_or_ability_rank(self, ability_id, rank_id):
+    #     """Check the ability id exists in our db."""
+    #     try:
+    #         ability_rank = self.ability_groups.get_ability_rank(ability_id, rank_id)
+    #         return ability_rank
+    #     except KeyError:
+    #         return self.ability_groups.get_ability(ability_id)
 
+    def get_ability(self, ability_ref):
+        return self.ability_groups.get_ability(ability_ref._id)
+        
 
     def parse_ability_ranks(self, xml):
         """
@@ -212,161 +212,161 @@ class DB:
         return 
     
     
-    def filter_abilities(self, xml, verbose=False):
-        """
-        Filters xml replacing our "magical" ability references (e.g. ✱✱dagger.strike)
-        or ability_rank references (e.g.  ✱dagger.strike_1), with values from the db. 
+    # def filter_abilities(self, xml, verbose=False):
+    #     """
+    #     Filters xml replacing our "magical" ability references (e.g. ✱✱dagger.strike)
+    #     or ability_rank references (e.g.  ✱dagger.strike_1), with values from the db. 
 
-        This is a pretty hacky but convenient approach. We could have done this with
-        xml or jinja filters, but it's a lot of typing.
+    #     This is a pretty hacky but convenient approach. We could have done this with
+    #     xml or jinja filters, but it's a lot of typing.
 
-        """
-        # split on ability refs and newlines
-        tokens = split_ability_tokens(xml)
+    #     """
+    #     # split on ability refs and newlines
+    #     tokens = split_ability_tokens(xml)
         
-        new_tokens = []
-        line_number = 1
+    #     new_tokens = []
+    #     line_number = 1
         
-        for token in tokens:
+    #     for token in tokens:
                 
-            # ability refs are tokens that start with the special character ✱
-            # we don't need to process things that are not ability refs
-            if not token.startswith("✱"):
-                new_tokens.append(token)
-                if token == "\n":
-                    line_number += 1
-                continue
+    #         # ability refs are tokens that start with the special character ✱
+    #         # we don't need to process things that are not ability refs
+    #         if not token.startswith("✱"):
+    #             new_tokens.append(token)
+    #             if token == "\n":
+    #                 line_number += 1
+    #             continue
 
-            ability_ref_match = ability_ref_parser.match(token)
+    #         ability_ref_match = ability_ref_parser.match(token)
 
-            if type(ability_ref_match) is not re.Match:
-                raise Exception(f"Can't parse ability ref {token}")
+    #         if type(ability_ref_match) is not re.Match:
+    #             raise Exception(f"Can't parse ability ref {token}")
             
-            # try and translate the token...
-            # if it starts with two ✱✱ it's an ability id (i.e. it's supposed to be rankless)
-            # if it starts with one it's an ability_rank id.
-            ability_ref = ability_ref_match.groupdict()
-            is_unranked_ability_id = ability_ref.get("is_unranked_ability_id") is not None
+    #         # try and translate the token...
+    #         # if it starts with two ✱✱ it's an ability id (i.e. it's supposed to be rankless)
+    #         # if it starts with one it's an ability_rank id.
+    #         ability_ref = ability_ref_match.groupdict()
+    #         is_unranked_ability_id = ability_ref.get("is_unranked_ability_id") is not None
             
-            # get the parts..
-            ability_name = ability_ref.get("ability_name")
-            specialization = ability_ref.get("ability_specialization")
-            rank = ability_ref.get("rank", "")
-            rankless_ability_id = f"{ability_name}"
+    #         # get the parts..
+    #         ability_name = ability_ref.get("ability_name")
+    #         specialization = ability_ref.get("ability_specialization")
+    #         rank = ability_ref.get("rank", "")
+    #         rankless_ability_id = f"{ability_name}"
 
-            # Some default and informative "Can't find ability" message for the _id
-            _id = f"Unable to look up ability id for ability name: {ability_name}"
+    #         # Some default and informative "Can't find ability" message for the _id
+    #         _id = f"Unable to look up ability id for ability name: {ability_name}"
 
-            try:
-                ability = self.ability_groups.get_ability(ability_name)
-                if ability is None:
-                    raise KeyError(f"Unable to look up ability for ability name: {ability_name}")
+    #         try:
+    #             ability = self.ability_groups.get_ability(ability_name)
+    #             if ability is None:
+    #                 raise KeyError(f"Unable to look up ability for ability name: {ability_name}")
 
-                try:
-                    _id = ability.get_id()
-                except KeyError:
-                    raise Exception()
+    #             try:
+    #                 _id = ability.get_id()
+    #             except KeyError:
+    #                 raise Exception()
 
-                # check if the ability exists, and if it exists check if it has the given rank.
-                if is_unranked_ability_id:
-                    self.ability_groups.get_ability(_id)
-                else:
-                    self.ability_groups.get_ability_rank(_id)
+    #             # check if the ability exists, and if it exists check if it has the given rank.
+    #             if is_unranked_ability_id:
+    #                 self.ability_groups.get_ability(_id)
+    #             else:
+    #                 self.ability_groups.get_ability_rank(_id)
 
-            except KeyError:
-                #
-                # Here we do quite a bit of work to provide useful contextual information
-                # when we fail to lookup the given ability or ability rank id.
-                #
+    #         except KeyError:
+    #             #
+    #             # Here we do quite a bit of work to provide useful contextual information
+    #             # when we fail to lookup the given ability or ability rank id.
+    #             #
 
-                # build debug context..
-                start = max(line_number-8, 0)
-                end = min(line_number+8, len(tokens))
-                # truncate the debug context if it's too long.
-                before = "".join(tokens[start:line_number])[-60:]
-                after = "".join(tokens[line_number+1:end])[:60]
-                context = f"On line: {line_number} {before} ❰{token}❱ {after}"
+    #             # build debug context..
+    #             start = max(line_number-8, 0)
+    #             end = min(line_number+8, len(tokens))
+    #             # truncate the debug context if it's too long.
+    #             before = "".join(tokens[start:line_number])[-60:]
+    #             after = "".join(tokens[line_number+1:end])[:60]
+    #             context = f"On line: {line_number} {before} ❰{token}❱ {after}"
 
-                # it's bad, so try dropping the rank and looking for the ability
-                # (so we can log some extra debug info)
-                try:
-                    self.ability_groups.get_ability(_id)
-                except KeyError:
-                    # Bad ability
-                    raise Exception(
-                        f"Invalid ability id {rankless_ability_id} in reference {_id}. "
-                        f"Check the ability is exists and not misspelled.\n{context}"
-                    ) from None
-                else:
-                    # Check the ability group exists
-                    ability_group_regex = re.compile("^(?P<ability_group>[^.]*?)\.")
-                    match = ability_group_regex.search(_id)
-                    print(f"ID {_id}  Match {str(match)}")
-                    if match is not None:                        
-                        ability_group_name = match.group("ability_group")
-                        ability_group = self.ability_groups.get_ability_group(ability_group_name)
-                        if ability_group is None:
-                            # Then it must be a missing/misspelled ability group
-                            raise Exception(
-                                "Invalid ability_rank_id in reference. \n"
-                                f"Ability Group {ability_group_name} does not exist or is "
-                                f"mispelled in {_id}.\n{context}"
-                            ) from None
+    #             # it's bad, so try dropping the rank and looking for the ability
+    #             # (so we can log some extra debug info)
+    #             try:
+    #                 self.ability_groups.get_ability(_id)
+    #             except KeyError:
+    #                 # Bad ability
+    #                 raise Exception(
+    #                     f"Invalid ability id {rankless_ability_id} in reference {_id}. "
+    #                     f"Check the ability is exists and not misspelled.\n{context}"
+    #                 ) from None
+    #             else:
+    #                 # Check the ability group exists
+    #                 ability_group_regex = re.compile("^(?P<ability_group>[^.]*?)\.")
+    #                 match = ability_group_regex.search(_id)
+    #                 print(f"ID {_id}  Match {str(match)}")
+    #                 if match is not None:                        
+    #                     ability_group_name = match.group("ability_group")
+    #                     ability_group = self.ability_groups.get_ability_group(ability_group_name)
+    #                     if ability_group is None:
+    #                         # Then it must be a missing/misspelled ability group
+    #                         raise Exception(
+    #                             "Invalid ability_rank_id in reference. \n"
+    #                             f"Ability Group {ability_group_name} does not exist or is "
+    #                             f"mispelled in {_id}.\n{context}"
+    #                         ) from None
 
-                    # Check the ability exists.
-                    if self.ability_groups.get_ability(_id) is None:
-                        # Then it's a missing/misspelled ability
-                        raise Exception(
-                            f"Missing/misspelled ability? {rankless_ability_id} in {_id}."
-                            f"\n{context}"
-                        ) from None
+    #                 # Check the ability exists.
+    #                 if self.ability_groups.get_ability(_id) is None:
+    #                     # Then it's a missing/misspelled ability
+    #                     raise Exception(
+    #                         f"Missing/misspelled ability? {rankless_ability_id} in {_id}."
+    #                         f"\n{context}"
+    #                     ) from None
 
-                    if not is_unranked_ability_id:
-                        # We're looking for an ability_rank id (not an ability id).
-                        # so we can check a few more things..
+    #                 if not is_unranked_ability_id:
+    #                     # We're looking for an ability_rank id (not an ability id).
+    #                     # so we can check a few more things..
 
-                        # Do we have an ability rank?
-                        if rank is None:
-                            # Then it must be a bad ability rank
-                            raise Exception(
-                                f"Invalid rank '{rank}' in ability_rank reference."
-                                f"\n{context}"
-                            ) from None
-                        else:
-                            # Dunno!?
-                            raise Exception(
-                                "Bug in db.py !! looking up ability. "
-                                f"Ability rank out of range? {_id}.\n{context}"
-                            ) from None
+    #                     # Do we have an ability rank?
+    #                     if rank is None:
+    #                         # Then it must be a bad ability rank
+    #                         raise Exception(
+    #                             f"Invalid rank '{rank}' in ability_rank reference."
+    #                             f"\n{context}"
+    #                         ) from None
+    #                     else:
+    #                         # Dunno!?
+    #                         raise Exception(
+    #                             "Bug in db.py !! looking up ability. "
+    #                             f"Ability rank out of range? {_id}.\n{context}"
+    #                         ) from None
 
-                        # it's bad, so try dropping the rank and looking for the ability
-                        # (so we can log some extra debug info)
-                        try:
-                            self.ability_groups.get_ability(rankless_ability_id)
-                        except KeyError:
-                            # Bad ability
-                            raise Exception(
-                                f"Invalid ability id in reference {_id}. "
-                                f"Check the ability rank is valid.\n{context}"
-                            ) from None
-                        else:
-                            # Dunno!?
-                            raise Exception(
-                                "Bug in db.py !! looking up ability. "
-                                f"Ability rank out of range? {rank} in {_id}. "
-                                f"\n{context}"
-                            ) from None
+    #                     # it's bad, so try dropping the rank and looking for the ability
+    #                     # (so we can log some extra debug info)
+    #                     try:
+    #                         self.ability_groups.get_ability(rankless_ability_id)
+    #                     except KeyError:
+    #                         # Bad ability
+    #                         raise Exception(
+    #                             f"Invalid ability id in reference {_id}. "
+    #                             f"Check the ability rank is valid.\n{context}"
+    #                         ) from None
+    #                     else:
+    #                         # Dunno!?
+    #                         raise Exception(
+    #                             "Bug in db.py !! looking up ability. "
+    #                             f"Ability rank out of range? {rank} in {_id}. "
+    #                             f"\n{context}"
+    #                         ) from None
 
 
-            # Build the abilityref xml element 
-            specialization_str = f' specialization="{specialization}"' if specialization is not None else ''
-            rank_str = f' rank="{rank}"' if rank is not None else ''
-            ability_ref_xml = f'<abilityref id="{rankless_ability_id}"{rank_str}{specialization_str}/>'
+    #         # Build the abilityref xml element 
+    #         specialization_str = f' specialization="{specialization}"' if specialization is not None else ''
+    #         rank_str = f' rank="{rank}"' if rank is not None else ''
+    #         ability_ref_xml = f'<abilityref id="{rankless_ability_id}"{rank_str}{specialization_str}/>'
 
-            # and insert the abilityref xml into the stream of tokens we're parsing.
-            new_tokens.append(ability_ref_xml)
+    #         # and insert the abilityref xml into the stream of tokens we're parsing.
+    #         new_tokens.append(ability_ref_xml)
 
-        return "".join(new_tokens)
+    #     return "".join(new_tokens)
 
     #
     # Implement the Context Manager Protocol so we
@@ -393,7 +393,7 @@ def get_ability_rank(ability_id):
 if __name__ == "__main__":
 
     # Just some test code.. (should be in a unit test if I were doing this properly).
-    import sys
+    #import sys
     import utils
     db = DB()
     db.load(utils.root_dir)

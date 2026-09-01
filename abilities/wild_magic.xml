@@ -4,10 +4,13 @@
     <abilitygrouptitle>Wild Magic</abilitygrouptitle>
     <abilitygroupid><wild-magic/></abilitygroupid>
     <abilitygroupfamily><magic/></abilitygroupfamily>
+    <slug>
+      Forget not the old ways.
+    </slug>
     <abilitygroupdescription>
       <p>
-	Wild Magic magic involves harnessing the residual life magic in a region,
-	drawing energy for casting from the characters environment.
+	Wild Magic magic involves harnessing the residual life magic in a
+	region, drawing energy for casting from the characters environment.
       </p>
     </abilitygroupdescription>
     <enabled/>
@@ -20,26 +23,25 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>rrr</critsuccess>
-	<critfail>eee</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>rrr</critsuccess>
+      <critfail>eee</critfail>      
     </abilitycheck>
-    <prereqabilityrank>vermin_swarm_2</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
+    <prereqabilityref id="vermin_swarm" rank="2"/>
+    <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
 	The caster calls to the local animals for help.
       </p>
 
       <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<standardtable/>
+	<tablespec><fixed>0.1</fixed><fixed>0.7</fixed></tablespec>
 	<tabletitle>Call of the Wild Overcharge Table</tabletitle>
 	<tablelabel>fig:call-of-the-wild-overcharge</tablelabel>	  
 
@@ -49,27 +51,32 @@
 	</tableheaderrow>
 
 	<tablerow>
-	  <td>11-26</td>
-	  <td>The animals hear the call but are swayed by their own self-interest.
-	  None answer the call.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>31-36</td>
-	  <td>The casters mind is linked to the animals.  They can either banish the animals
-	  or control them, but that is all.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>41-65</td>
-	  <td>Backwash.  The casters energy flows from the caster into the wyld.  Caster exhausts
-	  two dice from their magic pool.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>66</td>
+	  <td>11-13</td>
 	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
 	</tablerow>
+
+	<tablerow>
+	  <td>14-26</td>
+	  <td>
+	    Backwash. The casters energy flows from the caster into the wyld.
+	    Caster loses 2 additional points from their magic pool.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-46</td>
+	  <td>
+	    The casters mind is inextricably linked to the animals. Their mind
+	    inhabits the body of the controlled animal and they cannot control
+	    their own body which remains in a state of torpor. The caster can
+	    either banish the animal, ending the spell, or control the
+	    animal.</td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>51-66</td>
+	  <td>The animals hear the call but are swayed by their own
+	  self-interest. None answer the call.</td>
+	</tablerow>	
       </table>      
     </abilitydescription>
   </ability>  
@@ -81,24 +88,23 @@
     <abilityid>howl_of_the_hunt</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Check</name> 
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap2/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>bbb</critsuccess>
-	<critfail>nnn</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>bbb</critsuccess>
+      <critfail>nnn</critfail>      
     </abilitycheck>
-    <prereqabilityrank>wild-magic_2</prereqabilityrank>
-    <spline><p x="60" y="30"/></spline>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="60"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
-	The caster lets loose a loud howling sound that resembles
-	the sound of a wolves howl.   If the howl is made successfully,
-	opponents must make DC 5+Rank morale check.
+	The caster lets loose a loud howling sound that resembles the sound of a
+	great wolf's howl.   If the howl is made successfully, opponents must
+	make DC 5+Rank morale check.
       </p>
     </abilitydescription>
   </ability>
@@ -110,18 +116,17 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
     </abilitycheck>
-    <prereqabilityrank>wild-magic_1</prereqabilityrank>
-    <spline><p x="0" y="60"/></spline>
+    <prereqabilityref id="wild_magic" rank="1"/>
+    <spline><p x="0" y="120"/><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character gains a very enhanced sense of smell, temporarily.
@@ -140,23 +145,22 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
     </abilitycheck>
-    <prereqabilityrank>wild-magic_2</prereqabilityrank>
-    <spline></spline>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="105"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
-	If the character has access to a tree root, turnip <etc/> the
-	character can infuse it with an evil spirit for a short an 10+Rank minutes.
-	The animated Mandragora behaves like a small servant and will perform
+	If the character has access to a tree root, turnip <etc/> the character
+	can infuse it with an evil spirit for a short an 10+Rank minutes. The
+	animated Mandragora behaves like a small servant and will perform
 	actions as directed by the caster.  The Mandragora is malevolent and
 	will attempt to misconstrue instructions in such a way as to allow it
 	to hurt others.
@@ -175,27 +179,28 @@
 
   <ability>
     <abilitytitle>Therianthropy</abilitytitle>
-    <abilityid>magic.therianthropy</abilityid>    
+    <abilityid>therianthropy</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>pool_cost_2</defaults> -->
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <!-- <keywords><magicpool/></keywords> -->
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
     </abilitycheck>
-    <prereqabilityrank>hyperosmia_2</prereqabilityrank>
+    <prereqabilityref id="hyperosmia" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
-      <indexentry>Shapeshifting<subentry>see Therianthropy</subentry></indexentry>
+      <indexentry>
+	<entry>Shapeshifting</entry>
+	<subentry>see Therianthropy</subentry>
+      </indexentry>
       <figure position="h">
-        <img id="dore_therianthropy" scale="0.6"/>
+        <img id="dore_therianthropy"/>
       </figure>
       
       <p>
@@ -207,8 +212,8 @@
       </p>
 
       <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.2</fixed><fixed>0.7</fixed></tablespec>
+	<standardtable/>
+	<tablespec><fixed>0.10</fixed><fixed>0.8</fixed></tablespec>
 	<tabletitle>Therianthropy Temperate Table</tabletitle>
 	<tablelabel>fig:therianthropy</tablelabel>
 
@@ -262,8 +267,8 @@
       </p>
 
       <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.2</fixed><fixed>0.7</fixed></tablespec>
+	<standardtable/>
+	<tablespec><fixed>0.10</fixed><fixed>0.8</fixed></tablespec>
 	<tabletitle>Therianthropy Tropical/Subtropical Table</tabletitle>
 	<tablelabel>fig:therianthropy2</tablelabel>
 
@@ -322,8 +327,8 @@
       
 
       <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<standardtable/>
+	<tablespec><fixed>0.1</fixed><fixed>0.8</fixed></tablespec>
 	<tabletitle>Therianthropy Overcharge Table</tabletitle>
 	<tablelabel>fig:therianthropyovercharge</tablelabel>
 
@@ -352,18 +357,17 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc7/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
     </abilitycheck>
-    <prereqabilityrank>wild-magic_1</prereqabilityrank>
-    <spline><p x="-45" y="30"/></spline>
+    <prereqabilityref id="wild_magic" rank="1"/>
+    <spline><p x="0" y="45"/><p x="-45" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character summons a swarm of vermin.  The GM should choose one 
@@ -375,8 +379,8 @@
       </p>
 
       <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<standardtable/>
+	<tablespec><fixed>0.1</fixed><fixed>0.8</fixed></tablespec>
 	<tabletitle>Vermin Swarm Overcharge Table</tabletitle>
 	<tablelabel>fig:vermin-swarm-overcharge</tablelabel>
 
@@ -419,19 +423,16 @@
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<success>FIXME</success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <success>FIXME</success>
     </abilitycheck>
-    <prereqabilityrank>wild-magic_1</prereqabilityrank>
-    <spline><p x="-60" y="0"/></spline>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="150"/><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster uses magical energies to help him climb a surface
@@ -445,33 +446,30 @@
   <ability>
     <abilitytitle>Tanglefoot</abilitytitle>
     <abilityid>tanglefoot</abilityid>
+    <slug>Folly is an endless maze; Tangled roots perplex her ways;</slug>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
       <name>Cast</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc9/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/><magicpool/></keywords>
+      <counter><sv9/></counter>      
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
+
     <abilitycheck>
       <name>Tangle</name>
-      <actiontype><ap1/></actiontype>
+      <checktype><cast/></checktype>
+      <apcost><ap1/></apcost>
       <range><ranged-medium/></range>
-      <keywords></keywords>
-      <dc><opponents-agility/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail>       -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><check/></keywords>
+      <counter><opponents-agility-save/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
-    <prereqabilityrank>wild-magic_1</prereqabilityrank>
-    <spline><p x="-60" y="0"/></spline>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="15"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	This spell can be cast only in woods, bushlands and
@@ -498,7 +496,7 @@
     <indifferent></indifferent>
 
   -->
-  <!--   <actiontype><ap1/></actiontype> -->
+  <!--   <apcost><ap1/></apcost> -->
   <!--   <keywords><magic/><wildmagic/><magicpool/></keywords> -->
   <!--   <abilitydescription> -->
   <!--     <p> -->
@@ -511,22 +509,25 @@
   <!--   </abilitydescription>     -->
   <!--   <spline><p x="-60" y="0"/></spline> -->
   <!--   <prereqabilityrank>lore_1</prereqabilityrank> -->
-  <!--   <abilitycheck dc="9">Magic+Rank</abilitycheck> -->
+  <!--   <check dc="9">Magic+Rank</abilitycheck> -->
   <!--   <abilityranks from="1" to="4"/> -->
   <!-- </ability> -->
   
 
   <ability>
     <abilitytitle>Wild Magic Lore</abilitytitle>
-    <abilityid>wild-magic</abilityid>
+    <abilityid>wild_magic</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>
-      <xdef fname="lore_defaults" elem_name="fate"/>                  
+      <name>Cast</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -543,19 +544,17 @@
     <abilityid>warp_wood</abilityid>
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
-    <prereqabilityrank>wild-magic_1</prereqabilityrank>
-    <spline><p x="-60" y="0"/></spline>
+    <prereqabilityref id="wild_magic" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster can warp wood at a distance.  This spell can be used
@@ -566,9 +565,8 @@
       </p>
 
       <p>
-	The spell has a range of <measurement><metric>30m</metric>
-	<imperial>100'</imperial></measurement>. The spell can effect one
-	item For each rank of the spell.  The spells abilities linger on the
+	The spell has a range of <m30/>. The spell can effect one
+	item For each rank of the spexll.  The spells abilities linger on the
 	character.. they cast the spell, and then they can choose which items
 	to warp anytime as a free action over the next five minutes/30 turns. 
       </p>	

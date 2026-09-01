@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Conditions</abilitygrouptitle>
+    <abilitygroupid><conditions/></abilitygroupid>
+    <abilitygroupfamily><conditions/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+      </p>
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Holding Your Breath</abilitytitle>
+    <abilityid>holding-your-breath</abilityid>
+    <param-rank>3</param-rank>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck>
+      <name>When Surprised</name>
+      <checktype><aspect/></checktype>
+      <apcost><immediate/></apcost>
+      <range><na/></range>
+      <keywords><check/><aspect/></keywords>
+      <counter><opponents-speed-or-perception-save/></counter> 
+      <any-success>Your breath is held.</any-success>
+      <any-fail>Your breath is not held.</any-fail>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+	Holding your breath confers some protection against various poison gas,
+	disease, acidic vapours, and other noxious gas effects. Characters can
+	hold their breath for 5 of their turns plus or minus d4 turns for each
+	rank in Endurance that they hold.
+      </p>
+      <p>
+	For example a character with an Endurance -1 can hold their breath for
+	5-d4 turns.A character with Endurance 3 can hold their breath for 5+3d4
+	turns. If, at the end of their round, the character has	been holding
+	their breath for their maximum number of turns they cease to hold their
+	breath and must do so on their next turn.	
+      </p>
+
+      <p>
+	Characters can automatically <emph>hold their breath</emph> if they
+	are prepared to do so, for example, before running into a burning
+	building.  However they must make a save if they want to do so as a
+	reaction to some third party event.
+      </p>
+
+      <p>
+	Characters cannot Hold Their Breath while being asphyxiated.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Near Death</abilitytitle>
+    <abilityid>near-death</abilityid>
+    <slug>There's a big difference between mostly dead and all dead.</slug>
+    <abilityranks from="1" to="5"/>
+    <abilitycheck>
+      <name>Trial</name>
+      <checktype><aspect/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><immediate/></apcost>
+      <range><na/></range>
+      <keywords><mettlepool/><check/></keywords>
+      <effect>
+	If this aspect dos not have the <emph>permanent</emph> keyword, and
+	ranks up to 5 or more after this check then the aspect should be
+	re-evaluated.
+      </effect>
+      <counter><gm-fiat/></counter> 
+      <any-success>Aspect is resisted.</any-success>
+      <righteoussuccess>
+	Tenacious: Increase Rank of this Aspect by 1
+      </righteoussuccess>
+      <any-fail>Aspect is compelled.</any-fail>
+      <grimfail>Recidivism: Demote 1 (to a minimum of 0).</grimfail>
+    </abilitycheck>
+    <abilitydescription>
+      <p>
+	The player must make rolls on the Near-Death table for the character
+	each round until the condition is removed of their character dies.
+	Characters who are Near-Death also have the Down condition and usually
+	will have the Prone condition as well.
+      </p>
+
+      <img id="batten_near_death"/>
+      {% include "docs/tables/near_death_table.xml" %}
+    </abilitydescription>
+  </ability>
+
+  
+</abilitygroup>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Crossbow Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Crossbow Abilities</abilitygrouptitle>
     <abilitygroupid><crossbow/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
@@ -13,50 +13,92 @@
     <enabled/>
   </abilitygroupinfo>
   
-
   <ability>
     <abilitytitle>Light Crossbow</abilitytitle>
     <abilityid>crossbow_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap4/></actiontype>
-      <xdef fname="crossbow_defaults" elem_name="range"/>      
-      <dc><opponents-defend/></dc>
+    <abilitycheck>
+      <name>Missile-Attack</name> 
+      <checktype><missile-attack/></checktype>
+      <apcost><ap2/></apcost>
+      <range><default-crossbow-range/></range>
+      <keywords>
+	<crossbow/><physical-attack/><basic-attack/><missile/><check/>
+      </keywords>
+      <counter><opponents-physical-defence/></counter>
       <dmg>Weapon</dmg>
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>            
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
-    </abilityattack>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </abilitycheck>
+
+    <abilityauxiliary>
+      <name>Reload</name>
+      <checktype><auxiliary/></checktype>
+      <apcost><ap3/></apcost>
+      <range><reach/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>Armed with an empty crossbow.</precondition>
+      <effect>Reloads the crossbow.</effect>
+    </abilityauxiliary>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
-        Characters equipped with a <emph>Light Crossbow</emph> can shoot it during combat
-	doing weapon damage.  It takes ap3 to reload a light crossbow, ap4 to reload a
-	heavy crossbow.
+        Characters equipped with a <emph>Light Crossbow</emph> can shoot it
+	during combat doing weapon damage.  Crossbows have to be reloaded
+	as a separate action.
       </p>
     </abilitydescription>
   </ability>
 
+  <ability>
+    <abilitytitle>Deadshot</abilitytitle>
+    <abilityid>crossbow_deadshot</abilityid>    
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <abilitycheck>
+      <name>Missile-Attack</name> 
+      <checktype><missile-attack/></checktype>
+      <apcost><ap5/></apcost>
+      <range><default-crossbow-range/></range>
+      <keywords>
+	<crossbow/><physical-attack/><basic-attack/><missile/><check/>
+      </keywords>
+      <effect>Attacks with advantage.</effect>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>Weapon</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
+      <success><default-attack-success/></success>
+    </abilitycheck>
+    <prereqabilityref id="crossbow_shoot" rank="2"/>
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a <emph>Light Crossbow</emph> can shoot it
+	during combat doing weapon damage.  
+      </p>
+    </abilitydescription>
+  </ability>
+  
 
   <ability>
     <abilitytitle>Reload</abilitytitle>
     <abilityid>fast_loader</abilityid>    
     <abilityranks from="0" to="4"/>
     <abilitycheck>
-      <name>Fast Reload</name>
-      <actiontype><ap2/></actiontype>
+      <name>Trial</name>
+      <checktype><test/></checktype>
+      <apcost><ap2/></apcost>
       <range><self/></range>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>Reload takes 1ap</critsuccess>
-	<righteoussuccess>Reload takes 2ap</righteoussuccess>
-	<success>Reload takes 3ap</success>
-	<fail>Reload takes 4ap</fail>
-	<grimfail>Reload takes 7ap</grimfail>
-      </mastery>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+      <keywords><crossbow/><missile/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>Reload takes 1ap</critsuccess>
+      <righteoussuccess>Reload takes 2ap</righteoussuccess>
+      <success>Reload takes 3ap</success>
+      <fail>Reload takes 4ap</fail>
+      <grimfail>Reload takes 7ap</grimfail>      
     </abilitycheck>
-    <prereqabilityrank>crossbow_shoot_2</prereqabilityrank>
+    <prereqabilityref id="crossbow_shoot" rank="2"/>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -67,23 +109,18 @@
       </p>
     </abilitydescription>
   </ability>
-
-
-  <!-- FIXME add an accurate shot -->
   
   <ability>
     <abilitytitle>Heavy Cross Bow</abilitytitle>
     <abilityid>heavy</abilityid>
     <abilityranks untrained="-3" from="1" to="1"/>
     <keywords></keywords>
-    <prereqabilityrank>crossbow_shoot_2</prereqabilityrank>
-    <spline><p x="90" y="30"/></spline>
+    <prereqabilityref id="crossbow_shoot" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-	Character has trained in the use of the heavy crossbow.  Characters
-	with this ability can use the Light Crossbow Shoot ability with Heavy
-	Crossbows.  Heavy crossbows are slow to reload and take a full turn
-	to reload.
+	Character has trained in the use of the heavy crossbows in any
+	ability that uses light crossbows.
       </p>
     </abilitydescription>
   </ability>  

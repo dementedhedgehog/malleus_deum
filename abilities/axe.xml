@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Axe Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Axe Abilities</abilitygrouptitle>
     <abilitygroupid><axe/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
@@ -19,14 +19,21 @@
     <abilitytitle>Axe Cleave</abilitytitle>
     <abilityid>axe_cleave</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilitytrigger>
-      <name>Check</name>
-      <actiontype><free/></actiontype>
-      <range><melee/></range>
-      <precondition>The character kills an opponent using an Axe Strike attack.</precondition>
-      <effect>Overflow damage + Rank is dealt to adjacent enemies.</effect>  
-    </abilitytrigger>
-    <prereqabilityrank>axe_strike_3</prereqabilityrank>
+    <abilityauxiliary>
+      <name>Auxiliary Attack</name>
+      <checktype><auxiliary/></checktype>
+      <apcost><free/></apcost>
+      <range><reach/></range>
+      <keywords><axe/><melee/><auxiliary/></keywords>
+      <precondition>
+	The character kills an opponent using an Axe Strike attack.
+      </precondition>
+      <effect>
+	Axe Strike damage is dealt to an additional enemy adjacent
+	to the attacking character.
+      </effect>  
+    </abilityauxiliary>
+    <prereqabilityref id="axe_strike" rank="3"/>
     <prereqattr><strength>13</strength></prereqattr>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -52,53 +59,53 @@
     <abilityid>axe_frenzy</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <keywords><mettlepool/></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<any-success>Make 2 Axe-Strike attacks.</any-success>
-	<critsuccess>3 Attacks instead of 2</critsuccess>
-	<critfail>Berserk</critfail>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>      
+      <name>Trial</name>
+      <checktype><trial/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
+      <range><reach/></range>
+      <keywords><mettlepool/><axe/><melee/><check/></keywords>
+      <counter><sv11/></counter>     
+      <any-success>Make 2 Axe-Strike attacks.</any-success>
+      <critsuccess>3 Attacks instead of 2</critsuccess>
+      <critfail>Berserk</critfail>      
     </abilitycheck>
-    <prereqabilityrank>axe_strike_1</prereqabilityrank>
+    <prereqabilityref id="axe_strike" rank="1"/>
     <prereqattr><strength>13</strength></prereqattr>
     <spline><p x="-75" y="30"/></spline>    
     <abilitydescription>
       <p>
-	When a character makes a frenzied attack with an axe, they make
-	a Mettle Check.  If they pass they may make another standard axe
-	attack that round. On a bane the character goes beserk.	
+	When a character makes a frenzied attack with an axe, they make a Mettle
+	Check. If they pass they may make two standard axe attacks. On a Damned
+	result the character goes beserk. Results can be shifted up in the face
+	of instigating circumstances.
       </p>
     </abilitydescription>
   </ability>
 
-  
   <ability>
     <abilitytitle>Axe Hook</abilitytitle>
     <abilityid>axe_hook</abilityid>    
     <abilityranks from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><free/></actiontype>
-      <range><melee/></range>
-      <precondition>Axe Strike Boon against an opponent carrying an item, a weapon or shield</precondition>
-      <dc><opponents-strength/></dc>
-      <mastery>
-	<critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
-	<success>Target drops random item, weapon or shield</success>
-      </mastery>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+      <name>Melee Attack</name> 
+      <checktype><melee-attack/></checktype>
+      <apcost><free/></apcost>
+      <range><reach/></range>
+      <keywords><axe/><melee/><check/></keywords>
+      <precondition>Righteous Axe Strike against an opponent carrying an item,
+      a weapon or shield</precondition>
+      <counter><opponents-strength-save/></counter>
+      <critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
+      <success>Target drops random item, weapon or shield</success>
     </abilitycheck>
-    <prereqabilityrank>axe_strike_1</prereqabilityrank>
+    <prereqabilityref id="axe_strike" rank="1"/>
     <spline><p x="0" y="30"/></spline>    
     <abilitydescription>
       <p>
-        Characters equipped with an axe can use the axe to attempt to disarm
-	an opponent or remove their shield by using the axes beard as a hook.
+        Characters equipped with an axe can use the beard of the axe to attempt
+	to disarm an opponent, remove their shield or hook things out of their
+	hands.
       </p>
     </abilitydescription>
   </ability>
@@ -109,12 +116,15 @@
     <abilityid>axe_strike</abilityid>    
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <dc><opponents-defend/></dc>
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>            
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>            
+      <name>Melee Attack</name> 
+      <checktype><melee-attack/></checktype>
+      <apcost><ap4/></apcost>
+      <range><reach/></range>
+      <keywords><axe/><melee/><basic-attack/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
+      <success><default-attack-success/></success>
     </abilitycheck>
     <spline></spline>
     <abilitydescription>

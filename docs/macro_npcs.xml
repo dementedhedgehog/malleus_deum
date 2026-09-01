@@ -28,10 +28,10 @@
     {% for ability_level_id in npc_group.get_ability_level_ids() %}
     <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
     {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
-    <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
+    <br/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
     {% endif -%}       
     {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
-    <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
+    <br/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
     {% endif -%}
     {% endfor %}
   </mbabilities>
@@ -74,10 +74,10 @@
     {% for ability_level_id in npc.get_ability_level_ids() %}
     <bold>{{ ability_groups.get_ability_level(ability_level_id).get_title() }}</bold>
     {%- if ability_groups.get_ability_level(ability_level_id).get_check() != "" -%}
-    <newline/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
+    <br/>Check: {{ ability_groups.get_ability_level(ability_level_id).get_check() }}
     {% endif -%}       
     {% if ability_groups.get_ability_level(ability_level_id).get_effect() != "" -%}
-    <newline/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
+    <br/>Effect: {{ ability_groups.get_ability_level(ability_level_id).get_effect() }}
     {% endif -%}
     {% endfor %}
   </mbabilities>

@@ -5,129 +5,204 @@
     <abilitygroupid><lore/></abilitygroupid>
     <abilitygroupfamily><lore/></abilitygroupfamily>
     <abilitygroupdescription>
-      <p>
-        Represents book learning on a wide variety of fields through academic study.
-	<nb/> Lore itself is not an ability but characters can gain
-	specializations in Lore to represent knowledge of various fields for which there
-	is not specific abilitity below.
-      </p>
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
 
-
   <ability>
     <abilitytitle>Alchemy</abilitytitle>
     <abilityid>alchemy</abilityid>    
-    <abilityranks from="1" to="5"/>
+    <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>      
-    </abilitycheck>
-    <prereqabilityrank>alchemy_lesser_2</prereqabilityrank>
-    <spline><p x="60" y="30"/></spline>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv/></counter>       
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </abilitycheck> 
+
+    <abilitycheck>
+      <name>Craft</name>
+      <checktype><craft/></checktype>
+      <apcost><default-craft-apcost/></apcost>
+      <requires><alchemical-lab/></requires>
+      <range><self/></range>      
+      <keywords><craft/><check/></keywords>
+      <counter><default-craft-sv/></counter>       
+      <critsuccess><default-craft-critical-success/></critsuccess>
+      <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
+      <success><default-craft-success/></success>
+    </abilitycheck> 
+    <prereqabilityref id="natural_history" rank="1"/>
+    <spline><p x="0" y="30"/></spline>    
     <abilitydescription>
       <p>
-	The character may call themselves an Apothecary, and can prepare poisons,
-	Laudanum, War-Fire, Foaming Plaster, Colloidal Silver, and medicines for
-	certain diseases. The character must have alchemical equipment and the requisite
-	ingredients to do this.
-      </p>
-    </abilitydescription>
-  </ability>
-  
+	Alchemy is concerned with the creation of chemical substances, the
+	creation of cures for various diseases, the creation of solvents
+	(acids), liquid fire, dies, gunpowder, etc.
 
-  <ability>
-    <abilitytitle>Alchemy, Lesser</abilitytitle>
-    <abilityid>alchemy_lesser</abilityid>    
-    <abilityranks from="1" to="5"/>
-    <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
-    </abilitycheck>
-    <prereqabilityrank>natural_history_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
-    <abilitydescription>
-      <p>
-	Alchemy is concerned with the creation of chemical substances,
-	the creation of cures for various diseases, the creation of solvents (acids),
-	liquid fire, dies, gunpowder, etc. If the character has the necessary ingredients
-	they can check to manufacture acids, dyes, blackpowder, inks, petards, grenades,
-	poultices etc. They can identify many chemical substances.  In need they may be
-	able to substitute some substances during creation to make solutions of lesser
-	strength.  Possesion of relevant equipment such as a Mortar and Pestle should
-	provide	a bonus to the Check, at the GM's discretion.
+	A character with the Alchemy ability has the necessary ingredients they
+	can check to manufacture acids, dyes, blackpowder, inks, poultices etc.
+	They can identify many chemical substances.  In need they may be able to
+	substitute some substances during creation to make solutions of lesser
+	strength. Possesion of relevant equipment such as a Mortar and Pestle
+	should provide a bonus to the Check, at the GM's discretion.
       </p>
 
       <p>
-	The ingredient used to manufacture these items may be expensive.  Furthermore they
-	may have a limited shelf life as moisture in the air and internal alchmical reactions	
-	can reduce the efficacy of these items over time.  For these reasons alchemical
-	creations are often created before embarking on an endeavour and any unused items are
-	discarded afterwards.
+	The ingredient used to manufacture these items may be expensive.
+	Furthermore they may have a limited shelf life as moisture in the air
+	and internal alchmical reactions can reduce the efficacy of these items
+	over time. For these reasons alchemical	creations are often created
+	before embarking on an endeavour and any unused items are discarded
+	afterwards.
       </p>
 
       <p>
-	In addition the character can make lore checks regarding the chemical composition
-	of solutions, metals etc and might be able to conjecture on their origins and
-	purposes.
+	Mechanically, the Craft check id a deferred check and works as follows:
+	the character declares that they will craft a particular item while
+	they have access to their lab.  They then make the check to succeed at
+	a later time when they finally go to use the formulation.  The check
+	should be made with disadvantage if the formulation is old (does not
+	apply to black-powder).
+      </p>
+
+      <p>
+	In addition the character can make lore checks to recall knowledge
+	regarding the chemical composition of solutions, metals etc and might be
+	able to conjecture on their origins and purposes.
       </p>
       
       <p>
-	Two, as yet, unattained goals of alchemy are the transmutation of lead into gold,
-	and the creation of an elixir of immortality.  
+	Two, as yet, unattained goals of alchemy are the transmutation of lead
+	into gold, and the creation of an elixir of immortality.  
       </p>
+
+      <table colsep="0.8">
+	<standardtable/>
+	<tablespec><fixed>0.92</fixed></tablespec>
+	<tabletitle>Alchemy Crafting Table</tabletitle>
+	<tablelabel>fig:alchemy</tablelabel>
+
+	<tablerow>
+	  <th>Rank 1</th>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Dyes, Blackpowder, Inks, <ampersand/> Poultices</td>
+	</tablerow>
+
+	<tablerow>
+	  <th>Rank 2</th>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Strong Acids: see Oil of Vitriol, Aqua Fortis, Spirit of Salt,
+	  and Aqua Regia.</td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Limaceous Grease requires Ichor of a demon</td>
+	</tablerow>
+	
+	<tablerow>
+	  <th>Rank 4</th>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Various medicines, Poisons, War-Fire, Foaming Plaster, Coloidal
+	  Silver</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>Smoked Snigglets requires Fresh raw swamp snigglets</td>
+	</tablerow>
+	
+      	<tablerow>
+	  <td>Tears of Lethe requires Laudanum</td>
+	</tablerow>	
+
+	<tablerow>
+	  <th>Rank 6</th>
+	</tablerow>
+	
+	<tablerow>
+	  <td>Alkahest requires Bile of the White Worm</td>
+	</tablerow>
+	
+      	<tablerow>
+	  <td>Potion of Living Death requires Serpents Venom</td>
+	</tablerow>	
+	
+	<tablerow>
+	  <td>Ignis Sacer requires Moldy Bread</td>
+	</tablerow>
+      </table>
     </abilitydescription>
   </ability>
 
   
   <ability>
-    <abilitytitle>Alchemy, Greater</abilitytitle>
-    <abilityid>alchemy_greater</abilityid>    
-    <abilityranks from="1" to="5"/>
+    <abilitytitle>Artillery</abilitytitle>
+    <abilityid>artillery</abilityid>    
+    <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Missile Attack</name>
+      <checktype><missile-attack/></checktype>
+      <apcost><ap4/></apcost>
+      <range><ranged-extremely-long/></range>
+      <keywords><black-powder/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <any-success>Attack using artillery pieces.</any-success>      
+      <critsuccess>Deal 3×Damage</critsuccess>
+      <righteoussuccess>Deal 2×Damage</righteoussuccess>
+      <success>Deal Damage</success>
+      <fail>No Effect</fail>
+      <critfail>Roll on the ranged consequence table</critfail>
     </abilitycheck>
-    <prereqabilityrank>alchemy_2</prereqabilityrank>
-    <spline><p x="0" y="60"/></spline>
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><ap4/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </abilitycheck>
+    <prereqabilityref id="alchemy" rank="1"/>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character can prepare Alkahest (requires Bile of the White Worm),
-	a Potion of Living Death (requires serpents venom), Tears of Lethe
-	(requires Laudanum), Limaceous Grease (requires the ichor of a demon),
-	Smoked snigglets (requires fresh swamp snigglets), Ignis Sacer (requires
-	rye bread and a few weeks of time), or Spirits of Quickening.
+	The character is trained in the use of artillery in sieges or naval
+	warfare. They can arm, aim, fire and on some occasions repair artillery
+	pieces.
       </p>
     </abilitydescription>
   </ability>
-
+  
 
   <ability>
     <abilitytitle>Antiquarian</abilitytitle>
     <abilityid>antiquarian</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+    <abilitycheck> 
+      <name>Check</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>history_1</prereqabilityrank>
+    <prereqabilityref id="history" rank="1"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
       <p>
@@ -141,50 +216,30 @@
 
   
   <ability>
-    <abilitytitle>Barber</abilitytitle>
-    <abilityid>barber</abilityid>    
-    <abilityranks from="1" to="5"/>
-    <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
-    </abilitycheck>
-    <spline><p x="-90" y="450"/></spline>
-    <abilitydescription>
-      <p>
-	The character has an understanding of minor surgery:
-	setting bones, sewing sutures, trepanning, dentistry, cataract couchery,
-	pig-gelding, and cutting hair.
-      </p>
-    </abilitydescription>
-  </ability>
-
-  
-  <ability>
     <abilitytitle>Book Keeping</abilitytitle>
     <abilityid>book_keeping</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Check</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>mathematics_1</prereqabilityrank>
-    <spline><p x="-40" y="30"/></spline>
+    <prereqabilityref id="mathematics" rank="1"/>
+    <spline><p x="-20" y="30"/></spline>
     <abilitydescription>
       <p>
-	Book keeping encompasses accounting and financial abilities. 
-        Book keeping is used by merchants, clerks, and castellans, to manage 
-	finances.  With this ability an character can examine the books of a business to 
-	get an idea of how the business operates, whether it is doing well or badly,
-	how much debt is owed if any, where the money is coming from and going to,
-	and so on.
+	Book keeping encompasses accounting and financial abilities. Book
+	keeping is used by merchants, clerks, and castellans, to manage
+	finances.  With this ability an character can examine the books of a
+	business to get an idea of how the business operates, whether it is
+	doing well or badly, how much debt is owed if any, where the money is
+	coming from and going to, and so on.
       </p>
     </abilitydescription>
   </ability>
@@ -195,12 +250,24 @@
     <abilityid>book_learning</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Library Use Check</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <precondition>
+	Access to a library containing pertinent information.
+      </precondition>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess>
+	+9 to the skill result for Knowledge Checks made in the library.
+      </critsuccess>
+      <righteoussuccess>
+	+6 to the skill result for Knowledge Checks made in the library.
+      </righteoussuccess>  
+      <success>
+	+3 to the skill result for Knowledge Checks made in the library.
+      </success>
     </abilitycheck>
     <spline></spline>    
     <abilitydescription>
@@ -211,68 +278,44 @@
     </abilitydescription>
   </ability>
 
-  
+ 
   <ability>
-    <abilitytitle>Explosives</abilitytitle>
-    <abilityid>explosives</abilityid>
-    <abilityranks untrained="-6" from="1" to="5"/>
-    <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
-    </abilitycheck>
-    <prereqabilityrank>smoke_bomb_1</prereqabilityrank>
-    <spline><p x="0" y="30"/></spline>
-    <abilitydescription>
-      <p>
-  	The character knows how create explosives.  They keep on their person some explosive material at all
-	times which may be used to create an ersatz grenade or petard.  A grenade is an anti personal explosive
-	thrown at a target which does an area of effect damage.  A petard is a breaching charge used to blow
-	a hole in a door or thin wall.  When required the character makes a check.  If unsuccesful the bomb is
-	a dud and fails to ignite.  If successful the bomb they are carrying lights successfully and performs
-	as the equipment item of the same name.  Note that these explosives are a little unstable, and a little
-	unweildy.  The character only carries enough ingredients to create one of these items, after which they
-	must create more in their lab.
-      </p>      
-    </abilitydescription>
-  </ability>  
-  
-
-  <ability>
-    <abilitytitle>Grand Discovery</abilitytitle>
+    <abilitytitle>Magnum Opus</abilitytitle>
     <abilityid>grand_discovery</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilitytrigger>
-      <name>Trigger</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <keywords></keywords>
-      <precondition>Can make this check once for each rank gained in this ability.  The character must have
-      access to a laboratory in order to do make this check.</precondition>
+    <abilityauxiliary>
+      <name>Grand Discovery</name>
+      <checktype><fixme/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><auxiliary/></keywords>      
+      <precondition>
+	Can make this check once for each rank gained in this ability.  The
+	character must have access to a laboratory in order to do make this
+	check.
+      </precondition>
       <effect>Roll on the table below</effect>
-    </abilitytrigger>
-    <prereqabilityrank>alchemy_2</prereqabilityrank>
-    <spline><p x="70" y="30"/></spline>
+    </abilityauxiliary>
+    <prereqabilityref id="alchemy" rank="5"/>
+    <spline><p x="40" y="60"/></spline>
     <abilitydescription>
       <p>
-	The alchemist makes a Grand Discovery!! (maybe).
-	Every time the character gains a rank in this ability roll 2d12 on the
-	Grand Discovery table.  If the character makes several Grand Discoveries and
-	receives a duplicate result then they reroll, except for the Disappointment,
-	Transmutation and Surprise Discovery results.  Mastery for this ability is one,
-	so the character only needs to make this check once before being able to gain
-	the next rank of this ability.  Only one check is allowed per rank.   It takes
-	the character 3d4 days to perform the applied experimentation for this check,
-	for which they require a suitably equipped laboratory.  This experimentation
-	must be done prior to making the check.
+	The alchemist makes a Grand Discovery!! (maybe). Every time the
+	character gains a rank in this ability roll 2d12 on the Grand Discovery
+	table.  If the character makes several Grand Discoveries and receives a
+	duplicate result then they reroll, except for the Disappointment,
+	Transmutation and Surprise Discovery results.  Mastery for this ability
+	is one, so the character only needs to make this check once before being
+	able to gain the next rank of this ability.  Only one check is allowed
+	per rank.   It takes the character 3d4 days to perform the applied
+	experimentation for this check, for which they require a suitably
+	equipped laboratory.  This experimentation must be done prior to making
+	the check.
       </p>
 
-      <table>
-	<tablecategory>Standard</tablecategory>
-	<tablespec><fixed>0.09</fixed><fixed>0.8</fixed></tablespec>
+      <table colsep="0.8">
+	<standardtable/>
+	<tablespec><fixed>0.11</fixed><fixed>0.72</fixed></tablespec>
 	<tabletitle>Grand Discoveries Table</tabletitle>
 	<tablelabel>fig:grand-discoveries</tablelabel>
 
@@ -288,8 +331,10 @@
 	
 	<tablerow>
 	  <td>2</td>
-	  <td>Untamed Brute.  The characters brutish nature comes to the fore at times
-	  of stress.  Gain the “Untamed Brute” Aspect.</td>
+	  <td>
+	    Untamed Brute.  The characters brutish nature comes to the fore at
+	    times of stress.  Gain the “Untamed Brute” Aspect.
+	  </td>
 	</tablerow>
 	
 	<tablerow>
@@ -309,16 +354,17 @@
 
 	<tablerow>
 	  <td>18-19</td>
-	  <td>Transmutation.  After years of practice you finally are able to transmute
-	  lead into gold.  Unfortunately you can't work out how to repeat the process.
-	  Fortunatly you transmute a lot of lead the first time.</td>
+	  <td>Transmutation.  After years of practice you finally are able to
+	  transmute lead into gold.  Unfortunately you can't work out how to
+	  repeat the process. Fortunatly you transmuted a lot of lead the first
+	  time.</td>
 	</tablerow>
 	
 	<tablerow>
 	  <td>20</td>
-	  <td>Arcane Knowledge.  Gain 1x promotions in magic and 2x promotions in
-	  fine arts, lore or special abilities (promotions cannot be used to gain more
-	  Grand Discoveries)</td>
+	  <td>Arcane Knowledge.  Gain 1x promotions in magic and 2x promotions
+	  in fine arts, lore or special abilities (promotions cannot be used to
+	  gain more Grand Discoveries)</td>
 	</tablerow>
 	
 	<tablerow>
@@ -354,15 +400,18 @@
     <abilityid>history</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>book_learning_1</prereqabilityrank>
-    <spline><p x="-60" y="45"/></spline>
+    <prereqabilityref id="book_learning" rank="2"/>
+    <spline><p x="0" y="60"/><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
 	History is the study of the events of the civilized peoples.
@@ -377,39 +426,45 @@
     <abilityid>law</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>book_learning_2</prereqabilityrank>    
-    <spline><p x="75" y="15"/></spline>
+    <prereqabilityref id="book_learning" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
     <specializations>
       <specialization>Laibstadt</specialization>
       <specialization>Hibernia</specialization>
     </specializations>    
     <abilitydescription>
       <p>
-	An understanding of the law grants the character insight into the way society
-	works.  The practice of law invariably leads to the heart of industry and
-	the seats of power.  Characters may be able to discern the motive behind
-	political machinations and they may be able to cite a legal precedent in
-	order to compel or cease certain courses of events in a civilized society.	
+	An understanding of the law grants the character insight into the way
+	society works. The practice of law invariably leads to the heart of
+	industry and the seats of power. Characters may be able to discern the
+	motive behind political machinations and they may be able to cite a
+	legal precedent in order to compel or cease certain courses of events in
+	a civilized society.
       </p>
 
       <p>
-	Law is the study of the laws of a particular society.  The study of the
-	laws of one society is not necessarilly applicable to another.  When choosing
-	the law ability the player must specify which legal system they are studying.
+	Law is the study of the laws of a particular society. The study of the
+	laws of one society is not necessarilly applicable to another. When
+	choosing the law ability the player must specify which legal system they
+	are studying.
       </p>
 
       <p>
 	At first rank this represents having a good, but not professional,
-	understanding of the law of some land.  Usually, the characters homeland.
-	At higher ranks this ability represents a professional rank of understanding
-	of the law, and some understanding of the laws in surrounding regions.  
+	understanding of the law of some land. Usually, the characters homeland.
+	At higher ranks this ability represents a professional rank of
+	understanding of the law, and some understanding of the laws in
+	surrounding regions.
       </p>
     </abilitydescription>
   </ability>
@@ -420,20 +475,24 @@
     <abilityid>mathematics</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>      
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>book_learning_1</prereqabilityrank>
-    <spline><p x="0" y="100"/></spline>
+    <prereqabilityref id="book_learning" rank="1"/>
+    <spline><p x="0" y="150"/><p x="-40" y="30"/></spline>
     <abilitydescription>
       <p>
 	Maths is the lingua franca of science.  A basic understanding
 	of maths is a prerequisite for many other abilities.  It can be
-	applied in a very large and diverse range of circumstances.
+	applied in a very large and diverse range of circumstances including
+	cryptography.
       </p>
     </abilitydescription>
   </ability>
@@ -444,15 +503,18 @@
     <abilityid>natural_history</abilityid>    
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>book_learning_1</prereqabilityrank>
-    <spline><p x="0" y="70"/><p x="50" y="30"/><p x="0" y="90"/></spline>
+    <prereqabilityref id="book_learning" rank="2"/>
+    <spline><p x="0" y="200"/><p x="50" y="30"/></spline>
     <abilitydescription>
       <p>
 	The study of nature. The character has some knowledge of the flora
@@ -477,15 +539,18 @@
     <abilityid>occult</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>book_learning_1</prereqabilityrank>
-    <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
+    <prereqabilityref id="book_learning" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	The study of religions, their belief systems, rituals and history.
@@ -502,9 +567,9 @@
       </p>
       
       <p>
-	At fifth rank the character can enter a trance that releases stress, appears
-	as if the character is dead, can reduce the characters oxygen consumption,
-	and reduce the effect of poisonous miasmas.
+	At fifth rank the character can enter a trance that releases stress,
+	appears as if the character is dead, can reduce the characters oxygen
+	consumption, and reduce the effect of poisonous miasmas.
       </p>	
     </abilitydescription>
   </ability>
@@ -515,14 +580,17 @@
     <abilityid>physician</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>    
-    <prereqabilityrank>natural_history_2</prereqabilityrank>
+    <prereqabilityref id="natural_history" rank="2"/>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -536,27 +604,30 @@
     </abilitydescription>
   </ability>
 
-  
   <ability>
     <abilitytitle>Physics</abilitytitle>
     <abilityid>physics</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>mathematics_1</prereqabilityrank>
+    <prereqabilityref id="mathematics" rank="2"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
       <p>
-	Physics involves the study of the natural laws of the universe, movement and
-	energy, celestial mechanics, astronomy and meterology.  Its practioners usually make
-	a clear	deliniation between the study of physics and the study of the wyrd, unworldly
-	and unnatural laws (possibly to protect themselves from pogroms and witch hunts).
+	Physics involves the study of the natural laws of the universe, movement
+	and energy, celestial mechanics, astronomy and meterology.  Its
+	practioners usually make a clear deliniation between the study of
+	physics and the study of the wyrd, unworldly and unnatural laws
+	(possibly to protect themselves from pogroms and witch hunts).
       </p>
     </abilitydescription>
   </ability>
@@ -567,30 +638,34 @@
     <abilityid>politics</abilityid>  
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>book_learning_1</prereqabilityrank>
-    <spline><p x="0" y="50"/><p x="120" y="60"/></spline>
+    <prereqabilityref id="book_learning" rank="1"/>
+    <spline><p x="0" y="50"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
 	This ability represents the study of the machinations that occur in the
-	upper ranks of power in society, its application, its history and its heraldry.
-	This includes political theory: Real Politics and Machiavellian dealings
-	and important historical treaties and maneveurings.
+	upper ranks of power in society, its application, its history and its
+	heraldry. This includes political theory: Real Politics and
+	Machiavellian dealings and important historical treaties and
+	maneveurings.
       </p>
 
       <p>
-	At first rank the character has knowledge of the history and current affairs
-	of some local regions nobility and royalty.  They know the heraldic insignias
-	of these nobles and important state organizations.  They understand
-	the laws of succession in that region.  They know most of the
-	commonly known court intrigue and have a decent understanding of the machinations and
-	manoevering of the ruling classes.
+	At first rank the character has knowledge of the history and current
+	affairs of some local regions nobility and royalty.  They know the
+	heraldic insignias of these nobles and important state organizations.
+	They understand the laws of succession in that region.  They know most
+	of the commonly known court intrigue and have a decent understanding of
+	the machinations and manoevering of the ruling classes.
       </p>
 
       <p>
@@ -606,15 +681,18 @@
     <abilityid>potions</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>alchemy_1</prereqabilityrank>	
-    <spline><p x="-40" y="30"/></spline>
+    <prereqabilityref id="alchemy" rank="4"/>
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
 	The character knows how to make magical potions given
@@ -625,75 +703,91 @@
 
 
   <ability>
-    <abilitytitle>Smoke Bomb</abilitytitle>
-    <abilityid>smoke_bomb</abilityid>    
-    <abilityranks from="1" to="3"/>
+    <abilitytitle>Explosives</abilitytitle>
+    <abilityid>explosives</abilityid>
+    <abilityranks untrained="-6" from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <mastery>
-	<any-success>Defensive checks against missile attacks made at +2×Rank</any-success>
-      </mastery>
-      <fate>
-	<blessed>Fast: This is a free action.</blessed>
-	<!-- <boon></boon> -->
-	<!-- <indifferent></indifferent> -->
-	<bane>Fumble: Lose remaining actions this round</bane>
-	<damned>Explosion: Suffer d4 damage</damned>
-      </fate>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
     </abilitycheck>
-    <prereqabilityrank>alchemy_lesser_1</prereqabilityrank>
-    <spline><p x="-60" y="30"/></spline>
+
+    <abilitycheck>
+      <name>Smoke Bomb Supply</name>      
+      <checktype><supply/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>            
+      <any-success>
+	Defensive checks against missile attacks made at +2×Rank
+      </any-success>
+    </abilitycheck>
+
+    <abilitycheck>
+      <name>Petard Supply</name>
+      <checktype><supply/></checktype>
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <precondition>Rank 3 in Explosives</precondition>      
+      <counter><default-lore-sv-hard/></counter>            
+      <any-success>
+	Defensive checks against missile attacks made at +2×Rank
+      </any-success>
+    </abilitycheck>
+    
+    <prereqabilityref id="alchemy" rank="4"/>
+    <spline>
+      <p x="75" y="30"/>
+    </spline>
     <abilitydescription>
       <p>
-  	The character has learned to create smoke bombs and keeps upon his person a smoke bomb that he has previously created.
-	When required the character makes a check.  If unsuccesful the bomb is a dud and fails to ignite. In the event of failure
-	further attempts at lighting the bomb may be made.
-	If successful the smoke bomb they are carrying lights successfully creates a billowing cloud
-	of grey smoke surrounding the bomb with a radius of
-	<measurement><imperial>20'</imperial><metric>6m</metric></measurement>
-	on the first turn <measurement><imperial>30'</imperial><metric>9m</metric></measurement> on the
-	second turn and <measurement><imperial>40'</imperial><metric>12m</metric></measurement> on the third
-	turn.
+  	The character knows how create explosives.  They keep on their person
+	some explosive material at all times which may be used to create an
+	ersatz grenade or petard.  A grenade is an anti personal explosive
+	thrown at a target which does an area of effect damage.  A petard is a
+	breaching charge used to blow	a hole in a door or thin wall.  When
+	required the character makes a check.  If unsuccesful the bomb is a dud
+	and fails to ignite.  If successful the bomb they are carrying lights
+	successfully and performs as the equipment item of the same name.  Note
+	that these explosives are a little unstable, and a little unweildy. The
+	character only carries enough ingredients to create one of these items,
+	after which they must create more in their lab.
+      </p>
+
+      <p>
+  	The character has learned to create smoke bombs and keeps upon his
+	person a smoke bomb that he has previously created.  When required the
+	character makes a check.  If unsuccesful the bomb is a dud and fails to
+	ignite. In the event of failure further attempts at lighting the bomb
+	may be made. If successful the smoke bomb they are carrying lights
+	successfully creates a billowing cloud of grey smoke surrounding the
+	bomb with a radius of <m6/> on the first turn <m9/> on the second turn
+	and <m12/> on the third turn.
       </p>
       
       <p>
-	This cloud gives +3×Rank to defensive rolls against missile attacks.  It is clearly visible during
-	the day, but may not be noticeable at night depending on the lighting.    The cloud also provides
-	+Rank against area-of-effect attacks.   Note that after successfully lighting the bomb, the character
-	must take a long rest before they can build another bomb which allows them to make this check again.
-	Smoke bombs take time to prepare and are do not age well, so the character cannot produce a never ending
-	stream of smoke bombs.  Furthermore smoke bombs require a small amount of specialised equipment and the
-	character must have access to this equipemnt to create smoke bombs.  The smoke bomb may be thrown as if
-	it were a rock.  If the character uses a thurible this grants a +1 to the check and also allows the
-	smoke bomb to be thown as if it were a sling (if not retrieved the thurible will then be lost).
-      </p>
+	This cloud gives +3×Rank to defensive rolls against missile attacks. It
+	is clearly visible during the day, but may not be noticeable at night
+	depending on the lighting. The cloud also provides +Rank against
+	area-of-effect attacks. Note that after successfully lighting the bomb,
+	the character must take a long rest before they can build another bomb
+	which allows them to make this check again. Smoke bombs take time to
+	prepare and are do not age well, so the character cannot produce a never
+	ending stream of smoke bombs.  Furthermore smoke bombs require a small
+	amount of specialised equipment and the character must have access to
+	this equipemnt to create smoke bombs.  The smoke bomb may be thrown as
+	if it were a rock.  If the character uses a thurible this grants a +1 to
+	the check and also allows the smoke bomb to be thown as if it were a
+	sling (if not retrieved the thurible will then be lost).
+      </p>      
     </abilitydescription>
   </ability>
-
-  
-  <ability>
-    <abilitytitle>Thaumaturgy</abilitytitle>
-    <abilityid>thaumaturgy</abilityid>
-    <abilityranks untrained="-6" from="1" to="5"/>
-    <abilitycheck>
-      <name>Check</name>            
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>      
-    </abilitycheck>
-    <prereqabilityrank>book_learning_1</prereqabilityrank>
-    <spline><p x="0" y="30"/><p x="75" y="20"/></spline>
-    <abilitydescription>
-      <p>
-	Thaumaturgy is the academic and theoretical study of magic, mythos
-	and the occult.  This ability does not extend to casting spells, though
-	it is a prerequisite to do so.
-      </p>	
-    </abilitydescription>
-  </ability>  
 </abilitygroup>

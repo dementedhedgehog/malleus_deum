@@ -1,0 +1,33 @@
+<chapter>
+  <chaptertitle>Hazards<label>ch:hazards</label></chaptertitle>
+
+  <section>
+    <sectiontitle>Hazards</sectiontitle>
+    <p>
+      Hazards are traps, environmental dangers, and mystical effects that are
+      usually antagonistic to the PCs. They provide the mechanism for resolving
+      conflict between PCs and their environment.
+    </p>
+
+    
+    <img id="anon_demon"/>
+    <img id="pyle_knights"/>
+
+    {% from "docs/macro_ability.xml" import build_ability with context %}
+    
+    {% for ag in ability_groups if ag.is_hazards_family() %}
+    <subsection>
+      <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
+
+      {{ ag.get_description() }}
+
+      {% for ability in ag.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
+    </subsection>    
+    {% endfor %}
+
+    <img id="anon_crypt"/>    
+  </section>
+
+</chapter>

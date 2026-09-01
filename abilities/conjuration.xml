@@ -4,11 +4,12 @@
     <abilitygrouptitle>Conjuration</abilitygrouptitle>
     <abilitygroupid><conjuration/></abilitygroupid>
     <abilitygroupfamily><magic/></abilitygroupfamily>
+    <slug>Do not call upon that which you cannot put down.</slug>
     <abilitygroupdescription>
       <p>
-	Conjuration is the most versatile, powerful and therefore hardest to control and
-	most dangerous of all magical schools.   It involves harnessing raw magic and 
-	Conjuration involves the unsophisticated use of raw magic powers.
+	Conjuration is the most versatile, powerful and	therefore hardest to
+	control and most dangerous of all magical schools.  It involves
+	harnessing raw magical powers by the caster directly.
       </p>
     </abilitygroupdescription>
     <enabled/>
@@ -17,15 +18,18 @@
 
   <ability>
     <abilitytitle>Conjuration Lore</abilitytitle>
-    <abilityid>conjuration</abilityid>    
+    <abilityid>conjuration</abilityid>
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>      
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>                
+      <apcost><default-skill-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>      
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
     <spline></spline>
     <abilitydescription>
@@ -42,36 +46,32 @@
     <abilitytitle>Chain Lightning</abilitytitle>
     <abilityid>chain_lightning</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap3/></actiontype>
+    <abilitycheck>
+      <name>Cast</name>
+      <checktype><magic-attack/></checktype>                
+      <poolcost>1</poolcost>
+      <apcost><ap3/></apcost>
       <range><ranged-medium/></range>
-      <keywords><attack/><magicpool/></keywords>
-      <dc><opponents-defend/></dc>
+      <keywords><physical-attack/><magicpool/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
       <dmg>12+Rank Damage</dmg>
-      <mastery>
-	<any-success>Deal damage to one target</any-success>
-	<righteoussuccess>May make an additional chain lightning attack as a
-	free action.</righteoussuccess>
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
-    </abilityattack>
-    <prereqabilityrank>conjuration_1</prereqabilityrank>
-    <spline><p x="90" y="30"/></spline>
+      <any-success>Deal damage to one target</any-success>
+      <righteoussuccess>May make an additional chain lightning attack as a
+      free action.</righteoussuccess>
+    </abilitycheck>
+    <prereqabilityref id="conjuration" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p>
-	The caster acts as a conduit for eldritch energies,
-	directing them in an arc at a target.  First the caster
-	checks magic to gather the energy.  Then they roll to a
-	2d12+Rank against the targets defence.  If the arc successfuls
-	hits, the caster can arc the lightning to a subsequent
-	target making another to hit roll, and so on until the caster
-	misses or runs out of potential targets.  The initial target
-	can be any opponent within range
-	<measurement><imperial>60'</imperial><metric>20m</metric></measurement>.
-	When choosing subsequent targets the caster must choose the
-	closest untargeted enemy to the last target.  No target can
-	be struck more than once.
+	The caster acts as a conduit for eldritch energies, directing them in an
+	arc at a target. First the caster checks magic to gather the energy.
+	Then they roll to a 2d12+Rank against the targets defence. If the arc
+	successfuls hits, the caster can arc the lightning to a subsequent
+	target making another to hit roll, and so on until the caster misses or
+	runs out of potential targets. The initial target can be any opponent
+	within range <m20/>. When choosing subsequent targets the caster must
+	choose the closest untargeted enemy to the last target. No target can be
+	struck more than once.
       </p>
 
       <p>
@@ -85,31 +85,29 @@
     <abilitytitle>Eldritch Push</abilitytitle>
     <abilityid>eldritch_push</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap2/></actiontype>
+    <abilitycheck>
+      <name>Magic-Attack</name>
+      <checktype><magic-attack/></checktype>                
+      <poolcost>2</poolcost>
+      <apcost><ap2/></apcost>
       <range><ranged-medium/></range>
+      <keywords><physical-attack/><check/><magicpool/></keywords>
       <effect>Target takes damage and is Pushed DC: 15+Rank</effect>
-      <dc><opponents-defend/></dc>
-      <dmg>3+Rank</dmg>
-      <mastery>
-	<critsuccess>Target three opponents</critsuccess>
-	<righteoussuccess>Target two opponents</righteoussuccess>
-	<success>Target one opponent</success> 
-	<grimfail>Caster is knocked back <measurement><imperial>10'</imperial><metric>5m</metric></measurement> and is Prone and takes d3 damage</grimfail>
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>            
-    </abilityattack>
-    <prereqabilityrank>conjuration_2</prereqabilityrank>
-    <spline><p x="90" y="30"/></spline>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>3+Rank</dmg>      
+      <critsuccess>Target three opponents</critsuccess>
+      <righteoussuccess>Target two opponents</righteoussuccess>
+      <success>Target one opponent</success> 
+      <grimfail>Caster is knocked back <m6/> and is Prone and takes d3 damage</grimfail>
+    </abilitycheck>
+    <prereqabilityref id="conjuration" rank="2"/>
+    <spline><p x="0" y="30"/><p x="60" y="60"/></spline>
     <abilitydescription>
       <p>
-	The caster shoots a raw stream of thaumic energy from
-	their hands at one or more targets.  If the stream hits the target, the target
-	suffers damage and is thrown
-	<measurement><imperial>30'</imperial><metric>10m</metric></measurement>
-	away from the caster.  For Large creatures the distance	thrown is reduced at
-	the GMs discretion.
+	The caster shoots a raw stream of thaumic energy from their hands at one
+	or more targets. If the stream hits the target, the target suffers
+	damage and is thrown <m10/> away from the caster.  For Large creatures
+	the distance thrown is reduced at the GMs discretion.
       </p>
     </abilitydescription>    
   </ability>
@@ -119,27 +117,22 @@
     <abilitytitle>Eldritch Grasp</abilitytitle>
     <abilityid>eldritch_grasp</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap1/></actiontype>
+    <abilitycheck>
+      <name>Magic-Attack</name>
+      <checktype><magic-attack/></checktype>                
+      <poolcost>2</poolcost>
+      <apcost><ap1/></apcost>
       <range><ranged-medium/></range>
-      <keywords><attack/><magicpool/></keywords>
+      <keywords><physical-attack/><magicpool/><check/></keywords>
       <effect>Target takes damage and is Pushed or Pulled DC: 15+Rank</effect>
-      <dc><opponents-defend/></dc>
+      <counter><opponents-physical-defence/></counter>
       <dmg>5+Rank</dmg>
-      <mastery>
-	<!-- <critsuccess>Target three opponents</critsuccess> -->
-	<!-- <righteoussuccess>Target two opponents</righteoussuccess> -->
-	<!-- <success>Target one opponent</success>  -->
-	<righteoussuccess>Target</righteoussuccess>
-	<success><aka/></success> 
-	<grimfail>X</grimfail> 
-	<critfail>t</critfail>
-	<!-- <grimfail>Caster is knocked back <measurement><imperial>10'</imperial><metric>5m</metric></measurement> and is Prone and takes d3 damage</grimfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>            
-    </abilityattack>
-    <prereqabilityrank>eldritch_push_2</prereqabilityrank>
+      <righteoussuccess>Target</righteoussuccess>
+      <success><aka/></success> 
+      <grimfail>X</grimfail> 
+      <critfail>t</critfail>
+    </abilitycheck>
+    <prereqabilityref id="eldritch_push" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
@@ -150,9 +143,8 @@
       </p>
 
       <p>
-	If they hit the target, the target suffers damage
-	and is either pushed or pulled  <measurement><imperial>30'</imperial><metric>10m</metric></measurement>
-	in any direction.  
+	If they hit the target, the target suffers damage and is either pushed or
+	pulled <m10/> in any direction.  
       </p>
     </abilitydescription>    
   </ability>
@@ -163,47 +155,38 @@
     <abilityid>scry</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Cast</name>
+      <checktype><cast/></checktype>                
+      <poolcost>2</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><magicpool/><ritual/></keywords>
-      <dc><dc17/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_2" elem_name="fate"/>            
+      <keywords><magicpool/><ritual/><check/></keywords>
+      <precondition>Item with thaumic contagion</precondition>
+      <counter><sv17/></counter>
+      <any-success><gm-fiat/></any-success>
     </abilitycheck>
-    <prereqabilityrank>conjuration_2</prereqabilityrank>
-    <spline><p x="-60" y="60"/></spline>
+    <prereqabilityref id="conjuration" rank="2"/>
+    <spline><p x="0" y="30"/><p x="-60" y="60"/></spline>
     <abilitydescription>
       <p>
-    	The character can view events from the past.  (Viewing events in
-    	the future is incredibly difficult and unreliable.  See Scry, Greater).
+    	The character can view events from the past using an item as a thaumic
+	anchor.  (Viewing events in the future is incredibly difficult and
+	unreliable. See Scry, Greater).
       </p>
 
       <p>
-    	The caster first names a target, holding items with contagious links to the
-	target, then checks to see whether the spell succeeds. If it does, they see
-	an important scene from targets life (the GM narrates the scene to the player).
-	The caster may then choose to look far forward, forward, back or far back in
-	time.  Each time the player attempts to view another scene from the targets
-	life they make another check with their remaining magic pool against a DC 9.
-    	The caster may continue to view scenes from the targets life until they
-    	fail or choose to stop scrying.
+    	The caster first names a target, holding items with contagious links to
+	the target, then checks to see whether the spell succeeds. If it does,
+	they see an important scene from targets life (the GM narrates the scene
+	to the player). The caster may then choose to scry for one or more
+	important past events associated with those items.
       </p>
 
       <p>
-    	Contagion is very important to this spell.  A good contagious link, the
-    	targets blood, or hair for example, can	reduce the difficulty of this
-    	spell by five or more.  Subsequent contagious items have reduced effectiveness.
-    	For example the GM might rule that if the caster has the blood and hair of the target
-    	an item of their clothes and their diary the DC is reduced by from fifteen by ten down
-    	to five.  These contagious links diminish rapidly and so will be of little advantage
-    	after a day or two.  Most intelligent adversaries will take care not to allow contagious
-    	items to be obtained by their opponents.
-    	If the caster fails any checks while scrying their contagious link is destroyed.
+    	Contagion is very important for this spell to work. A good contagious
+	link to the subject, <ie/> the targets blood, or hair, can reduce the
+	difficulty of this spell by multiple shifts. Subsequent contagious items
+	have reduced effectiveness. 
       </p>
     </abilitydescription>
   </ability>
@@ -215,24 +198,22 @@
     <abilityranks from="1" to="2"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><cast/></checktype>                
+      <poolcost>1</poolcost>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><magicpool/></keywords>
-      <dc><dc17/></dc>
-      <mastery>
-	<any-success>FIXME</any-success>
-	<!-- <critsuccess></critsuccess> -->
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv17/></counter>
+      <any-success><gm-fiat/></any-success>
     </abilitycheck>
-    <prereqabilityrank>scry_2</prereqabilityrank>	
+    <prereqabilityref id="scry" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
-	The character can view events from a targets present and their future as well
-	as their past. 	This spell works like the lesser Scry but because the future
-	is not predetermined the results are often very unreliable and inaccurate.
+	The character can view events from a targets present and their future as
+	well as their past. This spell works like the lesser Scry but because
+	the future is not predetermined the results are often very unreliable
+	and inaccurate.
       </p>
     </abilitydescription>    
   </ability>
@@ -243,19 +224,17 @@
     <abilityid>wither</abilityid>    
     <abilityranks from="1" to="3"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><ap1/></actiontype>
-      <range><melee/></range>
-      <keywords></keywords>
-      <dc><opponents-defend/></dc>
-      <mastery>
-	<any-success>Deal 5+Rank Damage.  The caster heals half the damage dealt.</any-success>
-	<!-- <critsuccess></critsuccess> -->
-      </mastery>
-      <xdef fname="pool_cost_1" elem_name="fate"/>            
+      <name>Magic-Attack</name>
+      <checktype><magic-attack/></checktype>                
+      <poolcost>1</poolcost>
+      <apcost><ap1/></apcost>
+      <range><reach/></range>
+      <keywords><check/><magicpool/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <any-success>Deal 5+Rank Damage.  The caster heals half the damage dealt.</any-success>
     </abilitycheck>
-    <prereqabilityrank>conjuration_2</prereqabilityrank>
-    <spline><p x="-90" y="30"/></spline>
+    <prereqabilityref id="conjuration" rank="2"/>
+    <spline><p x="0" y="60"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	The caster rolls to grab an opponent. On success the caster acts as a conduit to

@@ -6,58 +6,66 @@
     <abilitygroupfamily><general/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-        Represents those abilities used to live in the wilderness: hunting, tracking,
-	wayfinding, survivalism and woodcraft.
+        Represents those abilities used to live in the wilderness: hunting,
+	tracking, wayfinding, survivalism and woodcraft.
       </p>
 
       <p>
-	The biomes for these abilities include: Deserts, Plains/Woodlands, Marshes,
-	Hills, Forests, Mountains, Tundra, Jungles, and the Seas.  Plains and Woodlands
-	are sparsely wooded, often due to logging.  This land is more common in ``civilized''
-	areas.  Forests tend to be deeper, darker, and larger bodies, often never before logged, woodlands.
+	The biomes for these abilities include: Deserts, Plains/Woodlands,
+	Marshes, Hills, Forests, Mountains, Tundra, Jungles, and the Seas.
+	Plains and Woodlands are sparsely wooded, often due to logging. This
+	land is more common in ``civilized'' areas.  Forests tend to be deeper,
+	darker, and larger bodies, often never before logged, woodlands.
       </p>
 
       <p>
-	There is some overlap between biomes so a character with an ability for one biome may make checks
-	for a "related" biome at a higher DC than normal.  For example suppose a character with
-	FIXME survivalism Hills 1 wants to make a check while in a Forests biome, the GM may allow them
-	to make the check at a harder DC than usual, because of the similarity between these biomes (they
-	may share flora and fauna).
-      </p>      
+	There is some overlap between biomes so a character with an ability for
+	one biome may make checks for a "related" biome at a higher DC than
+	normal.  For example suppose a character with FIXME survivalism Hills 1
+	wants to make a check while in a Forests biome, the GM may allow them to
+	make the check at a harder DC than usual, because of the similarity
+	between these biomes (they may share flora and fauna).
+      </p>
+      <img id="mj_wilderness"/>
     </abilitygroupdescription>
     <dontdrawskilltree/>
     <enabled/>
   </abilitygroupinfo>
 
-  
   <ability>
     <abilitytitle>Dungeoneering</abilitytitle>
     <abilityid>dungeoneering</abilityid>
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="mastery"/>
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <checktype><craft/></checktype>
+      <apcost><default-skill-apcost/></apcost>
+      <range><self/></range>
+      <keywords><physical/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
     </abilitycheck>
-    <!-- <prereqabilityrank>lore_1</prereqabilityrank> -->
-    <!-- <spline><p x="-60" y="30"/></spline> -->
+    
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-lore-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </abilitycheck>
     <abilitydescription>
+	<p>
+	  Used for living under the ground: detect slope,
+	  detect depth, find direction, detect wind currents
+	  underground, detect secret doors, detect traps
+	  underground, detect poison gases and so on.
+	</p>
       <p>
-	Skills used for living under the ground: detect slope, detect depth,
-	find direction.
+	Skills used for living under the ground: detect slope,
+	detect depth, find direction.
       </p>
     </abilitydescription>
   </ability>
@@ -69,24 +77,23 @@
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="mastery"/>
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <checktype><craft/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><self/></range>
+      <keywords><physical/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
     </abilitycheck>
-    <!-- <prereqabilityrank>lore_1</prereqabilityrank> -->
-    <!-- <spline><p x="-30" y="60"/></spline> -->
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-lore-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </abilitycheck>
     <specializations>
       <specialization>Tundra</specialization>
       <specialization>Jungles</specialization>
@@ -103,12 +110,17 @@
       </p>
 
       <p>
-	This ability includes constructing make-shift shelters, starting fires in
-	challenging conditions, finding water, trapping and the use of snares.  Normally this is not an issue 
-	for characters.  However, when the cold north winds start to howl and the 
-	snow falls, when food runs low, or when alone in the burning deserts survival
-	becomes	difficult and someone should test against this ability.
-        <indexentry>Traps<subentry>create Survivalism (Wilderness)</subentry></indexentry>	
+	This ability includes constructing make-shift shelters, starting
+	fires in challenging conditions, finding water, trapping and the
+	use of snares.  Normally this is not an issue for characters.
+	However, when the cold north winds start to howl and the snow
+	falls, when food runs low, or when alone in the burning deserts
+	survival becomes difficult and someone should test against this
+	ability.
+        <indexentry>
+	  <entry>Traps</entry>
+	  <subentry>create Survivalism (Wilderness)</subentry>
+	</indexentry>	
       </p>
       
       <p>
@@ -126,29 +138,30 @@
   
 
   <ability>
-    <abilitytitle>Hunting, Scouting and Tracking</abilitytitle>
+    <abilitytitle>Hunting, Scouting <ampersand/> Tracking</abilitytitle>
     <abilityid>hunting</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>
-      <xdef fname="lore_defaults" elem_name="range"/>
-      <xdef fname="lore_defaults" elem_name="dc"/>
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="mastery"/>
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><gm-fiat/></apcost>
+      <range><self/></range>
+      <keywords><physical/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
     </abilitycheck>
-    <!-- <prereqabilityrank>lore_1</prereqabilityrank> -->
-    <!-- <spline><p x="-30" y="60"/></spline> -->
+
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><default-lore-apcost/></apcost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </abilitycheck>
+    
     <specializations>
       <specialization>Tundra</specialization>
       <specialization>Jungles</specialization>
@@ -189,11 +202,17 @@
       </p>
 
       <p>
-        <indexentry>Detect Traps<subentry>see Hunting (Wilderness)</subentry></indexentry>
-        <indexentry>Traps<subentry>see Hunting (Wilderness)</subentry></indexentry>
+        <indexentry>
+	  <entry>Detect Traps</entry>
+	  <subentry>see Hunting (Wilderness)</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Traps</entry>
+	  <subentry>see Hunting (Wilderness)</subentry>
+	</indexentry>
 	Scout can be used to detect traps, snares, lures etc in the wilderness.
-	In urban environments use the Notice ability, and use a
-	Perception Check in other cases.
+	In urban environments use the Notice ability, and use a Perception Check
+	in other cases.
       </p>	            
     </abilitydescription>
   </ability>  

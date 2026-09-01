@@ -19,26 +19,26 @@
     <abilitytitle>Cloak Fighting</abilitytitle>
     <abilityid>cloak_fighting</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
-    <abilitydefend>
+    <abilitycountercheck>
       <name>Defend</name>
-      <actiontype><reaction/></actiontype>
+      <checktype><fixme/></checktype>
+      <apcost><reaction/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><opponents-attack/></dc>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>                  
-    </abilitydefend>
+      <keywords><countercheck/></keywords>
+      <counter><opponents-physical-attack/></counter>
+    </abilitycountercheck>
     <spline><p x="90" y="90"/></spline> 
     <abilitydescription>
       <p>
-	Reaction to being attacked with a <emph>Piercing</emph> weapon.  The character
-        makes a cloak fighting check to use their cloak to <emph>Block</emph> the
-        attack.  The character should be wearing a cloak, but a
-	character can improvise by using a blanket, curtain, tablecloth <etc/> if they
-	have to.  On a success the attack does no damage, with boon the character can
-	perform an opposed Strength check to disarm the attacker, with bane the
-	character performs an Agility+Rank check vs DC 13 or falls prone.  On
-	a failure the character takes damage as normal, with boon they take half damage,
-	with bane they take double damage.
+	Reaction to being attacked with a <emph>Piercing</emph> weapon. The
+	character makes a cloak fighting check to use their cloak to
+	<emph>Block</emph> the attack.  The character should be wearing a cloak,
+	but a character can improvise by using a blanket, curtain, tablecloth
+	<etc/> if they have to.  On a success the attack does no damage, with
+	boon the character can perform an opposed Strength check to disarm the
+	attacker, with bane the character performs an Agility+Rank check vs
+	DC 13 or falls prone. On a failure the character takes damage as normal,
+	with boon they take half damage, with bane they take double damage.
       </p>
     </abilitydescription>
   </ability>
@@ -50,30 +50,25 @@
     <abilityranks untrained="0" from="1" to="9"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<!-- <indifferent></indifferent> -->
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><check/></keywords>
+      <counter><opponents-perception-save/></counter>      
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
     <spline><p x="0" y="90"/></spline> 
     <abilitydescription>
       <p>
-	<indexentry>concealment</indexentry>
+	<indexentry>
+	  <entry>concealment</entry>
+	</indexentry>
 	Characters or monsters can conceal themselves from other creatures.  
-	Concealment is a relationship between two groups of creatures.            
-	For example given three groups; a party of adventurers, 
-	a large band of goblins and some goblin scouts; then it may be 
-	possible that the adventurers are concealed from the band of goblins, and 
-	the goblin scouts are concealed from the adventurers.
+	Concealment is a relationship between two groups of creatures. For
+	example given three groups; a party of adventurers, a large band of
+	goblins and some goblin scouts; then it may be possible that the
+	adventurers are concealed from the band of goblins, and the goblin
+	scouts are concealed from the adventurers.
       </p>
 
       <p>
@@ -84,9 +79,9 @@
       </p>
 
       <p>
-	If the party remains still then no further concealment checks need
-	be made.  If the party would like to move, someone needs to make a
-	sneak check.  Attacks from concealment should usually grant surprise.  
+	If the party remains still then no further concealment checks need be
+	made.  If the party would like to move, someone needs to make a sneak
+	check.  Attacks from concealment should usually grant surprise.
       </p>
     </abilitydescription>    
   </ability>
@@ -98,27 +93,19 @@
     <abilityranks untrained="-3" from="1" to="2"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><dc11/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<!-- <indifferent></indifferent> -->
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
     <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
       <p>
-	The character is supple and or double jointed.  They have
-	studied the art of escaping from bindings.  At higher
-	ranks they may be able to earn money in towns and cities
-	performing shows.
+	The character is supple and or double jointed.  They have studied the
+	art of escaping from bindings.  At higher ranks they may be able to earn
+	money in towns and cities performing shows.
       </p>
     </abilitydescription>    
   </ability>  
@@ -129,26 +116,18 @@
     <abilityid>cryptography</abilityid>
     <abilityranks from="1" to="5"/>
     <abilitycheck>
-      <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <name>Check</name> 
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<!-- <indifferent></indifferent> -->
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><check/></keywords>
+      <counter><sv13/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
-	Knowledge of reading and writing ciphers and
-	deciphering.  
+	Knowledge of reading and writing ciphers and deciphering.  
       </p>
     </abilitydescription>
   </ability>
@@ -160,19 +139,12 @@
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<!-- <indifferent></indifferent> -->
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><check/></keywords>
+      <counter><opponents-perception-save/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
     <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
@@ -191,19 +163,12 @@
     <abilityranks untrained="0" from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<!-- <indifferent></indifferent> -->
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><check/></keywords>
+      <counter><sv13/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
     <spline><p x="90" y="60"/></spline> 
     <abilitydescription>
@@ -221,40 +186,34 @@
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><ap4/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <fate>
-	<!-- <boon></boon> -->
-	<indifferent>FIXME</indifferent>
-	<!-- <bane></bane> -->
-      </fate>
+      <keywords><check/></keywords>
+      <counter><opponents-perception-save/></counter>
+      <critsuccess>FIXME</critsuccess>
     </abilitycheck>
     <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <p>
-	A character can attempt to attack an opponent that is unaware of the attacker
-	using the Roques Strike ability.  In order to do so the character makes
-	a back stab attempt against the opponents perception and then a normal
-	attack.   If the backstab is succsesful the opponent can only defend using
-	Armour (not Dodge, Parry etc) and a hit will do double the weapons damage.
-	If the Back Stab check is unsuccessful then the attack proceeds as usual.  If
-	the opponent is flanked then the flanking bonuses to hit are added irrespective
-	of whether the backstab was successful.  The Backstab ability can only be used
-	once per combat per character.
+	A character can attempt to attack an opponent that is unaware of the
+	attacker using the Roques Strike ability.  In order to do so the
+	character makes a back stab attempt against the opponents perception and
+	then a normal attack.   If the backstab is succsesful the opponent can
+	only defend using Armour (not Dodge, Parry etc) and a hit will do double
+	the weapons damage. If the Back Stab check is unsuccessful then the
+	attack proceeds as usual.  If the opponent is flanked then the flanking
+	bonuses to hit are added irrespective of whether the backstab was
+	successful.  The Backstab ability can only be used once per combat per
+	character.
       </p>
 
       <p>
-	An opponent can be <emph>unaware</emph> if an attacker for a number of reasons:
-	the attacker is invisible, the attacker has made a successful Conceal, or
-	Sneak check before the combat, or if the opponent is unaware that the attacker
-	is a an enemy of theirs	(perhaps the character has infiltrated the opponents
-	group using Deceive or Disguise).  
+	An opponent can be <emph>unaware</emph> if an attacker for a number of
+	reasons: the attacker is invisible, the attacker has made a successful
+	Conceal, or Sneak check before the combat, or if the opponent is unaware
+	that the attacker is a an enemy of theirs (perhaps the character has
+	infiltrated the opponents group using Deceive or Disguise).  
       </p>
     </abilitydescription>
   </ability>  
@@ -266,19 +225,13 @@
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><ap4/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><ap4/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<indifferent>FIXME</indifferent>
-	<bane>FIXME</bane>
-      </fate>
+      <keywords><check/></keywords>
+      <counter><sv13/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
@@ -297,19 +250,13 @@
     <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><dc13/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<indifferent>FIXME</indifferent>
-	<bane>FIXME</bane>
-      </fate>
+      <keywords><check/></keywords>
+      <counter><sv13/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
@@ -328,20 +275,13 @@
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <!-- <defaults>skulduggery_defaults</defaults> -->
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<indifferent>FIXME</indifferent>
-	<bane>FIXME</bane>
-      </fate>
+      <keywords><check/></keywords>
+      <counter><opponents-perception-save/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="-90" y="90"/></spline> 
     <abilitydescription>
@@ -359,19 +299,13 @@
     <abilityranks untrained="-3" from="1" to="5"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords><easy/></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<indifferent>FIXME</indifferent>
-	<bane>FIXME</bane>
-      </fate>
+      <keywords><check/></keywords>
+      <counter><opponents-perception-save/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline></spline>
     <specializations><specialization>Urban</specialization><specialization>Wilds</specialization></specializations>
@@ -383,7 +317,7 @@
       </p>
 
       <p>
-	In wilderness you can also use the Hunting ability instead.
+	In wilderness you should use the Hunting ability instead.
       </p>	
     </abilitydescription>
   </ability>  
@@ -395,25 +329,22 @@
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<indifferent>FIXME</indifferent>
-	<bane>FIXME</bane>
-      </fate>
+      <keywords><check/></keywords>
+      <counter><opponents-perception-save/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>
 	Creating, arming and disarming traps in urban environs.
-        <indexentry>Traps<subentry>create Trap Work (Urban)</subentry></indexentry>	
+        <indexentry>
+	  <entry>Traps</entry>
+	  <subentry>create Trap Work (Urban)</subentry>
+	</indexentry>	
       </p>
     </abilitydescription>
   </ability>
@@ -426,19 +357,13 @@
     <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
-      <actiontype><noncombat/></actiontype>
+      <checktype><test/></checktype>
+      <apcost><noncombat/></apcost>
       <range><na/></range>
-      <keywords></keywords>
-      <dc><opponents-perception/></dc>
-      <mastery>
-	<critsuccess>FIXME</critsuccess>
-	<critfail>FIXME</critfail>
-      </mastery>
-      <fate>
-	<boon>FIXME</boon>
-	<indifferent>FIXME</indifferent>
-	<bane>FIXME</bane>
-      </fate>
+      <keywords><check/></keywords>
+      <counter><opponents-perception-save/></counter>
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>
     </abilitycheck>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>

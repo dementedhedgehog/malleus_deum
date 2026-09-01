@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <abilitygroup>
   <abilitygroupinfo>
-    <abilitygrouptitle>Mace Proficiency</abilitygrouptitle>
+    <abilitygrouptitle>Mace Abilities</abilitygrouptitle>
     <abilitygroupid><mace/></abilitygroupid>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
@@ -16,24 +16,25 @@
 
   <ability>
     <abilitytitle>Mace Smash</abilitytitle>
-    <abilityid>mace_smash</abilityid>    
+    <abilityid>mace_smash</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <precondition>Fighting in melee against an opponent holding a weapon or shield</precondition>
-      <dc><opponents-defend/></dc>      
-      <dmg>Weapon+Strength|Willpower</dmg>      
-      <mastery>
-	<!-- <critsuccess></critsuccess> -->
-	<righteoussuccess>Make a weapon or shield break test against your opponents weapon.</righteoussuccess>
-	<!-- <critfail></critfail> -->
-      </mastery>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>
-    </abilityattack>
-    <prereqabilityrank>mace_strike_2</prereqabilityrank>
-    <spline><p x="-75" y="30"/></spline>
+    <abilitycheck>
+      <name>Mace Smash</name>
+      <checktype><melee-attack/></checktype>                
+      <apcost><ap4/></apcost>
+      <range><reach/></range>
+      <keywords><physical-attack/><check/></keywords>
+      <precondition>
+	Fighting in melee against an opponent holding a weapon or shield
+      </precondition>
+      <counter><opponents-physical-defence/></counter>      
+      <dmg>Weapon+Strength|Will</dmg>            
+      <righteoussuccess>
+	Make a break test against your opponents weapon or shield.
+      </righteoussuccess>
+    </abilitycheck>
+    <prereqabilityref id="mace_strike" rank="2"/>
+    <spline><p x="75" y="30"/></spline>
     <abilitydescription>
       <p>
         Characters equipped with a mace or similar weapon can attempt
@@ -49,21 +50,18 @@
     <abilitytitle>Mace Strike</abilitytitle>
     <abilityid>mace_strike</abilityid>
     <abilityranks untrained="0" from="1" to="3"/>
-    <abilityattack>
+    <abilitycheck>
       <name>Attack</name>
-      <actiontype><ap4/></actiontype>
-      <range><melee/></range>
-      <keywords><attack/></keywords>
-      <dc><opponents-defend/></dc>
-      <dmg>Weapon+Strength|Willpower</dmg>
-      <!-- <mastery> -->
-      <!-- 	<righteoussuccess></righteoussuccess> -->
-      <!-- 	<critsuccess>FIXME</critsuccess> -->
-      <!-- 	<critfail></critfail> -->
-      <!-- </mastery>       -->
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>
-    </abilityattack>
+      <checktype><melee-attack/></checktype>                
+      <apcost><ap3/></apcost>
+      <range><reach/></range>
+      <keywords><physical-attack/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>Weapon+Strength|Will</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>      
+    </abilitycheck>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -78,26 +76,36 @@
     <abilitytitle>Mace Wild Swing</abilitytitle>
     <abilityid>wild_swing</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilityattack>
-      <name>Attack</name>
-      <actiontype><ap5/></actiontype>
-      <range><melee/></range>
-      <!-- <keywords><crushing/></keywords> -->
-      <dc><opponents-willpower/></dc>
-      <dmg>Weapon+Rank+Strength+Willpower</dmg>
-      <xdef fname="mastery_melee_defaults" elem_name="mastery"/>
-      <xdef fname="fate_melee_defaults" elem_name="fate"/>
-    </abilityattack>
-    <prereqabilityrank>mace_strike_1</prereqabilityrank>
-    <spline><p x="75" y="30"/></spline>
+    <abilitycheck>
+      <name>Stand Firm</name>
+      <checktype><melee-attack/></checktype>                
+      <apcost><ap3/></apcost>
+      <range><reach/></range>
+      <keywords><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>Grants three Wild Swings</critsuccess>
+      <righteoussuccess>Grants two Wild Swings.</righteoussuccess>  
+      <success>Grants one Wild Swing.</success>
+    </abilitycheck>
+    <abilitycheck>
+      <name>Wild Swing</name>
+      <checktype><melee-attack/></checktype>                
+      <apcost><free-reaction/></apcost>
+      <range><reach/></range>
+      <keywords><check/></keywords>
+      <counter><opponents-will-save/></counter>
+      <success>Action fails</success>
+    </abilitycheck>
+    <prereqabilityref id="mace_strike" rank="1"/>
+    <spline><p x="-75" y="30"/></spline>
     <abilitydescription>
       <p>
 	The character swings the mace wildly keeping their opponents at bay.
-	When attacked the character makes a free willpower check against the
-	first opponent that attacks them in a round. If successful the opponent
-	loses their attack, being unable to approach.  If the willpower check
-	is not successful the character makes a free attack against the
-	opponents defence before the opponents attack.
+	When attacked the character makes a free will check against the first
+	opponent that attacks them in a round. If successful the opponent loses
+	their attack, being unable to approach.  If the will check is not
+	successful the character makes a free attack against the opponents
+	defence before the opponents attack.
       </p>
     </abilitydescription>
   </ability>

@@ -1,9 +1,14 @@
 """
 
+  Jinja Templating
+
+  We run the xml through a template engine to enable us to fill things in from
+  the database.  Input docs are in dirs like docs/, abilities/ etc and the
+  outputs go into build/foo.xml
 
 """
 import functools
-from os.path import join, splitext, basename # , dirname, exists, abspath
+from os.path import join, splitext, basename
 import codecs
 
 from jinja2 import Environment, FileSystemLoader
@@ -14,25 +19,19 @@ from utils import root_dir, build_dir
 import config
 
 
-
-def jinja_no_nones(x):
-    """Custom jinja filter for formatting nones"""
-    return "-" if (x is None or (type(x) == str and x.strip() == "")) else x
-
-
-def jinja_log_to_console(text):
+def _jinja_log_to_console(text):
     """Custom jinja filter for printing log messages to console."""
     print(text, flush=True)
     return ''
 
 
-def jinja_exit(text):
+def _jinja_exit(text):
     """Custom jinja filter to exit the program (for debugging only)."""
     print(text, flush=True)
     sys.exit(1)
 
     
-def jinja_recursive_render(template, jinja_env, **values):
+def _jinja_recursive_render(template, jinja_env, **values):
     """
     Recurse into expanded template variables .. so our templates can
     include templates which can include templates... etc and all the
@@ -56,8 +55,7 @@ def jinja_recursive_render(template, jinja_env, **values):
 
 
 @functools.cache
-def get_jinja_env(db):
-    
+def get_jinja_env(db):    
     # get a jinja environment
     jinja_env = Environment(
         loader = FileSystemLoader([root_dir, ]),
@@ -66,26 +64,25 @@ def get_jinja_env(db):
         lstrip_blocks = False,
     )
     
-    # Use these in jinja templates like this:  {{ "foobar" | log }}
-    #jinja_env.filters['convert_to_roman_numerals'] = utils.convert_to_roman_numerals
-    jinja_env.filters['ab'] = db.filter_abilities
-    jinja_env.filters['abilities'] = db.filter_abilities
-    #jinja_env.filters['no_nones'] = jinja_no_nones
-    jinja_env.filters['log']=jinja_log_to_console
-    jinja_env.filters['exit']=jinja_exit
-    
+    # Use these in jinja template code like this:  {{ "foobar" | log }}
+    # jinja_env.filters['ab'] = db.filter_abilities
+    # jinja_env.filters['abilities'] = db.filter_abilities
+    jinja_env.filters['log']=_jinja_log_to_console
+    jinja_env.filters['exit']=_jinja_exit    
     return jinja_env
 
 
-def apply_template_to_xml(jinja_env,
-                          db,
-                          xml_fname_in,
-                          verbosity,
-                          template_fname=None,
-                          archetype=None,
-                          patron=None):
+def render_xml(
+        jinja_env,
+        db,
+        xml_fname_in,
+        verbosity=0,
+        template_fname=None,
+        archetype=None,
+        patron=None):
     """
-    Run the xml through a templating system.
+    Run the xml through a templating system, and write the processed
+    xml to the build dir
 
     """
     xml_base_fname, _ = splitext(basename(xml_fname_in))
@@ -98,10 +95,9 @@ def apply_template_to_xml(jinja_env,
         template_fname = xml_fname_in
     template = jinja_env.get_template(template_fname)
     if template is None:
-        print(f"Problem reading template file {template_fname}.")
-        exit(0)
-        
-    xml = jinja_recursive_render(
+        raise Exception(f"Problem reading template file {template_fname}.")
+    
+    xml = _jinja_recursive_render(
         template=template,
         jinja_env=jinja_env,
         db=db,
@@ -116,26 +112,15 @@ def apply_template_to_xml(jinja_env,
         doc_name=xml_fname_in)
 
     # process abilities
-    try:
-        xml = db.filter_abilities(xml, verbose=verbosity>0)
-    except Exception as err:
-        print(f"Problem filtering abilities in {xml_fname_in}")
-        raise err
+    # try:
+    #     xml = db.filter_abilities(xml, verbose=verbosity>0)
+    # except Exception as err:
+    #     err.add_note(f"Problem filtering abilities in {xml_fname_in}")
+    #     raise err
 
     # write the post-processed xml to the build dir 
     # (has all the included files in it).
     with codecs.open(xml_fname_out, "w", "utf-8") as f:
         f.write(xml)
 
-    # parse an xml document
-    doc = Doc(xml_fname_out)
-    if not doc.parse():
-        print(f"Problem parsing the xml.")
-        exit(0)
-
-    if not doc.validate():
-        print("Fatal: xml errors are fatal!")
-        print("Run with the -s cmd line option to ignore xml errors.")
-        exit(0)        
-        
-    return doc
+    return xml_fname_out

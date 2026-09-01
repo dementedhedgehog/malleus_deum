@@ -1,8 +1,7 @@
 """
 
-  Draws graphs, splines etc using Cairo.
-
-
+  Draws graph primitives, splines etc using Cairo.
+  
 
 """
 import cairo

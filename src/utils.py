@@ -1,14 +1,15 @@
 """
 
-  Utility methods.
-  Hide lxml calls here.
+  Utility methods including all the low level XML interface.
 
 
 """
 import sys
 from os.path import abspath, join, dirname
 import codecs
+import functools
 import lxml
+import io
 from lxml.isoschematron import Schematron
 import re
 from functools import lru_cache
@@ -21,7 +22,10 @@ from lxml import etree
 # local
 from config import use_imperial
 
-COMMENT = etree.Comment
+class XMLException(Exception):
+    """Raised when we have problems with xml."""
+    pass
+
 
 # directory constants
 root_dir = abspath(join(dirname(__file__), ".."))
@@ -43,11 +47,20 @@ third_party_dir = join(src_dir, "third_party")
 ability_groups_dir = join(root_dir, "abilities")
 
 
-def load_xsd_schema():
+def is_filelike(obj):
+    return isinstance(obj, io.IOBase)
+
+@functools.cache
+def _load_xsd_schema():
     schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
     schema = etree.parse(schema_fname)
     try:
-        xml_schema = etree.XMLSchema(schema)
+        xml_schema = etree.XMLSchema(
+            schema,
+            # This tells etree to insert xsd 'fixed' and 'default' values
+            # into the xml before parsing.  Required for keywordTypes.
+            attribute_defaults=True,
+        )
     except lxml.etree.XMLSchemaParseError as err:
         if hasattr(err, "message"):
             message = err.message
@@ -58,15 +71,12 @@ def load_xsd_schema():
     return xml_schema
 
 
-def load_schematron_validator():
+@functools.cache
+def _load_schematron_validator():
     schematron_fname = abspath(join(dirname(__file__), "rpg.schematron"))
     schematron_doc = etree.parse(schematron_fname)
     schematron_validator = Schematron(schematron_doc, store_report=True)
     return schematron_validator
-
-
-xml_schema = load_xsd_schema()
-schematron_validator = load_schematron_validator()
 
 
 _ability_tokenizer = re.compile(
@@ -87,6 +97,11 @@ _ability_tokenizer = re.compile(
 )
 
 
+def is_comment(element):
+    return element.tag is etree.Comment
+#COMMENT = etree.Comment
+
+
 def split_ability_tokens(xml_str):
     """
     Extracts special ability tokens, e.g. ✱dagger.strike_1 from other text.
@@ -100,11 +115,27 @@ def parse_xml_list(xml_node):
     Parses xml like this: <xml_node> <A/> <B/><!-- a comment --><C/></xml_node>
     and returns a list like this: ["A", "B", "C"]
 
+    Used for lists of keywords where we want the ids.
     """
     elements = []
     for child in list(xml_node):
-        if child.tag is not COMMENT:
+        if not is_comment(child):
             elements.append(strip_xml(child.tag))
+    return elements
+
+
+def parse_xml_keyword_list(xml_node):
+    """
+    Parses xml like this:
+    <xml_node> <a>A</a> <b>B</b><!-- a comment --><c>C</c></xml_node>
+    and returns a list like this: ["A", "B", "C"]
+
+    Used for lists of keywords where we want the text.
+    """
+    elements = []
+    for child in list(xml_node):
+        if not is_comment(child):
+            elements.append(child.text.strip())
     return elements
 
 
@@ -124,85 +155,23 @@ def normalize_ws(text):
 
     leading_ws = " " if text[0].isspace() else ""
     trailing_ws = " " if text[-1].isspace() else ""
-    return leading_ws + " ".join(text.split()) + trailing_ws
-
-
-@lru_cache(maxsize=256)
-def _get_defaults_tree(fname):
-    """
-    Method to get the defaults xml files and cache them because
-    we don't want to do it over and over again when we don't need to.
-
-    """
-    if not fname.endswith(".xml"):
-        fname += ".xml"
-    full_fname = join(default_abilities_dir, fname)
-    defaults_tree = etree.parse(full_fname)
-    return defaults_tree
-
-
-def _replace_xdefs(tree, source_fname):
-    """
-    Custom method that does kind of what xinclude is supposed to do.
-    This modifies tree in-place!
-    (XInclude looks like it's died at the spec level - in its current
-    form it's semi-useless).
-
-    """
-    for xdef_elem in tree.iter("xdef"):
-        fname = xdef_elem.get("fname", None)
-        if fname is None:
-            raise Exception(
-                "Error can't replace <xdef/> element.  "
-                "No 'fname' attribute specified in "
-                f"file {source_fname} on line {xdef_elem.sourceline}")
-
-        elem_name = xdef_elem.get("elem_name", None)
-        if elem_name is None:
-            raise Exception(
-                "Error can't replace <xdef/> element. "
-                "No elem_name attribute specified in "
-                f"file {source_fname} on line {xdef_elem.sourceline}")
-
-        # get the default element tree from the defaults file
-        defaults_tree = _get_defaults_tree(fname)
-        default_element = defaults_tree.find(f".//{elem_name}")
-
-        # You can't substitute a default element in if that default element
-        # does not exist.
-        if default_element is None:
-            raise Exception(
-                f"Default element '{elem_name}' is not specified in "
-                f"defaults file {fname}.  However it is referenced in "
-                f"file {source_fname} on line {xdef_elem.sourceline}")
-
-        # Create a copy of the defaul element.
-        # (Deepcopy doesn't copy the sourceline value, strangely.  The
-        # sourceline value will be the line number in the pre-replacement xml).
-        new_element = deepcopy(default_element)
-        new_element.sourceline = xdef_elem.sourceline
-
-        # Replace the xdef element with the element copied from the
-        # defaults file.
-        xdef_elem.getparent().replace(xdef_elem, new_element)
-    return
+    return leading_ws + " ".join(text.split()) + trailing_ws        
         
-        
-def perform_schematron_validation(etree):
 
+def _perform_schematron_validation(xml_doc):
+    """
+    Runs the src/rpg.schematron rules over the xml docs.
+
+    """
     # Jump through some hoops to make sure that when we get an error
     # the error context is accurate!.
-    xml_str = xml_tree_to_str(etree)
-    f = io.StringIO(xml_str)
-    etree = etree.parse(f)
-
-    
-    validation_result = schematron_validator.validate(etree)
+    validator = _load_schematron_validator()
+    validation_result = validator.validate(xml_doc)
     if not validation_result:
 
         # We've got a problem, now work out what it is.
         e = Exception(f"Schematron validation error!!!")        
-        report = schematron_validator.validation_report
+        report = validator.validation_report
         for child in report.getiterator():
             tag = str(child.tag).replace(
                 "{http://purl.oclc.org/dsdl/svrl}", "")
@@ -221,13 +190,14 @@ def perform_schematron_validation(etree):
                 case (_, "failed-assert"):
                     test = child.get("test")
                     source_xpath = child.get("location")
-                    element = etree.xpath(source_xpath)[0]
+                    element = xml_doc.xpath(source_xpath)[0]
                     sourceline = element.sourceline
                     tag = element.tag
                     message_element = child.getchildren()[0]
                     message = contents_to_string(message_element).strip()
                         
                     # Throw a schematron assert error with some context.
+                    xml_str = node_to_string(xml_doc)
                     f = io.StringIO(xml_str)
                     context = get_error_context(f, sourceline, context_size=21)
                     e.add_note(
@@ -250,32 +220,75 @@ def perform_schematron_validation(etree):
     return
 
 
-
-def parse_xml(fname):
+def parse_xml(fname, verbosity=0):
     try:
         try:        
-            # Parse the xml
-            tree = etree.parse(fname)
+            # Load the XSD
+            etree.clear_error_log()
+            xsd_schema = _load_xsd_schema()
+            xsd_parser = etree.XMLParser(
+                schema=xsd_schema,
+                attribute_defaults=True,
+                # Latex has problems with extra newlines in moving arguments
+                # (e.g. index entries and section labels) so remove as much
+                # of this as we can.
+                remove_blank_text=True 
+                #remove_blank_text=False
+            )
 
-            # Do some in-place #include like substitution.
-            # XInclude is an abortion.  We'll roll our own called <xdef>.
-            _replace_xdefs(tree, fname)
-
-            # Perform schematron validation on the modified tree.
-            perform_schematron_validation(tree) 
+            if verbosity > 1:
+                print(f"\t\tXML Parsing: {fname}")
             
+            # This does two things: i) it substitutes xsd "fixed" values into
+            # the xml_str so that they're available for schematron to reason
+            # about, and ii) it runs XSD validation on the xml.
+            f = open(fname, "r")
+            xml_doc = etree.parse(f)
+
+            if verbosity>1:
+                print(f"\t\tXML Validating Schema: {fname}")
+            if not xsd_schema.validate(xml_doc):
+                e = xsd_schema.error_log[0]
+                context = get_error_context(
+                    e.filename,
+                    e.line,
+                    context_size=21)
+                
+                raise XMLException(
+                     f"XSD assert failed at {e.filename}:{e.line}\n"
+                     f"{e}\n"
+                     f"{context}\n"
+                )
+                            
         except lxml.etree.XMLSyntaxError as lxml_err:
-            lxml_err.msg += " happens in file: %s" % fname
             line, column = lxml_err.position
+            msg = f" happens in file: {fname}:{line}:{column}"
             context = get_error_context(fname, line)
-            lxml_err.add_note(context)
-            tree = None
+            lxml_err.add_note(msg + " " + context)
+            xml_doc = None
             raise
+
+        else:
+            # Perform schematron validation on the modified tree.
+            if verbosity>1:
+                print(f"\t\tXML Validating Schematron: {fname}")
+            
+            _perform_schematron_validation(xml_doc)
 
     except Exception as err:
         err.add_note(f"Problem in file: {fname}")
         raise
-    return tree
+    return xml_doc
+
+
+def get_alias(element):
+    """    
+    
+    """
+    tag = element.text.lower()
+    alias_element = etree.Element(tag)
+    element.append(alias_element)
+    return alias_element
 
 
 def xml_tree_to_str(tree):
@@ -285,16 +298,6 @@ def xml_tree_to_str(tree):
     """
     xml_str = etree.tostring(tree, pretty_print=True)
     return xml_str.decode()
-
-
-def validate_xml(doc):
-    """
-    Return a list (an iterable) of errors or None.
-
-    """
-    if not xml_schema.validate(doc):
-        return xml_schema.error_log
-    return None
 
 
 def node_to_string(node):
@@ -322,10 +325,25 @@ def contents_to_string(node):
     Returns everything between the nodes tags <x>..</x> but NOT the tags
     themselves.
 
+    FIXME: I think we want to migrate to contents_to_string2() and remove this.
+
     """
     return (node.text or "") + "".join(
         [etree.tostring(child, encoding="unicode")
          for child in node.iterchildren()])
+
+
+def contents_to_string2(node):
+    """
+    Returns everything between the nodes tags <x>..</x> but NOT the tags
+    themselves.
+
+    e.g. contents_to_string2("<td> text1 <a> link </a> text2 </td>")
+    returns "text1  link  text2"
+    
+
+    """
+    return etree.tostring(node, method="text", encoding="unicode")
 
 
 def contents_to_list(node):
@@ -379,20 +397,26 @@ def get_error_context(file_or_filename, error_line_number, context_size=7):
         # It's a filename?
         f = open(file_or_filename, "r")
     except TypeError:
-        # It's a file!
-        f = file_or_filename
 
-    finally:
-        lines = f.readlines()
-        from_line = max(error_line_number - context_size, 0)
-        to_line = min(error_line_number + context_size, len(lines))
-        for line_number in range(from_line, to_line):
-            if line_number == error_line_number:
-                ptr = "=>"
-            else:
-                ptr = "  "
-
-            context += "%5s %2s %s" % (line_number, ptr, lines[line_number])
+        if is_filelike(file_or_filename):
+            # It's a file!
+            f = file_or_filename
+        else:
+            # No idea what this is!!
+            raise Exception("Unknown object, "
+                            "expecting a file or filename %s" %
+                            file_or_filename)
+    #finally:
+    lines = f.readlines()
+    from_line = max(error_line_number - context_size, 0)
+    to_line = min(error_line_number + context_size, len(lines))
+    for line_number in range(from_line, to_line):
+        if line_number == error_line_number-1:
+            ptr = "=>"
+        else:
+            ptr = "  "
+            
+        context += "%5s %2s %s" % (line_number, ptr, lines[line_number])
     return context
 
 
@@ -420,6 +444,11 @@ def strip_xml(element_str):
 def convert_str_to_int(str_int):
     # later we might want some error handling!
     return int(str_int)
+
+
+def convert_str_to_float(str_float):
+    # later we might want some error handling!
+    return float(str_float)
 
 
 def parse_measurement_to_str(fname, measurement_node):
@@ -455,6 +484,14 @@ def parse_measurement_to_str(fname, measurement_node):
     return text_repr
 
 
+def get_child(node, child_name):
+    r"""
+    Given <node><x/><x/></node> then get_child_name 'x' returns the first x node.
+
+    """
+    return node.find(child_name)
+
+
 def get_text_for_child(element, child_name):
     """
     Find text for a child element.
@@ -486,3 +523,63 @@ def parse_ability_str(ability_str):
     """
     match = _ability_regex.match(ability_str)
     return None if match is None else match.groups()
+
+
+# def paginate(items, n_items_per_page):
+#     """
+#     Breaks a list of items up into a list of lists of a given size so we can fit
+#     things on a page (e.g. for breaking a big list of abilities into multiple
+#     tables).
+    
+#     """
+#     pages = []
+#     i = 0
+#     page_num = 0
+#     while i < len(items):
+#         new_i = i + n_items_per_page
+#         page = items[i:new_i]
+#         pages.append(page)
+#         i = new_i
+#     return pages
+
+def tabulate(items, n_lines_per_page, n_columns, n_lines_first_page=None):
+    """
+    Breaks a list of items up into a list of lists of a given size so we can fit
+    things on a page (e.g. for breaking a big list of abilities into multiple
+    tables).
+    
+    """
+    pages = []
+    
+    i = 0
+    finished = False
+    while not finished:
+        # Add a page
+        page = []
+        pages.append(page)
+
+        if len(pages) == 1 and n_lines_first_page is not None:
+            n_lines_this_page = n_lines_first_page
+        else:
+            n_lines_this_page = n_lines_per_page
+        
+        #
+        for _ in range(n_lines_this_page):
+            new_i = i + n_columns
+            line = items[i:new_i]
+            page.append(line)
+            i = new_i
+
+            if i >= len(items):
+                finished = True
+                break
+        
+    return pages
+
+
+
+
+if __name__ == "__main__":    
+    xml_doc = parse_xml("test.xml")
+    print(node_to_string(xml_doc.getroot()))
+    

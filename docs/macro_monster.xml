@@ -1,14 +1,21 @@
-{# short monster block.. these are a couple of lines with no images and no description. #}
+
+{#
+
+   Configurable monster block..
+   You can conditionally render parts of the monster stat block for
+   added brevity.
+
+#}
 {% macro monster_block(monster, show_img=False, show_description=False) %}
   <monsterblock>
-    <mbtitle>{{ monster.get_title() }}</mbtitle>  <mbtags>{{ monster.get_keywords_str() }}</mbtags>
+    <mbtitle>{{ monster.get_title() }}</mbtitle> <mbtags>{{ monster.get_keywords_str() }}</mbtags>
     {% if show_img and monster.img is not none %}
     {{ monster.img }}
     {% endif %}
     <mbarmour>{{  monster.get_armour() }}</mbarmour>
     <mbhp>{{ monster.get_stamina() }}/{{ monster.get_health() }}</mbhp>
     <mbmove>{{ monster.get_move() }}</mbmove>
-    <mbinitiativebonus>{{ monster.get_initiative_bonus() }}</mbinitiativebonus>
+    <mbinitiative>{{ monster.get_initiative() }}</mbinitiative>
     <mbmagic>{{ monster.get_magic_pool() }}</mbmagic>
     <mbmettle>{{ monster.get_mettle_pool() }}</mbmettle>
     <mbluck>{{ monster.get_luck() }}</mbluck>
@@ -17,24 +24,28 @@
     <mbag>{{ monster.get_agility() }}</mbag>
     <mbspd>{{ monster.get_speed() }}</mbspd>
     <mbper>{{ monster.get_perception() }}</mbper>
-    <mbwil>{{ monster.get_willpower() }}</mbwil>
+    <mbwil>{{ monster.get_will() }}</mbwil>
     <mbabilities>
-      {% for ability_rank_id in monster.get_ability_rank_ids() %}
-      <bold>{{ ability_groups.get_ability_rank(ability_rank_id).get_title() }}</bold>
-      <bold>Checks:</bold> {% for check in ability_groups.get_ability_rank(ability_rank_id).get_checks()  %}
-      {%- if check.name is not none  -%}{{check.name}} {%- endif -%}
-      {%- if check.dc is not none  -%}{{check.dc}}{%- endif -%}
-      {%- if check.overcharge is not none  -%}/{{check.overcharge}}{%- endif -%}
-      {% if not loop.last %}, {% endif -%}
+      {% for ability_ref in monster.get_ability_refs() -%}
+      <bold>X {{ ability_ref }}</bold>      
+      {#
+      {% with ability_rank_id = ability_ref.get_rank_id() -%} 
+      {% with ability_rank = ability_groups.get_ability_rank(ability_rank_id) -%} 
+      {%- for check in ability_rank.get_checks() %}
+      {{ monster.get_passive_check_desc(ability_rank, check) -}}      
+      {%- if not loop.last %}, {% else -%}. {% endif -%}
       {% endfor -%}
-      {% endfor %}
+      {% endwith -%}
+      {% endwith -%}
+      #}
+      {% endfor -%}
     </mbabilities>
     {% if monster.get_aspects_str() != "" %}
     <mbaspects>{{ monster.get_aspects_str() }}</mbaspects>
     {% endif %}
   </monsterblock>
 
-  {% if monster.description %}
+  {% if show_description and monster.description %}
     {{ monster.description }}
   {% endif %}  
 {% endmacro %}
@@ -44,3 +55,17 @@
 {% macro long_monster_block(monster) %}
   {{ monster_block(monster, show_img=True, show_description=True) }}
 {% endmacro %}
+
+
+
+{#
+{% macro monster(monster_id) %}
+{% set monster = db.monster_groups.get_monster_by_id(monster_id) %}
+<p><bold>{{ monster.get_title() }}</bold> Armour: {{ monster.armour|no_nones}}, 
+{% if monster.dodge  -%}Dodge: {{ monster.dodge }}, {% endif -%}
+{% if monster.block  -%}Block: {{ monster.block }}, {% endif -%}
+{% if monster.parry  -%}Parry: {{ monster.parry }}, {% endif -%} Str: {{ monster.strength|no_nones}}, End: {{ monster.endurance|no_nones}}, Ag: {{ monster.agility|no_nones}}, Spd: {{ monster.speed|no_nones}}, Per: {{ monster.perception|no_nones}},
+Stamina: {{monster.stamina}}, Health: {{ monster.health }}, Mettle: {{monster.mettle_pool|no_nones}}, Magic: {{ monster.magic_pool|no_nones}}, Luck: {{monster.luck_pool|no_nones}}, Tags: {{monster.tags|join(', ')}}, Abilities: {{ monster.abilities }}
+</p>
+{% endmacro %}
+#}

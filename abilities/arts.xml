@@ -19,12 +19,15 @@
     <abilityid>art_history</abilityid>    
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>      
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
     <spline><p x="-60" y="0"/></spline>    
     <abilitydescription>
@@ -44,15 +47,29 @@
     <abilityid>dance</abilityid>
     <abilityranks untrained="0" from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>      
+      <name>Perform</name>
+      <checktype><perform/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><physical/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>music_1</prereqabilityrank>
-    <spline><p x="0" y="50"/><p x="30" y="30"/></spline>
+    <abilitycheck>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </abilitycheck>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="30"/><p x="-20" y="50"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
  	The character is a trained dancer.  This may be useful
@@ -67,25 +84,18 @@
     <abilityid>fine_art</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>art_history_1</prereqabilityrank>
-    <spline><p x="120" y="30"/></spline>
+    <prereqabilityref id="art_history" rank="1"/>
+    <spline><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
   	The character has some ability, experience and training in painting, sculpting,
@@ -109,25 +119,18 @@
     <abilityid>jester</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><perform/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank></prereqabilityrank>
-    <spline><p x="-40" y="30"/></spline>
+    <!-- <prereqabilityrank></prereqabilityrank> -->
+    <spline><p x="90" y="0"/></spline>
     <abilitydescription>
       <p>
   	The character has learned the basics of comedic acting.  Jesting,
@@ -145,24 +148,17 @@
     <abilityid>music</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Recall Knowledge</name>
+      <checktype><recall-knowledge/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <spline><p x="50" y="100"/></spline>
+    <spline><p x="30" y="100"/></spline>
     <abilitydescription>
       <p>
   	This ability represents the characters understanding the structure
@@ -177,25 +173,18 @@
     <abilityid>keyed</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><recall-knowledge/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>music_1</prereqabilityrank>
-    <spline><p x="-110" y="60"/></spline>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="30"/><p x="-110" y="60"/></spline>
     <abilitydescription>
       <p>
   	The character can play some form of keyed instrument, e.g. the clavichord
@@ -210,25 +199,18 @@
     <abilityid>percussion</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><recall-knowledge/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>music_1</prereqabilityrank>
-    <spline><p x="-20" y="50"/><p x="0" y="60"/></spline>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
       <p>
   	The character is an accomplished percussionist.
@@ -237,10 +219,8 @@
       </p>
 
       <p>
-	Tribal percussionists may be able to use this ability
-	to communicate with other tribe members
-	up to <measurement><metric>3 kilometers</metric><imperial>2 miles</imperial></measurement>
-	away in any direction.
+	Tribal percussionists may be able to use this ability to communicate with
+	other tribe members up to <km3/> away in any direction.
       </p>
     </abilitydescription>
   </ability>
@@ -251,25 +231,18 @@
     <abilityid>singing</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><perform/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>music_1</prereqabilityrank>
-    <spline><p x="-140" y="30"/></spline>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="90"/><p x="60" y="60"/></spline>
     <abilitydescription>
       <p>
   	The character can sing.
@@ -283,25 +256,18 @@
     <abilityid>strings</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><perform/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>music_2</prereqabilityrank>
-    <spline><p x="40" y="30"/></spline>
+    <prereqabilityref id="music" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
     <abilitydescription>
       <p>
   	The character can play some form of stringed instrument,
@@ -316,25 +282,18 @@
     <abilityid>wind</abilityid>
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><perform/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>music_1</prereqabilityrank>
-    <spline><p x="-100" y="120"/><p x="0" y="20"/></spline>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="30"/><p x="-90" y="120"/><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
   	The character can play some form of pipe instrument, e.g. the bagpipes, Uilleann
@@ -350,25 +309,18 @@
     <abilityid>oratory</abilityid>    
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><perform/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank>art_history_1</prereqabilityrank>
-    <spline><p x="30" y="30"/></spline>
+    <prereqabilityref id="art_history" rank="1"/> 
+    <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
       <p>
   	Oratory is the art of public speaking.  It is the art of
@@ -384,25 +336,18 @@
     <abilityid>soothe_the_savage_beast</abilityid>    
     <abilityranks from="1" to="6"/>
     <abilitycheck>
-      <name>Check</name>
-      <!-- <defaults>lore_defaults</defaults> -->
-      <!-- <actiontype><noncombat/></actiontype> -->
-      <!-- <critsuccess></critsuccess> -->
-      <!-- <critfail></critfail> -->
-      <!-- <boon></boon> -->
-      <!-- <indifferent></indifferent> -->
-      <!-- <bane></bane> -->
-      <!-- <range><na/></range> -->
-      <!-- <keywords></keywords> -->
-      <!-- <dc><dc13/></dc> -->
-      <xdef fname="lore_defaults" elem_name="actiontype"/>      
-      <xdef fname="lore_defaults" elem_name="range"/>      
-      <xdef fname="lore_defaults" elem_name="dc"/>      
-      <xdef fname="lore_defaults" elem_name="mastery"/>            
-      <xdef fname="lore_defaults" elem_name="fate"/>
+      <name>Perform</name>
+      <checktype><perform/></checktype>                
+      <apcost><default-skill-apcost/></apcost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>      
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
     </abilitycheck>
-    <prereqabilityrank></prereqabilityrank>
-    <spline><p x="50" y="300"/></spline>
+    <prereqabilityref id="singing" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
     <abilitydescription>
       <p>
 	It is widely known that music has charms to soothe
