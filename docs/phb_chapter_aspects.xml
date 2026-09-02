@@ -19,6 +19,7 @@
   </p>
   
 
+
   
   <section>
     <sectiontitle>Aspects</sectiontitle>
@@ -205,6 +206,29 @@
 	  right hand.
 	</p>
       </playexample>
+
+
+   {% for ag in ability_groups
+       if ag.get_family_id() == db.ABILITY_FAMILY_ASPECT_ID %}
+
+    <!-- <subsection> -->
+    <!--   <subsectiontitle>{{ ag.get_name() }}</subsectiontitle> -->
+      {{ ag.get_description() }}
+
+      <!-- {% if ag.has_abilities() %} -->
+      <!-- <figure position="h" fullwidth="false" sideways="false"> -->
+      <!--   <img buildfname="{{ ag.get_id() }}_skill_tree.pdf"/> -->
+      <!--   <caption>{{ ag.get_name() }}</caption> -->
+      <!--   <label>figure:{{ ag.get_id() }}_skill_tree</label> -->
+      <!-- </figure> -->
+      <!-- {% endif %} -->
+
+      {% for ability in ag.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
+    <!-- </subsection> -->
+    {% endfor %}
+      
     </subsection>
 
   
@@ -377,27 +401,6 @@
       </subsubsection>
     </subsection>
     
-
-
-
-    {% for ability_group in ability_groups if ability_group.is_aspect_family() %}
-    <subsection>
-      <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
-      {{ ability_group.get_description() }}
-
-      <!-- {% if ability_group.has_abilities() %} -->
-      <!-- <figure position="h" fullwidth="false" sideways="false"> -->
-      <!--   <img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/> -->
-      <!--   <caption>{{ ability_group.get_name() }}</caption> -->
-      <!--   <label>figure:{{ ability_group.get_id() }}_skill_tree</label> -->
-      <!-- </figure> -->
-      <!-- {% endif %} -->
-
-      {% for ability in ability_group.get_abilities()%}
-      {{ build_ability(ability) }}
-      {% endfor %}
-    </subsection>
-    {% endfor %}
   </section>
 
 

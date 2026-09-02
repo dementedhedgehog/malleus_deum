@@ -2635,14 +2635,11 @@ class LatexFormatter(DocFormatter):
         char_code = 89 # standard
         if divider.attrib == "fancy":
             char_code = 80
-        #self.buffer.write(r"\pgfornament[scale=0.2,color=red]{%s}" % char_code)
         self.buffer.write(r"\centerline{\pgfornament[scale=0.14]{%s}}"
                           % char_code)
-        #self.buffer.write(r"{\centering\pgfornament[scale=0.14]{%s}}"
-        #                  % char_code)
-            # r"\begin{centering}"
-            # r"\pgfornament[scale=0.14]{%s}"
-            # r"\end{centering}") % char_code)
+        # Suggest to latex that if it wants to add vertical space for layout
+        # here is a reasonably good place to do so.
+        self.buffer.write(r"\vspace{0cm plus 2cm}")
         return
     end_divider = no_op
             

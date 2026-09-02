@@ -20,6 +20,7 @@ from changelog import Changelog
 from resources import Resources
 from weapons import Weapons
 from utils import split_ability_tokens
+from schema_introspection import Constants
 
 
 ability_ref_parser = re.compile(
@@ -51,6 +52,7 @@ class DB:
         self.melee_weapons = None
         self.missile_weapons = None
         self.encounters = None
+        self.constants = None
         return
 
     def load(self, root_dir, fail_fast=True):
@@ -116,10 +118,19 @@ class DB:
         encounters_dirs = join(root_dir, "encounters")
         self.encounters = Encounters()
         self.encounters.load(root_dir=root_dir)
-        
-        assert self.missile_weapons is not None
+
+        # load the constants (to expose to Jinja mainly)
+        self.constants = Constants.get_constants()
         return
 
+
+    def __getattr__(self, name):
+        """
+        Expose the constants dict.
+
+        """
+        return self.constants.__getattr__(name)
+    
 
     # def lookup_ability_or_ability_rank(self, ability_id, rank_id):
     #     """Check the ability id exists in our db."""

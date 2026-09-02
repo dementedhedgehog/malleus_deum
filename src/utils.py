@@ -12,7 +12,7 @@ import lxml
 import io
 from lxml.isoschematron import Schematron
 import re
-from functools import lru_cache
+#from functools import lru_cache
 from copy import deepcopy
 import io
 
@@ -25,7 +25,6 @@ from config import use_imperial
 class XMLException(Exception):
     """Raised when we have problems with xml."""
     pass
-
 
 # directory constants
 src_dir = abspath(join(dirname(__file__)))
@@ -46,14 +45,13 @@ styles_dir = join(root_dir, "styles").replace("\\", "/")
 release_dir = join(root_dir, "releases")
 third_party_dir = join(src_dir, "third_party")
 ability_groups_dir = join(root_dir, "abilities")
-
+schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
 
 def is_filelike(obj):
     return isinstance(obj, io.IOBase)
 
 @functools.cache
-def _load_xsd_schema():
-    schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
+def load_xsd_schema():
     schema = etree.parse(schema_fname)
     try:
         xml_schema = etree.XMLSchema(
@@ -100,7 +98,6 @@ _ability_tokenizer = re.compile(
 
 def is_comment(element):
     return element.tag is etree.Comment
-#COMMENT = etree.Comment
 
 
 def split_ability_tokens(xml_str):
@@ -226,7 +223,7 @@ def parse_xml(fname, verbosity=0):
         try:        
             # Load the XSD
             etree.clear_error_log()
-            xsd_schema = _load_xsd_schema()
+            xsd_schema = load_xsd_schema()
             xsd_parser = etree.XMLParser(
                 schema=xsd_schema,
                 attribute_defaults=True,

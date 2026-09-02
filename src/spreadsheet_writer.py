@@ -126,7 +126,7 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
         for ability in ability_group:
             for check in ability.get_checks():
                 ws.write(r, ABILITY_COL, ability.get_name(), title_format)
-                ws.write(r, FAMILY_COL, ability_group.get_family())
+                ws.write(r, FAMILY_COL, ability_group.get_family_id())
                 ws.write(r, GROUP_COL, ability_group.get_name())        
                 ws.write(r, CHECK_COL, check.get_name())
                 ws.write(r, KEYWORDS_COL, ", ".join(check.get_keywords()))

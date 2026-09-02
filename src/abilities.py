@@ -1223,11 +1223,12 @@ class AbilityGroupInfo:
                        "Only one abilitygroupfamily per ability. (%s) %s\n" %
                        (child.tag, str(child)))
                else:
-                   family_ids = parse_xml_keyword_list(child)
+                   family_ids = utils.contents_to_list(child)
+                   #family_ids = parse_xml_keyword_list(child)
                    if len(family_ids) != 1:
-                       raise Exception(
-                           "Expecting 1 family id: got %s and %s"
-                           % (len(family_ids), contents_to_string(child)))
+                      raise Exception(
+                          "Expecting 1 family id: got %s and %s"
+                          % (len(family_ids), contents_to_string(child)))
                    # save the id!
                    self.family_id = family_ids[0]
 
@@ -1310,44 +1311,14 @@ class AbilityGroup:
     def get_id(self):
         return self.info.ability_group_id
 
+    def get_family_id(self):
+        return self.info.family_id
+
     def get_info(self):
         return self.info
 
     def get_description(self):
         return self.info.get_description()
-
-    def is_aspect_family(self):
-        return self.info.family_id == "Aspect"
-
-    def is_lore_family(self):
-        return self.info.family_id == "Lore"
-
-    def is_general_family(self):
-        return self.info.family_id == "General"
-
-    def is_magic_family(self):
-        return self.info.family_id == "Magic"
-
-    def is_martial_family(self):
-        return self.info.family_id == "Martial"
-
-    def is_primary_family(self):
-        return self.info.family_id == "Primary"
-
-    def is_common_family(self):
-        return self.info.family_id == "Common"
-
-    def is_wyrd_science_family(self):
-        return self.info.family_id == "Wyrd-Science"
-
-    def is_hazards_family(self):
-        return self.info.family_id == "Hazards"
-
-    def is_conditions_family(self):
-        return self.info.family_id == "Conditions"
-
-    def get_family(self):
-        return self.info.family_id
 
     def __iter__(self):
         return iter(self.abilities)

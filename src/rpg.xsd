@@ -2,17 +2,17 @@
 <!-- -*-xml-*-
 
 This is the XSD Schema for all the xml documents in the project.
-We use this to verify our xml.
+We use this to verify our xml and to define constants.
 
 
 Naming convention.. (we don't comply yet)
    - Groups should always be named somethingGroup
-   - Types are called somethingType or somethingEnum
+   - Types are called somethingType or somethingEnum 
    - xsd 'fixed' attributes are used quite a bit to encode constant human
      readable values for various types etc to ameliorate limitations with 
      what xsd can specify.
 
-
+     
 Token Types:
    * alias - replace this element with a different element before formatting
    * keyword - a text constant bold formated 
@@ -26,6 +26,14 @@ Token Types:
    Because we encode information about how elements should be parsed in this
    xsd it's possible to change the format of the docs generated if you fiddle
    with this xml, the "type" field in particular.
+
+
+ WARNING:
+   Because we parse this document as an XML document, in order to extract
+   constants for python, changing the names of elements can break things.
+   Specifically the names for the types which are big sets of
+   KeywordType declarations, i.e. avoid renaming the blahEnum elements unless
+   you're careful about it.
      
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">    
@@ -439,19 +447,21 @@ Token Types:
       <!-- general is for misc noncombat ability groups -->
       <xs:element name="antag" type="keywordType" fixed="Antagonist"/>
       <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
-      <xs:element name="conditions" type="keywordType" fixed="Conditions"/>
+      <!-- <xs:element name="conditions" type="keywordType" fixed="Conditions"/> -->
       <xs:element name="general" type="keywordType" fixed="General"/>
-      <xs:element name="lore" type="keywordType" fixed="Lore"/>
+      <xs:element name="primary" type="keywordType" fixed="Primary"/> 
+     <xs:element name="lore" type="keywordType" fixed="Lore"/>
       <xs:element name="martial" type="keywordType" fixed="Martial"/>
       <xs:element name="magic" type="keywordType" fixed="Magic"/>
-      <xs:element name="hazards" type="keywordType" fixed="Hazards"/>
+      <!-- <xs:element name="hazards" type="keywordType" fixed="Hazards"/> -->
+      <xs:element name="tribulations" type="keywordType" fixed="Tribulations"/>
       <xs:element name="primary" type="keywordType" fixed="Primary"/>
       <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
     </xs:choice>
   </xs:complexType>
   
   <!-- Ability Group Keywords Enum -->
-  <xs:complexType name="abilityGroupKeywordType">
+  <xs:complexType name="abilityGroupKeywordEnum">
     <xs:choice>
       <xs:element name="archery" type="keywordType" fixed="Archery"/>
       <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
@@ -475,6 +485,7 @@ Token Types:
       <xs:element name="luck" type="keywordType" fixed="Luck"/>
       <xs:element name="lore" type="keywordType" fixed="Lore"/>
       <xs:element name="mace" type="keywordType" fixed="Mace"/>
+      <xs:element name="madness" type="keywordType" fixed="Madness"/>
       <xs:element name="magic" type="keywordType" fixed="Magic"/>
       <xs:element name="monster" type="keywordType" fixed="Monster"/>
       <xs:element name="necromancy" type="keywordType" fixed="Necromancy"/>
@@ -2377,7 +2388,7 @@ Token Types:
   <xs:complexType name="abilitygroupinfoType">
     <xs:sequence>
       <xs:element name="abilitygrouptitle" type="titleType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="abilitygroupid" type="abilityGroupKeywordType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="abilitygroupid" type="abilityGroupKeywordEnum" minOccurs="1" maxOccurs="1"/>
       <xs:element name="abilitygroupfamily" type="abilityFamilyKeywordEnum" minOccurs="1" maxOccurs="1"/>
       <xs:element name="keywords" type="abilityKeywordsType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="slug" type="textType" minOccurs="0" maxOccurs="1"/>

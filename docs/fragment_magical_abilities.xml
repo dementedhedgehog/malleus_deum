@@ -5,21 +5,23 @@
     are only available to certain archetypes.
   </p>
 
-  {% for ability_group in ability_groups if ability_group.is_magic_family() %} 
+  {% for ag in ability_groups
+       if ag.get_family_id() == db.ABILITY_FAMILY_MAGIC_ID %}
+ 
   <subsection>
-    <subsectiontitle>{{ ability_group.get_name() }}</subsectiontitle>
+    <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
 
-    {{ ability_group.get_description() }}
+    {{ ag.get_description() }}
 
-    {% if ability_group.has_abilities() %}
+    {% if ag.has_abilities() %}
     <figure position="h" fullwidth="false" sideways="false">
-      <img buildfname="{{ ability_group.get_id() }}_skill_tree.pdf"/>
-      <caption>{{ ability_group.get_name() }}</caption>
-      <label>figure:{{ ability_group.get_id() }}_skill_tree</label>
+      <img buildfname="{{ ag.get_id() }}_skill_tree.pdf"/>
+      <caption>{{ ag.get_name() }}</caption>
+      <label>figure:{{ ag.get_id() }}_skill_tree</label>
     </figure>
     {% endif %}
 
-    {% for ability in ability_group.get_abilities()%}
+    {% for ability in ag.get_abilities()%}
     {{ build_ability(ability) }}
     {% endfor %}
   </subsection>
