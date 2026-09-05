@@ -221,7 +221,6 @@ latex_frontmatter = r"""
 \newfontfamily{\cloisterblack}[Path=fonts/]{CloisterBlack}
 \newfontfamily{\dogma}[Path=fonts/]{Dogma}
 \newfontfamily{\becker}[Path=fonts/]{Becker-ZVrz}
-%%\newfontfamily{\amelies}[Path=fonts/]{Amelies}
 \newfontfamily{\isabella}[Path=fonts/, Scale=1.1]{Isabella}
 \newfontfamily{\germania}[Path=fonts/]{GermaniaVersalien}
 \newfontfamily{\carrickc}[Path=fonts/]{CarrickCaps}
@@ -259,8 +258,6 @@ latex_frontmatter = r"""
 
 
 
-
-
 %%
 %% Dropcaps
 %%
@@ -278,46 +275,6 @@ latex_frontmatter = r"""
 \newcommand{\downarrowfrombar}{\ensuremath{\mapsdown}} 
 \newcommand{\uparrowfrombar}{\ensuremath{\mapsup}}
 
-
-%% Custom Environment For Ability Checks
-%%\newenvironment{mdindent}{%%
-%%\vspace{-0.7em}%%
-%%\list{}{\rightmargin0.3cm \leftmargin0.3cm}%%
-%%\item\relax}%%
-%%{\endlist}
-
-%%\newenvironment{mdindent}{%%
-%%  \vspace*{-\baselineskip}
-%%  %% Avoid inserting vertical space when we start an indent
-%%  %%\setlength{\topsep}{0pt}%%
-%%  %%\setlength{\partopsep}{0pt}%%
-%%  %%\setlength{\parsep}{\parskip}%%
-%%  %%\setlength{\itemsep}{0pt}%%
-%%  a\begin{adjustwidth}{0.3cm}{}b%%
-%%}{%%
-%%  \end{adjustwidth}%%
-%%}
-
-
-
-%%\newenvironment{mdindent}{%%
-%%  \addtolength{\leftskip}{0.3cm}%%
-%%}{%%
-%%  \addtolength{\leftskip}{-0.3cm}%%
-%%}
-
-%%\newenvironment{mdindent}{%%
-%%  \addtolength{\leftskip}{0.3cm}%%
-%%}{%%
-%%  \addtolength{\leftskip}{-0.3cm}%%
-%%}
-
-
-%%n\ifvmode\else\vspace{-\parskip}\fi{}m%%
-%%\leavevmode
-%%\vspace{-1\parskip}p%%
-
-
 %% Custom indent environment
 %% Inserts no vertical space and is nestable.
 \newenvironment{mdindent}{%%
@@ -325,9 +282,11 @@ latex_frontmatter = r"""
 \begin{adjustwidth}{0.3cm}{\rightskip}%%
 }{%%
 \end{adjustwidth}%%
-\vspace{-1\parskip}%%
+\ifvmode\else\vspace{-1\parskip}\fi{}%%
 }
 
+%% Custom linebreak mode
+\newcommand{\mdbr}{\ifvmode\else\newline\fi}
 
 %% Custon Bold Environment
 \newenvironment{mdbold}{\bfseries}{}
@@ -439,42 +398,21 @@ latex_frontmatter = r"""
 \colorlet{tableoddrowcolor}{champagne}
 
 %%
+%% Elastic Vertical Space
+%%
+%% Suggest to latex that if it wants to add vertical space for layout here is a
+%% reasonably good place to do so.  (Adds vspace of 0 to 2cm and let's latex
+%% decide how much).
+%%
+\newcommand{\mdspacer}{\vspace{0cm plus 2cm}}
+
+
+%%
 %% Sidebar Formatting
 %%
 \colorlet{sidebarcolor}{champagne}
 \colorlet{sidebarboxcolor}{black}
 \newsavebox{\sidebarbox}
-
-%% \newenvironment{mdsidebar}{%%
-%% \begin{figure}[t]%%
-%% \colorbox{sidebarcolor}{%%
-%% \begin{lrbox}{\sidebarbox}%%
-%% \begin{minipage}{0.95\linewidth}%%
-%% }%%
-%% {%%
-%% \end{minipage}%%
-%% \end{lrbox}\fbox{\usebox{\sidebarbox}}%%
-%% }%%
-%% \end{figure}%%
-%% }
-
-%%
-%% Use this length instead of \textheight to calculate the height for scaling
-%% images and such (\textheight doesn't take into account the height of chapter
-%% titles and the like.. i.e. the textheight on a chapter title page is the same
-%% as that on a page with a block of text.  So images scaled to this value are
-%% too tall).
-%%
-%% \newlength{\availabletextheight}
-
-%% %% Call this to set \availabletextheight
-%% \newcommand{\resetavailabletextheight}{%%
-%% \setlength{\availabletextheight}{\textheight}}
-
-%% \newcommand{\updateavailabletextheight}{%%
-%% \setlength{\availabletextheight}{\dimexpr \pagegoal-\pagetotal}}
-
-%% \AddToHook{shipout/after}{\resetavailabletextheight{}}
 
 %%
 %% Create custom environments from commands.
@@ -503,13 +441,91 @@ latex_frontmatter = r"""
 \setlength{\symbolverticaloffset}{-0.2em}
 
 \newlength{\symbolhorizontalspace}
-\setlength{\symbolhorizontalspace}{0.3ex}
+\setlength{\symbolhorizontalspace}{0.2ex}
 
 
-%% Ability Bullet
-\newcommand\abilitybullet{%%
+
+
+
+
+
+
+
+
+
+%% Symbol Free Action
+\newcommand\freeactionsymbol{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/anon_elder_sign/anon_elder_sign.png}}
+{./resources/symbol_actions/symbol_free_action.png}}
+
+%% Symbol One Action
+\newcommand\oneactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_one_action.png}}
+
+%% Symbol Two Actions
+\newcommand\twoactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_two_actions.png}}
+
+%% Symbol Three Actions
+\newcommand\threeactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_three_actions.png}}
+
+%% Symbol Four Actions
+\newcommand\fouractionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_four_actions.png}}
+
+%% Symbol Five Actions
+\newcommand\fiveactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_five_actions.png}}
+
+%% Symbol Reaction
+\newcommand\reactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_reaction.png}}
+
+%% Symbol Free Reaction
+\newcommand\freereactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_free_reaction.png}}
+
+%% Symbol Interrupt
+\newcommand\interruptactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_interrupt.png}}
+
+%% Symbol Free Interrupt
+\newcommand\freeinterruptactionsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_free_interrupt.png}}
+
+%% Symbol GM Fiat Action
+\newcommand\gmfiatsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_gm_fiat_action.png}}
+
+%% Symbol Out of Combat Action
+\newcommand\outofcombatsymbol{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_actions/symbol_out_of_turn_action.png}}
+
+
+
+
+
+
+
+
+
+
+%% %% Ability Bullet
+%% \newcommand\abilitybullet{%%
+%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
+%% {./resources/anon_elder_sign/anon_elder_sign.png}}
 
 %% Check Symbol
 \newcommand\checksymbol{%%
@@ -531,6 +547,10 @@ latex_frontmatter = r"""
 \includegraphics[width=\largesymbolsize,height=\largesymbolsize]%%
 {./resources/symbol_auxiliary/symbol_auxiliary.png}%%
 \hspace{\symbolhorizontalspace}}}
+
+
+
+
 
 %% Antag Check Symbol
 \newcommand\antagonistsymbol{%%
@@ -639,7 +659,7 @@ latex_frontmatter = r"""
 \typeout{    Text Height: \textheight}
 \typeout{}
 
-"""    
+"""
 
 def sanitize_index_text(txt):
     """
@@ -959,6 +979,59 @@ class LatexFormatter(DocFormatter):
         self.buffer.write(r"\abilitybullet ")
     end_abilitybullet = no_op    
 
+
+
+
+
+    def start_freeactionsymbol(self, symbol):
+        self.buffer.write(r"\freeactionsymbol{}")
+    end_freeactionsymbol = no_op
+    
+    def start_oneactionsymbol(self, symbol):
+        self.buffer.write(r"\oneactionsymbol{}")
+    end_oneactionsymbol = no_op    
+
+    def start_twoactionsymbol(self, symbol):
+        self.buffer.write(r"\twoactionsymbol{}")
+    end_twoactionsymbol = no_op
+        
+    def start_threeactionsymbol(self, symbol):
+        self.buffer.write(r"\threeactionsymbol{}")
+        self.end_threeactionsymbol(symbol)
+    end_threeactionsymbol = no_op
+
+    def start_fouractionsymbol(self, symbol):
+        self.buffer.write(r"\fouractionsymbol{}")
+    end_fouractionsymbol = no_op
+
+    def start_fiveactionsymbol(self, symbol):
+        self.buffer.write(r"\fiveactionsymbol{}")
+    end_fiveactionsymbol = no_op
+
+    def start_interruptactionsymbol(self, symbol):
+        self.buffer.write(r"\interruptactionsymbol{}")
+    end_interruptactionsymbol = no_op
+
+    def start_freeinterruptsymbol(self, symbol):
+        self.buffer.write(r"\freeinterruptactionsymbol{}")
+    end_freeinterruptsymbol = no_op
+
+    def start_reactionsymbol(self, symbol):
+        self.buffer.write(r"\reactionsymbol{}")
+    end_reactionsymbol = no_op
+
+    def start_freereactionsymbol(self, symbol):
+        self.buffer.write(r"\freereactionactionsymbol{}")
+    end_free_action_symbol = no_op
+
+    def start_gmfiatactionsymbol(self, symbol):
+        self.buffer.write(r"\gmfiatactionsymbol{}")
+    end_gmfiatactionsymbol = no_op
+
+
+
+
+    
     def start_checksymbol(self, symbol):
         self.buffer.write(r"\checksymbol ")
     end_checksymbol = no_op    
@@ -1152,7 +1225,8 @@ class LatexFormatter(DocFormatter):
 
     def start_br(self, br):
         length = br.attrib.get("length")
-        self.buffer.write(r"\ifvmode\else\newline\fi{}")
+        # self.buffer.write(r"\ifvmode\else\newline\fi{}")
+        self.buffer.write(r"\mdbr{}")
         # if length:
         #     assert float(length)
         #     #     self.buffer.write(r" \\ ")
@@ -2630,16 +2704,19 @@ class LatexFormatter(DocFormatter):
         self.buffer.write(r"\hfill")
         return
     end_hfill = no_op
-            
+
+
+    def start_spacer(self, spacer):        
+        self.buffer.write(r"\mdspacer{}")
+        return
+    end_spacer = no_op
+    
     def start_divider(self, divider):        
         char_code = 89 # standard
         if divider.attrib == "fancy":
             char_code = 80
         self.buffer.write(r"\centerline{\pgfornament[scale=0.14]{%s}}"
                           % char_code)
-        # Suggest to latex that if it wants to add vertical space for layout
-        # here is a reasonably good place to do so.
-        self.buffer.write(r"\vspace{0cm plus 2cm}")
         return
     end_divider = no_op
             

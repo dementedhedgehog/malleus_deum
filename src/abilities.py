@@ -140,9 +140,6 @@ class AbilityStage:
 MIN_INITIAL_ABILITY_RANK = -6
 MAX_INITIAL_ABILITY_RANK = 9
 
-# Lookup table from ability-rank-id :--> ability-rank
-#ability_rank_lookup = {}
-
 
 def parse_spline(point_nodes):
     """
@@ -155,7 +152,6 @@ def parse_spline(point_nodes):
         y = float(point_node.attrib["y"])
         points.append((x, y))
     return points
-
 
 
 
@@ -739,7 +735,7 @@ class Ability:
 
         # list of spline points .. used for laying out the ability
         # in a graph in the phb.
-        self.spline = []
+        self.spline = None
 
         # Ability stages
         self.stages = []
@@ -860,7 +856,7 @@ class Ability:
         trained_ranks = self.get_trained_ranks()
         first_ability_rank = trained_ranks[0]
         last_ability_rank = trained_ranks[-1]
-        ability_ranks = f"{first_ability_rank}-{last_ability_rank}"
+        ability_ranks = f"{first_ability_rank} – {last_ability_rank}"
         return ability_ranks
 
     def is_core(self):  # FIXME: WHAT DOES THIS MEAN?
@@ -1055,6 +1051,7 @@ class Ability:
 
             elif tag == "spline":
                 self.spline = parse_spline(child.getchildren())
+                #assert self.spline
 
             elif tag == "specializations":
                 self.parse_specializations(child.getchildren())
@@ -1086,8 +1083,6 @@ class Ability:
                 name=specialization_name,
                 ability=self)
             self.specializations.append(specialization)
-            print(specialization.get_full_name())
-            print(specialization.get_long_name())
             # ability_rank_lookup[specialization.get_full_name()] = specialization
             # ability_rank_lookup[specialization.get_long_name()] = specialization
         return
@@ -1165,9 +1160,11 @@ class AbilityGroupInfo:
         self.fname = fname
         self.name = None
         self.ability_group_id = None
+        self.ability_group_readable_id = None
         self.description = None
         self.slug = None        
         self.family_id = None
+        self.family_readable_id = None
         self.keywords = []
 
         # Should we draw a skill tree when documenting the ability group?
@@ -1213,9 +1210,11 @@ class AbilityGroupInfo:
                        "Only one abilitygroupid per ability. (%s) %s\n" %
                        (child.tag, str(child)))
                else:
-                   node = list(child)[0]
-                   self.ability_group_id = node.tag
-                   ability_group_location = f"{self.fname}:{node.sourceline}"
+                   groupid = list(child)[0]
+                   self.ability_group_id = groupid.tag
+                   self.ability_group_readable_id = contents_to_string2(groupid)
+                   assert self.ability_group_readable_id is not None
+                   ability_group_location = f"{self.fname}:{groupid.sourceline}"
                    
            elif tag == "abilitygroupfamily":
                if self.family_id is not None:
@@ -1223,14 +1222,17 @@ class AbilityGroupInfo:
                        "Only one abilitygroupfamily per ability. (%s) %s\n" %
                        (child.tag, str(child)))
                else:
-                   family_ids = utils.contents_to_list(child)
+                   family_ids = list(child.iterchildren())
                    #family_ids = parse_xml_keyword_list(child)
                    if len(family_ids) != 1:
                       raise Exception(
                           "Expecting 1 family id: got %s and %s"
                           % (len(family_ids), contents_to_string(child)))
                    # save the id!
-                   self.family_id = family_ids[0]
+                   family = family_ids[0]
+                   self.family_id = family.tag
+                   self.family_readable_id = contents_to_string2(family)
+                   assert self.family_readable_id is not None
 
            elif tag == "keywords":
                self.keywords = parse_xml_keyword_list(child)
@@ -1273,18 +1275,19 @@ class AbilityGroup:
         return
 
     def get_ability(self, ability_id):
-        if "wyrd" in self.get_id():
-            print(f"Get ability {[a.get_id() for a in self.abilities]}")
         for ability in self.abilities:
             if ability.ability_id == ability_id:
                 assert isinstance(ability, Ability)
                 return ability            
         return None
 
+    def get_slug(self):
+        return self.info.slug
+    
     def get_keywords(self):
         all_keywords = self.info.keywords + [
-            self.info.family_id,
-            #self.info.ability_group_id
+            self.info.ability_group_readable_id,
+            self.info.family_readable_id
         ]
         return sorted(list(set(all_keywords)))
 
@@ -1426,15 +1429,7 @@ class AbilityGroups:
         ability_id = ability.get_id()
         print(f"\t{ability_id}")
         for group in self.ability_groups:
-            # if "wyrd" in group.get_id():
-            #     print(f"\tGroup {group}")
-            assert isinstance(group, AbilityGroup)
-            #group_ability = group.get_ability(ability_id)
-            #if group_ability is None:
-            #    continue
-            #assert isinstance(ability, Ability)
-            #print(f"\t{group_ability}")
-            
+            assert isinstance(group, AbilityGroup)            
             print(f"\t --- ability .. {ability}")
             for a2 in group:
                 print(f"\t\t --- child? .. {a2.get_id()}")
@@ -1493,7 +1488,6 @@ class AbilityGroups:
 
         # load all the ability groups
         for xml_fname in listdir(abilities_dir):
-
             if not xml_fname.endswith(".xml"):
                 continue
 
@@ -1580,7 +1574,6 @@ class AbilityGroups:
                               n_lines_first_page=n_lines_first_page)
 
 
-
 def generate_ability_check_table():
     """
     Creates an html table listing all the abilities and their checks.
@@ -1640,7 +1633,11 @@ if __name__ == "__main__":
 
 
     for g in ability_groups:
-        print(g.get_family())
+        #print(g.get_family())
+        print(g)
+        print(g.info.family_readable_id)
+        #print(g.info.ability_group_readable_id)
+        print(g.info.slug)
     
     
     # a = g.get_ability("alchemy")

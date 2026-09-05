@@ -243,7 +243,7 @@ class Doc:
                 
             else:
                 raise self._create_error(
-                    f"Unknown element <{tag}> or missing {handler_name}",
+                    f"Missing xml element handler {handler_name}()",
                     i_formatter,
                     element)
 

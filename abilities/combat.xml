@@ -7,7 +7,9 @@
     <abilitygroupdescription>
       <p>
 	Generic combat abilities.
-      </p>      
+      </p>
+
+      <vspace>5</vspace>
     </abilitygroupdescription>
     <enabled/>
   </abilitygroupinfo>
@@ -16,19 +18,37 @@
   <ability>
     <abilitytitle>Adversary</abilitytitle>
     <abilityid>adversary</abilityid>    
-    <abilityranks from="1" to="4"/>
+    <abilityranks from="1" to="2"/>
+    <abilityauxiliary>
+      <name>Experience Sets In</name>
+      <checktype><recall-knowledge/></checktype>
+      <apcost><free-reaction/></apcost>
+      <range><self/></range>
+      <keywords><lore/><auxiliary/></keywords>
+      <precondition>Luck Fate result or Critical Success or Failure on a
+      physical attack on a creature of the given specialization.</precondition>
+      <effect>
+	+Rank to all further physical attacks by this character against that
+	creature.
+      </effect>
+      <!-- <counter><ssv13/></counter> -->
+      <!-- <critsuccess><default-lore-critical-success/></critsuccess> -->
+      <!-- <righteoussuccess><default-lore-righteous-success/></righteoussuccess> -->
+      <!-- <success><default-lore-success/></success> -->
+    </abilityauxiliary>
+    
     <abilitycheck>
       <name>Recall Knowledge</name>
       <checktype><recall-knowledge/></checktype>
       <apcost><ap4/></apcost>
       <range><self/></range>
       <keywords><lore/><check/></keywords>
+      <precondition></precondition>
       <counter><gm-fiat/></counter>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>
       <success><default-lore-success/></success>
     </abilitycheck>    
-    <!-- <spline><p x="70" y="90"/></spline> -->
     <specializations>
       <specialization>Green-Skins</specialization>
       <specialization>Froche</specialization>
@@ -180,6 +200,7 @@
       <any-success>FIXME</any-success>
     </abilitycheck>
     <!-- <spline><p x="90" y="90"/></spline> -->
+    <spline></spline>
     <abilitydescription>
       <p>
 	Brawling is the art of unarmed combat. It involves grappling, head
@@ -355,8 +376,6 @@
       <keywords><physical-defence/><countercheck/></keywords>
       <counter><opponents-physical-attack/></counter>      
     </abilitycountercheck>
-    <!-- <prereqabilityref id="" rank=""/> -->
-    <!-- <spline><p x="-30" y="60"/></spline> -->
     <abilitydescription>
       <p>
 	<label>ability:parry</label>

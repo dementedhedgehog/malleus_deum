@@ -161,28 +161,20 @@ def draw_ability_tree(
 
     """
     assert ability is not None
-    node = AbilityNode(ability)
 
     # calculate the nodes size    
+    node = AbilityNode(ability)
     node.calc_size(context)
     
-    print(f"NODE {node} OFFSET {offset}")
-
     # calculate position of the spline points and ability node
     if offset is None:
-        print(f"\t {ability.spline}")
         spline_points = [(WIDTH/2, ABILITY_MARGIN_TOP), ] + ability.spline 
         offset_spline_points = spline_points
         starting_pos = draw.add_spline_points(offset_spline_points)
-        print(f"\t {starting_pos}")
-        print(f"\t {offset_spline_points}")
-        
     else:
         spline_points = [(0, 0), ] + ability.spline 
         offset_spline_points = draw.calc_spline_offsets(offset, spline_points)
         starting_pos = offset_spline_points[-1]
-
-    #print(f" {node} {offset}\n\n")
             
     # draw the node and calculate the nodes' offset.
     starting_pos, new_max_y = node.draw(
@@ -195,31 +187,20 @@ def draw_ability_tree(
     # draw the spline if any
     if offset is not None:
         draw.draw_spline(context, offset_spline_points)
-
     
     # first set all the offsets
     children = ability_groups.get_abilities_children(ability)
-    print(f"====> {node}   {children}")
     if children is not None:
         for child_ability in children:
-            print("\t---> CHILD {child_ability.get_id()}")
             prereq_ability_rank = child_ability.ability_ref_prereq.get_rank()
 
-            print(f"x xxx  {child_ability.get_id()}")
-            if "feign" in child_ability.get_id():
-                print("CHILD is FEIGN DEATH")
-            
-            print(prereq_ability_rank)
-            print(prereq_ability_rank.__class__)
             if prereq_ability_rank is not None:
                 assert isinstance(prereq_ability_rank, int)
             else:
                 prereq_ability_rank = 0
 
             try:
-                child_pos = node.get_outgoing_offset(prereq_ability_rank)
-                print(f"\tXXXXXx {child_pos}")
-                
+                child_pos = node.get_outgoing_offset(prereq_ability_rank)                
                 new_max_y = draw_ability_tree(
                     ability_groups, ability_group, child_ability,
                     context,
@@ -273,6 +254,12 @@ def _build_ability_tree(
     root_abilities = ability_group.get_root_abilities()
     max_y = 0
     for ability in root_abilities:
+
+        # If they don't have a <spline> element is indicates they don't
+        # want this ability drawn on the ability tree.
+        if ability.spline is None:
+            continue
+        
         new_max_y = draw_ability_tree(
             ability_groups,
             ability_group,
@@ -307,6 +294,9 @@ def build_ability_trees(ability_groups):
         fname = join(build_dir, ability_group_id + "_skill_tree.pdf")
         #fname = join(build_dir, ability_group_id + "_skill_tree.svg")
 
+        if ability_group_id != "combat":
+            continue
+
         # The root ability has the same name as the ability group.
 
         # We build the diagram twice.  First time to determine the required
@@ -330,7 +320,14 @@ if __name__ == "__main__":
     build_ability_trees(ability_groups)
 
     #print("XXXXX")
-    #n = ability_groups.get_ability("wyrdscience")
+    # ag = ability_groups.get_ability("combat")
+    # _build_ability_tree(
+    #     ability_groups,
+    #     ag,
+    #     "foobar.pdf",
+    #     height=HEIGHT,
+    #     draw_frame=False):    
+       
     #c = ability_groups.get_abilities_children(n)
     #print(f"{n} {c}")
 

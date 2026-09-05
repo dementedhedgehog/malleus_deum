@@ -1,14 +1,20 @@
 {% macro build_ability(ability) %}
+<spacer/>
 <subsubsection>
   <subsubsectiontitle>
     {%- if ability.is_antag_ability() -%}<antagonistsymbol/> {%- endif -%}
-    {{- ability.get_name() -}}
+    {{- ability.get_name() -}}{{ " " }}
+    {%- if ability.has_ranks() -%}
+    {%- if ability.untrained_rank  -%}
+    <bold>({{ ability.untrained_rank }}) </bold>
+    {%- endif -%}
+    {{ ability.get_ability_rank_range() }}
+    {%- endif -%}    
     {%- if ability.has_parameters() -%}
     <hfill/><smaller>Params: [{{ability.get_parameters_str()}}]</smaller>
     {%- endif -%}
     {#- eat extra newlines as latex doesn't like them in movable arguments -#}
   </subsubsectiontitle>
-  <vspace>-0.3</vspace>
   <indexentry>
     <entry>{{- ability.get_name() }} Ability</entry>
   </indexentry>
@@ -16,73 +22,82 @@
     <entry>Ability</entry>
     <subentry>{{- ability.get_name() }}</subentry>
   </indexentry>
-
   {%- if ability.slug -%}
+  <vspace>-0.3</vspace>
   <epigraph>{{ ability.slug }}</epigraph>
   {%- endif -%}
+  <vspace>-0.5</vspace>
   
   <p>
     <smaller>
-      {%- if ability.has_ranks() -%}
-      <bold>Ranks: </bold>
-      {%- if ability.untrained_rank  -%}
-      <bold>({{ ability.untrained_rank }}) </bold>
-      {%- endif -%}
-      {{ ability.get_ability_rank_range() }}
-      {%- endif -%}
       {%- if ability.prerequisites -%}
-      , <bold>Prereqs:</bold> {{ ability.get_prerequisites_str() }}
+      <bold>Prereqs:</bold> {{ ability.get_prerequisites_str() }}
       {%- endif -%}
       {%- if ability.specializations -%}
-      , <bold>Specializations:</bold> {{ ability.get_specializations_str() }}
+      <bold>Specializations:</bold> {{ ability.get_specializations_str() }}
       {%- endif %}      
       {%- if ability.get_checks() -%}
       {%- for check in ability.get_checks() -%}
-        <indent>
+      <indent>
 	<vspace>0.8</vspace>
 	{%- if check.check_class == 'Check' -%}
-	<checksymbol/><bold> {{check.name}} vs {{ check.counter }}</bold>
+	<checksymbol/><bold> {{check.name}}</bold> vs {{ check.counter }}
 	{%- elif check.check_class == 'Countercheck' -%}
-	<counterchecksymbol/> <bold>{{check.name}} Countercheck</bold>
+	<counterchecksymbol/> <bold>{{check.name}}</bold>
 	{%- elif check.check_class == 'Auxiliary' -%}
-	<auxiliarysymbol/> Auxilliary
+	<auxiliarysymbol/> <bold>{{check.name}}</bold>
 	{%- else -%}
 	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ check.check_type }}
-	{%- endif %}
-	<br/><bold> Cost:</bold> {{ check.ap_cost }}
-	<bold> Crits:</bold> {{ check.get_check_type() }}
-	{%- if check.pool_cost -%}
-	, <bold>Pool Cost:</bold> {{ check.get_pool_cost_str() }}
 	{%- endif -%}
-	, <bold>Range:</bold> {{ check.check_range -}}
+	<br/>
+	<bold>Cost:</bold>
+	{%- if check.ap_cost == 'Free' -%}	
+	<freeactionsymbol/>
+	{%- elif check.ap_cost == '1AP' -%}
+	<oneactionsymbol/>
+	{%- elif check.ap_cost == '2AP' -%}
+	<twoactionsymbol/>
+	{%- elif check.ap_cost == '3AP' -%}
+	<threeactionsymbol/>
+	{%- elif check.ap_cost == '4AP' -%}
+	<fouractionsymbol/>
+	{%- elif check.ap_cost == '5AP' -%}
+	<fiveactionsymbol/>
+	{%- elif check.ap_cost == 'Immediate' -%}
+	<interruptactionsymbol/>
+	{%- endif -%}
+	{{ check.ap_cost }}
+	<bold>Crits:</bold> {{ check.get_check_type() + " " }}
+	{%- if check.pool_cost -%}
+	<bold>Pool Cost:</bold> {{ check.get_pool_cost_str() }}
+	{%- endif -%}
+	<bold>Range:</bold> {{ check.check_range + " " -}}
 	{%- if check.dmg -%}
-	, <bold>Damage:</bold> {{ check.dmg }}
+	<bold>Damage:</bold> {{ check.dmg  + " " }}
 	{%- endif -%}
 	{%- if check.keywords -%}
-	, <bold>Keywords:</bold> {{ check.get_keywords_str() }}
+	<bold>Keywords:</bold> {{ check.get_keywords_str()  + " " }}
 	{%- endif -%}
 	{%- if check.requires %}
 	<bold>Requires:</bold> {{ check.requires }}	
 	{%- endif -%}
 	{%- if check.precondition %}	
-	<bold>Preconditions:</bold> {{ check.precondition }}
-	{%- endif -%}	
-	{% if check.effect %}
-	<bold>Effect:</bold> {{ check.effect }}
-	{% endif %}
-	{%- if check.has_outcomes() %}
-	<vspace>-0.6</vspace>
-	<bold>Outcomes:</bold><indent>
-	{%- for outcome in check.get_outcomes() -%}	
-	{% set name, result = outcome %}	
-	<bold>{{ name }}:</bold> {{ result }}<br/>
-	{%- endfor -%}
-        </indent>
+	<br/><bold>Preconditions:</bold> {{ check.precondition }}
 	{%- endif -%}
-	<br/>
-        </indent>
+	{% if check.effect -%}
+	<br/><bold>Effect:</bold> {{ check.effect }}
+	{%- endif -%}
+	{%- if check.has_outcomes() %}
+	<br/><bold>Outcomes:</bold><indent>
+	{%- for outcome in check.get_outcomes() -%}
+	{%- set name, result = outcome -%}	
+	<br/><bold>{{ name }}:</bold> {{ result }}
 	{%- endfor -%}
-      {%- endif -%}            
+      </indent>
+      {%- endif -%}
+      </indent>
+      {%- endfor -%}
+      {%- endif -%}
     </smaller>
     <vspace>1</vspace>
   </p>
@@ -100,9 +115,10 @@
     <vspace>1</vspace>
   </p>      
   {%- endif %}            
-    {%- if ability.description -%}
-    {{ ability.description }}
-    {%- endif -%}
-    <divider/>
-  </subsubsection>  
-{% endmacro %}
+  {%- if ability.description -%}
+  {{ ability.description }}
+  {%- endif -%}
+  <divider/>
+</subsubsection>  
+<spacer/>
+{%- endmacro -%}

@@ -1,6 +1,8 @@
 
   {% from "docs/macro_ability.xml" import build_ability with context %}
+  {% from "docs/macro_ability_group.xml" import build_ability_group with context %}
 
+  
 <chapter>
   <chaptertitle>Abilities<label>ch:abilities</label></chaptertitle>
 
@@ -16,22 +18,10 @@
     <sectiontitle>Primary Abilities</sectiontitle>
     <indexentry><entry>Abilities</entry><subentry>Primary</subentry></indexentry>
   
-  {% for ag in ability_groups
-     if ag.get_family_id() == db.ABILITY_FAMILY_PRIMARY_ID %}
-    {{ ag.get_description() }}
-    
-    {% if ag.has_abilities() and ag.draw_skill_tree() %}
-    <figure position="h" fullwidth="false" sideways="false">
-      <img buildfname="{{ ag.get_id() }}_skill_tree.pdf"/>
-      <caption>{{ ag.get_name() }}</caption>
-      <label>figure:{{ ag.get_id() }}_skill_tree</label>
-    </figure>
-    {% endif %}
-
-    {% for ability in ag.get_abilities()%}
-    {{ build_ability(ability) }}
-    {% endfor %}
-  {% endfor %}
+    {% for ag in ability_groups
+    if ag.get_family_id() == db.ABILITY_FAMILY_PRIMARY_ID %}
+    {{- build_ability_group(ag) -}}
+    {% endfor %} 
   </section>
 
 
@@ -46,45 +36,13 @@
 
 
     {% for ag in ability_groups
-       if ag.get_family_id() == db.ABILITY_FAMILY_LORE_ID %}
-    
-    <subsection>
-      <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
-      {{ ag.get_description() }}
-
-      {% if ag.has_abilities() %}
-      <figure position="h" fullwidth="false" sideways="false">
-	<img buildfname="{{ ag.get_id() }}_skill_tree.pdf"/>
-	<caption>{{ ag.get_name() }}</caption>
-	<label>figure:{{ ag.get_id() }}_skill_tree</label>
-      </figure>
-      {% endif %}
-
-      {% for ability in ag.get_abilities()%}
-      {{ build_ability(ability) }}
-      {% endfor %}
-    </subsection>
+    if ag.get_family_id() == db.ABILITY_FAMILY_LORE_ID %}
+      {{- build_ability_group(ag) -}}
     {% endfor %}
-
  
     {% for ag in ability_groups
-       if ag.get_family_id() == db.ABILITY_FAMILY_WYRDSCIENCE_ID %}
-   <subsection>
-      <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
-      {{ ag.get_description() }}
-
-      {% if ag.has_abilities() %}
-      <figure position="h" fullwidth="false" sideways="false">
-	<img buildfname="{{ ag.get_id() }}_skill_tree.pdf"/>
-	<caption>{{ ag.get_name() }}</caption>
-	<label>figure:{{ ag.get_id() }}_skill_tree</label>
-      </figure>
-      {% endif %}
-
-      {% for ability in ag.get_abilities()%}
-      {{ build_ability(ability) }}
-      {% endfor %}
-    </subsection>
+    if ag.get_family_id() == db.ABILITY_FAMILY_WYRDSCIENCE_ID %}
+      {{- build_ability_group(ag) -}}
     {% endfor %}
   </section>
 
@@ -121,25 +79,9 @@
       character uses against the attack.
     </p>
 
-
     {% for ag in ability_groups
-       if ag.get_family_id() == db.ABILITY_FAMILY_MARTIAL_ID %}
-    <subsection>
-      <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
-      {{ ag.get_description() }}
-
-      {% if ag.has_abilities() %}
-      <figure position="h" fullwidth="false" sideways="false">
-	<img buildfname="{{ ag.get_id() }}_skill_tree.pdf"/>
-	<caption>{{ ag.get_name() }}</caption>
-	<label>figure:{{ ag.get_id() }}_skill_tree</label>
-      </figure>
-      {% endif %}
-
-      {% for ability in ag.get_abilities()%}
-      {{ build_ability(ability) }}
-      {% endfor %}
-    </subsection>
+    if ag.get_family_id() == db.ABILITY_FAMILY_MARTIAL_ID %}
+      {{- build_ability_group(ag) -}}
     {% endfor %}
   </section>
 
@@ -155,23 +97,8 @@
     </p>
 
     {% for ag in ability_groups
-       if ag.get_family_id() == db.ABILITY_FAMILY_GENERAL_ID %}
-    <subsection>
-      <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
-      {{ ag.get_description() }}
-
-      {% if ag.has_abilities() and ag.draw_skill_tree() %}
-      <figure position="h" fullwidth="false" sideways="false">
-	<img buildfname="{{ ag.get_id() }}_skill_tree.pdf"/>
-	<caption>{{ ag.get_name() }}</caption>
-	<label>figure:{{ ag.get_id() }}_skill_tree</label>
-      </figure>
-      {% endif %}
-
-      {% for ability in ag.get_abilities()%}
-      {{ build_ability(ability) }}
-      {% endfor %}
-    </subsection>
+    if ag.get_family_id() == db.ABILITY_FAMILY_GENERAL_ID %}
+      {{- build_ability_group(ag) -}}
     {% endfor %}
   </section>
 

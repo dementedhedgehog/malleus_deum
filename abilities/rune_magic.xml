@@ -95,6 +95,33 @@
     </abilitydescription>    
   </ability>
 
+  <ability>
+    <abilitytitle>Oathstone</abilitytitle>
+    <abilityid>oathstone</abilityid>
+    <slug>Duty is heavier than a mountain, death is lighter than a feather.</slug>
+    <abilityranks from="1" to="3"/>
+    <abilitycheck>
+      <name>Cast</name>
+      <checktype><cast/></checktype>
+      <poolcost>1</poolcost>
+      <apcost><ap4/></apcost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>.</critsuccess>
+      <righteoussuccess>.</righteoussuccess>
+      <success>.</success>
+      <critfail>x</critfail>
+    </abilitycheck>
+    <prereqabilityref id="runelore" rank="2"/>	
+    <spline><p x="30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME: something similar to the oathstone in WHF.
+      </p>
+    </abilitydescription>    
+  </ability>
+
   
   <ability>
     <abilitytitle>Runelore</abilitytitle>

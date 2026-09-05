@@ -6,10 +6,10 @@
 
   <p>
     Aspects are game mechanics Malleus Deum uses to model inner conflict for
-    PCs.  They are antagonistic abilities attached to a PC that describe a
-    range of different features a player character might have, including:
-    personality traits, their system of beliefs, or their philosophies, social
-    obligations and oaths.
+    PCs, <ie/> they represent the conflict between man and himself.  Aspects are
+    antagonistic abilities attached to a PC that describe a range of different
+    features a player character might have, including: personality traits, their
+    system of beliefs, or their philosophies, social obligations and oaths.
   </p>
 
   <p>
@@ -400,184 +400,32 @@
 	</p>
       </subsubsection>
     </subsection>
-    
   </section>
 
-
-
+  
   <section>
-    <sectiontitle>Aflictions</sectiontitle>
-    <indexentry><entry>Afflictions</entry></indexentry>
-
+    <sectiontitle>Madness</sectiontitle>
     <p>
-      Diseases, poisons, and acids 
-      phobias, madness?
-      IS AN ASPECT AN AFLICTION?
-      
-      Transmission.
-      - Injury, Contact, Ingested, and Inhaled.
-
-      Airborne
-      : Tiny droplet nuclei or dust stay in the air for a long time and travel far on air currents. Examples include measles and tuberculosis.Fomites (surfaces): Germs live on non-living objects like doorknobs, phones, or toys until touched by a new host. Examples include norovirus and the common cold.Vehicles: Contaminated food, water, or blood products carry pathogens to multiple people. Examples include cholera and hepatitis A.
-      Vectors: Living creatures—mostly insects like mosquitoes, ticks, and fleas—carry pathogens between hosts. Examples include malaria and Lyme disease.
-
+      Generally new Aspects for a character are chosen cooperatively by the
+      party with the intent to generate interesting social dynamics within the
+      game. Madnesses are a type of aspect that are imposed upon the player by
+      the GM. While aspects are generally a two edged sword, madnesses are
+      usually a curse.
     </p>
     
-
+    {% for ag in ability_groups 
+       if ag.get_id() ==  db.ABILITY_GROUP_MADNESS_ID %}
     <subsection>
-      <subsectiontitle>Acids</subsectiontitle>
-      <indexentry><entry>Acids</entry></indexentry>
+      <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
 
-      <p>
-	There are four strong acids in common use: Oil of Vitriol, Aqua
-	Fortis, Spirit of Salt, and Aqua Regis. The first three must be stored
-	in special glass bottles.  While Aqua Regia must be used immediately
-	once it is made as it constantly gives off gas and the pressure of
-	these gases will destroy any container that is capable of holding it.
-      </p>
-      
-      <p>
-	Acids may be either thrown, or poured into a solution or over an item
-	(such as a chain, or a door lock).  
-      </p>
+      {{ ag.get_description() }}
 
-      <p>
-	<indexentry><entry>Acids</entry><subentry>Pouring</subentry></indexentry>
-	When pouring acid a single crafting check is made when opening the
-	vial.  If the acid has been created by a PC using the Alchemy ability
-	then the check is made using that characters Alchemy Craft check.  If
-	the acid has been made by an NPC then the player makes a check for the
-	NPC creator at Rank 0.  A fail represents poor quality acid that is
-	weak the GM can determine the effect of the reduced strength acid.
-	Critical fails have different effects described for each type of acid.
-      </p>
-
-      <p>	  
-	<indexentry><entry>Acids</entry><subentry>Throwing</subentry></indexentry>
-	When throwing acid a two checks are made. The first is a Throw Object
-	check to see where the object lands, the second is a crafting check
-	with results dependent on the type of acid.
-      </p>
-
-      <p>
-	<indexentry><entry>Acids</entry><subentry>Broken Vial</subentry></indexentry>  
-	If some mishap causes a vial of acid to break on the characters person
-	then 1d4 random colocated items are also destroyed and possibly the
-	PC suffers acid damage as well.
-      </p>
-
-      <table>
-	<fullwidthtable/>
-	<tablespec>
-	  <fixed>0.04</fixed>
-	  <fixed>0.254</fixed>
-	  <fixed>0.254</fixed>
-	  <fixed>0.254</fixed>
-	</tablespec>
-	<tabletitle>Acid Critical Fails</tabletitle>
-	<tablelabel>table:</tablelabel>
-
-	<tableheaderrow>
-	  <th></th>
-	  <th align="c">Oil of Vitriol</th>
-	  <th align="c">Aqua Fortis</th>
-	  <th align="c">Spirit of Salt</th>
-	</tableheaderrow>
-
-	<tableheaderrow>
-	  <th>SV</th>
-	  <th align="c" width="3">Opened</th>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>1-2</td>
-	  <td align="l">Sulfuric acid fog released, opener and adjacent
-	  characters take half damage.</td>
-	  <td align="l">Extreme Oxidation instantly ignites any organic
-	  matter like paper, wood, and alcohols near the acid.</td>
-	  <td align="l">Hydrogen gas build up, will spray acid over the
-	  user if opened takes half damage.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>3-5</td>
-	  <td align="l">Vial breaks when touched. Lose 1d3 collocated
-	  items.</td>
-	  <td align="l">Red-brown nitrogen dioxide gas spews from the vial,
-	  irritating the nose and throat causing loud coughing, and chest
-	  pain.</td>
-	  <td align="l">Colourless hydrogen chloride gas is released that
-	  irritates or burns the upper respiratory tract, leading to coughing
-	  and choking.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>6-20</td>
-	  <td align="c" width="3">No Effect</td>
-	</tablerow>
-
-	<hline/>
-	
-	<tableheaderrow>
-	  <th>SV</th>
-	  <th align="c" width="3">Thrown</th>
-	</tableheaderrow>
-
-	<tablerow>
-	  <td>1-2</td>
-	  <td align="l" width="3">Vial breaks when throwing.  Thrower takes
-	  damage. Throw automatically fails.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>3-4</td>
-	  <td align="l" width="3">Catalyst contamination.  Damage halved.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>5</td>
-	  <td align="l" width="3">Leak/residue on bottle. Thrower takes d4
-	  health or loses one collocated item.</td>
-	</tablerow>
-
-	<tablerow>
-	  <td>6-20</td>
-	  <td align="c" width="3">No Effect</td>
-	</tablerow>
-      </table>    
+      {% for ability in ag.get_abilities()%}
+      {{ build_ability(ability) }}
+      {% endfor %}
     </subsection>
-
-    
-    <subsection>
-      <subsectiontitle>Poisons</subsectiontitle>
-
-      <p>
-	FIXME
-
-	Poison condition
-
-	Injury, Contact, Ingested, and Inhaled.
-
-	Injury: Triggered by a successful weapon strike or monster bite.Ingested: Hid in food or drink; relies on roleplay, perception, and paranoia.Inhaled: Traps, gas clouds, or spores; affects an entire area or zone.Contact: Smeared on door handles or items; punishes careless looting.      
-      </p>
-
-      
-      
-    </subsection>
-
-    
-
-    <subsection>
-      <subsectiontitle>Diseases</subsectiontitle>
-      <indexentry><entry>Diseases</entry></indexentry>
-      
-    </subsection>
-
+    {% endfor %}
   </section>
-  
-
-  
-
 </chapter>
 
 
