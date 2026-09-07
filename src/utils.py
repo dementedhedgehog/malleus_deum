@@ -5,7 +5,7 @@
 
 """
 import sys
-from os.path import abspath, join, dirname
+from os.path import abspath, join, dirname, getsize
 import codecs
 import functools
 import lxml
@@ -49,6 +49,12 @@ schema_fname = abspath(join(dirname(__file__), "rpg.xsd"))
 
 def is_filelike(obj):
     return isinstance(obj, io.IOBase)
+
+
+def get_file_size_kb(full_fname):
+    file_size_bytes = getsize(full_fname)
+    return file_size_bytes // 1024
+
 
 @functools.cache
 def load_xsd_schema():

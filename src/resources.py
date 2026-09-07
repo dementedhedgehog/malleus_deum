@@ -13,6 +13,7 @@ import codecs
 import collections
 import json
 import os
+import glob
 from os.path import abspath, join, splitext, dirname, exists, basename, relpath
 import sys
 import traceback
@@ -21,13 +22,13 @@ import xml.etree.cElementTree as et
 from utils import (
     parse_xml,
     xml_tree_to_str,
-    #validate_xml,
     get_error_context,
-    #COMMENT,
     is_comment,
     resources_dir,
     build_dir,
-    )
+    root_dir,
+    get_file_size_kb,
+)
 
 
 # Set this True to make missing license stuff a fatal error
@@ -263,7 +264,7 @@ class UsedResourcesDB:
 
 
     def is_used(self, resource_id):
-        return resource_id in self.resources and len(self.resources) > 0
+        return len(self.resources.get(resource_id, ())) > 0
     
     def use(self, resource_id, filename):
         self.resources[resource_id].add(filename)
@@ -349,15 +350,16 @@ class Resources:
         ok_resources = []
         # Note these two lists need not be mutually exclusive.
         no_license_resources = []
-        unused_resources = []
-
+        unused_resources = set()
+        
+        # list of image (path, size)
+        resource_sizes = []
 
         ids = list(self.lookup.keys())
         ids.sort()
 
         for resource_id in ids:
-
-            used = self.used_resources_db.is_used(resource_id)
+            used = self.used_resources_db.is_used(resource_id)            
             info = self.lookup[resource_id]
             if used and info.license:
                 ok_resources.append(info)
@@ -365,8 +367,25 @@ class Resources:
             if not info.license:
                 no_license_resources.append(info)
 
+            # if resource_id == "guillaumot_gate":
+            #     print(resource_id)
+            #     print(used)
+            #     sys.exit()
+                
             if not used:
-                unused_resources.append(info)
+                unused_resources.add(info.fname)
+
+            # Calculate resource size
+            fname = info.get_fname()
+            full_fname = join(root_dir, fname)
+            file_size_kb = get_file_size_kb(full_fname)
+            resource_sizes.append((fname, file_size_kb))
+
+        # sort the file sizes descending
+        sorted_resource_sizes = sorted(
+            resource_sizes,
+            key=lambda x: x[1],
+            reverse=True)
 
         print("\n\n * Resource Report *")
         if verbose:
@@ -374,18 +393,47 @@ class Resources:
             for info in ok_resources:
                 print(info.info_fname)
                 
-        if len(no_license_resources) > 0 or not verbose:
+        if len(no_license_resources) > 0:
             print("\n** Missing License Resources **")
             for info in no_license_resources:
                 print(info.info_fname)
 
-        if len(unused_resources) > 0 or not verbose:
-            print("\n** Unused Resources **")
-            for info in unused_resources:
-                print(info.info_fname)
+        if len(unused_resources) > 0:
+            print("\n** Unused Resources **")            
+            for fname in sorted(unused_resources):
+                print(fname)
 
             print("\n**Note**: the 'used' field is only accurate if "
               "you have built *all* the docs.\n\n")
+
+        print("\n** Resources by Size Descending **")
+        print("\t A4 \\textheight is 8.276in, \\textwidth is 6.255in"
+              "\\columnwidth is 3.058in\n"
+              "\t .. and printers print at 300dpi for the purposes of "
+              "calculating optimal pixel sizes for printed images. "
+              "(e.g. column wide image should be 917px wide)\n\n")
+        for img_fname, size in sorted_resource_sizes:
+            unused = img_fname in unused_resources
+            unused_str = "Unused" if unused else ""            
+            print(f"\t{size:7d} Kb   {unused_str:<6}   {img_fname}")
+
+
+        #
+        # Print PDF doc sizes.
+        #
+        print("\n** PDFs by Size Descending **")
+        pdf_fnames = glob.glob(join(build_dir, '*.pdf'))
+        pdf_sizes = []
+        for fname in pdf_fnames:
+            full_fname = join(root_dir, fname)
+            file_size_kb = get_file_size_kb(full_fname)
+            pdf_sizes.append((fname, file_size_kb))
+        sorted_pdf_sizes = sorted(
+            pdf_sizes,
+            key=lambda x: x[1],
+            reverse=True)
+        for pdf_fname, size in sorted_pdf_sizes:
+            print(f"\t{size:7d} Kb   {pdf_fname}")
 
 
 if __name__ == "__main__":

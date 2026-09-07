@@ -451,67 +451,103 @@ latex_frontmatter = r"""
 
 
 
+\newlength{\actionsymbolverticaloffset}
+\setlength{\actionsymbolverticaloffset}{-0.7mm}
+
+\newlength{\actionsymbolhorizontaloffset}
+\setlength{\actionsymbolhorizontaloffset}{0.2mm}
 
 
 %% Symbol Free Action
 \newcommand\freeactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_free_action.png}}
+{./resources/symbol_actions/symbol_free_action.png}}}
 
 %% Symbol One Action
 \newcommand\oneactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_one_action.png}}
+{./resources/symbol_actions/symbol_one_action.png}}}
 
 %% Symbol Two Actions
 \newcommand\twoactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_two_actions.png}}
+{./resources/symbol_actions/symbol_two_actions.png}}}
 
 %% Symbol Three Actions
 \newcommand\threeactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_three_actions.png}}
+{./resources/symbol_actions/symbol_three_actions.png}}}
 
 %% Symbol Four Actions
 \newcommand\fouractionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_four_actions.png}}
+{./resources/symbol_actions/symbol_four_actions.png}}}
 
 %% Symbol Five Actions
 \newcommand\fiveactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_five_actions.png}}
+{./resources/symbol_actions/symbol_five_actions.png}}}
 
 %% Symbol Reaction
 \newcommand\reactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_reaction.png}}
+{./resources/symbol_actions/symbol_reaction.png}}}
 
 %% Symbol Free Reaction
 \newcommand\freereactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_free_reaction.png}}
+{./resources/symbol_actions/symbol_free_reaction.png}}}
 
 %% Symbol Interrupt
-\newcommand\interruptactionsymbol{%%
+\newcommand\interruptsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_interrupt.png}}
+{./resources/symbol_actions/symbol_interrupt.png}}}
 
 %% Symbol Free Interrupt
 \newcommand\freeinterruptactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_free_interrupt.png}}
+{./resources/symbol_actions/symbol_free_interrupt.png}}}
 
 %% Symbol GM Fiat Action
 \newcommand\gmfiatsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_gm_fiat_action.png}}
+{./resources/symbol_actions/symbol_gm_fiat_action.png}}}
 
 %% Symbol Out of Combat Action
 \newcommand\outofcombatsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_out_of_turn_action.png}}
+{./resources/symbol_actions/symbol_out_of_combat_action.png}}}
+
+%% Multi Round Action
+\newcommand\multiroundactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
+\includegraphics[width=\symbolsize,height=1.43\symbolsize]%%
+{./resources/symbol_actions/multi_round_action.png}}}
 
 
 
@@ -1008,9 +1044,9 @@ class LatexFormatter(DocFormatter):
         self.buffer.write(r"\fiveactionsymbol{}")
     end_fiveactionsymbol = no_op
 
-    def start_interruptactionsymbol(self, symbol):
-        self.buffer.write(r"\interruptactionsymbol{}")
-    end_interruptactionsymbol = no_op
+    def start_interruptsymbol(self, symbol):
+        self.buffer.write(r"\interruptsymbol{}")
+    end_interruptsymbol = no_op
 
     def start_freeinterruptsymbol(self, symbol):
         self.buffer.write(r"\freeinterruptactionsymbol{}")
@@ -1021,14 +1057,20 @@ class LatexFormatter(DocFormatter):
     end_reactionsymbol = no_op
 
     def start_freereactionsymbol(self, symbol):
-        self.buffer.write(r"\freereactionactionsymbol{}")
-    end_free_action_symbol = no_op
+        self.buffer.write(r"\freereactionsymbol{}")
+    end_freereactionsymbol = no_op
 
-    def start_gmfiatactionsymbol(self, symbol):
-        self.buffer.write(r"\gmfiatactionsymbol{}")
-    end_gmfiatactionsymbol = no_op
+    def start_gmfiatsymbol(self, symbol):
+        self.buffer.write(r"\gmfiatsymbol{}")
+    end_gmfiatsymbol = no_op
 
+    def start_outofcombatsymbol(self, symbol):
+        self.buffer.write(r"\outofcombatsymbol{}")
+    end_outofcombatsymbol = no_op
 
+    def start_multiroundactionsymbol(self, symbol):
+        self.buffer.write(r"\multiroundactionsymbol{}")
+    end_multiroundactionsymbol = no_op
 
 
     

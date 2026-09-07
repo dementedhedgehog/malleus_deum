@@ -955,31 +955,28 @@ Token Types:
 
   <xs:complexType name="abilityAPCostType" mixed="false">
     <xs:choice>
-      <!-- 1-5 Action Points -->
+      <!-- 0-5 Action Points -->
+      <xs:element name="free" type="keywordType" fixed="Free"/>
       <xs:element name="ap5" type="keywordType" fixed="5AP"/>
       <xs:element name="ap4" type="keywordType" fixed="4AP"/>
       <xs:element name="ap3" type="keywordType" fixed="3AP"/>
       <xs:element name="ap2" type="keywordType" fixed="2AP"/>
       <xs:element name="ap1" type="keywordType" fixed="1AP"/>
 
-      <!-- Immediate means performed now, out of turn, at no AP cost REMOVE SAME AS FREE INTERUPT-->
-      <!-- <xs:element name="immediate" type="keywordType" fixed="Immediate"/> -->
-      
       <!-- no ap cost -->
-      <xs:element name="free" type="keywordType" fixed="Free"/>
       <!-- May take multiple players or multiple rounds to perform -->      
       <xs:element name="multi-round" type="keywordType" fixed="Multi-Round"/>
-      
       <xs:element name="gm-fiat" type="keywordType" fixed="GM-Fiat"/>
-      <xs:element name="retort" type="keywordType" fixed="Retort"/>
       <xs:element name="reaction" type="keywordType" fixed="Reaction"/>
       <xs:element name="interrupt" type="keywordType" fixed="Interrupt"/>
-      <xs:element name="free-reaction" type="keywordType" fixed="Free Reaction"/>
-      <xs:element name="free-action-or-reaction" type="keywordType" fixed="Free Action/Reaction"/>
-      <xs:element name="reaction-or-ap2" type="keywordType" fixed="Reaction or AP2"/>
-      <xs:element name="interrupt-or-ap2" type="keywordType" fixed="Interrupt or AP2"/>
-      <xs:element name="noncombat" type="keywordType" fixed="Noncombat"/>
-
+      <xs:element name="free-interrupt" type="keywordType" fixed="Free-Interrupt"/>
+      <xs:element name="free-reaction" type="keywordType" fixed="Free-Reaction"/>
+      <xs:element name="free-action-or-reaction" type="keywordType" fixed="Free-Action/Reaction"/>
+      <xs:element name="interrupt-or-reaction" type="keywordType" fixed="Interrupt/Reaction"/>
+      <xs:element name="reaction-or-ap2" type="keywordType" fixed="Reaction/2AP"/>
+      <xs:element name="interrupt-or-ap2" type="keywordType" fixed="Interrupt/2AP"/>
+      <xs:element name="noncombat" type="keywordType" fixed="Noncombat"/>      
+      
       <!-- Defaults -->
       <xs:element name="default-lore-apcost" type="keywordType" fixed="2AP"/>      
       <xs:element name="default-skill-apcost" type="keywordType" fixed="2AP"/>
@@ -1071,9 +1068,10 @@ Token Types:
       <xs:element name="fiveactionsymbol" type="symbolType"/>
       <xs:element name="reactionsymbol" type="symbolType"/>
       <xs:element name="freereactionsymbol" type="symbolType"/>
-      <xs:element name="interruptactionsymbol" type="symbolType"/>
-      <xs:element name="freeinterruptactionsymbol" type="symbolType"/>
-      <xs:element name="gmfiatactionsymbol" type="symbolType"/>
+      <xs:element name="interruptsymbol" type="symbolType"/>
+      <xs:element name="freeinterruptsymbol" type="symbolType"/>
+      <xs:element name="gmfiatsymbol" type="symbolType"/>
+      <xs:element name="outofcombatsymbol" type="symbolType"/>
       
       <xs:group ref="svResultGroup"/>
       <!-- <xs:group ref="resultGroup"/> -->

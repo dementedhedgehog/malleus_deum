@@ -1,3 +1,47 @@
+{% macro insert_action_symbol(check) %}
+{%- if check.ap_cost == 'Free' -%}
+<freeactionsymbol/>
+{%- elif check.ap_cost == '1AP' -%}
+<oneactionsymbol/>
+{%- elif check.ap_cost == '2AP' -%}
+<twoactionsymbol/>
+{%- elif check.ap_cost == '3AP' -%}
+<threeactionsymbol/>
+{%- elif check.ap_cost == '4AP' -%}
+<fouractionsymbol/>
+{%- elif check.ap_cost == '5AP' -%}
+<fiveactionsymbol/>
+{%- elif check.ap_cost == 'Interrupt' -%}
+<interruptsymbol/>
+{%- elif check.ap_cost == 'Free-Interrupt' -%}
+<freeinterruptsymbol/>
+{%- elif check.ap_cost == 'Reaction' -%}
+<reactionsymbol/>
+{%- elif check.ap_cost == 'Free-Reaction' -%}
+<freereactionsymbol/>
+{%- elif check.ap_cost == 'Free-Reaction/Interrupt' -%}
+<freereactionorinterruptsymbol/>
+{%- elif check.ap_cost == 'Reaction/Interrupt' -%}
+<reactionorinterruptsymbol/>
+{%- elif check.ap_cost == 'Reaction/2AP' -%}
+<reactionsymbol/>/<twoactionsymbol/>
+{%- elif check.ap_cost == 'Interrupt/2AP' -%}
+<interruptsymbol/>/<twoactionsymbol/>
+{%- elif check.ap_cost == 'GM-Fiat' -%}
+<gmfiatsymbol/>
+{%- elif check.ap_cost == 'Interrupt' -%}
+<interruptsymbol/>
+{%- elif check.ap_cost == 'Noncombat' -%}
+<outofcombatsymbol/>
+{%- endif -%}
+{%- endmacro -%}
+
+
+{#-
+
+ Formats an Ability
+
+-#}
 {% macro build_ability(ability) %}
 <spacer/>
 <subsubsection>
@@ -41,7 +85,9 @@
       <indent>
 	<vspace>0.8</vspace>
 	{%- if check.check_class == 'Check' -%}
-	<checksymbol/><bold> {{check.name}}</bold> vs {{ check.counter }}
+	<checksymbol/><bold> {{check.name}}</bold>
+	{{- insert_action_symbol(check) }}
+	vs {{ check.counter }}
 	{%- elif check.check_class == 'Countercheck' -%}
 	<counterchecksymbol/> <bold>{{check.name}}</bold>
 	{%- elif check.check_class == 'Auxiliary' -%}
@@ -51,21 +97,6 @@
 	{%- endif -%}
 	<br/>
 	<bold>Cost:</bold>
-	{%- if check.ap_cost == 'Free' -%}	
-	<freeactionsymbol/>
-	{%- elif check.ap_cost == '1AP' -%}
-	<oneactionsymbol/>
-	{%- elif check.ap_cost == '2AP' -%}
-	<twoactionsymbol/>
-	{%- elif check.ap_cost == '3AP' -%}
-	<threeactionsymbol/>
-	{%- elif check.ap_cost == '4AP' -%}
-	<fouractionsymbol/>
-	{%- elif check.ap_cost == '5AP' -%}
-	<fiveactionsymbol/>
-	{%- elif check.ap_cost == 'Immediate' -%}
-	<interruptactionsymbol/>
-	{%- endif -%}
 	{{ check.ap_cost }}
 	<bold>Crits:</bold> {{ check.get_check_type() + " " }}
 	{%- if check.pool_cost -%}

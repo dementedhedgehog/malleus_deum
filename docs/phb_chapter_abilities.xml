@@ -34,7 +34,6 @@
       fields such as Antiquities, Natural History, Alchemy, <etc/>.
     </p>
 
-
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_LORE_ID %}
       {{- build_ability_group(ag) -}}

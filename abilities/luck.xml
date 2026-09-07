@@ -21,7 +21,7 @@
       <name>Check</name>
       <checktype><trial/></checktype>
       <poolcost>1</poolcost>
-      <apcost><immediate/></apcost>
+      <apcost><free-interrupt/></apcost>
       <range><self/></range>
       <keywords><luckpool/><check/></keywords>
       <counter><sv11/></counter>              
@@ -72,7 +72,7 @@
       <name>Check</name>
       <checktype><trial/></checktype>
       <poolcost>1</poolcost>
-      <apcost><immediate/></apcost>
+      <apcost><free-interrupt/></apcost>
       <range><self/></range>
       <keywords><luckpool/><check/></keywords>
       <precondition>Any time a blessed result is rolled.</precondition>
@@ -179,7 +179,7 @@
       <name>Check</name>
       <checktype><trial/></checktype>
       <poolcost>1</poolcost>
-      <apcost><retort/></apcost>
+      <apcost><interrupt-or-reaction/></apcost>
       <range><self/></range>
       <keywords><luckpool/><check/></keywords>
       <counter><sv11/></counter>
@@ -189,11 +189,11 @@
     <spline><p x="-70" y="60"/></spline> 
     <abilitydescription>
       <p>
-        Sometimes all you need is a little luck to get something done in the
-	nick of time. After an NPC, monster of character performs an action the
-	player can try to perform any action as a retort <emph>in the nick of
-	time</emph>.  If the GM chooses	to allow it, the PC performs their
-	action before the monsters action.
+        Sometimes all you need is a little luck to get something done <emph>in
+	the nick of time</emph>. After an NPC, monster of character performs an
+	action the player can try to perform any action in response. The GM
+	determines whether the ability can be performed as an interrupt or
+	reaction depending on context.
       </p>
 
       <p>

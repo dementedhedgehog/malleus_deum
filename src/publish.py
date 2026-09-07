@@ -199,14 +199,15 @@ if __name__ == "__main__":
     release = False
     validate_only = False
     only_build_tex_files = False
-    produce_unused_resources_report = False
+    #produce_unused_resources_report = False
+    print_resource_report = False    
     for o, a in opts:
         if o in ("-v", "--verbose"):
             verbosity += 1            
         elif o in ("-t", "--tex"):
             only_build_tex_files = True
         elif o in ("-u", "--unusedresources"):
-            produce_unused_resources_report = True
+            print_resource_report = True
         elif o in ("-V", "--validate"):
             validate_only = True
         elif o in ("-h", "--help"):
@@ -382,7 +383,7 @@ if __name__ == "__main__":
         # and also list unused art resources to help us
         # cull stuff from the repo.
         #
-        if config.print_resource_report or produce_unused_resources_report:
+        if config.print_resource_report or print_resource_report:
             db.resources.print_report(verbose=True)
 
         #
