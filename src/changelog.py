@@ -1,4 +1,10 @@
+"""
 
+  Reads the docs/changelog.xml document and makes its contents available
+  to documents.
+  
+
+"""
 from utils import parse_xml, is_comment # COMMENT
 
 
@@ -19,7 +25,6 @@ class Version:
     def load(cls, version_node):
         version = Version()
         
-        #for child in list(root):
         for child in list(version_node):
            tag = child.tag
 

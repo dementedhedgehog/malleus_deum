@@ -11,15 +11,19 @@
 <fouractionsymbol/>
 {%- elif check.ap_cost == '5AP' -%}
 <fiveactionsymbol/>
-{%- elif check.ap_cost == 'Interrupt' -%}
-<interruptsymbol/>
-{%- elif check.ap_cost == 'Free-Interrupt' -%}
-<freeinterruptsymbol/>
+{%- elif check.ap_cost == 'Save' -%}
+<savesymbol/>
+{%- elif check.ap_cost == 'Free Save' -%}
+<freesavesymbol/>
 {%- elif check.ap_cost == 'Reaction' -%}
 <reactionsymbol/>
-{%- elif check.ap_cost == 'Free-Reaction' -%}
+{%- elif check.ap_cost == 'Free Reaction' -%}
 <freereactionsymbol/>
-{%- elif check.ap_cost == 'Free-Reaction/Interrupt' -%}
+{%- elif check.ap_cost == 'Mandatory Reaction' -%}
+<mandatoryreactionsymbol/>
+{%- elif check.ap_cost == 'Mandatory Free Reaction' -%}
+<mandatoryfreereactionsymbol/>
+{%- elif check.ap_cost == 'Free Reaction/Interrupt' -%}
 <freereactionorinterruptsymbol/>
 {%- elif check.ap_cost == 'Reaction/Interrupt' -%}
 <reactionorinterruptsymbol/>
@@ -31,6 +35,12 @@
 <gmfiatsymbol/>
 {%- elif check.ap_cost == 'Interrupt' -%}
 <interruptsymbol/>
+{%- elif check.ap_cost == 'Free Interrupt' -%}
+<freeinterruptsymbol/>
+{%- elif check.ap_cost == 'Mandatory Interrupt' -%}
+<mandatoryinterruptsymbol/>
+{%- elif check.ap_cost == 'Mandatory Free Interrupt' -%}
+<mandatoryfreeinterruptsymbol/>
 {%- elif check.ap_cost == 'Noncombat' -%}
 <outofcombatsymbol/>
 {%- endif -%}
@@ -45,14 +55,15 @@
 {% macro build_ability(ability) %}
 <spacer/>
 <subsubsection>
-  <subsubsectiontitle>
+  <subsubsectiontitle isabilitytitle="true">
     {%- if ability.is_antag_ability() -%}<antagonistsymbol/> {%- endif -%}
     {{- ability.get_name() -}}{{ " " }}
     {%- if ability.has_ranks() -%}
     {%- if ability.untrained_rank  -%}
     <bold>({{ ability.untrained_rank }}) </bold>
     {%- endif -%}
-    {{ ability.get_ability_rank_range() }}
+    {%- set from_rank, to_rank = ability.get_ability_trained_rank_range() -%}
+    {{ from_rank }}<endash/>{{ to_rank }}    
     {%- endif -%}    
     {%- if ability.has_parameters() -%}
     <hfill/><smaller>Params: [{{ability.get_parameters_str()}}]</smaller>
@@ -86,18 +97,17 @@
 	<vspace>0.8</vspace>
 	{%- if check.check_class == 'Check' -%}
 	<checksymbol/><bold> {{check.name}}</bold>
-	{{- insert_action_symbol(check) }}
-	vs {{ check.counter }}
+	{{- insert_action_symbol(check) }} vs {{ check.counter }}
 	{%- elif check.check_class == 'Countercheck' -%}
-	<counterchecksymbol/> <bold>{{check.name}}</bold>
+	<savesymbol/> <bold>{{check.name}}</bold>
+	{{- insert_action_symbol(check) -}}	
 	{%- elif check.check_class == 'Auxiliary' -%}
 	<auxiliarysymbol/> <bold>{{check.name}}</bold>
+	{{- insert_action_symbol(check) }}
 	{%- else -%}
 	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ check.check_type }}
 	{%- endif -%}
 	<br/>
-	<bold>Cost:</bold>
-	{{ check.ap_cost }}
 	<bold>Crits:</bold> {{ check.get_check_type() + " " }}
 	{%- if check.pool_cost -%}
 	<bold>Pool Cost:</bold> {{ check.get_pool_cost_str() }}

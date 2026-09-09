@@ -311,7 +311,7 @@ Token Types:
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:group ref="weaponKeywordEnum"/> 
       <xs:group ref="symbolsEnum"/>      
-      <xs:element name="label" type="leafType"/>
+      <!-- <xs:element name="label" type="leafType"/> -->
       <xs:element name="label" type="leafType"/>
       <xs:element name="bold" type="leafType"/>
       <xs:element name="indexentry" type="indexentryType"/>
@@ -319,14 +319,21 @@ Token Types:
       <xs:element name="hfill" type="textType"/>
     </xs:choice>
     <!-- <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/> -->
+
+    <!--
+	Hacky little flag to indicate this title should be formated differently
+	because the section is an ability subsubsection. Set it to true for
+	ability subsubsectiontitles and the latex_formatter while change how it
+	looks.  I'm not sure how I feel about this "fix".
+    -->    
+    <xs:attribute name="isabilitytitle" type="xs:boolean" default="false"/>
   </xs:complexType>  
+  
+  <!-- <xs:complexType name="attributionType"> -->
+  <!-- </xs:complexType> -->
 
-
-  <xs:complexType name="attributionType">
-  </xs:complexType>
-
-  <xs:complexType name="inspirationType">
-  </xs:complexType>
+  <!-- <xs:complexType name="inspirationType"> -->
+  <!-- </xs:complexType> -->
 
   <!-- Measurements Enum (metric it's up to -->
   <xs:group name="lengthMeasurementGroup">
@@ -965,13 +972,21 @@ Token Types:
 
       <!-- no ap cost -->
       <!-- May take multiple players or multiple rounds to perform -->      
-      <xs:element name="multi-round" type="keywordType" fixed="Multi-Round"/>
-      <xs:element name="gm-fiat" type="keywordType" fixed="GM-Fiat"/>
+      <xs:element name="multi-round" type="keywordType" fixed="Multi Round"/>
+      <xs:element name="gm-fiat" type="keywordType" fixed="GM Fiat"/>
+      <xs:element name="save" type="keywordType" fixed="Save"/>
       <xs:element name="reaction" type="keywordType" fixed="Reaction"/>
       <xs:element name="interrupt" type="keywordType" fixed="Interrupt"/>
-      <xs:element name="free-interrupt" type="keywordType" fixed="Free-Interrupt"/>
-      <xs:element name="free-reaction" type="keywordType" fixed="Free-Reaction"/>
-      <xs:element name="free-action-or-reaction" type="keywordType" fixed="Free-Action/Reaction"/>
+      <xs:element name="mandatory-save" type="keywordType" fixed="Mandatory Save"/>
+      <xs:element name="mandatory-reaction" type="keywordType" fixed="Mandatory Reaction"/>
+      <xs:element name="mandatory-interrupt" type="keywordType" fixed="Mandatory Interrupt"/>
+      <xs:element name="free-save" type="keywordType" fixed="Free Save"/>
+      <xs:element name="free-interrupt" type="keywordType" fixed="Free Interrupt"/>
+      <xs:element name="free-reaction" type="keywordType" fixed="Free Reaction"/>
+      <xs:element name="mandatory-free-save" type="keywordType" fixed="Mandatory Free Save"/>
+      <xs:element name="mandatory-free-interrupt" type="keywordType" fixed="Mandatory Free Interrupt"/>
+      <xs:element name="mandatory-free-reaction" type="keywordType" fixed="Mandatory Free Reaction"/>
+      <xs:element name="free-action-or-reaction" type="keywordType" fixed="Free Action/Reaction"/>
       <xs:element name="interrupt-or-reaction" type="keywordType" fixed="Interrupt/Reaction"/>
       <xs:element name="reaction-or-ap2" type="keywordType" fixed="Reaction/2AP"/>
       <xs:element name="interrupt-or-ap2" type="keywordType" fixed="Interrupt/2AP"/>
@@ -1043,6 +1058,7 @@ Token Types:
       <xs:element name="notapplicable" type="symbolType"/>
       <xs:element name="percent" type="symbolType"/>
       <xs:element name="uparrowfrombar" type="symbolType"/>
+      <xs:element name="endash" type="symbolType"/>
 
       <!-- <xs:element name="param-dmg" type="symbolType"/> -->
       <xs:element
@@ -1053,7 +1069,8 @@ Token Types:
       <!-- custom -->
       <xs:element name="abilitybullet" type="symbolType"/>      
       <xs:element name="checksymbol" type="symbolType"/>      
-      <xs:element name="counterchecksymbol" type="symbolType"/>      
+      <xs:element name="savesymbol" type="symbolType"/>      
+      <xs:element name="freesavesymbol" type="symbolType"/>      
       <xs:element name="auxiliarysymbol" type="symbolType"/>      
       <xs:element name="antagonistsymbol" type="symbolType"/>
       <xs:element name="fatediesymbol" type="symbolType"/>      
@@ -1068,8 +1085,12 @@ Token Types:
       <xs:element name="fiveactionsymbol" type="symbolType"/>
       <xs:element name="reactionsymbol" type="symbolType"/>
       <xs:element name="freereactionsymbol" type="symbolType"/>
+      <xs:element name="mandatoryreactionsymbol" type="symbolType"/>
+      <xs:element name="mandatoryfreereactionsymbol" type="symbolType"/>
       <xs:element name="interruptsymbol" type="symbolType"/>
       <xs:element name="freeinterruptsymbol" type="symbolType"/>
+      <xs:element name="mandatoryinterruptsymbol" type="symbolType"/>
+      <xs:element name="mandatoryfreeinterruptsymbol" type="symbolType"/>
       <xs:element name="gmfiatsymbol" type="symbolType"/>
       <xs:element name="outofcombatsymbol" type="symbolType"/>
       
@@ -1924,28 +1945,15 @@ Token Types:
       <xs:element name="subsubsectiontitle" type="titleType" />
       <xs:element name="slug" type="textType" minOccurs="0" maxOccurs="1"/>      
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="subsubsubsection" type="subsubsubsectionType" />
         <xs:group ref="blockEnum"/>
 	<xs:element name="sidebar" type="sidebarType"/>
       </xs:choice>
-    </xs:sequence>
+    </xs:sequence>  
     <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
-  </xs:complexType>
-
-  <xs:complexType name="subsubsubsectionType">
-    <xs:sequence>
-      <xs:element name="subsubsubsectiontitle" type="titleType" />
-      <xs:element name="slug" type="textType" minOccurs="0" maxOccurs="1"/>      
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="blockEnum"/>
-	<xs:element name="sidebar" type="sidebarType"/>
-      </xs:choice>
-    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="sidebarType">
     <xs:sequence>
-      <!-- <xs:element name="sidebartitle" type="titleType" /> -->
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group ref="blockEnum"/>
       </xs:choice>
@@ -2125,10 +2133,10 @@ Token Types:
 
   <!-- An image on a page by itself with nothing on the reverse page for handing out to players. -->
   <xs:complexType name="handoutType" mixed="true">
-    <xs:sequence>
-      <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/>    
-    </xs:sequence>
+    <!-- <xs:sequence> -->
+    <!--   <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/> -->
+    <!--   <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/>     -->
+    <!-- </xs:sequence> -->
     <xs:attribute name="scale" type="xs:float"/>
     <xs:attribute name="id" type="xs:string"/>
     <xs:attribute name="src" type="xs:string"/>
@@ -2207,10 +2215,10 @@ Token Types:
   <xs:complexType name="imgType" mixed="false">
 
     <!-- FIXME: I'm not sure all of these fields are still used -->
-    <xs:sequence>
-      <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>    
+    <!-- <xs:sequence> -->
+    <!--   <xs:element name="attribution" type="attributionType" minOccurs="0" maxOccurs="1"/> -->
+    <!--   <xs:element name="inspiration" type="inspirationType" minOccurs="0" maxOccurs="1"/> -->
+    <!-- </xs:sequence>     -->
 
     <!-- id for images in our resource db -->
     <xs:attribute name="id" type="xs:string"/>
@@ -2222,16 +2230,10 @@ Token Types:
     <xs:attribute name="title" type="xs:string"/>
 
     <!-- Scale the image up or down.  1.0 leaves the image its current size -->
-    <!-- <xs:attribute name="scale" type="xs:float"/> -->
     <xs:attribute name="linewidth" type="xs:float"/>
     <xs:attribute name="textwidth" type="xs:float"/>
   </xs:complexType>
   
-
-  <!-- <xs:complexType name="includeType"> -->
-  <!--   <xs:attribute name="src" type="xs:string"/> -->
-  <!-- </xs:complexType> -->
-
 
   <!--
   Wraps text around the image.
@@ -2524,10 +2526,11 @@ Token Types:
 
   <xs:complexType name="titlePageType">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="lore" type="keywordType"/>
-
+      <!-- <xs:element name="lore" type="keywordType"/> -->
       <xs:element name="title" type="titleType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="subtitle" type="titleType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="subsubtitle" type="blockType"
 		  minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="vspace" type="xs:integer"
 		  minOccurs="0" maxOccurs="unbounded" default="1"/>

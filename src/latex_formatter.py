@@ -95,30 +95,6 @@ latex_frontmatter = r"""
 \usepackage[maxfloats=256]{morefloats}
 \maxdeadcycles=1000
 
-%% include subsubsections in the table of contents
-\setcounter{tocdepth}{3}
-
-%% allow \paragraph{X} as a subsubsubsection "title".
-\setcounter{secnumdepth}{3}
-
-%% Ability header format
-\newcommand{\ability}[1]{\subsubsection{#1}\vspace{-1.8ex}}
-
-%% Principle and Corollary environments
-%% (for the Rationale doc.. don't use these in player facing docs)
-%% Redefine the corollary/principle style to not put parentheses around the title.
-\newtheoremstyle{customtheoremstyle}%%
-  {.5\baselineskip}%%           Space above
-  {.5\baselineskip}%%           Space below
-  {\itshape}%%                  Body font
-  {0pt}%%                       Indent amount
-  {\bfseries}%%                 Theorem header font
-  {}%%                          Punctuation after theorem head
-  {\newline}%%                  Space after theorem head, ' ', or \newline
-  {\thmname{#1}\thmnumber{ #2}.\thmnote{ #3}}%% Theorem head spec 
-\theoremstyle{customtheoremstyle}
-\newtheorem{principle}{Principle}
-\newtheorem{corollary}{Corollary}
 
 %%
 %% Colours
@@ -142,6 +118,8 @@ latex_frontmatter = r"""
 \colorlet{rpgtitlefontcolor}{black}
 \colorlet{chapterfontcolor}{black}
 \colorlet{rpgsectionfontcolor}{rosewood}
+\colorlet{rpgsubsectionfontcolor}{rosewood}
+\colorlet{rpgsubsubsectionfontcolor}{black}
 \colorlet{monstertitlecolor}{rosewood}
 \colorlet{monstertagscolor}{black}
 \colorlet{pagecolor}{paleparchment}
@@ -212,6 +190,24 @@ latex_frontmatter = r"""
   \fi
 }
 
+%%
+%% Principle and Corollary environments
+%%
+%% For the Rationale doc.. don't use these in player facing docs. Redefine the
+%% corollary/principle style to not put parentheses around the title.
+%%
+\newtheoremstyle{customtheoremstyle}%%
+  {.5\baselineskip}%%           Space above
+  {.5\baselineskip}%%           Space below
+  {\itshape}%%                  Body font
+  {0pt}%%                       Indent amount
+  {\bfseries}%%                 Theorem header font
+  {}%%                          Punctuation after theorem head
+  {\newline}%%                  Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}.\thmnote{ #3}}%% Theorem head spec 
+\theoremstyle{customtheoremstyle}
+\newtheorem{principle}{Principle}
+\newtheorem{corollary}{Corollary}
 
 
 
@@ -227,6 +223,8 @@ latex_frontmatter = r"""
 \newfontfamily{\libertine}{Linux Libertine O}
 \newfontfamily{\caudex}[Path=fonts/, Scale=1.1]{Caudex-Regular}
 %%\newfontfamily{\becker}[Path=fonts/]{Becker Regular}
+
+\newenvironment{smaller}{\begin{footnotesize}}{\end{footnotesize}}
 
 %% the font for the body of the text
 \setmainfont[
@@ -246,11 +244,14 @@ latex_frontmatter = r"""
 \newcommand{\epigraphfont}{\libertine}
 \newcommand{\dropcapfont}{\carrickc}
 \newcommand{\chapterfont}{\cloisterblack}
-\newcommand{\rpgtitlefont}{\dogma}
-\newcommand{\rpgtitlesubtitlefont}{\cloisterblack}
+\newcommand{\rpgtitlefont}{\fontsize{90}{102}\dogma}
+\newcommand{\rpgtitlesubtitlefont}{\fontsize{60}{72}\cloisterblack}
+\newcommand{\rpgtitlesubsubtitlefont}{\cloisterblack}
 \newcommand{\rpgtitleauthorfont}{\dogma}
 \newcommand{\versionfont}{\dogma}
 \newcommand{\rpgsectionfont}{\cloisterblack}
+\newcommand{\rpgsubsectionfont}{\cloisterblack}
+\newcommand{\rpgsubsubsectionfont}{\cloisterblack}
 \newcommand{\attributionfont}{\germania}
 \newcommand{\indexlettergroupfont}{\cloisterblack}
 \newcommand{\sidebartitlefont}{\cloisterblack} 
@@ -308,8 +309,38 @@ latex_frontmatter = r"""
 {\end{em}\end{small}\endlist\vspace{0.1cm}}
 
 
-%% spacing
+
+%%
+%% Title Page
+%%
+\newenvironment{mdtitlepage}{%%
+\begin{titlepage}%%
+\begin{center}%%
+}{%%
+\end{center}%%
+\end{titlepage}}
+
+\newenvironment{mdtitle}{%%
+\color{rpgtitlefontcolor}\rpgtitlefont}{}
+
+\newenvironment{mdsubtitle}{%%
+\color{rpgtitlefontcolor}\rpgtitlesubtitlefont}{}
+
+\newenvironment{mdsubsubtitle}{%%
+\color{rpgtitlefontcolor}\rpgtitlesubsubtitlefont}{}
+
+\newenvironment{mdauthor}{%%
+\color{rpgtitlefontcolor}\large\rpgtitleauthorfont}{}
+
+\newenvironment{mdversion}{%%
+\color{rpgtitlefontcolor}\rpgtitleauthorfont}{}
+
+
+%%
+%% Spacing
+%%
 %% drop is a vspace 1/100th the page text height.
+%%
 \newlength\drop
 \drop = 0.01\textheight
 
@@ -323,14 +354,7 @@ latex_frontmatter = r"""
 {\raggedright\Huge\bfseries\chapterfont\color{chapterfontcolor}}
 {}{1em}{}
 
-\titleformat{\section}
-{\rpgsectionfont\LARGE\color{rpgsectionfontcolor}}
-{\thesection}{0.5em}{}
-
-\newcommand\rpgtablesection[1]{
-\rule{0pt}{1ex}\bfseries\scriptsize #1}
             
-\newenvironment{smaller}{\begin{footnotesize}}{\end{footnotesize}}
 
 %%
 %% Definition
@@ -365,11 +389,6 @@ latex_frontmatter = r"""
 %%
 %% Hyperlinks
 %%
-%%\hypersetup{%%
-%%  colorlinks=false, %%            hyperlinks will be black
-%%  linkbordercolor=blue, %%        hyperlink border colour
-%% pdfborderstyle={/S/U/W 1} %%     border style will be underline of width 1pt
-%%}
 \hypersetup{%%
   colorlinks=false, %%               hyperlinks will be black
   linkbordercolor=hyperlinkcolor, %% hyperlink border colour
@@ -422,8 +441,10 @@ latex_frontmatter = r"""
 %%
 %% NewEnviron eats trailing whitespace!! 
 %%
-\NewEnviron{chaptertitle}{\chapter{\BODY}}
+\NewEnviron{mdchaptertitle}{\chapter{\BODY}}
 \NewEnviron{mdemph}{\emph{\color{emphcolor}\BODY}}
+
+
 
 
 %%
@@ -434,157 +455,178 @@ latex_frontmatter = r"""
 \newlength{\symbolsize}
 \setlength{\symbolsize}{0.8em}
 
-\newlength{\largesymbolsize}
-\setlength{\largesymbolsize}{0.9em}
-
+%% Make sure they're all the same size
 \newlength{\symbolverticaloffset}
 \setlength{\symbolverticaloffset}{-0.2em}
-
 \newlength{\symbolhorizontalspace}
 \setlength{\symbolhorizontalspace}{0.2ex}
 
-
-
-
-
-
-
-
-
+%% Same offsets for all symbols.
 \newlength{\actionsymbolverticaloffset}
 \setlength{\actionsymbolverticaloffset}{-0.7mm}
-
 \newlength{\actionsymbolhorizontaloffset}
 \setlength{\actionsymbolhorizontaloffset}{0.2mm}
-
 
 %% Symbol Free Action
 \newcommand\freeactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_free_action.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_free_action.png}}}
 
 %% Symbol One Action
 \newcommand\oneactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_one_action.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_one_action.png}}}
 
 %% Symbol Two Actions
 \newcommand\twoactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_two_actions.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_two_actions.png}}}
 
 %% Symbol Three Actions
 \newcommand\threeactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_three_actions.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_three_actions.png}}}
 
 %% Symbol Four Actions
 \newcommand\fouractionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_four_actions.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_four_actions.png}}}
 
 %% Symbol Five Actions
 \newcommand\fiveactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_five_actions.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_five_actions.png}}}
 
 %% Symbol Reaction
 \newcommand\reactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_reaction.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_reaction.png}}}
 
 %% Symbol Free Reaction
 \newcommand\freereactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_free_reaction.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_free_reaction.png}}}
+
+%% Symbol Mandatory Reaction
+\newcommand\mandatoryreactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_mandatory_reaction.png}}}
+
+%% Symbol Mandatory Free Reaction
+\newcommand\mandatoryfreereactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_mandatory_free_reaction.png}}}
 
 %% Symbol Interrupt
 \newcommand\interruptsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_interrupt.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_interrupt.png}}}
 
 %% Symbol Free Interrupt
 \newcommand\freeinterruptactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_free_interrupt.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_free_interrupt.png}}}
+
+%% Symbol Mandatory Interrupt
+\newcommand\mandatoryinterruptsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_mandatory_interrupt.png}}}
+
+%% Symbol Mandatory Free Interrupt
+\newcommand\mandatoryfreeinterruptactionsymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_mandatory_free_interrupt.png}}}
 
 %% Symbol GM Fiat Action
 \newcommand\gmfiatsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_gm_fiat_action.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_gm_fiat_action.png}}}
 
 %% Symbol Out of Combat Action
 \newcommand\outofcombatsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_actions/symbol_out_of_combat_action.png}}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_out_of_combat_action.png}}}
 
 %% Multi Round Action
 \newcommand\multiroundactionsymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=1.43\symbolsize]%%
-{./resources/symbol_actions/multi_round_action.png}}}
-
-
-
-
-
-
-
-
-
-
-%% %% Ability Bullet
-%% \newcommand\abilitybullet{%%
-%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
-%% {./resources/anon_elder_sign/anon_elder_sign.png}}
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_multi_round_action.png}}}
 
 %% Check Symbol
 \newcommand\checksymbol{%%
 \raisebox{\symbolverticaloffset}{%%
-\includegraphics[width=\largesymbolsize,height=\largesymbolsize]%%
-{./resources/symbol_check/symbol_check.png}%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_check.png}%%
 \hspace{\symbolhorizontalspace}}}
 
-%% Counter Check Symbol
-\newcommand\counterchecksymbol{%%
+%% Save Symbol
+\newcommand\savesymbol{%%
 \raisebox{\symbolverticaloffset}{%%
-\includegraphics[width=\largesymbolsize,height=\largesymbolsize]%%
-{./resources/symbol_counter_check/symbol_counter_check.png}%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_save.png}%%
+\hspace{\symbolhorizontalspace}}}
+
+%% Free Save Symbol
+\newcommand\freesavesymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_free_save.png}%%
 \hspace{\symbolhorizontalspace}}}
 
 %% Auxiliary Check Symbol
 \newcommand\auxiliarychecksymbol{%%
 \raisebox{\symbolverticaloffset}{%%
-\includegraphics[width=\largesymbolsize,height=\largesymbolsize]%%
-{./resources/symbol_auxiliary/symbol_auxiliary.png}%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_auxiliary.png}%%
 \hspace{\symbolhorizontalspace}}}
 
+%% Subsubsection Symbol
+\newcommand\subsubsectionsymbol{%%
+\raisebox{-0.2mm}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_subsubsection.png}%%
+\hspace{\symbolhorizontalspace}}}
 
+%% Ability Subsubsection Symbol
+\newcommand\abilitysubsubsectionsymbol{%%
+\raisebox{-0.2mm}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_abilitysubsubsection.png}%%
+\hspace{\symbolhorizontalspace}}}
 
 
 
@@ -596,22 +638,70 @@ latex_frontmatter = r"""
 \hspace{\symbolhorizontalspace}}}
 
 %% Fate Die Symbol
-\newcommand\fatediesymbol{%%
-\raisebox{\symbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_fate_die/symbol_fate_die.png}}}
+%% \newcommand\fatediesymbol{%%
+%% \raisebox{\symbolverticaloffset}{%%
+%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
+%% {./resources/symbol_fate_die/symbol_fate_die.png}}}
 
-%% No Fate Die Symbol
-\newcommand\nofatediesymbol{%%
-\raisebox{\symbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_no_fate_die/symbol_no_fate_die.png}}}
+%% %% No Fate Die Symbol
+%% \newcommand\nofatediesymbol{%%
+%% \raisebox{\symbolverticaloffset}{%%
+%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
+%% {./resources/symbol_no_fate_die/symbol_no_fate_die.png}}}
 
-%% Skill Die Symbol
-\newcommand\skilldiesymbol{%%
-\raisebox{\symbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_skill_die/symbol_skill_die.png}}}
+%% %% Skill Die Symbol
+%% \newcommand\skilldiesymbol{%%
+%% \raisebox{\symbolverticaloffset}{%%
+%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
+%% {./resources/symbol_skill_die/symbol_skill_die.png}}}
+
+
+%%
+%% Sectioning
+%%
+
+%% include subsubsections in the table of contents
+\setcounter{tocdepth}{3}
+
+%% allow \subsubsection numbering.
+%% \setcounter{secnumdepth}{3}
+
+
+\titleformat{\section}
+{\rpgsectionfont\LARGE\color{rpgsectionfontcolor}}
+{\thesection}{0.5em}{}
+
+\titleformat{\subsection}
+{\rpgsubsectionfont\Large\color{rpgsubsectionfontcolor}}
+{\thesubsection}{0.5em}{}
+
+\titleformat{\subsubsection}
+{\bfseries\rpgsubsubsectionfont\color{rpgsubsubsectionfontcolor}}
+{\thesubsubsection}{0.5em}{\subsubsectionsymbol }
+
+\newcommand\rpgtablesection[1]{
+\rule{0pt}{1ex}\bfseries\scriptsize #1}
+
+
+%% Ability header format
+%%\newcommand{\ability}[1]{\subsubsection{#1}\vspace{-1.8ex}}
+
+
+%% Define a special subsubsection for abilities.
+\newcounter{abilitysubsubsection}
+\titleclass{\abilitysubsubsection}{straight}[\subsection] 
+
+\titleformat{\abilitysubsubsection}
+{\bfseries\rpgsubsubsectionfont\color{rpgsubsubsectionfontcolor}}%%
+{\thesubsubsection}   %% Custom numbering format
+{1em}
+{\abilitysubsubsectionsymbol }
+
+\titlespacing*{\abilitysubsubsection}%%
+{0pt}%%
+{3.25ex plus 1ex minus .2ex}%%
+{1.5ex plus .2ex}
+
 
 
 
@@ -963,7 +1053,7 @@ class LatexFormatter(DocFormatter):
         else:
             raise Exception("Unknown paper size.  "
                             "Pick one of [a4, letter] in config.py")
-        orientation = ""
+        orientation = "" 
         landscape = attrib_is_true(book, "landscape")
         formatting = paper_size + orientation
         self.buffer.write(latex_frontmatter % formatting)
@@ -996,24 +1086,24 @@ class LatexFormatter(DocFormatter):
         return
     end_daggersymbol = no_op    
 
-    def start_doubledaggersymbol(self, symbol):
-        self.buffer.write("\\textsuperscript{\\ddag}")
-        return
-    end_doubledaggersymbol = no_op    
+    # def start_doubledaggersymbol(self, symbol):
+    #     self.buffer.write("\\textsuperscript{\\ddag}")
+    #     return
+    # end_doubledaggersymbol = no_op    
 
-    def start_downarrowfrombar(self, symbol):
-        self.buffer.write("\\downarrowfrombar ")
-        return
-    end_downarrowfrombar = no_op    
+    # def start_downarrowfrombar(self, symbol):
+    #     self.buffer.write("\\downarrowfrombar ")
+    #     return
+    # end_downarrowfrombar = no_op    
 
-    def start_uparrowfrombar(self, symbol):
-        self.buffer.write("\\uparrowfrombar ")
-        return
-    end_uparrowfrombar = no_op    
+    # def start_uparrowfrombar(self, symbol):
+    #     self.buffer.write("\\uparrowfrombar ")
+    #     return
+    # end_uparrowfrombar = no_op    
 
-    def start_abilitybullet(self, symbol):
-        self.buffer.write(r"\abilitybullet ")
-    end_abilitybullet = no_op    
+    # def start_abilitybullet(self, symbol):
+    #     self.buffer.write(r"\abilitybullet ")
+    # end_abilitybullet = no_op    
 
 
 
@@ -1052,6 +1142,14 @@ class LatexFormatter(DocFormatter):
         self.buffer.write(r"\freeinterruptactionsymbol{}")
     end_freeinterruptsymbol = no_op
 
+    def start_mandatoryinterruptsymbol(self, symbol):
+        self.buffer.write(r"\mandatoryinterruptsymbol{}")
+    end_mandatoryinterruptsymbol = no_op
+
+    def start_mandatoryfreeinterruptsymbol(self, symbol):
+        self.buffer.write(r"\mandatoryfreeinterruptactionsymbol{}")
+    end_mandatoryfreeinterruptsymbol = no_op
+
     def start_reactionsymbol(self, symbol):
         self.buffer.write(r"\reactionsymbol{}")
     end_reactionsymbol = no_op
@@ -1059,6 +1157,14 @@ class LatexFormatter(DocFormatter):
     def start_freereactionsymbol(self, symbol):
         self.buffer.write(r"\freereactionsymbol{}")
     end_freereactionsymbol = no_op
+
+    def start_mandatoryreactionsymbol(self, symbol):
+        self.buffer.write(r"\mandatoryreactionsymbol{}")
+    end_mandatoryreactionsymbol = no_op
+
+    def start_mandatoryfreereactionsymbol(self, symbol):
+        self.buffer.write(r"\mandatoryfreereactionsymbol{}")
+    end_mandatoryfreereactionsymbol = no_op
 
     def start_gmfiatsymbol(self, symbol):
         self.buffer.write(r"\gmfiatsymbol{}")
@@ -1071,16 +1177,18 @@ class LatexFormatter(DocFormatter):
     def start_multiroundactionsymbol(self, symbol):
         self.buffer.write(r"\multiroundactionsymbol{}")
     end_multiroundactionsymbol = no_op
-
-
     
     def start_checksymbol(self, symbol):
         self.buffer.write(r"\checksymbol ")
     end_checksymbol = no_op    
 
-    def start_counterchecksymbol(self, symbol):
-        self.buffer.write(r"\counterchecksymbol ")
-    end_counterchecksymbol = no_op    
+    def start_savesymbol(self, symbol):
+        self.buffer.write(r"\savesymbol ")
+    end_savesymbol = no_op    
+
+    def start_freesavesymbol(self, symbol):
+        self.buffer.write(r"\freesavesymbol ")
+    end_freesavesymbol = no_op    
 
     def start_auxiliarysymbol(self, symbol):
         self.buffer.write(r"\auxiliarychecksymbol ")
@@ -1210,6 +1318,11 @@ class LatexFormatter(DocFormatter):
         return
     end_ccby = no_op
 
+    def start_endash(self, _):
+        self.buffer.write(r"\textendash{}")
+        return
+    end_endash = no_op
+
     def start_lore(self, element):
         self.buffer.write("\\lore{}")
         return    
@@ -1332,26 +1445,16 @@ class LatexFormatter(DocFormatter):
     start_subsubsection = no_op
     end_subsubsection = no_op
 
-    def start_subsubsectiontitle(self, section_title):
-        self.buffer.write("\\subsubsection*{")
+    def start_subsubsectiontitle(self, title):
+        is_ability_title = attrib_is_true(title, "isabilitytitle")
+        if is_ability_title:
+            self.buffer.write("\\abilitysubsubsection*{")
+        else:
+            self.buffer.write("\\subsubsection*{")
         return
-    def end_subsubsectiontitle(self, section_title):
+    def end_subsubsectiontitle(self, title):
         self.buffer.write("}")
         return    
-
-    start_subsubsubsection = no_op
-    end_subsubsubsection = no_op
-
-    def start_subsubsubsectiontitle(self, section_title):
-        self.buffer.write("\\paragraph{")
-        return
-    def end_subsubsubsectiontitle(self, section_title):
-        self.buffer.write("}")
-        return    
-
-    #
-    #
-    #
 
     start_archetypelevel = no_op
     end_archetypelevel = no_op
@@ -1383,15 +1486,6 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("}")
         return
 
-    def start_titlepage(self, chapter):
-        self.buffer.write("\\begin{titlepage}\n"
-                              "\\begin{center}\n")
-        return
-
-    def end_titlepage(self, chapter):
-        self.buffer.write("\\end{center}\n"
-                              "\\end{titlepage}\n")
-        return
 
     def start_emph(self, emph):
         self.buffer.write(r"\begin{mdemph}")
@@ -1703,56 +1797,83 @@ class LatexFormatter(DocFormatter):
             self.buffer.write("\n\n")
         return
 
+    #
+    # Title Page
+    #
+
+    def start_titlepage(self, chapter):
+        self.buffer.write(r"\begin{mdtitlepage}")
+        return
+
+    def end_titlepage(self, chapter):
+        self.buffer.write(r"\end{mdtitlepage}")
+        return    
+    
+    def start_title(self, title):
+        """Title page title."""
+        self.buffer.write("\\begin{mdtitle}")
+        return
+
+    def end_title(self, section_title):
+        self.buffer.write("\\end{mdtitle}\n")
+        return
+
+    def start_subtitle(self, title):
+        """Title page subtitle."""
+        self.buffer.write("\\begin{mdsubtitle}")
+        return
+
+    def end_subtitle(self, section_title):
+        self.buffer.write("\\end{mdsubtitle}\n")
+        return
+
+    def start_subsubtitle(self, title):
+        """Title page subtitle."""
+        self.buffer.write("\\begin{mdsubsubtitle}")
+        return
+
+    def end_subsubtitle(self, section_title):
+        self.buffer.write("\\end{mdsubsubtitle}\n")
+        return
+
     def start_author(self, author):
-        self.buffer.write("{\\LARGE \\rpgtitleauthorfont %s}\\\\" % author.text)        
+        self.buffer.write(r"\begin{mdauthor}")
         return
 
     def end_author(self, author):
+        self.buffer.write(r"\end{mdauthor}")
         return
 
     def start_version(self, version):
-        self.buffer.write("{\\LARGE \\versionfont %s}\\\\" % version.text)
+        self.buffer.write("\\begin{mdversion}") 
         return
     
-    def end_version(self, npchps):
+    def end_version(self, npchps): 
+        self.buffer.write("\\end{mdversion}\n")
         return
-            
-    def start_title(self, title):
-        self.buffer.write(
-            "{\\color{rpgtitlefontcolor}\\Huge\\rpgtitlefont %s }\\\\\n"
-            % title.text)
-        return
+    
 
-    def end_title(self, title):
-        return
-
-    def start_caption(self, caption):
-        self.buffer.write("\\caption{%s}" % caption.text)
+    #
+    #
+    #
+    def start_caption(self, caption): 
+        self.buffer.write(r"\caption{%s}" % caption.text)
         return
 
     def end_caption(self, caption):
-        return
-
-    def start_subtitle(self, subtitle):        
-        self.buffer.write("{\\large\\rpgtitlesubtitlefont  %s}\\\\\n"
-                          % subtitle.text)
-        return
-
-    def end_subtitle(self, title):
-        return
+        return    
 
     def start_chaptertitle(self, section_title):
-        self.buffer.write("\\begin{chaptertitle}")
+        self.buffer.write(r"\begin{mdchaptertitle}")
         return
 
     def end_chaptertitle(self, section_title):
-        self.buffer.write("\\end{chaptertitle}")
-        # self.writeln(r"\updateavailabletextheight{}")
-        # self.writeln(r"THE AVAILABLE TEXT HEIGHT POST CHAPTER TITLE \the\availabletextheight{}")
+        self.buffer.write(r"\end{mdchaptertitle}")
         return
     
     def start_img(self, img):        
-        self.buffer.write("\t\\begin{center}\n")
+        #self.buffer.write("\t\\begin{center}\n")
+        
         # optionally draw a box around the image
         # (for debugging)
         #if config.draw_imgs:
@@ -1801,7 +1922,7 @@ class LatexFormatter(DocFormatter):
             title = img.get("title")
             self.buffer.write("\\emph{%s}" % title)
             
-        self.buffer.write("\t\\end{center}\n")
+        #self.buffer.write("\t\\end{center}\n")
         return
 
 

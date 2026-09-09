@@ -4,4 +4,4 @@
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 # Open gThumb and view all images in this directory and its subdirectories
-find "${SCRIPT_DIR}" -type f -name "*.jpg" -o  -name "*.png" -exec gthumb {} + &
+find "${SCRIPT_DIR}" -type f \( -name "*.jpg" -o  -name "*.jpeg" -o  -name "*.webp" -o  -name "*.png" \) -exec gthumb {} +

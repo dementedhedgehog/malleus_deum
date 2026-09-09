@@ -294,9 +294,6 @@ def build_ability_trees(ability_groups):
         fname = join(build_dir, ability_group_id + "_skill_tree.pdf")
         #fname = join(build_dir, ability_group_id + "_skill_tree.svg")
 
-        if ability_group_id != "combat":
-            continue
-
         # The root ability has the same name as the ability group.
 
         # We build the diagram twice.  First time to determine the required

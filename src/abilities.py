@@ -850,29 +850,21 @@ class Ability:
     def has_ranks(self):
         return len(self.ability_ranks) > 0
     
-    def get_ability_rank_range(self):
+    def get_ability_trained_rank_range(self):
         if not self.has_ranks():
             return None
         trained_ranks = self.get_trained_ranks()
         first_ability_rank = trained_ranks[0]
         last_ability_rank = trained_ranks[-1]
-        ability_ranks = f"{first_ability_rank} – {last_ability_rank}"
-        return ability_ranks
+        #ability_ranks = f"{first_ability_rank} – {last_ability_rank}"
+        #return ability_ranks
+        return (first_ability_rank, last_ability_rank)
 
     def is_core(self):  # FIXME: WHAT DOES THIS MEAN?
         return "core" in self.keywords
 
     def is_pool(self):
         return "pool" in self.keywords
-
-    # def get_rank_number(self):
-    #     """
-    #     Make ability look like ability rank so we can
-    #     treat them the same-ish in other code
-    #     (duck-typing ftw).
-
-    #     """
-    #     return None
 
     def get_name(self):
         """Return the abilities name."""
@@ -885,11 +877,7 @@ class Ability:
         return None
 
     def get_prerequisites_str(self):
-        #if self.prerequisites:
-        prereqs = ", ".join([str(p) for p in self.prerequisites])
-        #else:
-        #    prereqs = ""
-        return prereqs
+        return ", ".join([str(p) for p in self.prerequisites])
 
     def get_attr_modifiers(self):
         return self.attr_modifiers

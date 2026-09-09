@@ -2,32 +2,36 @@
 <book>
   <titlepage>
     <title>Malleus Deum</title>
-    <img id="mj_phb_title" textwidth="0.9"/>
-    <subtitle>Malleus Deum</subtitle>
-    <author>Blaize A. Rhodes</author>
+    <img id="clarke_lich" textwidth="0.6"/>
+    <subtitle>Players Handbook</subtitle>
     <version>{{ db.version }}</version>
+    <subsubtitle>Rejoice not against me, O mine enemy! when I fall, I shall arise.</subsubtitle>
+    <author>Blaize A. Rhodes</author>
   </titlepage>
 
-  
-  <tableofcontents/> 
+
+  <tableofcontents/>
   {#
   <listoffigures/>
   <listofart/>
   
   {% include "docs/phb_chapter_intro.xml" %} 
   {% include "docs/phb_chapter_character_creation.xml" %} 
+  {% include "docs/phb_chapter_checks.xml" %}
   #}
 
-  {% include "docs/phb_chapter_checks.xml" %} 
   {% include "docs/phb_chapter_abilities.xml" %}
-  
+
+  {#
+  #}
+
   {#
   {% include "docs/phb_chapter_aspects.xml" %} 
   {% include "docs/phb_chapter_tribulations.xml" %}
   {% include "docs/phb_chapter_combat.xml" %}
   {% include "docs/phb_chapter_harnessing_magic.xml" %}
+  #}
 
-  
   {#  
   {% include "docs/phb_chapter_keywords.xml" %} 
   {% include "docs/phb_chapter_equipment.xml" %} 

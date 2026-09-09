@@ -53,7 +53,7 @@
   <ability>
     <abilitytitle>Encumbrance<daggersymbol/></abilitytitle>
     <abilityid>encumberance</abilityid>    
-    <abilityranks from="0" to="4"/>
+    <abilityranks untrained="0" from="1" to="4"/>
     <abilitycheck>
       <name>Save</name>
       <checktype><trial/></checktype>
@@ -123,7 +123,7 @@
   <ability>
     <abilitytitle>Throw Object</abilitytitle>
     <abilityid>throw_object</abilityid>    
-    <abilityranks from="0" to="0"/>
+    <abilityranks untrained="-3" from="1" to="3"/>
     <abilitycheck>
       <name>Check</name>
       <checktype><fixme/></checktype>
@@ -145,7 +145,7 @@
   <ability>
     <abilitytitle>Flat Checks</abilitytitle>
     <abilityid>flat_check</abilityid>    
-    <abilityranks from="0" to="0"/>
+    <abilityranks untrained="0" from="0" to="0"/>
     <abilitycheck>
       <name>Check</name>
       <checktype><fixme/></checktype>
@@ -167,7 +167,8 @@
     </abilitycountercheck>
     <spline><p x="0" y="0"/></spline>     
     <abilitydescription>
-	<p>
+      <p>
+	FIXME NO TRAINED RANK FOR THIS?
 	  Flat checks are catch-all check, when no ability really applies to the
 	  situation and no skill enters the equation. The player simply rolls a
 	  Check against a DC chosen by the GM, applying no Rank bonus. These
