@@ -16,8 +16,10 @@
   
   <section>
     <sectiontitle>Primary Abilities</sectiontitle>
-    <indexentry><entry>Abilities</entry><subentry>Primary</subentry></indexentry>
-  
+    <indexentry>
+      <entry>Abilities</entry>
+      <subentry>Primary</subentry>
+    </indexentry>
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_PRIMARY_ID %}
     {{- build_ability_group(ag) -}}

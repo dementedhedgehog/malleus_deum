@@ -140,10 +140,6 @@ latex_frontmatter = r"""
 %% Page Background
 %%
 
-%%\newcommand{\getpagebackground}{
-%%\transparent{0.2}\includegraphics[width=\paperwidth,height=\paperheight]{./resources/anon_elder_sign/anon_elder_sign.png}
-%%}
-
 \newcounter{modpagenumber}
 \setcounter{modpagenumber}{0}
 
@@ -565,12 +561,19 @@ latex_frontmatter = r"""
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_mandatory_free_interrupt.png}}}
 
-%% Symbol GM Fiat Action
-\newcommand\gmfiatsymbol{%%
+%% Symbol GM Fiat Check
+\newcommand\gmfiatchecksymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/symbol_gm_fiat_action.png}}}
+{./resources/symbols/symbol_gm_fiat_check.png}}}
+
+%% Symbol GM Fiat Save
+\newcommand\gmfiatsavesymbol{%%
+\hspace{\actionsymbolhorizontaloffset}%%
+\raisebox{\actionsymbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_gm_fiat_save.png}}}
 
 %% Symbol Out of Combat Action
 \newcommand\outofcombatsymbol{%%
@@ -593,6 +596,34 @@ latex_frontmatter = r"""
 {./resources/symbols/symbol_check.png}%%
 \hspace{\symbolhorizontalspace}}}
 
+%% Check Arrow Symbol
+\newcommand\checkarrowsymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_check_arrow.png}%%
+\hspace{\symbolhorizontalspace}}}
+
+%% VS Check Arrow Symbol
+\newcommand\vscheckarrowsymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_vs_check_arrow.png}%%
+\hspace{\symbolhorizontalspace}}}
+
+%% Save Arrow Symbol
+\newcommand\savearrowsymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_save_arrow.png}%%
+\hspace{\symbolhorizontalspace}}}
+
+%% Vs Save Arrow Symbol
+\newcommand\vssavearrowsymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_vs_save_arrow.png}%%
+\hspace{\symbolhorizontalspace}}}
+
 %% Save Symbol
 \newcommand\savesymbol{%%
 \raisebox{\symbolverticaloffset}{%%
@@ -605,6 +636,13 @@ latex_frontmatter = r"""
 \raisebox{\symbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_free_save.png}%%
+\hspace{\symbolhorizontalspace}}}
+
+%% Save or Free Save Symbol
+\newcommand\saveorfreesavesymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_save_or_free_save.png}%%
 \hspace{\symbolhorizontalspace}}}
 
 %% Auxiliary Check Symbol
@@ -628,6 +666,43 @@ latex_frontmatter = r"""
 {./resources/symbols/symbol_abilitysubsubsection.png}%%
 \hspace{\symbolhorizontalspace}}}
 
+%% Ability Versus Save Symbol
+\newcommand\vssavesymbol{%%
+\raisebox{-0.5mm}{
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_vs_save.png}%%
+\hspace{\symbolhorizontalspace}}
+}
+
+%% Ability Versus Check Symbol
+%%\newcommand\vschecksymbol{%%
+%%\raisebox{-0.5mm}{%%
+%%\includegraphics[height=\symbolsize]%%
+%%{./resources/symbols/symbol_vs_check.png}%%
+%%\hspace{\symbolhorizontalspace}}
+%%}
+
+%% Ability Bullet Symbol
+\newcommand\abilitybulletsymbol{%%
+\raisebox{-0.5mm}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_ability_bullet.png}%%
+\hspace{\symbolhorizontalspace}}
+}
+
+%% Elder Sign Symbol
+%%\newcommand\eldersign{%%
+%%\raisebox{-0.5mm}{%%
+%%\includegraphics[height=\symbolsize]%%
+%%{./resources/symbols/symbol_elder_sign.png}%%
+%%\hspace{\symbolhorizontalspace}}
+%%}
+
+%%\newcommand{\getpagebackground}{
+%%\transparent{0.2}\includegraphics[width=\paperwidth,height=\paperheight]{./resources/anon_elder_sign/anon_elder_sign.png}
+%%}
+
+\newcommand\versus{\raisebox{-0.2mm}{{\cloisterblack{}VS}}}
 
 
 %% Antag Check Symbol
@@ -1166,9 +1241,29 @@ class LatexFormatter(DocFormatter):
         self.buffer.write(r"\mandatoryfreereactionsymbol{}")
     end_mandatoryfreereactionsymbol = no_op
 
-    def start_gmfiatsymbol(self, symbol):
-        self.buffer.write(r"\gmfiatsymbol{}")
-    end_gmfiatsymbol = no_op
+    def start_gmfiatchecksymbol(self, symbol):
+        self.buffer.write(r"\gmfiatchecksymbol{}")
+    end_gmfiatchecksymbol = no_op
+
+    def start_checkarrowsymbol(self, symbol):
+        self.buffer.write(r"\checkarrowsymbol{}")
+    end_checkarrowsymbol = no_op
+
+    def start_vscheckarrowsymbol(self, symbol):
+        self.buffer.write(r"\vscheckarrowsymbol{}")
+    end_vscheckarrowsymbol = no_op
+
+    def start_savearrowsymbol(self, symbol):
+        self.buffer.write(r"\savearrowsymbol{}")
+    end_savearrowsymbol = no_op
+
+    def start_vssavearrowsymbol(self, symbol):
+        self.buffer.write(r"\vssavearrowsymbol{}")
+    end_vssavearrowsymbol = no_op
+
+    def start_gmfiatsavesymbol(self, symbol):
+        self.buffer.write(r"\gmfiatsavesymbol{}")
+    end_gmfiatsavesymbol = no_op
 
     def start_outofcombatsymbol(self, symbol):
         self.buffer.write(r"\outofcombatsymbol{}")
@@ -1179,41 +1274,68 @@ class LatexFormatter(DocFormatter):
     end_multiroundactionsymbol = no_op
     
     def start_checksymbol(self, symbol):
-        self.buffer.write(r"\checksymbol ")
+        self.buffer.write(r"\checksymbol{}")
     end_checksymbol = no_op    
 
     def start_savesymbol(self, symbol):
-        self.buffer.write(r"\savesymbol ")
+        self.buffer.write(r"\savesymbol{}")
     end_savesymbol = no_op    
 
+    # def start_eldersign(self, symbol):
+    #     self.buffer.write(r"\eldersign{}")
+    # end_eldersign = no_op    
+
+    def start_abilitybulletsymbol(self, symbol):
+        self.buffer.write(r"\abilitybulletsymbol{}")
+    end_abilitybulletsymbol = no_op    
+
     def start_freesavesymbol(self, symbol):
-        self.buffer.write(r"\freesavesymbol ")
+        self.buffer.write(r"\freesavesymbol{}")
     end_freesavesymbol = no_op    
 
+    def start_saveorfreesavesymbol(self, symbol):
+        self.buffer.write(r"\saveorfreesavesymbol{}")
+    end_saveorfreesavesymbol = no_op    
+
     def start_auxiliarysymbol(self, symbol):
-        self.buffer.write(r"\auxiliarychecksymbol ")
+        self.buffer.write(r"\auxiliarychecksymbol{}")
         return
     end_auxiliarysymbol = no_op    
 
     def start_antagonistsymbol(self, symbol):
-        self.buffer.write(r"\antagonistsymbol ")
+        self.buffer.write(r"\antagonistsymbol{}")
         return
     end_antagonistsymbol = no_op    
 
     def start_fatediesymbol(self, symbol):
-        self.buffer.write(r"\fatediesymbol ")
+        self.buffer.write(r"\fatediesymbol{}")
         return
     end_fatediesymbol = no_op    
 
     def start_nofatediesymbol(self, symbol):
-        self.buffer.write(r"\nofatediesymbol ")
+        self.buffer.write(r"\nofatediesymbol{}")
         return
     end_nofatediesymbol = no_op    
 
     def start_skilldiesymbol(self, symbol):
-        self.buffer.write(r"\skilldiesymbol ")
+        self.buffer.write(r"\skilldiesymbol{}")
         return
     end_skilldiesymbol = no_op    
+
+    def start_vschecksymbol(self, symbol):
+        self.buffer.write(r"\vschecksymbol{}")
+        return
+    end_vschecksymbol = no_op    
+
+    def start_gmfiatsymbol(self, symbol):
+        self.buffer.write(r"\gmfiatsymbol{}")
+        return
+    end_gmfiatsymbol = no_op    
+
+    def start_vssavesymbol(self, symbol):
+        self.buffer.write(r"\vssavesymbol{}")
+        return
+    end_vssavesymbol = no_op    
 
     #
     # Corollaries
@@ -1322,6 +1444,11 @@ class LatexFormatter(DocFormatter):
         self.buffer.write(r"\textendash{}")
         return
     end_endash = no_op
+
+    def start_versus(self, _):
+        self.buffer.write(r"\versus{}")
+        return
+    end_versus = no_op
 
     def start_lore(self, element):
         self.buffer.write("\\lore{}")
@@ -1709,7 +1836,6 @@ class LatexFormatter(DocFormatter):
             defn_str = (
                 r"\index{%s" 
                 r"!aaaaaaaa@\empty \igobble |seealso {%s}}"
-                #r"!aaaaaaaa@\empty \igobble |seealso{\hspace{-2ex}%s}}"
                 % (entry_str, sanitized_defn))
             self.buffer.write(defn_str)
 
@@ -2556,23 +2682,19 @@ class LatexFormatter(DocFormatter):
     end_dpool = no_op
 
     def start_vspace(self, vspace):
-        if vspace.text is None:
-            drop = 1.0
-        else:
-            drop = convert_str_to_float(vspace.text)
-        self.buffer.write("\\vspace{%s\\drop}\n" % drop)
+        length_str = vspace.attrib.get("length", "1.0")
+        length = convert_str_to_float(length_str)
+        self.buffer.write("\\vspace{%s\\drop}\n" % length)
         return
     end_vspace = no_op
 
 
-    # def start_hspace(self, vspace):
-    #     if hspace.text is None:
-    #         drop = 1.0
-    #     else:
-    #         drop = convert_str_to_float(vspace.text)
-    #     self.buffer.write("\\vspace{%s\\drop}\n" % drop)
-    #     return
-    # end_vspace = no_op
+    def start_hspace(self, hspace):
+        length_str = hspace.attrib.get("length", "1.0")
+        length = convert_str_to_float(length_str)
+        self.buffer.write(r"\hspace{%sex}" % length)
+        return
+    end_hspace = no_op
     
     
     #

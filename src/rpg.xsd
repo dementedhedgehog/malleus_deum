@@ -68,6 +68,15 @@ Token Types:
   <xs:complexType name="atomType">
     <xs:attribute name="token_type" type="xs:string" fixed="atom"/>
   </xs:complexType>
+
+
+  <!--
+      Subtype of atom with a dimension, for vspace and hspace.
+  -->      
+  <xs:complexType name="spaceType">
+    <xs:attribute name="token_type" type="xs:string" fixed="atom"/>
+    <xs:attribute name="length" type="xs:float" default="1.0"/>
+  </xs:complexType>
   
 
   <!--
@@ -83,6 +92,7 @@ Token Types:
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  
   
   <!--
       XSD doesn't have constants  and we kind of want them so we can constrain
@@ -559,7 +569,7 @@ Token Types:
 	  Actions performed with this ap cost are too varied for us to provide a reasonable
 	  estimate.  We leave it up to the GM to make a call since he will have more context.
       -->
-      <xs:element name="gm-fiat" type="keywordType" fixed="GM Fiat"/>
+      <xs:element name="gm-fiat" type="keywordType" fixed="GM-Fiat"/>
       <xs:element name="default-language-range" type="keywordType" fixed="Long Range"/>
       <xs:element name="default-crossbow-range" type="keywordType" fixed="Very Long Range"/>
     </xs:choice>
@@ -738,6 +748,7 @@ Token Types:
       <xs:group ref="weaponDamageKeywordEnum"/>
       <xs:group ref="weaponModifiersKeywordEnum"/>
       <xs:group ref="abilitySpecialKeywordEnum"/>
+      <xs:group ref="primaryAbilityKeywordEnum"/>
 
       <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
       <xs:element name="abjuration" type="keywordType" fixed="Abjuration"/>
@@ -754,6 +765,7 @@ Token Types:
       <xs:element name="luck" type="keywordType" fixed="Luck"/>
       <xs:element name="lore" type="keywordType" fixed="Lore"/>
       <xs:element name="monster" type="keywordType" fixed="Monster"/>
+      <xs:element name="mental" type="keywordType" fixed="Mental"/>
       <xs:element name="magic" type="keywordType" fixed="Magic"/>
       <xs:element name="necromancy" type="keywordType" fixed="Necromancy"/>
       <xs:element name="npc" type="keywordType" fixed="NPC"/>
@@ -847,7 +859,7 @@ Token Types:
       <xs:element
 	  name="countercheck"
 	  type="keywordType"
-	  fixed="Counter-Check"/>
+	  fixed="Save"/>
       <xs:element
 	  name="auxiliary"
 	  type="keywordType"
@@ -934,20 +946,38 @@ Token Types:
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:complexType name="attributeType">
+  <xs:group name="primaryAbilityKeywordEnum">
+    <xs:choice>
+      <xs:element name="strength" type="keywordType" fixed="Strength"/>
+      <xs:element name="endurance" type="keywordType" fixed="Endurance"/>
+      <xs:element name="agility" type="keywordType" fixed="Agility"/>
+      <xs:element name="will" type="keywordType" fixed="Will"/>
+      <xs:element name="speed" type="keywordType" fixed="Speed"/>
+      <xs:element name="perception" type="keywordType" fixed="Perception"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="primaryAbilityType">
     <xs:choice maxOccurs="unbounded" minOccurs="0">
-      <xs:element name="strength" type="keywordType" fixed=""/>
-      <xs:element name="endurance" type="keywordType" fixed=""/>
-      <xs:element name="agility" type="keywordType" fixed=""/>
-      <xs:element name="speed" type="keywordType" fixed=""/>
-      <xs:element name="perception" type="keywordType" fixed=""/>
+      <xs:group ref="primaryAbilityKeywordEnum"/>
     </xs:choice>
   </xs:complexType>
 
+  <!-- <xs:complexType name="attributeType"> -->
+  <!--   <xs:choice maxOccurs="unbounded" minOccurs="0"> -->
+  <!--     <xs:element name="strength" type="keywordType" fixed=""/> -->
+  <!--     <xs:element name="endurance" type="keywordType" fixed=""/> -->
+  <!--     <xs:element name="agility" type="keywordType" fixed=""/> -->
+  <!--     <xs:element name="speed" type="keywordType" fixed=""/> -->
+  <!--     <xs:element name="perception" type="keywordType" fixed=""/> -->
+  <!--   </xs:choice> -->
+  <!-- </xs:complexType> -->
+  
   <!-- limit the attributes for archetypes -->
   <xs:complexType name="attributeLimitType">
     <xs:sequence>
-      <xs:element name="attr" type="attributeType"/>
+      <!-- <xs:element name="attr" type="attributeType"/> -->
+      <xs:element name="attr" type="primaryAbilityType"/>
       <xs:element name="value" type="xs:nonNegativeInteger"/>
     </xs:sequence>
   </xs:complexType>
@@ -955,7 +985,8 @@ Token Types:
   <!-- limit the attributes for archetypes -->
   <xs:complexType name="attributeBonusType">
     <xs:sequence>
-      <xs:element name="attr" type="attributeType"/>
+      <!-- <xs:element name="attr" type="attributeType"/> -->
+      <xs:element name="attr" type="primaryAbilityType"/>
       <xs:element name="value" type="xs:integer"/>
     </xs:sequence>
   </xs:complexType>
@@ -973,13 +1004,14 @@ Token Types:
       <!-- no ap cost -->
       <!-- May take multiple players or multiple rounds to perform -->      
       <xs:element name="multi-round" type="keywordType" fixed="Multi Round"/>
-      <xs:element name="gm-fiat" type="keywordType" fixed="GM Fiat"/>
+      <xs:element name="gm-fiat" type="keywordType" fixed="GM-Fiat"/>
       <xs:element name="save" type="keywordType" fixed="Save"/>
       <xs:element name="reaction" type="keywordType" fixed="Reaction"/>
       <xs:element name="interrupt" type="keywordType" fixed="Interrupt"/>
       <xs:element name="mandatory-save" type="keywordType" fixed="Mandatory Save"/>
       <xs:element name="mandatory-reaction" type="keywordType" fixed="Mandatory Reaction"/>
       <xs:element name="mandatory-interrupt" type="keywordType" fixed="Mandatory Interrupt"/>
+      <xs:element name="save-or-free-save" type="keywordType" fixed="Save/Free Save"/>
       <xs:element name="free-save" type="keywordType" fixed="Free Save"/>
       <xs:element name="free-interrupt" type="keywordType" fixed="Free Interrupt"/>
       <xs:element name="free-reaction" type="keywordType" fixed="Free Reaction"/>
@@ -990,7 +1022,10 @@ Token Types:
       <xs:element name="interrupt-or-reaction" type="keywordType" fixed="Interrupt/Reaction"/>
       <xs:element name="reaction-or-ap2" type="keywordType" fixed="Reaction/2AP"/>
       <xs:element name="interrupt-or-ap2" type="keywordType" fixed="Interrupt/2AP"/>
-      <xs:element name="noncombat" type="keywordType" fixed="Noncombat"/>      
+      <xs:element name="noncombat" type="keywordType" fixed="Noncombat"/>
+
+      <!-- generic check used to oppose certain saves -->
+      <xs:element name="unknown-check" type="keywordType" fixed="Unknown"/>      
       
       <!-- Defaults -->
       <xs:element name="default-lore-apcost" type="keywordType" fixed="2AP"/>      
@@ -1059,6 +1094,7 @@ Token Types:
       <xs:element name="percent" type="symbolType"/>
       <xs:element name="uparrowfrombar" type="symbolType"/>
       <xs:element name="endash" type="symbolType"/>
+      <xs:element name="versus" type="symbolType"/>
 
       <!-- <xs:element name="param-dmg" type="symbolType"/> -->
       <xs:element
@@ -1071,11 +1107,14 @@ Token Types:
       <xs:element name="checksymbol" type="symbolType"/>      
       <xs:element name="savesymbol" type="symbolType"/>      
       <xs:element name="freesavesymbol" type="symbolType"/>      
+      <xs:element name="saveorfreesavesymbol" type="symbolType"/>      
       <xs:element name="auxiliarysymbol" type="symbolType"/>      
       <xs:element name="antagonistsymbol" type="symbolType"/>
       <xs:element name="fatediesymbol" type="symbolType"/>      
       <xs:element name="nofatediesymbol" type="symbolType"/>      
       <xs:element name="skilldiesymbol" type="symbolType"/>
+      <xs:element name="vschecksymbol" type="symbolType"/>
+      <xs:element name="vssavesymbol" type="symbolType"/>
 
       <xs:element name="freeactionsymbol" type="symbolType"/>
       <xs:element name="oneactionsymbol" type="symbolType"/>
@@ -1091,8 +1130,15 @@ Token Types:
       <xs:element name="freeinterruptsymbol" type="symbolType"/>
       <xs:element name="mandatoryinterruptsymbol" type="symbolType"/>
       <xs:element name="mandatoryfreeinterruptsymbol" type="symbolType"/>
-      <xs:element name="gmfiatsymbol" type="symbolType"/>
+      <xs:element name="gmfiatchecksymbol" type="symbolType"/>
+      <xs:element name="gmfiatsavesymbol" type="symbolType"/>
       <xs:element name="outofcombatsymbol" type="symbolType"/>
+      <!-- <xs:element name="eldersign" type="symbolType"/> -->
+      <xs:element name="abilitybulletsymbol" type="symbolType"/>
+      <xs:element name="checkarrowsymbol" type="symbolType"/>
+      <xs:element name="vscheckarrowsymbol" type="symbolType"/>
+      <xs:element name="savearrowsymbol" type="symbolType"/>
+      <xs:element name="vssavearrowsymbol" type="symbolType"/>
       
       <xs:group ref="svResultGroup"/>
       <!-- <xs:group ref="resultGroup"/> -->
@@ -1129,8 +1175,10 @@ Token Types:
       <xs:element name="olist" type="orderedListType"/>      
       <xs:element name="spacer" type="atomType"
 		  minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="vspace" type="leafType"
-		  minOccurs="0" maxOccurs="unbounded" default="1.0"/>
+      <xs:element name="vspace" type="spaceType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="hspace" type="spaceType"
+		  minOccurs="0" maxOccurs="unbounded"/>
     </xs:choice>
   </xs:group>
   
@@ -1264,10 +1312,6 @@ Token Types:
       <!--
 	  Antag Abilities may have params for damage and sv,
       -->
-      <!-- <xs:element -->
-      <!-- 	  name="param-check-default" -->
-      <!-- 	  type="svResultType" -->
-      <!-- 	  minOccurs="0" maxOccurs="1"/> -->
       <xs:element
 	  name="param-dmg"
 	  type="xs:positiveInteger"
@@ -1368,27 +1412,21 @@ Token Types:
   <!-- Used for Antag Check Results and for Antag/Protag Counter Results -->
   <xs:group name="svResultGroup">
     <xs:choice>
-      <!-- <xs:element name="gm-fiat" type="emptyType"/> -->
-      <!-- <xs:group ref="abilityParamGroup"/> -->
-      
       <xs:element name="param-check" type="stringConstantType" fixed="CHECK"/>
-
-      <xs:element name="sv3" type="symbolType"/>
-      <xs:element name="sv5" type="symbolType"/>
-      <xs:element name="sv7" type="symbolType"/>
-      <xs:element name="sv9" type="symbolType"/>
-      <xs:element name="sv11" type="symbolType"/>
-      <xs:element name="sv13" type="symbolType"/>
-      <xs:element name="sv15" type="symbolType"/>
-      <xs:element name="sv17" type="symbolType"/>
-      <xs:element name="sv19" type="symbolType"/>
-      <xs:element name="sv21" type="symbolType"/>
-      <xs:element name="sv23" type="symbolType"/>
-      <xs:element name="sv25" type="symbolType"/>
-      <xs:element name="sv27" type="symbolType"/>
-      <xs:element name="sv29" type="symbolType"/>
-
-      
+      <xs:element name="sv3" type="stringConstantType" fixed="SV3"/>
+      <xs:element name="sv5" type="stringConstantType" fixed="SV5"/>
+      <xs:element name="sv7" type="stringConstantType" fixed="SV7"/>
+      <xs:element name="sv9" type="stringConstantType" fixed="SV9"/>
+      <xs:element name="sv11" type="stringConstantType" fixed="SV11"/>
+      <xs:element name="sv13" type="stringConstantType" fixed="SV13"/>
+      <xs:element name="sv15" type="stringConstantType" fixed="SV15"/>
+      <xs:element name="sv17" type="stringConstantType" fixed="SV17"/>
+      <xs:element name="sv19" type="stringConstantType" fixed="SV19"/>
+      <xs:element name="sv21" type="stringConstantType" fixed="SV21"/>
+      <xs:element name="sv23" type="stringConstantType" fixed="SV23"/>
+      <xs:element name="sv25" type="stringConstantType" fixed="SV25"/>
+      <xs:element name="sv27" type="stringConstantType" fixed="SV27"/>
+      <xs:element name="sv29" type="stringConstantType" fixed="SV29"/>
     </xs:choice>
   </xs:group>
 
@@ -1476,15 +1514,20 @@ Token Types:
       <xs:element
 	  name="opponents-negotiate-save"
 	  type="stringConstantType"
-	  fixed="Negotiate Save or GM Fiat"/>
+	  fixed="Negotiate Save or GM-Fiat"/>
       
       <xs:element
 	  name="opponents-etiquette-save"
 	  type="stringConstantType"
-	  fixed="Etiquette Save or GM Fiat"/>
-          
+	  fixed="Etiquette Save or GM-Fiat"/>
+
+      <!-- Gm decides if it should be a save or a free save -->
+      <xs:element name="save-or-free-save"
+		  type="stringConstantType"
+		  fixed="Save or Free Save"/>
+      
       <!-- NPC/Hazard/GM opposed abilities -->
-      <xs:element name="gm-fiat" type="stringConstantType" fixed="GM Fiat"/>
+      <xs:element name="gm-fiat" type="stringConstantType" fixed="GM-Fiat"/>
 
       <xs:element name="aspect-sv" type="aliasType" fixed="sv9"/>
       <xs:element name="default-lore-sv-easy" type="aliasType" fixed="sv9"/>
@@ -1776,7 +1819,7 @@ Token Types:
   </xs:complexType>
   
 
-  <!-- Protagonist CounterCheck (Save) -->
+  <!-- CounterCheck (Save) -->
   <xs:complexType name="counterCheckType" mixed="false">
     <xs:sequence>
       <xs:group ref="abilityCheckHeaderGroup"/>

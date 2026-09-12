@@ -351,6 +351,10 @@ class AbilityCheck:
     def get_keywords_str(self):
         return ", ".join(self.get_keywords()).strip()
 
+    def get_check_keywords_str(self):
+        keywords = set(self.keywords) - set(self.ability.get_keywords())
+        return ", ".join(sorted(list(keywords)))
+
     def get_range(self):
         return self.check_range
 
@@ -432,7 +436,7 @@ class AbilityCheck:
             elif tag == "counter":
                 if len(child):
                     counter = child[0]
-                    self.counter = node_to_string(counter)
+                    self.counter = counter.text
                 else:
                     self._throw_error(child, "MISSING counter?")                
 
@@ -778,11 +782,9 @@ class Ability:
         return len(self.get_keywords()) > 0
 
     def get_keywords_str(self):
-        return ",".join(self.get_keywords())
-    
+        return ", ".join(self.get_keywords())
+
     def __str__(self):
-        #return f"✱{self.ability_id}"
-        #return self.ability_id}"
         return AbilityRef.from_ability(self).to_str()
 
     def set_group(self, ability_group):

@@ -6,7 +6,7 @@
     <abilitygroupfamily><primary/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
-	The primary abilities are five core abilities that represent the
+	The primary abilities are six core abilities that represent the
 	characters raw, innate, unlearned capabilities.
 	<label>sec:primary_abilities</label>
       </p>
@@ -44,7 +44,7 @@
       </playexample>
 
       <figure position="!b">
-	<img id="rackham_giant_frogs"/>
+	<img id="rackham_imp"/>
       </figure>
       
     </abilitygroupdescription>
@@ -54,27 +54,29 @@
 
   <ability>
     <abilitytitle>Strength</abilitytitle>
-    <abilityid>strength</abilityid>    
-    <abilityranks from="-3" to="6"/>
+    <abilityid>strength</abilityid>
+    <abilityranks from="-3" to="9"/>
+    <keywords><physical/><strength/></keywords>
     <abilitycheck> 
-      <name>Check</name>
+      <name>Strength Check</name>
       <checktype><physical/></checktype>
       <apcost><gm-fiat/></apcost>
       <range><touch/></range>
       <keywords><check/></keywords>
       <counter><gm-fiat/></counter>
-    </abilitycheck>    
+    </abilitycheck>
     <abilitycountercheck>
-      <name>Counter-Check</name>
+      <name>Strength Save</name>
       <checktype><physical/></checktype>
-      <apcost><gm-fiat/></apcost>
+      <apcost><unknown-check/></apcost>
       <range><touch/></range>
       <keywords><countercheck/></keywords>
-      <counter><gm-fiat/></counter>
+      <counter><save-or-free-save/></counter>
     </abilitycountercheck>
     <spline><p x="90" y="0"/></spline> 
     <specializations>
       <specialization>Throw</specialization>
+      <specialization>Bend Bars/Lift Gates</specialization>
     </specializations>     
     <abilitydescription>
       <indexentry>
@@ -85,10 +87,10 @@
 	<subentry>Strength</subentry>
       </indexentry>
       <p>
-	Represents the characters brute physical power.  Strength savs are made
-	when the character wishes to perform a Feat of Strength, such as bending
-	bars, opening doors and to lift heavy objects.  Strength modifies melee
-	damage and the characters Health.
+	Strength represents the characters brute physical power. Strength saves
+	are made when the character wishes to perform a Feat of Strength, such
+	as bending bars, opening doors and to lift heavy objects. Strength
+	modifies the characters Health and melee damage for some weapons.
       </p>      
     </abilitydescription>
   </ability>
@@ -97,9 +99,10 @@
   <ability>
     <abilitytitle>Endurance</abilitytitle>
     <abilityid>endurance</abilityid>
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="-3" to="9"/>
+    <keywords><physical/><endurance/></keywords>
     <abilitycheck>
-      <name>Check</name>
+      <name>Endurance Check</name>
       <checktype><physical/></checktype>
       <apcost><free-interrupt/></apcost>
       <range><na/></range>
@@ -107,12 +110,12 @@
       <counter><gm-fiat/></counter>
     </abilitycheck>
     <abilitycountercheck>
-      <name>Save</name>
+      <name>Endurance Save</name>
       <checktype><physical/></checktype>
       <apcost><gm-fiat/></apcost>
       <range><self/></range>
       <keywords><countercheck/></keywords>
-      <counter><gm-fiat/></counter>
+      <counter><save-or-free-save/></counter>
     </abilitycountercheck>
     <abilitydescription>
       <p>
@@ -123,10 +126,10 @@
 	  <entry>Abilities</entry>
 	  <subentry>Endurance</subentry>
 	</indexentry>	
-        The characters ability to handle physical stress.  If a character has a
-	high Endurance it indicates that they are healthy and tough. Endurance
-	is used to oppose poisons, resist exhaustion, diseases, the cold, and
-        modifies the characters Stamina.
+        Endurance is the characters ability to handle physical stress. If a
+	character has a high endurance it indicates that they are healthy and
+	tough. Endurance is used to save against poisons, resist exhaustion,
+	diseases, the cold, and modifies the characters Stamina.
       </p>
     </abilitydescription>
   </ability>
@@ -135,9 +138,10 @@
   <ability>
     <abilitytitle>Agility</abilitytitle>
     <abilityid>agility</abilityid>    
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="-3" to="9"/>
+    <keywords><physical/><agility/></keywords>
     <abilitycheck>
-      <name>Check</name>
+      <name>Agility Check</name>
       <checktype><physical/></checktype>
       <apcost><free-interrupt/></apcost>
       <range><self/></range>
@@ -145,15 +149,15 @@
       <counter><sv13/></counter>
     </abilitycheck>
     <abilitycountercheck>
-      <name>Save</name>
+      <name>Agility Save</name>
       <checktype><physical/></checktype>
       <apcost><gm-fiat/></apcost>
       <range><self/></range>
       <keywords><countercheck/></keywords>
-      <counter><gm-fiat/></counter>
+      <counter><save-or-free-save/></counter>
     </abilitycountercheck>
     <specializations>
-      <specialization>SureFeet</specialization>
+      <specialization>Sure Feet</specialization>
     </specializations>    
     <abilitydescription>
       <p>
@@ -172,8 +176,8 @@
       </p>
 
       <p>
-	The Sure-Feet specialization is used when the attacker the character
-	would be knocked prone.
+	The Sure-Feet specialization is used when the character makes an
+	agility save to avoid being knocked prone.
       </p>      
     </abilitydescription>
   </ability>
@@ -185,9 +189,10 @@
     <slug>
       Wisely and slow; they stumble that run fast.
     </slug>
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="-3" to="9"/>
+    <keywords><physical/><speed/></keywords>
     <abilitycheck>
-      <name>Check</name>
+      <name>Speed Check</name>
       <checktype><physical/></checktype>
       <apcost><free-interrupt/></apcost>
       <range><self/></range>
@@ -195,7 +200,7 @@
       <counter><gm-fiat/></counter>
     </abilitycheck>
     <abilitycountercheck>
-      <name>Save</name>
+      <name>Speed Save</name>
       <checktype><physical/></checktype>
       <apcost><gm-fiat/></apcost>
       <range><self/></range>
@@ -205,6 +210,7 @@
     <specializations>
       <specialization>Jump</specialization>
       <specialization>Throw</specialization>
+      <specialization>Sprint</specialization>
     </specializations>    
     <abilitydescription>
       <p>
@@ -232,9 +238,10 @@
   <ability>
     <abilitytitle>Perception</abilitytitle>
     <abilityid>perception</abilityid>    
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="-3" to="9"/>
+    <keywords><perception/></keywords>
     <abilitycheck>
-      <name>Check</name>
+      <name>Perception Check</name>
       <checktype><physical/></checktype>
       <apcost><free-interrupt/></apcost>
       <range><na/></range>
@@ -242,7 +249,7 @@
       <counter><gm-fiat/></counter>
     </abilitycheck>
     <abilitycountercheck>
-      <name>Save</name>
+      <name>Perception Save</name>
       <checktype><physical/></checktype>
       <apcost><gm-fiat/></apcost>
       <range><ranged-very-long/></range>
@@ -291,11 +298,12 @@
       </p>      
     </abilitydescription>
   </ability>  
-  
+
   <ability>
     <abilitytitle>Will</abilitytitle>
     <abilityid>will</abilityid>    
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="-3" to="9"/>
+    <keywords><mental/><will/></keywords>
     <abilitycheck>
       <name>Will Check</name>
       <checktype><physical/></checktype>
@@ -306,7 +314,7 @@
     </abilitycheck>
 
     <abilitycountercheck>
-      <name>Save</name>
+      <name>Will Save</name>
       <checktype><physical/></checktype>
       <apcost><gm-fiat/></apcost>
       <range><self/></range>
@@ -425,7 +433,8 @@
   <ability>
     <abilitytitle>Magic Save</abilitytitle>
     <abilityid>magic-save</abilityid>
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="-3" to="9"/>
+    <keywords><physical/><strength/></keywords>
     <abilitycountercheck>
       <name>Save</name>
       <checktype><trial/></checktype>
@@ -450,7 +459,8 @@
   <ability>
     <abilitytitle>Luck Check</abilitytitle>
     <abilityid>luck</abilityid>
-    <abilityranks from="-3" to="6"/>
+    <abilityranks from="-3" to="9"/>
+    <keywords><physical/><strength/></keywords>
     <abilitycountercheck>
       <name>Save</name>
       <checktype><trial/></checktype>
