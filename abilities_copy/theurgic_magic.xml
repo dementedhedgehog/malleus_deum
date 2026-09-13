@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Theurgic Abilities</abilitygrouptitle>
+    <abilitygroupid><theurgy/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
+    <slug>
+      Lux E Tenebris
+    </slug>
+    <abilitygroupdescription>
+      <p>
+	Theurgic magic is magic channelled from a powerful deity.
+        They involve the use of the characters magic pool and
+	are only available to certain archetypes.
+      </p>
+
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  
+  <ability>
+    <abilitytitle>Air of Beatitude</abilitytitle>
+    <abilityid>air_of_beatitude</abilityid>
+    <slug>
+      An unjust man is an abomination to the righteous, but one whose way
+      is straight is an abomination to the wicked.
+    </slug>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><self/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="180"/><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	If successful those observing the character
+  	will be struck by their holiness and devoutness.
+  	This will grant a +Rank bonus to Negotiate actions
+  	or Charm spells against good creatures.
+      </p>
+
+      <p>
+  	Demons must make an Mettle Check DDC:5+Rank to resist or become
+	Enraged and Charge the caster.
+      </p>
+
+      <p>
+  	Undead monsters must make a Will DC 15 check or become
+	Enraged and Charge the caster.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Augury</abilitytitle>
+    <abilityid>augury</abilityid>
+    <slug>It’s tough to make predictions, especially about the future.</slug>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>2</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><ritual/><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>FIXME</any-success>
+    </action>    
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="210"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	Augury involves petitioning a deity or powerful being for
+  	information or insight.  Auguries are performed by
+  	interpretation of the stars, palmistry, tea leaf reading,
+  	dream interpretation, use of cards, the entrails of a sacrificial
+  	victim etc.  The character should choose one method per message
+  	deity and use that method thereafter.
+      </p>
+
+      <p>
+  	The augury process follows the following steps. First, the
+  	character asks a question, then they prepare the augury,
+  	and finally they examine the auspicies for the answer.
+      </p>
+
+      <p>
+  	When asking the question it is important that the augure
+  	specify to whom they are directing their question otherwise
+  	checknameless eavesdroppers may respond.  Asking the question is
+  	usually done in one of the old languages.  Firstly because
+  	it may be easier to communicate to the entity in that language,
+  	and second because it makes for good theatre.
+      </p>
+
+      <p>
+  	The steps to prepare an augury depend on the method of
+  	divination, but could include making a cup of tea, or
+  	sacrificing someone on an alter.  The Gods are more likely
+  	to answer the character if a method appropriate to the God is
+  	used.
+      </p>
+
+      <p>
+  	Finally, the auspices can be examined. The GM will answer the
+  	characters question in a three words or less or provide no
+  	response.  If the augury is unsuccessful those words may have
+  	nothing to do with the question being asked.  The check is
+  	made as an hidden opposed check modified by how likely it is for the god
+  	to know the answer and the likelihood that the god cares enough to
+  	answer. At higher ranks the character may be gifted visions as a response.
+      </p>
+
+      <p>
+  	It is important to know that in Malleus Deum the Gods are
+  	capricious, are not omniscient or in general, particularly caring.
+  	So they may not answer the characters augury.
+      </p>
+      
+      <p>
+  	A character may keep making checks and asking questions until they
+  	fail, at which point they feel they have lost the attention of the
+  	god and no more attempts may be made to contact that deity for
+  	next day.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Back Fiend!</abilitytitle>
+    <abilityid>back</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><ranged-short/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>      
+      <any-success>Demon makes Mettle Check vs Cast Result</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="0" y="120"/><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	The character calls on their deity to repel demons. Demons must make a
+	DC 9 Mettle Check the first time they come within a radius of <m10/>.
+	Many demons will avoid making this check.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Blessed Arms</abilitytitle>
+    <abilityid>blessed_arms</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <!-- <name>Check</name>  -->
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Weapons receive +Rank dmg vs demons and undead</any-success>
+      <critsuccess>Weapons receive +2×Rank dmg vs demons and undead</critsuccess>      
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="360"/><p x="120" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	Renders all weapons so blessed as magical for the next ten minutes
+	(granting them the magic tag). Grants +Rank damage for these weapons
+	against demons and the undead during that time.  In the event of
+	overcharge the weapons will glow with radiant light.  The spell effects
+	Rank+1 weapons that can be seen by the caster.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Canticle of Mithras</abilitytitle>
+    <abilityid>canticle_of_mithras</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap4/></cost>
+      <range><ranged-short/></range>
+      <keywords><magicpool/><maintain/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>
+	Alies make defensive checks with a +Rank bonus against evil opponents
+      </any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="0" y="30"/><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The caster calls on Mithras to protect the faithful.  Allies gain
+	+Rank to defensive checks against evil creatures.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Holy Water</abilitytitle>
+    <abilityid>holy_water</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><craft/></critclass>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><check/></keywords>
+      <counter><sv9/></counter>      
+      <any-success>Holy water is available.</any-success>
+      <critsuccess>+2 bonus to checks made with this item</critsuccess>
+      <righteoussuccess>+1 bonus to checks made with this item</righteoussuccess>
+      <fail>Last one.  No more Holy Water checks can be made until the character has had time to create more.</fail>
+      <grimfail>As fail, but it's old.  -2 bonus to checks made with this item</grimfail>
+      <critfail>All out.</critfail>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="510"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	The character usually keeps about their person some number of vials of holy
+	water they had created earlier for just such an occasion.  Whenever the ability
+	is used a check is made to see how well prepared they are.  If successful they
+	have drawn one of these vials of holy water, if they fail they may be down to their
+	last vial or have none. Note that the character	must have a long rest before they
+	can make this check again once they fail.  Holy water
+	takes time to prepare so the caster cannot produce a never ending stream
+	of holy water vials. To cast this spell the deity that cleric follows
+	cannot be evil. Also note that the character must have access to vials
+	and water to create holy water.	They cannot produce water in the desert.
+      </p>
+      
+      <p>
+	Holy Water can be prepared in one hour.  If the player explicitly states that they are preparing
+	holy water and they have the required time and materials to do so, then they may create Rank+1d4
+	vials for use without making a check.  Holy water should be kept in a special font.
+	If kept in a vial it only lasts a day before its efficacy fades.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Divine Retribution</abilitytitle>
+    <abilityid>divine_retribution</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><reaction/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Check to make a free counter attack</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="300"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	When struck the character may check and if successful make an
+  	immediate counter-attack.  On overcharge the character is Enraged.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Exorcise</abilitytitle>
+    <abilityid>exorcise</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>2</poolcost>
+      <cost><ap1/></cost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>Exorcise evil spirit</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="300"/><p x="90" y="30"/></spline>
+    
+    <abilitydescription>
+      <p noindent="true">
+  	The character can cast this spell to purge evil spirits from
+	a possessed person or a location such as a burial site, or demon temple.
+      </p>
+
+      <p>
+  	When purifying a person or an area the difficulty of the check is
+  	determined by the GM based on how evil the site is.  This works as
+  	follows: first the character commits, but does not roll, at least
+  	three dice to the purification, then the GM reveals the difficulty of
+  	the check to the player, at this point the caster may choose to add
+  	additional dice to their check.  Then the character rolls the magic
+  	check as usual.
+      </p>      
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Gentle Repose</abilitytitle>
+    <abilityid>gentle_repose</abilityid>
+    <slug>There is a big difference between mostly dead and all dead</slug>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>+Rank to Near Death saves</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="255"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	Provides a +Rank bonus to Near-Death saves.  If the character recovers
+	hit points as a result of their Near Death rolls they gain an additional
+	+Rank hit points. While stop a corpse from turning to undeath if cast
+	early enough.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Grace of Mithras</abilitytitle>
+    <abilityid>grace_of_mithras</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>+Rank to hit and dmg</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="390"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	If called upon Mithras will grant a +Rank bonus to the caster to hit
+	rolls and damage.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Guiding Hand</abilitytitle>
+    <abilityid>guiding_hand</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><reaction/></cost>
+      <range><ranged-medium/></range>
+      <keywords><magicpool/><check/></keywords>
+      <precondition>
+	Someone nearby is hit with an arrow or crossbow bolt.
+      </precondition>
+      <counter><sv7/></counter>
+      <any-success>
+	Arrow or bolt misses in defence or is rerolled in offence.
+      </any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="165"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	This spell can be used offensively or defensively.
+      </p>
+
+      <p>
+  	In defence, after a missle is fired, hits and the damage is rolled, the
+	caster, predicting the outcome of the shot,  uses his powers to deflect
+	the missile instead so that it now misses. 
+      </p>
+      
+      <p>
+  	In offence, after a missle is fired and it would have missed. The caster
+	uses his powers to try to guide a missile to its target. The shot is
+	rerolled.
+      </p>
+
+      <p>
+	This spell does not work on bullets, which fly so fast the character has
+	no time to react.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Heal</abilitytitle>
+    <abilityid>heal</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Heal 1d4+Rank hit points</any-success>
+      <critfail>
+	The healer accidentaly uses their own animus in order to heal the
+	bloodied character and loses d4 hitpoints.
+      </critfail>      
+    </action>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="90" y="15"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	The healing character places their hands on a bloodied target
+  	and makes a check.  If successful the bloodied character heals
+  	1d4+Rank Hit Points.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Hypnotic Gaze</abilitytitle>
+    <abilityid>hypnotic_gaze</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>      
+      <any-success>Target mesmerized</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="2"/>
+    <spline><p x="0" y="75"/><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The character gazes into the eyes of their target and makes an opposed
+	Mettle check against them. If successful the target is mesmerized and
+	will perform as the character dictates.  Mesmerized characters will not
+	perform actions that result in self-harm.  Good characters will not harm
+	others if mesmerized. This effect lasts for as many rounds as the
+	difference between the casters roll and the targets roll.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Light of Mithras</abilitytitle>
+    <abilityid>light_of_mithras</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Create light</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="480"/><p x="90" y="30"/></spline>
+    
+    <abilitydescription>
+      <p noindent="true">
+  	The character creates a bright divine light attached to some object.
+  	The light burns for an hour.  It is as bright as a pitch torch.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Litany of Redemption</abilitytitle>
+    <abilityid>litany_of_redemption</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Prayer refreshes a mettle die</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="350"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	Once per day the caster may attempt the Litany of Redemption.  This is a
+	five minute ritual where the caster quotes passages from the Book of
+	Light and reflects on the lessons within. If successful participants
+	refresh a single mettle die if able.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>No - Take Me!</abilitytitle>
+    <abilityid>no_take_me</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><reaction/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>Transfers damage</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="450"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	The character implores their patron to take them in the stead of some
+  	other individual Near Death.   If the character succeeds, up to 2d6
+  	Health (or the targets maximum health whichever is smaller) is
+  	added to the targets health and removed from the casters Health. In the
+  	event of an overcharge the caster loses any remaining health and is Near
+	Death themselves.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Purify</abilitytitle>
+    <abilityid>purify</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Purifies food or drink</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="120"/><p x="-60" y="30"/></spline>    
+    <abilitydescription>
+      <p noindent="true">
+  	The character can casts this spell to purify food or water that
+  	has gone rancid, rotten, is poisoned, or is brackish. The caster
+  	can purify enough food for three people for a day per rank of the
+  	spell.  Most deities will not take kindly to being continuously hassled
+  	because a follower cannot be bothered to organize provisions. In such
+  	cases the caster may lose favour with their god.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Theurgic Lore</abilitytitle>
+    <abilityid>theurgy</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><recall-knowledge/></critclass>
+      <cost><free-interrupt/></cost>
+      <range><na/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>Reveals background lore</any-success>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	Theurgy is the study of how to cast theological, or clerical, spells.
+	There is a separate ability called Theology that represents study of
+	the the deities, the history of religion, and of the teleolical origins
+	of the world.  In most cases both abilities are required to cast
+	theurgic spells.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Hammer of the Hierophant</abilitytitle>
+    <abilityid>hammer_of_the_hierophant</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>2</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><maintain/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Mace, Hammer or Staff +Rank to hit and damage</any-success>
+    </action>
+    <prereqabilityref id="blessed_arms" rank="2"/>
+    <spline><p x="0" y="15"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	If successfully cast, the caster gains +Rank to attack checks and +Rank
+	to damage with attacks made using a hammer or mace for the rest of the
+	combat.  These bonuses <emph>do not stack</emph> with other magical bonuses
+	the caster has for those attacks.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Hold Undead</abilitytitle>
+    <abilityid>hold_undead</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <precondition>Opponents are undead.</precondition>
+      <counter><opponents-will-save/></counter>
+      <any-success>
+	If successfully cast any undead within range whose will is less than or equal to the result are Held.
+      </any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="-60" y="5"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	The character calls on their deity to hold creatures animated by
+  	necrotic forces.   Held creatures cannot make melee attacks against, or move any closer to the
+	caster.  If the caster moves towards them they must retreat.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Turn Undead</abilitytitle>
+    <abilityid>turn_undead</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><ranged-short/></range>
+      <keywords><magicpool/><check/></keywords>
+      <precondition>Opponents are undead.</precondition>
+      <counter><sv11/></counter>
+      <any-success>
+	If successfully cast any undead within range whose will is less than or
+	equal to the result are Turned.
+      </any-success>
+    </action>
+    <prereqabilityref id="hold_undead" rank="3"/>
+    <spline><p x="0" y="15"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	The character calls on their deity to turn creatures animated by
+	necrotic forces. Turned creatures must move away from the caster each
+	turn and may not make melee attacks.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Destroy Undead</abilitytitle>
+    <abilityid>destroy_undead</abilityid>
+    <abilityranks from="2" to="5"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><ranged-short/></range>
+      <keywords><magicpool/><check/></keywords>
+      <precondition>Opponents are undead.</precondition>
+      <counter><sv13/></counter>      
+      <any-success>
+	If successfully cast any undead within range whose will is less than
+	or equal to the result are Destroyed.
+      </any-success>
+    </action>
+    <prereqabilityref id="turn_undead" rank="2"/>
+    <spline><p x="0" y="15"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+  	The character calls on their deity to destroy creatures animated by
+  	necrotic forces. Turned creatures must move away from the caster each
+	turn and may not make melee attacks.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Witness Me!</abilitytitle>
+    <abilityid>witness_me</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap4/></cost>
+      <range><self/></range>
+      <keywords><magicpool/><check/></keywords>
+      <precondition>Caster is bloodied</precondition>
+      <counter><sv11/></counter>
+      <any-success>Make three melee attacks</any-success>
+    </action>
+    <prereqabilityref id="theurgy" rank="1"/>
+    <spline><p x="0" y="240"/><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The character calls on their patron for support in the hour of their
+	death! If the characters health is 6 or less they can use the Witness
+	Me! ability to make three melee attacks in that round instead of their
+	usual standard action.
+      </p>
+    </abilitydescription>
+  </ability>    
+</abilitygroup>
+

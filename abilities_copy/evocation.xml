@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Evocation</abilitygrouptitle>
+    <abilitygroupid><evocation/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p noindent="true">
+	Demons inhabit the cold lower planes.  There is much recorded of their
+	nature and their history in old and long forgotten tomes. Evocation
+	encompases the study of that history and theory. Such books are not
+	easily come by, nor should they be read lightly.
+	<indexentry>
+	  <entry>Demonic Lore</entry>
+	  <subentry>See Evocation</subentry>
+	</indexentry>
+      </p>
+
+      <p>
+	Evocation magic specializes in summoning or communicating with extra
+	planar entities, binding extra planar entities, opening gates and the
+	like.
+      </p>
+
+      <p>
+        Magic abilities involve the use of the characters magic pool and are
+	only available to certain archetypes.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Bind</abilitytitle>
+    <abilityid>bind</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>3</poolcost>
+      <cost><ap1/></cost> 
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><opponents-will-save/></counter>     
+      <any-success>Cast successfully</any-success>
+      <critfail>Roll on the Miscast Table</critfail>
+    </action>
+    <prereqabilityref id="evocation" rank="1"/>
+    <spline><p x="0" y="10"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	Bind holds an opponent using magical energies.  If successful The target
+	makes a will check DC 6 in the first round and are held until they
+	succeed.   The difficulty decreases by two every round the target is
+	held.  The caster may release the target at any time.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Evocation Lore</abilitytitle>
+    <abilityid>evocation</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Recall Knowledge</name>
+      <critclass><recall-knowledge/></critclass>
+      <cost><default-lore-checkcost/></cost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p>
+	This ability represents the characters knowledge of the theory and
+	history of evocation magick.  Players can make this check to
+	see if their characters have pertinent information about the situation
+	in which they find themselves.  For this ability, exhausted dice are
+	not removed from the pool but exhausted dice and overcharge increases
+	the unreliablility of the information that the GM provides to the players.
+	If the check fails the character has no useful additional information.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Greater Portal</abilitytitle>
+    <abilityid>greater_portal</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>3</poolcost>
+      <cost><ap4/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv23/></counter>
+      <any-success>Cast successfully</any-success>
+    </action>
+    <prereqabilityref id="portal" rank="2"/>
+    <spline><p x="0" y="15"/></spline>
+    <abilitydescription>
+      <p>
+	This is a very rapid invocation of the normal portal spell. The spell is
+	cast in one action.  The character can open a portal between two well
+	known places in this plane.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Lesser Portal</abilitytitle>
+    <abilityid>lesser_portal</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>2</poolcost>
+      <cost><ap3/></cost>
+      <range><na/></range>
+      <keywords><ritual/><magicpool/><check/></keywords>
+      <counter><sv19/></counter>      
+      <any-success>Cast successfully</any-success>
+    </action>    
+    <prereqabilityref id="evocation" rank="1"/>    
+    <spline><p x="0" y="120"/></spline>
+    <abilitydescription>
+      <p>
+	When casting this spell extemporaneously the user creates a portal in a
+	wall or floor to a destination within the current plane, a distance of
+	no more than <m3/> per rank of the spell away.  The portal
+	remains open for 2d4 minutes or until the caster wills the gate shut.
+	Casting portal requires marking a magical circle in the ground or against
+	a wall which takes a full round to prepare.  Note that this is a
+	noncombat spell though it only takes a minute or two to cast.
+      </p>
+
+      <p>
+	Lesser Portal may also be cast to open a portal to a nearby coterminous
+	plane as a ritual. Choosing the destination plane is difficult without
+	the use of a fetish and some preparation.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Phantasmal Leech</abilitytitle>
+    <abilityid>phantasmal_leech</abilityid>
+    <slug>
+      Like one who, on a lonely road, Doth walk in fear and dread,
+      And, having once turned round, walks on, And turns no more his head;
+      Because he knows a frightful fiend Doth close behind him tread.
+    </slug>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>Cast successfully</any-success>
+    </action>
+    <prereqabilityref id="evocation" rank="1"/>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>      
+      <p>
+	Given an object with a contagious connection to a target, the caster
+	summons a Phantasmal Leech to track the target. A Phantasmal Leech
+	is a cat sized, snake-like demon with membraneous wings and a
+	cyclostomatic head with five lidless black eyes. It is translucent,
+	and insubstantial.  The starving Leech craves the blood of the target
+	and the caster sees through its eyes as it tracks the target. The
+	leeches projection onto this plane is volatile and it is easily
+	destroyed by magic.  If not dismissed it will involuntarily return to
+	its home plane after ten minutes. Furthermore the leech cannot interact
+	with objects in this plane and may pass through walls, doors <etc/>
+	The leech cannot attack.
+      </p>
+      
+      <p>
+	If successfully cast the target gets a perception check with DC 14+rank
+	to notice the presence of the leech following. If the target has magical
+	attacks these will almost certainly work against the leech, sending it
+	back from whence it came. If the target has no magical attacks it cannot
+	harm the creature.  
+      </p>
+
+      <table>
+	<standardtable/>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Phantasmal Leech Overcharge Table</tabletitle>
+	<tablelabel>fig:leech-overcharge</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d66</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-26</td>
+	  <td>The caster summons a Phantasmal Vulture instead (as per
+	  the spell of the
+	  same checkname).</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-46</td>
+	  <td>Something from beyond takes a small bite out of the caster.
+	  Caster suffers d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>51-65</td>
+	  <td>Something from beyond takes a big bite out of the caster. Caster
+	  suffers 2d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>66</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>
+      </table>
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Phantasmal Vulture</abilitytitle>
+    <abilityid>phantasmal_vulture</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range> 
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Cast successfully</any-success>
+    </action>
+    <prereqabilityref id="phantasmal_leech" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+	Given an object with a contagious connection to a target, the caster
+	summons a Phantasmal Vulture to track the target.  A Phantasmal Vulture is
+	a dog sized, vulture-like demon with membraneous wings, a tentacled face and
+	stinging tail. 	Like a Phantasmal Leech it is translucent, susceptible to magical
+	attacks and has the same difficulty of detection.  Unlike the Leech the Vulture
+	can summon its magical reserves to phase into this plane momentarilly to attack.
+	It may attack once before being dispelled to its home plane and will automatically
+	do so when it finds its prey (it is not up to the caster).
+      </p>
+
+      <p>
+	The vulture may make a single Std+2+Rank attack for 1d8 damage (if
+	the target has not perceived the vulture, Perception Check 12+Rank, it is considered
+	to be Blind to the attack, -4 to AC).
+      </p>
+      <table>
+	<standardtable/>
+	<tablespec><fixed>0.3</fixed><fixed>0.6</fixed></tablespec>
+	<tabletitle>Phantasmal Vulture Overcharge Table</tabletitle>
+	<tablelabel>fig:vulture-overcharge</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d66</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>10-26</td>
+	  <td>Something from beyond takes a small bite out of the caster.  Caster suffers
+	  d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-64</td>
+	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
+	  2d6 health damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>65-66</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>
+      </table>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Portal</abilitytitle>
+    <abilityid>portal</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>3</poolcost>
+      <cost><ap4/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv23/></counter>      
+      <any-success>Cast successfully</any-success>
+    </action>
+    <prereqabilityref id="lesser_portal" rank="2"/>
+    <spline><p x="30" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	This is a very rapid invocation of the lesser portal spell.
+	The spell is cast in one action.  The character can open a portal
+	in a wall or floor.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Shade</abilitytitle>
+    <abilityid>shade</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap4/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv17/></counter>
+      <any-success>Cast successfully</any-success>
+    </action>
+    <prereqabilityref id="lesser_portal" rank="1"/>
+    <spline><p x="-30" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	A shade is one of the lesser demons.  It can be summoned to attack a
+	living creature.  If there are no living opponents left it will turn on
+	its attacker.   Shades are insubstantial and visible only as a lack of
+	light. Shades take double damage from fire and magical based attacks.
+      </p>
+    </abilitydescription>    
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Summon</abilitytitle>
+    <abilityid>summon</abilityid>
+    <slug>
+	Do not call upon that which you cannot put down.
+    </slug>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>3</poolcost>
+      <cost><noncombat/></cost> 
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Cast successfully</any-success>
+    </action>
+    <prereqabilityref id="evocation" rank="1"/>
+    <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character makes a check to open a minute portal into one of the near
+	planes.  This allows some creature on the other side to project a
+	simulacrum of themselves into this plane.  If successful a single demon
+	manifests in this plane. It is highly likely that the entity will be
+	ravenous and seek to devour the animus of the caster or others nearby.
+	For this reason the caster usually also casts a Circle of Containment
+	immediately before summoning the demon.  For the caster to create and
+	control the portal they must use a specially prepared fetish that is
+	placed inside the circle before the summoning.  The fetish provides a
+	channel to the Summon spell via an external plane, thereby circumventing
+	the Circle of Containment.
+      </p>
+      
+      <p>
+	If the caster does not commune with an entity before the summoning they
+	may summon any extra planar creature.  This can be incredibly dangerous.
+	In addition demons may lie about their checknames and their capabailites. So
+	the only, even moderately safe way of summoning demons is to: commune
+	with a demon of a known checkname, then to summon them into a circle of
+	protection.  Note that demons are deceitful creatures and will jump at
+	the chance to try to trick a summoner into calling them into the world
+	and once here they will try to establish a foothold and not leave. They
+	will try to break the circle of protection or bargain for information
+	about the caster which will allow them to break the circle via contagion.
+      </p>
+
+      <p>
+	Closing the portal cuts the simulacrums link to the demon. Powerful
+	demons may be able to keep the portal open themselves, once they have
+	created a simulacrum.  Note that the demons simulacrum need not look
+	like the demon who created it and often times it does not as the demon
+	will wish to disguise their identity.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Wyld Portal</abilitytitle>
+    <abilityid>wyld_portal</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>3</poolcost>
+      <cost><ap4/></cost>
+      <range><ranged-short/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv9/></counter>
+      <any-success>Cast successfully</any-success>
+    </action>
+    <prereqabilityref id="greater_portal" rank="1"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	This ability enables the user to recognize gateways,
+	areas with an affinity with the Wyld.  At
+	these places the caster may cast a portal which opens to
+	the Wyld.
+      </p>
+
+      <p>	
+      	It is not known how many such gateways exist. Given
+	the near suicidal nature of travelling in the Wyld
+	the knowledge of their locations is quickly forgotten.
+      </p>
+
+      <p>	
+	Finally, it should be added that the Wyld is a
+	many-varied place.  Gateways can be found in swamps,
+	deserts and sewers, as well as forested groves.
+	Often the presence of a gateway is indicated by an incongrousness
+	in the environment as the gateway forms a contagious link
+	between the two planes at its locus.  The nature of the
+	Wyld bleeds into this plane at the gateway which can
+	indicate the nature of the Wyld beyond.
+      </p>	
+    </abilitydescription>    
+  </ability>
+</abilitygroup>

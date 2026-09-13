@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Wild Magic</abilitygrouptitle>
+    <abilitygroupid><wild-magic/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
+    <slug>
+      Forget not the old ways.
+    </slug>
+    <abilitygroupdescription>
+      <p>
+	Wild Magic magic involves harnessing the residual life magic in a
+	region, drawing energy for casting from the characters environment.
+      </p>
+      <img id="rackham_treant"/>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  
+  <ability>
+    <abilitytitle>Call of the Wild</abilitytitle>
+    <abilityid>call_of_the_wild</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Check</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>rrr</critsuccess>
+      <critfail>eee</critfail>      
+    </action>
+    <prereqabilityref id="vermin_swarm" rank="2"/>
+    <spline><p x="0" y="15"/></spline>
+    <abilitydescription>
+      <p>
+	The caster calls to the local animals for help.
+      </p>
+
+      <table>
+	<standardtable/>
+	<tablespec><fixed>0.1</fixed><fixed>0.7</fixed></tablespec>
+	<tabletitle>Call of the Wild Overcharge Table</tabletitle>
+	<tablelabel>fig:call-of-the-wild-overcharge</tablelabel>	  
+
+	<tableheaderrow>
+	  <td>Roll d66</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-13</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>14-26</td>
+	  <td>
+	    Backwash. The casters energy flows from the caster into the wyld.
+	    Caster loses 2 additional points from their magic pool.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-46</td>
+	  <td>
+	    The casters mind is inextricably linked to the animals. Their mind
+	    inhabits the body of the controlled animal and they cannot control
+	    their own body which remains in a state of torpor. The caster can
+	    either banish the animal, ending the spell, or control the
+	    animal.</td>
+	</tablerow>
+	
+	<tablerow>
+	  <td>51-66</td>
+	  <td>The animals hear the call but are swayed by their own
+	  self-interest. None answer the call.</td>
+	</tablerow>	
+      </table>      
+    </abilitydescription>
+  </ability>  
+  
+
+
+  <ability>
+    <abilitytitle>Howl of the Hunt</abilitytitle>
+    <abilityid>howl_of_the_hunt</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Check</name> 
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap2/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>bbb</critsuccess>
+      <critfail>nnn</critfail>      
+    </action>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="60"/><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster lets loose a loud howling sound that resembles the sound of a
+	great wolf's howl.   If the howl is made successfully, opponents must
+	make DC 5+Rank morale check.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Hyperosmia</abilitytitle>
+    <abilityid>hyperosmia</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Check</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
+    </action>
+    <prereqabilityref id="wild_magic" rank="1"/>
+    <spline><p x="0" y="120"/><p x="-30" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character gains a very enhanced sense of smell, temporarily.
+	This spell gives them advantages to fighting when they cannot see
+	(+2 to hit, more against strongly smelling opponents), +2 tracking,
+	saves against illusions, +4 to Ambush roles, and +2 to Interogate
+	and Perceive checks.  The spell lasts half an hour.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+
+  <ability>
+    <abilitytitle>Mandragora</abilitytitle>
+    <abilityid>mandragora</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Check</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
+    </action>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="105"/><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	If the character has access to a tree root, turnip <etc/> the character
+	can infuse it with an evil spirit for a short an 10+Rank minutes. The
+	animated Mandragora behaves like a small servant and will perform
+	actions as directed by the caster.  The Mandragora is malevolent and
+	will attempt to misconstrue instructions in such a way as to allow it
+	to hurt others.
+      </p>
+
+      <p>
+	In a fight the Mandragora has HP: 5, Defence: 15, and attacks automatically
+	for 1 hp of biting damage each round.  If the Mandragora is made from
+	an actual mandragora root then the creature has HP: 9 and does 2 HP damage
+	per round.
+      </p>
+    </abilitydescription>    
+  </ability> 
+  
+
+
+  <ability>
+    <abilitytitle>Therianthropy</abilitytitle>
+    <abilityid>therianthropy</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Check</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
+    </action>
+    <prereqabilityref id="hyperosmia" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <indexentry>
+	<entry>Shapeshifting</entry>
+	<subentry>see Therianthropy</subentry>
+      </indexentry>
+      <figure position="h">
+        <img id="dore_therianthropy"/>
+      </figure>
+      
+      <p>
+	The caster takes animal form for up to a few hours.  The first
+	time the caster casts the spell they roll on the appropriate Therianthropy
+	table to choose the animal to which they are atuned.  	That is the animal
+	that they will always change into when casting this spell.  It should be
+	noted that therianthropy is a very different thing from lycanthropy.
+      </p>
+
+      <table>
+	<standardtable/>
+	<tablespec><fixed>0.10</fixed><fixed>0.8</fixed></tablespec>
+	<tabletitle>Therianthropy Temperate Table</tabletitle>
+	<tablelabel>fig:therianthropy</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Animal</td>
+	</tableheaderrow>
+
+	<tablerow> <td>11</td><td>Cockroach</td></tablerow>
+	<tablerow> <td>12</td><td>Beetle</td></tablerow>
+	<tablerow> <td>13-14</td><td>House fly or Firefly</td></tablerow>
+	<tablerow> <td>15-18</td><td>Spider</td></tablerow>
+
+	<tablerow> <td>21-25</td><td>Frog, Toad, Lizard or Newt</td></tablerow>
+	<tablerow> <td>26-27</td><td>Squirrel, Mouse, Mole or Hedgehog</td></tablerow>
+	<tablerow> <td>28</td><td>Hare or Rabbit</td></tablerow>
+	
+	<tablerow> <td>31</td><td>Goat or Ibex</td></tablerow>
+	<tablerow> <td>32-34</td><td>Sparrow, Crow, or Pidgeon</td></tablerow>
+	<tablerow> <td>35-36</td><td>Weasel, Polecat or Ferret</td></tablerow>
+	<tablerow> <td>37-38</td><td>Bat</td></tablerow>
+
+	<tablerow> <td>41-42</td><td>Yak, Musk Ox, Bison</td></tablerow>
+	<tablerow> <td>43-44</td><td>Deer, Reindeer, or Elk</td></tablerow>
+	<tablerow> <td>45-46</td><td>Pig or Wild Boar</td></tablerow>	
+	<tablerow> <td>47-48</td><td>Horse</td></tablerow>
+	
+	<tablerow> <td>51-52</td><td>Fox or Jackal</td></tablerow>
+	<tablerow> <td>53-54</td><td>Owl or Vulture</td></tablerow>
+	<tablerow> <td>55-58</td><td>Dog or Hound</td></tablerow>
+	
+	<tablerow> <td>61-63</td><td>House Cat</td></tablerow>
+	<tablerow> <td>64-65</td><td>Lynx</td></tablerow>
+	<tablerow> <td>66-68</td><td>Hawk</td></tablerow>
+	
+	<tablerow> <td>71-72</td><td>Otter or Badger</td></tablerow>
+	<tablerow> <td>73-74</td><td>Wolverine</td></tablerow>
+	<tablerow> <td>75-76</td><td>Adder</td></tablerow>
+	<tablerow> <td>77-78</td><td>Moose or Aurochs</td></tablerow>
+	
+	<tablerow> <td>81-83</td><td>Wolf</td></tablerow>
+	<tablerow> <td>84-85</td><td>Lion, Snow Leopard, or Panther</td></tablerow>
+	<tablerow> <td>86</td><td>Bear Black, Brown or Polar</td></tablerow>
+	<tablerow> <td>88</td><td>Mammoth</td></tablerow>
+      </table>
+      
+      <p>
+	Northern druid style casters should roll on the Therianthropy Temperate Table.
+	Casters from the tropics should roll on the Therianthropy Tropical/Subtropical Table.
+	If the caster comes from somewhere in-between they can roll and choose which table.
+      </p>
+
+      <table>
+	<standardtable/>
+	<tablespec><fixed>0.10</fixed><fixed>0.8</fixed></tablespec>
+	<tabletitle>Therianthropy Tropical/Subtropical Table</tabletitle>
+	<tablelabel>fig:therianthropy2</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Animal</td>
+	</tableheaderrow>
+
+	<tablerow> <td>11</td><td>Cockroach</td></tablerow>
+	<tablerow> <td>12</td><td>Beetle</td></tablerow>
+	<tablerow> <td>13-14</td><td>House fly or Firefly</td></tablerow>
+	<tablerow> <td>15-18</td><td>Spider or Scorpion</td></tablerow>
+
+	<tablerow> <td>21-25</td><td>Frog, Toad, Lizard or Newt</td></tablerow>
+	<tablerow> <td>26</td><td>Squirrel, Mouse, Rat, or Mole</td></tablerow>
+	<tablerow> <td>28</td><td>Hare or Rabbit</td></tablerow>
+	
+	<tablerow> <td>31</td><td>Buffalo, Bull or Cow</td></tablerow>
+	<tablerow> <td>32-34</td><td>Sparrow, Crow, Parrot, Pidgeon</td></tablerow>
+	<tablerow> <td>35-36</td><td>Weasel</td></tablerow>
+	<tablerow> <td>37-38</td><td>Bat</td></tablerow>
+
+	<tablerow> <td>41</td><td>Antelope</td></tablerow>
+	<tablerow> <td>42-43</td><td>Goat or Ibex</td></tablerow>
+	<tablerow> <td>44-45</td><td>Pig or Wild Boar</td></tablerow>	
+	<tablerow> <td>46-47</td><td>Horse or Wild Horse</td></tablerow>
+	<tablerow> <td>48</td><td>Python</td></tablerow>
+	
+	<tablerow> <td>51-52</td><td>Jackal</td></tablerow>
+	<tablerow> <td>53-54</td><td>Hawk or Vulture</td></tablerow>
+	<tablerow> <td>55</td><td>Monkey</td></tablerow>
+	<tablerow> <td>56-58</td><td>Wild Dog</td></tablerow>
+	
+	<tablerow> <td>61-63</td><td>Jungle/Desert Cat</td></tablerow>
+	<tablerow> <td>64-65</td><td>Crocodile</td></tablerow>
+	<tablerow> <td>66-68</td><td>Eagle</td></tablerow>
+	
+	<tablerow> <td>71-73</td><td>Otter or Badger</td></tablerow>
+	<tablerow> <td>74-75</td><td>Baboon, Gibbon or Chimpanzee</td></tablerow>
+	<tablerow> <td>76-78</td><td>Viper</td></tablerow>
+	
+	<tablerow> <td>81-82</td><td>Rhino</td></tablerow>
+	<tablerow> <td>83-84</td><td>Gorilla</td></tablerow>
+	<tablerow> <td>85</td><td>Elephant</td></tablerow>
+	<tablerow> <td>86</td><td>Lion or Tiger</td></tablerow>
+	<tablerow> <td>87-88</td><td>Bear</td></tablerow>
+      </table>
+
+
+      <p>
+	If a character rolls one of the results with multiple animals then it
+	is the GMs role to choose which of the animals the caster becomes based
+	on their character and the environs from which they came, <eg/> a northern
+	barbarian might become a polar bear given the bear result.	
+      </p>
+      
+
+      <table>
+	<standardtable/>
+	<tablespec><fixed>0.1</fixed><fixed>0.8</fixed></tablespec>
+	<tabletitle>Therianthropy Overcharge Table</tabletitle>
+	<tablelabel>fig:therianthropyovercharge</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow> <td>13-14</td><td>Roll on the random overcharge table</td></tablerow>
+	<tablerow> <td>14-18</td><td>The character is trapped in the animal form until the spell can be removed.</td></tablerow>
+	<tablerow> <td>21-28</td><td>The caster is trapped in animal form for d3 days or until the spell is removed.</td></tablerow>
+	<tablerow> <td>31-68</td><td>The character gains an aspect that their animal might have.</td></tablerow>
+	<tablerow> <td>71-88</td><td>No Effect</td></tablerow>
+      </table>
+
+      <p>
+	In the event the spell is overcharged roll on the table above.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Vermin Swarm</abilitytitle>
+    <abilityid>vermin_swarm</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Check</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>      
+      <critsuccess>FIXME</critsuccess>
+      <critfail>FIXME</critfail>      
+    </action>
+    <prereqabilityref id="wild_magic" rank="1"/>
+    <spline><p x="0" y="45"/><p x="-45" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character summons a swarm of vermin.  The GM should choose one 
+	of the following types of swarms either randomly or as appropriate to
+	the context: Spiders, Beetles, Rats, Bees, Flys, Bats, Ravens, Maggots.
+	Swarms remain in play until the end of combat.   If there are no vermin
+	in the vicinity then none can be summoned.  The caster can sense the
+	presence of vermin before attempting to cast this spell.
+      </p>
+
+      <table>
+	<standardtable/>
+	<tablespec><fixed>0.1</fixed><fixed>0.8</fixed></tablespec>
+	<tabletitle>Vermin Swarm Overcharge Table</tabletitle>
+	<tablelabel>fig:vermin-swarm-overcharge</tablelabel>
+
+	<tableheaderrow>
+	  <td>Roll d88</td>
+	  <td>Overcharge Effect</td>
+	</tableheaderrow>
+
+	<tablerow>
+	  <td>11-28</td>
+	  <td>The swarm mistakes the caster for the target.  They GM moves the swarm
+	  towards the caster each turn until they are destroyed </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>31-38</td>
+	  <td>The casters mind is linked to the swarm.  They can either banish the swarm
+	  or control it, but that is all.
+	  </td>
+	</tablerow>
+
+	<tablerow>
+	  <td>41-58</td>
+	  <td>Something from beyond takes a big bite out of the caster.  Caster suffers
+	  3d6 damage.</td>
+	</tablerow>
+
+	<tablerow>
+	  <td>61-88</td>
+	  <td>Weirdness ensues.. Reroll on the Overcharge Effects Table..</td>
+	</tablerow>
+      </table>      
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Spider Climb</abilitytitle>
+    <abilityid>spider_climb</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Check</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <success>FIXME</success>
+    </action>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="150"/><p x="30" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster uses magical energies to help him climb a surface
+	as per the Climb ability. 
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  
+  <ability>
+    <abilitytitle>Tanglefoot</abilitytitle>
+    <abilityid>tanglefoot</abilityid>
+    <slug>Folly is an endless maze; Tangled roots perplex her ways;</slug>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/><magicpool/></keywords>
+      <counter><sv9/></counter>      
+      <critsuccess>FIXME</critsuccess>
+    </action>
+
+    <action>
+      <name>Tangle</name>
+      <critclass><cast/></critclass>
+      <cost><ap1/></cost>
+      <range><ranged-medium/></range>
+      <keywords><check/></keywords>
+      <counter><opponents-agility-save/></counter>
+      <critsuccess>FIXME</critsuccess>
+    </action>
+    <prereqabilityref id="wild_magic" rank="2"/>
+    <spline><p x="0" y="15"/><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	This spell can be cast only in woods, bushlands and
+	gardens.  The caster calls upon the trees and bushes
+	to slow a group of individuals travelling through
+	the landscape.  If the spell is successfully cast
+	and the target fails their agility check then they
+	gain the Slowed condition.  This spell can target
+	d4 individuals for each rank of the spell.	
+      </p>      
+    </abilitydescription>    
+  </ability>
+
+
+  <!-- <ability> -->
+  <!--   <abilitytitle>Tanglebriar</abilitytitle> -->
+  <!--   <abilityid>tanglebriar</abilityid>
+       
+       <critsuccess></critsuccess>
+       <critfail></critfail>
+       <boon></boon>
+       <bane></bane>
+    <range><na/></range>
+    <indifferent></indifferent>
+
+  -->
+  <!--   <cost><ap1/></cost> -->
+  <!--   <keywords><magic/><wildmagic/><magicpool/></keywords> -->
+  <!--   <abilitydescription> -->
+  <!--     <p> -->
+  <!-- 	This spell can be cast only in woods, bushlands and -->
+  <!-- 	gardens.  The caster calls upon the trees and bushes -->
+  <!-- 	to hold a group of individuals travelling through -->
+  <!-- 	the landscape.  They gain the Slowed condition. -->
+  <!--     </p> -->
+  
+  <!--   </abilitydescription>     -->
+  <!--   <spline><p x="-60" y="0"/></spline> -->
+  <!--   <prereqabilityrank>lore_1</prereqabilityrank> -->
+  <!--   <check dc="9">Magic+Rank</action> -->
+  <!--   <abilityranks from="1" to="4"/> -->
+  <!-- </ability> -->
+  
+
+  <ability>
+    <abilitytitle>Wild Magic Lore</abilitytitle>
+    <abilityid>wild_magic</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><recall-knowledge/></critclass>
+      <cost><default-skill-checkcost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p>
+	This ability represents the characters knowledge about wild magic.
+	This includes the use of herbs and natural medicines.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Warp Wood</abilitytitle>
+    <abilityid>warp_wood</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>FIXME</critsuccess>
+    </action>
+    <prereqabilityref id="wild_magic" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster can warp wood at a distance.  This spell can be used
+	to warp a wooden door.. rendering it unclosable if it was open at the
+	time of casting, or unopenable if it was shut at the time of casting.
+	It can render a quiver of arrows extremely inaccurate, -6 to hit, or
+	destroy a bow.
+      </p>
+
+      <p>
+	The spell has a range of <m30/>. The spell can effect one
+	item For each rank of the spexll.  The spells abilities linger on the
+	character.. they cast the spell, and then they can choose which items
+	to warp anytime as a free action over the next five minutes/30 turns. 
+      </p>	
+    </abilitydescription>    
+  </ability>
+</abilitygroup>

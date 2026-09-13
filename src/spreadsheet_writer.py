@@ -124,31 +124,31 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     r += 1
     for ability_group in ability_groups:
         for ability in ability_group:
-            for check in ability.get_checks():
+            for action in ability.get_actions():
                 ws.write(r, ABILITY_COL, ability.get_name(), title_format)
                 ws.write(r, FAMILY_COL, ability_group.get_family_id())
                 ws.write(r, GROUP_COL, ability_group.get_name())        
-                ws.write(r, CHECK_COL, check.get_name())
-                ws.write(r, KEYWORDS_COL, ", ".join(check.get_keywords()))
-                #ws.write(r, COST_COL, check.get_cost())
-                ws.write(r, RANGE_COL, check.get_range())
-                ws.write(r, ACTION_TYPE_COL, check.get_ap_cost())
+                ws.write(r, CHECK_COL, action.get_name())
+                ws.write(r, KEYWORDS_COL, ", ".join(action.get_keywords()))
+                #ws.write(r, COST_COL, action.get_cost())
+                ws.write(r, RANGE_COL, action.get_range())
+                ws.write(r, ACTION_TYPE_COL, action.get_cost())
 
-                ws.write(r, CRIT_SUCCESS_COL, check.critsuccess)
-                ws.write(r, RIGHTEOUS_SUCCESS_COL, check.righteoussuccess)
-                ws.write(r, SUCCESS_COL, check.success)
-                ws.write(r, FAIL_COL, check.fail)
-                ws.write(r, GRIM_FAIL_COL, check.grimfail)
-                ws.write(r, CRIT_FAIL_COL, check.critfail)
+                ws.write(r, CRIT_SUCCESS_COL, action.critsuccess)
+                ws.write(r, RIGHTEOUS_SUCCESS_COL, action.righteoussuccess)
+                ws.write(r, SUCCESS_COL, action.success)
+                ws.write(r, FAIL_COL, action.fail)
+                ws.write(r, GRIM_FAIL_COL, action.grimfail)
+                ws.write(r, CRIT_FAIL_COL, action.critfail)
                 
-                ws.write(r, BLESSED_COL, check.blessed)
-                ws.write(r, LUCKY_COL, check.lucky)
-                #ws.write(r, INDIFFERENT_COL, check.indifferent)
-                ws.write(r, DAMNED_COL, check.damned)
-                ws.write(r, CURSED_COL, check.cursed)
+                ws.write(r, BLESSED_COL, action.blessed)
+                ws.write(r, LUCKY_COL, action.lucky)
+                #ws.write(r, INDIFFERENT_COL, action.indifferent)
+                ws.write(r, DAMNED_COL, action.damned)
+                ws.write(r, CURSED_COL, action.cursed)
 
-                ws.write(r, TRIGGER_COL, check.get_precondition())
-                ws.write(r, EFFECT_COL, check.get_effect())
+                ws.write(r, TRIGGER_COL, action.get_precondition())
+                ws.write(r, EFFECT_COL, action.get_effect())
                 r += 1
 
     ws.autofit()

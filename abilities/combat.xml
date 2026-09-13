@@ -21,8 +21,8 @@
     <abilityranks from="1" to="2"/>
     <abilityauxiliary>
       <name>Experience Sets In</name>
-      <checktype><recall-knowledge/></checktype>
-      <apcost><free-reaction/></apcost>
+      <critclass><recall-knowledge/></critclass>
+      <cost><free-reaction/></cost>
       <range><self/></range>
       <keywords><lore/><auxiliary/></keywords>
       <precondition>Luck Fate result or Critical Success or Failure on a
@@ -37,18 +37,18 @@
       <!-- <success><default-lore-success/></success> -->
     </abilityauxiliary>
     
-    <abilitycheck>
+    <action>
       <name>Recall Knowledge</name>
-      <checktype><recall-knowledge/></checktype>
-      <apcost><ap4/></apcost>
+      <critclass><recall-knowledge/></critclass>
+      <cost><ap4/></cost>
       <range><self/></range>
       <keywords><lore/><check/></keywords>
       <precondition></precondition>
-      <counter><gm-fiat/></counter>
+      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>
       <success><default-lore-success/></success>
-    </abilitycheck>    
+    </action>    
     <specializations>
       <specialization>Green-Skins</specialization>
       <specialization>Froche</specialization>
@@ -93,15 +93,15 @@
     <abilitytitle>Armour</abilitytitle>
     <abilityid>armour</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
-    <abilitycountercheck>
+    <action>
       <name>Physical Defence</name>
-      <checktype><armour/></checktype>
-      <apcost><free/></apcost>
+      <critclass><armour/></critclass>
+      <cost><free/></cost>
       <range><na/></range>
-      <keywords><physical-defence/><countercheck/></keywords>
+      <keywords><physical-defence/>save</keywords>
       <counter><opponents-physical-attack/></counter>
       <!-- FIXME THESE FATE DEFAULTS DONT MAKE SENSE FOR REACTIONS AND FREE ACTIONS -->
-    </abilitycountercheck>
+    </action>
     <!-- <spline><p x="90" y="0"/></spline>  -->
     <abilitydescription>
       <p>
@@ -156,16 +156,16 @@
     <abilitytitle>Blood Frenzy</abilitytitle>
     <abilityid>blood_frenzy</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
+    <action>
       <name>Check</name>
-      <checktype><trial/></checktype>
+      <critclass><trial/></critclass>
       <poolcost>1</poolcost>
-      <apcost><ap1/></apcost>
+      <cost><ap1/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/><maintain/></keywords>
       <counter><sv13/></counter>
       <any-success>FIXME</any-success>
-    </abilitycheck>
+    </action>
     <!-- <spline><p x="0" y="30"/></spline> -->
     <abilitydescription>
       <p>
@@ -190,15 +190,15 @@
     <abilitytitle>Brawl</abilitytitle>
     <abilityid>brawl</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
-    <abilitycheck>
+    <action>
       <name>Melee Attack</name>
-      <checktype><melee-attack/></checktype>
-      <apcost><ap4/></apcost>
+      <critclass><melee-attack/></critclass>
+      <cost><ap4/></cost>
       <range><na/></range>
       <keywords><check/></keywords>
       <counter><opponents-physical-defence/></counter>
       <any-success>FIXME</any-success>
-    </abilitycheck>
+    </action>
     <!-- <spline><p x="90" y="90"/></spline> -->
     <spline></spline>
     <abilitydescription>
@@ -278,8 +278,8 @@
     <abilityranks from="1" to="3"/>
     <abilityauxiliary>    
       <name>Talent</name>
-      <checktype><auxiliary/></checktype>
-      <apcost><free/></apcost>
+      <critclass><auxiliary/></critclass>
+      <cost><free/></cost>
       <range><reach/></range>
       <keywords><auxiliary/></keywords>
       <precondition>
@@ -305,14 +305,14 @@
     <abilitytitle>Dodge</abilitytitle>
     <abilityid>dodge</abilityid>
     <abilityranks untrained="0" from="1" to="6"/>
-    <abilitycountercheck>
+    <action>
       <name>Physical Defence</name>
-      <checktype><dodge/></checktype>
-      <apcost><reaction/></apcost>
+      <critclass><dodge/></critclass>
+      <cost><reaction/></cost>
       <range><na/></range>
-      <keywords><physical-defence/><countercheck/></keywords>
+      <keywords><physical-defence/>save</keywords>
       <counter><opponents-physical-attack/></counter>      
-    </abilitycountercheck>
+    </action>
     <!-- <spline><p x="90" y="120"/></spline>  -->
     <abilitydescription>      
       <p>
@@ -337,15 +337,15 @@
     <abilitytitle>Juggernaut</abilitytitle>
     <abilityid>juggernaut</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilitycheck>
+    <action>
       <name>Check</name>
-      <checktype><physical/></checktype>
-      <apcost><ap4/></apcost>
+      <critclass><physical/></critclass>
+      <cost><ap4/></cost>
       <range><na/></range>
       <keywords><check/></keywords>
       <counter><opponents-strength-save/></counter>
       <any-success>Push the opponent one square.</any-success>
-    </abilitycheck>
+    </action>
     <!-- <spline><p x="-90" y="90"/></spline> -->
     <abilitydescription>
       <p>
@@ -368,14 +368,14 @@
     <abilitytitle>Parry</abilitytitle>
     <abilityid>parry</abilityid>
     <abilityranks untrained="-3" from="1" to="6"/>
-    <abilitycountercheck>
+    <action>
       <name>Physical Defence</name>
-      <checktype><parry/></checktype>
-      <apcost><reaction/></apcost>
+      <critclass><parry/></critclass>
+      <cost><reaction/></cost>
       <range><na/></range>
-      <keywords><physical-defence/><countercheck/></keywords>
+      <keywords><physical-defence/>save</keywords>
       <counter><opponents-physical-attack/></counter>      
-    </abilitycountercheck>
+    </action>
     <abilitydescription>
       <p>
 	<label>ability:parry</label>
@@ -394,16 +394,16 @@
     <abilitytitle>Retribution</abilitytitle>
     <abilityid>retribution</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <abilitycheck>
+    <action>
       <name>Check</name>
-      <checktype><test/></checktype>
+      <critclass><test/></critclass>
       <poolcost>1</poolcost>
-      <apcost><reaction/></apcost>
+      <cost><reaction/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
       <counter><sv7/></counter>
       <any-success>FIXME</any-success>
-    </abilitycheck>
+    </action>
     <!-- <spline><p x="0" y="30"/></spline>  -->
     <abilitydescription>
       <p>

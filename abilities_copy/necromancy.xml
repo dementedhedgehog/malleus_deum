@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -*-xml-*- -->
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Necromancy</abilitygrouptitle>
+    <abilitygroupid><necromancy/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
+    <slug>
+	All human things are subject to decay,
+	and when fate summons, Monarchs must obey
+	<!-- John Dryden -->
+    </slug>
+    <abilitygroupdescription>
+      <p>
+        The art of communing with the unquiet dead is at best the province of
+	shysters and charlatans and at worst an art that plays with things that
+	no man ought.  It's practice is viewed with disdain by all right
+	thinking peoples.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  
+  <ability>
+    <abilitytitle>Commune with the Dead</abilitytitle>
+    <abilityid>commune_with_the_dead</abilityid>    
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>      
+      <any-success>Talk with a corpse</any-success>
+      <critfail>Accidentally create a zombie.</critfail>      
+    </action>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="120"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	While holding part of the deceased's body the necromancer may ask
+	questions of the dead person.  If the spell succeeds the dead person
+	will respond to questions telepathically.  After each question roll a
+	D4, on a 1 the link with the spirit has been broken and no more
+	questions can be asked.
+      </p>
+
+      <p>
+	Answers will be heard only by the necromancer and will be heard 
+	as a voice in the head.  The necromancer must ask the question in a language 
+	understood by the spirit and the spirit will respond in a language they understood 
+	during their lifetime.  The spirit that is contacted is under no compulsion to 
+	reply and may ignore the character, lie in its responses or answer how it pleases.  
+      </p>
+
+      <p>
+	The newly dead are often disorientated by their experience and may not realize that 
+	they are in fact dead.  If death is sudden or traumatic a spirit may not remember 
+	it.
+      </p>
+
+      <p>
+	Characters may only attempt to commune with a particular dead person once.  
+	Whether they succeed or fail in their first attempt they will never be 
+	able to successfully commune with that person again as the things that keep the 
+	gates between life and death are vigillant and fearsome.
+      </p>
+      
+      <p>
+        summoned might attack (need to exert will over them?)
+        handle failure of magic
+      </p>	  
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Eye for an Eye</abilitytitle>
+    <abilityid>eye_for_an_eye</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action> 
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>      
+      <range><reach/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <critsuccess>
+	Melee attacks against the caster deal 3x damage to the attacker
+      </critsuccess>
+      <righteoussuccess>
+	Melee attacks against the caster deal 2x damage to the attacker
+      </righteoussuccess>  
+      <success>
+	Melee attacks against the caster deal damage to the attacker
+      </success>
+    </action>
+    <prereqabilityref id="necromancy" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster is warded.  Any attacker doing damage in melee to the caster
+	also suffers the same amount of damage.  This spell lasts for the length
+	of combat.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Forbidden Psalm</abilitytitle>
+    <abilityid>forbidden_psalm</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><ap4/></cost>
+      <range><self/></range>
+      <keywords><magicpool/><check/><maintain/></keywords>
+      <counter><sv13/></counter>
+      <any-success>Undead who can make attacks at disadvantage.</any-success>
+    </action>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="120"/><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	If successfully cast, chanting this psalm makes it hard for any undead
+	to see and hear the caster.  Undead make attacks with disadvantage.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Graft Flesh</abilitytitle>
+    <abilityid>graft_flesh</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>2</poolcost>
+      <cost><noncombat/></cost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Replace amputated limbs and heal</any-success>
+      <critfail>Succeeds.  However, gain the aspect: It has a Mind
+      of It's Own!  The limb will attempt to murder people at inoportune
+      times, when it gets the chance.</critfail>
+    </action>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="15"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster grafts the fresh flesh of one creature onto another.
+	Without the appropriate skeletal, vascular and muscular support the new
+	flesh will not be usable by the subject, <eg/> you can graft
+	an extra arm to a subject but they will not be able to use it.
+	You can however replace an existing limb with another or
+	restore a previously amputated limb.  Note that you cannot
+	use this spell to replace the head of a creature.  Once decapitated
+	the creature is dead.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Necromantic Lore</abilitytitle>
+    <abilityid>necromancy</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Recall Knowledge</name>
+      <critclass><recall-knowledge/></critclass>
+      <cost><default-skill-checkcost/></cost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </action>
+    <spline></spline>    
+    <abilitydescription>
+      <p noindent="true">
+	The school of necromancy is concerned with the use of death or blood
+	magic, the legends of the dread necromancers and the unquiet dead.
+	Characters may provide useful information about these topics on occasion:
+	identifying undead, and or their weaknesses, and providing the relevant
+	mythology around these creatures.
+      </p>      
+    </abilitydescription>    
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Stay Death</abilitytitle>
+    <abilityid>stay_death</abilityid>
+    <slug>The light, then the dark, then the light again.</slug>
+    <abilityranks from="1" to="3"/>
+    <action> 
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><free-interrupt/></cost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv11/></counter>
+      <any-success>Reroll one Near-Death roll.</any-success>
+    </action>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character holds death at bay for a moment.  The target
+	can reroll a single near-death roll.  This spell may be cast
+	once per character per day.
+      </p>
+    </abilitydescription>    
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
+    <abilityid>blood_soucriant</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><reaction/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>In the presence of blood, summon a demon to fight.</any-success>
+    </action>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="60"/><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	In the presence of a lot of blood the character can summon
+	a Blood Soucriant.  A female demon, temptress and drinker of blood.
+	The demon will not tarry long and once summoned will drink of the
+	blood of the living.   If the Blood Sucreant does not drink she
+	will attack the caster.
+      </p>
+    </abilitydescription>    
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Pall of Darkness</abilitytitle>
+    <abilityid>pall_of_darkness</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>2</poolcost>
+      <cost><noncombat/></cost>
+      <range><ranged-short/></range>
+      <keywords><magicpool/><aoe-emination/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>
+	Darkness
+      </any-success>
+      <critfail>
+	Something from beyond bites the caster.  Suffer d4 damage
+      </critfail>
+    </action>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="180"/></spline>
+    <abilitydescription>
+      <p>
+	If successfully cast, chanting this psalm creates a dark cloud
+	surrounding the caster with a radius of <m6/>. This cloud gives +3×Rank
+	to defensive rolls against missile attacks. It is clearly visible during
+	the day, but may not be noticeable at night depending on the lighting.
+	The cloud also provides +Rank to defence against area-of-effect attacks.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Veil of Corruption</abilitytitle>
+    <abilityid>veil_of_corruption</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action> 
+      <name>Cast</name>
+      <critclass><cast/></critclass>
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><self/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv7/></counter>
+      <any-success>Resembles a corpse</any-success>
+    </action>
+    <prereqabilityref id="necromancy" rank="1"/>
+    <spline><p x="15" y="30"/><p x="0" y="60"/><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character appears as if dead.  This is not an illusion. They look,
+	smell, and feel like a corpse.  They may also adopt a preternatural
+	stillness.  At rank 1 the character can appear as a fresh corpse, dead
+	for a few hours, at rank 3 they can appear as a corpse that has been
+	rotting in the weather for a few weeks.
+      </p>
+    </abilitydescription>    
+  </ability>  
+</abilitygroup>

@@ -33,6 +33,29 @@ ANTAGONIST = "Aspect"
 
 
 
+# def get_only_child_tag(element):
+#     """
+#     Returns the tag of the only child of the xml element or dies.
+
+#     """
+#     children = element.getchildren()    
+#     if len(children) != 1:
+#         raise Exception("Expecting one child in element %s",
+#                         node_to_string(element))
+#     return children[0].tag
+
+def get_only_child_value(element):
+    """
+    Returns the value of the only child of the xml element or dies.
+
+    """
+    children = element.getchildren()    
+    if len(children) != 1:
+        raise Exception("Expecting one child in element %s",
+                        node_to_string(element))
+    return children[0].text
+
+
 class SpecializationRef:
     """Specialization part of an AbilityRef"""
 
@@ -235,7 +258,7 @@ class TagPrereq: #(Prerequisite):
         return self.to_string()
 
 
-class NotTagPrereq: # (Prerequisite):
+class NotTagPrereq:
 
     def __init__(self, tag):
         self.tag = tag
@@ -249,46 +272,45 @@ class NotTagPrereq: # (Prerequisite):
 
     def __str__(self):
         return self.to_string()
+ 
 
-
-class AbilityCheck:
+class Action:
     """
-    An ability check configuration.
+    An ability check/save/auxiliary configuration.
 
     """
-
     def __init__(self, ability):
         self.ability = ability
-
-        # Check Type e.g. Check, CounterCheck
-        self.check_class = None
 
         # can be None for the default
         self.name = None
 
-        # Things like physical, magic, melee .. used for crit tables.
-        self.check_type = None
+        # can be None for the default
+        self.opposing_action_name = None
 
+        # Things like physical, magic, melee .. used for crit tables.
+        self.crit_class = None
+
+        # Things like physical, magic, melee .. used for crit tables.
+        #self.save_type = None
+        
+        # Action point cost
+        self.cost = None
+        
         # Pool point default cost.
         self.pool_cost = None
         
-        # Action point cost
-        self.ap_cost = None
+        # range of this action in meters/yards
+        self.action_range = None
 
-        # range of the attack/spell etc, in meters/yards
-        self.check_range = None
-
-        # Requirements to make the check.
+        # Requirements to attempt this action
         self.requires = None
-
-        # 
         self.precondition = None
+
+        # Results of the action
         self.effect = None
         self.dmg = None
 
-        # Countercheck if any.
-        self.counter = None
-        
         # list of tags for the ability
         self.keywords = []
 
@@ -314,16 +336,27 @@ class AbilityCheck:
     def get_name(self):
         return self.name
 
-    def get_check_type(self):
-        return self.check_type
+    def get_action_class(self):
+        """
+        Is this a check, save or auxiliary action?
+
+        """
+        return self.action_class
+
+    def get_crit_class(self):
+        """
+        Is this a check, save or auxiliary action?
+
+        """
+        return self.action_class
 
     
-    def get_ap_cost(self):
+    def get_cost(self):
         """
-        Returns the Action Point cost of the check.
+        Returns the Action Point or OOTA cost of the check.
 
         """
-        return self.ap_cost
+        return self.cost
 
     def get_pool_cost(self):
         return self.pool_cost
@@ -351,12 +384,17 @@ class AbilityCheck:
     def get_keywords_str(self):
         return ", ".join(self.get_keywords()).strip()
 
-    def get_check_keywords_str(self):
+    def get_action_keywords_str(self):
+        """
+        Get the keywords for this action not including the keywords for it's
+        parent ability.
+
+        """
         keywords = set(self.keywords) - set(self.ability.get_keywords())
         return ", ".join(sorted(list(keywords)))
 
     def get_range(self):
-        return self.check_range
+        return self.action_range
 
     def get_precondition(self):
         return self.precondition
@@ -371,31 +409,26 @@ class AbilityCheck:
             f"{self.ability.fname}:{node.sourceline}\n"
             f"{context}\n")
     
-    def _load(self, ability_check_element):
-
-        # Get the type of check. (Check or Countercheck).
-        self.check_class = ability_check_element.get("readable-type")
-        if self.check_class is None:
-            raise Exception(str(ability_check_element))
-        #print(f"check class %s" % self.check_class)
-
+    def _load(self, action_element):
         # handle all the children
-        for child in list(ability_check_element):
+        for child in list(action_element):
 
             if self.line_number is None:
                 self.line_number = child.sourceline
 
             tag = child.tag
-            if tag == "name":
+            if tag == "class":
+                self.action_class = get_only_child_value(child)
+
+            elif tag == "name":
                 self.name = contents_to_string(child)
 
-            elif tag == "checktype":
-                #self.check_type = contents_to_string(child)
+            elif tag == "opposing-action-name":
+                self.opposing_action_name = get_only_child_value(child)
+                assert self.opposing_action_name
 
-                check_type = list(child)[0]
-                self.check_type = contents_to_string(check_type)
-                if self.name == "":
-                    self.name = self.check_type
+            elif tag == "critclass":
+                self.crit_class = get_only_child_value(child)
 
             elif tag == "poolcost":
                 if self.pool_cost is not None:
@@ -404,20 +437,11 @@ class AbilityCheck:
                 else:
                     self.pool_cost = int(child.text)
 
-            elif tag == "apcost":
-                self.ap_cost = child[0].text                
-                if self.ap_cost is None:
-                    # APCost is a keywordType in the xsd.  So if you get this
-                    # error check you've set a fixed attribute value for the
-                    # keyword.
-                    self._throw_error(child, "Unknown apcost")                
+            elif tag == "cost":
+                self.cost = get_only_child_value(child)
 
             elif tag == "range":
-                if len(child):
-                    range_node = child[0]
-                    self.check_range = range_node.text
-                else:
-                    self._throw_error(child, "MISSING range?")                
+                self.action_range = get_only_child_value(child)
 
             elif tag == "requires":
                 if self.requires is None:
@@ -434,30 +458,13 @@ class AbilityCheck:
                 self.effect = contents_to_string(child).strip()
 
             elif tag == "counter":
-                if len(child):
-                    counter = child[0]
-                    self.counter = counter.text
-                else:
-                    self._throw_error(child, "MISSING counter?")                
+                self.counter = get_only_child_value(child)
 
             elif tag == "range":
                 self.ability_range = contents_to_string(child).strip()
 
             elif tag == "keywords":
                 self.keywords += parse_xml_keyword_list(child)
-
-            # elif tag == "result":
-            #     if len(child):
-            #         result = child[0]
-            #         if result.text:
-            #             # If it has a fixed text value then use that
-            #             self.result = result.text
-            #         else:
-            #             # Otherwise pass the whole element.  Let the formatter
-            #             # sort it out.
-            #             self.result = node_to_string(result)
-            #     else:
-            #         self._throw_error(child, "Problem with result?")
 
             elif tag == "dmg":
                 self.dmg = contents_to_string(child).strip()
@@ -682,6 +689,7 @@ class AbilityCheck:
             outcomes.append(("Cursed", self.cursed))
 
         return outcomes
+ 
     
     
 class Ability:
@@ -700,10 +708,7 @@ class Ability:
         self.description = None
         self.specializations = []
         self.group_id = ability_group_id
-
-        # Checks .. a dictionary from name->check details. An ability can have
-        # multiple check configurations
-        self.checks = []
+        self.actions = []
 
         # List of template parameters for antag checks (e.g. damage, result).
         #self.param_check_default = None  FIXME USE RANK INSTEAD
@@ -721,14 +726,11 @@ class Ability:
         # list of tags for the ability
         self.keywords = []
 
-        # list of available ability ranks.
-        #self.ranks = []
-
         # list of ability refs for this ability
         self.refs = []
 
         # list of available ranks (ints).
-        self.ability_ranks = []
+        self.ranks = []
 
         # list of specializations
         self.specializations = []
@@ -747,9 +749,6 @@ class Ability:
         # the group this ability belongs to.
         self.ability_group = None
         return
-
-    # def get_range(self):
-    #     return self.ability_range
 
     def get_name(self):
         return self.name
@@ -801,8 +800,8 @@ class Ability:
         """Checks for malformed abilities.. returns a list of problems."""
         problems = []                
         
-        for check in self.checks:
-            problems += check.get_problems()
+        for action in self.actions:
+            problems += action.get_problems()
 
         # rank numbers can have an optional initial untrained/negative rank,
         # after that the should be a continuous range of increasing positive
@@ -828,15 +827,6 @@ class Ability:
             last_rank_number = rank_number
         return problems
 
-    def get_trained_ranks(self):
-        if self.is_untrained():
-            if len(self.ability_ranks) > 1:
-                return self.ability_ranks[1:]
-            else:
-                return []
-        else:
-            return self.ability_ranks
-
     def check_sanity(self):
         problems = self.get_problems()
         if len(problems) > 0:
@@ -848,19 +838,6 @@ class Ability:
 
     def is_valid_rank(self, rank):
         return int(rank) in self.ranks
-
-    def has_ranks(self):
-        return len(self.ability_ranks) > 0
-    
-    def get_ability_trained_rank_range(self):
-        if not self.has_ranks():
-            return None
-        trained_ranks = self.get_trained_ranks()
-        first_ability_rank = trained_ranks[0]
-        last_ability_rank = trained_ranks[-1]
-        #ability_ranks = f"{first_ability_rank} – {last_ability_rank}"
-        #return ability_ranks
-        return (first_ability_rank, last_ability_rank)
 
     def is_core(self):  # FIXME: WHAT DOES THIS MEAN?
         return "core" in self.keywords
@@ -887,9 +864,6 @@ class Ability:
     def get_description(self):
         return self.description
 
-    def get_ranks(self):
-        return self.ability_ranks
-
     def get_id(self):
         """Returns something like conjuration.ignis_2"""
         return self.ability_id
@@ -898,8 +872,8 @@ class Ability:
     #     """For conjuration.ignis_2 this will return the string ignis_2"""
     #     return self.ability_id.split(".")[-1]
 
-    def get_checks(self):
-        return self.checks
+    def get_actions(self):
+        return self.actions
 
     def has_prerequisites(self):
         # has_prereqs = False
@@ -975,24 +949,13 @@ class Ability:
             elif tag == "param-rank":
                 self.param_rank_default = child.text.strip()
 
-            elif tag in ("abilitycheck", "abilitycountercheck",
-                         "abilityantagcheck",
-                         "abilityopposed", 
-                         "abilityauxiliary"):
-
-                # Ability check type is an xsd fixed attribute.
-                ability_check = AbilityCheck(ability=self)
-                ability_check._load(child)
-                self.checks.append(ability_check)
+            elif tag == "action":
+                action = Action(ability=self)
+                action._load(child)
+                self.actions.append(action)
 
             elif tag == "abilityranks":
-                # if len(self.ranks) > 0: #  is not None:
-                #     raise Exception(
-                #         "Only one abilityranks per ability. (%s) %s\n" %
-                #         (child.tag, str(child)))
-                # else:
-                #     self.load_ability_ranks(child)
-                if len(self.ability_ranks) > 0: #  is not None:
+                if len(self.ranks) > 0:
                     raise Exception(
                         "Only one abilityranks per ability. (%s) %s\n" %
                         (child.tag, str(child)))
@@ -1077,63 +1040,65 @@ class Ability:
             # ability_rank_lookup[specialization.get_long_name()] = specialization
         return
 
-
-    def is_untrained(self):
-        return self.untrained_rank is not None
-
-    def get_untrained_rank(self):
-        if self.untrained_rank is None:
-            return None
-        return self.ability_ranks[0]
-
-    # def _add_ability_rank(self, rank_number):
-    #     """Add an ability rank."""
-    #     rank = AbilityRank()
-    #     rank.ability = self
-    #     rank.rank_number = rank_number
-    #     rank_id = rank.get_id()
-        
-    #     assert "." not in rank_id
-    #     ability_rank_lookup[rank_id] = rank
-    #     self.ranks.append(rank)
-    #     return
-    
-
     def _add_ability_ref(self, rank):
         """Add an ability ref."""
         ref = AbilityRef()
         ref.ability = self
         ref.rank = rank_number
-        #rank_id = rank.get_id()        
-        #assert "." not in rank_id
-        #ability_rank_lookup[rank_id] = rank
         self.refs.append(ref)
         return
 
-    # def load_ability_ranks(self, ability_ranks):
-    #     untrained_rank = ability_ranks.attrib.get("untrained", None)
-    #     if untrained_rank is not None:
-    #         self.untrained_rank = int(untrained_rank)
-    #         self._add_ability_rank(self.untrained_rank)
+    #
+    # Ability Ranks
+    #
+    def get_ranks_range(self):        
+        first_ability_rank = self.ranks[0]
+        last_ability_rank = self.ranks[-1]
+        return (first_ability_rank, last_ability_rank)        
 
-    #     from_rank = int(ability_ranks.attrib["from"])
-    #     to_rank = int(ability_ranks.attrib["to"])
-    #     for rank_number in range(from_rank, to_rank+1):
-    #         self._add_ability_rank(rank_number)
-    #     return
+    def has_untrained_rank(self):
+        return self.untrained_rank is not None
 
+    def get_untrained_rank(self):
+        return self.untrained_rank
+
+    def get_trained_ranks(self):
+        return self.ranks
+
+    def has_trained_ranks(self):
+        # No ranks
+        if len(self.ranks) == 0:
+            return False
+
+        # Highest rank is the untrained rank (e.g. Fortune).
+        if len(self.ranks)>0 and self.untrained_rank == self.ranks[-1]:
+            return False
+
+        return True
+
+    def get_ability_trained_rank_range(self):
+        if not self.has_trained_ranks():
+            return None
+        trained_ranks = self.get_trained_ranks()
+        first_ability_rank = trained_ranks[0]
+        last_ability_rank = trained_ranks[-1]
+        return (first_ability_rank, last_ability_rank)    
+    
     def load_ability_ranks(self, ability_ranks):
-        untrained_rank = ability_ranks.attrib.get("untrained", None)
-        if untrained_rank is not None:
-            self.untrained_rank = int(untrained_rank)
-            #self._add_ability_rank(self.untrained_rank)
-            self.ability_ranks.append(self.untrained_rank)
+        untrained_rank_str = ability_ranks.attrib.get("untrained", None)
+        if untrained_rank_str is not None:
+            self.untrained_rank = int(untrained_rank_str)
 
         from_rank = int(ability_ranks.attrib["from"])
         to_rank = int(ability_ranks.attrib["to"])
+
+        # Check if we've got trained ranks.  (Fortune is like this).
+        if from_rank == self.untrained_rank and to_rank == self.untrained_rank:
+            return
+
+        # We do have trained ranks, add them
         for rank_number in range(from_rank, to_rank+1):
-            #self._add_ability_rank(rank_number)
-            self.ability_ranks.append(rank_number)
+            self.ranks.append(rank_number)
         return
     
 
@@ -1564,9 +1529,9 @@ class AbilityGroups:
                               n_lines_first_page=n_lines_first_page)
 
 
-def generate_ability_check_table():
+def generate_action_table():
     """
-    Creates an html table listing all the abilities and their checks.
+    Creates an html table listing all the abilities and their actions.
 
     """
     ability_groups = AbilityGroups()
@@ -1628,6 +1593,10 @@ if __name__ == "__main__":
         print(g.info.family_readable_id)
         #print(g.info.ability_group_readable_id)
         print(g.info.slug)
+        for a in g:
+            print(a)
+            print(a.get_untrained_rank())
+            print(a.has_ranks())
     
     
     # a = g.get_ability("alchemy")

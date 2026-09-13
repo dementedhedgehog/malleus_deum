@@ -117,9 +117,9 @@ latex_frontmatter = r"""
 %%
 \colorlet{rpgtitlefontcolor}{black}
 \colorlet{chapterfontcolor}{black}
-\colorlet{rpgsectionfontcolor}{rosewood}
-\colorlet{rpgsubsectionfontcolor}{rosewood}
-\colorlet{rpgsubsubsectionfontcolor}{black}
+\colorlet{mdsectionfontcolor}{rosewood}
+\colorlet{mdsubsectionfontcolor}{rosewood}
+\colorlet{mdsubsubsectionfontcolor}{black}
 \colorlet{monstertitlecolor}{rosewood}
 \colorlet{monstertagscolor}{black}
 \colorlet{pagecolor}{paleparchment}
@@ -245,9 +245,9 @@ latex_frontmatter = r"""
 \newcommand{\rpgtitlesubsubtitlefont}{\cloisterblack}
 \newcommand{\rpgtitleauthorfont}{\dogma}
 \newcommand{\versionfont}{\dogma}
-\newcommand{\rpgsectionfont}{\cloisterblack}
-\newcommand{\rpgsubsectionfont}{\cloisterblack}
-\newcommand{\rpgsubsubsectionfont}{\cloisterblack}
+\newcommand{\mdsectionfont}{\cloisterblack}
+\newcommand{\mdsubsectionfont}{\cloisterblack}
+\newcommand{\mdsubsubsectionfont}{\cloisterblack}
 \newcommand{\attributionfont}{\germania}
 \newcommand{\indexlettergroupfont}{\cloisterblack}
 \newcommand{\sidebartitlefont}{\cloisterblack} 
@@ -286,7 +286,7 @@ latex_frontmatter = r"""
 \newcommand{\mdbr}{\ifvmode\else\newline\fi}
 
 %% Custon Bold Environment
-\newenvironment{mdbold}{\bfseries}{}
+\newenvironment{mdbold}{\bfseries{}}{}
 
 %% Custom Quote Environment
 \newenvironment{mdquote}{%%
@@ -455,7 +455,7 @@ latex_frontmatter = r"""
 \newlength{\symbolverticaloffset}
 \setlength{\symbolverticaloffset}{-0.2em}
 \newlength{\symbolhorizontalspace}
-\setlength{\symbolhorizontalspace}{0.2ex}
+\setlength{\symbolhorizontalspace}{0.1ex}
 
 %% Same offsets for all symbols.
 \newlength{\actionsymbolverticaloffset}
@@ -691,12 +691,12 @@ latex_frontmatter = r"""
 }
 
 %% Elder Sign Symbol
-%%\newcommand\eldersign{%%
-%%\raisebox{-0.5mm}{%%
-%%\includegraphics[height=\symbolsize]%%
-%%{./resources/symbols/symbol_elder_sign.png}%%
-%%\hspace{\symbolhorizontalspace}}
-%%}
+\newcommand\eldersign{%%
+\raisebox{-0.5mm}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_elder_sign.png}%%
+\hspace{\symbolhorizontalspace}}
+}
 
 %%\newcommand{\getpagebackground}{
 %%\transparent{0.2}\includegraphics[width=\paperwidth,height=\paperheight]{./resources/anon_elder_sign/anon_elder_sign.png}
@@ -743,16 +743,16 @@ latex_frontmatter = r"""
 
 
 \titleformat{\section}
-{\rpgsectionfont\LARGE\color{rpgsectionfontcolor}}
+{\mdsectionfont\LARGE\color{mdsectionfontcolor}}
 {\thesection}{0.5em}{}
 
 \titleformat{\subsection}
-{\rpgsubsectionfont\Large\color{rpgsubsectionfontcolor}}
+{\mdsubsectionfont\Large\color{mdsubsectionfontcolor}}
 {\thesubsection}{0.5em}{}
 
 \titleformat{\subsubsection}
-{\bfseries\rpgsubsubsectionfont\color{rpgsubsubsectionfontcolor}}
-{\thesubsubsection}{0.5em}{\subsubsectionsymbol }
+{\bfseries\mdsubsectionfont\color{mdsubsubsectionfontcolor}}
+{\thesubsubsection}{0.5em}{\mdsubsubsectionsymbol }
 
 \newcommand\rpgtablesection[1]{
 \rule{0pt}{1ex}\bfseries\scriptsize #1}
@@ -767,7 +767,7 @@ latex_frontmatter = r"""
 \titleclass{\abilitysubsubsection}{straight}[\subsection] 
 
 \titleformat{\abilitysubsubsection}
-{\bfseries\rpgsubsubsectionfont\color{rpgsubsubsectionfontcolor}}%%
+{\bfseries\mdsubsubsectionfont\color{mdsubsubsectionfontcolor}}%%
 {\thesubsubsection}   %% Custom numbering format
 {1em}
 {\abilitysubsubsectionsymbol }
@@ -790,7 +790,6 @@ latex_frontmatter = r"""
 {\color{monstertitlecolor}\normalsize}{\hfill}
 
 \newenvironment{mbtitle}%%
-%% {\sherwood\color{monstertitlecolor}\begin{large}}%%
 {\dogma\color{monstertitlecolor}\begin{large}}%%
 {\end{large}\vspace{0.0cm}\hfill}
 
@@ -1583,6 +1582,15 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("}")
         return    
 
+    def start_smalltitle(self, title):
+        self.buffer.write(r"\begin{mdbold}\eldersign{} ")
+            #r"\noindent{\large\bfseries ")
+        return
+    def end_smalltitle(self, title):
+        self.buffer.write("\end{mdbold}")
+        return    
+
+
     start_archetypelevel = no_op
     end_archetypelevel = no_op
     
@@ -1695,10 +1703,10 @@ class LatexFormatter(DocFormatter):
         return
 
 
-    def start_bold(self, bold):
+    def start_bold(self, _):
         self.buffer.write(r"\begin{mdbold}")
         return
-    def end_bold(self, smaller):
+    def end_bold(self, _):
         self.buffer.write(r"\end{mdbold}")
         return
 

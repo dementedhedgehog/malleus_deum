@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Archery Abilities</abilitygrouptitle>
+    <abilitygroupid><archery/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <keywords><missile/></keywords>
+    <abilitygroupdescription>
+      <p>
+	These abilities represent training with the use of the bow and
+	arrow.  Initial training is with a short bow.  Use of the long
+	bow requires a fair amount of training.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+  
+  
+  <ability>
+    <abilitytitle>Archery Shoot</abilitytitle>
+    <abilityid>archery_shoot</abilityid>    
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <action>
+      <name>Missile Attack</name>
+      <critclass><missile-attack/></critclass>          
+      <cost><ap4/></cost>
+      <range><ranged-long/></range>
+      <keywords><archery/><physical-attack/><basic-attack/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>Weapon</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The character has trained in the use of the long bow.
+        Characters may use Archery to shoot arrows from short
+	bows during combat doing weapon dmg when they hit.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Dead Eye</abilitytitle>
+    <abilityid>dead_eye</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Missile Attack</name>
+      <critclass><missile-attack/></critclass>          
+      <cost><ap5/></cost>
+      <range><ranged-long/></range>
+      <keywords><archery/><physical-attack/><missile/><check/></keywords>
+      <effect>Attack made with Advantage.</effect>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>Weapon</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </action>
+    <prereqabilityref id="archery_shoot" rank="2"/>
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character has spent many hours working on improving the accuracy of
+	their shots.  Players can choose to call a shot which gives them a large
+	bonus to hit.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Fast Shot</abilitytitle>
+    <abilityid>fast_shot</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Missile Attack</name>
+      <critclass><missile-attack/></critclass>          
+      <cost><ap2/></cost>
+      <range><ranged-long/></range>
+      <keywords>
+	<archery/><physical-attack/><missile/><check/><disadvantage/>
+      </keywords>      
+      <effect>Attack made at Disadvantage.</effect>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>Weapon</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </action>
+    <prereqabilityref id="archery_shoot" rank="2"/>
+    <spline><p x="-90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character takes a quick, not well-aimed shot. 
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  
+  <ability>
+    <abilitytitle>Rain of Arrows</abilitytitle>
+    <abilityid>rain_of_arrows</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Missile Attack</name>
+      <critclass><missile-attack/></critclass>          
+      <cost><ap5/></cost>
+      <range><ranged-long/></range>
+      <keywords><archery/><physical-attack/><missile/><check/></keywords>      
+      <precondition>
+	The character can only be performed during the first round of combat,
+	and the character has a round before combat to prepare.  The character
+	has to declare that they are preparing to perform this action before
+	combat starts.
+      </precondition>
+      <effect>3+Rank Attacks made at Disadvantage.</effect>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>Weapon</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </action>    
+    <prereqabilityref id="archery_shoot" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	This ability allows the character to fire four arrows in quick
+	succession.  The speed of these shots occurs because the character has
+	prepared himself.  He is holding the arrows in his firing hand before
+	the combat begins or has them readily at hand,
+	so this ability can only be used in the first round of combat and
+	cannot be used when the character is surprised or otherwise
+	unprepared.  The character rolls to hit for each
+	arrow.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

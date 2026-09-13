@@ -1,61 +1,68 @@
-{% macro insert_symbol(ap_cost) %}
-{%- if ap_cost == 'Free' -%}
+{% macro insert_action_cost_symbol(action) %}
+{% set cost = action.cost %}
+{%- if cost == 'Free' -%}
 <freeactionsymbol/>
-{%- elif ap_cost == '1AP' -%}
+{%- elif cost == '1AP' -%}
 <oneactionsymbol/>
-{%- elif ap_cost == '2AP' -%}
+{%- elif cost == '2AP' -%}
 <twoactionsymbol/>
-{%- elif ap_cost == '3AP' -%}
+{%- elif cost == '3AP' -%}
 <threeactionsymbol/>
-{%- elif ap_cost == '4AP' -%}
+{%- elif cost == '4AP' -%}
 <fouractionsymbol/>
-{%- elif ap_cost == '5AP' -%}
+{%- elif cost == '5AP' -%}
 <fiveactionsymbol/>
-{%- elif ap_cost == 'Save' -%}
+{%- elif cost == 'Save' -%}
 <savesymbol/>
-{%- elif ap_cost == 'Free Save' -%}
+{%- elif cost == 'Free Save' -%}
 <freesavesymbol/>
-{%- elif ap_cost == 'Save/Free Save' -%}
+{%- elif cost == 'Save/Free Save' -%}
 <saveorfreesavesymbol/>
-{%- elif ap_cost == 'Reaction' -%}
+{%- elif cost == 'Reaction' -%}
 <reactionsymbol/>
-{%- elif ap_cost == 'Free Reaction' -%}
+{%- elif cost == 'Free Reaction' -%}
 <freereactionsymbol/>
-{%- elif ap_cost == 'Mandatory Reaction' -%}
+{%- elif cost == 'Mandatory Reaction' -%}
 <mandatoryreactionsymbol/>
-{%- elif ap_cost == 'Mandatory Free Reaction' -%}
+{%- elif cost == 'Mandatory Free Reaction' -%}
 <mandatoryfreereactionsymbol/>
-{%- elif ap_cost == 'Free Reaction/Interrupt' -%}
+{%- elif cost == 'Free Reaction/Interrupt' -%}
 <freereactionorinterruptsymbol/>
-{%- elif ap_cost == 'Reaction/Interrupt' -%}
+{%- elif cost == 'Reaction/Interrupt' -%}
 <reactionorinterruptsymbol/>
-{%- elif ap_cost == 'Reaction/2AP' -%}
+{%- elif cost == 'Reaction/2AP' -%}
 <reactionsymbol/>/<twoactionsymbol/>
-{%- elif ap_cost == 'Interrupt/2AP' -%}
+{%- elif cost == 'Interrupt/2AP' -%}
 <interruptsymbol/>/<twoactionsymbol/>
-{%- elif ap_cost == 'GM-Fiat' -%}
+{%- elif cost == 'GM Fiat' -%}
 <gmfiatchecksymbol/>
-{%- elif ap_cost == 'Interrupt' -%}
+{%- elif cost == 'Interrupt' -%}
 <interruptsymbol/>
-{%- elif ap_cost == 'Free Interrupt' -%}
+{%- elif cost == 'Free Interrupt' -%}
 <freeinterruptsymbol/>
-{%- elif ap_cost == 'Mandatory Interrupt' -%}
+{%- elif cost == 'Mandatory Interrupt' -%}
 <mandatoryinterruptsymbol/>
-{%- elif ap_cost == 'Mandatory Free Interrupt' -%}
+{%- elif cost == 'Mandatory Free Interrupt' -%}
 <mandatoryfreeinterruptsymbol/>
-{%- elif ap_cost == 'Noncombat' -%}
+{%- elif cost == 'Noncombat' -%}
 <outofcombatsymbol/>
+{%- else -%}
+UNKNOWN COST!! {{ cost }}
 {%- endif -%}
 {%- endmacro -%}
 
-{% macro insert_check_symbol(check) %}
-{{- insert_symbol(check.ap_cost) -}}
-{%- endmacro -%}
 
 
-{%- macro insert_save_symbol(check) -%}
-{{- insert_symbol(check.counter) -}}
+
+{% macro insert_opposing_action_symbol(action) %}
+{% set opposing_action_name = action.opposing_action_name %}
+{%- if opposing_action_name == 'Unknown Save' -%}
+<saveorfreesavesymbol/> 
+{%- else -%}
+UNKNOWN OPPOSING ACTION!! ({{ opposing_action_name }})
+{%- endif -%}
 {%- endmacro -%}
+
 
 
 
@@ -70,11 +77,12 @@
 <subsubsection>
   <subsubsectiontitle isabilitytitle="true">
     {%- if ability.is_antag_ability() -%}<antagonistsymbol/> {%- endif -%}
-    {{- ability.get_name() -}}{{ " " }}
-    {%- if ability.has_ranks() -%}
-    {%- if ability.untrained_rank  -%}
-    <bold>({{ ability.untrained_rank }}) </bold>
+    {{- ability.get_name() + " " -}}
+    
+    {%- if ability.has_untrained_rank() -%}
+    <bold>({{ ability.get_untrained_rank() }}) </bold>
     {%- endif -%}
+    {%- if ability.has_trained_ranks() -%}
     {%- set from_rank, to_rank = ability.get_ability_trained_rank_range() -%}
     {{ from_rank }}<endash/>{{ to_rank }}    
     {%- endif -%}    
@@ -105,52 +113,49 @@
       {%- if ability.specializations -%}
       <bold>Specializations:</bold> {{ability.get_specializations_str()  + " "}}
       {%- endif %}      
-      {%- if ability.get_checks() -%}
-      {%- for check in ability.get_checks() -%}
+      {%- if ability.get_actions() -%}
+      {%- for action in ability.get_actions() -%}
       <indent>
 	<vspace length="1.0"/><br/>
 	<abilitybulletsymbol/>
-	{#- ***CHECK*** #}{%- if check.check_class == 'Check' -%}
-	<bold>{{check.name}}</bold>{{ insert_check_symbol(check) }}
-	<hspace length="2"/><checkarrowsymbol/><hspace length="5"/>
-	<vssavearrowsymbol/><hspace length="2"/>
-	{{- insert_save_symbol(check) }}{{check.counter}}
-	{#- ***SAVE*** #}{%- elif check.check_class == 'Countercheck' -%}
-	{{check.name}}{{ insert_check_symbol(check) -}}
-	<vscheckarrowsymbol/><hspace length="5"/>
-	<savearrowsymbol/>{{ insert_save_symbol(check) }}<bold>{{check.name}}</bold>
-	{#- ***Auxiliary*** #}{%- elif check.check_class == 'Auxiliary' -%}	
-	<bold>{{check.name}}</bold> <vscheckarrowsymbol/>
-	<hspace/>	
-	<versus/>
-	<hspace/>
-	{{ check.counter }}
+	{#- ***CHECK*** #}{%- if action.action_class == 'Check' -%}
+	<bold>{{action.name}}</bold>{{ insert_action_cost_symbol(action) }}
+	<checkarrowsymbol/><vssavearrowsymbol/>
+	<smaller>{{- action.opposing_action_name }}</smaller>
+	{#- ***SAVE*** #}{%- elif action.action_class == 'Save' -%}
+	{{action.opposing_action_name}}
+	<vscheckarrowsymbol/><savearrowsymbol/>
+	{{- " " + insert_action_cost_symbol(action) + " "-}}
+	<bold>{{action.name}}</bold>
+	{#- ***Auxiliary*** #}{%- elif action.action_class == 'Auxiliary' -%}	
+	<bold>{{action.action_name}}</bold> <vscheckarrowsymbol/>
+	<hspace/><versus/><hspace/>{{ action.save_name }}
 	{#- ***Error!*** #}{%- else -%}
-	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ check.check_type }}
+	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ action.action_type }}
 	{%- endif %}	
-	<br/><bold>Crits:</bold> {{ check.get_check_type() + " " }}
-	{%- if check.pool_cost -%}
-	<bold>Pool Cost:</bold> {{ check.get_pool_cost_str() }}
+	<br/><bold>Crits:</bold> {{ action.get_crit_class() + " " }}
+	{%- if action.pool_cost -%}
+	<bold>Pool Cost:</bold> {{ action.get_pool_cost_str()  + " " }}
 	{%- endif -%}
-	<bold>Range:</bold> {{ check.check_range + " " -}}
-	{%- if check.dmg -%}
-	<bold>Damage:</bold> {{ check.dmg  + " " }}
+	<bold>Range:</bold> {{ action.action_range + " " -}}
+	{%- if action.dmg -%}
+	<bold>Damage:</bold> {{ action.dmg  + " " }}
 	{%- endif -%}
-	{%- if check.keywords -%}
-	<bold>Keywords:</bold> {{ check.get_check_keywords_str()  + " " }}
+	{%- if action.keywords -%}
+	<bold>Keywords:</bold> {{ action.get_action_keywords_str()  + " " }}
 	{%- endif -%}
-	{%- if check.requires %}
-	<bold>Requires:</bold> {{ check.requires }}	
+	{%- if action.requires %}
+	<bold>Requires:</bold> {{ action.requires }}	
 	{%- endif -%}
-	{%- if check.precondition %}	
-	<br/><bold>Preconditions:</bold> {{ check.precondition }}
+	{%- if action.precondition %}	
+	<br/><bold>Preconditions:</bold> {{ action.precondition }}
 	{%- endif -%}
-	{% if check.effect -%}
-	<br/><bold>Effect:</bold> {{ check.effect }}
+	{% if action.effect -%}
+	<br/><bold>Effect:</bold> {{ action.effect }}
 	{%- endif -%}
-	{%- if check.has_outcomes() %}
+	{%- if action.has_outcomes() %}
 	<br/><bold>Outcomes:</bold><indent>
-	{%- for outcome in check.get_outcomes() -%}
+	{%- for outcome in action.get_outcomes() -%}
 	{%- set name, result = outcome -%}	
 	<br/><bold>{{ name }}:</bold> {{ result }}
 	{%- endfor -%}

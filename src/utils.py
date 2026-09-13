@@ -203,7 +203,7 @@ def _perform_schematron_validation(xml_doc):
                     # Throw a schematron assert error with some context.
                     xml_str = node_to_string(xml_doc)
                     f = io.StringIO(xml_str)
-                    context = get_error_context(f, sourceline, context_size=21)
+                    context = get_error_context(f, sourceline, context_size=19)
                     e.add_note(
                         f"{context}\n"
                         f"*** {message} ***\n"
@@ -256,7 +256,7 @@ def parse_xml(fname, verbosity=0):
                 context = get_error_context(
                     e.filename,
                     e.line,
-                    context_size=21)
+                    context_size=19)
                 
                 raise XMLException(
                      f"XSD assert failed at {e.filename}:{e.line}\n"

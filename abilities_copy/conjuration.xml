@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Conjuration</abilitygrouptitle>
+    <abilitygroupid><conjuration/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
+    <slug>Do not call upon that which you cannot put down.</slug>
+    <abilitygroupdescription>
+      <p>
+	Conjuration is the most versatile, powerful and	therefore hardest to
+	control and most dangerous of all magical schools.  It involves
+	harnessing raw magical powers by the caster directly.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Conjuration Lore</abilitytitle>
+    <abilityid>conjuration</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Recall Knowledge</name>
+      <critclass><recall-knowledge/></critclass>                
+      <cost><default-skill-checkcost/></cost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>      
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p>
+	This ability represents the characters knowledge of conjuration
+	magic and its theory.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  
+  <ability>
+    <abilitytitle>Chain Lightning</abilitytitle>
+    <abilityid>chain_lightning</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><magic-attack/></critclass>                
+      <poolcost>1</poolcost>
+      <cost><ap3/></cost>
+      <range><ranged-medium/></range>
+      <keywords><physical-attack/><magicpool/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>12+Rank Damage</dmg>
+      <any-success>Deal damage to one target</any-success>
+      <righteoussuccess>May make an additional chain lightning attack as a
+      free action.</righteoussuccess>
+    </action>
+    <prereqabilityref id="conjuration" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster acts as a conduit for eldritch energies, directing them in an
+	arc at a target. First the caster checks magic to gather the energy.
+	Then they roll to a 2d12+Rank against the targets defence. If the arc
+	successfuls hits, the caster can arc the lightning to a subsequent
+	target making another to hit roll, and so on until the caster misses or
+	runs out of potential targets. The initial target can be any opponent
+	within range <m20/>. When choosing subsequent targets the caster must
+	choose the closest untargeted enemy to the last target. No target can be
+	struck more than once.
+      </p>
+
+      <p>
+	On overcharge the caster is also struck.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Eldritch Push</abilitytitle>
+    <abilityid>eldritch_push</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Magic-Attack</name>
+      <critclass><magic-attack/></critclass>                
+      <poolcost>2</poolcost>
+      <cost><ap2/></cost>
+      <range><ranged-medium/></range>
+      <keywords><physical-attack/><check/><magicpool/></keywords>
+      <effect>Target takes damage and is Pushed DC: 15+Rank</effect>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>3+Rank</dmg>      
+      <critsuccess>Target three opponents</critsuccess>
+      <righteoussuccess>Target two opponents</righteoussuccess>
+      <success>Target one opponent</success> 
+      <grimfail>Caster is knocked back <m6/> and is Prone and takes d3 damage</grimfail>
+    </action>
+    <prereqabilityref id="conjuration" rank="2"/>
+    <spline><p x="0" y="30"/><p x="60" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	The caster shoots a raw stream of thaumic energy from their hands at one
+	or more targets. If the stream hits the target, the target suffers
+	damage and is thrown <m10/> away from the caster.  For Large creatures
+	the distance thrown is reduced at the GMs discretion.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Eldritch Grasp</abilitytitle>
+    <abilityid>eldritch_grasp</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Magic-Attack</name>
+      <critclass><magic-attack/></critclass>                
+      <poolcost>2</poolcost>
+      <cost><ap1/></cost>
+      <range><ranged-medium/></range>
+      <keywords><physical-attack/><magicpool/><check/></keywords>
+      <effect>Target takes damage and is Pushed or Pulled DC: 15+Rank</effect>
+      <counter><opponents-physical-defence/></counter>
+      <dmg>5+Rank</dmg>
+      <righteoussuccess>Target</righteoussuccess>
+      <success><aka/></success> 
+      <grimfail>X</grimfail> 
+      <critfail>t</critfail>
+    </action>
+    <prereqabilityref id="eldritch_push" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster uses a raw stream of thaumic energy to grab a target
+	crushing it and pulling it towards him.  If successful the caster makes
+	a second attack against the targets Dodge, Agility, or Strength Defence Check,
+	with a +6+Rank bonus.
+      </p>
+
+      <p>
+	If they hit the target, the target suffers damage and is either pushed or
+	pulled <m10/> in any direction.  
+      </p>
+    </abilitydescription>    
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Scry</abilitytitle>
+    <abilityid>scry</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <critclass><cast/></critclass>                
+      <poolcost>2</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><ritual/><check/></keywords>
+      <precondition>Item with thaumic contagion</precondition>
+      <counter><sv17/></counter>
+      <any-success><gm-fiat/></any-success>
+    </action>
+    <prereqabilityref id="conjuration" rank="2"/>
+    <spline><p x="0" y="30"/><p x="-60" y="60"/></spline>
+    <abilitydescription>
+      <p>
+    	The character can view events from the past using an item as a thaumic
+	anchor.  (Viewing events in the future is incredibly difficult and
+	unreliable. See Scry, Greater).
+      </p>
+
+      <p>
+    	The caster first checknames a target, holding items with contagious links to
+	the target, then checks to see whether the spell succeeds. If it does,
+	they see an important scene from targets life (the GM narrates the scene
+	to the player). The caster may then choose to scry for one or more
+	important past events associated with those items.
+      </p>
+
+      <p>
+    	Contagion is very important for this spell to work. A good contagious
+	link to the subject, <ie/> the targets blood, or hair, can reduce the
+	difficulty of this spell by multiple shifts. Subsequent contagious items
+	have reduced effectiveness. 
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Scry, Greater</abilitytitle>
+    <abilityid>scry_greater</abilityid>
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Check</name>
+      <critclass><cast/></critclass>                
+      <poolcost>1</poolcost>
+      <cost><noncombat/></cost>
+      <range><na/></range>
+      <keywords><magicpool/><check/></keywords>
+      <counter><sv17/></counter>
+      <any-success><gm-fiat/></any-success>
+    </action>
+    <prereqabilityref id="scry" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character can view events from a targets present and their future as
+	well as their past. This spell works like the lesser Scry but because
+	the future is not predetermined the results are often very unreliable
+	and inaccurate.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Wither</abilitytitle>
+    <abilityid>wither</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Magic-Attack</name>
+      <critclass><magic-attack/></critclass>                
+      <poolcost>1</poolcost>
+      <cost><ap1/></cost>
+      <range><reach/></range>
+      <keywords><check/><magicpool/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <any-success>Deal 5+Rank Damage.  The caster heals half the damage dealt.</any-success>
+    </action>
+    <prereqabilityref id="conjuration" rank="2"/>
+    <spline><p x="0" y="60"/><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The caster rolls to grab an opponent. On success the caster acts as a conduit to
+	one of the dread planes, life is drained from the target.  Anything that
+	increases contagion will increase damage for this spell.
+      </p>
+    </abilitydescription>    
+  </ability>    
+</abilitygroup>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Physical Abilities</abilitygrouptitle>
+    <abilitygroupid><physical/></abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents general physical abilities.
+      </p>      
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>   
+
+  
+  <ability>
+    <abilitytitle>Climb</abilitytitle>
+    <abilityid>climb</abilityid>    
+    <abilityranks untrained="-3" from="1" to="6"/>
+    <action>
+      <name>Check</name>
+      <critclass><physical/></critclass>
+      <cost><ap4/></cost>
+      <range><self/></range>
+      <keywords><physical/><check/></keywords>
+      <counter><sv7/></counter>      
+      <critsuccess>Can assist another character with their climb</critsuccess>
+      <success>Success</success>
+      <fail>The character has problems needs to check again.</fail>
+      <critfail>Fall</critfail>
+    </action>
+    <spline><p x="90" y="150"/></spline> 
+    <abilitydescription>
+      <p>
+	This ability represents the characters ability to Climb.
+	FIXME what does assist mean in this context?
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Swim</abilitytitle>
+    <abilityid>swim</abilityid>    
+    <abilityranks untrained="-3" from="1" to="4"/>
+    <action>
+      <name>Check</name>
+      <critclass><physical/></critclass>
+      <cost><ap4/></cost>
+      <range><self/></range>
+      <keywords><physical/><check/></keywords>
+      <counter><sv7/></counter>
+      <critsuccess>Can assist another character with their swim</critsuccess>
+      <success>Success.</success>
+      <fail>The character has problems needs to check again.</fail>
+      <critfail>Gain the Drowing condition</critfail>
+    </action>
+    <spline><p x="90" y="180"/></spline> 
+    <abilitydescription>
+      <p>
+	This ability represents the characters ability to swim (if at all).  Everyone
+	is assumed to be able to dog paddle instinctively.  Failure of this check
+	means that the character is unable to make any progress.  Repeated failures
+	might result in the characters having to make exhaustion or resolve checks
+	as they start to panic.
+      </p>
+
+      <p>
+	FIXME What does Drowning condition do?
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

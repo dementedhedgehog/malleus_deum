@@ -109,7 +109,7 @@ class AbilityNode:
         # draw the ability ranks.
         rank_x = x0 + ABILITY_RANK_SEPARATOR
         rank_y = y1 + ABILITY_MARGIN_TOP + CIRCLE_RADIUS
-        for rank in self.ability.get_ranks():
+        for rank in self.ability.get_trained_ranks():
             rank_str = str(rank)
             (xt, yt, width, height, dx, dy) = context.text_extents(rank_str)
             context.move_to(rank_x - dx/2 + width/2, rank_y)
@@ -123,17 +123,15 @@ class AbilityNode:
 
             # draw outgoing rank number
             context.move_to(rank_x - dx/2, rank_y + height/2)
-            #context.show_text(number_str)
             context.show_text(rank_str)
             context.stroke()
 
             # remember where to connect to            
-            #self.outgoing_connector_offsets[number] = (rank_x,
             self.outgoing_connector_offsets[rank] = (rank_x,
                                                      rank_y + CIRCLE_RADIUS)
             rank_x += 2 * CIRCLE_RADIUS + CIRCLE_HORIZONTAL_SEPARATOR
 
-        if len(self.ability.get_ranks()) > 0:
+        if len(self.ability.get_trained_ranks()) > 0:
             max_y = rank_y + CIRCLE_RADIUS
         else:
             max_y = y1

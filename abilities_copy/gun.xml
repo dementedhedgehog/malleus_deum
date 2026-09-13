@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Gun Abilities</abilitygrouptitle>
+    <abilitygroupid><gun/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <keywords><gun/><martial/></keywords>    
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use of pistols and blunderbuss.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+  
+
+  <ability>
+    <abilitytitle>Gun Maintenance</abilitytitle>
+    <abilityid>gun_maintenance</abilityid>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <action>
+      <name>Recall Knowledge</name>
+      <critclass><recall-knowledge/></critclass>
+      <cost><default-skill-checkcost/></cost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <counter><default-lore-sv-hard/></counter>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </action>
+    
+    <action>
+      <name>Fast Reload</name>
+      <critclass><test/></critclass>
+      <cost><ap2/></cost>
+      <range><touch/></range>
+      <keywords><black-powder/><missile/><check/></keywords>
+      <counter><sv9/></counter>      
+      <any-success>Reload the gun during combat.  If successful the gun is
+      reloaded during this minor action. A gun can be reloaded without a check
+      using a Standard Action.
+      </any-success>
+    </action>
+    
+    <action>
+      <name>Repair</name>
+      <critclass><craft/></critclass>
+      <cost><noncombat/></cost>
+      <range><touch/></range>
+      <keywords><craft/><check/></keywords>
+      <counter><sv13/></counter>
+      <any-success>
+	Make minor repairs and perform maintenance on the gun
+      </any-success>
+    </action>
+    <prereqabilityref id="gun_shoot" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character needs to make this check to reload the gun during combat.
+      </p>
+
+      <p>
+	At rank 3 and above the character can make repairs to a gun out of
+	combat on a successful check (presumably addressing damage caused by
+	misfires).
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Sharp Shooter</abilitytitle>
+    <abilityid>sharp_shooter</abilityid>
+    <abilityranks from="1" to="5"/>
+    <action>
+      <name>Missile Attack</name>
+      <critclass><missile-attack/></critclass>
+      <cost><ap5/></cost>
+      <range><ranged-short/></range>
+      <keywords>
+	<physical-attack/><black-powder/><missile/><advantage/><check/>
+      </keywords>
+      <counter><opponents-physical-defence/></counter>      
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+    </action>
+    <prereqabilityref id="gun_shoot" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	Even though guns are inherently inaccurate, the character has spent many
+	hours working on improving their aim.  Players can choose to call a shot
+	which gives them advantage to hit, but takes extra time to aim.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Gun Shoot</abilitytitle>
+    <abilityid>gun_shoot</abilityid>
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <action>
+      <name>Missile Attack</name>
+      <critclass><missile-attack/></critclass>
+      <cost><ap2/></cost>
+      <range><ranged-short/></range>
+      <keywords><physical-attack/><black-powder/><missile/><check/></keywords>
+      <counter><opponents-physical-defence/></counter>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
+      <success><default-attack-success/></success>
+      <critfail>Roll on the ranged consequence table</critfail>
+    </action>
+
+    <action>
+      <name>Reload</name>
+      <critclass><test/></critclass>
+      <cost><ap4/></cost>
+      <range><touch/></range>
+      <keywords><black-powder/><check/></keywords>
+      <counter><sv7/></counter>      
+      <any-success>Reload the gun during combat.</any-success>
+    </action>
+    
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a gun can shoot with it during combat
+	doing weapon damage.  Any bane results in a gun jam.  A critical
+	fail results in a small explosion (firer takes 1 damage).  A boon
+	results in double damage.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

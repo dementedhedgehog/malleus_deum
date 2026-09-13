@@ -151,7 +151,15 @@ Token Types:
   <xs:complexType name="keywordType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-	<xs:attribute name="token_type" type="xs:string" fixed="keyword"/>
+	<xs:attribute
+	    name="token_type"
+	    type="xs:string"
+	    fixed="keyword"/>
+	<!-- <xs:attribute -->
+	<!--     name="fixed" -->
+	<!--     type="xs:string" -->
+	<!--     fixed="keyword" -->
+	<!--     use="required"/> -->
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -323,7 +331,7 @@ Token Types:
       <xs:group ref="symbolsEnum"/>      
       <!-- <xs:element name="label" type="leafType"/> -->
       <xs:element name="label" type="leafType"/>
-      <xs:element name="bold" type="leafType"/>
+      <xs:element name="bold" type="textType"/>
       <xs:element name="indexentry" type="indexentryType"/>
       <xs:element name="smaller" type="textType"/>
       <xs:element name="hfill" type="textType"/>
@@ -467,12 +475,11 @@ Token Types:
       <!-- <xs:element name="conditions" type="keywordType" fixed="Conditions"/> -->
       <xs:element name="general" type="keywordType" fixed="General"/>
       <xs:element name="primary" type="keywordType" fixed="Primary"/> 
-     <xs:element name="lore" type="keywordType" fixed="Lore"/>
+      <xs:element name="lore" type="keywordType" fixed="Lore"/>
       <xs:element name="martial" type="keywordType" fixed="Martial"/>
       <xs:element name="magic" type="keywordType" fixed="Magic"/>
       <!-- <xs:element name="hazards" type="keywordType" fixed="Hazards"/> -->
       <xs:element name="tribulations" type="keywordType" fixed="Tribulations"/>
-      <xs:element name="primary" type="keywordType" fixed="Primary"/>
       <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
     </xs:choice>
   </xs:complexType>
@@ -521,7 +528,8 @@ Token Types:
       <xs:element name="wild-magic" type="keywordType" fixed="Wild-Magic"/>
       <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
       <!-- patrons -->
-      <xs:element name="klazyabolous" type="keywordType" fixed="Klazyabolous"/>
+      <xs:element name="klasyalabolous" type="keywordType" fixed="Klazyabolous"/>
+      
       <!-- replace with antagonist -->
       <xs:element name="npc" type="keywordType" fixed="NPC"/>      
       <!-- <xs:element name="antag" type="keywordType" fixed="Antag"/> -->
@@ -819,7 +827,7 @@ Token Types:
 	  with a 'physical-defence' counter check.
 
           The keywords unblockable, undodgeable, unparryable, and noarmour may
-	  be used to exclude certain defence counterchecks for a check,
+	  be used to exclude certain defence save for a check,
 	  e.g. you can't dodge a bullet.
       -->
       <xs:element
@@ -848,8 +856,8 @@ Token Types:
 	  fixed="Delegate-Saves"/>
       
       <!--
-	  All checks must either be Checks, Counterchecks or Auxiliarys.
-	  Each Check is opposed by a CounterCheck
+	  All checks must either be Checks, Saves or Auxiliarys.
+	  Each Check is opposed by a Save
 	  Auxilaries are triggers for other actions.
       -->
       <xs:element
@@ -857,7 +865,7 @@ Token Types:
 	  type="keywordType"
 	  fixed="Check"/>
       <xs:element
-	  name="countercheck"
+	  name="save"
 	  type="keywordType"
 	  fixed="Save"/>
       <xs:element
@@ -991,8 +999,13 @@ Token Types:
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="abilityAPCostType" mixed="false">
+  <xs:complexType name="abilityCostType" mixed="false">
     <xs:choice>
+      <!--
+	  
+	  CHECKS
+
+      -->      
       <!-- 0-5 Action Points -->
       <xs:element name="free" type="keywordType" fixed="Free"/>
       <xs:element name="ap5" type="keywordType" fixed="5AP"/>
@@ -1000,38 +1013,50 @@ Token Types:
       <xs:element name="ap3" type="keywordType" fixed="3AP"/>
       <xs:element name="ap2" type="keywordType" fixed="2AP"/>
       <xs:element name="ap1" type="keywordType" fixed="1AP"/>
-
-      <!-- no ap cost -->
       <!-- May take multiple players or multiple rounds to perform -->      
-      <xs:element name="multi-round" type="keywordType" fixed="Multi Round"/>
-      <xs:element name="gm-fiat" type="keywordType" fixed="GM-Fiat"/>
-      <xs:element name="save" type="keywordType" fixed="Save"/>
-      <xs:element name="reaction" type="keywordType" fixed="Reaction"/>
-      <xs:element name="interrupt" type="keywordType" fixed="Interrupt"/>
-      <xs:element name="mandatory-save" type="keywordType" fixed="Mandatory Save"/>
-      <xs:element name="mandatory-reaction" type="keywordType" fixed="Mandatory Reaction"/>
-      <xs:element name="mandatory-interrupt" type="keywordType" fixed="Mandatory Interrupt"/>
-      <xs:element name="save-or-free-save" type="keywordType" fixed="Save/Free Save"/>
-      <xs:element name="free-save" type="keywordType" fixed="Free Save"/>
-      <xs:element name="free-interrupt" type="keywordType" fixed="Free Interrupt"/>
-      <xs:element name="free-reaction" type="keywordType" fixed="Free Reaction"/>
-      <xs:element name="mandatory-free-save" type="keywordType" fixed="Mandatory Free Save"/>
-      <xs:element name="mandatory-free-interrupt" type="keywordType" fixed="Mandatory Free Interrupt"/>
-      <xs:element name="mandatory-free-reaction" type="keywordType" fixed="Mandatory Free Reaction"/>
-      <xs:element name="free-action-or-reaction" type="keywordType" fixed="Free Action/Reaction"/>
-      <xs:element name="interrupt-or-reaction" type="keywordType" fixed="Interrupt/Reaction"/>
-      <xs:element name="reaction-or-ap2" type="keywordType" fixed="Reaction/2AP"/>
-      <xs:element name="interrupt-or-ap2" type="keywordType" fixed="Interrupt/2AP"/>
-      <xs:element name="noncombat" type="keywordType" fixed="Noncombat"/>
+      <xs:element name="multi-round-check-cost" type="keywordType" fixed="Multi Round"/>
+      <!-- Generic unknown check used to oppose certain saves -->
+      <xs:element name="gm-fiat-check-cost" type="keywordType" fixed="GM Fiat"/>
+      <!-- Takes too long to perform in combat -->
+      <xs:element name="noncombat-cost" type="keywordType" fixed="Noncombat"/>
 
-      <!-- generic check used to oppose certain saves -->
-      <xs:element name="unknown-check" type="keywordType" fixed="Unknown"/>      
+      <!--
+	  
+	  Out Of Turn Actions
+
+      -->            
+      <xs:element name="save-cost" type="keywordType" fixed="Save"/>
+      <xs:element name="reaction-cost" type="keywordType" fixed="Reaction"/>
+      <xs:element name="interrupt-cost" type="keywordType" fixed="Interrupt"/>
+      <xs:element name="mandatory-save-cost" type="keywordType" fixed="Mandatory Save"/>
+      <xs:element name="mandatory-reaction-cost" type="keywordType" fixed="Mandatory Reaction"/>
+      <xs:element name="mandatory-interrupt-cost" type="keywordType" fixed="Mandatory Interrupt"/>
+      <xs:element name="save-or-free-save-cost" type="keywordType" fixed="Save/Free Save"/>
+      <xs:element name="free-save-cost" type="keywordType" fixed="Free Save"/>
+      <xs:element name="free-interrupt-cost" type="keywordType" fixed="Free Interrupt"/>
+      <xs:element name="free-reaction-cost" type="keywordType" fixed="Free Reaction"/>
+      <xs:element name="mandatory-free-save-cost" type="keywordType" fixed="Mandatory Free Save"/>
+      <xs:element name="mandatory-free-interrupt-cost" type="keywordType" fixed="Mandatory Free Interrupt"/>
+      <xs:element name="mandatory-free-reaction-cost" type="keywordType" fixed="Mandatory Free Reaction"/>
+      <xs:element name="free-action-or-reaction-cost" type="keywordType" fixed="Free Action/Reaction"/>
+      <xs:element name="interrupt-or-reaction-cost" type="keywordType" fixed="Interrupt/Reaction"/>
+
+      <!--
+	  
+	  Either Check or OOTA?
+
+          FIXME: BREAK THESE UP INTO TWO ACTIONS
+
+      -->                  
+      <!-- <xs:element name="reaction-or-ap2-cost" type="keywordType" fixed="Reaction/2AP"/> -->
+      <!-- <xs:element name="interrupt-or-ap2-cost" type="keywordType" fixed="Interrupt/2AP"/> -->
+
       
       <!-- Defaults -->
-      <xs:element name="default-lore-apcost" type="keywordType" fixed="2AP"/>      
-      <xs:element name="default-skill-apcost" type="keywordType" fixed="2AP"/>
-      <xs:element name="default-language-apcost" type="keywordType" fixed="Free"/>
-      <xs:element name="default-craft-apcost" type="keywordType" fixed="GM Fiat"/>
+      <xs:element name="default-lore-cost" type="keywordType" fixed="2AP"/>      
+      <xs:element name="default-skill-cost" type="keywordType" fixed="2AP"/>
+      <xs:element name="default-language-cost" type="keywordType" fixed="Free"/>
+      <xs:element name="default-craft-cost" type="keywordType" fixed="GM Fiat"/>
     </xs:choice>
   </xs:complexType>
   
@@ -1140,10 +1165,10 @@ Token Types:
       <xs:element name="savearrowsymbol" type="symbolType"/>
       <xs:element name="vssavearrowsymbol" type="symbolType"/>
       
-      <xs:group ref="svResultGroup"/>
-      <!-- <xs:group ref="resultGroup"/> -->
-      <!-- <xs:group ref="defaultResultGroup"/> -->
-      <xs:group ref="opponentsCounterResultGroup"/>
+      <!-- <xs:group ref="svResultGroup"/> -->
+      <!-- <!-\- <xs:group ref="resultGroup"/> -\-> -->
+      <!-- <!-\- <xs:group ref="defaultResultGroup"/> -\-> -->
+      <!-- <xs:group ref="opponentsCounterResultGroup"/> -->
       <!-- <xs:group ref="antagCounterResultGroup"/> -->
       <!-- <xs:group ref="protagCounterResultGroup"/> -->
     </xs:choice>
@@ -1213,7 +1238,6 @@ Token Types:
       <xs:group ref="acronymsEnum"/>
       <xs:group ref="symbolsEnum"/>
       <xs:group ref="styleEnum"/>
-      <xs:group ref="abilityCheckEnum"/>
       <xs:element name="hlink" type="hlinkType"/>
     </xs:choice>
   </xs:group>
@@ -1243,6 +1267,7 @@ Token Types:
       <xs:element name="corollary" type="corollaryType"/>
       <xs:element name="divider" type="dividerType"/>
       <xs:element name="epigraph" type="textType"/>
+      <xs:element name="smalltitle" type="textType"/>
     </xs:choice>
   </xs:group>
 
@@ -1346,9 +1371,10 @@ Token Types:
       <!-- Ability Check types -->
       <xs:sequence  minOccurs="0" maxOccurs="unbounded">
 	<xs:choice>
-	  <xs:element name="abilitycheck" type="checkType"/>
-	  <xs:element name="abilitycountercheck" type="counterCheckType"/>
-	  <xs:element name="abilityauxiliary" type="abilityCheckAuxiliaryType"/>
+	  <xs:element name="action" type="actionType"/>
+	  <!-- <xs:element name="abilitycheck" type="checkType"/> -->
+	  <!-- <xs:element name="abilitysave" type="counterCheckType"/> -->
+	  <!-- <xs:element name="abilityauxiliary" type="abilityCheckAuxiliaryType"/> -->
 	</xs:choice>
       </xs:sequence>
 
@@ -1408,7 +1434,6 @@ Token Types:
   </xs:complexType>
       
   
-
   <!-- Used for Antag Check Results and for Antag/Protag Counter Results -->
   <xs:group name="svResultGroup">
     <xs:choice>
@@ -1430,34 +1455,40 @@ Token Types:
     </xs:choice>
   </xs:group>
 
-  <xs:complexType name="svResultType">
-    <xs:sequence>
-      <xs:group ref="svResultGroup" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
-  
-  <!-- <xs:group name="resultGroup"> -->
-  <!--   <xs:choice> -->
-  <!--     <xs:element name="d20plusrank" type="emptyType"/>       -->
-  <!--   </xs:choice> -->
-  <!-- </xs:group> -->
-
   <!--
-      These are possible counterchecks against a check.
-      E.g. when skill is X vs Y then these define the allowed Y's.
+      When performing an action there are a number of  possible values for
+      opposing actions.  These are they. E.g. when action X is opposed by Y then
+      this group defines the allowed values for Y.
   -->
-  <xs:group name="opponentsCounterResultGroup">
+  <!-- <xs:group name="opponentsCounterResultGroup"> -->
+  <xs:group name="opposingActionGroup">
     <xs:choice>
 
-      <!-- <xs:group ref="defaultResultGroup"/> -->
+      <!--
+
+        Checks
+
+      -->
+
+      <!-- Unknown Save (e.g. opposing Strength Check -->
+      <xs:element name="unknown-check"
+		  type="stringConstantType"
+		  fixed="Unknown Check"/>
       
-      <!-- For PC defend actions -->
+
+      <!--
+
+        Saves
+
+      -->
+      
+      <!-- For defence saves -->
       <xs:element
 	  name="opponents-physical-attack"
 	  type="stringConstantType"
 	  fixed="Physical Attack"/>
       
-      <!-- For PC attack actions -->
+      <!-- For attack checks -->
       <xs:element
 	  name="opponents-physical-defence"
 	  type="stringConstantType"
@@ -1510,7 +1541,6 @@ Token Types:
 	  name="opponents-luck-save"
 	  type="stringConstantType"
 	  fixed="Luck Save"/>
-      
       <xs:element
 	  name="opponents-negotiate-save"
 	  type="stringConstantType"
@@ -1526,20 +1556,34 @@ Token Types:
 		  type="stringConstantType"
 		  fixed="Save or Free Save"/>
       
+      <!-- Unknown Save (e.g. opposing Strength Check -->
+      <xs:element name="unknown-save"
+		  type="stringConstantType"
+		  fixed="Unknown Save"/>
+      
       <!-- NPC/Hazard/GM opposed abilities -->
-      <xs:element name="gm-fiat" type="stringConstantType" fixed="GM-Fiat"/>
+      <!-- <xs:element name="gm-fiat" type="stringConstantType" fixed="GM-Fiat"/> -->
 
-      <xs:element name="aspect-sv" type="aliasType" fixed="sv9"/>
-      <xs:element name="default-lore-sv-easy" type="aliasType" fixed="sv9"/>
-      <xs:element name="default-lore-sv" type="aliasType" fixed="sv11"/>
-      <xs:element name="default-lore-sv-hard" type="aliasType" fixed="sv13"/>
-      <xs:element name="default-transport-sv" type="aliasType" fixed="sv11"/>
-      <xs:element name="default-physical-sv" type="aliasType" fixed="sv11"/>
-      <xs:element name="default-craft-sv" type="aliasType" fixed="sv11"/>
-      <xs:element name="default-language-sv" type="aliasType" fixed="sv11"/>
-      <xs:element name="default-language-sv-hard" type="aliasType" fixed="sv13"/>
+      <xs:element name="aspect-sv" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-lore-sv-easy" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-lore-sv" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-lore-sv-hard" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-transport-sv" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-physical-sv" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-craft-sv" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-save-sv" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-language-sv" type="aliasType" fixed="SV13"/>
+      <xs:element name="default-language-sv-hard" type="aliasType" fixed="SV13"/>
     </xs:choice>
   </xs:group>
+
+
+  <xs:complexType name="opposingActionType">
+    <xs:choice>
+      <xs:group ref="svResultGroup"/>
+      <xs:group ref="opposingActionGroup"/>
+    </xs:choice>
+  </xs:complexType>
 
 
   <xs:complexType name="poolCostType" mixed="true">
@@ -1550,7 +1594,7 @@ Token Types:
   </xs:complexType>  
 
 
-  <xs:group name="abilityCheckEnum">
+  <xs:group name="critClassEnum">
     <xs:choice>
       <!-- Uses svv, and recall knowledge crit table -->
       <xs:element name="recall-knowledge" type="keywordType" fixed="Recall Knowledge"/>
@@ -1594,7 +1638,11 @@ Token Types:
 
 
       <xs:element name="custom" type="keywordType" fixed="Custom Outcomes"/>
+
       
+      <!-- <xs:group ref="svResultGroup"/> -->
+      <!-- <xs:group ref="opponentsCounterResultGroup"/> -->
+
       <!-- Aspects -->
       <!-- <xs:element name="quirk" type="keywordType" fixed="Missile Attack"/>       -->
     </xs:choice>
@@ -1602,8 +1650,8 @@ Token Types:
 
 
   <!-- -->
-  <xs:complexType name="abilityCheckType" mixed="false">
-      <xs:group ref="abilityCheckEnum"/>
+  <xs:complexType name="critClassType" mixed="false">
+      <xs:group ref="critClassEnum"/>
   </xs:complexType>
   
   <xs:group name="abilityRequiresEnum">
@@ -1649,9 +1697,10 @@ Token Types:
       <!-- Check types -->
       <xs:sequence  minOccurs="0" maxOccurs="unbounded">
 	<xs:choice>
-	  <xs:element name="check" type="checkType"/>
-	  <xs:element name="countercheck" type="counterCheckType"/>
-	  <xs:element name="auxiliary" type="abilityCheckAuxiliaryType"/>
+	  <xs:element name="action" type="actionType"/>
+	  <!-- <xs:element name="check" type="checkType"/> -->
+	  <!-- <xs:element name="countercheck" type="counterCheckType"/> -->
+	  <!-- <xs:element name="auxiliary" type="abilityCheckAuxiliaryType"/> -->
 	</xs:choice>
       </xs:sequence>      
     </xs:sequence>
@@ -1681,34 +1730,34 @@ Token Types:
     However *ALL* checks share these header fields.
 
   -->
-  <xs:group name="abilityCheckHeaderGroup">
-    <xs:sequence>
-      <!-- The name of the check.  One of a few standard types or <special/> -->
-      <xs:element name="name" type="leafType" minOccurs="1" maxOccurs="1"/>
+  <!-- <xs:group name="abilityCheckHeaderGroup"> -->
+  <!--   <xs:sequence> -->
+  <!--     <!-\- The name of the check.  One of a few standard types or <special/> -\-> -->
+  <!--     <xs:element name="name" type="leafType" minOccurs="1" maxOccurs="1"/> -->
 
-      <!-- This value used to determine behaviour in the event of a crit success or crit fail -->
-      <xs:element name="checktype" type="abilityCheckType" minOccurs="1" maxOccurs="1"/>
+  <!--     <!-\- This value used to determine behaviour in the event of a crit success or crit fail -\-> -->
+  <!--     <xs:element name="checktype" type="abilityCheckType" minOccurs="1" maxOccurs="1"/> -->
 
-      <!-- Point Pool cost to make the check -->
-      <xs:element name="poolcost" type="poolCostType" minOccurs="0" maxOccurs="1"/>
+  <!--     <!-\- Point Pool cost to make the check -\-> -->
+  <!--     <xs:element name="poolcost" type="poolCostType" minOccurs="0" maxOccurs="1"/> -->
       
-      <!-- Action economy information -->
-      <xs:element name="apcost" type="abilityAPCostType" minOccurs="1" maxOccurs="1"/>
+  <!--     <!-\- Action economy information -\-> -->
+  <!--     <xs:element name="apcost" type="abilityAPCostType" minOccurs="1" maxOccurs="1"/> -->
 
-      <!-- Action economy information -->
-      <xs:element name="requires" type="abilityRequiresType" minOccurs="0" maxOccurs="1"/>
+  <!--     <!-\- Action economy information -\-> -->
+  <!--     <xs:element name="requires" type="abilityRequiresType" minOccurs="0" maxOccurs="1"/> -->
 
-      <!-- what range the ability works at. -->
-      <xs:element name="range" type="rangeEnum" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="keywords" type="abilityKeywordsType" minOccurs="1" maxOccurs="1"/>      
+  <!--     <!-\- what range the ability works at. -\-> -->
+  <!--     <xs:element name="range" type="rangeEnum" minOccurs="1" maxOccurs="1"/> -->
+  <!--     <xs:element name="keywords" type="abilityKeywordsType" minOccurs="1" maxOccurs="1"/>       -->
 
-      <!-- some abilities can only be used after certain preconditions are met -->
-      <xs:element name="precondition" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <!--     <!-\- some abilities can only be used after certain preconditions are met -\-> -->
+  <!--     <xs:element name="precondition" type="xs:string" minOccurs="0" maxOccurs="1"/> -->
 
-      <!-- Some abilities cause other checks or abilities to be used. They're specified here. -->
-      <xs:element name="effect" type="textType" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-  </xs:group>
+  <!--     <!-\- Some abilities cause other checks or abilities to be used. They're specified here. -\-> -->
+  <!--     <xs:element name="effect" type="textType" minOccurs="0" maxOccurs="1"/> -->
+  <!--   </xs:sequence> -->
+  <!-- </xs:group> -->
 
 
   <!--
@@ -1786,20 +1835,61 @@ Token Types:
       <!-- <xs:element name="gm-fiat" type="emptyType" minOccurs="0" maxOccurs="1"/> -->
     </xs:sequence>
   </xs:group>
-  
 
-  <!-- Check -->  
-  <xs:complexType name="checkType" mixed="true">
+  <xs:complexType name="actionClassType">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:element name="check" type="keywordType" fixed="Check"/>
+      <xs:element name="save" type="keywordType" fixed="Save"/>
+      <xs:element name="auxiliary" type="keywordType" fixed="Auxiliary"/>
+    </xs:choice>
+  </xs:complexType>        
+
+  <!-- check -->  
+  <xs:complexType name="actionType" mixed="true">
     <xs:sequence>
-      <xs:group ref="abilityCheckHeaderGroup"/>
-      <xs:element name="counter" minOccurs="1" maxOccurs="1">
-	<xs:complexType>
-	  <xs:choice>
-	    <xs:group ref="svResultGroup"/>
-	    <xs:group ref="opponentsCounterResultGroup"/>
-	  </xs:choice>
-	</xs:complexType>
-      </xs:element>
+
+      <!-- Is this a Check, a Save or an Auxiliary? -->
+      <xs:element name="class" type="actionClassType" minOccurs="1" maxOccurs="1"/>
+      
+      <!--
+	  CHECK INFORMATION
+      -->
+      <!-- The name of this action. -->
+      <xs:element name="name" type="leafType" minOccurs="1" maxOccurs="1"/>
+
+      <!-- The name of the opposing action.  One of a few standard types -->
+      <xs:element
+	  name="opposing-action-name"
+	  type="opposingActionType"
+	  minOccurs="1" maxOccurs="1"/>
+
+      <!--
+
+        Prerequisites and other details.
+
+      -->
+
+      <!-- Point Pool cost to make the check (if any) -->
+      <xs:element name="critclass" type="critClassType" minOccurs="0" maxOccurs="1"/>           
+      
+      <!-- Action economy information for the check (action points or OOTA?)-->
+      <xs:element name="cost" type="abilityCostType" minOccurs="1" maxOccurs="1"/>
+
+      <!-- Point Pool cost to make the check (if any) -->
+      <xs:element name="poolcost" type="poolCostType" minOccurs="0" maxOccurs="1"/>           
+
+      <!-- Action economy information -->
+      <xs:element name="requires" type="abilityRequiresType" minOccurs="0" maxOccurs="1"/>
+      
+      <!-- what range the ability works at. -->
+      <xs:element name="range" type="rangeEnum" minOccurs="1" maxOccurs="1"/>
+      
+      <xs:element name="keywords" type="abilityKeywordsType" minOccurs="1" maxOccurs="1"/>
+
+      <!-- some abilities can only be used after certain preconditions are met -->
+      <xs:element name="precondition" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+
 
       <xs:element name="dmg" minOccurs="0" maxOccurs="1">
 	<xs:complexType mixed="true">
@@ -1814,36 +1904,70 @@ Token Types:
       </xs:element>
 	
       <xs:group ref="abilityCheckOutcomeGroup"/>
+
+      <!-- Some abilities cause other checks or abilities to be used. They're specified here. -->
+      <xs:element name="effect" type="blockType" minOccurs="0" maxOccurs="1"/>      
     </xs:sequence>
-    <xs:attribute name="readable-type" type="xs:string" fixed="Check"/>    
   </xs:complexType>
+
   
 
-  <!-- CounterCheck (Save) -->
-  <xs:complexType name="counterCheckType" mixed="false">
-    <xs:sequence>
-      <xs:group ref="abilityCheckHeaderGroup"/>
-      <xs:element name="counter" minOccurs="1" maxOccurs="1">
-	<xs:complexType>
-	  <xs:choice>
-	    <xs:group ref="svResultGroup"/>
-	    <xs:group ref="opponentsCounterResultGroup"/>
-	  </xs:choice>
-	</xs:complexType>
-      </xs:element>
-      
-      <xs:group ref="abilityCheckOutcomeGroup"/>
-    </xs:sequence>    
-    <xs:attribute name="readable-type" type="xs:string" fixed="Countercheck"/>
-  </xs:complexType>
+  <!-- Check -->  
+  <!-- <xs:complexType name="checkType" mixed="true"> -->
+  <!--   <xs:sequence> -->
+  <!--     <xs:group ref="abilityCheckHeaderGroup"/> -->
+  <!--     <xs:element name="counter" minOccurs="1" maxOccurs="1"> -->
+  <!-- 	<xs:complexType> -->
+  <!-- 	  <xs:choice> -->
+  <!-- 	    <xs:group ref="svResultGroup"/> -->
+  <!-- 	    <xs:group ref="opponentsCounterResultGroup"/> -->
+  <!-- 	  </xs:choice> -->
+  <!-- 	</xs:complexType> -->
+  <!--     </xs:element> -->
 
-  <!-- Triggered by another check but doesn't require a roll. -->
-  <xs:complexType name="abilityCheckAuxiliaryType" mixed="false">
-    <xs:sequence>
-      <xs:group ref="abilityCheckHeaderGroup"/>
-    </xs:sequence>
-    <xs:attribute name="readable-type" type="xs:string" fixed="Auxiliary"/>    
-  </xs:complexType>
+  <!--     <xs:element name="dmg" minOccurs="0" maxOccurs="1"> -->
+  <!-- 	<xs:complexType mixed="true"> -->
+  <!-- 	  <xs:sequence> -->
+  <!-- 	    <xs:element -->
+  <!-- 		name="param-dmg" -->
+  <!-- 		type="stringConstantType" -->
+  <!-- 		fixed="DMG" -->
+  <!-- 		minOccurs="0" maxOccurs="1"/> -->
+  <!-- 	  </xs:sequence> -->
+  <!-- 	</xs:complexType> -->
+  <!--     </xs:element> -->
+	
+  <!--     <xs:group ref="abilityCheckOutcomeGroup"/> -->
+  <!--   </xs:sequence> -->
+  <!--   <xs:attribute name="readable-type" type="xs:string" fixed="Check"/>     -->
+  <!-- </xs:complexType> -->
+  
+
+  <!-- <!-\- CounterCheck (Save) -\-> -->
+  <!-- <xs:complexType name="counterCheckType" mixed="false"> -->
+  <!--   <xs:sequence> -->
+  <!--     <xs:group ref="abilityCheckHeaderGroup"/> -->
+  <!--     <xs:element name="counter" minOccurs="1" maxOccurs="1"> -->
+  <!-- 	<xs:complexType> -->
+  <!-- 	  <xs:choice> -->
+  <!-- 	    <xs:group ref="svResultGroup"/> -->
+  <!-- 	    <xs:group ref="opponentsCounterResultGroup"/> -->
+  <!-- 	  </xs:choice> -->
+  <!-- 	</xs:complexType> -->
+  <!--     </xs:element> -->
+      
+  <!--     <xs:group ref="abilityCheckOutcomeGroup"/> -->
+  <!--   </xs:sequence>     -->
+  <!--   <xs:attribute name="readable-type" type="xs:string" fixed="Countercheck"/> -->
+  <!-- </xs:complexType> -->
+
+  <!-- <!-\- Triggered by another check but doesn't require a roll. -\-> -->
+  <!-- <xs:complexType name="abilityCheckAuxiliaryType" mixed="false"> -->
+  <!--   <xs:sequence> -->
+  <!--     <xs:group ref="abilityCheckHeaderGroup"/> -->
+  <!--   </xs:sequence> -->
+  <!--   <xs:attribute name="readable-type" type="xs:string" fixed="Auxiliary"/>     -->
+  <!-- </xs:complexType> -->
 
   <xs:complexType name="tableType">
     <xs:sequence>
@@ -1994,7 +2118,7 @@ Token Types:
     </xs:sequence>  
     <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
   </xs:complexType>
-
+  
   <xs:complexType name="sidebarType">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
