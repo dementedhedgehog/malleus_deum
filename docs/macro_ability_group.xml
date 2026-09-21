@@ -1,4 +1,4 @@
-{% macro build_ability_group(ag) %}
+{% macro format_ability_group(ag) %}
 <subsection>
   <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
   {% set slug = ag.get_slug() -%}
@@ -16,7 +16,7 @@
   {% endif %}
     
   {% for ability in ag.get_abilities()%}
-  {{ build_ability(ability) }}
+  {{ format_ability(ability) }}
   {% endfor %}
 </subsection>
 {%- endmacro -%}

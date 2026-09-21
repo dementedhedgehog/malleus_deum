@@ -19,7 +19,7 @@
 
       {{ patron.ability_group.get_description() }}
 
-      {% from "docs/macro_ability.xml" import build_ability with context %}      
+      {% from "docs/macro_ability.xml" import format_ability with context %}      
       {% for ability in patron.ability_group.get_abilities()%}
 
       <subsection>
@@ -27,7 +27,7 @@
 	{{ ability.get_title() }}
       </subsectiontitle>
 
-      {{ build_ability(ability) }}
+      {{ format_ability(ability) }}
 
       </subsection>
       {% endfor %}

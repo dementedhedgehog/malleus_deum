@@ -2,11 +2,90 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" >
 <!--
 
+    Schematron Rules to validate our xml.
+
 Some notes.
 
 i) Schematron doesn't have implication!?  So instead of testing for
 A⟹B we have to test ¬A ∨ B instead (frickin idiots).
   
+-->
+
+<pattern id="test-auxiliary-actions">
+  <rule context="action[class/auxiliary]">
+
+    <assert test="not(critclass)">
+      Error in ability: <value-of select="../abilitytitle"/>
+
+      Auxiliary actions must NOT have a critclass element
+    </assert>
+
+    <assert test="keywords/auxiliary">
+      Error in ability: <value-of select="../abilitytitle"/>
+
+      Auxiliary actions must have auxiliary ∈ keywords
+    </assert>
+  </rule>
+</pattern>
+
+
+<pattern id="test-checks">
+  <rule context="action[class/check][not(../keywords/antagonist)]">
+
+    <assert test="critclass">
+      Error in ability: <value-of select="../abilitytitle"/>
+
+      Antag check actions must NOT have a critclass.
+    </assert>
+
+    <assert test="opposing-action">
+      Error in ability: <value-of select="../abilitytitle"/>
+
+      Check actions must have an opposing-action
+    </assert>
+
+    <assert test="keywords/check">
+      Error in ability: <value-of select="../abilitytitle"/>
+
+      Check actions must have check ∈ keywords
+    </assert>    
+  </rule>
+</pattern>
+
+
+<!-- Check antagonist keyword sanity -->
+<pattern id="test-antag">
+  <rule context="action[keywords/antagonist]">
+    
+    <assert test="../keywords/antagonist">  
+      Error in ability: <value-of select="../abilitytitle"/>
+    
+      Action <value-of select="name"/> has 'antagonist' ∈ keywords
+      then the parent ability *must* also have 'antagonist' ∈ keywords
+
+      Abilities are either antagonist or not.  In an antagonist ability all the
+      actions are antagonist actions (they all have the antagonist keyword). In
+      a PC/protagonist/normal ability, all the actions must be normal.
+	
+      This is because all the actions in an ability share the same rank so if
+      you have mixed antagonist and protagonist actions in the same ability then
+      the rank effects both the PCs results and the GMs results (for different
+      actions). So changing the ability rank causes conflicting results (higher
+      ranks are better for both the GM and the PC, lower ranks are worse for
+      both the GM and the PC).
+      ----------------------------------------------------------------------
+    </assert>
+  </rule>
+</pattern>
+
+
+
+
+
+<!--
+
+OLD STUFF .. ALL NEEDS TO BE RECHECKED AND PROBABLY REWRITTEN
+
 -->
 <pattern>
 

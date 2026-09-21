@@ -19,7 +19,7 @@
     <abilitytitle>Axe Cleave</abilitytitle>
     <abilityid>axe_cleave</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilityauxiliary>
+    <action>
       <name>Auxiliary Attack</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -32,7 +32,7 @@
 	Axe Strike damage is dealt to an additional enemy adjacent
 	to the attacking character.
       </effect>  
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="axe_strike" rank="3"/>
     <prereqattr><strength>13</strength></prereqattr>
     <spline><p x="60" y="30"/></spline>
@@ -65,7 +65,7 @@
       <cost><ap4/></cost>
       <range><reach/></range>
       <keywords><mettlepool/><axe/><melee/><check/></keywords>
-      <counter><sv11/></counter>     
+      <opposing-action><sv11/></opposing-action>     
       <any-success>Make 2 Axe-Strike attacks.</any-success>
       <critsuccess>3 Attacks instead of 2</critsuccess>
       <critfail>Berserk</critfail>      
@@ -95,7 +95,7 @@
       <keywords><axe/><melee/><check/></keywords>
       <precondition>Righteous Axe Strike against an opponent carrying an item,
       a weapon or shield</precondition>
-      <counter><opponents-strength-save/></counter>
+      <opposing-action><strength-save/></opposing-action>
       <critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
       <success>Target drops random item, weapon or shield</success>
     </action>
@@ -121,7 +121,7 @@
       <cost><ap4/></cost>
       <range><reach/></range>
       <keywords><axe/><melee/><basic-attack/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
       <success><default-attack-success/></success>

@@ -25,14 +25,14 @@
       <keywords>
 	<crossbow/><physical-attack/><basic-attack/><missile/><check/>
       </keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
     </action>
 
-    <abilityauxiliary>
+    <action>
       <name>Reload</name>
       <critclass><auxiliary/></critclass>
       <cost><ap3/></cost>
@@ -40,7 +40,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>Armed with an empty crossbow.</precondition>
       <effect>Reloads the crossbow.</effect>
-    </abilityauxiliary>
+    </action>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -64,7 +64,7 @@
 	<crossbow/><physical-attack/><basic-attack/><missile/><check/>
       </keywords>
       <effect>Attacks with advantage.</effect>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
@@ -91,7 +91,7 @@
       <cost><ap2/></cost>
       <range><self/></range>
       <keywords><crossbow/><missile/><check/></keywords>
-      <counter><sv11/></counter>      
+      <opposing-action><sv11/></opposing-action>      
       <critsuccess>Reload takes 1ap</critsuccess>
       <righteoussuccess>Reload takes 2ap</righteoussuccess>
       <success>Reload takes 3ap</success>

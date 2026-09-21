@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Combat Abilities</abilitygrouptitle>
+    <abilitygroupid><combat/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <slug>Wars may be fought with weapons, but they are won by men.</slug>
+    <abilitygroupdescription>
+      <p>
+	Generic combat abilities.
+      </p>
+
+      <img id="zvorykin_lion"/>
+      <vspace length="5"/>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  
+  <ability>
+    <abilitytitle>Adversary</abilitytitle>
+    <abilityid>adversary</abilityid>    
+    <abilityranks from="1" to="5"/>
+    <action>
+      <class><check/></class>
+      <name>Experience Sets In</name>
+      <opposing-action><sv13/></opposing-action>
+      <critclass><recall-knowledge/></critclass>
+      <cost><free-interrupt-cost/></cost>
+      <range><self/></range>
+      <keywords><lore/><auxiliary/></keywords> 
+      <precondition>Lucky or Righteous physical attack on a creature of the
+      given specialization.</precondition>
+      <critsuccess>
+	As for success but +3 to hit <ampersand/> damage.
+      </critsuccess>
+      <righteoussuccess>
+	As for success but +2 to hit <ampersand/> damage.
+      </righteoussuccess>
+      <success>
+	+1 to all further physical attacks to hit <ampersand/> damage by this
+	character against creatures of this type during this combat.
+      </success>
+      <any-fail>
+	No effect, though the character may make an attempt the next time the
+	preconditions are met during this combat.
+      </any-fail>
+    </action>
+    
+    <action>
+      <class><check/></class>
+      <name>Recall Knowledge</name>
+      <opposing-action><easy-recall-knowledge-sv/></opposing-action>
+      <critclass><recall-knowledge/></critclass>
+      <cost><default-recall-knowledge-cost/></cost>
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>
+      <success><default-lore-success/></success>
+    </action>
+    
+    <specializations>
+      <specialization>Deep-Ones</specialization>
+      <specialization>Green-Skins</specialization>
+      <specialization>Froche</specialization>
+      <specialization>Fey</specialization>
+      <specialization>Giants</specialization>
+      <specialization>Demons</specialization>
+      <specialization>Animals</specialization>
+      <specialization>Undead</specialization>
+    </specializations>    
+    <abilitydescription>
+      <p>
+	The character bears an animosity towards, and/or has been trained to
+	fight opponents of a given monster-class.
+      </p>
+
+      <p>
+	This ability is triggered after a character with this ability makes
+	their first successful blessed melee attack against a creature having a
+	monster-class that this character is adversarial to. Once triggered the
+	characters training/experience kicks in and the ability remains active
+	for the rest of the combat.
+      </p>
+
+      <p>
+	While triggered the character gains a bonus equal to their adversary
+	rank for combat checks against monsters of the given monster-class (the
+	bonus is to the check only and not to damage).
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Armour</abilitytitle>
+    <abilityid>armour</abilityid>    
+    <abilityranks untrained="0" from="1" to="5"/>
+    <action>
+      <class><save/></class>
+      <name>Armour Save</name>
+      <opposing-action><physical-attack/></opposing-action>
+      <critclass><armour/></critclass>
+      <cost><free-save-cost/></cost>
+      <range><na/></range>
+      <keywords><physical-defence/><save/></keywords>
+    </action>
+    <abilitydescription>
+      <p>
+  	The character takes the brunt of the attack on their armour, hoping that
+	it will protect them. A character may be harder to hit because they are
+	wearing heavier armour or carrying a shield.
+      </p>
+      
+      <p>
+	The bonus for this check is determined by the rank of this ability plus
+	a modifier for the armour the character is wearing. The armour modifier
+	is +2 for very heavy armour, +1 for heavy armour, +0 for medium armour,
+	-1 for light armour and -3 for None, with an additional +1 if using a
+	shield.
+      </p>
+
+      <playexample>
+	<p>
+	  Dourli has Armour 2 and is wearing banded mail, which is heavy armour,
+	  he gets attacked by two goblins. He blocks the first attack with his
+	  shield, using his OOTA for the turn.  He has to use an Armour Save for
+	  the second attack since he has no OOTAs remaining.  He rolls dice and
+	  adds +4 to the skill result to defend; +1 for the heavy armour, +1
+	  for the shield, and +2 for his ranks in armour.
+	</p>
+      </playexample>
+      
+      <p>
+	<label>ability:armour</label>
+        <indexentry><entry>Armour Save</entry></indexentry>
+	Instead of making an armour check the character may choose to dodge,
+	shield block, parry or use some	other attack-reaction ability.
+	However, because Armour Saves are free they tend to be used as the
+	defence of last resort for all but the most heavily armoured.
+      </p>
+
+      <p>
+	Some attacks cannot be defended with armour, <eg/> a dragons breath
+	weapon. If no other defence ability can be used the attack automatically
+	does normal damage.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Blood Frenzy</abilitytitle>
+    <abilityid>blood_frenzy</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <class><check/></class>
+      <name>Trigger Frenzy</name>
+      <opposing-action><sv13/></opposing-action>
+      <critclass><trial/></critclass>
+      <cost><free-reaction-cost/></cost>
+      <poolcost>1</poolcost>
+      <range><na/></range>
+      <keywords><mettlepool/><check/><maintain/></keywords>
+      <precondition>A successful melee hit in combat.</precondition>      
+      <any-success>Character may decide to enter or leave the Blood Frenzy
+      state.</any-success>
+    </action>
+    <abilitydescription>
+      <p>
+	After your character makes a successful melee attack you can make 
+	a save to see if you enter a Blood Frenzy. 
+      </p>
+
+      <p>
+        <indexentry>
+	  <entry>Blood Frenzy Condition</entry>
+	</indexentry>
+        <indexentry>
+	  <entry>Condition</entry>
+	  <subentry>Blood Frenzy</subentry>
+	</indexentry>
+	While a character has the <emph>Blood Frenzy Condition</emph> they get
+	advantage on standard basic melee attacks. During this time the
+	character must perform a basic melee attack every turn, moving to attack
+	if necessary.  <emph>The character must pay the pool cost at the start
+	of each round to maintain this ability</emph>. The frenzy ends when the
+	character runs out of Mettle, when they perform a turn without attacking
+	anything, or when they make a second successful Trigger Frenzy check to
+	lose this condition. While in a frenzy if the character cannot reach an
+	enemy then they must attack an ally if they can.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Brawl</abilitytitle>
+    <abilityid>brawl</abilityid>
+    <abilityranks untrained="-3" from="1" to="6"/>
+    <action>
+      <class><check/></class>
+      <name>Grapple</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap3/></cost>
+      <range><na/></range>
+      <keywords><check/><nonlethal/><subdue/></keywords>
+      <precondition>Opponent must not be much larger than the character.
+      </precondition>
+      <dmg>Depends on the type of Brawl action chosen.</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
+      <success><default-attack-success/></success>
+    </action>
+    
+    <action>
+      <class><save/></class>
+      <name>Guard</name>
+      <opposing-action><physical-attack/></opposing-action>
+      <critclass><physical-defence/></critclass>
+      <cost><reaction-cost/></cost>
+      <range><na/></range>
+      <keywords><save/><nonlethal/><subdue/></keywords>
+      <effect>Shift the result down against lethal attacks. Make the save at
+      advantage against grappled opponents.</effect>
+    </action>
+    
+    <action>
+      <class><check/></class>
+      <name>Punch</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap3/></cost>
+      <range><na/></range>
+      <keywords><check/><nonlethal/></keywords>
+      <dmg>1d2+Str damage, +2 if the attacker is wearing gauntlets.</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
+      <success><default-attack-success/></success>      
+    </action>
+    
+    <action>
+      <class><check/></class>
+      <name>Headbutt</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap3/></cost>
+      <range><na/></range>
+      <keywords><check/><nonlethal/></keywords>
+      <precondition>Opponent must not be much larger than the character.
+      </precondition>
+      <dmg>Depends on the type of Brawl action chosen.</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
+      <success><default-attack-success/></success>      
+    </action>
+    
+    <abilitydescription>
+      <p>
+	Brawling is the art of unarmed combat. It involves grappling, head
+	butting, or punching opponents. Brawl damage is non-lethal.  The check
+	is shifted down twice if the opponent is larger than the brawler.
+      </p>
+
+      <p>
+        <indexentry>
+	  <entry>Grappling</entry>
+	  <subentry>See Brawl/Grappling</subentry>
+	</indexentry>
+	<emph>Grappling</emph> involves grabbing, tackling or wrestling an
+	opponent and holding them without harming them too much. Other attacks
+	against a grappled opponent are hindered by the grappler being close to
+	the opponent and the opponents struggling. Every round that an opponent
+	is grappled they may make an opposed Brawl|Str save against their grappler
+	to escape. Once grappled it takes a round for a second character to
+	tie-up, or otherwise constrain, the opponent.
+      </p>
+
+      <p>
+        <indexentry>
+	  <entry>Head Butt</entry>
+	  <subentry>See Brawl/Head Butt</subentry>
+	</indexentry>
+	A <emph>Head Butt</emph> involves the attacker driving their head into
+	the bridge of the defenders nose.  Head butting is mainly used as an
+	attack of last resort or as a surprise attack. An attacker may only head
+	butt someone immediately in front or behind them.  An character may head
+	butt when grappled or otherwise constrained. Head butts do 1d2+Str
+	damage, +1 damage if the attacker is wearing a helmet and -1 damage if
+	the defender is wearing a helmet.
+      </p>
+
+      <p>
+        <indexentry>
+	  <entry>Punch</entry>
+	  <subentry>See Brawl/Punch</subentry>
+	</indexentry>
+        <indexentry>
+	  <entry>Kick</entry>
+	  <subentry>See Brawl/Kick</subentry>
+	</indexentry>
+	When a character makes a <emph>Punch or Kick</emph> attack the attacker
+	attempts to hit their opponent using their fists. The attack is a Brawl
+	vs Targets Defence. It does 1d2+Str damage, +2 damage if the attacker is
+	wearing gauntlets.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+
+  <ability>
+    <abilitytitle>Dirty-Fighter</abilitytitle>
+    <abilityid>dirty-fighter</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <class><auxiliary/></class>
+      <name>Talent</name>
+      <!-- <critclass><auxiliary/></critclass> -->
+      <cost><ap2/></cost>
+      <range><reach/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>
+	Lucky success in a melee attack against an opponent of Appropriate
+	Size
+      </precondition>
+      <effect>Make a Brawl attack with a Dirty Fighter Rank bonus.</effect>
+    </action>
+    <prereqabilityref id="brawl" rank="1"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	When the character makes a lucky successful melee attack, they may
+	immediately make a free brawl attack as a minor action adding their
+	Dirty-Fighter Rank to any damage that the Brawl attack does.
+      </p>
+    </abilitydescription>
+  </ability>
+    
+  
+  
+  <ability>
+    <abilitytitle>Dodge</abilitytitle>
+    <abilityid>dodge</abilityid>
+    <abilityranks untrained="0" from="1" to="6"/>
+    <action>
+      <class><save/></class>
+      <name>Physical Defence</name>
+      <opposing-action><physical-attack/></opposing-action>
+      <critclass><dodge/></critclass>
+      <cost><reaction-cost/></cost>
+      <range><na/></range>
+      <keywords><physical-defence/><save/></keywords>
+    </action>
+    <abilitydescription>
+      <p>
+	The character may attempt to dodge, to leap out of the way of the
+	attack, <emph>instead</emph> of making an armour roll.
+	Doing so uses the characters reaction for the round.
+	If successful the attack is dodged and the character takes no damage.
+      </p>
+
+      <p>
+	Some types of attack cannot be dodged, e.g. surprise attacks or
+	poisonous gas attacks. Other types of attack <eg/> the acid or
+	fire attacks of dragons may be dodgeable depending on the context
+	and deal half or no damage (at the GM's discretion).
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Juggernaut</abilitytitle>
+    <abilityid>juggernaut</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <class><check/></class>
+      <name>Check</name>
+      <opposing-action><strength-save/></opposing-action>
+      <critclass><physical/></critclass>
+      <cost><free-interrupt-cost/></cost>
+      <range><na/></range>
+      <keywords><check/></keywords>
+      <any-success>Push the opponent one square.</any-success>
+    </action>
+    <!-- <spline><p x="-90" y="90"/></spline> -->
+    <abilitydescription>
+      <p>
+	Once per movement action the attacker may use his mass and strength to
+	brush aside those who stand in his way. Such is the force of his
+	unstoppable charge that at most one opportunity attack can be made
+	against him. The pushed opponent cannot make an opportunity attack
+	against the Juggernaut.
+      </p>
+
+      <p>
+	Note that the Juggernaut ability may only be used against opponents of
+	similar or smaller size and strength.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Throw Object</abilitytitle>
+    <abilityid>throw_object</abilityid>    
+    <abilityranks untrained="-3" from="1" to="3"/>
+    <action>
+      <class><check/></class> 
+      <name>Check</name>
+      <opposing-action><physical-defence-or-gm-fiat/></opposing-action>
+      <critclass><fixme/></critclass>
+      <cost><ap2/></cost>
+      <range><ranged-short/></range>
+      <keywords><check/></keywords>
+      <any-success>Success</any-success>
+    </action>
+    <spline><p x="0" y="0"/></spline>     
+    <abilitydescription>
+      <p>
+	This ability is used to throw objects.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Parry</abilitytitle>
+    <abilityid>parry</abilityid>
+    <abilityranks untrained="-3" from="1" to="6"/>
+    <action>
+      <class><save/></class>
+      <name>Physical Defence</name>
+      <opposing-action><physical-attack/></opposing-action>
+      <critclass><parry/></critclass>
+      <cost><reaction-cost/></cost>
+      <range><na/></range>
+      <keywords><physical-defence/><save/></keywords>
+    </action>
+    <abilitydescription>
+      <p>
+	<label>ability:parry</label>
+        When a character is attacked they may attempt to parry the blow when
+	using a mace or sword instead of making an armour roll. If the parry
+	result fails and a boon is rolled the attack deals half damage.  If the
+	parry result fails and a bane is rolled the attack deals double damage.
+	It may not be possible to parry certain types of attack, for example
+	breath weapons cannot be parried.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Retribution</abilitytitle>
+    <abilityid>retribution</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <class><check/></class>
+      <name>Check</name>
+      <opposing-action><easy-sv/></opposing-action>      
+      <critclass><test/></critclass>
+      <cost><reaction-cost/></cost>
+      <poolcost>1</poolcost>
+      <range><na/></range>
+      <keywords><mettlepool/><check/></keywords>
+      <any-success>Free charge or melee attack.</any-success>
+    </action>
+    <abilitydescription>
+      <p>
+	When the characters health drops to 0 they can instantly make a
+	Retribution check and if successful the character may immediately
+	perform a free charge or melee attack.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

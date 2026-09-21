@@ -1,5 +1,4 @@
-{% macro insert_action_cost_symbol(action) %}
-{% set cost = action.cost %}
+{% macro insert_cost_symbol(cost) %}
 {%- if cost == 'Free' -%}
 <freeactionsymbol/>
 {%- elif cost == '1AP' -%}
@@ -46,6 +45,10 @@
 <mandatoryfreeinterruptsymbol/>
 {%- elif cost == 'Noncombat' -%}
 <outofcombatsymbol/>
+{%- elif cost == 'Start of Turn' -%}
+<startofturnsymbol/>
+{%- elif cost == 'Any OOTA' -%}
+<anyootasymbol/>
 {%- else -%}
 UNKNOWN COST!! {{ cost }}
 {%- endif -%}
@@ -53,32 +56,112 @@ UNKNOWN COST!! {{ cost }}
 
 
 
+{%- macro insert_action_cost_symbol(action) -%}
+{%- set cost = action.cost -%}
+{{- insert_cost_symbol(cost) -}}
+{%- endmacro -%}
 
-{% macro insert_opposing_action_symbol(action) %}
-{% set opposing_action_name = action.opposing_action_name %}
-{%- if opposing_action_name == 'Unknown Save' -%}
-<saveorfreesavesymbol/> 
-{%- else -%}
-UNKNOWN OPPOSING ACTION!! ({{ opposing_action_name }})
+{%- macro insert_opposing_action_cost_symbol(action) -%}
+{%- set cost = action.opposing_action_cost -%}
+{%- if cost is not none -%}
+{{- insert_cost_symbol(cost) -}}
 {%- endif -%}
+{%- endmacro -%}
+
+
+
+{% macro format_action(action) %}
+    <vspace length="1.0"/><br/>
+    {%- if action.action_class == 'Auxiliary' -%}
+        <auxiliarysymbol/>
+    {%- else -%}
+        <abilitybulletsymbol/>
+    {%- endif -%}
+
+    
+    {#- ***CHECK*** -#}
+    {%- if action.action_class == 'Check' -%}
+
+        {%- if action.is_antag_action() -%}
+            AC {{action.name}}{{ insert_action_cost_symbol(action) }}
+	    <vscheckarrowsymbol/><savearrowsymbol/>
+	    {{- insert_opposing_action_cost_symbol(action) -}}
+	    <bold>{{- action.opposing_action }}</bold>
+	{%- else -%}
+            CH <bold>{{action.name}}</bold>
+	    <checkarrowsymbol/><vssavearrowsymbol/>
+	    <smaller>{{- action.opposing_action }}</smaller>
+	{%- endif -%}
+
+	
+    {#- ***SAVE*** #}{%- elif action.action_class == 'Save' -%}
+
+        {%- if action.is_antag_action() -%}
+	    AS {{action.name}}
+	    {{- " " + insert_action_cost_symbol(action) + " "-}}
+            <vscheckarrowsymbol/><savearrowsymbol/>
+	    {{- " " + insert_opposing_action_cost_symbol(action) + " "-}}
+	    <bold>{{action.opposing_action}}</bold>
+	{%- else -%}
+	    SV {{action.opposing_action}}
+	    <vscheckarrowsymbol/><savearrowsymbol/>
+	    {{- " " + insert_action_cost_symbol(action) + " "-}}
+	    <bold>{{action.name}}</bold>
+	{%- endif -%}
+
+	
+    {#- ***Auxiliary*** #}{%- elif action.action_class == 'Auxiliary' -%}	
+	{{- " " + insert_action_cost_symbol(action) + " "-}}
+	<bold>{{action.name}}</bold>
+
+
+    {#- ***Error!*** #}{%- else -%}
+	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ action.action_type }}
+    {%- endif -%}	
+
+    <br/><bold>Crits:</bold> {{ action.get_crit_class()|string + " " }}
+    {%- if action.pool_cost -%}
+    <bold>Pool Cost:</bold> {{ action.get_pool_cost_str()  + " " }}
+    {%- endif -%}
+    <bold>Range:</bold> {{ action.action_range + " " -}}
+    {%- if action.dmg -%}
+    <bold>Damage:</bold> {{ action.dmg  + " " }}
+    {%- endif -%}
+    {%- if action.keywords -%}
+    <bold>Keywords:</bold> {{ action.get_action_keywords_str()  + " " }}
+    {%- endif -%}
+    {%- if action.requires %}
+    <bold>Requires:</bold> {{ action.requires }}	
+    {%- endif -%}
+    {%- if action.precondition %}	
+    <br/><bold>Preconditions:</bold> {{ action.precondition }}
+    {%- endif -%}
+    {% if action.effect -%}
+    <br/><bold>Effect:</bold> {{ action.effect }}
+    {%- endif -%}
+    {%- if action.has_outcomes() %}
+    <br/><bold>Outcomes:</bold><indent>
+    {%- for outcome in action.get_outcomes() -%}
+    {%- set name, result = outcome -%}	
+    <br/><bold>{{ name }}:</bold> {{ result }}
+    {%- endfor -%}
+    </indent>
+    {%- endif -%}	
 {%- endmacro -%}
 
 
 
 
 
-{#-
-
- Formats an Ability
-
--#}
-{% macro build_ability(ability) %}
+{% macro format_ability(ability) %}
 <spacer/>
 <subsubsection>
-  <subsubsectiontitle isabilitytitle="true">
-    {%- if ability.is_antag_ability() -%}<antagonistsymbol/> {%- endif -%}
-    {{- ability.get_name() + " " -}}
-    
+  {%- set titlecategory = "ability" -%}
+  {%- if ability.is_antag_ability() -%}
+  {%- set titlecategory = "antagonist-ability" -%}
+  {%- endif -%}    
+  <subsubsectiontitle titlecategory="{{titlecategory}}">
+    {{- ability.get_name() + " " -}}    
     {%- if ability.has_untrained_rank() -%}
     <bold>({{ ability.get_untrained_rank() }}) </bold>
     {%- endif -%}
@@ -91,19 +174,17 @@ UNKNOWN OPPOSING ACTION!! ({{ opposing_action_name }})
     {%- endif -%}
     {#- eat extra newlines as latex doesn't like them in movable arguments -#}
   </subsubsectiontitle>
+  {%- if ability.slug -%}
+  <!-- <vspace length="-0.3"/> -->
+  <slug>{{ ability.slug }}</slug>
+  {%- endif -%}
   <indexentry>
     <entry>{{- ability.get_name() }} Ability</entry>
   </indexentry>
   <indexentry>
-    <entry>Ability</entry>
-    <subentry>{{- ability.get_name() }}</subentry>
+    <entry>Ability</entry><subentry>{{- ability.get_name() }}</subentry>
   </indexentry>
-  {%- if ability.slug -%}
-  <vspace length="-0.3"/>
-  <epigraph>{{ ability.slug }}</epigraph>
-  {%- endif -%}
   <vspace length="-0.5"/>
-  
   <p>
     <smaller>
       <bold>Keywords:</bold> {{ ability.get_keywords_str()  + " " }}
@@ -116,51 +197,7 @@ UNKNOWN OPPOSING ACTION!! ({{ opposing_action_name }})
       {%- if ability.get_actions() -%}
       {%- for action in ability.get_actions() -%}
       <indent>
-	<vspace length="1.0"/><br/>
-	<abilitybulletsymbol/>
-	{#- ***CHECK*** #}{%- if action.action_class == 'Check' -%}
-	<bold>{{action.name}}</bold>{{ insert_action_cost_symbol(action) }}
-	<checkarrowsymbol/><vssavearrowsymbol/>
-	<smaller>{{- action.opposing_action_name }}</smaller>
-	{#- ***SAVE*** #}{%- elif action.action_class == 'Save' -%}
-	{{action.opposing_action_name}}
-	<vscheckarrowsymbol/><savearrowsymbol/>
-	{{- " " + insert_action_cost_symbol(action) + " "-}}
-	<bold>{{action.name}}</bold>
-	{#- ***Auxiliary*** #}{%- elif action.action_class == 'Auxiliary' -%}	
-	<bold>{{action.action_name}}</bold> <vscheckarrowsymbol/>
-	<hspace/><versus/><hspace/>{{ action.save_name }}
-	{#- ***Error!*** #}{%- else -%}
-	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ action.action_type }}
-	{%- endif %}	
-	<br/><bold>Crits:</bold> {{ action.get_crit_class() + " " }}
-	{%- if action.pool_cost -%}
-	<bold>Pool Cost:</bold> {{ action.get_pool_cost_str()  + " " }}
-	{%- endif -%}
-	<bold>Range:</bold> {{ action.action_range + " " -}}
-	{%- if action.dmg -%}
-	<bold>Damage:</bold> {{ action.dmg  + " " }}
-	{%- endif -%}
-	{%- if action.keywords -%}
-	<bold>Keywords:</bold> {{ action.get_action_keywords_str()  + " " }}
-	{%- endif -%}
-	{%- if action.requires %}
-	<bold>Requires:</bold> {{ action.requires }}	
-	{%- endif -%}
-	{%- if action.precondition %}	
-	<br/><bold>Preconditions:</bold> {{ action.precondition }}
-	{%- endif -%}
-	{% if action.effect -%}
-	<br/><bold>Effect:</bold> {{ action.effect }}
-	{%- endif -%}
-	{%- if action.has_outcomes() %}
-	<br/><bold>Outcomes:</bold><indent>
-	{%- for outcome in action.get_outcomes() -%}
-	{%- set name, result = outcome -%}	
-	<br/><bold>{{ name }}:</bold> {{ result }}
-	{%- endfor -%}
-      </indent>
-      {%- endif -%}
+	{{- format_action(action) -}}
       </indent>
       {%- endfor -%}
       {%- endif -%}
@@ -180,11 +217,11 @@ UNKNOWN OPPOSING ACTION!! ({{ opposing_action_name }})
     </smaller> 
     <vspace length="1"/>
   </p>      
-  {%- endif %}            
+  {%- endif %}  
   {%- if ability.description -%}
-  {{ ability.description }}
+  {{- ability.description -}}
   {%- endif -%}
   <divider/>
-</subsubsection>  
-<spacer/>
+</subsubsection>
+<spacer/>     
 {%- endmacro -%}

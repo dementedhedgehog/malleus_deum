@@ -75,7 +75,7 @@ ARCHETYPE_TEMPLATE_FNAME = join("docs", "archetype_template.xml")
 PATRON_TEMPLATE_FNAME = join("docs", "patron_template.xml")
 
 
-def clean():
+def _clean():
     """
     Delete all the build artifacts (tex, etc) and the pdfs.
 
@@ -213,9 +213,9 @@ if __name__ == "__main__":
         elif o in ("-h", "--help"):
             usage()
         elif o in ("-c", "--clean"):
-            clean()            
+            _clean()            
         elif o in ("-C", "--clobber"):
-            clean()
+            _clean()
             sys.exit()
         elif o in ("-r", "--release"):
             release = True

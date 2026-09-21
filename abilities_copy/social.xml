@@ -24,14 +24,15 @@
     <abilitytitle>Contacts</abilitytitle>
     <abilityid>contacts</abilityid>    
     <abilityranks untrained="-6" from="1" to="6"/>
-    <action>
+    <action> 
+      <class><check/></class>
       <name>Check</name>
+      <opposing-action><sv13/></opposing-action>
       <critclass><social/></critclass>
-      <cost><noncombat/></cost>
+      <cost><noncombat-cost/></cost>
       <range><self/></range>
       <keywords><social/><check/></keywords>
-      <counter><sv13/></counter>
-      <any-success>.</any-success>
+      <any-success>FIXME</any-success>
       <critfail>FIXME</critfail>
     </action>
     <spline><p x="0" y="30"/></spline> 
@@ -118,12 +119,13 @@
     </slug>      
     <abilityranks untrained="-3" from="1" to="5"/>
     <action>
+      <class><check/></class>
       <name>Check</name>
+      <opposing-action><negotiate-save/></opposing-action>
       <critclass><social/></critclass>
-      <cost><noncombat/></cost>
+      <cost><noncombat-cost/></cost>
       <range><ranged-short/></range>
       <keywords><social/><check/></keywords>
-      <counter><opponents-negotiate-save/></counter>
       <any-success>.</any-success>
       <critfail>FIXME</critfail>
     </action>
@@ -216,12 +218,13 @@
     <slug>He who knows how to speak, knows also when.</slug>
     <abilityranks untrained="-3" from="1" to="5"/>
     <action>
+      <class><check/></class>
       <name>Check</name>
+      <opposing-action><etiquette-save/></opposing-action>
       <critclass><social/></critclass>    
-      <cost><noncombat/></cost>
+      <cost><noncombat-cost/></cost>
       <range><ranged-short/></range>
       <keywords><social/><check/></keywords>
-      <counter><opponents-etiquette-save/></counter>
       <any-success>.</any-success>
       <critfail>FIXME</critfail>
     </action>
@@ -303,12 +306,13 @@
     <abilityid>fame</abilityid>
     <abilityranks from="1" to="5"/>
     <action> 
+      <class><check/></class>
       <name>Check</name>
+      <opposing-action><sv13/></opposing-action>
       <critclass><social/></critclass>    
-      <cost><noncombat/></cost>
+      <cost><noncombat-cost/></cost>
       <range><ranged-short/></range>
       <keywords><social/><check/></keywords>
-      <counter><sv13/></counter>
       <any-success>.</any-success>
       <critfail>FIXME</critfail>
     </action>    
@@ -364,12 +368,13 @@
     <abilityid>leadership</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
     <action>
+      <class><check/></class>
       <name>Check</name>
+      <opposing-action><sv13/></opposing-action>
       <critclass><social/></critclass>    
-      <cost><reaction/></cost>
+      <cost><reaction-cost/></cost>
       <range><ranged-short/></range>
       <keywords><social/><check/></keywords>
-      <counter><sv13/></counter>
       <any-success>Target may reroll their Mettle Check.</any-success>
       <critfail>FIXME</critfail>
     </action>
@@ -384,7 +389,7 @@
 	yell some encouraging words to an associate who has just failed a morale
 	check, <eg/> ``Fight you Scum''.  If successful the target may reroll
 	their Mettle Check.  Only one such reroll is	permitted per character
-	per encounter.
+	per enopposing-action.
       </p>
 
       <p>

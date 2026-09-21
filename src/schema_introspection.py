@@ -47,6 +47,13 @@ class Constants:
                 continue
 
             tag = _strip_schema_from_tag(child.tag)
+
+            # recurse into groups
+            #if tag == "group":
+            #    self._parse_keywords(prefix, child)
+            #    continue
+
+            # ignore anything that remains that's not an element
             if tag != "element":
                 continue
 
@@ -69,11 +76,13 @@ class Constants:
         """
         schema = lxml.etree.parse(utils.schema_fname)
         for element in schema.iter():
-            name = element.attrib.get("name", None)            
+            name = element.attrib.get("name", None)
             if name == "abilityFamilyKeywordEnum":
-                self._parse_keywords("ABILITY_FAMILY_", element)
+               self._parse_keywords("ABILITY_FAMILY_", element)
             elif name == "abilityGroupKeywordEnum":
-                self._parse_keywords("ABILITY_GROUP_", element)
+               self._parse_keywords("ABILITY_GROUP_", element) 
+            elif name == "abilityKeywordEnum":
+                self._parse_keywords("ABILITY_KEYWORD_", element)
         return
 
     def __getattr__(self, name):
@@ -94,7 +103,17 @@ class Constants:
         constants.parse_schema()
         return constants
 
+            
 if __name__ == "__main__":
     constants = Constants.get_constants()
     #print(constants._constants)
-    print(constants.ABILITY_FAMILY_GENERAL)
+    #print(constants.ABILITY_FAMILY_GENERAL)
+    
+    constants_dict = constants._constants
+    keys = list(constants_dict.keys())
+    keys.sort()
+
+    for k in keys:
+        print(f"{k} {constants_dict[k]}")
+
+    

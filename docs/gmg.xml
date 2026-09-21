@@ -54,11 +54,6 @@
   </chapter>
   
   <chapter>
-    <chaptertitle>Death, Diseases and Insanity</chaptertitle>
-    {% include "docs/fragment_death.xml" %}
-  </chapter>  
-  
-  <chapter>
     <chaptertitle>Cults</chaptertitle>
     {% include "docs/fragment_cults.xml" %}
   </chapter>
@@ -68,7 +63,7 @@
     {% include "docs/fragment_monsters.xml" %}
   </chapter>
 
-{% from "docs/macro_ability.xml" import build_ability with context %}
+{% from "docs/macro_ability.xml" import format_ability with context %}
 
   {% include "docs/phb_chapter_hazards.xml" %}
 

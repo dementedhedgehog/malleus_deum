@@ -19,7 +19,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv/></counter>       
+      <opposing-action><default-lore-sv/></opposing-action>       
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
@@ -32,7 +32,7 @@
       <requires><alchemical-lab/></requires>
       <range><self/></range>      
       <keywords><craft/><check/></keywords>
-      <counter><default-craft-sv/></counter>       
+      <opposing-action><default-craft-sv/></opposing-action>       
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>
@@ -156,7 +156,7 @@
       <cost><ap4/></cost>
       <range><ranged-extremely-long/></range>
       <keywords><black-powder/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <any-success>Attack using artillery pieces.</any-success>      
       <critsuccess>Deal 3×Damage</critsuccess>
       <righteoussuccess>Deal 2×Damage</righteoussuccess>
@@ -170,7 +170,7 @@
       <cost><ap4/></cost>
       <range><self/></range>
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>
+      <opposing-action><default-lore-sv-hard/></opposing-action>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
@@ -199,7 +199,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -227,7 +227,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -260,7 +260,7 @@
       <precondition>
 	Access to a library containing pertinent information.
       </precondition>
-      <counter><default-lore-sv-hard/></counter>
+      <opposing-action><default-lore-sv-hard/></opposing-action>
       <critsuccess>
 	+9 to the skill result for Knowledge Checks made in the library.
       </critsuccess>
@@ -285,7 +285,7 @@
     <abilitytitle>Magnum Opus</abilitytitle>
     <abilityid>grand_discovery</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilityauxiliary>
+    <action>
       <name>Grand Discovery</name>
       <critclass><fixme/></critclass>
       <cost><default-skill-checkcost/></cost>      
@@ -297,7 +297,7 @@
 	check.
       </precondition>
       <effect>Roll on the table below</effect>
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="alchemy" rank="5"/>
     <spline><p x="40" y="60"/></spline>
     <abilitydescription>
@@ -407,7 +407,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -433,7 +433,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -482,7 +482,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -510,7 +510,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -546,7 +546,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -587,7 +587,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -616,7 +616,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -645,7 +645,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -688,7 +688,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -714,7 +714,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -726,7 +726,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>            
+      <opposing-action><default-lore-sv-hard/></opposing-action>            
       <any-success>
 	Defensive checks against missile attacks made at +2×Rank
       </any-success>
@@ -739,7 +739,7 @@
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
       <precondition>Rank 3 in Explosives</precondition>      
-      <counter><default-lore-sv-hard/></counter>            
+      <opposing-action><default-lore-sv-hard/></opposing-action>            
       <any-success>
 	Defensive checks against missile attacks made at +2×Rank
       </any-success>

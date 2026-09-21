@@ -33,9 +33,9 @@ def _jinja_exit(text):
     
 def _jinja_recursive_render(template, jinja_env, **values):
     """
-    Recurse into expanded template variables .. so our templates can
-    include templates which can include templates... etc and all the
-    templates will be evaluated.
+    Recurse into expanded templates .. so our templates can include nested jinja
+    macros which can include other nested templates etc and all macros will be
+    evaluated.
 
     """
     MAX_DEPTH=5
@@ -65,8 +65,6 @@ def get_jinja_env(db):
     )
     
     # Use these in jinja template code like this:  {{ "foobar" | log }}
-    # jinja_env.filters['ab'] = db.filter_abilities
-    # jinja_env.filters['abilities'] = db.filter_abilities
     jinja_env.filters['log']=_jinja_log_to_console
     jinja_env.filters['exit']=_jinja_exit    
     return jinja_env
@@ -96,7 +94,7 @@ def render_xml(
     template = jinja_env.get_template(template_fname)
     if template is None:
         raise Exception(f"Problem reading template file {template_fname}.")
-    
+
     xml = _jinja_recursive_render(
         template=template,
         jinja_env=jinja_env,
@@ -110,13 +108,6 @@ def render_xml(
         encounters=db.encounters,
         add_index_to_core=config.add_index_to_core,
         doc_name=xml_fname_in)
-
-    # process abilities
-    # try:
-    #     xml = db.filter_abilities(xml, verbose=verbosity>0)
-    # except Exception as err:
-    #     err.add_note(f"Problem filtering abilities in {xml_fname_in}")
-    #     raise err
 
     # write the post-processed xml to the build dir 
     # (has all the included files in it).

@@ -28,7 +28,7 @@
       <keywords>
 	<hammer/><melee/><basic-attack/><physical-attack/><check/>
       </keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
@@ -48,7 +48,7 @@
     <abilitytitle>Righteous Blow</abilitytitle>
     <abilityid>stunning_blow</abilityid>
     <abilityranks from="1" to="3"/>
-    <abilityauxiliary>
+    <action>
       <name>Righteous Blow</name>      
       <!-- <critclass><melee/></critclass> -->
       <critclass><auxiliary/></critclass>
@@ -62,7 +62,7 @@
       <effect>
 	Target is Stunned and Target takes an additional +Rank hit points damage.
       </effect>
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="hammer_strike" rank="2"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -89,7 +89,7 @@
       <keywords>
 	<hammer/><melee/><basic-attack/><physical-attack/><check/>
       </keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon+Strength|Endurance</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <!-- <critsuccess>Frog</critsuccess> -->

@@ -33,7 +33,7 @@
       <cost><noncombat/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>      
+      <opposing-action><sv11/></opposing-action>      
       <any-success>Talk with a corpse</any-success>
       <critfail>Accidentally create a zombie.</critfail>      
     </action>
@@ -88,7 +88,7 @@
       <cost><ap1/></cost>      
       <range><reach/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <critsuccess>
 	Melee attacks against the caster deal 3x damage to the attacker
       </critsuccess>
@@ -123,7 +123,7 @@
       <cost><ap4/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/><maintain/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>Undead who can make attacks at disadvantage.</any-success>
     </action>
     <prereqabilityref id="necromancy" rank="1"/>
@@ -147,7 +147,7 @@
       <cost><noncombat/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Replace amputated limbs and heal</any-success>
       <critfail>Succeeds.  However, gain the aspect: It has a Mind
       of It's Own!  The limb will attempt to murder people at inoportune
@@ -181,7 +181,7 @@
       <cost><default-skill-checkcost/></cost>
       <range><self/></range>
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>
+      <opposing-action><default-lore-sv-hard/></opposing-action>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -211,7 +211,7 @@
       <cost><free-interrupt/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Reroll one Near-Death roll.</any-success>
     </action>
     <prereqabilityref id="necromancy" rank="1"/>
@@ -237,7 +237,7 @@
       <cost><reaction/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>In the presence of blood, summon a demon to fight.</any-success>
     </action>
     <prereqabilityref id="necromancy" rank="1"/>
@@ -265,7 +265,7 @@
       <cost><noncombat/></cost>
       <range><ranged-short/></range>
       <keywords><magicpool/><aoe-emination/><check/></keywords>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
       <any-success>
 	Darkness
       </any-success>
@@ -298,7 +298,7 @@
       <cost><noncombat/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
       <any-success>Resembles a corpse</any-success>
     </action>
     <prereqabilityref id="necromancy" rank="1"/>

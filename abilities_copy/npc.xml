@@ -28,7 +28,7 @@
       <cost><ap3/></cost>
       <range><touch/></range>
       <keywords><melee/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg><param-dmg/></dmg>
       <any-fail><param-dmg/></any-fail>
     </action>
@@ -44,15 +44,15 @@
   <ability>
     <abilitytitle>Blood Rage</abilitytitle>
     <abilityid>blood_rage</abilityid>
-    <abilityauxiliary> 
+    <action> 
       <name>Rage</name> 
       <critclass><auxiliary/></critclass>
       <cost><free-reaction/></cost>
       <range><self/></range>
       <keywords><auxiliary/></keywords>
       <precondition>Monster becomes bloodied.</precondition>
-      <effect>Immediately makes a melee counter attack - if possible</effect>
-    </abilityauxiliary>    
+      <effect>Immediately makes a melee opposing-action attack - if possible</effect>
+    </action>    
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -74,7 +74,7 @@
       <cost><ap2/></cost>
       <range><reach/></range>
       <keywords><check/><melee/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <any-fail>param-dmg</any-fail>
     </action>
     <spline></spline>
@@ -100,7 +100,7 @@
       <keywords>
 	<npc/><check/><melee/><unblockable/><undodgeable/><unparryable/>
       </keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <any-success>1+Rank Damage</any-success>
       <fail>Deal Damage</fail>
       <grimfail>Deal 2×Damage</grimfail>
@@ -130,7 +130,7 @@
     <abilityid>death_blow</abilityid>
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
-    <abilityauxiliary>
+    <action>
       <name>Trigger</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -138,7 +138,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>When the character would go Down</precondition>
       <effect>The character gets one more melee attack</effect>
-    </abilityauxiliary>
+    </action>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -160,7 +160,7 @@
       <range><na/></range>
       <keywords><mettlepool/><check/><delegate-saves/></keywords>
       <precondition>When this creature is hit for 10 or more damage</precondition>
-      <counter><opponents-luck-save/></counter>
+      <opposing-action><luck-save/></opposing-action>
       <any-fail>
 	The demon loses its link to its simulacrum in this plane. The simularcrum
 	is destroyed.
@@ -230,7 +230,7 @@
       <range><reach/></range>      
       <keywords><melee/><check/></keywords>
       <precondition>Only available when charging</precondition>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <any-success>7+Rank Damage</any-success>
     </action>
     <spline></spline>
@@ -255,7 +255,7 @@
       <range><reach/></range>
       <keywords><melee/><check/></keywords>
       <precondition>When the character is hit for 10 or more damage</precondition>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <success>No Damage</success>
       <any-fail>7 damage</any-fail>
       <grimfail>Poisoned</grimfail>
@@ -280,7 +280,7 @@
       <cost><ap2/></cost>
       <range><reach/></range>
       <keywords><melee/><check/><noarmour/><unblockable/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <success>No Damage</success>
       <any-fail>Grabbed</any-fail>
       <grimfail>Crushed 2 Damage</grimfail>
@@ -306,7 +306,7 @@
       <cost><ap2/></cost>
       <range><reach/></range>
       <keywords><melee/><check/><noarmour/><unblockable/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
     </action>
     <spline></spline>
     <abilitydescription>
@@ -324,7 +324,7 @@
     <abilityid>regeneration</abilityid>
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
-    <abilityauxiliary>
+    <action>
       <name>Talent</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -332,7 +332,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>Start of the round</precondition>
       <effect>Character regains rank hit points</effect>
-    </abilityauxiliary>
+    </action>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -352,7 +352,7 @@
       <cost><ap5/></cost>
       <range><ranged-short/></range>
       <keywords><check/><delegate-saves/></keywords>
-      <counter><opponents-luck-save/></counter>
+      <opposing-action><luck-save/></opposing-action>
       <any-fail>A demon is summoned</any-fail>
     </action>
     <spline></spline>
@@ -395,7 +395,7 @@
       <cost><ap4/></cost>
       <range><ranged-medium/></range>
       <keywords><mettlepool/><npc/><check/></keywords>
-      <counter><opponents-mettle-save/></counter>
+      <opposing-action><mettle-save/></opposing-action>
       <success>No effect</success>
       <fail>Target loses Rank mettle</fail>
       <grimfail>Target loses Rank+1 mettle</grimfail>
@@ -430,7 +430,7 @@
       <cost><ap4/></cost>
       <range><ranged-short/></range>
       <keywords><aoe-emination/><mettlepool/><npc/><check/></keywords>
-      <counter><opponents-mettle-save/></counter>
+      <opposing-action><mettle-save/></opposing-action>
       <success>No effect</success>
       <fail>Target loses Rank mettle</fail>
       <grimfail>Target loses Rank+1 mettle</grimfail>
@@ -458,7 +458,7 @@
       <keywords>
 	<check/><delegate-saves/>
       </keywords>
-      <counter><opponents-luck-save/></counter>
+      <opposing-action><luck-save/></opposing-action>
     </action>
     <spline></spline>
     <abilitydescription>
@@ -484,7 +484,7 @@
       <keywords>
 	<aoe-cone/><unparryable/><check/><everyone-saves/>
       </keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <fail>Slowed</fail>
       <grimfail>Petrified</grimfail>      
     </action>

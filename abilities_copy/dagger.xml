@@ -3,6 +3,7 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Dagger Abilities</abilitygrouptitle>
     <abilitygroupid><dagger/></abilitygroupid>
+    <slug>The blade itself incites to deeds of violence</slug>
     <abilitygroupfamily><martial/></abilitygroupfamily>
     <abilitygroupdescription>
       <p>
@@ -18,7 +19,7 @@
     <abilitytitle>Dagger Riposte</abilitytitle>
     <abilityid>riposte</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
-    <abilityauxiliary>
+    <action>
       <name>Talent</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -31,7 +32,7 @@
 	Character may make a Dagger Strike attack with a dagger in their
 	off-hand.
       </effect>
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="dagger_strike" rank="2"/>
     <prereqattr><speed>3</speed><agility>3</agility></prereqattr>
     <spline><p x="75" y="30"/></spline>
@@ -55,7 +56,7 @@
       <cost><ap3/></cost>
       <range><reach/></range>
       <keywords><melee/><physical-attack/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon+Speed|Agility</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
@@ -81,7 +82,7 @@
       <cost><ap2/></cost>
       <range><ranged-short/></range>
       <keywords><missile/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>      

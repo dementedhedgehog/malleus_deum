@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Aspects</abilitygrouptitle>
+    <abilitygroupid><aspect/></abilitygroupid>
+    <abilitygroupfamily><aspect/></abilitygroupfamily>
+    <slug>The fault, is not in our stars. But in ourselves.</slug>
+    <abilitygroupdescription>
+      NB WE DON'T PRINT THIS GROUP HEADER FOR ASPECTS SINCE ASPECTS
+      ARE A BIT SPECIAL AND THERE's ONLY ONE ABILITY IN THE GROUP.
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Aspect</abilitytitle>
+    <abilityid>aspect</abilityid>
+      <param-rank>5</param-rank>
+      <param-permanent>false</param-permanent>
+    <abilityranks from="0" to="7"/>
+    <keywords><antagonist/></keywords>           
+    <action>
+      <class><save/></class>
+      <name>Aspect Check</name>
+      <opposing-action><mettle-save/></opposing-action>
+      <critclass><aspect/></critclass>
+      <cost><free-interrupt-cost/></cost>
+      <poolcost>1</poolcost>
+      <range><na/></range>
+      <keywords><mettlepool/><save/><antagonist/></keywords>        
+      <any-success>Aspect is resisted. Demote 1</any-success>
+      <righteoussuccess>Demote 2</righteoussuccess>
+      <any-fail>Aspect is compelled.</any-fail>
+      <grimfail>Promote 1</grimfail>
+     </action>
+    <abilitydescription>
+      <p>
+        <indexentry><entry>Aspect Check</entry></indexentry>
+	Characters make an aspect check to se
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

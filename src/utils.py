@@ -309,7 +309,7 @@ def node_to_string(node):
     Returns all the nodes contents and its children as a string.
 
     """
-    return etree.tostring(node, pretty_print=True, encoding="unicode")
+    return etree.tostring(node, encoding="unicode")
 
 
 def children_to_string(node):
@@ -319,7 +319,7 @@ def children_to_string(node):
 
     """
     return "".join([
-        etree.tostring(c, pretty_print=True, encoding="unicode")
+        etree.tostring(c, encoding="unicode")
         for c in node.getchildren()
     ])
 
@@ -389,6 +389,13 @@ def attrib_is_true(xml_node, attribute):
         elif value_str != "false":
             raise Exception("Unexpected value for boolean in xml")
     return value
+
+
+def attrib_to_int(xml_node, attribute):
+    value_str = xml_node.get(attribute)
+    if value_str is not None:
+        return int(value_str)
+    return None
 
 
 def get_error_context(file_or_filename, error_line_number, context_size=7):

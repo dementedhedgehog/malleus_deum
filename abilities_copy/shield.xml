@@ -24,7 +24,7 @@
       <cost><reaction/></cost>
       <range><self/></range>
       <keywords><physical-defence/>save<shield/></keywords>
-      <counter><opponents-physical-attack/></counter>
+      <opposing-action><physical-attack/></opposing-action>
     </action>
     <spline></spline>
     <abilitydescription>
@@ -56,7 +56,7 @@
       <precondition>
 	This character is in melee with an opponent of similar size or smaller.
       </precondition>      
-      <counter><opponents-strength-save/></counter>      
+      <opposing-action><strength-save/></opposing-action>      
       <critsuccess>
 	Opponent is Pushed twice and knocked Prone.
       </critsuccess>
@@ -87,7 +87,7 @@
     <abilitytitle>Shield Support</abilitytitle>
     <abilityid>support</abilityid>    
     <abilityranks from="1" to="4"/>
-    <abilityauxiliary>
+    <action>
       <name>Talent</name>
       <critclass><auxiliary/></critclass>
       <cost><interrupt/></cost>
@@ -101,7 +101,7 @@
       </precondition>
       <effect>The character may make a Shield Block as an
       free interrupt in place of the failed defence.</effect>
-    </abilityauxiliary>    
+    </action>    
     <prereqabilityref id="block" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -118,7 +118,7 @@
 
       <p>
 	Adjacent characters get a shift up for block, parry and
-	armour counterchecks.
+	armour opposing-actionchecks.
       </p>
     </abilitydescription>
   </ability>

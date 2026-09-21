@@ -20,6 +20,7 @@ from utils import (
     contents_to_string2,
     contents_to_comma_separated_str,
     contents_to_list,
+    convert_str_to_bool,
     node_to_string,
     get_child_name,
     root_dir,
@@ -28,21 +29,12 @@ from utils import (
     ability_groups_dir,
 )
 
+from schema_introspection import Constants
+CONSTANTS = Constants.get_constants()
+
 # constants
-ANTAGONIST = "Aspect"
+ANTAGONIST = "Antagonist"
 
-
-
-# def get_only_child_tag(element):
-#     """
-#     Returns the tag of the only child of the xml element or dies.
-
-#     """
-#     children = element.getchildren()    
-#     if len(children) != 1:
-#         raise Exception("Expecting one child in element %s",
-#                         node_to_string(element))
-#     return children[0].tag
 
 def get_only_child_value(element):
     """
@@ -84,18 +76,19 @@ class AbilityRef:
         self._id = None
         self.rank = None
         self.ability = None
+
+        # parameters
         self.specializations = []
         self.dmg = None
+
+        self.permanent = False
         return
 
     def parse(self, node):
         self._id = node.attrib["id"]
-
-        rank = node.attrib.get("rank")
-        self.rank = int(rank) if rank is not None else None
-        dmg_str = node.attrib.get("dmg")
-        if dmg_str is not None:
-            self.dmg = int(dmg_str)
+        self.rank = utils.attrib_to_int(node, "rank")
+        self.dmg = utils.attrib_to_int(node, "dmg")
+        self.permanent = utils.attrib_is_true(node, "permanent")
         specializations = node.attrib.get("specializations")
         if specializations is not None:
             for specialization_rank in specializations.split(","):
@@ -123,6 +116,9 @@ class AbilityRef:
     def get_rank(self):
         return self.rank
 
+    def is_permanent(self):
+        return self.permanent == True
+
     def to_str(self):
         return f'<abilityref id="{self._id}" rank="{self.rank}"/>'
 
@@ -138,7 +134,6 @@ class AbilityStage:
     def __init__(self):
         self.name = None
         self.description = None
-
 
     def parse(self, stage_element, fname):
         for child in list(stage_element):
@@ -161,7 +156,7 @@ class AbilityStage:
     
 
 MIN_INITIAL_ABILITY_RANK = -6
-MAX_INITIAL_ABILITY_RANK = 9
+MAX_INITIAL_ABILITY_RANK = 23
 
 
 def parse_spline(point_nodes):
@@ -285,8 +280,11 @@ class Action:
         # can be None for the default
         self.name = None
 
-        # can be None for the default
-        self.opposing_action_name = None
+        # Can be None for the default (for auxiliarys mainly)
+        self.opposing_action = None
+
+        # Cost of the opposing action (optional)
+        self.opposing_action_cost = None
 
         # Things like physical, magic, melee .. used for crit tables.
         self.crit_class = None
@@ -343,13 +341,15 @@ class Action:
         """
         return self.action_class
 
+    def is_antag_action(self):
+        return self.ability.is_antag_ability()
+
     def get_crit_class(self):
         """
         Is this a check, save or auxiliary action?
 
         """
-        return self.action_class
-
+        return self.crit_class
     
     def get_cost(self):
         """
@@ -362,20 +362,17 @@ class Action:
         return self.pool_cost
     
     def get_pool_cost_str(self):
-
         if self.pool_cost is None:
            return None
-
         keywords = self.get_keywords()
         if "Magic-Pool" in keywords:
-            pool = "Magic Pool"
+            pool = "Magic"
         elif "Mettle-Pool" in keywords:
-            pool =  "Mettle Pool"
+            pool =  "Mettle"
         elif "Luck-Pool" in keywords:
-            pool = "Luck Pool"
+            pool = "Luck"
         else:
-            raise Exception(f"Unknown pool cost!\n{self.ability}")
-        
+            raise Exception(f"Unknown pool cost!\n{self.ability}")        
         return f"{self.pool_cost} {pool}"
 
     def get_keywords(self):
@@ -423,9 +420,13 @@ class Action:
             elif tag == "name":
                 self.name = contents_to_string(child)
 
-            elif tag == "opposing-action-name":
-                self.opposing_action_name = get_only_child_value(child)
-                assert self.opposing_action_name
+            elif tag == "opposing-action":
+                self.opposing_action = get_only_child_value(child)
+                assert self.opposing_action
+
+            elif tag == "opposing-action-cost":
+                self.opposing_action_cost = get_only_child_value(child)
+                assert self.opposing_action_cost
 
             elif tag == "critclass":
                 self.crit_class = get_only_child_value(child)
@@ -689,8 +690,7 @@ class Action:
             outcomes.append(("Cursed", self.cursed))
 
         return outcomes
- 
-    
+
     
 class Ability:
     """
@@ -711,10 +711,12 @@ class Ability:
         self.actions = []
 
         # List of template parameters for antag checks (e.g. damage, result).
-        #self.param_check_default = None  FIXME USE RANK INSTEAD
         self.param_dmg_default = None
         self.param_stage_default = None # 
         self.param_rank_default = None # suggestion for antag abilities.
+
+        # Aspect params
+        self.param_permanent = None
         
         # prereq.
         #self.ability_rank_prereq = None
@@ -754,24 +756,24 @@ class Ability:
         return self.name
 
     def has_parameters(self):
-        return (# self.param_check_default or
-                self.param_dmg_default or
+        return (self.param_dmg_default or
                 self.param_rank_default or
-                self.param_stage_default)
+                self.param_stage_default or
+                self.param_permanent)
 
     def is_antag_ability(self):
         return ANTAGONIST in self.keywords
 
     def get_parameters_str(self):
         params = []
-        #if self.param_check_default:
-        #    params.append(f"SSV: {self.param_check_default}")
         if self.param_dmg_default:
             params.append(f"Dmg: {self.param_dmg_default}")
         if self.param_stage_default:
             params.append(f"Stage: {self.param_stage_default}")
         if self.param_rank_default:
             params.append(f"Rank: {self.param_rank_default}")
+        if self.param_permanent is not None:
+            params.append(f"Permanent?: {self.param_permanent}")
         return ", ".join(params)
 
     def get_keywords(self):
@@ -949,6 +951,12 @@ class Ability:
             elif tag == "param-rank":
                 self.param_rank_default = child.text.strip()
 
+            elif tag == "param-initial-rank":
+                self.param_initial_rank = child.text.strip()
+
+            elif tag == "param-permanent":
+                self.param_permanent = convert_str_to_bool(child.text.strip())
+
             elif tag == "action":
                 action = Action(ability=self)
                 action._load(child)
@@ -968,6 +976,11 @@ class Ability:
                         "Only one abilitydescription per ability. (%s) %s\n" %
                         (child.tag, str(child)))
                 else:
+                    # if self.get_id() == "near-death":
+                    #     print(child)
+                    #     print("--")
+                    #     print(children_to_string(child))
+                    #     sys.exit()                    
                     self.description = children_to_string(child)
 
             # elif tag == "prereqabilityrank":
@@ -1588,15 +1601,21 @@ if __name__ == "__main__":
 
 
     for g in ability_groups:
+        print(g.get_id())
+        if g.get_id() !=  "conditions":
+            continue
+        
         #print(g.get_family())
-        print(g)
-        print(g.info.family_readable_id)
+        #print(g)
+        #print(g.info.family_readable_id)
         #print(g.info.ability_group_readable_id)
-        print(g.info.slug)
+        #print(g.info.slug)
         for a in g:
-            print(a)
-            print(a.get_untrained_rank())
-            print(a.has_ranks())
+            print(a.get_id())
+            print("[" +  a.get_description() + "]")
+            #print(a.get_untrained_rank())
+            #print(a.has_ranks())
+            #print(a.slug)
     
     
     # a = g.get_ability("alchemy")

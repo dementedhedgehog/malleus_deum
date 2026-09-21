@@ -9,6 +9,7 @@ from copy import deepcopy
 import sys
 import codecs
 import traceback
+import re
 
 from config import use_imperial
 from utils import (
@@ -20,6 +21,15 @@ from utils import (
     get_alias,
 )
 
+
+handle_regex = re.compile(r"^handle_")
+
+def no_op(obj):
+    """
+       We've got a lot of handlers that don't need to do anything..
+       do nothing once.
+    """
+    pass
 
 # These attributes tell us to format their tokens differently.
 TOKEN_TYPE = "token_type"
@@ -49,6 +59,7 @@ NON_DOC_TAGS = (
     "levelmettle",
     "levelmettlerefresh",
 )
+
 
 
 class Doc:
@@ -151,6 +162,10 @@ class Doc:
         Descend into the doc tree calling formatter callbacks to format
         the doc as we go.
 
+        There are two sorts of formatter callbacks we deal with e.g
+        (start_section, end_section) pairs and handle_divider (we treat the
+        handle methods as if they were a (handle_divider, no_op) pair
+
         """
         book_node = self.get_book_node()
         if book_node is None:
@@ -164,7 +179,17 @@ class Doc:
                 fn = getattr(i_formatter, fn_name)
                 if callable(fn):
                     methods[fn_name] = fn
-                              
+
+            elif fn_name.startswith("handle_"):
+                # methods with handle_foo() get converted into start and end
+                # handlers as follows: start_foo->handle_foo, end_foo->no_op.
+                start_fn_name = handle_regex.sub("start_", fn_name)
+                end_fn_name = handle_regex.sub("end_", fn_name)
+                handle_fn = getattr(i_formatter, fn_name)
+                if callable(fn):
+                    methods[start_fn_name] = handle_fn
+                    methods[end_fn_name] = no_op
+                    
         self._format(book_node, i_formatter, methods, errors)
         return errors
 
@@ -185,7 +210,7 @@ class Doc:
 
         token_type = element.get(TOKEN_TYPE)                
         if token_type == TOKEN_TYPE_STRING_CONSTANT:
-            i_formatter.handle_text(element.text)
+            i_formatter.process_plain_text(element.text)
         
         elif token_type == TOKEN_TYPE_KEYWORD:
             i_formatter.handle_keyword(element.text)
@@ -214,7 +239,7 @@ class Doc:
             # handle text.
             if element.text and token_type != TOKEN_TYPE_IGNORE_TEXT:
                 text = element.text
-                i_formatter.handle_text(text)
+                i_formatter.process_plain_text(text)
             
             # handle all the children
             if token_type != TOKEN_TYPE_ATOM:
@@ -250,7 +275,7 @@ class Doc:
         # handle trailing text.
         if element.tail:
             tail = element.tail
-            i_formatter.handle_text(tail)            
+            i_formatter.process_plain_text(tail)
         return
     
                 

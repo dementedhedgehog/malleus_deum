@@ -7,7 +7,7 @@
     <abilitygroupdescription>
       <p>
         Abjuration involves the	use of raw magical energies and focuses on
-	casting	protective, shielding and counter magics.
+	casting	protective, shielding and opposing-action magics.
       </p>
     </abilitygroupdescription>
     <enabled/>
@@ -23,7 +23,7 @@
       <cost><default-skill-checkcost/></cost>
       <range><self/></range>
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>
+      <opposing-action><default-lore-sv-hard/></opposing-action>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -51,7 +51,7 @@
       <cost><ap4/></cost>
       <range><ranged-medium/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><opponents-will-save/></counter>      
+      <opposing-action><will-save/></opposing-action>      
       <critsuccess>+3 Mettle Drain</critsuccess>
       <righteoussuccess>+2 Mettle Drain</righteoussuccess>
       <success>2 Mettle Drain to Target</success>      
@@ -85,7 +85,7 @@
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
       <precondition>A demon or undead tries to enter or leave the circle.</precondition>
-      <counter><opponents-will-save/></counter>      
+      <opposing-action><will-save/></opposing-action>      
       <critsuccess>Target takes 6 Mettle damage and is repelled.</critsuccess>
       <righteoussuccess>Target takes 4 Mettle damage and is repelled.</righteoussuccess>
       <success>Target takes 3 Mettle damage and is repelled.</success>
@@ -144,7 +144,7 @@
       <cost><interrupt-or-ap2/></cost>
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>      
+      <opposing-action><sv11/></opposing-action>      
       <any-success>8+3xRank Temporary Stamina</any-success>
       <critsuccess>+10 Temporary Stamina</critsuccess>
       <righteoussuccess>+5 Temporary Stamina</righteoussuccess>
@@ -175,7 +175,7 @@
       <cost><noncombat/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Cast successfully</any-success>
       <critsuccess>Good Mood.  The target is in a good mood.</critsuccess>
       <critfail>Accidentally summons a demon as per the Summon Demon 1 spell.
@@ -212,7 +212,7 @@
       <cost><reaction/></cost>
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>      
+      <opposing-action><sv7/></opposing-action>      
       <any-success>The missile is diverted</any-success>      
     </action>
     <prereqabilityref id="abjuration" rank="1"/>
@@ -243,7 +243,7 @@
       <cost><reaction-or-ap2/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>      	
+      <opposing-action><sv7/></opposing-action>      	
       <critsuccess>Gain Resilience 4</critsuccess>
       <righteoussuccess>Gain Resilience 3</righteoussuccess>
       <success>Gain Resilience 2</success>      

@@ -61,6 +61,7 @@ latex_frontmatter = r"""
 \usepackage[table]{xcolor}         %% colour for tables
 \usepackage{enumitem}              %% customize enumerations, lists etc
 \usepackage{environ}               %% converts latex commands into environments
+\usepackage{epigraph}              %% after title epigraphs
 \usepackage{fail-fast}             %% fail on warnings
 \usepackage{fancyhdr}              %% header control
 \usepackage{fancybox}              %% fancy boxes.. eg box outs
@@ -210,14 +211,19 @@ latex_frontmatter = r"""
 %%
 %% Fonts
 %%
+%% Used for chapter/section titles
 \newfontfamily{\cloisterblack}[Path=fonts/]{CloisterBlack}
+%% Used on the title page
 \newfontfamily{\dogma}[Path=fonts/]{Dogma}
-\newfontfamily{\becker}[Path=fonts/]{Becker-ZVrz}
+%% Quote font
 \newfontfamily{\isabella}[Path=fonts/, Scale=1.1]{Isabella}
 \newfontfamily{\germania}[Path=fonts/]{GermaniaVersalien}
+%% Used for Drop Caps
 \newfontfamily{\carrickc}[Path=fonts/]{CarrickCaps}
+%% Used for the body of the text
 \newfontfamily{\libertine}{Linux Libertine O}
 \newfontfamily{\caudex}[Path=fonts/, Scale=1.1]{Caudex-Regular}
+%%\newfontfamily{\becker}[Path=fonts/]{Becker-ZVrz}
 %%\newfontfamily{\becker}[Path=fonts/]{Becker Regular}
 
 \newenvironment{smaller}{\begin{footnotesize}}{\end{footnotesize}}
@@ -244,6 +250,7 @@ latex_frontmatter = r"""
 \newcommand{\rpgtitlesubtitlefont}{\fontsize{60}{72}\cloisterblack}
 \newcommand{\rpgtitlesubsubtitlefont}{\cloisterblack}
 \newcommand{\rpgtitleauthorfont}{\dogma}
+\newcommand{\rpgsmalltitlefont}{\libertine}
 \newcommand{\versionfont}{\dogma}
 \newcommand{\mdsectionfont}{\cloisterblack}
 \newcommand{\mdsubsectionfont}{\cloisterblack}
@@ -287,6 +294,9 @@ latex_frontmatter = r"""
 
 %% Custon Bold Environment
 \newenvironment{mdbold}{\bfseries{}}{}
+
+%% Custon Quotemark Environment
+\newenvironment{mdquotemarks}{``}{''}
 
 %% Custom Quote Environment
 \newenvironment{mdquote}{%%
@@ -350,7 +360,7 @@ latex_frontmatter = r"""
 {\raggedright\Huge\bfseries\chapterfont\color{chapterfontcolor}}
 {}{1em}{}
 
-            
+
 
 %%
 %% Definition
@@ -590,11 +600,11 @@ latex_frontmatter = r"""
 {./resources/symbols/symbol_multi_round_action.png}}}
 
 %% Check Symbol
-\newcommand\checksymbol{%%
-\raisebox{\symbolverticaloffset}{%%
-\includegraphics[height=\symbolsize]%%
-{./resources/symbols/symbol_check.png}%%
-\hspace{\symbolhorizontalspace}}}
+%%\newcommand\checksymbol{%%
+%%\raisebox{\symbolverticaloffset}{%%
+%%\includegraphics[height=\symbolsize]%%
+%%{./resources/symbols/symbol_check.png}%%
+%%\hspace{\symbolhorizontalspace}}}
 
 %% Check Arrow Symbol
 \newcommand\checkarrowsymbol{%%
@@ -666,6 +676,13 @@ latex_frontmatter = r"""
 {./resources/symbols/symbol_abilitysubsubsection.png}%%
 \hspace{\symbolhorizontalspace}}}
 
+%% Antagonist Check Symbol also used for antagonistic abilities.
+\newcommand\antagonistsymbol{%%
+\raisebox{-0.2mm}{%%
+\includegraphics[width=\symbolsize,height=\symbolsize]%%
+{./resources/symbol_antagonist/symbol_antagonist.png}%%
+\hspace{\symbolhorizontalspace}}}
+
 %% Ability Versus Save Symbol
 \newcommand\vssavesymbol{%%
 \raisebox{-0.5mm}{
@@ -698,19 +715,28 @@ latex_frontmatter = r"""
 \hspace{\symbolhorizontalspace}}
 }
 
+%% Start of Turn Symbol
+\newcommand\startofturnsymbol{%%
+\raisebox{-0.5mm}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_start_of_turn.png}%%
+\hspace{\symbolhorizontalspace}}
+}
+
+%% Any Out of Turn Action Symbol
+\newcommand\anyootasymbol{%%
+\raisebox{-0.5mm}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_any_oota.png}%%
+\hspace{\symbolhorizontalspace}}
+}
+
 %%\newcommand{\getpagebackground}{
 %%\transparent{0.2}\includegraphics[width=\paperwidth,height=\paperheight]{./resources/anon_elder_sign/anon_elder_sign.png}
 %%}
 
 \newcommand\versus{\raisebox{-0.2mm}{{\cloisterblack{}VS}}}
 
-
-%% Antag Check Symbol
-\newcommand\antagonistsymbol{%%
-\raisebox{\symbolverticaloffset}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_antagonist/symbol_antagonist.png}%%
-\hspace{\symbolhorizontalspace}}}
 
 %% Fate Die Symbol
 %% \newcommand\fatediesymbol{%%
@@ -750,27 +776,13 @@ latex_frontmatter = r"""
 {\mdsubsectionfont\Large\color{mdsubsectionfontcolor}}
 {\thesubsection}{0.5em}{}
 
-\titleformat{\subsubsection}
-{\bfseries\mdsubsectionfont\color{mdsubsubsectionfontcolor}}
-{\thesubsubsection}{0.5em}{\mdsubsubsectionsymbol }
+%%\titleformat{\subsubsection}
+%%{\bfseries\mdsubsectionfont\color{mdsubsubsectionfontcolor}}
+%%{\thesubsubsection}{0.5em}{\subsubsectionsymbol{}}
 
 \newcommand\rpgtablesection[1]{
 \rule{0pt}{1ex}\bfseries\scriptsize #1}
 
-
-%% Ability header format
-%%\newcommand{\ability}[1]{\subsubsection{#1}\vspace{-1.8ex}}
-
-
-%% Define a special subsubsection for abilities.
-\newcounter{abilitysubsubsection}
-\titleclass{\abilitysubsubsection}{straight}[\subsection] 
-
-\titleformat{\abilitysubsubsection}
-{\bfseries\mdsubsubsectionfont\color{mdsubsubsectionfontcolor}}%%
-{\thesubsubsection}   %% Custom numbering format
-{1em}
-{\abilitysubsubsectionsymbol }
 
 \titlespacing*{\abilitysubsubsection}%%
 {0pt}%%
@@ -1145,222 +1157,160 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("\\end{document}\n")        
         return
 
-    def start_appendix(self, appendix):
+    def handle_appendix(self, appendix):
         self.buffer.write("\\appendix\n"
                           "\\addcontentsline{toc}{chapter}{APPENDICES}\n")
         return
-    end_appendix = no_op
 
     def handle_keyword(self, keyword):
         self.buffer.write("{\\color{keywordcolor} \\textbf{%s}}" % keyword)
         return
 
-    def start_daggersymbol(self, symbol):
+    def handle_daggersymbol(self, symbol):
         self.buffer.write("\\textsuperscript{\\dag}")
-        return
-    end_daggersymbol = no_op    
 
-    # def start_doubledaggersymbol(self, symbol):
+    # def handle_doubledaggersymbol(self, symbol):
     #     self.buffer.write("\\textsuperscript{\\ddag}")
-    #     return
-    # end_doubledaggersymbol = no_op    
 
-    # def start_downarrowfrombar(self, symbol):
+    # def handle_downarrowfrombar(self, symbol):
     #     self.buffer.write("\\downarrowfrombar ")
-    #     return
-    # end_downarrowfrombar = no_op    
 
-    # def start_uparrowfrombar(self, symbol):
+    # def handle_uparrowfrombar(self, symbol):
     #     self.buffer.write("\\uparrowfrombar ")
-    #     return
-    # end_uparrowfrombar = no_op    
 
-    # def start_abilitybullet(self, symbol):
+    # def handle_abilitybullet(self, symbol):
     #     self.buffer.write(r"\abilitybullet ")
-    # end_abilitybullet = no_op    
 
+    def handle_startofturnsymbol(self, symbol):
+        self.buffer.write(r"\startofturnsymbol{}")
 
-
-
-
-    def start_freeactionsymbol(self, symbol):
+    def handle_freeactionsymbol(self, symbol):
         self.buffer.write(r"\freeactionsymbol{}")
-    end_freeactionsymbol = no_op
     
-    def start_oneactionsymbol(self, symbol):
+    def handle_oneactionsymbol(self, symbol):
         self.buffer.write(r"\oneactionsymbol{}")
-    end_oneactionsymbol = no_op    
 
-    def start_twoactionsymbol(self, symbol):
+    def handle_twoactionsymbol(self, symbol):
         self.buffer.write(r"\twoactionsymbol{}")
-    end_twoactionsymbol = no_op
         
-    def start_threeactionsymbol(self, symbol):
+    def handle_threeactionsymbol(self, symbol):
         self.buffer.write(r"\threeactionsymbol{}")
-        self.end_threeactionsymbol(symbol)
-    end_threeactionsymbol = no_op
 
-    def start_fouractionsymbol(self, symbol):
+    def handle_fouractionsymbol(self, symbol):
         self.buffer.write(r"\fouractionsymbol{}")
-    end_fouractionsymbol = no_op
 
-    def start_fiveactionsymbol(self, symbol):
+    def handle_fiveactionsymbol(self, symbol):
         self.buffer.write(r"\fiveactionsymbol{}")
-    end_fiveactionsymbol = no_op
 
-    def start_interruptsymbol(self, symbol):
+    def handle_interruptsymbol(self, symbol):
         self.buffer.write(r"\interruptsymbol{}")
-    end_interruptsymbol = no_op
 
-    def start_freeinterruptsymbol(self, symbol):
+    def handle_freeinterruptsymbol(self, symbol):
         self.buffer.write(r"\freeinterruptactionsymbol{}")
-    end_freeinterruptsymbol = no_op
 
-    def start_mandatoryinterruptsymbol(self, symbol):
+    def handle_mandatoryinterruptsymbol(self, symbol):
         self.buffer.write(r"\mandatoryinterruptsymbol{}")
-    end_mandatoryinterruptsymbol = no_op
 
-    def start_mandatoryfreeinterruptsymbol(self, symbol):
+    def handle_mandatoryfreeinterruptsymbol(self, symbol):
         self.buffer.write(r"\mandatoryfreeinterruptactionsymbol{}")
-    end_mandatoryfreeinterruptsymbol = no_op
 
-    def start_reactionsymbol(self, symbol):
+    def handle_reactionsymbol(self, symbol):
         self.buffer.write(r"\reactionsymbol{}")
-    end_reactionsymbol = no_op
 
-    def start_freereactionsymbol(self, symbol):
+    def handle_freereactionsymbol(self, symbol):
         self.buffer.write(r"\freereactionsymbol{}")
-    end_freereactionsymbol = no_op
 
-    def start_mandatoryreactionsymbol(self, symbol):
+    def handle_mandatoryreactionsymbol(self, symbol):
         self.buffer.write(r"\mandatoryreactionsymbol{}")
-    end_mandatoryreactionsymbol = no_op
 
-    def start_mandatoryfreereactionsymbol(self, symbol):
+    def handle_mandatoryfreereactionsymbol(self, symbol):
         self.buffer.write(r"\mandatoryfreereactionsymbol{}")
-    end_mandatoryfreereactionsymbol = no_op
 
-    def start_gmfiatchecksymbol(self, symbol):
+    def handle_gmfiatchecksymbol(self, symbol):
         self.buffer.write(r"\gmfiatchecksymbol{}")
-    end_gmfiatchecksymbol = no_op
 
-    def start_checkarrowsymbol(self, symbol):
+    def handle_checkarrowsymbol(self, symbol):
         self.buffer.write(r"\checkarrowsymbol{}")
-    end_checkarrowsymbol = no_op
 
-    def start_vscheckarrowsymbol(self, symbol):
+    def handle_vscheckarrowsymbol(self, symbol):
         self.buffer.write(r"\vscheckarrowsymbol{}")
-    end_vscheckarrowsymbol = no_op
 
-    def start_savearrowsymbol(self, symbol):
+    def handle_savearrowsymbol(self, symbol):
         self.buffer.write(r"\savearrowsymbol{}")
-    end_savearrowsymbol = no_op
 
-    def start_vssavearrowsymbol(self, symbol):
+    def handle_vssavearrowsymbol(self, symbol):
         self.buffer.write(r"\vssavearrowsymbol{}")
-    end_vssavearrowsymbol = no_op
 
-    def start_gmfiatsavesymbol(self, symbol):
+    def handle_gmfiatsavesymbol(self, symbol):
         self.buffer.write(r"\gmfiatsavesymbol{}")
-    end_gmfiatsavesymbol = no_op
 
-    def start_outofcombatsymbol(self, symbol):
+    def handle_outofcombatsymbol(self, symbol):
         self.buffer.write(r"\outofcombatsymbol{}")
-    end_outofcombatsymbol = no_op
 
-    def start_multiroundactionsymbol(self, symbol):
+    def handle_multiroundactionsymbol(self, symbol):
         self.buffer.write(r"\multiroundactionsymbol{}")
-    end_multiroundactionsymbol = no_op
     
-    def start_checksymbol(self, symbol):
+    def handle_checksymbol(self, symbol):
         self.buffer.write(r"\checksymbol{}")
-    end_checksymbol = no_op    
 
-    def start_savesymbol(self, symbol):
+    def handle_savesymbol(self, symbol):
         self.buffer.write(r"\savesymbol{}")
-    end_savesymbol = no_op    
 
-    # def start_eldersign(self, symbol):
+    # def handle_eldersign(self, symbol):
     #     self.buffer.write(r"\eldersign{}")
-    # end_eldersign = no_op    
 
-    def start_abilitybulletsymbol(self, symbol):
+    def handle_abilitybulletsymbol(self, symbol):
         self.buffer.write(r"\abilitybulletsymbol{}")
-    end_abilitybulletsymbol = no_op    
 
-    def start_freesavesymbol(self, symbol):
+    def handle_freesavesymbol(self, symbol):
         self.buffer.write(r"\freesavesymbol{}")
-    end_freesavesymbol = no_op    
 
-    def start_saveorfreesavesymbol(self, symbol):
+    def handle_saveorfreesavesymbol(self, symbol):
         self.buffer.write(r"\saveorfreesavesymbol{}")
-    end_saveorfreesavesymbol = no_op    
 
-    def start_auxiliarysymbol(self, symbol):
+    def handle_auxiliarysymbol(self, symbol):
         self.buffer.write(r"\auxiliarychecksymbol{}")
-        return
-    end_auxiliarysymbol = no_op    
 
-    def start_antagonistsymbol(self, symbol):
+    def handle_antagonistsymbol(self, symbol):
         self.buffer.write(r"\antagonistsymbol{}")
-        return
-    end_antagonistsymbol = no_op    
 
-    def start_fatediesymbol(self, symbol):
+    def handle_fatediesymbol(self, symbol):
         self.buffer.write(r"\fatediesymbol{}")
-        return
-    end_fatediesymbol = no_op    
 
-    def start_nofatediesymbol(self, symbol):
+    def handle_nofatediesymbol(self, symbol):
         self.buffer.write(r"\nofatediesymbol{}")
-        return
-    end_nofatediesymbol = no_op    
 
-    def start_skilldiesymbol(self, symbol):
+    def handle_skilldiesymbol(self, symbol):
         self.buffer.write(r"\skilldiesymbol{}")
-        return
-    end_skilldiesymbol = no_op    
 
-    def start_vschecksymbol(self, symbol):
+    def handle_vschecksymbol(self, symbol):
         self.buffer.write(r"\vschecksymbol{}")
-        return
-    end_vschecksymbol = no_op    
 
-    def start_gmfiatsymbol(self, symbol):
+    def handle_gmfiatsymbol(self, symbol):
         self.buffer.write(r"\gmfiatsymbol{}")
-        return
-    end_gmfiatsymbol = no_op    
 
-    def start_vssavesymbol(self, symbol):
+    def handle_vssavesymbol(self, symbol):
         self.buffer.write(r"\vssavesymbol{}")
-        return
-    end_vssavesymbol = no_op    
 
     #
     # Corollaries
     #
     def start_corollary(self, symbol):
         self.buffer.write(r"\begin{corollary}")
-        return
     
     def end_corollary(self, symbol):
         self.buffer.write(r"\end{corollary}")
-        return
 
     def start_corollary(self, symbol):
         self.buffer.write(r"\begin{corollary}")
-        return
 
     def start_corollarytitle(self, symbol):
         self.buffer.write("[")
-        return
     
     def end_corollarytitle(self, symbol):
         self.buffer.write("]")
-        return
     
-    start_corollarybody = no_op
-    end_corollarybody = no_op
+    handle_corollarybody = no_op
     
     def end_corollary(self, symbol):
         self.buffer.write(r"\end{corollary}")
@@ -1369,37 +1319,27 @@ class LatexFormatter(DocFormatter):
     #
     # Principles
     #
-    start_principlebody = no_op
-    end_principlebody = no_op
+    handle_principlebody = no_op
 
     def start_principle(self, symbol):
         self.buffer.write(r"\begin{principle}")
-        return
     
     def end_principle(self, symbol):
         self.buffer.write(r"\end{principle}")
-        return    
 
     def start_principletitle(self, symbol):
         self.buffer.write("[")
-        return
     
     def end_principletitle(self, symbol):
         self.buffer.write("]")
-        return
         
-    def start_arrowleft(self, symbol):
+    def handle_arrowleft(self, symbol):
         self.buffer.write("\\arrowleft{}")
-        return
-    end_arrowleft = no_op    
 
-    start_ability_title = no_op
-    end_ability_title = no_op
+    handle_ability_title = no_op
 
-    def start_ability_id(self, ability_id):        
+    def handle_ability_id(self, ability_id):        
         self.buffer.write("ID: %s\\\n" % ability_id) 
-        return
-    end_ability_id = no_op
 
     start_ability_group = no_op
     def end_ability_group(self, ability_group):
@@ -1416,95 +1356,69 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("%s\n" % normalize_ws(action_points.text))
         return
 
-    def start_hlink(self, hlink):
+    def handle_hlink(self, hlink):
         url = hlink.get("url")
         text = utils.contents_to_string(hlink)
         self.buffer.write(r"\href{%s}{%s}" % (url, text))
-        return
-    end_hlink = no_op
+        return    
     
-    
-    def start_ampersand(self, and_element):
+    def handle_ampersand(self, and_element):
         self.buffer.write("\\&")
-        return
-    end_ampersand = no_op
 
-    def start_copyright(self, _):
+    def handle_copyright(self, _):
         self.buffer.write(r"\copyright{}")
-        return
-    end_copyright = no_op
 
-    def start_ccby(self, _):
+    def handle_ccby(self, _):
         self.buffer.write(r"\ccby{}")
-        return
-    end_ccby = no_op
 
-    def start_endash(self, _):
+    def handle_endash(self, _):
         self.buffer.write(r"\textendash{}")
-        return
-    end_endash = no_op
 
-    def start_versus(self, _):
+    def handle_versus(self, _):
         self.buffer.write(r"\versus{}")
-        return
-    end_versus = no_op
 
-    def start_lore(self, element):
+    def handle_lore(self, element):
         self.buffer.write("\\lore{}")
-        return    
-    end_lore = no_op
 
-    def start_martial(self, element):
+    def handle_martial(self, element):
         self.buffer.write("\\martial{}")
-        return    
-    end_martial = no_op
 
-    def start_percent(self, element):
+    def handle_percent(self, element):
         self.buffer.write("\\%")
-        return    
-    end_percent = no_op
 
-    def start_general(self, element):
+    def handle_general(self, element):
         self.buffer.write("\\general{}")
         return    
-    end_general = no_op
 
-    def start_magical(self, element):
+    def handle_magical(self, element):
         self.buffer.write("\\magical{}")
         return    
-    end_magical = no_op
 
-    def start_geqqsymbol(self, geqq_element):
+    def handle_geqqsymbol(self, geqq_element):
         self.buffer.write(r"$\stackrel{\scriptscriptstyle ?}{\geq}{}$")
         return
-    end_geqqsymbol = no_op
 
-    def start_leqqsymbol(self, geqq_element):
+    def handle_leqqsymbol(self, geqq_element):
         self.buffer.write(r"$\stackrel{\scriptscriptstyle ?}{\leq}{}$")
         return
-    end_leqqsymbol = no_op
 
-    def start_leqsymbol(self, leq_element):
+    def handle_leqsymbol(self, leq_element):
         self.buffer.write(r"$\leq$")
         return
-    end_leqsymbol = no_op
 
-    def start_ltsymbol(self, leq_element):
+    def handle_ltsymbol(self, leq_element):
         self.buffer.write("$<$")
         return
-    end_ltsymbol = no_op
 
-    def start_gtsymbol(self, leq_element):
+    def handle_gtsymbol(self, leq_element):
         self.buffer.write("$>$")
         return
-    end_gtsymbol = no_op
 
-    def start_geqsymbol(self, geq_element):
+    def handle_geqsymbol(self, geq_element):
         self.buffer.write(r"$\geq$")
         return
-    end_geqsymbol = no_op
 
-    def start_br(self, br):
+    def handle_br(self, br):
         length = br.attrib.get("length")
         # self.buffer.write(r"\ifvmode\else\newline\fi{}")
         self.buffer.write(r"\mdbr{}")
@@ -1516,12 +1430,10 @@ class LatexFormatter(DocFormatter):
         #     self.buffer.write(r"\ifvmode\else\\\fi{}")
         #     #     self.buffer.write(r" \\[%s\\baselineskip] " % length)
         return
-    end_br = no_op
 
-    def start_newpage(self, newpage):
+    def handle_newpage(self, newpage):
         self.buffer.write(r"\ifvmode\else\newpage\fi{}")
         return
-    end_newpage = no_op
 
     start_pageref = no_op
     def end_pageref(self, pageref):
@@ -1533,13 +1445,12 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("~\\ref{%s}" % normalize_ws(ref.text))
         return
     
-    def start_index(self, index):
+    def handle_index(self, index):
         """Put the index in the document where the <index/> element occurs."""
         self.buffer.write("\\clearpage\n")               
         self.buffer.write("\\addcontentsline{toc}{chapter}{Index}\n")
         self.buffer.write("\\printindex\n")
         return
-    end_index = no_op
 
     #
     # Section Definitions
@@ -1568,39 +1479,45 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("}")
         return
 
-    start_subsubsection = no_op
-    end_subsubsection = no_op
+    handle_subsubsection = no_op
 
     def start_subsubsectiontitle(self, title):
-        is_ability_title = attrib_is_true(title, "isabilitytitle")
-        if is_ability_title:
-            self.buffer.write("\\abilitysubsubsection*{")
+        title_category = title.attrib.get("titlecategory")
+        if title_category == "antagonist-ability":        
+            symbol = r"\antagonistsymbol{}"            
+        elif title_category == "ability":        
+            symbol = r"\abilitysubsubsectionsymbol{}"            
         else:
-            self.buffer.write("\\subsubsection*{")
+            symbol = "\subsubsectionsymbol{}"                        
+        self.buffer.write(r"\subsubsection*{" + symbol)
         return
     def end_subsubsectiontitle(self, title):
         self.buffer.write("}")
         return    
 
     def start_smalltitle(self, title):
-        self.buffer.write(r"\begin{mdbold}\eldersign{} ")
-            #r"\noindent{\large\bfseries ")
+        """
+        A little header title (smaller than a subsubsection).
+
+        """
+        # suggest to latex that if we have to insert a page break
+        # we'd much rather that was done before the little header
+        # than after it.
+        self.buffer.write(
+            r"\pagebreak[2]"
+            r"\begin{mdbold}\eldersign\rpgsmalltitlefont\small{}"
+            r"\nopagebreak[2]")
         return
+    
     def end_smalltitle(self, title):
         self.buffer.write("\end{mdbold}")
         return    
 
-
-    start_archetypelevel = no_op
-    end_archetypelevel = no_op
+    handle_archetypelevel = no_op
     
-    def start_leveltitle(self, archetype_level_title):
+    def handle_leveltitle(self, archetype_level_title):
         levelnumber = archetype_level_title.get("levelnumber", -1)        
         self.buffer.write("\\subsection{Level {%s}}" % levelnumber)
-        return
-    def end_leveltitle(self, archetype_level_title):
-        return
-    
 
     def start_playexample(self, playexample):
         self.buffer.write("\\begin{playexample}\n")
@@ -1622,6 +1539,9 @@ class LatexFormatter(DocFormatter):
         return
 
 
+    #
+    # Text with emphasis
+    #
     def start_emph(self, emph):
         self.buffer.write(r"\begin{mdemph}")
         return
@@ -1632,27 +1552,27 @@ class LatexFormatter(DocFormatter):
         return
 
 
-    # def start_dropcap(self, dropcap):
-    #     if dropcap.text:
-    #         words = dropcap.text.split()
-    #         if len(words) > 0:
-    #             first_word = words[0]
-    #             if len(first_word) > 0:
-    #                 first_letter = first_word[0]
-    #                 other_letters = first_word[1:]
-    #                 dropcap_word = (
-    #                     r"\dropcap{%s}{%s} " % (first_letter, other_letters))
-    #             words = [dropcap_word, ] + words[1:]
-    #         self.buffer.write(" ".join(words))
-    #     return
+    #
+    # Text with emphasis but less emphasis than emph.
+    #
+    def start_italic(self, _):
+        self.buffer.write(r"\begin{itshape}")
+        
+    def end_italic(self, _):
+        self.buffer.write(r"\end{itshape}")
 
-    # def end_dropcap(self, emph):
-    #     # latex environments eat trailing space. The trailing {} fixes this.
-    #     #self.buffer.write(r"\end{mdemph}{}")
-    #     return
 
+    #
+    # "Quotes" latex style.
+    #
+    def start_quotemarks(self, quote):
+        self.buffer.write(r"\begin{mdquotemarks}")
+        
+    def end_quotemarks(self, quote):
+        self.buffer.write(r"\end{mdquotemarks}")
+        
+    
     def start_dropcap(self, dropcap):
-        #self.buffer.write(r"\begin{mddropcapbody}")
         if dropcap.text:
             words = dropcap.text.split()
             if len(words) > 0:
@@ -1721,21 +1641,15 @@ class LatexFormatter(DocFormatter):
         self.buffer.write(r"\end{smaller}")
         return
 
-    def handle_text(self, text):
+    def process_plain_text(self, text):
         if text is not None:
-            self.buffer.write(text)
-        return
-
+            self.buffer.write(text.replace("\n", ""))
+            #self.buffer.write(text.strip())
 
     def start_indent(self, indent):
         self.buffer.write(r"\begin{mdindent}")        
     def end_indent(self, indent):
         self.buffer.write(r"\end{mdindent}")
-
-    # def start_indent(self, indent):
-    #     self.buffer.write(r"\begin{adjustwidth}{0.3cm}{}")        
-    # def end_indent(self, indent):
-    #     self.buffer.write(r"\end{adjustwidth}")
 
     #
     # A quote
@@ -1749,16 +1663,35 @@ class LatexFormatter(DocFormatter):
     #
     # Am epigraph
     #
-    def start_epigraph(self, quote):
-        self.buffer.write(r"\begin{mdepigraph}")
+
+    #
+    # FIXME DROP EPIGRAPH IN XML FOR SLUG.
+    #
+    # def start_epigraph(self, quote):
+    #     self.buffer.write(r"\begin{mdepigraph}")
         
-    def end_epigraph(self, quote_entry):
-        self.buffer.write(r"\end{mdepigraph}")
+    # def end_epigraph(self, quote_entry):
+    #     self.buffer.write(r"\end{mdepigraph}")
+
+    def start_slug(self, slug):
+        if slug.attrib.get("slugAfterChapterTitle"):
+            self.buffer.write(r"\epigraph{")
+        else:
+            self.buffer.write(r"\begin{mdepigraph}")
+        return
+        
+    def end_slug(self, slug):
+        if slug.attrib.get("slugAfterChapterTitle"):
+            self.buffer.write(r"}")
+        else:
+            self.buffer.write(r"\end{mdepigraph}")
+        return
 
     #
     # Index Entries
     #
     def start_indexentry(self, _):
+        # We need to be able to defer index entries in tables.
         self.index_entry = IndexEntry()
         self.push_buffer()
         return
@@ -1766,24 +1699,12 @@ class LatexFormatter(DocFormatter):
     def end_indexentry(self, _):
         self.index_entry.text = self.get_buffer_str(strip=True)
         assert self.index_entry.entry
-        #print(self.index_entry.entry)
-
-        
         if self.table:
             # If it's an index in a table then save the index info and
             # defer writing the index entry till the end of the table.
-            #index_entry = copy.deepcopy(self.index_entry)
-            #self.table.index_entries.append(index_entry)
             pass
-
-            # FIXME
         else:
             self.write_index_entry(self.index_entry)
-
-        # if self.index_entry.entry.startswith("Asanguinous"):
-        #     print(index_entry)
-        #     raise Exception()
-            
         self.index_entry = None                                            
         return
 
@@ -1846,7 +1767,6 @@ class LatexFormatter(DocFormatter):
                 r"!aaaaaaaa@\empty \igobble |seealso {%s}}"
                 % (entry_str, sanitized_defn))
             self.buffer.write(defn_str)
-
         return
 
     #
@@ -1958,7 +1878,7 @@ class LatexFormatter(DocFormatter):
         return
 
     def end_subtitle(self, section_title):
-        self.buffer.write("\\end{mdsubtitle}\n")
+        self.buffer.write("\\end{mdsubtitle}\\newline{}")
         return
 
     def start_subsubtitle(self, title):
@@ -1967,7 +1887,7 @@ class LatexFormatter(DocFormatter):
         return
 
     def end_subsubtitle(self, section_title):
-        self.buffer.write("\\end{mdsubsubtitle}\n")
+        self.buffer.write("\\end{mdsubsubtitle}\\newline{}")
         return
 
     def start_author(self, author):
@@ -1983,7 +1903,7 @@ class LatexFormatter(DocFormatter):
         return
     
     def end_version(self, npchps): 
-        self.buffer.write("\\end{mdversion}\n")
+        self.buffer.write("\\end{mdversion}\\newline{}")
         return
     
 
@@ -2248,14 +2168,13 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("\\end{itemize}\n")
         return
 
-    def start_li(self, list_item):
+    def handle_li(self, list_item):
         """
         Start list item.
 
         """
         self.buffer.write(r"\item ")
         return
-    end_li = no_op
 
     def start_comment(self, comment):
         return
@@ -2478,14 +2397,12 @@ class LatexFormatter(DocFormatter):
         self.table.title = self.get_buffer_str()
 
     # Tablelabel is also parsed by the table
-    def start_tablelabel(self, label):
+    def handle_tablelabel(self, label):
         self.table.label = label.text.strip()
-    end_tablelabel = no_op
 
-    def start_tablesection(self, tablesection):
+    def handle_tablesection(self, tablesection):
         self.buffer.write("\\rpgtablesection{%s}" % tablesection.text.strip())
         return
-    end_tablesection = no_op
 
     def start_tablerow(self, table_row):
         # we can turn off new colours on the next row 
@@ -2603,106 +2520,69 @@ class LatexFormatter(DocFormatter):
     def end_th(self, th):
         return self.end_td(th, header=True)        
 
-    def start_tableofcontents(self, table_of_contents):
+    def handle_tableofcontents(self, table_of_contents):
         self.buffer.write("\\tableofcontents\n")
-        return
-    end_tableofcontents = no_op
 
-    def start_listoffigures(self, list_of_figures):
+    def handle_listoffigures(self, list_of_figures):
         self.buffer.write(r"\listoffigures{}")
-        return
-    end_listoffigures = no_op
 
-    def start_listofart(self, list_of_art):
+    def handle_listofart(self, list_of_art):
         return
-    end_listofart = no_op
 
-    def start_list_of_tables(self, list_of_tables):
+    def handle_list_of_tables(self, list_of_tables):
         self.buffer.write("\\listoftables\n")
-        return
-
-    def end_list_of_tables(self, list_of_tables):
-        return
 
     def start_label(self, label):
         self.buffer.write(r"\label{")
-        return
+
     def end_label(self, label):
         self.buffer.write("}")
-        return
 
     def start_fourcolumns(self, threecolumns):
         self.buffer.write("\\onecolumn\\begin{multicols}{4}\n")
-        return
 
     def end_fourcolumns(self, ability_group):
         self.buffer.write("\\end{multicols}\\twocolumn\n")
-        return
     
-    def start_attempt(self, success):
+    def handle_attempt(self, success):
         self.buffer.write("\\rpgattempt{}")
-        return
-    end_attempt = no_op
 
-    def start_success(self, success):
+    def handle_success(self, success):
         self.buffer.write("\\rpgsuccess{}")
-        return
-    end_success = no_op
 
-    def start_fail(self, fail):
+    def handle_fail(self, fail):
         self.buffer.write("\\rpgfail{}")
-        return
-    end_fail = no_op
 
-    def start_eg(self, fail):
+    def handle_eg(self, fail):
         self.buffer.write(r"e.g.\@{}")
-        return
-    end_eg = no_op
 
-    def start_ie(self, fail):
+    def handle_ie(self, fail):
         self.buffer.write(r"i.e.\@{}")
-        return
-    end_ie = no_op
 
-    def start_aka(self, fail):
+    def handle_aka(self, fail):
         self.buffer.write(r"a.k.a.\@{}")
-        return
-    end_aka = no_op
 
-    def start_etc(self, fail):
+    def handle_etc(self, fail):
         self.buffer.write(r"etc.\protect\@{}")
-        return
-    end_etc = no_op
 
-    def start_nb(self, fail):
+    def handle_nb(self, fail):
         self.buffer.write(r"n.b.\@{}")
-        return
-    end_nb = no_op
 
-    def start_notapplicable(self, fail):
+    def handle_notapplicable(self, fail):
         self.buffer.write("n/a")
-        return
-    end_notapplicable = no_op
 
-    def start_dpool(self, fail):
+    def handle_dpool(self, fail): # What's this for?
         self.buffer.write("\\dpool{}")
-        return
-    end_dpool = no_op
 
-    def start_vspace(self, vspace):
+    def handle_vspace(self, vspace):
         length_str = vspace.attrib.get("length", "1.0")
         length = convert_str_to_float(length_str)
         self.buffer.write("\\vspace{%s\\drop}\n" % length)
-        return
-    end_vspace = no_op
 
-
-    def start_hspace(self, hspace):
+    def handle_hspace(self, hspace):
         length_str = hspace.attrib.get("length", "1.0")
         length = convert_str_to_float(length_str)
         self.buffer.write(r"\hspace{%sex}" % length)
-        return
-    end_hspace = no_op
     
     
     #
@@ -2882,7 +2762,7 @@ class LatexFormatter(DocFormatter):
         self.buffer.write("\\end{npchp}")
         return
 
-    def start_inspiration(self, inspiration):
+    def handle_inspiration(self, inspiration):
         img = inspiration.getparent()
         if "id" in img.attrib:
             resource_id = img.get("id")
@@ -2893,9 +2773,8 @@ class LatexFormatter(DocFormatter):
         else:
             raise Exception("Image inspiration missing id!")        
         return
-    end_inspiration = no_op
 
-    def start_attribution(self, attribution):
+    def handle_attribution(self, attribution):
         img = attribution.getparent()
         if "id" in img.attrib:
             resource_id = img.get("id")
@@ -2906,21 +2785,18 @@ class LatexFormatter(DocFormatter):
         else:
             raise Exception("Image attribution missing id!")
         return
-    end_attribution = no_op
 
-    def start_ellipsis(self, ellipsis):
+    def handle_ellipsis(self, ellipsis):
         self.buffer.write(r"\ldots")
-    end_ellipsis = no_op
 
-    def start_hline(self, _):
+    def handle_hline(self, _):
         if self.table is None:
             self.buffer.write(r"\noindent\rule{\columnwidth}{0.8pt}\nopagebreak\vspace{-0.8em}")
         else:
             self.buffer.write(r"\hline")
         return
-    end_hline = no_op
 
-    def start_abilityref(self, ability_ref_node):
+    def handle_abilityref(self, ability_ref_node):
         ability_ref = abilities.AbilityRef()
         ability_ref.parse(ability_ref_node)
         ability = self.db.get_ability(ability_ref)
@@ -2933,32 +2809,51 @@ class LatexFormatter(DocFormatter):
                 f"{self.xml_fname}:{line_number}\n")
             
         name = ability.get_name()            
-        rank_num = ability_ref.get_rank()
-        specializations = ability_ref.get_specializations_str()
-
-        if rank_num is None:
-            if specializations:
-                self.buffer.write(f"{name}[{specializations}]")
-            else:
-                self.buffer.write(f"{name}")
+        rank_num_str = f" {ability_ref.get_rank()}"
+        phrase = ability_ref.get_phrase() or ""
+        if phrase:
+            phrase_str = f"{phrase} "
         else:
-            if specializations:
-                self.buffer.write(f"{name}[{specializations}] {rank_num}")
-            else:
-                self.buffer.write(f"{name} {rank_num}")
+            phrase_str = ""
+        
+        if ability_ref.is_permanent():
+            is_permanent_str = " permanent"
+        else:
+            is_permanent_str = ""
+        
+        specializations = ability_ref.get_specializations_str()
+        if specializations:
+            specializations_str = f"{name}[{specializations}]"
+        else:
+            specializations_str = ""
+
+        self.buffer.write(
+            phrase_str +
+            name +
+            is_permanent_str +
+            specializations_str +
+            rank_num_str)
+            
+        # if rank_num is None:
+        #     if specializations:
+        #         self.buffer.write(f"{name}[{specializations}]")
+        #     else:
+        #         self.buffer.write(f"{name}")
+        # else:
+        #     if specializations:
+        #         self.buffer.write(f"{name}[{specializations}] {rank_num}")
+        #     else:
+        #         self.buffer.write(f"{name} {rank_num}")
 
         #except KeyError:
         #    # bad ability ref...
         #    raise Exception("Bad abilityref!!  Missing ability id.")        
-        return    
-    def end_abilityref(self, _):
         return    
 
 
     def start_sidebar(self, sidebar):
         """
         """
-
         if "title" in sidebar.attrib:        
             title = sidebar.attrib.get("title")
             title_str = (
@@ -2988,33 +2883,28 @@ class LatexFormatter(DocFormatter):
         return
 
     # FIXME: what is this for?
-    def start_details(self, _):        
+    def handle_details(self, _):        
         # self.buffer.write("\\paragraph*{Detials}")
         return        
-    end_details = no_op
 
-    def start_hfill(self, hfill):        
+    def handle_hfill(self, hfill):        
         self.buffer.write(r"\hfill")
         return
-    end_hfill = no_op
 
-
-    def start_spacer(self, spacer):        
+    def handle_spacer(self, spacer):        
         self.buffer.write(r"\mdspacer{}")
         return
-    end_spacer = no_op
-    
-    def start_divider(self, divider):        
+
+    def handle_divider(self, divider):        
         char_code = 89 # standard
         if divider.attrib == "fancy":
             char_code = 80
         self.buffer.write(r"\centerline{\pgfornament[scale=0.14]{%s}}"
                           % char_code)
         return
-    end_divider = no_op
-            
+    
 
-    def _start_short_measurement(self, sm):
+    def _handle_short_measurement(self, sm):
         """
         Converts a measurement constant, e.g. <m3> to metric or imperial
         depending on a setting in the configuration file.
@@ -3034,20 +2924,20 @@ class LatexFormatter(DocFormatter):
         return
 
     # Measurement Constants.
-    start_m05, end_m05 = _start_short_measurement, no_op
-    start_m2, end_m2 = _start_short_measurement, no_op
-    start_m3, end_m3 = _start_short_measurement, no_op
-    start_m6, end_m6 = _start_short_measurement, no_op    
-    start_m9, end_m9 = _start_short_measurement, no_op    
-    start_m10, end_m10 = _start_short_measurement, no_op    
-    start_m12, end_m12 = _start_short_measurement, no_op    
-    start_m20, end_m20 = _start_short_measurement, no_op    
-    start_m30, end_m30 = _start_short_measurement, no_op    
-    start_m90, end_m90 = _start_short_measurement, no_op    
-    start_m180, end_m180 = _start_short_measurement, no_op    
-    start_km3, end_km3 = _start_short_measurement, no_op
+    handle_m05 = _handle_short_measurement
+    handle_m2 = _handle_short_measurement  
+    handle_m3 = _handle_short_measurement
+    handle_m6 = _handle_short_measurement
+    handle_m9 = _handle_short_measurement
+    handle_m10 = _handle_short_measurement
+    handle_m12 = _handle_short_measurement
+    handle_m20 = _handle_short_measurement
+    handle_m30 = _handle_short_measurement
+    handle_m90 = _handle_short_measurement
+    handle_m180 = _handle_short_measurement
+    handle_km3 = _handle_short_measurement
     
-    def _start_sv(self, sv_element):
+    def _handle_sv(self, sv_element):
         """
         Shared formatting for all the skill values, e.g. <sv13/>
         
@@ -3056,30 +2946,27 @@ class LatexFormatter(DocFormatter):
         match_obj = _sv_regex.search(tag)
         if match_obj is not None:
             skill_value = match_obj[0]
-            #self.buffer.write(fr"\nofatediesymbol/{dc}")
             self.buffer.write(fr"SSV: {skill_value}")
         else:
             raise Exception(
                 f"Unknown skill value check! {node_to_string(sv_element)}")
 
-    start_sv3, end_sv3 = _start_sv, no_op
-    start_sv5, end_sv5 = _start_sv, no_op
-    start_sv7, end_sv7 = _start_sv, no_op
-    start_sv9, end_sv9 = _start_sv, no_op
-    start_sv11, end_sv11 = _start_sv, no_op
-    start_sv13, end_sv13 = _start_sv, no_op
-    start_sv15, end_sv15 = _start_sv, no_op
-    start_sv17, end_sv17 = _start_sv, no_op
-    start_sv19, end_sv19 = _start_sv, no_op
-    start_sv21, end_sv21 = _start_sv, no_op
-    start_sv23, end_sv23 = _start_sv, no_op
-    start_sv25, end_sv25 = _start_sv, no_op
-    start_sv27, end_sv27 = _start_sv, no_op
+    handle_sv3 = _handle_sv 
+    handle_sv5 = _handle_sv
+    handle_sv7 = _handle_sv
+    handle_sv9 = _handle_sv
+    handle_sv11 = _handle_sv
+    handle_sv13 = _handle_sv
+    handle_sv15 = _handle_sv
+    handle_sv17 = _handle_sv
+    handle_sv19 = _handle_sv
+    handle_sv21 = _handle_sv
+    handle_sv23 = _handle_sv
+    handle_sv25 = _handle_sv
+    handle_sv27 = _handle_sv
+    handle_sv29 = _handle_sv
 
-    def start_d20plusrank(self, tag):
-        #self.buffer.write(r"\fatediesymbol/\skilldiesymbol+Rank")
+    def handle_d20plusrank(self, tag):
         self.buffer.write(r"\fatediesymbol/\skilldiesymbol+Rank")
-        return
-    end_d20plusrank = no_op
 
     

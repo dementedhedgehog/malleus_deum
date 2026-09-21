@@ -34,7 +34,7 @@
 	Triggered at the end of a round if any character is in a square that
 	contains acidic vapours.
       </precondition>      
-      <counter><opponents-endurance-or-willpower-save/></counter>
+      <opposing-action><endurance-or-willpower-save/></opposing-action>
       <any-success>Increment Stage</any-success>
       <any-fail>If the character is not in a square containing Acidic Vapours
       then decrement the Stage.</any-fail>
@@ -89,7 +89,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><aoe-emination/><check/></keywords>
-      <counter><opponents-luck-save/></counter>      
+      <opposing-action><luck-save/></opposing-action>      
       <dmg><param-dmg/></dmg>
       <critsuccess>Unharmed and find something useful.</critsuccess>
       <righteoussuccess>Unharmed</righteoussuccess>
@@ -114,7 +114,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><aoe-emination/><check/></keywords>
-      <counter><opponents-luck-save/></counter>
+      <opposing-action><luck-save/></opposing-action>
       <success>Unharmed</success>
       <fail>Take d6×Rank damage</fail>
     </action>
@@ -137,7 +137,7 @@
       <cost><gm-fiat/></cost>
       <range><touch/></range>
       <keywords><check/><mettlepool/></keywords>
-      <counter><opponents-strength-save/></counter>
+      <opposing-action><strength-save/></opposing-action>
       <success>Unharmed</success>
       <fail>Failed.</fail>
       <critfail>Niggling injury.</critfail>
@@ -162,7 +162,7 @@
       <cost><multi-round/></cost>
       <range><self/></range>
       <keywords><check/></keywords>
-      <counter><opponents-endurance-save/></counter>      
+      <opposing-action><endurance-save/></opposing-action>      
       <success>No effect</success>
       <fail>Check again next round with disadvantage.</fail>
       <critfail>Character is Nearly-Dead.</critfail>
@@ -208,7 +208,7 @@
       <cost><multi-round/></cost>
       <range><self/></range>
       <keywords><check/></keywords>
-      <counter><opponents-endurance-save/></counter>
+      <opposing-action><endurance-save/></opposing-action>
       <success>Take Rank damage</success>
       <fail>Take d6×Rank damage</fail>
     </action>

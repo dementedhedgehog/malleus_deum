@@ -27,7 +27,7 @@
       <precondition>
 	Fighting in melee against an opponent holding a weapon or shield
       </precondition>
-      <counter><opponents-physical-defence/></counter>      
+      <opposing-action><physical-defence/></opposing-action>      
       <dmg>Weapon+Strength|Will</dmg>            
       <righteoussuccess>
 	Make a break test against your opponents weapon or shield.
@@ -56,7 +56,7 @@
       <cost><ap3/></cost>
       <range><reach/></range>
       <keywords><physical-attack/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon+Strength|Will</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
@@ -82,7 +82,7 @@
       <cost><ap3/></cost>
       <range><reach/></range>
       <keywords><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <critsuccess>Grants three Wild Swings</critsuccess>
       <righteoussuccess>Grants two Wild Swings.</righteoussuccess>  
       <success>Grants one Wild Swing.</success>
@@ -93,7 +93,7 @@
       <cost><free-reaction/></cost>
       <range><reach/></range>
       <keywords><check/></keywords>
-      <counter><opponents-will-save/></counter>
+      <opposing-action><will-save/></opposing-action>
       <success>Action fails</success>
     </action>
     <prereqabilityref id="mace_strike" rank="1"/>

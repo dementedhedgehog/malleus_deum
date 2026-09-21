@@ -64,7 +64,7 @@
     <action>
       <class><check/></class>
       <name>Strength Check</name>
-      <opposing-action-name><unknown-save/></opposing-action-name>
+      <opposing-action><unknown-save/></opposing-action>
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>
       <range><touch/></range>
@@ -73,7 +73,7 @@
     <action>
       <class><save/></class>
       <name>Strength Save</name>
-      <opposing-action-name><unknown-check/></opposing-action-name>
+      <opposing-action><unknown-check/></opposing-action>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><touch/></range>
@@ -114,14 +114,14 @@
     <!--   <name>Endurance Check</name> -->
     <!--   <critclass><physical/></critclass> -->
     <!--   <cost><gm-fiat-check-cost/></cost> -->
-    <!--   <opposing-action-name>?</opposing-action-name> -->
+    <!--   <opposing-action>?</opposing-action> -->
     <!--   <range><na/></range> -->
     <!--   <keywords><check/></keywords> -->
     <!-- </action> -->
     <action>
       <class><save/></class>
       <name>Endurance Save</name>
-      <opposing-action-name><unknown-check/></opposing-action-name>
+      <opposing-action><unknown-check/></opposing-action>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><self/></range>
@@ -153,7 +153,7 @@
     <action>
       <class><check/></class>
       <name>Agility Check</name>
-      <opposing-action-name><unknown-save/></opposing-action-name>
+      <opposing-action><unknown-save/></opposing-action>
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>
       <range><self/></range>
@@ -162,7 +162,7 @@
     <action>
       <class><save/></class>
       <name>Agility Save</name>
-      <opposing-action-name><unknown-check/></opposing-action-name>
+      <opposing-action><unknown-check/></opposing-action>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><self/></range>
@@ -206,7 +206,7 @@
     <action>
       <class><check/></class>
       <name>Speed Check</name>
-      <opposing-action-name><unknown-save/></opposing-action-name>
+      <opposing-action><unknown-save/></opposing-action>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><self/></range>
@@ -215,7 +215,7 @@
     <action>
       <class><save/></class>
       <name>Speed Save</name>
-      <opposing-action-name><unknown-check/></opposing-action-name>
+      <opposing-action><unknown-check/></opposing-action>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><self/></range>
@@ -258,7 +258,7 @@
     <action>
       <class><check/></class>
       <name>Perception Check</name>
-      <opposing-action-name><unknown-save/></opposing-action-name>
+      <opposing-action><unknown-save/></opposing-action>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><na/></range>
@@ -267,7 +267,7 @@
     <action>
       <class><save/></class>
       <name>Perception Save</name>
-      <opposing-action-name><unknown-check/></opposing-action-name>
+      <opposing-action><unknown-check/></opposing-action>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><ranged-very-long/></range>
@@ -326,7 +326,7 @@
     <action>
       <class><check/></class>
       <name>Will Check</name>
-      <opposing-action-name><unknown-save/></opposing-action-name>
+      <opposing-action><unknown-save/></opposing-action>
       <critclass><physical/></critclass>
       <cost><free/></cost>
       <range><self/></range>
@@ -336,17 +336,29 @@
     <action>
       <class><save/></class>
       <name>Will Save</name>
-      <opposing-action-name><unknown-check/></opposing-action-name>
+      <opposing-action><unknown-check/></opposing-action>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
+      <poolcost>0</poolcost>
       <range><self/></range>
-      <keywords><save/></keywords>
+      <keywords><save/><mettlepool/></keywords>
+    </action>
+
+    <action>
+      <class><save/></class>
+      <name>Mettle Save</name>
+      <opposing-action><default-save-sv/></opposing-action>
+      <critclass><physical/></critclass>
+      <cost><free-interrupt-cost/></cost>
+      <poolcost>1</poolcost>
+      <range><self/></range>
+      <keywords><save/><mettlepool/></keywords>
     </action>
 
     <action>
       <class><save/></class>
       <name>Break Save</name>
-      <opposing-action-name><default-save-sv/></opposing-action-name>
+      <opposing-action><default-save-sv/></opposing-action>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>2</poolcost>
@@ -358,7 +370,7 @@
     <action>
       <class><save/></class>
       <name>Magic Save</name>
-      <opposing-action-name><unknown-check/></opposing-action-name>
+      <opposing-action><unknown-check/></opposing-action>
       <critclass><trial/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <poolcost>1</poolcost>
@@ -372,8 +384,6 @@
 	cast against them.
       </effect>
     </action>
-    
-    
     <abilitydescription>
       <p>
         <indexentry><entry>Will</entry></indexentry>
@@ -461,7 +471,7 @@
     <action>
       <class><save/></class>
       <name>Fortune Save</name>
-      <opposing-action-name><default-save-sv/></opposing-action-name>
+      <opposing-action><default-save-sv/></opposing-action>
       <critclass><trial/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>

@@ -7,6 +7,6 @@
 
   {% for ag in ability_groups
   if ag.get_family_id() == db.ABILITY_FAMILY_MAGIC_ID %}  
-  {{- build_ability_group(ag) -}}
+  {{- format_ability_group(ag) -}}
   {% endfor %} 
 </section>  

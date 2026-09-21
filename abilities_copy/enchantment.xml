@@ -25,7 +25,7 @@
       <cost><ap1/></cost>      
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><opponents-will-save/></counter>      
+      <opposing-action><will-save/></opposing-action>      
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="enchantment" rank="1"/>    
@@ -80,7 +80,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords>
-      <counter><default-lore-sv-hard/></counter>      
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
@@ -105,7 +105,7 @@
       <cost><free-interrupt/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="enchantment" rank="2"/>    
@@ -131,7 +131,7 @@
       <cost><ap4/></cost>
       <range><ranged-long/></range>
       <keywords><magic/><check/><magicpool/></keywords>
-      <counter><opponents-perception-save/></counter>
+      <opposing-action><perception-save/></opposing-action>
       <success>The target is convinced by the Glamour.</success>
       <fail>The target is suspicious.</fail>
       <grimfail>The target sees something off and will investigate further</grimfail>
@@ -179,7 +179,7 @@
       <cost><ap1/></cost>
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><opponents-will-save/></counter>      
+      <opposing-action><will-save/></opposing-action>      
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
     </action>
@@ -216,7 +216,7 @@
       <cost><noncombat/></cost> 
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="enchantment" rank="1"/>    
@@ -248,7 +248,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="zoolingualism" rank="1"/>    
@@ -273,7 +273,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="zoolingualism" rank="1"/>    
@@ -298,7 +298,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="zoolingualism" rank="1"/>    
@@ -322,7 +322,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="zoolingualism" rank="1"/>    
@@ -348,7 +348,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="zoolingualism" rank="1"/>    
@@ -372,7 +372,7 @@
       <cost><free-interrupt/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>      
+      <opposing-action><sv11/></opposing-action>      
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="zoolingualism" rank="1"/>    
@@ -397,7 +397,7 @@
       <cost><noncombat/></cost>
       <range><reach/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><opponents-will-save/></counter>
+      <opposing-action><will-save/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="enchantment" rank="1"/>    
@@ -409,7 +409,7 @@
 	into the mind of the target.   If Vox is successfully cast then
 	a 2d12+Rank check is made against the targets will to command
 	the target.  The opposed check is modified as follows: -6 if the
-	command is self	destructive, -3 if the command is counter to the
+	command is self	destructive, -3 if the command is opposing-action to the
 	creatures nature and desires, +3 if the command is something aligned
 	with the creatures desires, +6 if the command is strongly aligned with the
 	creatures desires.  If successful the target performs the action
@@ -429,7 +429,7 @@
       <cost><ap1/></cost>
       <range><ranged-short/></range>
       <keywords><lore/><check/><magicpool/></keywords>
-      <counter><opponents-endurance-save/></counter>
+      <opposing-action><endurance-save/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="enchantment" rank="2"/>    

@@ -30,7 +30,7 @@
       <range><reach/></range>
       <keywords><polearm/><melee/><check/></keywords>
       <precondition>Hit an opponent with a boon</precondition>
-      <counter><opponents-strength-save/></counter>
+      <opposing-action><strength-save/></opposing-action>
       <critsuccess>
 	Target drops item, weapon or shield.  Attacker chooses.
       </critsuccess>
@@ -63,7 +63,7 @@
       <cost><ap4/></cost>
       <range><reach/></range>
       <keywords><polearm/><physical-attack/><basic-attack/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon+Rank+Speed|Strength</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
@@ -92,7 +92,7 @@
       <precondition>
 	An opponent charges the character or an adjacent character
       </precondition>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon+Rank+Speed|Strength</dmg>      
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
@@ -117,7 +117,7 @@
     <abilitytitle>Circle of Death</abilitytitle>
     <abilityid>circle_of_death</abilityid>
     <abilityranks from="1" to="4"/>
-    <abilityauxiliary>
+    <action>
       <name>Melee Attack</name>
       <critclass><melee-attack/></critclass>          
       <cost><ap4/></cost>
@@ -127,7 +127,7 @@
 	Opponents moves into reach anytime before his next reaction.
       </precondition>
       <effect>Character gets a free Fend reaction.</effect>
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="polearm_strike" rank="2"/>
     <spline><p x="120" y="30"/></spline> 
     <abilitydescription>
@@ -153,7 +153,7 @@
       <precondition>
 	Character not in melee and an opponent attempts to move into reach.
       </precondition>
-      <counter><opponents-will-save/></counter>
+      <opposing-action><will-save/></opposing-action>
       <any-success>
 	Opponent's movement stops before moving into reach.
       </any-success>      

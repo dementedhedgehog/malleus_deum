@@ -1,6 +1,6 @@
 
-  {% from "docs/macro_ability.xml" import build_ability with context %}
-  {% from "docs/macro_ability_group.xml" import build_ability_group with context %}
+  {% from "docs/macro_ability.xml" import format_ability with context %}
+  {% from "docs/macro_ability_group.xml" import format_ability_group with context %}
 
   
 <chapter>
@@ -22,7 +22,7 @@
     </indexentry>
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_PRIMARY_ID %}
-    {{- build_ability_group(ag) -}}
+    {{- format_ability_group(ag) -}}
     {% endfor %} 
   </section>
 
@@ -38,12 +38,12 @@
 
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_LORE_ID %}
-      {{- build_ability_group(ag) -}}
+      {{- format_ability_group(ag) -}}
     {% endfor %}
  
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_WYRDSCIENCE_ID %}
-      {{- build_ability_group(ag) -}}
+      {{- format_ability_group(ag) -}}
     {% endfor %}
   </section>
 
@@ -82,7 +82,7 @@
 
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_MARTIAL_ID %}
-      {{- build_ability_group(ag) -}}
+      {{- format_ability_group(ag) -}}
     {% endfor %}
   </section>
 
@@ -99,7 +99,7 @@
 
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_GENERAL_ID %}
-      {{- build_ability_group(ag) -}}
+      {{- format_ability_group(ag) -}}
     {% endfor %}
   </section>
 

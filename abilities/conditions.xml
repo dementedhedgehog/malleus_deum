@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Conditions</abilitygrouptitle>
+    <abilitygroupid><conditions/></abilitygroupid>
+    <abilitygroupfamily><tribulations/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+      </p>
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Holding Your Breath</abilitytitle>
+    <abilityid>holding-your-breath</abilityid>
+    <param-rank>3</param-rank>
+    <abilityranks from="1" to="5"/>
+    <keywords><condition/><antagonist/></keywords>
+    <action>
+      <class><auxiliary/></class>
+      <name>On Your Turn</name>
+      <cost><free/></cost>
+      <range><na/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>This action happens during your turn.</precondition>
+      <effect>Your breath is held.</effect>
+    </action>
+    
+    <action>
+      <class><save/></class>
+      <name>When surprised!</name>
+      <opposing-action><speed-or-perception-save/></opposing-action>
+      <opposing-action-cost><save-cost/></opposing-action-cost>
+      <critclass><no-crits/></critclass>
+      <cost><start-of-turn-cost/></cost>
+      <range><na/></range>
+      <keywords><save/></keywords>
+      <any-success>Your breath is held.</any-success>
+      <any-fail>Your breath is not held.</any-fail>
+    </action>
+    
+    <abilitydescription>
+      <p>
+	Holding your breath confers some protection against various poison gas,
+	disease, acidic vapours, and other noxious gas effects.
+      </p>
+
+      <p>
+	<emph>Characters can hold their breath for 5 of their turns plus d4
+	turns for each rank in Endurance that they hold above zero</emph>. For
+	example a character with Endurance 3 can hold their breath for 5+3d4
+	turns. If, at the end of their round, the character has been holding
+	their breath for their maximum number of turns they cease to hold their
+	breath and must do so on their next turn.
+      </p>
+
+      <p>
+	Characters can automatically <emph>hold their breath</emph> if they
+	are prepared to do so, for example, before running into a burning
+	building.  However they must make a save if they want to do so as a
+	reaction to some third party event.
+      </p>
+
+      <p>
+	Characters cannot start to Hold Their Breath while being asphyxiated.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Near Death</abilitytitle>
+    <abilityid>near-death</abilityid>
+    <slug>There's a big difference between mostly dead and all dead.</slug>
+    <abilityranks from="11" to="11"/>
+    <keywords><condition/><antagonist/></keywords>
+    <action>
+      <class><auxiliary/></class>
+      <name>Roll for Near Death</name>
+      <cost><ap3/></cost>
+      <range><na/></range>
+      <keywords><mettlepool/><auxiliary/></keywords>
+      <precondition>
+	This check is made at the start of your turn.
+      </precondition>
+      <effect>
+	The character rolls on the Near-Death table.
+      </effect>       
+    </action>
+
+    <action>
+      <class><check/></class>
+      <name>Divine Intervention</name>
+      <opposing-action><flat-save/></opposing-action>
+      <opposing-action-cost><free-interrupt-cost/></opposing-action-cost>       
+      <critclass><listed-below/></critclass>
+      <cost><free/></cost>
+      <range><na/></range>
+      <keywords><check/></keywords>
+      <critsuccess>
+	Apply the "I'm Fine" result from the Near-Death table.	
+      </critsuccess>
+      <righteoussuccess>
+	Apply the "Flesh Wound" result from the Near-Death table.	
+      </righteoussuccess>
+      <success>
+	Apply the "Where am I" result from the Near-Death table.
+      </success>
+      <any-fail>The character is dead.</any-fail>
+    </action>
+
+    
+    <abilitydescription>
+      <figure position="htbp"><img id="batten_near_death"/></figure>
+
+      <p>
+	The player must make rolls on the Near-Death table for the character
+	each round until the condition is removed of their character dies.
+	Characters who are Near-Death also have the Down condition and usually
+	will have the Prone condition as well.
+      </p>
+
+      <smalltitle>Divine Intervention</smalltitle>
+      <indexentry><entry>Divine Intevention Save</entry></indexentry>
+      <indexentry>
+	<entry>Saves</entry>
+	<subentry>Divine Intevention</subentry>
+      </indexentry>
+      <p>
+	Divine intervention is a special rule where a character may be spared
+	by an intervention from Mithras or their patron before they die. As a
+	character is just about to die they <emph>may</emph> make a Divine
+	Intevention Save. If successful the powerful entity intervenes,
+	usually indirectly, on the characters behalf somehow. Particularly
+	religious characters gain a shift up on this roll. If the character
+	has donated to the church of Mithras recently they gain an additional
+	shift up. 
+      </p>
+
+      <p>
+	Such intervention, when it happens, is never free of obligation and
+	the entity will surely assume something in return. If successful the
+	character gains an aspect reflecting this obligation to the deity. In
+      </p>
+      
+      {%- include "docs/tables/near_death_table.xml" | trim -%}      
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Stunned</abilitytitle>
+    <abilityid>stunned</abilityid>
+    <param-rank>3</param-rank>
+    <abilityranks from="1" to="7"/>
+    <keywords><antagonist/></keywords>
+    <action>
+      <class><check/></class>
+      <name>Snap out of it!!</name>
+      <opposing-action><mettle-save/></opposing-action>
+      <opposing-action-cost><save-cost/></opposing-action-cost>
+      <critclass><listed-below/></critclass>
+      <cost><free/></cost>
+      <poolcost>0</poolcost>
+      <range><self/></range>
+      <keywords><check/><mettlepool/></keywords>
+      <any-success>The stunned condition is lost.</any-success>
+      <critsuccess>The stunned condition is lost.</critsuccess>
+      <critfail>FIXME THINGS GET WORSE SOMEHOW!</critfail>
+    </action>
+    <abilitydescription>
+      <p>
+	Characters who have been stunned cannot move, and can speak only
+	falteringly.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Subdued<daggersymbol/></abilitytitle>
+    <abilityid>subdued</abilityid>
+    <param-rank>3</param-rank>
+    <abilityranks from="1" to="5"/>
+    <keywords><antagonist/></keywords>
+    <action>
+      <class><save/></class>
+      <name>Resist!!</name>
+      <opposing-action><default-save-sv/></opposing-action>
+      <critclass><physical/></critclass>
+      <cost><save-or-free-save-cost/></cost>
+      <range><self/></range>
+      <keywords><save/></keywords>
+    </action>
+    
+    <abilitydescription>
+      <p>
+	Characters who have been subdued have lost the will to resist.
+	Subdued characters roll all will checks at disadvantage including Resist
+	and to resist Interrogate.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

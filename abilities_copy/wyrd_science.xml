@@ -24,7 +24,7 @@
       <cost><default-skill-checkcost/></cost>      
       <range><self/></range>      
       <keywords><lore/><check/></keywords> 
-      <counter><default-lore-sv-hard/></counter>
+      <opposing-action><default-lore-sv-hard/></opposing-action>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
@@ -49,7 +49,7 @@
       <cost><noncombat/></cost>
       <range><self/></range>
       <keywords><wyrdscience/><mettlepool/><check/></keywords>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
       <righteoussuccess>The feigned death is extremely convincing. Your example
       assists any companions in doing the same they gain a +2 to Feign Death or
       using Deception to pretend to be dead.
@@ -81,7 +81,7 @@
     <abilitytitle>Fleshcraft</abilitytitle>
     <abilityid>fleshcraft</abilityid>    
     <abilityranks from="1" to="5"/>
-    <abilityauxiliary>
+    <action>
       <name>Fles</name>
       <critclass><fixme/></critclass>
       <cost><default-skill-checkcost/></cost>      
@@ -94,7 +94,7 @@
 	check.
       </precondition>
       <effect>Roll on the table below</effect>
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="wyrdscience" rank="1"/>
     <spline><p x="0" y="60"/><p x="-30" y="30"/><p x="0" y="30"/><p x="-30" y="30"/><p x="30" y="30"/></spline>    
     <abilitydescription>
@@ -160,7 +160,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><wyrdscience/><check/><mettlepool/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <grimfail>FIXME</grimfail>
     </action>
     <prereqabilityref id="homunculus" rank="2"/>
@@ -201,7 +201,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <critsuccess>FIXME</critsuccess>
     </action>
     <prereqabilityref id="wyrdscience" rank="3"/>
@@ -287,7 +287,7 @@
       <cost><ap1/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>
 	The next lore check made today is made at advantage.
       </any-success>
@@ -313,7 +313,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
-      <counter><sv15/></counter>
+      <opposing-action><sv15/></opposing-action>
       <any-success>The rat is created.</any-success>
       <critfail>The rat is created but it hates its creator. Gain the Malicious-Rodent aspect.</critfail>
       <damned>Gain the Unhealthy Devotion aspect. The doktor develops an unhealthy bond with his new friend.</damned>
@@ -353,7 +353,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <critsuccess>FIXME</critsuccess>
     </action>
     <prereqabilityref id="fleshcraft" rank="1"/>
@@ -379,7 +379,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>FIXME</any-success>
     </action>
     <prereqabilityref id="splice_flesh" rank="2"/>
@@ -419,7 +419,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>An inner-eye is grafted to the recipient.</any-success>
     </action>
     <prereqabilityref id="fleshcraft" rank="2"/>
@@ -459,7 +459,7 @@
 	The corpse can be given simple instructions by its reanimator, such as
 	attack, or carry this
       </effect>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Taget is reanimated.</any-success>
     </action>
     <prereqabilityref id="homunculus" rank="3"/>
@@ -488,7 +488,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Target is revivified</any-success>
     </action>
     <prereqabilityref id="splice_flesh" rank="2"/>
@@ -515,7 +515,7 @@
       <cost><default-skill-checkcost/></cost>
       <range><self/></range>
       <keywords><check/><manipulate/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <success>Become the Beast</success>
     </action>
 
@@ -526,13 +526,13 @@
       <cost><free/></cost>
       <range><self/></range>
       <keywords><check/><mettlepool/></keywords>
-      <counter><sv9/></counter>
+      <opposing-action><sv9/></opposing-action>
       <success>Choose a target</success>
       <critfail>Revert to normal form.</critfail>
       <damned>Revert to normal form.</damned>
     </action>
 
-    <abilityauxiliary>
+    <action>
       <name>Spent</name>
       <critclass><auxiliary/></critclass>
       <cost><reaction/></cost>
@@ -544,7 +544,7 @@
       <effect>
 	The character reverts to normal form.
       </effect>
-    </abilityauxiliary>
+    </action>
     
     <prereqabilityref id="wyrdscience" rank="2"/>
     <spline><p x="0" y="90"/><p x="45" y="45"/><p x="0" y="45"/></spline>
@@ -585,7 +585,7 @@
       <range><na/></range>
       <keywords><mettlepool/><check/></keywords>
       <precondition>Must have a severed hand.  It doesn't have to be fresh.</precondition>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>Animated hand is created.</any-success>
       <critfail>The hand is created. Gain the Strangler aspect.. occasionaly the hand likes to murder things</critfail>
       <damned>Gain the Mind-of-its-Own aspect.. occasionaly the hand likes to wander off and do its own thing.  Always returning.</damned>

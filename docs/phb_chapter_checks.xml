@@ -34,9 +34,8 @@
       are based on the concept of Actor-Action-Object triplets, a theory used
       to describe interactions between entities in which an <defn>Actor</defn>
       performs an <defn>Action</defn> upon an <defn>Object</defn>. In Malleus
-      Deum, we decompose each Action into a <checksymbol/>Check made by the
-      Actor, and an opposing <savesymbol/> Save, made by the
-      Object.
+      Deum, we decompose each Action into a <checkarrowsymbol/> Check made by
+      the Actor, and an opposing <savearrowsymbol/> Save, made by the Object.
     </p>
 
     <p>
@@ -45,11 +44,11 @@
     </p>
     
     <indexentry>
-      <entry><checksymbol/>Check Symbol</entry>
+      <entry><checkarrowsymbol/>Check Symbol</entry>
     </indexentry>
     
     <indexentry>
-      <entry><savesymbol/>Save Symbol</entry>
+      <entry><savearrowsymbol/>Save Symbol</entry>
     </indexentry>
 
     <playexample>
@@ -262,8 +261,10 @@
       <p>
 	An <interruptsymbol/> <defn>Interrupt</defn> is an effect that happens
 	<emph>before</emph> its' triggering check is resolved. A
-	<reactionsymbol/> <defn>Reaction</defn> is an effect that happens
-	<emph>after</emph> the triggering check has been resolved.
+	<savearrowsymbol/> <defn>Save</defn> is an action that occurs at the
+	same time as the Check and opposes it.  While, a <reactionsymbol/>
+	<defn>Reaction</defn> is an effect that happens <emph>after</emph> the
+	triggering check has been resolved.
       </p>
 
       <p>
@@ -275,13 +276,12 @@
 
       <p>
 	Reactions and interrupts can be <defn>Mandatory</defn>, which means they
-	<emph>must</emph> be performed if their prerequisites are met.  Mandatory
+	<emph>must</emph> be performed if their prerequisites are met. Mandatory
 	actions are denoted by a trailing exclamation mark and come in free and
 	unfree types, <eg/> <mandatoryfreeinterruptsymbol/>, and
-	<mandatoryreactionsymbol/>.      
+	<mandatoryreactionsymbol/>.
       </p>
-    </subsection>
-    
+    </subsection>    
   </section>
 
   
@@ -629,13 +629,17 @@
 
     
     <subsection>
-      <subsectiontitle>Static Skill Values <ampersand/> DCs</subsectiontitle>
+      <subsectiontitle>
+	Static Skill Values, DCs <ampersand/> Borrowing Fate
+      </subsectiontitle>
 
       <p>
 	When using Static Skill we do not bother to roll the skill die,
 	instead we assume that the die rolled a 10 and calculate the skill
 	value as per usual.  So the Static Skill is 10 plus
 	the Rank of the Ability being used plus any shifts/modifiers.
+	The static skill is very similar to the concept of difficulty classes
+	in other TTRPGS, however DCs do not deal with resolving fate.
       </p>
 
       <p>
@@ -645,13 +649,24 @@
 
       <p>
 	Static Checks are used by the GM for antagonists in order to save
-	time.  Players should use the Roll Dice method.
+	time. Players should use the Roll Dice method.
       </p>
 
+      <playexample>
+	<p>
+	  A goblin makes a Sword Strike 4 attack on Dourli, with no shifts.
+	  This gives the goblin a static skill (SSV) of 14 for his attack.
+	  Dourli rolls 4|15 using a shield block phsical defence save, 4 for his
+	  fate and 15 for his skill. The 4 is a damned result. The 15 succeeds
+	  in beating the goblins SSV of 14 so Dourli takes no damage.  However,
+	  the goblin can borrow Dourli's fate result, inverting it, the damned
+	  result for Dourli, becomes a Lucky result for the goblin.  If the
+	  goblin had an interrupt or reaction that triggered on a Lucky fate
+	  value then he could perform that action.
+	</p>
+      </playexample>
+      
       <p>
-	Imagine that on the goblin's turn he makes a Sword Strike 4 attack
-	on Dourli, with no shifts.  So Dourli has to beat the Goblin's
-	Static Skill Value of 13 on his Defence roll.
       </p>
 
       {% include "docs/sidebars/borrowing_fate.xml" %}

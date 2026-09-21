@@ -1,0 +1,264 @@
+{% macro insert_cost_symbol(cost) %}
+{%- if cost == 'Free' -%}
+<freeactionsymbol/>
+{%- elif cost == '1AP' -%}
+<oneactionsymbol/>
+{%- elif cost == '2AP' -%}
+<twoactionsymbol/>
+{%- elif cost == '3AP' -%}
+<threeactionsymbol/>
+{%- elif cost == '4AP' -%}
+<fouractionsymbol/>
+{%- elif cost == '5AP' -%}
+<fiveactionsymbol/>
+{%- elif cost == 'Save' -%}
+<savesymbol/>
+{%- elif cost == 'Free Save' -%}
+<freesavesymbol/>
+{%- elif cost == 'Save/Free Save' -%}
+<saveorfreesavesymbol/>
+{%- elif cost == 'Reaction' -%}
+<reactionsymbol/>
+{%- elif cost == 'Free Reaction' -%}
+<freereactionsymbol/>
+{%- elif cost == 'Mandatory Reaction' -%}
+<mandatoryreactionsymbol/>
+{%- elif cost == 'Mandatory Free Reaction' -%}
+<mandatoryfreereactionsymbol/>
+{%- elif cost == 'Free Reaction/Interrupt' -%}
+<freereactionorinterruptsymbol/>
+{%- elif cost == 'Reaction/Interrupt' -%}
+<reactionorinterruptsymbol/>
+{%- elif cost == 'Reaction/2AP' -%}
+<reactionsymbol/>/<twoactionsymbol/>
+{%- elif cost == 'Interrupt/2AP' -%}
+<interruptsymbol/>/<twoactionsymbol/>
+{%- elif cost == 'GM Fiat' -%}
+<gmfiatchecksymbol/>
+{%- elif cost == 'Interrupt' -%}
+<interruptsymbol/>
+{%- elif cost == 'Free Interrupt' -%}
+<freeinterruptsymbol/>
+{%- elif cost == 'Mandatory Interrupt' -%}
+<mandatoryinterruptsymbol/>
+{%- elif cost == 'Mandatory Free Interrupt' -%}
+<mandatoryfreeinterruptsymbol/>
+{%- elif cost == 'Noncombat' -%}
+<outofcombatsymbol/>
+{%- elif cost == 'Start of Turn' -%}
+<startofturnsymbol/>
+{%- elif cost == 'Any OOTA' -%}
+<anyootasymbol/>
+{%- else -%}
+UNKNOWN COST!! {{ cost }}
+{%- endif -%}
+{%- endmacro -%}
+
+
+
+{%- macro insert_action_cost_symbol(action) -%}
+{%- set cost = action.cost -%}
+{{- insert_cost_symbol(cost) -}}
+{%- endmacro -%}
+
+{%- macro insert_opposing_action_cost_symbol(action) -%}
+{%- set cost = action.opposing_action_cost -%}
+{%- if cost is not none -%}
+{{- insert_cost_symbol(cost) -}}
+{%- endif -%}
+{%- endmacro -%}
+
+
+
+{%- macro format_action(action) -%}
+    <vspace length="1.0"/><br/>
+    {%- if action.action_class == 'Auxiliary' -%}
+        <auxiliarysymbol/>
+    {%- else -%}
+        <abilitybulletsymbol/>
+    {%- endif -%}
+
+    {#- ***CHECK*** -#}
+    {%- if action.action_class == 'Check' -%}
+
+        {%- if action.is_antag_action() -%}
+            AC {{action.name}}{{ insert_action_cost_symbol(action) }}
+	    <vscheckarrowsymbol/><savearrowsymbol/>
+	    {{- insert_opposing_action_cost_symbol(action) -}}
+	    <bold>{{- action.opposing_action }}</bold>
+	{%- else -%}
+            CH <bold>{{action.name}}</bold>
+	    <checkarrowsymbol/><vssavearrowsymbol/>
+	    <smaller>{{- action.opposing_action }}</smaller>
+	{%- endif -%}
+
+
+
+    {#- ***SAVE*** #}{%- elif action.action_class == 'Save' -%}
+
+        {%- if action.is_antag_action() -%}
+	    AS {{action.name}}
+	    {{- " " + insert_action_cost_symbol(action) + " "-}}
+            <vscheckarrowsymbol/><savearrowsymbol/>
+	    {{- " " + insert_opposing_action_cost_symbol(action) + " "-}}
+	    <bold>{{action.opposing_action}}</bold>
+	{%- else -%}
+	    SV {{action.opposing_action}}
+	    <vscheckarrowsymbol/><savearrowsymbol/>
+	    {{- " " + insert_action_cost_symbol(action) + " "-}}
+	    <bold>{{action.name}}</bold>
+	{%- endif -%}
+	
+
+
+    {#- ***Auxiliary*** #}{%- elif action.action_class == 'Auxiliary' -%}	
+	{{- " " + insert_action_cost_symbol(action) + " "-}}
+	<bold>{{action.name}}</bold>
+
+
+
+    {#- ***Error!*** #}{%- else -%}
+	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ action.action_type }}
+    {%- endif -%}	
+
+    <br/><bold>Crits:</bold> {{ action.get_crit_class()|string + " " }}
+    {%- if action.pool_cost -%}
+    <bold>Pool Cost:</bold> {{ action.get_pool_cost_str()  + " " }}
+    {%- endif -%}
+    <bold>Range:</bold> {{ action.action_range + " " -}}
+    {%- if action.dmg -%}
+    <bold>Damage:</bold> {{ action.dmg  + " " }}
+    {%- endif -%}
+    {%- if action.keywords -%}
+    <bold>Keywords:</bold> {{ action.get_action_keywords_str()  + " " }}
+    {%- endif -%}
+    {%- if action.requires %}
+    <bold>Requires:</bold> {{ action.requires }}	
+    {%- endif -%}
+    {%- if action.precondition %}	
+    <br/><bold>Preconditions:</bold> {{ action.precondition }}
+    {%- endif -%}
+    {% if action.effect -%}
+    <br/><bold>Effect:</bold> {{ action.effect }}
+    {%- endif -%}
+    {%- if action.has_outcomes() %}
+    <br/><bold>Outcomes:</bold><indent>
+    {%- for outcome in action.get_outcomes() -%}
+    {%- set name, result = outcome -%}	
+    <br/><bold>{{ name }}:</bold> {{ result }}
+    {%- endfor -%}
+    </indent>
+    {%- endif -%}	
+{%- endmacro -%}
+
+<spacer/>
+<subsubsection>
+  {%- set titlecategory = "ability" -%}
+  {%- if ability.is_antag_ability() -%}
+  {%- set titlecategory = "antagonist-ability" -%}
+  {%- endif -%}    
+  <subsubsectiontitle titlecategory="{{titlecategory}}">
+    {{- ability.get_name() + " " -}}    
+    {%- if ability.has_untrained_rank() -%}
+    <bold>({{ ability.get_untrained_rank() }}) </bold>
+    {%- endif -%}
+    {%- if ability.has_trained_ranks() -%}
+    {%- set from_rank, to_rank = ability.get_ability_trained_rank_range() -%}
+    {{ from_rank }}<endash/>{{ to_rank }}    
+    {%- endif -%}    
+    {%- if ability.has_parameters() -%}
+    <hfill/><smaller>Params: [{{ability.get_parameters_str()}}]</smaller>
+    {%- endif -%}
+    {#- eat extra newlines as latex doesn't like them in movable arguments -#}
+  </subsubsectiontitle>
+  {%- if ability.slug -%}
+  <!-- <vspace length="-0.3"/> -->
+  <slug>{{ ability.slug }}</slug>
+  {%- endif -%}
+  <indexentry>
+    <entry>{{- ability.get_name() }} Ability</entry>
+  </indexentry>
+  <indexentry>
+    <entry>Ability</entry>
+    <subentry>{{- ability.get_name() }}</subentry>
+  </indexentry>
+  <vspace length="-0.5"/>
+  <p>
+    <smaller>
+      <bold>Keywords:</bold> {{ ability.get_keywords_str()  + " " }}
+      {%- if ability.prerequisites -%}
+      <bold>Prereqs:</bold> {{ ability.get_prerequisites_str()  + " " }}
+      {%- endif -%}
+      {%- if ability.specializations -%}
+      <bold>Specializations:</bold> {{ability.get_specializations_str()  + " "}}
+      {%- endif %}      
+      {%- if ability.get_actions() -%}
+      {%- for action in ability.get_actions() -%}
+      <indent>
+	{{- format_action(action) -}}
+      </indent>
+      {%- endfor -%}
+      {%- endif -%}
+    </smaller>
+    <vspace length="0.8"/>
+  </p>
+  {%- if ability.stages -%}
+  <p>
+    <smaller>
+      <bold>Stages:</bold>
+      <indent>
+	{% for stage in ability.stages -%}    
+	<vspace length="0.6"/><br/>
+	<bold>{{ loop.index }}: {{ stage.name }}</bold> {{ stage.description }}
+	{%- endfor %}
+      </indent>
+    </smaller> 
+    <vspace length="1"/>
+  </p>      
+  {%- endif %}  
+          
+  {%- if ability.slug -%}
+  <!-- <vspace length="-0.3"/> -->
+  <slug>{{ ability.slug }}</slug>
+  {%- endif -%}
+  <indexentry>
+    <entry>{{- ability.get_name() }} Ability</entry>
+  </indexentry>
+  <indexentry>
+    <entry>Ability</entry>
+    <subentry>{{- ability.get_name() }}</subentry>
+  </indexentry>
+  <vspace length="-0.5"/>
+  <p>
+    <smaller>
+      <bold>Keywords:</bold> {{ ability.get_keywords_str()  + " " }}
+      {%- if ability.prerequisites -%}
+      <bold>Prereqs:</bold> {{ ability.get_prerequisites_str()  + " " }}
+      {%- endif -%}
+      {%- if ability.specializations -%}
+      <bold>Specializations:</bold> {{ability.get_specializations_str()  + " "}}
+      {%- endif %}      
+      {%- if ability.get_actions() -%}
+      {%- for action in ability.get_actions() -%}
+      <indent>
+	{{- format_action(action) -}}
+      </indent>
+      {%- endfor -%}
+      {%- endif -%}
+    </smaller>
+    <vspace length="0.8"/>
+  </p>
+  {%- if ability.stages -%}
+  <p>
+    <smaller>
+      <bold>Stages:</bold>
+      <indent>
+	{% for stage in ability.stages -%}    
+	<vspace length="0.6"/><br/>
+	<bold>{{ loop.index }}: {{ stage.name }}</bold> {{ stage.description }}
+	{%- endfor %}
+      </indent>
+    </smaller> 
+    <vspace length="1"/>
+  </p>      
+  {%- endif %}            

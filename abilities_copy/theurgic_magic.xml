@@ -34,7 +34,7 @@
       <cost><ap1/></cost>
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="180"/><p x="90" y="30"/></spline>
@@ -71,7 +71,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><ritual/><magicpool/><check/></keywords>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
       <any-success>FIXME</any-success>
     </action>    
     <prereqabilityref id="theurgy" rank="1"/>
@@ -146,7 +146,7 @@
       <cost><ap1/></cost>
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><opponents-will-save/></counter>      
+      <opposing-action><will-save/></opposing-action>      
       <any-success>Demon makes Mettle Check vs Cast Result</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="2"/>
@@ -173,7 +173,7 @@
       <cost><ap1/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>      
+      <opposing-action><sv7/></opposing-action>      
       <any-success>Weapons receive +Rank dmg vs demons and undead</any-success>
       <critsuccess>Weapons receive +2×Rank dmg vs demons and undead</critsuccess>      
     </action>
@@ -202,7 +202,7 @@
       <cost><ap4/></cost>
       <range><ranged-short/></range>
       <keywords><magicpool/><maintain/><check/></keywords>
-      <counter><sv11/></counter>      
+      <opposing-action><sv11/></opposing-action>      
       <any-success>
 	Alies make defensive checks with a +Rank bonus against evil opponents
       </any-success>
@@ -228,7 +228,7 @@
       <cost><ap1/></cost>
       <range><na/></range>
       <keywords><check/></keywords>
-      <counter><sv9/></counter>      
+      <opposing-action><sv9/></opposing-action>      
       <any-success>Holy water is available.</any-success>
       <critsuccess>+2 bonus to checks made with this item</critsuccess>
       <righteoussuccess>+1 bonus to checks made with this item</righteoussuccess>
@@ -273,15 +273,15 @@
       <cost><reaction/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv9/></counter>
-      <any-success>Check to make a free counter attack</any-success>
+      <opposing-action><sv9/></opposing-action>
+      <any-success>Check to make a free opposing-action attack</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="300"/><p x="-60" y="30"/></spline>
     <abilitydescription>
       <p noindent="true">
   	When struck the character may check and if successful make an
-  	immediate counter-attack.  On overcharge the character is Enraged.
+  	immediate opposing-action-attack.  On overcharge the character is Enraged.
       </p>
     </abilitydescription>
   </ability>
@@ -298,7 +298,7 @@
       <cost><ap1/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>Exorcise evil spirit</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
@@ -335,7 +335,7 @@
       <cost><ap1/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
       <any-success>+Rank to Near Death saves</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
@@ -362,7 +362,7 @@
       <cost><ap1/></cost>
       <range><touch/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>+Rank to hit and dmg</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
@@ -390,7 +390,7 @@
       <precondition>
 	Someone nearby is hit with an arrow or crossbow bolt.
       </precondition>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
       <any-success>
 	Arrow or bolt misses in defence or is rerolled in offence.
       </any-success>
@@ -434,7 +434,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Heal 1d4+Rank hit points</any-success>
       <critfail>
 	The healer accidentaly uses their own animus in order to heal the
@@ -464,7 +464,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><opponents-will-save/></counter>      
+      <opposing-action><will-save/></opposing-action>      
       <any-success>Target mesmerized</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="2"/>
@@ -493,7 +493,7 @@
       <cost><ap1/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>      
+      <opposing-action><sv7/></opposing-action>      
       <any-success>Create light</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
@@ -519,7 +519,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>      
+      <opposing-action><sv7/></opposing-action>      
       <any-success>Prayer refreshes a mettle die</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
@@ -546,7 +546,7 @@
       <cost><reaction/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>
+      <opposing-action><sv7/></opposing-action>
       <any-success>Transfers damage</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
@@ -575,7 +575,7 @@
       <cost><noncombat/></cost>
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
-      <counter><sv7/></counter>      
+      <opposing-action><sv7/></opposing-action>      
       <any-success>Purifies food or drink</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>
@@ -603,7 +603,7 @@
       <cost><free-interrupt/></cost>
       <range><na/></range>
       <keywords><lore/><check/></keywords>
-      <counter><sv13/></counter>
+      <opposing-action><sv13/></opposing-action>
       <any-success>Reveals background lore</any-success>
     </action>
     <spline></spline>
@@ -630,7 +630,7 @@
       <cost><ap1/></cost>
       <range><na/></range>
       <keywords><magicpool/><maintain/><check/></keywords>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Mace, Hammer or Staff +Rank to hit and damage</any-success>
     </action>
     <prereqabilityref id="blessed_arms" rank="2"/>
@@ -658,7 +658,7 @@
       <range><na/></range>
       <keywords><magicpool/><check/></keywords>
       <precondition>Opponents are undead.</precondition>
-      <counter><opponents-will-save/></counter>
+      <opposing-action><will-save/></opposing-action>
       <any-success>
 	If successfully cast any undead within range whose will is less than or equal to the result are Held.
       </any-success>
@@ -687,7 +687,7 @@
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
       <precondition>Opponents are undead.</precondition>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>
 	If successfully cast any undead within range whose will is less than or
 	equal to the result are Turned.
@@ -717,7 +717,7 @@
       <range><ranged-short/></range>
       <keywords><magicpool/><check/></keywords>
       <precondition>Opponents are undead.</precondition>
-      <counter><sv13/></counter>      
+      <opposing-action><sv13/></opposing-action>      
       <any-success>
 	If successfully cast any undead within range whose will is less than
 	or equal to the result are Destroyed.
@@ -747,7 +747,7 @@
       <range><self/></range>
       <keywords><magicpool/><check/></keywords>
       <precondition>Caster is bloodied</precondition>
-      <counter><sv11/></counter>
+      <opposing-action><sv11/></opposing-action>
       <any-success>Make three melee attacks</any-success>
     </action>
     <prereqabilityref id="theurgy" rank="1"/>

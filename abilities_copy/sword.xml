@@ -17,7 +17,7 @@
     <abilitytitle>Daring Thrust</abilitytitle>
     <abilityid>daring_thrust</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilityauxiliary>
+    <action>
       <name>Trigger</name>
       <critclass><auxiliary/></critclass>
       <cost><reaction/></cost>
@@ -26,7 +26,7 @@
       <precondition>Righteous success when making a Sword Parry against
       a melee attack within reach.</precondition>
       <effect>May make a Sword Retort attack as a reaction.</effect>
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="sword_strike" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -40,7 +40,7 @@
     <abilitytitle>Follow Through</abilitytitle>
     <abilityid>follow_through</abilityid>    
     <abilityranks from="1" to="2"/>
-    <abilityauxiliary>
+    <action>
       <name>Attack</name>
       <critclass><auxiliary/></critclass>
       <cost><ap2/></cost>
@@ -48,7 +48,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>Hit with a melee attack.</precondition>
       <effect>Make a Sword Retort attack on the first, or second adjacent, opponent.</effect>
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="sword_strike" rank="2"/>
     <spline><p x="0" y="60"/><p x="-90" y="30"/></spline>
     <abilitydescription>
@@ -64,7 +64,7 @@
     <abilitytitle>Mighty Blow</abilitytitle>
     <abilityid>mighty_blow</abilityid>    
     <abilityranks from="1" to="3"/>
-    <abilityauxiliary>
+    <action>
       <name>Mighty Blow</name>
       <critclass><auxiliary/></critclass>
       <poolcost>1</poolcost>
@@ -73,7 +73,7 @@
       <keywords><mettlepool/><physical-attack/><check/><auxiliary/></keywords> 
       <precondition>Righteous hit with a sword.</precondition>
       <effect>+Rank to damage before multipliers</effect>      
-    </abilityauxiliary>
+    </action>
     <prereqabilityref id="sword_strike" rank="3"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -96,7 +96,7 @@
       <range><reach/></range>
       <keywords><sword/><check/></keywords>
       <precondition>Righteous hit with a sword.</precondition>
-      <counter><opponents-speed-save/></counter>      
+      <opposing-action><speed-save/></opposing-action>      
       <any-success>Opponent disarmed</any-success>
     </action>
     <prereqabilityref id="sword_strike" rank="2"/>
@@ -120,7 +120,7 @@
       <cost><reaction/></cost>      
       <range><reach/></range>
       <keywords><sword/><physical-attack/><melee/><check/></keywords>
-      <counter><opponents-agility-save/></counter>      
+      <opposing-action><agility-save/></opposing-action>      
       <any-success>Character acts before target.</any-success>
     </action>
     <prereqabilityref id="sword_strike" rank="2"/>
@@ -146,7 +146,7 @@
   <!--     <cost><ap2/></cost> -->
   <!--     <range><reach/></range> -->
   <!--     <keywords><basic-attack/><check/></keywords> -->
-  <!--     <counter><opponents-physical-defence/></counter> -->
+  <!--     action><physical-defence/></opposing-action> -->
   <!--     <dmg>Weapon+Rank+Strength|Speed</dmg> -->
   <!--     <critsuccess><default-attack-critical-success/></critsuccess> -->
   <!--     <righteoussuccess><default-attack-righteous-success/></righteoussuccess> -->
@@ -155,7 +155,7 @@
   <!--   <spline><p x="35" y="90"/></spline> -->
   <!--   <abilitydescription> -->
   <!--     <p noindent="true">	 -->
-  <!--       Characters equipped with a Sword can counter strike with it during -->
+  <!--       Characters equipped with a Sword can opposing-action strike with it during -->
   <!-- 	combat.  This ability is usually triggered by other abilities. -->
   <!--     </p> -->
   <!--   </abilitydescription> -->
@@ -172,7 +172,7 @@
       <cost><ap4/></cost>
       <range><reach/></range>
       <keywords><basic-attack/><check/></keywords>
-      <counter><opponents-physical-defence/></counter>
+      <opposing-action><physical-defence/></opposing-action>
       <dmg>Weapon+Rank+Strength|Speed</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 

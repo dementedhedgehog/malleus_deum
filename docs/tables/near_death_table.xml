@@ -1,7 +1,7 @@
-<!-- included from the tables/near-death-banes file -->
-<table colsep="0.6">
-    <standardtable/>
-    <tablespec><fixed>0.12</fixed><fixed>0.78</fixed></tablespec>
+<!-- included from the tables/near_death_table.xml file -->
+<table colsep="0.5">  
+    <figuretable/>
+    <tablespec><fixed>0.092</fixed><fixed>0.8</fixed></tablespec>
     <tabletitle>Near Death Table</tabletitle>
     <tablelabel>table:near-death-table</tablelabel>
 
@@ -11,77 +11,94 @@
     </tableheaderrow>
     
     <tablerow>
-      <td>≤1</td>
-      <td><emph>Dying</emph>.  They will be dead at the end of the next
-      round unless someone intervenes.  If all else fails they can make a final
-      Std 2d12 roll for divine intervention, if they gain a Boon or Bane then
-      some god spares them for reasons that the god will make known to the character at
-      some time in the near future.  If successful the character gains an aspect reflecting
-      their obligation to this deity.  In the case of a Bane the divine intervention
-      is from a malicious source seeking to use the character as a pawn in their nefarious
-      plans.  The character may reject the intervention in this case.</td>
+      <td>≤-10</td>
+      <td>
+	<emph>Dead.</emph> If all else fails the character can make a check
+	for Divine Intervention.
+      </td>
     </tablerow>
 
     <tablerow>
+    <td>-9-1</td>
+    <td>
+      <emph>Dying</emph>. They will be dead at the end of the next round
+      unless someone intervenes.
+    </td>
+    </tablerow>
+
+    
+    <tablerow>
       <td>2</td>
-      <td><emph>Wounded</emph>.  Suffers some permanent disability, <eg/>They have lost
-      an eye or a hand, their face has been badly burned etc.  Gain the Checked condition
-      and 1d3 hit points.</td>
+      <td>
+	<emph>Coma</emph>. The character is in a comma.  Lose the Near-Death
+	condition.
+	FIXME COMA CONDITION
+      </td>
     </tablerow>
     
     <tablerow>
       <td>3</td>
-      <td><emph>Mostly Dead</emph>.  The character is in a comma.  They reroll on this table until they
-      are magically healed or </td>
+      <td><emph>Wounded</emph>. Suffer some permanent disability, <eg/> They
+      have lost an eye or a hand, their face has been badly burned <etc/> Gain
+      the Checked condition and 1d3 hit points. Lose the Near-Death condition.
+      </td>
     </tablerow>
     
     <tablerow>
       <td>4-5</td>
-      <td><emph>Bleeding Out Fast</emph>. Roll again next round with a -5 cummulative modifier.</td>
+      <td><emph>Bleeding Out Fast</emph>. Roll again next round with three
+      shifts down.</td>
     </tablerow>
 
     <tablerow>
       <td>6-8</td>
-      <td><emph>Bleeding Out</emph>. Roll again next round with a -3 cummulative modifier.</td>
+      <td><emph>Bleeding Out</emph>. Roll again next round with two shifts
+      down.</td>
     </tablerow>
 
     <tablerow>
       <td>9-13</td>
-      <td><emph>It doesn't look good</emph>.  Roll again next round.</td>
+      <td><emph>It doesn't look good</emph>. Roll again next round with one
+      shift down.</td>
     </tablerow>
 
     <tablerow>
       <td>14-15</td>
-      <td><emph>Out Cold</emph>.  The character gets the Unconscious condition and 1 health.</td>
-    </tablerow>
-     
-    <tablerow>
-      <td>16-17</td>
-      <td><emph>Coming To</emph>.  Roll again next round with a +3 cummulative modifier.</td>
+      <td><emph>Improving</emph>. Roll again next round with a one shift up.</td>
     </tablerow>
 
     <tablerow>
-      <td>18</td>
-      <td><emph>Waking Up</emph>.  Roll again next round with a +5 cummulative modifier.</td>
+      <td>16-17</td>
+      <td><emph>Getting Better</emph>.  Roll again next round with two shifts up.</td>
     </tablerow>
+
+    
+    <tablerow>
+      <td>18</td>
+      <td><emph>Out Cold</emph>. The character gains the Unconscious condition
+      and 1 health. Lose the Near-Death condition.</td>
+    </tablerow>
+     
 
     <tablerow>
       <td>19-20</td>
-      <td><emph>Where am I?</emph>.  Character gains the Dazed condition, the Checked condition and 1 health.</td>
+      <td><emph>Where am I?</emph>. Character gains the Dazed condition, the
+      Checked condition and 1 health.Lose the Near-Death condition.</td>
     </tablerow>
     
     <tablerow>
       <td>21-22</td>
-      <td><emph>A Flesh Wound</emph>.  Heals to 1 health and gains the Dazed condition.</td>
+      <td><emph>A Flesh Wound</emph>. Heals to 1 health and 1 Stamina, gains
+      the Dazed condition. Lose the Near-Death condition.</td>
     </tablerow>
 
     <tablerow>
       <td>23</td>
-      <td><emph>I'm Fine</emph>.  Heals 3 health.</td>
+      <td><emph>I'm Fine</emph>. Heals 3 Health and 3 Stamina. Lose the Near-Death condition.</td>
     </tablerow>
     
     <tablerow>
       <td>≥24</td>
-      <td><emph>Never Been Better</emph>.  Heals 5 health and gets an additional 10 temporary health.</td>
+      <td><emph>Never Been Better</emph>. Heals 5 health and 5 Stamina.  Lose the Near-Death condition.</td>
     </tablerow>
 </table>

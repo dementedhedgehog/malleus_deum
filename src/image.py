@@ -10,7 +10,6 @@ class Img:
         self.resource = None
         self.scale = None
 
-        
     def parse(self, img_node):
         self.filename = img_node.get("src")
         self.resource_id = img.get("id")
