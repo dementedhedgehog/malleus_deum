@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Rune Magic</abilitygrouptitle>
+    <abilitygroupid><rune/></abilitygroupid>
+    <abilitygroupfamily><magic/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	Rune magic is a type of earth elemental based magic.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Bladesharp</abilitytitle>
+    <abilityid>bladesharp</abilityid>    
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Cast</name>
+      <opposing-action><sv7/></opposing-action>
+      <critclass><cast/></critclass>
+      <cost><ap1/></cost>
+      <poolcost>1</poolcost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <any-success>
+	+Rank dmg for one edged weapon for the next 5 minutes.
+      </any-success>
+    </action>
+    <prereqabilityref id="runelore" rank="1"/>	
+    <spline><p x="-90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	An invocation that sharpens a blade.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Hold Door</abilitytitle>
+    <abilityid>hold_portal</abilityid>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <opposing-action><sv11/></opposing-action>
+      <critclass><cast/></critclass>
+      <cost><reaction-cost/></cost>
+      <poolcost>1</poolcost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <any-success>Door is held.</any-success>
+    </action>
+    <prereqabilityref id="runelore" rank="1"/>	
+    <spline><p x="-30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	The character can carve or mark with chalk or paint
+	a sign upon a door.  That door is warded shut until
+	the following sunrise.  The door gains a magical protective
+	barrier with 10 hit points for each rank of the spell cast.
+      </p>
+    </abilitydescription>    
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Hex Hammer</abilitytitle>
+    <abilityid>hex_hammer</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <opposing-action><sv11/></opposing-action>      
+      <critclass><cast/></critclass>
+      <cost><ap4/></cost>
+      <poolcost>1</poolcost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <critsuccess>Weapon does an additional 7 damage.</critsuccess>
+      <righteoussuccess>Weapon does an additional 5 damage.</righteoussuccess>
+      <success>Weapon does an additional 3 damage.</success>
+      <critfail>Weapon does 3 damage to the wielder when it hits</critfail>
+    </action>
+    <prereqabilityref id="runelore" rank="2"/>	
+    <spline><p x="30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	The character traces a rune of power upon the
+	hammer while charging it with magical energies.  For 
+	the rest of that combat it does an additional +d8 damage
+	on melee hits and counts as a magic weapon.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+  <ability>
+    <abilitytitle>Oathstone</abilitytitle>
+    <abilityid>oathstone</abilityid>
+    <slug>Duty is heavier than a mountain, death is lighter than a feather.</slug>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Cast</name>
+      <opposing-action><sv11/></opposing-action>      
+      <critclass><cast/></critclass>
+      <cost><ap4/></cost>
+      <poolcost>1</poolcost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <critsuccess>.</critsuccess>
+      <righteoussuccess>.</righteoussuccess>
+      <success>.</success>
+      <critfail>x</critfail>
+    </action>
+    <prereqabilityref id="runelore" rank="2"/>	
+    <spline><p x="30" y="60"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME: something similar to the oathstone in WHF.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Runelore</abilitytitle>
+    <abilityid>runelore</abilityid>    
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><recall-knowledge/></critclass>
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	Rune magic is a very specific form of elemental ritual magic
+	used mainly by dwarves and shamen.
+      </p>
+    </abilitydescription>    
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Sign of Idreshein</abilitytitle>
+    <abilityid>sign_of_idreshein</abilityid>    
+    <slug>
+      The fox condemns the trap, not himself.
+    </slug>
+    <abilityranks from="1" to="4"/>
+    <action>
+      <name>Cast</name>
+      <opposing-action><sv11/></opposing-action>      
+      <critclass><cast/></critclass>
+      <cost><ap4/></cost>
+      <poolcost>1</poolcost>
+      <range><touch/></range>
+      <keywords><magicpool/><check/></keywords>
+      <any-success>d6x(Rank+4)</any-success>
+    </action>
+    <prereqabilityref id="runelore" rank="2"/>	
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The Sign of Idreshein is a sigil that stores energy
+	that can be released in a fiery explosion when something
+	touches the sign or by an act of will on the behalf of
+	the caster.
+      </p>
+    </abilitydescription>    
+  </ability>
+</abilitygroup>

@@ -15,7 +15,7 @@
     </p>
 
     {% for ag in ability_groups
-    if ag.get_id() ==  db.ABILITY_GROUP_CONDITIONS_ID %}
+    if ag.get_id() ==  db.ABILITY_GROUP_CONDITION_ID %}
     <subsection>
       <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
 
@@ -40,7 +40,7 @@
     </p>
     
     {% for ag in ability_groups
-    if ag.get_id() ==  db.ABILITY_GROUP_HAZARDS_ID %}
+    if ag.get_id() ==  db.ABILITY_GROUP_HAZARD_ID %}
     <subsection>
       <subsectiontitle>{{ ag.get_name() }}</subsectiontitle>
 

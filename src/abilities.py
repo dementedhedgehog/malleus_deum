@@ -35,6 +35,8 @@ CONSTANTS = Constants.get_constants()
 # constants
 ANTAGONIST = "Antagonist"
 
+ACTION_CLASSES = {"Check", "Save", "Auxiliary"}
+
 
 def get_only_child_value(element):
     """
@@ -81,14 +83,17 @@ class AbilityRef:
         self.specializations = []
         self.dmg = None
 
+        # for aspect refs
         self.permanent = False
+        self.phrase = None
         return
 
     def parse(self, node):
         self._id = node.attrib["id"]
         self.rank = utils.attrib_to_int(node, "rank")
-        self.dmg = utils.attrib_to_int(node, "dmg")
+        self.dmg = node.get("dmg")
         self.permanent = utils.attrib_is_true(node, "permanent")
+        self.phrase = node.attrib.get("phrase", None)
         specializations = node.attrib.get("specializations")
         if specializations is not None:
             for specialization_rank in specializations.split(","):
@@ -100,6 +105,9 @@ class AbilityRef:
 
     def get_skill_value(self):
         return self.rank + 11
+
+    def get_phrase(self):
+        return self.phrase
 
     def get_specializations_str(self):
         return ", ".join([str(s) for s in self.specializations])
@@ -414,10 +422,7 @@ class Action:
                 self.line_number = child.sourceline
 
             tag = child.tag
-            if tag == "class":
-                self.action_class = get_only_child_value(child)
-
-            elif tag == "name":
+            if tag == "name":
                 self.name = contents_to_string(child)
 
             elif tag == "opposing-action":
@@ -466,6 +471,18 @@ class Action:
 
             elif tag == "keywords":
                 self.keywords += parse_xml_keyword_list(child)
+                print(self.keywords)
+                action_classes = ACTION_CLASSES.intersection(set(self.keywords))
+                # Both these error cases should have been caught by schematron
+                if len(action_classes) > 1:
+                    raise Exception("Received more than one action class "
+                                    "keyword (Check, Save, Auxiliary) "
+                                    "there can be only one!")
+                if len(action_classes) == 0:
+                    raise Exception("Received zero action class keywords "
+                                    "expecting keywords to contain one, and "
+                                    "only one of (Check, Save, Auxiliary)")
+                self.action_class = action_classes.pop()
 
             elif tag == "dmg":
                 self.dmg = contents_to_string(child).strip()
@@ -1602,7 +1619,7 @@ if __name__ == "__main__":
 
     for g in ability_groups:
         print(g.get_id())
-        if g.get_id() !=  "conditions":
+        if g.get_id() !=  "hazard":
             continue
         
         #print(g.get_family())
@@ -1610,9 +1627,10 @@ if __name__ == "__main__":
         #print(g.info.family_readable_id)
         #print(g.info.ability_group_readable_id)
         #print(g.info.slug)
+        
         for a in g:
             print(a.get_id())
-            print("[" +  a.get_description() + "]")
+            print(a.get_parameters_str())
             #print(a.get_untrained_rank())
             #print(a.has_ranks())
             #print(a.slug)

@@ -2,12 +2,12 @@
 {% from "docs/macro_ability.xml" import format_ability with context %}
 
 <chapter>
-  <chaptertitle>Aspects <ampersand/> Afflictions<label>ch:aspects</label></chaptertitle>
+  <chaptertitle>Aspects<label>ch:aspects</label></chaptertitle>
   <slug>Some rise by sin, and some by virtue fall.</slug>
 
   <p>
     Malleus Deum uses Aspects as a game mechanic to model inner conflict for
-    PCs. They represent the conflict between man and himself.
+    PCs. Aspects represent the conflict between man and himself.
   </p>
 
 
@@ -15,22 +15,13 @@
     <sectiontitle>Aspects are Abilities</sectiontitle>
     
     <p>      
-      Aspects are antagonistic abilities attached to a PC that can describe a
+      Aspects are antagonistic abilities attached to a PC used to describe a
       range of different features the character has that are not covered by
-      other character attributes. The PCs may be compelled by the GM to save
-      against one of their aspects, at any time that context dictates that the
-      PCs actions might be directed by that aspect.
+      other character attributes. The GM may, at any time that context dictates,
+      compell a PC to save against one of their aspects or have their
+      characters actions be directed by that aspect.
     </p>
     
-    <p>
-      FIXME: aspects are characterized by a phrase... 
-      Each aspect has a rank that represents how much control the PC has over
-      that particular aspect.  The higher their rank the easier it is for the
-      character to resist the aspect. Players have to keep track of the rank,
-      and possibly the stage of any aspects they have on their own character
-      sheet.
-    </p>
-
     <playexample>
       <p>
 	Dourli has an aspect <emph>Terrible Braggart</emph>.  He's playing cards
@@ -38,12 +29,12 @@
 	when the topic of a recent jewel heist from a local merchant is raised.
 	The GM uses Douli's aspect to try to compel him to claim responsibility
 	for the heist (whether he is responsible or not). Dourli must make an
-	Aspect Save or be compelled to be Terrible Braggert.
+	Aspect Save or be compelled by Terrible Braggert.
       </p>
       
       <p>
 	If Dourli fails the save then he is compelled. <emph>It is up to the
-	player just how his PC complies with the aspect</emph>, he might
+	player just how his PC complies with a compelled aspect</emph>, he might
 	disparage the job, saying that <quotemarks>it sounds like child's play,
 	a three legged scrofulous dog could have pulled it off. I'd done harder
 	jobs before I grew a beard</quotemarks>, or he might take credit for it
@@ -58,7 +49,6 @@
       </p>
     </playexample>
     
-
     {% for ag in ability_groups
     if ag.get_family_id() == db.ABILITY_FAMILY_ASPECT_ID %}
     {{ ag.get_description() }}
@@ -66,6 +56,19 @@
     {{ format_ability(ability) }}
     {% endfor %}
     {% endfor %}
+
+    <p>
+      Aspects are characterized by a descriptive phrase, <eg/> Douli has an
+      aspect <quotemarks>Terrible Braggart</quotemarks>, and a rank that
+      represents how much control the aspect has over the PC. This information
+      should be recorded on the player character sheets. 
+    </p>
+
+    <p>
+      In later chapters, we also use aspects to model various other afflictions,
+      like specific madnesses. We denote this as follows, <eg/>
+      <abilityref id="aspect" phrase="Claustrophobia" rank="3"/>.
+    </p>
   </section>
 
 
@@ -202,9 +205,19 @@
       <term>Oaths</term>
       <description>
 	<p>
-	  Oaths are important and characters who have sworn Oaths are, to the
-	  extent of their conscience, bound by them.  Oaths may be broken, and
-	  when they are there are consequences for the character.
+	  Oaths are important in the world of Malleus Deum and characters who
+	  have sworn Oaths are, to the extent of their conscience and public
+	  opinion, bound by them.  Oaths may be broken, and when they are there
+	  are consequences for the character.  Followers of Mithras may be
+	  required to swear oaths governing their behaviour or their allegiance.
+	</p>
+
+	<p>
+	  If a character breaks an oath they may  gain the <abilityref
+	  id="aspect" phrase="Oath-Breaker"/>.  If this becomes public knowledge
+	  then their character will attract opprobrium. If the character is a
+	  conscientious then this will cause them a certain amount of angst and
+	  a need to make amends.
 	</p>
       </description>
       
@@ -398,27 +411,6 @@
       </p>
     </playexample>      
   </section>
-
-  
-
-  <section>
-    <sectiontitle>Oaths <ampersand/> Oath Breaking</sectiontitle>
-    <p>
-      FIXME
-    </p>
-
-
-
-    
-    <p>
-      Theurgic Magic requires the use of a special Theurgic Oath,
-      that is represented in game by an Aspect,
-      for example "I shall be the shield of the downtrodden, and the
-      sword of the suffering".   Some theurgic abilities will reduce the
-      strength of that oath.
-    </p>
-    
-  </section>    
 </chapter>
 
 

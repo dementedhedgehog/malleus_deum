@@ -483,7 +483,6 @@ Token Types:
   <xs:complexType name="abilityFamilyKeywordEnum">
     <xs:choice>
       <!-- general is for misc noncombat ability groups -->
-      <!-- <xs:element name="antag" type="keywordType" fixed="Antagonist"/> -->
       <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
       <!-- <xs:element name="conditions" type="keywordType" fixed="Conditions"/> -->
       <xs:element name="general" type="keywordType" fixed="General"/>
@@ -491,8 +490,8 @@ Token Types:
       <xs:element name="lore" type="keywordType" fixed="Lore"/>
       <xs:element name="martial" type="keywordType" fixed="Martial"/>
       <xs:element name="magic" type="keywordType" fixed="Magic"/>
-      <!-- <xs:element name="hazards" type="keywordType" fixed="Hazards"/> -->
-      <xs:element name="tribulations" type="keywordType" fixed="Tribulations"/>
+      <xs:element name="npc" type="keywordType" fixed="NPC"/>
+      <xs:element name="tribulation" type="keywordType" fixed="Tribulation"/>
       <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
     </xs:choice>
   </xs:complexType>
@@ -506,7 +505,7 @@ Token Types:
       <xs:element name="arcana" type="keywordType" fixed="Arcana"/>
       <xs:element name="arts" type="keywordType" fixed="Arts"/>
       <xs:element name="axe" type="keywordType" fixed="Axe"/>
-      <xs:element name="conditions" type="keywordType" fixed="Conditions"/>
+      <xs:element name="condition" type="keywordType" fixed="Condition"/>
       <xs:element name="conjuration" type="keywordType" fixed="Conjuration"/>
       <xs:element name="craft" type="keywordType" fixed="Craft"/>
       <xs:element name="crossbow" type="keywordType" fixed="Crossbow"/>
@@ -517,7 +516,7 @@ Token Types:
       <xs:element name="enchantment" type="keywordType" fixed="Enchantment"/>
       <xs:element name="evocation" type="keywordType" fixed="Evocation"/>
       <xs:element name="hammer" type="keywordType" fixed="Hammer"/>
-      <xs:element name="hazards" type="keywordType" fixed="Hazards"/>
+      <xs:element name="hazard" type="keywordType" fixed="Hazard"/>
       <xs:element name="language" type="keywordType" fixed="Language"/>
       <xs:element name="luck" type="keywordType" fixed="Luck"/>
       <xs:element name="lore" type="keywordType" fixed="Lore"/>
@@ -1172,7 +1171,7 @@ Token Types:
       <xs:element name="savesymbol" type="symbolType"/>      
       <xs:element name="freesavesymbol" type="symbolType"/>      
       <xs:element name="saveorfreesavesymbol" type="symbolType"/>      
-      <xs:element name="auxiliarysymbol" type="symbolType"/>      
+      <!-- <xs:element name="auxiliarysymbol" type="symbolType"/>       -->
       <xs:element name="antagonistsymbol" type="symbolType"/>
       <xs:element name="fatediesymbol" type="symbolType"/>      
       <xs:element name="nofatediesymbol" type="symbolType"/>      
@@ -1206,7 +1205,11 @@ Token Types:
       <!-- <xs:element name="eldersign" type="symbolType"/> -->
       <xs:element name="abilitybulletsymbol" type="symbolType"/>
       <xs:element name="checkarrowsymbol" type="symbolType"/>
-      
+
+      <xs:element name="actionchecksymbol" type="symbolType"/> 
+      <xs:element name="actionsavesymbol" type="symbolType"/> 
+      <xs:element name="actionauxiliarysymbol" type="symbolType"/>
+    
       <!-- <xs:group ref="svResultGroup"/> -->
       <!-- <!-\- <xs:group ref="resultGroup"/> -\-> -->
       <!-- <!-\- <xs:group ref="defaultResultGroup"/> -\-> -->
@@ -1871,13 +1874,13 @@ Token Types:
     </xs:sequence>
   </xs:group>
 
-  <xs:complexType name="actionClassType">
-    <xs:choice minOccurs="1" maxOccurs="1">
-      <xs:element name="check" type="keywordType" fixed="Check"/>
-      <xs:element name="save" type="keywordType" fixed="Save"/>
-      <xs:element name="auxiliary" type="keywordType" fixed="Auxiliary"/> 
-    </xs:choice>
- </xs:complexType>        
+ <!--  <xs:complexType name="actionClassType"> -->
+ <!--    <xs:choice minOccurs="1" maxOccurs="1"> -->
+ <!--      <xs:element name="check" type="keywordType" fixed="Check"/> -->
+ <!--      <xs:element name="save" type="keywordType" fixed="Save"/> -->
+ <!--      <xs:element name="auxiliary" type="keywordType" fixed="Auxiliary"/>  -->
+ <!--    </xs:choice> -->
+ <!-- </xs:complexType>         -->
 
   <!-- Aspect Keywords Enum -->
   <!-- <xs:group name="standardActionNamesGroup"> -->
@@ -1911,7 +1914,7 @@ Token Types:
     <xs:sequence>
 
       <!-- Is this a Check, a Save or an Auxiliary? -->
-      <xs:element name="class" type="actionClassType" minOccurs="1" maxOccurs="1"/>
+      <!-- <xs:element name="class" type="actionClassType" minOccurs="1" maxOccurs="1"/> -->
       
       <!--
 	  CHECK INFORMATION

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Art Abilities</abilitygrouptitle>
+    <abilitygroupid><arts/></abilitygroupid>
+    <abilitygroupfamily><general/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	Acting, singing, poetry, reading an audience, moving people
+	and knowing the history and theories of art.
+      </p>
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Art History</abilitytitle>
+    <abilityid>art_history</abilityid>    
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Recall Knowledge</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><recall-knowledge/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <spline><p x="-60" y="0"/></spline>    
+    <abilitydescription>
+      <p>
+ 	This ability represents background knowledge in the arts,
+ 	and arts history.  This ability can be used to answer questions
+ 	about the provenance of a piece of art, its style, information about
+	prominent artists, its likely country and period of origin, and
+	to appraise its value.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Dance</abilitytitle>
+    <abilityid>dance</abilityid>
+    <abilityranks untrained="0" from="1" to="6"/>
+    <action>
+      <name>Perform</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><perform/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><physical/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <action>
+      <name>Recall Knowledge</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><recall-knowledge/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="30"/><p x="-20" y="50"/><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+ 	The character is a trained dancer.  This may be useful
+ 	in social occasions or as a trade.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Fine Art</abilitytitle>
+    <abilityid>fine_art</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Recall Knowledge</name> 
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><recall-knowledge/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="art_history" rank="1"/>
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	The character has some ability, experience and training in painting, sculpting,
+  	art history and appraisal.  They have worked for a master craftsman for
+  	a number of years.  They know of, and can recognize, the great masters and
+  	can provide information about the provenence of works of art.
+      </p>
+      <p>
+  	At third rank The character can create good works of art, and can make a good
+  	living creating	art, if they choose to do so.  They may have rich and powerful
+  	patrons that will provide some support in times of need.  Given a few weeks,
+  	access to the art-work and the necessary equipment they are able to craft
+  	forgeries that are hard to detect.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Jester</abilitytitle>
+    <abilityid>jester</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name> 
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><perform/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <!-- <prereqabilityrank></prereqabilityrank> -->
+    <spline><p x="90" y="0"/></spline>
+    <abilitydescription>
+      <p>
+  	The character has learned the basics of comedic acting.  Jesting,
+	clowning, fire-eating, ventriloquism, puppetry and some mime.  They
+	may use this ability to make money in towns and cities, plying their
+  	trade from the market places and drinking houses in the poor quarters
+	to the courts of nobles and kings.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  
+  <ability>
+    <abilitytitle>Music</abilitytitle>
+    <abilityid>music</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Recall Knowledge</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><recall-knowledge/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <spline><p x="30" y="100"/></spline>
+    <abilitydescription>
+      <p>
+  	This ability represents the characters understanding the structure
+  	of music, scales rhythm and so on.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Musician - Keyed</abilitytitle>
+    <abilityid>keyed</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name> 
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><recall-knowledge/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="30"/><p x="-110" y="60"/></spline>
+    <abilitydescription>
+      <p>
+  	The character can play some form of keyed instrument, e.g. the clavichord
+  	or clavicymbalum (early harpsichords), the pipe organ, or the hurdigurdy.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Musician - Percussion</abilitytitle>
+    <abilityid>percussion</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><recall-knowledge/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="-90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	The character is an accomplished percussionist.
+  	The character can play the tambor, or some form of drums,
+  	etc.
+      </p>
+
+      <p>
+	Tribal percussionists may be able to use this ability to communicate with
+	other tribe members up to <km3/> away in any direction.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Musician - Singing</abilitytitle>
+    <abilityid>singing</abilityid>
+    <slug>Arma virumque cano</slug>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><perform/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="90"/><p x="60" y="60"/></spline>
+    <abilitydescription>
+      <p>
+  	The character can sing.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Musician - Strings</abilitytitle>
+    <abilityid>strings</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name> 
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><perform/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="music" rank="2"/>
+    <spline><p x="60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	The character can play some form of stringed instrument,
+  	e.g. the lute
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Musician - Wind Instrument</abilitytitle>
+    <abilityid>wind</abilityid>
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><perform/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="music" rank="1"/>
+    <spline><p x="0" y="30"/><p x="-90" y="120"/><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	The character can play some form of pipe instrument, e.g. the bagpipes, Uilleann
+  	pipes, trumpet, flute, tuba, cornu, askaules, whistle, pan pipes or some form
+  	of mouth organ.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Oratory</abilitytitle>
+    <abilityid>oratory</abilityid>    
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><perform/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="art_history" rank="1"/> 
+    <spline><p x="-30" y="30"/></spline>
+    <abilitydescription>
+      <p>
+  	Oratory is the art of public speaking.  It is the art of
+  	reading the crowd and manipulating their mood.  The character
+  	is also talented in Story Telling and Mimicry.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Soothe the Savage Beast</abilitytitle>
+    <abilityid>soothe_the_savage_beast</abilityid>    
+    <abilityranks from="1" to="6"/>
+    <action>
+      <name>Perform</name>
+      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <critclass><perform/></critclass>                
+      <cost><default-skill-cost/></cost>      
+      <range><self/></range>      
+      <keywords><lore/><check/></keywords>
+      <critsuccess><default-lore-critical-success/></critsuccess>
+      <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
+      <success><default-lore-success/></success>      
+    </action>
+    <prereqabilityref id="singing" rank="2"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	It is widely known that music has charms to soothe
+	the savage beast.  Natural animals may be calmed
+	by a musician successfully playing them a melody.
+	This ability does not work on starving animals
+	attacking for food, animals trained to attack and
+	so on.  Nor does it work in the middle of combat.
+	It may be used to preempt a combat though.
+      </p>
+
+      <p>
+	The prerequisite for this ability is the ability to
+	play any non-percussion musical instrument at Rank 2
+	or greater.
+      </p>
+    </abilitydescription>
+  </ability>  
+</abilitygroup>

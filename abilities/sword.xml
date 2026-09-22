@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>Sword Abilities</abilitygrouptitle>
+    <abilitygroupid><sword/></abilitygroupid>
+    <abilitygroupfamily><martial/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+        Represents training the ability to use swords in combat.  This
+	includes the use of two handed swords.
+      </p>      
+    </abilitygroupdescription>
+    <enabled/>
+  </abilitygroupinfo>
+
+  <ability>
+    <abilitytitle>Daring Thrust</abilitytitle>
+    <abilityid>daring_thrust</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Trigger</name>
+      <critclass><auxiliary/></critclass>
+      <cost><reaction-cost/></cost>
+      <range><reach/></range>
+      <keywords><sword/><auxiliary/></keywords> 
+      <precondition>Righteous success when making a Sword Parry against
+      a melee attack within reach.</precondition>
+      <effect>May make a Sword Retort attack as a reaction.</effect>
+    </action>
+    <prereqabilityref id="sword_strike" rank="1"/>
+    <spline><p x="-60" y="30"/></spline>
+    <abilitydescription>
+      <p>
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Follow Through</abilitytitle>
+    <abilityid>follow_through</abilityid>    
+    <abilityranks from="1" to="2"/>
+    <action>
+      <name>Attack</name>
+      <critclass><auxiliary/></critclass>
+      <cost><ap2/></cost>
+      <range><reach/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>Hit with a melee attack.</precondition>
+      <effect>Make a Sword Retort attack on the first, or second adjacent, opponent.</effect>
+    </action>
+    <prereqabilityref id="sword_strike" rank="2"/>
+    <spline><p x="0" y="60"/><p x="-90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character hits an opponent with a melee attack.  If successful
+	they can make a Sword Strike check to a second adjacent opponent.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Mighty Blow</abilitytitle>
+    <abilityid>mighty_blow</abilityid>    
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Mighty Blow</name>
+      <critclass><auxiliary/></critclass>
+      <cost><ap5/></cost>
+      <poolcost>1</poolcost>
+      <range><reach/></range>
+      <keywords><mettlepool/><physical-attack/><auxiliary/></keywords> 
+      <precondition>Righteous hit with a sword.</precondition>
+      <effect>+Rank to damage</effect>      
+    </action>
+    <prereqabilityref id="sword_strike" rank="3"/>
+    <spline><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Sword can strike with it using
+	enormous force during combat.  
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Sword Disarm</abilitytitle>
+    <abilityid>disarm</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Check</name>
+      <opposing-action><speed-save/></opposing-action>      
+      <critclass><melee-attack/></critclass>
+      <cost><ap1/></cost>
+      <range><reach/></range>
+      <keywords><sword/><check/></keywords>
+      <precondition>Righteous hit with a sword.</precondition>
+      <any-success>Opponent disarmed</any-success>
+    </action>
+    <prereqabilityref id="sword_strike" rank="2"/>
+    <spline><p x="0" y="60"/><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character attempts to disarm their opponent.  If
+	successful the opponent is disarmed. 
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Sword Feint</abilitytitle>
+    <abilityid>feint</abilityid>
+    <abilityranks from="1" to="3"/>
+    <action>
+      <name>Check</name>
+      <opposing-action><agility-save/></opposing-action>      
+      <critclass><fixme/></critclass>
+      <cost><reaction-cost/></cost>      
+      <range><reach/></range>
+      <keywords><sword/><physical-attack/><melee/><check/></keywords>
+      <any-success>Character acts before target.</any-success>
+    </action>
+    <prereqabilityref id="sword_strike" rank="2"/>
+    <spline><p x="0" y="60"/><p x="90" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	FIXME: after they're hit they've likely used their reaction!!
+	The character makes an opposed check after an opponent successfully attacks
+	them with a melee weapon. The character can attempt If they are successful
+	they act before their opponent.  This action cannot be taken if surprised.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <!-- <ability> -->
+  <!--   <abilitytitle>Sword Retort</abilitytitle> -->
+  <!--   <abilityid>sword_retort</abilityid>     -->
+  <!--   <abilityranks untrained="0" from="1" to="6"/> -->
+  <!--   <action> -->
+  <!--     <name>Attack</name>    -->
+  <!--     <critclass><melee-attack/></critclass>  -->
+  <!--     <cost><ap2/></cost> -->
+  <!--     <range><reach/></range> -->
+  <!--     <keywords><basic-attack/><check/></keywords> -->
+  <!--     action><physical-defence/></opposing-action> -->
+  <!--     <dmg>Weapon+Rank+Strength|Speed</dmg> -->
+  <!--     <critsuccess><default-attack-critical-success/></critsuccess> -->
+  <!--     <righteoussuccess><default-attack-righteous-success/></righteoussuccess> -->
+  <!--     <success><default-attack-success/></success> -->
+  <!--   </action> -->
+  <!--   <spline><p x="35" y="90"/></spline> -->
+  <!--   <abilitydescription> -->
+  <!--     <p noindent="true">	 -->
+  <!--       Characters equipped with a Sword can opposing-action strike with it during -->
+  <!-- 	combat.  This ability is usually triggered by other abilities. -->
+  <!--     </p> -->
+  <!--   </abilitydescription> -->
+  <!-- </ability> -->
+
+  
+  <ability>
+    <abilitytitle>Sword Strike</abilitytitle>
+    <abilityid>sword_strike</abilityid>    
+    <abilityranks untrained="-3" from="1" to="6"/>
+    <action>
+      <name>Melee-Attack</name>   
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap4/></cost>
+      <range><reach/></range>
+      <keywords><basic-attack/><check/></keywords>
+      <dmg>Weapon+Rank+Strength|Speed</dmg>
+      <critsuccess><default-attack-critical-success/></critsuccess>
+      <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
+      <success><default-attack-success/></success>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+        Characters equipped with a Sword can strike with it during
+	combat doing weapon damage.
+      </p>
+    </abilitydescription>
+  </ability>
+</abilitygroup>

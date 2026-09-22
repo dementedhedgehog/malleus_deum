@@ -11,6 +11,19 @@ A⟹B we have to test ¬A ∨ B instead (frickin idiots).
   
 -->
 
+<pattern id="test-actions">
+  <rule context="action/keywords">
+    <assert test="count(check | save | auxiliary) = 1">
+      Error in ability: <value-of select="../abilitytitle"/>
+
+      For every action the list of keywords must contain one, and only one, of
+      the following three keywords: check, save and auxiliary.      
+    </assert>
+ </rule>
+  
+</pattern>
+
+
 <pattern id="test-auxiliary-actions">
   <rule context="action[class/auxiliary]">
 
@@ -27,7 +40,6 @@ A⟹B we have to test ¬A ∨ B instead (frickin idiots).
     </assert>
   </rule>
 </pattern>
-
 
 <pattern id="test-checks">
   <rule context="action[class/check][not(../keywords/antagonist)]">

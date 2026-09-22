@@ -61,6 +61,7 @@ UNKNOWN COST!! {{ cost }}
 {{- insert_cost_symbol(cost) -}}
 {%- endmacro -%}
 
+
 {%- macro insert_opposing_action_cost_symbol(action) -%}
 {%- set cost = action.opposing_action_cost -%}
 {%- if cost is not none -%}
@@ -69,26 +70,41 @@ UNKNOWN COST!! {{ cost }}
 {%- endmacro -%}
 
 
+{%- macro insert_action_symbol(action) -%}
+
+{%- set action_class = action.get_action_class() -%}
+{%- set is_antag = action.is_antag_action() -%}
+
+{%- if is_antag and not action_class == 'Auxiliary' -%}
+<antagonistsymbol/>
+{%- endif -%}
+{%- if action_class == 'Check' -%}
+<actionchecksymbol/>
+{%- elif action_class == 'Save' -%}
+<actionsavesymbol/>
+{%- elif action_class == 'Auxiliary' -%}
+<actionauxiliarysymbol/>
+{%- else -%}
+FIXME UNKNOWN ACTION CLASS '{{ action_class }}'!!
+{%- endif -%}
+{%- endmacro -%}
+
+
 
 {% macro format_action(action) %}
     <vspace length="1.0"/><br/>
-    {%- if action.action_class == 'Auxiliary' -%}
-        <auxiliarysymbol/>
-    {%- else -%}
-        <abilitybulletsymbol/>
-    {%- endif -%}
-
+    {{- insert_action_symbol(action) -}}    
     
     {#- ***CHECK*** -#}
     {%- if action.action_class == 'Check' -%}
 
         {%- if action.is_antag_action() -%}
-            AC {{action.name}}{{ insert_action_cost_symbol(action) }}
+            {{action.name}}{{- insert_action_cost_symbol(action) -}}
 	    <vscheckarrowsymbol/><savearrowsymbol/>
 	    {{- insert_opposing_action_cost_symbol(action) -}}
 	    <bold>{{- action.opposing_action }}</bold>
 	{%- else -%}
-            CH <bold>{{action.name}}</bold>
+            <bold>{{action.name}}</bold>
 	    <checkarrowsymbol/><vssavearrowsymbol/>
 	    <smaller>{{- action.opposing_action }}</smaller>
 	{%- endif -%}
@@ -97,13 +113,13 @@ UNKNOWN COST!! {{ cost }}
     {#- ***SAVE*** #}{%- elif action.action_class == 'Save' -%}
 
         {%- if action.is_antag_action() -%}
-	    AS {{action.name}}
+	    {{action.name}}
 	    {{- " " + insert_action_cost_symbol(action) + " "-}}
             <vscheckarrowsymbol/><savearrowsymbol/>
 	    {{- " " + insert_opposing_action_cost_symbol(action) + " "-}}
 	    <bold>{{action.opposing_action}}</bold>
 	{%- else -%}
-	    SV {{action.opposing_action}}
+	    {{action.opposing_action}}
 	    <vscheckarrowsymbol/><savearrowsymbol/>
 	    {{- " " + insert_action_cost_symbol(action) + " "-}}
 	    <bold>{{action.name}}</bold>
@@ -111,8 +127,8 @@ UNKNOWN COST!! {{ cost }}
 
 	
     {#- ***Auxiliary*** #}{%- elif action.action_class == 'Auxiliary' -%}	
-	{{- " " + insert_action_cost_symbol(action) + " "-}}
 	<bold>{{action.name}}</bold>
+	{{- " " + insert_action_cost_symbol(action) + " "-}}
 
 
     {#- ***Error!*** #}{%- else -%}

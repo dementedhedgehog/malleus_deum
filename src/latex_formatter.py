@@ -109,7 +109,6 @@ latex_frontmatter = r"""
 \definecolor{blackbean}{RGB}{61,12,2}
 \definecolor{paleparchment}{RGB}{253,250,241}
 \definecolor{tan}{cmyk}{0,0.14,0.33,0.18}
-%%\definecolor{champagne}{cmyk}{0,0.06,0.17,0.03}
 \definecolor{champagne}{RGB}{247,231,206}
 
 
@@ -655,11 +654,33 @@ latex_frontmatter = r"""
 {./resources/symbols/symbol_save_or_free_save.png}%%
 \hspace{\symbolhorizontalspace}}}
 
-%% Auxiliary Check Symbol
-\newcommand\auxiliarychecksymbol{%%
+%% Auxiliary Action Symbol
+\newcommand\actionauxiliarysymbol{%%
 \raisebox{\symbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/symbol_auxiliary.png}%%
+{./resources/symbols/action_auxiliary_symbol.png}%%
+\hspace{\symbolhorizontalspace}}}
+
+
+%% Antagonist Check Symbol also used for antagonistic abilities.
+\newcommand\antagonistsymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/symbol_antagonist.png}%%
+\hspace{0.0\symbolhorizontalspace}}}
+
+%% Check Action Symbol
+\newcommand\actionchecksymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/action_check_symbol.png}%%
+\hspace{\symbolhorizontalspace}}}
+
+%% Save Action Symbol
+\newcommand\actionsavesymbol{%%
+\raisebox{\symbolverticaloffset}{%%
+\includegraphics[height=\symbolsize]%%
+{./resources/symbols/action_save_symbol.png}%%
 \hspace{\symbolhorizontalspace}}}
 
 %% Subsubsection Symbol
@@ -674,13 +695,6 @@ latex_frontmatter = r"""
 \raisebox{-0.2mm}{%%
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_abilitysubsubsection.png}%%
-\hspace{\symbolhorizontalspace}}}
-
-%% Antagonist Check Symbol also used for antagonistic abilities.
-\newcommand\antagonistsymbol{%%
-\raisebox{-0.2mm}{%%
-\includegraphics[width=\symbolsize,height=\symbolsize]%%
-{./resources/symbol_antagonist/symbol_antagonist.png}%%
 \hspace{\symbolhorizontalspace}}}
 
 %% Ability Versus Save Symbol
@@ -741,19 +755,19 @@ latex_frontmatter = r"""
 %% Fate Die Symbol
 %% \newcommand\fatediesymbol{%%
 %% \raisebox{\symbolverticaloffset}{%%
-%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
+%% \includegraphics[height=\symbolsize]%%
 %% {./resources/symbol_fate_die/symbol_fate_die.png}}}
 
 %% %% No Fate Die Symbol
 %% \newcommand\nofatediesymbol{%%
 %% \raisebox{\symbolverticaloffset}{%%
-%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
+%% \includegraphics[height=\symbolsize]%%
 %% {./resources/symbol_no_fate_die/symbol_no_fate_die.png}}}
 
 %% %% Skill Die Symbol
 %% \newcommand\skilldiesymbol{%%
 %% \raisebox{\symbolverticaloffset}{%%
-%% \includegraphics[width=\symbolsize,height=\symbolsize]%%
+%% \includegraphics[height=\symbolsize]%%
 %% {./resources/symbol_skill_die/symbol_skill_die.png}}}
 
 
@@ -1292,6 +1306,15 @@ class LatexFormatter(DocFormatter):
     def handle_vssavesymbol(self, symbol):
         self.buffer.write(r"\vssavesymbol{}")
 
+    def handle_actionchecksymbol(self, symbol):
+        self.buffer.write(r"\actionchecksymbol{}")
+
+    def handle_actionsavesymbol(self, symbol):
+        self.buffer.write(r"\actionsavesymbol{}")
+
+    def handle_actionauxiliarysymbol(self, symbol):
+        self.buffer.write(r"\actionauxiliarysymbol{}")
+
     #
     # Corollaries
     #
@@ -1484,11 +1507,11 @@ class LatexFormatter(DocFormatter):
     def start_subsubsectiontitle(self, title):
         title_category = title.attrib.get("titlecategory")
         if title_category == "antagonist-ability":        
-            symbol = r"\antagonistsymbol{}"            
+            symbol = r"\antagonistsymbol{} "            
         elif title_category == "ability":        
-            symbol = r"\abilitysubsubsectionsymbol{}"            
+            symbol = r"\abilitysubsubsectionsymbol{} "            
         else:
-            symbol = "\subsubsectionsymbol{}"                        
+            symbol = "\subsubsectionsymbol{} "                        
         self.buffer.write(r"\subsubsection*{" + symbol)
         return
     def end_subsubsectiontitle(self, title):
@@ -2827,27 +2850,24 @@ class LatexFormatter(DocFormatter):
         else:
             specializations_str = ""
 
-        self.buffer.write(
-            phrase_str +
-            name +
-            is_permanent_str +
-            specializations_str +
-            rank_num_str)
-            
-        # if rank_num is None:
-        #     if specializations:
-        #         self.buffer.write(f"{name}[{specializations}]")
-        #     else:
-        #         self.buffer.write(f"{name}")
-        # else:
-        #     if specializations:
-        #         self.buffer.write(f"{name}[{specializations}] {rank_num}")
-        #     else:
-        #         self.buffer.write(f"{name} {rank_num}")
-
-        #except KeyError:
-        #    # bad ability ref...
-        #    raise Exception("Bad abilityref!!  Missing ability id.")        
+        if ability_ref.get_id() == "aspect":
+            self.buffer.write(
+                r"\begin{mdbold}" + 
+                phrase_str +
+                " «Aspect» " +
+                is_permanent_str +
+                specializations_str +
+                rank_num_str +
+                r"\end{mdbold}")            
+        else:
+            self.buffer.write(
+                r"\begin{mdbold}" +
+                phrase_str +
+                name +
+                is_permanent_str +
+                specializations_str +
+                rank_num_str +
+                r"\end{mdbold}")
         return    
 
 

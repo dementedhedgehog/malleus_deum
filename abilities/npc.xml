@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<abilitygroup>
+  <abilitygroupinfo>
+    <abilitygrouptitle>NPC/Monster Abilities</abilitygrouptitle>
+    <abilitygroupid><npc/></abilitygroupid>
+    <abilitygroupfamily><npc/></abilitygroupfamily>
+    <abilitygroupdescription>
+      <p>
+	These abilities describe monsters special abilities.  Monster abilities
+	can break some of the standard constraints on abilities as monsters do
+	not have to level up, and we typically want their abilities to be simple
+	and easy to run.
+      </p>      
+    </abilitygroupdescription>
+    <dontdrawskilltree/>
+    <enabled/>
+  </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Bite</abilitytitle>
+    <abilityid>bite</abilityid>
+    <param-dmg>4</param-dmg>
+    <param-rank>3</param-rank> 
+    <keywords><antagonist/></keywords>
+    <action> 
+      <name>Opposed</name> 
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap3/></cost>
+      <range><touch/></range>
+      <keywords><melee/><check/></keywords>
+      <dmg><param-dmg/></dmg>
+      <any-fail>FIXME</any-fail>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The creature has a bite.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Blood Rage</abilitytitle>
+    <abilityid>blood_rage</abilityid>
+    <keywords><antagonist/></keywords>
+    <action> 
+      <name>Rage</name> 
+      <critclass><auxiliary/></critclass>
+      <cost><free-reaction-cost/></cost>
+      <range><self/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>Monster becomes bloodied.</precondition>
+      <effect>Immediately makes a melee opposing-action attack - if possible</effect>
+    </action>    
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	When bloodied the monster rages using this ability to attack a
+	second time in melee.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Claw</abilitytitle>
+    <abilityid>claw</abilityid>
+    <param-dmg>4</param-dmg>    
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap2/></cost>
+      <range><reach/></range>
+      <keywords><check/><melee/></keywords>
+      <any-fail>param-dmg</any-fail>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	<!-- Claws are an attack that are particularly effective against -->
+	<!-- Claws get an +Rank to hit against Block or Armour Defences. -->
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Countless Bites</abilitytitle>
+    <abilityid>countless_bites</abilityid>
+    <param-dmg>4</param-dmg>    
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>      
+      <name>Opposed</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap3/></cost>
+      <range><reach/></range>
+      <keywords>
+	<npc/><check/><melee/><unblockable/><undodgeable/><unparryable/>
+      </keywords>
+      <any-success>1+Rank Damage</any-success>
+      <fail>Deal Damage</fail>
+      <grimfail>Deal 2×Damage</grimfail>
+      <critfail>Deal 3×Damage</critfail>      
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The monster makes dozens of attacks per round.  No to-hit roll is
+	required.  No block or dodge saves apply.  The monster does a fixed
+	amount of damage to each character, friend or foe, adjacent to it at
+	the end of the monsters turn. The monster makes an automatic attack when
+	making an opportunity attack.  Adjacent characters are Dazed and
+	Distracted.
+      </p>
+
+      <p>
+	On the first round characters have to make a mettle check to ignore
+	the bites or lose their turn or flee.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Death Blow</abilitytitle>
+    <abilityid>death_blow</abilityid>
+    <param-dmg>4</param-dmg>    
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Trigger</name>
+      <critclass><auxiliary/></critclass>
+      <cost><free/></cost>
+      <range><na/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>When the character would go Down</precondition>
+      <effect>The character gets one more melee attack</effect>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	When the character goes down they get one last additional attack.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <!-- FIXME THIS SHOULD BE A SAVE? -->
+  <ability>
+    <abilitytitle>Demon Instability</abilitytitle>
+    <abilityid>demon_instability</abilityid>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Check</name>
+      <opposing-action><luck-save/></opposing-action>
+      <critclass><fixme/></critclass>
+      <cost><free/></cost>
+      <poolcost>2</poolcost>
+      <range><na/></range>
+      <keywords><mettlepool/><check/><delegate-saves/></keywords>
+      <precondition>When this creature is hit for 10 or more damage</precondition>
+      <any-fail>
+	The demon loses its link to its simulacrum in this plane. The simularcrum
+	is destroyed.
+      </any-fail>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	Demons project their wills into this plane and create
+	physical proxies of themselves from ectoplasm which they
+	control as puppet masters from beyond.  Maintaining these
+	forms requires an act of will.  As the demons corporeal forms
+	suffer damage it becomes increasingly difficult for them
+	to maintain the integrity of their projected forms.
+      </p>
+
+      <p>
+	In game, the way this works is that whenever a demon is hit
+	for 10 or more damage they make a Mettle Check and if they fail
+	they become unstable the demon's connection to the simulacrum
+	is broken and the simulacrum dissipates into foul smelling ooze.
+	A demon's simulacrum has no hit points per se, only a mettle pool.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Fleet</abilitytitle>
+    <abilityid>fleet</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+        The NPC takes an additional move action each round for each rank of
+	fleet they have.
+      </p>
+    </abilitydescription>
+  </ability>
+
+    
+  <ability>
+    <abilitytitle>Fly</abilitytitle>
+    <abilityid>fly</abilityid>
+    <keywords><antagonist/></keywords>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The monster can fly.   They can move over terrain that they
+	would not be able to under normal conditions such as pits and
+	rivers.  The monster only needs to make a check for flying in difficult
+	situations, when they are attempting to carry something heavy or in the
+	strong winds.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Horns</abilitytitle>
+    <abilityid>horns</abilityid>
+    <param-dmg>4</param-dmg>    
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name> 
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap3/></cost>
+      <range><reach/></range>      
+      <keywords><melee/><check/></keywords>
+      <precondition>Only available when charging</precondition>
+      <any-success>7+Rank Damage</any-success>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	This powerfull built monster has a set of horns
+	that it may use to charge.
+      </p>
+    </abilitydescription>
+  </ability>
+
+ 
+  <ability>
+    <abilitytitle>Poisonous Bite</abilitytitle>
+    <abilityid>poison_bite</abilityid>
+    <param-dmg>4</param-dmg>    
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap4/></cost>
+      <range><reach/></range>
+      <keywords><melee/><check/></keywords>
+      <precondition>When the character is hit for 10 or more damage</precondition>
+      <success>No Damage</success>
+      <any-fail>7 damage</any-fail>
+      <grimfail>Poisoned</grimfail>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	FIXME: we need to work out what poisoned should look like.  (Tempted to
+	make it save or take fractional damage).
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Prehensile Tail</abilitytitle>
+    <abilityid>prehensile_tail</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap2/></cost>
+      <range><reach/></range>
+      <keywords><melee/><check/><noarmour/><unblockable/></keywords>
+      <success>No Damage</success>
+      <any-fail>Grabbed</any-fail>
+      <grimfail>Crushed 2 Damage</grimfail>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The monster has a prehensile tail that they can use to climb, grab
+	things.  At higher ranks the monster can wield a weapon using
+	the tail. 
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Prehensile Tongue</abilitytitle>
+    <abilityid>prehensile_tongue</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><melee-attack/></critclass>
+      <cost><ap2/></cost>
+      <range><reach/></range>
+      <keywords><melee/><check/><noarmour/><unblockable/></keywords>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The monster has a tongue that they can shoot out a distance of <m6/> and
+	grab things with.  If successful the target is grabbed with a Strength
+	8+3xRank DC.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Regeneration</abilitytitle>
+    <abilityid>regeneration</abilityid>
+    <param-dmg>4</param-dmg>    
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Talent</name>
+      <critclass><auxiliary/></critclass>
+      <cost><free/></cost>
+      <range><self/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>Start of the round</precondition>
+      <effect>Character regains rank hit points</effect>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+    	At the start of the creatures turn it regenerates Rank hit points.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Summon Demon</abilitytitle>
+    <abilityid>summon_demon</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><luck-save/></opposing-action>
+      <critclass><cast/></critclass>
+      <cost><ap5/></cost>
+      <range><ranged-short/></range>
+      <keywords><check/><delegate-saves/></keywords>
+      <any-fail>A demon is summoned</any-fail>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	A demon is summoned
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Swarm</abilitytitle>
+    <abilityid>swarm</abilityid>
+    <abilityranks from="1" to="1"/>
+    <keywords><antagonist/></keywords>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The monster is composed of a large number of smaller individuals. Swarms
+	suffer maximum damage from area of effect attacks like fire (any damage
+	immunity applies). Some swarms are not stopped by doors or windows or
+	sometimes even walls. GMs may make a check each round to see if the
+	swarm can pass through a barrier,<eg/> wall, window or door. The
+	difficulty of the check should depend on the integrity of the barrier
+	and the size of the individuals in the swarm.
+      </p>
+    </abilitydescription>     
+  </ability>  
+  
+
+  <ability>
+    <abilitytitle>Terrifying</abilitytitle>
+    <abilityid>terrifying</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><mettle-save/></opposing-action>
+      <critclass><fixme/></critclass>
+      <cost><ap4/></cost>
+      <poolcost>1</poolcost>
+      <range><ranged-medium/></range>
+      <keywords><mettlepool/><npc/><check/></keywords>
+      <success>No effect</success>
+      <fail>Target loses Rank mettle</fail>
+      <grimfail>Target loses Rank+1 mettle</grimfail>
+      <critfail>Target loses Rank+2 mettle</critfail>
+    </action>    
+    <spline></spline>
+    <specializations>
+      <specialization>DC11</specialization>
+      <specialization>DC13</specialization>
+      <specialization>DC15</specialization>
+      <specialization>DC17</specialization>
+      <specialization>DC19</specialization>
+    </specializations>
+    <abilitydescription>
+      <p noindent="true">
+	The creature once revealed in their true form is terrifying.  The
+	characters have to make a will check vs rank.  If they fail
+	they must lose their turn or flee.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Terrifying Clarion</abilitytitle>
+    <abilityid>terrifying_clarion</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><mettle-save/></opposing-action>
+      <critclass><fixme/></critclass>
+      <cost><ap4/></cost>
+      <poolcost>1</poolcost>
+      <range><ranged-short/></range>
+      <keywords><aoe-emination/><mettlepool/><npc/><check/></keywords>
+      <success>No effect</success>
+      <fail>Target loses Rank mettle</fail>
+      <grimfail>Target loses Rank+1 mettle</grimfail>
+      <critfail>Target loses Rank+2 mettle</critfail>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The creature has a terrifying roar or battle cry. The
+	characters have to make a mettle check or lose their turn.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Watch Out Sir!</abilitytitle>
+    <abilityid>watch_out_sir</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Check</name>
+      <opposing-action><luck-save/></opposing-action>
+      <critclass><auxiliary/></critclass>
+      <cost><reaction-cost/></cost>
+      <range><reach/></range>
+      <keywords>
+	<check/><delegate-saves/>
+      </keywords>
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The monster grabs one of his lesser comrades and uses them as
+	a meat shield to protect him from one non-area of effect
+	attack.  If the check is successful the meat shield takes all
+	the damage from one attack.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+  
+  <ability>
+    <abilitytitle>Web</abilitytitle>
+    <abilityid>web</abilityid>
+    <param-rank>3</param-rank>
+    <keywords><antagonist/></keywords>
+    <action>
+      <name>Opposed</name>
+      <opposing-action><physical-defence/></opposing-action>
+      <critclass><missile-attack/></critclass>
+      <cost><ap1/></cost>
+      <range><ranged-short/></range>
+      <keywords>
+	<aoe-cone/><unparryable/><check/><everyone-saves/>
+      </keywords>
+      <fail>Slowed</fail>
+      <grimfail>Petrified</grimfail>      
+    </action>
+    <spline></spline>
+    <abilitydescription>
+      <p noindent="true">
+	The monster can shoot a sticky web-like substance that slows
+	and constrains the target.  Armour and Parry cannot be
+	used to defend against Web.  If successful the target is
+	slowed.
+      </p>
+    </abilitydescription>     
+  </ability>  
+</abilitygroup>
