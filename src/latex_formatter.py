@@ -360,7 +360,6 @@ latex_frontmatter = r"""
 {}{1em}{}
 
 
-
 %%
 %% Definition
 %%
@@ -1505,10 +1504,12 @@ class LatexFormatter(DocFormatter):
     handle_subsubsection = no_op
 
     def start_subsubsectiontitle(self, title):
-        title_category = title.attrib.get("titlecategory")
-        if title_category == "antagonist-ability":        
-            symbol = r"\antagonistsymbol{} "            
-        elif title_category == "ability":        
+        title_category = title.attrib.get("titlecategory")  
+        #if title_category == "antagonist-ability":        
+        #  symbol = r"\antagonistsymbol{} "            
+        #elif title_category == "ability":        
+        if (title_category == "antagonist-ability" or
+            title_category == "ability"):       
             symbol = r"\abilitysubsubsectionsymbol{} "            
         else:
             symbol = "\subsubsectionsymbol{} "                        
@@ -1841,7 +1842,7 @@ class LatexFormatter(DocFormatter):
         # turn of paragraph indentation?
         no_indent = attrib_is_true(paragraph, "noindent")
         if no_indent:
-            self.buffer.write("\\noindent ")                
+            self.buffer.write("\\noindent ")            
         return
 
     def end_p(self, paragraph):
@@ -1960,6 +1961,7 @@ class LatexFormatter(DocFormatter):
         #scale = img.get("scale")
         textwidth_length = img.get("textwidth")
         linewidth_length = img.get("linewidth")
+
         
         # if scale:
         #     #return f"scale={scale}"

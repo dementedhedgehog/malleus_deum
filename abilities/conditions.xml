@@ -3,23 +3,237 @@
   <abilitygroupinfo>
     <abilitygrouptitle>Conditions</abilitygrouptitle>
     <abilitygroupid><condition/></abilitygroupid>
-    <abilitygroupfamily><tribulation/></abilitygroupfamily>
+    <abilityfamily><tribulation/></abilityfamily>
     <abilitygroupdescription>
-      <p>
-      </p>
+    <p>
+      A <defn>Condition</defn> is a type of keyword that has a well-defined game
+      effect, and a lifetime. All conditions are keywords, but not all keywords
+      are conditions. Conditions represent temporary modifications to things in
+      game, often to characters, <eg/> Blind, or Dazed.
+    </p>
+
+    <p>
+      <indexentry><entry>Conditions</entry><subentry>Save Ends</subentry></indexentry>
+      <indexentry><entry>Save Ends</entry></indexentry>
+      Conditions have different lifetimes. Some conditions typically last for
+      the length of a combat, or until a <bold>Save Ends</bold> the effects of
+      the condition. Other conditions might be ongoing and terminate at
+      different times. How and when a PC can save to end a condition should be
+      specified on a per condition, or per instance basis. For example text
+      might say: If the character has a fishing net dropped on them they are
+      Prone Agility Save ends with a DC of 12. Saves are made at the end of the
+      characters turn and, if they have multiple saves to make, in any order the
+      character wishes.
+    </p>
+
+    <p>
+      The following is a list of some common conditions.
+    </p>      
     </abilitygroupdescription>
     <dontdrawskilltree/>
     <enabled/>
   </abilitygroupinfo>
 
+
+  <ability>
+    <abilitytitle>Attitude</abilitytitle>
+    <abilityid>attitude</abilityid>
+    <param-stage>2</param-stage>
+    <keywords><condition/><antagonist/></keywords>
+    <stage>
+      <name>Helpful</name>
+      <description>
+	Character's make social checks with two shifts up.
+      </description>
+    </stage>
+    <stage>
+      <name>Friendly</name>
+      <description>
+	Characters make social checks with one shift up.
+      </description>
+    </stage>
+    <stage>
+      <name>Indifferent</name>
+      <description>
+	Characters make social checks with no shifts.
+      </description>
+    </stage>
+    <stage>
+      <name>Unfriendly</name>
+      <description>
+	Characters make social checks with one shift down.
+      </description>
+    </stage>
+    <stage>
+      <name>Hostile</name>
+      <description>
+	Characters make social checks with two shifts down.
+      </description>
+    </stage>
+  
+    <abilitydescription>
+      <figure position="htbp"><img id="herrero_goblin"/></figure>
+      <p>
+	This condition represents the disposition of some third party
+	towards a PC or PCs when it comes to social interactions.
+	The GM determines initial attitudes to a party and any changes to those
+	attitudes.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  
+
+  <ability>
+    <abilitytitle>Bewildered</abilitytitle>
+    <abilityid>bewildered</abilityid>
+    <keywords><condition/><antagonist/></keywords>
+
+    <stage>
+      <name>Stupefied</name>
+      <description>
+	Two shifts down to all actions. No OOTAs.
+      </description>
+    </stage>
+
+    <stage>
+      <name>Dazzed</name>
+      <description>
+	Two shifts down to all actions. Free OOTAs have a OOTA cost in this
+	stage.
+      </description>
+    </stage>    
+
+    <stage>
+      <name>Confused</name>
+      <description>
+	Shift down to all actions. Free OOTAs have a OOTA cost in this stage.
+      </description>
+    </stage>
+    
+    <abilitydescription>
+      <p>
+	The character is unable to think or plan clearly, they are uncoordinated
+	and their understanding about what is happening is impaired.
+      </p>
+    </abilitydescription>
+  </ability>
+
+ 
+  <ability>
+    <abilitytitle>Blinded</abilitytitle>
+    <abilityid>blinded</abilityid>
+    <param-permanent>false</param-permanent>
+    <keywords><condition/><antagonist/></keywords>
+    <abilitydescription>
+      <p>
+	The character cannot see. Four shifts down on perception and ranged
+	attacks which use sight, three shifts down on melee attacks. This
+	condition has the same effects as the Pitch Black stage for the
+	Lighting condition.
+      </p>
+    </abilitydescription>
+  </ability>
+
+   
+
+  <ability>
+    <abilitytitle>Cover</abilitytitle>
+    <abilityid>cover</abilityid>
+    <keywords><condition/><antagonist/></keywords>
+    <stage>
+      <name>Complete Cover</name>
+      <description>
+	Character is behind something that completely blocks attacks. No damage
+	is taken.
+      </description>
+    </stage>
+    <stage>
+      <name>Full Cover</name>
+      <description>
+	Character is behing something that completely blocks attacks, such as
+	a wall. But the character is sticking their head out to observe, or
+	firing from cover, so they are not completely protected.  Attacks and
+	perception checks are made against the character with three shifts down.	
+      </description>
+    </stage>
+    <stage>
+      <name>Cover</name>
+      <description>
+	Character is behind something that offers protection from attacks, for
+	example a turned over table, a medium sized tree, hard corners of a
+	building, or a gravestone. Attacks and perception checks are made
+	against the character with two shifts down.
+      </description>
+    </stage>
+
+    <stage>
+      <name>Partial Cover</name>
+      <description>
+	The character is behind something that offers partial protection from
+	attacks, for example chairs, a wagon, or another character. Attacks and
+	perception checks are made against the character with one shift down.
+      </description>
+    </stage>
+
+    <stage>
+      <name>Concealment</name>
+      <description>
+	The character is behind something that obscures their true location
+	but provides little or no physical protection, for example, behind a
+	curtain, waterfall, tall grass, or small bushes. Ranged attacks are
+	made against the character with one shift down. Perception checks are
+	made against the character with two shifts down.
+      </description>
+    </stage>
+    
+    <abilitydescription>
+      <p>
+	Standing next to a character in cover may reduce or negate that cover.
+	For example the GM may rule that when making a melee attack against a
+	character behind an overturned table, instead their Cover is reduced to
+	Partial Cover.
+      </p>
+
+      <p>
+	FIXME: damage from blockable area attacks: Fire and Acid.
+	FIXME: damage from unblockable attacks is unaffected (poison gas).
+      </p>
+
+      <p>
+	The GM has final say in the modifiers provided.  For example the GM
+	might rule that an ice wall provides full cover, but only one shift down
+	for perception checks.
+      </p>      
+    </abilitydescription>
+  </ability>
+
+  
+  
+  <ability>
+    <abilitytitle>Deafened</abilitytitle>
+    <abilityid>deafened</abilityid>
+    <param-permanent>false</param-permanent>
+    <keywords><condition/><antagonist/></keywords>
+    <abilitydescription>
+      <p>
+	The character cannot hear.  Any actions that require being able to hear
+	are made with two shifts down, that includes certain peception,
+	language, social and leadership checks.  All communication requires
+	language checks for lip reading.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  
   <ability>
     <abilitytitle>Holding Your Breath</abilitytitle>
     <abilityid>holding-your-breath</abilityid>
     <param-rank>3</param-rank>
     <abilityranks from="1" to="5"/>
     <keywords><condition/><antagonist/></keywords>
-    <action>
-      
+    <action>      
       <name>On Your Turn</name>
       <cost><free/></cost>
       <range><na/></range>
@@ -28,8 +242,7 @@
       <effect>Your breath is held.</effect>
     </action>
     
-    <action>
-      
+    <action>      
       <name>When surprised!</name>
       <opposing-action><speed-or-perception-save/></opposing-action>
       <opposing-action-cost><save-cost/></opposing-action-cost>
@@ -69,15 +282,160 @@
     </abilitydescription>
   </ability>
 
+
+
+  <ability>
+    <abilitytitle>Lighting</abilitytitle>
+    <abilityid>lighting</abilityid>
+    <keywords><condition/><antagonist/></keywords>
+    <stage>
+      <name>Pitch Black</name>
+      <description>
+	No light.  Underground with no light sources. 
+	Four shifts down on perception and ranged attacks,
+	three shifts down on melee attacks.
+      </description>
+    </stage>
+    <stage>
+      <name>Very Dark</name>
+      <description>
+	Night with no light sources, <eg/> in the countryside with a new moon,
+	in forests at night, or underground with a few candles.
+	Three shifts down on perception and ranged attacks, two shifts down on
+	melee attacks.
+      </description>
+    </stage>
+    <stage>
+      <name>Dark</name>
+      <description>
+	Night with very few or distant light sources, e.g. dark city streets,
+	underground with a lamp.
+	Two shifts down on perception and ranged attacks, one shift down on
+	melee attacks.
+      </description>
+    </stage>
+    <stage>
+      <name>Dim</name>
+      <description>
+	Dusk, or dark forest during the day.
+	One shift down on perception and ranged attacks.
+      </description>
+    </stage>
+    <stage>
+      <name>Light</name>
+      <description>
+	Interior of a well lit house at night, outside during the day.
+	No modifiers.
+      </description>
+    </stage>
+    <stage>
+      <name>Bright</name>
+      <description>
+	Middle of the day in a desert or snowfield.
+	One shift down on perception and ranged attacks.
+      </description>
+    </stage>
+    <stage>
+      <name>Very Bright</name>
+      <description>
+	Magical light.
+	Two shifts down on perception and ranged attacks, one shift down on
+	melee attacks.
+      </description>
+    </stage>
   
+    <abilitydescription>
+      <p>
+	This condition describes the level of illumination in the area.
+	These modifiers are for sight based checks.  
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+
+
+
+
+  
+
+  <ability>
+    <abilitytitle>Morale</abilitytitle>
+    <abilityid>morale</abilityid>
+    <keywords><condition/><antagonist/></keywords>
+    <stage>
+      <name>XXXX</name>
+      <description>
+	XXX
+      </description>
+    </stage>
+    <stage>
+      <name>XXX</name>
+      <description>
+	XXX
+      </description>
+    </stage>  
+    <stage>
+      <name>Routed</name>
+      <description>
+	XXX
+      </description>
+    </stage>  
+    <stage>
+      <name>Bloodied</name>
+      <description>
+	XXX
+      </description>
+    </stage>  
+    <abilitydescription>
+      <p>
+	XXXX
+      </p>
+<!--
+<term>Broken</term>
+<description>
+<label>condition:broken</label>
+<indexentry><entry>Broken Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Broken</subentry></indexentry>
+The character has lost the will to fight and must withdraw from battle.
+On their turn they may attack but may not move into melee combat unless
+they have no other choice.  This condition occurs after a character
+has failed two Mettle Checks in combat.
+</description>
+
+
+<term>Bloodied</term>
+<description>
+<indexentry><entry>Bloodied Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Bloodied</subentry></indexentry> The
+character has suffered damage to their Health.  When a character first
+suffers health damage in a fight they must make a Mettle Check.
+</description>
+
+<term>Routed</term>
+<description>
+<indexentry><entry>Routed Condition</entry></indexentry>
+<indexentry><entry>Conditions</entry><subentry>Routed</subentry></indexentry>
+The character has been defeated in combat.  If they can Flee they do so.
+Otherwise they will attempt to yield or do something desperate.  This occurs
+when the player has failed three Mettle Checks in combat.
+</description>
+
+
+-->
+    </abilitydescription>
+  </ability>
+
+  
+  
+
   <ability>
     <abilitytitle>Near Death</abilitytitle>
     <abilityid>near-death</abilityid>
     <slug>There's a big difference between mostly dead and all dead.</slug>
     <abilityranks from="11" to="11"/>
     <keywords><condition/><antagonist/></keywords>
-    <action>
-      
+    <action>      
       <name>Roll for Near Death</name>
       <cost><ap3/></cost>
       <range><na/></range>
@@ -90,8 +448,7 @@
       </effect>       
     </action>
 
-    <action>
-      
+    <action>      
       <name>Divine Intervention</name>
       <opposing-action><flat-save/></opposing-action>
       <opposing-action-cost><free-interrupt-cost/></opposing-action-cost>       
@@ -149,6 +506,89 @@
     </abilitydescription>
   </ability>
 
+  
+  <ability>
+    <abilitytitle>Slowed</abilitytitle>
+    <abilityid>slowed</abilityid>
+    <param-permanent>false</param-permanent>
+    <keywords><condition/><antagonist/></keywords>
+
+    <action>
+      <name>Wake up</name>
+      <opposing-action><default-sv/></opposing-action>
+      <opposing-action-cost><save-cost/></opposing-action-cost>
+      <critclass><listed-below/></critclass>
+      <cost><free/></cost>
+      <poolcost>0</poolcost>
+      <range><self/></range>
+      <keywords><check/><mettlepool/></keywords>
+      <any-success>The Sleeping condition is lost.</any-success>
+      <critsuccess>FIXME The stunned condition is lost.</critsuccess>
+      <critfail>FIXME THINGS GET WORSE SOMEHOW!</critfail>
+    </action>
+    
+
+    <stage>
+      <name>Unconscious</name>
+      <description>
+	The character has blacked out due to a stunning blow to the head or too
+	much pain. They are unaware of their surrounding and incapacitated.
+	actions.
+      </description>
+    </stage>
+    
+    <stage>
+      <name>Sleeping</name>
+      <description>
+	The character is asleep. They are unaware of their surrounding and are
+	incapacitated.
+      </description>
+    </stage>
+    
+    <stage>
+      <name>Incapacitated</name>
+      <description>
+	No actions per turn.
+      </description>
+    </stage>
+    <stage>
+      <name>Partially Conscious</name>
+      <description>
+	Character gets one action per turn. Make speed and agility actions
+	shifted down three.
+      </description>
+    </stage>
+
+    <stage>
+      <name>Slowed 3</name>
+      <description>
+	Character gets two actions per turn. Make speed and agility actions
+	shifted down two.
+      </description>
+    </stage>
+
+    <stage>
+      <name>Slowed 2</name>
+      <description>
+	Character gets three actions per turn. Make speed and agility actions
+	shifted down one.
+      </description>
+    </stage>
+
+    <stage>
+      <name>Slowed 1</name>
+      <description>
+	Character gets four actions per turn.
+      </description>
+    </stage>
+
+    <abilitydescription>
+      <p>
+	The character has trouble moving.
+      </p>
+    </abilitydescription>
+  </ability>
+  
 
   <ability>
     <abilitytitle>Stunned</abilitytitle>
@@ -184,8 +624,7 @@
     <param-rank>3</param-rank>
     <abilityranks from="1" to="5"/>
     <keywords><antagonist/></keywords>
-    <action>
-      
+    <action>      
       <name>Resist!!</name>
       <opposing-action><default-save-sv/></opposing-action>
       <critclass><physical/></critclass>
@@ -195,6 +634,7 @@
     </action>
     
     <abilitydescription>
+      <figure position="htbp"><img id="anon_deer_skull"/></figure>      
       <p>
 	Characters who have been subdued have lost the will to resist.
 	Subdued characters roll all will checks at disadvantage including Resist

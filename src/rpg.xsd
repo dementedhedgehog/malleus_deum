@@ -491,6 +491,7 @@ Token Types:
       <xs:element name="martial" type="keywordType" fixed="Martial"/>
       <xs:element name="magic" type="keywordType" fixed="Magic"/>
       <xs:element name="npc" type="keywordType" fixed="NPC"/>
+      <xs:element name="keyword" type="keywordType" fixed="Keyword"/>
       <xs:element name="tribulation" type="keywordType" fixed="Tribulation"/>
       <xs:element name="wyrdscience" type="keywordType" fixed="Wyrd-Science"/>
     </xs:choice>
@@ -517,6 +518,7 @@ Token Types:
       <xs:element name="evocation" type="keywordType" fixed="Evocation"/>
       <xs:element name="hammer" type="keywordType" fixed="Hammer"/>
       <xs:element name="hazard" type="keywordType" fixed="Hazard"/>
+      <xs:element name="keyword" type="keywordType" fixed="Keyword"/>
       <xs:element name="language" type="keywordType" fixed="Language"/>
       <xs:element name="luck" type="keywordType" fixed="Luck"/>
       <xs:element name="lore" type="keywordType" fixed="Lore"/>
@@ -794,6 +796,7 @@ Token Types:
       <xs:element name="enchantment" type="keywordType" fixed="Enchantment"/>
       <xs:element name="evocation" type="keywordType" fixed="Evocation"/>
       <xs:element name="hazard" type="keywordType" fixed="Hazard"/>
+      <xs:element name="keyword" type="keywordType" fixed="Keyword"/>
       <xs:element name="language" type="keywordType" fixed="Language"/>
       <xs:element name="luck" type="keywordType" fixed="Luck"/>
       <xs:element name="lore" type="keywordType" fixed="Lore"/>
@@ -1158,12 +1161,6 @@ Token Types:
       <xs:element name="uparrowfrombar" type="symbolType"/>
       <xs:element name="endash" type="symbolType"/>
       <xs:element name="versus" type="symbolType"/>
-
-      <!-- <xs:element name="param-dmg" type="symbolType"/> -->
-      <!-- <xs:element -->
-      <!-- 	  name="param-dmg"  -->
-      <!-- 	  type="stringConstantType" -->
-      <!-- 	  fixed="DMG"/> -->
       
       <!-- custom -->
       <xs:element name="abilitybullet" type="symbolType"/>      
@@ -2583,7 +2580,6 @@ Token Types:
       <xs:element
 	  name="ability"
 	  type="abilityType" minOccurs="0" maxOccurs="unbounded"/>
-      <!-- <xs:element name="antagability" type="abilityType" minOccurs="0" maxOccurs="unbounded"/> -->
     </xs:sequence>
   </xs:complexType>
 
@@ -2597,7 +2593,7 @@ Token Types:
 	  name="abilitygroupid"
 	  type="abilityGroupKeywordEnum" minOccurs="1" maxOccurs="1"/>
       <xs:element
-	  name="abilitygroupfamily"
+	  name="abilityfamily"
 	  type="abilityFamilyKeywordEnum" minOccurs="1" maxOccurs="1"/>
       <xs:element
 	  name="slug"

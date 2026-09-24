@@ -1084,7 +1084,7 @@ class Ability:
     def get_ranks_range(self):        
         first_ability_rank = self.ranks[0]
         last_ability_rank = self.ranks[-1]
-        return (first_ability_rank, last_ability_rank)        
+        return (first_ability_rank, last_ability_rank)
 
     def has_untrained_rank(self):
         return self.untrained_rank is not None
@@ -1201,14 +1201,13 @@ class AbilityGroupInfo:
                    assert self.ability_group_readable_id is not None
                    ability_group_location = f"{self.fname}:{groupid.sourceline}"
                    
-           elif tag == "abilitygroupfamily":
+           elif tag == "abilityfamily":
                if self.family_id is not None:
                    raise Exception(
                        "Only one abilitygroupfamily per ability. (%s) %s\n" %
                        (child.tag, str(child)))
                else:
                    family_ids = list(child.iterchildren())
-                   #family_ids = parse_xml_keyword_list(child)
                    if len(family_ids) != 1:
                       raise Exception(
                           "Expecting 1 family id: got %s and %s"

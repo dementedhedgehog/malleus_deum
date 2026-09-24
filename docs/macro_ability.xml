@@ -182,8 +182,12 @@ FIXME UNKNOWN ACTION CLASS '{{ action_class }}'!!
     <bold>({{ ability.get_untrained_rank() }}) </bold>
     {%- endif -%}
     {%- if ability.has_trained_ranks() -%}
-    {%- set from_rank, to_rank = ability.get_ability_trained_rank_range() -%}
-    {{ from_rank }}<endash/>{{ to_rank }}    
+      {%- set from_rank, to_rank = ability.get_ability_trained_rank_range() -%}
+      {%- if from_rank == to_rank -%}
+        {{ from_rank }}
+      {%- else -%}	
+        {{ from_rank }}<endash/>{{ to_rank }}    
+      {%- endif -%}    
     {%- endif -%}    
     {%- if ability.has_parameters() -%}
     <hfill/><smaller>Params: [{{ability.get_parameters_str()}}]</smaller>
