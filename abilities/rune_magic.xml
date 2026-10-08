@@ -17,18 +17,18 @@
     <abilitytitle>Bladesharp</abilitytitle>
     <abilityid>bladesharp</abilityid>    
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>
 	+Rank dmg for one edged weapon for the next 5 minutes.
       </any-success>
-    </action>
+    </check>
     <prereqabilityref id="runelore" rank="1"/>	
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
@@ -43,16 +43,16 @@
     <abilitytitle>Hold Door</abilitytitle>
     <abilityid>hold_portal</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Door is held.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="runelore" rank="1"/>	
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
@@ -70,19 +70,19 @@
     <abilitytitle>Hex Hammer</abilitytitle>
     <abilityid>hex_hammer</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>Weapon does an additional 7 damage.</critsuccess>
       <righteoussuccess>Weapon does an additional 5 damage.</righteoussuccess>
       <success>Weapon does an additional 3 damage.</success>
       <critfail>Weapon does 3 damage to the wielder when it hits</critfail>
-    </action>
+    </check>
     <prereqabilityref id="runelore" rank="2"/>	
     <spline><p x="30" y="60"/></spline>
     <abilitydescription>
@@ -100,19 +100,19 @@
     <abilityid>oathstone</abilityid>
     <slug>Duty is heavier than a mountain, death is lighter than a feather.</slug>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>.</critsuccess>
       <righteoussuccess>.</righteoussuccess>
       <success>.</success>
       <critfail>x</critfail>
-    </action>
+    </check>
     <prereqabilityref id="runelore" rank="2"/>	
     <spline><p x="30" y="60"/></spline>
     <abilitydescription>
@@ -127,17 +127,17 @@
     <abilitytitle>Runelore</abilitytitle>
     <abilityid>runelore</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -155,16 +155,16 @@
       The fox condemns the trap, not himself.
     </slug>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>d6x(Rank+4)</any-success>
-    </action>
+    </check>
     <prereqabilityref id="runelore" rank="2"/>	
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>

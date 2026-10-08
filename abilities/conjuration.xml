@@ -20,17 +20,17 @@
     <abilitytitle>Conjuration Lore</abilitytitle>
     <abilityid>conjuration</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>                
       <cost><default-skill-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>      
+      <keywords><lore/><action/></keywords>      
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -46,19 +46,19 @@
     <abilitytitle>Chain Lightning</abilitytitle>
     <abilityid>chain_lightning</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><magic-attack/></critclass>                
       <cost><ap3/></cost>
       <poolcost>1</poolcost>
       <range><ranged-medium/></range>
-      <keywords><physical-attack/><magicpool/><check/></keywords>
+      <keywords><physical-attack/><magicpool/><action/></keywords>
       <dmg>12+Rank Damage</dmg>
       <any-success>Deal damage to one target</any-success>
       <righteoussuccess>May make an additional chain lightning attack as a
       free action.</righteoussuccess>
-    </action>
+    </check>
     <prereqabilityref id="conjuration" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -85,21 +85,21 @@
     <abilitytitle>Eldritch Push</abilitytitle>
     <abilityid>eldritch_push</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Magic-Attack</name> 
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><magic-attack/></critclass>                
       <cost><ap2/></cost>
       <poolcost>2</poolcost>
       <range><ranged-medium/></range>
-      <keywords><physical-attack/><check/><magicpool/></keywords>
+      <keywords><physical-attack/><action/><magicpool/></keywords>
       <dmg>3+Rank</dmg>      
       <critsuccess>Target three opponents</critsuccess>
       <righteoussuccess>Target two opponents</righteoussuccess>
       <success>Target one opponent</success> 
       <grimfail>Caster is knocked back <m6/> and is Prone and takes d3 damage</grimfail>
       <effect>Target takes damage and is Pushed DC: 15+Rank</effect>
-    </action>
+    </check>
     <prereqabilityref id="conjuration" rank="2"/>
     <spline><p x="0" y="30"/><p x="60" y="60"/></spline>
     <abilitydescription>
@@ -117,21 +117,21 @@
     <abilitytitle>Eldritch Grasp</abilitytitle>
     <abilityid>eldritch_grasp</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Magic-Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><magic-attack/></critclass>                
       <cost><ap1/></cost>
       <poolcost>2</poolcost>
       <range><ranged-medium/></range>
-      <keywords><physical-attack/><magicpool/><check/></keywords>
+      <keywords><physical-attack/><magicpool/><action/></keywords>
       <dmg>5+Rank</dmg>
       <righteoussuccess>Target</righteoussuccess>
       <success><aka/></success> 
       <grimfail>X</grimfail> 
       <critfail>t</critfail>
       <effect>Target takes damage and is Pushed or Pulled DC: 15+Rank</effect>
-    </action>
+    </check>
     <prereqabilityref id="eldritch_push" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -154,17 +154,17 @@
     <abilitytitle>Scry</abilitytitle>
     <abilityid>scry</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv17/></opposing-action>
+      <reaction><ssv17/></reaction>
       <critclass><cast/></critclass>                
       <cost><noncombat-cost/></cost>
       <poolcost>2</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><ritual/><check/></keywords>
+      <keywords><magicpool/><ritual/><action/></keywords>
       <precondition>Item with thaumic contagion</precondition>
       <any-success>GM decides what you see.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="conjuration" rank="2"/>
     <spline><p x="0" y="30"/><p x="-60" y="60"/></spline>
     <abilitydescription>
@@ -196,16 +196,16 @@
     <abilitytitle>Scry, Greater</abilitytitle>
     <abilityid>scry_greater</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv17/></opposing-action>
+      <reaction><ssv17/></reaction>
       <critclass><cast/></critclass>                
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>GM decides what you see.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="scry" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -223,16 +223,16 @@
     <abilitytitle>Wither</abilitytitle>
     <abilityid>wither</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Magic-Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><magic-attack/></critclass>                
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><reach/></range>
-      <keywords><check/><magicpool/></keywords>
+      <keywords><action/><magicpool/></keywords>
       <any-success>Deal 5+Rank Damage.  The caster heals half the damage dealt.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="conjuration" rank="2"/>
     <spline><p x="0" y="60"/><p x="0" y="30"/></spline>
     <abilitydescription>

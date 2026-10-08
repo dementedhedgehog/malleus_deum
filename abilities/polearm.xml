@@ -23,19 +23,19 @@
     <abilitytitle>Polearm Hook</abilitytitle>
     <abilityid>polearm_hook</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Melee Attack</name> 
-      <opposing-action><strength-save/></opposing-action>
+      <reaction><strength-save/></reaction>
       <critclass><melee-attack/></critclass>          
       <cost><free/></cost>
       <range><reach/></range>
-      <keywords><polearm/><melee/><check/></keywords>
+      <keywords><polearm/><melee/><action/></keywords>
       <precondition>Hit an opponent with a boon</precondition>
       <critsuccess>
 	Target drops item, weapon or shield.  Attacker chooses.
       </critsuccess>
       <success>Target drops random item, weapon or shield</success>
-    </action>
+    </check>
     <prereqabilityref id="polearm_strike" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -57,18 +57,18 @@
     <abilitytitle>Polearm/Staff/Spear Strike</abilitytitle>
     <abilityid>polearm_strike</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <action>
+    <check>
       <name>Melee Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>          
       <cost><ap4/></cost>
       <range><reach/></range>
-      <keywords><polearm/><physical-attack/><basic-attack/><check/></keywords>
+      <keywords><polearm/><physical-attack/><basic-attack/><action/></keywords>
       <dmg>Weapon+Rank+Speed|Strength</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
       <success><default-attack-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -83,13 +83,13 @@
     <abilitytitle>Brace for Charge</abilitytitle>
     <abilityid>polearm_brace</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Brace</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>          
-      <cost><free-reaction-cost/></cost>
+      <cost><free-response-cost/></cost>
       <range><reach/></range>
-      <keywords><polearm/><physical-attack/><basic-attack/><check/></keywords>
+      <keywords><polearm/><physical-attack/><basic-attack/><action/></keywords>
       <precondition>
 	An opponent charges the character or an adjacent character
       </precondition>
@@ -99,7 +99,7 @@
       <success><default-attack-success/></success>
       <fail>No Effect</fail>
       <critfail>Roll on the melee consequence table</critfail>
-    </action>
+    </check>
     <prereqabilityref id="polearm_strike" rank="2"/>
     <spline><p x="60" y="30"/><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -117,17 +117,17 @@
     <abilitytitle>Circle of Death</abilitytitle>
     <abilityid>circle_of_death</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Melee Attack</name>
       <critclass><melee-attack/></critclass>          
       <cost><ap4/></cost>
       <range><reach/></range>
       <keywords><polearm/><physical-attack/><auxiliary/></keywords>
       <precondition>
-	Opponents moves into reach anytime before his next reaction.
+	Opponents moves into reach anytime before his next response.
       </precondition>
-      <effect>Character gets a free Fend reaction.</effect>
-    </action>
+      <effect>Character gets a free Fend response.</effect>
+    </check>
     <prereqabilityref id="polearm_strike" rank="2"/>
     <spline><p x="120" y="30"/></spline> 
     <abilitydescription>
@@ -144,20 +144,20 @@
     <abilitytitle>Fend</abilitytitle>
     <abilityid>fend</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Fend</name>
-      <opposing-action><will-save/></opposing-action>
+      <reaction><will-save/></reaction>
       <critclass><melee-attack/></critclass>          
-      <cost><free-reaction-cost/></cost>
+      <cost><free-response-cost/></cost>
       <range><reach/></range>
-      <keywords><polearm/><physical-attack/><check/></keywords>
+      <keywords><polearm/><physical-attack/><action/></keywords>
       <precondition>
 	Character not in melee and an opponent attempts to move into reach.
       </precondition>
       <any-success>
 	Opponent's movement stops before moving into reach.
       </any-success>      
-    </action>
+    </check>
     <prereqabilityref id="polearm_strike" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>

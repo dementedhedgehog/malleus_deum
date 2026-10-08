@@ -77,10 +77,10 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     # COST_COL = KEYWORDS_COL+1
     # RANGE_COL = COST_COL+1
     RANGE_COL = KEYWORDS_COL+1
-    ACTION_TYPE_COL = RANGE_COL+1
+    ACTION_COST_COL = RANGE_COL+1
 
     # 
-    CRIT_SUCCESS_COL = ACTION_TYPE_COL+1
+    CRIT_SUCCESS_COL = ACTION_COST_COL+1
     RIGHTEOUS_SUCCESS_COL = CRIT_SUCCESS_COL+1
     SUCCESS_COL = RIGHTEOUS_SUCCESS_COL+1
     FAIL_COL = SUCCESS_COL+1
@@ -104,7 +104,7 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     ws.write(r, CHECK_COL, "Check", title_format)
     ws.write(r, KEYWORDS_COL, "Keywords", title_format)
     ws.write(r, RANGE_COL, "Range", title_format)
-    ws.write(r, ACTION_TYPE_COL, "AP Cost", title_format)
+    ws.write(r, ACTION_COST_COL, "AP Cost", title_format)
 
     ws.write(r, CRIT_SUCCESS_COL, "Crit Success", title_format)
     ws.write(r, RIGHTEOUS_SUCCESS_COL, "Righteous Success", title_format)
@@ -124,31 +124,31 @@ def write_ability_summary_spreadsheet(spreadsheet_fname, ability_groups):
     r += 1
     for ability_group in ability_groups:
         for ability in ability_group:
-            for action in ability.get_actions():
+            for check in ability.get_checks():
                 ws.write(r, ABILITY_COL, ability.get_name(), title_format)
                 ws.write(r, FAMILY_COL, ability_group.get_family_id())
                 ws.write(r, GROUP_COL, ability_group.get_name())        
-                ws.write(r, CHECK_COL, action.get_name())
-                ws.write(r, KEYWORDS_COL, ", ".join(action.get_keywords()))
-                #ws.write(r, COST_COL, action.get_cost())
-                ws.write(r, RANGE_COL, action.get_range())
-                ws.write(r, ACTION_TYPE_COL, action.get_cost())
+                ws.write(r, CHECK_COL, check.get_name())
+                ws.write(r, KEYWORDS_COL, ", ".join(check.get_keywords()))
+                #ws.write(r, COST_COL, check.get_cost())
+                ws.write(r, RANGE_COL, check.get_range())
+                ws.write(r, ACTION_COST_COL, check.get_cost())
 
-                ws.write(r, CRIT_SUCCESS_COL, action.critsuccess)
-                ws.write(r, RIGHTEOUS_SUCCESS_COL, action.righteoussuccess)
-                ws.write(r, SUCCESS_COL, action.success)
-                ws.write(r, FAIL_COL, action.fail)
-                ws.write(r, GRIM_FAIL_COL, action.grimfail)
-                ws.write(r, CRIT_FAIL_COL, action.critfail)
+                ws.write(r, CRIT_SUCCESS_COL, check.critsuccess)
+                ws.write(r, RIGHTEOUS_SUCCESS_COL, check.righteoussuccess)
+                ws.write(r, SUCCESS_COL, check.success)
+                ws.write(r, FAIL_COL, check.fail)
+                ws.write(r, GRIM_FAIL_COL, check.grimfail)
+                ws.write(r, CRIT_FAIL_COL, check.critfail)
                 
-                ws.write(r, BLESSED_COL, action.blessed)
-                ws.write(r, LUCKY_COL, action.lucky)
-                #ws.write(r, INDIFFERENT_COL, action.indifferent)
-                ws.write(r, DAMNED_COL, action.damned)
-                ws.write(r, CURSED_COL, action.cursed)
+                ws.write(r, BLESSED_COL, check.blessed)
+                ws.write(r, LUCKY_COL, check.lucky)
+                #ws.write(r, INDIFFERENT_COL, check.indifferent)
+                ws.write(r, DAMNED_COL, check.damned)
+                ws.write(r, CURSED_COL, check.cursed)
 
-                ws.write(r, TRIGGER_COL, action.get_precondition())
-                ws.write(r, EFFECT_COL, action.get_effect())
+                ws.write(r, TRIGGER_COL, check.get_precondition())
+                ws.write(r, EFFECT_COL, check.get_effect())
                 r += 1
 
     ws.autofit()
@@ -164,9 +164,9 @@ if __name__ == "__main__":
     db = DB()
     db.load(root_dir=root_dir, fail_fast=True)
 
-    ability_summary_fname = join(build_dir, "ability_summary.xlsx")
+    check_summary_fname = join(build_dir, "check_summary.xlsx")
     write_ability_summary_spreadsheet(
-        ability_summary_fname,
+        check_summary_fname,
         ability_groups=db.ability_groups)    
   
     

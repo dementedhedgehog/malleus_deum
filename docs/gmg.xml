@@ -74,6 +74,38 @@
   </chapter>
 
   {% include "docs/phb_chapter_hazards.xml" %}  
+
+
+  <chapter>
+    <chaptertitle>Diseases</chaptertitle>    
+    {% for ag in ability_groups
+    if ag.get_id() == db.ABILITY_GROUP_DISEASE_ID %}
+
+    {% for ability in ag.get_abilities()%}
+    {{ format_ability(ability) }}
+    {% endfor %}
+    {% endfor %}
+
+    <hline/>
+  </chapter>
+  
+
+  <chapter>
+    <chaptertitle>Madness</chaptertitle>
+    {% for ag in ability_groups
+    if ag.get_id() == db.ABILITY_GROUP_MADNESS_ID %}
+
+    {% for ability in ag.get_abilities()%}
+    {{ format_ability(ability) }}
+    {% endfor %}
+    {% endfor %}
+
+    <hline/>
+    {% include "docs/tables/insanities.xml" %}    
+  </chapter>
+  
+
+
   
   <chapter>
     <chaptertitle>Traps</chaptertitle>

@@ -72,17 +72,17 @@
     <abilitytitle>Alemagne</abilitytitle>
     <abilityid>alemagne</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -98,17 +98,17 @@
     <abilitytitle>Aquilonian</abilitytitle>
     <abilityid>aquilonian</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="0" y="30"/></spline>  
     <abilitydescription>
       <p>
@@ -127,17 +127,17 @@
     <abilitytitle>Dwarvern</abilitytitle>
     <abilityid>dwarven</abilityid>
     <abilityranks from="1" to="5"/>
-    <action> 
+    <check> 
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -148,20 +148,47 @@
 
 
   <ability>
-    <abilitytitle>Fey</abilitytitle>
-    <abilityid>fey</abilityid>
+    <abilitytitle>Thieves Cant</abilitytitle>
+    <abilityid>thieves_cant</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
+    <spline></spline>
+    <abilitydescription>
+      <p>
+	Thieves Cant is a mix of jargon, dialect, and double meanings embedded
+	inside Merovingian.  It is a coded way of speaking used by criminals,
+	beggars, and outlaws.  To the naive Merovingian speaker, Cant sounds
+	like Merovingian using a lot of slang.  It does not sound like a
+	foreign language and it does not sound overly suspicious.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Fey</abilitytitle>
+    <abilityid>fey</abilityid>
+    <abilityranks from="1" to="5"/>
+    <check>
+      <name>Check</name>
+      <reaction><default-language-sv/></reaction>
+      <critclass><language/></critclass>
+      <cost><default-language-cost/></cost>
+      <range><default-language-range/></range>
+      <keywords><language/><action/></keywords>
+      <critsuccess><default-language-critical-success/></critsuccess>
+      <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
+      <success><default-language-success/></success>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -176,17 +203,17 @@
     <abilitytitle>Lagashi</abilitytitle>
     <abilityid>lagashi</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -201,17 +228,17 @@
     <abilitytitle>Leonese</abilitytitle>
     <abilityid>leonese</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -228,17 +255,17 @@
     <abilitytitle>Merovingian</abilitytitle>
     <abilityid>merovingian</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -256,17 +283,17 @@
     <abilitytitle>Poitevin</abilitytitle>
     <abilityid>poitevin</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="90" y="60"/></spline> 
     <abilitydescription>
       <p>
@@ -281,17 +308,17 @@
     <abilitytitle>Occitan</abilitytitle>
     <abilityid>occitan</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -308,17 +335,17 @@
     <abilitytitle>Hybernian</abilitytitle>
     <abilityid>hybernian</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -333,17 +360,17 @@
     <abilitytitle>Inochian</abilitytitle>
     <abilityid>inochian</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -361,17 +388,17 @@
     <abilitytitle>Sylvan</abilitytitle>
     <abilityid>sylvan</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
       <p>
@@ -388,17 +415,17 @@
     <abilitytitle>Thule</abilitytitle>
     <abilityid>thule</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-language-sv/></opposing-action>
+      <reaction><default-language-sv/></reaction>
       <critclass><language/></critclass>
       <cost><default-language-cost/></cost>
       <range><default-language-range/></range>
-      <keywords><language/><check/></keywords>
+      <keywords><language/><action/></keywords>
       <critsuccess><default-language-critical-success/></critsuccess>
       <righteoussuccess><default-language-righteous-success/></righteoussuccess>  
       <success><default-language-success/></success>
-    </action>
+    </check>
     <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
       <p>

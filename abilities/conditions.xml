@@ -5,7 +5,9 @@
     <abilitygroupid><condition/></abilitygroupid>
     <abilityfamily><tribulation/></abilityfamily>
     <abilitygroupdescription>
-    <p>
+      <p>
+	FIXME a condition is an antagonist ability applied to a PC.  All abilities are also keywords.
+	FIXME: antagonistic abilities are driven by the GM.  Often they allow the GM to make checks against the targert PC.
       A <defn>Condition</defn> is a type of keyword that has a well-defined game
       effect, and a lifetime. All conditions are keywords, but not all keywords
       are conditions. Conditions represent temporary modifications to things in
@@ -13,6 +15,7 @@
     </p>
 
     <p>
+      FIXME
       <indexentry><entry>Conditions</entry><subentry>Save Ends</subentry></indexentry>
       <indexentry><entry>Save Ends</entry></indexentry>
       Conditions have different lifetimes. Some conditions typically last for
@@ -33,6 +36,61 @@
     <dontdrawskilltree/>
     <enabled/>
   </abilitygroupinfo>
+
+
+  <ability>
+    <abilitytitle>Asphyxiating</abilitytitle>
+    <abilityid>asphyxiating</abilityid>
+    <param-rank>3</param-rank>
+    <check> 
+      <name>Save Against Asphyxiation</name>
+      <action><skill-plus-rank-check/></action>      
+      <reaction><endurance-save/></reaction>      
+      <critclass><listed-below/></critclass>
+      <cost><start-of-turn/></cost>
+      <range><self/></range>
+      <keywords><reaction/></keywords> 
+      <critsuccess>
+	No effect.  Make next Save against Asphyxiation with a shift up.
+      </critsuccess>
+      <success>No effect</success>
+      <fail>Check again next round with disadvantage.</fail>
+      <critfail>Character is Nearly-Dead.</critfail>
+    </check>
+    <stage>
+      <name>Dyspnea</name>
+      <description>
+	Blood pressure rises, and a lack of oxygen to the brain can cause
+	dizziness, confusion, bluish skin discoloration, and involuntary muscle
+	twitching or convulsions. Make all checks shifted down. If the
+	character can breath during their round they lose the Asphyixiating
+	condition. Make a Mettle check at the end of each turn, and progress to
+	the next stage of this condition on failure.
+      </description>
+    </stage>
+    <stage>
+      <name>Suffocating</name>
+      <description>
+	The character gains the Unconscious and Near-Death conditions and cannot
+	lose them until they can breath again. They cannot reduce their stage
+	in these conditions while asphixiating. They can only increase their
+	stage or remain at their current stage.
+      </description>
+    </stage>
+    <abilitydescription>
+      <p noindent="true">
+	Drowning, suffocating, or choking characters have the Asphyxiating
+	condition. Characters lose this condition when they are able to breathe
+	again.
+      </p>
+      
+      <p>
+	Characters are temporarily immune to asphyxiation while Holding Their
+	Breath, but they cannot start to Hold Their Breath while being
+	Asphyxiated.
+      </p>
+    </abilitydescription>
+  </ability>
 
 
   <ability>
@@ -81,8 +139,6 @@
       </p>
     </abilitydescription>
   </ability>
-
-
   
 
   <ability>
@@ -135,9 +191,55 @@
       </p>
     </abilitydescription>
   </ability>
+  
+  
+  <ability>
+    <abilitytitle>Burning</abilitytitle>
+    <abilityid>burning</abilityid>
+    <param-dmg>4</param-dmg>
+    <param-rank>3</param-rank>
 
-   
+    <check> 
+      <name>Every Round</name>
+      <action><skill-plus-rank-check/></action>      
+      <reaction><endurance-save/></reaction>      
+      <critclass><listed-below/></critclass>
+      <cost><start-of-turn/></cost>
+      <range><self/></range>
+      <keywords><reaction/></keywords>
+      <precondition>At the start of your turn you are Burning.</precondition>
+      <effect>
+	Take Dmg+Rank damage. Make a Mettle Save or you must
+	immediately Drop and Roll.
+      </effect>
+    </check>
 
+    <check> 
+      <name>Drop and Roll</name>
+      <action><speed-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
+      <!-- <reaction><speed-save/></reaction> -->
+      <!-- <critclass><fixme/></critclass> -->
+      <cost><ap2/></cost>
+      <range><self/></range>
+      <keywords><physical/><action/></keywords>
+      <success>Lose this condition</success>
+      <fail>Take d6×Rank damage</fail>
+      <effect>Gain the Prone condition.</effect>
+    </check>
+    
+    <abilitydescription>
+      <p noindent="true">
+	The character is on fire!  They suffer burning damage each round until
+	they can put themselves out.	
+      </p>
+      <figure position="!htbp">
+	<img id="rackham_hopfrog"/>
+      </figure>
+    </abilitydescription>
+  </ability>
+
+  
   <ability>
     <abilitytitle>Cover</abilitytitle>
     <abilityid>cover</abilityid>
@@ -155,7 +257,7 @@
 	Character is behing something that completely blocks attacks, such as
 	a wall. But the character is sticking their head out to observe, or
 	firing from cover, so they are not completely protected.  Attacks and
-	perception checks are made against the character with three shifts down.	
+	perception checks are made against the character with three shifts down.
       </description>
     </stage>
     <stage>
@@ -210,18 +312,411 @@
   </ability>
 
   
+  <ability>
+    <abilitytitle>Clumsy</abilitytitle>
+    <abilityid>clumsy</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Agility checks are made with disadvantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character loses ranks in Agility equal to their Clumsy rank.
+      </p>
+    </abilitydescription>
+  </ability>
   
   <ability>
     <abilitytitle>Deafened</abilitytitle>
     <abilityid>deafened</abilityid>
+    <param-rank>2</param-rank>
     <param-permanent>false</param-permanent>
+    <abilityranks from="1" to="5"/>    
     <keywords><condition/><antagonist/></keywords>
     <abilitydescription>
       <p>
 	The character cannot hear.  Any actions that require being able to hear
-	are made with two shifts down, that includes certain peception,
-	language, social and leadership checks.  All communication requires
-	language checks for lip reading.
+	are made with a shift down per rank they have in the Deafened condition,
+	that includes certain peception, language, social and leadership checks.
+	All communication requires line of sight and language checks for lip
+	reading.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Demoralized</abilitytitle>
+    <abilityid>demoralized</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Will checks are made with disadvantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character loses ranks in Will equal to their Demoralized rank.
+      </p>
+    </abilitydescription>
+  </ability>  
+
+
+  <ability>
+    <abilitytitle>Distracted</abilitytitle>
+    <abilityid>distracted</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Perception checks are made with disadvantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character loses ranks in Perception equal to their Distracted rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Emboldened</abilitytitle>
+    <abilityid>emboldened</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Damned roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Will checks are made with advantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character gains ranks in Will equal to their Emboldened rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Exhausted</abilitytitle>
+    <abilityid>exhausted</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Endurance checks are made with disadvantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character loses ranks in Endurance equal to their Exhausted rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Falling</abilitytitle>
+    <abilityid>falling</abilityid>
+    <param-dmg>4</param-dmg>
+    <param-rank>3</param-rank>
+    <check> 
+      <name>Opposed</name>
+      <reaction><luck-save/></reaction>      
+      <critclass><fixme/></critclass>
+      <cost><free-interrupt-cost/></cost>
+      <range><self/></range>
+      <keywords><aoe-emination/><action/></keywords>
+      <dmg>FIXME</dmg>
+      <critsuccess>Unharmed and find something useful.</critsuccess>
+      <righteoussuccess>Unharmed</righteoussuccess>
+      <success>Take damage</success>
+      <fail>Take double damage</fail>      
+    </check>
+    <abilitydescription>
+      <p noindent="true">
+	FIXME
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Focused</abilitytitle>
+    <abilityid>focused</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Damned roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Perception checks are made with advantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character gains ranks in Perception equal to their Focused rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Fortunate</abilitytitle>
+    <abilityid>fortunate</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Damned roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Luck checks are made with advantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character gains ranks in Luck equal to their Focused rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+
+  <ability>
+    <abilitytitle>Grabbed</abilitytitle>
+    <abilityid>grabbed</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <check> 
+      <name>Escape</name>
+      <action><strength-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>      
+      <critclass><listed-below/></critclass>
+      <cost><ap2/></cost>
+      <range><self/></range>
+      <keywords><action/><physical/></keywords>
+      <critsuccess>Lose 3 stages of Grabbed.</critsuccess>
+      <righteoussuccess>Lose 2 stages of Grabbed</righteoussuccess>
+      <success>Lose 1 stage of Grabbed</success>
+      <fail>Gain 1 stage of Grabbed.</fail>
+      <critfail>Gain 2 stage of Grabbed.</critfail>
+      <effect>
+	The character attempts to get free of the grab or break their bonds.
+      </effect>
+    </check>
+
+    <stage>
+      <name>Hobbled</name>
+      <description>
+	The character has been grabbed around the legs.  They cannot make move
+	actions. Dodge actions are made with a shift down.
+      </description>
+    </stage>
+    
+    <stage>
+      <name>Grabbed</name>
+      <description>
+	The character has been grabbed.  They are Hobbled.  They make all
+	physical checks with a shift down.
+      </description>
+    </stage>
+    
+    <stage>
+      <name>Restrained</name>
+      <description>
+	The character can barely move.  They are grabbed.  The only physical
+	actions the character can make are Escape, Headbut.
+      </description>
+    </stage>
+    
+    <stage>
+      <name>Immobilized</name>
+      <description>
+	The character is Restrained.  The cannot even perform somatic gestures
+	to cast spells, so they cast spells shifted down one.
+      </description>
+    </stage>
+    
+    <abilitydescription>
+      <p>
+	The characters movement is constrained by something.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  <ability>
+    <abilitytitle>Hidden</abilitytitle>
+    <abilityid>hidden</abilityid>
+    <param-permanent>false</param-permanent>
+    <abilityranks from="1" to="5"/>
+    <keywords><condition/><antagonist/></keywords>
+    <check>      
+      <name>Hide</name>
+      <cost><free/></cost>
+      <range><na/></range>
+      <keywords><reaction/></keywords>
+      <any-success>The character remains unnoticed.</any-success>
+      <any-fail>The character is detected.</any-fail>      
+    </check>    
+    <qualifier>
+      <name>Concealed</name>
+      <description>
+	Of an item hidden in a room.  Equivalent to
+	<abilityref id="hidden" rank="3"/>.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Invisible</name>
+      <description>
+	Equivalent to <abilityref id="hidden" rank="3"/> and advantage.
+      </description>
+    </qualifier>
+    <abilitydescription>
+      <p>
+	This ability is used to oppose vision based Perception checks.  Gains
+	shifts up or down based on how easy the environment is to hide in.
       </p>
     </abilitydescription>
   </ability>
@@ -233,26 +728,26 @@
     <param-rank>3</param-rank>
     <abilityranks from="1" to="5"/>
     <keywords><condition/><antagonist/></keywords>
-    <action>      
+    <check>      
       <name>On Your Turn</name>
       <cost><free/></cost>
       <range><na/></range>
       <keywords><auxiliary/></keywords>
       <precondition>This action happens during your turn.</precondition>
       <effect>Your breath is held.</effect>
-    </action>
+    </check>
     
-    <action>      
+    <check>      
       <name>When surprised!</name>
-      <opposing-action><speed-or-perception-save/></opposing-action>
-      <opposing-action-cost><save-cost/></opposing-action-cost>
+      <reaction><speed-or-perception-save/></reaction>
+      <reaction-cost><save/></reaction-cost>
       <critclass><no-crits/></critclass>
-      <cost><start-of-turn-cost/></cost>
+      <cost><start-of-turn/></cost>
       <range><na/></range>
-      <keywords><save/></keywords>
+      <keywords><reaction/></keywords>
       <any-success>Your breath is held.</any-success>
       <any-fail>Your breath is not held.</any-fail>
-    </action>
+    </check>
     
     <abilitydescription>
       <p>
@@ -261,19 +756,18 @@
       </p>
 
       <p>
-	<emph>Characters can hold their breath for 5 of their turns plus d4
-	turns for each rank in Endurance that they hold above zero</emph>. For
-	example a character with Endurance 3 can hold their breath for 5+3d4
-	turns. If, at the end of their round, the character has been holding
-	their breath for their maximum number of turns they cease to hold their
-	breath and must do so on their next turn.
+	<emph>Characters can hold their breath for 7 plus Endurance Rank turns.
+	After which they must make a Free Endurance Save each turn to keep
+	holding their breath, or begin asphyxiating</emph>. For
+	example a character with Endurance 3 can hold their breath for 10 turns
+	before they must start saving. 
       </p>
 
       <p>
 	Characters can automatically <emph>hold their breath</emph> if they
 	are prepared to do so, for example, before running into a burning
 	building.  However they must make a save if they want to do so as a
-	reaction to some third party event.
+	response to some surprising third party event, <eg/> falling into water.
       </p>
 
       <p>
@@ -282,8 +776,59 @@
     </abilitydescription>
   </ability>
 
+  
+  <ability>
+    <abilitytitle>Impeded</abilitytitle>
+    <abilityid>impeded</abilityid>
+    <param-permanent>false</param-permanent>
+    <abilityranks from="1" to="5"/>
+    <keywords><condition/><antagonist/></keywords>
+    <abilitydescription>
+      <p>
+	The character loses one action point per rank in Impeded.
+      </p>
+    </abilitydescription>
+  </ability>
 
+  
+  <ability>
+    <abilitytitle>Invigorated</abilitytitle>
+    <abilityid>invigorated</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Damned roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Endurance checks are made with advantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character gains ranks in Endurance equal to their Invigorated rank.
+      </p>
+    </abilitydescription>
+  </ability>
 
+  
   <ability>
     <abilitytitle>Lighting</abilitytitle>
     <abilityid>lighting</abilityid>
@@ -351,82 +896,33 @@
       </p>
     </abilitydescription>
   </ability>
-
-  
-
-
-
-
   
 
   <ability>
-    <abilitytitle>Morale</abilitytitle>
-    <abilityid>morale</abilityid>
+    <abilitytitle>Frightened</abilitytitle>
+    <abilityid>frightened</abilityid>
     <keywords><condition/><antagonist/></keywords>
-    <stage>
-      <name>XXXX</name>
-      <description>
-	XXX
-      </description>
-    </stage>
-    <stage>
-      <name>XXX</name>
-      <description>
-	XXX
-      </description>
-    </stage>  
-    <stage>
-      <name>Routed</name>
-      <description>
-	XXX
-      </description>
-    </stage>  
-    <stage>
-      <name>Bloodied</name>
-      <description>
-	XXX
-      </description>
-    </stage>  
+
+    <check>      
+      <name>Stand Firm</name>
+      <cost><free/></cost>
+      <range><na/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>
+	The character is frightened and makes a righteous will or mettle check,
+	or rests.	
+      </precondition>
+      <effect>
+	The character looses this condition.
+      </effect>       
+    </check>
+    
     <abilitydescription>
       <p>
-	XXXX
+	The character makes Mettle and Break saves with one shift down.
       </p>
-<!--
-<term>Broken</term>
-<description>
-<label>condition:broken</label>
-<indexentry><entry>Broken Condition</entry></indexentry>
-<indexentry><entry>Conditions</entry><subentry>Broken</subentry></indexentry>
-The character has lost the will to fight and must withdraw from battle.
-On their turn they may attack but may not move into melee combat unless
-they have no other choice.  This condition occurs after a character
-has failed two Mettle Checks in combat.
-</description>
-
-
-<term>Bloodied</term>
-<description>
-<indexentry><entry>Bloodied Condition</entry></indexentry>
-<indexentry><entry>Conditions</entry><subentry>Bloodied</subentry></indexentry> The
-character has suffered damage to their Health.  When a character first
-suffers health damage in a fight they must make a Mettle Check.
-</description>
-
-<term>Routed</term>
-<description>
-<indexentry><entry>Routed Condition</entry></indexentry>
-<indexentry><entry>Conditions</entry><subentry>Routed</subentry></indexentry>
-The character has been defeated in combat.  If they can Flee they do so.
-Otherwise they will attempt to yield or do something desperate.  This occurs
-when the player has failed three Mettle Checks in combat.
-</description>
-
-
--->
     </abilitydescription>
   </ability>
-
-  
   
 
   <ability>
@@ -435,8 +931,8 @@ when the player has failed three Mettle Checks in combat.
     <slug>There's a big difference between mostly dead and all dead.</slug>
     <abilityranks from="11" to="11"/>
     <keywords><condition/><antagonist/></keywords>
-    <action>      
-      <name>Roll for Near Death</name>
+    <check>      
+      <name>Roll for Near Death</name> 
       <cost><ap3/></cost>
       <range><na/></range>
       <keywords><mettlepool/><auxiliary/></keywords>
@@ -446,16 +942,29 @@ when the player has failed three Mettle Checks in combat.
       <effect>
 	The character rolls on the Near-Death table.
       </effect>       
-    </action>
+    </check>
 
-    <action>      
+    <check>      
+      <name>Struggle</name>
+      <cost><free/></cost>
+      <range><na/></range>
+      <keywords><auxiliary/></keywords>
+      <precondition>
+	The character may make a Will Check once per round.
+      </precondition>
+      <any-success>
+	The character gains 2AP.
+      </any-success>
+    </check>
+
+    <check>      
       <name>Divine Intervention</name>
-      <opposing-action><flat-save/></opposing-action>
-      <opposing-action-cost><free-interrupt-cost/></opposing-action-cost>       
+      <reaction><flat-save/></reaction>
+      <reaction-cost><free-interrupt-cost/></reaction-cost>       
       <critclass><listed-below/></critclass>
       <cost><free/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>
 	Apply the "I'm Fine" result from the Near-Death table.	
       </critsuccess>
@@ -466,25 +975,27 @@ when the player has failed three Mettle Checks in combat.
 	Apply the "Where am I" result from the Near-Death table.
       </success>
       <any-fail>The character is dead.</any-fail>
-    </action>
+    </check>
 
-    
     <abilitydescription>
       <figure position="htbp"><img id="batten_near_death"/></figure>
 
       <p>
 	The player must make rolls on the Near-Death table for the character
 	each round until the condition is removed of their character dies.
-	Characters who are Near-Death also have the Down condition and usually
-	will have the Prone condition as well.
+	Characters who are Near-Death have the <abilityref id="impeded"
+	rank="5"/> condition and will usually have the <abilityref id="prone"/>
+	condition as well.
       </p>
 
-      <smalltitle>Divine Intervention</smalltitle>
-      <indexentry><entry>Divine Intevention Save</entry></indexentry>
-      <indexentry>
-	<entry>Saves</entry>
-	<subentry>Divine Intevention</subentry>
-      </indexentry>
+      <p>
+	Characters who are Near Death are effectively too hurt and too weak to
+	defend themselves or do too much and are in danger of dying. Enemy
+	combatants will tend to leave characters who are Near Death alone
+	until after combat ends when they can be dispatched, eaten, saved for
+	later, ransomed or sold into slavery.  
+      </p>
+      
       <p>
 	Divine intervention is a special rule where a character may be spared
 	by an intervention from Mithras or their patron before they die. As a
@@ -506,85 +1017,332 @@ when the player has failed three Mettle Checks in combat.
     </abilitydescription>
   </ability>
 
-  
+
   <ability>
-    <abilitytitle>Slowed</abilitytitle>
-    <abilityid>slowed</abilityid>
-    <param-permanent>false</param-permanent>
+    <abilitytitle>Nimble</abilitytitle>
+    <abilityid>nimble</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
     <keywords><condition/><antagonist/></keywords>
-
-    <action>
-      <name>Wake up</name>
-      <opposing-action><default-sv/></opposing-action>
-      <opposing-action-cost><save-cost/></opposing-action-cost>
-      <critclass><listed-below/></critclass>
-      <cost><free/></cost>
-      <poolcost>0</poolcost>
-      <range><self/></range>
-      <keywords><check/><mettlepool/></keywords>
-      <any-success>The Sleeping condition is lost.</any-success>
-      <critsuccess>FIXME The stunned condition is lost.</critsuccess>
-      <critfail>FIXME THINGS GET WORSE SOMEHOW!</critfail>
-    </action>
-    
-
-    <stage>
-      <name>Unconscious</name>
+    <qualifier>
+      <name>Momentarily</name>
       <description>
-	The character has blacked out due to a stunning blow to the head or too
-	much pain. They are unaware of their surrounding and incapacitated.
-	actions.
+	Until the characters next Damned roll.
       </description>
-    </stage>
-    
-    <stage>
-      <name>Sleeping</name>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
       <description>
-	The character is asleep. They are unaware of their surrounding and are
-	incapacitated.
+	Until the next rest.
       </description>
-    </stage>
-    
-    <stage>
-      <name>Incapacitated</name>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
       <description>
-	No actions per turn.
+	Until such time as the GM decrees.
       </description>
-    </stage>
-    <stage>
-      <name>Partially Conscious</name>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
       <description>
-	Character gets one action per turn. Make speed and agility actions
-	shifted down three.
+	Agility checks are made with advantage.
       </description>
-    </stage>
-
-    <stage>
-      <name>Slowed 3</name>
-      <description>
-	Character gets two actions per turn. Make speed and agility actions
-	shifted down two.
-      </description>
-    </stage>
-
-    <stage>
-      <name>Slowed 2</name>
-      <description>
-	Character gets three actions per turn. Make speed and agility actions
-	shifted down one.
-      </description>
-    </stage>
-
-    <stage>
-      <name>Slowed 1</name>
-      <description>
-	Character gets four actions per turn.
-      </description>
-    </stage>
-
+    </qualifier2>
     <abilitydescription>
       <p>
-	The character has trouble moving.
+	The character gains ranks in Agility equal to their Nimble rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Petrified</abilitytitle>
+    <abilityid>petrified</abilityid>
+    <param-rank>3</param-rank>
+    <abilityranks from="1" to="3"/>    
+    <keywords><antagonist/></keywords>
+    <check> 
+      <name>Save Every Round</name>
+      <action><skill-plus-rank-check/></action>      
+      <reaction><endurance-save/></reaction>      
+      <critclass><listed-below/></critclass>
+      <cost><start-of-turn/></cost>
+      <range><self/></range>
+      <keywords><reaction/></keywords>
+      <precondition>At the start of your turn you are Petrified (but not
+      Profoundly Petrified).
+      </precondition>
+      <critsuccess>Lose three ranks in Petrified.</critsuccess>
+      <righteoussuccess>Lose two ranks in Petrified.</righteoussuccess>
+      <success>Lose one rank in Petrified</success>
+      <fail>Gain one rank in Petrified</fail>
+      <critfail>Gain two ranks in Petrified!</critfail>      
+    </check> 
+   
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until they save or the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the groups next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees, or the death of the caster if the
+	condition was caused by a spell.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Lesser</name>
+      <description>
+	The character can think, sense and cast spells (at two shifts down
+	since verbal components and somatic gestures are impossible).
+      </description>
+    </qualifier2>
+    <qualifier2>
+      <name>Greater</name>
+      <description>
+	The character is unaware of their surroundings and can perform no
+	actions, not even saves. 
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	Characters who have been petrified have been turned to stone.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+  <ability>
+    <abilitytitle>Poisoned</abilitytitle>
+    <abilityid>poisoned</abilityid>
+    <param-dmg>4</param-dmg> 
+    <param-rank>3</param-rank>
+    <check> 
+      <name>Opposed</name> 
+      <reaction><endurance-save/></reaction>
+      <critclass><fixme/></critclass>
+      <cost><multi-round/></cost>
+      <range><self/></range>
+      <keywords><action/></keywords>
+      <success>Take Rank damage</success>
+      <fail>Take d6×Rank damage</fail>
+    </check>
+    <abilitydescription>
+      <p noindent="true">
+	XXX
+      </p>
+
+      <img id="holm_poison"/>
+
+      <p>
+	FIXME
+
+	Poison condition
+
+	Injury, Contact, Ingested, and Inhaled.
+
+	Injury: Triggered by a successful weapon strike or monster bite.Ingested: Hid in food or drink; relies on roleplay, perception, and paranoia.Inhaled: Traps, gas clouds, or spores; affects an entire area or zone.Contact: Smeared on door handles or items; punishes careless looting.
+      </p>      
+    </abilitydescription>
+  </ability>  
+  
+  <ability>
+    <abilitytitle>Possessed «Aspect»</abilitytitle>
+    <abilityid>possessed</abilityid>
+    <keywords><condition/><antagonist/></keywords>
+    <abilitydescription>
+      <p>
+	The character is magically possessed. The possessor may attempt to
+	control their actions either verbally, or mentally, depending on the
+	kind of possession.  The possessed character may choose to make an
+	Aspect Save or comply with the possessive suggestion.
+      </p>
+    </abilitydescription>
+  </ability>
+
+ 
+  <ability>
+    <abilitytitle>Prone</abilitytitle>
+    <abilityid>prone</abilityid>
+    <keywords><condition/><antagonist/></keywords>
+    <check>
+      <name>Stand up</name>
+      <!-- <reaction><default-sv/></reaction> -->
+      <!-- <reaction-cost><save/></reaction-cost> -->
+      <!-- <critclass><listed-below/></critclass> -->
+      <cost><ap2/></cost>
+      <poolcost>0</poolcost>
+      <range><self/></range>
+      <keywords><action/><agility/></keywords>
+      <precondition>
+	You are prone.
+      </precondition>      
+      <!-- <any-success>The Sleeping condition is lost.</any-success> -->
+      <!-- <critsuccess>FIXME The stunned condition is lost.</critsuccess> -->
+      <!-- <critfail>FIXME THINGS GET WORSE SOMEHOW!</critfail> -->
+      <effect>
+	Prone condition is lost.  The GM might require an agility check to stand
+	up in challenging circumstances, such as on the deck of a ship in a
+	storm, or if the character is suffering from some condition that affects
+	their agility.
+      </effect>      
+    </check>
+    
+    <abilitydescription>
+      <p>
+	The character is lying on the ground.  While prone melee attacks are
+	made against the character with one shift up. Ranged attacks are made
+	against the with one shift down.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Quickened</abilitytitle>
+    <abilityid>quickened</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Damned roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Agility checks are made with advantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character gains ranks in Speed equal to their Quickened rank.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Sleeping</abilitytitle>
+    <abilityid>sleeping</abilityid>
+    <param-rank>3</param-rank>
+    <abilityranks from="1" to="7"/>
+    <keywords><antagonist/></keywords>
+    <check>
+      <name>Wake up!!</name>
+      <reaction><perception-save/></reaction>
+      <critclass><fixme/></critclass>
+      <cost><free/></cost>
+      <range><self/></range>
+      <keywords><reaction/></keywords>
+      <precondition>
+	Some noise occurs that might wake the character.  Gain one shift up if
+	the noise is combat.  Gain one shift up if someone is yelling to wake
+	up.  Gain one shift up for each turn the noise continues.
+      </precondition>            
+      <any-success>The sleeping condition is lost.</any-success>
+    </check>
+    <abilitydescription>
+      <p>
+	Characters who are sleeping cannot move, take no actions and are prone.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Slowed</abilitytitle>
+    <abilityid>slowed</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Speed checks are made with disadvantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character loses ranks in Speed equal to their Slowed rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Strengthened</abilitytitle>
+    <abilityid>strengthened</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Damned roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Strength checks are made with advantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character gains ranks in Strength equal to their Strengthened rank.
       </p>
     </abilitydescription>
   </ability>
@@ -596,23 +1354,27 @@ when the player has failed three Mettle Checks in combat.
     <param-rank>3</param-rank>
     <abilityranks from="1" to="7"/>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Snap out of it!!</name>
-      <opposing-action><mettle-save/></opposing-action>
-      <opposing-action-cost><save-cost/></opposing-action-cost>
+      <reaction><mettle-save/></reaction>
+      <reaction-cost><save/></reaction-cost>
       <critclass><listed-below/></critclass>
       <cost><free/></cost>
       <poolcost>0</poolcost>
       <range><self/></range>
-      <keywords><check/><mettlepool/></keywords>
-      <any-success>The stunned condition is lost.</any-success>
-      <critsuccess>The stunned condition is lost.</critsuccess>
-      <critfail>FIXME THINGS GET WORSE SOMEHOW!</critfail>
-    </action>
+      <keywords><action/><mettlepool/></keywords>
+      <critsuccess>Lose three ranks in Stunned.</critsuccess>
+      <righteoussuccess>Lose two ranks in Stunned.</righteoussuccess>
+      <success>Lose one rank in Stunned</success>
+      <fail>Gain one rank in Stunned</fail>
+      <critfail>Gain two ranks in Stunned!</critfail>
+    </check>
     <abilitydescription>
       <p>
-	Characters who have been stunned cannot move, and can speak only
-	falteringly.
+	Characters who have been stunned they are not completely lucid.	They are
+	Slowed at the same rank that they are stunned. They suffer one shift
+	down for every rank they have in stunned for any Cast, Recall Knowledge
+	and Perception checks made.
       </p>
     </abilitydescription>
   </ability>
@@ -624,14 +1386,14 @@ when the player has failed three Mettle Checks in combat.
     <param-rank>3</param-rank>
     <abilityranks from="1" to="5"/>
     <keywords><antagonist/></keywords>
-    <action>      
+    <check>      
       <name>Resist!!</name>
-      <opposing-action><default-save-sv/></opposing-action>
+      <reaction><default-save-sv/></reaction>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><self/></range>
-      <keywords><save/></keywords>
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     
     <abilitydescription>
       <figure position="htbp"><img id="anon_deer_skull"/></figure>      
@@ -639,6 +1401,82 @@ when the player has failed three Mettle Checks in combat.
 	Characters who have been subdued have lost the will to resist.
 	Subdued characters roll all will checks at disadvantage including Resist
 	and to resist Interrogate.
+      </p>
+    </abilitydescription>
+  </ability>
+
+  
+  <ability>
+    <abilitytitle>Unfortunate</abilitytitle>
+    <abilityid>unfortunate</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Luck checks are made with disadvantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character loses ranks in Luck equal to their Unfortunate rank.
+      </p>
+    </abilitydescription>
+  </ability>
+
+
+  <ability>
+    <abilitytitle>Weakened</abilitytitle>
+    <abilityid>weakened</abilityid> 
+    <param-rank>1</param-rank>
+    <abilityranks from="1" to="5"/>    
+    <keywords><condition/><antagonist/></keywords>
+    <qualifier>
+      <name>Momentarily</name>
+      <description>
+	Until the characters next Lucky roll.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Temporarily</name>
+      <description>
+	Until the next rest.
+      </description>
+    </qualifier>
+    <qualifier>
+      <name>Permanently</name>
+      <description>
+	Until such time as the GM decrees.
+      </description>
+    </qualifier>
+    <qualifier2>
+      <name>Profoundly</name>
+      <description>
+	Strength checks are made with disadvantage.
+      </description>
+    </qualifier2>
+    <abilitydescription>
+      <p>
+	The character loses ranks in Strength equal to their Weakened rank.
       </p>
     </abilitydescription>
   </ability>

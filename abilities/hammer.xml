@@ -20,20 +20,20 @@
     <abilitytitle>Hammer Smash</abilitytitle>
     <abilityid>hammer_smash</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       
       <name>Hammer Smash</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><free/></cost>
       <range><reach/></range>
       <keywords>
-	<hammer/><melee/><basic-attack/><physical-attack/><check/>
+	<hammer/><melee/><basic-attack/><physical-attack/><action/>
       </keywords>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="hammer_strike" rank="2"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -49,7 +49,7 @@
     <abilitytitle>Righteous Blow</abilitytitle>
     <abilityid>stunning_blow</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       
       <name>Righteous Blow</name>      
       <cost><free/></cost>
@@ -62,7 +62,7 @@
       <effect>
 	Target is Stunned and Target takes an additional +Rank hit points damage.
       </effect>
-    </action>
+    </check>
     <prereqabilityref id="hammer_strike" rank="2"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -70,7 +70,7 @@
 	When the character makes a Hammer Strike with a righteous success the
 	character may make a Righteous Blow attack as a free action. They make a
 	check versus their opponents Agility. If they make a righteous success
-	the opponent is stunned (loses their Move, Minor and Reaction for their
+	the opponent is stunned (loses their Move, Minor and Response for their
 	next turn).
       </p>
     </abilitydescription>
@@ -81,21 +81,21 @@
     <abilitytitle>Hammer Strike</abilitytitle>
     <abilityid>hammer_strike</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <action>
+    <check>
       
       <name>Melee Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap4/></cost>
       <range><reach/></range>
       <keywords>
-	<hammer/><melee/><basic-attack/><physical-attack/><check/>
+	<hammer/><melee/><basic-attack/><physical-attack/><action/>
       </keywords>
       <dmg>Weapon+Strength|Endurance</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

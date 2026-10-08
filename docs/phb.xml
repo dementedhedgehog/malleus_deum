@@ -3,40 +3,51 @@
   <titlepage>
     <title>Malleus Deum</title>
     <img id="clarke_lich" textwidth="0.6"/>
-    <subtitle>Players Handbook</subtitle>
-    <version>{{ db.version }}</version>
     <subsubtitle>Rejoice not against me, O mine enemy! when I fall, I shall arise.</subsubtitle>
+    <vspace length="3.0"/>
+    <subtitle>Players Handbook</subtitle>
+    <vspace/>
+    <version>{{ db.version }}</version>
+    <vspace/>
     <author>Blaize A. Rhodes</author>
   </titlepage>
 
 
   <tableofcontents/>
   {#
+  #}
   <listoffigures/>
   <listofart/>
-  #}
 
+  {% include "docs/phb/chapter_intro.xml" %} 
   {#
-  {% include "docs/phb_chapter_intro.xml" %} 
-  {% include "docs/phb_chapter_character_creation.xml" %} 
-  {% include "docs/phb_chapter_checks.xml" %}   
-  {% include "docs/phb_chapter_abilities.xml" %}
-  {% include "docs/phb_chapter_aspects.xml" %} 
   #}
+  {% include "docs/phb/chapter_character_creation.xml" %} 
 
-  {% include "docs/phb_chapter_tribulations.xml" %}
-  {% include "docs/phb_chapter_combat.xml" %}
+  {% include "docs/phb/chapter_checks.xml" %}   
+  
+  {#
+  #}
+  {% include "docs/phb/chapter_abilities.xml" %}
+  {% include "docs/phb/chapter_aspects.xml" %} 
+
+  {% include "docs/phb/chapter_tribulations.xml" %}
+  {% include "docs/phb/chapter_combat.xml" %}
  
 
   {#
-  {% include "docs/phb_chapter_death.xml" %}
-  {% include "docs/phb_chapter_harnessing_magic.xml" %} 
   #}
-
+  {% include "docs/phb/chapter_death.xml" %}
+  {% include "docs/phb/chapter_harnessing_magic.xml" %}  
   {#
-  {% include "docs/phb_chapter_equipment.xml" %} 
-  {% include "docs/phb_chapter_abilities_by_name.xml" %} 
-  #}
+ #}
+
+  {% include "docs/phb/chapter_equipment.xml" %} 
+  {% include "docs/phb/chapter_abilities_by_name.xml" %} 
+
+  <appendix>
+  {% include "docs/phb/appendix_character_sheet.xml" %} 
+  </appendix>
 
 {% if add_index_to_core %}
 <index/>

@@ -1,4 +1,134 @@
 
+design notes...?
+
+
+Gilded Age? Age of the Elves?
+Age of Darkness
+Age of Kings
+
+FIX LABELS The \label must always come after or inside the \caption
+ABILITYREF .. make them like chapterref in docs.
+
+
+
+WE'VE GOT PROBLEMS WITH RESOLUTION FOR PC vs PC checks (two crits etc)?
+How do you get a righteous result in PVP as a reaction?
+
+BORROW A Crude Fail.
+
+
+RENAME Actor/Object ... Actor/Reactor.  So Object==>Reactor
+
+
+ TAbles.. use \midrule for hrules in a table  (call it a <tablerule/>)
+
+ THE EMPTY HANDLErS (e.g. table headers) SHOULD HAVE THEIR TYPE CHANGED SO THAT
+ DOC DOESN'T PASS THAT INFO TO THE Formatters.
+
+ Can we add structured metadata to the lxml elements (e.g. lists and classes
+ instead of just attributes)
+
+
+ def handle_threeactionsymbol(self, symbol):
+     self.buffer.write(r"\threeactionsymbol{}")
+
+Add a "pass thorough" thing where the 
+ def handle_threeactionsymbol(self, symbol):
+        self.buffer.write(r"\threeactionsymbol{}")
+
+gets replaced, somehow, with 
+ def handle_foo(self, symbol):
+       self.buffer.write(r"\foo ")
+
+e.g.
+  i) 
+  def get_pass_through_elements():
+    return ("threeactionsymbol", etc..)
+
+  def pass_through(tag):
+       self.buffer.write(r"%s " % tag)
+
+  ii) have the doc add pass through handlers 
+      for each tag returned by get_pass_through_elements.
+    
+
+
+Reactions??
+
+
+
+SEPARATE ICONS...
+  TYPE.. action, reaction
+  COST.. AP or OOTA or Free
+  POOL COST.. ?
+  MANDATORY !
+
+
+ Make a DocWalker with
+    get_start_method(elem_tag)
+    get_end_method(elem_tag)
+
+
+ Make DocFormatter the son of DocWalker
+ Move _get_formatter_handlers from the doc to the DocWalker
+
+
+
+ PROBLEM
+   alignment and width interact to insert two multicolumn calls.
+
+
+
+
+
+
+
+
+Big gap after Stages
+Uneven spacing in stages
+
+
+
+BREAK MONSTERS INTO BITS FOR HP AND AC?
+E.g giant spider..  thorax AC 18 HP 90, abdomen AC14 HP 40
+
+
+mandatoryfreeinterruptsymbol add attribs? mandatory and free?
+
+ DO WE NEED THE ANTAGONIST CONCEPT ANYMORE??
+ 
+
+ PROBLEM WE WANT TO DESCRIBE HOW PEOPLE GET THEIR SKILL BUT WE DON'T WANT TO SAY HOW THEY GET IT..
+ e.g.
+   Dice + Rank
+   10 + Rank
+
+
+
+
+PROBLEM
+  PLAYER CHECKS AGAINST ANTAGONIST ACTION ON THE PLAYERS TURN
+  ACTIONS DEFINED ON THE ANTAGONIST ABILITY ARE PERFORMED BY THE ANTAGONIST? NO!
+
+  ==> MAKE NAME SEPARATE
+  ==> INTRODUCE A STD+RANK? thing in the check description.
+d20/10+Rank
+
+  ==> Action --> Check
+  ==> ADD AN ACTION and a Reaction
+  ==> RENAME Reaction -> response
+  ==> RENAME OPPOSING ACTION WITH Reaction
+  ==> RENAME OPPOSING ACTION COST WITH Reaction COST
+
+
+
+MOVE CRITCLASS DOWN TO OUTCOMES..  HAVE EITHER CRITCLASS XOR OUTCOMES????
+
+
+Burning Damage vs on fire
+
+Consider having a Start-of-turn and End-of-turn check "cost" (like OOTA).
+
 
 Keyword is a tag with no rules
 Condition is a tag with rules
@@ -4881,3 +5011,5 @@ https://www.reddit.com/r/MapPorn/comments/lz3xf2/ancient_lakes_of_the_sahara_dur
 pygmies
 The Land of Punt
 The Kingdom of Kush
+
+the opener of the ways

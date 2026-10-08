@@ -407,14 +407,13 @@ class Resources:
               "you have built *all* the docs.\n\n")
 
         print("\n** Resources by Size Descending **")
-        print("\t A4 \\textheight is 8.276in, \\textwidth is 6.255in"
-              "\\columnwidth is 3.058in\n"
-              "\t .. and printers print at 300dpi for the purposes of "
+        print("A4 \\textheight is 8.276in, \\textwidth is 6.255in"
+              "\columnwidth is 3.058in"              
+              ".. and printers print at 300dpi for the purposes of "
               "calculating optimal pixel sizes for printed images.\n"
               "(e.g. column wide images should be 917px wide)\n"
-              "      page wide images should be 1876px wide)\n"
+              "      page wide images should be 1876px wide)\n")
 
-              )
         for img_fname, size in sorted_resource_sizes:
             unused = img_fname in unused_resources
             unused_str = "Unused" if unused else ""            

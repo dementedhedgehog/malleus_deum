@@ -20,20 +20,19 @@
       <param-permanent>false</param-permanent>
     <abilityranks from="0" to="7"/>
     <keywords><antagonist/></keywords>           
-    <action>
-      
-      <name>Aspect Check</name>
-      <opposing-action><mettle-save/></opposing-action>
+    <check>      
+      <name>Aspect Save</name>
+      <reaction><mettle-save/></reaction>
       <critclass><aspect/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><save/><antagonist/></keywords>        
+      <keywords><mettlepool/><reaction/><antagonist/></keywords>        
       <any-success>Aspect is resisted. Demote 1</any-success>
       <righteoussuccess>Demote 2</righteoussuccess>
       <any-fail>Aspect is compelled.</any-fail>
       <grimfail>Promote 1</grimfail>
-     </action>
+     </check>
     <abilitydescription>
       <p>
         <indexentry><entry>Aspect Check</entry></indexentry>

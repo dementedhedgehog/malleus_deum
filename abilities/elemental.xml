@@ -18,17 +18,17 @@
     <abilitytitle>Black Colossus</abilitytitle>
     <abilityid>black_colossus</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name> 
-      <opposing-action><sv13/></opposing-action>      
+      <reaction><ssv13/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="summon_elemental" rank="2"/>	
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -44,17 +44,17 @@
     <abilitytitle>Burning Hands</abilitytitle>
     <abilityid>burning_hands</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><reach/></range> 
-      <keywords><magicpool/><fire/><check/></keywords>
+      <keywords><magicpool/><fire/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
-    </action> 
+    </check> 
     <prereqabilityref id="fyre" rank="2"/>	
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -70,17 +70,17 @@
     <abilitytitle>Elemental Lore</abilitytitle>
     <abilityid>elemental_magic</abilityid>  
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><elemental/><check/></keywords>
+      <keywords><lore/><elemental/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -95,20 +95,20 @@
     <abilitytitle>Fyre Bolt</abilitytitle>
     <abilityid>fyre</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><magic-attack/></critclass>
       <cost><ap4/></cost>
       <poolcost>2</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><fire/><unparryable/><check/></keywords>
+      <keywords><magicpool/><fire/><unparryable/><action/></keywords>
       <dmg>(1+Rank)×d6</dmg>      
       <any-success>Damage</any-success>
       <critsuccess>3×Damage</critsuccess>
       <righteoussuccess>2×Damage</righteoussuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <prereqabilityref id="elemental_magic" rank="1"/>	
     <spline><p x="-30" y="30"/><p x="0" y="120"/></spline>
     <abilitydescription>
@@ -123,17 +123,17 @@
     <abilitytitle>Gaseous Form</abilitytitle>
     <abilityid>gaseous_form</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name> 
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <prereqabilityref id="elemental_magic" rank="1"/>	
     <spline><p x="-30" y="30"/><p x="0" y="60"/><p x="-45" y="30"/></spline>
     <abilitydescription>
@@ -149,17 +149,17 @@
     <abilitytitle>Kiss of the Deep</abilitytitle>
     <abilityid>kiss_of_the_deep</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>
+      <reaction><will-save/></reaction>
       <critclass><cast/></critclass>
-      <cost><free-action-or-reaction-cost/></cost>
+      <cost><free-action-or-response-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <prereqabilityref id="elemental_magic" rank="1"/>	
     <spline><p x="-30" y="30"/><p x="-45" y="30"/></spline>
     <abilitydescription>
@@ -184,17 +184,17 @@
     <abilitytitle>Mist</abilitytitle>
     <abilityid>mist</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <prereqabilityref id="elemental_magic" rank="1"/>	
     <spline><p x="-30" y="30"/><p x="0" y="45"/><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -211,17 +211,17 @@
     <abilitytitle>Shatter</abilitytitle>
     <abilityid>shatter</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap3/></cost>
       <poolcost>2</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <prereqabilityref id="elemental_magic" rank="2"/>	
     <spline><p x="30" y="30"/><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -254,17 +254,17 @@
     <abilitytitle>Smoke Weasel</abilitytitle>
     <abilityid>smoke_weasel</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <prereqabilityref id="fyre" rank="1"/>	
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
@@ -284,26 +284,26 @@
     <abilitytitle>Sow the Wind</abilitytitle>
     <abilityid>sow_the_wind</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name> 
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap2/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>All movement for counts as difficult terrain.</any-success>
-    </action>
-    <action>
+    </check>
+    <check>
       <name>Interrupt Cast</name> 
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><save/></keywords>
+      <keywords><magicpool/><reaction/></keywords>
       <any-success>All movement for counts as difficult terrain.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="elemental_magic" rank="2"/>	
     <spline><p x="30" y="30"/><p x="0" y="120"/></spline>
     <abilitydescription>
@@ -318,17 +318,17 @@
     <abilitytitle>Summon Elemental</abilitytitle>
     <abilityid>summon_elemental</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap3/></cost>
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <prereqabilityref id="elemental_magic" rank="3"/>	
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>

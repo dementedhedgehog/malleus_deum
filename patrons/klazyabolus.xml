@@ -126,15 +126,15 @@ More flavourful to have a per patron thing?
     <abilitytitle>Invoke Klasyalabolous</abilitytitle>
     <abilityid>invoke_klasyalabolous</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action> 
+      <reaction><ssv11/></reaction> 
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>      
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
-    </action>
+      <keywords><magicpool/><action/></keywords>
+    </check>
     <prereqabilityref id="evocation" rank="1"/>	
     <spline></spline>
     <abilitydescription>
@@ -164,15 +164,15 @@ More flavourful to have a per patron thing?
     <abilitytitle>Batrachian Leap</abilitytitle>
     <abilityid>batrachian_leap</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>       
+    <check>       
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
-    </action>
+      <keywords><magicpool/><action/></keywords>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -187,15 +187,15 @@ More flavourful to have a per patron thing?
     <abilitytitle>Incorporal Mist</abilitytitle>
     <abilityid>incorporal_mist</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>      
+    <check>      
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
-    </action>
+      <keywords><magicpool/><action/></keywords>
+    </check>
     <prereqabilityref id="evocation" rank="1"/>	
     <spline></spline>
     <abilitydescription>

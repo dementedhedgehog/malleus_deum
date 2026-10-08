@@ -27,15 +27,15 @@
       is straight is an abomination to the wicked.
     </slug>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
-    </action>
+      <keywords><magicpool/><action/></keywords>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="180"/><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -64,16 +64,16 @@
     <abilityid>augury</abilityid>
     <slug>It’s tough to make predictions, especially about the future.</slug>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass> 
       <cost><noncombat-cost/></cost>
       <poolcost>2</poolcost>
       <range><na/></range>
-      <keywords><ritual/><magicpool/><check/></keywords>
+      <keywords><ritual/><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>    
+    </check>    
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="210"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -139,16 +139,16 @@
     <abilitytitle>Back Fiend!</abilitytitle>
     <abilityid>back</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>      
+      <reaction><will-save/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Demon makes Mettle Check vs Cast Result</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="2"/>
     <spline><p x="0" y="120"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -165,17 +165,17 @@
     <abilitytitle>Blessed Arms</abilitytitle>
     <abilityid>blessed_arms</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass> 
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Weapons receive +Rank dmg vs demons and undead</any-success>
       <critsuccess>Weapons receive +2×Rank dmg vs demons and undead</critsuccess>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="360"/><p x="120" y="30"/></spline>
     <abilitydescription>
@@ -194,18 +194,18 @@
     <abilitytitle>Canticle of Mithras</abilitytitle>
     <abilityid>canticle_of_mithras</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass> 
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><maintain/><check/></keywords>
+      <keywords><magicpool/><maintain/><action/></keywords>
       <any-success>
 	Alies make defensive checks with a +Rank bonus against evil opponents
       </any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="2"/>
     <spline><p x="0" y="30"/><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -221,20 +221,20 @@
     <abilitytitle>Holy Water</abilitytitle>
     <abilityid>holy_water</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv9/></opposing-action>      
+      <reaction><ssv9/></reaction>      
       <critclass><craft/></critclass>
       <cost><ap1/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <any-success>Holy water is available.</any-success>
       <critsuccess>+2 bonus to checks made with this item</critsuccess>
       <righteoussuccess>+1 bonus to checks made with this item</righteoussuccess>
       <fail>Last one.  No more Holy Water checks can be made until the character has had time to create more.</fail>
       <grimfail>As fail, but it's old.  -2 bonus to checks made with this item</grimfail>
       <critfail>All out.</critfail>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="510"/></spline>
     <abilitydescription>
@@ -265,16 +265,16 @@
     <abilitytitle>Divine Retribution</abilitytitle>
     <abilityid>divine_retribution</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv9/></opposing-action>
+      <reaction><ssv9/></reaction>
       <critclass><cast/></critclass> 
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Check to make a free opposing-action attack</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="300"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -290,16 +290,16 @@
     <abilitytitle>Exorcise</abilitytitle>
     <abilityid>exorcise</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>2</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Exorcise evil spirit</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="300"/><p x="90" y="30"/></spline>
     
@@ -327,16 +327,16 @@
     <abilityid>gentle_repose</abilityid>
     <slug>There is a big difference between mostly dead and all dead</slug>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass> 
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>+Rank to Near Death saves</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="255"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -354,16 +354,16 @@
     <abilitytitle>Grace of Mithras</abilitytitle>
     <abilityid>grace_of_mithras</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass> 
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>+Rank to hit and dmg</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="390"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -379,21 +379,21 @@
     <abilitytitle>Guiding Hand</abilitytitle>
     <abilityid>guiding_hand</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
-      <cost><reaction-cost/></cost> 
+      <cost><response-cost/></cost> 
       <poolcost>1</poolcost>
       <range><ranged-medium/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <precondition>
 	Someone nearby is hit with an arrow or crossbow bolt.
       </precondition>
       <any-success>
 	Arrow or bolt misses in defence or is rerolled in offence.
       </any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="165"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -426,20 +426,20 @@
     <abilitytitle>Heal</abilitytitle>
     <abilityid>heal</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass> 
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Heal 1d4+Rank hit points</any-success>
       <critfail>
 	The healer accidentaly uses their own animus in order to heal the
 	bloodied character and loses d4 hitpoints.
       </critfail>      
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="2"/>
     <spline><p x="90" y="15"/></spline>
     <abilitydescription>
@@ -456,16 +456,16 @@
     <abilitytitle>Hypnotic Gaze</abilitytitle>
     <abilityid>hypnotic_gaze</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>      
+      <reaction><will-save/></reaction>      
       <critclass><cast/></critclass> 
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Target mesmerized</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="2"/>
     <spline><p x="0" y="75"/><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -485,16 +485,16 @@
     <abilitytitle>Light of Mithras</abilitytitle>
     <abilityid>light_of_mithras</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass> 
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Create light</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="480"/><p x="90" y="30"/></spline>
     
@@ -511,16 +511,16 @@
     <abilitytitle>Litany of Redemption</abilitytitle>
     <abilityid>litany_of_redemption</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Prayer refreshes a mettle die</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="350"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -538,16 +538,16 @@
     <abilitytitle>No - Take Me!</abilitytitle>
     <abilityid>no_take_me</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Transfers damage</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="450"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -567,16 +567,16 @@
     <abilitytitle>Purify</abilitytitle>
     <abilityid>purify</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass> 
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Purifies food or drink</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="120"/><p x="-60" y="30"/></spline>    
     <abilitydescription>
@@ -596,15 +596,15 @@
     <abilitytitle>Theurgic Lore</abilitytitle>
     <abilityid>theurgy</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><na/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <any-success>Reveals background lore</any-success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -622,16 +622,16 @@
     <abilitytitle>Hammer of the Hierophant</abilitytitle>
     <abilityid>hammer_of_the_hierophant</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass> 
       <cost><ap1/></cost>
       <poolcost>2</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><maintain/><check/></keywords>
+      <keywords><magicpool/><maintain/><action/></keywords>
       <any-success>Mace, Hammer or Staff +Rank to hit and damage</any-success>
-    </action>
+    </check>
     <prereqabilityref id="blessed_arms" rank="2"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -649,19 +649,19 @@
     <abilitytitle>Hold Undead</abilitytitle>
     <abilityid>hold_undead</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>
+      <reaction><will-save/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <precondition>Opponents are undead.</precondition>
       <any-success>
 	If successfully cast any undead within range whose will is less than or equal to the result are Held.
       </any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="-60" y="5"/></spline>
     <abilitydescription>
@@ -678,20 +678,20 @@
     <abilitytitle>Turn Undead</abilitytitle>
     <abilityid>turn_undead</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <precondition>Opponents are undead.</precondition>
       <any-success>
 	If successfully cast any undead within range whose will is less than or
 	equal to the result are Turned.
       </any-success>
-    </action>
+    </check>
     <prereqabilityref id="hold_undead" rank="3"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -708,20 +708,20 @@
     <abilitytitle>Destroy Undead</abilitytitle>
     <abilityid>destroy_undead</abilityid>
     <abilityranks from="2" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv13/></opposing-action>      
+      <reaction><ssv13/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <precondition>Opponents are undead.</precondition>
       <any-success>
 	If successfully cast any undead within range whose will is less than
 	or equal to the result are Destroyed.
       </any-success>
-    </action>
+    </check>
     <prereqabilityref id="turn_undead" rank="2"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -738,17 +738,17 @@
     <abilitytitle>Witness Me!</abilitytitle>
     <abilityid>witness_me</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <precondition>Caster is bloodied</precondition>
       <any-success>Make three melee attacks</any-success>
-    </action>
+    </check>
     <prereqabilityref id="theurgy" rank="1"/>
     <spline><p x="0" y="240"/><p x="90" y="30"/></spline>
     <abilitydescription>

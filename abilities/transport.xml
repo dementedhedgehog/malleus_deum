@@ -18,27 +18,27 @@
     <abilitytitle>Animal Handling</abilitytitle>
     <abilityid>animal_handling</abilityid>
     <abilityranks untrained="-3" from="1" to="4"/> 
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><gm-fiat-check-cost/></cost>      
       <range><gm-fiat/></range>      
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Physical Check</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>      
       <range><gm-fiat/></range>      
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <any-success>Success</any-success>
-    </action>
+    </check>
     <spline><p x="-30" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -55,27 +55,27 @@
     <abilityid>carter</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
 
-    <action>
+    <check>
       <name>Physical Check</name>      
-      <opposing-action><default-physical-sv/></opposing-action>      
+      <reaction><default-physical-sv/></reaction>      
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>
       <range><gm-fiat/></range>
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <any-success>Success!</any-success>
-    </action>
+    </check>
     
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><gm-fiat-check-cost/></cost>      
       <range><gm-fiat/></range>      
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="animal_handling" rank="1"/>   
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -93,15 +93,15 @@
     <abilitytitle>Riding</abilitytitle>
     <abilityid>riding</abilityid>
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       <name>Physical Check</name>
-      <opposing-action><default-physical-sv/></opposing-action>      
+      <reaction><default-physical-sv/></reaction>      
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>      
       <range><gm-fiat/></range>      
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <any-success>Success!</any-success>
-    </action>
+    </check>
     <prereqabilityref id="animal_handling" rank="1"/>   
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -116,17 +116,17 @@
     <abilitytitle>Master</abilitytitle>
     <abilityid>master</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><gm-fiat-check-cost/></cost>      
       <range><gm-fiat/></range>      
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="sailor" rank="1"/>   
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -160,27 +160,27 @@
     <abilitytitle>Sailor</abilitytitle>
     <abilityid>sailor</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       <name>Physical Check</name>
-      <opposing-action><default-transport-sv/></opposing-action>      
+      <reaction><default-transport-sv/></reaction>      
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>      
       <range><gm-fiat/></range>      
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <any-success>Success!</any-success>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><transport/><check/></keywords>
+      <keywords><transport/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline><p x="60" y="0"/></spline>
     <abilitydescription>
       <p>

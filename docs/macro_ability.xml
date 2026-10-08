@@ -9,30 +9,28 @@
 <threeactionsymbol/>
 {%- elif cost == '4AP' -%}
 <fouractionsymbol/>
-{%- elif cost == '5AP' -%}
+{%- elif cost == db.ABILITY_COST_AP5_NAME -%}
 <fiveactionsymbol/>
-{%- elif cost == 'Save' -%}
+{%- elif cost == db.ABILITY_COST_MULTI_ROUND_NAME -%}
+<multiroundactionsymbol/>
+{%- elif cost == db.ABILITY_COST_SAVE_NAME -%}
 <savesymbol/>
 {%- elif cost == 'Free Save' -%}
 <freesavesymbol/>
 {%- elif cost == 'Save/Free Save' -%}
 <saveorfreesavesymbol/>
-{%- elif cost == 'Reaction' -%}
-<reactionsymbol/>
-{%- elif cost == 'Free Reaction' -%}
-<freereactionsymbol/>
-{%- elif cost == 'Mandatory Reaction' -%}
-<mandatoryreactionsymbol/>
-{%- elif cost == 'Mandatory Free Reaction' -%}
-<mandatoryfreereactionsymbol/>
-{%- elif cost == 'Free Reaction/Interrupt' -%}
-<freereactionorinterruptsymbol/>
-{%- elif cost == 'Reaction/Interrupt' -%}
-<reactionorinterruptsymbol/>
-{%- elif cost == 'Reaction/2AP' -%}
-<reactionsymbol/>/<twoactionsymbol/>
-{%- elif cost == 'Interrupt/2AP' -%}
-<interruptsymbol/>/<twoactionsymbol/>
+{%- elif cost == 'Response' -%}
+<responsesymbol/>
+{%- elif cost == 'Free Response' -%}
+<freeresponsesymbol/>
+{%- elif cost == 'Mandatory Response' -%}
+<mandatoryresponsesymbol/>
+{%- elif cost == 'Mandatory Free Response' -%}
+<mandatoryfreeresponsesymbol/>
+{%- elif cost == 'Free Response/Interrupt' -%}
+<freeresponseorinterruptsymbol/>
+{%- elif cost == 'Response/Interrupt' -%}
+<responseorinterruptsymbol/>
 {%- elif cost == 'GM Fiat' -%}
 <gmfiatchecksymbol/>
 {%- elif cost == 'Interrupt' -%}
@@ -50,124 +48,109 @@
 {%- elif cost == 'Any OOTA' -%}
 <anyootasymbol/>
 {%- else -%}
-UNKNOWN COST!! {{ cost }}
+UNKNOWN COST!! "{{ cost }}"
 {%- endif -%}
 {%- endmacro -%}
 
 
 
-{%- macro insert_action_cost_symbol(action) -%}
-{%- set cost = action.cost -%}
+{%- macro insert_action_cost_symbol(check) -%}
+{%- set cost = check.cost -%}
 {{- insert_cost_symbol(cost) -}}
 {%- endmacro -%}
 
 
-{%- macro insert_opposing_action_cost_symbol(action) -%}
-{%- set cost = action.opposing_action_cost -%}
+{%- macro insert_reaction_cost_symbol(check) -%}
+{%- set cost = check.reaction_cost -%}
 {%- if cost is not none -%}
 {{- insert_cost_symbol(cost) -}}
 {%- endif -%}
 {%- endmacro -%}
 
 
-{%- macro insert_action_symbol(action) -%}
-
-{%- set action_class = action.get_action_class() -%}
-{%- set is_antag = action.is_antag_action() -%}
-
-{%- if is_antag and not action_class == 'Auxiliary' -%}
-<antagonistsymbol/>
-{%- endif -%}
-{%- if action_class == 'Check' -%}
-<actionchecksymbol/>
-{%- elif action_class == 'Save' -%}
-<actionsavesymbol/>
-{%- elif action_class == 'Auxiliary' -%}
-<actionauxiliarysymbol/>
+{%- macro insert_verb_symbol(verb) -%}
+{%- if verb == db.CHECK_VERB_ACTION_NAME -%}
+<actionsymbol/>
+{%- elif verb == db.CHECK_VERB_REACTION_NAME -%}
+<reactionsymbol/>
+{%- elif verb == db.CHECK_VERB_AUXILIARY_NAME -%}
+<auxiliarysymbol/>
 {%- else -%}
-FIXME UNKNOWN ACTION CLASS '{{ action_class }}'!!
+FIXME UNKNOWN CHECK VERB '{{ verb }}'!!
 {%- endif -%}
 {%- endmacro -%}
 
 
 
-{% macro format_action(action) %}
+{% macro format_check(check) %}
+    {%- set verb = check.get_check_verb() -%}
     <vspace length="1.0"/><br/>
-    {{- insert_action_symbol(action) -}}    
+    {{- insert_verb_symbol(verb) + " " -}}
+    <bold>{{check.name}}</bold><br/>
     
     {#- ***CHECK*** -#}
-    {%- if action.action_class == 'Check' -%}
-
-        {%- if action.is_antag_action() -%}
-            {{action.name}}{{- insert_action_cost_symbol(action) -}}
-	    <vscheckarrowsymbol/><savearrowsymbol/>
-	    {{- insert_opposing_action_cost_symbol(action) -}}
-	    <bold>{{- action.opposing_action }}</bold>
-	{%- else -%}
-            <bold>{{action.name}}</bold>
-	    <checkarrowsymbol/><vssavearrowsymbol/>
-	    <smaller>{{- action.opposing_action }}</smaller>
-	{%- endif -%}
-
+    {%- if verb == db.CHECK_VERB_ACTION_NAME -%}
+        <bold>{{- check.action }}</bold>
+	{{-" " + insert_action_cost_symbol(check) + " "-}}
+        <checkarrowsymbol/><vssavearrowsymbol/>{{- " " -}}
+        <antagonistsymbol/>
+	<smaller>{{- check.reaction }}</smaller><br/>
 	
-    {#- ***SAVE*** #}{%- elif action.action_class == 'Save' -%}
-
-        {%- if action.is_antag_action() -%}
-	    {{action.name}}
-	    {{- " " + insert_action_cost_symbol(action) + " "-}}
-            <vscheckarrowsymbol/><savearrowsymbol/>
-	    {{- " " + insert_opposing_action_cost_symbol(action) + " "-}}
-	    <bold>{{action.opposing_action}}</bold>
-	{%- else -%}
-	    {{action.opposing_action}}
-	    <vscheckarrowsymbol/><savearrowsymbol/>
-	    {{- " " + insert_action_cost_symbol(action) + " "-}}
-	    <bold>{{action.name}}</bold>
-	{%- endif -%}
-
+    {#- ***SAVE*** -#}
+    {%- elif verb == db.CHECK_VERB_REACTION_NAME -%}	
+        <antagonistsymbol/>
+	{{-" " + insert_action_cost_symbol(check) + " "-}}
+        {{- check.action -}}
+        <vscheckarrowsymbol/><savearrowsymbol/>
+	{{-" " + insert_reaction_cost_symbol(check) + " "-}}
+	<bold>{{check.reaction}}</bold><br/>
 	
-    {#- ***Auxiliary*** #}{%- elif action.action_class == 'Auxiliary' -%}	
-	<bold>{{action.name}}</bold>
-	{{- " " + insert_action_cost_symbol(action) + " "-}}
-
+    {#- ***Auxiliary*** -#}
+    {%- elif verb == db.CHECK_VERB_AUXILIARY_NAME -%}
+	{# {- " " + insert_auxiliary_cost_symbol(check) + " "-} #}
 
     {#- ***Error!*** #}{%- else -%}
-	<bold>FIXME:</bold> UNKNOWN CHECK TYPE: {{ action.action_type }}
+	<bold>FIXME:</bold> UNKNOWN CHECK VERB: {{ verb }}
     {%- endif -%}	
 
-    <br/><bold>Crits:</bold> {{ action.get_crit_class()|string + " " }}
-    {%- if action.pool_cost -%}
-    <bold>Pool Cost:</bold> {{ action.get_pool_cost_str()  + " " }}
+    {%- if check.pool_cost -%}
+    <bold>Pool Cost:</bold> {{ check.get_pool_cost_str()  + " " }}
     {%- endif -%}
-    <bold>Range:</bold> {{ action.action_range + " " -}}
-    {%- if action.dmg -%}
-    <bold>Damage:</bold> {{ action.dmg  + " " }}
+    <bold>Range:</bold> {{ check.check_range + " " -}}
+    {%- if check.dmg -%}
+    <bold>Damage:</bold> {{ check.dmg  + " " }}
     {%- endif -%}
-    {%- if action.keywords -%}
-    <bold>Keywords:</bold> {{ action.get_action_keywords_str()  + " " }}
+    {%- if check.keywords -%}
+    <bold>Keywords:</bold> {{ check.get_check_keywords_str()  + " " }}
     {%- endif -%}
-    {%- if action.requires %}
-    <bold>Requires:</bold> {{ action.requires }}	
+    {%- if check.requires %}
+    <bold>Requires:</bold> {{ check.requires }}	
     {%- endif -%}
-    {%- if action.precondition %}	
-    <br/><bold>Preconditions:</bold> {{ action.precondition }}
+    {%- if check.precondition %}	
+    <br/><bold>Preconditions:</bold> {{ check.precondition }}
     {%- endif -%}
-    {% if action.effect -%}
-    <br/><bold>Effect:</bold> {{ action.effect }}
+    {% if check.effect -%}
+    <br/><bold>Effect:</bold> {{ check.effect }}
     {%- endif -%}
-    {%- if action.has_outcomes() %}
+
+    {%-
+        if check.get_crit_class() not in [
+            db.CHECK_CRITS_LISTED_BELOW_NAME,
+            db.CHECK_CRITS_NO_CRITS_NAME,
+	    None,
+	]
+    %}
+    <bold>Crits:</bold> {{ check.get_crit_class()|string + " " }}
+    {%- endif -%}
+    {%- if check.has_outcomes() %}
     <br/><bold>Outcomes:</bold><indent>
-    {%- for outcome in action.get_outcomes() -%}
+    {%- for outcome in check.get_outcomes() -%}
     {%- set name, result = outcome -%}	
     <br/><bold>{{ name }}:</bold> {{ result }}
     {%- endfor -%}
     </indent>
     {%- endif -%}	
 {%- endmacro -%}
-
-
-
-
 
 {% macro format_ability(ability) %}
 <spacer/>
@@ -195,7 +178,6 @@ FIXME UNKNOWN ACTION CLASS '{{ action_class }}'!!
     {#- eat extra newlines as latex doesn't like them in movable arguments -#}
   </subsubsectiontitle>
   {%- if ability.slug -%}
-  <!-- <vspace length="-0.3"/> -->
   <slug>{{ ability.slug }}</slug>
   {%- endif -%}
   <indexentry>
@@ -214,23 +196,51 @@ FIXME UNKNOWN ACTION CLASS '{{ action_class }}'!!
       {%- if ability.specializations -%}
       <bold>Specializations:</bold> {{ability.get_specializations_str()  + " "}}
       {%- endif %}      
-      {%- if ability.get_actions() -%}
-      {%- for action in ability.get_actions() -%}
+      {%- if ability.get_checks() -%}
+      {%- for check in ability.get_checks() -%}
       <indent>
-	{{- format_action(action) -}}
+	{{- format_check(check) -}}
       </indent>
       {%- endfor -%}
       {%- endif -%}
     </smaller>
-    <vspace length="0.8"/>
+    <vspace length="0.5"/>
   </p>
+  {%- if ability.qualifiers -%}
+  <p>
+    <smaller>
+      <bold>Qualifiers:</bold>
+      <indent>
+	{% for qualifier in ability.qualifiers -%}    
+	<vspace length="0.4"/><br/>
+	<bold>{{ qualifier.name }}</bold> {{ qualifier.description }}
+	{%- endfor %}
+      </indent>
+    </smaller> 
+    <vspace length="1"/>
+  </p>      
+  {%- endif %}  
+  {%- if ability.additional_qualifiers -%}
+  <p>
+    ---
+    <smaller>
+      <indent>
+	{% for qualifier in ability.additional_qualifiers -%}    
+	<vspace length="0.4"/><br/>
+	<bold>{{ qualifier.name }}</bold> {{ qualifier.description }}
+	{%- endfor %}
+      </indent>
+    </smaller> 
+    <vspace length="1"/>
+  </p>      
+  {%- endif %}  
   {%- if ability.stages -%}
   <p>
     <smaller>
       <bold>Stages:</bold>
       <indent>
 	{% for stage in ability.stages -%}    
-	<vspace length="0.6"/><br/>
+	<vspace length="0.4"/><br/>
 	<bold>{{ loop.index }}: {{ stage.name }}</bold> {{ stage.description }}
 	{%- endfor %}
       </indent>

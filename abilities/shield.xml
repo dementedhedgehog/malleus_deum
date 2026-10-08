@@ -18,21 +18,21 @@
     <abilitytitle>Shield Block</abilitytitle>
     <abilityid>block</abilityid>    
     <abilityranks untrained="0" from="1" to="4"/>
-    <action>
+    <check>
       <name>Block</name>
-      <opposing-action><physical-attack/></opposing-action>
+      <reaction><physical-attack/></reaction>
       <critclass><physical-defence/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><self/></range>
-      <keywords><physical-defence/><save/><shield/></keywords>
-    </action>
+      <keywords><physical-defence/><reaction/><shield/></keywords>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
 	<label>ability:block</label>
         When a character is attacked they may attempt to block the blow using
 	their shield instead of making an armour roll.  This ability spends the
-	characters reaction for the round.  If the block result fails and a boon
+	characters response for the round.  If the block result fails and a boon
 	is rolled the attack deals half damage.  If the block result fails and a
 	bane is rolled the attack deals double damage. If the block check
 	succeeds the attack does no damage.  If the block succeeds and a boon
@@ -47,13 +47,13 @@
     <abilitytitle>Shield Push</abilitytitle>
     <abilityid>push</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Push</name> 
-      <opposing-action><strength-save/></opposing-action>      
+      <reaction><strength-save/></reaction>      
       <critclass><melee-attack/></critclass>
       <cost><ap2/></cost>
       <range><reach/></range>
-      <keywords><shield/><melee/><check/></keywords>
+      <keywords><shield/><melee/><action/></keywords>
       <precondition>
 	This character is in melee with an opponent of similar size or smaller.
       </precondition>      
@@ -66,7 +66,7 @@
       <success>
 	Opponent is Pushed.
       </success>
-    </action>
+    </check>
     <prereqabilityref id="block" rank="1"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -87,7 +87,7 @@
     <abilitytitle>Shield Support</abilitytitle>
     <abilityid>support</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Talent</name>
       <critclass><auxiliary/></critclass>
       <cost><interrupt-cost/></cost>
@@ -99,7 +99,7 @@
       </precondition>
       <effect>The character may make a Shield Block as a
       free interrupt in place of the failed defence.</effect>
-    </action>    
+    </check>    
     <prereqabilityref id="block" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -109,7 +109,7 @@
 	</indexentry>
   	Large shields provide <defn>Support</defn>. The
 	character wielding a large shield can use their
-	reaction to block attacks on adjacent allies. In order
+	response to block attacks on adjacent allies. In order
 	to use this ability the ally must be standing shoulder to
 	shoulder with the character. 
       </p>

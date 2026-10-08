@@ -61,24 +61,23 @@
     lamentations of their women</slug>
     <abilityranks from="-3" to="9"/>
     <keywords><physical/><strength/></keywords>
-    <action>
-      
+    <check>
       <name>Strength Check</name>
-      <opposing-action><unknown-save/></opposing-action>
+      <reaction><unknown-save/></reaction>
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>
       <range><touch/></range>
-      <keywords><check/></keywords>
-    </action>
-    <action>
-      
+      <keywords><action/></keywords>
+    </check>
+    <check>
       <name>Strength Save</name>
-      <opposing-action><unknown-check/></opposing-action>
+      <action><unknown-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><touch/></range>
-      <keywords><save/></keywords>
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     <spline><p x="90" y="0"/></spline>
     <specializations>
       <specialization>Throw</specialization>
@@ -109,24 +108,24 @@
     Under the bludgeonings of chance My head is bloody, but unbowed.</slug>
     <abilityranks from="-3" to="9"/>
     <keywords><physical/><endurance/></keywords>
-    <!-- <action> -->
-    <!--   <critclass><check/></critclass> -->
+    <!-- <check> -->
+    <!--   <critclass><action/></critclass> -->
     <!--   <name>Endurance Check</name> -->
     <!--   <critclass><physical/></critclass> -->
     <!--   <cost><gm-fiat-check-cost/></cost> -->
-    <!--   <opposing-action>?</opposing-action> -->
+    <!--   <reaction>?</reaction> -->
     <!--   <range><na/></range> -->
-    <!--   <keywords><check/></keywords> -->
-    <!-- </action> -->
-    <action>
-      
+    <!--   <keywords><action/></keywords> -->
+    <!-- </check> -->
+    <check>
       <name>Endurance Save</name>
-      <opposing-action><unknown-check/></opposing-action>
+      <action><unknown-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><self/></range>
-      <keywords><save/></keywords>
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     <abilitydescription>
       <p>
         <indexentry>
@@ -150,24 +149,24 @@
     <abilityid>agility</abilityid>
     <abilityranks from="-3" to="9"/>
     <keywords><physical/><agility/></keywords>
-    <action>
-      
+    <check>
       <name>Agility Check</name>
-      <opposing-action><unknown-save/></opposing-action>
+      <reaction><unknown-save/></reaction>
       <critclass><physical/></critclass>
       <cost><gm-fiat-check-cost/></cost>
       <range><self/></range>
-      <keywords><check/></keywords>
-    </action>
-    <action>
-      
+      <keywords><action/></keywords>
+    </check>
+    <check>
       <name>Agility Save</name>
-      <opposing-action><unknown-check/></opposing-action>
+      <!-- <reaction><unknown-check/></reaction> -->
+      <action><unknown-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><self/></range>
-      <keywords><save/></keywords>
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     <specializations>
       <specialization>Sure Feet</specialization>
     </specializations>
@@ -203,24 +202,25 @@
     </slug>
     <abilityranks from="-3" to="9"/>
     <keywords><physical/><speed/></keywords>
-    <action>
+    <check>
       
       <name>Speed Check</name>
-      <opposing-action><unknown-save/></opposing-action>
+      <reaction><unknown-save/></reaction>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><self/></range>
-      <keywords><check/></keywords>
-    </action>
-    <action>
-      
+      <keywords><action/></keywords>
+    </check>
+    <check>
       <name>Speed Save</name>
-      <opposing-action><unknown-check/></opposing-action>
+      <!-- <reaction><unknown-check/></reaction> -->
+      <action><unknown-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><self/></range>
-      <keywords><save/></keywords>
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     <specializations>
       <specialization>Jump</specialization>
       <specialization>Throw</specialization>
@@ -255,25 +255,24 @@
     <slug>My true failure was inattention.</slug>
     <abilityranks from="-3" to="9"/>
     <keywords><perception/></keywords>
-    <action>
-      
+    <check>
       <name>Perception Check</name>
-      <opposing-action><unknown-save/></opposing-action>
+      <reaction><unknown-save/></reaction>      
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>      
-    </action>
-    <action>
-      
+      <keywords><action/></keywords>      
+    </check>
+    <check>
       <name>Perception Save</name>
-      <opposing-action><unknown-check/></opposing-action>
+      <!-- <reaction><unknown-check/></reaction> -->
+      <action><unknown-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
       <critclass><physical/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <range><ranged-very-long/></range>
-      <keywords><save/></keywords>
-      
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     <specializations>
       <specialization>Listen</specialization>
       <specialization>Smell</specialization>
@@ -323,59 +322,56 @@
     <slug>Everything you've ever wanted is on the other side of fear.</slug>
     <abilityranks from="-3" to="9"/>
     <keywords><mental/><will/></keywords>
-    <action>
-      
+    <check>
       <name>Will Check</name>
-      <opposing-action><unknown-save/></opposing-action>
+      <reaction><unknown-save/></reaction>
       <critclass><physical/></critclass>
       <cost><free/></cost>
-      <range><self/></range>
-      <keywords><check/></keywords>
-    </action>
-
-    <action>
-      
-      <name>Will Save</name>
-      <opposing-action><unknown-check/></opposing-action>
-      <critclass><physical/></critclass>
-      <cost><save-or-free-save-cost/></cost>
       <poolcost>0</poolcost>
       <range><self/></range>
-      <keywords><save/><mettlepool/></keywords>
-    </action>
+     <keywords><action/></keywords>
+    </check>
 
-    <action>
-      
+    <!-- <check> -->
+    <!--   <name>Will Save</name> -->
+    <!--   <reaction><unknown-check/></reaction> -->
+    <!--   <critclass><physical/></critclass> -->
+    <!--   <cost><save-or-free-save-cost/></cost> -->
+    <!--   <poolcost>0</poolcost> -->
+    <!--   <range><self/></range> -->
+    <!--   <keywords><reaction/><mettlepool/></keywords> -->
+    <!-- </check> -->
+
+    <check>
       <name>Mettle Save</name>
-      <opposing-action><default-save-sv/></opposing-action>
+      <reaction><default-save-sv/></reaction>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><save/><mettlepool/></keywords>
-    </action>
+      <keywords><reaction/><mettlepool/></keywords>
+    </check>
 
-    <action>
-      
+    <check>
       <name>Break Save</name>
-      <opposing-action><default-save-sv/></opposing-action>
+      <reaction><default-save-sv/></reaction>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>2</poolcost>
       <range><self/></range>
-      <keywords><save/><mettlepool/></keywords>
+      <keywords><reaction/><mettlepool/></keywords>
       <fail>Another local ally makes a break check.</fail>
-    </action>
+    </check>
 
-    <action>
-      
+    <check>      
       <name>Magic Save</name>
-      <opposing-action><unknown-check/></opposing-action>
+      <action><unknown-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
       <critclass><trial/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><save/></keywords>
+      <keywords><magicpool/><reaction/></keywords>
       <effect>
         <indexentry>
 	  <entry>Magic Resilience</entry>
@@ -383,7 +379,7 @@
 	Characters make a magic check to overcome the effects of magic
 	cast against them.
       </effect>
-    </action>
+    </check>
     <abilitydescription>
       <p>
         <indexentry><entry>Will</entry></indexentry>
@@ -441,11 +437,11 @@
       <p>
 	The first time the group collectively fails a break check then
 	everyone gains the Checked Condition see
-	page<pageref>condition:checked</pageref>, the second time everyone
+	<pageref label="condition:checked"/>, the second time everyone
 	fails a break check everyone gains the Broken Condition, see
-	page<pageref>condition:broken</pageref>. The third
+	page<pageref label="condition:broken"/>. The third
 	time the group fails their break check they gain the Routed Condition,
-	see page<pageref>condition:routed</pageref>.
+	see page<pageref label="condition:routed"/>.
       </p>
 
       <playexample>
@@ -468,16 +464,15 @@
     <slug>On what slender threads do life and fortune hang<ellipsis/>!</slug>
     <abilityranks untrained="0" from="0" to="0"/>
     <keywords><luck/><luckpool/></keywords>
-    <action>
-      
+    <check>
       <name>Fortune Save</name>
-      <opposing-action><default-save-sv/></opposing-action>
+      <reaction><default-save-sv/></reaction>
       <critclass><trial/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><luckpool/><save/></keywords>      
-    </action>
+      <keywords><luckpool/><reaction/></keywords>      
+    </check>
     <abilitydescription>
       <p>
         <indexentry>

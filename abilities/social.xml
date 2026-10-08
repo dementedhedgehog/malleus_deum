@@ -24,17 +24,17 @@
     <abilitytitle>Contacts</abilitytitle>
     <abilityid>contacts</abilityid>    
     <abilityranks untrained="-6" from="1" to="6"/>
-    <action> 
+    <check> 
       
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><social/></critclass>
       <cost><noncombat-cost/></cost>
       <range><self/></range>
-      <keywords><social/><check/></keywords>
+      <keywords><social/><action/></keywords>
       <any-success>FIXME</any-success>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="0" y="30"/></spline> 
     <specializations>
       <specialization>Laibstadt Nobility</specialization>
@@ -98,7 +98,7 @@
   <!--   <cost><noncombat-cost/></cost> -->
   <!--   <keywords><general/><social/></keywords> -->
   <!--   <abilityranks untrained="0" from="1" to="3"/> -->
-  <!--   <check dc="Targets Perception">2d12+Rank</action> -->
+  <!--   <check dc="Targets Perception">2d12+Rank</check> -->
   <!--   <spline><p x="30" y="75"/></spline>  -->
   <!--   <abilitydescription> -->
   <!--     <p> -->
@@ -118,17 +118,17 @@
       Brother, may I have some oats?
     </slug>      
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       
       <name>Check</name>
-      <opposing-action><negotiate-save/></opposing-action>
+      <reaction><negotiate-save/></reaction>
       <critclass><social/></critclass>
       <cost><noncombat-cost/></cost>
       <range><ranged-short/></range>
-      <keywords><social/><check/></keywords>
+      <keywords><social/><action/></keywords>
       <any-success>.</any-success>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="-90" y="105"/></spline> 
     <specializations>
       <specialization>Business</specialization>
@@ -217,17 +217,17 @@
     <abilityid>etiquette</abilityid>
     <slug>He who knows how to speak, knows also when.</slug>
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       
       <name>Check</name>
-      <opposing-action><etiquette-save/></opposing-action>
+      <reaction><etiquette-save/></reaction>
       <critclass><social/></critclass>    
       <cost><noncombat-cost/></cost>
       <range><ranged-short/></range>
-      <keywords><social/><check/></keywords>
+      <keywords><social/><action/></keywords>
       <any-success>.</any-success>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="-90" y="105"/></spline> 
     <abilitydescription>  
       <indexentry><entry>High Etiquette</entry></indexentry>
@@ -305,17 +305,17 @@
     <abilitytitle>Fame</abilitytitle>
     <abilityid>fame</abilityid>
     <abilityranks from="1" to="5"/>
-    <action> 
+    <check> 
       
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><social/></critclass>    
       <cost><noncombat-cost/></cost>
       <range><ranged-short/></range>
-      <keywords><social/><check/></keywords>
+      <keywords><social/><action/></keywords>
       <any-success>.</any-success>
       <critfail>FIXME</critfail>
-    </action>    
+    </check>    
     <spline><p x="-90" y="0"/></spline>
     <abilitydescription>
       <indexentry><entry>Renown</entry></indexentry>
@@ -367,17 +367,17 @@
     <abilitytitle>Leadership</abilitytitle>
     <abilityid>leadership</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><social/></critclass>    
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><ranged-short/></range>
-      <keywords><social/><check/></keywords>
+      <keywords><social/><action/></keywords>
       <any-success>Target may reroll their Mettle Check.</any-success>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="0" y="165"/></spline> 
     <abilitydescription>    
       <p>

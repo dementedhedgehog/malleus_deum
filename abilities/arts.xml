@@ -18,17 +18,17 @@
     <abilitytitle>Art History</abilitytitle>
     <abilityid>art_history</abilityid>    
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <spline><p x="-60" y="0"/></spline>    
     <abilitydescription>
       <p>
@@ -46,28 +46,28 @@
     <abilitytitle>Dance</abilitytitle>
     <abilityid>dance</abilityid>
     <abilityranks untrained="0" from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><perform/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><physical/><check/></keywords>
+      <keywords><physical/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
-    <action>
+    </check>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="music" rank="1"/>
     <spline><p x="0" y="30"/><p x="-20" y="50"/><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -83,17 +83,17 @@
     <abilitytitle>Fine Art</abilitytitle>
     <abilityid>fine_art</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="art_history" rank="1"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -118,17 +118,17 @@
     <abilitytitle>Jester</abilitytitle>
     <abilityid>jester</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><perform/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <!-- <prereqabilityrank></prereqabilityrank> -->
     <spline><p x="90" y="0"/></spline>
     <abilitydescription>
@@ -147,17 +147,17 @@
     <abilitytitle>Music</abilitytitle>
     <abilityid>music</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <spline><p x="30" y="100"/></spline>
     <abilitydescription>
       <p>
@@ -172,17 +172,17 @@
     <abilitytitle>Musician - Keyed</abilitytitle>
     <abilityid>keyed</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="music" rank="1"/>
     <spline><p x="0" y="30"/><p x="-110" y="60"/></spline>
     <abilitydescription>
@@ -198,17 +198,17 @@
     <abilitytitle>Musician - Percussion</abilitytitle>
     <abilityid>percussion</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="music" rank="1"/>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
@@ -231,17 +231,17 @@
     <abilityid>singing</abilityid>
     <slug>Arma virumque cano</slug>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><perform/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="music" rank="1"/>
     <spline><p x="0" y="90"/><p x="60" y="60"/></spline>
     <abilitydescription>
@@ -256,17 +256,17 @@
     <abilitytitle>Musician - Strings</abilitytitle>
     <abilityid>strings</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><perform/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="music" rank="2"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -282,17 +282,17 @@
     <abilitytitle>Musician - Wind Instrument</abilitytitle>
     <abilityid>wind</abilityid>
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><perform/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="music" rank="1"/>
     <spline><p x="0" y="30"/><p x="-90" y="120"/><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -309,17 +309,17 @@
     <abilitytitle>Oratory</abilitytitle>
     <abilityid>oratory</abilityid>    
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><perform/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="art_history" rank="1"/> 
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -336,17 +336,17 @@
     <abilitytitle>Soothe the Savage Beast</abilitytitle>
     <abilityid>soothe_the_savage_beast</abilityid>    
     <abilityranks from="1" to="6"/>
-    <action>
+    <check>
       <name>Perform</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><perform/></critclass>                
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="singing" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>

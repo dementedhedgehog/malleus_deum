@@ -18,16 +18,16 @@
     <abilitytitle>Auri Fames</abilitytitle>
     <abilityid>auri_fames</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>      
+      <reaction><will-save/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>      
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="enchantment" rank="1"/>    
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>    
     <abilitydescription>
@@ -74,17 +74,17 @@
     <abilitytitle>Enchantment Lore</abilitytitle>
     <abilityid>enchantment</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -98,16 +98,16 @@
     <abilitytitle>Ghost Step</abilitytitle>
     <abilityid>ghost_step</abilityid>   
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="enchantment" rank="2"/>    
     <spline><p x="75" y="30"/><p x="0" y="60"/><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -124,19 +124,19 @@
     <abilitytitle>Glamour</abilitytitle>
     <abilityid>glamour</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><perception-save/></opposing-action>
+      <reaction><perception-save/></reaction>
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><ranged-long/></range>
-      <keywords><magic/><check/><magicpool/></keywords>
+      <keywords><magic/><action/><magicpool/></keywords>
       <success>The target is convinced by the Glamour.</success>
       <fail>The target is suspicious.</fail>
       <grimfail>The target sees something off and will investigate further</grimfail>
       <critfail>Immediately sees through the deception.</critfail>
-    </action>
+    </check>
     <prereqabilityref id="enchantment" rank="1"/>    
     <spline><p x="0" y="150"/></spline>
     <abilitydescription>
@@ -173,17 +173,17 @@
     <abilitytitle>Hex</abilitytitle>
     <abilityid>hex</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>      
+      <reaction><will-save/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost> 
       <poolcost>0</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="enchantment" rank="1"/>    
     <spline><p x="0" y="10"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -210,16 +210,16 @@
     <abilitytitle>Mind Worm</abilitytitle>
     <abilityid>mind_worm</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action> 
+      <reaction><ssv11/></reaction> 
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost> 
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="enchantment" rank="1"/>    
     <spline><p x="0" y="120"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -242,16 +242,16 @@
     <abilitytitle>Speak with Amphibians</abilitytitle>
     <abilityid>speak_with_amphibians</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="zoolingualism" rank="1"/>    
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -267,16 +267,16 @@
     <abilitytitle>Speak with Birds</abilitytitle>
     <abilityid>speak_with_birds</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="zoolingualism" rank="1"/>    
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -292,16 +292,16 @@
     <abilitytitle>Speak with Cats</abilitytitle>
     <abilityid>speak_with_cats</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="zoolingualism" rank="1"/>    
     <spline><p x="0" y="120"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -316,16 +316,16 @@
     <abilitytitle>Speak with Horses</abilitytitle>
     <abilityid>speak_with_horses</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="zoolingualism" rank="1"/>    
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -342,16 +342,16 @@
     <abilitytitle>Speak with Rodents</abilitytitle>
     <abilityid>speak_with_rodents</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="zoolingualism" rank="1"/>    
     <spline><p x="0" y="120"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -366,16 +366,16 @@
     <abilitytitle>Speak with Wolves</abilitytitle>
     <abilityid>speak_with_wolves</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="zoolingualism" rank="1"/>    
     <spline><p x="0" y="60"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -391,16 +391,16 @@
     <abilitytitle>Vox Imperium</abilitytitle>
     <abilityid>vox_imperium</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>
+      <reaction><will-save/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><reach/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="enchantment" rank="1"/>    
     <spline><p x="0" y="30"/><p x="45" y="30"/></spline>
     <abilitydescription>
@@ -423,16 +423,16 @@
     <abilitytitle>Wrack</abilitytitle>
     <abilityid>wrack</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><endurance-save/></opposing-action>
+      <reaction><endurance-save/></reaction>
       <critclass><magic-attack/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><lore/><check/><magicpool/></keywords>
+      <keywords><lore/><action/><magicpool/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="enchantment" rank="2"/>    
     <spline><p x="75" y="30"/><p x="0" y="10"/><p x="30" y="30"/></spline>
     <abilitydescription>

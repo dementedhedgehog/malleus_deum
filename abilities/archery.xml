@@ -20,19 +20,19 @@
     <abilitytitle>Archery Shoot</abilitytitle>
     <abilityid>archery_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action> 
+    <check> 
       
       <name>Missile Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>          
       <cost><ap4/></cost>
       <range><ranged-long/></range>
-      <keywords><archery/><physical-attack/><basic-attack/><check/></keywords>
+      <keywords><archery/><physical-attack/><basic-attack/><action/></keywords>
       <dmg>Weapon</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -48,20 +48,20 @@
     <abilitytitle>Dead Eye</abilitytitle>
     <abilityid>dead_eye</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       
       <name>Missile Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>          
       <cost><ap5/></cost>
       <range><ranged-long/></range>
-      <keywords><archery/><physical-attack/><missile/><check/></keywords>
+      <keywords><archery/><physical-attack/><missile/><action/></keywords>
       <dmg>Weapon</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
       <effect>Attack made with Advantage.</effect>
-    </action>
+    </check>
     <prereqabilityref id="archery_shoot" rank="2"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -78,22 +78,22 @@
     <abilitytitle>Fast Shot</abilitytitle>
     <abilityid>fast_shot</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       
       <name>Missile Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>          
       <cost><ap2/></cost>
       <range><ranged-long/></range>
       <keywords>
-	<archery/><physical-attack/><missile/><check/><disadvantage/>
+	<archery/><physical-attack/><missile/><action/><disadvantage/>
       </keywords>      
       <dmg>Weapon</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
       <effect>Attack made at Disadvantage.</effect>
-    </action>
+    </check>
     <prereqabilityref id="archery_shoot" rank="2"/>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
@@ -108,14 +108,14 @@
     <abilitytitle>Rain of Arrows</abilitytitle>
     <abilityid>rain_of_arrows</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       
       <name>Missile Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>          
       <cost><ap5/></cost>
       <range><ranged-long/></range>
-      <keywords><archery/><physical-attack/><missile/><check/></keywords>      
+      <keywords><archery/><physical-attack/><missile/><action/></keywords>      
       <precondition>
 	The character can only be performed during the first round of combat,
 	and the character has a round before combat to prepare.  The character
@@ -127,7 +127,7 @@
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
       <effect>3+Rank Attacks made at Disadvantage.</effect>
-    </action>    
+    </check>    
     <prereqabilityref id="archery_shoot" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>

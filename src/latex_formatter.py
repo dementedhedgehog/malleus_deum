@@ -4,8 +4,9 @@ import sys
 import copy
 import io
 import re
-import config
 import typing
+
+import config
 from utils import (
     normalize_ws,
     convert_str_to_bool,
@@ -21,18 +22,29 @@ from utils import (
     build_dir,
 )
 import utils
-
 from npcs import NPC, NPCGroup
 import abilities
-import utils
 from db import DB
+from doc_walkers import BaseDocFormatter, no_op, DocTreePreprocessor as pp
+
 
 # Regex to find the boundary between non-digits and digits at the end
 # of <sv13/> type elements.
 _sv_regex = re.compile(r'(\d+)$')
 
+#
+# Be careful adding newlines.  Latex changes its behaviour when it sees empty
+# lines.  
+NEWLINE = "\n"
+COMMENTLINE = "%\n"
 
 latex_frontmatter = r"""
+%% -*- mode: LaTeX; eval: (auto-revert-mode 1); buffer-read-only: t; -*-
+
+%%
+%%  *** MALLEUS DEUM ***
+%%
+%%
 
 %%
 %% Magic to make transparency work with Xelatex.
@@ -75,18 +87,22 @@ latex_frontmatter = r"""
 \usepackage{multirow}              %% for table data with multiple rows
 \usepackage{niceframe}             %% fancy boxes around text
 \usepackage{parskip}               %% non indented paragraphs
+\usepackage{pdfpages}              %% for includepdf
 \usepackage{pgfornament}           %% for the page dividers
 \usepackage{quoting}               %% more configurable quoting environment.
-\usepackage{amssymb}               %% for special maths symbols, eg slanted geq
 \usepackage{rotating}              %% for sidewaystable
 \usepackage{tabularx}              %% for tables
 \usepackage{tcolorbox}             %% color boxes
 \tcbuselibrary{skins}              %% more color box stuff
 \usepackage[raggedright]{titlesec} %% avoid hyphenating titles
 \usepackage{unicode-math}
+\usepackage{varwidth}              %% for centering cells in tables.
 \usepackage{wrapfig}               %% figures with text wrapping.
 \usepackage{xtab}                  %% for multipage tables
+
 \usepackage{transparent}           %% for transparent backgrounds
+\usepackage[unicode]{hyperref}     %% for hyperlinks in pdf
+\usepackage{bookmark}              %% fixes a hyperref warning.
 
 %% TESTING
 \usepackage{changepage}
@@ -110,7 +126,7 @@ latex_frontmatter = r"""
 \definecolor{paleparchment}{RGB}{253,250,241}
 \definecolor{tan}{cmyk}{0,0.14,0.33,0.18}
 \definecolor{champagne}{RGB}{247,231,206}
-
+\definecolor{palechampagne}{RGB}{249,240,223}
 
 %%
 %% Colour Aliases
@@ -206,7 +222,6 @@ latex_frontmatter = r"""
 \newtheorem{corollary}{Corollary}
 
 
-
 %%
 %% Fonts
 %%
@@ -222,8 +237,6 @@ latex_frontmatter = r"""
 %% Used for the body of the text
 \newfontfamily{\libertine}{Linux Libertine O}
 \newfontfamily{\caudex}[Path=fonts/, Scale=1.1]{Caudex-Regular}
-%%\newfontfamily{\becker}[Path=fonts/]{Becker-ZVrz}
-%%\newfontfamily{\becker}[Path=fonts/]{Becker Regular}
 
 \newenvironment{smaller}{\begin{footnotesize}}{\end{footnotesize}}
 
@@ -246,7 +259,7 @@ latex_frontmatter = r"""
 \newcommand{\dropcapfont}{\carrickc}
 \newcommand{\chapterfont}{\cloisterblack}
 \newcommand{\rpgtitlefont}{\fontsize{90}{102}\dogma}
-\newcommand{\rpgtitlesubtitlefont}{\fontsize{60}{72}\cloisterblack}
+\newcommand{\rpgtitlesubtitlefont}{\fontsize{62}{68}\cloisterblack}
 \newcommand{\rpgtitlesubsubtitlefont}{\cloisterblack}
 \newcommand{\rpgtitleauthorfont}{\dogma}
 \newcommand{\rpgsmalltitlefont}{\libertine}
@@ -258,7 +271,6 @@ latex_frontmatter = r"""
 \newcommand{\indexlettergroupfont}{\cloisterblack}
 \newcommand{\sidebartitlefont}{\cloisterblack} 
 \newcommand{\sidebarfont}{\normalfont}
-
 
 
 %%
@@ -274,9 +286,10 @@ latex_frontmatter = r"""
 
 %% Arrows with bars, e.g. ↧ and ↥
 %% (for use in tables to denote entry for multiple rows)
-\setmathfont{TeX Gyre Pagella Math}
-\newcommand{\downarrowfrombar}{\ensuremath{\mapsdown}} 
-\newcommand{\uparrowfrombar}{\ensuremath{\mapsup}}
+%%\setmathfont{TeX Gyre Pagella Math}
+%%\newcommand{\downarrowfrombar}{\ensuremath{\mapsdown}} 
+%%\newcommand{\uparrowfrombar}{\ensuremath{\mapsup}}
+
 
 %% Custom indent environment
 %% Inserts no vertical space and is nestable.
@@ -288,14 +301,18 @@ latex_frontmatter = r"""
 \ifvmode\else\vspace{-1\parskip}\fi{}%%
 }
 
+
 %% Custom linebreak mode
 \newcommand{\mdbr}{\ifvmode\else\newline\fi}
+
 
 %% Custon Bold Environment
 \newenvironment{mdbold}{\bfseries{}}{}
 
+
 %% Custon Quotemark Environment
 \newenvironment{mdquotemarks}{``}{''}
+
 
 %% Custom Quote Environment
 \newenvironment{mdquote}{%%
@@ -305,6 +322,7 @@ latex_frontmatter = r"""
 \item\relax\begin{itshape}\quotefont\large}%%
 {\end{itshape}\endlist\vspace{1cm}}
 
+
 %% Custom Epigraph Environment
 \newenvironment{mdepigraph}{%%
 \setlength{\parskip}{0.3\parskip}%%
@@ -312,7 +330,6 @@ latex_frontmatter = r"""
 \list{}{\rightmargin0.2cm \leftmargin0.2cm}%%
 \item\relax\begin{small}\begin{em}\epigraphfont}%%
 {\end{em}\end{small}\endlist\vspace{0.1cm}}
-
 
 
 %%
@@ -414,11 +431,31 @@ latex_frontmatter = r"""
 %% Space between rows
 \setlength{\extrarowheight}{2pt}
 %% Header background color (tan)
-%%\definecolor{tableheadercolor}{cmyk}{0,0.14,0.33,0.18}
 \colorlet{tableheadercolor}{tan}
 %% Every second row color (champagne)
-%%\definecolor{tableoddrowcolor}{cmyk}{0,0.06,0.17,0.03}
-\colorlet{tableoddrowcolor}{champagne}
+\colorlet{tableoddrowcolor}{palechampagne}
+
+%% Table header - centered and bold.
+%% \newcommand{\mdtblheader}[1]{{\centering\arraybackslash \bfseries #1\par}}
+%%\newcommand{\mdtblheader}[1]{\begin{varwidth}{\linewidth}\setlength{\parskip}{0pt}\centering\bfseries #1\end{varwidth}}
+
+%% Center a <td> or <th> element
+%%\newcommand{\mdtblcenter}[1]{{\centering\arraybackslash #1\par}}
+
+\newcommand{\mdtblcenter}[1]{{\centering\arraybackslash #1}}
+
+%%\newcommand{\mdtblcenter}[1]{\begin{varwidth}{\linewidth}\setlength{\parskip}{0pt}\centering #1\end{varwidth}}
+
+%%{\centering\arraybackslash}X
+
+%%\newcommand{\mdtblcenter}[1]{%%
+%%  \begin{varwidth}{\linewidth}%%
+%%    \setlength{\topsep}{0pt}%%     <-- Removes top/bottom padding
+%%    \setlength{\partopsep}{0pt}%%   <-- Removes extra structural padding
+%%    \setlength{\parskip}{0pt}%%
+%%    \centering #1%%
+%%  \end{varwidth}%%
+%%}
 
 %%
 %% Elastic Vertical Space
@@ -433,9 +470,10 @@ latex_frontmatter = r"""
 %%
 %% Sidebar Formatting
 %%
-\colorlet{sidebarcolor}{champagne}
+\colorlet{sidebarcolor}{palechampagne}
 \colorlet{sidebarboxcolor}{black}
 \newsavebox{\sidebarbox}
+
 
 %%
 %% Create custom environments from commands.
@@ -446,6 +484,9 @@ latex_frontmatter = r"""
 %% NewEnviron eats trailing whitespace!! 
 %%
 \NewEnviron{mdchaptertitle}{\chapter{\BODY}}
+\NewEnviron{mdsectiontitle}{\section{\BODY}}
+\NewEnviron{mdsubsectiontitle}{\subsection{\BODY}}
+\NewEnviron{mdsubsubsectiontitle}{\subsubsection{\BODY}}
 \NewEnviron{mdemph}{\emph{\color{emphcolor}\BODY}}
 
 
@@ -463,7 +504,7 @@ latex_frontmatter = r"""
 \newlength{\symbolverticaloffset}
 \setlength{\symbolverticaloffset}{-0.2em}
 \newlength{\symbolhorizontalspace}
-\setlength{\symbolhorizontalspace}{0.1ex}
+\setlength{\symbolhorizontalspace}{0.3ex}
 
 %% Same offsets for all symbols.
 \newlength{\actionsymbolverticaloffset}
@@ -513,33 +554,33 @@ latex_frontmatter = r"""
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_five_actions.png}}}
 
-%% Symbol Reaction
-\newcommand\reactionsymbol{%%
+%% Symbol Response
+\newcommand\responsesymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/symbol_reaction.png}}}
+{./resources/symbols/symbol_response.png}}}
 
-%% Symbol Free Reaction
-\newcommand\freereactionsymbol{%%
+%% Symbol Free Response
+\newcommand\freeresponsesymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/symbol_free_reaction.png}}}
+{./resources/symbols/symbol_free_response.png}}}
 
-%% Symbol Mandatory Reaction
-\newcommand\mandatoryreactionsymbol{%%
+%% Symbol Mandatory Response
+\newcommand\mandatoryresponsesymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/symbol_mandatory_reaction.png}}}
+{./resources/symbols/symbol_mandatory_response.png}}}
 
-%% Symbol Mandatory Free Reaction
-\newcommand\mandatoryfreereactionsymbol{%%
+%% Symbol Mandatory Free Response
+\newcommand\mandatoryfreeresponsesymbol{%%
 \hspace{\actionsymbolhorizontaloffset}%%
 \raisebox{\actionsymbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/symbol_mandatory_free_reaction.png}}}
+{./resources/symbols/symbol_mandatory_free_response.png}}}
 
 %% Symbol Interrupt
 \newcommand\interruptsymbol{%%
@@ -597,13 +638,6 @@ latex_frontmatter = r"""
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_multi_round_action.png}}}
 
-%% Check Symbol
-%%\newcommand\checksymbol{%%
-%%\raisebox{\symbolverticaloffset}{%%
-%%\includegraphics[height=\symbolsize]%%
-%%{./resources/symbols/symbol_check.png}%%
-%%\hspace{\symbolhorizontalspace}}}
-
 %% Check Arrow Symbol
 \newcommand\checkarrowsymbol{%%
 \raisebox{\symbolverticaloffset}{%%
@@ -653,34 +687,36 @@ latex_frontmatter = r"""
 {./resources/symbols/symbol_save_or_free_save.png}%%
 \hspace{\symbolhorizontalspace}}}
 
-%% Auxiliary Action Symbol
-\newcommand\actionauxiliarysymbol{%%
+%% Auxiliary Symbol
+\newcommand\auxiliarysymbol{%%
 \raisebox{\symbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/action_auxiliary_symbol.png}%%
+{./resources/symbols/check_auxiliary_symbol.png}%%
 \hspace{\symbolhorizontalspace}}}
 
 
 %% Antagonist Check Symbol also used for antagonistic abilities.
 \newcommand\antagonistsymbol{%%
-\raisebox{\symbolverticaloffset}{%%
+%%\raisebox{\symbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_antagonist.png}%%
-\hspace{0.0\symbolhorizontalspace}}}
+\hspace{0.0\symbolhorizontalspace}}
+%%}
 
 %% Check Action Symbol
-\newcommand\actionchecksymbol{%%
+\newcommand\actionsymbol{%%
 \raisebox{\symbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/action_check_symbol.png}%%
+{./resources/symbols/check_action_symbol.png}%%
 \hspace{\symbolhorizontalspace}}}
 
-%% Save Action Symbol
-\newcommand\actionsavesymbol{%%
+%% Reaction Symbol
+\newcommand\reactionsymbol{%%
 \raisebox{\symbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
-{./resources/symbols/action_save_symbol.png}%%
-\hspace{\symbolhorizontalspace}}}
+{./resources/symbols/check_reaction_symbol.png}%%
+%%\hspace{\symbolhorizontalspace}
+}}
 
 %% Subsubsection Symbol
 \newcommand\subsubsectionsymbol{%%
@@ -733,8 +769,8 @@ latex_frontmatter = r"""
 \raisebox{-0.5mm}{%%
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_start_of_turn.png}%%
-\hspace{\symbolhorizontalspace}}
-}
+%%\hspace{\symbolhorizontalspace}
+}}
 
 %% Any Out of Turn Action Symbol
 \newcommand\anyootasymbol{%%
@@ -744,11 +780,21 @@ latex_frontmatter = r"""
 \hspace{\symbolhorizontalspace}}
 }
 
-%%\newcommand{\getpagebackground}{
-%%\transparent{0.2}\includegraphics[width=\paperwidth,height=\paperheight]{./resources/anon_elder_sign/anon_elder_sign.png}
+
+%%\DeclareRobustCommand{\optionalsymbol}{%%
+%%\protect\includegraphics[height=\symbolsize]{./resources/symbols/symbol_optional.png}%%
+%%\hspace{\symbolhorizontalspace}%%
 %%}
 
 \newcommand\versus{\raisebox{-0.2mm}{{\cloisterblack{}VS}}}
+
+%%
+%%  Pass Through Definitions
+%%
+\newcommand{\emdash}{\textemdash }
+%%\newcommand{\daggersymbol}{\dag }
+\newcommand{\optionalsymbol}{\dag }
+
 
 
 %% Fate Die Symbol
@@ -853,6 +899,19 @@ latex_frontmatter = r"""
 
 
 %%
+%% Relax spacing around figures.
+%%
+
+%% Max fraction of page/column for floats at top
+\renewcommand{\topfraction}{0.85}
+%% Max fraction of page/column for floats at bottom
+\renewcommand{\bottomfraction}{0.7}   
+%% Minimum fraction of page/column that must be text
+\renewcommand{\textfraction}{0.15}    
+%% Minimum fraction a float must occupy to get its own page
+\renewcommand{\floatpagefraction}{0.75} 
+
+%%
 %% Index
 %%
 
@@ -879,12 +938,12 @@ latex_frontmatter = r"""
 \sloppy
 
 %% Print some page info
-\typeout{ --- Page Info ---}
-\typeout{    Line Width: \linewidth}
-\typeout{    Text Height: \textheight}
+\typeout{--- Page Info ---}
+\typeout{ Line Width: \the\linewidth}
+\typeout{ Text Height: \the\textheight}
 \typeout{}
 
-"""
+""".lstrip() # (Make the emacs mode line the first line in the file.)
 
 def sanitize_index_text(txt):
     """
@@ -968,17 +1027,15 @@ class TableState:
 
 class IndexEntry:
     """
-    Information
+    Save Index Entry State.
+    FIXME: this is complicated.  I could just walk the tree and find this info.
 
     """
-
     def __init__(self):
-        #self.text = None
         self.entry = None
         self.subentries = []
         self.sees = []
-        self.definitions = []
-    
+        self.definitions = []    
 
     def __str__(self):
         str_rep = "Index Entry\n"
@@ -994,38 +1051,8 @@ class IndexEntry:
             str_rep += f"  %s\n" % defn
         return str_rep
         
-           
-class DocFormatter:
-    """
-    Logic common to all doc formatters.
-
-    """
-
-    def no_op(self, obj):
-        """
-        We've got a lot of handlers that don't need to do anything..
-        do nothing once.
-        """
-        pass
-        
-    def start_measurement(self, distance):
-        if config.use_imperial:
-            distance_text = get_text_for_child(distance, "imperial")
-            if distance_text is None:
-                raise Exception("Imperial distance not specified!")
-
-        else:
-            distance_text = get_text_for_child(distance, "metric")
-            if distance_text is None:
-                raise Exception("Metric distance not specified!")
-
-        self.buffer.write(normalize_ws(distance_text).strip())
-        return
-    end_measurement = no_op
     
-
-    
-class LatexFormatter(DocFormatter):
+class LatexFormatter(BaseDocFormatter):
     """
     The class that takes a doc and writes a .tex file.
 
@@ -1075,11 +1102,12 @@ class LatexFormatter(DocFormatter):
         self.table = None        
         return
 
-    # Shorthand
-    no_op = DocFormatter.no_op
-
     def write(self, *args, **kwargs):
         self.buffer.write(*args, **kwargs)
+        return
+        
+    def writelines(self, *args, **kwargs):
+        self.buffer.writelines(*args, **kwargs)
         return
         
     def writeln(self, *args, **kwargs):
@@ -1134,7 +1162,7 @@ class LatexFormatter(DocFormatter):
             except KeyError:
                 raise Exception(f"Image {resource_id} does not exist!")
             filename = resource.get_fname()
-            # self.buffer.write("\\addcontentsline{loa}{section}{%s}"
+            # self.write("\\addcontentsline{loa}{section}{%s}"
             #                       % resource.get_contents_desc())
         else:
             raise Exception("Image missing source or id!")
@@ -1143,9 +1171,10 @@ class LatexFormatter(DocFormatter):
             raise Exception("Image does not exist: %s" % filename)        
         return filename
 
-    def start_book(self, book):        
+    def start_book(self, book):
         # must be a valid latex paper size
-        if config.paper_size == "a4":
+        # FIXME == config.A4?  but these should be an xml enum <a4/>
+        if config.paper_size == "a4":  
             paper_size = "a4paper"
         elif config.paper_size == "letter":
             paper_size = "letterpaper"
@@ -1155,411 +1184,387 @@ class LatexFormatter(DocFormatter):
         orientation = "" 
         landscape = attrib_is_true(book, "landscape")
         formatting = paper_size + orientation
-        self.buffer.write(latex_frontmatter % formatting)
+        self.write(latex_frontmatter % formatting)
 
         if config.display_page_background:
-            self.buffer.write(
+            self.write(
                 "\n"
-                "% use a background image\n"
+                "% use a parchment background image for the pages\n"
                 "\\CenterWallPaper{1.0}"
                 "{./resources/paper_" + paper_size + ".jpg}"
                 "\n\n")
         return
 
     def end_book(self, book):
-        self.buffer.write("\\end{document}\n")        
+        self.write(r"\end{document}" + NEWLINE)        
         return
 
     def handle_appendix(self, appendix):
-        self.buffer.write("\\appendix\n"
-                          "\\addcontentsline{toc}{chapter}{APPENDICES}\n")
+        self.write(
+            r"\appendix" + NEWLINE + 
+            r"\addcontentsline{toc}{chapter}{Appendicies}" + NEWLINE)
         return
 
     def handle_keyword(self, keyword):
-        self.buffer.write("{\\color{keywordcolor} \\textbf{%s}}" % keyword)
+        self.write(r"{\color{keywordcolor} \textbf{%s}}" % keyword)
         return
 
-    def handle_daggersymbol(self, symbol):
-        self.buffer.write("\\textsuperscript{\\dag}")
-
-    # def handle_doubledaggersymbol(self, symbol):
-    #     self.buffer.write("\\textsuperscript{\\ddag}")
-
-    # def handle_downarrowfrombar(self, symbol):
-    #     self.buffer.write("\\downarrowfrombar ")
-
-    # def handle_uparrowfrombar(self, symbol):
-    #     self.buffer.write("\\uparrowfrombar ")
-
-    # def handle_abilitybullet(self, symbol):
-    #     self.buffer.write(r"\abilitybullet ")
+    # def handle_daggersymbol(self, symbol):2
+    #     self.write(r"\dag ")
 
     def handle_startofturnsymbol(self, symbol):
-        self.buffer.write(r"\startofturnsymbol{}")
+        self.write(r"\startofturnsymbol{}")
 
     def handle_freeactionsymbol(self, symbol):
-        self.buffer.write(r"\freeactionsymbol{}")
+        self.write(r"\freeactionsymbol{}")
     
     def handle_oneactionsymbol(self, symbol):
-        self.buffer.write(r"\oneactionsymbol{}")
+        self.write(r"\oneactionsymbol{}")
 
     def handle_twoactionsymbol(self, symbol):
-        self.buffer.write(r"\twoactionsymbol{}")
+        self.write(r"\twoactionsymbol{}")
         
     def handle_threeactionsymbol(self, symbol):
-        self.buffer.write(r"\threeactionsymbol{}")
+        self.write(r"\threeactionsymbol{}")
 
     def handle_fouractionsymbol(self, symbol):
-        self.buffer.write(r"\fouractionsymbol{}")
+        self.write(r"\fouractionsymbol{}")
 
     def handle_fiveactionsymbol(self, symbol):
-        self.buffer.write(r"\fiveactionsymbol{}")
+        self.write(r"\fiveactionsymbol{}")
 
     def handle_interruptsymbol(self, symbol):
-        self.buffer.write(r"\interruptsymbol{}")
+        self.write(r"\interruptsymbol{}")
 
     def handle_freeinterruptsymbol(self, symbol):
-        self.buffer.write(r"\freeinterruptactionsymbol{}")
+        self.write(r"\freeinterruptactionsymbol{}")
 
     def handle_mandatoryinterruptsymbol(self, symbol):
-        self.buffer.write(r"\mandatoryinterruptsymbol{}")
+        self.write(r"\mandatoryinterruptsymbol{}")
 
     def handle_mandatoryfreeinterruptsymbol(self, symbol):
-        self.buffer.write(r"\mandatoryfreeinterruptactionsymbol{}")
+        self.write(r"\mandatoryfreeinterruptactionsymbol{}")
 
-    def handle_reactionsymbol(self, symbol):
-        self.buffer.write(r"\reactionsymbol{}")
+    def handle_responsesymbol(self, symbol):
+        self.write(r"\responsesymbol{}")
 
-    def handle_freereactionsymbol(self, symbol):
-        self.buffer.write(r"\freereactionsymbol{}")
+    def handle_freeresponsesymbol(self, symbol):
+        self.write(r"\freeresponsesymbol{}")
 
-    def handle_mandatoryreactionsymbol(self, symbol):
-        self.buffer.write(r"\mandatoryreactionsymbol{}")
+    def handle_mandatoryresponsesymbol(self, symbol):
+        self.write(r"\mandatoryresponsesymbol{}")
 
-    def handle_mandatoryfreereactionsymbol(self, symbol):
-        self.buffer.write(r"\mandatoryfreereactionsymbol{}")
+    def handle_mandatoryfreeresponsesymbol(self, symbol):
+        self.write(r"\mandatoryfreeresponsesymbol{}")
 
     def handle_gmfiatchecksymbol(self, symbol):
-        self.buffer.write(r"\gmfiatchecksymbol{}")
+        self.write(r"\gmfiatchecksymbol{}")
 
     def handle_checkarrowsymbol(self, symbol):
-        self.buffer.write(r"\checkarrowsymbol{}")
+        self.write(r"\checkarrowsymbol{}")
 
     def handle_vscheckarrowsymbol(self, symbol):
-        self.buffer.write(r"\vscheckarrowsymbol{}")
+        self.write(r"\vscheckarrowsymbol{}")
 
     def handle_savearrowsymbol(self, symbol):
-        self.buffer.write(r"\savearrowsymbol{}")
+        self.write(r"\savearrowsymbol{}")
 
     def handle_vssavearrowsymbol(self, symbol):
-        self.buffer.write(r"\vssavearrowsymbol{}")
+        self.write(r"\vssavearrowsymbol{}")
 
     def handle_gmfiatsavesymbol(self, symbol):
-        self.buffer.write(r"\gmfiatsavesymbol{}")
+        self.write(r"\gmfiatsavesymbol{}")
 
     def handle_outofcombatsymbol(self, symbol):
-        self.buffer.write(r"\outofcombatsymbol{}")
+        self.write(r"\outofcombatsymbol{}")
 
     def handle_multiroundactionsymbol(self, symbol):
-        self.buffer.write(r"\multiroundactionsymbol{}")
+        self.write(r"\multiroundactionsymbol{}")
     
-    def handle_checksymbol(self, symbol):
-        self.buffer.write(r"\checksymbol{}")
+    def handle_actionsymbol(self, symbol):
+        self.write(r"\actionsymbol{}")
 
-    def handle_savesymbol(self, symbol):
-        self.buffer.write(r"\savesymbol{}")
+    def handle_reactionsymbol(self, symbol):
+        self.write(r"\reactionsymbol{}")
 
     # def handle_eldersign(self, symbol):
-    #     self.buffer.write(r"\eldersign{}")
+    #     self.write(r"\eldersign{}")
 
     def handle_abilitybulletsymbol(self, symbol):
-        self.buffer.write(r"\abilitybulletsymbol{}")
+        self.write(r"\abilitybulletsymbol{}")
+
+    def handle_savesymbol(self, symbol):
+        self.write(r"\savesymbol{}")
 
     def handle_freesavesymbol(self, symbol):
-        self.buffer.write(r"\freesavesymbol{}")
+        self.write(r"\freesavesymbol{}")
 
     def handle_saveorfreesavesymbol(self, symbol):
-        self.buffer.write(r"\saveorfreesavesymbol{}")
+        self.write(r"\saveorfreesavesymbol{}")
 
     def handle_auxiliarysymbol(self, symbol):
-        self.buffer.write(r"\auxiliarychecksymbol{}")
+        self.write(r"\auxiliarysymbol{}")
 
     def handle_antagonistsymbol(self, symbol):
-        self.buffer.write(r"\antagonistsymbol{}")
+        self.write(r"\antagonistsymbol{}")
 
     def handle_fatediesymbol(self, symbol):
-        self.buffer.write(r"\fatediesymbol{}")
+        self.write(r"\fatediesymbol{}")
 
     def handle_nofatediesymbol(self, symbol):
-        self.buffer.write(r"\nofatediesymbol{}")
+        self.write(r"\nofatediesymbol{}")
 
     def handle_skilldiesymbol(self, symbol):
-        self.buffer.write(r"\skilldiesymbol{}")
+        self.write(r"\skilldiesymbol{}")
 
     def handle_vschecksymbol(self, symbol):
-        self.buffer.write(r"\vschecksymbol{}")
+        self.write(r"\vschecksymbol{}")
 
     def handle_gmfiatsymbol(self, symbol):
-        self.buffer.write(r"\gmfiatsymbol{}")
+        self.write(r"\gmfiatsymbol{}")
 
     def handle_vssavesymbol(self, symbol):
-        self.buffer.write(r"\vssavesymbol{}")
+        self.write(r"\vssavesymbol{}")
 
     def handle_actionchecksymbol(self, symbol):
-        self.buffer.write(r"\actionchecksymbol{}")
+        self.write(r"\actionchecksymbol{}")
 
     def handle_actionsavesymbol(self, symbol):
-        self.buffer.write(r"\actionsavesymbol{}")
+        self.write(r"\actionsavesymbol{}")
 
     def handle_actionauxiliarysymbol(self, symbol):
-        self.buffer.write(r"\actionauxiliarysymbol{}")
+        self.write(r"\actionauxiliarysymbol{}")
 
     #
     # Corollaries
     #
     def start_corollary(self, symbol):
-        self.buffer.write(r"\begin{corollary}")
+        self.write(r"\begin{corollary}")
     
     def end_corollary(self, symbol):
-        self.buffer.write(r"\end{corollary}")
+        self.write(r"\end{corollary}")
 
     def start_corollary(self, symbol):
-        self.buffer.write(r"\begin{corollary}")
+        self.write(r"\begin{corollary}")
 
     def start_corollarytitle(self, symbol):
-        self.buffer.write("[")
+        self.write("[")
     
     def end_corollarytitle(self, symbol):
-        self.buffer.write("]")
+        self.write("]")
     
     handle_corollarybody = no_op
     
     def end_corollary(self, symbol):
-        self.buffer.write(r"\end{corollary}")
+        self.write(r"\end{corollary}")
         return
 
+    #
+    # Pass through simple tags straight to latex (e.g. handle pass through
+    # elements by defining a \newcommand{\tag}{...} in the latex preamble)
+    #
+    def get_pass_through_elements(self):
+        return ("emdash", "optionalsymbol", "daggersymbol", )
+
+    def pass_through_handler(self, pass_through_element):
+        self.write(r"\%s " % pass_through_element.tag)
+        return
+    
     #
     # Principles
     #
     handle_principlebody = no_op
 
     def start_principle(self, symbol):
-        self.buffer.write(r"\begin{principle}")
+        self.write(r"\begin{principle}")
     
     def end_principle(self, symbol):
-        self.buffer.write(r"\end{principle}")
+        self.write(r"\end{principle}")
 
     def start_principletitle(self, symbol):
-        self.buffer.write("[")
+        self.write("[")
     
     def end_principletitle(self, symbol):
-        self.buffer.write("]")
+        self.write("]")
         
     def handle_arrowleft(self, symbol):
-        self.buffer.write("\\arrowleft{}")
+        self.write("\\arrowleft{}")
 
     handle_ability_title = no_op
 
     def handle_ability_id(self, ability_id):        
-        self.buffer.write("ID: %s\\\n" % ability_id) 
+        self.write("ID: %s\\\n" % ability_id) 
 
     start_ability_group = no_op
     def end_ability_group(self, ability_group):
-        self.buffer.write("%s\n" % normalize_ws(ability_group.text))
+        self.write("%s\n" % normalize_ws(ability_group.text))
         return
 
     start_ability_class = no_op
     def end_ability_class(self, ability_class):
-        self.buffer.write("%s\n" % normalize_ws(ability_class.text))
+        self.write("%s\n" % normalize_ws(ability_class.text))
         return
 
     start_action_points = no_op
     def end_action_points(self, action_points):
-        self.buffer.write("%s\n" % normalize_ws(action_points.text))
+        self.write("%s\n" % normalize_ws(action_points.text))
         return
 
     def handle_hlink(self, hlink):
         url = hlink.get("url")
         text = utils.contents_to_string(hlink)
-        self.buffer.write(r"\href{%s}{%s}" % (url, text))
+        self.write(r"\href{%s}{%s}" % (url, text))
         return    
     
     def handle_ampersand(self, and_element):
-        self.buffer.write("\\&")
+        self.write("\\&")
 
     def handle_copyright(self, _):
-        self.buffer.write(r"\copyright{}")
+        self.write(r"\copyright{}")
 
     def handle_ccby(self, _):
-        self.buffer.write(r"\ccby{}")
+        self.write(r"\ccby{}")
+
+    def handle_includepdf(self, includepdf):
+        fname = includepdf.get("fname")        
+        self.write(r"\includepdf[pages=-]{%s}" % fname + NEWLINE)
+        #self.write(r"\ccby{}")
 
     def handle_endash(self, _):
-        self.buffer.write(r"\textendash{}")
+        # We can't replace this with a passthrough because we'd have to call the
+        # latex command \endash and latex reservers names that start with \end
+        # for ending environments
+        self.write(r"\textendash{}")
 
     def handle_versus(self, _):
-        self.buffer.write(r"\versus{}")
+        self.write(r"\versus ")
 
     def handle_lore(self, element):
-        self.buffer.write("\\lore{}")
+        self.write(r"\lore ")
 
     def handle_martial(self, element):
-        self.buffer.write("\\martial{}")
+        self.write(r"\martial ")
 
     def handle_percent(self, element):
-        self.buffer.write("\\%")
+        self.write(r"\% ")
 
     def handle_general(self, element):
-        self.buffer.write("\\general{}")
+        self.write(r"\general ")
         return    
 
     def handle_magical(self, element):
-        self.buffer.write("\\magical{}")
+        self.write(r"\magical ")
         return    
 
     def handle_geqqsymbol(self, geqq_element):
-        self.buffer.write(r"$\stackrel{\scriptscriptstyle ?}{\geq}{}$")
+        self.write(r"$\stackrel{\scriptscriptstyle ?}{\geq}{}$")
         return
 
     def handle_leqqsymbol(self, geqq_element):
-        self.buffer.write(r"$\stackrel{\scriptscriptstyle ?}{\leq}{}$")
+        self.write(r"$\stackrel{\scriptscriptstyle ?}{\leq}{}$")
         return
 
     def handle_leqsymbol(self, leq_element):
-        self.buffer.write(r"$\leq$")
+        self.write(r"$\leq$")
         return
 
     def handle_ltsymbol(self, leq_element):
-        self.buffer.write("$<$")
+        self.write("$<$")
         return
 
     def handle_gtsymbol(self, leq_element):
-        self.buffer.write("$>$")
+        self.write("$>$")
         return
 
     def handle_geqsymbol(self, geq_element):
-        self.buffer.write(r"$\geq$")
+        self.write(r"$\geq$")
         return
 
-    def handle_br(self, br):
+    def handle_br(self, br): 
         length = br.attrib.get("length")
-        # self.buffer.write(r"\ifvmode\else\newline\fi{}")
-        self.buffer.write(r"\mdbr{}")
+        # self.write(r"\ifvmode\else\newline\fi{}")
+        self.write(r"\mdbr ")
         # if length:
         #     assert float(length)
-        #     #     self.buffer.write(r" \\ ")
-        #     self.buffer.write(r"\ifvmode\else\\[%s\baselineskip]\fi{}" % length)
+        #     #     self.write(r" \\ ")
+        #     self.write(r"\ifvmode\else\\[%s\baselineskip]\fi{}" % length)
         # else:
-        #     self.buffer.write(r"\ifvmode\else\\\fi{}")
-        #     #     self.buffer.write(r" \\[%s\\baselineskip] " % length)
+        #     self.write(r"\ifvmode\else\\\fi{}")
+        #     #     self.write(r" \\[%s\\baselineskip] " % length)
         return
 
     def handle_newpage(self, newpage):
-        self.buffer.write(r"\ifvmode\else\newpage\fi{}")
+        self.write(r"\ifvmode\else\newpage\fi{}")
         return
 
-    start_pageref = no_op
-    def end_pageref(self, pageref):
-        self.buffer.write("~\\pageref{%s}" % normalize_ws(pageref.text))
-        return
+    #
+    # References
+    #
+    def __handle_ref(self, ref):
+        tag = ref.tag
 
-    start_ref = no_op
-    def end_ref(self, ref):
-        self.buffer.write("~\\ref{%s}" % normalize_ws(ref.text))
+        if tag == "chapterref":
+            ref_name = "Chapter"
+        elif tag == "sectionref":
+            ref_name = "Section"
+        elif tag == "tableref":
+            ref_name = "Table"
+        elif tag == "figureref":
+            ref_name = "Figure"
+        else:
+            raise Exception(f"Unknown ref type?! {ref.tag}")
+
+        label = ref.get("label")
+        on_page = attrib_is_true(ref, "on-page")
+        if label and on_page:
+            page_ref = r" on page~\pageref{%s}" % label
+        else:
+            page_ref = ""
+        
+        self.write(ref_name + r"~\ref{%s}" % label + page_ref)        
+        return
+    handle_chapterref = __handle_ref
+    handle_sectionref = __handle_ref
+    handle_tableref = __handle_ref
+    handle_figureref = __handle_ref
+
+    def handle_pageref(self, pageref):
+        """Page refs are a bit different from other refs."""
+        label = pageref.get("label")        
+        self.write(r"page~\pageref{%s}" % normalize_ws(label))
         return
     
     def handle_index(self, index):
         """Put the index in the document where the <index/> element occurs."""
-        self.buffer.write("\\clearpage\n")               
-        self.buffer.write("\\addcontentsline{toc}{chapter}{Index}\n")
-        self.buffer.write("\\printindex\n")
+        self.write(r"\clearpage" + NEWLINE)               
+        self.write(r"\addcontentsline{toc}{chapter}{Index}" + NEWLINE)
+        self.write(r"\printindex" + NEWLINE)
         return
 
     #
-    # Section Definitions
     #
-    start_section = no_op
-    end_section = no_op
-
-    def start_sectiontitle(self, section_title):
-        self.push_buffer()
-        self.buffer.write("\\section{")
-        return
-
-    def end_sectiontitle(self, section_title):
-        stripped_term = self.get_buffer_str(strip=True)
-        self.buffer.write(stripped_term)
-        self.buffer.write("}\n")
-        return
-    
-
-    start_subsection = no_op
-    end_subsection = no_op
-    def start_subsectiontitle(self, section_title):
-        self.buffer.write("\\subsection{")
-        return
-    def end_subsectiontitle(self, section_title):
-        self.buffer.write("}")
-        return
-
-    handle_subsubsection = no_op
-
-    def start_subsubsectiontitle(self, title):
-        title_category = title.attrib.get("titlecategory")  
-        #if title_category == "antagonist-ability":        
-        #  symbol = r"\antagonistsymbol{} "            
-        #elif title_category == "ability":        
-        if (title_category == "antagonist-ability" or
-            title_category == "ability"):       
-            symbol = r"\abilitysubsubsectionsymbol{} "            
-        else:
-            symbol = "\subsubsectionsymbol{} "                        
-        self.buffer.write(r"\subsubsection*{" + symbol)
-        return
-    def end_subsubsectiontitle(self, title):
-        self.buffer.write("}")
-        return    
-
-    def start_smalltitle(self, title):
-        """
-        A little header title (smaller than a subsubsection).
-
-        """
-        # suggest to latex that if we have to insert a page break
-        # we'd much rather that was done before the little header
-        # than after it.
-        self.buffer.write(
-            r"\pagebreak[2]"
-            r"\begin{mdbold}\eldersign\rpgsmalltitlefont\small{}"
-            r"\nopagebreak[2]")
-        return
-    
-    def end_smalltitle(self, title):
-        self.buffer.write("\end{mdbold}")
-        return    
-
+    #
     handle_archetypelevel = no_op
     
     def handle_leveltitle(self, archetype_level_title):
         levelnumber = archetype_level_title.get("levelnumber", -1)        
-        self.buffer.write("\\subsection{Level {%s}}" % levelnumber)
+        self.write(r"\subsection{Level {%s}}" % levelnumber)
 
     def start_playexample(self, playexample):
-        self.buffer.write("\\begin{playexample}\n")
+        self.write("\\begin{playexample}\n")
         return
 
     def end_playexample(self, playexample):
-        self.buffer.write(playexample.text)                
-        self.buffer.write("\\end{playexample}\n")        
+        self.write(playexample.text)                
+        self.write("\\end{playexample}\n")
         return
 
-    start_level = no_op
-    end_level = no_op
-
+    handle_level = no_op
     def start_leveltitle(self, level_title):
-        self.buffer.write("\\subsection*{")
+        self.write(r"\subsection*{")
         return
     def end_leveltitle(self, level_title):
-        self.buffer.write("}")
+        self.write("}")
         return
 
 
@@ -1567,12 +1572,12 @@ class LatexFormatter(DocFormatter):
     # Text with emphasis
     #
     def start_emph(self, emph):
-        self.buffer.write(r"\begin{mdemph}")
+        self.write(r"\begin{mdemph}")
         return
 
     def end_emph(self, emph):
         # latex environments eat trailing space. The trailing {} fixes this.
-        self.buffer.write(r"\end{mdemph}{}")
+        self.write(r"\end{mdemph}{}")
         return
 
 
@@ -1580,20 +1585,20 @@ class LatexFormatter(DocFormatter):
     # Text with emphasis but less emphasis than emph.
     #
     def start_italic(self, _):
-        self.buffer.write(r"\begin{itshape}")
+        self.write(r"\begin{itshape}")
         
     def end_italic(self, _):
-        self.buffer.write(r"\end{itshape}")
+        self.write(r"\end{itshape}")
 
 
     #
     # "Quotes" latex style.
     #
     def start_quotemarks(self, quote):
-        self.buffer.write(r"\begin{mdquotemarks}")
+        self.write(r"\begin{mdquotemarks}")
         
     def end_quotemarks(self, quote):
-        self.buffer.write(r"\end{mdquotemarks}")
+        self.write(r"\end{mdquotemarks}")
         
     
     def start_dropcap(self, dropcap):
@@ -1607,26 +1612,26 @@ class LatexFormatter(DocFormatter):
                     dropcap_word = (
                         r"\mddropcap{%s}{%s} " % (first_letter, other_letters))
                 words = [dropcap_word, ] + words[1:]
-            self.buffer.write(" ".join(words))
+            self.write(" ".join(words))
         return
 
     def end_dropcap(self, emph):
-        #self.buffer.write(r"\end{mddropcapbody}")
-        #self.buffer.write(r"}")
+        #self.write(r"\end{mddropcapbody}")
+        #self.write(r"}")
         # latex environments eat trailing space. The trailing {} fixes this.
-        #self.buffer.write(r"\end{mdemph}{}")
+        #self.write(r"\end{mdemph}{}")
         return
 
 
     def start_equation(self, equation):
         self._equation_first_line = True
-        self.buffer.write(
+        self.write(
             "\\begin{tabbing}\n "
             "\\hspace*{0.5cm}\\= \\kill \\nopagebreak \n")
         return
 
     def end_equation(self, equation):
-        self.buffer.write("\\end{tabbing}\\vspace{-0.5cm}\n ")
+        self.write("\\end{tabbing}\\vspace{-0.5cm}\n ")
         return
 
 
@@ -1636,53 +1641,60 @@ class LatexFormatter(DocFormatter):
         
         """
         if not self._equation_first_line:
-            self.buffer.write("\\> ") 
+            self.write("\\> ") 
         self._equation_first_line = False
         if line.text:
-            self.buffer.write(" %s " % normalize_ws(line.text))
+            self.write(" %s " % normalize_ws(line.text))
         return
 
     def end_line(self, line):
-        self.buffer.write("\\\\\n ")
+        self.write("\\\\\n ")
         return
 
 
     def start_bold(self, _):
-        self.buffer.write(r"\begin{mdbold}")
+        self.write(r"\begin{mdbold}")
         return
     def end_bold(self, _):
-        self.buffer.write(r"\end{mdbold}")
+        self.write(r"\end{mdbold}")
         return
 
     def start_smaller(self, smaller):
         # smaller text
-        self.buffer.write(r"\begin{smaller}")
+        self.write(r"\begin{smaller}")
         # smaller vertical space in lists etc.
-        self.buffer.write(r"\setlist{nosep}")        
+        self.write(r"\setlist{nosep}")        
         return
     
     def end_smaller(self, smaller):
-        self.buffer.write(r"\end{smaller}")
+        self.write(r"\end{smaller}")
         return
 
     def process_plain_text(self, text):
+        """
+        Handles blocks of plain text with no embedded elements in it.
+
+        """
         if text is not None:
-            self.buffer.write(text.replace("\n", ""))
-            #self.buffer.write(text.strip())
+            # Makes some effort to make the resulting .tex semi-readable.
+            # Also it's a little careful about whitespace because tex is
+            # brittle around certain whitespace.
+            lines = utils.wrap_text(text)
+            self.writelines(lines)
 
     def start_indent(self, indent):
-        self.buffer.write(r"\begin{mdindent}")        
+        self.write(r"\begin{mdindent}")        
     def end_indent(self, indent):
-        self.buffer.write(r"\end{mdindent}")
+        self.write(r"\end{mdindent}")
 
     #
     # A quote
     #
     def start_quote(self, quote):
-        self.buffer.write(r"\begin{mdquote}")
+        self.write(r"\begin{mdquote}")
         
     def end_quote(self, quote_entry):
-        self.buffer.write(r"\end{mdquote}")
+        self.write(r"\end{mdquote}")
 
     #
     # Am epigraph
@@ -1692,23 +1704,23 @@ class LatexFormatter(DocFormatter):
     # FIXME DROP EPIGRAPH IN XML FOR SLUG.
     #
     # def start_epigraph(self, quote):
-    #     self.buffer.write(r"\begin{mdepigraph}")
+    #     self.write(r"\begin{mdepigraph}")
         
     # def end_epigraph(self, quote_entry):
-    #     self.buffer.write(r"\end{mdepigraph}")
+    #     self.write(r"\end{mdepigraph}")
 
     def start_slug(self, slug):
         if slug.attrib.get("slugAfterChapterTitle"):
-            self.buffer.write(r"\epigraph{")
+            self.write(r"\epigraph{")
         else:
-            self.buffer.write(r"\begin{mdepigraph}")
+            self.write(r"\begin{mdepigraph}")
         return
         
     def end_slug(self, slug):
         if slug.attrib.get("slugAfterChapterTitle"):
-            self.buffer.write(r"}")
+            self.write(r"}")
         else:
-            self.buffer.write(r"\end{mdepigraph}")
+            self.write(r"\end{mdepigraph}")
         return
 
     #
@@ -1770,19 +1782,19 @@ class LatexFormatter(DocFormatter):
 
         """
         entry_str = sanitize_index_text(entry.entry)
-        self.buffer.write(r"\index{%s}" % entry_str)
+        self.write(r"\index{%s}" % entry_str)
 
         for subentry in entry.subentries:        
             sanitized_subentry = sanitize_index_text(subentry)            
             subentry_str = (
                 r"\index{%s!%s}"
                 % (entry_str, sanitized_subentry))
-            self.buffer.write(subentry_str)
+            self.write(subentry_str)
 
         for see in entry.sees:                    
             sanitized_see = sanitize_index_text(see)
             see_str = r"\index{%s|see {%s}}" % (entry_str, sanitized_see)
-            self.buffer.write(see_str)
+            self.write(see_str)
 
         for defn in entry.definitions:                    
             sanitized_defn = sanitize_index_text(defn)
@@ -1790,7 +1802,7 @@ class LatexFormatter(DocFormatter):
                 r"\index{%s" 
                 r"!aaaaaaaa@\empty \igobble |seealso {%s}}"
                 % (entry_str, sanitized_defn))
-            self.buffer.write(defn_str)
+            self.write(defn_str)
         return
 
     #
@@ -1799,164 +1811,213 @@ class LatexFormatter(DocFormatter):
     
     # word definitions
     def start_defn(self, defn):
-        self.buffer.write(r"\begin{defn}")
+        self.write(r"\begin{defn}")
         return
     def end_defn(self, defn):
-        self.buffer.write(r"\end{defn}")
+        self.write(r"\end{defn}")
         return
 
-    # def start_measurement(self, distance):
-    #     # FIXME this logic should move up into doc.py
-    #     if config.use_imperial:
-    #         distance_text = get_text_for_child(distance, "imperial")
-    #         if distance_text is None:
-    #             raise Exception("Imperial distance not specified!")
-
-    #     else:
-    #         distance_text = get_text_for_child(distance, "metric")
-    #         if distance_text is None:
-    #             raise Exception("Metric distance not specified!")
-
-    #     self.buffer.write("{" + normalize_ws(distance_text).strip() + "}")
-    #     return
-    # end_measurement = no_op
-
-    start_metric = no_op
-    end_metric = no_op
-    start_imperial = no_op
-    end_imperial = no_op    
-    
-    def start_chapter(self, chapter):
-        return
-
-    def end_chapter(self, chapter):
-        return
+    handle_metric = no_op
+    handle_imperial = no_op
 
     def start_p(self, paragraph):
         """
         Start paragraph.
 
         """
-        self.buffer.write("\n\n")
+        self.write("\n\n")
 
         # turn of paragraph indentation?
         no_indent = attrib_is_true(paragraph, "noindent")
         if no_indent:
-            self.buffer.write("\\noindent ")            
+            self.write("\\noindent ")            
         return
 
     def end_p(self, paragraph):
-        self.buffer.write("\n\n")
+        self.write("\n\n")
         return
 
     def start_design(self, design):
         if config.print_design_notes:
-            self.buffer.write("\n\n")
-            self.buffer.write(design.text)        
+            self.write("\n\n")
+            self.write(design.text)        
         return
 
     def end_design(self, design):
-        self.buffer.write("\n\n")
+        self.write("\n\n")
         return
 
     def start_provenance(self, provenance):
-        self.buffer.write("\n\n")
+        self.write("\n\n")
         if config.print_provenence_notes:
-            self.buffer.write("\\begin{center}")
-            self.buffer.write(r"\\begin{minipage}[c]{0.9\linewidth}")
-            self.buffer.write(r"\\rpgprovenancesymbol\\hspace{0.2em}") 
-            self.buffer.write(provenance.text)        
+            self.write("\\begin{center}")
+            self.write(r"\\begin{minipage}[c]{0.9\linewidth}")
+            self.write(r"\\rpgprovenancesymbol\\hspace{0.2em}") 
+            self.write(provenance.text)        
         return
 
     def end_provenance(self, provenance):
         if config.print_provenence_notes:
-            self.buffer.write("\\end{minipage}")        
-            self.buffer.write("\\end{center}")
-            self.buffer.write("\n\n")
+            self.write("\\end{minipage}")        
+            self.write("\\end{center}")
+            self.write("\n\n")
         return
 
     #
     # Title Page
     #
-
     def start_titlepage(self, chapter):
-        self.buffer.write(r"\begin{mdtitlepage}")
+        self.write(r"\begin{mdtitlepage}")
         return
 
     def end_titlepage(self, chapter):
-        self.buffer.write(r"\end{mdtitlepage}")
+        self.write(r"\end{mdtitlepage}")
         return    
     
     def start_title(self, title):
         """Title page title."""
-        self.buffer.write("\\begin{mdtitle}")
+        self.write(r"\begin{mdtitle}")
         return
 
     def end_title(self, section_title):
-        self.buffer.write("\\end{mdtitle}\n")
+        self.write(r"\end{mdtitle}")
         return
 
     def start_subtitle(self, title):
         """Title page subtitle."""
-        self.buffer.write("\\begin{mdsubtitle}")
+        self.write(r"\begin{mdsubtitle}")
         return
 
     def end_subtitle(self, section_title):
-        self.buffer.write("\\end{mdsubtitle}\\newline{}")
+        self.write(r"\end{mdsubtitle}")
         return
 
     def start_subsubtitle(self, title):
-        """Title page subtitle."""
-        self.buffer.write("\\begin{mdsubsubtitle}")
+        self.write(r"\begin{mdsubsubtitle}")
         return
 
     def end_subsubtitle(self, section_title):
-        self.buffer.write("\\end{mdsubsubtitle}\\newline{}")
+        self.write(r"\end{mdsubsubtitle}")
         return
 
     def start_author(self, author):
-        self.buffer.write(r"\begin{mdauthor}")
+        self.write(r"\begin{mdauthor}")
         return
 
     def end_author(self, author):
-        self.buffer.write(r"\end{mdauthor}")
+        self.write(r"\end{mdauthor}")
         return
 
     def start_version(self, version):
-        self.buffer.write("\\begin{mdversion}") 
+        self.write(r"\begin{mdversion}Version: ") 
         return
     
     def end_version(self, npchps): 
-        self.buffer.write("\\end{mdversion}\\newline{}")
+        self.write(r"\end{mdversion}")
         return
     
-
     #
     #
     #
     def start_caption(self, caption): 
-        self.buffer.write(r"\caption{%s}" % caption.text)
+        self.write(r"\caption{%s}" % caption.text)
         return
 
     def end_caption(self, caption):
         return    
 
-    def start_chaptertitle(self, section_title):
-        self.buffer.write(r"\begin{mdchaptertitle}")
+    #
+    # Chapters, Sections, etc..
+    #
+
+    # Chapters
+    handle_chapter = no_op
+    def start_chaptertitle(self, chapter_title):
+        self.write(r"\begin{mdchaptertitle}")
         return
 
-    def end_chaptertitle(self, section_title):
-        self.buffer.write(r"\end{mdchaptertitle}")
+    def end_chaptertitle(self, chapter_title):
+        # If we have a label it has to go after the chapter title!
+        # (otherwise the label isn't set correctly,.. because of NewEnviron).
+        label = chapter_title.attrib.get("label")
+        if label:
+            self.write(r"\label{%s}" % label + NEWLINE)
+        self.write(r"\end{mdchaptertitle}" + NEWLINE)
+        self.write(NEWLINE)
+        return
+
+    # Sections
+    handle_section = no_op
+    def start_sectiontitle(self, section_title):
+        #self.push_buffer()
+        self.write(r"\begin{mdsectiontitle}")
+        return
+
+    def end_sectiontitle(self, section_title):
+        #stripped_term = self.get_buffer_str(strip=True)
+        #self.write(stripped_term)
+        label = section_title.attrib.get("label")
+        if label:
+            self.write(r"\label{%s}" % label)
+        self.write(r"\end{mdsectiontitle}" + NEWLINE)
+        return
+
+    # Subsections
+    handle_subsection = no_op
+    def start_subsectiontitle(self, section_title):
+        self.write(r"\subsection{")
+        return
+    def end_subsectiontitle(self, section_title):
+        self.write("}")
+        return
+
+    # Subsubsections
+    handle_subsubsection = no_op
+    def start_subsubsectiontitle(self, title):
+        title_category = title.attrib.get("titlecategory")  
+        if (title_category == "antagonist-ability" or
+            title_category == "ability"):       
+            symbol = r"\abilitysubsubsectionsymbol "
+        else:
+            symbol = r"\subsubsectionsymbol "
+        self.write(r"\subsubsection*{" + symbol)
+        return
+    def end_subsubsectiontitle(self, title):
+        self.write("}")
+        return    
+ 
+    # Small Title (not really a division.. just a little header thing)
+    def start_smalltitle(self, title):
+        """
+        A little header title (smaller than a subsubsection).
+
+        """
+        # suggest to latex that if we have to insert a page break
+        # we'd much rather that was done before the little header
+        # than after it.
+        self.write(
+            r"\pagebreak[2]"
+            r"\begin{mdbold}\eldersign\rpgsmalltitlefont\small{}"
+            r"\nopagebreak[2]")
         return
     
+    def end_smalltitle(self, title):
+        self.write(r"\end{mdbold}")
+        return    
+
+    
+    
+    #
+    #
+    #
     def start_img(self, img):        
-        #self.buffer.write("\t\\begin{center}\n")
+        #self.write("\t\\begin{center}\n")
         
         # optionally draw a box around the image
         # (for debugging)
         #if config.draw_imgs:
         #if config.debug_outline_images:                
-        #self.buffer.write("\\fbox{")
+        #self.write("\\fbox{")
 
         #scale = img.get("scale")
         textwidth_length = img.get("textwidth")
@@ -1987,21 +2048,21 @@ class LatexFormatter(DocFormatter):
         
         
         filename = self._get_img_filename(img)
-        self.buffer.write("\t\\includegraphics{%s}\n" % (filename))
+        self.write(r"\includegraphics{%s}" % (filename) + NEWLINE)
         return
 
     def end_img(self, img):
-        self.buffer.write("\\end{adjustbox}\n")
+        self.write("\\end{adjustbox}\n")
             
         if img.text is not None:
-            self.buffer.write("\t%s\n" % img.text)
+            self.write("\t%s\n" % img.text)
 
         # title
         if "title" in img.attrib:
             title = img.get("title")
-            self.buffer.write("\\emph{%s}" % title)
+            self.write("\\emph{%s}" % title)
             
-        #self.buffer.write("\t\\end{center}\n")
+        #self.write("\t\\end{center}\n")
         return
 
 
@@ -2011,14 +2072,14 @@ class LatexFormatter(DocFormatter):
         following page.
 
         """                
-        self.buffer.write("\\newpage\n")
-        self.buffer.write("\\pagestyle{empty}\n")
-        self.buffer.write("\\begin{figure*}[h!t]\n")
-        self.buffer.write("\\begin{center}\n")
+        self.write("\\newpage\n")
+        self.write("\\pagestyle{empty}\n")
+        self.write("\\begin{figure*}[h!t]\n")
+        self.write("\\begin{center}\n")
 
         if config.draw_imgs:
             if config.debug_outline_images:
-                self.buffer.write("\\fbox{")
+                self.write("\\fbox{")
         # 
         if "src" in handout.attrib:
             filename = handout.get("src")
@@ -2030,7 +2091,7 @@ class LatexFormatter(DocFormatter):
             except KeyError:
                 raise Exception(f"Handout image {resource_id} does not exist!")
             filename = resource.get_fname()
-            self.buffer.write("\\addcontentsline{loa}{section}{%s}"
+            self.write("\\addcontentsline{loa}{section}{%s}"
                                   % resource.get_contents_desc())
         else:
             raise Exception("Handout missing image src or id!")
@@ -2039,22 +2100,22 @@ class LatexFormatter(DocFormatter):
             raise Exception("Handout image does not exist: %s" % filename)
 
         # handout image without a box
-        self.buffer.write("\t\\includegraphics[scale=%s]{%s}\n"
+        self.write("\t\\includegraphics[scale=%s]{%s}\n"
                               % (handout.get("scale", default="1.0"), filename))
         return
 
     def end_handout(self, handout):
         if handout.text is not None:
-            self.buffer.write("\t%s\n" % handout.text)
+            self.write("\t%s\n" % handout.text)
         if config.debug_outline_images:
-            self.buffer.write("}")
-        self.buffer.write("\\end{center}\n")
-        self.buffer.write("\\end{figure*}\n")
-        self.buffer.write("\\cleardoublepage\n")
-        self.buffer.write("\\newpage\n")
-        self.buffer.write("\\cleardoublepage\n")
-        self.buffer.write("\\newpage\n")
-        self.buffer.write("\\pagestyle{headings}\n")
+            self.write("}")
+        self.write("\\end{center}\n")
+        self.write("\\end{figure*}\n")
+        self.write("\\cleardoublepage\n")
+        self.write("\\newpage\n")
+        self.write("\\cleardoublepage\n")
+        self.write("\\newpage\n")
+        self.write("\\pagestyle{headings}\n")
         return
     
     def start_figure(self, figure):
@@ -2081,13 +2142,13 @@ class LatexFormatter(DocFormatter):
             else:
                 figure_name = "figure"
 
-        self.buffer.write("\\begin{%s}[%s]\n" % (figure_name, position))
+        self.write("\\begin{%s}[%s]\n" % (figure_name, position))
         return
 
     def end_figure(self, figure):
         caption = figure.get("caption")
         if caption is not None:
-            self.buffer.write("\\caption{%s}\n" % caption)        
+            self.write(r"\caption{%s}" % caption + NEWLINE)        
 
         if attrib_is_true(figure, "fullwidth"):
             if attrib_is_true(figure, "sideways"):
@@ -2100,7 +2161,7 @@ class LatexFormatter(DocFormatter):
             else:
                 figure_name = "figure"
 
-        self.buffer.write("\\end{%s}\n" % figure_name)            
+        self.write(r"\end{%s}" % figure_name + NEWLINE*3)
         return
 
     # An image which the text wraps around
@@ -2108,20 +2169,20 @@ class LatexFormatter(DocFormatter):
         position = wrapimg.get("position", "l")
         width = wrapimg.get("scale", default="1.0") + "\\textwidth"
         
-        self.buffer.write(
+        self.write(
             "\\begin{wrapfigure}{%s}{%s}\n"
             % (position, width))
 
         if config.draw_imgs:
             if config.debug_outline_images:
-                self.buffer.write("\\fbox{")
+                self.write("\\fbox{")
 
-        self.buffer.write("\\centering\n")
+        self.write("\\centering\n")
 
         filename = self._get_img_filename(wrapimg)
 
         # image without a box
-        self.buffer.write(
+        self.write(
             "\t\\includegraphics[width=%s]{%s}\n"
             % (width, filename))        
         return
@@ -2129,12 +2190,12 @@ class LatexFormatter(DocFormatter):
     
     def end_wrapimg(self, wrapimg):
         if config.debug_outline_images:
-            self.buffer.write("}")
+            self.write("}")
 
         caption = wrapimg.get("caption")
         if caption is not None:
-            self.buffer.write("\\caption{%s}\n" % caption)
-        self.buffer.write("\\end{wrapfigure}\n")
+            self.write("\\caption{%s}\n" % caption)
+        self.write("\\end{wrapfigure}\n")
         return
 
     
@@ -2144,22 +2205,22 @@ class LatexFormatter(DocFormatter):
 
         """
         # the [i] gets us roman numerals in the enumeration
-        self.buffer.write("\\begin{enumerate}[label = (\\roman*)]\n")
+        self.write("\\begin{enumerate}[label = (\\roman*)]\n")
         return
 
     def end_olist(self, enumeration):
-        self.buffer.write("\\end{enumerate}\n")
+        self.write("\\end{enumerate}\n")
         return
 
     # a list of definitions
     def start_descriptions(self, description_list):
-        self.buffer.write("\\begin{description}[topsep=5pt,itemsep=5pt]\n")
+        self.write("\\begin{description}[topsep=5pt,itemsep=5pt]\n")
         self.terms_on_new_line = description_list.get("termonnewline", False)
         return
 
     def end_descriptions(self, description_list):
         # note seeing weird artifacts in embedded latex lists without the extra newline
-        self.buffer.write("\\end{description}\n\n")
+        self.write("\\end{description}\n\n")
         return
 
     
@@ -2168,7 +2229,7 @@ class LatexFormatter(DocFormatter):
         List items for a descriptions list
 
         """
-        self.buffer.write(r"\item[")
+        self.write(r"\item[")
         self.push_buffer()
         return
     
@@ -2176,8 +2237,8 @@ class LatexFormatter(DocFormatter):
         # strip the term string to try and avoid
         # "! Paragraph ended before \@item was complete." errors.
         stripped_term = self.get_buffer_str(strip=True)
-        self.buffer.write(stripped_term)
-        self.buffer.write("]")
+        self.write(stripped_term)
+        self.write("]")
 
     def start_description(self, description):
         return
@@ -2186,11 +2247,11 @@ class LatexFormatter(DocFormatter):
         return
 
     def start_list(self, list_element):
-        self.buffer.write("\\begin{itemize}\n")
+        self.write("\\begin{itemize}\n")
         return
 
     def end_list(self, list_element):
-        self.buffer.write("\\end{itemize}\n")
+        self.write("\\end{itemize}\n")
         return
 
     def handle_li(self, list_item):
@@ -2198,7 +2259,7 @@ class LatexFormatter(DocFormatter):
         Start list item.
 
         """
-        self.buffer.write(r"\item ")
+        self.write(r"\item ")
         return
 
     def start_comment(self, comment):
@@ -2211,23 +2272,23 @@ class LatexFormatter(DocFormatter):
         return
 
     def start_branchtitle(self, branchtitle_node):
-        self.buffer.write("\\subsubsection*{")
+        self.write("\\subsubsection*{")
         return
 
     def end_branchtitle(self, branchtitle_node):
         
-        self.buffer.write("}")
+        self.write("}")
         return
 
     def start_branchdescription(self, branchdescription_node):
         return
 
     def end_branchdescription(self, branchtitle_node):
-        self.buffer.write("\\begin{description}\n")
+        self.write("\\begin{description}\n")
         return
 
     def end_branch(self, branch_node):
-        self.buffer.write("\\end{description}\n")
+        self.write("\\end{description}\n")
         return
 
     
@@ -2238,18 +2299,18 @@ class LatexFormatter(DocFormatter):
             if child.tag == "pathtitle":
                 has_pathtitle = True
         if not has_pathtitle:
-            self.buffer.write(f"\\item[\\em❧] ")
+            self.write(f"\\item[\\em❧] ")
         return
 
     def end_path(self, path_node):
         return
 
     def start_pathtitle(self, pathtitle_node):
-        self.buffer.write(f"\\item[\\em❧ ")
+        self.write(f"\\item[\\em❧ ")
         return
 
     def end_pathtitle(self, pathtitle_node):
-        self.buffer.write("]")
+        self.write("]")
         return
 
     def start_choice(self, choice_node):
@@ -2274,10 +2335,9 @@ class LatexFormatter(DocFormatter):
     end_standardtable = no_op
     
     def start_table(self, table):
-        assert self.table is None
         self.table = TableState()
         self.table.parse_category(table)
-            
+
         # turn this on to draw vertical lines between columns
         DEBUG_COLUMN_WIDTH = False
 
@@ -2307,72 +2367,59 @@ class LatexFormatter(DocFormatter):
             table_spec_str += "|"
 
         # vertical space
-        self.buffer.write("\n\\vspace{-0.3cm}")
+        self.write(NEWLINE + r"\vspace{-0.3cm}")
 
         # don't have paragraph indents buggering up our table layouts
-        self.buffer.write("\\noindent{}")            
+        self.write(r"\noindent{}" + NEWLINE)
         
         # wrap single page tables in a table environment
         # (we use xtabular for multi-page tables and the table environment
         # confuses it about page size).        
         if self.table.figure:
             if self.table.sideways:
-                self.buffer.write(r"\begin{sidewaystable*}[htp]")
+                self.write(r"\begin{sidewaystable*}[htp]" + NEWLINE)
             elif self.table.fullwidth:
-                self.buffer.write(r"\begin{table*}[ht]")
+                self.write(r"\begin{table*}[ht]" + NEWLINE)
             else:
-                self.buffer.write(r"\begin{table}[ht]")
+                self.write(r"\begin{table}[ht]" + NEWLINE)
         else:
-             self.buffer.write(r"\begin{table}[H]")             
+             self.write(r"\begin{table}[H]" + NEWLINE)             
             
-        self.buffer.write(" \\begin{center}")
-
+        self.write(r"\begin{center}" + NEWLINE)
 
         # Change the separation between table columns??
         tabcolsep = table.get("colsep")
         if tabcolsep is not None:
-            self.buffer.write(
-                r"\setlength{\tabcolsep}{%s\tabcolsep}" % tabcolsep)
+            self.write(
+                r"\setlength{\tabcolsep}{%s\tabcolsep}" % tabcolsep +
+                NEWLINE)
 
         # Tabular
         if self.table.fullwidth:
             table_width = r"\textwidth"
         else:
             table_width = r"\linewidth"
-        self.buffer.write(
+        self.write(
             r"\begin{tabularx}{%s}{%s}" 
-            % (table_width, table_spec_str))
-
-        # horizontal line
-        if self.table.figure:
-            self.buffer.write(r" \toprule ")
-        else:
-            self.buffer.write(r" \hline ")
-        assert self.table is not None
+            % (table_width, table_spec_str) + NEWLINE)
         return
 
     def end_table(self, table):
         assert self.table is not None
 
-        if self.table.figure:
-            self.buffer.write(r"\bottomrule ")
-        else:
-            self.buffer.write(r" \hline ")
-
         # normal table environment
-        self.buffer.write(r"\end{tabularx}")
+        self.write(r"\end{tabularx}" + NEWLINE)
         
         # Add labels for references
         if self.table.label:
-            label = self.buffer.write("\\label{%s}" % self.table.label)
+            label = self.write(r"\label{%s}" % self.table.label)
 
-        self.buffer.write(r" \end{center}")
+        self.write(r"\end{center}" + NEWLINE)
 
         # Change the separation between table columns??
         tabcolsep = table.get("colsep")
         if tabcolsep is not None:
-            self.buffer.write(
-                r"\setlength{\tabcolsep}{\originaltabcolsep}")
+            self.write(r"\setlength{\tabcolsep}{\originaltabcolsep}" + NEWLINE)
 
         # handle any table indexes now!
         for index_entry  in self.table.index_entries:
@@ -2380,34 +2427,30 @@ class LatexFormatter(DocFormatter):
 
         # The table caption from the <tabletitle> element, if we have one.
         if self.table.title:
-            self.buffer.write(self.table.title)
+            self.write(self.table.title)
             
         if self.table.figure:
             if self.table.sideways:
-                self.buffer.write(r"\end{sidewaystable*}")        
+                self.write(r"\end{sidewaystable*}" + NEWLINE)        
             elif self.table.fullwidth:
-                self.buffer.write(r"\end{table*}")        
+                self.write(r"\end{table*}" + NEWLINE)
             else:
-                self.buffer.write(r"\end{table}")
+                self.write(r"\end{table}" + NEWLINE)
                 # vertical space
-                self.buffer.write("\n\\\\\n")
+                #self.write("\n\\\\\n")
         else:
-            self.buffer.write(r"\end{table}")            
-        self.buffer.write("\n\n")
+            self.write(r"\end{table}" + NEWLINE)            
+        self.write("\n\n")
 
         self.table = None
         assert self.table is None
         return
 
     # tablespec and it's children are parsed by the table element (it's special)
-    start_tablecategory = no_op
-    end_tablecategory = no_op
-    start_tablespec = no_op
-    end_tablespec = no_op
-    start_fixed = no_op
-    end_fixed = no_op
-    start_elastic = no_op
-    end_elastic = no_op
+    handle_tablecategory = no_op
+    handle_tablespec = no_op
+    handle_fixed = no_op
+    handle_elastic = no_op
 
     # 
     def start_tabletitle(self, table_title):
@@ -2415,10 +2458,10 @@ class LatexFormatter(DocFormatter):
         table_title = table_title.text
         table_title = table_title.strip()
         if table_title:        
-            self.buffer.write("\\captionof{table}{")
+            self.write(r"\captionof{table}{")
 
     def end_tabletitle(self, table_title):
-        self.buffer.write("}")
+        self.write("}")
         self.table.title = self.get_buffer_str()
 
     # Tablelabel is also parsed by the table
@@ -2426,7 +2469,7 @@ class LatexFormatter(DocFormatter):
         self.table.label = label.text.strip()
 
     def handle_tablesection(self, tablesection):
-        self.buffer.write("\\rpgtablesection{%s}" % tablesection.text.strip())
+        self.write(r"\rpgtablesection{%s}" % tablesection.text.strip())
         return
 
     def start_tablerow(self, table_row):
@@ -2441,104 +2484,103 @@ class LatexFormatter(DocFormatter):
         if new_colour:
             self.table.current_row += 1
 
-        # Do we want to color the row?
+        # do we want to color the row?
         color = None
         if table_row.tag == "tableheaderrow":
-            self.buffer.write(
+            self.write(
                 r"\rowcolor{tableheadercolor}")        
         elif self.table.current_row % 2 == 1:
-            self.buffer.write(
+            self.write(
                 r"\rowcolor{tableoddrowcolor}")
+
+        # Add a horizontal line at the top of the first row of the table
+        # (this has to come after the \rowcolor command above).
+        if pp.is_first_table_row(table_row):
+            self.write(r"\toprule " + NEWLINE)
         return
 
     def end_tablerow(self, table_row):
-        self.buffer.write(r"\tabularnewline ")
+        if pp.is_last_table_row(table_row):
+            self.write(
+                r"\\ \bottomrule" +
+                NEWLINE)
+        else:
+            self.write(
+                r"\\ " +
+                NEWLINE)
         return
 
     start_tableheaderrow = start_tablerow
     end_tableheaderrow = end_tablerow
 
-    def start_td(self, table_data, header=False):
+    def start_td(self, td, header=False):
         """
         Start table data.
 
         """
         # get the number of columns wide this cell should be.
-        width = int(table_data.get("width", 1))
-        
-        # get the number of rows high this cell should be.
-        height = int(table_data.get("height", 1))
-        height_hint = float(table_data.get("heighthint", 0.0))
-        
+        align = td.get("align", "l")
+        width = int(td.get("width", 1))
+
         # make cells wider than one column?
         if width > 1:
             percent_width = self.table.get_columns_percent_width(width)
             cell_align = ("p{%s\\hsize+%s\\tabcolsep}"
                           % (percent_width, 2*(width-1)))
-            self.buffer.write("\\multicolumn{%s}{%s}{"
-                                  % (width, cell_align))
-
-        # make cells taller than one row?
-        if height > 1:
-            self.buffer.write("\\multirow{%s}{=}[-%.2f\\baselineskip]{"
-                                  % (height, height_hint))
-
-        # get the text alignment within the cell (default left).
-        align = table_data.get("align", "l")
+            self.write("\\multicolumn{%s}{%s}{"
+                              % (width, cell_align))
+        #else:
         if align == "l":
             alignment = None
         elif align == "c":
-            alignment = "\\centering "
+            #self.write(r"\multicolumn{1}{c}{")
+            self.write(r"\mdtblcenter{")
         elif align == "r":
-            alignment = "\\raggedleft "
+            #alignment = r"\raggedleft{}"
+            #self.write(r"\multicolumn{1}{r}{")
+            alignment = None
+            pass
         else:
             raise Exception(f'Unknown table cell alignments "{align}"')
-        if alignment: 
-            self.buffer.write(alignment)
 
         # cell color?
         if header:
-            cell_color = "\\cellcolor{tableheadercolor}"
+            cell_color = r"\cellcolor{tableheadercolor}\bfseries "
         else:
             cell_color = None
         if cell_color:
-            self.buffer.write(cell_color)
+            self.write(cell_color)
            
         self.table.current_column = (
             (self.table.current_column + width) % self.table.number_of_columns)
 
         if header:
-            self.buffer.write("\\begin{mdbold}")
+            self.write(r"\begin{mdbold}")
         return
 
-    def end_td(self, table_data, header=False):
+    def end_td(self, td, header=False):
         if header:
-            self.buffer.write("\\end{mdbold}")
-        
-        # get the number of columns wide or rows high this cell should be.
-        width = int(table_data.get("width", 1))
-        height = int(table_data.get("height", 1))
-        
-        # get the text alignment within the cell.
-        align = table_data.get("align", "l")
+            self.write(r"\end{mdbold}")
 
-        # borders
-        borders = int(table_data.get("borders", 0))
-                
+        # get the number of columns wide or rows high this cell should be.
+        width = int(td.get("width", 1))        
+        # get the text alignment within the cell.
+        align = td.get("align", "l")
+
+        if align == "c":
+            self.write(r"}")
+        
+        # Close out the multicolumn?
         if width > 1:
             # multicolumn table data
-            self.buffer.write("}")
-
-        if height > 1:
-            # multicolumn table data
-            self.buffer.write("}")
-
+            self.write("}")
+            #pass
+        
         if self.table.current_column != 0:
-            self.buffer.write(" & ")
+            self.write(" & ")
         return    
 
     # table headers are a type of table data
-    start_th = start_td
     def start_th(self, th):
         return self.start_td(th, header=True)
     
@@ -2546,68 +2588,70 @@ class LatexFormatter(DocFormatter):
         return self.end_td(th, header=True)        
 
     def handle_tableofcontents(self, table_of_contents):
-        self.buffer.write("\\tableofcontents\n")
+        self.write(r"\tableofcontents" + NEWLINE)
 
     def handle_listoffigures(self, list_of_figures):
-        self.buffer.write(r"\listoffigures{}")
+        self.write(r"\listoffigures{}")
 
     def handle_listofart(self, list_of_art):
         return
 
     def handle_list_of_tables(self, list_of_tables):
-        self.buffer.write("\\listoftables\n")
+        self.write(r"\listoftables" + NEWLINE)
 
     def start_label(self, label):
-        self.buffer.write(r"\label{")
+        self.write(r"\label{")
 
     def end_label(self, label):
-        self.buffer.write("}")
+        self.write("}")
 
     def start_fourcolumns(self, threecolumns):
-        self.buffer.write("\\onecolumn\\begin{multicols}{4}\n")
+        self.write(r"\onecolumn\begin{multicols}{4}" + NEWLINE)
 
     def end_fourcolumns(self, ability_group):
-        self.buffer.write("\\end{multicols}\\twocolumn\n")
+        self.write(r"\end{multicols}\twocolumn" + NEWLINE)
     
     def handle_attempt(self, success):
-        self.buffer.write("\\rpgattempt{}")
+        self.write(r"\rpgattempt{}")
 
     def handle_success(self, success):
-        self.buffer.write("\\rpgsuccess{}")
+        self.write(r"\rpgsuccess{}")
 
     def handle_fail(self, fail):
-        self.buffer.write("\\rpgfail{}")
+        self.write(r"\rpgfail{}")
 
     def handle_eg(self, fail):
-        self.buffer.write(r"e.g.\@{}")
+        self.write(r"e.g.\@{}")
 
     def handle_ie(self, fail):
-        self.buffer.write(r"i.e.\@{}")
+        self.write(r"i.e.\@{}")
 
     def handle_aka(self, fail):
-        self.buffer.write(r"a.k.a.\@{}")
+        self.write(r"a.k.a.\@{}")
 
     def handle_etc(self, fail):
-        self.buffer.write(r"etc.\protect\@{}")
+        self.write(r"etc.\protect\@{}")
 
     def handle_nb(self, fail):
-        self.buffer.write(r"n.b.\@{}")
+        self.write(r"\textbf{N.B.\@} ")
 
     def handle_notapplicable(self, fail):
-        self.buffer.write("n/a")
+        self.write("n/a")
 
-    def handle_dpool(self, fail): # What's this for?
-        self.buffer.write("\\dpool{}")
+    #def handle_dpool(self, fail): # What's this for?
+    #    self.write(r"\dpool{}")
 
     def handle_vspace(self, vspace):
         length_str = vspace.attrib.get("length", "1.0")
         length = convert_str_to_float(length_str)
-        self.buffer.write("\\vspace{%s\\drop}\n" % length)
+        #self.write(r"\vspace{%s\drop}\\" % length + NEWLINE)
+        self.write(r"\ifvmode\else\vspace{%s\drop}\\\fi{}" % length + NEWLINE)
+
 
     def handle_hspace(self, hspace):
         length_str = hspace.attrib.get("length", "1.0")
         length = convert_str_to_float(length_str)
-        self.buffer.write(r"\hspace{%sex}" % length)
+        self.write(r"\hspace{%sex}" % length)
     
     
     #
@@ -2615,176 +2659,176 @@ class LatexFormatter(DocFormatter):
     #
 
     def start_monsterblock(self, monsterblock):
-        self.buffer.write(r"\begin{minipage}{\linewidth}")
+        self.write(r"\begin{minipage}{\linewidth}")
         return
 
     def end_monsterblock(self, monsterblock):
-        self.buffer.write(r"\end{minipage}")
+        self.write(r"\end{minipage}")
         return
 
     def start_mbtitle(self, mbtitle):
-        self.buffer.write(r"\mbsep{}\begin{mbtitle}")
+        self.write(r"\mbsep{}\begin{mbtitle}")
         return
 
     def end_mbtitle(self, mbtitle):
-        self.buffer.write(r"\end{mbtitle}\noindent{}")
+        self.write(r"\end{mbtitle}\noindent{}")
         return
     
     def start_mbtags(self, mbtags):
-        self.buffer.write(r"\begin{mbtags}")
+        self.write(r"\begin{mbtags}")
         return
 
     def end_mbtags(self, mbtags):
-        self.buffer.write(r"\end{mbtags}\noindent")
+        self.write(r"\end{mbtags}\noindent")
         return
 
     def start_mbdefence(self, mbac):
-        self.buffer.write(r"\textbf{Defence: }\begin{mbdefence}")
+        self.write(r"\textbf{Defence: }\begin{mbdefence}")
         return
 
     def end_mbdefence(self, mbac):
-        self.buffer.write(r"\end{mbdefence}\enspace{}")
+        self.write(r"\end{mbdefence}\enspace{}")
         return
 
     def start_mbhp(self, mbhp):
-        self.buffer.write(r"\textbf{HP: }\begin{mbhp}")
+        self.write(r"\textbf{HP: }\begin{mbhp}")
         return
     
     def end_mbhp(self, mbhp):
-        self.buffer.write("\\end{mbhp}")
+        self.write("\\end{mbhp}")
         return
 
     def start_mbmove(self, mbmove):
-        self.buffer.write(r"\textbf{Mv: }\begin{mbmove}")
+        self.write(r"\textbf{Mv: }\begin{mbmove}")
         return
 
     def end_mbmove(self, mbmove):
-        self.buffer.write("\\end{mbmove}")
+        self.write("\\end{mbmove}")
         return
 
     def start_mbinitiative(self, mbinitiative):
-        self.buffer.write(r"\textbf{Init: }\begin{mbinitiative}")
+        self.write(r"\textbf{Init: }\begin{mbinitiative}")
         return
     def end_mbinitiative(self, mbinitiati):
-        self.buffer.write("\\end{mbinitiative}")
+        self.write(r"\end{mbinitiative}")
         return
     
     def start_mbmagic(self, mbmagic):
-        self.buffer.write(r"\textbf{Magic: }\begin{mbmagic}")
+        self.write(r"\textbf{Magic: }\begin{mbmagic}")
         return
     def end_mbmagic(self, mbmagic):
-        self.buffer.write("\\end{mbmagic}")
+        self.write("\\end{mbmagic}")
         return
     
     def start_mbmettle(self, mbmettle):
-        self.buffer.write(r"\textbf{Mettle: }\begin{mbmettle}")
+        self.write(r"\textbf{Mettle: }\begin{mbmettle}")
         return
     def end_mbmettle(self, mbmettle):
-        self.buffer.write("\\end{mbmettle}")
+        self.write("\\end{mbmettle}")
         return
     
     def start_mbluck(self, mbluck):
-        self.buffer.write(r"\textbf{Luck: }\begin{mbluck}")
+        self.write(r"\textbf{Luck: }\begin{mbluck}")
         return
     def end_mbluck(self, mbluck):
-        self.buffer.write("\\end{mbluck}")
+        self.write("\\end{mbluck}")
         return
     
 
     def start_mbstr(self, mbstr):
-        self.buffer.write(r"\\\textbf{Str: }\begin{mbattr}")
+        self.write(r"\\\textbf{Str: }\begin{mbattr}")
         return
     def end_mbstr(self, mbmagic):
-        self.buffer.write("\\end{mbattr}")
+        self.write("\\end{mbattr}")
         return
     def start_mbend(self, mbend):
-        self.buffer.write(r"\textbf{End: }\begin{mbattr}")
+        self.write(r"\textbf{End: }\begin{mbattr}")
         return
     def end_mbend(self, mbend):
-        self.buffer.write("\\end{mbattr}")
+        self.write("\\end{mbattr}")
         return
 
     def start_mbag(self, mbag):
-        self.buffer.write(r"\textbf{Ag: }\begin{mbattr}")
+        self.write(r"\textbf{Ag: }\begin{mbattr}")
         return
     def end_mbag(self, mbag):
-        self.buffer.write("\\end{mbattr}")
+        self.write("\\end{mbattr}")
         return
     
     def start_mbspd(self, mbspd):
-        self.buffer.write(r"\textbf{Spd: }\begin{mbattr}")
+        self.write(r"\textbf{Spd: }\begin{mbattr}")
         return
     def end_mbspd(self, mbspd):
-        self.buffer.write("\\end{mbattr}")
+        self.write("\\end{mbattr}")
         return
     
     def start_mbper(self, mbper):
-        self.buffer.write(r"\textbf{Per: }\begin{mbattr}")
+        self.write(r"\textbf{Per: }\begin{mbattr}")
         return
     def end_mbper(self, mbper):
-        self.buffer.write("\\end{mbattr}")
+        self.write("\\end{mbattr}")
         return
     
     def start_mbwil(self, mbwil):
-        self.buffer.write(r"\textbf{Will: }\begin{mbattr}")
+        self.write(r"\textbf{Will: }\begin{mbattr}")
         return
     def end_mbwil(self, mbwil):
-        self.buffer.write("\\end{mbattr}")
+        self.write("\\end{mbattr}")
         return
 
     
     def start_mbarmour(self, mbarmour):
-        #self.buffer.write("\\begin{small}")
+        #self.write("\\begin{small}")
         return        
     def end_mbarmour(self, mbarmour):
-        #self.buffer.write("\\end{small} & %\n")
-        #self.buffer.write("\n")
+        #self.write("\\end{small} & %\n")
+        #self.write("\n")
         return
 
     def start_mbabilities(self, mbabilities):
-        #self.buffer.write(r"\textbf{Abilities}: ")
+        #self.write(r"\textbf{Abilities}: ")
         return
     def end_mbabilities(self, mbabilities):
-        #self.buffer.write("\n")
+        #self.write("\n")
         return
 
     def start_mbaspects(self, mbaspects):
-        self.buffer.write(r"\textbf{Aspects:} ")
+        self.write(r"\textbf{Aspects:} ")
         return
     def end_mbaspects(self, mbaspects):
-        self.buffer.write("\\\\\n")
+        self.write("\\\\\n")
         return
     
     def start_mbdescription(self, mbdescription):
-        self.buffer.write(r"\vspace{1.0mm}"
+        self.write(r"\vspace{1.0mm}"
                               r"\textbf{Description:}"
                               r"\hfill"
                               r"\break"
                               r"\vspace{-0.3cm}")
         return
     def end_mbdescription(self, mbdescription):
-        self.buffer.write("\n")
+        self.write("\n")
         return
     
     def start_mbnpc(self, mbnpc):
         return
 
     def end_mbnpc(self, mbnpc):
-        self.buffer.write("\\newline{}")
+        self.write("\\newline{}")
         return
 
     def start_npcname(self, npcname):
-        self.buffer.write(r"\textbf{Name: }\begin{npcname}")
+        self.write(r"\textbf{Name: }\begin{npcname}")
         return
     def end_npcname(self, npcname):
-        self.buffer.write("\\end{npcname} ")
+        self.write("\\end{npcname} ")
         return
     
     def start_npchps(self, npchps):
-        self.buffer.write(r"\textbf{HPs: }\begin{npchp}")
+        self.write(r"\textbf{HPs: }\begin{npchp}")
         return
     def end_npchps(self, npchps):
-        self.buffer.write("\\end{npchp}")
+        self.write("\\end{npchp}")
         return
 
     def handle_inspiration(self, inspiration):
@@ -2794,7 +2838,7 @@ class LatexFormatter(DocFormatter):
             resource = self.db.resources.use(resource_id)
             sig = resource.get_sig()
             
-            self.buffer.write(r"{\attributionfont %s}" % sig)
+            self.write(r"{\attributionfont %s}" % sig)
         else:
             raise Exception("Image inspiration missing id!")        
         return
@@ -2806,25 +2850,28 @@ class LatexFormatter(DocFormatter):
             resource = self.db.resources.use(resource_id)
             sig = resource.get_sig()
             
-            self.buffer.write(r"{\attributionfont %s}" % sig)
+            self.write(r"{\attributionfont %s}" % sig)
         else:
             raise Exception("Image attribution missing id!")
         return
 
     def handle_ellipsis(self, ellipsis):
-        self.buffer.write(r"\ldots")
+        self.write(r"\ldots")
 
     def handle_hline(self, _):
         if self.table is None:
-            self.buffer.write(r"\noindent\rule{\columnwidth}{0.8pt}\nopagebreak\vspace{-0.8em}")
+            self.write(
+                r"\noindent"
+                r"\rule{\columnwidth}{0.8pt}"
+                r"\nopagebreak\vspace{-0.8em}")
         else:
-            self.buffer.write(r"\hline")
+            self.write(r"\hline ")
         return
 
     def handle_abilityref(self, ability_ref_node):
         ability_ref = abilities.AbilityRef()
         ability_ref.parse(ability_ref_node)
-        ability = self.db.get_ability(ability_ref)
+        ability = self.db.get_ability_from_ref(ability_ref)
         if ability is None:
             line_number = ability_ref_node.sourceline
             context = get_error_context(self.xml_fname, line_number)
@@ -2853,7 +2900,7 @@ class LatexFormatter(DocFormatter):
             specializations_str = ""
 
         if ability_ref.get_id() == "aspect":
-            self.buffer.write(
+            self.write(
                 r"\begin{mdbold}" + 
                 phrase_str +
                 " «Aspect» " +
@@ -2862,7 +2909,7 @@ class LatexFormatter(DocFormatter):
                 rank_num_str +
                 r"\end{mdbold}")            
         else:
-            self.buffer.write(
+            self.write(
                 r"\begin{mdbold}" +
                 phrase_str +
                 name +
@@ -2871,7 +2918,6 @@ class LatexFormatter(DocFormatter):
                 rank_num_str +
                 r"\end{mdbold}")
         return    
-
 
     def start_sidebar(self, sidebar):
         """
@@ -2884,8 +2930,8 @@ class LatexFormatter(DocFormatter):
         else:
             title_str = ""
         
-        self.buffer.write(
-            r"\begin{figure}[t]"
+        self.write(
+            r"\begin{figure}[hbtp!]"
             r"\sidebarfont"
             r"\begin{tcolorbox}["
             r"enhanced, "
@@ -2898,7 +2944,7 @@ class LatexFormatter(DocFormatter):
         return
 
     def end_sidebar(self, _):
-        self.buffer.write(
+        self.write(
             r"\end{minipage}"
             r"\end{tcolorbox}"
             r"\end{figure}")
@@ -2906,25 +2952,23 @@ class LatexFormatter(DocFormatter):
 
     # FIXME: what is this for?
     def handle_details(self, _):        
-        # self.buffer.write("\\paragraph*{Detials}")
+        # self.write("\\paragraph*{Detials}")
         return        
 
     def handle_hfill(self, hfill):        
-        self.buffer.write(r"\hfill")
+        self.write(r"\hfill")
         return
 
     def handle_spacer(self, spacer):        
-        self.buffer.write(r"\mdspacer{}")
+        self.write(r"\mdspacer{}")
         return
 
     def handle_divider(self, divider):        
         char_code = 89 # standard
         if divider.attrib == "fancy":
             char_code = 80
-        self.buffer.write(r"\centerline{\pgfornament[scale=0.14]{%s}}"
-                          % char_code)
-        return
-    
+        self.write(r"\centerline{\pgfornament[scale=0.14]{%s}}" % char_code)
+        return    
 
     def _handle_short_measurement(self, sm):
         """
@@ -2942,7 +2986,7 @@ class LatexFormatter(DocFormatter):
             if distance_text is None:
                 raise Exception("Metric distance not specified!")
 
-        self.buffer.write(normalize_ws(distance_text).strip())
+        self.write(normalize_ws(distance_text).strip())
         return
 
     # Measurement Constants.
@@ -2968,7 +3012,7 @@ class LatexFormatter(DocFormatter):
         match_obj = _sv_regex.search(tag)
         if match_obj is not None:
             skill_value = match_obj[0]
-            self.buffer.write(fr"SSV: {skill_value}")
+            self.write(fr"SSV: {skill_value}")
         else:
             raise Exception(
                 f"Unknown skill value check! {node_to_string(sv_element)}")
@@ -2989,6 +3033,6 @@ class LatexFormatter(DocFormatter):
     handle_sv29 = _handle_sv
 
     def handle_d20plusrank(self, tag):
-        self.buffer.write(r"\fatediesymbol/\skilldiesymbol+Rank")
+        self.write(r"\fatediesymbol/\skilldiesymbol+Rank")
 
     

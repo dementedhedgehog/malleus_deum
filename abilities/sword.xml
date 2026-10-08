@@ -17,16 +17,16 @@
     <abilitytitle>Daring Thrust</abilitytitle>
     <abilityid>daring_thrust</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Trigger</name>
       <critclass><auxiliary/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><reach/></range>
       <keywords><sword/><auxiliary/></keywords> 
       <precondition>Righteous success when making a Sword Parry against
       a melee attack within reach.</precondition>
-      <effect>May make a Sword Retort attack as a reaction.</effect>
-    </action>
+      <effect>May make a Sword Retort attack as a response.</effect>
+    </check>
     <prereqabilityref id="sword_strike" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -40,7 +40,7 @@
     <abilitytitle>Follow Through</abilitytitle>
     <abilityid>follow_through</abilityid>    
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Attack</name>
       <critclass><auxiliary/></critclass>
       <cost><ap2/></cost>
@@ -48,7 +48,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>Hit with a melee attack.</precondition>
       <effect>Make a Sword Retort attack on the first, or second adjacent, opponent.</effect>
-    </action>
+    </check>
     <prereqabilityref id="sword_strike" rank="2"/>
     <spline><p x="0" y="60"/><p x="-90" y="30"/></spline>
     <abilitydescription>
@@ -64,7 +64,7 @@
     <abilitytitle>Mighty Blow</abilitytitle>
     <abilityid>mighty_blow</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Mighty Blow</name>
       <critclass><auxiliary/></critclass>
       <cost><ap5/></cost>
@@ -73,7 +73,7 @@
       <keywords><mettlepool/><physical-attack/><auxiliary/></keywords> 
       <precondition>Righteous hit with a sword.</precondition>
       <effect>+Rank to damage</effect>      
-    </action>
+    </check>
     <prereqabilityref id="sword_strike" rank="3"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -89,16 +89,16 @@
     <abilitytitle>Sword Disarm</abilitytitle>
     <abilityid>disarm</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><speed-save/></opposing-action>      
+      <reaction><speed-save/></reaction>      
       <critclass><melee-attack/></critclass>
       <cost><ap1/></cost>
       <range><reach/></range>
-      <keywords><sword/><check/></keywords>
+      <keywords><sword/><action/></keywords>
       <precondition>Righteous hit with a sword.</precondition>
       <any-success>Opponent disarmed</any-success>
-    </action>
+    </check>
     <prereqabilityref id="sword_strike" rank="2"/>
     <spline><p x="0" y="60"/><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -114,20 +114,20 @@
     <abilitytitle>Sword Feint</abilitytitle>
     <abilityid>feint</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><agility-save/></opposing-action>      
+      <reaction><agility-save/></reaction>      
       <critclass><fixme/></critclass>
-      <cost><reaction-cost/></cost>      
+      <cost><response-cost/></cost>      
       <range><reach/></range>
-      <keywords><sword/><physical-attack/><melee/><check/></keywords>
+      <keywords><sword/><physical-attack/><melee/><action/></keywords>
       <any-success>Character acts before target.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="sword_strike" rank="2"/>
     <spline><p x="0" y="60"/><p x="90" y="30"/></spline>
     <abilitydescription>
       <p>
-	FIXME: after they're hit they've likely used their reaction!!
+	FIXME: after they're hit they've likely used their response!!
 	The character makes an opposed check after an opponent successfully attacks
 	them with a melee weapon. The character can attempt If they are successful
 	they act before their opponent.  This action cannot be taken if surprised.
@@ -140,18 +140,18 @@
   <!--   <abilitytitle>Sword Retort</abilitytitle> -->
   <!--   <abilityid>sword_retort</abilityid>     -->
   <!--   <abilityranks untrained="0" from="1" to="6"/> -->
-  <!--   <action> -->
+  <!--   <check> -->
   <!--     <name>Attack</name>    -->
   <!--     <critclass><melee-attack/></critclass>  -->
   <!--     <cost><ap2/></cost> -->
   <!--     <range><reach/></range> -->
-  <!--     <keywords><basic-attack/><check/></keywords> -->
-  <!--     action><physical-defence/></opposing-action> -->
+  <!--     <keywords><basic-attack/><action/></keywords> -->
+  <!--     action><physical-defence/></reaction> -->
   <!--     <dmg>Weapon+Rank+Strength|Speed</dmg> -->
   <!--     <critsuccess><default-attack-critical-success/></critsuccess> -->
   <!--     <righteoussuccess><default-attack-righteous-success/></righteoussuccess> -->
   <!--     <success><default-attack-success/></success> -->
-  <!--   </action> -->
+  <!--   </check> -->
   <!--   <spline><p x="35" y="90"/></spline> -->
   <!--   <abilitydescription> -->
   <!--     <p noindent="true">	 -->
@@ -166,18 +166,18 @@
     <abilitytitle>Sword Strike</abilitytitle>
     <abilityid>sword_strike</abilityid>    
     <abilityranks untrained="-3" from="1" to="6"/>
-    <action>
+    <check>
       <name>Melee-Attack</name>   
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap4/></cost>
       <range><reach/></range>
-      <keywords><basic-attack/><check/></keywords>
+      <keywords><basic-attack/><action/></keywords>
       <dmg>Weapon+Rank+Strength|Speed</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
       <success><default-attack-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

@@ -20,34 +20,34 @@
     <abilitytitle>Aegis</abilitytitle>
     <abilityid>aegis</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><ap2/></cost>
       <poolcost>1</poolcost>
       <range><ranged-medium/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>4 shifts up for missile defence checks
       </critsuccess>
       <righteoussuccess>3 shifts up for missile defence checks
       </righteoussuccess>
       <success>2 shifts up for missile defence checks</success>
-    </action>
-    <action>
+    </check>
+    <check>
       <name>Interrupt Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><ranged-medium/></range>
-      <keywords><magicpool/><save/></keywords>
+      <keywords><magicpool/><reaction/></keywords>
       <critsuccess>4 shifts up for missile defence checks
       </critsuccess>
       <righteoussuccess>3 shifts up for missile defence checks
       </righteoussuccess>
       <success>2 shifts up for missile defence checks</success>
-    </action>
+    </check>
     <prereqabilityref id="arcana" rank="1"/>   
     <spline><p x="0" y="90"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -68,16 +68,16 @@
     <abilitytitle>Alarum</abilitytitle>
     <abilityid>alarum</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap2/></cost>
       <poolcost>1</poolcost>
       <range><ranged-medium/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Successfully cast.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="arcana" rank="1"/>   
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>
@@ -100,17 +100,17 @@
     <abilitytitle>Arcana Lore</abilitytitle>
     <abilityid>arcana</abilityid>  
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -126,16 +126,16 @@
     <abilitytitle>Cloak of Shadows</abilitytitle>
     <abilityid>cloak_of_shadows</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Spell successfully cast</any-success>      
-    </action>
+    </check>
     <prereqabilityref id="arcana" rank="1"/>   
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -153,16 +153,16 @@
     <abilitytitle>Ignis</abilitytitle>
     <abilityid>ignis</abilityid>
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Fire is created.</any-success>
-    </action>    
+    </check>    
     <prereqabilityref id="arcana" rank="1"/>   
     <spline><p x="0" y="90"/><p x="0" y="45"/></spline>
     <abilitydescription>
@@ -182,19 +182,19 @@
     <abilitytitle>Incendo</abilitytitle>
     <abilityid>incendo</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><fire/><check/></keywords>
+      <keywords><magicpool/><fire/><action/></keywords>
       <critsuccess>Weapon does +6 fire damage</critsuccess>
       <righteoussuccess>Weapon does +4 fire damage</righteoussuccess>
       <success>Weapon does +2 fire damage</success>
       <critfail>Weapon makes a Break Check</critfail>
-    </action>
+    </check>
     <prereqabilityref id="ignis" rank="1"/>   
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -217,19 +217,19 @@
     <abilitytitle>True Sight</abilitytitle>
     <abilityid>true_sight</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><ap2/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>The character has True Sight</any-success>
       <critfail>
 	Gains the "You don't know the Horrors I've Seen" aspect.
       </critfail>      
-    </action>
+    </check>
     <prereqabilityref id="arcana" rank="1"/>   
     <spline><p x="0" y="30"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -251,16 +251,16 @@
     <abilitytitle>Scroll Writing</abilitytitle>
     <abilityid>scrolls</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><sv15/></opposing-action>
+      <reaction><ssv15/></reaction>
       <critclass><craft/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/><craft/></keywords>
+      <keywords><magicpool/><action/><craft/></keywords>
       <any-success>Scroll is written</any-success> 
-    </action>
+    </check>
     <prereqabilityref id="arcana" rank="3"/>   
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>

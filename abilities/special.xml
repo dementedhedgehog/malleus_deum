@@ -27,10 +27,8 @@
     <abilitytitle>Blindsight</abilitytitle>
     <abilityid>blindsight</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action> 
-       
+    <check>       
       <name>Talent</name>
-      <!-- <critclass><auxiliary/></critclass> -->
       <cost><free/></cost>
       <range><ranged-short/></range>
       <keywords><auxiliary/></keywords>
@@ -38,7 +36,7 @@
       the dark.</precondition>
       <effect>Add the Blindsight Rank to the check Skill dice when making
       attacks. Any penalties for attacking in the dark still apply.</effect>
-    </action>
+    </check>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -56,19 +54,18 @@
     <abilitytitle>Encumbrance<daggersymbol/></abilitytitle>
     <abilityid>encumberance</abilityid>    
     <abilityranks untrained="0" from="1" to="4"/>
-    <action>
-      
+    <check>      
       <name>Save</name>
-      <opposing-action><sv13/></opposing-action>      
+      <reaction><ssv13/></reaction>      
       <critclass><trial/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>0</poolcost>
       <range><self/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <any-success>Reroll the surprise roll</any-success>
       <critsuccess>Reroll the surprise roll with advantage</critsuccess>
       <critfail>Character is Stunned</critfail>      
-    </action>
+    </check>
     <spline><p x="0" y="0"/></spline>     
     <abilitydescription>
       <p>
@@ -129,28 +126,26 @@
     <abilitytitle>Flat Checks</abilitytitle>
     <abilityid>flat_check</abilityid>    
     <abilityranks untrained="0" from="0" to="0"/>
-    <action>
-       
+    <check>
       <name>Flat Check</name>
-      <opposing-action><default-sv/></opposing-action>       
+      <reaction><default-sv/></reaction>       
       <critclass><fixme/></critclass>
-     <!-- <poolcost>0</poolcost> -->
       <cost><gm-fiat-check-cost/></cost>
       <range><gm-fiat/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <any-success>Success</any-success>
-    </action>
+    </check>
 
-    <action>
-       
+    <check>
       <name>Flat Save</name>
-      <opposing-action><unknown-check/></opposing-action>
+      <action><unknown-check/></action>
+      <reaction><skill-plus-rank-save/></reaction>
       <critclass><fixme/></critclass>
       <cost><save-or-free-save-cost/></cost>
       <poolcost>0</poolcost>
       <range><self/></range>
-      <keywords><save/></keywords>
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     <!-- <spline><p x="0" y="0"/></spline>      -->
     <abilitydescription>
       <p>
@@ -164,14 +159,27 @@
   </ability>
 
       
+  <ability>
+    <abilitytitle>Immunity</abilitytitle>
+    <abilityid>immunity</abilityid>    
+    <abilityranks from="1" to="5"/>
+    <spline><p x="0" y="60"/></spline> 
+    <specializations><specialization>Damage Type</specialization></specializations>
+    <abilitydescription>
+      <p>
+ 	The character takes no damage from the given Damage Type
+      </p>
+    </abilitydescription>
+  </ability>   
+
 
 
     <!-- <section> -->
     <!--   <sectiontitle>Initiative, Surprise and Ambush</sectiontitle> -->
 
     <!--   <p> -->
-    <!-- 	These checks are described in the chapter on combat in sections <ref>subsec:initiative</ref>, -->
-    <!-- 	<ref>subsec:surprise</ref> and <ref>subsec:ambush</ref>, respectively. -->
+    <!-- 	These checks are described in the chapter on combat in sections <subsubsectionbref label="subsec:initiative"/>, -->
+    <!-- 	<subsectionref label="subsec:surprise"/> and <subsectionref label="subsec:ambush/>, respectively. -->
     <!--   </p> -->
     <!-- </section> -->
 
@@ -180,18 +188,18 @@
     <abilitytitle>Item Breaks</abilitytitle>
     <abilityid>break_check</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       
       <name>Item Break Check</name>
-      <opposing-action><item-break-sv/></opposing-action>      
+      <reaction><item-break-sv/></reaction>      
       <critclass><fixme/></critclass>
-      <cost><free-reaction-cost/></cost>
+      <cost><free-response-cost/></cost>
       <poolcost>0</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <any-success>The item remains unbroken.</any-success>
       <critfail>Roll for a another piece of equipment.</critfail>      
-    </action>
+    </check>
     <spline><p x="0" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -217,19 +225,19 @@
     <abilitytitle>Sixth Sense</abilitytitle>
     <abilityid>sixth_sense</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
        
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>      
+      <reaction><ssv13/></reaction>      
       <critclass><fixme/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>0</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <any-success>Reroll the surprise roll</any-success>
       <critsuccess>Reroll the surprise roll with advantage</critsuccess>
       <critfail>Character is Stunned</critfail>            	
-    </action>
+    </check>
     <spline><p x="0" y="0"/></spline>     
     <abilitydescription>
       <p>
@@ -248,7 +256,7 @@
       very dangerous over short distances
     </slug>
     <abilityranks from="1" to="3"/>
-    <action> 
+    <check> 
       
       <name>Talent</name>
       <!-- <critclass><auxiliary/></critclass> -->
@@ -261,7 +269,7 @@
 	(perform a double move action)
       </precondition>
       <effect>The character moves at human sprint speed.</effect>
-    </action>
+    </check>
     <abilitydescription>
       <p>
 	FIXME: definition of Sprint (or has that gone?)
@@ -277,45 +285,30 @@
   </ability>
 
   <ability>
-    <abilitytitle>Fey Resilience</abilitytitle>
+    <abilitytitle>Fey Resistance</abilitytitle>
     <abilityid>fey_resilience</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>  
-      
-      <name>Talent</name>
-      <!-- <critclass><auxiliary/></critclass> -->
-      <cost><free-reaction-cost/></cost>
-      <poolcost>0</poolcost>
-      <range><self/></range>
-      <keywords><auxiliary/></keywords>
-      <precondition>Character takes physical damage from a non-iron weapon</precondition>
-      <effect>Damage is reduced by 1+Rank</effect>
-    </action>
-
-    <action> 
-      
+    <check>       
       <name>Post Battle Regeneration</name>
-      <opposing-action><easy-sv/></opposing-action>      
+      <reaction><easy-sv/></reaction>      
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>2</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>Heals d3+3 damage</critsuccess>
       <righteoussuccess>Heals d3+1 damage</righteoussuccess>
       <success>Heals d3 damage</success>
       <critfail>Suffers d4 damage</critfail>      
-    </action>
+    </check>
     <spline><p x="0" y="60"/></spline> 
+    <specializations><specialization>Iron Weapons</specialization></specializations>
     <abilitydescription>
       <p>
 	The fey are resistant to damage from non-magically conductive sources.
-	They reduce damage from non-ferrous metal weapons by their ability rank
-	for each hit as a free action, <eg/> a character with Fey Resilience 2
-	is hit by a wooden club for 5 hit points damage. This damage is reduced
-	by 2 for their Fey Resilience so they instead take 3 damage. 
+	They have <abilityref id="resistance" specializations="Iron Weapons"/>
+	at their Fey Resistance rank.
       </p>
-
       <p>
 	Out of combat Fey creatures may make a magic check to magically heal
 	health.
@@ -324,31 +317,39 @@
   </ability>
 
   <ability>
-    <abilitytitle>Resilience</abilitytitle>
-    <abilityid>resilience</abilityid>    
+    <abilitytitle>Resistance</abilitytitle>
+    <abilityid>resistance</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
-      
+    <check>      
       <name>Talent</name>
-      <!-- <critclass><auxiliary/></critclass> -->
-      <cost><free-reaction-cost/></cost>
+      <cost><free-response-cost/></cost>
       <range><self/></range>
       <keywords><auxiliary/></keywords>
       <precondition>Character takes damage.</precondition>
       <effect>Damage is reduced by Rank</effect>
-    </action>
+    </check>
     <spline><p x="0" y="60"/></spline> 
+    <specializations><specialization>Damage Type</specialization></specializations>
     <abilitydescription>
       <p>
- 	Any damage received is reduced by the ability rank for as a free action,
-	<eg/> a character with Resilience 2 is hit by a sword for 5 hit points
-	damage.  This damage is reduced by 2 for their Resilience so they
-	instead take 3 damage. 
-      </p>
-
-      <p>
-	Fey creatures, including elves, cannot have resilience.
+ 	Any damage received is reduced by the ability rank for as a free
+	response, <eg/> a character with Resistance 2 is hit by a sword for 5
+	hit points damage.  They take the 5 damage and then heal 2 for their
+	Resistance leaving them with 3 damage.
       </p>
     </abilitydescription>
-  </ability>   
+  </ability>
+
+  <ability>
+    <abilitytitle>Weakness</abilitytitle>
+    <abilityid>weakness</abilityid>    
+    <abilityranks from="1" to="10"/>
+    <spline><p x="0" y="60"/></spline> 
+    <specializations><specialization>Damage Type</specialization></specializations>
+    <abilitydescription>
+      <p>
+ 	The character takes an +Rank damage from the given Damage Type
+      </p>
+    </abilitydescription>
+  </ability>
 </abilitygroup>

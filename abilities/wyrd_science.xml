@@ -18,17 +18,17 @@
     <abilitytitle>Wyrd Science</abilitytitle>
     <abilityid>wyrdscience</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>          
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords> 
+      <keywords><lore/><action/></keywords> 
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <spline><p x="0" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -42,14 +42,14 @@
     <abilitytitle>Feign Death</abilitytitle>
     <abilityid>feign_death</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><wyrdscience/><mettlepool/><check/></keywords>
+      <keywords><wyrdscience/><mettlepool/><action/></keywords>
       <righteoussuccess>The feigned death is extremely convincing. Your example
       assists any companions in doing the same they gain a +2 to Feign Death or
       using Deception to pretend to be dead.
@@ -64,7 +64,7 @@
 	You succeed in entering the trance but remain in a death like state for
 	longer than you intended.
       </critfail>
-    </action>
+    </check>
     <prereqabilityref id="wyrdscience" rank="1"/>
     <spline><p x="0" y="60"/><p x="-30" y="30"/><p x="0" y="30"/><p x="-30" y="30"/><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -81,7 +81,7 @@
     <abilitytitle>Fleshcraft</abilitytitle>
     <abilityid>fleshcraft</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Fleshcraft</name>
       <critclass><fixme/></critclass>
       <cost><default-skill-cost/></cost>      
@@ -94,7 +94,7 @@
 	check.
       </precondition>
       <effect>Roll on the table below</effect>
-    </action>
+    </check>
     <prereqabilityref id="wyrdscience" rank="1"/>
     <spline><p x="0" y="60"/><p x="-30" y="30"/><p x="0" y="30"/><p x="-30" y="30"/><p x="30" y="30"/></spline>    
     <abilitydescription>
@@ -154,15 +154,15 @@
     <abilitytitle>Flesh Golem</abilitytitle>
     <abilityid>flesh_golem</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><wyrdscience/><check/><mettlepool/></keywords>
+      <keywords><wyrdscience/><action/><mettlepool/></keywords>
       <grimfail>FIXME</grimfail>
-    </action>
+    </check>
     <prereqabilityref id="homunculus" rank="2"/>
     <spline><p x="0" y="80"/></spline>
     <abilitydescription>
@@ -194,16 +194,16 @@
     <abilitytitle>Homunculus</abilitytitle>
     <abilityid>homunculus</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <prereqabilityref id="wyrdscience" rank="3"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -281,18 +281,18 @@
     <abilityid>juice_of_sapho</abilityid>
     <slug>It is by will alone I set my mind in motion.</slug>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><test/></critclass>
       <cost><ap1/></cost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <any-success>
 	The next lore check made today is made at advantage.
       </any-success>
       <critfail>Gain an Addiction to Sapho Aspect</critfail>
-    </action>
+    </check>
     <prereqabilityref id="wyrdscience" rank="2"/>
     <spline><p x="0" y="145"/></spline>
     <abilitydescription>
@@ -306,18 +306,18 @@
     <abilitytitle>Wyrd Rats</abilitytitle>
     <abilityid>wyrd_rat</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv15/></opposing-action>
+      <reaction><ssv15/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <any-success>The rat is created.</any-success>
       <critfail>The rat is created but it hates its creator. Gain the Malicious-Rodent aspect.</critfail>
       <damned>Gain the Unhealthy Devotion aspect. The doktor develops an unhealthy bond with his new friend.</damned>
-    </action>
+    </check>
     <prereqabilityref id="wyrd_hand" rank="1"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -346,16 +346,16 @@
     <abilitytitle>Splice Flesh</abilitytitle>
     <abilityid>splice_flesh</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>2</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <prereqabilityref id="fleshcraft" rank="1"/>
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>
@@ -372,16 +372,16 @@
     <abilitytitle>Meld Flesh</abilitytitle>
     <abilityid>meld_flesh</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="splice_flesh" rank="2"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -412,16 +412,16 @@
     <abilitytitle>Inner Eye</abilitytitle>
     <abilityid>inner_eye</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><trial/></critclass> 
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <any-success>An inner-eye is grafted to the recipient.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="fleshcraft" rank="2"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -447,21 +447,21 @@
     <abilitytitle>Reanimate</abilitytitle>
     <abilityid>reanimate</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <precondition>The caster requires a corpse to reanimate.</precondition>
       <any-success>Taget is reanimated.</any-success>
       <effect>
 	The corpse can be given simple instructions by its reanimator, such as
 	"attack", or "follow me" or "carry this".
       </effect>
-    </action>
+    </check>
     <prereqabilityref id="homunculus" rank="3"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -481,16 +481,16 @@
     <abilitytitle>Revivify</abilitytitle>
     <abilityid>revivify</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <any-success>Target is revivified</any-success>
-    </action>
+    </check>
     <prereqabilityref id="splice_flesh" rank="2"/>
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -509,33 +509,33 @@
     <abilityid>unleash-the-beast</abilityid>
     <slug>Man is not truly one, but truly two!</slug>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Unleash the Beast</name> 
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><fixme/></critclass>
       <cost><default-skill-cost/></cost>
       <range><self/></range>
-      <keywords><check/><manipulate/></keywords>
+      <keywords><action/><manipulate/></keywords>
       <success>Become the Beast</success>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Choose a Target</name>
-      <opposing-action><sv9/></opposing-action>
+      <reaction><ssv9/></reaction>
       <critclass><fixme/></critclass>
       <cost><free/></cost> 
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><check/><mettlepool/></keywords>
+      <keywords><action/><mettlepool/></keywords>
       <success>Choose a target</success>
       <critfail>Revert to normal form.</critfail>
       <damned>Revert to normal form.</damned>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Spent</name>
       <critclass><auxiliary/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><reach/></range>
       <keywords><sword/><auxiliary/></keywords>
       <precondition>
@@ -544,7 +544,7 @@
       <effect>
 	The character reverts to normal form.
       </effect>
-    </action>
+    </check>
     
     <prereqabilityref id="wyrdscience" rank="2"/>
     <spline><p x="0" y="90"/><p x="45" y="45"/><p x="0" y="45"/></spline>
@@ -577,19 +577,19 @@
     <abilitytitle>Wyrd Hand</abilitytitle>
     <abilityid>wyrd_hand</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><trial/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <precondition>Must have a severed hand.  It doesn't have to be fresh.</precondition>
       <any-success>Animated hand is created.</any-success>
       <critfail>The hand is created. Gain the Strangler aspect.. occasionaly the hand likes to murder things</critfail>
       <damned>Gain the Mind-of-its-Own aspect.. occasionaly the hand likes to wander off and do its own thing.  Always returning.</damned>
-    </action>
+    </check>
     <prereqabilityref id="wyrdscience" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>

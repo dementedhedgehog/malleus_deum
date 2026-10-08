@@ -21,10 +21,9 @@
     <abilitytitle>Adversary</abilitytitle>
     <abilityid>adversary</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
-      
+    <check>      
       <name>Experience Sets In</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><self/></range>
@@ -45,20 +44,19 @@
 	No effect, though the character may make an attempt the next time the
 	preconditions are met during this combat.
       </any-fail>
-    </action>
+    </check>
     
-    <action>
-      
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><easy-recall-knowledge-sv/></opposing-action>
+      <reaction><easy-recall-knowledge-sv/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-recall-knowledge-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>
       <success><default-lore-success/></success>
-    </action>
+    </check>
     
     <specializations>
       <specialization>Deep-Ones</specialization>
@@ -97,15 +95,14 @@
     <abilitytitle>Armour</abilitytitle>
     <abilityid>armour</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
-    <action>
-      
+    <check>
       <name>Armour Save</name>
-      <opposing-action><physical-attack/></opposing-action>
+      <reaction><physical-attack/></reaction>
       <critclass><armour/></critclass>
       <cost><free-save-cost/></cost>
       <range><na/></range>
-      <keywords><physical-defence/><save/></keywords>
-    </action>
+      <keywords><physical-defence/><reaction/></keywords>
+    </check>
     <abilitydescription>
       <p>
   	The character takes the brunt of the attack on their armour, hoping that
@@ -136,7 +133,7 @@
 	<label>ability:armour</label>
         <indexentry><entry>Armour Save</entry></indexentry>
 	Instead of making an armour check the character may choose to dodge,
-	shield block, parry or use some	other attack-reaction ability.
+	shield block, parry or use some	other attack-response ability.
 	However, because Armour Saves are free they tend to be used as the
 	defence of last resort for all but the most heavily armoured.
       </p>
@@ -154,19 +151,18 @@
     <abilitytitle>Blood Frenzy</abilitytitle>
     <abilityid>blood_frenzy</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
-      
+    <check>
       <name>Trigger Frenzy</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><trial/></critclass>
-      <cost><free-reaction-cost/></cost>
+      <cost><free-response-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/><maintain/></keywords>
+      <keywords><mettlepool/><action/><maintain/></keywords>
       <precondition>A successful melee hit in combat.</precondition>      
       <any-success>Character may decide to enter or leave the Blood Frenzy
       state.</any-success>
-    </action>
+    </check>
     <abilitydescription>
       <p>
 	After your character makes a successful melee attack you can make 
@@ -199,63 +195,59 @@
     <abilitytitle>Brawl</abilitytitle>
     <abilityid>brawl</abilityid>
     <abilityranks untrained="-3" from="1" to="6"/>
-    <action>
-      
+    <check>
       <name>Grapple</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap3/></cost>
       <range><na/></range>
-      <keywords><check/><nonlethal/><subdue/></keywords>
+      <keywords><action/><nonlethal/><subdue/></keywords>
       <precondition>Opponent must not be much larger than the character.
       </precondition>
       <dmg>Depends on the type of Brawl action chosen.</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
       <success><default-attack-success/></success>
-    </action>
+    </check>
     
-    <action>
-      
+    <check>
       <name>Guard</name>
-      <opposing-action><physical-attack/></opposing-action>
+      <reaction><physical-attack/></reaction>
       <critclass><physical-defence/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><na/></range>
-      <keywords><save/><nonlethal/><subdue/></keywords>
+      <keywords><reaction/><nonlethal/><subdue/></keywords>
       <effect>Shift the result down against lethal attacks. Make the save at
       advantage against grappled opponents.</effect>
-    </action>
+    </check>
     
-    <action>
-      
+    <check>
       <name>Punch</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap3/></cost>
       <range><na/></range>
-      <keywords><check/><nonlethal/></keywords>
+      <keywords><action/><nonlethal/></keywords>
       <dmg>1d2+Str damage, +2 if the attacker is wearing gauntlets.</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
       <success><default-attack-success/></success>      
-    </action>
+    </check>
     
-    <action>
-      
+    <check>
       <name>Headbutt</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap3/></cost>
       <range><na/></range>
-      <keywords><check/><nonlethal/></keywords>
+      <keywords><action/><nonlethal/></keywords>
       <precondition>Opponent must not be much larger than the character.
       </precondition>
       <dmg>Depends on the type of Brawl action chosen.</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess> 
       <success><default-attack-success/></success>      
-    </action>
+    </check>
     
     <abilitydescription>
       <p>
@@ -310,15 +302,56 @@
   </ability>
 
 
+  <ability>
+    <abilitytitle>Full Attack</abilitytitle>
+    <abilityid>full-attack</abilityid>
+    <abilityranks from="1" to="3"/>
+    <check>
+      <name>On Full Attack</name>
+      <cost><oota/></cost>
+      <range><self/></range>
+      <keywords><auxiliary/></keywords>
+      <effect>Spend your OOTA in exchange for an extra 2AP this turn.</effect>
+    </check>
+    <prereqabilityref id="brawl" rank="1"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character concentrates on attack, rather than taking a more
+	defensive posture.
+      </p>
+    </abilitydescription>
+  </ability>
+  
+
+  <ability>
+    <abilitytitle>Full Defence</abilitytitle>
+    <abilityid>full-defence</abilityid>
+    <abilityranks from="1" to="3"/>
+    <check>
+      <name>On Full Defence</name>
+      <cost><ap3/></cost>
+      <range><self/></range>
+      <keywords><auxiliary/></keywords>
+      <effect>Gain an additional extra OOTA till the characters next turn.</effect>
+    </check>
+    <prereqabilityref id="brawl" rank="1"/>
+    <spline><p x="0" y="30"/></spline>
+    <abilitydescription>
+      <p>
+	The character concentrates on defence, rather than taking a more
+	aggessive posture.
+      </p>
+    </abilitydescription>
+  </ability>
+  
 
   <ability>
     <abilitytitle>Dirty-Fighter</abilitytitle>
     <abilityid>dirty-fighter</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
-      
+    <check>
       <name>Talent</name>
-      <!-- <critclass><auxiliary/></critclass> -->
       <cost><ap2/></cost>
       <range><reach/></range>
       <keywords><auxiliary/></keywords>
@@ -327,7 +360,7 @@
 	Size
       </precondition>
       <effect>Make a Brawl attack with a Dirty Fighter Rank bonus.</effect>
-    </action>
+    </check>
     <prereqabilityref id="brawl" rank="1"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -345,20 +378,19 @@
     <abilitytitle>Dodge</abilitytitle>
     <abilityid>dodge</abilityid>
     <abilityranks untrained="0" from="1" to="6"/>
-    <action>
-      
+    <check>
       <name>Physical Defence</name>
-      <opposing-action><physical-attack/></opposing-action>
+      <reaction><physical-attack/></reaction>
       <critclass><dodge/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><na/></range>
-      <keywords><physical-defence/><save/></keywords>
-    </action>
+      <keywords><physical-defence/><reaction/></keywords>
+    </check>
     <abilitydescription>
       <p>
 	The character may attempt to dodge, to leap out of the way of the
 	attack, <emph>instead</emph> of making an armour roll.
-	Doing so uses the characters reaction for the round.
+	Doing so uses the characters response for the round.
 	If successful the attack is dodged and the character takes no damage.
       </p>
 
@@ -376,16 +408,15 @@
     <abilitytitle>Juggernaut</abilitytitle>
     <abilityid>juggernaut</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
-      
+    <check>
       <name>Check</name>
-      <opposing-action><strength-save/></opposing-action>
+      <reaction><strength-save/></reaction>
       <critclass><physical/></critclass>
       <cost><free-interrupt-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <any-success>Push the opponent one square.</any-success>
-    </action>
+    </check>
     <!-- <spline><p x="-90" y="90"/></spline> -->
     <abilitydescription>
       <p>
@@ -408,16 +439,15 @@
     <abilitytitle>Throw Object</abilitytitle>
     <abilityid>throw_object</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
-       
+    <check>
       <name>Check</name>
-      <opposing-action><physical-defence-or-gm-fiat/></opposing-action>
+      <reaction><physical-defence-or-gm-fiat/></reaction>
       <critclass><fixme/></critclass>
       <cost><ap2/></cost>
       <range><ranged-short/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <any-success>Success</any-success>
-    </action>
+    </check>
     <spline><p x="0" y="0"/></spline>     
     <abilitydescription>
       <p>
@@ -431,15 +461,14 @@
     <abilitytitle>Parry</abilitytitle>
     <abilityid>parry</abilityid>
     <abilityranks untrained="-3" from="1" to="6"/>
-    <action>
-      
+    <check>
       <name>Physical Defence</name>
-      <opposing-action><physical-attack/></opposing-action>
+      <reaction><physical-attack/></reaction>
       <critclass><parry/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><na/></range>
-      <keywords><physical-defence/><save/></keywords>
-    </action>
+      <keywords><physical-defence/><reaction/></keywords>
+    </check>
     <abilitydescription>
       <p>
 	<label>ability:parry</label>
@@ -458,17 +487,16 @@
     <abilitytitle>Retribution</abilitytitle>
     <abilityid>retribution</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
-      
+    <check>
       <name>Check</name>
-      <opposing-action><easy-sv/></opposing-action>      
+      <reaction><easy-sv/></reaction>      
       <critclass><test/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/></keywords>
+      <keywords><mettlepool/><action/></keywords>
       <any-success>Free charge or melee attack.</any-success>
-    </action>
+    </check>
     <abilitydescription>
       <p>
 	When the characters health drops to 0 they can instantly make a

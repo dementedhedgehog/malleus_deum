@@ -1,0 +1,1439 @@
+<chapter>
+  <chaptertitle>Checks<label>ch:checks</label></chaptertitle>
+
+  <p>
+    <dropcap>Whenever</dropcap><emph> any non-trivial and narratively
+    interesting action happens within the game the players should be involved
+    in a <defn>Check</defn> to determine the outcome</emph>. Checks are the
+    mechanic we use to for all conflict in the Malleus Deum.
+  </p>
+  
+  <p>
+    For example, a PC might make a check to climb a wall, to stab an enemy,
+    close a protective circle, block an attack, cast a spell, resist their
+    fear of heights, or jump a horse over a fence.    Similarly NPCs and
+    monsters can make checks to attack PCs.  In fact, Checks can me made by any
+    antagonist, <eg/> the environment might make a hyperthermia check against
+    the PCs, and the PCs would have to react to save against that effect.
+  </p>
+
+
+  <section>
+    <sectiontitle>The Basics<label>sec:check-basics</label></sectiontitle>
+
+    <p>      
+      Checks are based on the concept of Actor-Check-Reactor triplets, in which
+      an <defn>Actor</defn> performs a <defn>Check</defn> upon a
+      <defn>Reactor</defn>. We decompose each Check into two parts, an
+      <checkarrowsymbol/> Action made by the Actor, and an opposing
+      <savearrowsymbol/> Reaction, made by the Reactor.
+    </p>
+    
+    <p>
+      Every check in the game consists of an opposed action and reaction. When a
+      PC attacks, <ie/> checks to attack a monster, the character performs an
+      action to attack and the monster performs a reaction to defend themselves.
+      On the monsters turn, the monster might attack and the PC then performs a
+      reaction to defend.
+    </p>
+
+    <p>
+      Ultimately the Action and the Reaction are resolved to numerical skill
+      values and the higher of the two skill value prevails. In the interests of
+      speed and simplicity of play when determining the skill values, usually,
+      but not always, PCs will roll dice to determine their skill value, and
+      antagonists will use a flat value, without rolling any dice.
+    </p>
+    
+    <indexentry>
+      <entry><checkarrowsymbol/>Check Symbol</entry>
+    </indexentry>
+    
+    <indexentry>
+      <entry><savearrowsymbol/>Save Symbol</entry>
+    </indexentry>
+
+    <playexample>
+      <p>
+	When Dourli attacks a goblin with his axe then, Dourli is the Actor
+	and the goblin is the Reactor.  Dourli might attempt to perform this
+	action with an Axe Cleave check and the Goblin might perform a Dodge
+	Save, a reaction, to avoid being hit.
+      </p>
+      <img id="actor_check_save_reactor"/>
+      
+      <p>
+	Subsequently, the goblin may try and stab Dourli with his short sword.
+	Now the goblin is the Actor, Dourli is the Reactor, and the goblin
+	might use a Sword Strike action while Dourli counters with a Shield
+	Block Save.
+      </p>
+      <img id="actor_check_save_reactor_opposed"/>
+    </playexample>
+
+    <indexentry>
+      <entry>Check</entry>
+      <indexdefn>
+	Players make Checks by rolling the dice to determine the outcome of
+	actions in the game.
+      </indexdefn>
+    </indexentry>
+
+    <indexentry>
+      <entry>Actor-Action-Reactor (AAR) Triplet</entry>
+      <indexdefn>
+	An Actor-Action-Reactor triplet is a structure for describing events,
+	where an Actor (entity) attempts to perform an Action (verb) on an
+	Reactor (target).
+      </indexdefn>
+    </indexentry>
+
+    <indexentry>
+      <entry>AAR</entry>
+      <see>Actor-Action-Reactor (AAR) Triplet</see>
+    </indexentry>
+
+    <indexentry>
+      <entry>Reactor</entry>
+      <indexdefn>
+	A Reactor is the object upon which an Actor performs an Action.  When a
+	PC strikes at a goblin with their sword, the goblin is the reactor of
+	this action.
+      </indexdefn>
+      <subentry>See Actor-Action-Reactor</subentry>
+    </indexentry>
+
+    <indexentry>
+      <entry>Entity</entry>
+      <indexdefn>
+	Anything that acts upon or may be acted upon in the game, <eg/> PCs
+	and antagonists, including environmental hazards etc.
+      </indexdefn>
+      <see>See Actor-Action-Reactor</see>
+    </indexentry>
+
+    <indexentry>
+      <entry>Action</entry>
+      <indexdefn>
+	An action is the verb being performed by the Actor upon the Reactor in
+	a Check. The success or failure of an action is determined by comparing
+	the results of the Check and the Save.
+      </indexdefn>
+    </indexentry>
+    
+    <indexentry>
+      <entry>Actor</entry>
+      <indexdefn>
+	An actor, in the game, is any entity which may act upon another.
+	During combat the Actor is usually the character whose turn it is.
+	<eg/> When a PC makes a Sword Strike against a goblin, then PC is the
+	actor.
+      </indexdefn>
+      <subentry>See Actor-Action-Reactor</subentry>
+    </indexentry>
+  </section>
+
+
+  <section>
+    <sectiontitle>The Details<label>sec:check-details</label></sectiontitle>
+    
+    <p>
+      Making checks involves the following steps outlined below. We discuss
+      these steps in detail in coming sections:
+    </p>
+    
+    <figure>
+      <img id="making_checks" linewidth="1.0"/>
+    </figure>
+    
+
+    <descriptions>
+      <term>i) Actor Chooses a Check</term>
+      <description>
+	<p>
+	  The actor decides what action they want to attempt, and selects
+	  a Check to perform that action.
+	</p>
+
+	<p>
+	  Before a check can be made, the character must satisfy any
+	  prerequisites of that check, including having enough time (Action
+	  Points AP) to perform the action remaining in their turn, and having
+	  an appropriate rank in the ability to attempts the check.
+	</p>
+      </description>
+
+      <term>ii) The Reactor chooses a Save</term>
+      <description>
+	<p>
+	  After the actor decides what check they are using, the reactor(s)
+	  decide which Save they will use to oppose that check.
+	</p>
+	<p>
+	  The reactor must be able to satisfy any prerequisites required by the
+	  Save including training and time requirements.
+	</p>
+      </description>
+      
+      <term>iii) Player(s) Roll the Dice</term>
+      <description>
+	<p>
+	  The check result is determined by comparing two skill results, the
+	  Actor's and the Reactor's.
+	</p>
+	<p>
+	  Typically, <emph>Players</emph> involved in the check roll two
+	  different colored d20s. The darker die is the Fate die. The lighter
+	  die is the Skill die.
+	</p>
+	<p>
+	  Antagonists, usually use a Flat DC for checks and counterchecks.
+	  Though they can roll a single D20 if the GM chooses.
+	</p>
+      </description>
+      
+      <term>iv) Apply any Fate Die effects</term>
+      <description>
+	<p>
+	  High and low values on the fate die add special tags to the result
+	  including <defn>Blessed, Righteous, Damned and Cursed</defn>, which
+	  may be used to trigger other actions and effects. Similarly doubles
+	  add the <defn>Stars Align</defn> tag.
+	</p>
+
+	<p>
+	  Certain Checks and Saves have a Point Pool cost, which may
+	  be affected by the Fate Die, and must be paid now.
+	</p>
+      </description>
+
+      <term>v) Calculate Initial Skill Values</term>
+      <description>
+	<p>
+	  The face value on the skill die is modified by the ability's rank,
+	  and any modifiers caused by fate, and point pool exhaustion.  The
+	  results are made public so that players can choose whether they want
+	  to interrupt or respond to the result.
+	</p>
+      </description>
+
+      <term>» Interrupts Trigger</term>
+      <description>
+	Any triggered interrupts may be performed now, potentially modifying the
+	skill values before the check results are finalized.
+      </description>
+
+      <term>vi) Resolve Check Results <ampersand/> Apply Effects</term>
+      <description>	
+	<p>
+	  The skill of the actor is compared with the skill of the reactor.
+	  The higher skill value succeeds. Any effects of the check are applied
+	  based on the check's level of success.
+	</p>
+      </description>
+
+      <term>» Responses Trigger</term>
+      <description>
+	Any triggered responses may be performed now.
+      </description>
+    </descriptions>
+
+    <subsection>
+      <subsectiontitle>Start-of-Turn Actions</subsectiontitle>
+      <p>
+	Some antagonist abilities happen at the start of the players turn,
+	represented by the following symbol <startofturnsymbol/>.  Start of Turn
+	actions happen before any of the PCs actions and have no cost to the
+	antagonists.  Typically they are used to model ongoing conditions.
+      </p>    
+    </subsection>    
+
+    <subsection>
+      <subsectiontitle>Out-of-Turn Actions</subsectiontitle>
+      <indexentry>
+	<entry>Responses</entry>
+      </indexentry>
+      <indexentry>
+	<entry>Out-of-Turn Actions (OOTA)</entry>
+      </indexentry>
+      <indexentry>
+	<entry>OOTA: Out-of-Turn Actions</entry>
+      </indexentry>
+      <indexentry>
+	<entry>Interrupts</entry>
+      </indexentry>
+
+      <p>
+	Each round characters get one Out-of-Turn Action (OOTAs).  Certain
+	abilities will allow characters to spend their OOTA to perform various
+	Saves, Interrupts or Responses.
+      </p>
+
+      <p>
+	An <interruptsymbol/><defn>Interrupt</defn> is an effect that happens
+	<emph>before</emph> its' triggering action is resolved. A
+	<savearrowsymbol/><defn>Save</defn> is a reaction that occurs at the
+	same time as the Check and opposes it.  While, a
+	<responsesymbol/><defn>Response</defn> is an effect that happens
+	<emph>after</emph> the triggering action has been resolved.
+      </p>
+
+      <p>
+	Intterupts, saves and interrupts can be <defn>Free</defn>, which means
+	they do not require the character to spend their OOTA to perform. They
+	are denoted by the following "hollow" symbols: 
+	<freeinterruptsymbol/>, <freesavesymbol/>, and <freeresponsesymbol/>.
+      </p> 
+
+      <p>
+	Responses and interrupts can be <defn>Mandatory</defn>, which means they
+	<emph>must</emph> be performed if their prerequisites are met. Mandatory
+	actions are denoted by a trailing exclamation mark and come in free and
+	unfree types, <eg/> <mandatoryfreeinterruptsymbol/>, and
+	<mandatoryresponsesymbol/>.
+      </p>
+    </subsection>    
+  </section>
+
+  
+  <section>
+    <sectiontitle>
+      Actor Chooses A Check
+    </sectiontitle>
+
+    <p>
+      First the Actor decides what action thet want to do, and then they choose
+      a check to perform that action.  Some negotiation with the GM may be
+      necessary to ensure that the check is both <defn>Viable</defn> and
+      <defn>Appropriate</defn> to the task at hand.
+    </p>
+
+
+    <subsection>
+      <subsectiontitle>Appropriate Checks</subsectiontitle>
+
+      <p>
+	The Actor needs to make a choice about what check they want to make to
+	try and perform an action. Most of the time the choice of which check to
+	use should be fairly straightforward, <eg/> to jump a horse over a fence
+	you would make a check using the Riding ability, you swim using the Swim
+	ability.
+      </p>
+
+      <p>
+	However, in some cases there may be multiple potential checks to choose
+	from, and some negotiation between the GM and the player might be
+	necessary to choose the most appropriate check to perform for a given
+	action, <eg/> to choose which Recall Knowledge Lore check to use from
+	multiple Lore abilities, or to ask about range or reach of weapons,
+	cover and so on.
+      </p>
+
+      <p>
+	When the choice of Check is not clear use the following rules of thumb:
+	<olist>
+	  <li><emph>Use the check that is most specific to the task at
+	  hand.</emph>  If there is one ability specifically for performing the
+	  task at hand, use that ability. For example, when climbing use the
+	  Climb ability. 
+	  </li>
+	  <li>When the GM deems that there are multiple potential checks
+	  that might be used then the player may choose whichever check they
+	  prefer, and the GM should apply shifts to make the task harder when
+	  less relevant or appropriate checks are used for the task at hand. For
+	  example when trying to recall information about a nobles lineage, one
+	  character might make a check using History, while another might use
+	  Lore/Heraldry and the GM should allow either check.
+	  </li>
+	</olist>
+      </p>
+    </subsection>
+
+    
+    <subsection>
+      <subsectiontitle>Viable Checks</subsectiontitle>
+      <indexentry>
+	<entry>Viable Check</entry>
+	<indexdefn>
+	  Viable Checks are checks that a character is allowed to perform.
+	  A check is viable if it satisfies a number of prerequisites that
+	  include having the time required to perform the action, having
+	  the required training to perform that action, having points towards
+	  any Pool Cost for the check, and any other prerequisites required
+	  for the check, <eg/> within reach for melee attacks.
+	</indexdefn>
+      </indexentry>
+      <indexentry>
+	<entry>Untrained Rank</entry>
+	<indexdefn>
+	  Most abilities require training before you can perform any checks
+	  associated with that ability.  Abilities with an Untrained Rank do
+	  not require training and anyone can attempt to perform checks using
+	  those abilities at the untrained rank provided all other prerequisites
+	  are met.
+	</indexdefn>
+      </indexentry>
+      
+      <p>
+	A check is <defn>Viable</defn> if all its prerequisite are satisfied:
+	<olist>
+	  <li>The Actor must have time to perform the action.  They must
+	  pay the Action Point Cost to perform the action.  Each character
+	  gets five action points each turn. If they perform an action requiring
+	  three action points, then they cannot perform another three
+	  action point check in the same turn, because they do not have enough
+	  action points remaining to do so</li>
+	  <li>The Actor must have any required rank in the ability required to
+	  make the check. Though some abilities can be used untrained, <ie/>
+	  any ability with an <defn>Untrained Rank</defn> may be used untrained,
+	  most checks require a rank of at least one in an ability in order to
+	  perform a check, <eg/> certain Alchemy checks have require ranks
+	  greater than one that must be met before the check can be made.</li>
+	  <li>If the Check has a point pool cost then that pool must not be
+	  empty, <eg/> in order to cast a spell which has a magic pool cost
+	  the character's magic pool must be greater than zero.</li>
+	  <li>The actor must satisfy any other prerequistes specifically for
+	  that check, <eg/>:
+	  <olist>
+	    <li>wielding a sword to use Sword Strike,</li>
+	    <li>reactor within reach for melee attacks,</li>
+	    <li>reactor within range for ranged attacks,</li>
+	    <li>and any other requirements or preconditions listed in the check
+	    description</li>
+	  </olist>
+	  </li>
+	</olist>
+      </p>
+
+      
+      <subsubsection>
+	<subsubsectiontitle>Required Time</subsubsectiontitle>
+	<p>
+	  In order to perform an action a character must have enough time
+	  available to do so.
+	</p>
+
+	<p>
+	  Outside of combat the rules deal with time informally. So it is up to
+	  the GM to determine how long a check will take, which might be in
+	  minutes, hours, days months or years.
+	</p>
+
+	<p>
+	  During combat time is broken into 6 second <defn>Rounds</defn>.
+	  Characters get one <defn>Turn</defn> each round, and each turn is
+	  broken down into 5 <defn>Action Points (APs)</defn>. The character can
+	  spend these action points to perform actions. If a character does not
+	  have the APs to perform a check they may not even attempt to perform
+	  that check.  
+	</p>
+
+	<p>
+	  Similarly each character gets one <defn>Out of Turn Action
+	  (OOTA)</defn> each round, which they may spend to perform responses,
+	  interrupts, and certain saves.  More on these later.
+	</p>
+	
+	<indexentry>
+	  <entry>Action Points (APs)</entry>
+	  <indexdefn>
+	    Combat time is broken down into 10 second rounds. During each round
+	    every combatant gets one turn.
+	  </indexdefn>
+	</indexentry>
+	
+	<indexentry>
+	  <entry>APs</entry>
+	  <indexdefn>
+	    Combat time is broken down into 10 second rounds. During each round
+	    every combatant gets one turn.
+	  </indexdefn>
+	</indexentry>
+	
+	<indexentry>
+	  <entry>Round</entry>
+	  <indexdefn>
+	    Combat time is broken down into 10 second rounds. During each round
+	    every combatant gets one turn.
+	  </indexdefn>
+	</indexentry>
+	
+	<indexentry>
+	  <entry>Turn</entry>
+	  <indexdefn>
+	    Combat time is broken down into 10 second rounds. During each round
+	    every combatant gets one turn.
+	  </indexdefn>
+	</indexentry>
+	{% include "docs/sidebars/action_economy.xml" %}
+      </subsubsection>
+      
+      <subsubsection>
+	<subsubsectiontitle>Required Rank</subsubsectiontitle>
+	<p>
+	  By default checks require that the character have training in order
+	  to perform any checks associated with the ability, <ie/> the character
+	  must have ranks in the ability to use it.
+	</p>
+
+	<p>
+	  Some abilities may be used without training. Abilities with an
+	  Untrained value or a minimum rank of 0 do not require training to
+	  perform checks.
+	</p>
+      </subsubsection>
+    </subsection>
+  </section>
+  
+
+  <section>
+    <sectiontitle>
+      Reactor Chooses a Save
+    </sectiontitle>
+
+    <p>
+      Once the a has chosen a check, the reactor chooses a
+      <defn>Viable <reactionsymbol/>Save</defn> to counter. For example, if the
+      actor makes a physical-attack the reactor has to choose one from a number
+      of different physical-defence saves, <eg/> Armour, Dodge, Shield Block, or
+      Parry.
+    </p>
+
+    <p>
+      A save is viable in the same sense as a check is, except that instead of
+      having an AP cost, saves are usually either free or have a response cost,
+      that is they require that the reactor spend their out-of-turn action for
+      that turn.
+    </p>
+
+    <indexentry>
+      <entry>Out-Of-Turn Actions (OOTA)</entry>
+      <indexdefn>
+	During each round every combatant gets one Out Of Turn Action that
+	they can spend once to perform a certain of checks outside of
+	their turn.
+      </indexdefn>
+    </indexentry>
+
+    <indexentry>
+      <entry>OOTA (Out of Turn Actions)</entry>
+      <indexdefn>
+	During each round every combatant gets one Out Of Turn Action that
+	they can spend once to perform a certain checks outside of their
+	turn.
+      </indexdefn>
+    </indexentry>
+
+    <indexentry>
+      <entry>Responses</entry>
+      <indexdefn>
+	Responses are Out of Turn Actions used to make certain Counter
+	Checks.
+      </indexdefn>
+    </indexentry>
+
+    <indexentry>
+      <entry>Interrupts</entry>
+      <indexdefn>
+	Are Out-of-Turn Actions that occur before any results of a check
+	are applied.
+      </indexdefn>
+    </indexentry>
+
+    <indexentry>
+      <entry>Responses</entry>
+      <indexdefn>
+	Are Out-of-Turn Actions that occur after any results of a check
+	are applied.
+      </indexdefn>
+    </indexentry>
+    
+
+    <subsection>
+      <subsectiontitle>Viable Saves</subsectiontitle>
+      <p>
+	A <defn>Viable Saves</defn> satisfies the following
+	conditions:
+	<olist>
+	  <li>The Reactor must have any required rank for the check.</li>
+	  <li>The Reactor must have an unused OOTA if their save requires
+	  one.</li>
+	  <li>If the save has a point pool cost then then that pool
+	  must not be empty.</li>
+	  <li>The actor must satisfy any other prerequistes specifically for
+	  the save, <eg/>:
+	  <olist>
+	    <li>wielding a sword to use Sword Parry,</li>
+	    <li>and any other requirments listed in the check description</li>
+	  </olist>
+	  </li>
+	</olist>
+      </p>
+    </subsection>
+
+    <figure position="h">
+      <img id="geir-king_in_yellow"/>
+    </figure>
+
+    <figure position="h">
+      {% include "docs/tables/action_point_costs_table.xml" %}
+    </figure>
+  </section>
+  
+  <section>
+    <sectiontitle>Making the Check</sectiontitle>
+
+    <p>
+      The success or failure of an action is determined by comparing the
+      Skill of the Actor and the Reactor. 
+    </p>
+    
+    <subsection>
+      <subsectiontitle>Generating a Skill <ampersand/> Fate</subsectiontitle>
+
+      <p>
+	There are three ways to evaluate the Skill in a check:
+      </p>
+      <olist>
+	<li>Dynamic Skill Value</li>
+	<li>Hidden Skill Value</li>
+	<li>Static Skill Value</li>
+      </olist>
+
+      <figure>
+	<img id="check_interpretation"/>
+	<caption>Interpreting the Check Dice</caption>
+	<label>figure:check-dice</label>
+      </figure>
+
+      <subsubsection>
+	<subsubsectiontitle>Dynamic Skill Values</subsubsectiontitle>
+	<p>
+	  Players roll two different coloured d20s. The face value of the dark die
+	  is the <defn>Fate Value</defn>. The skill value is the face value of the
+	  lighter die plus the ability rank and any check modifiers.  This is the
+	  only method players use to calculate skill.
+	</p>
+
+	<p>
+	  GMs rarely use Dynamic Skill Values, but when they do the process is the
+	  similar to that for players except that GMs only roll a skill die.  GMs
+	  never roll the Fate Die, instead they borrow Fate from the players.
+	</p>
+
+	<figure position="H">
+	  <img id="check_dice" linewidth="0.5"/>
+	  <caption>Players make Dynamic Checks</caption>
+	</figure>
+	
+	
+	<playexample>
+	  <p>
+	    The <defn>Skill</defn> is the face value of the Skill die, plus the
+	    characters ability rank and any shifts that apply, <eg/> Dourli makes
+	    an <abilityref id="axe_strike" rank="3"/> attack, he rolls a 13 adds
+	    3 for his rank to get a Skill of 16.
+	  </p>
+	  <figure position="H">
+	    <img id="calculating_skill_roll_dice"/>
+	    <caption>Calculating a Dynamic Skill Value.</caption>
+	  </figure>	  
+
+	  <p>
+	    For example, suppose Dourli rolls a 12 on his Skill Die while
+	    attacking with his Axe Strike 3 ability.  The attack has no
+	    modifiers, there are no shifts.  Then the Skill for that attack is
+	    12 + 3 = 15.
+	  </p>
+
+	  <figure position="H">
+	    <img id="calculating_skill_roll_dice_example" linewidth="0.5"/>
+	    <caption>Dourli Strikes with his Axe.</caption>
+	  </figure>	  
+	  
+	  
+	  <p>
+	    Later, Dourli rolls a 15 on his Skill Die while attacking
+	    the same Goblin with his Dagger Strike 2 ability.  Unfortunately
+	    that goblin has ducked behind a small wall and the GM decides that
+	    this cover gives the attack two shifts down. Then the Skill for that
+	    attack is 15 + 2 - 4 = 13 with the -4 coming from the cover.
+	  </p>
+	</playexample>
+
+	  <figure position="H">
+	    <img id="calculating_skill_roll_dice_example2" linewidth="0.5"/>
+	    <caption>Dourli Stabs a Goblin in Cover.</caption>
+	  </figure>	  
+
+	{% include "docs/sidebars/shifts.xml" %}      
+      </subsubsection>
+
+
+      <subsubsection>
+	<subsubsectiontitle>Hidden Skill Values</subsubsectiontitle>
+	<p>
+	  Hidden Skill Values are used when the GM wants to make the outcome of
+	  a check uncertain to the players.  This method of calculating skill is
+	  only used by Antagonists and differs from a Dynamic Skill Values only
+	  in that the skill dice result is not disclosed to the players, and no
+	  Fate die is rolled.
+	</p>      
+      </subsubsection>
+      
+
+      
+      <subsubsection>
+	<subsubsectiontitle>Static Skill Values</subsubsectiontitle>
+	{% include "docs/sidebars/static_skill_values.xml" %}
+	{% include "docs/sidebars/borrowing_fate.xml" %}
+
+	<p>
+	  When calculating Static Skill Value we do not bother to roll the skill
+	  die, instead we assume that the die rolled a 10 and calculate the skill
+	  value as per usual. So the Static Skill is 10 plus the Rank of the
+	  Ability being used plus any shifts/modifiers. The static skill is
+	  Malleus Deums version of a DC. This is the usual way to calculate skill
+	  for Antagonists.
+	</p>
+
+	<p>
+	  Static Checks are used by the GM for antagonists in order to save
+	  time, and by the GM for players in Hidden and Secret checks.
+	  Players should use the Roll Dice method instead.
+	</p>
+
+	<p>
+	  Static Checks do not generate a Fate result.  If the GM is making the
+	  static check for an antagonist, the antagonist borrows fate from the
+	  player. If the Static Check is made by the GM on behalf of a character
+	  in a hidden or secret check then assume a Fate Result of 10.
+	</p>
+		
+	<playexample>
+	  <p>
+	    A goblin makes a Sword Strike 4 attack on Dourli, with no shifts.
+	    This gives the goblin a static skill (SSV) of 14 for his attack.
+	  </p>
+
+	  <figure position="H">
+	    <img id="calculating_static_skill_example"/>
+	    <caption>Calculating a Static Skill Value for the Goblin.</caption>
+	  </figure>
+	  
+	  <p>
+	    Dourli rolls 3 for his Fate and a 15 for his Skill, a Damned 15,
+	    using a shield block. The 15 succeeds in beating the goblins SSV of
+	    14 so Dourli takes no damage.
+	  </p>
+
+	  <p>
+	    However, the goblin can borrow Dourli's fate result, inverting it,
+	    the damned result for Dourli, becomes a Lucky result for the goblin.
+	    If the goblin had an interrupt or response that triggers on a Lucky
+	    fate value then he could perform that action.
+	  </p>
+	</playexample>
+      </subsubsection>
+    </subsection>
+
+    
+    <subsection>
+      <subsectiontitle>Types of Check</subsectiontitle>
+      
+      <p>
+	There are the four different types of checks<ellipsis/>
+      </p> 
+
+      <subsubsection>
+	<subsubsectiontitle>Standard Check</subsubsectiontitle>
+	<indexentry>
+	  <entry>Check</entry>
+	  <subentry>Standard Checks</subentry>
+	</indexentry>      
+	<p>
+	  Standard Checks are the workhorse of the game. The player rolls two
+	  dice and the GM uses a Static Skill Value.
+	</p>
+      </subsubsection>
+      
+      <subsubsection>
+	<subsubsectiontitle>Opposed Check</subsubsectiontitle>
+	<indexentry>
+	  <entry>Check</entry>
+	  <subentry>Opposed Checks</subentry>
+	</indexentry>      
+	<p>
+	  If the GM wants to make the checks a little bit more random he can
+	  make opposed checks.  In an Opposed Check the player and the GM both
+	  make dynamic checks, the player rolling two dice, the GM rolling
+	  a public skill die and borrowing fate.
+	</p>      
+      </subsubsection>      
+      
+      <subsubsection>
+	<subsubsectiontitle>Hidden Checks</subsubsectiontitle>
+	<indexentry>
+	  <entry>Check</entry>
+	  <subentry>Hidden Checks</subentry>
+	</indexentry>      
+	<p>
+	  A Hidden Check is an Opposed Check where the GMs skill die result is
+	  not revealled to the players.  Hidden Checks may be used when the GM
+	  wants the players to remain uncertain about whether they have succeeded.
+	</p>
+	
+	<playexample>
+	  <p>
+	    Dourli attempts to decieve, Emrich, the head of the local thieves
+	    guild and the GM does not want Dourli to know whether he succeeded
+	    or not.
+	  </p>
+	  <p>
+	    Dourli checks his Deception, and gets a Skill of 18.  Emrich
+	    rolls a 15 on his Perception Save and adds his Perception rank of 4
+	    for a total of 19.  
+	  </p>
+	  
+	  <p>
+	    Now Dourli may be left thinking that there is a good chance he has
+	    fooled Emrich.  But little does he know that, in fact, Emrich has
+	    seen through his ruse.
+	  </p>
+	</playexample>
+      </subsubsection>
+      
+      <subsubsection>
+	<subsubsectiontitle>Secret Checks</subsubsectiontitle>
+	<indexentry>
+	  <entry>Checks</entry>
+	  <subentry>Secret</subentry>
+	</indexentry>
+	<indexentry>
+	  <entry>Secret Check</entry>
+	</indexentry>
+	<indexentry>
+	  <entry>Secret Perception Check</entry>
+	  <subentry>see Secret Check</subentry>
+	</indexentry>      
+	<p>
+	  Secret Checks are made when the GM does not want the players to even
+	  know that a check has been made.  The proceeds with the GM making a
+	  Hidden Skill Check for the antagonist and uses a Static Skill Value for
+	  the PCs result.  No Fate result is generated or used.
+	</p>
+	
+	<p>
+	  An example of this might be Passive Perception checks may be made to
+	  have characters notice something about their environment without them
+	  asking to make the check.
+	</p>
+      </subsubsection>
+    </subsection>
+  </section>
+
+
+  <section>
+    <sectiontitle>Resolve the Fate Die</sectiontitle>
+
+    <indexentry>
+      <entry>Natural 1</entry>
+      <indexdefn>
+	Occurs when the face value of the d20 die is 1, before
+	any modifiers, shifts or other adjustments.
+      </indexdefn>
+    </indexentry>
+
+    <indexentry>
+      <entry>Natural 20</entry>
+      <indexdefn>
+	Occurs when the face value of the d20 die is 20, before
+	any modifiers, shifts or other adjustments.
+      </indexdefn>
+    </indexentry>
+    
+    <p>
+      To resolve the Fate Outcome check the face value of the Fate Die:
+    </p>
+    <olist>
+      <li>
+	A <defn>Natural 20</defn> is <emph>Blessed</emph> and Lucky. The
+	player gains the <bold>Blessings of Mithras</bold> boon.
+      </li>
+      <li><geqsymbol/>15 or more is <emph>Lucky</emph>.</li>
+      <li>
+	Results from 14 to 6 are <emph>Indifferent</emph>
+      </li>
+      <li><leqsymbol/>5 is <emph>Damned</emph></li>
+      <li>
+	A <defn>Natural 1</defn> is <emph>Cursed</emph> and Damned. The
+	player suffers <bold>Ill Omens</bold> bane.
+      </li>
+    </olist>
+
+    <p>
+      If the Fate Die and Skill Die have the same Face Value, <ie/>
+      Doubles, then the <defn>Stars Align</defn> which trigger further
+      actions.
+    </p>
+
+    <p>
+      The various fate results can trigger OOTAs for you, your allies
+      and the NPCs.  In addition, the fate values affect the Pool Point cost
+      of checks as follows:
+    </p>
+    
+    <subsubsection>
+      <subsubsectiontitle>Blessings of Mithras</subsubsectiontitle>
+      <p>
+	When the player rolls a Natural 20 on their Fate die they perform
+	the Blessings of Mithras the player may choose one of the following
+	boons:
+      </p>
+
+      <descriptions>
+	<term>Effortless</term>
+	<description>
+	  Halve the pool cost of the check or reduce the cost to zero if
+	  the cost is one.
+	</description>
+	
+	<term>Masterful</term>
+	<description>
+	  Shift the Skill result up twice.
+	</description>
+	
+	<term>Fast</term>
+	<description>
+	  If this action is performed during a characters
+	  turn in combat then this check is free and requires no action
+	  points. If this action is a combat OOTA then it is free.
+	</description>
+      </descriptions>
+    </subsubsection>
+
+    <subsubsection>
+      <subsubsectiontitle>Ill Omens</subsubsectiontitle>
+      <p>
+	When Ill Omens occur the player <emph>must</emph> apply the first of
+	the effects, that is applicable to the check, in the following list:
+      </p>
+      <descriptions>
+	<term>Careless</term>
+	<description>
+	  If the check has an associated pool then increase the Pool
+	  Cost by one.  If the check does not have an associated pool then
+	  this effect does not apply.
+	</description>
+
+	<term>Slow</term>
+	<description>
+	  If the player has remaining action points after paying for this
+	  check then those points are lost.  If the character does not have
+	  any remaining APs after this action then this effect does not
+	  apply.
+        </description>
+
+<term>Inaccurate</term>
+<description>
+  Shift the Skill Die result down twice.
+</description>
+</descriptions>
+</subsubsection>
+
+<subsubsection>
+<subsubsectiontitle>The Stars Align</subsubsectiontitle>
+<indexentry>
+<entry>Doubles</entry>
+<see>Stars Align</see>
+</indexentry>
+<indexentry>
+<entry>Stars Align</entry>
+<indexdefn>
+  Rolling doubles on a check adds the Stars-Align tag to the
+  result.
+</indexdefn>
+</indexentry>
+<p>
+  Doubles gain the Stars Align tag which may trigger Out-of-Turn
+  Actions.
+</p>
+</subsubsection>
+
+<subsection>
+  <subsectiontitle>
+    Pay the Pool Cost
+</subsectiontitle>
+
+<p>
+  <indexentry>
+<entry>Point Pool Cost</entry>
+</indexentry>
+<indexentry>
+<entry>Check</entry>
+<subentry>Point Pool Cost</subentry>
+</indexentry>
+<indexentry>
+<entry>Check</entry>
+<subentry>Cost</subentry>
+</indexentry>
+<indexentry>
+<entry>Cost</entry>
+</indexentry>
+Some checks have a cost in points that the character must pay from
+one of their point pools in order to make a check, <eg/> casting
+spells usually costs points from the Magic Pool.  You can tell if an
+action has an associated Point Pool by checking whether it has a
+Pool Cost or if it uses one the Point Pool keywords, <eg/> Magic
+Pool. Checks made with those abilities may deduct the cost from the
+point pool, see <tableref label="table:point-pool-checks"/>.
+</p>
+
+<subsubsection>
+<subsubsectiontitle>Exhaustion</subsubsectiontitle>
+
+{% include "docs/tables/exhaustion_table.xml" %}
+
+<p>
+  If the point pool would be reduced <emph>below zero</emph>, then
+  instead:
+  <olist>
+<li>The pool value becomes zero, and</li>
+<li>Shift the skill die down twice, and</li>
+<li>Roll on the exhaustion table for that pool.</li>
+</olist>
+</p>
+
+<p>
+  If the pool cost for a check is zero then performing the action
+  usually has a negligable effect on the associated point pool.
+  However the cost can still be affected by Fate and perhaps other
+  factors.
+</p>
+</subsubsection>
+</subsection>
+</section>
+
+<section>
+<sectiontitle>Trigger Interrupts</sectiontitle>
+<p>
+  Any interupts that are triggered happen now.
+  Interrupts are OOTAs that occur before the triggering action.
+  Interrupts count as OOTAs towards the action economy and in order to
+  perform one a character has to spend their unused OOTA for the turn.
+</p>
+
+<p>
+  If an interrupt occurs and after the interrupt occurs the
+  preconditions for the initial check are no longer met then the initial
+  check automatically fails.
+</p>
+</section>
+
+<section>
+<sectiontitle>Resolve Check</sectiontitle>
+
+<p>
+  Once the Skill values have been determined for the Actor and the
+  Reactor we can compare them to find the outcome of the check as
+  follows:
+</p>
+
+<table>
+<tablespec><fixed>0.4</fixed><fixed>0.4</fixed></tablespec>
+<tabletitle>Check Resolution</tabletitle>
+<tablelabel>table:phb-check-resolution-table</tablelabel>
+
+<tableheaderrow>
+<th>PC SV - Antag SV</th>
+<th>Standard Results</th>
+</tableheaderrow>
+
+<hline/>
+<tablerow>
+<td align="c"><leqsymbol/>-10</td>
+<td>Critical Fail</td>
+</tablerow>
+
+<tablerow>
+<td align="c"><leqsymbol/>-5</td>
+<td>Grim Fail</td>
+</tablerow>
+
+<tablerow>
+<td align="c"><ltsymbol/>0</td>
+<td>Fail</td>
+</tablerow>
+
+<tablerow>
+<td align="c"><geqsymbol/>0</td>
+<td>Success</td>
+</tablerow>
+
+<tablerow>
+<td align="c"><geqsymbol/>5</td>
+<td>Righteous Success</td>
+</tablerow>
+
+<tablerow>
+<td align="c"><geqsymbol/>10</td>
+<td>Critical Success</td>
+</tablerow>
+
+<hline/>
+<tablerow>
+  <td width="2" align="c"><bold>Edge Case 1: Both parties Rolling for
+  Skill</bold></td>
+</tablerow>
+
+<tablerow>
+<td align="c">Both roll 1s</td>
+<td>Success</td>
+</tablerow>
+
+<tablerow>
+<td align="c">Both roll 20s</td>
+<td>Success</td>
+</tablerow>
+
+<hline/>
+<tablerow>
+<td width="2" align="c"><bold>Edge Case 2: PVP Checks</bold></td>
+</tablerow>
+
+<tablerow>
+  <td width="2">Using the Standard Results above: PC Reactor takes the role of
+  PC, PC Actor is Antag.</td>
+</tablerow>
+</table>	
+
+<p>
+  <nb/> When interpreting these results a Critical Success is also
+  considered to be a Righteous Success, a Righteous Success is also a Success,
+  and similarly a Critical Failure is also a Grim Fail and so on.
+</p>
+
+
+<p>
+  See <tableref label="table:check-dcs"/> which shows probabilities of
+  success for checks.
+</p>
+
+<subsection>
+  <subsectiontitle>Natural 1s and 20s</subsectiontitle>
+
+  <p>
+    There is a rare edge case where, if both parties in the check roll dice,
+    and then they both roll natural 1s or if they both roll natural 20s. In
+    this case 
+  </p>
+
+  <playexample>
+    <p>
+      XX
+    </p>
+  </playexample> 
+</subsection>
+
+
+<subsection>
+  <subsectiontitle>Borrowing Skill Results</subsectiontitle>
+
+  <p>
+    In the same way that Antagonists borrow Fate from the players, they also
+    borrow the skill result from the check.  
+  </p>
+
+  <playexample>
+    <p>
+      Dourli attempts to climb a wall with a static skill value of 13.
+    </p>
+  </playexample> 
+</subsection>
+
+
+<subsection>
+  <subsectiontitle>PVP Checks</subsectiontitle>
+
+  <p>
+    When evaluating the, hopefully quite rare, instance of Player vs Player
+    checks we have to deal with two edge cases: Result Boundaries and Critical
+    Rolls.
+  </p>
+
+  <p>
+    We evaluate PVP checks using the standard table
+    <tableref label="table:phb-check-resolution-table"/> above.    
+    However the PC Actor takes on the role of the antagonist in that table.
+  </p>
+  
+  <p>
+    We have a problem in PVP checks when the results fall on the  boundaries, <eg/> what is the result if both PCs in a PVP
+    check have a Skill Value of 0?  What if they both have a Skill Value of -5?
+  </p>
+  
+  <playexample>
+    <p>
+      Roslyn asks Dourli whether he still had the gems he had lifted from
+      a local notable named Emrich.  Dourli says "No" attempting to Deceive
+      Rosyln.  This is a PVP check.  Dourli is the Actor.  Both PCs end up
+      with the same Skill Value, so the difference between the two is zero.
+      From the table we see that a zero is a Success for Roslyn, the Reactor in
+      this check, and therefore a Fail for Dourli.	
+    </p>
+  </playexample>
+
+  <p>
+    When evaluating for Player vs Player checks use table
+    <tableref label="table:phb-check-resolution-table" on-page="false"/> above.
+    However the PC Actor takes on the role of the antagonist in that table.
+  </p>
+  
+  
+</subsection>
+
+
+{% include "docs/tables/confirm_critical_success_table.xml" %}
+{% include "docs/tables/confirm_critical_fail_table.xml" %}
+</section>
+
+
+<section>
+<sectiontitle>Trigger Responses</sectiontitle>
+<p>
+  Responses happen now in reverse initiative order.
+</p>
+</section>
+
+
+<section>
+<sectiontitle>Other Complications</sectiontitle>
+
+<p>
+  This section contains some extra details about using checks.
+</p>
+
+<subsection>
+<subsectiontitle>When to Check?</subsectiontitle>
+<p>
+  The GM should usually only require players to check when: <emph>the
+  outcome is uncertain and failure would make the game more interesting
+  </emph>.
+</p>
+
+<p>
+  Many tasks are easy enough that they can be completed automatically. In
+  this case no check is required. Harder variants of the task might
+  require a check though.  For example, opening a door might be
+  considered an easy task that automatically succeeds, while opening a
+  door quietly might require a check.  Similarly breaking down a door
+  might require a check to perform quickly but can be done automatically
+  given enough time, and that one of the characters carries an axe.
+</p>
+</subsection>
+
+
+<subsection>
+<subsectiontitle>How Often Can You Check?</subsectiontitle>
+<indexentry>
+<entry>Abilities</entry>
+<subentry>Check Once</subentry>
+</indexentry>
+
+<p>
+  A problem arises that players will at times want to repeat checks until
+  they succeed.  We outline some strategies to deal with his.
+</p>
+
+<p>
+  In the usual course of play each character can perform a check once -
+  twice if a reroll is used.  For example,  Dourli might try opening a
+  box quickly by picking locks.  If Dourli fails he might check to open
+  the box with his axe but he can't try picking the lock again.
+</p>
+
+<subsubsection>
+<subsubsectiontitle>Let them Succeed</subsubsectiontitle>
+<p>
+  If the character will definitely succeed after making repeated
+  attempts at a check and there is no other cost then just allow them to
+  succeed, <eg/> a character who can pick locks tries to open a cheap
+  locked box that they have brought back to their lodgings. In this case
+  the GM should perhaps not require a check at all.  We call this
+  approach <defn>Taking Time</defn> and if the GM thinks it is
+  reasonable they should allow characters to announce they are Taking
+  Time to perform a task.
+</p>
+
+<indexentry>
+<entry>Abilities</entry>
+<subentry>Taking Time</subentry>
+</indexentry>
+<indexentry>
+<entry>Taking Time</entry>
+</indexentry>
+</subsubsection>
+
+<subsubsection>
+<subsubsectiontitle>Failure is Success with a Cost</subsubsectiontitle>
+<p>
+  If the player fails, they still succeed at the action, but with a
+  <emph>"but"</emph>, <eg/> Yes, you find the secret door, but the noise
+  attracts a guard, or Yes, you find the secret door, but it takes you so
+  much time that the person you are chasing has fled, or Yes, you open the
+  locked box but you break the lock, or you break your pick.
+</p>
+</subsubsection>
+
+<subsubsection>
+<subsubsectiontitle>Attempts have a Cost</subsubsectiontitle>
+<p>
+  Each attempt has a cost associated with it. That cost might be time,
+  money or increasing danger (<eg/> roll for random encounters at
+  different times).
+</p>
+</subsubsection>
+</subsection>
+
+
+<subsection>
+<subsectiontitle>Who Checks?</subsectiontitle>
+
+<indexentry>
+<entry>Group Checks</entry>
+</indexentry>
+<indexentry>
+<entry>Checks</entry>
+<subentry>Group</subentry>
+</indexentry>
+<p>
+  The most common form of check are <defn>Individual Checks</defn>, where
+  the character performing the action makes the check. However, sometimes
+  checks have to be made by a group of characters. In Malleus Deum there
+  are two ways of doing this: Everyone Checks and Delegate Checks.
+</p>
+
+<subsubsection>
+<subsubsectiontitle>Everyone Checks</subsubsectiontitle>
+<indexentry>
+<entry>Everyone Checks</entry>
+</indexentry>
+<indexentry>
+<entry>Checks</entry>
+<subentry>Everyone Checks</subentry>
+</indexentry>
+<p>
+  Sometimes everyone in a group has to make a check. For example, if
+  the party is attacked using poisonous gas everyone in the group has
+  to save individually. When <defn>Everyone Checks</defn>, each group
+  member makes a separate check independent of the rest of the group and
+  each individual suffers any repercussions separately if they fail.
+</p>
+</subsubsection>
+
+<subsubsection>
+<subsubsectiontitle>Delegate Checks</subsubsectiontitle>
+<indexentry>
+<entry>Delegate Checks</entry>
+</indexentry>
+<indexentry>
+<entry>Checks</entry>
+<subentry>Delegate Checks</subentry>
+</indexentry>
+<p>
+  In a delegate check one player character is <bold>Delegated</bold> by
+  the GM to make a check on behalf of the whole group. If that check
+  fails then the whole group fails the check. The GM may choose the
+  delegate at random or at their own discretion. Some examples of
+  checks that may be delegated are Initiative, Stealth, Perception, Ambush
+  and Surprise rolls. But more on these later.
+</p>
+</subsubsection>
+</subsection>
+
+
+<subsection>
+<subsectiontitle>Rerolls</subsectiontitle>
+<indexentry>
+<entry>Abilities</entry>
+<subentry>Rerolls</subentry>
+</indexentry>
+<indexentry>
+<entry>Rerolls</entry>
+</indexentry>
+<p>
+  Sometimes the players will get a chance to Reroll a Check. There are a
+  number of rules about rerolling:
+  <olist>
+<li>No check can be rerolled more than once for any reason</li>
+<li>When rerolling all dice used to determine the initial result
+must be rerolled.</li>
+<li>If the player rerolls the check they must take the result from
+the second roll.</li>
+<li>Assume that all checks are able to be rerolled unless the
+ability states otherwise. Luck based checks cannot be rerolled.</li>
+</olist>
+</p>
+</subsection>
+
+
+<subsection>
+<subsectiontitle>Rounding</subsectiontitle>
+<indexentry>
+<entry>Rounding</entry>
+<indexdefn>
+  When taking fractional values always round up.
+</indexdefn>
+</indexentry>
+<indexentry>
+<entry>Check</entry>
+<subentry>Rounding</subentry>
+<indexdefn>
+  When taking fractional values always round up.
+</indexdefn>
+</indexentry>
+<p>
+  Some rules require numeric values to be halved, quartered and so on.
+  When rounding the rule is <emph>always round up</emph>, <eg/> half of 7
+  is 4, and a quarter of 7 is 2.
+</p>
+</subsection>
+
+<subsection>
+  <subsectiontitle>
+    Advantage and Disadvantage
+</subsectiontitle>
+<p>
+<indexentry><entry>Advantage</entry></indexentry>
+<indexentry><entry>Disadvantage</entry></indexentry>
+Some checks allow players to make checks at Advantage or at
+Disadvantage. In these cases an additional skill die is rolled (only
+one Fate die is ever rolled).
+When making a check with <defn>Advantage</defn> the player chooses the
+higher face value on the two skill dice as the Initial Skill Value.
+When making a check with <defn>Disadvantage</defn> the player chooses
+the lowest face value on the two skill dice as the Initial Skill Value.
+</p>
+</subsection>
+
+
+<subsection>
+  <subsectiontitle>
+    Optional Rules<optionalsymbol/>
+</subsectiontitle>
+<indexentry>
+<entry>Optional Rules<optionalsymbol/></entry>
+</indexentry>
+<indexentry>
+<entry><optionalsymbol/> Optional Rules</entry>
+</indexentry>
+<p>
+  In Malleus Deum all rules are optional, but some rules are more optional
+  than others. Rules denoted by the dagger symbol <optionalsymbol/> are
+  optional and may or may not be used as the GM prefers, trading off
+  complexity and complications for speed of game play.
+</p>
+</subsection>
+</section>
+</chapter>
+

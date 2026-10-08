@@ -59,14 +59,20 @@ class Constants:
 
             # Ids are for code (lower case with underscores)
             raw_id = child.attrib.get("name", None)
-            sanitized_id = _sanitize_name(prefix, raw_id, "_ID")
-            self._constants[sanitized_id] = raw_id
-
             # Values are human readable (capitalized with hyphens)
             name = child.attrib.get("fixed", None)
-            sanitized_name = _sanitize_name(prefix, raw_id, "_NAME")
-            self._constants[sanitized_name] = name
+
+            # Save the value
+            self.set_constant(prefix, raw_id, name)
             
+            
+    def set_constant(self, prefix, raw_id, name):
+        sanitized_id = _sanitize_name(prefix, raw_id, "_ID")
+        self._constants[sanitized_id] = raw_id
+        sanitized_name = _sanitize_name(prefix, raw_id, "_NAME")
+        self._constants[sanitized_name] = name
+        return
+
             
     def parse_schema(self):
         """
@@ -83,6 +89,13 @@ class Constants:
                self._parse_keywords("ABILITY_GROUP_", element) 
             elif name == "abilityKeywordEnum":
                 self._parse_keywords("ABILITY_KEYWORD_", element)
+            elif name == "abilityCostType":
+                self._parse_keywords("ABILITY_COST_", element)
+            elif name == "checkVerbKeywordEnum":
+                self._parse_keywords("CHECK_VERB_", element)
+            elif name == "critClassEnum":
+                self._parse_keywords("CHECK_CRITS_", element)
+
         return
 
     def __getattr__(self, name):

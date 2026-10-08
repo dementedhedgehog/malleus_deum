@@ -13,30 +13,30 @@
     <abilitytitle>Alchemy</abilitytitle>
     <abilityid>alchemy</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv/></opposing-action>       
+      <reaction><default-lore-sv/></reaction>       
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>     
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action> 
+    </check> 
 
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>       
+      <reaction><default-craft-sv/></reaction>       
       <critclass><craft/></critclass>
       <cost><default-craft-cost/></cost>
       <requires><alchemical-lab/></requires>
       <range><self/></range>      
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>
-    </action> 
+    </check> 
     <prereqabilityref id="natural_history" rank="1"/>
     <spline><p x="0" y="30"/></spline>    
     <abilitydescription>
@@ -56,7 +56,7 @@
       <p>
 	The ingredient used to manufacture these items may be expensive.
 	Furthermore they may have a limited shelf life as moisture in the air
-	and internal alchmical reactions can reduce the efficacy of these items
+	and internal alchmical responses can reduce the efficacy of these items
 	over time. For these reasons alchemical	creations are often created
 	before embarking on an endeavour and any unused items are discarded
 	afterwards.
@@ -150,31 +150,31 @@
     <abilitytitle>Artillery</abilitytitle>
     <abilityid>artillery</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       <name>Missile Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>
       <cost><ap4/></cost>
       <range><ranged-extremely-long/></range>
-      <keywords><black-powder/><check/></keywords>
+      <keywords><black-powder/><action/></keywords>
       <any-success>Attack using artillery pieces.</any-success>      
       <critsuccess>Deal 3×Damage</critsuccess>
       <righteoussuccess>Deal 2×Damage</righteoussuccess>
       <success>Deal Damage</success>
       <fail>No Effect</fail>
       <critfail>Roll on the ranged consequence table</critfail>
-    </action>
-    <action>
+    </check>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><ap4/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="alchemy" rank="1"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -193,17 +193,17 @@
     <slug>Our world, like a charnel-house, lies strewn with the detritus of
     dead epochs.</slug>
     <abilityranks from="1" to="5"/>
-    <action> 
+    <check> 
       <name>Check</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>       
+      <reaction><default-lore-sv-hard/></reaction>       
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="history" rank="1"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -221,17 +221,17 @@
     <abilitytitle>Book Keeping</abilitytitle>
     <abilityid>book_keeping</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="mathematics" rank="1"/>
     <spline><p x="-20" y="30"/></spline>
     <abilitydescription>
@@ -251,13 +251,13 @@
     <abilitytitle>Book Learning</abilitytitle>
     <abilityid>book_learning</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <action>
+    <check>
       <name>Library Use Check</name>  
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <precondition>
 	Access to a library containing pertinent information.
       </precondition>
@@ -270,7 +270,7 @@
       <success>
 	+3 to the skill result for Knowledge Checks made in the library.
       </success>
-    </action>
+    </check>
     <spline></spline>    
     <abilitydescription>
       <p>
@@ -285,7 +285,7 @@
     <abilitytitle>Magnum Opus</abilitytitle>
     <abilityid>grand_discovery</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Grand Discovery</name>
       <critclass><fixme/></critclass>
       <cost><default-skill-cost/></cost>      
@@ -297,7 +297,7 @@
 	check.
       </precondition>
       <effect>Roll on the table below</effect>
-    </action>
+    </check>
     <prereqabilityref id="alchemy" rank="5"/>
     <spline><p x="40" y="60"/></spline>
     <abilitydescription>
@@ -401,17 +401,17 @@
     <abilitytitle>History</abilitytitle>
     <abilityid>history</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="book_learning" rank="2"/>
     <spline><p x="0" y="60"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -427,17 +427,17 @@
     <abilitytitle>Law</abilitytitle>
     <abilityid>law</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="book_learning" rank="2"/>
     <spline><p x="60" y="30"/></spline>
     <specializations>
@@ -476,17 +476,17 @@
     <abilitytitle>Mathematics</abilitytitle>
     <abilityid>mathematics</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="book_learning" rank="1"/>
     <spline><p x="0" y="150"/><p x="-40" y="30"/></spline>
     <abilitydescription>
@@ -504,17 +504,17 @@
     <abilitytitle>Natural History</abilitytitle>
     <abilityid>natural_history</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="book_learning" rank="2"/>
     <spline><p x="0" y="200"/><p x="50" y="30"/></spline>
     <abilitydescription>
@@ -540,17 +540,17 @@
     <abilitytitle>Occult</abilitytitle>
     <abilityid>occult</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="book_learning" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -581,17 +581,17 @@
     <abilitytitle>Physician</abilitytitle>
     <abilityid>physician</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>    
+    </check>    
     <prereqabilityref id="natural_history" rank="2"/>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -610,17 +610,17 @@
     <abilitytitle>Physics</abilitytitle>
     <abilityid>physics</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="mathematics" rank="2"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -639,17 +639,17 @@
     <abilitytitle>Politics</abilitytitle>
     <abilityid>politics</abilityid>  
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="book_learning" rank="1"/>
     <spline><p x="0" y="50"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -682,17 +682,17 @@
     <abilitytitle>Potion Making</abilitytitle>
     <abilityid>potions</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="alchemy" rank="4"/>
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -708,42 +708,42 @@
     <abilitytitle>Explosives</abilitytitle>
     <abilityid>explosives</abilityid>
     <abilityranks untrained="-6" from="1" to="5"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Smoke Bomb Supply</name>      
-      <opposing-action><default-lore-sv-hard/></opposing-action>            
+      <reaction><default-lore-sv-hard/></reaction>            
       <critclass><supply/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <any-success>
 	Defensive checks against missile attacks made at +2×Rank
       </any-success>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Petard Supply</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>            
+      <reaction><default-lore-sv-hard/></reaction>            
       <critclass><supply/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <precondition>Rank 3 in Explosives</precondition>      
       <any-success>
 	Defensive checks against missile attacks made at +2×Rank
       </any-success>
-    </action>
+    </check>
     
     <prereqabilityref id="alchemy" rank="4"/>
     <spline>

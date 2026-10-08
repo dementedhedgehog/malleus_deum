@@ -35,17 +35,17 @@
     <abilitytitle>Bind</abilitytitle>
     <abilityid>bind</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><will-save/></opposing-action>     
+      <reaction><will-save/></reaction>     
       <critclass><cast/></critclass>
       <cost><ap1/></cost> 
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
       <critfail>Roll on the Miscast Table</critfail>
-    </action>
+    </check>
     <prereqabilityref id="evocation" rank="1"/>
     <spline><p x="0" y="10"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -63,17 +63,17 @@
     <abilitytitle>Evocation Lore</abilitytitle>
     <abilityid>evocation</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name> 
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-recall-knowledge-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -93,16 +93,16 @@
     <abilitytitle>Greater Portal</abilitytitle>
     <abilityid>greater_portal</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv23/></opposing-action>
+      <reaction><ssv23/></reaction>
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>
+    </check>
     <prereqabilityref id="portal" rank="2"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -119,16 +119,16 @@
     <abilitytitle>Lesser Portal</abilitytitle>
     <abilityid>lesser_portal</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv19/></opposing-action>      
+      <reaction><ssv19/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap3/></cost>
       <poolcost>2</poolcost>
       <range><na/></range>
-      <keywords><ritual/><magicpool/><check/></keywords>
+      <keywords><ritual/><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>    
+    </check>    
     <prereqabilityref id="evocation" rank="1"/>    
     <spline><p x="0" y="120"/></spline>
     <abilitydescription>
@@ -160,16 +160,16 @@
       Because he knows a frightful fiend Doth close behind him tread.
     </slug>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>
+    </check>
     <prereqabilityref id="evocation" rank="1"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>      
@@ -238,16 +238,16 @@
     <abilitytitle>Phantasmal Vulture</abilitytitle>
     <abilityid>phantasmal_vulture</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv9/></opposing-action>
+      <reaction><ssv9/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range> 
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>
+    </check>
     <prereqabilityref id="phantasmal_leech" rank="2"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -302,16 +302,16 @@
     <abilitytitle>Portal</abilitytitle>
     <abilityid>portal</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv23/></opposing-action>      
+      <reaction><ssv23/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>
+    </check>
     <prereqabilityref id="lesser_portal" rank="2"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -328,16 +328,16 @@
     <abilitytitle>Shade</abilitytitle>
     <abilityid>shade</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv17/></opposing-action>
+      <reaction><ssv17/></reaction>
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>
+    </check>
     <prereqabilityref id="lesser_portal" rank="1"/>
     <spline><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -358,16 +358,16 @@
 	Do not call upon that which you cannot put down.
     </slug>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv9/></opposing-action>
+      <reaction><ssv9/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost> 
       <poolcost>3</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>
+    </check>
     <prereqabilityref id="evocation" rank="1"/>
     <spline><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -413,16 +413,16 @@
     <abilitytitle>Wyld Portal</abilitytitle>
     <abilityid>wyld_portal</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv9/></opposing-action>
+      <reaction><ssv9/></reaction>
       <critclass><cast/></critclass>
       <cost><ap4/></cost>
       <poolcost>3</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Cast successfully</any-success>
-    </action>
+    </check>
     <prereqabilityref id="greater_portal" rank="1"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>

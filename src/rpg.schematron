@@ -13,11 +13,11 @@ A⟹B we have to test ¬A ∨ B instead (frickin idiots).
 
 <pattern id="test-actions">
   <rule context="action/keywords">
-    <assert test="count(check | save | auxiliary) = 1">
+    <assert test="count(action | reaction | auxiliary) = 1">
       Error in ability: <value-of select="../abilitytitle"/>
 
       For every action the list of keywords must contain one, and only one, of
-      the following three keywords: check, save and auxiliary.      
+      the following three keywords: action, reaction and auxiliary.      
     </assert>
  </rule>
   
@@ -50,16 +50,16 @@ A⟹B we have to test ¬A ∨ B instead (frickin idiots).
       Antag check actions must NOT have a critclass.
     </assert>
 
-    <assert test="opposing-action">
+    <assert test="reaction">
       Error in ability: <value-of select="../abilitytitle"/>
 
-      Check actions must have an opposing-action
+      Actions must have an reaction
     </assert>
 
-    <assert test="keywords/check">
+    <assert test="keywords/action">
       Error in ability: <value-of select="../abilitytitle"/>
 
-      Check actions must have check ∈ keywords
+      Actions must have action ∈ keywords
     </assert>    
   </rule>
 </pattern>

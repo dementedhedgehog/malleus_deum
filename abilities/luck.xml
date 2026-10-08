@@ -17,14 +17,14 @@
     <abilitytitle>Brilliant Planner</abilitytitle>
     <abilityid>brilliant_planner</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>              
+      <reaction><ssv11/></reaction>              
       <critclass><trial/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <critsuccess>
 	Not only has the character thought to bring the piece of equipment they
 	need, they've also brought any other items that can reasonably be
@@ -36,7 +36,7 @@
 	that could reasonably be foreseen to be useful. They can declare what
 	this item is anytime later during the current game session.
       </righteoussuccess>
-    </action>
+    </check>
     <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="60" y="60"/></spline> 
     <abilitydescription>
@@ -68,19 +68,19 @@
     <abilitytitle>Lucky</abilitytitle>
     <abilityid>lucky</abilityid>    
     <abilityranks untrained="0" from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>        
+      <reaction><ssv11/></reaction>        
       <critclass><trial/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <precondition>Any time a blessed result is rolled.</precondition>
       <critsuccess>+3 Luck</critsuccess>
       <righteoussuccess>+2 Luck</righteoussuccess>
       <success>+1 Luck</success>      
-    </action>
+    </check>
     <spline><p x="0" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -99,16 +99,16 @@
     <abilitytitle>I Think I'm OK!</abilitytitle>
     <abilityid>itiok</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <any-success>FIXME</any-success>
-    </action>
+    </check>
     <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="0" y="40"/></spline> 
     <abilitydescription>
@@ -124,16 +124,16 @@
     <abilitytitle>Misfortune</abilitytitle>
     <abilityid>misfortune</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
       <cost><ap3/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>            
@@ -173,16 +173,16 @@
     <abilitytitle>Nick of Time</abilitytitle>
     <abilityid>nick_of_time</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><trial/></critclass>
-      <cost><interrupt-or-reaction-cost/></cost>
+      <cost><interrupt-or-response-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <prereqabilityref id="lucky" rank="1"/>
     <spline><p x="-70" y="60"/></spline> 
     <abilitydescription>
@@ -191,7 +191,7 @@
 	the nick of time</emph>. After an NPC, monster of character performs an
 	action the player can try to perform any action in response. The GM
 	determines whether the ability can be performed as an interrupt or
-	reaction depending on context.
+	response depending on context.
       </p>
 
       <p>
@@ -205,19 +205,19 @@
     <abilitytitle>Not As Bad As It Looks</abilitytitle>
     <abilityid>nabail</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><trial/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><luckpool/><check/></keywords>
+      <keywords><luckpool/><action/></keywords>
       <critsuccess>Heal 3d6+Rank hit points</critsuccess>	
       <righteoussuccess>Heal 2d6+Rank hit points</righteoussuccess>	
       <success>Heal d6+Rank hit points</success>	
       <critfail>Lose 3 hit points</critfail>
-    </action>
+    </check>
     <prereqabilityref id="itiok" rank="1"/>
     <spline><p x="0" y="35"/></spline> 
     <abilitydescription>
@@ -234,7 +234,7 @@
     <abilitytitle>Reroll</abilitytitle>
     <abilityid>reroll</abilityid>
     <abilityranks untrained="0" from="1" to="3"/>
-    <action>
+    <check>
       <name>Talent</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -243,7 +243,7 @@
       <keywords><luckpool/><auxiliary/></keywords>
       <precondition>This character rolled dice.</precondition>
       <effect>Character rerolls those dice.</effect>
-    </action>    
+    </check>    
     <abilitydescription>
       <p>
 	The character gets a lucky break and gets to reroll.  A roll may only

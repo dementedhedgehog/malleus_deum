@@ -1,0 +1,415 @@
+
+{% from "docs/macro_ability.xml" import format_ability with context %}
+
+<chapter>
+  <chaptertitle>Aspects<label>ch:aspects</label></chaptertitle>
+  <slug>Some rise by sin, and some by virtue fall.</slug>
+
+  <p>
+    Malleus Deum uses Aspects as a game mechanic to model inner conflict for
+    PCs. Aspects represent the conflict between man and himself.
+  </p>
+
+
+  <section>
+    <sectiontitle>Aspects are Abilities</sectiontitle>
+    
+    <p>      
+      Aspects are antagonistic abilities attached to a PC used to describe a
+      range of different features the character has that are not covered by
+      other character attributes. The GM may, at any time that context dictates,
+      compell a PC to save against one of their aspects or have their
+      characters actions be directed by that aspect.
+    </p>
+    
+    <playexample>
+      <p>
+	Dourli has an aspect <emph>Terrible Braggart</emph>.  He's playing cards
+	at the local inn, trying to gather some information from the regulars,
+	when the topic of a recent jewel heist from a local merchant is raised.
+	The GM uses Douli's aspect to try to compel him to claim responsibility
+	for the heist (whether he is responsible or not). Dourli must make an
+	Aspect Save or be compelled by Terrible Braggert.
+      </p>
+      
+      <p>
+	If Dourli fails the save then he is compelled. <emph>It is up to the
+	player just how his PC complies with a compelled aspect</emph>, he might
+	disparage the job, saying that <quotemarks>it sounds like child's play,
+	a three legged scrofulous dog could have pulled it off. I'd done harder
+	jobs before I grew a beard</quotemarks>, or he might take credit for it
+	and say, <quotemarks>it's funny you should bring that up because you are
+	looking at the dwarf responsible for said heist, and, if I do say so
+	myself, only a plunderer of the highest calibre could have pulled it off
+	so professionally.</quotemarks>.  Or the player could frame someone
+	else <quotemarks>It was old Jon Longshanks that did it.  He's the only
+	one round here that's got the know-how to do a job like this, and it's
+	got his mark on it if I'm not mistaken, and I never am.  I should know
+	there ain't a thing about lifting that I didn't teach him</quotemarks>.
+      </p>
+    </playexample>
+    
+    {% for ag in ability_groups
+    if ag.get_family_id() == db.ABILITY_FAMILY_ASPECT_ID %}
+    {{ ag.get_description() }}
+    {% for ability in ag.get_abilities()%}
+    {{ format_ability(ability) }}
+    {% endfor %}
+    {% endfor %}
+
+    <p>
+      Aspects are characterized by a descriptive phrase, <eg/> Douli has an
+      aspect <quotemarks>Terrible Braggart</quotemarks>, and a rank that
+      represents how much control the aspect has over the PC. This information
+      should be recorded on the player character sheets. 
+    </p>
+
+    <p>
+      In later chapters, we also use aspects to model various other afflictions,
+      like specific madnesses. We denote this as follows, <eg/>
+      <abilityref id="aspect" phrase="Claustrophobia" rank="3"/>.
+    </p>
+  </section>
+
+
+
+  <section>
+    <sectiontitle>Compelling and Resisting Aspects</sectiontitle>
+
+    <p>
+      <indexentry><entry>Compelling an Aspect</entry></indexentry>
+      <indexentry><entry>Aspect</entry><subentry>Compel</subentry></indexentry>
+      Aspects are used to coerce a PCs behaviour. That coercion is not
+      automatically successful.  The process of compelling aspects is as
+      follows:
+    </p>
+
+
+    <descriptions>
+      <term>Someone proposes that a PC should be coerced</term>
+      <description>
+	First, someone suggests that an aspect that they believe could apply in
+	the current game context, <eg/> one of Dourli's fellow players suggests
+	that Dourli's <quotemarks>Terrible Braggart</quotemarks> aspect might
+	cause him some problems while he's playing cards.
+      </description>
+      
+      <term>Decide whether the aspect should be coerced</term>
+      <description>
+	<p>
+	  Next, the GM and the player who runs the PC should negotiate, the GM
+	  confirms that the attempt to compel is reasonable and would be
+	  narratively interesting. The player confirms that the attempt to
+	  compel is acceptable to them, and to their vision of their character.
+	  Players have a veto in this matter.
+	</p>
+      </description>
+      
+      <term>Player accepts or resists coercion</term>
+      <description>
+	If the PC accepts the coercion then they are automatically Compelled. If
+	the PC resists the coercion they make an Aspect Save if they fail that
+	save they are Compelled. If they succeed then the Aspect is not
+	compelled and the PC's behaviour is not bound by the aspect at this
+	time.
+      </description>
+      
+      <term>If the PC is Compelled</term>
+      <description>
+	then their character should behave in line with the aspect that was
+	compelled, <ie/> their actions should be congruous with that aspect. It
+	is up to the player to decide what that behaviour will be.
+      </description>
+    </descriptions>
+
+
+
+    <figure fullwidth="true">
+      <img id="compelling_aspects" textwidth="0.95"/>
+    </figure>
+    
+    <!--
+	<p>
+	When the check is successful the Character who makes the successful
+	check promotes this aspect, and  whoever compelled the aspect may recharge a
+	die into their Luck or Mettle Pool.
+	</p>
+    -->
+
+    <playexample>
+      <p>
+	Dourli hears at the table that Emrich, of the Red Knives, has offered
+	good gold for information about one of Dourli's colleagues. Another
+	player might suggest that Dourli's aspect <quotemarks>Gold is my
+	Lodestone</quotemarks> should apply here.  It is decided that the
+	coercion is reasonable, and Dourli decides whether he will accept or
+	resist the compel.
+      </p>
+
+      <p>
+	He decides to resist. So he has to make an Aspect Save and fails. Now
+	Dourli has decide what to do in accordance with that aspect.
+      </p>
+
+      <p>
+	Dourli now decides that he cannot just hand over the information about
+	his associate in order to garner such a pittance, like a despicable cad,
+	and instead resolves to try and sell Emrich bogus information. This
+	action satisfies the compel as, if he succeeds, he still gets his gold.
+	Whether the attempt to deceive Emrich is successful or not is resolved
+	separately.
+      </p>
+    </playexample>
+  </section>
+
+  
+  <section>
+    <sectiontitle>Types of Aspects</sectiontitle>
+    <p>
+      Aspect can be used to model personality traits, their system of beliefs,
+      or their philosophies, social obligations, oaths and any other qualities
+      not already described by the existing attributes. Such as:
+    </p>
+    
+    <descriptions>
+      <term>Personality Aspects</term>
+      <description>
+	<p>
+	  describe some part of a characters personality or demeanour, their
+	  flaws and foibles, their short-comings, their weaknesses and sometimes
+	  their strengths, <eg/> Mama's Boy, As Exciting as Cold Oatmeal,
+	  Plagued by Self-Doubt.
+	</p>
+      </description>
+
+      <term>Philosophy Aspects</term>
+      <description>
+	<p>
+	  encode a character's beliefs and their moral compass: Defender of the
+	  Downtrodden, Man of the Book, Death before Dishonour.
+	</p>
+      </description>
+
+      <term>Relationship Aspects</term>
+      <description>
+	<p>
+	  can be used to describe a close bond between the character and an
+	  individual, a magic item, their god, a small group or even a large
+	  population, <eg/> reknown. In the last case it comes in the form of
+	  fame, or infamy, with aspects like Hero of Southmarch,  Emissary
+	  of the High Elf Council, Beholden to the Black Hand, or The Scourge of
+	  the Serpent People.
+	</p>
+      </description>
+
+      <term>Oaths</term>
+      <description>
+	<p>
+	  Oaths are important in the world of Malleus Deum and characters who
+	  have sworn Oaths are, to the extent of their conscience and public
+	  opinion, bound by them.  Oaths may be broken, and when they are there
+	  are consequences for the character.  Followers of Mithras may be
+	  required to swear oaths governing their behaviour or their allegiance.
+	</p>
+
+	<p>
+	  If a character breaks an oath they may  gain the <abilityref
+	  id="aspect" phrase="Oath-Breaker"/>.  If this becomes public knowledge
+	  then their character will attract opprobrium. If the character is a
+	  conscientious then this will cause them a certain amount of angst and
+	  a need to make amends.
+	</p>
+      </description>
+      
+      <term>Afflictions</term>
+      <description>
+	<p>
+	  Certain afflictions such as insanity, curses, diseases may also
+	  be modelled by aspects in the game.
+	</p>
+      </description>
+    </descriptions>
+  </section>
+
+  
+
+  <section>
+    <sectiontitle>Choosing Good Aspects</sectiontitle>
+    <p>
+      Aspects are used to drive conflict in the game.  Here is a list of
+      attributes a good aspect will have.
+    </p>
+
+    <list>
+      <li>
+	A good aspect needs to be used fairly regularly, otherwise it adds
+	nothing to the game but extra complexity. They should be neither too
+	specific, because they are never applied, nor too general, because
+	vagueness makes their application unclear.   For good example aspects
+	see <figureref label="figure:random-aspect-table"/>.	  
+      </li>
+
+      <li>
+	A good aspect should promote interesting gameplay, drive conflict and
+	create  problems for the characters to overcome. As a general rule
+	good aspects are phrases that require action from the character.
+      </li>
+
+      <li>
+	A good aspect should not tread on the toes of the existing game
+	mechanics.  They should not describe parts of the game already covered
+	by existing rules. For example, <emph>Greatest Swordsman Ever</emph>
+	is not a good aspect - it interferes with the game rules on combat.
+	<emph>Thinks He's the Greatest Swordsman Ever</emph> is much better
+	because it establishes the character as a self-delusional.
+      </li>
+
+      <li>
+	Good aspects are evocative of the characters personality, their belief
+	system or their social status. They should give the PCs character.
+      </li>
+    </list>
+
+    {% include "docs/tables/random_aspect_table.xml" %}
+  </section>
+
+  <section>
+    <sectiontitle>Aspect Creation</sectiontitle>
+    <indexentry><entry>Creating Aspects</entry></indexentry>
+    <indexentry><entry>Aspect Creation</entry></indexentry>
+    <p>
+      Choosing aspects should be done as a group. Before choosing aspects for
+      your character we suggest discussing the campaign with the GM and the
+      other players, in order to get a feel for the colour of the world and
+      the NPCs and organizations within it. Then <emph>with the other players,
+      together as a group</emph>, choose one aspect with the GM
+      that ties your character to one of these NPCs or organizations, or one
+      of the player characters.  Then choose a Personality or Philosophy based
+      aspect for your character.  Write the Aspect phrase and the initial rank
+      on your character sheet.
+    </p>
+
+    <p>
+      At the end of the day the player's character is his own.  he GM and
+      other players should not force the player to make his character take an
+      aspect, or behave in a way they do not want. The player may always veto
+      newly proposed aspects for their character or suggested actions for a
+      compelled aspect.  Players should use this veto power only when they
+      really dislike the outcome of a compelled aspect.
+    </p>      
+  </section>
+
+  
+  <section>
+    <sectiontitle>Reevaluating Aspects</sectiontitle>
+    <slug>Vincit qui se vincit</slug>
+    <indexentry><entry>Reevaluating Aspects</entry></indexentry>
+    <indexentry><entry>Aspect</entry><subentry>Reevaluation</subentry></indexentry>
+    <p>
+      Aspects can be <defn>Reevaluated</defn> for two reasons.  The first is that
+      the Aspect is not working in the game in a way that makes the GM or the player happy,
+      <eg/> this might be because the Aspect is never used, or the behaviour the aspect compels
+      do not align with the players view of their character.  The second reason is that
+      the Aspect has reached a Rank of 4.  <bold>Aspects must be reevaluated when the Aspects
+      Rank reaches 4.</bold> At this point the character has concluded this stage
+      of their character arc.  If the Aspect was interesting then a new Aspect can be chosen
+      based on the original aspect, that has the character evolve and grow over time.
+    </p>
+
+    <p>
+      When reevaluating aspects any number of aspects can be retired, reworded, replaced with
+      a new, completely different aspect, or perhaps the character simple gains a new
+      additional aspect entirely.
+    </p>
+
+    <p>
+      When reevaluating aspects remember that the point of aspects in the game is to drive
+      the story and character development.  If an aspect is not being used frequently, or if
+      it is being overused, or abused, if it has just become a little tired, if there is an
+      opportunity to represent character growth or move the character through some character
+      arc, then now is the time to consider making changes to the characters aspects.
+    </p>
+
+    <playexample>
+      <p>
+	Much later, Dourli's aspect <emph>Gold is my Lodestone 4</emph> finally reaches a rank of 4.
+	At this point the aspect should be reevaluated.  If his aspects are working
+	well in the game, leading to enjoyable game play, then Dourli might make a subtle change to
+	the aspect, maybe softening the wording of this aspect to, something like,
+	<emph>If you give a Man a Sword he can Rob a Bank, if you give him a Bank he can Rob the
+	World 1</emph>, which is a little less proscriptive.
+      </p>
+
+      <p>
+	Maybe Dourli has had an epiphany?  He has realized the error of his ways, wasting his life
+	in the pursuit of filthy lucre, and so he replaces the <emph>Gold is my Lodestone 4</emph>
+	aspect with a new aspect, <emph>I am a River to My People 1</emph>.
+      </p>
+
+      <p>
+	Finally, Dourli might decide to choose a new aspect altogether.  Maybe choosing a new
+	aspect all together <emph>You Must be the Change you Wish to See in the World 1</emph>.
+      </p>
+
+      <p>
+	In any case the decision should be opened up to the table for input and debate.
+      </p>
+    </playexample>
+  </section>
+
+  <section>
+    <sectiontitle>Conflicting Aspects</sectiontitle>
+    <p>
+      Sometimes a characters aspects conflict with one another.  In such cases
+      someone can compel one aspect to try and gain a bonus on a second
+      aspect check.
+    </p>
+
+    <playexample>
+      <p>
+	Suppose the GM tries to compel Dourli's <emph>Gold is My Lodestone 1</emph>
+	aspect to make Dourli sell out one of his companions.  Dourli may counter that
+	he has sworn friendship with the companion while imbibing and that the
+	GM's compel conflicts with another one of his aspects <emph>My Word as a Dwarf 2</emph>.
+	In such cases the GM should grant the player some advantage to the
+	<emph>Gold is My Lodestone 1</emph> check.  As a general rule, it is not a good idea
+	to allow a character to have aspects that are too contradictary.
+      </p>
+    </playexample>
+  </section>
+
+  <section>
+    <sectiontitle>Permanent Aspects</sectiontitle>
+    <p>
+      Some disabilities or afflications can be modelled, in game, using aspects.
+      These aspects may or may not be permanent.  For this kind of aspect the GM
+      can rule that the aspect is never reevaluated.  Permanent aspects have some
+      maximum rank beyond which the character cannot improve.  The upper limit for
+      the rank of permanent aspects should be determined by the GM on a per aspect
+      basis.  The higher the maximum rank the less of an impediment the aspect will
+      become with time.
+    </p>
+
+    <playexample>
+      <p>
+	Dourli comes into some unexpected wealth.  He decides to go and celebrate
+	at the local tavern.  The GM asks him to roll a Flat Check to give an
+	indication of what happens.  Unfortunately Dourli rolls a double 1.  The
+	GM decides that Dourli looses his left hand in an unfortunate axe throwing
+	incident.  Dourli gains the <emph>Missing Left Hand 1</emph> aspect.  The GM
+	determines that this is a permanent aspect and that it has a maximum rank of
+	7.
+      </p>
+
+      <p>
+	Later Dourli, finds himself climbing over a roof.  He fails the Climb roll and
+	starts to slip.   The GM determines that now might be a good time to make a
+	<emph>Missing Left Hand 1</emph>  check.  Dourli fails and so slips off the roof.
+	He makes a last minute Agility Check and is left hanging from the gutter by his
+	right hand.
+      </p>
+    </playexample>      
+  </section>
+</chapter>
+
+

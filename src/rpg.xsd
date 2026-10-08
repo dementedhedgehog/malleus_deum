@@ -72,10 +72,19 @@ Token Types:
 
   <!--
       Subtype of atom with a dimension, for vspace and hspace.
-  -->      
-  <xs:complexType name="spaceType">
+  -->       
+ <xs:complexType name="spaceType">
     <xs:attribute name="token_type" type="xs:string" fixed="atom"/>
     <xs:attribute name="length" type="xs:float" default="1.0"/>
+  </xs:complexType>
+
+  <!--
+      Subtype of atom with a label, for references.
+  -->      
+  <xs:complexType name="refType">
+    <xs:attribute name="token_type" type="xs:string" fixed="atom"/>
+    <xs:attribute name="label" type="xs:string" use="required"/>
+    <xs:attribute name="on-page" type="xs:boolean" default="false"/>
   </xs:complexType>
   
 
@@ -132,21 +141,19 @@ Token Types:
   <!--
       Elements that are keywords
 
-      Anything defined like this is EXPECTED to have a 'fixed'
-      attribute set in this xsd.  (The fixed attribute in an
-      xsd is a mandatory default text body that the xml will insert as
-      the 'text' value).  So put a HUMAN READABLE STRING in the
-      fixed value for keywords.
+      Anything defined like this is EXPECTED to have a 'fixed' attribute set in
+      this xsd. (The fixed attribute in an xsd is a mandatory default text body
+      that the xml will insert as the 'text' value).  So put a HUMAN READABLE
+      STRING in the fixed value for keywords.
  
       For example if we define
-      <xs:element
-          name="reaction-interrupt"
-          type="keywordType"
-	  fixed="Reaction Interrupt"/> 
+         <xs:element
+             name="interrupt"
+             type="keywordType"
+	     fixed="Interrupt"/> 
 
-      then these values look like, e.g. <reaction-interrupt/> in the
-      xml and their element.tag is "reaction-interrupt" but their
-      element.text is "Reaction Interrupt".
+      then these values look like, e.g. <interrupt/> in the xml and their
+      element.tag is "interrupt" but their element.text is "Interrupt".
   -->
   <xs:complexType name="keywordType">
     <xs:simpleContent>
@@ -155,11 +162,6 @@ Token Types:
 	    name="token_type"
 	    type="xs:string"
 	    fixed="keyword"/>
-	<!-- <xs:attribute -->
-	<!--     name="fixed" -->
-	<!--     type="xs:string" -->
-	<!--     fixed="keyword" -->
-	<!--     use="required"/> -->
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -339,15 +341,6 @@ Token Types:
       <xs:element name="smaller" type="textType"/>
       <xs:element name="hfill" type="textType"/>
     </xs:choice>
-    <!-- <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/> -->
-
-    <!--
-	Hacky little flag to indicate this title should be formated differently
-	because the section is an ability subsubsection. Set it to true for
-	ability subsubsectiontitles and the latex_formatter while change how it
-	looks.  I'm not sure how I feel about this "fix".
-    -->    
-    <!-- <xs:attribute name="isabilitytitle" type="xs:boolean" default="false"/> -->
 
     <xs:attribute name="titlecategory" default="standard">
       <xs:simpleType>
@@ -357,7 +350,8 @@ Token Types:
 	  <xs:enumeration value="antagonist-ability"/>
 	</xs:restriction>
       </xs:simpleType>
-    </xs:attribute>    
+    </xs:attribute>
+    <xs:attribute name="label" type="xs:string" use="optional"/>    
   </xs:complexType>  
   
   <!-- <xs:complexType name="attributionType"> -->
@@ -372,7 +366,7 @@ Token Types:
       <xs:element name="m05">
 	<xs:complexType>
 	  <xs:attribute name="metric" type="xs:string" fixed="half a meter"/>
-	  <xs:attribute name="imperial" type="xs:string" fixed="2 foot"/>
+	  <xs:attribute name="imperial" type="xs:string" fixed="2 feet"/>
 	</xs:complexType>
       </xs:element>
 
@@ -500,17 +494,19 @@ Token Types:
   <!-- Ability Group Keywords Enum -->
   <xs:complexType name="abilityGroupKeywordEnum">
     <xs:choice>
+      <xs:element name="affliction" type="keywordType" fixed="Affliction"/>
       <xs:element name="archery" type="keywordType" fixed="Archery"/>
       <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
       <xs:element name="abjuration" type="keywordType" fixed="Abjuration"/>
       <xs:element name="arcana" type="keywordType" fixed="Arcana"/>
       <xs:element name="arts" type="keywordType" fixed="Arts"/>
       <xs:element name="axe" type="keywordType" fixed="Axe"/>
-      <xs:element name="condition" type="keywordType" fixed="Condition"/>
+      <xs:element name="condition" type="keywordType" fixed="Condition"/> 
       <xs:element name="conjuration" type="keywordType" fixed="Conjuration"/>
       <xs:element name="craft" type="keywordType" fixed="Craft"/>
       <xs:element name="crossbow" type="keywordType" fixed="Crossbow"/>
       <xs:element name="dagger" type="keywordType" fixed="Dagger"/>
+      <xs:element name="disease" type="keywordType" fixed="Disease"/>
       <xs:element name="combat" type="keywordType" fixed="Combat"/>
       <xs:element name="gun" type="keywordType" fixed="Gun"/>
       <xs:element name="elemental" type="keywordType" fixed="Elemental"/>
@@ -556,8 +552,11 @@ Token Types:
   <!-- ability Special Group Enum -->
   <xs:group name="abilitySpecialKeywordEnum">
     <xs:choice>
-      <!-- <xs:element name="versatile" type="keywordType"/> <!-\- spells which are open to interpretation -\-> -->
-      <!-- <xs:element name="maintain" type="keywordType"/> <!-\- requires the minor action to keep going each round -\-> -->
+      <!-- spells which are open to interpretation -->
+      <!-- <xs:element name="versatile" type="keywordType"/> -->
+	   
+      <!-- requires the minor action to keep going each round -->      
+      <!-- <xs:element name="maintain" type="keywordType"/> -->
 
       <xs:element name="manipulate" type="keywordType" fixed="Manipulate"/>
       <xs:element name="fire" type="keywordType" fixed="Fire"/>
@@ -783,6 +782,7 @@ Token Types:
       <xs:group ref="weaponModifiersKeywordEnum"/>
       <xs:group ref="abilitySpecialKeywordEnum"/>
       <xs:group ref="primaryAbilityKeywordEnum"/>
+      <xs:group ref="checkVerbKeywordEnum"/>
 
       <xs:element name="aspect" type="keywordType" fixed="Aspect"/>
       <xs:element name="abjuration" type="keywordType" fixed="Abjuration"/>
@@ -791,15 +791,16 @@ Token Types:
       <xs:element name="condition" type="keywordType" fixed="Condition"/>
       <xs:element name="conjuration" type="keywordType" fixed="Conjuration"/>
       <xs:element name="craft" type="keywordType" fixed="Craft"/>
-      <xs:element name="martial" type="keywordType" fixed="Martial"/>
+      <xs:element name="disease" type="keywordType" fixed="Disease"/>
       <xs:element name="elemental" type="keywordType" fixed="Elemental"/>
       <xs:element name="enchantment" type="keywordType" fixed="Enchantment"/>
       <xs:element name="evocation" type="keywordType" fixed="Evocation"/>
       <xs:element name="hazard" type="keywordType" fixed="Hazard"/>
       <xs:element name="keyword" type="keywordType" fixed="Keyword"/>
       <xs:element name="language" type="keywordType" fixed="Language"/>
-      <xs:element name="luck" type="keywordType" fixed="Luck"/>
       <xs:element name="lore" type="keywordType" fixed="Lore"/>
+      <xs:element name="luck" type="keywordType" fixed="Luck"/>
+      <xs:element name="martial" type="keywordType" fixed="Martial"/>
       <xs:element name="monster" type="keywordType" fixed="Monster"/>
       <xs:element name="mental" type="keywordType" fixed="Mental"/>
       <xs:element name="magic" type="keywordType" fixed="Magic"/>
@@ -881,25 +882,7 @@ Token Types:
       <xs:element
 	  name="delegate-saves"
 	  type="keywordType"
-	  fixed="Delegate-Saves"/>
-      
-      <!--
-	  All checks must either be Checks, Saves or Auxiliarys.
-	  Each Check is opposed by a Save
-	  Auxilaries are triggers for other actions.
-      -->
-      <xs:element
-	  name="check"
-	  type="keywordType"
-	  fixed="Check"/>
-      <xs:element
-	  name="save"
-	  type="keywordType"
-	  fixed="Save"/>
-      <xs:element
-	  name="auxiliary"
-	  type="keywordType"
-	  fixed="Auxiliary"/>
+	  fixed="Delegate-Saves"/>      
 
       
       <!-- Spells which are open to interpretation (FIXME: RENAME gm-fiat?? or similar) -->
@@ -989,6 +972,29 @@ Token Types:
     </xs:restriction>
   </xs:simpleType>
 
+  <!--
+      All checks must either be Actions, Reactions or Auxiliarys.
+      Each Check is opposed by a Save
+      Auxilaries are triggers for other actions.
+  -->  
+  <xs:group name="checkVerbKeywordEnum">
+    <xs:choice>
+      <xs:element
+	  name="action"
+	  type="keywordType"
+	  fixed="Action"/>
+      <xs:element
+	  name="reaction"
+	  type="keywordType"
+	  fixed="Reaction"/>
+      <xs:element
+	  name="auxiliary"
+	  type="keywordType"
+	  fixed="Auxiliary"/>      
+    </xs:choice>
+  </xs:group>
+
+  
   <xs:group name="primaryAbilityKeywordEnum">
     <xs:choice>
       <xs:element name="strength" type="keywordType" fixed="Strength"/>
@@ -1024,6 +1030,9 @@ Token Types:
     </xs:sequence>
   </xs:complexType>
 
+
+  
+
   <xs:complexType name="abilityCostType" mixed="false">
     <xs:choice>
       <!--
@@ -1039,57 +1048,54 @@ Token Types:
       <xs:element name="ap2" type="keywordType" fixed="2AP"/>
       <xs:element name="ap1" type="keywordType" fixed="1AP"/>
       <!-- May take multiple players or multiple rounds to perform -->      
-      <xs:element name="multi-round-check-cost" type="keywordType" fixed="Multi Round"/>
+      <xs:element name="multi-round" type="keywordType" fixed="Multi Round"/>
+
       <!-- Generic unknown check used to oppose certain saves -->
       <xs:element name="gm-fiat-check-cost" type="keywordType" fixed="GM Fiat"/>
+
       <!-- Takes too long to perform in combat -->
       <xs:element name="noncombat-cost" type="keywordType" fixed="Noncombat"/>
 
       <!--
+	  Start of Turn Actions
+	  (These will all be Antagonist actions and have no cost)
+      -->
+      <xs:element
+	  name="start-of-turn"
+	  type="keywordType" fixed="Start of Turn"/>
+      
+      <!--
 	  
 	  Out Of Turn Actions
 
-      -->            
-      <xs:element name="save-cost" type="keywordType" fixed="Save"/>
-      <xs:element name="reaction-cost" type="keywordType" fixed="Reaction"/>
-      <xs:element name="interrupt-cost" type="keywordType" fixed="Interrupt"/>
-      <xs:element name="mandatory-save-cost" type="keywordType" fixed="Mandatory Save"/>
-      <xs:element name="mandatory-reaction-cost" type="keywordType" fixed="Mandatory Reaction"/>
-      <xs:element name="mandatory-interrupt-cost" type="keywordType" fixed="Mandatory Interrupt"/>
-      <xs:element name="save-or-free-save-cost" type="keywordType" fixed="Save/Free Save"/>
+      -->
+
+
+      <xs:element
+	  name="oota"
+	  type="keywordType" fixed="OOTA"/>
+      
+      <xs:element name="save" type="keywordType" fixed="Save"/>
       <xs:element name="free-save-cost" type="keywordType" fixed="Free Save"/>
+      <xs:element name="response-cost" type="keywordType" fixed="Response"/>
+      <xs:element name="free-response-cost" type="keywordType" fixed="Free Response"/>
+      <xs:element name="interrupt-cost" type="keywordType" fixed="Interrupt"/>
       <xs:element name="free-interrupt-cost" type="keywordType" fixed="Free Interrupt"/>
-      <xs:element name="free-reaction-cost" type="keywordType" fixed="Free Reaction"/>
+
+      <xs:element name="mandatory-save-cost" type="keywordType" fixed="Mandatory Save"/>
+      <xs:element name="mandatory-response-cost" type="keywordType" fixed="Mandatory Response"/>
+      <xs:element name="mandatory-interrupt-cost" type="keywordType" fixed="Mandatory Interrupt"/>
+
+      <xs:element name="save-or-free-save-cost" type="keywordType" fixed="Save/Free Save"/>
       <xs:element name="mandatory-free-save-cost" type="keywordType" fixed="Mandatory Free Save"/>
+
       <xs:element name="mandatory-free-interrupt-cost" type="keywordType" fixed="Mandatory Free Interrupt"/>
-      <xs:element name="mandatory-free-reaction-cost" type="keywordType" fixed="Mandatory Free Reaction"/>
-      <xs:element name="free-action-or-reaction-cost" type="keywordType" fixed="Free Action/Reaction"/>
-      <xs:element name="interrupt-or-reaction-cost" type="keywordType" fixed="Interrupt/Reaction"/>
-      <!-- <xs:element name="any-oota-cost" type="keywordType" fixed="Any OOTA"/> -->
+      <xs:element name="mandatory-free-response-cost" type="keywordType" fixed="Mandatory Free Response"/>
+      <xs:element name="free-action-or-response-cost" type="keywordType" fixed="Free Action/Response"/>
+      <xs:element name="interrupt-or-response-cost" type="keywordType" fixed="Interrupt/Response"/>
       <xs:element
 	  name="any-oota-cost"
 	  type="keywordType" fixed="Any OOTA"/>
-
-
-      <!--
-	  
-	  Antagonist Actions
-
-      -->            
-      <xs:element
-	  name="start-of-turn-cost"
-	  type="keywordType" fixed="Start of Turn"/>
-
-      <!--
-	  
-	  either Check or OOTA?
-
-          FIXME: BREAK THESE UP INTO TWO ACTIONS
-
-      -->                  
-      <!-- <xs:element name="reaction-or-ap2-cost" type="keywordType" fixed="Reaction/2AP"/> -->
-      <!-- <xs:element name="interrupt-or-ap2-cost" type="keywordType" fixed="Interrupt/2AP"/> -->
-
       
       <!-- Defaults -->
       <xs:element
@@ -1147,8 +1153,7 @@ Token Types:
       <xs:element name="ccby" type="symbolType" />
       <xs:element name="copyright" type="symbolType" />
       <xs:element name="daggersymbol" type="symbolType"/>
-      <xs:element name="doubledaggersymbol" type="symbolType"/>
-      <xs:element name="downarrowfrombar" type="symbolType"/>
+      <xs:element name="optionalsymbol" type="symbolType"/>
       <xs:element name="ellipsis" type="symbolType"/>
       <xs:element name="geqqsymbol" type="symbolType"/>
       <xs:element name="geqsymbol" type="symbolType"/>
@@ -1158,17 +1163,11 @@ Token Types:
       <xs:element name="gtsymbol" type="symbolType"/>
       <xs:element name="notapplicable" type="symbolType"/>
       <xs:element name="percent" type="symbolType"/>
-      <xs:element name="uparrowfrombar" type="symbolType"/>
       <xs:element name="endash" type="symbolType"/>
+      <xs:element name="emdash" type="symbolType"/>
       <xs:element name="versus" type="symbolType"/>
       
       <!-- custom -->
-      <xs:element name="abilitybullet" type="symbolType"/>      
-      <xs:element name="checksymbol" type="symbolType"/>      
-      <xs:element name="savesymbol" type="symbolType"/>      
-      <xs:element name="freesavesymbol" type="symbolType"/>      
-      <xs:element name="saveorfreesavesymbol" type="symbolType"/>      
-      <!-- <xs:element name="auxiliarysymbol" type="symbolType"/>       -->
       <xs:element name="antagonistsymbol" type="symbolType"/>
       <xs:element name="fatediesymbol" type="symbolType"/>      
       <xs:element name="nofatediesymbol" type="symbolType"/>      
@@ -1182,20 +1181,30 @@ Token Types:
       
       <xs:element name="anyootasymbol" type="symbolType"/>      
       <xs:element name="startofturnsymbol" type="symbolType"/>      
+
       <xs:element name="freeactionsymbol" type="symbolType"/>
       <xs:element name="oneactionsymbol" type="symbolType"/>
       <xs:element name="twoactionsymbol" type="symbolType"/>
       <xs:element name="threeactionsymbol" type="symbolType"/>
       <xs:element name="fouractionsymbol" type="symbolType"/>
       <xs:element name="fiveactionsymbol" type="symbolType"/>
-      <xs:element name="reactionsymbol" type="symbolType"/>
-      <xs:element name="freereactionsymbol" type="symbolType"/>
-      <xs:element name="mandatoryreactionsymbol" type="symbolType"/>
-      <xs:element name="mandatoryfreereactionsymbol" type="symbolType"/>
+      <xs:element name="multiroundactionsymbol" type="symbolType"/>
+      
+      
+      <xs:element name="savesymbol" type="symbolType"/>
+      <xs:element name="freesavesymbol" type="symbolType"/>      
+      <xs:element name="saveorfreesavesymbol" type="symbolType"/>      
+      
+      <xs:element name="responsesymbol" type="symbolType"/>
+      <xs:element name="freeresponsesymbol" type="symbolType"/>
+      <xs:element name="mandatoryresponsesymbol" type="symbolType"/>
+      <xs:element name="mandatoryfreeresponsesymbol" type="symbolType"/>
+      
       <xs:element name="interruptsymbol" type="symbolType"/>
       <xs:element name="freeinterruptsymbol" type="symbolType"/>
       <xs:element name="mandatoryinterruptsymbol" type="symbolType"/>
       <xs:element name="mandatoryfreeinterruptsymbol" type="symbolType"/>
+      
       <xs:element name="gmfiatchecksymbol" type="symbolType"/>
       <xs:element name="gmfiatsavesymbol" type="symbolType"/>
       <xs:element name="outofcombatsymbol" type="symbolType"/>
@@ -1203,16 +1212,9 @@ Token Types:
       <xs:element name="abilitybulletsymbol" type="symbolType"/>
       <xs:element name="checkarrowsymbol" type="symbolType"/>
 
-      <xs:element name="actionchecksymbol" type="symbolType"/> 
-      <xs:element name="actionsavesymbol" type="symbolType"/> 
-      <xs:element name="actionauxiliarysymbol" type="symbolType"/>
-    
-      <!-- <xs:group ref="svResultGroup"/> -->
-      <!-- <!-\- <xs:group ref="resultGroup"/> -\-> -->
-      <!-- <!-\- <xs:group ref="defaultResultGroup"/> -\-> -->
-      <!-- <xs:group ref="opponentsCounterResultGroup"/> -->
-      <!-- <xs:group ref="antagCounterResultGroup"/> -->
-      <!-- <xs:group ref="protagCounterResultGroup"/> -->
+      <xs:element name="actionsymbol" type="symbolType"/> 
+      <xs:element name="reactionsymbol" type="symbolType"/> 
+      <xs:element name="auxiliarysymbol" type="symbolType"/>
     </xs:choice>
   </xs:group>
 
@@ -1238,8 +1240,13 @@ Token Types:
       <xs:element name="indexentry" type="indexentryType"/>
       <xs:element name="label" type="leafType"
 		  minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="pageref" type="leafType"/>
-      <xs:element name="ref" type="leafType"/>
+      <!-- <xs:element name="sectionref" type="refType"/> -->
+      <xs:element name="chapterref" type="refType"/>
+      <xs:element name="sectionref" type="refType"/>
+      <xs:element name="pageref" type="refType"/> 
+      <xs:element name="tableref" type="refType"/>
+      <xs:element name="figureref" type="refType"/>
+      <!-- <xs:element name="ref" type="refType"/> -->
       <xs:element name="abilityref" type="abilityrefType"/>
       <xs:element name="list" type="itemizedListType"/>
       <xs:element name="olist" type="orderedListType"/>      
@@ -1313,8 +1320,13 @@ Token Types:
       <xs:element name="divider" type="dividerType"/>
       <xs:element name="epigraph" type="textType"/>
       <xs:element name="smalltitle" type="textType"/>
+      <xs:element name="includepdf" type="includepdfType"/>
     </xs:choice>
   </xs:group>
+
+  <xs:complexType name="includepdfType">
+    <xs:attribute name="fname" type="xs:string" use="required"/>
+  </xs:complexType>
 
   <!-- A block of text including elements like emph, bold etc -->
   <xs:complexType name="blockType" mixed="true">
@@ -1329,41 +1341,14 @@ Token Types:
             <xs:element name="archetypelevel" type="archetypelevelType" />
     </xs:choice>
   </xs:complexType>
-  
-  <xs:complexType name="tabledataType" mixed="true">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="blockEnum"/>
-    </xs:choice>
-
-    <!-- the number of columns the table data takes -->
-    <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
-    <!-- the number of rows the table data takes -->
-    <xs:attribute name="height" type="xs:positiveInteger" default="1"/>
-    <!--
-	This is a number to adjust the vertical positioning
-	of a multirow table cell, i.e. or cells with a
-	height > 1.
-
-        Latex doesn't know the height of the cells in rows ahead of
-	time, so we can't vertically position the contents of a cell
-	automatically.  For a multi row cell occuring in rows with other
-	cells which are extra tall, i.e. cells with text with multiple lines,
-	we cannot calculate the correct vertical offset for the multirow cell.
-	So we provide this "hint" attribute to allow people to manually tune
-	the vertical position. (It's a terrible hack, but the best I can do).
-
-        This number is the number of vertical "normal height table lines" to
-	vertically offset the contents of this cell.
-    -->
-    <xs:attribute name="heighthint" type="positiveFloat" default="1.0"/>
-    <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
-  </xs:complexType>
 
 
   <!--
-      Each ability can have 0 or more stages (e.g. like diseases in PF2e).
+      Extra classifications for an ability.. comes in three different
+      flavours stages (for diseases an enumeration), qualifiers and
+      qualifiers2 (for a second set of independent qualifiers)
   -->
-  <xs:complexType name="abilityStageType" mixed="true">
+  <xs:complexType name="abilityAddendaType" mixed="true">
     <xs:sequence>
     <xs:element name="name" type="textType"/>
     <xs:element name="description" type="blockType"/>    
@@ -1424,12 +1409,7 @@ Token Types:
       <!-- Ability Check types -->
       <xs:sequence  minOccurs="0" maxOccurs="unbounded">
 	<xs:choice>
-	  <xs:element name="action" type="actionType"/>
-	  <!-- <xs:element name="check" type="checkType"/> -->
-	  <!-- <xs:element name="antagcheck" type="checkType"/> -->
-	  <!-- <xs:element name="save" type="counterCheckType"/> -->
-	  <!-- <xs:element name="antagsave" type="counterCheckType"/> -->
-	  <!-- <xs:element name="auxiliary" type="abilityCheckAuxiliaryType"/> -->
+	  <xs:element name="check" type="checkType"/>
 	</xs:choice>
       </xs:sequence>
 
@@ -1448,10 +1428,31 @@ Token Types:
       <xs:element name="specializations"
 		  type="specializationsType"
 		  minOccurs="0" maxOccurs="1"/>
-      
-      <xs:element name="stage"
-		  type="abilityStageType"
+
+      <!--
+	  Unordered states, a condition can have 0 or more of these at once
+	  e.g. Temporarily
+      -->
+      <xs:element name="qualifier"
+		  type="abilityAddendaType"
 		  minOccurs="0" maxOccurs="unbounded"/>
+
+      <!--
+	  For abilities that can have a second qualifier.. e.g.
+	  for an ability Permanently, *Profoundly* Deaf the would be
+	  written with permanently as a qualifier, and profoundly is a
+	  qualifier2.
+      -->
+      <xs:element name="qualifier2"
+		  type="abilityAddendaType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+      
+      <!-- Stages are ordered states (like stages of a disease in PF2e)
+           An ability must be in one of these stages at a time -->
+      <xs:element name="stage"
+		  type="abilityAddendaType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+      
       
       <xs:element name="abilitydescription"
 		  type="blockType"
@@ -1472,6 +1473,7 @@ Token Types:
     <xs:attribute name="to" type="xs:int" />
   </xs:complexType>
 
+  <!--
   <xs:complexType name="opposedType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -1487,36 +1489,35 @@ Token Types:
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-      
+      -->
   
   <!-- Used for Antag Check Results and for Antag/Protag Counter Results -->
-  <xs:group name="svResultGroup">
+  <xs:group name="ssvGroup">
     <xs:choice>
       <xs:element name="param-check" type="stringConstantType" fixed="CHECK"/>
-      <xs:element name="sv3" type="stringConstantType" fixed="SV3"/>
-      <xs:element name="sv5" type="stringConstantType" fixed="SV5"/>
-      <xs:element name="sv7" type="stringConstantType" fixed="SV7"/>
-      <xs:element name="sv9" type="stringConstantType" fixed="SV9"/>
-      <xs:element name="sv11" type="stringConstantType" fixed="SV11"/>
-      <xs:element name="sv13" type="stringConstantType" fixed="SV13"/>
-      <xs:element name="sv15" type="stringConstantType" fixed="SV15"/>
-      <xs:element name="sv17" type="stringConstantType" fixed="SV17"/>
-      <xs:element name="sv19" type="stringConstantType" fixed="SV19"/>
-      <xs:element name="sv21" type="stringConstantType" fixed="SV21"/>
-      <xs:element name="sv23" type="stringConstantType" fixed="SV23"/>
-      <xs:element name="sv25" type="stringConstantType" fixed="SV25"/>
-      <xs:element name="sv27" type="stringConstantType" fixed="SV27"/>
-      <xs:element name="sv29" type="stringConstantType" fixed="SV29"/>
+      <xs:element name="ssv3" type="stringConstantType" fixed="SSV3"/>
+      <xs:element name="ssv5" type="stringConstantType" fixed="SSV5"/>
+      <xs:element name="ssv7" type="stringConstantType" fixed="SSV7"/>
+      <xs:element name="ssv9" type="stringConstantType" fixed="SSV9"/>
+      <xs:element name="ssv11" type="stringConstantType" fixed="SSV11"/>
+      <xs:element name="ssv13" type="stringConstantType" fixed="SSV13"/>
+      <xs:element name="ssv15" type="stringConstantType" fixed="SSV15"/>
+      <xs:element name="ssv17" type="stringConstantType" fixed="SSV17"/>
+      <xs:element name="ssv19" type="stringConstantType" fixed="SSV19"/>
+      <xs:element name="ssv21" type="stringConstantType" fixed="SSV21"/>
+      <xs:element name="ssv23" type="stringConstantType" fixed="SSV23"/>
+      <xs:element name="ssv25" type="stringConstantType" fixed="SSV25"/>
+      <xs:element name="ssv27" type="stringConstantType" fixed="SSV27"/>
+      <xs:element name="ssv29" type="stringConstantType" fixed="SSV29"/>
     </xs:choice>
   </xs:group>
 
   <!--
       When performing an action there are a number of  possible values for
-      opposing actions.  These are they. E.g. when action X is opposed by Y then
+      reactions.  These are they. E.g. when action X is opposed by Y then
       this group defines the allowed values for Y.
   -->
-  <!-- <xs:group name="opponentsCounterResultGroup"> -->
-  <xs:group name="opposingActionGroup">
+  <xs:group name="reactionGroup">
     <xs:choice>
 
       <!--
@@ -1525,11 +1526,17 @@ Token Types:
 
       -->
 
-      <!-- Unknown Save (e.g. opposing Strength Check -->
-      <xs:element name="unknown-check"
-		  type="stringConstantType"
-		  fixed="Unknown Check"/>
+      <!-- <!-\- Unknown Save (e.g. reaction Strength Check -\-> -->
+      <!-- <xs:element name="unknown-check" -->
+      <!-- 		  type="stringConstantType" -->
+      <!-- 		  fixed="Unknown Check"/>  <!-\- FIXME: CAN I DELETE THIS? -\-> -->
 
+      <!-- <!-\-  -\-> -->
+      <!-- <xs:element -->
+      <!-- 	  name="d20-or-10-plus-rank-check" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="d20/10+Rank Check"/> -->
+      
       <!--
 
         Saves
@@ -1541,6 +1548,31 @@ Token Types:
 	  name="flat-save"
 	  type="stringConstantType"
 	  fixed="Flat Save"/>
+
+      <!-- <!-\-  -\-> -->
+      <!-- <xs:element -->
+      <!-- 	  name="d20-or-10-plus-rank-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="d20/10+Rank Save"/> -->
+
+      <!-- Normal Interrupt -->
+      <xs:element
+	  name="skill-plus-rank-interrupt"
+	  type="stringConstantType"
+	  fixed="Skill+Rank Interrupt"/>
+
+      <!-- Normal Save -->
+      <xs:element
+	  name="skill-plus-rank-save"
+	  type="stringConstantType"
+	  fixed="Skill+Rank Save"/>
+
+      <!-- Normal Save -->
+      <xs:element
+	  name="skill-plus-rank-response"
+	  type="stringConstantType"
+	  fixed="Skill+Rank Response"/>
+
       
       <!-- For defence saves -->
       <xs:element
@@ -1670,12 +1702,198 @@ Token Types:
     </xs:choice>
   </xs:group>
 
-  <xs:complexType name="opposingActionType">
+  <xs:complexType name="reactionType">
     <xs:choice>
-      <xs:group ref="svResultGroup"/>
-      <xs:group ref="opposingActionGroup"/>
+      <xs:group ref="ssvGroup"/>
+      <xs:group ref="reactionGroup"/>
     </xs:choice>
   </xs:complexType>
+
+
+  <!--
+      When performing an action there are a number of  possible values for
+      reactions.  These are they. E.g. when action X is opposed by Y then
+      this group defines the allowed values for Y.
+  -->
+  <xs:group name="actionGroup">
+    <xs:choice>
+      <!--
+
+        Checks
+
+      -->
+
+      <!-- Unknown Check (for generic Save definitions like Strength Save) -->
+      <xs:element
+	  name="unknown-check"
+	  type="stringConstantType"
+	  fixed="Unknown Check"/>
+
+      <!-- Normal Check -->
+      <xs:element
+	  name="skill-plus-rank-check"
+	  type="stringConstantType"
+	  fixed="Skill+Rank Check"/>
+      
+      <!--
+
+        Saves
+
+      -->
+      
+      <!-- <!-\-  -\-> -->
+      <!-- <xs:element -->
+      <!-- 	  name="flat-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Flat Save"/> -->
+
+      <!-- <!-\-  -\-> -->
+      <!-- <xs:element -->
+      <!-- 	  name="d20-or-10-plus-rank-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="d20/10+Rank Save"/> -->
+      
+      <!-- <!-\- For defence saves -\-> -->
+      <!-- <xs:element -->
+      <!-- 	  name="physical-attack" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Physical Attack"/> -->
+      
+      <!-- <!-\- For attack checks -\-> -->
+      <!-- <xs:element -->
+      <!-- 	  name="physical-defence" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Physical Defence"/> -->
+      
+      <!-- <xs:element -->
+      <!-- 	  name="physical-defence-or-gm-fiat" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Physical Defence or GM's Fiat"/> -->
+      
+      <!-- For various opposed checks -->
+      <xs:element
+	  name="strength-check"
+	  type="stringConstantType"
+	  fixed="Strength Check"/>
+      
+      <!-- <xs:element -->
+      <!-- 	  name="agility-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Agility Save"/> -->
+      <!-- <xs:element -->
+      <!-- 	  name="agility-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Agility Save"/> -->
+      <xs:element
+	  name="speed-check"
+	  type="stringConstantType"
+	  fixed="Speed Check"/>
+      <!-- <xs:element -->
+      <!-- 	  name="perception-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Perception Save"/> -->
+      <!-- <xs:element -->
+      <!-- 	  name="speed-or-perception-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Speed or Perception Save"/> -->
+      <!-- <xs:element -->
+      <!-- 	  name="will-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Will Save"/>       -->
+      <!-- <xs:element -->
+      <!-- 	  name="mettle-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Mettle Save"/> -->
+      <!-- <xs:element -->
+      <!-- 	  name="endurance-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Endurance Save"/> -->
+      <!-- <xs:element -->
+      <!-- 	  name="endurance-or-willpower-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Endurance or Willpower Save"/> -->
+      <!-- <xs:element -->
+      <!-- 	  name="luck-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Luck Save"/> -->
+      <!-- <xs:element -->
+      <!-- 	  name="negotiate-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Negotiate Save or GM-Fiat"/> -->
+      
+      <!-- <xs:element -->
+      <!-- 	  name="etiquette-save" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Etiquette Save or GM-Fiat"/> -->
+
+      <!-- <!-\- Gm decides if it should be a save or a free save -\-> -->
+      <!-- <xs:element name="save-or-free-save" -->
+      <!-- 		  type="stringConstantType" -->
+      <!-- 		  fixed="Save or Free Save"/> -->
+      
+      <!-- <!-\- Unknown Save (e.g. opposing Strength Check -\-> -->
+      <!-- <xs:element name="unknown-save" -->
+      <!-- 		  type="stringConstantType" -->
+      <!-- 		  fixed="Unknown Save"/> -->
+      <!--
+
+      Auxiliary
+
+      -->
+      <!-- <xs:element -->
+      <!-- 	  name="auxiliary-prerequisite" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="Prerequisite"/>       -->
+
+      <!-- <xs:element -->
+      <!-- 	  name="first-hit" -->
+      <!-- 	  type="stringConstantType" -->
+      <!-- 	  fixed="First Hit"/>       -->
+      
+      <!-- NPC/Hazard/GM opposed abilities -->
+      <!-- <xs:element name="gm-fiat" type="stringConstantType" fixed="GM-Fiat"/> -->
+
+      <!--
+
+      SV Defaults
+
+      -->
+
+      <!-- <!-\- FIXME replace these -\-> -->
+      <!-- <xs:element name="default-lore-sv-easy" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="default-lore-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="default-lore-sv-hard" type="aliasType" fixed="SV13"/> -->
+      <!-- <!-\- With these ... -\-> -->
+      <!-- <xs:element name="easy-recall-knowledge-sv" type="aliasType" fixed="SV9"/> -->
+      <!-- <xs:element name="default-recall-knowledge-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="hard-recall-knowledge-sv" type="aliasType" fixed="SV17"/>       -->
+
+      <!-- <xs:element name="easy-sv" type="aliasType" fixed="SV9"/> -->
+      <!-- <xs:element name="default-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="hard-sv" type="aliasType" fixed="SV17"/> -->
+      
+      <!-- <xs:element name="item-break-sv" type="aliasType" fixed="Item Break SV"/> -->
+      
+      <!-- <xs:element name="static-sv" type="aliasType" fixed="SSV: 10+Rank"/> -->
+      <!-- <!-\- <xs:element name="aspect-sv" type="aliasType" fixed="SV9"/> -\-> -->
+      <!-- <xs:element name="default-transport-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="default-physical-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="default-craft-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="default-save-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="default-language-sv" type="aliasType" fixed="SV13"/> -->
+      <!-- <xs:element name="default-language-sv-hard" type="aliasType" fixed="SV13"/> -->
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="actionType">
+    <xs:choice>
+      <xs:group ref="ssvGroup"/>
+      <xs:group ref="actionGroup"/>
+    </xs:choice>
+  </xs:complexType>
+  
+
+  
 
   <xs:complexType name="poolCostType" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -1693,6 +1911,9 @@ Token Types:
       <xs:element name="custom" type="keywordType" fixed="Custom Outcomes"/>
       <xs:element name="no-crits" type="keywordType" fixed="No Criticals"/>
 
+      <xs:element name="disease" type="keywordType" fixed="Disease"/>
+      <xs:element name="affliction" type="keywordType" fixed="Affliction"/>
+
       <!-- Uses svv, and recall knowledge crit table -->
       <xs:element name="recall-knowledge" type="keywordType" fixed="Recall Knowledge"/>
       <xs:element name="language" type="keywordType" fixed="Language"/>
@@ -1707,6 +1928,7 @@ Token Types:
       <xs:element name="supply" type="keywordType" fixed="Supply"/>
       <!-- Uses a SSV, Magic Crit Table -->
       <xs:element name="cast" type="keywordType" fixed="Cast"/>
+      
       <!-- Art/Music etc -->
       <xs:element name="perform" type="keywordType" fixed="Perform"/>
       <!-- Willpower or Luck Test. has an associated pool and a cost? -->
@@ -1731,6 +1953,8 @@ Token Types:
       -->
       <xs:element name="missile-attack" type="keywordType" fixed="Missile Attack"/>      
       <xs:element name="craft" type="keywordType" fixed="Craft"/>
+
+      <!-- FIXME WHY DO I NEED THIS? -->
       <xs:element name="auxiliary" type="keywordType" fixed="Auxiliary"/>
 
 
@@ -1786,10 +2010,7 @@ Token Types:
       <!-- Check types -->
       <xs:sequence  minOccurs="0" maxOccurs="unbounded">
 	<xs:choice>
-	  <xs:element name="action" type="actionType"/>
-	  <!-- <xs:element name="check" type="checkType"/> -->
-	  <!-- <xs:element name="countercheck" type="counterCheckType"/> -->
-	  <!-- <xs:element name="auxiliary" type="abilityCheckAuxiliaryType"/> -->
+	  <xs:element name="check" type="checkType"/>
 	</xs:choice>
       </xs:sequence>      
     </xs:sequence>
@@ -1870,48 +2091,11 @@ Token Types:
       <!-- <xs:element name="gm-fiat" type="emptyType" minOccurs="0" maxOccurs="1"/> -->
     </xs:sequence>
   </xs:group>
-
- <!--  <xs:complexType name="actionClassType"> -->
- <!--    <xs:choice minOccurs="1" maxOccurs="1"> -->
- <!--      <xs:element name="check" type="keywordType" fixed="Check"/> -->
- <!--      <xs:element name="save" type="keywordType" fixed="Save"/> -->
- <!--      <xs:element name="auxiliary" type="keywordType" fixed="Auxiliary"/>  -->
- <!--    </xs:choice> -->
- <!-- </xs:complexType>         -->
-
-  <!-- Aspect Keywords Enum -->
-  <!-- <xs:group name="standardActionNamesGroup"> -->
-  <!--   <xs:choice> -->
-  <!--     <xs:element -->
-  <!-- 	  name="physical-attack-name" -->
-  <!-- 	  type="keywordType" -->
-  <!-- 	  fixed="Physical-Attack"/> -->
-  <!--     <xs:element -->
-  <!-- 	  name="physical-defence-name" -->
-  <!-- 	  type="keywordType" -->
-  <!-- 	  fixed="Physical-Defence"/> -->
-  <!--     <xs:element -->
-  <!-- 	  name="recall-knowledge-name" -->
-  <!-- 	  type="keywordType" -->
-  <!-- 	  fixed="Recall Knowledge"/>     -->
-  <!--   </xs:choice> -->
-  <!-- </xs:group> -->
-  
-  <!-- <xs:complexType name="actionNameType" mixed="true"> -->
-  <!--   <xs:choice minOccurs="0" maxOccurs="unbounded"> -->
-  <!--     <xs:group ref="textEnum"/> -->
-  <!--   </xs:choice> -->
-  <!--   <xs:attribute name="noindent" type="xs:boolean" default="false"/> -->
-  <!-- </xs:complexType>   -->
-
   
  
   <!-- check -->  
-  <xs:complexType name="actionType" mixed="true">
+  <xs:complexType name="checkType" mixed="true">
     <xs:sequence>
-
-      <!-- Is this a Check, a Save or an Auxiliary? -->
-      <!-- <xs:element name="class" type="actionClassType" minOccurs="1" maxOccurs="1"/> -->
       
       <!--
 	  CHECK INFORMATION
@@ -1919,15 +2103,20 @@ Token Types:
       <!-- The name of this action. -->
       <xs:choice minOccurs="1" maxOccurs="1">
 	<xs:element name="name" type="leafType"/>  
-	<!-- <xs:group ref="standardActionNamesGroup"/>  -->
       </xs:choice>
+
+
+      <xs:element
+	  name="action"
+	  type="actionType"
+	  minOccurs="0" maxOccurs="1"/>
       
       <!--
 	  The name of the opposing action.  One of a few standard types	  
       -->
       <xs:element
-	  name="opposing-action"
-	  type="opposingActionType"
+	  name="reaction"
+	  type="reactionType"
 	  minOccurs="0" maxOccurs="1"/>
 
       <!--
@@ -1935,14 +2124,19 @@ Token Types:
 	  (action points or OOTA?)
       -->
       <xs:element
-	  name="opposing-action-cost"
-	  type="abilityCostType" minOccurs="0" maxOccurs="1"/>
+	  name="reaction-cost"
+	  type="abilityCostType"
+	  minOccurs="0" maxOccurs="1"/>
 
       <!--
           Prerequisites and other details.
       -->
-      <!-- Point Pool cost to make the check (if any) -->
-      <xs:element name="critclass" type="critClassType" minOccurs="0" maxOccurs="1"/>                 
+      <!-- Do we use standard crit tables -->
+      <xs:element
+	  name="critclass"
+	  type="critClassType"
+	  minOccurs="0" maxOccurs="1"/>
+      
       <!-- Action economy information for the check (action points or OOTA?)-->
       <xs:element name="cost" type="abilityCostType" minOccurs="1" maxOccurs="1"/>
 
@@ -1980,6 +2174,12 @@ Token Types:
   </xs:complexType>
 
 
+  <!--
+
+    Tables
+
+  -->
+  
   <xs:complexType name="tableType">
     <xs:sequence>
       <!-- Optional element that determines table layout. -->
@@ -2064,6 +2264,49 @@ Token Types:
     </xs:restriction>
   </xs:simpleType>
 
+
+  <!-- For a <td> or <th> element -->
+  <xs:complexType name="tabledataType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="blockEnum"/>
+    </xs:choice>
+
+    <!-- the number of columns the table data takes -->
+    <xs:attribute name="width" type="xs:positiveInteger" default="1"/>
+    <!-- the number of rows the table data takes -->
+
+    <!--
+        LATEX TABLES ARE A NIGHTMARE... LEAVE OUT HEIGHT IF WE CAN
+
+    -->        
+    <!-- <xs:attribute name="height" type="xs:positiveInteger" default="1"/> -->
+    <!--
+	This is a number to adjust the vertical positioning
+	of a multirow table cell, i.e. or cells with a
+	height > 1.
+
+        Latex doesn't know the height of the cells in rows ahead of
+	time, so we can't vertically position the contents of a cell
+	automatically.  For a multi row cell occuring in rows with other
+	cells which are extra tall, i.e. cells with text with multiple lines,
+	we cannot calculate the correct vertical offset for the multirow cell.
+	So we provide this "hint" attribute to allow people to manually tune
+	the vertical position. (It's a terrible hack, but the best I can do).
+
+        This number is the number of vertical "normal height table lines" to
+	vertically offset the contents of this cell.
+    -->
+    <!-- <xs:attribute name="heighthint" type="positiveFloat" default="1.0"/> -->
+    <xs:attribute name="align" type="tabledataAlignmentType" default="l"/>
+  </xs:complexType>
+
+
+
+  <!--
+
+    Lists
+
+  -->
   <xs:complexType name="orderedListType" mixed="false">
     <xs:sequence>
       <xs:element
@@ -2363,6 +2606,7 @@ Token Types:
         <xs:element name="p" type="textType" />
         <xs:element name="design" type="textType" />
         <xs:element name="provenance" type="provenanceType" />
+	<xs:element name="figure" type="figureType"/>
         <xs:element name="olist" type="orderedListType"/>
         <xs:element name="descriptions" type="descriptionsType"/>
         <xs:element name="list" type="itemizedListType"/>
@@ -2728,8 +2972,10 @@ Token Types:
 		  minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="subsubtitle" type="blockType"
 		  minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="vspace" type="xs:integer"
-		  minOccurs="0" maxOccurs="unbounded" default="1"/>
+      <!-- <xs:element name="vspace" type="xs:integer" -->
+      <!-- 		  minOccurs="0" maxOccurs="unbounded" default="1"/> -->
+      <xs:element name="vspace" type="spaceType"
+		  minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="img" type="imgType"
@@ -2763,6 +3009,8 @@ Token Types:
       
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="section" type="sectionType"/>
+        <xs:element name="subsection" type="subsectionType" />
+        <xs:element name="subsubsection" type="subsubsectionType" />
         <xs:group ref="blockEnum"/>
 	<xs:element name="sidebar" type="sidebarType"/>
       </xs:choice>
@@ -2793,11 +3041,15 @@ Token Types:
       <xs:element name="leqsymbol" type="symbolType"/>
       <xs:element name="ltsymbol" type="symbolType"/>      
     </xs:choice>
-  </xs:complexType>  
+    <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
+  </xs:complexType>
 
   <xs:complexType name="equationType">
     <xs:sequence>
-      <xs:element name="line" type="lineType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element
+	  name="line"
+	  type="lineType"
+	  minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 

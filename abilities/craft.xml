@@ -21,17 +21,17 @@
     <abilitytitle>Armour Smith</abilitytitle>
     <abilityid>armour_smith</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="smith" rank="2"/> 
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -45,29 +45,29 @@
     <abilitytitle>Barber</abilitytitle>
     <abilityid>barber</abilityid>    
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>      
+      <reaction><default-lore-sv-hard/></reaction>      
       <critclass><craft/></critclass> 
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass> 
       <cost><default-skill-cost/></cost>      
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline><p x="90" y="0"/></spline>
     <abilitydescription>
       <p>
@@ -83,17 +83,17 @@
     <abilitytitle>Builder</abilitytitle>
     <abilityid>builder</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="20" y="60"/></spline>
     <abilitydescription>
@@ -109,17 +109,17 @@
     <abilitytitle>Carpentry</abilitytitle>
     <abilityid>carpentry</abilityid>  
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="craft" rank="1"/>
     <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
@@ -142,17 +142,17 @@
     <abilitytitle>Cartwright</abilitytitle>
     <abilityid>cartwright</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="-30" y="60"/></spline>
     <abilitydescription>
@@ -167,17 +167,17 @@
     <abilitytitle>Cooper</abilitytitle>
     <abilityid>cooper</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="-50" y="30"/></spline>
     <abilitydescription>
@@ -193,17 +193,17 @@
     <abilitytitle>Craft</abilitytitle>
     <abilityid>craft</abilityid>  
     <abilityranks untrained="0" from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -219,17 +219,17 @@
     <abilitytitle>Smith</abilitytitle>
     <abilityid>smith</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name> 
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="craft" rank="2"/>
     <spline><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -247,17 +247,17 @@
     <abilitytitle>Shipwright</abilitytitle>
     <abilityid>shipwright</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="carpentry" rank="1"/>
     <spline><p x="50" y="30"/></spline>
     <abilitydescription>
@@ -272,17 +272,17 @@
     <abilitytitle>Farmer</abilitytitle>
     <abilityid>farmer</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name> 
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="craft" rank="2"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -298,17 +298,17 @@
     <abilitytitle>Mason</abilitytitle>
     <abilityid>mason</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="craft" rank="1"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -333,17 +333,17 @@
     <abilitytitle>Miner</abilitytitle>
     <abilityid>mining</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="craft" rank="1"/>
     <spline><p x="-100" y="30"/></spline>
     <abilitydescription>
@@ -377,17 +377,17 @@
     <abilitytitle>Weapon Smith</abilitytitle>
     <abilityid>weapon_smith</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Craft</name>
-      <opposing-action><default-craft-sv/></opposing-action>
+      <reaction><default-craft-sv/></reaction>
       <critclass><craft/></critclass> 
       <cost><default-craft-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <critsuccess><default-craft-critical-success/></critsuccess>
       <righteoussuccess><default-craft-righteous-success/></righteoussuccess>  
       <success><default-craft-success/></success>      
-    </action>
+    </check>
     <prereqabilityref id="smith" rank="2"/>
     <spline><p x="0" y="60"/></spline>
     <abilitydescription>

@@ -7,7 +7,7 @@
   contains a bunch of little tables.
 
 """
-import re
+#import re
 from os.path import abspath, join, splitext, dirname, exists, basename
 from os import walk
 
@@ -23,22 +23,6 @@ from resources import Resources
 from weapons import Weapons
 from utils import split_ability_tokens
 from schema_introspection import Constants
-
-
-ability_ref_parser = re.compile(
-    # ability prefix (one or two "special stars")
-    r"✱"
-    r"(?P<is_unranked_ability_id>✱?)"
-    # mandatory ability name (can't end in _)
-    r"(?P<ability_name>[a-zA-Z_]*[a-zA-Z])"
-    # optional alternate way to write specialization, ✱foo.specialization_here
-    r"(\.(?P<ability_specialization2>[a-zA-Z]+))?"
-    # optional specialization ✱foo[specialization here]
-    r"(\[(?P<ability_specialization>[a-zA-Z_0-9\-\?/ ]+)\])?"
-    # optional rank
-    r"(_(?P<rank>[0-9]+))?" 
-)    
-
 
 
 class DB:
@@ -58,7 +42,10 @@ class DB:
         return
 
     def load(self, root_dir, fail_fast=True):
+        """
+        Reads the ttrpg game data from a set of xml files.
 
+        """
         # load the version
         changelog_dir = join(root_dir, "docs")
         changelog_fname = join(changelog_dir, "changelog.xml")
@@ -123,6 +110,14 @@ class DB:
 
         # load the constants (to expose to Jinja mainly)
         self.constants = Constants.get_constants()
+
+        # The schema introspection can't get all the information we need,
+        # (doesn't expose information outside of rpg.xsd, and I'm not sure it
+        # expands groups in the rpg.xsd file).
+        for ability in self.ability_groups.get_abilities():
+            raw_id = ability.get_id()
+            name = ability.get_name()
+            self.constants.set_constant("ABILITY_", raw_id, name)
         return
 
 
@@ -133,8 +128,11 @@ class DB:
         """
         return self.constants.__getattr__(name)
     
-    def get_ability(self, ability_ref):
+    def get_ability_from_ref(self, ability_ref):
         return self.ability_groups.get_ability(ability_ref._id)
+
+    def get_ability_from_id(self, ability_id):
+        return self.ability_groups.get_ability(ability_id)        
         
     #
     # Implement the Context Manager Protocol so we
@@ -150,8 +148,7 @@ class DB:
     
     
 if __name__ == "__main__":
-
-    # Just some test code.. (should be in a unit test if I were doing this properly).
+    # Just some scratch test code used for debugging..
     #import sys
     import utils
     db = DB()

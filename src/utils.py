@@ -9,6 +9,7 @@ from os.path import abspath, join, dirname, getsize
 import codecs
 import functools
 import lxml
+import textwrap
 import io
 from lxml.isoschematron import Schematron
 import re
@@ -54,6 +55,30 @@ def is_filelike(obj):
 def get_file_size_kb(full_fname):
     file_size_bytes = getsize(full_fname)
     return file_size_bytes // 1024
+
+
+def wrap_text(text, width=50):
+    """
+    Wrap text, be careful about what we do with whitespace
+    (so we don't cause problems for latex which cares deeply about whitespace).
+
+    """
+    # Collapse multiple spaces between words BUT preserve leading whitespace
+    text = __duplicate_ws_regex.sub(' ', text)
+
+    #  Wrap the text while preserving spaces
+    lines = textwrap.wrap(text, width=width, drop_whitespace=False)
+    
+    # Add newlines back for readability of the generated files.
+    lines = [line + '\n' for line in lines]
+
+    # Now remove the last \n
+    if len(lines) > 0:
+        lines[-1] = lines[-1].rstrip('\n')
+    return lines
+__duplicate_ws_regex = re.compile(r'(?<=\S)\s+')
+
+
 
 
 @functools.cache
@@ -591,6 +616,16 @@ def tabulate(items, n_lines_per_page, n_columns, n_lines_first_page=None):
 
 
 if __name__ == "__main__":    
-    xml_doc = parse_xml("test.xml")
-    print(node_to_string(xml_doc.getroot()))
+    #xml_doc = parse_xml("test.xml")
+    #print(node_to_string(xml_doc.getroot()))
+
+    text = """ If all else fails the character can make a check
+for Divine Intervention.
+
+
+      This action takes far too long to perform in the chaos of combat.
+    x """
+
+    print(wrap_text(text))
+
     

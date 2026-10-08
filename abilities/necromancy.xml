@@ -26,17 +26,17 @@
     <abilitytitle>Commune with the Dead</abilitytitle>
     <abilityid>commune_with_the_dead</abilityid>    
     <abilityranks from="1" to="2"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Talk with a corpse</any-success>
       <critfail>Accidentally create a zombie.</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="1"/>
     <spline><p x="15" y="30"/><p x="0" y="120"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -81,14 +81,14 @@
     <abilitytitle>Eye for an Eye</abilitytitle>
     <abilityid>eye_for_an_eye</abilityid>
     <abilityranks from="1" to="3"/>
-    <action> 
+    <check> 
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>      
       <poolcost>1</poolcost>
       <range><reach/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>
 	Melee attacks against the caster deal 3x damage to the attacker
       </critsuccess>
@@ -98,7 +98,7 @@
       <success>
 	Melee attacks against the caster deal damage to the attacker
       </success>
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="2"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -116,16 +116,16 @@
     <abilitytitle>Forbidden Psalm</abilitytitle>
     <abilityid>forbidden_psalm</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><cast/></critclass>
       <cost><ap4/></cost> 
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/><maintain/></keywords>
+      <keywords><magicpool/><action/><maintain/></keywords>
       <any-success>Undead who can make attacks at disadvantage.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="1"/>
     <spline><p x="15" y="30"/><p x="0" y="120"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -140,19 +140,19 @@
     <abilitytitle>Graft Flesh</abilitytitle>
     <abilityid>graft_flesh</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>2</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Replace amputated limbs and heal</any-success>
       <critfail>Succeeds.  However, gain the aspect: It has a Mind
       of It's Own!  The limb will attempt to murder people at inoportune
       times, when it gets the chance.</critfail>
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="1"/>
     <spline><p x="15" y="30"/><p x="0" y="15"/><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -175,17 +175,17 @@
     <abilitytitle>Necromantic Lore</abilitytitle>
     <abilityid>necromancy</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline></spline>    
     <abilitydescription>
       <p noindent="true">
@@ -204,16 +204,16 @@
     <abilityid>stay_death</abilityid>
     <slug>The light, then the dark, then the light again.</slug>
     <abilityranks from="1" to="3"/>
-    <action> 
+    <check> 
       <name>Cast</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><free-interrupt-cost/></cost>
       <poolcost>1</poolcost>
       <range><touch/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Reroll one Near-Death roll.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -230,16 +230,16 @@
     <abilitytitle>Offering for the Blood Soucriant</abilitytitle>
     <abilityid>blood_soucriant</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><cast/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>In the presence of blood, summon a demon to fight.</any-success>
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="1"/>
     <spline><p x="15" y="30"/><p x="0" y="60"/><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -258,21 +258,21 @@
     <abilitytitle>Pall of Darkness</abilitytitle>
     <abilityid>pall_of_darkness</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>2</poolcost>
       <range><ranged-short/></range>
-      <keywords><magicpool/><aoe-emination/><check/></keywords>
+      <keywords><magicpool/><aoe-emination/><action/></keywords>
       <any-success>
 	Darkness
       </any-success>
       <critfail>
 	Something from beyond bites the caster.  Suffer d4 damage
       </critfail>
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="1"/>
     <spline><p x="15" y="30"/><p x="0" y="180"/></spline>
     <abilitydescription>
@@ -291,16 +291,16 @@
     <abilitytitle>Veil of Corruption</abilitytitle>
     <abilityid>veil_of_corruption</abilityid>
     <abilityranks from="1" to="3"/>
-    <action> 
+    <check> 
       <name>Cast</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><cast/></critclass>
       <cost><noncombat-cost/></cost>
       <poolcost>1</poolcost>
       <range><self/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <any-success>Resembles a corpse</any-success>
-    </action>
+    </check>
     <prereqabilityref id="necromancy" rank="1"/>
     <spline><p x="15" y="30"/><p x="0" y="60"/><p x="-60" y="30"/></spline>
     <abilitydescription>

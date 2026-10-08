@@ -23,16 +23,16 @@
     <param-dmg>4</param-dmg>
     <param-rank>3</param-rank> 
     <keywords><antagonist/></keywords>
-    <action> 
+    <check> 
       <name>Opposed</name> 
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap3/></cost>
       <range><touch/></range>
-      <keywords><melee/><check/></keywords>
+      <keywords><melee/><action/></keywords>
       <dmg><param-dmg/></dmg>
       <any-fail>FIXME</any-fail>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -46,15 +46,15 @@
     <abilitytitle>Blood Rage</abilitytitle>
     <abilityid>blood_rage</abilityid>
     <keywords><antagonist/></keywords>
-    <action> 
+    <check> 
       <name>Rage</name> 
       <critclass><auxiliary/></critclass>
-      <cost><free-reaction-cost/></cost>
+      <cost><free-response-cost/></cost>
       <range><self/></range>
       <keywords><auxiliary/></keywords>
       <precondition>Monster becomes bloodied.</precondition>
       <effect>Immediately makes a melee opposing-action attack - if possible</effect>
-    </action>    
+    </check>    
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -71,15 +71,15 @@
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap2/></cost>
       <range><reach/></range>
-      <keywords><check/><melee/></keywords>
+      <keywords><action/><melee/></keywords>
       <any-fail>param-dmg</any-fail>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -96,20 +96,20 @@
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>      
+    <check>      
       <name>Opposed</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap3/></cost>
       <range><reach/></range>
       <keywords>
-	<npc/><check/><melee/><unblockable/><undodgeable/><unparryable/>
+	<npc/><action/><melee/><unblockable/><undodgeable/><unparryable/>
       </keywords>
       <any-success>1+Rank Damage</any-success>
       <fail>Deal Damage</fail>
       <grimfail>Deal 2×Damage</grimfail>
       <critfail>Deal 3×Damage</critfail>      
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -135,7 +135,7 @@
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Trigger</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -143,7 +143,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>When the character would go Down</precondition>
       <effect>The character gets one more melee attack</effect>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -158,20 +158,20 @@
     <abilitytitle>Demon Instability</abilitytitle>
     <abilityid>demon_instability</abilityid>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><luck-save/></opposing-action>
+      <reaction><luck-save/></reaction>
       <critclass><fixme/></critclass>
       <cost><free/></cost>
       <poolcost>2</poolcost>
       <range><na/></range>
-      <keywords><mettlepool/><check/><delegate-saves/></keywords>
+      <keywords><mettlepool/><action/><delegate-saves/></keywords>
       <precondition>When this creature is hit for 10 or more damage</precondition>
       <any-fail>
 	The demon loses its link to its simulacrum in this plane. The simularcrum
 	is destroyed.
       </any-fail>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -232,16 +232,16 @@
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name> 
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap3/></cost>
       <range><reach/></range>      
-      <keywords><melee/><check/></keywords>
+      <keywords><melee/><action/></keywords>
       <precondition>Only available when charging</precondition>
       <any-success>7+Rank Damage</any-success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -258,18 +258,18 @@
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap4/></cost>
       <range><reach/></range>
-      <keywords><melee/><check/></keywords>
+      <keywords><melee/><action/></keywords>
       <precondition>When the character is hit for 10 or more damage</precondition>
       <success>No Damage</success>
       <any-fail>7 damage</any-fail>
       <grimfail>Poisoned</grimfail>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -285,17 +285,17 @@
     <abilityid>prehensile_tail</abilityid>
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap2/></cost>
       <range><reach/></range>
-      <keywords><melee/><check/><noarmour/><unblockable/></keywords>
+      <keywords><melee/><action/><noarmour/><unblockable/></keywords>
       <success>No Damage</success>
       <any-fail>Grabbed</any-fail>
       <grimfail>Crushed 2 Damage</grimfail>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -312,14 +312,14 @@
     <abilityid>prehensile_tongue</abilityid>
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap2/></cost>
       <range><reach/></range>
-      <keywords><melee/><check/><noarmour/><unblockable/></keywords>
-    </action>
+      <keywords><melee/><action/><noarmour/><unblockable/></keywords>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -337,7 +337,7 @@
     <param-dmg>4</param-dmg>    
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Talent</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -345,7 +345,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>Start of the round</precondition>
       <effect>Character regains rank hit points</effect>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -360,15 +360,15 @@
     <abilityid>summon_demon</abilityid>
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><luck-save/></opposing-action>
+      <reaction><luck-save/></reaction>
       <critclass><cast/></critclass>
       <cost><ap5/></cost>
       <range><ranged-short/></range>
-      <keywords><check/><delegate-saves/></keywords>
+      <keywords><action/><delegate-saves/></keywords>
       <any-fail>A demon is summoned</any-fail>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -403,19 +403,19 @@
     <abilityid>terrifying</abilityid>
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><mettle-save/></opposing-action>
+      <reaction><mettle-save/></reaction>
       <critclass><fixme/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><ranged-medium/></range>
-      <keywords><mettlepool/><npc/><check/></keywords>
+      <keywords><mettlepool/><npc/><action/></keywords>
       <success>No effect</success>
       <fail>Target loses Rank mettle</fail>
       <grimfail>Target loses Rank+1 mettle</grimfail>
       <critfail>Target loses Rank+2 mettle</critfail>
-    </action>    
+    </check>    
     <spline></spline>
     <specializations>
       <specialization>DC11</specialization>
@@ -439,19 +439,19 @@
     <abilityid>terrifying_clarion</abilityid>
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><mettle-save/></opposing-action>
+      <reaction><mettle-save/></reaction>
       <critclass><fixme/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><ranged-short/></range>
-      <keywords><aoe-emination/><mettlepool/><npc/><check/></keywords>
+      <keywords><aoe-emination/><mettlepool/><npc/><action/></keywords>
       <success>No effect</success>
       <fail>Target loses Rank mettle</fail>
       <grimfail>Target loses Rank+1 mettle</grimfail>
       <critfail>Target loses Rank+2 mettle</critfail>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -467,16 +467,16 @@
     <abilityid>watch_out_sir</abilityid>
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><luck-save/></opposing-action>
+      <reaction><luck-save/></reaction>
       <critclass><auxiliary/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><reach/></range>
       <keywords>
-	<check/><delegate-saves/>
+	<action/><delegate-saves/>
       </keywords>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -494,18 +494,18 @@
     <abilityid>web</abilityid>
     <param-rank>3</param-rank>
     <keywords><antagonist/></keywords>
-    <action>
+    <check>
       <name>Opposed</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>
       <cost><ap1/></cost>
       <range><ranged-short/></range>
       <keywords>
-	<aoe-cone/><unparryable/><check/><everyone-saves/>
+	<aoe-cone/><unparryable/><action/><everyone-saves/>
       </keywords>
       <fail>Slowed</fail>
       <grimfail>Petrified</grimfail>      
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

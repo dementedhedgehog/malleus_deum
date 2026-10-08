@@ -17,23 +17,23 @@
     <abilitytitle>Light Crossbow</abilitytitle>
     <abilityid>crossbow_shoot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       
       <name>Missile-Attack</name> 
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>
       <cost><ap2/></cost>
       <range><default-crossbow-range/></range>
       <keywords>
-	<crossbow/><physical-attack/><basic-attack/><missile/><check/>
+	<crossbow/><physical-attack/><basic-attack/><missile/><action/>
       </keywords>
       <dmg>Weapon</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
-    </action>
+    </check>
 
-    <action>
+    <check>
       
       <name>Reload</name>
       <critclass><auxiliary/></critclass>
@@ -42,7 +42,7 @@
       <keywords><auxiliary/></keywords>
       <precondition>Armed with an empty crossbow.</precondition>
       <effect>Reloads the crossbow.</effect>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -57,21 +57,21 @@
     <abilitytitle>Deadshot</abilitytitle>
     <abilityid>crossbow_deadshot</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       <name>Missile-Attack</name> 
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>
       <cost><ap5/></cost>
       <range><default-crossbow-range/></range>
       <keywords>
-	<crossbow/><physical-attack/><basic-attack/><missile/><check/>
+	<crossbow/><physical-attack/><basic-attack/><missile/><action/>
       </keywords>
       <dmg>Weapon</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
       <success><default-attack-success/></success>
       <effect>Attacks with advantage.</effect>
-    </action>
+    </check>
     <prereqabilityref id="crossbow_shoot" rank="2"/>
     <spline><p x="90" y="30"/></spline>
     <abilitydescription>
@@ -87,19 +87,19 @@
     <abilitytitle>Reload</abilitytitle>
     <abilityid>fast_loader</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       <name>Trial</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><test/></critclass>
       <cost><ap2/></cost>
       <range><self/></range>
-      <keywords><crossbow/><missile/><check/></keywords>
+      <keywords><crossbow/><missile/><action/></keywords>
       <critsuccess>Reload takes 1ap</critsuccess>
       <righteoussuccess>Reload takes 2ap</righteoussuccess>
       <success>Reload takes 3ap</success>
       <fail>Reload takes 4ap</fail>
       <grimfail>Reload takes 7ap</grimfail>      
-    </action>
+    </check>
     <prereqabilityref id="crossbow_shoot" rank="2"/>
     <spline><p x="-90" y="30"/></spline>
     <abilitydescription>

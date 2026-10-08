@@ -22,17 +22,17 @@
     <abilitytitle>Call of the Wild</abilitytitle>
     <abilityid>call_of_the_wild</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>rrr</critsuccess>
       <critfail>eee</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="vermin_swarm" rank="2"/>
     <spline><p x="0" y="15"/></spline>
     <abilitydescription>
@@ -88,17 +88,17 @@
     <abilitytitle>Howl of the Hunt</abilitytitle>
     <abilityid>howl_of_the_hunt</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap2/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>bbb</critsuccess>
       <critfail>nnn</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="wild_magic" rank="2"/>
     <spline><p x="0" y="60"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -115,17 +115,17 @@
     <abilitytitle>Hyperosmia</abilitytitle>
     <abilityid>hyperosmia</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="wild_magic" rank="1"/>
     <spline><p x="0" y="120"/><p x="-30" y="30"/></spline>
     <abilitydescription>
@@ -144,17 +144,17 @@
     <abilitytitle>Mandragora</abilitytitle>
     <abilityid>mandragora</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="wild_magic" rank="2"/>
     <spline><p x="0" y="105"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -182,17 +182,17 @@
     <abilitytitle>Therianthropy</abilitytitle>
     <abilityid>therianthropy</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="hyperosmia" rank="2"/>
     <spline><p x="0" y="30"/></spline>
     <abilitydescription>
@@ -356,17 +356,17 @@
     <abilitytitle>Vermin Swarm</abilitytitle>
     <abilityid>vermin_swarm</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="wild_magic" rank="1"/>
     <spline><p x="0" y="45"/><p x="-45" y="30"/></spline>
     <abilitydescription>
@@ -422,16 +422,16 @@
     <abilitytitle>Spider Climb</abilitytitle>
     <abilityid>spider_climb</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>      
+      <reaction><ssv11/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <success>FIXME</success>
-    </action>
+    </check>
     <prereqabilityref id="wild_magic" rank="2"/>
     <spline><p x="0" y="150"/><p x="30" y="30"/></spline>
     <abilitydescription>
@@ -449,26 +449,26 @@
     <abilityid>tanglefoot</abilityid>
     <slug>Folly is an endless maze; Tangled roots perplex her ways;</slug>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><sv9/></opposing-action>      
+      <reaction><ssv9/></reaction>      
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/><magicpool/></keywords>
+      <keywords><magicpool/><action/><magicpool/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Tangle</name>
-      <opposing-action><agility-save/></opposing-action>
+      <reaction><agility-save/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <range><ranged-medium/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <prereqabilityref id="wild_magic" rank="2"/>
     <spline><p x="0" y="15"/><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -510,7 +510,7 @@
   <!--   </abilitydescription>     -->
   <!--   <spline><p x="-60" y="0"/></spline> -->
   <!--   <prereqabilityrank>lore_1</prereqabilityrank> -->
-  <!--   <check dc="9">Magic+Rank</action> -->
+  <!--   <check dc="9">Magic+Rank</check> -->
   <!--   <abilityranks from="1" to="4"/> -->
   <!-- </ability> -->
   
@@ -519,17 +519,17 @@
     <abilitytitle>Wild Magic Lore</abilitytitle>
     <abilityid>wild_magic</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>      
       <range><self/></range>      
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p>
@@ -544,16 +544,16 @@
     <abilitytitle>Warp Wood</abilitytitle>
     <abilityid>warp_wood</abilityid>
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Cast</name> 
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><cast/></critclass>
       <cost><ap1/></cost>
       <poolcost>1</poolcost>
       <range><na/></range>
-      <keywords><magicpool/><check/></keywords>
+      <keywords><magicpool/><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <prereqabilityref id="wild_magic" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>

@@ -23,7 +23,7 @@
     <abilitytitle>Axe Cleave</abilitytitle>
     <abilityid>axe_cleave</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Auxiliary Attack</name>
       <critclass><auxiliary/></critclass>
       <cost><free/></cost>
@@ -36,7 +36,7 @@
 	Axe Strike damage is dealt to an additional enemy adjacent
 	to the attacking character.
       </effect>  
-    </action>
+    </check>
     <prereqabilityref id="axe_strike" rank="3"/>
     <prereqattr><strength>13</strength></prereqattr>
     <spline><p x="60" y="30"/></spline>
@@ -62,18 +62,18 @@
     <abilitytitle>Axe Frenzy</abilitytitle>
     <abilityid>axe_frenzy</abilityid>    
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Trial</name>
-      <opposing-action><sv11/></opposing-action>     
+      <reaction><ssv11/></reaction>     
       <critclass><trial/></critclass>
       <cost><ap4/></cost>
       <poolcost>1</poolcost>
       <range><reach/></range>
-      <keywords><mettlepool/><axe/><melee/><check/></keywords>
+      <keywords><mettlepool/><axe/><melee/><action/></keywords>
       <any-success>Make 2 Axe-Strike attacks.</any-success>
       <critsuccess>3 Attacks instead of 2</critsuccess>
       <critfail>Berserk</critfail>      
-    </action>
+    </check>
     <prereqabilityref id="axe_strike" rank="1"/>
     <prereqattr><strength>13</strength></prereqattr>
     <spline><p x="-75" y="30"/></spline>    
@@ -91,18 +91,18 @@
     <abilitytitle>Axe Hook</abilitytitle>
     <abilityid>axe_hook</abilityid>    
     <abilityranks from="1" to="4"/>
-    <action>
+    <check>
       <name>Melee Attack</name> 
-      <opposing-action><strength-save/></opposing-action>
+      <reaction><strength-save/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><free/></cost>
       <range><reach/></range>
-      <keywords><axe/><melee/><check/></keywords>
+      <keywords><axe/><melee/><action/></keywords>
       <precondition>Righteous Axe Strike against an opponent carrying an item,
       a weapon or shield</precondition>
       <critsuccess>Target drops item, weapon or shield.  Attacker chooses.</critsuccess>
       <success>Target drops random item, weapon or shield</success>
-    </action>
+    </check>
     <prereqabilityref id="axe_strike" rank="1"/>
     <spline><p x="0" y="30"/></spline>    
     <abilitydescription>
@@ -119,17 +119,17 @@
     <abilitytitle>Axe Strike</abilitytitle>
     <abilityid>axe_strike</abilityid>    
     <abilityranks untrained="0" from="1" to="4"/>
-    <action>
+    <check>
       <name>Melee Attack</name> 
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>
       <cost><ap4/></cost>
       <range><reach/></range>
-      <keywords><axe/><melee/><basic-attack/><check/></keywords>
+      <keywords><axe/><melee/><basic-attack/><action/></keywords>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>
       <success><default-attack-success/></success>
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">

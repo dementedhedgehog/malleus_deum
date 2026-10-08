@@ -18,42 +18,42 @@
     <abilitytitle>Gun Maintenance</abilitytitle>
     <abilityid>gun_maintenance</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-skill-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     
-    <action>
+    <check>
       <name>Fast Reload</name>
-      <opposing-action><sv9/></opposing-action>      
+      <reaction><ssv9/></reaction>      
       <critclass><test/></critclass>
       <cost><ap2/></cost>
       <range><touch/></range>
-      <keywords><black-powder/><missile/><check/></keywords>
+      <keywords><black-powder/><missile/><action/></keywords>
       <any-success>Reload the gun during combat.  If successful the gun is
       reloaded during this minor action. A gun can be reloaded without a check
       using a Standard Action.
       </any-success>
-    </action>
+    </check>
     
-    <action>
+    <check>
       <name>Repair</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><craft/></critclass>
       <cost><noncombat-cost/></cost>
       <range><touch/></range>
-      <keywords><craft/><check/></keywords>
+      <keywords><craft/><action/></keywords>
       <any-success>
 	Make minor repairs and perform maintenance on the gun
       </any-success>
-    </action>
+    </check>
     <prereqabilityref id="gun_shoot" rank="1"/>
     <spline><p x="-60" y="30"/></spline>
     <abilitydescription>
@@ -74,19 +74,19 @@
     <abilitytitle>Sharp Shooter</abilitytitle>
     <abilityid>sharp_shooter</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Missile Attack</name>
-      <opposing-action><physical-defence/></opposing-action>      
+      <reaction><physical-defence/></reaction>      
       <critclass><missile-attack/></critclass>
       <cost><ap5/></cost>
       <range><ranged-short/></range>
       <keywords>
-	<physical-attack/><black-powder/><missile/><advantage/><check/>
+	<physical-attack/><black-powder/><missile/><advantage/><action/>
       </keywords>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
-    </action>
+    </check>
     <prereqabilityref id="gun_shoot" rank="2"/>
     <spline><p x="60" y="30"/></spline>
     <abilitydescription>
@@ -103,28 +103,28 @@
     <abilitytitle>Gun Shoot</abilitytitle>
     <abilityid>gun_shoot</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Missile Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><missile-attack/></critclass>
       <cost><ap2/></cost>
       <range><ranged-short/></range>
-      <keywords><physical-attack/><black-powder/><missile/><check/></keywords>
+      <keywords><physical-attack/><black-powder/><missile/><action/></keywords>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>
       <critfail>Roll on the ranged consequence table</critfail>
-    </action>
+    </check>
 
-    <action>
+    <check>
       <name>Reload</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><test/></critclass>
       <cost><ap4/></cost>
       <range><touch/></range>
-      <keywords><black-powder/><check/></keywords>
+      <keywords><black-powder/><action/></keywords>
       <any-success>Reload the gun during combat.</any-success>
-    </action>
+    </check>
     
     <spline></spline>
     <abilitydescription>

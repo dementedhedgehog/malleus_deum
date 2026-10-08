@@ -8,6 +8,10 @@
     <abilitygroupdescription>
       <p>
       </p>
+
+      <figure position="!b">
+	<img id="holm_madness"/>
+      </figure>      
     </abilitygroupdescription>
     <dontdrawskilltree/>
     <enabled/>
@@ -22,27 +26,32 @@
     <abilitydescription>
       <p>
 	Spiritual Torment occurs when the character is haunted or possessed by
-	one or more demons or evil spirits. Symptoms of an episode include
-	flashbacks, nightmares, and severe anxiety.
+	one or more demons or evil spirits. If a character is compelled by
+	spritual torment they must choose either to suffer the mental torment
+	from defying the will of the spirits; including flashbacks, nightmares,
+	and severe anxiety; or they can obey those evil influences.
       </p>
 
       <p>
-	Attacks may be triggered during the following times:
+	Aspect saves may be triggered during the following times:
       </p>
       <descriptions>
-	<term>During moments of Spiritual Triump</term>
+	<term>During moments of Spiritual Triump,</term>
 	<description>
-	  as the fiends that possess the character try desperately to stop them.
+	  as the fiends that possess the character try desperately to stop them
+	  from achieving some good dead.
 	</description>
 
-	<term>Character has opened the Doors of Sin.</term>
+	<term>Character has opened the Doors of Sin,</term>
 	<description>
-	  Y
+	  when the character has transgressed or performed some wrongdoing.  At
+	  these times their resistance to wicked influences is reduced.
 	</description>
 
 	<term>During the Vulnerability of the Night</term>
 	<description>
-	  X
+	  When the character may be beset by nightmares and wake in a screaming
+	  fit.
 	</description>
       </descriptions>      
     </abilitydescription>
@@ -64,6 +73,47 @@
     </abilitydescription>
   </ability>
   
+
+  <ability>
+    <abilitytitle>Hysterical Blindness «Aspect»</abilitytitle>
+    <abilityid>hysterical_blindness</abilityid>
+    <param-rank>2</param-rank>         
+    <abilityranks from="0" to="7"/>    
+    <keywords><antagonist/><disease/></keywords>
+    <check>
+      <name>Every Session</name>
+      <reaction><endurance-save/></reaction>
+      <critclass><disease/></critclass>
+      <cost><free/></cost>
+      <range><na/></range>
+      <keywords><reaction/></keywords>
+    </check>
+    <stage>
+      <name>W</name>
+      <description>
+      </description>
+    </stage>
+    <stage>
+      <name>X</name>
+      <description>
+      </description>
+    </stage>
+    <stage>
+      <name>Y</name>
+      <description>
+      </description>
+    </stage>
+    <stage>
+      <name>Z</name>
+      <description>
+      </description>
+    </stage>    
+    <abilitydescription>
+      <p>
+	FIXME: MADNESS
+      </p>
+    </abilitydescription>
+  </ability>
 
   <ability>
     <abilitytitle>Moral Injury «Aspect»</abilitytitle>

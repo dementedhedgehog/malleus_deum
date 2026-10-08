@@ -12,11 +12,12 @@
     <dontdrawskilltree/>
     <enabled/>
   </abilitygroupinfo>
+  
   <ability>
-    <abilitytitle>Creature Size</abilitytitle>
+    <abilitytitle>Size</abilitytitle>
     <abilityid>size</abilityid>
     <keywords><keyword/></keywords>
-    <stage>
+    <qualifier>
       <name>Minute</name>
       <description>
 	<indexentry><entry>Keywords</entry><subentry>Minute</subentry></indexentry>
@@ -28,8 +29,8 @@
 	</indexentry>
 	The size of an apple or smaller.
       </description>
-    </stage>
-    <stage>
+    </qualifier>
+    <qualifier>
       <name>Tiny</name>
       <description>
 	<indexentry><entry>Keywords</entry><subentry>Tiny</subentry></indexentry>
@@ -41,8 +42,8 @@
 	</indexentry>
 	A monster size as large as a cat, a chicken, or a small dog.
       </description>
-    </stage>
-    <stage>
+    </qualifier>
+    <qualifier>
       <name>Small</name>
       <description>
 	<indexentry><entry>Keywords</entry><subentry>Small</subentry></indexentry>
@@ -54,8 +55,8 @@
 	</indexentry>	
 	The size of a child or smaller.
       </description>
-    </stage>
-    <stage>
+    </qualifier>
+    <qualifier>
       <name>Medium</name>
       <description>
 	<indexentry><entry>Keywords</entry><subentry>Medium</subentry></indexentry>
@@ -63,9 +64,9 @@
 	<indexentry><entry>Medium</entry></indexentry>
 	The size of an adult human, dwarf or elf.
       </description>
-    </stage>
+    </qualifier>
     
-    <stage>
+    <qualifier>
       <name>Large</name>
       <description>	
 	<indexentry><entry>Keywords</entry><subentry>Large</subentry></indexentry>
@@ -77,9 +78,9 @@
 	</indexentry>	
 	A monster size as large as a horse, cow, or ogre.
       </description>
-    </stage>
+    </qualifier>
     
-    <stage>
+    <qualifier>
       <name>Huge</name>
       <description>
 	<indexentry><entry>Keywords</entry><subentry>Huge</subentry></indexentry>
@@ -90,9 +91,9 @@
 	</indexentry>
 	  A monster size approximately as large as an elephant.
       </description>
-    </stage>
+    </qualifier>
 
-    <stage>
+    <qualifier>
       <name>Gargantuan</name>
       <description>
 	<indexentry><entry>Keywords</entry><subentry>Gargantuan</subentry></indexentry>
@@ -104,32 +105,32 @@
 	</indexentry>
 	Larger than an elephant, <eg/> dinosaurs, dragons, and whales.
       </description>
-    </stage>
+    </qualifier>
     
     <abilitydescription>
 	<figure position="htbp">
 	  <img id="monster_sizes"/>
-	  <caption>Monster Sizes</caption>
+	  <caption>Creature Sizes</caption>
 	  <label>figure:monster-sizes</label>
 	</figure> 
      
 	<indexentry><entry>Sizes, Monster</entry>
 	<indexdefn>
-	  Monster sizes range from Tiny, Small, Medium, Large, Huge and
+	  Monster sizes range from Minute, Tiny, Small, Medium, Large, Huge and
 	  Gargantuan.  Humans are Medium, Cats are Tiny, and Elephants are
-	  Large.
+	  Huge.
 	</indexdefn>
 	</indexentry>
       
 	<p>
 	  Monsters come in varying sizes.  Humans, Dwarves and Elves are
-	  considered medium, Halflings are small.  Cats, Chickens and Tiny.
-	  Horses are Large.  Elephants are huge and Dragons are gigantic.
+	  considered medium, Halflings are small.  Cats, Chickens are Tiny.
+	  Horses are Large.  Elephants are Huge and Dragons are Gigantic.
 	</p>
-      
-      <p>
-	This keyword describes the physical size of the creature.
-      </p>
+	
+	<p>
+	  This keyword describes the physical size of the creature.
+	</p>
     </abilitydescription>
   </ability>
 </abilitygroup>

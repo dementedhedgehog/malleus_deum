@@ -19,18 +19,18 @@
     <abilitytitle>Cloak Fighting</abilitytitle>
     <abilityid>cloak_fighting</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Defend</name>
-      <opposing-action><physical-attack/></opposing-action>
+      <reaction><physical-attack/></reaction>
       <critclass><fixme/></critclass>
-      <cost><reaction-cost/></cost>
+      <cost><response-cost/></cost>
       <range><na/></range>
-      <keywords><save/></keywords>
-    </action>
+      <keywords><reaction/></keywords>
+    </check>
     <spline><p x="90" y="90"/></spline> 
     <abilitydescription>
       <p>
-	Reaction to being attacked with a <emph>Piercing</emph> weapon. The
+	Response to being attacked with a <emph>Piercing</emph> weapon. The
 	character makes a cloak fighting check to use their cloak to
 	<emph>Block</emph> the attack.  The character should be wearing a cloak,
 	but a character can improvise by using a blanket, curtain, tablecloth
@@ -48,15 +48,15 @@
     <abilitytitle>Concealment</abilitytitle>
     <abilityid>concealment</abilityid>    
     <abilityranks untrained="0" from="1" to="9"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><perception-save/></opposing-action>      
+      <reaction><perception-save/></reaction>      
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <spline><p x="0" y="90"/></spline> 
     <abilitydescription>
       <p>
@@ -91,15 +91,15 @@
     <abilitytitle>Contortionist/Escape Artist</abilitytitle>
     <abilityid>escapist</abilityid>    
     <abilityranks untrained="-3" from="1" to="2"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <spline><p x="0" y="60"/></spline> 
     <abilitydescription>
       <p>
@@ -115,15 +115,15 @@
     <abilitytitle>Cryptography</abilitytitle>
     <abilityid>cryptography</abilityid>
     <abilityranks from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>  
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <spline><p x="90" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -137,15 +137,15 @@
     <abilitytitle>Disguise</abilitytitle>
     <abilityid>disguise</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><perception-save/></opposing-action>
+      <reaction><perception-save/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <spline><p x="-90" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -161,15 +161,15 @@
     <abilitytitle>Pick Locks</abilitytitle>
     <abilityid>pick_locks</abilityid>    
     <abilityranks untrained="0" from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <spline><p x="90" y="60"/></spline> 
     <abilitydescription>
       <p>
@@ -184,15 +184,15 @@
     <abilitytitle>Back Stab</abilitytitle>
     <abilityid>back_stab</abilityid>    
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><perception-save/></opposing-action>
+      <reaction><perception-save/></reaction>
       <critclass><test/></critclass>
       <cost><ap4/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
-    </action>
+    </check>
     <spline><p x="-90" y="0"/></spline> 
     <abilitydescription>
       <p>
@@ -223,16 +223,16 @@
     <abilitytitle>Ropecraft</abilitytitle>
     <abilityid>ropecraft</abilityid>
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><test/></critclass>
       <cost><ap4/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="0" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -248,16 +248,16 @@
     <abilitytitle>Search</abilitytitle>
     <abilityid>search</abilityid>
     <abilityranks untrained="0" from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name> 
-      <opposing-action><sv13/></opposing-action>
+      <reaction><ssv13/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="-90" y="60"/></spline> 
     <abilitydescription>
       <p>
@@ -273,16 +273,16 @@
     <abilitytitle>Sleight of Hand</abilitytitle>
     <abilityid>sleight_of_hand</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><perception-save/></opposing-action>
+      <reaction><perception-save/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="-90" y="90"/></spline> 
     <abilitydescription>
       <p>
@@ -297,16 +297,16 @@
     <abilitytitle>Stealth (Ag)</abilitytitle>
     <abilityid>stealth</abilityid>    
     <abilityranks untrained="-3" from="1" to="5"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><perception-save/></opposing-action>
+      <reaction><perception-save/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline></spline>
     <specializations><specialization>Urban</specialization><specialization>Wilds</specialization></specializations>
     <abilitydescription>
@@ -327,16 +327,16 @@
     <abilitytitle>Trap Work</abilitytitle>
     <abilityid>trap_work</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><perception-save/></opposing-action> 
+      <reaction><perception-save/></reaction> 
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>
@@ -355,16 +355,16 @@
     <abilitytitle>Sure Feet</abilitytitle>
     <abilityid>surefeet</abilityid>
     <abilityranks untrained="-3" from="1" to="3"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><perception-save/></opposing-action>
+      <reaction><perception-save/></reaction>
       <critclass><test/></critclass>
       <cost><noncombat-cost/></cost>
       <range><na/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>FIXME</critsuccess>
       <critfail>FIXME</critfail>
-    </action>
+    </check>
     <spline><p x="90" y="30"/></spline> 
     <abilitydescription>
       <p>

@@ -18,18 +18,18 @@
     <abilitytitle>Climb</abilitytitle>
     <abilityid>climb</abilityid>    
     <abilityranks untrained="-3" from="1" to="6"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv7/></opposing-action>      
+      <reaction><ssv7/></reaction>      
       <critclass><physical/></critclass>
       <cost><ap4/></cost>
       <range><self/></range>
-      <keywords><physical/><check/></keywords>
+      <keywords><physical/><action/></keywords>
       <critsuccess>Can assist another character with their climb</critsuccess>
       <success>Success</success>
       <fail>The character has problems needs to check again.</fail>
       <critfail>Fall</critfail>
-    </action>
+    </check>
     <spline><p x="90" y="150"/></spline> 
     <abilitydescription>
       <p>
@@ -44,18 +44,18 @@
     <abilitytitle>Swim</abilitytitle>
     <abilityid>swim</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><sv7/></opposing-action>
+      <reaction><ssv7/></reaction>
       <critclass><physical/></critclass>
       <cost><ap4/></cost>
       <range><self/></range>
-      <keywords><physical/><check/></keywords>
+      <keywords><physical/><action/></keywords>
       <critsuccess>Can assist another character with their swim</critsuccess>
       <success>Success.</success>
       <fail>The character has problems needs to check again.</fail>
       <critfail>Gain the Drowing condition</critfail>
-    </action>
+    </check>
     <spline><p x="90" y="180"/></spline> 
     <abilitydescription>
       <p>

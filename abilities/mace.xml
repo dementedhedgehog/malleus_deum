@@ -9,22 +9,25 @@
         Represents training the ability to use maces, clubs, flails,
 	morning stars, virges, and improvised club-like weapons in combat.
       </p>
+
+      <figure position="!htbp">
+	<img id="rackham_flail"/>
+      </figure>
     </abilitygroupdescription>
     <enabled/>
-  </abilitygroupinfo>
-  
+  </abilitygroupinfo>  
 
   <ability>
     <abilitytitle>Mace Smash</abilitytitle>
     <abilityid>mace_smash</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Mace Smash</name>
-      <opposing-action><physical-defence/></opposing-action>      
+      <reaction><physical-defence/></reaction>      
       <critclass><melee-attack/></critclass>                
       <cost><ap4/></cost>
       <range><reach/></range>
-      <keywords><physical-attack/><check/></keywords>
+      <keywords><physical-attack/><action/></keywords>
       <precondition>
 	Fighting in melee against an opponent holding a weapon or shield
       </precondition>
@@ -32,7 +35,7 @@
       <righteoussuccess>
 	Make a break test against your opponents weapon or shield.
       </righteoussuccess>
-    </action>
+    </check>
     <prereqabilityref id="mace_strike" rank="2"/>
     <spline><p x="75" y="30"/></spline>
     <abilitydescription>
@@ -50,18 +53,18 @@
     <abilitytitle>Mace Strike</abilitytitle>
     <abilityid>mace_strike</abilityid>
     <abilityranks untrained="0" from="1" to="3"/>
-    <action>
+    <check>
       <name>Attack</name>
-      <opposing-action><physical-defence/></opposing-action>
+      <reaction><physical-defence/></reaction>
       <critclass><melee-attack/></critclass>                
       <cost><ap3/></cost>
       <range><reach/></range>
-      <keywords><physical-attack/><check/></keywords>
+      <keywords><physical-attack/><action/></keywords>
       <dmg>Weapon+Strength|Will</dmg>
       <critsuccess><default-attack-critical-success/></critsuccess>
       <righteoussuccess><default-attack-righteous-success/></righteoussuccess>  
       <success><default-attack-success/></success>      
-    </action>
+    </check>
     <spline></spline>
     <abilitydescription>
       <p noindent="true">
@@ -76,26 +79,26 @@
     <abilitytitle>Mace Wild Swing</abilitytitle>
     <abilityid>wild_swing</abilityid>
     <abilityranks from="1" to="3"/>
-    <action>
+    <check>
       <name>Stand Firm</name>
-      <opposing-action><sv11/></opposing-action>
+      <reaction><ssv11/></reaction>
       <critclass><melee-attack/></critclass>                
       <cost><ap3/></cost>
       <range><reach/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <critsuccess>Grants three Wild Swings</critsuccess>
       <righteoussuccess>Grants two Wild Swings.</righteoussuccess>  
       <success>Grants one Wild Swing.</success>
-    </action>
-    <action>
+    </check>
+    <check>
       <name>Wild Swing</name>
-      <opposing-action><will-save/></opposing-action>
+      <reaction><will-save/></reaction>
       <critclass><melee-attack/></critclass>
-      <cost><free-reaction-cost/></cost>
+      <cost><free-response-cost/></cost>
       <range><reach/></range>
-      <keywords><check/></keywords>
+      <keywords><action/></keywords>
       <success>Action fails</success>
-    </action>
+    </check>
     <prereqabilityref id="mace_strike" rank="1"/>
     <spline><p x="-75" y="30"/></spline>
     <abilitydescription>

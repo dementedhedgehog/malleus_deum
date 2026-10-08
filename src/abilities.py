@@ -35,7 +35,11 @@ CONSTANTS = Constants.get_constants()
 # constants
 ANTAGONIST = "Antagonist"
 
-ACTION_CLASSES = {"Check", "Save", "Auxiliary"}
+CHECK_VERBS = {
+    CONSTANTS.CHECK_VERB_ACTION_NAME, 
+    CONSTANTS.CHECK_VERB_REACTION_NAME,
+    CONSTANTS.CHECK_VERB_AUXILIARY_NAME,
+}
 
 
 def get_only_child_value(element):
@@ -159,8 +163,7 @@ class AbilityStage:
             else:
                 raise Exception("UNKNOWN (%s) in file %s\n" % 
                                 (child.tag, fname))
-        return
-        
+        return     
     
 
 MIN_INITIAL_ABILITY_RANK = -6
@@ -277,9 +280,9 @@ class NotTagPrereq:
         return self.to_string()
  
 
-class Action:
+class Check:
     """
-    An ability check/save/auxiliary configuration.
+    An ability action/response/auxiliary configuration.
 
     """
     def __init__(self, ability):
@@ -288,26 +291,29 @@ class Action:
         # can be None for the default
         self.name = None
 
-        # Can be None for the default (for auxiliarys mainly)
-        self.opposing_action = None
-
-        # Cost of the opposing action (optional)
-        self.opposing_action_cost = None
-
-        # Things like physical, magic, melee .. used for crit tables.
-        self.crit_class = None
-
-        # Things like physical, magic, melee .. used for crit tables.
-        #self.save_type = None
+        # The type of action used in the check
+        self.action = None
         
         # Action point cost
         self.cost = None
+        
+        # One of action, reaction or auxiliary
+        self.check_verb = None
+
+        # Can be None for the default (for auxiliarys mainly)
+        self.reaction = None
+
+        # Cost of the reaction (optional)
+        self.reaction_cost = None
+
+        # Things like physical, magic, melee .. used for crit tables.
+        self.crit_class = None
         
         # Pool point default cost.
         self.pool_cost = None
         
         # range of this action in meters/yards
-        self.action_range = None
+        self.check_range = None
 
         # Requirements to attempt this action
         self.requires = None
@@ -342,14 +348,14 @@ class Action:
     def get_name(self):
         return self.name
 
-    def get_action_class(self):
+    def get_check_verb(self):
         """
-        Is this a check, save or auxiliary action?
+        Is this a action, reaction or auxiliary check?
 
         """
-        return self.action_class
-
-    def is_antag_action(self):
+        return self.check_verb
+    
+    def is_antag_check(self):
         return self.ability.is_antag_ability()
 
     def get_crit_class(self):
@@ -389,7 +395,7 @@ class Action:
     def get_keywords_str(self):
         return ", ".join(self.get_keywords()).strip()
 
-    def get_action_keywords_str(self):
+    def get_check_keywords_str(self):
         """
         Get the keywords for this action not including the keywords for it's
         parent ability.
@@ -399,7 +405,7 @@ class Action:
         return ", ".join(sorted(list(keywords)))
 
     def get_range(self):
-        return self.action_range
+        return self.check_range
 
     def get_precondition(self):
         return self.precondition
@@ -425,13 +431,17 @@ class Action:
             if tag == "name":
                 self.name = contents_to_string(child)
 
-            elif tag == "opposing-action":
-                self.opposing_action = get_only_child_value(child)
-                assert self.opposing_action
+            elif tag == "action":
+                self.action = get_only_child_value(child)
+                assert self.action
 
-            elif tag == "opposing-action-cost":
-                self.opposing_action_cost = get_only_child_value(child)
-                assert self.opposing_action_cost
+            elif tag == "reaction":
+                self.reaction = get_only_child_value(child)
+                assert self.reaction
+
+            elif tag == "reaction-cost":
+                self.reaction_cost = get_only_child_value(child)
+                assert self.reaction_cost
 
             elif tag == "critclass":
                 self.crit_class = get_only_child_value(child)
@@ -447,7 +457,10 @@ class Action:
                 self.cost = get_only_child_value(child)
 
             elif tag == "range":
-                self.action_range = get_only_child_value(child)
+                self.check_range = get_only_child_value(child)
+
+            # elif tag == "range":
+            #     self.ability_range = contents_to_string(child).strip()
 
             elif tag == "requires":
                 if self.requires is None:
@@ -466,23 +479,19 @@ class Action:
             elif tag == "counter":
                 self.counter = get_only_child_value(child)
 
-            elif tag == "range":
-                self.ability_range = contents_to_string(child).strip()
-
             elif tag == "keywords":
                 self.keywords += parse_xml_keyword_list(child)
-                print(self.keywords)
-                action_classes = ACTION_CLASSES.intersection(set(self.keywords))
+                check_verbs = CHECK_VERBS.intersection(set(self.keywords))
                 # Both these error cases should have been caught by schematron
-                if len(action_classes) > 1:
+                if len(check_verbs) > 1:
                     raise Exception("Received more than one action class "
-                                    "keyword (Check, Save, Auxiliary) "
+                                    "keyword (Action, Reaction, Auxiliary) "
                                     "there can be only one!")
-                if len(action_classes) == 0:
+                if len(check_verbs) == 0:
                     raise Exception("Received zero action class keywords "
                                     "expecting keywords to contain one, and "
-                                    "only one of (Check, Save, Auxiliary)")
-                self.action_class = action_classes.pop()
+                                    "only one of (Action, Reaction, Auxiliary)")
+                self.check_verb = check_verbs.pop()
 
             elif tag == "dmg":
                 self.dmg = contents_to_string(child).strip()
@@ -725,7 +734,7 @@ class Ability:
         self.description = None
         self.specializations = []
         self.group_id = ability_group_id
-        self.actions = []
+        self.checks = []
 
         # List of template parameters for antag checks (e.g. damage, result).
         self.param_dmg_default = None
@@ -762,7 +771,16 @@ class Ability:
         # in a graph in the phb.
         self.spline = None
 
-        # Ability stages
+        # Ability qualifiers
+        # If an ability has qualifiers it can have 0 or more of these at any
+        # one time.
+        self.qualifiers = []
+        # A second set of additional qualifiers orthogonal to the first set.
+        self.additional_qualifiers = []
+        
+        # Ability stages (like disease stages)
+        # If the ability has stages then it must be in 1 and only 1
+        # of these stages.
         self.stages = []
         
         # the group this ability belongs to.
@@ -819,8 +837,8 @@ class Ability:
         """Checks for malformed abilities.. returns a list of problems."""
         problems = []                
         
-        for action in self.actions:
-            problems += action.get_problems()
+        for check in self.checks:
+            problems += check.get_problems()
 
         # rank numbers can have an optional initial untrained/negative rank,
         # after that the should be a continuous range of increasing positive
@@ -891,8 +909,8 @@ class Ability:
     #     """For conjuration.ignis_2 this will return the string ignis_2"""
     #     return self.ability_id.split(".")[-1]
 
-    def get_actions(self):
-        return self.actions
+    def get_checks(self):
+        return self.checks
 
     def has_prerequisites(self):
         # has_prereqs = False
@@ -974,10 +992,10 @@ class Ability:
             elif tag == "param-permanent":
                 self.param_permanent = convert_str_to_bool(child.text.strip())
 
-            elif tag == "action":
-                action = Action(ability=self)
-                action._load(child)
-                self.actions.append(action)
+            elif tag == "check":
+                check = Check(ability=self)
+                check._load(child)
+                self.checks.append(check)
 
             elif tag == "abilityranks":
                 if len(self.ranks) > 0:
@@ -993,19 +1011,7 @@ class Ability:
                         "Only one abilitydescription per ability. (%s) %s\n" %
                         (child.tag, str(child)))
                 else:
-                    # if self.get_id() == "near-death":
-                    #     print(child)
-                    #     print("--")
-                    #     print(children_to_string(child))
-                    #     sys.exit()                    
                     self.description = children_to_string(child)
-
-            # elif tag == "prereqabilityrank":
-            #     ability_rank_id = child.text
-            #     if ability_rank_id is not None:
-            #         prereq = AbilityRankPrereq(ability_rank_id)
-            #         self.ability_rank_prereq = prereq
-            #         self.prerequisites.append(prereq)
 
             elif tag == "prereqabilityref":                
                 ability_ref = AbilityRef()
@@ -1043,6 +1049,16 @@ class Ability:
                 stage = AbilityStage()
                 stage.parse(child, fname=self.fname)
                 self.stages.append(stage)
+    
+            elif tag == "qualifier":
+                qualifier = AbilityStage()
+                qualifier.parse(child, fname=self.fname)
+                self.qualifiers.append(qualifier)
+    
+            elif tag == "qualifier2":
+                qualifier = AbilityStage()
+                qualifier.parse(child, fname=self.fname)
+                self.additional_qualifiers.append(qualifier)
     
             elif is_comment(child):
                 # ignore comments!
@@ -1404,25 +1420,18 @@ class AbilityGroups:
         as a prerequisite.
 
         """
-
-        print(f"GET ABILITIES CHILDREN {ability.get_id()}")
         children = []
 
         # Do it the hard way.
         found = None
         ability_id = ability.get_id()
-        print(f"\t{ability_id}")
         for group in self.ability_groups:
             assert isinstance(group, AbilityGroup)            
-            print(f"\t --- ability .. {ability}")
             for a2 in group:
-                print(f"\t\t --- child? .. {a2.get_id()}")
                 if a2.ability_ref_prereq is not None:
                     a2_prereq_id = a2.ability_ref_prereq.get_id()
                     ability_prereq = self.get_ability(a2_prereq_id)
-                    print(f"\t\t XXX {ability_prereq}")
                     if ability_prereq is None:
-                        #prereq_id = ability_ref_prereq.get_ability_rank_id()
                         raise Exception(
                             f"Ability prereq {ability_prereq} does not "
                             f"exist for ability: {ability.get_name()} "
@@ -1560,7 +1569,7 @@ class AbilityGroups:
 
 def generate_action_table():
     """
-    Creates an html table listing all the abilities and their actions.
+    Creates an html table listing all the abilities and their checks.
 
     """
     ability_groups = AbilityGroups()
@@ -1617,8 +1626,8 @@ if __name__ == "__main__":
 
 
     for g in ability_groups:
-        print(g.get_id())
-        if g.get_id() !=  "hazard":
+        #print(g.get_id())
+        if g.get_id() !=  "condition":
             continue
         
         #print(g.get_family())
@@ -1626,10 +1635,16 @@ if __name__ == "__main__":
         #print(g.info.family_readable_id)
         #print(g.info.ability_group_readable_id)
         #print(g.info.slug)
-        
+
         for a in g:
-            print(a.get_id())
-            print(a.get_parameters_str())
+            if a.get_id() == "asphyxiating":
+                print(a.get_id())
+                for check in a.get_checks():
+                    print(check)
+                    print()
+                    print(check.get_check_class())
+                    print(check.foo())
+            #print(a.get_parameters_str())
             #print(a.get_untrained_rank())
             #print(a.has_ranks())
             #print(a.slug)

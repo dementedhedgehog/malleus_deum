@@ -36,26 +36,26 @@
     <abilitytitle>Dungeoneering</abilitytitle>
     <abilityid>dungeoneering</abilityid>
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><craft/></critclass>
       <cost><default-skill-cost/></cost>
       <range><self/></range>
-      <keywords><physical/><check/></keywords>
-    </action>
+      <keywords><physical/><action/></keywords>
+    </check>
     
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-recall-knowledge-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <abilitydescription>
 	<p>
 	  Used for living under the ground: detect slope,
@@ -75,25 +75,25 @@
     <abilitytitle>Survivalism</abilitytitle>
     <abilityid>survivalism</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><craft/></critclass>
       <cost><gm-fiat-check-cost/></cost>
       <range><self/></range>
-      <keywords><physical/><check/></keywords>
-    </action>
-    <action>
+      <keywords><physical/><action/></keywords>
+    </check>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-recall-knowledge-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     <specializations>
       <specialization>Tundra</specialization>
       <specialization>Jungles</specialization>
@@ -141,26 +141,26 @@
     <abilitytitle>Hunting, Scouting <ampersand/> Tracking</abilitytitle>
     <abilityid>hunting</abilityid>    
     <abilityranks untrained="-3" from="1" to="4"/>
-    <action>
+    <check>
       <name>Check</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><gm-fiat-check-cost/></cost>
       <range><self/></range>
-      <keywords><physical/><check/></keywords>
-    </action>
+      <keywords><physical/><action/></keywords>
+    </check>
 
-    <action>
+    <check>
       <name>Recall Knowledge</name>
-      <opposing-action><default-lore-sv-hard/></opposing-action>
+      <reaction><default-lore-sv-hard/></reaction>
       <critclass><recall-knowledge/></critclass>
       <cost><default-recall-knowledge-cost/></cost>
       <range><self/></range>
-      <keywords><lore/><check/></keywords>
+      <keywords><lore/><action/></keywords>
       <critsuccess><default-lore-critical-success/></critsuccess>
       <righteoussuccess><default-lore-righteous-success/></righteoussuccess>  
       <success><default-lore-success/></success>
-    </action>
+    </check>
     
     <specializations>
       <specialization>Tundra</specialization>

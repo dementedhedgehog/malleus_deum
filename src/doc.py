@@ -20,16 +20,9 @@ from utils import (
     get_error_context,
     get_alias,
 )
+from doc_walkers import DocTreePreprocessor
 
 
-handle_regex = re.compile(r"^handle_")
-
-def no_op(obj):
-    """
-       We've got a lot of handlers that don't need to do anything..
-       do nothing once.
-    """
-    pass
 
 # These attributes tell us to format their tokens differently.
 TOKEN_TYPE = "token_type"
@@ -61,7 +54,6 @@ NON_DOC_TAGS = (
 )
 
 
-
 class Doc:
     """
     Represents an xml doc.  We build pdfs etc from these.
@@ -74,7 +66,10 @@ class Doc:
         # the doc xml dom
         self.doc = None
 
-        # list of resource ids.
+        # has the preprocessor been run?
+        self.preprocessed = False
+
+        # list of used resource ids (to keep track of what images we've used).
         self.resource_ids = []
         return
 
@@ -86,6 +81,10 @@ class Doc:
 
     
     def _find_resource_ids(self):
+        """
+        Keep track of the ids for the images we use.
+
+        """
         book_node = self.get_book_node()
         if book_node is None:
             raise Exception(
@@ -96,12 +95,10 @@ class Doc:
 
     def _parse_resources(self, element, errors, in_comment=False):
         """
-        FSM to find img resource ids.
+        FSM to find img resource ids using recursive descent.
+        
         """
-        #tag = element.tag
-        #element_name = ("%s" % tag).lower()
         tag = ("%s" % element.tag).lower()
-
         if is_comment(element):
             in_comment = True
         elif tag in IMG_TAGS:
@@ -115,6 +112,10 @@ class Doc:
         return
 
     def has_book_node(self):
+        """
+        Return True if the xml doc has a single <book> node.
+
+        """
         root = self.doc.getroot()
         book_nodes = root.xpath("//book")
         return len(book_nodes) == 1
@@ -141,6 +142,7 @@ class Doc:
 
     def _create_error(self, msg, i_formatter, element) -> Exception:
         # This is the context within the xml where the error occured.
+        # FIXME: isn't there duplicate logic for this in xml_utils or somewhere?
         stack_list = traceback.format_stack()
         stack_trace = ''.join(stack_list[:-1]) + "\n"
         if element.sourceline:
@@ -156,7 +158,16 @@ class Doc:
             f"{stack_trace}"
             f"at {self.fname}:{sourceline}\n"
             f"{context}")
+
+
+    def _preprocess(self, book_node, errors = []):
+        if not self.preprocessed:
+            preprocessor = DocTreePreprocessor()            
+            self._format(book_node, preprocessor, errors)
+            self.preprocesed = True
+        return errors
         
+            
     def format(self, i_formatter):
         """
         Descend into the doc tree calling formatter callbacks to format
@@ -170,30 +181,13 @@ class Doc:
         book_node = self.get_book_node()
         if book_node is None:
             raise Exception("Can't format a doc without a book node!")
+
         errors = []
-
-        # Build a lookup table of callback functions
-        methods = {}
-        for fn_name in dir(i_formatter):
-            if fn_name.startswith("start_") or fn_name.startswith("end_"):
-                fn = getattr(i_formatter, fn_name)
-                if callable(fn):
-                    methods[fn_name] = fn
-
-            elif fn_name.startswith("handle_"):
-                # methods with handle_foo() get converted into start and end
-                # handlers as follows: start_foo->handle_foo, end_foo->no_op.
-                start_fn_name = handle_regex.sub("start_", fn_name)
-                end_fn_name = handle_regex.sub("end_", fn_name)
-                handle_fn = getattr(i_formatter, fn_name)
-                if callable(fn):
-                    methods[start_fn_name] = handle_fn
-                    methods[end_fn_name] = no_op
-                    
-        self._format(book_node, i_formatter, methods, errors)
+        self._preprocess(book_node, errors)
+        self._format(book_node, i_formatter, errors)
         return errors
 
-    def _format(self, element, i_formatter, methods, errors):
+    def _format(self, element, i_formatter, errors):
         """
         Recursively descend into the doc structure.. handing nodes off to 
         the formatter to deal with.
@@ -204,11 +198,11 @@ class Doc:
         
         tag = ("%s" % element.tag).lower()
         
+        # Don't bother passing these metadata tags to the formater.
         if tag in NON_DOC_TAGS:
-            # Don't bother parsing these metadata tags to the formater.
             return
 
-        token_type = element.get(TOKEN_TYPE)                
+        token_type = element.get(TOKEN_TYPE)
         if token_type == TOKEN_TYPE_STRING_CONSTANT:
             i_formatter.process_plain_text(element.text)
         
@@ -219,17 +213,16 @@ class Doc:
             i_formatter.start_comment(element)
 
         else:
-            # handle tag by calling start_tag() and end_tag() bookend calls.
-            handler_name = f"start_{tag}"
-            if handler_name in methods:
-                handler = methods[handler_name]       
+            # call start_tag() 
+            handler = i_formatter.get_start_method(tag)
+            if handler:
                 try:
-                    handler(element)
+                    handler(element)                    
                 except Exception as err:
                     context = get_error_context(self.fname, element.sourceline)
+                    err.add_note(f"Handling start_{tag}()")
                     err.add_note(context)
                     raise err
-                    #raise self._get_error(err, i_formatter, element)
             else:
                 raise self._create_error(
                     f"Unknown element <{tag}> or missing {handler_name}",
@@ -244,7 +237,7 @@ class Doc:
             # handle all the children
             if token_type != TOKEN_TYPE_ATOM:
                 for child in list(element):
-                    self._format(child, i_formatter, methods, errors)                
+                    self._format(child, i_formatter, errors)                
 
         if is_comment(element):
             i_formatter.end_comment(element)
@@ -256,16 +249,16 @@ class Doc:
             pass
 
         else:
-            handler_name = f"end_{tag}"
-            if handler_name in methods:
-                handler = methods[handler_name]
+            # call end_tag().
+            handler = i_formatter.get_end_method(tag)
+            if handler:
                 try:
-                    handler(element)                    
+                    handler(element)
                 except Exception as err:
                     context = get_error_context(self.fname, element.sourceline)
+                    err.add_note(f"Handling end_{tag}()")
                     err.add_note(context)
-                    raise err
-                
+                    raise err         
             else:
                 raise self._create_error(
                     f"Missing xml element handler {handler_name}()",
