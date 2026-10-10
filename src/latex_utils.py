@@ -101,7 +101,8 @@ def xelatex(tex_fname, verbosity=0):
             filter_xelatex_output(xelatex_output)
     else:
         print(xelatex_output)
-        sys.exit(f"Failed to run xelatex on doc: {tex_fname} with error:\n{xelatex_output}")
+        sys.exit(f"Failed to run xelatex on doc: {tex_fname} "
+                 f"with error:\n{xelatex_output}")
         
     # Rerun once to try and get cross-references right
     # (Throw away the trace this time)
@@ -129,8 +130,8 @@ def find_makeindex(verbosity=0):
     # sanity check makeindex exists.
     assert exists(makeindex), f"Can't find makeindex at {makeindex}"
     if verbosity > 1:
-        print("Using makeindex at %s" % makeindex)
-        
+        print("Using makeindex at %s" % makeindex)        
+
     return makeindex
 
 
@@ -200,12 +201,11 @@ def build_pdf(
 
     # check we have a book_node to format
     if not doc.has_book_node():
-        #if verbosity >= 1:
-        raise Exception(f"No book node to format in document: {doc_fname} IGNORING!")
-        #return    
+        raise Exception(
+            f"No book node to format in document: {doc_fname} IGNORING!")
     
     # makeindex won't write to files outside of the cwd (a safety mechanism),
-    # so we don't want a path here, ust a filename.
+    # so we don't want a path here, just a filename.
 
     # clear the index
     if not exists(idx_fname):
@@ -213,6 +213,7 @@ def build_pdf(
         f.write('')
 
     # build the latex document by translating the doc xml
+    # (e.g. build ./build/phb.tex) 
     if not fast_mode:
         with codecs.open(tex_fname, "w", "utf-8") as f:           
             latex_formatter = LatexFormatter(f, db, xml_fname)
@@ -227,7 +228,8 @@ def build_pdf(
     if only_build_tex_files:
         return True
 
-    # then convert the latex document to pdf (and generate the index idx file)
+    # Run xelatex to convert the .tex document to pdf
+    # (and generate the index idx file)
     idx_hash = _get_md5_hash(idx_fname)
     new_idx_hash = None
     for i in range(3):

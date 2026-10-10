@@ -131,12 +131,84 @@
       </indexdefn>
       <subentry>See Actor-Action-Reactor</subentry>
     </indexentry>
+
+
+    <subsection>
+      <subsectiontitle>When Actions Happen</subsectiontitle>
+
+      <subsubsection>
+	<subsubsectiontitle>Turn Actions</subsubsectiontitle>
+	<p>
+	  Most checks are initiated by PCs during their turns.  These actions
+	  have an <defn>Action Point (APs)</defn> cost that must be paid to
+	  perform the action.  PCs get five APs per round.
+	</p>    
+      </subsubsection>
+
+      <subsubsection>
+	<subsubsectiontitle>Start-of-Turn Actions</subsubsectiontitle>
+	<p>
+	  Some antagonist abilities happen at the start of the players turn,
+	  represented by the following symbol <startofturnsymbol/>.  Start of
+	  Turn actions happen before any of the PCs actions and have no cost to
+	  the antagonists. Typically they are used to model ongoing conditions,
+	  <eg/> checking for ongoing poisoned condition effects.
+	</p>    
+      </subsubsection>
+
+      <subsubsection>
+	<subsubsectiontitle>Out-of-Turn Actions</subsubsectiontitle>
+	<indexentry>
+	  <entry>Responses</entry>
+	</indexentry>
+	<indexentry>
+	  <entry>Out-of-Turn Actions (OOTA)</entry>
+	</indexentry>
+	<indexentry>
+	  <entry>OOTA: Out-of-Turn Actions</entry>
+	</indexentry>
+	<indexentry>
+	  <entry>Interrupts</entry>
+	</indexentry>
+
+	<p>
+	  Each round characters get one Out-of-Turn Action (OOTA).  Certain
+	  abilities will allow characters to spend their OOTA to perform various
+	  Saves, Interrupts or Responses.
+	</p>
+
+	<p>
+	  An <interruptsymbol/><defn>Interrupt</defn> is an effect that happens
+	  <emph>before</emph> its' triggering action is resolved. A
+	  <savearrowsymbol/><defn>Save</defn> is a reaction, saves occurs at the
+	  same time as the Check and opposes it.  While, a
+	  <responsesymbol/><defn>Response</defn> is an effect that happens
+	  <emph>after</emph> the triggering action has been resolved.
+	</p>
+
+	<p>
+	  Interrupts, Saves and Responses can be <defn>Free</defn>, which means
+	  they do not require the character to spend their OOTA to perform. They
+	  are denoted by the following "hollow" symbols: 
+	  <freeinterruptsymbol/>, <freesavesymbol/>, and <freeresponsesymbol/>.
+	</p> 
+
+	<p>
+	  <bold>FIXME: DOES THIS MAKE SENSE.. CANT WE DROP THESE AND REPLACE THEM
+	  WITH ANTAG CHECKS AGAINST THE PC?</bold>
+	  Responses and interrupts can be <defn>Mandatory</defn>, which means they
+	  <emph>must</emph> be performed if their prerequisites are met. Mandatory
+	  actions are denoted by a trailing exclamation mark and come in free and
+	  unfree types, <eg/> <mandatoryfreeinterruptsymbol/>, and
+	  <mandatoryresponsesymbol/>.
+	</p>
+      </subsubsection>    
+    </subsection>    
   </section>
 
-
+  
   <section>
-    <sectiontitle>The Details<label>sec:check-details</label></sectiontitle>
-    
+    <sectiontitle>The Details<label>sec:check-details</label></sectiontitle>    
     <p>
       Making checks involves the following steps outlined below. We discuss
       these steps in detail in coming sections:
@@ -237,64 +309,8 @@
 	Any triggered responses may be performed now.
       </description>
     </descriptions>
-
-    <subsection>
-      <subsectiontitle>Start-of-Turn Actions</subsectiontitle>
-      <p>
-	Some antagonist abilities happen at the start of the players turn,
-	represented by the following symbol <startofturnsymbol/>.  Start of Turn
-	actions happen before any of the PCs actions and have no cost to the
-	antagonists.  Typically they are used to model ongoing conditions.
-      </p>    
-    </subsection>    
-
-    <subsection>
-      <subsectiontitle>Out-of-Turn Actions</subsectiontitle>
-      <indexentry>
-	<entry>Responses</entry>
-      </indexentry>
-      <indexentry>
-	<entry>Out-of-Turn Actions (OOTA)</entry>
-      </indexentry>
-      <indexentry>
-	<entry>OOTA: Out-of-Turn Actions</entry>
-      </indexentry>
-      <indexentry>
-	<entry>Interrupts</entry>
-      </indexentry>
-
-      <p>
-	Each round characters get one Out-of-Turn Action (OOTAs).  Certain
-	abilities will allow characters to spend their OOTA to perform various
-	Saves, Interrupts or Responses.
-      </p>
-
-      <p>
-	An <interruptsymbol/><defn>Interrupt</defn> is an effect that happens
-	<emph>before</emph> its' triggering action is resolved. A
-	<savearrowsymbol/><defn>Save</defn> is a reaction that occurs at the
-	same time as the Check and opposes it.  While, a
-	<responsesymbol/><defn>Response</defn> is an effect that happens
-	<emph>after</emph> the triggering action has been resolved.
-      </p>
-
-      <p>
-	Intterupts, saves and interrupts can be <defn>Free</defn>, which means
-	they do not require the character to spend their OOTA to perform. They
-	are denoted by the following "hollow" symbols: 
-	<freeinterruptsymbol/>, <freesavesymbol/>, and <freeresponsesymbol/>.
-      </p> 
-
-      <p>
-	Responses and interrupts can be <defn>Mandatory</defn>, which means they
-	<emph>must</emph> be performed if their prerequisites are met. Mandatory
-	actions are denoted by a trailing exclamation mark and come in free and
-	unfree types, <eg/> <mandatoryfreeinterruptsymbol/>, and
-	<mandatoryresponsesymbol/>.
-      </p>
-    </subsection>    
   </section>
-
+  
   
   <section>
     <sectiontitle>
@@ -992,7 +1008,7 @@ point pool, see <tableref label="table:point-pool-checks"/>.
 <subsubsection>
 <subsubsectiontitle>Exhaustion</subsubsectiontitle>
 
-{% include "docs/tables/exhaustion_table.xml" %}
+{% include "docs/tables/point_pool_exhaustion_table.xml" %}
 
 <p>
   If the point pool would be reduced <emph>below zero</emph>, then
@@ -1039,10 +1055,9 @@ point pool, see <tableref label="table:point-pool-checks"/>.
   follows:
 </p>
 
-<table>
+<table label="table:phb-check-resolution-table">
 <tablespec><fixed>0.4</fixed><fixed>0.4</fixed></tablespec>
 <tabletitle>Check Resolution</tabletitle>
-<tablelabel>table:phb-check-resolution-table</tablelabel>
 
 <tableheaderrow>
 <th>PC SV - Antag SV</th>

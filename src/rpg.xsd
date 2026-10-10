@@ -341,7 +341,6 @@ Token Types:
       <xs:element name="smaller" type="textType"/>
       <xs:element name="hfill" type="textType"/>
     </xs:choice>
-
     <xs:attribute name="titlecategory" default="standard">
       <xs:simpleType>
 	<xs:restriction base="xs:string">
@@ -1264,7 +1263,7 @@ Token Types:
   <xs:group name="structureEnum">
     <xs:choice>
       <xs:element name="descriptions" type="descriptionsType"/>
-      <xs:element name="design" type="textType" />
+      <xs:element name="designnote" type="sidebarType" />
       <xs:element name="equation" type="equationType"/>
       <xs:element name="img" type="imgType"/>
       <xs:element name="wrapimg" type="wrapimgType"/>
@@ -2197,7 +2196,6 @@ Token Types:
       <!-- Specifies the number of columns and how wide they are -->
       <xs:element name="tablespec" type="tablespecType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="tabletitle" type="textType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="tablelabel" type="leafType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="indexentry" type="indexentryType" minOccurs="0" maxOccurs="unbounded"/>
       
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -2214,6 +2212,7 @@ Token Types:
     -->
     <xs:attribute name="colsep" type="xs:decimal"/>
     <xs:attribute name="token_type" type="xs:string" fixed="ignore-text"/>
+    <xs:attribute name="label" type="xs:string"/>
   </xs:complexType>
 
   <xs:complexType name="fixedColumnType">
@@ -2364,7 +2363,12 @@ Token Types:
 
   <xs:complexType name="subsubsectionType">
     <xs:sequence>
-      <xs:element name="subsubsectiontitle" type="titleType" />
+      <xs:choice minOccurs="1" maxOccurs="1">	
+	<!-- for actual subsubsections -->
+	<xs:element name="subsubsectiontitle" type="titleType" />
+	<!-- for subsubsections pretending to be ability descriptions -->
+	<xs:element name="abilitytitle" type="titleType" />
+      </xs:choice>
       <xs:element name="slug" type="textType" minOccurs="0" maxOccurs="1"/>      
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group ref="blockEnum"/>
@@ -2380,7 +2384,7 @@ Token Types:
         <xs:group ref="blockEnum"/>
       </xs:choice>
     </xs:sequence>
-    <xs:attribute name="title" type="xs:string" />
+    <xs:attribute name="title" type="xs:string" use="required"/>
   </xs:complexType>
 
   <xs:complexType name="archetypelevelType" >
@@ -2604,7 +2608,7 @@ Token Types:
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="img" type="imgType"/>
         <xs:element name="p" type="textType" />
-        <xs:element name="design" type="textType" />
+        <xs:element name="designnote" type="sidebarType" />
         <xs:element name="provenance" type="provenanceType" />
 	<xs:element name="figure" type="figureType"/>
         <xs:element name="olist" type="orderedListType"/>

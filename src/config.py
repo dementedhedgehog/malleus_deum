@@ -24,10 +24,9 @@ draw_skill_trees = True
 debug_outline_images = False
 
 # display design notes..
-# These are musings on why things have been done a certain way.
-# They're not necessary to play the game.  Include them if you
-# don't mind printing some extra stuff and you're curious about
-# the design motivations.
+# These are musings on why things have been done a certain way. They're not
+# necessary to play the game. Include them if you're curious about the design
+# motivations and you don't mind printing some extra stuff.
 print_design_notes = False
 
 # display provenance notes

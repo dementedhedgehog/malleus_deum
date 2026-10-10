@@ -32,7 +32,8 @@ sys.path.append(src_dir)
 # local
 from doc import Doc
 from db import DB
-#from epub_formatter import EPubFormatter
+# PROBABLY WANT MarkdownFormatter and TypstFormatter to replace latexformatter?
+#from epub_formatter import EPubFormatter  
 from html_formatter import HtmlFormatter
 from spreadsheet_writer import (
     write_game_balance_spreadsheet,
@@ -190,7 +191,6 @@ if __name__ == "__main__":
             "vVhcCrtu",
             ["verbose", "validate", "help", "clean",
              "clobber", "release", "tex", "unusedresources"])
-
     except GetoptError as err:
         usage(msg = str(err), return_code = 2)        
 
@@ -253,11 +253,11 @@ if __name__ == "__main__":
                 validate_only=validate_only,
                 only_build_tex_files=only_build_tex_files)
 
-        # Build background books (in the background dir)
+        # Build campaign/background books (in the background dir)
         for doc_xml_fname, _, _ in config.background_files_to_build:
             build_book("background", doc_xml_fname, verbosity, validate_only)
 
-        # Build archetypes
+        # Build archetype books
         for archetype_id, _, _ in config.archetypes_to_build:
             archetype = db.archetypes[archetype_id]
             assert archetype is not None
@@ -309,8 +309,7 @@ if __name__ == "__main__":
                 patron=patron,
                 db=db,
                 verbosity=verbosity) or die()
-
-            
+        
             doc = _parse_xml(processed_xml_fname)
             if validate_only:
                 continue

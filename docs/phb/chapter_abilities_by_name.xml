@@ -10,11 +10,10 @@ set pages = ability_groups.tabulate(n_lines_per_page=38,
 %}
 {% for page in pages %}
 <smaller>
-<table>
+<table label="table:abilities-by-name">
     <fullwidthtable/>
     <tablespec><fixed>0.46</fixed><fixed>0.46</fixed></tablespec>
     <tabletitle>Abilities by Name</tabletitle>
-    <tablelabel>abilitiesx</tablelabel>
     {%- for line in page -%}
     <tablerow>
     {%- for ability in line -%}

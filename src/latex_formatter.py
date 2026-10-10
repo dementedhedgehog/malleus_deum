@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+"""
+
+   Translates the document from XML to latex.
+
+   - I've come to the conclusion, over many years, that latex is really really
+     broken.  Unpopular opinion perhaps?
+
+"""
 from os.path import join, splitext, exists
 import sys
 import copy
@@ -32,6 +40,16 @@ from doc_walkers import BaseDocFormatter, no_op, DocTreePreprocessor as pp
 # of <sv13/> type elements.
 _sv_regex = re.compile(r'(\d+)$')
 
+# Some dingbats character codes
+STANDARD_DIVIDER_DING = 89
+FANCY_DIVIDER_DING = 80
+
+# turn this on to draw vertical lines between table columns (this will probably
+# bugger up layout a little bit, but is sometimes useful for debugging)
+DEBUG_COLUMN_WIDTH = False
+
+
+
 #
 # Be careful adding newlines.  Latex changes its behaviour when it sees empty
 # lines.  
@@ -64,6 +82,8 @@ latex_frontmatter = r"""
 \usepackage{amsthm}                %% nice theorem environments
 \usepackage[unicode]{hyperref}     %% for hyperlinks in pdf
 \usepackage{bookmark}              %% fixes a hyperref warning.
+%%\usepackage[unicode]{hyperref}     %% for hyperlinks in pdf
+%%\usepackage{bookmark}              %% fixes a hyperref warning.
 \usepackage{booktabs}              %% for tables
 \usepackage{calc}                  %% for table width calculations
 \usepackage{caption}               %% extra captions
@@ -101,8 +121,6 @@ latex_frontmatter = r"""
 \usepackage{xtab}                  %% for multipage tables
 
 \usepackage{transparent}           %% for transparent backgrounds
-\usepackage[unicode]{hyperref}     %% for hyperlinks in pdf
-\usepackage{bookmark}              %% fixes a hyperref warning.
 
 %% TESTING
 \usepackage{changepage}
@@ -483,11 +501,23 @@ latex_frontmatter = r"""
 %%
 %% NewEnviron eats trailing whitespace!! 
 %%
+\NewEnviron{mdemph}{\emph{\color{emphcolor}\BODY}}
 \NewEnviron{mdchaptertitle}{\chapter{\BODY}}
 \NewEnviron{mdsectiontitle}{\section{\BODY}}
 \NewEnviron{mdsubsectiontitle}{\subsection{\BODY}}
-\NewEnviron{mdsubsubsectiontitle}{\subsubsection{\BODY}}
-\NewEnviron{mdemph}{\emph{\color{emphcolor}\BODY}}
+\NewEnviron{mdsubsubsectiontitle}{%%
+%% Increment the subsection count and create the label for reference tracking
+\refstepcounter{subsubsection}%%
+\subsubsection*{\subsubsectionsymbol \phantomsection \BODY}}
+\NewEnviron{mdabilitytitle}{%%
+\refstepcounter{subsubsection}%%
+\subsubsection*{\abilitysubsubsectionsymbol \phantomsection \BODY}}
+
+
+%%\NewEnviron{mdsubsubsectiontitle}{\subsubsection{\BODY}}
+%%\NewEnviron{mdantagabilitytitle}{%%
+%%\subsubsection*{\abilitysubsubsectionsymbol \BODY}}
+
 
 
 
@@ -697,11 +727,10 @@ latex_frontmatter = r"""
 
 %% Antagonist Check Symbol also used for antagonistic abilities.
 \newcommand\antagonistsymbol{%%
-%%\raisebox{\symbolverticaloffset}{%%
+\raisebox{0.5\symbolverticaloffset}{%%
 \includegraphics[height=\symbolsize]%%
 {./resources/symbols/symbol_antagonist.png}%%
-\hspace{0.0\symbolhorizontalspace}}
-%%}
+\hspace{0.0\symbolhorizontalspace}}}
 
 %% Check Action Symbol
 \newcommand\actionsymbol{%%
@@ -823,8 +852,9 @@ latex_frontmatter = r"""
 %% include subsubsections in the table of contents
 \setcounter{tocdepth}{3}
 
-%% allow \subsubsection numbering.
-%% \setcounter{secnumdepth}{3}
+%% allow \subsubsection numbering
+%% (it's to get label/refs correct, not for display).
+\setcounter{secnumdepth}{3}
 
 
 \titleformat{\section}
@@ -971,9 +1001,6 @@ class TableState:
 
     """
     def __init__(self):
-        # This is a label for makeindex.
-        self.label = None
-
         # list of (index entry / sub entry)
         self.index_entries = []
 
@@ -1162,8 +1189,6 @@ class LatexFormatter(BaseDocFormatter):
             except KeyError:
                 raise Exception(f"Image {resource_id} does not exist!")
             filename = resource.get_fname()
-            # self.write("\\addcontentsline{loa}{section}{%s}"
-            #                       % resource.get_contents_desc())
         else:
             raise Exception("Image missing source or id!")
 
@@ -1837,14 +1862,20 @@ class LatexFormatter(BaseDocFormatter):
         self.write("\n\n")
         return
 
-    def start_design(self, design):
+    def start_designnote(self, design):
+        # FIXME: migrate this if statement up to shared code?
         if config.print_design_notes:
-            self.write("\n\n")
-            self.write(design.text)        
+            self.start_sidebar(design)
+        else:
+            # comment out the design note text
+            self.write(r"\iffalse ")
         return
 
-    def end_design(self, design):
-        self.write("\n\n")
+    def end_designnote(self, design):
+        if config.print_design_notes:
+            self.end_sidebar(design)
+        else:
+            self.write(r"\fi ")
         return
 
     def start_provenance(self, provenance):
@@ -1932,59 +1963,66 @@ class LatexFormatter(BaseDocFormatter):
 
     # Chapters
     handle_chapter = no_op
-    def start_chaptertitle(self, chapter_title):
+    def start_chaptertitle(self, _):
         self.write(r"\begin{mdchaptertitle}")
         return
 
-    def end_chaptertitle(self, chapter_title):
+    def end_chaptertitle(self, chaptertitle):
         # If we have a label it has to go after the chapter title!
         # (otherwise the label isn't set correctly,.. because of NewEnviron).
-        label = chapter_title.attrib.get("label")
+        label = chaptertitle.attrib.get("label")
         if label:
             self.write(r"\label{%s}" % label + NEWLINE)
-        self.write(r"\end{mdchaptertitle}" + NEWLINE)
-        self.write(NEWLINE)
+        self.write(r"\end{mdchaptertitle}" + 2*NEWLINE)
         return
 
     # Sections
     handle_section = no_op
-    def start_sectiontitle(self, section_title):
-        #self.push_buffer()
+    def start_sectiontitle(self, _):
         self.write(r"\begin{mdsectiontitle}")
         return
 
-    def end_sectiontitle(self, section_title):
-        #stripped_term = self.get_buffer_str(strip=True)
-        #self.write(stripped_term)
-        label = section_title.attrib.get("label")
+    def end_sectiontitle(self, sectiontitle):
+        label = sectiontitle.attrib.get("label")
         if label:
-            self.write(r"\label{%s}" % label)
-        self.write(r"\end{mdsectiontitle}" + NEWLINE)
+            self.write(r"\label{%s}" % label + NEWLINE)
+        self.write(r"\end{mdsectiontitle}" + 2*NEWLINE)
         return
 
     # Subsections
     handle_subsection = no_op
-    def start_subsectiontitle(self, section_title):
-        self.write(r"\subsection{")
+    def start_subsectiontitle(self, _):
+        self.write(r"\begin{mdsubsectiontitle}")
         return
-    def end_subsectiontitle(self, section_title):
-        self.write("}")
+    def end_subsectiontitle(self, subsectiontitle):
+        label = subsectiontitle.attrib.get("label")
+        if label:
+            self.write(r"\label{%s}" % label + NEWLINE)
+        self.write(r"\end{mdsubsectiontitle}" + 2*NEWLINE)
         return
 
     # Subsubsections
     handle_subsubsection = no_op
-    def start_subsubsectiontitle(self, title):
-        title_category = title.attrib.get("titlecategory")  
-        if (title_category == "antagonist-ability" or
-            title_category == "ability"):       
-            symbol = r"\abilitysubsubsectionsymbol "
-        else:
-            symbol = r"\subsubsectionsymbol "
-        self.write(r"\subsubsection*{" + symbol)
+    def start_subsubsectiontitle(self, _):
+        self.write(r"\begin{mdsubsubsectiontitle}")
         return
-    def end_subsubsectiontitle(self, title):
-        self.write("}")
-        return    
+    def end_subsubsectiontitle(self, subsubsectiontitle):
+        label = subsubsectiontitle.attrib.get("label")
+        if label:
+            self.write(r"\label{%s}" % label + NEWLINE)
+        self.write(r"\end{mdsubsubsectiontitle}")
+        return
+
+    # Abilities
+    def start_abilitytitle(self, _):
+        self.write(r"\begin{mdabilitytitle}")
+        return
+    def end_abilitytitle(self, abilitytitle):
+        self.write(r"\end{mdabilitytitle}")
+        label = abilitytitle.attrib.get("label")
+        if label:
+            self.write(r"\label{%s}" % label + NEWLINE)
+        return
  
     # Small Title (not really a division.. just a little header thing)
     def start_smalltitle(self, title):
@@ -2338,9 +2376,6 @@ class LatexFormatter(BaseDocFormatter):
         self.table = TableState()
         self.table.parse_category(table)
 
-        # turn this on to draw vertical lines between columns
-        DEBUG_COLUMN_WIDTH = False
-
         # we need to work out in advance the table layout (e.g. |c|c|c|
         # or whatever).
         table_spec = table.find("tablespec")
@@ -2409,10 +2444,6 @@ class LatexFormatter(BaseDocFormatter):
 
         # normal table environment
         self.write(r"\end{tabularx}" + NEWLINE)
-        
-        # Add labels for references
-        if self.table.label:
-            label = self.write(r"\label{%s}" % self.table.label)
 
         self.write(r"\end{center}" + NEWLINE)
 
@@ -2428,7 +2459,13 @@ class LatexFormatter(BaseDocFormatter):
         # The table caption from the <tabletitle> element, if we have one.
         if self.table.title:
             self.write(self.table.title)
-            
+        
+        # Add label for references
+        label = table.get("label")
+        if label:
+            self.write(r"\label{%s}" % label)            
+
+        # Close out the table env.
         if self.table.figure:
             if self.table.sideways:
                 self.write(r"\end{sidewaystable*}" + NEWLINE)        
@@ -2895,40 +2932,42 @@ class LatexFormatter(BaseDocFormatter):
         
         specializations = ability_ref.get_specializations_str()
         if specializations:
-            specializations_str = f"{name}[{specializations}]"
+            specializations_str = f"[{specializations}]"
         else:
             specializations_str = ""
-
+            
         if ability_ref.get_id() == "aspect":
-            self.write(
-                r"\begin{mdbold}" + 
-                phrase_str +
-                " «Aspect» " +
-                is_permanent_str +
-                specializations_str +
-                rank_num_str +
-                r"\end{mdbold}")            
-        else:
-            self.write(
-                r"\begin{mdbold}" +
-                phrase_str +
-                name +
-                is_permanent_str +
-                specializations_str +
-                rank_num_str +
-                r"\end{mdbold}")
+            ability_type_str = " «Aspect» "
+        else: 
+            ability_type_str = ""
+            
+        self.write(
+            # phantomsection required to get references correct.
+            #r"\phantomsection" + 
+            r"\hyperref[%s]" % ability_ref.get_label() +
+            "{" +
+            r"\begin{mdbold}" + 
+            name +
+            specializations_str +
+            phrase_str +
+            ability_type_str +
+            is_permanent_str +
+            specializations_str +
+            rank_num_str +
+            r"\end{mdbold}" +
+             "}")            
         return    
 
     def start_sidebar(self, sidebar):
         """
         """
-        if "title" in sidebar.attrib:        
-            title = sidebar.attrib.get("title")
-            title_str = (
-                r"fonttitle=\sidebartitlefont\huge, "
-                r"title={%s}, " % title)
-        else:
-            title_str = ""
+        title = sidebar.attrib.get("title")
+        if sidebar.tag == "designnote":
+            title = f"Design Note: {title}"
+        
+        title_str = (
+            r"fonttitle=\sidebartitlefont\large, "
+            r"title={%s}, " % title)
         
         self.write(
             r"\begin{figure}[hbtp!]"
@@ -2950,10 +2989,10 @@ class LatexFormatter(BaseDocFormatter):
             r"\end{figure}")
         return
 
-    # FIXME: what is this for?
-    def handle_details(self, _):        
-        # self.write("\\paragraph*{Detials}")
-        return        
+    # # FIXME: what is this for?
+    # def handle_details(self, _):        
+    #     # self.write("\\paragraph*{Detials}")
+    #     return        
 
     def handle_hfill(self, hfill):        
         self.write(r"\hfill")
@@ -2964,9 +3003,9 @@ class LatexFormatter(BaseDocFormatter):
         return
 
     def handle_divider(self, divider):        
-        char_code = 89 # standard
+        char_code = STANDARD_DIVIDER_DING
         if divider.attrib == "fancy":
-            char_code = 80
+            char_code = FANCY_DIVIDER_DING
         self.write(r"\centerline{\pgfornament[scale=0.14]{%s}}" % char_code)
         return    
 
@@ -2980,7 +3019,6 @@ class LatexFormatter(BaseDocFormatter):
             distance_text = sm.get("imperial")
             if distance_text is None:
                 raise Exception("Imperial distance not specified!")
-
         else:
             distance_text = sm.get("metric")
             if distance_text is None:

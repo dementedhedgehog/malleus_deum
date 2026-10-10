@@ -155,11 +155,7 @@ FIXME UNKNOWN CHECK VERB '{{ verb }}'!!
 {% macro format_ability(ability) %}
 <spacer/>
 <subsubsection>
-  {%- set titlecategory = "ability" -%}
-  {%- if ability.is_antag_ability() -%}
-  {%- set titlecategory = "antagonist-ability" -%}
-  {%- endif -%}    
-  <subsubsectiontitle titlecategory="{{titlecategory}}">
+  <abilitytitle label="{{ ability.get_label() }}">
     {{- ability.get_name() + " " -}}    
     {%- if ability.has_untrained_rank() -%}
     <bold>({{ ability.get_untrained_rank() }}) </bold>
@@ -176,7 +172,7 @@ FIXME UNKNOWN CHECK VERB '{{ verb }}'!!
     <hfill/><smaller>Params: [{{ability.get_parameters_str()}}]</smaller>
     {%- endif -%}
     {#- eat extra newlines as latex doesn't like them in movable arguments -#}
-  </subsubsectiontitle>
+  </abilitytitle>
   {%- if ability.slug -%}
   <slug>{{ ability.slug }}</slug>
   {%- endif -%}

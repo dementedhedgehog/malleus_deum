@@ -53,11 +53,9 @@ class DB:
         self.version = changelog.get_version()
         
         # load the abilities
-        print("Loading abilities")
         abilities_dir = join(root_dir, "abilities")
         self.ability_groups = AbilityGroups()
         self.ability_groups.load(abilities_dir, fail_fast=fail_fast)
-        print("Abilities Loaded")
         
         # load the archetypes
         archetype_dir = join(root_dir, "archetypes")

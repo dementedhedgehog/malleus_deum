@@ -8,11 +8,12 @@
       hopefully, be relatively straightforward:</emph>
     </p>
     <olist>
-      <li>First choose an archetype for your character, then</li>
+      <li>First choose an archetype for your character, </li>
+      <li>Get the archetype document for your character and a character sheet,
+      then</li>
       <li>
 	Follow the step by step instructions for character creation in that
-	archetype's handbook.  This involves getting your hands on a character
-	sheet.
+	archetype's handbook.  
       </li>
     </olist>
 
@@ -27,7 +28,7 @@
         <indexentry>
 	  <entry>Character</entry>
 	</indexentry>
-        Each Player Character has a list of statistics that describe what that
+        Each Player Character has a list of properties that describe what that
 	character can do and how well they can do it, as follows:
       </p>
 
@@ -55,7 +56,6 @@
       
       <subsection>
 	<subsectiontitle>Archetype</subsectiontitle>
-
 	<p>
           <indexentry>
 	    <entry>Archetype</entry>
@@ -65,11 +65,13 @@
 	  might choose to be a Red Mage or a Halfling Rover.
 	</p>
 	
-	<design>
-          Archetypes are indivisible because it makes them more modular and
-	  allows us to balance one archetype without effecting existing
-	  archetypes.
-	</design>
+	<designnote title="Archetype vs Class+Race">
+	  <p>
+            Archetypes are indivisible because it makes them more modular and
+	    allows us to balance one archetype without effecting existing
+	    archetypes.
+	  </p>
+	</designnote>
       </subsection>
 
       <subsection>
@@ -100,8 +102,7 @@
 	  </indexentry>
 	  Point pools represent some finite resource that will run out if
 	  overused, <eg/> for PCs these are Stamina, Health, Magic, Mettle and
-	  Luck, but monsters, magic items, and other things can have point pools
-	  as well.
+	  Luck.
 	</p>
 
 	<p>
@@ -109,20 +110,20 @@
 	  manage during the game, which will run out if overused. When any of
 	  the pools is reduced to zero the pool is said to be
 	  <defn>Exhausted</defn> and certain effects are applied as described in
-	  the Exhaustion Table.  Point pools have a minimum value of zero.
+	  the Exhaustion <tableref label="table:point-pool-exhaustion"
+	  on-page="true"/>. Point pools have a minimum value of zero.
 	</p>
 
 	<p>
 	  The number of points in a character's point pools are defined by their
-	  archetype, level and abilities.   For character point pools like Luck,
-	  Magic and Mettle the point pools will have a rest rate which allows
-	  the player to regain points for each point pool over time when they
-	  rest or through the use of other special abilities.
+	  archetype, level and abilities. Characters can gradually restore their
+	  point pools by resting.
 	</p>
 	
 	<p>
-	  Some point pools can never have their points restored, <eg/> some
-	  magical items.  While other point pools can regain their points in a
+	  Some point pools can never be restored, <eg/> some magical items have
+	  a fixed amount of magical energy in them that cannot easily be
+	  recharged.  While other point pools can regain their points in a
 	  variety of different ways, specified on a case by case basis.
 	</p>
 

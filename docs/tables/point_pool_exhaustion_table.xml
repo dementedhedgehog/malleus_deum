@@ -1,8 +1,7 @@
-<table colsep="0.3">
-  <fullwidthtable/>
-  <tablespec><fixed>0.17</fixed><fixed>0.80</fixed></tablespec>
-  <tabletitle>Exhausting Pools</tabletitle>
-  <tablelabel>table:{{ doc_name }}-exhausting-pools-table</tablelabel>
+<table colsep="0.3" label="table:point-pool-exhaustion">
+  <standardtable/>
+  <tablespec><fixed>0.17</fixed><fixed>0.77</fixed></tablespec>
+  <tabletitle>Point Pool Exhaustion.</tabletitle>
 
   <tableheaderrow>
     <td align="c"><bold>Pool</bold></td>
@@ -11,36 +10,36 @@
 
   <hline/>	  
   <tablerow>
-    <td>Health</td>
+    <th>Health</th>
     <td>Roll on the Near Death Table</td>
   </tablerow>
   
   <tablerow>
-    <td>Stamina</td>
+    <th>Stamina</th>
     <td>Make a Mettle Check. Gain the Bloodied condition. Remove the
       remainder of the Stamina damage from the Health Pool. Remove
-      further Stamina losses from Health, without reocurring Stamina
+      further Stamina losses from Health, without recurring Stamina
       Exhaustion.</td>
   </tablerow>
 
   <tablerow>
-    <td>Magic</td>
-    <td><bold>Spellburn!</bold> Suffer d6 damage.</td>
+    <th>Magic</th>
+    <td><emph>Spellburn!</emph> Suffer d6 damage.</td>
   </tablerow>
   
   <tablerow>
-    <td>Mettle</td>
+    <th>Mettle</th>
     <td>If the roll is Damned then roll on the Insanity Table.</td>
   </tablerow>
   
   <tablerow>
-    <td>Luck</td>
-    <td><bold>Out Of Luck</bold> Roll a d12 instead of a d20 when
+    <th>Luck</th>
+    <td><emph>Out Of Luck</emph> Roll a d12 instead of a d20 when
     confirming their Critical Fails until Luck is next increased.</td>
   </tablerow>
   
   <tablerow>
-    <td>Magical Items</td>
+    <th>Magical Items</th>
     <td>Item Dependent</td>
   </tablerow>
 </table>

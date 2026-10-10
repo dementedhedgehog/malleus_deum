@@ -110,6 +110,14 @@ class AbilityRef:
     def get_skill_value(self):
         return self.rank + 11
 
+    def get_label(self):
+        """
+        Return a reference id (i.e for hlinks to the ability defn in a pdf).
+        (e.g. for latex refs).        
+        
+        """
+        return self._id  # Just use id for the moment.  Should be good.
+
     def get_phrase(self):
         return self.phrase
 
@@ -787,6 +795,14 @@ class Ability:
         self.ability_group = None
         return
 
+    def get_label(self):
+        """
+        Use this for adding links to this ability into pdfs
+        (e.g. for latex labels).
+
+        """
+        return self.ability_id
+    
     def get_name(self):
         return self.name
 
